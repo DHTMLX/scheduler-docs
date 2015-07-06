@@ -1,0 +1,194 @@
+
+Methods
+=======
+
+{{api
+- api/scheduler_addevent.md - adds a new event
+- api/scheduler_addeventnow.md - adds a new event and opens the lightbox to confirm
+- api/scheduler_addmarkedtimespan.md - marks dates, but with certain settings makes blocking (unlike blockTime() allows setting custom styling for the limit)
+- api/scheduler_addsection.md - adds a section to the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+- api/scheduler_attachevent.md - attaches the handler to an inner event of dhtmlxScheduler
+- api/scheduler_backbone.md - makes the scheduler reflect all data changes in the Backbone model and vice versa
+- api/scheduler_blocktime.md - blocks the specified date and applies the default 'dimmed' style to it.
+- api/scheduler_callevent.md - calls an inner event
+- api/scheduler_changeeventid.md - changes the event's id
+- api/scheduler_checkcollision.md - checks whether the specified event occurs at the time that has already been occupied by another event(s)
+- api/scheduler_checkevent.md - checks whether an event has some handler(s) specified
+- api/scheduler_checkinmarkedtimespan.md - checks whether an event resides in a timespan of a specific type
+- api/scheduler_checklimitviolation.md - checks whether the specified event takes place at the blocked time period
+- api/scheduler_clearall.md - removes all events from the scheduler
+- api/scheduler_closeallsections.md - closes all sections in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+- api/scheduler_closesection.md - closes the specified section in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+- api/scheduler_collapse.md - collapses the expanded scheduler back to the normal size
+- api/scheduler_creategridview.md - creates the Grid view in the scheduler
+- api/scheduler_createtimelineview.md - creates the Timeline view in the scheduler
+- api/scheduler_createunitsview.md - creates the Units view in the scheduler
+- api/scheduler_deleteallsections.md - deletes all sections from  the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+- api/scheduler_deleteevent.md - deletes the specified event
+- api/scheduler_deletemarkedtimespan.md - removes marking/blocking set by the addMarkedTimespan() and blockTime() methods
+- api/scheduler_deletesection.md - deletes a section from  the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+- api/scheduler_destroycalendar.md - destroys previously created mini-calendar
+- api/scheduler_detachevent.md - detaches a handler from an event (which was attached before by the attachEvent method)
+- api/scheduler_edit.md - opens the inline editor to alter the event's text  (the editor in the event's box)
+- api/scheduler_editstop.md - closes the inline event editor, if it's currently open
+- api/scheduler_endlightbox.md - closes the lightbox
+- api/scheduler_expand.md - expands the scheduler to the full screen view
+- api/scheduler_formsection.md - gives access to the objects of lightbox's sections
+- api/scheduler_getactiondata.md - returns the current cursor-pointed date and section (if defined)
+- api/scheduler_getevent.md - returns the event object by its id
+- api/scheduler_geteventenddate.md - gets the event's end date
+- api/scheduler_geteventstartdate.md - gets the event's start date
+- api/scheduler_geteventtext.md - gets the event's text
+- api/scheduler_getevents.md - returns a collection of events which occur during the specified period
+- api/scheduler_getlabel.md - gets the label of a select control in the lightbox
+- api/scheduler_getlightbox.md - gets the lightbox's HTML object element
+- api/scheduler_getrecdates.md - returns all occurrences of a recurring event
+- api/scheduler_getrenderedevent.md - gets the object of the currently displayed event
+- api/scheduler_getsection.md - gets the object of the specified section in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+- api/scheduler_getstate.md - gets the current state of the scheduler
+- api/scheduler_getuserdata.md - gets the user data associated with the specified event
+- api/scheduler_hidecover.md - hides the lightbox modal overlay that blocks interactions with the remaining screen
+- api/scheduler_hidequickinfo.md - hides the pop-up event form (if it's currently active)
+- api/scheduler_highlighteventposition.md - highlights the event's duration on the time scale
+- api/scheduler_init.md - constructor. Initializes a dhtmlxScheduler object
+- api/scheduler_invertzones.md - inverts the specified time zones
+- api/scheduler_iscalendarvisible.md - checks whether the calendar is currently opened in the scheduler
+- api/scheduler_isonedayevent.md - checks whether the specified event one-day or multi-day
+- api/scheduler_isviewexists.md - checks whether a view with the specified name exists
+- api/scheduler_linkcalendar.md - 'says' to change the active date in the mini calendar each time, the active date in the scheduler is changed
+- api/scheduler_load.md - loads data to the scheduler from an external data source
+- api/scheduler_markcalendar.md - applies a css class to the specified date
+- api/scheduler_marktimespan.md - marks and/or blocks date(s) by applying the default or a custom style to them. Marking is cancelled right after any internal update in the app. Can be used for highlighting
+- api/scheduler_openallsections.md - opens all sections in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+- api/scheduler_opensection.md - opens the specified section in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+- api/scheduler_parse.md - loads data from a client-side resource
+- api/scheduler_rendercalendar.md - creates a mini calendar
+- api/scheduler_renderevent.md - generates HTML content for a custom event's box
+- api/scheduler_resetlightbox.md - removes the current lightbox's HTML object element
+- api/scheduler_scrollunit.md - scrolls the specified number of units in the Units view
+- api/scheduler_select.md - selects the specified event
+- api/scheduler_serverlist.md - returns a list of options
+- api/scheduler_setcurrentview.md - displays the specified view and date
+- api/scheduler_setevent.md - adds a new event to the scheduler's data pool
+- api/scheduler_seteventenddate.md - sets the event's end date
+- api/scheduler_seteventstartdate.md - sets the event's start date
+- api/scheduler_seteventtext.md - sets the event's text
+- api/scheduler_setlightboxsize.md - forces the lightbox to resize
+- api/scheduler_setloadmode.md - sets the mode that allows loading data by parts (enables the dynamic loading)
+- api/scheduler_setuserdata.md - sets the user data associated with the specified event
+- api/scheduler_showcover.md - shows the lightbox modal overlay that blocks interactions with the remaining screen
+- api/scheduler_showevent.md - shows and highlights the specified event in the current or specified view
+- api/scheduler_showlightbox.md - opens the lightbox for the specified event
+- api/scheduler_showquickinfo.md - displays the pop-up event form for the specified event
+- api/scheduler_startlightbox.md - shows a custom lightbox in the specified HTML container centered on the screen
+- api/scheduler_toical.md - converts scheduler's data to the ICal format
+- api/scheduler_tojson.md - converts scheduler's data into the JSON format
+- api/scheduler_topdf.md - exports the  current view to a PDF document (can be used for printing)
+- api/scheduler_topdfrange.md - exports several scheduler's views to a PDF document (can be used for printing)
+- api/scheduler_toxml.md - converts scheduler's data into the XML format
+- api/scheduler_uid.md - generates a unique ID (unique inside the current scheduler, not GUID)
+- api/scheduler_unblocktime.md - removes blocking set by the blockTime() method
+- api/scheduler_unmarkcalendar.md - removes a css class from the specified date
+- api/scheduler_unmarktimespan.md - removes marking/blocking set by the markTimespan() method
+- api/scheduler_unselect.md - unselects the specified event
+- api/scheduler_updatecalendar.md - displays the specified date in the mini calendar
+- api/scheduler_updatecollection.md - updates the specified collection with new options
+- api/scheduler_updateevent.md - updates the specified event
+- api/scheduler_updateview.md - displays the specified view and date (doesn't invoke any events)
+}}
+
+@index:
+- api/scheduler_addevent.md
+- api/scheduler_addeventnow.md
+- api/scheduler_addmarkedtimespan.md
+- api/scheduler_addsection.md
+- api/scheduler_attachevent.md
+- api/scheduler_backbone.md
+- api/scheduler_blocktime.md
+- api/scheduler_callevent.md
+- api/scheduler_changeeventid.md
+- api/scheduler_checkcollision.md
+- api/scheduler_checkevent.md
+- api/scheduler_checkinmarkedtimespan.md
+- api/scheduler_checklimitviolation.md
+- api/scheduler_clearall.md
+- api/scheduler_closeallsections.md
+- api/scheduler_closesection.md
+- api/scheduler_collapse.md
+- api/scheduler_creategridview.md
+- api/scheduler_createtimelineview.md
+- api/scheduler_createunitsview.md
+- api/scheduler_deleteallsections.md
+- api/scheduler_deleteevent.md
+- api/scheduler_deletemarkedtimespan.md
+- api/scheduler_deletesection.md
+- api/scheduler_destroycalendar.md
+- api/scheduler_detachevent.md
+- api/scheduler_edit.md
+- api/scheduler_editstop.md
+- api/scheduler_endlightbox.md
+- api/scheduler_expand.md
+- api/scheduler_formsection.md
+- api/scheduler_getactiondata.md
+- api/scheduler_getevent.md
+- api/scheduler_geteventenddate.md
+- api/scheduler_geteventstartdate.md
+- api/scheduler_geteventtext.md
+- api/scheduler_getevents.md
+- api/scheduler_getlabel.md
+- api/scheduler_getlightbox.md
+- api/scheduler_getrecdates.md
+- api/scheduler_getrenderedevent.md
+- api/scheduler_getsection.md
+- api/scheduler_getstate.md
+- api/scheduler_getuserdata.md
+- api/scheduler_hidecover.md
+- api/scheduler_hidequickinfo.md
+- api/scheduler_highlighteventposition.md
+- api/scheduler_init.md
+- api/scheduler_invertzones.md
+- api/scheduler_iscalendarvisible.md
+- api/scheduler_isonedayevent.md
+- api/scheduler_isviewexists.md
+- api/scheduler_linkcalendar.md
+- api/scheduler_load.md
+- api/scheduler_markcalendar.md
+- api/scheduler_marktimespan.md
+- api/scheduler_openallsections.md
+- api/scheduler_opensection.md
+- api/scheduler_parse.md
+- api/scheduler_rendercalendar.md
+- api/scheduler_renderevent.md
+- api/scheduler_resetlightbox.md
+- api/scheduler_scrollunit.md
+- api/scheduler_select.md
+- api/scheduler_serverlist.md
+- api/scheduler_setcurrentview.md
+- api/scheduler_setevent.md
+- api/scheduler_seteventenddate.md
+- api/scheduler_seteventstartdate.md
+- api/scheduler_seteventtext.md
+- api/scheduler_setlightboxsize.md
+- api/scheduler_setloadmode.md
+- api/scheduler_setuserdata.md
+- api/scheduler_showcover.md
+- api/scheduler_showevent.md
+- api/scheduler_showlightbox.md
+- api/scheduler_showquickinfo.md
+- api/scheduler_startlightbox.md
+- api/scheduler_toical.md
+- api/scheduler_tojson.md
+- api/scheduler_topdf.md
+- api/scheduler_topdfrange.md
+- api/scheduler_toxml.md
+- api/scheduler_uid.md
+- api/scheduler_unblocktime.md
+- api/scheduler_unmarkcalendar.md
+- api/scheduler_unmarktimespan.md
+- api/scheduler_unselect.md
+- api/scheduler_updatecalendar.md
+- api/scheduler_updatecollection.md
+- api/scheduler_updateevent.md
+- api/scheduler_updateview.md
+
+

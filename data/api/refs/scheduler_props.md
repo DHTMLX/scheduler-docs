@@ -1,0 +1,223 @@
+
+Properties
+==========
+
+{{api
+- api/scheduler_active_link_view_config.md - 'says' to present the numbers of days in the Month view as clickable links that open the related day in the specified view
+- api/scheduler_agenda_end_config.md - sets the date to display events until
+- api/scheduler_agenda_start_config.md - sets the date to start displaying events from
+- api/scheduler_ajax_error_config.md - specifies how to display the default error notification in case the XML data loading failed
+- api/scheduler_all_timed_config.md - 'says' to show multi-day events in  the regular way (as one-day events are displayed)
+- api/scheduler_api_date_config.md - sets the date format that will be used by the addEvent() method to parse the start_date, end_date properties in case they are specified as strings
+- api/scheduler_auto_end_date_config.md - enables automatic changing of the end event date after changing the start date
+- api/scheduler_buttons_left_config.md - stores a collection of buttons resided in the left bottom corner of the lightbox
+- api/scheduler_buttons_right_config.md - stores a collection of buttons resided in the right bottom corner of the lightbox
+- api/scheduler_cascade_event_count_config.md - sets the maximum number of events in a cascade
+- api/scheduler_cascade_event_display_config.md - sets the 'cascade' display mode
+- api/scheduler_cascade_event_margin_config.md - sets the left margin for a cascade of events
+- api/scheduler_check_limits_config.md - activates/disables checking of limits
+- api/scheduler_collision_limit_config.md - sets the maximum allowable number of events per time slot
+- api/scheduler_container_autoresize_config.md - forces the scheduler container to automatically change its size to show the whole content without scrolling
+- api/scheduler_day_date_config.md - sets the date format for the X-Axis of the Week and Units views
+- api/scheduler_dblclick_create_config.md - enables the possibility to create events by double click
+- api/scheduler_default_date_config.md - sets the date format used by the templates 'day_date', 'week_date', 'day_scale_date' for setting date in the views' headers
+- api/scheduler_delay_render_config.md - sets a timeout (in milliseconds) that wraps the api/scheduler_updateview.md and api/scheduler_setcurrentview.md calls  ( that cause re-drawing of the scheduler )
+- api/scheduler_details_on_create_config.md - 'says' to use the extended form while creating new events by drag or double click
+- api/scheduler_details_on_dblclick_config.md - 'says' to open the lightbox after double clicking on an event
+- api/scheduler_display_marked_timespans_config.md - defines whether the marked(blocked) time spans should be highlighted in the scheduler
+- api/scheduler_displayed_event_color_config.md - sets the default background color for the events retrieved by the showEvent() method
+- api/scheduler_displayed_event_text_color_config.md - sets the default font color for the events retrieved by the showEvent() method
+- api/scheduler_drag_create_config.md - enables the possibility to create new events by drag-and-drop
+- api/scheduler_drag_highlight_config.md - highlights the event's duration on the time scale when you drags an event over the scheduler
+- api/scheduler_drag_in_config.md - restrict dragging events to the calling scheduler from any other scheduler(s)
+- api/scheduler_drag_lightbox_config.md - enables the possibility to drag the lightbox by the header
+- api/scheduler_drag_move_config.md - enables the possibility to move events by drag-and-drop
+- api/scheduler_drag_out_config.md - restrict dragging events from the calling scheduler to any other scheduler(s)
+- api/scheduler_drag_resize_config.md - enables the possibility to resize events by drag-and-drop
+- api/scheduler_edit_on_create_config.md - 'says' to open the lightbox while creating new events
+- api/scheduler_event_duration_config.md - sets the initial duration of events in minutes
+- api/scheduler_first_hour_config.md - sets the minimum value for the hour scale (Y-Axis)
+- api/scheduler_fix_tab_position_config.md - moves views' tabs from the left to the right side
+- api/scheduler_full_day_config.md - enables setting of the event's duration to the full day
+- api/scheduler_highlight_displayed_event_config.md - specifies whether events retrieved by the showEvent method should be highlighted while displaying
+- api/scheduler_hour_date_config.md - sets the time format of Y-Axis. Also used in the default event and lighbox  templates for setting the time part.
+- api/scheduler_hour_size_px_config.md - sets the height of an hour unit in pixels
+- api/scheduler_icons_edit_config.md - stores a collection of icons visible in the side edit menu of the event's box
+- api/scheduler_icons_select_config.md - stores a collection of icons visible in the side selection menu of the event's box
+- api/scheduler_include_end_by_config.md - defines whether the date specified in the 'End by' field should be exclusive or inclusive
+- api/scheduler_key_nav_config.md - disables the keyboard navigation in the scheduler
+- api/scheduler_last_hour_config.md - sets the maximum value of the hour scale (Y-Axis)
+- api/scheduler_left_border_config.md - adds the dotted left border to the scheduler
+- api/scheduler_lightbox_config.md - specifies the lightbox object
+- api/scheduler_lightbox_recurring_config.md - defines the lightbox's behavior, when the user opens the lightbox to edit a recurring event
+- api/scheduler_limit_drag_out_config.md - denies to drag events out of the visible area of the scheduler
+- api/scheduler_limit_end_config.md - sets the right border of the allowable date range
+- api/scheduler_limit_start_config.md - sets the left border of the allowable date range
+- api/scheduler_limit_time_select_config.md - sets the max and min values of the time selector in the lightbox to the values of the 'last_hour' and 'first_hour' options
+- api/scheduler_limit_view_config.md - limits the date period during which the user can view the events
+- api/scheduler_load_date_config.md - sets the format of server request parameters 'from', 'to' in case of dynamic loading
+- api/scheduler_map_end_config.md - sets the date to display events until
+- api/scheduler_map_error_position_config.md - sets the position that will be displayed on the map in case the event's location can't be identified
+- api/scheduler_map_infowindow_max_width_config.md - the maximum width of the Google Maps's popup marker in the Map view
+- api/scheduler_map_initial_position_config.md - sets the initial position of the map
+- api/scheduler_map_initial_zoom_config.md - sets the initial zoom of Google Maps in the Map view
+- api/scheduler_map_resolve_event_location_config.md - activates attempts to resolve the event's location, if the database doesn't have  the event's coordinates stored
+- api/scheduler_map_resolve_user_location_config.md - enables/disables prompts asking the user to share his location for displaying on the map
+- api/scheduler_map_start_config.md - sets the date to start displaying events from
+- api/scheduler_map_type_config.md - sets the type of Google Maps
+- api/scheduler_map_zoom_after_resolve_config.md - sets the zoom that will be used to show the user's location, if the user agrees to the browser's offer to show it
+- api/scheduler_mark_now_config.md - enables/disables the marker displaying the current time
+- api/scheduler_max_month_events_config.md - sets the maximum number of events displayable in a cell
+- api/scheduler_minicalendar_config.md - specifies the mini calendar object
+- api/scheduler_month_date_config.md - sets the format for the header of the Month view
+- api/scheduler_month_day_config.md - sets the format for the day in the cells of the Month and Year views
+- api/scheduler_month_day_min_height_config.md - sets the minimum height of cells in the Month view
+- api/scheduler_multi_day_config.md - enables rendering of multi-day events
+- api/scheduler_multi_day_height_limit_config.md - sets the height of the area that displays multi-day events
+- api/scheduler_multisection_config.md - enables the possibility to render the same events in several sections of the Timeline or Units view
+- api/scheduler_multisection_shift_all_config.md - specifies whether while dragging events that assigned to several sections of the Timeline or Units view, all  instances should be dragged at once ('true') or just the selected one ('false')
+- api/scheduler_now_date_config.md - sets the date for the current-time marker in the Limit extension (enabled by the configuration - mark_now)
+- api/scheduler_occurrence_timestamp_in_utc_config.md - allows working with recurring events independently of time zones
+- api/scheduler_positive_closing_config.md - defines the 'saving' behaviour for the case, when  the user edits the event's text directly in the event's box
+- api/scheduler_preserve_length_config.md - preserves the visible length of an event while dragging along a non-linear time scale
+- api/scheduler_preserve_scroll_config.md - cancels preserving of the current scroll position while navigating between dates of the same view
+- api/scheduler_prevent_cache_config.md - enables/disables caching of GET requests in the browser
+- api/scheduler_quick_info_detached_config.md - defines whether the event form will appear from the left/right side of the screen or near the selected event
+- api/scheduler_readonly_config.md - activates the read-only mode for the scheduler
+- api/scheduler_readonly_form_config.md - activates the read-only mode for the lightbox
+- api/scheduler_recurring_workdays_config.md - specifies working days that will affect the recurring event when the user selects the ""Every workday" option in the lightbox
+- api/scheduler_repeat_date_config.md - sets the date format of the 'End by' field in the 'recurring' lightbox
+- api/scheduler_repeat_precise_config.md - prevents including past days to events with the 'weekly' recurrence
+- api/scheduler_resize_month_events_config.md - enables the possibility to resize multi-day events in the Month view by drag-and-drop
+- api/scheduler_resize_month_timed_config.md - enables the possibility to resize single-day events in the Month view by drag-n-drop
+- api/scheduler_scroll_hour_config.md - sets the initial position of the vertical scroll in the scheduler (an hour in the 24-hour clock format)
+- api/scheduler_section_delemiter_config.md - specifies the delimeter that will be used to separate several sections/units in the related data property of the event
+- api/scheduler_select_config.md - shows/hides the select bar in the event's box
+- api/scheduler_separate_short_events_config.md - allows preventing short events from overlapping
+- api/scheduler_server_utc_config.md - enables converting server-side dates from UTC to a local time zone (and backward) while sending data to the server
+- api/scheduler_show_loading_config.md - enables showing a progress/spinner while data is loading (useful for dynamic loading)
+- api/scheduler_show_quick_info_config.md - activates/disables the 'quick_info' extension (pop-up task's details form)
+- api/scheduler_start_on_monday_config.md - sets the start day of weeks
+- api/scheduler_time_step_config.md - sets the minimum step (in minutes) for event's time values
+- api/scheduler_touch_config.md - enables/disables the touch support in the scheduler
+- api/scheduler_touch_drag_config.md - defines the time period in milliseconds that is used to differ the long touch gesture from the scroll gesture
+- api/scheduler_touch_tip_config.md - enables/disables prompting messages in the right top corner of the screen
+- api/scheduler_touch_tooltip_config.md - disables dhtmxlScheduler's tooltips on the touch devices
+- api/scheduler_update_render_config.md - updates the mode when the scheduler fully repaints itself on any action
+- api/scheduler_use_select_menu_space_config.md - 'says' events to occupy the whole width of the cell
+- api/scheduler_week_date_config.md - sets the format of the date in the sub-header of the Month view
+- api/scheduler_wide_form_config.md - enables/disables displaying the standard (wide) lightbox instead of the short one
+- api/scheduler_xml_date_config.md - sets the date format that is used to parse data from the data set
+- api/scheduler_year_x_config.md - sets the number of rows in the Year view
+- api/scheduler_year_y_config.md - sets the number of columns in the Year view
+}}
+
+@index:
+- api/scheduler_active_link_view_config.md
+- api/scheduler_agenda_end_config.md
+- api/scheduler_agenda_start_config.md
+- api/scheduler_ajax_error_config.md
+- api/scheduler_all_timed_config.md
+- api/scheduler_api_date_config.md
+- api/scheduler_auto_end_date_config.md
+- api/scheduler_buttons_left_config.md
+- api/scheduler_buttons_right_config.md
+- api/scheduler_cascade_event_count_config.md
+- api/scheduler_cascade_event_display_config.md
+- api/scheduler_cascade_event_margin_config.md
+- api/scheduler_check_limits_config.md
+- api/scheduler_collision_limit_config.md
+- api/scheduler_container_autoresize_config.md
+- api/scheduler_day_date_config.md
+- api/scheduler_dblclick_create_config.md
+- api/scheduler_default_date_config.md
+- api/scheduler_delay_render_config.md
+- api/scheduler_details_on_create_config.md
+- api/scheduler_details_on_dblclick_config.md
+- api/scheduler_display_marked_timespans_config.md
+- api/scheduler_displayed_event_color_config.md
+- api/scheduler_displayed_event_text_color_config.md
+- api/scheduler_drag_create_config.md
+- api/scheduler_drag_highlight_config.md
+- api/scheduler_drag_in_config.md
+- api/scheduler_drag_lightbox_config.md
+- api/scheduler_drag_move_config.md
+- api/scheduler_drag_out_config.md
+- api/scheduler_drag_resize_config.md
+- api/scheduler_edit_on_create_config.md
+- api/scheduler_event_duration_config.md
+- api/scheduler_first_hour_config.md
+- api/scheduler_fix_tab_position_config.md
+- api/scheduler_full_day_config.md
+- api/scheduler_highlight_displayed_event_config.md
+- api/scheduler_hour_date_config.md
+- api/scheduler_hour_size_px_config.md
+- api/scheduler_icons_edit_config.md
+- api/scheduler_icons_select_config.md
+- api/scheduler_include_end_by_config.md
+- api/scheduler_key_nav_config.md
+- api/scheduler_last_hour_config.md
+- api/scheduler_left_border_config.md
+- api/scheduler_lightbox_config.md
+- api/scheduler_lightbox_recurring_config.md
+- api/scheduler_limit_drag_out_config.md
+- api/scheduler_limit_end_config.md
+- api/scheduler_limit_start_config.md
+- api/scheduler_limit_time_select_config.md
+- api/scheduler_limit_view_config.md
+- api/scheduler_load_date_config.md
+- api/scheduler_map_end_config.md
+- api/scheduler_map_error_position_config.md
+- api/scheduler_map_infowindow_max_width_config.md
+- api/scheduler_map_initial_position_config.md
+- api/scheduler_map_initial_zoom_config.md
+- api/scheduler_map_resolve_event_location_config.md
+- api/scheduler_map_resolve_user_location_config.md
+- api/scheduler_map_start_config.md
+- api/scheduler_map_type_config.md
+- api/scheduler_map_zoom_after_resolve_config.md
+- api/scheduler_mark_now_config.md
+- api/scheduler_max_month_events_config.md
+- api/scheduler_minicalendar_config.md
+- api/scheduler_month_date_config.md
+- api/scheduler_month_day_config.md
+- api/scheduler_month_day_min_height_config.md
+- api/scheduler_multi_day_config.md
+- api/scheduler_multi_day_height_limit_config.md
+- api/scheduler_multisection_config.md
+- api/scheduler_multisection_shift_all_config.md
+- api/scheduler_now_date_config.md
+- api/scheduler_occurrence_timestamp_in_utc_config.md
+- api/scheduler_positive_closing_config.md
+- api/scheduler_preserve_length_config.md
+- api/scheduler_preserve_scroll_config.md
+- api/scheduler_prevent_cache_config.md
+- api/scheduler_quick_info_detached_config.md
+- api/scheduler_readonly_config.md
+- api/scheduler_readonly_form_config.md
+- api/scheduler_recurring_workdays_config.md
+- api/scheduler_repeat_date_config.md
+- api/scheduler_repeat_precise_config.md
+- api/scheduler_resize_month_events_config.md
+- api/scheduler_resize_month_timed_config.md
+- api/scheduler_scroll_hour_config.md
+- api/scheduler_section_delemiter_config.md
+- api/scheduler_select_config.md
+- api/scheduler_separate_short_events_config.md
+- api/scheduler_server_utc_config.md
+- api/scheduler_show_loading_config.md
+- api/scheduler_show_quick_info_config.md
+- api/scheduler_start_on_monday_config.md
+- api/scheduler_time_step_config.md
+- api/scheduler_touch_config.md
+- api/scheduler_touch_drag_config.md
+- api/scheduler_touch_tip_config.md
+- api/scheduler_touch_tooltip_config.md
+- api/scheduler_update_render_config.md
+- api/scheduler_use_select_menu_space_config.md
+- api/scheduler_week_date_config.md
+- api/scheduler_wide_form_config.md
+- api/scheduler_xml_date_config.md
+- api/scheduler_year_x_config.md
+- api/scheduler_year_y_config.md
+

@@ -1,0 +1,156 @@
+
+Events
+=======
+
+{{api
+- api/scheduler_onaftereventdisplay_event.md - fires when the scheduler switches views, days, time etc. to show the event specified by the 'showEvent' method and fires AFTER the event is displayed
+- api/scheduler_onafterfoldertoggle_event.md - fires after a tree branch was opened or closed (the Timeline view, 'tree' mode only)
+- api/scheduler_onafterlightbox_event.md - fires after the user has closed the lightbox (edit form)
+- api/scheduler_onafterschedulerresize_event.md - fires after the scheduler has changed its size and data area was repainted
+- api/scheduler_onbeforecollapse_event.md - fires when a user clicks on the expand icon to change the scheduler's size from 'full screen' to original.
+- api/scheduler_onbeforedrag_event.md - fires when the user starts the drag/resize operation (version 2.1+)
+- api/scheduler_onbeforeeventchanged_event.md - fires when the event has been changed by drag-n-drop, but the changes aren't saved yet.
+- api/scheduler_onbeforeeventcreated_event.md - fires when the user creates a new event by dragging the cursor over the scheduler
+- api/scheduler_onbeforeeventdelete_event.md - fires after the user clicks on the delete button (in the event bar or details window)
+- api/scheduler_onbeforeeventdisplay_event.md - fires when the 'showEvent' method is called to show a specific event and fires BEFORE the event is displayed
+- api/scheduler_onbeforeeventdragin_event.md - fires before a dragged event is moved over the scheduler
+- api/scheduler_onbeforeeventdragout_event.md - fires before the dragged event is moved out of the scheduler
+- api/scheduler_onbeforeexpand_event.md - fires when a user clicks on the expand icon to change the scheduler's size from original to 'full screen'.
+- api/scheduler_onbeforeexternaldragin_event.md - fires before some element starts to be dragged into the scheduler from an outside DHTMLX component (only with dnd extension enabled)
+- api/scheduler_onbeforefoldertoggle_event.md - fires before a tree branch will be opened or closed (the Timeline view, 'tree' mode only)
+- api/scheduler_onbeforelightbox_event.md - fires immediately before the user opens the lightbox (edit form)
+- api/scheduler_onbeforesectionrender_event.md - fires before a single Timeline section was configured, but not rendered yet (the Timeline view only)
+- api/scheduler_onbeforetodaydisplayed_event.md - fires when the user clicks on the 'Today' button in the scheduler
+- api/scheduler_onbeforetooltip_event.md - fires before the tooltip is displayed for a data item (only with the 'tooltip' extension enabled)
+- api/scheduler_onbeforeviewchange_event.md - fires before the user changes the current view to some other one
+- api/scheduler_oncellclick_event.md - fires when the user makes a single click on a cell (the Timeline view only)
+- api/scheduler_oncelldblclick_event.md - fires when the user makes a double click on a cell (the Timeline view only)
+- api/scheduler_onclearall_event.md - fires after data in the scheduler was cleared
+- api/scheduler_onclick_event.md - fires when the user clicks the left mouse button on an event
+- api/scheduler_oncollapse_event.md - fires when a user clicks on the expand icon to change the scheduler's size from 'full screen' to original.
+- api/scheduler_onconfirmedbeforeeventdelete_event.md - fires after the user clicks on the delete button and confirms the deletion (in the event's bar or details window)
+- api/scheduler_oncontextmenu_event.md - fires when the user calls the context menu by clicking the right mouse button inside the scheduler
+- api/scheduler_ondblclick_event.md - fires when the user double clicks on an event
+- api/scheduler_ondragend_event.md - fires when the drag/resize operation is finished
+- api/scheduler_onemptyclick_event.md - fires when the user clicks on an empty space in the scheduler (not on events)
+- api/scheduler_oneventadded_event.md - fires when the user adds a new event to the scheduler
+- api/scheduler_oneventcancel_event.md - fires when the user clicks on the 'Cancel' button in the lightbox (edit form)
+- api/scheduler_oneventchanged_event.md - occurs after the user has edited an event and saved the changes (after clicking on the edit and save buttons in the event's bar or in the details window)
+- api/scheduler_oneventcollision_event.md - fires when the user tries to create a new event  (or modify some existing one) inside of some already occupied time slot
+- api/scheduler_oneventcopied_event.md - fires when the user presses the 'CTRL+C' keyboard command (only with the 'keyboard navigation' extension enabled)
+- api/scheduler_oneventcreated_event.md - fires when the user starts to create a new event (by double click or dragging)
+- api/scheduler_oneventcut_event.md - fires when the user presses the 'CTRL+X' keyboard command (only with the 'keyboard navigation' extension enabled)
+- api/scheduler_oneventdeleted_event.md - fires after the specified event was deleted (version 3.0+)
+- api/scheduler_oneventdrag_event.md - fires when the user drags/resizes events in the scheduler
+- api/scheduler_oneventdragin_event.md - fires when a dragged event is moved over the scheduler
+- api/scheduler_oneventdragout_event.md - fires when a dragged event  is moved out of the scheduler
+- api/scheduler_oneventdropout_event.md - fires when a dragged event  is dropped onto the area out of the scheduler
+- api/scheduler_oneventidchange_event.md - fires when the id of an event is changed
+- api/scheduler_oneventloading_event.md - fires when an event is being loaded from the data source
+- api/scheduler_oneventpasted_event.md - fires when the user presses the 'CTRL+V' keyboard command (only with the 'keyboard navigation' extension enabled)
+- api/scheduler_oneventsave_event.md - fires when the user clicks on the 'save' button in the lightbox (edit form)
+- api/scheduler_onexpand_event.md - fires when a user clicks on the expand icon to change the scheduler's size from original to 'full screen'.
+- api/scheduler_onexternaldragin_event.md - fires when some data is being dragged into the scheduler from an outside DHTMLX component (only with dnd extension enabled)
+- api/scheduler_onlightbox_event.md - fires after the user has opened the lightbox (edit form)
+- api/scheduler_onlightboxbutton_event.md - fires when the user clicks on a custom button in the lightbox
+- api/scheduler_onlimitviolation_event.md - fires when the user tries to set for an event the time that is currently limited/blocked
+- api/scheduler_onloaderror_event.md - fires when some error happened while data loading
+- api/scheduler_onlocationerror_event.md - fires when the event location can't be found on the map (the Map view only)
+- api/scheduler_onmousedown_event.md - fires when the user clicks on a scheduler's element that doesn't have the predefined 'onlick' handler
+- api/scheduler_onmousemove_event.md - fires when the mouse cursor is moved over the scheduler
+- api/scheduler_onoptionsload_event.md - fires after a collection of options or sections has been loaded from the server, but isn't parsed yet
+- api/scheduler_onoptionsloadfinal_event.md - fires after loading of an options(sections) collection  is complete (the Timeline view only)
+- api/scheduler_onoptionsloadstart_event.md - fires before a collection of options or sections  starts to be loaded from the server  (the Timeline view only)
+- api/scheduler_onsaveerror_event.md - fires when some error happened while data updating
+- api/scheduler_onscaleadd_event.md - fires after a single view unit (column, section, day cell etc.) has been rendered in the scheduler
+- api/scheduler_onscaledblclick_event.md - fires when the user double clicks on the time scale
+- api/scheduler_onschedulerready_event.md - fires after scheduler initialization is complete, but the scheduler is not rendered on the page yet.
+- api/scheduler_onschedulerresize_event.md - fires before the scheduler changes its size
+- api/scheduler_ontemplatesready_event.md - fires when the scheduler templates are initialized
+- api/scheduler_ontimelinecreated_event.md - fires after the Timeline view has been initialized, but is not rendered on the page yet (the Timeline view only)
+- api/scheduler_onviewchange_event.md - fires after the current view has been changed to some other one
+- api/scheduler_onviewmoreclick_event.md - fires when the user clicks on the 'View more' link in the Month view  (the Month view only)
+- api/scheduler_onxle_event.md - fires after loading data from the data source is complete
+- api/scheduler_onxls_event.md - fires immediately before loading data from the data source has been started
+- api/scheduler_onxscaleclick_event.md - fires when the user makes a single click on a cell on the x-axis (the Timeline view only)
+- api/scheduler_onxscaledblclick_event.md - fires when the user makes a double click on a cell on the x-axis (the Timeline view only)
+- api/scheduler_onyscaleclick_event.md - fires when the user makes a single click on a cell on the y-axis (the Timeline view only)
+- api/scheduler_onyscaledblclick_event.md - fires when the user makes a double click on a cell on the y-axis (the Timeline view only)
+}}
+
+@index:
+- api/scheduler_onaftereventdisplay_event.md
+- api/scheduler_onafterfoldertoggle_event.md
+- api/scheduler_onafterlightbox_event.md
+- api/scheduler_onafterschedulerresize_event.md
+- api/scheduler_onbeforecollapse_event.md
+- api/scheduler_onbeforedrag_event.md
+- api/scheduler_onbeforeeventchanged_event.md
+- api/scheduler_onbeforeeventcreated_event.md
+- api/scheduler_onbeforeeventdelete_event.md
+- api/scheduler_onbeforeeventdisplay_event.md
+- api/scheduler_onbeforeeventdragin_event.md
+- api/scheduler_onbeforeeventdragout_event.md
+- api/scheduler_onbeforeexpand_event.md
+- api/scheduler_onbeforeexternaldragin_event.md
+- api/scheduler_onbeforefoldertoggle_event.md
+- api/scheduler_onbeforelightbox_event.md
+- api/scheduler_onbeforesectionrender_event.md
+- api/scheduler_onbeforetodaydisplayed_event.md
+- api/scheduler_onbeforetooltip_event.md
+- api/scheduler_onbeforeviewchange_event.md
+- api/scheduler_oncellclick_event.md
+- api/scheduler_oncelldblclick_event.md
+- api/scheduler_onclearall_event.md
+- api/scheduler_onclick_event.md
+- api/scheduler_oncollapse_event.md
+- api/scheduler_onconfirmedbeforeeventdelete_event.md
+- api/scheduler_oncontextmenu_event.md
+- api/scheduler_ondblclick_event.md
+- api/scheduler_ondragend_event.md
+- api/scheduler_onemptyclick_event.md
+- api/scheduler_oneventadded_event.md
+- api/scheduler_oneventcancel_event.md
+- api/scheduler_oneventchanged_event.md
+- api/scheduler_oneventcollision_event.md
+- api/scheduler_oneventcopied_event.md
+- api/scheduler_oneventcreated_event.md
+- api/scheduler_oneventcut_event.md
+- api/scheduler_oneventdeleted_event.md
+- api/scheduler_oneventdrag_event.md
+- api/scheduler_oneventdragin_event.md
+- api/scheduler_oneventdragout_event.md
+- api/scheduler_oneventdropout_event.md
+- api/scheduler_oneventidchange_event.md
+- api/scheduler_oneventloading_event.md
+- api/scheduler_oneventpasted_event.md
+- api/scheduler_oneventsave_event.md
+- api/scheduler_onexpand_event.md
+- api/scheduler_onexternaldragin_event.md
+- api/scheduler_onlightbox_event.md
+- api/scheduler_onlightboxbutton_event.md
+- api/scheduler_onlimitviolation_event.md
+- api/scheduler_onloaderror_event.md
+- api/scheduler_onlocationerror_event.md
+- api/scheduler_onmousedown_event.md
+- api/scheduler_onmousemove_event.md
+- api/scheduler_onoptionsload_event.md
+- api/scheduler_onoptionsloadfinal_event.md
+- api/scheduler_onoptionsloadstart_event.md
+- api/scheduler_onsaveerror_event.md
+- api/scheduler_onscaleadd_event.md
+- api/scheduler_onscaledblclick_event.md
+- api/scheduler_onschedulerready_event.md
+- api/scheduler_onschedulerresize_event.md
+- api/scheduler_ontemplatesready_event.md
+- api/scheduler_ontimelinecreated_event.md
+- api/scheduler_onviewchange_event.md
+- api/scheduler_onviewmoreclick_event.md
+- api/scheduler_onxle_event.md
+- api/scheduler_onxls_event.md
+- api/scheduler_onxscaleclick_event.md
+- api/scheduler_onxscaledblclick_event.md
+- api/scheduler_onyscaleclick_event.md
+- api/scheduler_onyscaledblclick_event.md
+
+
