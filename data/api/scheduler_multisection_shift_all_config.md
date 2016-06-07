@@ -24,3 +24,5 @@ scheduler.init('scheduler_here', new Date(2012, 5, 30), "timeline");
 @default:true
 
 @edition:pro
+
+@apigroup: Events/Multisection events

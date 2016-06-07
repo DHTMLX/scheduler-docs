@@ -21,3 +21,5 @@ For example, if the user specifies value '15.01.2013' in the 'End by' field then
 
 - if <code>include_end_by = false</code> (default)  - the recurring series will be finished on 14.01.2013. 
 - If <code>include_end_by = true</code> - the recurring series will be finished on 15.01.2013
+
+@apigroup: Events/Reccuring events

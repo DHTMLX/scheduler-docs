@@ -16,4 +16,4 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 @template:	api_config
 @descr:
 
-
+@apigroup: Views/Map view

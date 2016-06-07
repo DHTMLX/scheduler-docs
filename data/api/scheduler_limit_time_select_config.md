@@ -18,3 +18,5 @@ scheduler.init('scheduler_here',new Date(2013,0,10),"week");
 @relatedapi:
 	 api/scheduler_last_hour_config.md
      api/scheduler_first_hour_config.md
+
+@apigroup: Lightbox

@@ -20,3 +20,5 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"month");
 @descr:
 
 By default, the date in the 'End by' field is exclusive.
+
+@apigroup: Date format

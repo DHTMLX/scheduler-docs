@@ -24,4 +24,4 @@ scheduler.init('scheduler_here', new Date(2013, 0, 10), "map");
 @relatedapi:
 	api/scheduler_map_end_config.md
 
-
+@apigroup: Views/Map view

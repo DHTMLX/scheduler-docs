@@ -15,4 +15,4 @@ scheduler.init('scheduler_here',new Date(2013,0,10),"week");
 @template:	api_config
 @descr:
 
-
+@apigroup: General setting/View settings

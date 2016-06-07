@@ -18,3 +18,5 @@ scheduler.init('scheduler_here',new Date(2013,0,10),"week");
 Note, it's enough to include the extension file to enable the parameter.
 }}
 <img src="api/containerAutoresize_property.png"/>
+
+@apigroup: General setting/View settings

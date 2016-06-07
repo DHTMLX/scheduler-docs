@@ -22,3 +22,4 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 @descr:
 The parameter is available from version 3.5. 
 
+@apigroup: Lightbox

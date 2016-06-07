@@ -104,6 +104,7 @@ The 'map_to' property can take the 'auto' value. The 'auto' value relates to the
 	02_customization/13_single_checkbox_section.html
     02_customization/14_radio_buttons_section.html
     
+@apigroup: Lightbox
     
     
  

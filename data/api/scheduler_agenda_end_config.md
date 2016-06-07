@@ -23,3 +23,5 @@ scheduler.init('scheduler_here', new Date(2013, 0, 10), "agenda");
 	03_extensions/03_agenda_view.html
 @relatedapi:
 	api/scheduler_agenda_start_config.md
+
+@apigroup: Views/Agenda view

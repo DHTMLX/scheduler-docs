@@ -18,3 +18,5 @@ scheduler.init('scheduler_here',new Date(2013,0,10),"year");
 @relatedapi:
 	api/scheduler_year_x_config.md
 @descr:
+
+@apigroup: Views/Year view

@@ -18,3 +18,5 @@ Watch out! The option is intended for 'newborn' schedulers and won't affect the 
 }}
 - If the option is enabled, timestamps of events are stored as UNIX time.
 - The option is available from version 3.5.
+
+@apigroup: Time, time zones

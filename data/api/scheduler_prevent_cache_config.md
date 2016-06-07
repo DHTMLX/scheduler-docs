@@ -17,3 +17,4 @@ scheduler.init('scheduler_here',new Date(2009,10,1),"month");
 @descr:
 Enabling the property is recommended.
 
+@apigroup: General settings

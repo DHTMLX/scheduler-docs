@@ -26,3 +26,6 @@ This property is available for Scheduler PRO ( Enterprise license ) only
     multiple_per_page.md
 @relatedapi:
 	api/scheduler_drag_in_config.md
+
+@apigroup: Events/Drag-and-Drop operations
+	

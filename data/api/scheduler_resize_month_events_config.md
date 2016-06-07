@@ -23,3 +23,5 @@ scheduler.init('scheduler_here',new Date(2010,0,10),"month");
 
 @views:month
 @default:  false
+
+@apigroup: Views/Month view

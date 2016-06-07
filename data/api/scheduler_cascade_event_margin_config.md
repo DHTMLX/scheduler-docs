@@ -30,3 +30,4 @@ scheduler.init('scheduler_here',new Date(2009,5,30),"week");
 
 <img src="api/cascadeEventmargin_property.png"/>
 
+@apigroup: Events/Cascade events

@@ -20,3 +20,4 @@ scheduler.init('scheduler_here',new Date(2013,7,11),"week");
 @template:	api_config
 @descr:
 
+@apigroup: Events/Multi-day events

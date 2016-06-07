@@ -25,3 +25,6 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
     api/scheduler_day_scale_date_template.md
 @related:
 	settings_format.md
+
+@apigroup: Date format
+	

@@ -20,3 +20,5 @@ By default, an event occupies just a part of the cell's width and leaves the pla
 Set the option to *false*, and events will start to occupy the whole width. 
 
 The property is available from version 3.5.
+
+@apigroup: General setting/View settings

@@ -19,3 +19,5 @@ If the parameter is set to *true*, a week will start from Monday (otherwise, fro
 
 @relatedsample:
 	01_initialization_loading/02_hour_scale_format.html
+
+@apigroup: General settings/Scale

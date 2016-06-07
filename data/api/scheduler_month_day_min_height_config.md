@@ -18,3 +18,5 @@ scheduler.init('scheduler_here',new Date(2013,5,30),"month");
 
 @relatedapi:
 	api/scheduler_month_day_config.md
+
+@apigroup: Views/Month view

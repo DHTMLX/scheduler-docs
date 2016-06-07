@@ -21,4 +21,5 @@ scheduler.init('scheduler_here', new Date(2010, 7, 5), "week");
 	01_initialization_loading/02_hour_scale_format.html
     02_customization/09_timestep.html
     
+@apigroup: General settings/Scale
     

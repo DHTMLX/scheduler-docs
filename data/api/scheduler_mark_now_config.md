@@ -24,3 +24,6 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 @relatedsample:
 	02_customization/23_current_time.html
     02_customization/26_linked_selects_in_lightbox.html
+
+@apigroup: Time, time zones
+    

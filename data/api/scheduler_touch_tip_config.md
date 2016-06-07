@@ -19,4 +19,4 @@ scheduler.init('scheduler_here',new Date(2013,0,10),"week");
     api/scheduler_touch_tooltip_config.md
 @descr:
 
-
+@apigroup: General settings/Touch support

@@ -22,3 +22,5 @@ scheduler.init('scheduler_here',new Date(2013,7,1),"week");
     api/scheduler_drag_resize_config.md
 @relatedsample:
 	09_api/06_hightlight_and_single_click_create.html
+
+@apigroup: Events/Drag-and-Drop operations

@@ -24,3 +24,4 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 be identified, the corresponding coordinates will be saved in the DB. If not, the scheduler will fire the  api/scheduler_onlocationerror_event.md event.
 - Enabling the property is useful for migration, but not for production stage.
 
+@apigroup: Views/Map view

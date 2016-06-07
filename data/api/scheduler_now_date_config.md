@@ -20,3 +20,5 @@ The option is applicable to the [Limit extension](limits.md) only.
 	limits.md
     
 @required:limit
+
+@apigroup: Time, time zones

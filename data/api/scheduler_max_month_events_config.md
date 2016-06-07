@@ -25,3 +25,6 @@ redirect the user to the Day view displaying a full list of assigned events.
 	 api/scheduler_onviewmoreclick_event.md
 @relatedsample:
 	02_customization/31_view_more.html
+
+@apigroup: Views/Month view
+	

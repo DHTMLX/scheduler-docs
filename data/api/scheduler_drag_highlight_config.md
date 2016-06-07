@@ -21,3 +21,6 @@ scheduler.load("./data/events.xml");
 @relatedapi:
 	api/scheduler_highlighteventposition.md
     api/scheduler_drag_marker_class_template.md
+
+@apigroup: General settings/Scale
+    

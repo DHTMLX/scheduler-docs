@@ -31,3 +31,4 @@ By default, events scheduled to the same time are displayed one by one. If you w
 <br>
 <img src="api/cascadeEventDisplay_property.png"/>
 
+@apigroup: Events/Cascade events

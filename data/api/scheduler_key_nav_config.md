@@ -19,3 +19,6 @@ scheduler.config.key_nav = false;
     keyboard_navigation.md
 @relatedsample:
 	03_extensions/07_navigation_plugin.html
+
+@apigroup: Events
+	

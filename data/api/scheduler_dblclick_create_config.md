@@ -17,3 +17,5 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 
 @relatedsample:
 	03_extensions/12_readonly_form.html
+
+@apigroup: Events

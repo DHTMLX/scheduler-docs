@@ -23,3 +23,6 @@ Events 'exceeding' the set value will be drawn over the cascade.
     api/scheduler_cascade_event_margin_config.md
 @relatedsample:
 	02_customization/24_cascade_event_display.html
+
+@apigroup: Events/Cascade events
+	

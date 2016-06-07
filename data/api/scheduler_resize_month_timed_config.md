@@ -27,3 +27,5 @@ Please, note:
 
 @views:month
 @default:  false
+
+@apigroup: Views/Month view

@@ -22,3 +22,5 @@ However, in some cases the position of the dragged event affects the positions o
 For example, when you have several events in the same cell and is moving some lower one, the scheduler will repaint only the event you are moving and as a result, it may cover some higher events. 
 When you will release the mouse button - all events will take the correct position but while moving events they may overlap each other.
 Enabling the **update_render** property ensures that all data will be fully repainted after each action.
+
+@apigroup: Views

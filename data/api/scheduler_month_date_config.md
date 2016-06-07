@@ -19,3 +19,5 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 @descr:
 
 <img src="api/monthView_properties.png"/>
+
+@apigroup: Date format

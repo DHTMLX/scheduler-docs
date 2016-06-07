@@ -37,3 +37,4 @@ If another 're-draw' call will be got during this time, the scheduler will reset
 As a result, if the api/scheduler_updateview.md or/and api/scheduler_setcurrentview.md method is called multiple times within a short amount of time (which usually happens when re-drawing is triggered from different places of
 the custom code) only the last call will be executed. 
 
+@apigroup: Views

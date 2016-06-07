@@ -18,3 +18,5 @@ scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
 
 @related:
 	settings_format.md
+
+@apigroup: Date format

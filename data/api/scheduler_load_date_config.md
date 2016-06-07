@@ -21,4 +21,5 @@ scheduler.load("data/events.php");
 @template:	api_config
 @descr:
 
+@apigroup: Date format
 
