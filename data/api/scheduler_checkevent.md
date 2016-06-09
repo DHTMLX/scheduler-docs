@@ -5,7 +5,7 @@ checkEvent
 	
 
 @params:
--	name	string	the event's name
+- name	SchedulerEventName	the event's name
 
 @returns:
 isExist	boolean	returns <i>true</i>, if some handler is specified for the event

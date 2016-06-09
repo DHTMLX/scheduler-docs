@@ -4,7 +4,7 @@ delay_render
 @short: sets a timeout (in milliseconds) that wraps the api/scheduler_updateview.md and api/scheduler_setcurrentview.md calls  ( that cause re-drawing of the scheduler ) 
 	
 
-@type: int
+@type: number
 @default:0
 
 @example:

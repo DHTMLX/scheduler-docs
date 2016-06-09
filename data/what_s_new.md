@@ -18,7 +18,7 @@ If you are updating scheduler from older version, check  migration_from_older_ve
 
 ### 4.2
 1. Ability to customize the layout of recurring form ([details](recurring_events.md#ustomcontrolforthelightboxsrecurringblock))
-2. Updated dhtmlxDataProcessor - REST mode and support of JSON response format ( [details](server_integration.md#savingdatafromrestserver))
+2. Updated DataProcessor - REST mode and support of JSON response format ( [details](server_integration.md#savingdatafromrestserver))
 3. Updated D'n'D of the multisection events ([details](api/scheduler_multisection_shift_all_config.md))
 4. API events for handling Ajax and server errors ([details](api/scheduler_onloaderror_event.md))
 5. Improved performance of the Timeline view
@@ -49,7 +49,7 @@ If you are updating scheduler from older version, check  migration_from_older_ve
 4. Backbone Integration ([details](backbone_integration.md))
 5. Default skin changed to "terrace", multi-day events are visible by default
 6. Alternative start-date logic for recurring events ([details](api/scheduler_repeat_precise_config.md))
-7. Scheduler can load json data from .Net webservices
+7. Scheduler can load json data from .Net web services
 8. Documentation greatly improved
 
 ### 3.7 
@@ -173,7 +173,7 @@ If you are updating scheduler from older version, check  migration_from_older_ve
 1.  Agenda view was added ([details](agenda_view.md))
 2.  Year view was added ([details](year_view.md))
 3.  Bunch of small extensions was added
-4.  SkinBuilder for the scheduler was added
+4.  Skin Builder for the scheduler was added
 5.  Count of samples was doubled
 
 #### Full list of updates 
@@ -187,8 +187,8 @@ If you are updating scheduler from older version, check  migration_from_older_ve
 + Finnish and Dutch locales are added
 + Chinese locale is added
 + Portuguese translation is added for scheduler
-+ time_picker tempalte is introduced
-+ event_date tempalte is introduced
++ time_picker template is introduced
++ event_date template is introduced
 + incorrect layout in case of multi-week events (#808)
 + incorrect rendering of editor in IE6
 + incorrect event-bar size in complex dynamic patterns

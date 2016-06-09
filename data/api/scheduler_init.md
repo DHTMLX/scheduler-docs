@@ -4,7 +4,7 @@ init
 constructor. Initializes a dhtmlxScheduler object 
     
 @params: 
-- container		string, DOM element	 an HTML container ( or its id) where a dhtmlxScheduler object will be initialized
+- container		string, HTMLElement	 an HTML container ( or its id) where a dhtmlxScheduler object will be initialized
 * date		Date	the initial date of the scheduler (by default, the current date)
 * view		string		the name of the initial view (by default, "week")
 
