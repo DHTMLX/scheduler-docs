@@ -43,6 +43,7 @@ scheduler.locale.labels.section_template = 'Details';
 scheduler.attachEvent("onBeforeLightbox", function(id) {
 	var ev = scheduler.getEvent(id);
 	ev.my_template = "<b>Holder:</b>"+ ev.holder+"<br><b>Room:</b>"+ ev.room;
+    return true;
 });
 ~~~
 	</li>

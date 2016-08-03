@@ -9,18 +9,24 @@ The library supplies 10 fully customizable views, helping you to build calendars
 Default views are initially added to the scheduler. They help you to organize your events in the most popular ways: by days, by weeks or by months. 
  
 <div class="components_group">
-	<a href="day_view.md">
-    	<img src="views_icons/day.png"/> 
-    	<br>Day
-    </a>
-	<a href="week_view.md">
-    	<img src="views_icons/week.png"/> 
-    	<br>Week
-    </a>
-    <a href="month_view.md">    
-    	<img src="views_icons/month.png"/> 
-   		<br>Month
-    </a>
+	<div>
+		<a href="day_view.md">
+			<img src="views_icons/day.png"/>
+			<br>Day
+		</a>
+    </div>
+    <div>
+		<a href="week_view.md">
+			<img src="views_icons/week.png"/>
+			<br>Week
+		</a>
+    </div>
+    <div>
+		<a href="month_view.md">
+			<img src="views_icons/month.png"/>
+			<br>Month
+		</a>
+    </div>
 </div>
 
 
@@ -30,40 +36,54 @@ display the location on Google Maps, etc.
 
  
 <div class="components_group">
-	<a href="agenda_view.md">
-		<img src="views_icons/agenda.png"/>
-    	<br>Agenda
-    </a>
-	<a href="grid_view.md">
-    	<img src="views_icons/grid.png"/>
-    	<br>Grid
-	</a>
-	<a href="map_view.md">
-		<img src="views_icons/map.png"/>
-    	<br>Map
-    </a>
-	<a href="timeline_view.md">
-    	<img src="views_icons/timeline.png"/>
-    	<br>Timeline
-    </a>
-	<a href="weekagenda_view.md">
-    	<img src="views_icons/weekagenda.png"/>
-    	<br>Week Agenda
-    </a>
-    <a href="units_view.md">
-    	<img src="views_icons/units.png"/>
-    	<br>Units
-    </a>
-	<a href="year_view.md">
-    	<img src="views_icons/year.png"/>
-    	<br>Year
-    </a>
+	<div>
+		<a href="agenda_view.md">
+			<img src="views_icons/agenda.png"/>
+			<br>Agenda
+		</a>
+    </div>
+    <div>
+		<a href="grid_view.md">
+			<img src="views_icons/grid.png"/>
+			<br>Grid
+		</a>
+	</div>
+	<div>
+		<a href="map_view.md">
+			<img src="views_icons/map.png"/>
+			<br>Map
+		</a>
+    </div>
+    <div>
+		<a href="timeline_view.md">
+			<img src="views_icons/timeline.png"/>
+			<br>Timeline
+		</a>
+    </div>
+    <div>
+		<a href="weekagenda_view.md">
+			<img src="views_icons/weekagenda.png"/>
+			<br>Week Agenda
+		</a>
+    </div>
+    <div>
+		<a href="units_view.md">
+			<img src="views_icons/units.png"/>
+			<br>Units
+		</a>
+    </div>
+    <div>
+		<a href="year_view.md">
+			<img src="views_icons/year.png"/>
+			<br>Year
+		</a>
+    </div>
 </div>
 
 <div style="clear:both;"></div>
 
 <style>
-div.components_group a{
+div.components_group div{
     padding-top:25px;
     padding-bottom:25px;
     float:left;

@@ -1,4 +1,3 @@
-
 Examples of Data Formats 
 ==============
 In this article you will find examples for all supported data formats.
@@ -53,6 +52,54 @@ JSON
 {id:2, text:"Conference",start_date:"04/15/2013 12:00",end_date:"04/18/2013 19:00"},
 {id:3, text:"Interview", start_date:"04/24/2013 09:00",end_date:"04/24/2013 10:00"}
 ]
+~~~
+
+JSON with Collections 
+------------------------
+
+This format will be useful if you need to pass some additional data collections. 
+For example, it is useful when you want to [load Timeline and Units sections from the server](loading_data.md#loadingdatawithtimelineandunitssectionsfromtheserver):
+
+~~~js
+{ 
+   "data":[
+      {
+          "id":"1",
+          "start_date":"2015-03-02 00:00:00",
+          "end_date":"2015-03-04 00:00:00",
+          "text":"dblclick me!",
+          "type":"1"
+      },
+      {
+          "id":"2",
+          "start_date":"2015-03-09 00:00:00",
+          "end_date":"2015-03-11 00:00:00",
+          "text":"and me!",
+          "type":"2"
+      },
+      {
+          "id":"3",
+          "start_date":"2015-03-16 00:00:00",
+          "end_date":"2015-03-18 00:00:00",
+          "text":"and me too!",
+          "type":"3"
+      },
+      { 
+          "id":"4",
+          "start_date":"2015-03-02 08:00:00",
+          "end_date":"2015-03-02 14:10:00",
+          "text":"Type 2 event",
+          "type":"2"
+      }
+   ], 
+   "collections": {
+      "sections":[
+         {"value":"1","label":"Simple"},
+         {"value":"2","label":"Complex"},
+         {"value":"3","label":"Unknown"}
+      ]
+   }
+}
 ~~~
 
 XML

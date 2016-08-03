@@ -18,7 +18,7 @@ scheduler.config.lightbox.sections=[
 
 
 @returns: 
-- collection	boolean		**true**, if the update was successful. **False**, if the collection wasn't found.
+- collection	boolean		<i>true</i>, if the update was successful; <i>false</i>, if the collection wasn't found
 @template:	api_method
 @relatedapi:
 	api/scheduler_serverlist.md

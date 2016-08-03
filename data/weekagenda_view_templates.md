@@ -21,5 +21,5 @@ WeekAgenda View Templates
   
 <br>
 
-<img src="api/weekagenda_view_templates.png"/>
+<img src="api/view_templates_week_agenda.png">
 

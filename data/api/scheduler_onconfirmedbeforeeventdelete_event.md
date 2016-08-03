@@ -11,6 +11,7 @@ onConfirmedBeforeEventDelete
 @example: 
 scheduler.attachEvent("onConfirmedBeforeEventDelete", function(id,e){
 	//any custom logic here
+    return true;
 });
 
 @returns: 

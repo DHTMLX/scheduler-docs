@@ -396,7 +396,13 @@ scheduler.createTimelineView({
 ~~~
 *where api/scheduler_serverlist.md  returns a list of options with the name 'sections'*.
 
-- On the server side -  the [OptionsConnector](http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:optionsconnector) connector:
+- On the server side 
+
+The data response for the api/scheduler_load.md method should contain a collection with the server list name specified in JSON
+[of the following format](data_formats.md#jsonwithcollections).
+
+You can also use the [OptionsConnector](http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:optionsconnector) connector:
+
 ~~~php
 <?php
     include('connector-php/codebase/scheduler_connector.php');//includes the file
@@ -415,6 +421,9 @@ scheduler.createTimelineView({
 ~~~
 
 <img src="server_list_db.png"/>
+
+The data response should have the [JSON format](data_formats.md#jsonwithcollections) that includes
+the "collections" hash of necessary collections to be referenced through the api/scheduler_serverlist.md method.
 
 <br>
 

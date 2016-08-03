@@ -1,4 +1,3 @@
-
  Map View 
 ==============
 The Map view presents a list of upcoming events and Google Maps to show or edit the event's location or to set the location for new events.
@@ -67,7 +66,7 @@ scheduler.init('scheduler_here',new Date(2013,8,1),"map");
 </ol>
 
 {{sample
-	03_extensions/24_week_agenda.html
+	03_extensions/19_map_view.html
 }}
 
 

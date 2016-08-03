@@ -76,3 +76,23 @@ This may appear on non-default zoom levels.
 
 Such a behavior is expected and currently can't be avoided.
 The calendar layout is guaranteed to look correctly at 100% (default) zoom, on other levels some elements may be shifted due to browser scaling.
+
+Scheduler scalability limitations and the maximum number of events
+----------------------------------------------------------
+The Scheduler scalability depends on several factors. 
+
+If you use the Timeline view, the number of rows has a significant impact on the rendering speed. 
+If you have hundreds of timeline sections displayed in a calendar,
+it may create noticeable lags. However, it would depend on combinations of different settings.
+
+Regarding the maximum possible number of events, if you expect a large amount of data, you can enable the [dynamic loading mode](loading_data.md#dynamicloading). 
+Thus, Scheduler will fetch only those records that need to be displayed (an AJAX request will contain related dates, so you can do selection by date range on the backend).
+
+When this option is enabled, the only limitation is the number of events displayed at the same time. Usually, this number is relatively high, and you can have up to a couple of
+thousand events with no lack of performance. However, it would also depend on the view you are using. 
+
+For example, the regular Day or Week modes of Scheduler won't be able to display such amounts of events, mostly because they won't fit into the calendar layout 
+(since events are displayed in columns and the column width is limited).
+
+Generally, the overall number of events is rarely an issue. Although, if you have a lot of Timeline sections (i.e. timeline with 200 rows), it may require some code tweaks to reduce the repainting time
+to some comfortable value.
