@@ -1,9 +1,10 @@
 Adding/deleting Events
 ===============================
+
 Adding events
 -------------------
 
-To add an event to the scheduler, you may use one of 3 methods:
+To add an event to the scheduler, you may use one of three methods:
 
 1. api/scheduler_addevent.md - adds a new event and invokes the api/scheduler_oneventadded_event.md or api/scheduler_oneventchanged_event.md event;
 2. api/scheduler_addeventnow.md - adds a new event and opens the lightbox to confirm. Doesn't invoke any events;
@@ -28,6 +29,32 @@ var eventId = scheduler.addEvent({
 {{sample
 	02_customization/28_lightbox_default_value.html
 }}
+
+Updating events
+--------------
+
+There are two cases of updating events possible in Scheduler:
+
+1. if you need just to rerender the event without sending changes to the server, use api/scheduler_updateevent.md 
+2. if you need to apply and save changes on the server - it's better to choose the [addEvent](adding_events.md#addingevents) method 
+
+~~~js
+var eventId = scheduler.addEvent({
+    start_date: "16-06-2013 09:00",
+    end_date:   "16-06-2013 12:00",
+    text:   "Meeting"
+});
+ 
+var event = scheduler.getEvent(eventId);
+event.text = "Conference"; //changes event's data
+
+scheduler.updateEvent(event.id); // repaint without sending to the server
+//or
+scheduler.addEvent(event.id); // repaint and send update to the server
+~~~
+
+
+
 Deleting events
 ----------------------------
 To delete an existing event from the scheduler, use the api/scheduler_deleteevent.md method:

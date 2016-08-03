@@ -1,8 +1,5 @@
 Integration with Google Calendar 
 ==============
-{{note
-The article refers to Google Calendar API v3. If you use Google Calendar API v2, see details [here](synchronization_with_google_calendar.md).
-}}
 
 **Download the package** [here](https://github.com/DHTMLX/scheduler-google-calendar/archive/master.zip).
 

@@ -4,11 +4,11 @@ onSaveError
 	
 
 @params:
-- events	array	an array of events' ids that failed to update
-- response	XMLHttpRequest	an Ajax request object
+- ids			array				an array of events' ids that failed to update
+- response		XMLHttpRequest		an Ajax request object
 
 @example:
-scheduler.attachEvent("onSaveError", function(id, resp){
+scheduler.attachEvent("onSaveError", function(ids, resp){
 	dhtmlx.message("Failed to  update data");
 })
 

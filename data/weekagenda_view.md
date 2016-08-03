@@ -23,7 +23,7 @@ To add the Week Agenda view  to the scheduler,  follow these steps:
 <div id="scheduler_here" class="dhx_cal_container" ...>
 	<div class="dhx_cal_navline">
 	   ...
-	   <div class="dhx_cal_tab" name="weekAg_tab" style="right:280px;"></div>
+	   <div class="dhx_cal_tab" name="week_agenda_tab" style="right:280px;"></div>
     </div>
 	...	
 </div>
@@ -32,7 +32,7 @@ To add the Week Agenda view  to the scheduler,  follow these steps:
     <li><b>Set the label for the tab:</b>
 ~~~js
 //'weekAg_tab' is the name of our div
-scheduler.locale.labels.weekAg_tab ="Week Agenda"; 
+scheduler.locale.labels.week_agenda_tab = "Week Agenda"; 
 ~~~
 	</li>
 </ol>

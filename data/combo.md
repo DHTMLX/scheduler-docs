@@ -148,7 +148,26 @@ Items in the  [options](api/scheduler_lightbox_config.md) parameter must have 2 
 Populating the control with data from the server
 -----------------------------------------------
 To populate the Combo control from the server, use the **script_path** property, where specify the path to the server-side script that will 
-handle the server requests:
+handle the server requests.
+
+~~~js
+scheduler.config.lightbox.sections = [
+	{ name: "country", type: "combo", script_path: "data/combo_select.php", ... },
+		...
+];
+~~~
+
+The **script_path** property specifies an url from which combo loads its options, i.e. if script_path is specified - combo will try to load data from that url via ajax.
+
+Combo selector is based on [dhtmlxCombo](http://docs.dhtmlx.com/combo__index.html), so the server should return data compatible with it.
+You can read about the ways of adding data into combo in the article [Loading Options](http://docs.dhtmlx.com/combo__adding_options.html). 
+We use the [dhtmlxConnector](http://docs.dhtmlx.com/connector__php__combo.html) for Combo in our examples to provide data compatibility.  
+
+The url is requested in two cases:
+
+1) when the lightbox is opened and combo has some selected value - control sends request to the server and loads a label for the selected option.
+
+2) when a user starts inputting text into the select box input - the control loads filtered values.
 
 ~~~js
 <?php

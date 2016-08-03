@@ -58,7 +58,8 @@ Also, it's required that the time section was placed **after** the recurring sec
 
 
 
-## Server side integration 
+Server side integration 
+---------------------------
 
 A recurring event is stored in the database as a single record that contains all fields of a regular event plus 3 additional: 
 
@@ -124,7 +125,9 @@ Examples of the **rec_type** data:
 
 
 
-##Editing/deleting a certain occurrence in the series 
+Editing/deleting a certain occurrence in the series 
+--------------------------------
+
 There is a possibility to delete or edit a particular occurrence in a series. 
 
 ###Important tips
@@ -200,24 +203,35 @@ $scheduler->event->attach("beforeProcessing","delete_related");
 $scheduler->event->attach("afterProcessing","insert_related");
 ~~~
 
-## Dragging all sequence 
+Dragging all sequence 
+-----------------------
+
 To add for users the possibility to move the entire sequence while dragging recurring events, add the next code before scheduler initialization:
 
 ~~~js
 scheduler.attachEvent("onBeforeEventChanged",function(dev){
-	var parts = this._drag_id.toString().split("#");
-	if (parts.length > 1) {
-		this._drag_id= parts[0];	
-		var ev = this.getEvent(parts[0]);
-		ev._end_date = ev.end_date;
-		ev.start_date = dev.start_date;
-		ev.end_date = dev.end_date;
-	}
-	return true;
+	var parts = scheduler.getState().drag_id.toString().split("#");
+ 	if (parts.length > 1) {
+
+  		var series = this.getEvent(parts[0]);
+
+  		series.start_date.setHours(dev.start_date.getHours());
+  		series.start_date.setMinutes(dev.start_date.getMinutes());
+  		series.event_length = (dev.end_date - dev.start_date) / 1000;
+
+  		setTimeout(function(){
+   			scheduler.addEvent(series);
+  		}, 1);
+
+  		return false;
+ 	}
+ 	return true;
 });
 ~~~
 
-## Сustom control for the lightbox's recurring block
+Сustom control for the lightbox's recurring block
+------------------------------------
+
 Starting from version 4.2, dhtxmlScheduler allows you to specify a custom HTML form for the 'recurring' block of the lightbox.
 
 ####What customizations can you do?
@@ -278,7 +292,7 @@ scheduler.config.lightbox.sections = [
 </li>
 </ol>
 
-<img src="custom_recurring_form.png"/>
+<div style="text-align:center;"><img src="custom_recurring_form.png"/></div>
 
 ###Main parts
 
@@ -293,7 +307,7 @@ Basically, the recurring block of the lightbox contains 3 groups of controls:
          You can use radio buttons as in the example above, selects or set the default type in the hidden input.
 
          <br>Consider following examples, each of those is a valid way for selecting the type of recurrence in the form. <br>Radiobuttons:
-~~~js
+~~~html
 <label><input type="radio" name="repeat" value="day" />Daily</label><br />
 <label><input type="radio" name="repeat" value="week"/>Weekly</label><br />
 <label><input type="radio" name="repeat" value="month" />Monthly</label><br />
@@ -301,7 +315,8 @@ Basically, the recurring block of the lightbox contains 3 groups of controls:
 ~~~
 
 Select input, without 'Monthly' and 'Yearly' options:
-~~~js
+
+~~~html
 <select name="repeat">
   <option value="day">Daily</option>
   <option value="week">Weekly</option>
@@ -309,7 +324,7 @@ Select input, without 'Monthly' and 'Yearly' options:
 ~~~
 
 Hidden input (the lightbox will create only 'Dayly' series):
-~~~js
+~~~html
 <input type="hidden" name="repeat" value="day" />
 ~~~
 <br>
@@ -318,17 +333,20 @@ Hidden input (the lightbox will create only 'Dayly' series):
 	<li> A block for configuring the recurrence depending on the repeat type.
 For example, for the 'Daily' repeat type, the block will take the following structure:
 
-~~~js
+~~~html
 <div class="dhx_repeat_center">
-	<div style="display:none;" id="dhx_repeat_day">
-		<label>
-        	<input class="dhx_repeat_radio" type="radio" name="day_type" value="d"/>Every
-        </label>
-        <input class="dhx_repeat_text" type="text" name="day_count" value="1" />day<br />
-        <label>
-        	<input class="dhx_repeat_radio" type="radio" name="day_type" checked value="w"/>Every workday
-        </label>
-    </div>
+   <div style="display:none;" id="dhx_repeat_day">
+	 <label>
+       <input class="dhx_repeat_radio" type="radio" 
+       		name="day_type" value="d"/>Every
+     </label>
+       <input class="dhx_repeat_text" type="text" 
+       		name="day_count" value="1" />day<br>
+     <label>
+       <input class="dhx_repeat_radio" type="radio" 
+       		name="day_type" checked value="w"/>Every workday
+     </label>
+  </div>
 ...
 </div>
          
@@ -383,7 +401,7 @@ Beware, dhtmlxScheduler doesn't work with your original HTML form and just creat
 
 Will be copied to the lightbox: 
 
-~~~js
+~~~html
 <input onclick="handler()"> 
 ~~~
 

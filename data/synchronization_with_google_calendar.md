@@ -3,7 +3,7 @@ Integration with Google Calendar <br>(API v.2)
 
 
 {{note
-The article refers to Google Calendar API v2. If you use Google Calendar API v3, see details [here](google_calendar_integration.md).
+This article refers to Google Calendar API v2, which isn't used any more. The details on actual version of Google Calendar API v3, are given [here](google_calendar_integration.md).
 }}
 
 ## Getting started

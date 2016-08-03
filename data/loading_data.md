@@ -171,6 +171,78 @@ scheduler.init('scheduler_here',new Date(2013,0,10),"month");
 To change the spinner image - replace 'imgs/loading.gif' with your custom image. 
 }}
 
+Loading data with Timeline and Units sections from the server
+--------------------------------------------
+
+While loading data into [Timeline](timeline_view.md#loadingdatatotheview) and [Units](units_view.md#loadingdatatotheview) views, 
+you need to set an array of sections that will be loaded into views. 
+
+In order to load data containing Timeline and Units sections from the backend, you need to implement a more extended configuration: 
+
+- during Timeline view initialization, instead of sections array you should use the api/scheduler_serverlist.md method and pass the name of a collection as an argument
+
+~~~js
+scheduler.createTimelineView({
+   ....
+   y_unit: scheduler.serverList("sections"),
+   ...
+});
+~~~
+
+- to load data into scheduler, use the api/scheduler_load.md method:
+
+~~~js
+scheduler.load("data.json", "json");
+~~~
+
+- while implementing scheduler data response on the backend, use the following format:
+
+{{snippet "data.json"}}
+~~~js
+{ 
+   "data":[
+      {
+          "id":"1",
+          "start_date":"2015-03-02 00:00:00",
+          "end_date":"2015-03-04 00:00:00",
+          "text":"dblclick me!",
+          "type":"1"
+      },
+      {
+          "id":"2",
+          "start_date":"2015-03-09 00:00:00",
+          "end_date":"2015-03-11 00:00:00",
+          "text":"and me!",
+          "type":"2"
+      },
+      {
+          "id":"3",
+          "start_date":"2015-03-16 00:00:00",
+          "end_date":"2015-03-18 00:00:00",
+          "text":"and me too!",
+          "type":"3"
+      },
+      { 
+          "id":"4",
+          "start_date":"2015-03-02 08:00:00",
+          "end_date":"2015-03-02 14:10:00",
+          "text":"Type 2 event",
+          "type":"2"
+      }
+   ], 
+   "collections": {
+      "sections":[
+         {"value":"1","label":"Simple"},
+         {"value":"2","label":"Complex"},
+         {"value":"3","label":"Unknown"}
+      ]
+   }
+}
+~~~
+
+In the above example the "data" array contains calendar events, and the "collections" hash contains collections that can be referenced via the api/scheduler_serverlist.md method.
+
+
 @index:
 - data_formats.md
 

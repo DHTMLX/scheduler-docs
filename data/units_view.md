@@ -229,7 +229,13 @@ scheduler.createUnitsView({
 ~~~
 *where api/scheduler_serverlist.md  returns a list of options with the name 'units'*.
 
-- On the server side -  the [OptionsConnector](http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:optionsconnector) connector:
+- On the server side 
+
+The data response for the api/scheduler_load.md method should contain a collection with the server list name specified in JSON
+[of the following format](data_formats.md#jsonwithcollections).
+
+You can also use the [OptionsConnector](http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:optionsconnector) connector:
+
 ~~~php
 <?php
     include('connector-php/codebase/scheduler_connector.php');//includes the file

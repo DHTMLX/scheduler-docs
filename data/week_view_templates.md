@@ -1,4 +1,3 @@
-
 Week View Templates
 ==============
 

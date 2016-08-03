@@ -1,13 +1,12 @@
-
 dhtmlxScheduler in Windows Store Apps
 ==============
 
 dhtmlxScheduler can be used in Windows Store applications written in JavaScript and HTML.
 
-You need to download a special edition of dhtmlxScheduler - <a href="http://dhtmlx.com/download/regular/dhtmlxScheduler_windows.zip">http://dhtmlx.com/download/regular/dhtmlxScheduler_windows.zip</a>
+You need to download a special edition of dhtmlxScheduler - <a href="http://dhtmlx.com/x/download/regular/dhtmlxScheduler_windows.zip">http://dhtmlx.com/x/download/regular/dhtmlxScheduler_windows.zip</a>.
 
 
-To make it easy to learn the topic, you can go through the step-by-step tutorial - [Basic Windows 8 app with dhtmlxScheduler](http://docs.dhtmlx.com/doku.php?id=tutorials:scheduler_and_windows8) .
+To make it easy to learn the topic, you can go through the step-by-step tutorial - [Basic Windows 8 app with dhtmlxScheduler](http://docs.dhtmlx.com/doku.php?id=tutorials:scheduler_and_windows8).
 
 
 ##Files to include

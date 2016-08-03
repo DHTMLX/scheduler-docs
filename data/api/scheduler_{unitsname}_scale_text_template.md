@@ -9,7 +9,7 @@
 
 
 @example:
-function(key, label, unit) {
+scheduler.templates.unit_scale_text = function(key, label, unit) {
 	if (option.css) {
 		return "<span class='" + option.css + "'>" + label + "</span>";
 	} else {

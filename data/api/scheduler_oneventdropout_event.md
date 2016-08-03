@@ -5,10 +5,10 @@ onEventDropOut
 	
 
 @params:
-- id	string	the event's id 
-- ev		object	the event's object
-- to object	the target scheduler(null, if dropped to an empty area)
-- e Event a native event object
+- id		string			the event's id 
+- ev		object			the event's object
+- to 		object			the target scheduler(null, if dropped to an empty area)
+- e 		Event 			a native event object
 
 
 @example:
