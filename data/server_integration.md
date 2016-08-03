@@ -1,48 +1,31 @@
-Server-side Integration
+Server-Side Integration
 ==================================
-dhtmlxScheduler library supports special helper libraries that simplify your work with the server side:
 
-- **dhtmlxConnector** - a server-side library. Provides the necessary data exchange conditions, so that you do not have to deal with the technical details of working with various data stores,
-systems or services (<a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">read more</a>).
-- **dataProcessor** - a client-side library (**included in dhtmlxScheduler.js**).  Monitors data changes and gets the server requests on the client side (<a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxdataprocessor:toc">read more</a>).
+<style>
+.dp_table td{
+	min-width:140px;
 
-Joint usage of the libraries allows you to achieve any client-server manipulation and not to write the server-client communication logic manually.
+}
+</style>
 
-<br>
+dhtmlxScheduler includes a client-side helper library **dataProcessor** (included in dhtmlxScheduler.js) that can be used together with REST API on the server-side to implement communication with server.
 
-<table border="1">
-	<caption>Table 1. Packages of dhtmlxConnector for different platforms</caption>
-	<tr>
-		<td>PHP</td>
-		<td><a href="https://github.com/DHTMLX/connector-php">https://github.com/DHTMLX/connector-php</a></td>
-	</tr>
-	<tr>
-		<td>.Net</td>
-		<td><a href="http://dhtmlx.com/x/download/regular/dhtmlxConnector_net.zip">http://dhtmlx.com/x/download/regular/dhtmlxConnector_net.zip</a></td>
-	</tr>
-	<tr>
-		<td>Java</td>
-		<td><a href="https://github.com/DHTMLX/connector-java">https://github.com/DHTMLX/connector-java</a></td>
-	</tr>
-	<tr>
-		<td>ColdFusion</td>
-		<td><a href="https://github.com/DHTMLX/connector-cf">https://github.com/DHTMLX/connector-cf</a></td>
-	</tr>
-</table>
-
+[dataProcessor](http://docs.dhtmlx.com/dataprocessor__index.html) is a client-side library included into dhtmlxScheduler.js.
+It monitors data changes and gets the server requests on the client side.
+ 
+[REST](http://rest.elkstein.org/) stands for Representational State Transfer. It relies on a stateless, client-server, cacheable communications protocol.
+RESTful APIs use HTTP as a transport layer in most cases. Due to its simplicity, REST works well with frameworks that use various languages.
 
 
 Technique
 ----------------------------------------------
-Generally, to load data from the server side you need to:
 
-<ol>
-	<li>
-  		<b>Client side:</b>
-            <ul>
-            	<li>call the api/scheduler_load.md method, where as a parameter you should specify the path to a server-side script, which outputs data as XML</li>
-                <li>initialize dataProcessor and attach it to the scheduler.The dataProcessor constructor accepts the path to the same server-side script</li>
-            </ul>
+###Client side
+
+1) Call the api/scheduler_load.md method where as a parameter, specify the path to a server-side script which outputs data in the [JSON](data_formats.md#json) format
+                
+2) Initialize dataProcessor and attach it to the dhtmlxScheduler object.
+            
 ~~~js
 scheduler.init('scheduler_here', new Date(), "month");
 scheduler.load("events.php");
@@ -50,41 +33,93 @@ scheduler.load("events.php");
 var dp = new dataProcessor("events.php");
 dp.init(scheduler);
 ~~~
-	</li>
-    <li>
-    	<b>Server-side:</b> 
-            <ul>
-            	<li>a standard server script that uses dhtmlxConnector looks like:</li>
-            </ul>
+	
+3) In order to set the REST mode of dataProcessor, call the setTransactionMode() function with the REST parameter:
+    		
 ~~~js
-//events.php
-include('connector-php/codebase/scheduler_connector.php');//includes the file
-
-$res=mysql_connect("localhost","root","");//connects to the server with our DB
-mysql_select_db("sampleDB");//connects to the DB.'sampleDB' is the DB's name
- 
-$calendar = new schedulerConnector($res);//connector initialization
-$calendar->render_table("events","id","event_start,event_end,text","type");
+dp.setTransactionMode("REST");
 ~~~
-	<ul>
-    	<li>dhtmlxConnector consists of individual component-specific connectors. For dhtmlxScheduler you should include -  <b>scheduler_connector.php</b>.</li>
-        <li>the <b>render_table</b> method allows you to load data from a single table.<br> Parameters:
-        	<ul>
-            	<li><i>the database's table name</i></li>
-                <li><i>the name of the identity field (optional)</i></li>
-                <li><i>a list of fields</i> which will be used as event's data properties</li>
-            </ul>
-            If you want to load data from several tables, read the related chapter of the dhtmlxConnector's documentation - <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:basis#work_with_several_tables">'Basic concepts: work with several tables'</a>.
-        </li>
-    </ul>
-	</li>
-</ol>
 
-{{sample
-	01_initialization_loading/05_loading_database.html
-}}
+<h3 id="requestresponsedetails">Request and Response details</h3>
 
-Updating data
+The url is formed by the following rule:
+
+- api/link/id
+- api/task/id
+
+where "api" is the url you've specified in the dataProcessor configuration.
+
+
+The list of possible requests and responses is:
+
+<table class="dp_table">
+	<tr>
+    	<th><b>Action</b></th><th><b>HTTP Method</b></th><th><b>URL</b></th><th><b>Response</b></th>
+    </tr>
+	<tr>
+    	<td>load data</td>
+		<td>GET</td>
+        <td>/apiUrl</td>
+        <td><a href="data_formats.md#json">JSON format</a></td>
+	</tr>
+    <tr>
+		<td>add a new task</td>
+		<td>POST</td>
+        <td>/apiUrl/task</td>
+        <td>{"action":"inserted","tid":"taskId"}</td>
+    </tr>
+	<tr>
+    	<td>update a task</td>
+		<td>PUT</td>
+        <td>/apiUrl/task/taskId</td>
+        <td>{"action":"updated"}</td>
+	</tr>
+	<tr>
+    	<td>delete a task</td>
+		<td>DELETE</td>
+        <td>/apiUrl/task/taskId</td>
+        <td>{"action":"deleted"}</td>
+	</tr>
+	<tr>
+    	<td>add a new link</td>
+		<td>POST</td>
+        <td>/apiUrl/link</td>
+        <td>{"action":"inserted","tid":"linkId"}</td>
+	</tr>
+    <tr>
+		<td>update a link</td>
+		<td>PUT</td>
+        <td>/apiUrl/link/linkId</td>
+        <td>{"action":"updated"}</td>
+    </tr>
+    <tr>
+		<td>delete a link</td>
+		<td>DELETE</td>
+        <td>/apiUrl/link/linkId</td>
+        <td>{"action":"deleted"}</td>
+	</tr>
+</table>
+
+###Server side
+           
+On each action performed in Scheduler (adding, updating or deleting tasks or links),
+dataProcessor reacts by sending an AJAX request to the server.
+
+Each request contains all the data needed to save changes in the database.
+As we initialized dataProcessor in the REST mode, it will use different HTTP verbs for each type of operation.
+
+Since we use REST API, it's possible to implement the server side using different frameworks and programming languages.
+Here's a list of available server side implementations that you can use for Scheduler backend integration:
+
+- Node.js
+- PHP
+- .Net
+- Ruby
+
+<br>
+If by some reason you don't want to use REST API, the best solution is [to use dhtmlxConnector library](using_connectors.md).
+
+Triggering data saving from script
 ------------------------------------
 If you have dataProcessor initialized, any change made by the user or programmatically will be automatically saved in the data source.
 
@@ -105,81 +140,8 @@ scheduler.updateEvent(1); // renders the updated event
 }}
 
 
-Saving data from REST server 
---------------------------------------
-To make dataProcessor work with the REST backend, you need to do 2 things: 
-
-1. Specify the path to your REST server in the dataProcessor's constructor.
-2. Call the setTransactionMode with the "REST" value.
-
-~~~js
-var dp = new dataProcessor("http://example.com/data");
-dp.init(scheduler);
-dp.setTransactionMode("REST");
 
 
-~~~
-<br>
+@index: 
 
-{{note
-Note, the response can be any valid JSON  object 
-}}
-
-To change the id of the event while updating - use the **tid** property. 
-
-
-~~~js
-{
-	tid: "some"
-}
-~~~
-
-
-
-
-Retrieving Data in JSON Format
------------------------------------
-By default, dhtmlxScheduler expects data to be in the XML format.<br>
-But starting from version 3.5, dhtmlxScheduler can be directly populated with a JSON data from dhtmlxConnector.
-
-
-~~~php
-include ('connector-php/codebase/scheduler_connector.php');
-
-$res=mysql_connect("localhost", "root", "");
-mysql_select_db("scheduler");
-
-$scheduler = new JSONSchedulerConnector($res);
-$scheduler->render_table("events","event_id","start_date,end_date,text,details");
-~~~
-
-JSONSchedulerConnector generates the 'JSON' data feed as in:
-
-~~~js
-[{ 
-		id:"1",  
-        start_date:"2009-05-24 00:00:00",   
-        end_date:"2009-06-08 00:00:00",  
-        text:"French Open",        
-        details:"Details for French Open"
-	},
-	{ 
-		id:"2",  
-        start_date:"2009-06-21 00:00:00",   
-        end_date:"2009-07-05 00:00:00",  
-        text:"Wimbledon",          
-        details:"Details for Wimbledon"
-}]
-~~~
-
-{{sample
-	01_initialization_loading/10_loading_database_json.html
-}}
-
-Saving data in an XML file
-----------------------------------------------
-The library includes a special extension **ext/dhtmlxScheduler_serialize.js** that allows storing data in an XML file, 
-without dealing with the database routine.
-
-Read more on the topic in the chapter <a href="export.html#savingdatainanxmlfile"> Serializing data to XML, JSON, iCal formats</a>.
-
+- using_connectors.md

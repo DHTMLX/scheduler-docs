@@ -1,9 +1,16 @@
-How to Start
+How to Start with dhtmlxScheduler
 ==============
 
 
 In this tutorial we want to consider the creation of a standard scheduler that loads data from a database and saves it back. 
 The final code of the tutorial can be used as the start point while creating applications with dhtmlxScheduler.  
+
+This tutorial discusses the sequence of steps needed for implementing Scheduler with PHP. If you want to create Scheduler with a different language, 
+check the available options in the list below:
+
+- [Integrating Scheduler with Node.js](server_nodejs.md)
+- [Integrating Scheduler with .Net](server_dotnet.md)
+- [Integrating Scheduler with Ruby](server_ruby.md)
 
 ![how_to_start_front_image.png](how_to_start_front_image.png)
 
