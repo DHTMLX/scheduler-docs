@@ -14,4 +14,5 @@ scheduler.config.limit_drag_out = true;
 @template:	api_config
 @descr:
 
+@apigroup: Views/Timeline view
 

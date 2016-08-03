@@ -19,4 +19,5 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"map");
 	 api/scheduler_map_initial_zoom_config.md
 @descr:
 
+@apigroup: Views/Map view
 

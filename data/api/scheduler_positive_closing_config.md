@@ -19,3 +19,4 @@ Any outside click closes the form and cancels the changes. To prevent this and s
 
 <img src="api/positiveClosing_property.png" />
 
+@apigroup: Events

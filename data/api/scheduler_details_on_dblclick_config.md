@@ -18,3 +18,5 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 	02_customization/11_auto_end_date.html
 
 @descr:
+
+@apigroup: Lightbox

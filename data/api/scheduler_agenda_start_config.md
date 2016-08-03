@@ -22,3 +22,4 @@ scheduler.init('scheduler_here', new Date(2010, 0, 10), "agenda");
 @relatedapi:
 	api/scheduler_agenda_end_config.md
 
+@apigroup: Views/Agenda view

@@ -1,0 +1,23 @@
+@groupindex:
+- Views
+- Views/Year view
+- Views/Month view
+- Views/Agenda view
+- Views/Map view
+- Views/Timeline view
+- General settings
+- General settings/Touch support
+- General settings/Quick info
+- General settings/Scale
+- General settings/Readonly mode
+- General setting/View settings
+- Events
+- Events/Drag-and-Drop operations
+- Events/Select bar
+- Events/Cascade events
+- Events/Reccuring events
+- Events/Multi-day events
+- Events/Multisection events
+- Date format
+- Lightbox
+- Time, time zones

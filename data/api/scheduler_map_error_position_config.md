@@ -22,3 +22,5 @@ The 'error position' will be applied in 2 cases:
 
 1. An event doesn't have one of the coordinates (or both of them) specified (i.e. a coordinate has value '0', 'null', 'undefined') and the api/scheduler_map_resolve_event_location_config.md option is disabled.
 2. An event doesn't have one of coordinates (or both of them) specified and the api/scheduler_map_resolve_event_location_config.md option is enabled, but the scheduler can't resolve the location.
+
+@apigroup: Views/Map view

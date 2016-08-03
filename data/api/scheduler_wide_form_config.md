@@ -23,3 +23,5 @@ The standard (wide) lightbox is initially enabled in the default skin and can't 
 @relatedsample:
 	07_skins/01_default.html
     07_skins/11_glossy_alt_rec.html
+
+@apigroup: Lightbox

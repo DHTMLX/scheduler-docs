@@ -4,7 +4,7 @@ isCalendarVisible
 	checks whether the calendar is currently opened in the scheduler
 
 @returns: 
-- cal	boolean, DOM element	<ul><li><b>the HTML object element of the mini calendar </b> - if the mini calendar is currently open </li> <li><b>false</b> - if the mini calendar is currently closed </li> </ul>
+- cal	boolean, HTMLElement	<ul><li><b>the HTML object element of the mini calendar </b> - if the mini calendar is currently open </li> <li><b>false</b> - if the mini calendar is currently closed </li> </ul>
 @require:minical
 @example: 
 //if the mini calendar is opened

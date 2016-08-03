@@ -23,3 +23,5 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"month");
 	readonly.md
 @relatedsample:
 	03_extensions/12_readonly_form.html
+
+@apigroup: General settings/Readonly mode	

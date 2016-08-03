@@ -22,3 +22,4 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 @relatedapi:
 	api/scheduler_last_hour_config.md
 
+@apigroup: General settings/Scale

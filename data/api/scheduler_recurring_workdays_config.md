@@ -16,3 +16,5 @@ scheduler.config.recurring_workdays = [2, 3, 4, 5];
 
 
 <img src="api/recurringworkdays_config.png"/>
+
+@apigroup: Lightbox

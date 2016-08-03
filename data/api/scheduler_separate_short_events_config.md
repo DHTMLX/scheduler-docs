@@ -15,3 +15,5 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 @descr:
 
 <img src="api/separateShortEvents_property.png"/>
+
+@apigroup: General setting/View settings

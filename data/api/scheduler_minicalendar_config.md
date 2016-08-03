@@ -23,3 +23,5 @@ The minicalendar object has 1 property:
 @relatedsample:	
 	07_skins/01_default.html
     
+@apigroup: General settings/View settings
+    

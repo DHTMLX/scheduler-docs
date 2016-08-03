@@ -25,3 +25,4 @@ the api/scheduler_event_duration_config.md option.
 	02_customization/11_auto_end_date.html
     02_customization/13_single_checkbox_section.html
     
+@apigroup: Time, time zones

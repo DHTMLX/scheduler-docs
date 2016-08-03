@@ -20,3 +20,5 @@ scheduler.init('scheduler_here',new Date(2013,5,30),"day");
     03_extensions/30_quick_info_detached.html
 @related:
 	touch_support.md
+
+@apigroup: General settings/Quick info

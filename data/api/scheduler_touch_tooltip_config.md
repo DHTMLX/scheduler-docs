@@ -18,5 +18,5 @@ scheduler.config.touch_tooltip = true; //disables tooltips
 @related:
 	touch_support.md
 
-
+@apigroup: General settings/Touch support
 

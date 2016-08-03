@@ -21,3 +21,5 @@ scheduler.init('scheduler_here',new Date(2013,3,10),"week");
     
 @descr:
 Note, if you set the parameter to *false*, the user won't be able to drag events.
+
+@apigroup: General settings/Touch support

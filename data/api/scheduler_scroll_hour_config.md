@@ -15,3 +15,4 @@ scheduler.init('scheduler_here', new Date(), "week");
 @views: day, week, units
 @descr:
 
+@apigroup: General settings

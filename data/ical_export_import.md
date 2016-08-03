@@ -5,7 +5,7 @@
 You have the possibility to import/export data of iCal format by using either ready-to-use utility or API methods. 
 
 Download the **iCal exporter** utility:
-[http://www.dhtmlx.com/docs/download/ical2scheduler.zip](http://www.dhtmlx.com/docs/download/ical2scheduler.zip)
+[http://dhtmlx.com/x/download/regular/ical2scheduler.zip](http://dhtmlx.com/x/download/regular/ical2scheduler.zip)
 
  iCal exporter (Front-end) 
 --------------------------------------

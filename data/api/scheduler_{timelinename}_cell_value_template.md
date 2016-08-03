@@ -19,7 +19,7 @@ scheduler.templates.timeline_cell_value = function(evs, date){
 - text    string     html text for rendering in the scheduler
 @descr:
 {{note
-The Timeline view, 'tree' mode only
+The Timeline view, 'cell' mode only
 }}
 
 	

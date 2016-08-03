@@ -17,3 +17,4 @@ scheduler.init('scheduler_here', new Date(2013, 7, 5), "month");
 
 <img src="api/leftBorder_property.png"/>
 
+@apigroup: General setting/View settings

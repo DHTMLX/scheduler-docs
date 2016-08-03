@@ -31,3 +31,6 @@ buttons_left
 @relatedapi:
 	api/scheduler_buttons_right_config.md
     api/scheduler_onlightboxbutton_event.md
+
+@apigroup: Lightbox
+    

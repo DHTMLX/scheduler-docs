@@ -21,3 +21,5 @@ scheduler.init('scheduler_here',new Date(2013,5,30),"week");
 	03_extensions/16_limitation.html
 @relatedapi:
 	api/scheduler_limit_start_config.md
+
+@apigroup: Time, time zones

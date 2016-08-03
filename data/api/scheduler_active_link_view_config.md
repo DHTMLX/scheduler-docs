@@ -21,3 +21,5 @@ The property should be set to the name of the view you want to open month's days
 	09_api/07_highlighted_timespans_month_view.html
 @related:
 	month_view.md#presentingdaysnumbersasclickablelinks
+
+@apigroup: Views

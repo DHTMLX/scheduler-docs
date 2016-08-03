@@ -15,3 +15,5 @@ scheduler.init("scheduler_here");
 
 
 @related: quick_info.md
+
+@apigroup: General settings/Quick info

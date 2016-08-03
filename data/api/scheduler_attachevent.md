@@ -5,7 +5,7 @@ attachEvent
 	attaches the handler to an inner event of dhtmlxScheduler
 
 @params: 
-- name		string		the event's name, case-insensitive
+- name		SchedulerEventName		the event's name, case-insensitive
 - handler	function	the handler function 
 
 @example: 
@@ -19,7 +19,7 @@ scheduler.attachEvent("onEventSave",function(id,ev){
 
 
 @returns:
-	event id		id	the id of the attached event handler
+	event      string		id	the id of the attached event handler
 
 @template:	api_method
 @relatedapi:

@@ -21,3 +21,5 @@ The saved event will contain the current week, i.e. the past Monday and Wednesda
 
 If you set the **repeat_precise** option to *true*, the start date of a recurring event 
 will be the date of the first real occurrence, i.e. in our example it will be Monday of the next week.
+
+@apigroup: Events/Reccuring events

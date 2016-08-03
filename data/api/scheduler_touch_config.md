@@ -31,4 +31,4 @@ So, there are 3 possible values that the parameter can take:
 @relatedsample:
 	01_initialization_loading/13_touch_ui.html
     
-    
+@apigroup: General settings/Touch support    

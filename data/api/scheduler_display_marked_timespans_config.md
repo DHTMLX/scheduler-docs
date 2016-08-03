@@ -20,3 +20,5 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 The property is available from version 3.5.
 
 If you set the option to *false*, time spans will continue to be blocked, but will be displayed as usual scheduler cells. 
+
+@apigroup: Time, time zones

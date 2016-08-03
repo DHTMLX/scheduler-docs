@@ -18,3 +18,5 @@ scheduler.init('scheduler_here',new Date(2013,0,10),"week");
 @relatedsample:
 	02_customization/05_custom_editor.html
     02_customization/12_full_day_event.html
+
+@apigroup: Events

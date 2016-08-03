@@ -17,3 +17,5 @@ scheduler.init('scheduler_here',new Date(2013,7,11),"week");
 @descr:
 
 As a boolean value, the property can take only the *false* value that is set by default.
+
+@apigroup: Events/Multi-day events

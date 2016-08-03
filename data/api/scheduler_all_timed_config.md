@@ -24,3 +24,5 @@ So, there are 3 possible values that the parameter can take:
 
 @relatedsample:
 	03_extensions/26_multi_day_visible.html
+
+@apigroup: Events/Multi-day events

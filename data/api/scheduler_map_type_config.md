@@ -20,4 +20,5 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"map");
 - <b> TERRAIN</b> - displays maps with physical features such as terrain and vegetation.
 @descr:
 
+@apigroup: Views/Map view
 

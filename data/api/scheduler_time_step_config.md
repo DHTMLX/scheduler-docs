@@ -22,3 +22,4 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 	02_customization/01_events_coloring.html
     03_extensions/24_week_agenda.html
     
+@apigroup: Time, time zones

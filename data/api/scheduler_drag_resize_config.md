@@ -22,4 +22,5 @@ scheduler.init('scheduler_here',new Date(2013,5,30),"week");
     
 @descr:
 
+@apigroup: Events/Drag-and-Drop operations
 

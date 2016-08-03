@@ -17,3 +17,6 @@ scheduler.config.section_delemiter = ";";
     timeline_view.md#assigningeventstoseveralsections
 @relatedapi:
 	api/scheduler_multisection_config.md
+
+@apigroup: General settings
+	

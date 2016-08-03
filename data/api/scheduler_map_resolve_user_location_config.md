@@ -17,4 +17,5 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 @descr:
 Some browsers open up the opportunity to determine the user's location. And if this option is set to *true*, such opportunity will be offered while the map is being loaded.
 
+@apigroup: Views/Map view
 

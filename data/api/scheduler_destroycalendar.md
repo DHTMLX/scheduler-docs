@@ -4,7 +4,7 @@ destroyCalendar
 	destroys previously created mini-calendar
 
 @params: 
-*	name	object	the mini-calendar's object (if not specified, the scheduler attempts <br> to destroy the last created mini calendar)
+* name	object	the mini-calendar's object (if not specified, the scheduler attempts <br> to destroy the last created mini calendar)
 
 @require:minical
 @example: 

@@ -21,3 +21,5 @@ scheduler.init("scheduler_here");
 The default error notification (i.e. when  <code>scheduler.config.ajax_error = "alert"</code>) looks like this: 
 
 <img src="api/ajax_error_property.png">
+
+@apigroup: General settings

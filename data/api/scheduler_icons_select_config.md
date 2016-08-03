@@ -24,3 +24,5 @@ scheduler.init('scheduler_here', new Date(2013, 0, 10), "week");
 
 @descr:
 <img src="api/iconsSelect_property.png"/>
+
+@apigroup: Events/Select bar

@@ -19,3 +19,4 @@ When the mode is enabled, an event preserves the visible length, instead of the 
 <br> Let's assume that you have a two-day event in the Month view and the weekends are hidden. If you drag the event and place it to occupy Friday and Monday length, the real difference between start and end day will be 4 days, 
 but the scheduler will preserve the visible length - 2 days. 
 
+@apigroup: General settings/Scale

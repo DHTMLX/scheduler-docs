@@ -26,3 +26,5 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 The property is available from version 3.5.    
 
 By default, the ['dhx_terrace'-skinned scheduler](skins.md#dhxterraceskin) presents the views tabs on the left side. To place the tabs on the right side - set the option to *false*.
+
+@apigroup: General setting/View settings

@@ -32,3 +32,6 @@ scheduler.addEvent({
 	03_extensions/14_readonly_event.html
 @relatedapi:
 	api/scheduler_addevent.md 
+
+@apigroup: Date format
+	

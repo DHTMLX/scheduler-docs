@@ -18,4 +18,5 @@ scheduler.init('scheduler_here',new Date(2010,0,10),"week");
 @descr:
 The parameter is available from version 3.5 and used only in the context of the api/scheduler_showevent.md method.
 
+@apigroup: Events
 

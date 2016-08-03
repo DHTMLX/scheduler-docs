@@ -20,3 +20,4 @@ scheduler.load("./data/events.xml");
 	01_initialization_loading/01_basic_init.html
     01_initialization_loading/02_hour_scale_format.html
     
+@apigroup: Date format
