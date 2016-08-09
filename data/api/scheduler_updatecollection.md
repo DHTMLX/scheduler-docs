@@ -12,7 +12,7 @@ updateCollection
 scheduler.config.lightbox.sections=[   
 	{name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
 	{name:"items", height:23, type:"select", 
-    options:serverList("goods", goods_array), map_to:"section_id" }, 
+    options:scheduler.serverList("goods", goods_array), map_to:"section_id" }, 
 	{name:"time", height:72, type:"time", map_to:"auto"}
 ]; 
 
@@ -37,7 +37,7 @@ Let's assume that you have the lightbox as in:
 ~~~js
 scheduler.config.lightbox.sections=[   
     {name:"description", ...},
-    {name:"items", height:23, type:"select", options:serverList("goods"), 
+    {name:"items", height:23, type:"select", options:scheduler.serverList("goods"), 
     map_to:"section_id" }, 
     {name:"time", ...}
 ]; 
