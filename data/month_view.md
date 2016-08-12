@@ -101,7 +101,7 @@ Resizing events by drag-n-drop (ver. 4.1+)
 -------------------------------------------------------------
 By default, users can't resize events in the Month view by drag-n-drop (only through the edit form). 
 
-To provide resizing multi-day events by drag-n-drop, set the api/scheduler_resize_month_events_config.md property to *true*:
+To provide resizing of multi-day events by drag-n-drop, set the api/scheduler_resize_month_events_config.md property to *true*:
 
 ~~~js
 //resizing multi-day events by drag-n-drop

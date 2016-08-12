@@ -1,6 +1,4 @@
-
-
- Migration from older versions 
+Migration From Older Versions 
 ==============
 
 ## 4.x -> 4.3

@@ -130,7 +130,6 @@ scheduler.date.units_start = function (date) {
 
 
 
-
 Assigning events to several units
 --------------------------------------------------------------
 
@@ -142,7 +141,7 @@ Starting from version 4.1, you have a possibility to assign events to several un
 
 To enable the possibility: 
 
-1. Include the "ext/dhtmlxscheduler_multisection.js" file on the page
+1. Include the **ext/dhtmlxscheduler_multisection.js** file on the page
 2. Set the api/scheduler_multisection_config.md property to *true*
 3. (Optional) Include "ext/dhtmlxscheduler_multiselect.js" file on the page to use multiselect.md control in the scheduler (a comfortable way to switch between sections)
 

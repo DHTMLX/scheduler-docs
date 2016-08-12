@@ -45,6 +45,7 @@ Start
 
 @index:
 - what_s_new.md
+- migration_from_older_version.md
 - how_to_start.md
 - views.md
 - guides.md
