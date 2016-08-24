@@ -1,6 +1,6 @@
 onSaveError
 =============
-@short: fires when some error happened while data updating 
+@short: fires when some error has happened during data updating 
 	
 
 @params:

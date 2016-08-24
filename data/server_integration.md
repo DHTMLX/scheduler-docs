@@ -134,7 +134,35 @@ To change the id of the event while updating - use the **tid** property.
 }
 ~~~
 
+Handling AJAX Loading Errors 
+-------------------------
 
+While dealing with server side using DataProcessor and loading data with AJAX you can catch possible errors with the help of the following events:  
+
+- api/scheduler_onloaderror_event.md - to handle errors that occur during data loading 
+
+This event can be invoked by the api/scheduler_parse.md and api/scheduler_load.md methods.
+
+The event handler takes the server response (an Ajax request object) as a parameter: 
+
+~~~js
+scheduler.attachEvent("onLoadError", function(response){
+    dhtmlx.message("Failed to load data");
+});
+~~~
+
+- api/scheduler_onsaveerror_event.md - to handle errors that happen during data updating 
+
+The event handler takes two parameters:
+
+- ids - an array of events' ids that failed to update
+- response - an Ajax request object
+
+~~~js
+scheduler.attachEvent("onSaveError", function(ids, response){
+    dhtmlx.message("Failed to  update data");
+})
+~~~
 
 
 Retrieving Data in JSON Format
