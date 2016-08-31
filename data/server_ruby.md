@@ -1,2 +1,2 @@
-Integrating Scheduler with Ruby using REST
+Ruby on Rails Code Samples
 ==============================

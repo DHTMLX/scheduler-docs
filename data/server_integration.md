@@ -42,7 +42,7 @@ dp.setTransactionMode("REST");
 
 <h3 id="requestresponsedetails">Request and Response details</h3>
 
-The url is formed by the following rule:
+The URL is formed by the following rule:
 
 - api/link/id
 - api/task/id
@@ -111,10 +111,10 @@ As we initialized dataProcessor in the REST mode, it will use different HTTP ver
 Since we use REST API, it's possible to implement the server side using different frameworks and programming languages.
 Here's a list of available server side implementations that you can use for Scheduler backend integration:
 
-- Node.js
-- PHP
-- .Net
-- Ruby
+- server_php.md
+- server_nodejs.md
+- server_dotnet.md
+- server_ruby.md
 
 <br>
 If by some reason you don't want to use REST API, the best solution is [to use dhtmlxConnector library](using_connectors.md).
@@ -145,3 +145,7 @@ scheduler.updateEvent(1); // renders the updated event
 @index: 
 
 - using_connectors.md
+- server_php.md
+- server_nodejs.md
+- server_dotnet.md
+- server_ruby.md

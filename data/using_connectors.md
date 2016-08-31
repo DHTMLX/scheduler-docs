@@ -1,4 +1,4 @@
-Using Connectors for Database Mapping
+Connector Code Samples
 =========================
 
 dhtmlxScheduler library supports a special server-side helper library dhtmlxConnector that simplifies your work with the server side.

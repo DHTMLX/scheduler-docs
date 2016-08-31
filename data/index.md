@@ -45,7 +45,6 @@ Start
 
 @index:
 - what_s_new.md
-- how_to_start.md
 - views.md
 - guides.md
 - api/refs/scheduler.md

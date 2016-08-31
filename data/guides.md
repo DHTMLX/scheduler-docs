@@ -7,6 +7,23 @@ The articles come around key procedures and problem-solving activities.
 
 <table  style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 	<tbody>
+    <tr>
+		<td id="data" class='topics'>
+		    <h4>
+		         How to Start with dhtmlxScheduler
+		    </h4>
+		    <ul id="data_sublist" >
+                    <li>howtostart_php.md</li>
+                    <li>howtostart_nodejs.md</li>
+                    <li>howtostart_dotnet.md</li>
+                    <li>howtostart_ruby.md</li>
+                    <li>howtostart_connector.md</li>
+            </ul>
+        </td>
+        <td class='topic_description'>Says how to build a standard Gantt chart on different server-side platforms and 
+        bring it to life: configure with specific settings, customize the default templates, 
+        attach events, etc.</td>
+	</tr>
 	<tr>
 		<td id="data" class='topics'>
 		    <h4>
@@ -140,6 +157,8 @@ The articles come around key procedures and problem-solving activities.
 </table>
 
 @index:
+
+- howtostart_guides.md
 - loading_and_storing_data.md
 - configuring_the_scheduler.md
 - configuring_the_lightbox.md

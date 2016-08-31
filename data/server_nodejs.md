@@ -1,2 +1,2 @@
-Integrating Scheduler with Node.js using REST
+Node.js Code Samples
 ==================================
