@@ -15,25 +15,22 @@ client-server manipulation and not to write the server-client communication logi
 	<caption>Table 1. Packages of dhtmlxConnector for different platforms</caption>
 	<tr>
 		<td>PHP</td>
-		<td><a href="http://dhtmlx.com/docs/download/dhtmlxConnector_php.zip">http://dhtmlx.com/docs/download/dhtmlxConnector_php.zip</a></td>
+		<td><a href="https://github.com/DHTMLX/connector-php">https://github.com/DHTMLX/connector-php</a></td>
 	</tr>
 	<tr>
 		<td>.Net</td>
-		<td><a href="http://dhtmlx.com/docs/download/dhtmlxConnector_net.zip">http://dhtmlx.com/docs/download/dhtmlxConnector_net.zip</a></td>
+		<td><a href="http://dhtmlx.com/x/download/regular/dhtmlxConnector_net.zip">http://dhtmlx.com/x/download/regular/dhtmlxConnector_net.zip</a></td>
 	</tr>
 	<tr>
 		<td>Java</td>
-		<td><a href="http://dhtmlx.com/docs/download/dhtmlxConnector_java.zip">http://dhtmlx.com/docs/download/dhtmlxConnector_java.zip</a></td>
-	</tr>
-	<tr>
-		<td>RubyOnRails</td>
-		<td><a href="http://support.dhtmlx.com/x-files/samples/ruby_scheduler.zip">http://support.dhtmlx.com/x-files/samples/ruby_scheduler.zip</a></td>
+		<td><a href="https://github.com/DHTMLX/connector-java">https://github.com/DHTMLX/connector-java</a></td>
 	</tr>
 	<tr>
 		<td>ColdFusion</td>
-		<td><a href="http://support.dhtmlx.com/x-files/samples/connector_cf.zip">http://support.dhtmlx.com/x-files/samples/connector_cf.zip</a></td>
+		<td><a href="https://github.com/DHTMLX/connector-cf">https://github.com/DHTMLX/connector-cf</a></td>
 	</tr>
 </table>
+
 
 Technique
 ----------
