@@ -134,6 +134,60 @@ To change the id of the event while updating - use the **tid** property.
 }
 ~~~
 
+Indicating Successful Event Saving
+------------------------
+
+You may prevent the user from the action that follows the current one, if there are some changes in an event that haven't been applied yet.
+
+Provided that you use dataProcessor, you can apply the [onBeforeUpdate](http://docs.dhtmlx.com/api__dataprocessor_onbeforeupdate_event.html) and
+[onAfterUpdate](http://docs.dhtmlx.com/api__dataprocessor_onafterupdate_event.html) events for this purpose.
+
+The *onAfterUpdate* fires when the server response is received.
+
+~~~js
+dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
+     //your code here
+})
+~~~
+
+The *onBeforeUpdate* event fires prior to sending AJAX to the backend.
+
+~~~js
+dp.attachEvent("onBeforeUpdate", function(id, state, data){
+    //your code here
+    return true;
+});
+~~~
+
+You can return *false* to leave the changes made to an event in the pending state. Thus it will be possible either to cancel the changes or to send them to the server later.
+To define what to do with pending changes next, you should set the corresponding statuses for events.
+
+###Defining event's status 
+
+####Setting a status for event
+
+You can specify the state of event using the [setUpdated](http://docs.dhtmlx.com/api__dataprocessor_setupdated.html) method.
+
+It takes three parameters:
+
+- eventId - (string|number) id of the event to set the update status for
+- mode	- (boolean)	optional, *true* (default) for "updated", false for "not updated"
+- state	- (string) optional, the update mode name, "updated" by default
+
+~~~js
+dp.setUpdated(1);
+dp.setUpdated(2, true, "deleted");
+~~~
+
+####Getting the event status
+
+To return the status of event, you can apply the [getState](http://docs.dhtmlx.com/api__dataprocessor_getstate.html) method. 
+It takes the event id as a parameter.
+
+~~~js
+var status = dp.getState(2); // -> "deleted"
+~~~
+
 Handling AJAX Loading Errors 
 -------------------------
 

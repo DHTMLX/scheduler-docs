@@ -97,20 +97,20 @@ scheduler.addMarkedTimespan({ // blocks 4th July,2012 (this is Wednesday).
 	days:  new Date(2012,7,4),
 	zones: "fullday", 
 	type:  "dhx_time_block",
-	css:   "red_section"
+	css:   "red_section" // the name of applied CSS class
 });
 scheduler.addMarkedTimespan({ // blocks each Sunday, Monday, Wednesday
 	days:  [0, 1, 3], 
 	zones: "fullday",
 	type:  "dhx_time_block", 
-	css:   "blue_section" 
+	css:   "blue_section" // the name of applied CSS class
 });
 //blocks each Sunday and Wednesday just for an item with id=2 
 scheduler.addMarkedTimespan({  
     days:  [0,3], 
 	zones: "fullday",
 	type:  "dhx_time_block", 
-	css:   "gray_section", 
+	css:   "gray_section",  // the name of applied CSS class
 	sections: { timeline: 2} 
 });
 
