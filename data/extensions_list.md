@@ -100,6 +100,21 @@ Saves the scheduler current state (mode and date ) in cookies.
 {{sample 03_extensions/08_cookies_plugin.html}}
 
 
+Drag-n-Drop between Schedulers
+----------------------------
+
+{{note This extension is available in PRO version only}}
+
+Enables drag-and-drop operations between multiple schedulers, which makes it possible to drag events from one scheduler to another and vice versa.
+
+~~~html
+<script src="../codebase/ext/dhtmlxscheduler_drag_between.js"></script> 
+~~~
+
+####Related resources
+
+Article: [Drag-and-drop between Schedulers](dhtmlx_components_integration.md#draganddropbetweenschedulers)
+
 
 Editors
 ---------------------------------------------
@@ -155,7 +170,7 @@ Article: grid_view.md<br>
 {{sample 03_extensions/27_grid_view.html}}
 
 
-HTML templates
+HTML Templates
 ---------------------------------------------
 Allows defining templates as an HTML code.
 

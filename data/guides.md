@@ -39,6 +39,8 @@ The articles come around key procedures and problem-solving activities.
                     <li>collisions.md</li>
                     <li>quick_info.md</li>
 					<li>jquery_integration.md</li>
+                    <li>accessibility.md</li>
+                    <li>keyboard_navigation.md</li>
             </ul>
         </td>
 		<td class='topic_description'>Shows how to configure the scheduler: to provide support for recurring events, to change scale units, to block specific dates etc.</td>

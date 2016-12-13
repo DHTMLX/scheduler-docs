@@ -1,4 +1,4 @@
-Multiple users
+Multiple Users
 =============================
 
 
