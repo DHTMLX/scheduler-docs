@@ -1,5 +1,6 @@
 Server-side Integration
 ==================================
+
 dhtmlxScheduler library supports special helper libraries that simplify your work with the server side:
 
 - **dhtmlxConnector** - a server-side library. Provides the necessary data exchange conditions, so that you do not have to deal with the technical details of working with various data stores,
@@ -84,8 +85,9 @@ $calendar->render_table("events","id","event_start,event_end,text","type");
 	01_initialization_loading/05_loading_database.html
 }}
 
-Updating data
+Updating Data
 ------------------------------------
+
 If you have dataProcessor initialized, any change made by the user or programmatically will be automatically saved in the data source.
 
 Generally, to update a specific event programmatically, use the api/scheduler_updateevent.md method:
@@ -105,8 +107,9 @@ scheduler.updateEvent(1); // renders the updated event
 }}
 
 
-Saving data from REST server 
+Saving Data from the REST Server 
 --------------------------------------
+
 To make dataProcessor work with the REST backend, you need to do 2 things: 
 
 1. Specify the path to your REST server in the dataProcessor's constructor.
@@ -127,65 +130,133 @@ Note, the response can be any valid JSON  object
 
 To change the id of the event while updating - use the **tid** property. 
 
-
 ~~~js
 {
 	tid: "some"
 }
 ~~~
 
-Indicating Successful Event Saving
+Sending Updates to the Server Side
 ------------------------
 
-You may prevent the user from the action that follows the current one, if there are some changes in an event that haven't been applied yet.
+When dataProcessor is attached to dhtmlxScheduler, it captures all changes made in the calendar and automatically sends the updates to the backend. 
+These updates can be traced, canceled or invoked manually using the public API of dataProcessor.
 
-Provided that you use dataProcessor, you can apply the [onBeforeUpdate](http://docs.dhtmlx.com/api__dataprocessor_onbeforeupdate_event.html) and
-[onAfterUpdate](http://docs.dhtmlx.com/api__dataprocessor_onafterupdate_event.html) events for this purpose.
+The whole process looks as follows:
 
-The *onAfterUpdate* fires when the server response is received.
+1) When an event is updated, Scheduler calls the related event: 
 
-~~~js
-dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
-     //your code here
-})
-~~~
+- api/scheduler_oneventadded_event.md - if a new event is added
+- api/scheduler_oneventchanged_event.md - if an event is changed
+- api/scheduler_onconfirmedbeforeeventdelete_event.md - if the event deletion is confirmed by the user
 
-The *onBeforeUpdate* event fires prior to sending AJAX to the backend.
+2) Next, the event is captured by [dhtmlxDataProcessor](http://docs.dhtmlx.com/dataprocessor__index.html). 
 
-~~~js
-dp.attachEvent("onBeforeUpdate", function(id, state, data){
-    //your code here
-    return true;
-});
-~~~
-
-You can return *false* to leave the changes made to an event in the pending state. Thus it will be possible either to cancel the changes or to send them to the server later.
-To define what to do with pending changes next, you should set the corresponding statuses for events.
-
-###Defining event's status 
-
-####Setting a status for event
-
-You can specify the state of event using the [setUpdated](http://docs.dhtmlx.com/api__dataprocessor_setupdated.html) method.
-
+dataProcessor calls the [setUpdated](http://docs.dhtmlx.com/api__dataprocessor_setupdated.html) method for the related item. 
 It takes three parameters:
 
-- eventId - (string|number) id of the event to set the update status for
-- mode	- (boolean)	optional, *true* (default) for "updated", false for "not updated"
-- state	- (string) optional, the update mode name, "updated" by default
+
+- **eventId** - (string|number) id of the event to set the update status for
+- **mode**	- (boolean)	optional, *true* (default) for "updated", false for "not updated"
+- **state**	- (string) optional, the update mode name, "updated" by default
+
+The *setUpdated()* method puts the item into the pool of unsaved items, where it will wait to be saved to the backend. 
+
+Events can be added or removed from that pool manually:
+
+- to mark an event as updated, use:
 
 ~~~js
-dp.setUpdated(1);
-dp.setUpdated(2, true, "deleted");
+dp.setUpdated(2, true, "updated");
 ~~~
 
-####Getting the event status
+- to remove an event from the pool of updated events, set the second parameter to *false*:
 
-To return the status of event, you can apply the [getState](http://docs.dhtmlx.com/api__dataprocessor_getstate.html) method. 
-It takes the event id as a parameter.
+~~~js
+dp.setUpdated(2, false);
+~~~
+
+- get status of an event:
 
 ~~~js
 var status = dp.getState(2); // -> "deleted"
+~~~
+
+3) Either directly after that or when [dataProcessor.sendData](http://docs.dhtmlx.com/api__dataprocessor_senddata.html) is called 
+(depending on the settings specified by the [setTransactionMode()](http://docs.dhtmlx.com/api__dataprocessor_settransactionmode.html) method of dataProcessor), 
+all unsaved items are sent to the backend.
+
+4) For each unsaved event dataProcessor calls the [onBeforeUpdate](http://docs.dhtmlx.com/api__dataprocessor_onbeforeupdate_event.html) event which allows preventing requests to the backend
+(preventing a request won't remove an item from the unsaved pool, you'll need to manually unmark it 
+using [dataProcessor.setUpdated(id, false)](http://docs.dhtmlx.com/api__dataprocessor_setupdated.html)).
+
+~~~js
+  // allowing item update
+dp.attachEvent("onBeforeUpdate", function(id, state, data){
+    // any custom logic here
+	return true;
+});
+
+ // canceling update, but keeping event marked as 'modified/unsaved'
+dp.attachEvent("onBeforeUpdate", function(id, state, data){
+    // any custom logic here
+	return false;
+});
+
+ // canceling update and removing the 'modified/unsaved' mark from event
+dp.attachEvent("onBeforeUpdate", function(id, state, data){
+    dp.setUpdated(id, false);
+    return false;
+});
+~~~
+
+As soon a request is sent to the backend, the event status is changed to 'pending' (waiting for the server
+response). Next changes made to this event won’t be sent to the backend until the current request is done.
+
+5) When the request is completed, dataProcessor fires [onAfterUpdate](http://docs.dhtmlx.com/api__dataprocessor_onafterupdate_event.html) event 
+which contains the server response and the result of the operation:
+
+~~~js
+dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
+     // any custom logic here
+});
+~~~
+
+###Considering the use-case
+
+The [onBeforeUpdate](http://docs.dhtmlx.com/api__dataprocessor_onbeforeupdate_event.html) and [onAfterUpdate](http://docs.dhtmlx.com/api__dataprocessor_onafterupdate_event.html) events
+can be used to indicate server-side updates to the user, or to ensure that the user won't close the tab until updates are done.
+
+
+For example, you can show a confirmation popup, if the user tries to close a tab while server requests are still in progress:
+
+~~~js
+var dp = new dataProcessor("data/events.php");
+dp.init(scheduler);
+
+(function(dp){
+	var pendingChanges;
+
+	dp.attachEvent("onBeforeUpdate", function(id, state, data){
+		pendingChanges = true;
+		return true;
+	});
+
+	dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
+		pendingChanges = false;
+		return true;
+	});
+
+	window.onbeforeunload = function(e) {
+		if(pendingChanges){
+			var dialogText = 'Are you sure want to quit?';
+			e.returnValue = dialogText;
+			return dialogText;
+		}else{
+			return null;
+		}
+	};
+})(dp);
 ~~~
 
 Handling AJAX Loading Errors 
@@ -221,6 +292,7 @@ scheduler.attachEvent("onSaveError", function(ids, response){
 
 Retrieving Data in JSON Format
 -----------------------------------
+
 By default, dhtmlxScheduler expects data to be in the XML format.<br>
 But starting from version 3.5, dhtmlxScheduler can be directly populated with a JSON data from dhtmlxConnector.
 
@@ -258,7 +330,7 @@ JSONSchedulerConnector generates the 'JSON' data feed as in:
 	01_initialization_loading/10_loading_database_json.html
 }}
 
-Saving data in an XML file
+Saving Data in an XML file
 ----------------------------------------------
 The library includes a special extension **ext/dhtmlxScheduler_serialize.js** that allows storing data in an XML file, 
 without dealing with the database routine.
