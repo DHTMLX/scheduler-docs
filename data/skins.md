@@ -1,38 +1,32 @@
 Skins 
 ==============
 
-There are 3 predefined skins:
+There are several predefined skins:
 
-
-1. [Default](skins.md#defaultskin)
+1. [Terrace (default)](skins.md#defaultskin)
 2. [Glossy](skins.md#glossyskin)
 3. [Classic](skins.md#classicskin)
 4. [Flat](skins.md#flatskin)
+5. [Contrast Black](skins.md#contrastblackskin)
+6. [Contrast White](skins.md#contrastwhiteskin)
 
-Each skin requires including its specific files. 
+Each skin requires including its specific CSS file. 
 
-Default skin 
+'Terrace' skin 
 -----------------------------
-To apply the default skin, include the default code files:
+To apply the default skin, include the default CSS file:
 
-
-
-- **dhtmlxscheduler.js**
 - **dhtmlxscheduler.css**
 
-
-![white_skin.png](white_skin.png)
+![terrace_skin.png](white_skin.png)
 
 {{sample 07_skins/01_default.html}}
 
 
-
 'Glossy' skin
 ----------------------------------
-To apply the 'Glossy' skin, include the files as in:
+To apply the 'Glossy' skin, include the CSS file as in:
 
-
-- **dhtmlxscheduler.js**
 - **dhtmlxscheduler_glossy.css**
 
 ![glossy_skin.png](glossy_skin.png)
@@ -41,27 +35,45 @@ To apply the 'Glossy' skin, include the files as in:
 
 'Classic' skin
 -----------------------------
-To apply the 'Classic' skin, include the files as in:
+To apply the 'Classic' skin, include the CSS file as in:
 
-- **dhtmlxscheduler.js**
 - **dhtmlxscheduler_classic.css**
 
-![default_skin.png](default_skin.png)
+![classic_skin.png](default_skin.png)
 
 {{sample 07_skins/03_classic.html}}
 
 
-
 'Flat' skin
 -----------------------------
-To apply the 'Flat' skin, include the files as in:
+To apply the 'Flat' skin, include the CSS file as in:
 
-- **dhtmlxscheduler.js**
 - **dhtmlxscheduler_flat.css**
 
-![default_skin.png](flat_skin.png)
+![flat_skin.png](flat_skin.png)
 
 {{sample 07_skins/13_flat.html}}
+
+
+'Contrast Black' skin
+----------------------
+To apply the 'Contrast Black' skin, include the CSS file as in:
+
+- **dhtmlxscheduler_contrast_black.css**
+
+![contrast_black_skin](contrast_black_skin.png)
+
+{{sample 07_skins/17_contrast_black.html}}
+
+'Contrast White' skin
+----------------------
+To apply the 'Contrast White' skin, include the CSS file as in:
+
+- **dhtmlxscheduler_contrast_white.css**
+
+![contrast_white_skin](contrast_white_skin.png)
+
+{{sample 07_skins/21_contrast_white.html}}
 
 ## Skin Detection
 

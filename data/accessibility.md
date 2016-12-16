@@ -1,7 +1,7 @@
 Accessibility
 ================
 
-{{todo add images, update links to samples for skins and article for key navigation}}
+{{todo check links to skin samples and update the article for key navigation}}
 
 
 [Accessibility](https://www.w3.org/WAI/intro/accessibility.php) is an important and necessary standard for modern web applications. 
@@ -48,19 +48,17 @@ There are two variants of contrast theme available:
 <img src="contrast_black_skin.png">
 
 ~~~html
-<link rel="stylesheet" href="../../codebase/dhtmlxscheduler_contrast_black.css" 
-	type="text/css" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="../../codebase/dhtmlxscheduler_contrast_black.css">
 ~~~
 
-{{sample high_contrast_black.html}}
+{{sample 07_skins/17_contrast_black.html}}
 
 - contrast white skin
 
 <img src="contrast_white_skin.png">
 
 ~~~html
-<link rel="stylesheet" href="../../codebase/dhtmlxscheduler_contrast_white.css" 
-    type="text/css" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="../../codebase/dhtmlxscheduler_contrast_white.css">
 ~~~
 
-{{sample high_contrast_white.html}}
+{{sample 07_skins/21_contrast_white.html}}
