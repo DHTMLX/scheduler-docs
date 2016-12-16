@@ -23,7 +23,7 @@ The required code files are:
 - *dhtmlxscheduler.css*
 
 
-~~~js
+~~~html
 <!DOCTYPE html>
 <html>
 <head>

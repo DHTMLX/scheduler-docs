@@ -1,4 +1,4 @@
- Units view 
+Units View 
 ==============
 The Units view is a view, where X-Axis is based on some property of events (not only on time). 
 

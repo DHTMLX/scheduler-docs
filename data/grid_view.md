@@ -1,4 +1,4 @@
- Grid view 
+Grid View 
 ==============
 
 The Grid view presents a list of upcoming events and, unlike the Agenda view, allows configuring any number of columns.

@@ -1,6 +1,6 @@
-
- Year view 
+Year View 
 ==============
+
 The Year view presents a single or more years of the calendar.
 
 <img src="year_view.png"/>
