@@ -1,9 +1,9 @@
-Keyboard navigation
+Keyboard Navigation
 ===================================
+
 The keyboard navigation functionality is included into the **ext/dhtmlxscheduler_key_nav.js** extension.
 
 ###Keyboard commands
-
 
 Once the extension file is included on the page, you can use the following command to navigate through the scheduler:
 

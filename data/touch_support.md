@@ -1,9 +1,7 @@
-
- Touch support in dhtmlxScheduler 
+Touch Support in dhtmlxScheduler 
 ==============
+
 dhtmlxScheduler provides support for touch devices, such as:
-
-
 
 - iOS devices (iPad, iPhone, iPod);
 - Windows 8-based tablets and touch screen monitors;

@@ -1,11 +1,24 @@
  Exporting Scheduler to PDF
 ===========================
-Starting from version 4.1, dhtmlxScheduler provides a new approach for exporting the scheduler into the PDF format.
+Starting from version 4.1, dhtmlxScheduler provides a new approach for exporting the scheduler into the PDF format - 
+an [online export service](pdf.md#defaultexporttopdf).
 
 {{note
 The article refers to exporting of dhtmlxScheduler 4.1+. If you use dhtmlxScheduler 4.0 or earlier versions, see details [here](pdf_v4.md).
 }}
 
+
+Using Export Services
+-----------------------
+
+There are several export services available. You can install them on your computer and export Scheduler to PDF locally.
+
+Note that export services are not included into the Scheduler package, 
+read the [corresponding article](http://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
+
+
+Default Export to PDF
+----------------------
 
 To export scheduler as a PDF document, do the following steps:
 

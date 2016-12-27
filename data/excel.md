@@ -82,7 +82,7 @@ To export scheduler's data to an iCal string, do the following steps:
 </li>
 	<li>Call the <b>exportToIcal</b> method to export the scheduler's data: 
 ~~~html
-<input value="Export to iCal" type="button" onclick='scheduler.exportToIcal()'>/*!*/
+<input value="Export to iCal" type="button" onclick='scheduler.exportToIСal()'>/*!*/
 
 <script>
 	scheduler.config.xml_date="%Y-%m-%d %H:%i";

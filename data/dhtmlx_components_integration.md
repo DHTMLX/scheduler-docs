@@ -25,7 +25,7 @@ Follow these steps, to integrate the scheduler with <a src="http://docs.dhtmlx.c
 <ol>
 	<li><a href="http://dhtmlx.com/docs/download.shtml">Download</a> the  dhtmlxTree package and unzip its content to [YOUR APPLICATION ROOT] folder</li>
     <li>Include the necessary <b>js</b> and <b>css</b> files on the page:
-~~~js
+~~~html
 <script src='ext/dhtmlxscheduler_outerdrag.js' type="text/javascript"></script>
 ...
 ~~~
@@ -51,9 +51,9 @@ scheduler.init('scheduler_here', new Date(2009, 5, 30), "timeline");
 	<li>Attach a handler to the api/scheduler_onexternaldragin_event.md event to set how the text of the dragged element will be converted to a property of the event:
 ~~~js
 scheduler.attachEvent("onExternalDragIn", function(id, source, event){
-		var label = tree.getItemText(tree._dragged[0].id);
-		scheduler.getEvent(id).text = label;
-		return true;
+	var label = tree.getItemText(tree._dragged[0].id);
+	scheduler.getEvent(id).text = label;
+	return true;
 });
 
 ~~~
@@ -70,11 +70,10 @@ Now, you can easy create new events, containing tree data - just drag and drop t
 
 Drag-and-drop between schedulers
 -----------------------------------------------
+
 {{note
 The functionality is available for the Enterprise license only
 }}
-
-
 
 
 If you display  [multiple schedulers on a page](multiple_per_page.md), you can enable drag-and-drop operations between them so users could drag events from one scheduler to another and vice versa.

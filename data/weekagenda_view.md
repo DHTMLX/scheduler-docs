@@ -1,4 +1,4 @@
-Week Agenda view 
+Week Agenda View 
 ==============
 The Week Agenda view is a combination of Week and Agenda views presenting a list of upcoming events within a week.
 

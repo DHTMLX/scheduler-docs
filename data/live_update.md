@@ -1,5 +1,4 @@
-
-Live update mode
+Live Update Mode
 ==============
 Live Update is a mode that provides synchronous data update in real time. 
 When one of the users makes a change, it becomes visible to all others immediately. 

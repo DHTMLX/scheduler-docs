@@ -12,7 +12,7 @@ addMarkedTimespan
 scheduler.addMarkedTimespan({  
 	days:  5,               // marks each Friday
 	zones: "fullday",       // marks the entire day
-	css:   "gray_section"   // the applied css style
+	css:   "gray_section"   // the name of applied CSS class
 });
 scheduler.updateView();
 

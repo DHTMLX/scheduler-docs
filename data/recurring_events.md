@@ -12,8 +12,9 @@ Once the support of recurring events is activated, the lightbox starts looking l
 	07_skins/07_default_rec.html
 }}
 
-Configuration options
+Configuration Options
 ---------------------------------------
+
 The library provides the following options to configure recurring events:
 
 {{links
@@ -34,8 +35,9 @@ scheduler.init('scheduler_here', new Date(2013, 7, 5), "month");
 	03_extensions/01_recurring_events.html
 }}
 
-'Recurring' lightbox
+'Recurring' Lightbox
 ------------------------------------------
+
 By default, once the recurring extension is enabled, the lightbox starts to have one more section  - "Repeat event". 
 And the default definition of the 'recurring' lightbox starts to be as in:
 
@@ -43,7 +45,7 @@ And the default definition of the 'recurring' lightbox starts to be as in:
 [	 
 	{name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
 	{name:"recurring", height:115, type:"recurring", map_to:"rec_type", 
-    button:"recurring"},
+    	button:"recurring"},
 	{name:"time", height:72, type:"time", map_to:"auto"}
 ];
 ~~~
@@ -57,8 +59,7 @@ Also, it's required that the time section was placed **after** the recurring sec
 }}
 
 
-
-Server side integration 
+Server-side Integration 
 ---------------------------
 
 A recurring event is stored in the database as a single record that contains all fields of a regular event plus 3 additional: 
@@ -95,7 +96,6 @@ details:"",
 rec_type:"day_1___",
 event_length:"7200",
 event_pid:"0" //0 for the parent events or the ID of parent events for sub-events
-
 ~~~
 
 
@@ -158,16 +158,14 @@ Consequently, we should have 3 records referring to our recurring event in the D
 ####What happens in DB as we follow action by action:
 
 
-
 1. Creating the recurring event:<br>![create_a_recurring_event.png](create_a_recurring_event.png)
 2. Editing **July 27,2012**:<br> ![edit_a_recurring_event.png](edit_a_recurring_event.png)
 3. Deleting **August 1,2012**: ![delete_an_occurrence.png](delete_an_occurrence.png)
 
 
 ###Server-side logic 
+
 In addition to extra fields, a specific logic needs to be added to the server-side controller:
-
-
 
 - If an event with **rec_type==none** was inserted - the response must have the "deleted" status.
 - If an event with **rec_type!=none** was updated or deleted - all records with the related **event_pid** must be deleted.
@@ -243,10 +241,11 @@ whole block for specifying the recurrence end.
 
 
 ### Usage example
+
 Lets start with an example. Let's imagine you want to remove the 'monthly' and 'yearly' repeat types and have the 'no end date' option for all events (i.e. remove the block for specifying the recurrence end). 
 
 <ol> 
-<li>Step 1. Define a markup of custom form and place it somewhere on the page (you can start by copying the default template, which can be found at <b>'scheduler\sources\locale\recurring\'</b>):
+<li>Define the markup of a custom form and place it somewhere on the page (you can start by copying the default template, which can be found at <b>'scheduler\sources\locale\recurring\'</b>):
 ~~~html
 <div class="dhx_form_repeat" id="my_recurring_form"> /*!*/
   <form>
@@ -301,12 +300,13 @@ For example,for the English locale you need to see the  <b>'scheduler\sources\lo
 
 Basically, the recurring block of the lightbox contains 3 groups of controls:
 
-<ol>
-	<li> Controls for choosing the type of recurrence. These inputs have the name 'repeat' and one of the following values: 'dayly', 'weekly', 'monthly', 'yearly'.
-         The form must have at least one 'repeat' input with the value.
-         You can use radio buttons as in the example above, selects or set the default type in the hidden input.
+1) Controls for choosing the type of recurrence. These inputs have the name 'repeat' and one of the following values: 'daily', 'weekly', 'monthly', 'yearly'.
+The form must have at least one 'repeat' input with the value. You can use radio buttons, selects or set the default type in the hidden input.
 
-         <br>Consider following examples, each of those is a valid way for selecting the type of recurrence in the form. <br>Radiobuttons:
+Consider the following examples, each of those is a valid way for selecting the type of recurrence in the form. 
+
+- Radiobuttons
+
 ~~~html
 <label><input type="radio" name="repeat" value="day" />Daily</label><br />
 <label><input type="radio" name="repeat" value="week"/>Weekly</label><br />
@@ -314,7 +314,7 @@ Basically, the recurring block of the lightbox contains 3 groups of controls:
 <label><input type="radio" name="repeat" value="year" />Yearly</label>
 ~~~
 
-Select input, without 'Monthly' and 'Yearly' options:
+- Select input, without 'Monthly' and 'Yearly' options:
 
 ~~~html
 <select name="repeat">
@@ -323,15 +323,13 @@ Select input, without 'Monthly' and 'Yearly' options:
 </select>
 ~~~
 
-Hidden input (the lightbox will create only 'Dayly' series):
+- Hidden input (the lightbox will create only 'Daily' series):
+
 ~~~html
 <input type="hidden" name="repeat" value="day" />
 ~~~
-<br>
-</li>
 
-	<li> A block for configuring the recurrence depending on the repeat type.
-For example, for the 'Daily' repeat type, the block will take the following structure:
+2) A block for configuring the recurrence depending on the repeat type. For example, for the 'Daily' repeat type, the block will take the following structure:
 
 ~~~html
 <div class="dhx_repeat_center">
@@ -351,14 +349,15 @@ For example, for the 'Daily' repeat type, the block will take the following stru
 </div>
          
 ~~~
-<br>
+
 Note, that the markup which is related to a specific type of recurrence can be wrapped in a div with the <b>id</b> in the following format <b>"dhx_repeat_&lt;repeat type&gt;"</b>, e.g. "dhx_repeat_day".
 In this case it will be displayed only when the appropriate repeat type is selected.
 
-</li>
-	<li> Controls for specifying the end of recurrence. The end of recurrence is defined by input with the name 'end'.
-	<br>Possible values are <b>'no'</b>, <b>'date_of_end'</b>, <b>'occurences_count'</b>.
+3) Controls for specifying the end of recurrence. The end of recurrence is defined by input with the name 'end'.
+<br>Possible values are <b>'no'</b>, <b>'date_of_end'</b>, <b>'occurences_count'</b>.
+
 Similar to the 'repeat' controls, the form must have at least one input of this type.
+
 ~~~html
 <div class="dhx_repeat_right">
   <label>
@@ -370,23 +369,24 @@ Similar to the 'repeat' controls, the form must have at least one input of this 
   <br />
   <label>
     <input type="radio" name="end" value="occurences_count" />After</label>
-    <input type="text" name="occurences_count" value="1" />Occurences
-
+    <input type="text" name="occurences_count" value="1" />Occurrences
 </div>
 ~~~
+
 The date for the <b>'date_of_end'</b> mode must be defined in an input named 'date_of_end'. The same works for the <b>'occurences_count'</b> mode, 
-that takes the number of occurences  from an input named 'occurences_count'.
+that takes the number of occurrences  from an input named 'occurences_count'.
 <br>
+
 You can remove any type or predefine it in a hidden input:
+
 ~~~html
 <input type="hidden" name="end" value="date_of_end" />
 <input type="hidden" name="date_of_end" value="01.01.2016" />
 ~~~
-	</li>
-</ol>
-
+	
 ###Notes for changing the recurring block
-Please, before starting to apply a custom configuration to the lighbox's recurring block, note the following things: 
+
+Please, before starting to apply a custom configuration to the lightbox's recurring block, note the following things: 
 
 1. The 'name' attribute is  hardcoded for all inputs -  the inputs with different names will be ignored.
 2. The 'value' attribute is fixed for all inputs except for ones that imply direct input.
@@ -399,13 +399,15 @@ Beware, dhtmlxScheduler doesn't work with your original HTML form and just creat
 }}
 
 
-Will be copied to the lightbox: 
+For example:
+
+- the following line will be copied to the lightbox:
 
 ~~~html
 <input onclick="handler()"> 
 ~~~
 
-Won't be copied to the lightbox
+- the line below won't be copied to the lightbox:
 
 ~~~js
 addEventListener(node, "click", function(){...})

@@ -1,5 +1,6 @@
- Map View 
+Map View 
 ==============
+
 The Map view presents a list of upcoming events and Google Maps to show or edit the event's location or to set the location for new events.
 
 <img src="map_view.png"/>
@@ -13,9 +14,9 @@ By default, the left list of the view displays events beginning from the current
 }}
 
 
-
 Initialization
 -------------------------------
+
 To add the Map view  to the scheduler, follow these steps:
 
 <ol>
@@ -96,6 +97,7 @@ GUI details
 
 Localization tips
 ----------------------------------------------
+
 The Map view has 4 labels defined in the locale:
 
 - **scheduler.locale.labels.{mapName}_tab** - the name of the map's tab

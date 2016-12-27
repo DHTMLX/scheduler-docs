@@ -1,8 +1,19 @@
  Exporting Scheduler to PNG
 ===========================
-Starting from version 4.1, dhtmlxScheduler provides  a possibility to export the scheduler to the PNG format. 
+Starting from version 4.1, dhtmlxScheduler provides an [online export service](png.md#defaultexporttopng)
+that gives you the possibility to export the scheduler to the PNG format. 
 
-<br>
+Using Export Services
+-----------------------
+
+There are several export services available. You can install them on your computer and export Scheduler to PNG locally.
+
+Note that export services are not included into the Scheduler package, 
+read the [corresponding article](http://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
+
+
+Default Export to PNG
+----------------------
 
 To export the scheduler as a PNG image, do the following steps:
 

@@ -1,4 +1,4 @@
- Timeline view 
+Timeline View 
 ==============
 The Timeline view allows you to visualize events horizontally with separate timelines arranged from left to right.
 
@@ -77,7 +77,7 @@ Let's consider an example - the time scale from 09:00 to 15:00 with 30 minutes s
 ~~~js
 {
 	x_unit:"minute",// the scale parameters will be calculated in minutes
-	x_step:30,  //sets the '30 minite' step, e.g. 09:00 - 09:30
+	x_step:30,  //sets the '30 minute' step, e.g. 09:00 - 09:30
 	x_size:12,  // the number of '30 minute's in the interval 09:00 - 15:00
     		    // 15 - 9 = 6 hours = 360 minutes = 360/30 = 12
 	x_start:18, //scale starts from 09:00,i.e. 9 hours from the default start- 00:00.
@@ -154,11 +154,11 @@ Starting from version 4.1, you have a possibility to assign events to several se
 
 To enable the possibility: 
 
-1. Include the "ext/dhtmlxscheduler_multisection.js" file on the page
+1. Include the **ext/dhtmlxscheduler_multisection.js** file on the page
 2. Set the api/scheduler_multisection_config.md property to *true*
 3. (Optional) Include "ext/dhtmlxscheduler_multiselect.js" file on the page to use multiselect.md control in the scheduler (a comfortable way to switch between sections)
 
-~~~js
+~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
 <script src="codebase/ext/dhtmlxscheduler_multisection.js"></script> /*!*/
 <link rel="stylesheet" href="codebase/dhtmlxscheduler.css" type="text/css">
@@ -330,7 +330,7 @@ To be correctly processed, [y_unit](api/scheduler_createtimelineview.md) items m
 Data for the Y-Axis sections in the 'Tree' mode
 -------------------------------------------
 
-The 'Tree' mode allows grouping items by creating multi-level folders. In addition to more convenient represention, it allows you to specify an event not only for individual event holder, but also for the whole folder (any level).
+The 'Tree' mode allows grouping items by creating multi-level folders. In addition to more convenient representation, it allows you to specify an event not only for individual event holder, but also for the whole folder (any level).
 
 <br>
 
@@ -512,7 +512,7 @@ scheduler.createTimelineView({
 });
 ~~~
 
-**round_position:false**(default behaviour)
+**round_position:false**(default behavior)
 
 <img src="stretching_events_01.png"/>
 

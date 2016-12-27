@@ -170,7 +170,7 @@ In such situations you may use the dynamic loading mode and load data by parts, 
 
 ###Technique
 
-To enable the dynamic loading , call the api/scheduler_setloadmode.md method:
+To enable the dynamic loading, call the api/scheduler_setloadmode.md method:
 {{snippet
 Enabling the dynamic loading
 }}
@@ -191,11 +191,13 @@ some.php?from=DATEHERE&to=DATEHERE
 
 <br>
 
-If you are using <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">dhtmlxConnector</a> at the server side, you don't need to do any additional server-side operations to parse the data.
+If you are using <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">dhtmlxConnector</a> at the server side, 
+you don't need to do any additional server-side operations to parse the data.
 
 
 ###Loading spinner
-When you deal with a large data size, it's useful to display the loading spinner shown users that the app is actually doing something.
+
+When you deal with a large data size, it's useful to display the loading spinner. It will show users that the app is actually doing something.
 
 To enable the loading spinner for the scheduler, set the api/scheduler_show_loading_config.md property to *true*. 
 

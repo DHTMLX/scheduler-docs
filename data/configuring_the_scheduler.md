@@ -16,5 +16,6 @@ Configuring the Scheduler
 - collisions.md
 - quick_info.md
 - jquery_integration.md
+- accessibility.md
 }}
 
