@@ -7,9 +7,10 @@ The final code of the tutorial can be used as the start point while creating app
 This tutorial discusses the sequence of steps needed for implementing Scheduler with PHP. If you want to create Scheduler with a different language, 
 check the available options in the list below:
 
-- [Integrating Scheduler with Node.js](server_nodejs.md)
-- [Integrating Scheduler with .Net](server_dotnet.md)
-- [Integrating Scheduler with Ruby](server_ruby.md)
+- howtostart_php.md
+- howtostart_nodejs.md
+- howtostart_dotnet.md
+- howtostart_ruby.md
 
 ![how_to_start_front_image.png](how_to_start_front_image.png)
 
@@ -165,7 +166,7 @@ Besides the aforementioned fields, you can create any number of extra ones, whic
 
 
 Beware, the format of the DataTime data type is '%Y-%m-%d %H:%i' that differs from the date format expected by the scheduler ('%m/%d/%Y %H:%i'). 
-So, to provide correct data convertion, you should change the default scheduler format. It can be achieved by specifying the api/scheduler_xml_date_config.md configuration option.
+So, to provide correct data conversion, you should change the default scheduler format. It can be achieved by specifying the api/scheduler_xml_date_config.md configuration option.
   
   
 Note, any configuration options go BEFORE the initialization string, i.e.:

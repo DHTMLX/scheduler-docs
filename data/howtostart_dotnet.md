@@ -16,7 +16,7 @@ We will build our application with the help of the Visual Studio IDE.
 Step 1. Making Preparations
 -----------------------------
 
-###Creating a new Visual Studio Project project
+###Creating a new Visual Studio Project 
 
 Let's start by running Visual Studio and creating a new project. For this, select the File menu tab and choose:<br>
 New -> Project. Then select ASP.NET Web Application and name it *scheduler-rest-net*. 
@@ -52,7 +52,63 @@ In the opened window select MVC 5 Controller -> Empty and name a newly added con
 
 The HomeController has the Index() method of the ActionResult class by default, so it doesn't require any additional logic. We will just add a view for it. 
 
-###Сreating a View
+~~~js
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace scheduler_rest_net.Controllers
+{
+    public class HomeController : Controller
+    {
+        // GET: Home
+        public ActionResult Index()
+        {
+            return View();
+        }
+    }
+}
+~~~
+
+####Confguring the format of loaded data
+
+Next we will specify the format of data that will be loaded into Scheduler. 
+
+Open *App_Start -> WebApiConfig.cs*. This file contains default routing configuration.
+
+We will set the JSON format for the loaded data. For this you need to add the highlighted string to the *Register()* method.
+
+~~~js
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
+
+namespace scheduer_rest_net
+{
+    public static class WebApiConfig
+    {
+        public static void Register(HttpConfiguration config)
+        {
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(				/*!*/
+            	new System.Net.Http.Headers.MediaTypeHeaderValue("text/html")		/*!*/
+            );																		/*!*/
+
+            config.MapHttpAttributeRoutes();
+
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+        }
+    }
+}
+~~~
+
+###Creating a View
 
 In the Views folder find the Home directory. Right click to call the context menu and select Add -> View. 
 
@@ -65,10 +121,10 @@ Open the newly created view and put the following code into it:
 @{
     ViewBag.Title = "Index";
 }
-<script src="@Url.Content("~/scripts/dhtmlxscheduler/dhtmlxscheduler.js")" type="text/javascript"></script>
-<link rel="stylesheet" href="@Url.Content("~/content/dhtmlxscheduler/dhtmlxscheduler_flat.css")" />
-/>
-
+<script src="@Url.Content("~/scripts/dhtmlxscheduler/dhtmlxscheduler.js")" 
+	type="text/javascript"></script>
+<link rel="stylesheet" 
+	href="@Url.Content("~/content/dhtmlxscheduler/dhtmlxscheduler_flat.css")" />
 
 <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:500px;'>
     <div class="dhx_cal_navline">
@@ -90,7 +146,7 @@ Open the newly created view and put the following code into it:
     (function () {
     	// specifying the date format 
         scheduler.config.xml_date = "%Y-%m-%d %H:%i";
-        // initialilizing scheduler
+        // initializing scheduler
         scheduler.init("scheduler_here", new Date(2016, 4, 23), "week");
 
 		// enabling data loading
@@ -137,7 +193,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace scheduer_rest_net.Models
+namespace scheduler_rest_net.Models
 {
     public class Event
     {
@@ -186,7 +242,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace scheduer_rest_net.Models
+namespace scheduler_rest_net.Models
 {
     public class SchedulerContext: DbContext
     {
@@ -211,20 +267,20 @@ Then we will add an entities collection into the context with the AddRange() met
 The full code of the *SchedulerContextInitializer* class is given below:
 
 ~~~js
-using scheduer_rest_net.Models;
+using scheduler_rest_net.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace scheduer_rest_net.App_Start
+namespace scheduler_rest_net.App_Start
 {
 public class SchedulerContextInitializer: DropCreateDatabaseIfModelChanges<SchedulerContext>
    {
-		protected override void Seed(SchedulerContext context)
+	  protected override void Seed(SchedulerContext context)
         {
-            context.Events.AddRange(new List<Event>
+          context.Events.AddRange(new List<Event>
             {
                 new Event {id = 1, text = "Test Event 1", 
                 	start_date = new DateTime(2016, 5, 23, 1, 0, 0), 
@@ -296,13 +352,13 @@ You will find the requirements to the client side,
 as well as the [description of possible requests and responses](server_integration.md#requestresponsedetails)
 in the server_integration.md article.
 
-Below we will consider how to load data into Scheduler using .Net server side.
+Below we will consider how to load data into Scheduler using ASP.NET MVC server side.
 
 <h3 id="scheduler_data">Adding object with Scheduler data</h3>
 
-Let's create a controller that will be responsible for loading tasks and links data into Scheduler.
+Let's create a controller that will be responsible for loading events into Scheduler and providing CRUD API for events.
 
-Activate a context menu for the Controllers folder and select  Add -> Controller.<br>
+Activate a context menu for the Controllers folder and select Add -> Controller.<br>
 Choose the Web API 2 Controller -> Empty. The new controller will be called "EventController".
 
 Open the newly created controller and put the following code into it:
@@ -321,13 +377,14 @@ using System.Web.Http.Results;
 
 namespace scheduer_rest_net.Controllers
 {
-    public class EventController : ApiController
-    {
-        private string _dateFormat = "yyyy-MM-dd HH:mm";
-        private SchedulerContext db = new SchedulerContext();
-
-        private JsonResult<Dictionary<string, string>> _getResult(string action, int? tid)
-        {
+ public class EventController : ApiController
+   {
+     private string _dateFormat = "yyyy-MM-dd HH:mm";
+     private SchedulerContext db = new SchedulerContext();
+		
+     // specifies the logic of forming a response
+     private JsonResult<Dictionary<string, string>> _getResult(string action, int? tid)
+     {
             var res = new Dictionary<string, string>();
             res.Add("action", action);
             if (tid != null)
@@ -348,11 +405,9 @@ namespace scheduer_rest_net.Controllers
                     end_date = item.end_date.ToString(_dateFormat)
                 });
             }
-
             return res;
         }
-
-
+        
         [HttpPost]
         public IHttpActionResult Post(Event ev)
         {
@@ -360,7 +415,6 @@ namespace scheduer_rest_net.Controllers
             {
                 return _getResult("error", null);
             }
-
             db.Events.Add(ev);
             db.SaveChanges();
 
@@ -375,7 +429,6 @@ namespace scheduer_rest_net.Controllers
             {
                 return _getResult("error", null);
             }
-
             db.Events.Remove(ev);
             db.SaveChanges();
 
@@ -389,7 +442,6 @@ namespace scheduer_rest_net.Controllers
             {
                 return _getResult("error", null);
             }
-
             ev.id = id;
             db.Entry(ev).State = EntityState.Modified;
             try
@@ -400,16 +452,33 @@ namespace scheduer_rest_net.Controllers
             {
                 return _getResult("error", null);
             }
-
             return _getResult("updated", null);
         }
     }
 }
 ~~~
 
-- POST request means that a new item needs to be inserted into db, 
-- PUT updates an existing record and 
-- DELETE goes for deleting.
+In the first part of the code we specify the desired date format, use the *SchedulerContext* variable for access to the database and set the format of a response.
 
-All actions return a JSON response containing the type of the performed operation or “error” if something went wrong.
+After that all necessary types of requests are described.
 
+####Requests
+
+- GET request loads events into the scheduler
+
+It will create an object with data for Scheduler which will contain a list of events. The dates of events should be converted into appropriate strings.
+
+- POST request means that a new item needs to be inserted into the database
+- PUT request updates an existing record 
+- DELETE request goes for deleting
+
+####Responses
+
+All actions return a JSON response containing the type of the performed operation or “error” if something went wrong. 
+
+Note that a response for the "insert" action also contains a database id of the new record. 
+It will be applied on the client side, so the new item could be mapped to the database entity. 
+
+You can find the detailed list of requests and responses in the article server_integration.md#requestresponsedetails. 
+
+<img src="ready_scheduler.png">
