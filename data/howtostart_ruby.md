@@ -69,7 +69,7 @@ rails server
 
 Open *http://localhost:3000/* in your browser. The result should be like this:
 
-<img src="server_test.png">
+<img src="ruby_routing.png">
 
 So the server is ready and we can proceed with views adding.
 
@@ -84,7 +84,7 @@ Complete the next steps:
 
 You should get something like following:
 
-{image}
+<img src="ruby_unpack_js.png">
 
 2) Unpack the files 
 
@@ -97,7 +97,7 @@ from the package to the directory *vendor/assets/stylesheets/* of your project.
 
 You should get something like following:
 
-{image}
+<img src="ruby_unpack_styles.png">
 
 3) In the "public" directory create the "assets" folder and unpack the following files into it:
 
@@ -108,7 +108,7 @@ You should get something like following:
 
 You should get something like following:
 
-{image}
+<img src="ruby_unpack_assets.png">
 
 4) Open the **config/initializers/assets.rb** file and add *dhtmlxscheduler.js* and *dhtmlxscheduler.css* files to the precompile array. 
 For this purpose, use the code below:
@@ -173,7 +173,7 @@ For this, open the file *app/views/home/index.html.erb*. We need to add a contai
 After that we can have a look at the current result. Open *http://localhost:3000/* (the rails server) in a browser.
 You will see an empty scheduler:
 
-<img src="empty_scheduler_ruby.png">
+<img src="ruby_empty_scheduler.png">
 
 Thus you've got a scheduler where you can add events and modify them. But it lacks the saving ability. 
 
@@ -226,7 +226,7 @@ Event.all
 
 4 . Enter "exit" to close the console.
 
-{image}
+<img src="ruby_console.png">
 
 Next we need to implement data loading and saving in the scheduler with the help of controllers.
 
@@ -329,7 +329,7 @@ dp.setTransactionMode("REST");
 
 It initializes Scheduler and enables it to load and save data. That's all. Now we can run our application in a browser and see the result.
 
-<img src="ready_scheduler_ruby.png">
+<img src="ruby_ready_scheduler.png">
 
 As you can see, an event appeared in the scheduler. We have added it at the [Step 6](howtostart_ruby.md#step6creatingmodels).  
 Now you can add more events and modify them. All the changes will be saved in the database.
