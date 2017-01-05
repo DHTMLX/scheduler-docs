@@ -22,7 +22,7 @@ To begin with, we'll create a project folder and then add the required dependenc
 - [Express](http://expressjs.com/) - a tiny framework for Node.js
 - [body-parser](https://www.npmjs.com/package/body-parser) - a Node.js parsing tool
 - [date-format-lite](https://github.com/litejs/date-format-lite) - a small library that will help us to convert dates of Scheduler entries into the proper format
-- [node-mysql](https://github.com/alcaeus/mongo-php-adapter) - a Node.js client for working with MySQL
+- [MongoDB](https://github.com/mongodb/node-mongodb-native) driver - adapter for the database access
 
 So, let's create a project folder and name it "scheduler-rest-node":
 
@@ -160,10 +160,12 @@ the following code into it:
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
+require("date-format-lite");
 
 var port = 3000;
+var dateFormat = "YYYY-MM-DD hh:mm";
 
-var db = require('mongoskin').db("localhost/testdb", { w: 0});
+var db = require('mongoskin').db("mongodb://localhost/testdb", { w: 0});
     db.bind('event');
 
 
@@ -175,23 +177,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/init', function(req, res){
 	db.event.insert({ 
 		text:"My test event A", 
-		start_date: new Date(2013,8,1),
-		end_date:	new Date(2013,8,5)
+		start_date: new Date(2016,3,1),
+		end_date:	new Date(2016,3,5)
 	});
 	db.event.insert({ 
 		text:"My test event B", 
-		start_date: new Date(2013,8,19),
-		end_date:	new Date(2013,8,24)
+		start_date: new Date(2016,3,19),
+		end_date:	new Date(2016,3,24)
 	});
 	db.event.insert({ 
 		text:"Morning event", 
-		start_date: new Date(2013,8,4,4,0),
-		end_date:	new Date(2013,8,4,14,0)
+		start_date: new Date(2016,3,4,4,0),
+		end_date:	new Date(2016,3,4,14,0)
 	});
 	db.event.insert({ 
 		text:"One more test event", 
-		start_date: new Date(2013,8,3),
-		end_date:	new Date(2013,8,8),
+		start_date: new Date(2016,3,3),
+		end_date:	new Date(2016,3,8),
 		color: "#DD8616"
 	});
 
@@ -205,7 +207,7 @@ app.listen(port, function(){
 
 What we have done in this code:
 
-- opened MySql connection to our database (we’ll need it later, for now just make sure you’ve specified actual connection parameters)
+- opened MongoDB connection to our database (we’ll need it later, for now just make sure you’ve specified actual connection parameters)
 - specified the "public" folder as the root directory of an application
 - attached the application to 3000 port of the localhost
 
@@ -244,8 +246,8 @@ app.get('/data', function(req, res){
 		for (var i = 0; i < data.length; i++)
 		{
 			data[i].id = data[i]._id;
-			data[i].start_date = data[i].start_date.format("YYYY-MM-DD hh:mm");
-			data[i].end_date = data[i].end_date.format("YYYY-MM-DD hh:mm");
+			data[i].start_date = data[i].start_date.format(dateFormat);
+			data[i].end_date = data[i].end_date.format(dateFormat);
 		}
 		
 		//output response
@@ -255,7 +257,7 @@ app.get('/data', function(req, res){
 ~~~
 
 The code reads events from db and formats dates so the client side could parse them. 
-After that we’ll send the collected data to http response.
+After that we’ll send the collected data to the HTTP response.
 
 If we run application now and open [http://127.0.0.1:3000](), we should see that the test data we’ve previously added to the database is loaded into scheduler.
 
@@ -339,7 +341,7 @@ function getEvent(data){
 }
 ~~~
 
-We have created the route for events entities. The "/data/:id" URL will serve for requests.
+We have created the route for events entities. The *"/data/:id"* URL will serve for requests.
 
 The requests types are pretty simple:
 

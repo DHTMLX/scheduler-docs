@@ -80,7 +80,8 @@ To begin with, we should [download the dhtmlxScheduler package](https://dhtmlx.c
 
 Complete the next steps:
 
-1) Unpack the file *codebase/dhtmlxscheduler.js* and the directories *codebase/ext* and *codebase/locale* from the package to the directory *vendor/assets/javascripts/* of your project
+1) Unpack the file *codebase/dhtmlxscheduler.js* and the directories *codebase/ext* and *codebase/locale* 
+from the package to the directory *vendor/assets/javascripts/* of your project
 
 You should get something like following:
 
@@ -166,7 +167,7 @@ For this, open the file *app/views/home/index.html.erb*. We need to add a contai
 </div>
 
 <script>	
-    scheduler.init("scheduler_here", new Date(2016,11,29), "week");
+    scheduler.init("scheduler_here", new Date(2016,4,27), "week");
 </script>
 ~~~
 
@@ -212,8 +213,8 @@ rails c
 
 ~~~js
 Event.create 
-	:start_date => "2016-12-29 10:00:00", 
-    :end_date => "2016-12-29 15:00:00", 
+	:start_date => "2016-05-27 10:00:00", 
+    :end_date => "2016-05-27 15:00:00", 
 	:text => "Test";
 ~~~
 
@@ -319,7 +320,7 @@ The last thing we have to do is to put the following code into the &#60;script&#
 
 ~~~js
 scheduler.config.xml_date="%Y-%m-%d %H:%i";
-scheduler.init("scheduler_here", new Date(2016,11,29), "week");
+scheduler.init("scheduler_here", new Date(2016,4,27), "week");
 scheduler.load("<%= data_path %>/", "json");
 
 var dp = new dataProcessor("<%= data_path %>/");
