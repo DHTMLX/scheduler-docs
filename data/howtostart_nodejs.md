@@ -240,7 +240,7 @@ Now we’ll add a server route for this URL which will generate an appropriate r
 Open *server.js* and add the following code:
 
 ~~~js
-app.get('/data', function(req, res){
+app.get("/data", function(req, res){
 	db.event.find().toArray(function(err, data){
 		//set id property for all records
 		for (var i = 0; i < data.length; i++)
@@ -289,7 +289,7 @@ The list of HTTP verbs together with request and response details is given in th
 Now we’ll add the required routes and handlers that will put changes into the database. Open the *server.js* file and add the following code:
 
 ~~~js
-app.post('/data/:id', function(req, res){
+app.post("/data/:id", function(req, res){
 	var event = getEvent(req.body);
 	
 	db.event.insert(event, function(err, result){

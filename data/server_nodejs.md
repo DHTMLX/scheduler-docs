@@ -50,14 +50,14 @@ So, on the server side we should add a server route for this URL. It will genera
 For this purpose, add the following code on the server side:
 
 ~~~js
-app.get('/data', function(req, res){
+app.get("/data", function(req, res){
     db.event.find().toArray(function(err, data){
         //set id property for all records
         for (var i = 0; i < data.length; i++)
         {
             data[i].id = data[i]._id;
-            data[i].start_date = data[i].start_date.format("YYYY-MM-DD hh:mm");
-            data[i].end_date = data[i].end_date.format("YYYY-MM-DD hh:mm");
+            data[i].start_date = data[i].start_date.format(dateFormat);
+            data[i].end_date = data[i].end_date.format(dateFormat);
         }
  
         //output response
@@ -89,7 +89,7 @@ You can find the details in the [list](server_integration.md#requestresponsedeta
 To apply the changes in the database, we need to add the required routes and handlers on the server side:
 
 ~~~js
-app.post('/data/:id', function(req, res){
+app.post("/data/:id", function(req, res){
     var event = getEvent(req.body);
  
     db.event.insert(event, function(err, result){
