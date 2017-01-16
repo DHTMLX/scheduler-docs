@@ -1,45 +1,43 @@
 Custom Lightbox Control
 ====================================
-To create  a custom control (editor), define a new object in the next way:
 
+To create  a custom control (editor), define a new object in the next way:
 
 ~~~js
 scheduler.form_blocks["my_editor"]={
-	render:function(sns){ //sns - section configuration object
-		return "html code of the editor here";
+	render:function(sns){ // sns - section configuration object
+		return "HTML code of the editor here";
 	},
 	set_value:function(node,value,ev){
-		//node - html object related to html defined above
-		//value - value defined by map_to property
-		//ev - event object
+		// node - HTML object related to HTML defined above
+		// value - value defined by map_to property
+		// ev - event object
 		... code to set value to the element ...
 	},
 	get_value:function(node,ev){
-		//node - html object related to html defined above
-		//event object
+		// node - HTML object related to HTML defined above
+		// event object
 		return "current value from editor";
 	},
 	focus:function(node){
-		//node - html object related to html defined above
+		// node - HTML object related to HTML defined above
 		...code to set focus to the element...
 	}
 }
 ~~~
 
-
-
 Make sure that you **don't** use the short closing syntax for tags inside the HTML code 
 returned by the "render" function, since that might cause parsing problems in the browser:
 
 ~~~js
-//this is WRONG
+// this is WRONG
 render:function(){
-	return "<div id='box'/>";// this is W
+	return "<div id='box'/>";
 }
 
-//instead use opening and closing tags syntax:
+// instead use opening and closing tags syntax:
 render:function(){
-    return "<div id='box'></div>";// recommended
+    return "<div id='box'></div>";
 }
 ~~~
 
@@ -75,7 +73,6 @@ scheduler.config.lightbox.sections=[
 	{ name:"description", height:200, map_to:"text", type:"my_editor" , focus:true},
 	{ name:"time", height:72, type:"time", map_to:"auto"}	
 ]
-
 ~~~
 
 {{sample

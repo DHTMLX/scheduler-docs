@@ -1,4 +1,4 @@
-Customizing the select and edit bars
+Customizing "Select" and "Edit" Bars
 ==============
 
 dhtmlxScheduler provides the possibility to define a custom set of buttons for the edit and select bars. 

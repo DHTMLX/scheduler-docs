@@ -30,7 +30,7 @@ To start using the extension, include the **ext/dhtmlxscheduler_quick_info.js** 
 
 {{links
 - api/scheduler_touch_config.md - enables/disables the touch support in the scheduler
-- api/scheduler_touch_drag_config.md - defines the time period in milliseconds that is used to differ the long touch gesture from the scroll gesture
+- api/scheduler_touch_drag_config.md - defines the time period in milliseconds that is used to differentiate the long touch gesture from the scroll gesture
 - api/scheduler_touch_tip_config.md - enables/disables prompting messages in the right top corner of the screen
 }}
 
@@ -42,8 +42,13 @@ To start using the extension, include the **ext/dhtmlxscheduler_quick_info.js** 
 - **Swipe** - switches view to the next|prev time span.
 
 ##'Quick info' extension
-Specially for providing touch functionality, the library is extended with the ["Quick Info" extension](extensions_list.md#quickinfo). The extension allows you to replace the standard sidebar buttons and the simplified edit form 
+
+
+Specially for providing touch functionality, the library is extended with the ["Quick Info" extension](extensions_list.md#quickinfo).
+
+The extension allows you to replace the standard sidebar buttons and the simplified edit form 
 (which are quite small and hard-to-target on touch devices) with new ones, bigger and handier.
+
 
 ![quick_info_extension.png](quick_info_extension.png)
 

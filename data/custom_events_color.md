@@ -1,5 +1,6 @@
-Custom event's color
+Custom Event's Color
 ============================
+
 There are 2 ways you can specify a custom color for an event:
 
 1. [To set color values in properties of the event object](custom_events_color.md#specifyingcolorsinpropertiesoftheeventobject);

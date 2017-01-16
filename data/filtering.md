@@ -1,5 +1,4 @@
-
-Filtering events
+Filtering Events
 ==============
 
 For any specified view you can set a filtering function that will define, which events should be displayed in the scheduler and which shouldn't. 

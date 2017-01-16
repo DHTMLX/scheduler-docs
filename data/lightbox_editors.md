@@ -1,6 +1,7 @@
 Lightbox Controls
 ======================================
-Lightbox is an edit form used to alter the event's details.<br> The default lightbox is presented on the image below.
+
+Lightbox is an edit form used to alter the event's details. The default lightbox is presented in the image below.
 
 <img src="lightbox.png"/>
 
@@ -37,10 +38,10 @@ Remember, whatever combination of editors you use, the 'time' editor must be the
 
 ~~~js
 {name:"reccuring", height:21, type:"select", map_to:"rec_type", options:[
-		{key:"", label:"Do not repeat"},
-		{key:"day", label:"Each day"},
-		{key:"week", label:"Each week"},
-		{key:"month", label:"Each month"}
+	{key:"", label:"Do not repeat"},
+	{key:"day", label:"Each day"},
+	{key:"week", label:"Each week"},
+	{key:"month", label:"Each month"}
 ]}
 ~~~
 
