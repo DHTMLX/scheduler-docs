@@ -22,7 +22,7 @@ scheduler.locale.labels.{viewName}_tab = "someName"
 ~~~
 
 ## Methods for handling the view
-There are 3 mandatory methods that define common behaviour of a view - the view interval (e.g. a week for the Week view, a month for the Month view etc.) and the active date in the view, when the user clicks 
+There are 3 mandatory methods that define common behavior of a view - the view interval (e.g. a week for the Week view, a month for the Month view etc.) and the active date in the view, when the user clicks 
 on the 'Next', 'Prev' navigation buttons in the view header.  
 
 1. **scheduler.date.{viewName}_start (active_date)**  - takes the active date of the scheduler and returns the start date of the view interval 

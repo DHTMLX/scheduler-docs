@@ -11,7 +11,7 @@ To make an easier access and interaction with DHTMLXScheduler for people with di
 
 - WAI-ARIA Attributes
 - Keyboard  Navigation
-- High-Сontrast Theme
+- High-Contrast Theme
 
 WAI-ARIA Attributes
 ----------------------
@@ -35,7 +35,7 @@ instead of navigating through an application with a mouse pointer.
 
 You will find the detailed information in the keyboard_navigation.md article.
 
-High-Сontrast Themes
+High-Contrast Themes
 --------------------
 
 DHTMLXScheduler supports a theme that uses contrasting colors which make the app's interface more distinct and easier to see.

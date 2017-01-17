@@ -175,7 +175,7 @@ function connect(callback){
             var db = ev.target.result;
 
             if (!db.objectStoreNames.contains("events")) {
-                //create datastore, set 'id' as autoincremental key
+                //create data store, set 'id' as autoincremental key
                 var events = db.createObjectStore(
                 	"events", 
                 	{ keyPath: "id", autoIncrement: true }

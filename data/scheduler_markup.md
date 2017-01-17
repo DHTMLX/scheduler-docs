@@ -37,7 +37,7 @@ scheduler.config.fix_tab_position = false;
 scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 ~~~
 
-Notice that you can use the following css classes to create a segmented button:
+Notice that you can use the following CSS classes to create a segmented button:
 
 - **dhx_cal_tab_last** - makes the right border rounded
 - **dhx_cal_tab_first** - makes the left border rounded
@@ -52,7 +52,7 @@ For example, to set the 'day'-'week'-'month' segmented button in the default ski
 ~~~
 
 ###'Glossy' and 'Classic' skins
-The 'classic', 'glossy' skins apply the coordinates specified in the scheduler's markup initially and don't require disabling of the default behaviour.
+The 'classic', 'glossy' skins apply the coordinates specified in the scheduler's markup initially and don't require disabling of the default behavior.
 
 ~~~html
 <div class="dhx_cal_navline">
@@ -82,7 +82,7 @@ To add a new tab to the header, add a div with the **"dhx_cal_tab"** class as a 
 The view that will be opened on a tab click is defined by the **name** attribute and specified as **{viewName}_tab**.
 
 {{note
-Note, the tab can have several css classes applied, but the **"dhx_cal_tab"** class must go first.
+Note, the tab can have several CSS classes applied, but the **"dhx_cal_tab"** class must go first.
 }}
 
 ###Deleting a tab
@@ -101,7 +101,7 @@ Removing the 'month' tab from the header
 ~~~
 
 {{note
-Even if the tab is removed, the related view is still accessable programmatically with the  api/scheduler_setcurrentview.md and api/scheduler_updateview.md methods.
+Even if the tab is removed, the related view is still accessible programmatically with the  api/scheduler_setcurrentview.md and api/scheduler_updateview.md methods.
 }}
 
 

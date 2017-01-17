@@ -29,7 +29,7 @@ In older versions of the scheduler this file can be missed in the codebase folde
 
 ## Triggering the export 
 
-To export scheduler data to PDF, you just need to add on the page a button, which will call the **toPDF()** method. The parameter of the **toPDF()** method is the url of the script, which has been installed previously:
+To export scheduler data to PDF, you just need to add on the page a button, which will call the **toPDF()** method. The parameter of the **toPDF()** method is the URL of the script, which has been installed previously:
 
 
 ~~~js
@@ -185,7 +185,7 @@ scheduler.toPDF(url, "color", true, true);
 ~~~
 
 
-As a result, you will have "_header.png_" and "_footer.png_" images as the header and footer on all pages in the generated pdf file. 
+As a result, you will have "_header.png_" and "_footer.png_" images as the header and footer on all pages in the generated PDF file. 
 
 ## Error reporting 
 

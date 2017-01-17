@@ -6,7 +6,7 @@ Year View Templates
 	<tbody>
     <tr>
 		<td class="webixdoc_links0">api/scheduler_event_class_template.md</td>
-		<td>the css style for the event container</td>
+		<td>the CSS style for the event container</td>
 	</tr>
 	<tr>
 		<td class="webixdoc_links0">api/scheduler_month_day_template.md</td>

@@ -36,7 +36,7 @@ Specifying templates as an HTML code
 --------------------------------------
 The library provides a special extension **ext/dhtmlxscheduler_html_templates.js** that allows defining templates as an HTML code.
 
-Once you include the extesnion file on the page you may specify templates as in:
+Once you include the extension file on the page you may specify templates as in:
 
 ~~~js
 //with 'ext/dhtmlxscheduler_html_templates.js' you can use

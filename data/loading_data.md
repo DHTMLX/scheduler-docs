@@ -51,7 +51,7 @@ Loading data from a database
 
 To load data from database table(s), use the api/scheduler_load.md method on the client side:
 
-- **Сlient side**
+- **Client side**
         
 {{snippet
 Static loading from db. Client-side code

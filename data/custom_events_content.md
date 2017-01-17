@@ -29,7 +29,7 @@ scheduler.templates.event_header = function(start,end,ev){
 ~~~
 
 *Let's assume that your data objects have a special boolean property **important** that indicates, whether the related event is important. 
-You want to hightlight the headers of important events by adding the icon - a red check - 
+You want to highlight the headers of important events by adding the icon - a red check - 
 and coloring the event's duration into orange color.*
 
 <br>

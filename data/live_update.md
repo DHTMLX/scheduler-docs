@@ -73,7 +73,7 @@ To work with the live update mode, 2 additional files must be included. They are
 
 
 
-##Step 3.  Сall method live_updates() for dataProcessor 
+##Step 3.  Call the method *live_updates()* for dataProcessor 
 The mode is enabled by calling method **live_updates()** for the dataProcessor instance. That's why the other essential requirement is **having dataProcessor initialized**. As a parameter, the method takes the path to JS server.
 
 

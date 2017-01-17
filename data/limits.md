@@ -44,7 +44,7 @@ There are 3 methods you can specify a limit in the scheduler with:
 {{links
 - api/scheduler_addmarkedtimespan.md - marks dates, but with certain settings makes blocking (unlike blockTime() allows setting custom styling for the limit)
 - api/scheduler_blocktime.md - blocks the specified date and applies the default 'dimmed' style to it.
-- api/scheduler_marktimespan.md - marks and/or blocks date(s) by applying the default or a custom style to them. Marking is cancelled right after any internal update occurs in the app. Can be used for highlighting
+- api/scheduler_marktimespan.md - marks and/or blocks date(s) by applying the default or a custom style to them. Marking is canceled right after any internal update occurs in the app. Can be used for highlighting
 }}
 
 {{sample
@@ -57,7 +57,7 @@ There are 2 methods that can be used to mark the specified date(s):
 
 {{links
 - api/scheduler_addmarkedtimespan.md - marks dates, but with certain settings makes blocking (unlike blockTime() allows setting custom styling for the limit)
-- api/scheduler_marktimespan.md - marks and/or blocks date(s) by applying the default or a custom style to them. Marking is cancelled right after any internal update occurs in the app. Can be used for highlighting
+- api/scheduler_marktimespan.md - marks and/or blocks date(s) by applying the default or a custom style to them. Marking is canceled right after any internal update occurs in the app. Can be used for highlighting
 }}
 
 {{sample

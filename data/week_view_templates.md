@@ -5,7 +5,7 @@ Week View Templates
 	<tbody>
     <tr>
 		<td class="webixdoc_links0">api/scheduler_event_class_template.md</td>
-		<td>the css style for the event container</td>
+		<td>the CSS style for the event container</td>
 	</tr>
 	<tr>
 		<td class="webixdoc_links0">api/scheduler_event_header_template.md</td>
@@ -25,7 +25,7 @@ Week View Templates
 	</tr>
 	<tr>
 		<td class="webixdoc_links0"> api/scheduler_week_date_class_template.md</td>
-		<td>the css style for a day cell</td>
+		<td>the CSS style for a day cell</td>
 	</tr>
 	<tr>
 		<td class="webixdoc_links0">api/scheduler_week_scale_date_template.md</td>

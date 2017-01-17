@@ -37,7 +37,7 @@ Remember, whatever combination of editors you use, the 'time' editor must be the
 }}
 
 ~~~js
-{name:"reccuring", height:21, type:"select", map_to:"rec_type", options:[
+{name:"recurring", height:21, type:"select", map_to:"rec_type", options:[
 	{key:"", label:"Do not repeat"},
 	{key:"day", label:"Each day"},
 	{key:"week", label:"Each week"},

@@ -3,10 +3,10 @@ FAQ
 
 Scheduler isn't rendered correctly
 -----------------------------------------
-If the scheduler wasn't rendered on the page properly, please, check a css style for the scheduler container - it must have a valid size in pixels or percents.<br>
+If the scheduler wasn't rendered on the page properly, please, check a CSS style for the scheduler container - it must have a valid size in pixels or percents.<br>
 
 - If the size defined in percents - be sure that the parent container has some height specified as well. 
-- If the scheduler was placed directly in the body - specify the next css style to use a percent-based height correctly:
+- If the scheduler was placed directly in the body - specify the next CSS style to use a percent-based height correctly:
 
 ~~~js
 html, body{
@@ -56,7 +56,7 @@ the <b>&#60;?php</b> and  <b>?&#62;</b> tags. <br>
 
 How to set 12-hour time format (non-military time)?
 -----------------------------------
-By default, the scheduler uses 24-hour format (also called as military time) and displayes time like 13:00. <br>
+By default, the scheduler uses 24-hour format (also called as military time) and displays time like 13:00. <br>
 To set 12-hour format and display  time like 1:00 PM, use the api/scheduler_hour_date_config.md property:
 
 ~~~js

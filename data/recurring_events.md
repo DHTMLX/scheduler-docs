@@ -227,7 +227,7 @@ scheduler.attachEvent("onBeforeEventChanged",function(dev){
 });
 ~~~
 
-Сustom control for the lightbox's recurring block
+Custom control for the lightbox's recurring block
 ------------------------------------
 
 Starting from version 4.2, dhtxmlScheduler allows you to specify a custom HTML form for the 'recurring' block of the lightbox.

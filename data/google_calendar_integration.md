@@ -18,7 +18,7 @@ Note, that the sync is 2-way, i.e. any changes you make to events in either Sche
 
 ## Getting started
 
-To start the integration, do the following preperations: 
+To start the integration, do the following preparations: 
 
 1. Login to the **Google API console** - <a href="https://code.google.com/apis/console">https://code.google.com/apis/console</a>.
 2. Click on the **"Create new project"** button. The **"Google apis"** screen opens.

@@ -17,7 +17,7 @@ The front-end of the utility consists of two parts:
 - **Resource configuration** 
 - **Database configuration**.
 
-In the first part you set the path to the data. You may do this by either choosing the path from the opened dialog window (**Ical file**, the button "Overview") or specifing it mannually (**Ical URL**).
+In the first part you set the path to the data. You may do this by either choosing the path from the opened dialog window (**Ical file**, the button "Overview") or specifying it manually (**Ical URL**).
   
   
 The second part contains the standard settings of the database ( host, database and table names, user's name and password), which you want to save the iCal data in. Also here you may set, whether your old data must be deleted or not (**Delete all data**).
@@ -79,7 +79,7 @@ file_put_contents("ical.ics", $ical);
 
 + Array of events
 
-It's an example of events' array that is reffered to in import/export data from/to array.
+It's an example of events' array that is referred to in import/export data from/to array.
 
 
 ~~~php

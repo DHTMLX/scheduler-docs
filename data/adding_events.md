@@ -17,8 +17,8 @@ var eventId = scheduler.addEvent({
     start_date: "16-06-2013 09:00",
     end_date:   "16-06-2013 12:00",
     text:   "Meeting",
-    holder: "John", //userdata
-    room:   "5"     //userdata
+    holder: "John",  // user data
+    room:   "5"      // user data
 });
 ~~~
 
@@ -35,7 +35,7 @@ Updating events
 
 There are two cases of updating events possible in Scheduler:
 
-1. if you need just to rerender the event without sending changes to the server, use api/scheduler_updateevent.md 
+1. if you need just to re-render the event without sending changes to the server, use api/scheduler_updateevent.md 
 2. if you need to apply and save changes on the server - it's better to choose the [addEvent](adding_events.md#addingevents) method 
 
 ~~~js

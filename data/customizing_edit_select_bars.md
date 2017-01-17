@@ -61,7 +61,7 @@ scheduler.locale.labels.icon_location = "Location";
 
 
 
--  Set the css class for the button:
+-  Set the CSS class for the button:
   
    
   
@@ -143,7 +143,7 @@ scheduler.locale.labels.icon_custom = "Info";
 
 
 
--  Set the css class for the button:
+-  Set the CSS class for the button:
   
    
   
@@ -175,7 +175,7 @@ Dynamic changing of bars' elements
 The buttons of the edit and select bars can be changed dynamically depending on some condition. 
 
 For example, your events have a custom boolean property - **important** - that indicates whether the event is important and can't be deleted by a user.
-Depending on the value of this property you'd like to hide/show the 'delete' button in the select bar. To provide such behaviour, use the following technique:
+Depending on the value of this property you'd like to hide/show the 'delete' button in the select bar. To provide such behavior, use the following technique:
 
 ~~~js
 scheduler.attachEvent("onClick", function(id){
