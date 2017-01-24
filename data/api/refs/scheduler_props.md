@@ -46,6 +46,7 @@ Properties
 - api/scheduler_icons_select_config.md - stores a collection of icons visible in the side selection menu of the event's box
 - api/scheduler_include_end_by_config.md - defines whether the date specified in the 'End by' field should be exclusive or inclusive
 - api/scheduler_key_nav_config.md - disables the keyboard navigation in the scheduler
+- api/scheduler_key_nav_step_config.md - defines the navigation step
 - api/scheduler_last_hour_config.md - sets the maximum value of the hour scale (Y-Axis)
 - api/scheduler_left_border_config.md - adds the dotted left border to the scheduler
 - api/scheduler_lightbox_config.md - specifies the lightbox object
@@ -68,6 +69,8 @@ Properties
 - api/scheduler_map_zoom_after_resolve_config.md - sets the zoom that will be used to show the user's location, if the user agrees to the browser's offer to show it
 - api/scheduler_mark_now_config.md - enables/disables the marker displaying the current time
 - api/scheduler_max_month_events_config.md - sets the maximum number of events displayable in a cell
+- api/scheduler_min_grid_size_config.md - 
+- api/scheduler_min_map_size_config.md - 
 - api/scheduler_minicalendar_config.md - specifies the mini calendar object
 - api/scheduler_month_date_config.md - sets the format for the header of the Month view
 - api/scheduler_month_day_config.md - sets the format for the day in the cells of the Month and Year views
@@ -91,7 +94,7 @@ Properties
 - api/scheduler_resize_month_events_config.md - enables the possibility to resize multi-day events in the Month view by drag-and-drop
 - api/scheduler_resize_month_timed_config.md - enables the possibility to resize single-day events in the Month view by drag-n-drop
 - api/scheduler_scroll_hour_config.md - sets the initial position of the vertical scroll in the scheduler (an hour in the 24-hour clock format)
-- api/scheduler_section_delemiter_config.md - specifies the delimeter that will be used to separate several sections/units in the related data property of the event
+- api/scheduler_section_delimiter_config.md - specifies the delimeter that will be used to separate several sections/units in the related data property of the event
 - api/scheduler_select_config.md - shows/hides the select bar in the event's box
 - api/scheduler_separate_short_events_config.md - allows preventing short events from overlapping
 - api/scheduler_server_utc_config.md - enables converting server-side dates from UTC to a local time zone (and backward) while sending data to the server
@@ -99,12 +102,14 @@ Properties
 - api/scheduler_show_quick_info_config.md - activates/disables the 'quick_info' extension (pop-up task's details form)
 - api/scheduler_start_on_monday_config.md - sets the start day of weeks
 - api/scheduler_time_step_config.md - sets the minimum step (in minutes) for event's time values
+- api/scheduler_timeline_swap_resize_config.md - 
 - api/scheduler_touch_config.md - enables/disables the touch support in the scheduler
 - api/scheduler_touch_drag_config.md - defines the time period in milliseconds that is used to differ the long touch gesture from the scroll gesture
 - api/scheduler_touch_tip_config.md - enables/disables prompting messages in the right top corner of the screen
 - api/scheduler_touch_tooltip_config.md - disables dhtmxlScheduler's tooltips on the touch devices
 - api/scheduler_update_render_config.md - updates the mode when the scheduler fully repaints itself on any action
 - api/scheduler_use_select_menu_space_config.md - 'says' events to occupy the whole width of the cell
+- api/scheduler_wai_aria_attributes_config.md - 
 - api/scheduler_week_date_config.md - sets the format of the date in the sub-header of the Month view
 - api/scheduler_wide_form_config.md - enables/disables displaying the standard (wide) lightbox instead of the short one
 - api/scheduler_xml_date_config.md - sets the date format that is used to parse data from the data set
@@ -156,6 +161,7 @@ Properties
 - api/scheduler_icons_select_config.md
 - api/scheduler_include_end_by_config.md
 - api/scheduler_key_nav_config.md
+- api/scheduler_key_nav_step_config.md
 - api/scheduler_last_hour_config.md
 - api/scheduler_left_border_config.md
 - api/scheduler_lightbox_config.md
@@ -178,6 +184,8 @@ Properties
 - api/scheduler_map_zoom_after_resolve_config.md
 - api/scheduler_mark_now_config.md
 - api/scheduler_max_month_events_config.md
+- api/scheduler_min_grid_size_config.md
+- api/scheduler_min_map_size_config.md
 - api/scheduler_minicalendar_config.md
 - api/scheduler_month_date_config.md
 - api/scheduler_month_day_config.md
@@ -201,7 +209,7 @@ Properties
 - api/scheduler_resize_month_events_config.md
 - api/scheduler_resize_month_timed_config.md
 - api/scheduler_scroll_hour_config.md
-- api/scheduler_section_delemiter_config.md
+- api/scheduler_section_delimiter_config.md
 - api/scheduler_select_config.md
 - api/scheduler_separate_short_events_config.md
 - api/scheduler_server_utc_config.md
@@ -209,12 +217,14 @@ Properties
 - api/scheduler_show_quick_info_config.md
 - api/scheduler_start_on_monday_config.md
 - api/scheduler_time_step_config.md
+- api/scheduler_timeline_swap_resize_config.md
 - api/scheduler_touch_config.md
 - api/scheduler_touch_drag_config.md
 - api/scheduler_touch_tip_config.md
 - api/scheduler_touch_tooltip_config.md
 - api/scheduler_update_render_config.md
 - api/scheduler_use_select_menu_space_config.md
+- api/scheduler_wai_aria_attributes_config.md
 - api/scheduler_week_date_config.md
 - api/scheduler_wide_form_config.md
 - api/scheduler_xml_date_config.md

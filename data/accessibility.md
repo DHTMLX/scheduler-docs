@@ -1,9 +1,6 @@
 Accessibility
 ================
 
-{{todo check links to skin samples and update the article for key navigation}}
-
-
 [Accessibility](https://www.w3.org/WAI/intro/accessibility.php) is an important and necessary standard for modern web applications. 
 There's a set of various techniques that allow making an application or a web site handier to use or work with. 
 

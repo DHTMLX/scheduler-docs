@@ -146,6 +146,7 @@ scheduler.parse([
 
 Assigning events to several sections
 --------------------------------------------------------------
+
 Starting from version 4.1, you have a possibility to assign events to several sections.
 
 <img src="multiple_sections.png"/>
@@ -173,7 +174,8 @@ To enable the possibility:
 ~~~
 
 
-After this,  you can specify several sections ([by default, delimited with a comma](api/scheduler_section_delemiter_config.md)) in the related data property of the event and the event will be rendered in all specified sections:
+After this you can specify several sections ([by default, delimited with a comma](api/scheduler_section_delimiter_config.md)) 
+in the related data property of the event and the event will be rendered in all specified sections:
 
 ~~~js
 scheduler.createTimelineView({

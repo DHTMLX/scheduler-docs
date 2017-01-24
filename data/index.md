@@ -1,15 +1,15 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Scheduler 4.3</h2>
+    <h2>Scheduler 4.4</h2>
     
     <p>
-    Version 4.3 continues to bring new improvements and features:
+    Version 4.4 continues to bring new improvements and features:
     </p>
     <ul>
-        <li><a href="timeline_view.md#daysmodedetails">New "Days" mode for the Timeline view</a></li>
-        <li><a href="units_view.md#displayingunitsformultipledays"> Multiday Units view </a></li>
-        <li><a href="extensions_list.md#url">Ability to link events using the URL extension </a> 
+        <li><a href="keyboard_navigation.md">Keyboard navigation</a></li>
+        <li><a href="accessibility.md#waiariaattributes">WAI-ARIA support</a></li>
+        <li><a href="accessibility.md#highcontrastthemes">High-contrast themes</a> 
     </ul>
     <p class='action_buttons'>
       <a class='action_button moredetails' href="what_s_new.html">More details</a>

@@ -31,15 +31,11 @@ If the focus is set on some button of the form, pressing *Space* or *Enter* will
 ##Enabling the functionality
 
 In order to use keyboard navigation in Scheduler, you need to include the **ext/dhtmlxscheduler_keyboard_navigation.js** extension on the page. 
-There are two variants of keyboard navigation available:
 
-- navigation by task rows
-
-To enable it, set the api/scheduler_keyboard_navigation_config.md property to true.
-
-- navigation by task cells  
-
-To use this type of navigation, set the api/scheduler_keyboard_navigation_cells_config.md property to true.
+~~~html
+<script src="../../codebase/ext/dhtmlxscheduler_key_nav.js" type="text/javascript" 
+	charset="utf-8"></script>
+~~~
 
 ##Scopes
 
@@ -47,9 +43,10 @@ An action called on a key click depends on the context. It means that different 
 There are the following context elements (scopes) in Scheduler:
 
 - **"scheduler"** - The whole scheduler
-- **"taskRow"** - A row with a task
-- **"taskCell"** - A cell of the row with a task
-- **"headerCell"** - A cell of the header
+- **"timeSlot"** - A time slot
+- **"event"** - An event
+- **"minicalDate"** - A date in the mini calendar
+- **"minicalButton"** - An arrow button in the mini calendar
 
 If one and the same shortcut is attached to several scopes, the more specific shortcut will trigger. It means that if the same shortcut is attached 
 to Scheduler and to its element, the shortcut attached to an element will be called rather than the shortcut attached to the whole Scheduler. 
@@ -98,39 +95,37 @@ There can be several key combinations for one action. In this case, all the comb
 
 There is a set of ready shortcuts that you can use to navigate Scheduler:
 
-###General keyboard shortcuts:
+###General keyboard shortcuts
 
-- **Tab** -  move browser focus to Scheduler or MiniCalendar element 
-<br><br>
-- **Alt+Up/Down** - scroll Scheduler vertically
-- **Alt+Left/Right** - scroll Scheduler horizontally
+- **Tab** -  puts focus on Scheduler
+- **Alt+1,Alt+2,Alt+3,...** - switch between views
+- **Ctrl+Left/Right** - move to the next/previous date
+- **Ctrl+Up/Down** - scroll data area
 - **Ctrl+Enter** - create a new event
-- **Ctrl+Z** - undo the action
-- **Ctrl+R** - redo the action
-
-###Shortcuts for MiniCalendar
-
-- **Up/Down/Left/Right Arrow Keys** - navigate over MiniCalendar elements
-- **Enter** - select date or press the Arrow button 
-
-###Shortcuts for Scheduler
-
-- **Up/Down/Left/Right Arrow Keys** - navigate between time slots (similar to MS Outlook)
-- **Shift+Down/Up Arrow Keys** - allocate the time slot 
-- **Enter** - create an event in the allocated time slot
-- **Alt+1, Alt+2, Alt+3,...** - switch between modes of scheduler (order of views is the same as the order of tabs in the header of calendar)
-- **Alt+Left/Right Arrow Keys** - change the displayed date
+- **E, Shift+E** - select next/previous event
 - **Home** - switch to the current date
+- **Ctrl+C, Ctrl+X, Ctrl+V** - copy/cut/paste an event
 
-###Schortcuts for events
+###Shortcuts for Time slots
 
-- **E** - select next event, 
-- **Shift+E** - select previous event, press enter to open the details form for a selected event
-- **Enter** - to open the details form for a selected event
+- **Up/Down/Left/Right Arrow Keys** - navigate over time slots 
+- **Shift+Up/Down/Left/Right Arrow Keys** - extend a time slot 
+- **Enter** - create an event in the selected time slot
+
+###Shortcuts for Events
+
+- **Up/Down/Left/Right Arrow Keys** - go to a time slot
+- **Enter** - open the lightbox
 
 
+###Shortcuts for Mini Calendar
 
-{{sample 02_extensions/17_keyboard_navigation_cell.html}}
+- **Tab** -  puts focus on Mini Calendar
+- **Up/Down/Left/Right Arrow Keys** - navigate over buttons/cells
+- **Enter** - click on a button/cell
+
+
+{{sample13_accessibility/01_regular_skin_all_views.html}}
 
 
 
@@ -193,4 +188,4 @@ Once the extension file is included on the page, you can use the following comma
 
 @todo: 
 
-add links to API, check extension name, update scopes, shortcuts examples, links to samples
+add examples for shortcuts API, decide on the last (outdated) section

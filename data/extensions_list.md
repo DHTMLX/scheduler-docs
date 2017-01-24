@@ -201,6 +201,22 @@ Article: keyboard_navigation.md<br>
 {{sample 03_extensions/07_navigation_plugin.html}}
 
 
+Keyboard Navigation
+---------------------------------------------
+
+Enables the keyboard navigation.
+
+~~~html
+<script src="../../codebase/ext/dhtmlxscheduler_key_nav.js"></script>
+~~~
+
+####Related resources
+
+Article: keyboard_navigation.md<br>
+
+{{sample 13_accessibility/01_regular_skin_all_views.html}}
+
+
 Limit
 ---------------------------------------------
 Provides functionality for blocking and highlighting dates.
@@ -525,3 +541,5 @@ Article: year_view.md<br>
 
 {{sample 03_extensions/04_year_view.html}}
 
+
+{{todo remove one of key_nav sections }}

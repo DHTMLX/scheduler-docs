@@ -62,7 +62,7 @@ where
 **Client-side:**
 
 <ol>
-	<li>Open the HTML file containing the initialized scheduler or initialize one in a standard way (see details in the article howtostart_php.md).</li>
+	<li>Open the HTML file containing the initialized scheduler or initialize one in a standard way (see details in the article how_to_start.md).</li>
 	<li>Load Google Calendar's events to the scheduler through the api/scheduler_load.md method. The 1st parameter is the path to the 'data.php' file, the 2nd parameter - expected data format that should be 'json'.
    
 ~~~js

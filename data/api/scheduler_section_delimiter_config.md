@@ -1,12 +1,13 @@
-section_delemiter
+section_delimiter
 =============
+
 @short: specifies the delimeter that will be used to separate several sections/units in the related data property of the event 
 	
 
 @type: string
 @default:","
 @example:
-scheduler.config.section_delemiter = ";";
+scheduler.config.section_delimiter = ";";
 
 @template:	api_config
 @descr:
@@ -20,3 +21,4 @@ scheduler.config.section_delemiter = ";";
 
 @apigroup: General settings
 	
+
