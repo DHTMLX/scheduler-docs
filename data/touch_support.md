@@ -81,3 +81,10 @@ The extension provides:
 - api/scheduler_hidequickinfo.md - hides the pop-up event form (if it's currently active)
 - api/scheduler_showquickinfo.md - displays the pop-up event form for the specified event
 }}
+
+- **2 events**
+
+{{links
+- api/scheduler_onquickinfo_event.md - fires when the pop-up edit form appears
+- api/scheduler_onafterquickinfo_event.md - fires after the pop-up event form is closed
+}}
