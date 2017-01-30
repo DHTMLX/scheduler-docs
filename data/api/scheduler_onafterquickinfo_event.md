@@ -1,13 +1,9 @@
 onAfterQuickInfo
 =============
-
-@todo:
-	check 
     
 @short:
 	fires after the pop-up event form is closed
 
-@require:quick_info
 
 @params:
 
@@ -17,6 +13,8 @@ onAfterQuickInfo
 scheduler.attachEvent("onAfterQuickInfo", function(eventId){
 	// your code here
 });
+
+@require:quick_info
 
 @template:	api_event
 @descr:

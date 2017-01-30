@@ -86,6 +86,20 @@ API: api/scheduler_container_autoresize_config.md <br>
 {{sample 03_extensions/28_container_autoresize.html}}
 
 
+Content Security Policy
+----------------------
+
+Allows working with dhtmlxScheduler in case Content Security Policy (CSP) is enabled in the application.
+
+~~~html
+<script src="../codebase/ext/dhtmlxscheduler_csp.js"></script>
+~~~
+
+####Related resources
+
+Article: content_security_policy.md
+
+
 Cookie
 ---------------------------------------------
 Saves the scheduler current state (mode and date ) in cookies.
@@ -98,6 +112,25 @@ Saves the scheduler current state (mode and date ) in cookies.
 ####Related resources
 
 {{sample 03_extensions/08_cookies_plugin.html}}
+
+
+Daytimeline
+---------------------------------------------
+
+{{note This extension is available in PRO version only}}
+
+A code file for the "Days" mode of the Timeline view.
+
+~~~html
+<script src="../codebase/ext/dhtmlxscheduler_daytimeline.js"></script>
+~~~
+
+
+####Related resources
+
+Article:  timeline_view.md
+
+{{sample 06_timeline/14_days_as_sections.html}}
 
 
 Drag-n-Drop between Schedulers
@@ -185,21 +218,6 @@ Article: <a href="templates.md#specifyingtemplatesasanhtmlcode">Templates</a><br
 {{sample 03_extensions/09_html_templates_plugin.html}}
 
 
-Key Navigation
----------------------------------------------
-Enables the keyboard navigation.
-
-~~~html
-<script src="../codebase/ext/dhtmlxscheduler_key_nav.js"></script>
-~~~
-
-
-####Related resources
-
-Article: keyboard_navigation.md<br>
-
-{{sample 03_extensions/07_navigation_plugin.html}}
-
 
 Keyboard Navigation
 ---------------------------------------------
@@ -214,7 +232,8 @@ Enables the keyboard navigation.
 
 Article: keyboard_navigation.md<br>
 
-{{sample 13_accessibility/01_regular_skin_all_views.html}}
+{{sample 13_accessibility/01_regular_skin_all_views.html}}<br><br>
+{{sample 03_extensions/07_navigation_plugin.html}}
 
 
 Limit
@@ -459,7 +478,7 @@ Treetimeline
 ---------------------------------------------
 {{note This extension is available in PRO version only}}
 
-A code file for the Tree mode of the Timeline view.
+A code file for the "Tree" mode of the Timeline view.
 
 ~~~html
 <script src="../codebase/ext/dhtmlxscheduler_treetimeline.js"></script>
@@ -468,7 +487,7 @@ A code file for the Tree mode of the Timeline view.
 
 ####Related resources
 
-Article:  <a href="timeline_view.md#treemodehierarchicaldatastructure"> Timeline view. Tree mode</a><br>
+Article:  timeline_view.md<br>
 
 {{sample 06_timeline/03_tree.html}}
 
@@ -540,6 +559,3 @@ The Year view code file.
 Article: year_view.md<br>
 
 {{sample 03_extensions/04_year_view.html}}
-
-
-{{todo remove one of key_nav sections }}

@@ -1,12 +1,9 @@
 key_nav_step
 =============
 
-@todo:
-	check 
-
 
 @short:
-	defines the navigation step
+	defines the minimal step (in minutes) for navigating events
 	
 @type:number    
 @require:key_nav
@@ -28,3 +25,6 @@ scheduler.config.key_nav_step = 40;
 
 @relatedapi:
 api/scheduler_key_nav_config.md
+api/scheduler_focus.md
+api/scheduler_addshortcut.md
+api/scheduler_removeshortcut.md

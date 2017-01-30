@@ -241,7 +241,7 @@ scheduler.createTimelineView({
 });
 ~~~
 	</li>
-    <li>The mode doesn't supports <a href="limits.md">Blocking and Marking functionality</a></li>
+    <li>The mode doesn't support <a href="limits.md">Blocking and Marking functionality</a></li>
     <li>
     The format of the Y-Axis labels is specified by the <a href="api__scheduler_%7Btimelinename%7D_scale_label_template.html">scale_label</a> template:
 ~~~js

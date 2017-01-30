@@ -1,7 +1,6 @@
 onDataRender
 =============
 
-@todo: check/complete the related api section
 
 @short:fires after data has been rendered on the page
 	

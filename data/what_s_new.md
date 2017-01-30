@@ -14,128 +14,34 @@ If you are updating scheduler from an older version, check migration_from_older_
 
 ###Minor Changes
 
-- Ability to remove recurring marker from a specific date added
-- Ability to skip days in the Year view added
-- daytimeline events should not lose '_sorder' and '_count' when are redrawn individually
-- *delimiter* option of the Multiselect control
-- External drag from dhtmlx.DragControl added
-- markTimespan should produce the same divs as addMarkedTimespans (enable markTimespan for the Month view)
-- merge CSP-improvements request from public repo
-- Minor performance improvements for timeline
-- Normalize z-index values, add styles for latest dhtmlx combo
+- [ability to enable markTimespan for the Month view](api/scheduler_marktimespan.md)
+- [ability to remove recurring marker from a specific date added](limits.md)
+- [ability to skip days in the Year view added](custom_scales.md)
+- [*delimiter* option of the Multiselect control](multiselect.md#properties)
+- [compatibility of external drag-n-drop with the latest dhtmlxSuite updated](dhtmlx_components_integration.md)
+- [merge CSP-improvements request from public repo](https://github.com/DHTMLX/scheduler/pull/11/)
+- minor performance improvements for [Timeline](timeline_view.md)
+- normalize z-index values, add styles for latest [dhtmlxCombo](combo.md)
 
 ###Bug Fixes and Improvements
 
-- _sday solving in the Units view with DST
 - addEventNow must return id of new event
-- adding marked time span into the Units view , if there is DST
-- all timed events showing with multisection
-- async confirmation before canceling edit
-- autoresize fix for day, week, units view multiday events, for Year, Agenda, WeekAgenda, Map views
-- bootstrap conflict [class*="span"] fixed
-- bug with agenda and week agenda view flags
 - bug with drag-n-drop and ignored column in the Week view
-- calendar_date template should be applied to the last row of minical, remove some redundancy
-- call of multiday units class template
 - check for undefined touch https://github.com/DHTMLX/scheduler/pull/21
-- check for visibility before redrawing timeline event
-- clear state on timeline drag cancel
 - click and keyboard focus issue on iPad
-- common marked timespan overwritten by a specific one fixed
-- console errors on multi-touch
-- dataprocessor state after clearAll
-- date comparison and Chrome optimizations
-- daytimeline view, bug with events on the 31st day of the month
-- dbl_click create config ignoring on timeline on mobile devices
-- decreasing scheduler height in autosize
-- deletion of recurring event occurence, if the server is not available
-- double tap on multiday area, fix start drag-n-drop on touch
-- drag position shift on drag start seems unnecessary and disabled
-- drag-create event dates in timeline with rounded dates
-- drag-n-drop changed state in mouseup handler
-- drag-n-drop is started at DST (1h back) and the start date goes back fixed
-- drag-n-drop regression on timeline event click
-- drag-n-drop state when drag and drop invoked externally
-- drag-n-dropp multisection events in the Units view
-- ensure recurring form returns valid numeric value for rec_type components
-- event date recognition in _locate_event in the Year view
-- event duration with preserve_event_length option
-- event visibility check
-- event visibility with first/last hour specified
-- event_pid changing when rec event was added and exception was added, but changes were not saved
-- events from ignored columns should not be displayed in timeline
-- events overlapping after drag-n-drop fixed
-- getISOWeek for not midnight datetimes
-- hide custom recurring form template after initialization
-- highlight on timeline when section_autoheight is false
-- image path for expand icon in glossy and flat skins
-- lightbox textarea and browser spellchecker extensions compatibility
-- lightbox time control to show not rounded minutes
-- limit_drag_out and preserve_event_length in timeline
-- locale for touch tooltip, locale usage
-- make tooltip position fixed
-- mark now with units view bug
-- marked timespan double click handler
-- marked timespan position calculation on DST
-- marked timespans removing by type
-- markTime and ignore columns bug
-- markTimespan must display timespans the same way as addMarkedTimespan
-- markTimespan regression in the Timeline view
-- mincal dates marking several times, if there are several events with dates on day
-- mouse move and double click issue in chrome, correct drag-n-drop detection
-- mouseup regression
-- multiday units and ignore time settings
-- multiday units scale class template arguments
-- multiple keyboard reopening on mobile devices fixed
-- multisection bug with prototype-cloned events
-- multisection drag and drop should use delimiter config
-- now_date marking in the Units view, if "size" is set
-- onYScaleClick calling when there are time ignores
-- processing times in timeline with skipped columns and first/last hours
-- quick_info detached, bug with hiding quick info popup
-- regression in marked timespans and units with size and scroll
-- regression with swap resize option
-- remove license comment from ical.js
-- reset '_loading' flag when event creation canceled
-- resolving event section in multiday units
-- safari DST bugfix
-- scheduler.getRecDates should produce the same result as scheduler.repeat_date
-- scheduler.getRecDates should work correctly with non-recurring events
-- scroll units and daily units regression
-- second scale timeline sizes
-- sections showing when Units view _min_date is on DST fixed
-- selected option in recurring form
-- setting id in the addEventNow function fixed
-- showEvent console error, if the timeline doesn't show such an event
-- state of ignored columns must be cleared on view change
-- Swedish locale mixed up week days and details icon
-- threshold before starting mouse-drag
-- timeline date rounding on drag-create
-- timeline end date correction on DST
-- timeline error on mark now with dynamic loading
-- timeline must reset header class and amended styles when deactivated
-- timeline scale cell index calculation when ignores defined
-- timeline scale class template in tree mode
-- timeline scale misplacing on DST
-- timeline should not reset an active calendar date to a view start
-- timeline tooltip sample, IE8 error
-- touch change dates only, no swipe inside scheduler div
-- Tree-Timeline sections with 'null' children must be considered leafs
-- typo in the section_delimiter property
-- Units view and templates should use current date factory method instead of native date
-- update stopping if an error was returned from server
-- use svg-safe CSS class checks
-- weekly second scale when week starts from Sunday
-- year now date showing twice
-- zoom-tolerance for layout elements, use border box for day/timeline elements
+- dataprocessor state must be cleared after scheduler.clearAll
+- JS errors in event handlers from SVG elements fixed
+- various bugs with Tooltip extension fixed
+- various issues with container_autosize extension fixed
+- many other fixes
 
 ##4.3
 1. ["Days" mode for Timeline view](timeline_view.md#daysmodedetails) was added (PRO version)
 2. Ability to present [units for multiple days in the Units view](units_view.md#displayingunitsformultipledays) (PRO version)
 3. New events for the ['expand' extension](extensions_list.md#expand) 
-4. New option - api/scheduler_now_date_config.md for the [Limit extension](extensions_list.html#limit) 
-5. New option - api/scheduler_touch_tooltip_config.md  for the [Tooltip extension](extensions_list.html#tooltip) 
-6. Ability to link events using the [URL extension](extensions_list.html#url)
+4. New option - api/scheduler_now_date_config.md for the [Limit extension](extensions_list.md#limit) 
+5. New option - api/scheduler_touch_tooltip_config.md  for the [Tooltip extension](extensions_list.md#tooltip) 
+6. Ability to link events using the [URL extension](extensions_list.md#url)
 7. Fixes for DST issues
 8. Fix for an issue with creating new events on touch devices in the Timeline view
 9. [Week Agenda](weekagenda_view.md), [Grid View](grid_view.html), [Timeline view](timeline_view.md), [Units View](units_view.md),

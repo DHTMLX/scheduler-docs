@@ -2,9 +2,6 @@ addShortcut
 =============
 
 
-@todo:
-	complete the example
-
 @short:
 	adds a new keyboard shortcut 
 
@@ -18,7 +15,11 @@ addShortcut
 
 @example:
 
-scheduler.addShortcut(shorcut, handler, scope);
+scheduler.addShortcut("shift+w", function(e){ 
+    var eventId = scheduler.locate(e); 
+    if(eventId) 
+        scheduler.showQuickInfo(eventId);
+},"event");
 
 @template:	api_method
 @descr:
@@ -29,6 +30,8 @@ In case the third parameter is not set, the handler will be attached to the sche
 @relatedapi:
 api/scheduler_removeshortcut.md
 api/scheduler_focus.md
+api/scheduler_key_nav_config.md
+api/scheduler_key_nav_step_config.md
 
 @related:
 keyboard_navigation.md

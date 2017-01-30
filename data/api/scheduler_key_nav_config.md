@@ -1,18 +1,15 @@
 key_nav
 =============
 
-
-@todo: check related sections
-
-@short: disables the keyboard navigation in the scheduler
+@short: enables the keyboard navigation in the scheduler
 	
 
 @type: boolean
 @default:true
 @require:key_nav
 @example:
-//disables the keyboard navigation
-scheduler.config.key_nav = false;
+
+scheduler.config.key_nav = true;
 
 @template:	api_config
 @descr:
@@ -25,6 +22,9 @@ scheduler.config.key_nav = false;
 
 @relatedapi:
 api/scheduler_key_nav_step_config.md
+api/scheduler_focus.md
+api/scheduler_addshortcut.md
+api/scheduler_removeshortcut.md
 
 @apigroup: Events
 	

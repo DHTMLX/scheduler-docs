@@ -1,10 +1,6 @@
 focus
 =============
 
-
-@todo:
-	check 
-
 @short:
 	sets focus on the scheduler
 
@@ -25,6 +21,8 @@ added in version 4.4
 @relatedapi:
 api/scheduler_addshortcut.md
 api/scheduler_removeshortcut.md
+api/scheduler_key_nav_config.md
+api/scheduler_key_nav_step_config.md
 
 @related:
 keyboard_navigation.md

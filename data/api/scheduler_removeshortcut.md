@@ -1,9 +1,6 @@
 removeShortcut
 =============
 
-@todo:
-	complete the example
-
 @short:
 	removes a keyboard shortcut
 
@@ -16,10 +13,14 @@ removeShortcut
 @example:
 
 // adding a shortcut
-scheduler.addShortcut(shorcut, handler, scope);
+scheduler.addShortcut("shift+w", function(e){ 
+    var eventId = scheduler.locate(e); 
+    if(eventId) 
+        scheduler.showQuickInfo(eventId);
+},"event");
 
 // removing a shortcut
-scheduler.removeShortcut(shortcut, scope);
+scheduler.removeShortcut("shift+w","event");
 
 @template:	api_method
 @descr:
@@ -28,6 +29,8 @@ added in version 4.4
 @relatedapi:
 api/scheduler_addshortcut.md
 api/scheduler_focus.md
+api/scheduler_key_nav_config.md
+api/scheduler_key_nav_step_config.md
 
 @related:
 keyboard_navigation.md

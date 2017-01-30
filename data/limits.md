@@ -65,12 +65,13 @@ There are 2 methods that can be used to mark the specified date(s):
 }}
 
 ##Removing marking/blocking
+
 There are 3 methods that can be used to remove the currently marked/blocked time spans:
 
 {{links
-- api/scheduler_deletemarkedtimespan.md - removes marking/blocking, set by the addMarkedTimespan() and blockTime() methods
-- api/scheduler_unmarktimespan.md - removes marking/blocking, set by the markTimespan() method
-- api/scheduler_unblocktime.md - removes blocking, set by the blockTime() method
+- api/scheduler_deletemarkedtimespan.md - removes marking/blocking, set by the api/scheduler_addmarkedtimespan.md and api/scheduler_blocktime.md methods
+- api/scheduler_unmarktimespan.md - removes marking/blocking, set by the api/scheduler_marktimespan.md method
+- api/scheduler_unblocktime.md - removes blocking, set by the api/scheduler_blocktime.md method
 }}
 
 {{sample

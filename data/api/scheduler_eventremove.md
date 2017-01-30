@@ -2,8 +2,6 @@ eventRemove
 =============
 
 
-@todo: check
-
 @short: 
 	removes an event handler from an HTML element
 	

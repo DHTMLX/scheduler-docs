@@ -1,9 +1,6 @@
 wai_aria_attributes
 =============
 
-@todo:
-	check 
-
 @short:
 	enables WAI-ARIA support to make the component recognizable for screen readers
 

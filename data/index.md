@@ -13,7 +13,7 @@ Start
     </ul>
     <p class='action_buttons'>
       <a class='action_button moredetails' href="what_s_new.html">More details</a>
-      <a class='action_button download' href="http://dhtmlx.com/x/download/regular/dhtmlxScheduler.zip" target="_blank">Download</a>
+      <a class='action_button download' href="https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml" target="_blank">Download</a>
     </p>
 </div>
 

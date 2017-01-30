@@ -30,7 +30,7 @@ If the focus is set on some button of the form, pressing *Space* or *Enter* will
 
 ##Enabling the functionality
 
-In order to use keyboard navigation in Scheduler, you need to include the **ext/dhtmlxscheduler_keyboard_navigation.js** extension on the page. 
+In order to use keyboard navigation in Scheduler, you need to include the **ext/dhtmlxscheduler_key_nav.js** extension on the page. 
 
 ~~~html
 <script src="../../codebase/ext/dhtmlxscheduler_key_nav.js" type="text/javascript" 
@@ -60,7 +60,11 @@ To create a new keyboard shortcut, you need to use the api/scheduler_addshortcut
 - scope - (string) the name of the context element to attach the handler function to
 
 ~~~js
-
+scheduler.addShortcut("shift+w", function(e){ 
+    var eventId = scheduler.locate(e); 
+    if(eventId) 
+        scheduler.showQuickInfo(eventId);
+},"event");
 ~~~
 
 ###Removing a shortcut
@@ -71,7 +75,7 @@ To remove a shortcut from the scope, you need to use the api/scheduler_removesho
 - scope - (string) the name of the context element to which the shortcut is attached
 
 ~~~js
-
+scheduler.removeShortcut("shift+w","event");
 ~~~
 
 ##Shortcut syntax
@@ -127,53 +131,6 @@ There is a set of ready shortcuts that you can use to navigate Scheduler:
 
 {{sample13_accessibility/01_regular_skin_all_views.html}}
 
-
-
-Key_nav extension
-------------------
-
-The keyboard navigation functionality is included into the **ext/dhtmlxscheduler_key_nav.js** extension.
-
-###Keyboard commands
-
-Once the extension file is included on the page, you can use the following command to navigate through the scheduler:
-
-
-<table class="list" cellspacing="0" cellpadding="5" border="0">
-	<thead>
-	<tr>
-		<th>
-			Key 
-		</th>
-		<th>
-			Description
-		</th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr>
-		<td>Right arrow key</td>
-        <td>scrolls to the next time period (next month, week, day, etc. depending on the currently active view)</td>
-    </tr>
-	<tr>
-		<td>Left arrow key</td>
-        <td>scrolls to the previous time period (last month, week, day, etc. depending on the currently active view)</td>
-    </tr>
-	<tr>
-		<td>Ctrl + C</td>
-        <td>copies the selected event to the clipboard</td>
-    </tr>
-	<tr>
-		<td>Ctrl + V</td>
-        <td>pastes the previously copied event from the clipboard to the scheduler</td>
-    </tr>
-	<tr>
-		<td>Ctrl + X</td>
-        <td>cuts the selected event</td>
-    </tr>
-    </tbody>
-</table>
-
 {{sample
 	03_extensions/07_navigation_plugin.html
 }}
@@ -185,7 +142,3 @@ Once the extension file is included on the page, you can use the following comma
 - api/scheduler_oneventcut_event.md
 - api/scheduler_oneventpasted_event.md
 
-
-@todo: 
-
-add examples for shortcuts API, decide on the last (outdated) section

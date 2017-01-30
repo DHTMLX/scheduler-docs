@@ -1,9 +1,5 @@
 event
-=============
-
-
-@todo:
-	check 
+============= 
 
 @short: attaches an event handler to an HTML element
 
