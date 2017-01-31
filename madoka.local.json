@@ -1,4 +1,4 @@
 {
-	"samples"			: "../dhxscheduler/samples/",
-	"samples_http"		: "../dhxscheduler/samples/"
+	"samples"			: "../scheduler/samples/",
+	"samples_http"		: "../scheduler/samples/"
 }
