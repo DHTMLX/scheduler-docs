@@ -18,7 +18,7 @@ These are additional attributes which make the component recognizable for screen
 
 You can find more information in the [official specification](https://www.w3.org/WAI/intro/aria) of WAI-ARIA.
 
-To enable WAI-ARIA attributes in Scheduler, you should use the *wai_aria_attributes* property with the *true* value:
+WAI-ARIA attributes in Scheduler are enabled by default, to disable them you can use the *wai_aria_attributes* property with the *false* value:
 
 ~~~js
 scheduler.config.wai_aria_attributes = true;
