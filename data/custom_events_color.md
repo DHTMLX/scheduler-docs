@@ -1,9 +1,10 @@
-Custom event's color
+Custom Event's Color
 ============================
+
 There are 2 ways you can specify a custom color for an event:
 
 1. [To set color values in properties of the event object](custom_events_color.md#specifyingcolorsinpropertiesoftheeventobject);
-2. [To attach additional css class(es) to the event](custom_events_color.md#attachingadditionalcssclassestoanevent).
+2. [To attach additional CSS class(es) to the event](custom_events_color.md#attachingadditionalcssclassestoanevent).
 
 <img src="custom_event_color.png"/>
 
@@ -33,7 +34,7 @@ Note, these are special properties. By default, the scheduler always checks whet
 Otherwise, the scheduler uses predefined colors for the event.
 
 
-The properties can have any valid css color value, e.g. all of the following notations are valid:
+The properties can have any valid CSS color value, e.g. all of the following notations are valid:
 
 ~~~js
 ev.color = "#FF0000";
@@ -42,12 +43,12 @@ ev.color = "rgb(255,0,0)";
 ~~~
 
 
-##Attaching additional css classes to an event
-The second way to color an event is to apply additional css class(es) to it. 
+##Attaching additional CSS classes to an event
+The second way to color an event is to apply additional CSS class(es) to it. 
 
 ###Technique
 
-To apply a css class to an event, use the api/scheduler_event_class_template.md template.<br>
+To apply a CSS class to an event, use the api/scheduler_event_class_template.md template.<br>
 The default implementation of the template is:
 
 ~~~js
@@ -66,9 +67,9 @@ Let's assume, you want to have the events assigned to managers and employees in 
 
 <ol>
 	<li>Add an additional data property to the model and name it, for example 'type'. The property will store the type of the user : 'manager' or 'employee'. <br> <img src="extended_data_model.png"/></li>
-	<li>Specify the related css classes for these types, e.g. named as 'manager_event' and 'employee_event'. For such names, css definition will look as in:<br> <br>
+	<li>Specify the related CSS classes for these types, e.g. named as 'manager_event' and 'employee_event'. For such names, CSS definition will look as in:<br> <br>
 {{snippet
-Redefining the default css classes
+Redefining the default CSS classes
 }}
 ~~~html
 <style>
@@ -104,7 +105,7 @@ Redefining the default css classes
     </li>
     <li>And finally, override the api/scheduler_event_class_template.md template <br> <br>
 {{snippet
-Applying additional css classes to events:
+Applying additional CSS classes to events:
 }}
 ~~~js
 scheduler.templates.event_class = function (start, end, event) {

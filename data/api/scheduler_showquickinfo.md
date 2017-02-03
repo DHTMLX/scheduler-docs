@@ -17,12 +17,19 @@ window.setTimeout(function(){
 },1);	
 
 
-
 @require:quick_info
 @template:	api_method
-@related:
-	touch_support.md
-@relatedapi:
-	api/scheduler_hidequickinfo.md
 
 @descr: 
+
+@related:
+	touch_support.md
+    extensions_list.md#quickinfo
+@relatedapi:
+	api/scheduler_hidequickinfo.md
+    api/scheduler_quick_info_detached_config.md
+    api/scheduler_onafterquickinfo_event.md
+    api/scheduler_onquickinfo_event.md
+
+
+

@@ -145,12 +145,12 @@ The articles come around key procedures and problem-solving activities.
             		<li>extensions_list.md</li>
                     <li>install_with_bower.md</li>
                     <li>backbone_integration.md</li>
-                    <li>keyboard_navigation.md</li>
 					<li>touch_support.md</li>
                     <li>winjs_compatibility.md</li>
                     <li>integration_with_dhtmlxmessage.md</li>
                     <li>live_update.md</li>
                     <li>multiple_users.md</li>
+                    <li>content_security_policy.md</li>
             </ul>
         </td>
         <td class='topic_description'>Guides you through various extensions provided by the library for extending existing functionality.</td>

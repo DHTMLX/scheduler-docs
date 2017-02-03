@@ -157,13 +157,13 @@ scheduler.config.lightbox.sections = [
 ];
 ~~~
 
-The **script_path** property specifies an url from which combo loads its options, i.e. if script_path is specified - combo will try to load data from that url via ajax.
+The **script_path** property specifies an URL from which combo loads its options, i.e. if script_path is specified - combo will try to load data from that URL via AJAX.
 
 Combo selector is based on [dhtmlxCombo](http://docs.dhtmlx.com/combo__index.html), so the server should return data compatible with it.
 You can read about the ways of adding data into combo in the article [Loading Options](http://docs.dhtmlx.com/combo__adding_options.html). 
 We use the [dhtmlxConnector](http://docs.dhtmlx.com/connector__php__combo.html) for Combo in our examples to provide data compatibility.  
 
-The url is requested in two cases:
+The URL is requested in two cases:
 
 1) when the lightbox is opened and combo has some selected value - control sends request to the server and loads a label for the selected option.
 

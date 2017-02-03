@@ -22,9 +22,9 @@ of the open event, otherwise 'null' or 'undefined'
 
 ~~~js
 if (scheduler.getState().lightbox_id){
-	//the code for the opened lighbox
+	//the code for the opened lightbox
 } else {
-	//the code for the closed lighbox
+	//the code for the closed lightbox
 }
 ~~~
 
@@ -41,7 +41,7 @@ $scheduler->render_table(
     "start_date,end_date,text,rec_type"
 );
 ~~~
-If you are generating XML by a custom code, just add the subtag to the event as:
+If you are generating XML by a custom code, just add the sub-tag to the event as:
 
 ~~~xml
 <event id='50' >
@@ -54,7 +54,7 @@ If you are generating XML by a custom code, just add the subtag to the event as:
 </li>
 	<li>On the client side, set the same name for the <b>map_to</b> attribute of a section:
 ~~~js
-{name:"reccuring", map_to:"rec_type" ...}
+{name:"recurring", map_to:"rec_type" ...}
 ~~~
 	</li>
 </ol>
@@ -83,7 +83,7 @@ the end event time and date will be changed automatically, in order to make the 
 To set the default value for a lightbox's section, use the **default_value** property of the section's object.
 
 For example, you have added a custom section to the lightbox  - 'Location' -  that displays the event's location. 
-When the user creates a new event, the field will be just empty. To correct such behaviour and to display, say, the address of 
+When the user creates a new event, the field will be just empty. To correct such behavior and to display, say, the address of 
 the Greenwich Observatory by default, specify the lightbox as in:
 
 ~~~js
@@ -156,7 +156,7 @@ scheduler.form_blocks.textarea.set_value=function(node,value,ev){
 
 ### 'Full-day event' option
 To add the 'full-day event' option to the lightbox, set the api/scheduler_full_day_config.md option to *true*.
-For this, just add the next codeline:
+For this, just add the next code line:
 
 ~~~js
 scheduler.config.full_day  = true;

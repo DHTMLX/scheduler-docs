@@ -153,7 +153,7 @@ var calendar = scheduler.renderCalendar({..});
 
 <img src="mini_calendar_custom_template.png"/>
 
-###Css classes
+###CSS classes
 To customize the look of days in the mini calendar, you can redefine the following CSS classes: 
 
 <table class="list"  cellspacing="0" cellpadding="5" border="0">
@@ -233,7 +233,7 @@ Related methods
 	</tr>
 	<tr>
 		<td class="webixdoc_links0">api/scheduler_markcalendar.md</td>
-		<td>applies a css class to the specified date</td>
+		<td>applies a CSS class to the specified date</td>
 	</tr>
 	<tr>
 		<td class="webixdoc_links0"> api/scheduler_rendercalendar.md</td>
@@ -241,7 +241,7 @@ Related methods
 	</tr>
 	<tr>
 		<td class="webixdoc_links0">api/scheduler_unmarkcalendar.md</td>
-		<td>removes a css class from the specified date</td>
+		<td>removes a CSS class from the specified date</td>
 	</tr>
 	<tr>
 		<td class="webixdoc_links0">api/scheduler_updatecalendar.md</td>

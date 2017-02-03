@@ -146,6 +146,7 @@ scheduler.parse([
 
 Assigning events to several sections
 --------------------------------------------------------------
+
 Starting from version 4.1, you have a possibility to assign events to several sections.
 
 <img src="multiple_sections.png"/>
@@ -173,7 +174,8 @@ To enable the possibility:
 ~~~
 
 
-After this,  you can specify several sections ([by default, delimited with a comma](api/scheduler_section_delemiter_config.md)) in the related data property of the event and the event will be rendered in all specified sections:
+After this you can specify several sections ([by default, delimited with a comma](api/scheduler_section_delimiter_config.md)) 
+in the related data property of the event and the event will be rendered in all specified sections:
 
 ~~~js
 scheduler.createTimelineView({
@@ -239,7 +241,7 @@ scheduler.createTimelineView({
 });
 ~~~
 	</li>
-    <li>The mode doesn't supports <a href="limits.md">Blocking and Marking functionality</a></li>
+    <li>The mode doesn't support <a href="limits.md">Blocking and Marking functionality</a></li>
     <li>
     The format of the Y-Axis labels is specified by the <a href="api__scheduler_%7Btimelinename%7D_scale_label_template.html">scale_label</a> template:
 ~~~js

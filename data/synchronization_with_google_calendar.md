@@ -180,7 +180,7 @@ _Google Calendar_ ->  Scheduler
 <tr><td markdown='1' style='border:1px solid #AAA;'>
 **_status_**  
 </td><td markdown='1' style='border:1px solid #AAA;'>
- shows the current status of the event: _cancelled_ (the event is cancelled), _confirmed_ (the event is confirmed), _tentative_ (the event is tentatively scheduled) 
+ shows the current status of the event: _cancelled_ (the event is canceled), _confirmed_ (the event is confirmed), _tentative_ (the event is tentatively scheduled) 
 </td></tr>
 </table>
 

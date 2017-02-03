@@ -1,9 +1,6 @@
 Accessibility
 ================
 
-{{todo check links to skin samples and update the article for key navigation}}
-
-
 [Accessibility](https://www.w3.org/WAI/intro/accessibility.php) is an important and necessary standard for modern web applications. 
 There's a set of various techniques that allow making an application or a web site handier to use or work with. 
 
@@ -11,7 +8,7 @@ To make an easier access and interaction with DHTMLXScheduler for people with di
 
 - WAI-ARIA Attributes
 - Keyboard  Navigation
-- High-Сontrast Theme
+- High-Contrast Theme
 
 WAI-ARIA Attributes
 ----------------------
@@ -21,7 +18,7 @@ These are additional attributes which make the component recognizable for screen
 
 You can find more information in the [official specification](https://www.w3.org/WAI/intro/aria) of WAI-ARIA.
 
-To enable WAI-ARIA attributes in Scheduler, you should use the *wai_aria_attributes* property with the *true* value:
+WAI-ARIA attributes in Scheduler are enabled by default, to disable them you can use the *wai_aria_attributes* property with the *false* value:
 
 ~~~js
 scheduler.config.wai_aria_attributes = true;
@@ -35,7 +32,7 @@ instead of navigating through an application with a mouse pointer.
 
 You will find the detailed information in the keyboard_navigation.md article.
 
-High-Сontrast Themes
+High-Contrast Themes
 --------------------
 
 DHTMLXScheduler supports a theme that uses contrasting colors which make the app's interface more distinct and easier to see.

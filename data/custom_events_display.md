@@ -1,6 +1,7 @@
- Custom event's box 
+Custom Event's Box 
 ==============
-Since the version 3.5, dhtmlxScheduler provides the possibility to define custom display for events.
+
+dhtmlxScheduler provides the possibility to define custom display for events.
 
 {{note
 Applicable to the day_view.md and week_view.md only
@@ -10,13 +11,10 @@ Applicable to the day_view.md and week_view.md only
 
 Events customizing is achieved with the help of the api/scheduler_renderevent.md method:
 
-
-
 ~~~js
 scheduler.renderEvent = function(container, ev) {
-	//your customizing code
+	// your customizing code
 }
-
 ~~~
 
 - **_container_** - the event's container
@@ -25,6 +23,7 @@ scheduler.renderEvent = function(container, ev) {
 {{sample
 	02_customization/27_custom_event_box.html
 }}
+
 ##Important tips
 
 
@@ -35,6 +34,7 @@ scheduler.renderEvent = function(container, ev) {
 
 
 ##Example
+
 Here is an example of some custom look:
 
 <img src="custom_event_box.png">

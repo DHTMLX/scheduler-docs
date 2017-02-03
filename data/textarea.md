@@ -19,7 +19,7 @@ scheduler.config.lightbox.sections = [
 
 Initialization
 -----------------------
-One Textarea control is added to the lighbox by default. To add another one, follow these steps:
+One Textarea control is added to the lightbox by default. To add another one, follow these steps:
 <ol>
     <li><b>Add the section to the lightbox configuration:</b>
 ~~~js

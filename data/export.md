@@ -2,15 +2,13 @@
 Serializing data to XML, JSON, iCal formats
 ========================================================
 
-Base prepartions 
+Making Preparations 
 -------------------------------
 To activate such functionality, include the **dhtmlxscheduler_serialize.js** extension file.
-
 
 ~~~js
 <script src='codebase/ext/dhtmlxscheduler_serialize.js'></script>
 ~~~
-
 
 
 
@@ -99,7 +97,7 @@ scheduler.data_attributes = function(){
 
 
 
-Basically, the method defines a list of attirubute names. 
+Basically, the method defines a list of attribute names. 
 
 
 But you can define the formatting function, which describes how attribute data needs to be processed before serialization.
@@ -146,20 +144,18 @@ Serialization allows you to implement a simple routine of data saving, which doe
 
 - First of all, include the serialization extension:
 
-~~~js
+~~~xml
 <script src='codebase/ext/dhtmlxscheduler_serialize.js'></script>
-
 ~~~
 
 
 - Then, place a hidden form for data saving on the page:
 
 
-~~~js
+~~~xml
 <form id="xml_form" action="xml_writer.php" method="post" target="hidden_frame" >
 	<input type="hidden" name="data" value="" id="data">
 </form>
-
 ~~~
 
 

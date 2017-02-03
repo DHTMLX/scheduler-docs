@@ -1,23 +1,54 @@
- What's New 
+What's New 
 ==============
 
+If you are updating scheduler from an older version, check migration_from_older_version.md for details.
 
+##4.4
 
-If you are updating scheduler from older version, check  migration_from_older_version.md for details.
+###Major Changes
+
+1. [Keyboard navigation](keyboard_navigation.md)
+2. [WAI-ARIA support](accessibility.md#waiariaattributes)
+3. [High-contrast themes](accessibility.md#highcontrastthemes)
+4. Initial support for [Content Security Policy](content_security_policy.md)
+
+###Minor Changes
+
+- [ability to enable markTimespan for the Month view](api/scheduler_marktimespan.md)
+- [ability to remove recurring marker from a specific date added](limits.md)
+- [ability to skip days in the Year view added](custom_scales.md)
+- [*delimiter* option of the Multiselect control](multiselect.md#properties)
+- [compatibility of external drag-n-drop with the latest dhtmlxSuite updated](dhtmlx_components_integration.md)
+- [merge CSP-improvements request from public repo](https://github.com/DHTMLX/scheduler/pull/11/)
+- minor performance improvements for [Timeline](timeline_view.md)
+- normalize z-index values, add styles for latest [dhtmlxCombo](combo.md)
+
+###Bug Fixes and Improvements
+
+- addEventNow must return id of new event
+- bug with drag-n-drop and ignored column in the Week view
+- check for undefined touch https://github.com/DHTMLX/scheduler/pull/21
+- click and keyboard focus issue on iPad
+- dataprocessor state must be cleared after scheduler.clearAll
+- JS errors in event handlers from SVG elements fixed
+- various bugs with Tooltip extension fixed
+- various issues with container_autosize extension fixed
+- many other fixes
 
 ##4.3
 1. ["Days" mode for Timeline view](timeline_view.md#daysmodedetails) was added (PRO version)
 2. Ability to present [units for multiple days in the Units view](units_view.md#displayingunitsformultipledays) (PRO version)
 3. New events for the ['expand' extension](extensions_list.md#expand) 
-4. New option - api/scheduler_now_date_config.md for the [Limit extension](extensions_list.html#limit) 
-5. New option - api/scheduler_touch_tooltip_config.md  for the [Tooltip extension](extensions_list.html#tooltip) 
-6. Ability to link events using the [URL extension](extensions_list.html#url)
+4. New option - api/scheduler_now_date_config.md for the [Limit extension](extensions_list.md#limit) 
+5. New option - api/scheduler_touch_tooltip_config.md  for the [Tooltip extension](extensions_list.md#tooltip) 
+6. Ability to link events using the [URL extension](extensions_list.md#url)
 7. Fixes for DST issues
 8. Fix for an issue with creating new events on touch devices in the Timeline view
 9. [Week Agenda](weekagenda_view.md), [Grid View](grid_view.html), [Timeline view](timeline_view.md), [Units View](units_view.md),
 [Multisection events](api/scheduler_multisection_config.md) (PRO version)
 
 ##4.2
+
 1. Ability to customize the layout of recurring form ([details](recurring_events.md#ustomcontrolforthelightboxsrecurringblock))
 2. Updated DataProcessor - REST mode and support of JSON response format ( [details](server_integration.md#savingdatafromrestserver))
 3. Updated D'n'D of the [multisection events](api/scheduler_multisection_shift_all_config.md) (PRO version)
@@ -29,6 +60,7 @@ If you are updating scheduler from older version, check  migration_from_older_ve
 9. Multiple minor fixes
     
 ##4.1
+
 1. New "Flat" skin  - ([details](skins.md#flatskin))
 2. Assigning events to several sections of [Timeline](timeline_view.md#assigningeventstoseveralsections) and [Units](units_view.md#assigningeventstoseveralunits) Views 
 (PRO version)
@@ -45,6 +77,7 @@ If you are updating scheduler from older version, check  migration_from_older_ve
 
 
 ##4.0
+
 1. Flexible time scales - some days, hours can be removed from time scale ([details](custom_scales.md))
 2. Ability to show "more events" links in the Month view ([details](month_view.md#limitingthenumberofeventsinacell))
 3. jQuery integration ([details](jquery_integration.md))
@@ -56,7 +89,7 @@ If you are updating scheduler from older version, check  migration_from_older_ve
 
 ##3.7 
 
-1.  Touch support ( tablets and touch monitors ) ([details](touch_support.md))
+1.  Touch support (tablets and touch monitors) ([details](touch_support.md))
 2.  Romanian locale added
 
 
@@ -105,7 +138,7 @@ If you are updating scheduler from older version, check  migration_from_older_ve
 
 ##2.3 
 
-###Major changes 
+###Major Changes 
 
 
 1.  Map view was added ([details](map_view.md))
@@ -116,7 +149,7 @@ If you are updating scheduler from older version, check  migration_from_older_ve
 6.  Ability to move events by drop-and-drag in Timeline mode
 7.  Ability to create new events by external drag and drop ([details](dhtmlx_components_integration.md))
 
-###Minor changes 
+### Minor Changes 
 
 
 + Week-number format option was added ([details](settings_format.md))
@@ -129,7 +162,7 @@ If you are updating scheduler from older version, check  migration_from_older_ve
 + api of mini-calendar extension extended ([details](minicalendar.md))
 + custom form implementation simplified ([details](custom_details_form.md#replacing_with_custom_form))
 
-#### Fixes 
+###Bug Fixes and Improvements
 
 
 + incorrect processing of specific iCal data sources
@@ -138,7 +171,7 @@ If you are updating scheduler from older version, check  migration_from_older_ve
 
 ##2.2 
 
-###Major changes 
+###Major Changes 
 
 
 1.  Export to XML, iCal, JSON added ([details](export.md))
@@ -150,25 +183,25 @@ If you are updating scheduler from older version, check  migration_from_older_ve
 7.  [Timeline view](timeline_view.md) was added 
 8.  Auto-fetching option lists from the server ([details](select.md#populatingthecontrolwithdatafromtheserver))
  
-###Minor changes 
+###Minor Changes 
 
 
-1.  hotkeys and some element's sizes are configurable now
-2.  step-like scrolling in the Units view ([details](units_view.md#scrollingunits)) (PRO version)
-3.  Arabic, Hungarian, Indonesian, Polish, Slovenian locales were added ([details](localization.md#included_locales))
-4.  18 new samples were added
+- hotkeys and some element's sizes are configurable now
+- step-like scrolling in the Units view ([details](units_view.md#scrollingunits)) (PRO version)
+- Arabic, Hungarian, Indonesian, Polish, Slovenian locales were added ([details](localization.md#included_locales))
+- 18 new samples were added
 
-###Bug fixes 
+###Bug Fixes and Improvements
 
 
-1.  many time-shifting related bugs
-2.  problems with recurring events in the Agenda view
-3.  problems with recurring events in the Year view
+- many time-shifting related bugs
+- problems with recurring events in the Agenda view
+- problems with recurring events in the Year view
   
 
 ##2.1 
 
-###Major changes 
+###Major Changes  
 
 
 1.  Agenda view was added ([details](agenda_view.md))
@@ -177,7 +210,7 @@ If you are updating scheduler from older version, check  migration_from_older_ve
 4.  Skin Builder for the scheduler was added
 5.  Count of samples was doubled
 
-###Full list of updates 
+###Full List of Updates 
 
 
 + agenda view
@@ -214,8 +247,7 @@ If you are updating scheduler from older version, check  migration_from_older_ve
 
 ##2.0 
 
-###Major changes 
-
+###Major Changes 
 
 1.  Added support of [Recurring events](recurring_events.md)
 2.  Added ability to create [Units view](units_view.md) (PRO version)

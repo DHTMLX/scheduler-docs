@@ -17,5 +17,6 @@ Configuring the Scheduler
 - quick_info.md
 - jquery_integration.md
 - accessibility.md
+- keyboard_navigation.md
 }}
 

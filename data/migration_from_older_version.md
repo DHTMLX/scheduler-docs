@@ -17,7 +17,7 @@ Public API - fully backward compatible
 ### Changed defaults
 
 Default skin changed to "terrace", ext/dhtmlxscheduler_dhx_terrace.js is removed.  
-To change skin back to classic one, just include the related css file (codebase/dhtmlxscheduler_classic.css) For more details check skins.md
+To change skin back to classic one, just include the related CSS file (codebase/dhtmlxscheduler_classic.css) For more details check skins.md
 
 api/scheduler_multi_day_config.md is enabled by default,and  if you want to revert such behavior, add:
 ~~~js
@@ -26,7 +26,7 @@ scheduler.config.multi_day = false;
 
 
 ### Custom skins
-Scheduler detects the used skin, based on name of css file, so if you are using custom skin ( which is not based on "terrace" ), rename its css file to dhtmlxscheduler_{skin name}.css. 
+Scheduler detects the used skin, based on name of CSS file, so if you are using custom skin ( which is not based on "terrace" ), rename its css file to dhtmlxscheduler_{skin name}.css. 
 Also, you can disable the skin auto-detection by adding the next line before scheduler.init
 
 scheduler.skin = "{skin name}";

@@ -17,7 +17,7 @@ To configure the tooltips you have 4 properties and 2 templates:
 Configuration properties
 ------------------------------------
 
-- **className** -  the name of a css class that will be applied to tooltips
+- **className** -  the name of the CSS class that will be applied to tooltips
 - **delta_x** - the right (if positive) offset of the cursor's position (by default, 15)
 - **delta_y**- the top (if positive) offset of the cursor's position (by default, -20)
 - **timeout_to_display** - the delay in milliseconds, before tooltip is displayed for an event(by default, 50)

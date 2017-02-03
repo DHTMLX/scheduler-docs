@@ -18,8 +18,11 @@ scheduler.hideQuickInfo();
 
 @related:
 	touch_support.md
+    extensions_list.md#quickinfo
 @relatedapi:
 	api/scheduler_showquickinfo.md
     api/scheduler_quick_info_detached_config.md
+    api/scheduler_onafterquickinfo_event.md
+    api/scheduler_onquickinfo_event.md
 
 

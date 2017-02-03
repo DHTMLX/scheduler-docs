@@ -7,6 +7,7 @@ Methods
 - api/scheduler_addeventnow.md - adds a new event and opens the lightbox to confirm
 - api/scheduler_addmarkedtimespan.md - marks dates, but with certain settings makes blocking (unlike blockTime() allows setting custom styling for the limit)
 - api/scheduler_addsection.md - adds a section to the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+- api/scheduler_addshortcut.md - adds a new keyboard shortcut
 - api/scheduler_attachevent.md - attaches the handler to an inner event of dhtmlxScheduler
 - api/scheduler_backbone.md - makes the scheduler reflect all data changes in the Backbone model and vice versa
 - api/scheduler_blocktime.md - blocks the specified date and applies the default 'dimmed' style to it.
@@ -32,7 +33,10 @@ Methods
 - api/scheduler_edit.md - opens the inline editor to alter the event's text  (the editor in the event's box)
 - api/scheduler_editstop.md - closes the inline event editor, if it's currently open
 - api/scheduler_endlightbox.md - closes the lightbox
+- api/scheduler_event.md - attaches an event handler to an HTML element
+- api/scheduler_eventremove.md - removes an event handler from an HTML element
 - api/scheduler_expand.md - expands the scheduler to the full screen view
+- api/scheduler_focus.md - sets focus on the scheduler
 - api/scheduler_formsection.md - gives access to the objects of lightbox's sections
 - api/scheduler_getactiondata.md - returns the current cursor-pointed date and section (if defined)
 - api/scheduler_getevent.md - returns the event object by its id
@@ -62,6 +66,7 @@ Methods
 - api/scheduler_openallsections.md - opens all sections in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
 - api/scheduler_opensection.md - opens the specified section in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
 - api/scheduler_parse.md - loads data from a client-side resource
+- api/scheduler_removeshortcut.md - removes a keyboard shortcut
 - api/scheduler_rendercalendar.md - creates a mini calendar
 - api/scheduler_renderevent.md - generates HTML content for a custom event's box
 - api/scheduler_resetlightbox.md - removes the current lightbox's HTML object element
@@ -102,6 +107,7 @@ Methods
 - api/scheduler_addeventnow.md
 - api/scheduler_addmarkedtimespan.md
 - api/scheduler_addsection.md
+- api/scheduler_addshortcut.md
 - api/scheduler_attachevent.md
 - api/scheduler_backbone.md
 - api/scheduler_blocktime.md
@@ -127,7 +133,10 @@ Methods
 - api/scheduler_edit.md
 - api/scheduler_editstop.md
 - api/scheduler_endlightbox.md
+- api/scheduler_event.md
+- api/scheduler_eventremove.md
 - api/scheduler_expand.md
+- api/scheduler_focus.md
 - api/scheduler_formsection.md
 - api/scheduler_getactiondata.md
 - api/scheduler_getevent.md
@@ -157,6 +166,7 @@ Methods
 - api/scheduler_openallsections.md
 - api/scheduler_opensection.md
 - api/scheduler_parse.md
+- api/scheduler_removeshortcut.md
 - api/scheduler_rendercalendar.md
 - api/scheduler_renderevent.md
 - api/scheduler_resetlightbox.md

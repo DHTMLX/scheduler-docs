@@ -6,6 +6,7 @@ Events
 - api/scheduler_onaftereventdisplay_event.md - fires when the scheduler switches views, days, time etc. to show the event specified by the 'showEvent' method and fires AFTER the event is displayed
 - api/scheduler_onafterfoldertoggle_event.md - fires after a tree branch was opened or closed (the Timeline view, 'tree' mode only)
 - api/scheduler_onafterlightbox_event.md - fires after the user has closed the lightbox (edit form)
+- api/scheduler_onafterquickinfo_event.md - fires after the pop-up event form is closed
 - api/scheduler_onafterschedulerresize_event.md - fires after the scheduler has changed its size and data area was repainted
 - api/scheduler_onbeforecollapse_event.md - fires when a user clicks on the expand icon to change the scheduler's size from 'full screen' to original.
 - api/scheduler_onbeforedrag_event.md - fires when the user starts the drag/resize operation (version 2.1+)
@@ -30,6 +31,7 @@ Events
 - api/scheduler_oncollapse_event.md - fires when a user clicks on the expand icon to change the scheduler's size from 'full screen' to original.
 - api/scheduler_onconfirmedbeforeeventdelete_event.md - fires after the user clicks on the delete button and confirms the deletion (in the event's bar or details window)
 - api/scheduler_oncontextmenu_event.md - fires when the user calls the context menu by clicking the right mouse button inside the scheduler
+- api/scheduler_ondatarender_event.md - fires after data has been rendered on the page
 - api/scheduler_ondblclick_event.md - fires when the user double clicks on an event
 - api/scheduler_ondragend_event.md - fires when the drag/resize operation is finished
 - api/scheduler_onemptyclick_event.md - fires when the user clicks on an empty space in the scheduler (not on events)
@@ -61,7 +63,8 @@ Events
 - api/scheduler_onoptionsload_event.md - fires after a collection of options or sections has been loaded from the server, but isn't parsed yet
 - api/scheduler_onoptionsloadfinal_event.md - fires after loading of an options(sections) collection  is complete (the Timeline view only)
 - api/scheduler_onoptionsloadstart_event.md - fires before a collection of options or sections  starts to be loaded from the server  (the Timeline view only)
-- api/scheduler_onsaveerror_event.md - fires when some error happened while data updating
+- api/scheduler_onquickinfo_event.md - fires when the pop-up edit form appears
+- api/scheduler_onsaveerror_event.md - fires when some error has happened during data updating
 - api/scheduler_onscaleadd_event.md - fires after a single view unit (column, section, day cell etc.) has been rendered in the scheduler
 - api/scheduler_onscaledblclick_event.md - fires when the user double clicks on the time scale
 - api/scheduler_onschedulerready_event.md - fires after scheduler initialization is complete, but the scheduler is not rendered on the page yet.
@@ -82,6 +85,7 @@ Events
 - api/scheduler_onaftereventdisplay_event.md
 - api/scheduler_onafterfoldertoggle_event.md
 - api/scheduler_onafterlightbox_event.md
+- api/scheduler_onafterquickinfo_event.md
 - api/scheduler_onafterschedulerresize_event.md
 - api/scheduler_onbeforecollapse_event.md
 - api/scheduler_onbeforedrag_event.md
@@ -106,6 +110,7 @@ Events
 - api/scheduler_oncollapse_event.md
 - api/scheduler_onconfirmedbeforeeventdelete_event.md
 - api/scheduler_oncontextmenu_event.md
+- api/scheduler_ondatarender_event.md
 - api/scheduler_ondblclick_event.md
 - api/scheduler_ondragend_event.md
 - api/scheduler_onemptyclick_event.md
@@ -137,6 +142,7 @@ Events
 - api/scheduler_onoptionsload_event.md
 - api/scheduler_onoptionsloadfinal_event.md
 - api/scheduler_onoptionsloadstart_event.md
+- api/scheduler_onquickinfo_event.md
 - api/scheduler_onsaveerror_event.md
 - api/scheduler_onscaleadd_event.md
 - api/scheduler_onscaledblclick_event.md

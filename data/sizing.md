@@ -11,7 +11,7 @@ I want short events to fit the scale.](sizing.md#howtomakeshorteventsfitthescale
 I want such short events not to overlap.](sizing.md#preventingshorteventsfromoverlapping)
   
   
-**Problem 3:** [I change the scale unit height and want to change the striped background accordingly.](sizing.md#howtochangethebackgroundaccordinglytothescaleset)
+**Problem 3:** [I change the scale unit height and want to change the striped background accordingly.](sizing.md#howtochangethebackgroundaccordingtothesetscale)
   
   
 **Problem 4:** [The default scale spacing is 1 hour. I want to change it and make, for example, 30 minutes.](sizing.md#howtochangethescalespacing)

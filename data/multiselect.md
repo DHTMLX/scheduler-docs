@@ -1,4 +1,3 @@
-
  Multiselect 
 ==============
 A set of check boxes.
@@ -81,7 +80,7 @@ The following properties are mostly important and commonly set for the 'multisel
 		</tr>
         <tr>
 			<td class="webixdoc_links0"  style="vertical-align: top;"><b>options</b></td>
-			<td>(<i>array of objects</i>) defines select options of the control (<b>for 'select', 'multiselect, 'radio' controls</b>).<br> Each object in the array specifies a single option and takes these properies:
+			<td>(<i>array of objects</i>) defines select options of the control (<b>for 'select', 'multiselect, 'radio' controls</b>).<br> Each object in the array specifies a single option and takes these properties:
             	<ul>
 					<li><b>key</b> -   (<i>string</i>) the option's id. This attribute is compared with the event's data property to assign options to events</li>
 					<li><b>label</b> -   (<i>string</i>) the option's label</li>
@@ -95,6 +94,11 @@ The following properties are mostly important and commonly set for the 'multisel
 		<tr>
 			<td class="webixdoc_links0"><b>vertical</b></td>
 			<td>(<i>boolean</i>) specifies, whether multiselect buttons should be placed vertically(<i>true</i>) or horizontally  (<b>for the 'select' control only</b>)</td>
+		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>delimiter</b></td>
+			<td>(<i>string</i>) specifies the delimeter that will be used to separate values of the multiselect. If this property isn't set, the api/scheduler_section_delimiter_config.md
+            config will be applied</td>
 		</tr>
     </tbody>
 </table>

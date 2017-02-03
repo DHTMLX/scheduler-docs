@@ -30,14 +30,14 @@ Follow these steps, to integrate the scheduler with <a src="http://docs.dhtmlx.c
 ...
 ~~~
 	</li>
-    <li>Initialize dhtmlxTree component (see instuctions <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxtree:initialization_of_dhtmlxtree">here</a>) :
+    <li>Initialize dhtmlxTree component (see instructions <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxtree:initialization_of_dhtmlxtree">here</a>) :
 ~~~js
 var tree = new dhtmlXTreeObject("treebox", "100%", "100%", 0);
 tree.setImagePath("../common/dhtmlxTree/imgs/csh_yellowbooks/");
 tree.loadXML("./data/tree.xml");
 ~~~
 	</li>
-    <li>Enable drag-and-drop in the dhtmlxTree component (see instuctions <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxtree:drag_and_drop_handling">here</a>) :
+    <li>Enable drag-and-drop in the dhtmlxTree component (see instructions <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxtree:drag_and_drop_handling">here</a>) :
 ~~~js
 tree.enableDragAndDrop(true);
 ~~~

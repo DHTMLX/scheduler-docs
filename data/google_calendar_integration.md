@@ -8,7 +8,7 @@ Introduction
 
 In this chapter you'll find out, how to keep Scheduler and Google Calendar in sync.
   
-Note, that the sync is 2-way, i.e. any changes, you make to events in either Scheduler or Google Calendar. will be reflected in both applications.
+Note, that the sync is 2-way, i.e. any changes you make to events in either Scheduler or Google Calendar will be reflected in both applications.
 
 - If you alter the same event in both applications, the latest update will be synced between Scheduler and Google Calendar.
 - If you delete an event in one of the calendars, this event will be deleted from both applications.
@@ -18,7 +18,7 @@ Note, that the sync is 2-way, i.e. any changes, you make to events in either Sch
 
 ## Getting started
 
-To start the integration, do the following preperations: 
+To start the integration, do the following preparations: 
 
 1. Login to the **Google API console** - <a href="https://code.google.com/apis/console">https://code.google.com/apis/console</a>.
 2. Click on the **"Create new project"** button. The **"Google apis"** screen opens.
@@ -62,7 +62,7 @@ where
 **Client-side:**
 
 <ol>
-	<li>Open the HTML file containing the initialized scheduler or initialize one in a standard way (see details in the how_to_start.md article).</li>
+	<li>Open the HTML file containing the initialized scheduler or initialize one in a standard way (see details in the article how_to_start.md).</li>
 	<li>Load Google Calendar's events to the scheduler through the api/scheduler_load.md method. The 1st parameter is the path to the 'data.php' file, the 2nd parameter - expected data format that should be 'json'.
    
 ~~~js
@@ -95,7 +95,8 @@ _Google Calendar_ ->  Scheduler
 - endTime -> end_date  
   
  
-To process some other properties, make changes in the **"src/google_proxy.php"** file, resided in the provided package ([link to download](https://github.com/DHTMLX/scheduler-google-calendar/archive/master.zip)).
+To process some other properties, make changes in the **"src/google_proxy.php"** file, resided in the provided package 
+([link to download](https://github.com/DHTMLX/scheduler-google-calendar/archive/master.zip)).
 
 @index: 
 - synchronization_with_google_calendar.md

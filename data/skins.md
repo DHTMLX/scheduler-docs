@@ -77,8 +77,8 @@ To apply the 'Contrast White' skin, include the CSS file as in:
 
 ## Skin Detection
 
-By default, the scheduler autodetects the skin by  the name of a css file in use.  
-If you need to rename the css file, you can force correct skin usage by adding code like next:
+By default, the scheduler autodetects the skin by  the name of a CSS file in use.  
+If you need to rename the CSS file, you can force correct skin usage by adding code like next:
 
 ~~~js
 scheduler.skin = "classic"; //valid values are classic, glossy, terrace

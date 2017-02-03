@@ -285,7 +285,7 @@ scheduler.locale={
 ~~~
 
 
-In case of reccuring events, it requires a bit more complex operation. 
+In case of recurring events, it requires a bit more complex operation. 
 In addition to the above step, you will need to made  a copy of the **sources/repeat_template.html** file
 and translate all text messages in it to the target language. After that, the translated html file needs converting in a single-line js string
 

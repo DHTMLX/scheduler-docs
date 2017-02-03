@@ -160,8 +160,8 @@ To enable the possibility:
 ~~~
 
 
-
-After this,  you can specify several sections ([ by default, delimited with a comma](api/scheduler_section_delemiter_config.md)) in the related data property of the event and the event will be rendered in all specified units:
+After this you can specify several sections ([by default, delimited with a comma](api/scheduler_section_delimiter_config.md))
+in the related data property of the event and the event will be rendered in all specified units:
 
 ~~~js
 scheduler.createUnitsView({
