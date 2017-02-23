@@ -8,7 +8,7 @@ The PHP version of the package: [http://dhtmlx.com/x/download/regular/scheduler-
 The Java version of the package: [http://dhtmlx.com/x/download/regular/scheduler-pdf-java.zip](http://dhtmlx.com/x/download/regular/scheduler-pdf-java.zip)
   
   
-The .NET version of the package: [http://dhtmlx.com/x/download/regular/scheduler-pdf-net.zip](http://dhtmlx.com/x/download/regular/scheduler-pdf-net.zip)
+The .NET version of the package: [https://github.com/DHTMLX/scheduler-export-net](https://github.com/DHTMLX/scheduler-export-net)
 
 {{sample
 04_export/05_standalone_export.html
