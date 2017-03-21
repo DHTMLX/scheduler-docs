@@ -3,10 +3,8 @@ Common Configuration Instructions
 
 To achieve the desired look for the scheduler, the library provides 3 objects: 
 
-
-
 - <a href="api/refs/scheduler.md#properties">scheduler.config</a> - configuration options for dates, scale, controls etc.
-- <a href="api/refs/scheduler.md#templates">scheduler.templates</a> - formatting templates for dates and titles used in the scheduler, tooltips and styling.
+- <a href="api/refs/scheduler_templates.md">scheduler.templates</a> - formatting templates for dates and titles used in the scheduler, tooltips and styling.
 - <a href="api/scheduler_xy_other.md">scheduler.xy</a> - options that set sizes of scheduler's elements
 
 ##scheduler.config

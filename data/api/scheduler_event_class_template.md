@@ -20,6 +20,10 @@ In case of the Timeline view, the template is applied to 'Bar' and 'Tree' modes 
 
 @views:day, month, week, year, units, timeline
 
+@relatedsample: 
+
+02_customization/06_templates.html
+
 @related:
 	day_view_templates.md
 	month_view_templates.md

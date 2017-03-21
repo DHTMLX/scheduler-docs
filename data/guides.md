@@ -97,7 +97,6 @@ The articles come around key procedures and problem-solving activities.
 		        Appearance and Styling 
 		    </h4>
 		    <ul id="styling_sublist">
-            	   <li>user_interface.md</li>
                    <li>skins.md</li>
                    <li>templates.md</li>
             </ul>
@@ -138,6 +137,17 @@ The articles come around key procedures and problem-solving activities.
         </td>
         <td class='topic_description'>Guides you through various extensions provided by the library for extending existing functionality.</td>
     </tr>
+    <tr>
+		<td id="data" class='topics'>
+		    <h4>
+		        User Interface Guide
+		    </h4>
+		    <ul id="data_sublist" >
+                    <li>user_interface.md</li>
+            </ul>
+        </td>
+		<td class='topic_description'>Describes the elements of Scheduler interface from the point of view of the end-user.</td>
+	</tr>
    	</tbody>
 </table>
 
@@ -150,3 +160,4 @@ The articles come around key procedures and problem-solving activities.
 - appearance_and_styling.md
 - data_export.md
 - special_extensions.md
+- user_interface.md
