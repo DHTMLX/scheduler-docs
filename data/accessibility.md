@@ -18,10 +18,10 @@ These are additional attributes which make the component recognizable for screen
 
 You can find more information in the [official specification](https://www.w3.org/WAI/intro/aria) of WAI-ARIA.
 
-WAI-ARIA attributes in Scheduler are enabled by default, to disable them you can use the *wai_aria_attributes* property with the *false* value:
+WAI-ARIA attributes in Scheduler are enabled by default. If needed, you can disable them by using use the *wai_aria_attributes* property with the *false* value:
 
 ~~~js
-scheduler.config.wai_aria_attributes = true;
+scheduler.config.wai_aria_attributes = false;
 ~~~
 
 Keyboard Navigation

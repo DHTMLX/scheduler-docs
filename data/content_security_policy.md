@@ -1,7 +1,7 @@
 Content Security Policy Compliance
 ====================================
 
-Content Security Policy Compliance (CSP) is a web standard used to prevent unauthorized JavaScript execution. 
+Content Security Policy (CSP) is a web standard used to prevent unauthorized JavaScript execution. 
 
 The dhtmlxScheduler library provides the **ext/dhtmlxscheduler_csp.js** extension that allows working with dhtmlxScheduler 
 in case Content Security Policy (CSP) is enabled in the app. It enhances the security of created apps. 
