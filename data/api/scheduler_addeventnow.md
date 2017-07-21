@@ -66,8 +66,4 @@ The event object can have the following properties:
 
 <br>
 
-There is also a possibility to pass the event object to the method as a list of string values:
 
-~~~js
-scheduler.addEvent("16-06-2013 09:00","16-06-2013 14:00","Summit", {holder:"Alex"})
-~~~

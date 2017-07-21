@@ -13,8 +13,8 @@ scheduler.addEvent({
 	start_date: "16-06-2013 09:00",
 	end_date:	"16-06-2013 12:00",
 	text:	"Meeting",
-	holder:	"John", //userdata
-    room:	"5"     //userdata
+	holder:	"John", // userdata
+    room:	"5"     // userdata
 });
 
 
@@ -62,9 +62,4 @@ The event object can have the following properties:
 
 <br>
 
-There is also a possibility to pass the event object to the method as a list of string values:
-
-~~~js
-scheduler.addEvent("16-06-2013 09:00","16-06-2013 12:00","Meeting", {holder:"John"})
-~~~
 
