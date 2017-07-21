@@ -1,5 +1,6 @@
  Exporting Scheduler to PDF
 ===========================
+
 Starting from version 4.1, dhtmlxScheduler provides a new approach for exporting the scheduler into the PDF format - 
 an [online export service](pdf.md#defaultexporttopdf).
 
@@ -14,7 +15,7 @@ Using Export Services
 There are several export services available. You can install them on your computer and export Scheduler to PDF locally.
 
 Note that export services are not included into the Scheduler package, 
-read the [corresponding article](http://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
+read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
 
 
 Default Export to PDF
@@ -23,10 +24,10 @@ Default Export to PDF
 To export scheduler as a PDF document, do the following steps:
 
 <ol>
-	<li>Include the <a href="http://export.dhtmlx.com/scheduler/api.js" target="_blank">http://export.dhtmlx.com/scheduler/api.js</a> file on the page to enable the online export service: <br> <br>
+	<li>Include the <a href="https://export.dhtmlx.com/scheduler/api.js" target="_blank">https://export.dhtmlx.com/scheduler/api.js</a> file on the page to enable the online export service: <br> <br>
 ~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
-<script src="http://export.dhtmlx.com/scheduler/api.js"></script>  /*!*/
+<script src="https://export.dhtmlx.com/scheduler/api.js"></script>  /*!*/
 <link rel="stylesheet" href="codebase/dhtmlxscheduler.css" type="text/css">
 ~~~
 </li>
@@ -149,7 +150,7 @@ Note, the aforementioned solution works for the global HTTP reference. If you ha
 
 ~~~js
 scheduler.exportToPDF({
-	header:"<style>.tier1{   background: red;   color:white;}</style>"
+	header:"<style>.tier1{background: red; color:white;}</style>"
 });
 ~~~
 

@@ -2,13 +2,12 @@ Export to PDF (version 4.0)
 ============================
 
 ## Installation 
-The PHP version of the package: [http://dhtmlx.com/x/download/regular/scheduler-pdf-php.zip](http://dhtmlx.com/x/download/regular/scheduler-pdf-php.zip)
+
+The PHP version of the package: [https://github.com/DHTMLX/scheduler-to-pdf-php](https://github.com/DHTMLX/scheduler-to-pdf-php)
   
+The Java version of the package: [https://github.com/DHTMLX/scheduler-to-pdf-java](https://github.com/DHTMLX/scheduler-to-pdf-java)
   
-The Java version of the package: [http://dhtmlx.com/x/download/regular/scheduler-pdf-java.zip](http://dhtmlx.com/x/download/regular/scheduler-pdf-java.zip)
-  
-  
-The .NET version of the package: [https://github.com/DHTMLX/scheduler-export-net](https://github.com/DHTMLX/scheduler-export-net)
+The .NET version of the package: [https://github.com/DHTMLX/scheduler-to-pdf-net](https://github.com/DHTMLX/scheduler-to-pdf-net)
 
 {{sample
 04_export/05_standalone_export.html
@@ -18,9 +17,8 @@ The .NET version of the package: [https://github.com/DHTMLX/scheduler-export-net
 
 On the scheduler page, include one more extension:
 
-~~~js
+~~~html
 <script src="codebase/ext/dhtmlxscheduler_pdf.js"></script>
-
 ~~~
 
 
@@ -32,7 +30,7 @@ In older versions of the scheduler this file can be missed in the codebase folde
 To export scheduler data to PDF, you just need to add on the page a button, which will call the **toPDF()** method. The parameter of the **toPDF()** method is the URL of the script, which has been installed previously:
 
 
-~~~js
+~~~html
 <input type="button" name="save" value="save" 
 onclick="scheduler.toPDF('path/to/folder/generate.php')" 
 style="right:300px; width:80px; position:absolute; top:1px;">
@@ -43,9 +41,11 @@ style="right:300px; width:80px; position:absolute; top:1px;">
 
 
 ## Configuring service 
-To configure the export options, you need to deal with both client- and server-sides.
 
-### Client-side 
+To configure the export options, you need to deal with both client and server sides.
+
+### Client side 
+
 As mentioned above, for export activation you should use the method **toPDF()**:
 
 ~~~js
@@ -76,7 +76,8 @@ scheduler.toPDF('path/to/folder/generate.php','gray');
 ~~~
 
 
-## Server-side
+## Server side
+
 In the code snippet above _generate.php_ is a php file that defines export options.
   
   
@@ -129,7 +130,7 @@ $scPDF->todayFontSize = 11;
 ~~~
 
 
-**Custom colors** ( make sure, you use the 'custom' value as the name of colormap on client-side ):
+**Custom colors** (make sure, you use the 'custom' value as the name of the colormap on the client side):
 
 ~~~php
 $scPDF->lineColor = '586A7E';
@@ -166,24 +167,21 @@ $scPDF->footerImg = './footer.png';
 
 
 ## Header and Footer 
+
 It's possible to define custom header and footer for each page.
-  
    
 To achieve that, do the following steps: 
 
 
 + create images with the names  "_header.png_" and "_footer.png_".
 + copy those images to the same folder where _generate.php_ resides. 
-+ on client-side, change thr code's call as:
-  
-   
-  
++ on the client side, change the code's call as:
+    
    
 ~~~js
 scheduler.toPDF(url, "color", true, true);
 
 ~~~
-
 
 As a result, you will have "_header.png_" and "_footer.png_" images as the header and footer on all pages in the generated PDF file. 
 
@@ -206,7 +204,7 @@ $debug = true;
 ~~~
 
 
-As a result, there will be a new file saved, with the name "debug_xxxxx.xml". Please, send it with the related error report. 
+As a result, there will be a new file saved. It will be called like "debug_xxxxx.xml". Please, send it with the related error report. 
 
 
 @index:

@@ -1,7 +1,7 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Scheduler 4.4</h2>
+    <h2>Meet Scheduler 4.4!</h2>
     
     <p>
     Version 4.4 continues to bring new improvements and features:

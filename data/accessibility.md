@@ -8,7 +8,7 @@ To make an easier access and interaction with DHTMLXScheduler for people with di
 
 - WAI-ARIA Attributes
 - Keyboard  Navigation
-- High-Contrast Theme
+- High-Contrast Themes
 
 WAI-ARIA Attributes
 ----------------------

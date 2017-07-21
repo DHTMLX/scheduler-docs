@@ -5,13 +5,14 @@ Starting from version 4.2, dhtmlxScheduler provides  a possibility to export all
 
 Export to Excel
 -------------------
+
 To export scheduler's data to an Excel document, do the following steps:
 
 <ol>
-	<li>Include the <b>"http://export.dhtmlx.com/scheduler/api.js"</b> file on the page to enable the online export service:
+	<li>Include the <b>"https://export.dhtmlx.com/scheduler/api.js"</b> file on the page to enable the online export service:
 ~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
-<script src="http://export.dhtmlx.com/scheduler/api.js"></script>  /*!*/
+<script src="https://export.dhtmlx.com/scheduler/api.js"></script>  /*!*/
 <link rel="stylesheet" href="codebase/dhtmlxscheduler.css" type="text/css">
 ~~~
 </li>
@@ -70,13 +71,14 @@ scheduler.exportToExcel({
 
 Export to iCal
 -------------------
+
 To export scheduler's data to an iCal string, do the following steps:
 
 <ol>
-	<li>Include the <b>"http://export.dhtmlx.com/scheduler/api.js"</b> file on the page to enable the online export service:
+	<li>Include the <b>"https://export.dhtmlx.com/scheduler/api.js"</b> file on the page to enable the online export service:
 ~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
-<script src="http://export.dhtmlx.com/scheduler/api.js"></script>  /*!*/
+<script src="https://export.dhtmlx.com/scheduler/api.js"></script>  /*!*/
 <link rel="stylesheet" href="codebase/dhtmlxscheduler.css" type="text/css">
 ~~~
 </li>
