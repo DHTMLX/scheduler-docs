@@ -1,26 +1,29 @@
- Tooltips 
+Tooltips 
 ==============
-To display tooltips for events you should include the **dhtmlxscheduler_tooltip.js** extension once on the page.
+
+To display tooltips for events, you should include the **dhtmlxscheduler_tooltip.js** extension once on the page.
 
 ~~~js
 <script src="codebase/ext/dhtmlxscheduler_tooltip.js"></script>
 ~~~
 
-
 After that tooltips will be displayed with the default settings.
 
-<img src="tooltip.png"/>
-  
+<img src="tooltip.png">
 
-To configure the tooltips you have 4 properties and 2 templates:
+
+{{sample 03_extensions/20_tooltip.html}}
+<br><br>
+
+To configure the tooltips, you have 4 properties and 2 templates:
 
 Configuration properties
 ------------------------------------
 
 - **className** -  the name of the CSS class that will be applied to tooltips
-- **delta_x** - the right (if positive) offset of the cursor's position (by default, 15)
-- **delta_y**- the top (if positive) offset of the cursor's position (by default, -20)
-- **timeout_to_display** - the delay in milliseconds, before tooltip is displayed for an event(by default, 50)
+- **delta_x** - the right (if positive) offset of the cursor position (by default, 15)
+- **delta_y**- the top (if positive) offset of the cursor position (by default, -20)
+- **timeout_to_display** - the delay in milliseconds, before tooltip is displayed for an event (by default, 50)
 
 ~~~js
 dhtmlXTooltip.config.className = 'dhtmlXTooltip tooltip'; 
@@ -31,6 +34,7 @@ dhtmlXTooltip.config.delta_y = -20;
 
 Templates
 ------------------------------------------
+
 - api/scheduler_tooltip_text_template.md - specifies the text of tooltips  
 - api/scheduler_tooltip_date_format_template.md - specifies the format of start and end dates displayed in the tooltip
 
