@@ -64,6 +64,7 @@ scheduler.createTimelineView({
 In the 'Days' mode, time scale must cover 1 day exactly. If your configuration specifies a shorter or longer period - timeline will be rendered incorrectly.
 }}
 
+
 ###Scale configuration example
 
 In spite of a big number of parameters used in the api/scheduler_createtimelineview.md method, it's quite simple. 
@@ -87,6 +88,47 @@ Let's consider an example - the time scale from 09:00 to 15:00 with 30 minutes s
 }
 ~~~
 
+
+Configuring Timeline View
+----------------------------------
+
+{{note It's important that you need to configure the Timeline unit view after its creation.}}
+
+All template functions the names of which have *{timeline}_some* in their name should be specified after the view's creation, since 
+they are defined dynamically from the timeline constructor and will be overwritten by the **createTimeline()** call. 
+
+###Setting the start date for the Timeline view
+
+For example, let's have a look at how the start date of the Timeline view should be set.  
+
+The start date of any view is defined by a *scheduler.date[<viewName> +"_start"]* function.
+In order to change the first date of the timeline scale, you need to override the *scheduler.date.timeline_start* function after the *scheduler.createTimelineView()* call:
+
+~~~js
+// set week start
+TcTbK.config.start_on_monday = true;
+
+// initialize timeline 
+TcTbK.createTimelineView({
+	name: "timeline",
+	render: "tree",
+	days: 7,
+	folder_dy : 20,
+	x_unit: "day",
+	x_date: "%D %j %F",
+	x_step: 1,
+	x_size: 7,
+	x_start: 0,
+	x_length: 7,
+	y_unit:[],
+	y_property: "section_id"
+});
+
+// configure timeline after it's created
+TcTbK.date.timeline_start = TcTbK.date.week_start;
+
+TcTbK.init("timeline_tree",new Date(),"timeline");
+~~~
 
 
 Dynamic changing of properties
