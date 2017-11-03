@@ -6,7 +6,7 @@ onBeforeEventDragOut
 
 @params:
 - id	string	the event's id
-- ev	object	the event's object
+- ev	object	the event's data object
 - e		Event	a native event object
 
 

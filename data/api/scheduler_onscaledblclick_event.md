@@ -7,7 +7,9 @@ onScaleDblClick
 @params:
 
 @example:
-
+scheduler.attachEvent("onScaleDblClick", function(){
+    // any custom logic here
+});
 
 @template:	api_event
 @descr:

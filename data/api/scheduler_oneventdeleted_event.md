@@ -6,9 +6,10 @@ onEventDeleted
 
 @params: 
 - id	string		the event's id
+- ev	object		the event's object		
 
 @example: 
-scheduler.attachEvent("onEventDeleted", function(id){
+scheduler.attachEvent("onEventDeleted", function(id,ev){
     // custom code
 });
 
