@@ -20,11 +20,12 @@ scheduler.createTimelineView({
      x_size:	24,
      x_start:	16,
      x_length:	48,
-     y_unit:
-     	[	{key:1, label:"Section A"},
-        	{key:2, label:"Section B"},
-        	{key:3, label:"Section C"},
-        	{key:4, label:"Section D"}	],
+     y_unit:[	
+     	{key:1, label:"Section A"},
+        {key:2, label:"Section B"},
+        {key:3, label:"Section C"},
+        {key:4, label:"Section D"}	
+     ],
      y_property:"section_id",
      render:	"bar"
 });
@@ -170,6 +171,7 @@ The configuration object of the Units view can have the following properties:
 
 Dynamic changing of properties
 -------------------------------------
+
 All defined timeline objects are stored in the scheduler.matrix object.
 You can access the configuration  of any timeline view by its name and change any property. Changes will be applied as soon as you update the scheduler:
 
@@ -184,9 +186,9 @@ where 'timeline' is the name of the timeline view as specified in the api/schedu
 
 ~~~js
 scheduler.createTimelineView({
-name:'timeline',
-...
-})
+	name:'timeline',
+	...
+});
 ~~~
 
 @edition:pro

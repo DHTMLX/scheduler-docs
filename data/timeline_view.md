@@ -92,28 +92,26 @@ Let's consider an example - the time scale from 09:00 to 15:00 with 30 minutes s
 Configuring Timeline View
 ----------------------------------
 
-{{note It's important that you need to configure the Timeline unit view after its creation.}}
-
 All template functions the names of which have *{timeline}_some* in their name should be specified after the view's creation, since 
-they are defined dynamically from the timeline constructor and will be overwritten by the **createTimeline()** call. 
+they are defined dynamically from the timeline constructor and will be overwritten by the api/scheduler_createtimelineview.md call. 
 
 ###Setting the start date for the Timeline view
 
-For example, let's have a look at how the start date of the Timeline view should be set.  
+For example, let's have a look how the start date of the Timeline view should be set.  
 
 The start date of any view is defined by a *scheduler.date[<viewName> +"_start"]* function.
-In order to change the first date of the timeline scale, you need to override the *scheduler.date.timeline_start* function after the *scheduler.createTimelineView()* call:
+In order to change the first day of the timeline scale, you need to override the *scheduler.date.timeline_start* function after the *scheduler.createTimelineView()* call:
 
 ~~~js
-// set week start
-TcTbK.config.start_on_monday = true;
+// set the 1st day of the week
+scheduler.config.start_on_monday = true;
 
-// initialize timeline 
-TcTbK.createTimelineView({
+// create a timeline in the scheduler
+scheduler.createTimelineView({
 	name: "timeline",
 	render: "tree",
 	days: 7,
-	folder_dy : 20,
+	folder_dy: 20,
 	x_unit: "day",
 	x_date: "%D %j %F",
 	x_step: 1,
@@ -124,10 +122,11 @@ TcTbK.createTimelineView({
 	y_property: "section_id"
 });
 
-// configure timeline after it's created
-TcTbK.date.timeline_start = TcTbK.date.week_start;
+// configure the timeline after it's created
+scheduler.date.timeline_start = scheduler.date.week_start;
 
-TcTbK.init("timeline_tree",new Date(),"timeline");
+// initialize a scheduler
+scheduler.init("timeline_tree",new Date(),"timeline");
 ~~~
 
 
@@ -146,8 +145,8 @@ where 'timeline' is the name of the timeline view as specified in the api/schedu
 
 ~~~js
 scheduler.createTimelineView({
-name:'timeline',
-...
+	name:'timeline',
+	...
 })
 ~~~
 
@@ -561,7 +560,6 @@ scheduler.createTimelineView({
 <img src="stretching_events_01.png"/>
 
 
-
 **round_position:true**
 
 <img src="stretching_events_02.png"/>
@@ -573,7 +571,6 @@ of the [sort](api/scheduler_createtimelineview.md) parameter:
 
 
 This function will be called for each pair of adjacent values and return 1,-1 or 0:
-
 
 
 - **1** - an object with the first value in pair must go before the second one;
@@ -600,11 +597,6 @@ scheduler.createTimelineView({
 	}
 });
 ~~~
-
-
-
-
-
 
 
 Related guides
