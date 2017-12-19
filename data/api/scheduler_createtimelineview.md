@@ -6,8 +6,7 @@ createTimelineView
 
 
 @params:
-- config	object	the configuration object of the Timeline view
-
+- config		object		the configuration object of the Timeline view
 
 
 @example: 
@@ -26,7 +25,7 @@ scheduler.createTimelineView({
         {key:3, label:"Section C"},
         {key:4, label:"Section D"}	
      ],
-     y_property:"section_id",
+     y_property: "section_id",
      render:	"bar"
 });
 
@@ -41,7 +40,8 @@ scheduler.createTimelineView({
     06_timeline/03_tree.html
     
 @descr: 
-The configuration object of the Units view can have the following properties:
+The configuration object of the Timeline view can have the following properties:
+
 <table class="webixdoc_links">
 	<tbody>
     	<tr>
@@ -172,21 +172,20 @@ The configuration object of the Units view can have the following properties:
 Dynamic changing of properties
 -------------------------------------
 
-All defined timeline objects are stored in the scheduler.matrix object.
-You can access the configuration  of any timeline view by its name and change any property. Changes will be applied as soon as you update the scheduler:
+All defined timeline objects are stored in the **scheduler.matrix** object.
+You can access the configuration of any timeline view by its name and change any property. Changes will be applied as soon as you update the scheduler:
 
 ~~~js
-scheduler.matrix['timeline'].x_size = 12;
-scheduler.setCurrentView();//redraws scheduler
+scheduler.matrix["timeline"].x_size = 12;
+scheduler.setCurrentView(); // redraws scheduler
 ~~~
 
-<br>
 
-where 'timeline' is the name of the timeline view as specified in the api/scheduler_createtimelineview.md method:
+where "timeline" is the name of the timeline view as specified in the api/scheduler_createtimelineview.md method:
 
 ~~~js
 scheduler.createTimelineView({
-	name:'timeline',
+	name:"timeline",
 	...
 });
 ~~~
