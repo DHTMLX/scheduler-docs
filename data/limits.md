@@ -1,4 +1,4 @@
- Blocking and Marking dates
+Blocking and Marking Dates
 ==============
 
 The library provides the **ext/dhtmlxscheduler_limit.js** extension that allows you to block and mark (highlight) certain dates or date ranges.
