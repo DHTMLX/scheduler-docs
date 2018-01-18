@@ -1,11 +1,11 @@
-
  Localization 
 ==============
 
-The library  supports scheduler's localization  by providing a number of predefined locales and means for creating custom ones.
+The library  supports scheduler's localization  by providing a number of predefined locales and means of creating custom ones.
 
 ##Activation
-To set the desired language for the scheduler - include the related locale '*js*' file on the page. For example, to present the scheduler in Spanish you need to have the following files included on the page:
+
+To set the desired language for the scheduler, include the related locale '*js*' file on the page. For example, to present the scheduler in Spanish you need to have the following files included on the page:
 
 
 ~~~html
@@ -24,6 +24,7 @@ Make sure that you use **charset="utf-8"**, because all locales are stored as UT
 }}
 
 ###Recurring events
+
 If you are using recurring events, one more file needs including  - the localized form for recurring events.
 
 ~~~html
@@ -32,11 +33,11 @@ If you are using recurring events, one more file needs including  - the localize
 
 <script src="../sources/locale/locale_es.js" type="text/javascript"></script>
 <script src="../sources/locale/recurring/locale_recurring_es.js" ></script>
-
 ~~~
-##Included locales 
-**Note**, 
 
+##Included locales 
+
+**Note**, 
 
 - Common locale files reside in the **scheduler/sources/locale/** folder.
 - Recurring locale files reside in the **scheduler/sources/locale/recurring/** folder.
@@ -243,9 +244,9 @@ dhtmlxScheduler includes localization for the following languages:
 </td></tr>
 </table>
 
-## Creating a custom locale 
-The easiest way to create a custom locale is to make a copy of the default (English) locale  - **scheduler/sources/locale/locale.js**, 
-and translate all strings from it into the required language. 
+## Creating custom locale 
+
+The easiest way to create a custom locale is to make a copy of the default (English) locale  - **scheduler/sources/locale/locale.js**, and translate all strings from it into the required language. 
 
 {{note
 Note, activating a custom locale in the app will cause changes in the app's interface. Check and redefine (if required) all locale-dependent elements 
@@ -255,13 +256,15 @@ to be sure that the scheduler looks fine in its new language.
 **You can send your custom locale file to support@dhtmlx.com - so we will include it in the next release**.
 
 
-
 ~~~js
 scheduler.locale={
 	date:{
-		month_full:["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-		month_short:["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-		day_full:["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+		month_full:["January", "February", "March", "April", "May", "June", 
+        	"July", "August", "September", "October", "November", "December"],
+		month_short:["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+        	"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+		day_full:["Sunday", "Monday", "Tuesday", "Wednesday", 
+        	"Thursday", "Friday", "Saturday"],
     	day_short:["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     },
     labels:{
@@ -270,25 +273,23 @@ scheduler.locale={
     	week_tab:"Week",
     	month_tab:"Month",
     	new_event:"New event",
-	icon_save:"Save",
-	icon_cancel:"Cancel",
-	icon_details:"Details",
-	icon_edit:"Edit",
-	icon_delete:"Delete",
-	confirm_closing:"", //Your changes will be lost, are your sure?
-	confirm_deleting:"Event will be deleted permanently, are you sure?",
-	section_description:"Description",
-	section_time:"Time period"
+		icon_save:"Save",
+		icon_cancel:"Cancel",
+		icon_details:"Details",
+		icon_edit:"Edit",
+		icon_delete:"Delete",
+		confirm_closing:"", //Your changes will be lost, are your sure?
+		confirm_deleting:"Event will be deleted permanently, are you sure?",
+		section_description:"Description",
+		section_time:"Time period"
     }
 }
-
 ~~~
 
 
 In case of recurring events, it requires a bit more complex operation. 
 In addition to the above step, you will need to made  a copy of the **sources/repeat_template.html** file
 and translate all text messages in it to the target language. After that, the translated html file needs converting in a single-line js string
-
 
 ~~~php
 $source = "repeat_template_".$lang[$i].".html";
@@ -301,8 +302,7 @@ file_put_contents(target,$data)."\n\n";
 ~~~
 
 {{note
-To make things simpler, you can send the translated HTML form to support@dhtmlx.com  and we 
-will reply with converted js file (and include the translation into the next release).
+To make things simpler, you can send the translated HTML form to support@dhtmlx.com, and we will reply with a converted js file (and include the translation into the next release).
 }}
 
 {{sample
@@ -311,6 +311,6 @@ will reply with converted js file (and include the translation into the next rel
 
 ## Additional notes 
 
-- If the **confirm_closing** or **confirm_deleting** label is not defined - the related confirm dialog will not be shown at all (auto-confirm); 
+- If the **confirm_closing** or **confirm_deleting** label is not defined, the related confirm dialog will not be shown at all (auto-confirm); 
 - The **section_{name}** label refers to the lightbox section of the related name.
 - The **new_event** label defines the default text of a new event.

@@ -1,5 +1,6 @@
 Guides
 ======
+
 The guidance information makes up the major part of the  documentation and helps you in actual use of the scheduler.
 The chapter is divided into task-oriented manuals that assist you in performing both simple and difficult, often and seldom used tasks. 
 The articles come around key procedures and problem-solving activities. 
@@ -51,10 +52,10 @@ The articles come around key procedures and problem-solving activities.
     	        Configuring the Lightbox (Edit Form)
     	    </h4>
     	    <ul id="lightbox_sublist">
-                    <li><a href="lightbox_editors.md">Sections and Controls (editors)</a> </li>
+                    <li><a href="lightbox_editors.md">Sections and Controls (Editors)</a> </li>
                     <li><a href="custom_lightbox_editor.md">Custom Editors</a></li>
                     <li><a href="lightbox_editors_manipulations.md">Manipulations with Lightbox</a></li>
-                    <li><a href="custom_details_form.md">A Fully Custom Lightbox</a></li>
+                    <li><a href="custom_details_form.md">Fully Custom Lightbox</a></li>
                     <li><a href="changing_lightbox_buttons.md">Changing buttons</a></li>
             </ul>
         </td>
@@ -133,6 +134,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>live_update.md</li>
                     <li>multiple_users.md</li>
                     <li>content_security_policy.md</li>
+                    <li>scheduler_typescript.md</li>
             </ul>
         </td>
         <td class='topic_description'>Guides you through various extensions provided by the library for extending existing functionality.</td>

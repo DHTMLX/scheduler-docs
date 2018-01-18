@@ -1,27 +1,24 @@
- Multiple Schedulers on the Page 
+Creating Multiple Schedulers on a Page 
 ==============
 
-
 {{note
-
- This functionality is available in the Enterprise license only
+This functionality is available in the Scheduler PRO version (Enterprise license) only.
 }}
 
 ##Common
+
 As you have probably noticed at the very beginning of your work with the library, dhtmlxScheduler is a static object, i.e. _only one instance_ of dhtmlxScheduler can exist on the page.
 
-Now, for the PRO version,  we should rephrase that statement and say: _more than one instance_ of dhtmlxScheduler can exist on the page. You still have one default instance of scheduler, which can be accessed by global **scheduler** object, but you can also create new scheduler objects.
+Now, for the PRO version, we should rephrase that statement and say: _more than one instance_ of dhtmlxScheduler can exist on the page. You still have one default instance of scheduler, which can be accessed by the global **scheduler** object, but you can also create new scheduler objects.
 
 To create a new instance of dhtmlxScheduler, use the following command:
 
 ~~~js
 //Beware, 'Scheduler' in the command goes with the capital letter
 [instanceName] = Scheduler.getSchedulerInstance();
-
 ~~~
 
-
-Now configure, initialize and populate with data your new instance, as usual. And don't forget to add a standard set of DIV containers for its elements.
+Now configure your new instance, initialize it and populate with data, as usual. And don't forget to add a standard set of DIV containers for its elements.
 
 Let's take a simple example: 2 schedulers, one under another: 
 
@@ -40,7 +37,6 @@ function init() {
 ~~~
 
 
-
 ~~~js
 <body onload="init();">
 	<div id="scheduler_here" class="dhx_cal_container" ...>
@@ -55,10 +51,10 @@ function init() {
 ~~~
 
 ##Synchronization with dhtmlxDataStore
+
 In this sub-chapter we want to consider synchronizing multiple schedulers through a dhtmlXDataStore object, from which the schedulers are being populated with data (so an event changed in one scheduler will be reflected in the other one).
 
-Common technique looks like in:
-
+Common technique looks like this:
 
 ~~~js
 function init() {
@@ -74,14 +70,14 @@ function init() {
 		}
 	});
 
-        scheduler1 = Scheduler.getSchedulerInstance();
-        scheduler1.config.xml_date="%Y-%m-%d %H:%i";
+    scheduler1 = Scheduler.getSchedulerInstance();
+    scheduler1.config.xml_date="%Y-%m-%d %H:%i";
 	scheduler1.init('scheduler_here',new Date(2009,05,12),"week");
 	scheduler1.sync(data, { copy:true });
 	
 
 	scheduler2 = Scheduler.getSchedulerInstance();
-        scheduler2.config.xml_date="%Y-%m-%d %H:%i";
+    scheduler2.config.xml_date="%Y-%m-%d %H:%i";
 	scheduler2.init('scheduler_here_too',new Date(2009,05,12),"month");
 	scheduler2.sync(data, { copy:true });
 }
@@ -92,12 +88,10 @@ function init() {
 Let's discuss what we do in the code snippet above.
 
 
-
 1.  First of all, we initialize dhtmlXDataStore in its usual way (for details, see chapters [Initialization](http://docs.dhtmlx.com/doku.php?id=dhtmlxdatastore:initialization), [Data scheme](http://docs.dhtmlx.com/doku.php?id=dhtmlxdatastore:data_scheme) of the [dhtmlXDataStore documentation](http://docs.dhtmlx.com/doku.php?id=dhtmlxdatastore:toc)).
 2.  Then, we add 2 schedulers. Again, we do this in the usual manner, except for the use of the [sync](http://docs.dhtmlx.com/doku.php?id=dhtmlxdatastore:api_method_dhtmlxdatastore_sync) method.
 
 The [sync](http://docs.dhtmlx.com/doku.php?id=dhtmlxdatastore:api_method_dhtmlxdatastore_sync) method binds schedulers with DataStore  and takes 2 parameters:
-
 
 
 + **data** - (mandatory) a dhtmlXDataStore instance, the scheduler will get data from.
@@ -111,29 +105,22 @@ and passes the update to the second scheduler.
 
 At this point, you  might ask yourself: "What are these difficulties for, if we have the same behavior?".
   
-   Here is the answer: besides the main data properties, each event has bags of inner ones, that Scheduler assigns to the event while running. 
-   These assigned properties continuously change their values, depending on the selected view. You can simply face the situation, when the user 
-   changes an event, which is opened in both schedulers at the same time, but in different views. As a result, mismatch of the values of the same inner property in the different views will cause incorrect event displaying.  
+Here is the answer: besides the main data properties, each event has bags of inner ones, that Scheduler assigns to the event while running. These assigned properties continuously change their values, depending on the selected view. You can simply face the situation, when the user changes an event, which is opened in both schedulers at the same time, but in different views. As a result, mismatch of the values of the same inner property in the different views will cause incorrect event displaying.  
 
-So, in our case we use the parameter ( **{copy:true}** ) only to ensure the correct processing. But in some situations such data duplication can really be useful.
-  
-   For example, you have 2 schedulers on the page. In both schedulers you use the same events BUT want to display them in different time zones (e.g. Moscow and London).  Having one dataset doesn't allow you to solve this task, but
-   having 3 datasets does! 
+So, in our case we use the parameter (**{copy:true}**) only to ensure the correct processing. But in some situations such data duplication can really be useful.
+     For example, you have 2 schedulers on the page. In both schedulers you use the same events BUT want to display them in different time zones (e.g. Moscow and London).  Having one dataset doesn't allow you to solve this task, but having 3 datasets does! 
 
 {{sample
 	10_integration/04_datastore.html
 }}
 
 ##Integration with dhtmlxLayout
-A good way to place schedulers on the page is using [dhtmlxLayout](http://docs.dhtmlx.com/doku.php?id=dhtmlxlayout:toc). It not only provides a beautiful frame, but also ensures correct interacting with other elements on the page and 
-acting according to the page size changes. 
+
+A good way to place schedulers on the page is using [dhtmlxLayout](http://docs.dhtmlx.com/doku.php?id=dhtmlxlayout:toc). It not only provides a beautiful frame, but also ensures correct interacting with other elements on the page and acting according to the page size changes. 
 
 **To attach a dhtmlxScheduler instance to a layout cell**, use method [attachScheduler()](http://docs.dhtmlx.com/doku.php?id=dhtmlxlayout:api_method_dhtmlxlayoutpanel_attachscheduler).
   
-  
 **Note**, attaching scheduler to a cell automatically initializes it. So, configure scheduler before placing it into the layout.
-
-
 
 ~~~js
 function init() {

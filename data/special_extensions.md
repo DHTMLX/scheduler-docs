@@ -11,4 +11,5 @@ Special Extensions and Editions
 - live_update.md
 - multiple_users.md
 - content_security_policy.md
+- scheduler_typescript.md
 }}
