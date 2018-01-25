@@ -1,4 +1,4 @@
- Exporting Scheduler to PDF
+Exporting Scheduler to PDF
 ===========================
 
 Starting from version 4.1, dhtmlxScheduler provides a new approach for exporting the scheduler into the PDF format - 
@@ -51,7 +51,8 @@ To export scheduler as a PDF document, do the following steps:
 
 Parameters of the export method
 ----------------------------------------------------------
-The **exportToPDF()** method takes as a parameter the object with 6 possible properties (all of the properties are optional):
+
+The **exportToPDF()** method takes as a parameter an object with a number of properties (all of the properties are optional):
 
 
 <table class="webixdoc_links">
@@ -80,25 +81,33 @@ The **exportToPDF()** method takes as a parameter the object with 6 possible pro
 			<td class="webixdoc_links0"><b>footer</b></td>
 			<td>(<i>string</i>) specifies the footer that will be added to the output PDF image. Note, you can use any HTML here</td>
 		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>server</b></td>
+			<td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/scheduler</strong></td>
+		</tr>
     </tbody>
 </table>
+<br>
+
 {{snippet
 Calling the export method with optional properties
 }}
 ~~~js
 scheduler.exportToPDF({
+	name:"myscheduler.pdf",
 	format:"A4",
     orientation:"portrait",
     zoom:1,
     header:"<h1>My company</h1>",
-    footer:"<h4>Bottom line</h4>"
+    footer:"<h4>Bottom line</h4>",
+    server:"https://myapp.com/myexport/scheduler"
 });
 ~~~
 
 
 ##Name of the output file
 
-To set a custom name for the output file, use the **name** property in the <a href="pdf.md#parametersoftheexportmethods">exportToPDF</a>/<a href="pdf.md#parametersoftheexportmethods">exportToPNG</a> method:
+To set a custom name for the output file, use the **name** property in the in the parameter of the [exportToPDF](pdf.md#parametersoftheexportmethod) method:
 
 ~~~js
 scheduler.exportToPDF({
@@ -108,7 +117,8 @@ scheduler.exportToPDF({
 
 
 ##Header/footer of the output file
-To add the header/footer to the output PDF file, use the **header**/**footer** properties in the <a href="pdf.md#parametersoftheexportmethod">exportToPDF</a> method:
+
+To add a header/footer to the output PDF file, use the **header**/**footer** properties in the parameter of the [exportToPDF](pdf.md#parametersoftheexportmethod) method:
 
 {{note
 Note, you can use any HTML while specifying the parameters. While specifying images, remember that you need to set global paths as values of the "src" attribute
@@ -124,27 +134,27 @@ scheduler.exportToPDF({
 
 
 ##Custom style for the output file
+
 To apply a custom style for the scheduler, provide the stylesheet with your custom CSS classes:
 
-<ul>
-	<li>through a link:
+- through a link:
+
 ~~~js
 scheduler.exportToPDF({
     name:"calendar.pdf",
     header:'<link rel="stylesheet" href="http://mysite.com/custom.css">' /*!*/
 });
 ~~~
-	</li>
-	<li>or through the 'style' tag:
+
+- or through the 'style' tag:
+
 ~~~js
 scheduler.exportToPDF({
     name:"calendar.pdf",
     header:'<style>... custom css classes here ...</style>' /*!*/
 });
 ~~~
-	</li>
-</ul>
-<br>
+
 
 Note, the aforementioned solution works for the global HTTP reference. If you have CSS classes specified in an Intranet/local environment, you can embed all styles as in:
 

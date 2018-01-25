@@ -1,5 +1,6 @@
- Exporting Scheduler to PNG
+Exporting Scheduler to PNG
 ===========================
+
 Starting from version 4.1, dhtmlxScheduler provides an [online export service](png.md#defaultexporttopng)
 that gives you the possibility to export the scheduler to the PNG format. 
 
@@ -44,7 +45,8 @@ To export the scheduler as a PNG image, do the following steps:
 
 Parameters of the export method
 ----------------------------------------------------------
-The **exportToPNG()** method takes as a parameter the object with 6 possible properties (all of the properties are optional):
+
+The **exportToPNG()** method takes as a parameter an object with a number of properties (all the properties are optional):
 
 <table class="webixdoc_links">
 	<tbody>
@@ -72,8 +74,13 @@ The **exportToPNG()** method takes as a parameter the object with 6 possible pro
 			<td class="webixdoc_links0"><b>footer</b></td>
 			<td>(<i>string</i>) specifies the footer that will be added to the output PNG image. Note, you can use any HTML here</td>
 		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>server</b></td>
+			<td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/scheduler</strong></td>
+		</tr>
     </tbody>
 </table>
+<br>
 {{snippet
 Calling the export method with optional properties
 }}
@@ -83,7 +90,8 @@ scheduler.exportToPNG({
 	orientation:"portrait",
 	zoom:1,
     header:"<h1>My company</h1>",
-    footer:"<h4>Bottom line</h4>"
+    footer:"<h4>Bottom line</h4>",
+    server:"https://myapp.com/myexport/scheduler"
 });
 ~~~
 
@@ -102,6 +110,7 @@ scheduler.exportToPNG({
 
 
 ##Header/footer of the output file
+
 To add the header/footer to the output PNG file, use the **header**/**footer** properties in the 
 <a href="export.md#parametersoftheexportmethod">exportToPNG</a> method:
 
@@ -119,27 +128,26 @@ scheduler.exportToPNG({
 
 
 ##Custom style for the output file
+
 To apply a custom style for the scheduler, provide the stylesheet with your custom CSS classes:
 
-<ul>
-	<li>through a link:
+- through a link:
+
 ~~~js
 scheduler.exportToPNG({
     name:"calendar.png",
     header:'<link rel="stylesheet" href="http://mysite.com/custom.css">' /*!*/
 });
 ~~~
-	</li>
-	<li>or through the 'style' tag:
+
+- or through the 'style' tag:
+
 ~~~js
 scheduler.exportToPNG({
     name:"calendar.png",
     header:'<style>... custom css classes here ...</style>' /*!*/
 });
 ~~~
-	</li>
-</ul>
-<br>
 
 Note, the aforementioned solution works for the global HTTP reference. If you have CSS classes specified in an Intranet/local environment, you can embed all styles as in:
 
