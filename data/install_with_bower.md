@@ -67,6 +67,7 @@ There are step-by-step instructions for both variants:
 
 1. Copy the Scheduler codebase into some local directory.
 2. [Initialize the npm package there](https://docs.npmjs.com/cli/init). Name the package *dhtmlx-scheduler* or whatever you like.
+Make sure to set *dhtmlxscheduler.js* as a main file in package.json as `"main": "codebase/dhtmlxscheduler.js"`.
 3. Go to your project directory. 
 4. Call `npm install ../scheduler-local-package-path`.
 
@@ -74,6 +75,7 @@ There are step-by-step instructions for both variants:
 
 1. Copy the Scheduler codebase into some local directory.
 2. [Initialize the npm package there](https://docs.npmjs.com/cli/init). Name the package *dhtmlx-scheduler* or whatever you like.
+Make sure to set *dhtmlxscheduler.js* as a main file in package.json as `"main": "codebase/dhtmlxscheduler.js"`.
 3. Call `npm link` in the package folder.
 4. Go to your project directory.
 5. Call `npm link dhtmlx-scheduler`.
