@@ -50,8 +50,8 @@ And the default definition of the 'recurring' lightbox starts to be as in:
 ];
 ~~~
 
-You may add any extra sections, but need to preserve both recurring and time sections. 
-Also, it's required that the time section was placed **after** the recurring section. 
+You may add any extra sections, but need to preserve both the "recurring" and "time" sections. 
+Also, it's required to place the "time" section **after** the "recurring" one.
 
 
 {{sample
@@ -138,6 +138,8 @@ There is a possibility to delete or edit a particular occurrence in a series.
 will store the time stamp of the date, when the occurrence should have happened if it wasn't edited, instead of the real event length. 
 So if the occurrence has happened on July 27,2012 at 15:00 and was moved to July 30,2012 15:00, the time stamp would reflect the first date. 
 The time stamp is measured in seconds from UNIX epoch.
+- Note that if your DB contains records of edited occurrences in the series and you decide to 'Edit series' via the lightbox, all the stored records will be deleted after saving. 
+The only record that will remain is the main recurring event, while its occurrences will lose their differences (will become identical).
 
 ###Let's consider an example
 
@@ -157,10 +159,17 @@ Consequently, we should have 3 records referring to our recurring event in the D
 
 ####What happens in DB as we follow action by action:
 
+Creating the recurring event:
 
-1. Creating the recurring event:<br>![create_a_recurring_event.png](create_a_recurring_event.png)
-2. Editing **July 27,2012**:<br> ![edit_a_recurring_event.png](edit_a_recurring_event.png)
-3. Deleting **August 1,2012**: ![delete_an_occurrence.png](delete_an_occurrence.png)
+![create_a_recurring_event.png](create_a_recurring_event.png)
+
+Editing **July 27,2012**:
+
+![edit_a_recurring_event.png](edit_a_recurring_event.png)
+
+Deleting **August 1,2012**: 
+
+![delete_an_occurrence.png](delete_an_occurrence.png)
 
 
 ###Server-side logic 
@@ -263,14 +272,14 @@ Lets start with an example. Let's imagine you want to remove the 'monthly' and '
       <div style="display:none;" id="dhx_repeat_week">
         Repeat every week next days:<br />
 
-        <label><input type="checkbox" name="week_day" value="1" />Monday</label>
-        <label><input type="checkbox" name="week_day" value="2" />Tuesday</label>
-        <label><input type="checkbox" name="week_day" value="3" />Wednesday</label>
-        <label><input type="checkbox" name="week_day" value="4" />Thursday</label>
-        <label><input type="checkbox" name="week_day" value="5" />Friday</label>
-        <label><input type="checkbox" name="week_day" value="6" />Saturday</label>
-        <label><input type="checkbox" name="week_day" value="0" />Sunday</label>
-        <input type="hidden" name="week_count" value="1" />
+       <label><input type="checkbox" name="week_day" value="1" />Monday</label>
+       <label><input type="checkbox" name="week_day" value="2" />Tuesday</label>
+       <label><input type="checkbox" name="week_day" value="3" />Wednesday</label>
+       <label><input type="checkbox" name="week_day" value="4" />Thursday</label>
+       <label><input type="checkbox" name="week_day" value="5" />Friday</label>
+       <label><input type="checkbox" name="week_day" value="6" />Saturday</label>
+       <label><input type="checkbox" name="week_day" value="0" />Sunday</label>
+       <input type="hidden" name="week_count" value="1" />
       </div>
     </div>
 
