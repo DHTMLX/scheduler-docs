@@ -1,6 +1,5 @@
-
-Serializing data to XML, JSON, iCal formats
-========================================================
+Data Serialization to XML, JSON and iCal 
+=========================================
 
 Making Preparations 
 -------------------------------

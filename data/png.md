@@ -1,4 +1,4 @@
-Exporting Scheduler to PNG
+Export to PNG
 ===========================
 
 Starting from version 4.1, dhtmlxScheduler provides an [online export service](png.md#defaultexporttopng)

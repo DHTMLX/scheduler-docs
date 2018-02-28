@@ -1,10 +1,16 @@
 Recurring Events 
 ==============
 
-By default, the scheduler doesn't support recurring events. To enable such support, you need to include a special extension file on the page - **dhtmlxscheduler_recurring.js**. 
+By default, the scheduler doesn't support recurring events. To enable such support, you need to include a special extension file on the page - **ext/dhtmlxscheduler_recurring.js**. 
 
 
-Once the support of recurring events is activated, the lightbox starts looking like shown below: 
+~~~html
+<script src="ext/ext/dhtmlxscheduler_recurring.js" type="text/javascript"></script>
+~~~
+
+
+Once the support of recurring events is activated, the lightbox starts looking as shown below: 
+
 
 <img src="recurring_lightbox.png"/>
 

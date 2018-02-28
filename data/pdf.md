@@ -1,4 +1,4 @@
-Exporting Scheduler to PDF
+Export to PDF
 ===========================
 
 Starting from version 4.1, dhtmlxScheduler provides a new approach for exporting the scheduler into the PDF format - 
