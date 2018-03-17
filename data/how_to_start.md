@@ -195,19 +195,33 @@ $conn = new SchedulerConnector($res);
 $conn->render_table("events","id","start_date,end_date,text");
 ~~~
 
-<br>
+###Mapping database columns
 
-Note, you can name the table fields, as you want. In any case, the scheduler interprets 3 first fields to load, as the required ones. For instance, if you load data as in:
-
-~~~php
-$conn->render_table("events","id","event_start,event_end,event_text");
+Please note that the order of columns in **$connector->render_table** is important. The first three columns in the columns list are mapped to *start_date/end_date/text* properties of the
+client-side task object respectively, no matter what column names you specify:
+ 
+~~~js
+$conn->render_table("events","EventId","Start,End,Name,details","");
+//JS: event.id, event.start_date, event.end_date, event.text, event.text, event.details
 ~~~
 
-the interpretation will be as follows:
+####Mapping other columns
 
-- *event_start* -> *start_date*;
-- *event_end* -> *end_date*;
-- *event_text* ->*text*. 
+All other columns will be mapped by their names without changes:
+
+~~~js
+$conn->render_table("events","id","start_date,end_date,text,custom,details","");
+// JS: event.start_date, event.end_date, event.text, event.custom, event.details
+~~~
+
+You can also use aliases, as follows:
+
+~~~js
+$conn->render_table("events","id",
+	"start_date,end_date,text,custom_column(customProperty),details","");
+//JS:event.start_date, event.end_date, event.text, event.customProperty, event.details
+~~~
+
 
 ## Step 9. Saving data 
 
