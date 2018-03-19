@@ -1,13 +1,17 @@
 Export to PDF
 ===========================
 
+*The article refers to exporting of dhtmlxScheduler 4.1+. If you use dhtmlxScheduler 4.0 or earlier versions, see details [here](pdf_v4.md).*
+
+
 Starting from version 4.1, dhtmlxScheduler provides a new approach for exporting the scheduler into the PDF format - 
 an [online export service](pdf.md#defaultexporttopdf).
 
-{{note
-The article refers to exporting of dhtmlxScheduler 4.1+. If you use dhtmlxScheduler 4.0 or earlier versions, see details [here](pdf_v4.md).
-}}
 
+{{note
+The service is free, but the output PDF file will contain the library's watermark under the GPL license. In case you buy a license, the result of export will be available without a watermark
+during the valid support period (1 month for Commercial license and 12 months for the Enterprise one).
+}}
 
 Using Export Services
 -----------------------

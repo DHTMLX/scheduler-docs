@@ -4,6 +4,11 @@ Export to PNG
 Starting from version 4.1, dhtmlxScheduler provides an [online export service](png.md#defaultexporttopng)
 that gives you the possibility to export the scheduler to the PNG format. 
 
+{{note
+The service is free, but the output PNG file will contain the library's watermark under the GPL license. In case you buy a license, the result of export will be available without a watermark
+during the valid support period (1 month for Commercial license and 12 months for the Enterprise one).
+}}
+
 Using Export Services
 -----------------------
 
