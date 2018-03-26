@@ -10,7 +10,7 @@ createTimelineView
 
 
 @example: 
-//the time scale from 8AM to 8PM with 30 minutes step
+// the time scale from 8 AM to 8 PM with a 30-minutes step
 scheduler.createTimelineView({
      name:		"timeline",
      x_unit:	"minute",
@@ -106,11 +106,11 @@ The configuration object of the Timeline view can have the following properties:
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>first_hour</b></td>
-			<td>(<i>number</i>) sets the start hour of the cell's time interval. Optional</td>
+			<td>(<i>number</i>) sets the start hour of the cell's time interval. The attribute is applicable only if <b>x_unit="day"</b></td>
 		</tr>        
         <tr>
 			<td class="webixdoc_links0"><b>last_hour</b></td>
-			<td>(<i>number</i>) sets the end hour of the cell's time interval. Optional</td>
+			<td>(<i>number</i>) sets the end hour of the cell's time interval. The attribute is applicable only if <b>x_unit="day"</b></td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>show_unassigned</b></td>
