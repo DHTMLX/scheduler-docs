@@ -19,7 +19,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>more tutorials</li>
             </ul>
         </td>
-		<td class='topic_description'>Says how to build a standard Scheduler on different server-side platforms and bring it to life.</td>
+		<td class='topic_description'>Says how to build a standard Scheduler on different server-side platforms and perform common tasks.</td>
 	</tr>
 	<tr>
 		<td id="manipulations" class='topics'>
@@ -39,7 +39,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>extensions_list.md</li>
             </ul>
         </td>
-		<td class='topic_description'>Shows how to configure the scheduler: to provide support for recurring events, to change scale units, to block specific dates etc.</td>
+		<td class='topic_description'>Shows how to create a Scheduler and configure it: provide support for recurring events, block specific dates, create multiple schedulers on a page, etc.</td>
 	</tr>
     <tr>
 		<td id="data" class='topics'>
@@ -51,7 +51,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>server_integration.md</li>
             </ul>
         </td>
-		<td class='topic_description'>Discusses the ways of loading data into the scheduler: different data sources, formats, techniques.</td>
+		<td class='topic_description'>Discusses the ways of loading data into Scheduler: different data sources, formats, techniques.</td>
 	</tr>
     <tr>
         <td id="import" class='topics'>
@@ -66,7 +66,7 @@ The articles come around key procedures and problem-solving activities.
                     <li><a href="export.md"> XML, JSON, iCal and other formats</a></li>
             </ul>
         </td>
-        <td class='topic_description'>Covers the formats and techniques you can use to import/export the scheduler's data.</td>
+        <td class='topic_description'>Covers the formats and techniques you can use to import/export Scheduler's data.</td>
     </tr>
     <tr>
 		<td id="manipulations" class='topics'>
@@ -78,7 +78,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>custom_views.md</li>
             </ul>
         </td>
-		<td class='topic_description'>Shows how to configure the scheduler: to provide support for recurring events, to change scale units, to block specific dates etc.</td>
+		<td class='topic_description'>Shows how to configure the views: change scale units and create a custom view.</td>
 	</tr>
 	<tr>
     	<td id="lightbox" class='topics'>
@@ -109,7 +109,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>collisions.md</li>
             </ul>
         </td>
-        <td class='topic_description'>Covers the basics of performing general operations under events' objects, such as adding, deleting, setting the date format, filtering, etc.</td>
+        <td class='topic_description'>Covers the basics of performing general operations over events' objects, such as adding, deleting, setting the date format, filtering, etc.</td>
     </tr>
     <tr>
     	<td id="customevent" class='topics'>
@@ -124,7 +124,7 @@ The articles come around key procedures and problem-solving activities.
  		    		<li><a href="customizing_edit_select_bars.md">Edit and Select bars of the event</a></li>
             </ul>
         </td>
-        <td class='topic_description'>Describes how to customize different aspects of events starting from the text template and ending with the box appearance</td>
+        <td class='topic_description'>Describes how to customize different aspects of events starting from the text template and ending with the box appearance.</td>
     </tr>
 	<tr>
 		<td id="styling" class='topics'>
@@ -148,7 +148,7 @@ The articles come around key procedures and problem-solving activities.
                   <li>date_formats.md</li>
             </ul>
         </td>
-		<td class='topic_description'>Presents the scheduler GUI elements and the means of styling them. </td>
+		<td class='topic_description'>Discusses the topics you may need while working with dates in the Scheduler: converting dates to strings and backward, allowable characters in the date format, etc.</td>
 	</tr>
     <tr>
 		<td id="styling" class='topics'>
@@ -162,7 +162,7 @@ The articles come around key procedures and problem-solving activities.
                   <li>jquery_integration.md</li>
             </ul>
         </td>
-		<td class='topic_description'>Presents the scheduler GUI elements and the means of styling them. </td>
+		<td class='topic_description'>Describes available solutions for integrating Scheduler with third-party frameworks.</td>
 	</tr>
     <tr>
         <td id="internet" class='topics'>
@@ -178,7 +178,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>multiple_users.md</li>          
             </ul>
         </td>
-        <td class='topic_description'>Guides you through various extensions provided by the library for extending existing functionality.</td>
+        <td class='topic_description'>Guides you through various extensions provided by the library for extending the existing functionality.</td>
     </tr>
     <tr>
 		<td id="data" class='topics'>
