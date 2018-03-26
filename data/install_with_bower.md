@@ -1,5 +1,5 @@
-Studying Ways to Install dhtmlxScheduler 
-==========================================
+Ways to Install Scheduler 
+================================
 
 You can use [NuGet](http://www.nuget.org/), [Bower](http://bower.io/) or [npm](https://www.npmjs.com/) package managers to install the dhtmlxScheduler package into your project.
 
@@ -51,7 +51,7 @@ To include JS/CSS files from CDN, you should set direct links to **dhtmlxschedul
 
 You can find the full list of links you can include from CDN, depending on the version of dhtmlxScheduler in a [separate article](cdn_links_list.md).
 
-Adding Professional Edition into Project
+Adding PRO Edition into Project
 ---------------------------------
 
 All public sources (CDN, NuGet, Bower, and npm) contain a Stardard edition of the component, which is distributed under the GPL license.

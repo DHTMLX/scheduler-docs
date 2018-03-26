@@ -3,18 +3,13 @@ Blocking and Marking Dates
 
 The library provides the **ext/dhtmlxscheduler_limit.js** extension that allows you to block and mark (highlight) certain dates or date ranges.
 
-{{note
 To start using the extension, include the **ext/dhtmlxscheduler_limit.js** file on the page. 
-}}
 
+{{note Note, if you use the timeline_view.md, the 'limit' extension file should go before the 'timeline' one:}}
 
-Note, if you use the timeline_view.md, the 'limit' extension file should go before the 'timeline' one:
-
-~~~js
-//the 'limit' file should go before the 'timeline' one
-<script src="codebase/ext/dhtmlxscheduler_limit.js"></script>
-<script src='codebase/ext/dhtmlxscheduler_timeline.js'></script>
-
+~~~html
+<script src="codebase/ext/dhtmlxscheduler_limit.js"></script> /*!*/
+<script src='codebase/ext/dhtmlxscheduler_timeline.js'></script> 
 ~~~
 
 
@@ -94,7 +89,7 @@ For example:
 
 
 ~~~js
-scheduler.addMarkedTimespan({ // blocks 4th July,2012 (this is Wednesday).
+scheduler.addMarkedTimespan({ // blocks 4th July, 2012 (this is Wednesday).
 	days:  new Date(2012,7,4),
 	zones: "fullday", 
 	type:  "dhx_time_block",
@@ -121,8 +116,8 @@ scheduler.addMarkedTimespan({
 As a result of calling these methods you will get the following:
 
 
-1.  First of all, the scheduler will block **each Sunday and Wednesday for the item (id=2) in the Timeline view** and **color them in gray**
-2.  Then, will block **4th July,2012** and **color it in red**
+1.  First of all, the scheduler will block **each Sunday and Wednesday for the item (id=2) in the Timeline view** and **color them in gray**.
+2.  Then, will block **4th July, 2012** and **color it in red**.
 3.  Finally, will block **each Sunday, Monday, Wednesday** and **color them in blue**.
 
 ![limits_priority.png](limits_priority.png)

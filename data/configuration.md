@@ -1,4 +1,4 @@
-Common Configuration Instructions
+Common Config Instructions
 ===========================================
 
 To achieve the desired look for the scheduler, the library provides 3 objects: 

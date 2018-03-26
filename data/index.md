@@ -7,7 +7,7 @@ Start
     Version 4.4 continues to bring new improvements and features:
     </p>
     <ul>
-        <li><a href="keyboard_navigation.md">Keyboard navigation</a></li>
+        <li><a href="accessibility.md#keyboardnavigation">Keyboard navigation</a></li>
         <li><a href="accessibility.md#waiariaattributes">WAI-ARIA support</a></li>
         <li><a href="accessibility.md#highcontrastthemes">High-contrast themes</a> 
     </ul>

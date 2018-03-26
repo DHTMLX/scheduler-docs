@@ -5,7 +5,7 @@ How to Start
 In this tutorial we want to consider the creation of a standard scheduler that loads data from a database and saves it back. 
 The final code of the tutorial can be used as the start point while creating applications with dhtmlxScheduler.  
 
-![how_to_start_front_image.png](how_to_start_front_image.png)
+![init_scheduler_front.png](init_scheduler_front.png)
 
 {{sample
 	01_initialization_loading/05_loading_database.html

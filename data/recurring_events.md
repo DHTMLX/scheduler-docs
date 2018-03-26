@@ -9,7 +9,7 @@ By default, the scheduler doesn't support recurring events. To enable such suppo
 ~~~
 
 
-Once the support of recurring events is activated, the lightbox starts looking as shown below: 
+Once the support for recurring events is activated, the lightbox starts looking as shown below: 
 
 
 <img src="recurring_lightbox.png"/>
