@@ -5,6 +5,7 @@ The guidance information makes up the major part of the  documentation and helps
 The chapter is divided into task-oriented manuals that assist you in performing both simple and difficult, often and seldom used tasks. 
 The articles come around key procedures and problem-solving activities. 
 
+Сheck the [features available in the Standard and PRO versions](editions_comparison.md) of the dhtmlxScheduler library.
 
 <table  style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 	<tbody>
@@ -14,7 +15,7 @@ The articles come around key procedures and problem-solving activities.
 		        How to Start with dhtmlxScheduler
 		    </h4>
 		    <ul id="data_sublist" >
-                    <li>dhtmlxScheduler with PHP</li>
+                    <li>howtostart_php.md</li>
                     <li>dhtmlxScheduler with Node.js</li>
                     <li>more tutorials</li>
             </ul>
@@ -195,6 +196,7 @@ The articles come around key procedures and problem-solving activities.
 </table>
 
 @index:
+- editions_comparison.md
 - howtostart_guides.md
 - configuring_the_scheduler.md
 - loading_and_storing_data.md

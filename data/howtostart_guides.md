@@ -17,7 +17,7 @@ This section is dedicated to the very beginning of work with Scheduler. Each cha
         </tr>
     <tr>
 		<td>
-		    <span style="font-size:15px;">link</span><br>
+		    <span style="font-size:15px;">howtostart_php.md</span><br>
            
             A step-by-step tutorial that shows how to implement .. 
         </td>
@@ -58,4 +58,5 @@ This section is dedicated to the very beginning of work with Scheduler. Each cha
     </tbody>
 </table>
    
-@index:   
+@index:
+- howtostart_php.md
