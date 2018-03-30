@@ -1,7 +1,7 @@
 Creating Multiple Schedulers on a Page 
 ==============
 
-{{note
+{{pronote
 This functionality is available in the Scheduler PRO version (Enterprise license) only.
 }}
 

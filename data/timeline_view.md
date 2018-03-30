@@ -1,6 +1,10 @@
 Timeline View 
 ==============
 
+{{pronote
+This view is available in the Scheduler PRO version only.
+}}
+
 The Timeline view allows you to visualize events horizontally with separate timelines arranged from left to right.
 
 <img src="timeline_view.png"/>

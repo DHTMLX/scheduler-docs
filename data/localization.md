@@ -61,18 +61,11 @@ dhtmlxScheduler includes localization for the following languages:
  not translated 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
- Belarus 
+ Belarusian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_be.js 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_recurring_be.js 
-</td></tr>
-<tr><td markdown='1' style='border:1px solid #AAA;'>
- English 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- default 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- default 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Catalan 
@@ -107,7 +100,14 @@ dhtmlxScheduler includes localization for the following languages:
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_nl.js 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- not translated 
+ locale_recurring_nl.js 
+</td></tr>
+<tr><td markdown='1' style='border:1px solid #AAA;'>
+ English 
+</td><td markdown='1' style='border:1px solid #AAA;'>
+ locale_en.js - default
+</td><td markdown='1' style='border:1px solid #AAA;'>
+  locale_recurring_en.js - default 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Finnish 
@@ -142,7 +142,7 @@ dhtmlxScheduler includes localization for the following languages:
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_he.js 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- not translated 
+ locale_recurring_he.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Hungarian 
@@ -177,7 +177,14 @@ dhtmlxScheduler includes localization for the following languages:
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_no.js 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_nl.js 
+ not translated 
+</td></tr>
+<tr><td markdown='1' style='border:1px solid #AAA;'>
+ Norwegian Bokmål
+</td><td markdown='1' style='border:1px solid #AAA;'>
+ locale_nb.js 
+</td><td markdown='1' style='border:1px solid #AAA;'>
+ locale_recurring_nb.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Polish 
@@ -206,6 +213,13 @@ dhtmlxScheduler includes localization for the following languages:
  locale_ru.js 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_recurring_ru.js 
+</td></tr>
+<tr><td markdown='1' style='border:1px solid #AAA;'>
+ Slovak 
+</td><td markdown='1' style='border:1px solid #AAA;'>
+ locale_sk.js 
+</td><td markdown='1' style='border:1px solid #AAA;'>
+ locale_recurring_sk.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Slovenian 
