@@ -34,7 +34,7 @@ The **xy** object has the following properties:
 	<tbody>
 	<tr>
 		<td><a href="#month">bar_height</a></td>
-		<td>the height of day cells in the month view</td>
+		<td>the height of the task bars in the Month view</td>
 		<td>20</td>
 		<td>month</td>
 	</tr>
