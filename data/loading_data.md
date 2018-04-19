@@ -141,20 +141,66 @@ scheduler.setLoadMode("month");
 scheduler.load("some.php");
 ~~~
 
-*As a parameter the method takes the loading mode that defines the size of the data to load  - day, week, month or year.*
+As a parameter the method takes the loading mode that defines the size of the data to load: *day, week, month or year.*
 
 For example, if you set the 'week' mode, the scheduler will request data just for the current week and load remaining ones on demand.<br>
-Generated requests look like:
+
+####How loading modes work
+
+The predefined loading modes specify the interval of loading data within the set period. For example, you open the Week View in the scheduler for the following dates: from 2018-01-29 to 2018-02-05.
+Depending on the chosen mode, the dynamic loading will go like this:
+
+- for the "day" mode
+
+~~~js
+scheduler.setLoadMode("day");
+~~~
+
+Scheduler will request data by days, i.e.: from 2018-01-29 to 2018-02-05.
+
+- for the "month" mode
+
+~~~js
+scheduler.setLoadMode("month");
+~~~
+
+Scheduler will request data by whole months, i.e.: from 2018-01-01 to 2018-03-01.
+
+- for the "year" mode
+
+~~~js
+scheduler.setLoadMode("year");
+~~~
+
+Scheduler will request data by whole years, i.e.: from 2018-01-01 to 2019-01-01.
+
+
+In any case, the requested interval won't be smaller than the rendered one.
+
+The loading interval defines:
+
+- the frequency of dynamic loading calls
+
+The greater the loading interval is, the less the frequency of calls for dynamic loading will be. Scheduler keeps in memory the already loaded data portion and won't repeat a call for it.
+
+- the duration of processing a separate request
+
+The greater the loading interval is, the longer a request is being processed, since the more data are being loaded at once.
+
+
+####Request
+
+Generated requests look as in:
 
 ~~~js
 some.php?from=DATEHERE&to=DATEHERE
 ~~~
-*where DATEHERE - a valid date value in the format defined by the api/scheduler_load_date_config.md option.*
 
-<br>
+*where DATEHERE - a valid date value in the format defined by the api/scheduler_load_date_config.md option.* <br>
 
 If you are using <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">dhtmlxConnector</a> at the server side, 
 you don't need to do any additional server-side operations to parse the data.
+
 
 
 ###Loading spinner
