@@ -9,19 +9,6 @@ The articles come around key procedures and problem-solving activities.
 
 <table  style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 	<tbody>
-    <tr>
-		<td id="data" class='topics'>
-		    <h4>
-		        How to Start with dhtmlxScheduler
-		    </h4>
-		    <ul id="data_sublist" >
-                    <li>howtostart_php.md</li>
-                    <li>dhtmlxScheduler with Node.js</li>
-                    <li>more tutorials</li>
-            </ul>
-        </td>
-		<td class='topic_description'>Says how to build a standard Scheduler on different server-side platforms and perform common tasks.</td>
-	</tr>
 	<tr>
 		<td id="manipulations" class='topics'>
 		    <h4>
@@ -197,7 +184,6 @@ The articles come around key procedures and problem-solving activities.
 
 @index:
 - editions_comparison.md
-- howtostart_guides.md
 - configuring_the_scheduler.md
 - loading_and_storing_data.md
 - data_export.md
