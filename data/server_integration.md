@@ -227,6 +227,7 @@ Thus, you can add an additional property directly to the data object and it will
 
 ~~~js
 scheduler.attachEvent("onEventCreated", function(id,e){
+    var event = scheduler.getEvent(id);
     event.userId = currentUser;
     return true;
 });
@@ -239,7 +240,7 @@ the [setTransactionMode](https://docs.dhtmlx.com/api__dataprocessor_settransacti
 scheduler.init("gantt_here");
 scheduler.load("/api");
  
-var dp = new scheduler.dataProcessor("/api");
+var dp = new dataProcessor("/api");
 dp.init(scheduler);
 dp.setTransactionMode({
     mode:"REST",
@@ -254,20 +255,22 @@ Triggering Data Saving from Script
 
 If you have dataProcessor initialized, any change made by the user or programmatically will be automatically saved in the data source.
 
-Generally, to update a specific event programmatically, use the api/scheduler_updateevent.md method:
+Generally, to update a specific event programmatically, use the api/scheduler_addevent.md method:
 
 ~~~js
 
 scheduler.parse([
-     { id:1, start_date:"2013-05-13 6:00", end_date:"2009-05-13 8:00", text:"Event 1"},
-     { id:2, start_date:"2013-06-09 6:00", end_date:"2009-06-09 8:00", text:"Event 2"}
+     { id:1, start_date:"2017-05-13 6:00", end_date:"2017-05-13 8:00", text:"Event 1"},
+     { id:2, start_date:"2017-06-09 6:00", end_date:"2017-06-09 8:00", text:"Event 2"}
 ],"json");
  
 scheduler.getEvent(1).text = "Conference"; //changes event's data
-scheduler.updateEvent(1); // renders the updated event
+scheduler.addEvent(1); // renders the updated event
 ~~~
 
-Other methods that invoke sending an update to the backend:
+When called for an event that is already loaded into the scheduler api/scheduler_addevent.md will trigger an *update* request, *insert* will be called otherwise.
+
+Methods that invoke sending an update to the backend:
 
 - api/scheduler_addevent.md
 - api/scheduler_deleteevent.md
