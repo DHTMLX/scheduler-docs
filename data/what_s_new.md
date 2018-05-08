@@ -3,7 +3,34 @@ What's New
 
 If you are updating scheduler from an older version, check migration_from_older_version.md for details.
 
-##4.4
+5.0
+------
+
+###Breaking Changes
+
+1. Classic and Glossy skins are removed. [Check the migration details](migration_from_older_version.md#4450)
+2. Scheduler went through the global CSS refactoring. [Learn how it will influence your applications](migration_from_older_version.md#4450)  
+
+###Major Changes
+
+1. New [Material skin](skins.html#materialskin) added
+2. [Server-side integration with REST API](server_integration.md)
+
+###Minor Changes
+
+- Touch support for Microsoft devices is updated 
+- [Hebrew locale](localization.md) is added for recurring events form
+- [onLoadError](api/scheduler_onloaderror_event.md) for network and server errors is added 
+
+###Bug Fixes and Improvements
+
+- Compatibility issues with ES6/TS imports are fixed
+- Fixes in keyboard navigation support
+- Minor bugfixes
+
+
+4.4
+-----------
 
 ###Major Changes
 
@@ -35,7 +62,9 @@ If you are updating scheduler from an older version, check migration_from_older_
 - various issues with container_autosize extension fixed
 - many other fixes
 
-##4.3
+4.3
+------
+
 1. ["Days" mode for Timeline view](timeline_view.md#daysmodedetails) was added (PRO version)
 2. Ability to present [units for multiple days in the Units view](units_view.md#displayingunitsformultipledays) (PRO version)
 3. New events for the ['expand' extension](extensions_list.md#expand) 
@@ -47,7 +76,8 @@ If you are updating scheduler from an older version, check migration_from_older_
 9. [Week Agenda](weekagenda_view.md), [Grid View](grid_view.html), [Timeline view](timeline_view.md), [Units View](units_view.md),
 [Multisection events](api/scheduler_multisection_config.md) (PRO version)
 
-##4.2
+4.2
+-----------
 
 1. Ability to customize the layout of recurring form ([details](recurring_events.md#ustomcontrolforthelightboxsrecurringblock))
 2. Updated DataProcessor - REST mode and support of JSON response format ( [details](server_integration.md#savingdatafromrestserver))
@@ -58,8 +88,9 @@ If you are updating scheduler from an older version, check migration_from_older_
 7. Improved data export to iCal and Excel - ([details](excel.md))
 8. Fixed compatibility with DHTMLX Suite 4.0
 9. Multiple minor fixes
-    
-##4.1
+
+4.1
+------
 
 1. New "Flat" skin  - ([details](skins.md#flatskin))
 2. Assigning events to several sections of [Timeline](timeline_view.md#assigningeventstoseveralsections) and [Units](units_view.md#assigningeventstoseveralunits) Views 
@@ -75,8 +106,8 @@ If you are updating scheduler from an older version, check migration_from_older_
 10. Samples updated to work correctly in different time zones.
 
 
-
-##4.0
+4.0
+-------
 
 1. Flexible time scales - some days, hours can be removed from time scale ([details](custom_scales.md))
 2. Ability to show "more events" links in the Month view ([details](month_view.md#limitingthenumberofeventsinacell))
@@ -87,13 +118,15 @@ If you are updating scheduler from an older version, check migration_from_older_
 7. Scheduler can load json data from .Net web services
 8. Documentation greatly improved
 
-##3.7 
+3.7 
+-----
 
 1.  Touch support (tablets and touch monitors) ([details](touch_support.md))
 2.  Romanian locale added
 
 
-##3.6 
+3.6 
+-----
 
 1.  Windows8 edition added ([details](winjs_compatibility.md)) 
 2.  Extended date format configuration for lightbox form
@@ -102,7 +135,8 @@ If you are updating scheduler from an older version, check migration_from_older_
 5.  Multi-page export to PDF ([details](pdf_multi.md))
 
 
-##3.5 
+3.5 
+-----
 
 1.  Ability to show [multiple schedulers](multiple_per_page.md) on the page
 2.  Support for loading JSON directly from Connectors ([details](server_integration.md#retrieving_data_in_json_format))
@@ -121,7 +155,8 @@ If you are updating scheduler from an older version, check migration_from_older_
 
 
 
-##3.0 
+3.0 
+-------
 
 1.  [WeekAgenda view](weekagenda_view.md) (PRO version)
 2.  Netbook friendly lightbox form ([details](lightbox_editors_manipulations.md#typesoflightbox))
@@ -136,7 +171,8 @@ If you are updating scheduler from an older version, check migration_from_older_
 
 
 
-##2.3 
+2.3 
+--------
 
 ###Major Changes 
 
@@ -169,7 +205,8 @@ If you are updating scheduler from an older version, check migration_from_older_
 + incorrect event rendering for overlapping events
 
 
-##2.2 
+2.2 
+-------
 
 ###Major Changes 
 
@@ -199,7 +236,8 @@ If you are updating scheduler from an older version, check migration_from_older_
 - problems with recurring events in the Year view
   
 
-##2.1 
+2.1 
+-------
 
 ###Major Changes  
 
@@ -245,7 +283,8 @@ If you are updating scheduler from an older version, check migration_from_older_
 
 
 
-##2.0 
+2.0 
+------
 
 ###Major Changes 
 

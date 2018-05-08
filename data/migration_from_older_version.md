@@ -1,26 +1,28 @@
 Migration From Older Versions 
 ==============
 
-## 4.x -> 5.0
+## 4.4 -> 5.0
 
-**Glossy** and **Classic** skins were deprecated and removed since v.5.0.
-If you use them, you'll either need to migrate to another [skin](skins.md) or keep using css file from an older version.
+**Glossy** and **Classic** skins were deprecated and removed since v5.0.
+If you use them, you'll either need to migrate to another [skin](skins.md) or keep using a corresponding CSS file from an older version.
 
-Release v.5.0 involves a major css overhaul, which may create issues with updating heavily css customized applications - existing styles may stop working due to the changed specificity of dhtmlxScheduler styles.
-There is no general solution for this, the migration will require investigating and correcting css issues.
+Release of v5.0 involves a major CSS overhaul, which may create issues with updating heavily CSS-customized applications: the existing styles may stop working due to the specificity of renewed dhtmlxScheduler styles.
+There is no general solution for this, the migration will require investigating and correcting CSS issues.
 
-The update also fixes the **POST** (insert) route of dataProcessor in **REST** mode, request no longer sends temporary event id to the server.
+The update also fixes the **POST** (insert) route of dataProcessor in the **REST** mode, the request no longer sends a temporary event id to the server.
 
-A following route
-~~~
+The following route:
+
+~~~js
 POST api/{tempId}
 
 //e.g.
 POST api/1234567890
 ~~~
-should be changed to
 
-~~~
+should be changed to this one:
+
+~~~js
 POST api/
 ~~~
 
@@ -141,5 +143,5 @@ For private API - check  [Scheduler 3.0](scheduler_3.0.md)
 @index:
 - scheduler_3.0.md
 
-@todo: proofread
+
 

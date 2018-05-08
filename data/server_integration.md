@@ -268,9 +268,9 @@ scheduler.getEvent(1).text = "Conference"; //changes event's data
 scheduler.addEvent(1); // renders the updated event
 ~~~
 
-When called for an event that is already loaded into the scheduler api/scheduler_addevent.md will trigger an *update* request, *insert* will be called otherwise.
+When called for an event that is already loaded into the scheduler, api/scheduler_addevent.md will trigger an *update* request, otherwise *insert* will be called.
 
-Methods that invoke sending an update to the backend:
+The methods that invoke sending an update to the backend:
 
 - api/scheduler_addevent.md
 - api/scheduler_deleteevent.md
@@ -343,5 +343,7 @@ It is important that responsibility for keeping an application safe is on the de
 Check the app_security.md article to learn the most vulnerable points of the component and the measures you can take to improve the safety of your application. 
 
 
+@index:
+app_security.md
 
 

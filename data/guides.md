@@ -18,16 +18,13 @@ The articles come around key procedures and problem-solving activities.
             		<li>install_with_bower.md</li>
                     <li>configuration.md</li>
                     <li>scheduler_markup.md</li>
-                    <li>recurring_events.md</li>
-					<li>limits.md</li>
-                   	<li>localization.md</li>
-                    <li>sizing.md</li>                 
+                   	<li>localization.md</li>                
                     <li>multiple_per_page.md</li>
                     <li>accessibility.md</li>
                     <li>extensions_list.md</li>
             </ul>
         </td>
-		<td class='topic_description'>Shows how to create a Scheduler and configure it: provide support for recurring events, block specific dates, create multiple schedulers on a page, etc.</td>
+		<td class='topic_description'>Shows how to create Scheduler and configure it, create multiple schedulers on a page, localize Scheduler, enable accesibility support, etc.</td>
 	</tr>
     <tr>
 		<td id="data" class='topics'>
@@ -42,31 +39,18 @@ The articles come around key procedures and problem-solving activities.
 		<td class='topic_description'>Discusses the ways of loading data into Scheduler: different data sources, formats, techniques.</td>
 	</tr>
     <tr>
-        <td id="import" class='topics'>
-            <h4>
-                Data Export/Import
-            </h4>
-            <ul id="import_sublist">
-                    <li><a href="google_calendar_integration.md">Integration with Google Calendar</a></li>
-                    <li>pdf.md</li>
-                    <li>png.md</li>
-                    <li>excel.md</li>
-                    <li><a href="export.md"> XML, JSON, iCal and other formats</a></li>
-            </ul>
-        </td>
-        <td class='topic_description'>Covers the formats and techniques you can use to import/export Scheduler's data.</td>
-    </tr>
-    <tr>
 		<td id="manipulations" class='topics'>
 		    <h4>
 		        Configuring Views
 		    </h4>
 		    <ul id="manipulations_sublist">
+            		<li><a href="views.md">Views Overview</a></li>
                     <li>custom_scales.md</li>
                     <li>custom_views.md</li>
+                    <li>limits.md</li>
             </ul>
         </td>
-		<td class='topic_description'>Shows how to configure the views: change scale units and create a custom view.</td>
+		<td class='topic_description'>Shows how to configure the views: change scale units, create a custom view, block specific dates.</td>
 	</tr>
 	<tr>
     	<td id="lightbox" class='topics'>
@@ -93,11 +77,14 @@ The articles come around key procedures and problem-solving activities.
                     <li>adding_events.md</li>
                     <li>filtering.md</li>
                     <li>dhtmlx_components_integration.md</li>
+                    <li>recurring_events.md</li>
                     <li>readonly.md</li>
+                    <li>validation.md</li>
                     <li>collisions.md</li>
             </ul>
         </td>
-        <td class='topic_description'>Covers the basics of performing general operations over events' objects, such as adding, deleting, setting the date format, filtering, etc.</td>
+        <td class='topic_description'>Covers the basics of performing various operations over events' objects, such as adding, deleting, filtering. Shows how to provide support for recurring events, make Scheduler
+        or its elements readonly, etc.</td>
     </tr>
     <tr>
     	<td id="customevent" class='topics'>
@@ -110,9 +97,25 @@ The articles come around key procedures and problem-solving activities.
                     <li><a href="custom_events_content.md">Content (template)</a></li>
                     <li><a href="tooltips.md">Tooltip</a></li>
  		    		<li><a href="customizing_edit_select_bars.md">Edit and Select bars of the event</a></li>
+                    <li>sizing.md</li> 
             </ul>
         </td>
         <td class='topic_description'>Describes how to customize different aspects of events starting from the text template and ending with the box appearance.</td>
+    </tr>
+    <tr>
+        <td id="import" class='topics'>
+            <h4>
+                Data Export/Import
+            </h4>
+            <ul id="import_sublist">
+                    <li><a href="google_calendar_integration.md">Integration with Google Calendar</a></li>
+                    <li>pdf.md</li>
+                    <li>png.md</li>
+                    <li>excel.md</li>
+                    <li><a href="export.md"> XML, JSON, iCal and other formats</a></li>
+            </ul>
+        </td>
+        <td class='topic_description'>Covers the formats and techniques you can use to import/export Scheduler's data.</td>
     </tr>
 	<tr>
 		<td id="styling" class='topics'>
@@ -186,11 +189,11 @@ The articles come around key procedures and problem-solving activities.
 - editions_comparison.md
 - configuring_the_scheduler.md
 - loading_and_storing_data.md
-- data_export.md
-- configuring_the_lightbox.md
 - config_views.md
+- configuring_the_lightbox.md
 - managing_events.md
 - customizing_events.md
+- data_export.md
 - appearance_and_styling.md
 - dates_in_scheduler.md
 - scheduler_integrations.md

@@ -4,11 +4,10 @@ Skins
 There are several predefined skins:
 
 1. [Terrace (default)](skins.md#defaultskin)
-2. [Glossy](skins.md#glossyskin)
-3. [Classic](skins.md#classicskin)
-4. [Flat](skins.md#flatskin)
-5. [Contrast Black](skins.md#contrastblackskin)
-6. [Contrast White](skins.md#contrastwhiteskin)
+2. [Material](skins.md#materialskin)
+3. [Flat](skins.md#flatskin)
+4. [Contrast Black](skins.md#contrastblackskin)
+5. [Contrast White](skins.md#contrastwhiteskin)
 
 Each skin requires including its specific CSS file. 
 
@@ -18,30 +17,20 @@ To apply the default skin, include the default CSS file:
 
 - **dhtmlxscheduler.css**
 
-![terrace_skin.png](white_skin.png)
+![terrace_skin.png](terrace_skin.png)
 
 {{sample 07_skins/01_default.html}}
 
 
-'Glossy' skin
-----------------------------------
-To apply the 'Glossy' skin, include the CSS file as in:
+'Material' skin
+----------------
+To apply the 'Material' skin, include the CSS file as in:
 
-- **dhtmlxscheduler_glossy.css**
+- **dhtmlxscheduler_material.css**
 
-![glossy_skin.png](glossy_skin.png)
+![](material_skin.png)
 
-{{sample 07_skins/02_glossy.html}}
-
-'Classic' skin
------------------------------
-To apply the 'Classic' skin, include the CSS file as in:
-
-- **dhtmlxscheduler_classic.css**
-
-![classic_skin.png](default_skin.png)
-
-{{sample 07_skins/03_classic.html}}
+{{sample 07_skins/02_material.html}}
 
 
 'Flat' skin
@@ -52,7 +41,7 @@ To apply the 'Flat' skin, include the CSS file as in:
 
 ![flat_skin.png](flat_skin.png)
 
-{{sample 07_skins/13_flat.html}}
+{{sample 07_skins/03_flat.html}}
 
 
 'Contrast Black' skin
@@ -63,7 +52,8 @@ To apply the 'Contrast Black' skin, include the CSS file as in:
 
 ![contrast_black_skin](contrast_black_skin.png)
 
-{{sample 07_skins/17_contrast_black.html}}
+{{sample 07_skins/04_contrast_black.html}}
+
 
 'Contrast White' skin
 ----------------------
@@ -73,15 +63,16 @@ To apply the 'Contrast White' skin, include the CSS file as in:
 
 ![contrast_white_skin](contrast_white_skin.png)
 
-{{sample 07_skins/21_contrast_white.html}}
+{{sample 07_skins/05_contrast_white.html}}
 
 ## Skin Detection
 
 By default, the scheduler autodetects the skin by  the name of a CSS file in use.  
-If you need to rename the CSS file, you can force correct skin usage by adding code like next:
+If you need to rename the CSS file, you can force correct skin usage by adding the following code line:
 
 ~~~js
-scheduler.skin = "classic"; //valid values are classic, glossy, terrace
+scheduler.skin = "flat";  
+// supported values are terrace, flat, material, contrast_white, contrast_black
 ~~~
 
 If you are using a custom skin you can use:

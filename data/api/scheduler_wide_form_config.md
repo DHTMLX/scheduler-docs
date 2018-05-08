@@ -1,10 +1,13 @@
 wide_form
 =============
-@short: enables/disables displaying the standard (wide) lightbox instead of the short one
+
+@short: enables/disables displaying of the standard (wide) lightbox instead of the short one
 	
 
 @type: boolean
-@default: true - for the default skin, false - for 'classic' and 'glossy' skins 
+@default: true
+
+
 @example:
 scheduler.config.wide_form = true;
 ...
@@ -18,10 +21,16 @@ The standard (wide) lightbox is initially enabled in the default skin and can't 
 
 <br>
 
-<img src="api/wideForm_property.png"/>
+- Standard lightbox
+
+<img src="api/wide_form_false.png"/>
+
+- Wide lightbox
+
+<img src="api/wide_form_true.png"/>
 
 @relatedsample:
 	07_skins/01_default.html
-    07_skins/11_glossy_alt_rec.html
+   
 
 @apigroup: Lightbox

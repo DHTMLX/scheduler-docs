@@ -14,9 +14,6 @@ Once the support for recurring events is activated, the lightbox starts looking 
 
 <img src="recurring_lightbox.png"/>
 
-{{sample
-	07_skins/07_default_rec.html
-}}
 
 Configuration Options
 ---------------------------------------

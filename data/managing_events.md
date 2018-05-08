@@ -5,6 +5,8 @@ Managing Scheduler Events
 - adding_events.md
 - filtering.md
 - dhtmlx_components_integration.md
-- collisions.md
+- recurring_events.md
 - readonly.md
+- validation.md
+- collisions.md
 }}

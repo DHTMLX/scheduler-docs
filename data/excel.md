@@ -65,7 +65,7 @@ Calling the export method with optional properties
 }}
 ~~~js
 scheduler.exportToExcel({
-    name:"My document", 
+    name:"My document.xls", 
     columns:[
 		{ id:"text",  header:"Title", width:150 },
         { id:"start_date",  header:"Start date", width:250 }

@@ -18,9 +18,9 @@ To load data from an inline dataset, use the api/scheduler_parse.md method:
 scheduler.init('scheduler_here',new Date(2009,10,1),"month");
 ...
 scheduler.parse([
-	{text:"Meeting",    start_date:"04/11/2013 14:00", end_date:"04/11/2013 17:00"},
-	{text:"Conference", start_date:"04/15/2013 12:00", end_date:"04/18/2013 19:00"},
-	{text:"Interview",  start_date:"04/24/2013 09:00", end_date:"04/24/2013 10:00"}
+	{text:"Meeting",    start_date:"04/11/2018 14:00", end_date:"04/11/2018 17:00"},
+	{text:"Conference", start_date:"04/15/2018 12:00", end_date:"04/18/2018 19:00"},
+	{text:"Interview",  start_date:"04/24/2018 09:00", end_date:"04/24/2018 10:00"}
 ],"json");
 
 ~~~
@@ -36,7 +36,7 @@ Loading data from a data file
 To load data from a file, use the api/scheduler_load.md method:
 
 ~~~js
-scheduler.init('scheduler_here',new Date(2009,10,1),"month");
+scheduler.init('scheduler_here',new Date(2018,10,1),"month");
 ...
 scheduler.load("data.xml","xml"); //loading data from a file in the XML format
 ~~~
@@ -212,7 +212,7 @@ To enable the loading spinner for the scheduler, set the api/scheduler_show_load
 ~~~js
 scheduler.config.show_loading = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"month");
+scheduler.init('scheduler_here',new Date(2018,0,10),"month");
 ~~~
 
 {{note
@@ -251,29 +251,29 @@ scheduler.load("data.json", "json");
    "data":[
       {
           "id":"1",
-          "start_date":"2015-03-02 00:00:00",
-          "end_date":"2015-03-04 00:00:00",
+          "start_date":"2018-03-02 00:00:00",
+          "end_date":"2018-03-04 00:00:00",
           "text":"dblclick me!",
           "type":"1"
       },
       {
           "id":"2",
-          "start_date":"2015-03-09 00:00:00",
-          "end_date":"2015-03-11 00:00:00",
+          "start_date":"2018-03-09 00:00:00",
+          "end_date":"2018-03-11 00:00:00",
           "text":"and me!",
           "type":"2"
       },
       {
           "id":"3",
-          "start_date":"2015-03-16 00:00:00",
-          "end_date":"2015-03-18 00:00:00",
+          "start_date":"2018-03-16 00:00:00",
+          "end_date":"2018-03-18 00:00:00",
           "text":"and me too!",
           "type":"3"
       },
       { 
           "id":"4",
-          "start_date":"2015-03-02 08:00:00",
-          "end_date":"2015-03-02 14:10:00",
+          "start_date":"2018-03-02 08:00:00",
+          "end_date":"2018-03-02 14:10:00",
           "text":"Type 2 event",
           "type":"2"
       }
