@@ -36,7 +36,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>server_integration.md</li>
             </ul>
         </td>
-		<td class='topic_description'>Discusses the ways of loading data into Scheduler: different data sources, formats, techniques.</td>
+		<td class='topic_description'>Discusses the ways of loading data into Scheduler: different data sources, formats, techniques, as well as explores the details of integration with the server side. </td>
 	</tr>
     <tr>
 		<td id="manipulations" class='topics'>
@@ -62,7 +62,7 @@ The articles come around key procedures and problem-solving activities.
                     <li><a href="custom_lightbox_editor.md">Custom Editors</a></li>
                     <li><a href="lightbox_editors_manipulations.md">Manipulations with Lightbox</a></li>
                     <li><a href="custom_details_form.md">Fully Custom Lightbox</a></li>
-                    <li><a href="changing_lightbox_buttons.md">Changing buttons</a></li>
+                    <li><a href="changing_lightbox_buttons.md">Changing Buttons</a></li>
             </ul>
         </td>
         <td class='topic_description'>Focuses on how to work with the lightbox: add/delete controls, get/set controls' values, customize lightbox's appearance, etc.</td>
@@ -96,7 +96,7 @@ The articles come around key procedures and problem-solving activities.
                     <li><a href="custom_events_color.md">Color</a></li>
                     <li><a href="custom_events_content.md">Content (template)</a></li>
                     <li><a href="tooltips.md">Tooltip</a></li>
- 		    		<li><a href="customizing_edit_select_bars.md">Edit and Select bars of the event</a></li>
+ 		    		<li><a href="customizing_edit_select_bars.md">Edit and Select Bars of the Event</a></li>
                     <li>sizing.md</li> 
             </ul>
         </td>
@@ -112,7 +112,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>pdf.md</li>
                     <li>png.md</li>
                     <li>excel.md</li>
-                    <li><a href="export.md"> XML, JSON, iCal and other formats</a></li>
+                    <li><a href="export.md"> XML, JSON, iCal and Other Formats</a></li>
             </ul>
         </td>
         <td class='topic_description'>Covers the formats and techniques you can use to import/export Scheduler's data.</td>
@@ -169,7 +169,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>multiple_users.md</li>          
             </ul>
         </td>
-        <td class='topic_description'>Guides you through various extensions provided by the library for extending the existing functionality.</td>
+        <td class='topic_description'>Guides you through various extensions provided by the library to extend the existing functionality.</td>
     </tr>
     <tr>
 		<td id="data" class='topics'>

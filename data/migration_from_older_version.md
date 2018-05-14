@@ -13,7 +13,7 @@ If you use them, you'll either need to migrate to another [skin](skins.md) or ke
 Release of v5.0 involves a major CSS overhaul, which may create issues with updating heavily CSS-customized applications: the existing styles may stop working due to the specificity of renewed dhtmlxScheduler styles.
 There is no general solution for this, the migration will require investigating and correcting CSS issues.
 
-###POST route fixed
+###POST route in the REST mode fixed
 
 The update also fixes the **POST** (insert) route of dataProcessor in the **REST** mode, the request no longer sends a temporary event id to the server.
 
