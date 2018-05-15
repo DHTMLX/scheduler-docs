@@ -20,7 +20,7 @@ The required code files are:
 
 
 - *dhtmlxscheduler.js*
-- *dhtmlxscheduler.css*
+- *dhtmlxscheduler_material.css* (to use the Material skin, you can also [explore the available skins](skins.md))
 
 
 ~~~html
@@ -29,7 +29,8 @@ The required code files are:
 <head>
    <title>How to start</title>
    <script src="../scheduler/dhtmlxscheduler.js" type="text/javascript"></script>
-   <link rel="stylesheet" href="../scheduler/dhtmlxscheduler.css" type="text/css">
+   <link rel="stylesheet" href="../scheduler/dhtmlxscheduler_material.css" 
+   		type="text/css">
 </head>
 <body>
    	//your code will be here
