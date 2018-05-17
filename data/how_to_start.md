@@ -20,7 +20,7 @@ The required code files are:
 
 
 - *dhtmlxscheduler.js*
-- *dhtmlxscheduler_material.css* (to use the Material skin, you can also [explore the available skins](skins.md))
+- *dhtmlxscheduler_material.css* (for Material skin; you can also [explore the available skins](skins.md))
 
 
 ~~~html

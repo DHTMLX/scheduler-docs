@@ -125,6 +125,7 @@ The articles come around key procedures and problem-solving activities.
 		    <ul id="styling_sublist">
                    <li>skins.md</li>
                    <li>templates.md</li>
+                   <li>custom_skins.md</li>
             </ul>
         </td>
 		<td class='topic_description'>Presents the scheduler GUI elements and the means of styling them. </td>

@@ -9,7 +9,7 @@ Start
     <ul>
         <li><a href="skins.md#materialskin">New Material skin</a></li>
         <li><a href="server_integration.md">Server-side integration with REST API</a></li>
-        <li><a href="migration_from_older_version.md#4450">Global styles refactoring</a> 
+        <li><a href="custom_skins.md">Flexible skins customization</a></li>
     </ul>
     <p class='action_buttons'>
       <a class='action_button moredetails' href="what_s_new.html">More details</a>

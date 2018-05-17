@@ -142,5 +142,5 @@ codebase/dhtmlxgrid_units.js => codebase/ext/dhtmlxgrid_units.js
 @index:
 - scheduler_3.0.md
 
-@todo: check the added headers
+
 
