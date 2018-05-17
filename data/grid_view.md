@@ -1,6 +1,10 @@
 Grid View 
 ==============
 
+{{pronote
+This view is available in the Scheduler PRO version only.
+}}
+
 The Grid view presents a list of upcoming events and, unlike the Agenda view, allows configuring any number of columns.
 
 <img src="grid_view.png"/>

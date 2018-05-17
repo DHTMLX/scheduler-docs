@@ -27,4 +27,5 @@ scheduler.config.key_nav_step = 40;
 api/scheduler_key_nav_config.md
 api/scheduler_focus.md
 api/scheduler_addshortcut.md
+api/scheduler_getshortcuthandler.md
 api/scheduler_removeshortcut.md

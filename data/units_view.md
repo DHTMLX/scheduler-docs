@@ -1,5 +1,10 @@
 Units View 
 ==============
+
+{{pronote
+This view is available in the Scheduler PRO version only.
+}}
+
 The Units view is a view, where X-Axis is based on some property of events (not only on time). 
 
 <img src="units_view.png"/>

@@ -1,5 +1,6 @@
-Large-size Buttons to Help Users Easier Navigate Through Events
+Large Buttons for Easier Navigation 
 ============================================
+
 Starting from version 3.7, dhtmlxScheduler provides the new ["Quick Info" extension](extensions_list.md#quickinfo). The extension gives the possibility 
 to replace standard sidebar buttons and simplified edit form with new (bigger and handier) ones.
 

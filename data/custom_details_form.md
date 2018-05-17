@@ -1,5 +1,4 @@
-
-Custom Lightbox
+Fully Custom Lightbox
 ==============
 
 To specify for the scheduler a fully custom lightbox you need to redefine the api/scheduler_showlightbox.md method:

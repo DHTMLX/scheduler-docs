@@ -14,6 +14,6 @@ scheduler.init("scheduler_here");
 @descr:
 
 
-@related: quick_info.md
+@related: touch_support.md#quickinfoextension
 
 @apigroup: General settings/Quick info

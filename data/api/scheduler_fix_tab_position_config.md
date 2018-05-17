@@ -20,7 +20,6 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 	scheduler_markup.md#tabspositioning
 @relatedsample:
 	07_skins/01_default.html
-	07_skins/07_default_rec.html
     
 @descr:    
 The property is available from version 3.5.    

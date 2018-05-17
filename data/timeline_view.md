@@ -1,12 +1,18 @@
 Timeline View 
 ==============
+
+{{pronote
+This view is available in the Scheduler PRO version only.
+}}
+
 The Timeline view allows you to visualize events horizontally with separate timelines arranged from left to right.
 
 <img src="timeline_view.png"/>
 
 Initialization
 -----------------------------------
-To add the Timeline view  to the scheduler, follow these steps:
+
+To add the Timeline view to the scheduler, follow these steps:
 
 <ol>
 	<li><b>Include the Timeline code file on the page:</b>
@@ -64,6 +70,7 @@ scheduler.createTimelineView({
 In the 'Days' mode, time scale must cover 1 day exactly. If your configuration specifies a shorter or longer period - timeline will be rendered incorrectly.
 }}
 
+
 ###Scale configuration example
 
 In spite of a big number of parameters used in the api/scheduler_createtimelineview.md method, it's quite simple. 
@@ -88,6 +95,46 @@ Let's consider an example - the time scale from 09:00 to 15:00 with 30 minutes s
 ~~~
 
 
+Configuring Timeline View
+----------------------------------
+
+All template functions the names of which have *{timeline}_some* in their name should be specified after the view's creation, since 
+they are defined dynamically from the timeline constructor and will be overwritten by the api/scheduler_createtimelineview.md call. 
+
+###Setting the start date for the Timeline view
+
+For example, let's have a look how the start date of the Timeline view should be set.  
+
+The start date of any view is defined by a *scheduler.date[<viewName> +"_start"]* function.
+In order to change the first day of the timeline scale, you need to override the *scheduler.date.timeline_start* function after the *scheduler.createTimelineView()* call:
+
+~~~js
+// set the 1st day of the week
+scheduler.config.start_on_monday = true;
+
+// create a timeline in the scheduler
+scheduler.createTimelineView({
+	name: "timeline",
+	render: "tree",
+	days: 7,
+	folder_dy: 20,
+	x_unit: "day",
+	x_date: "%D %j %F",
+	x_step: 1,
+	x_size: 7,
+	x_start: 0,
+	x_length: 7,
+	y_unit:[],
+	y_property: "section_id"
+});
+
+// configure the timeline after it's created
+scheduler.date.timeline_start = scheduler.date.week_start;
+
+// initialize a scheduler
+scheduler.init("timeline_tree",new Date(),"timeline");
+~~~
+
 
 Dynamic changing of properties
 -------------------------------------
@@ -104,8 +151,8 @@ where 'timeline' is the name of the timeline view as specified in the api/schedu
 
 ~~~js
 scheduler.createTimelineView({
-name:'timeline',
-...
+	name:'timeline',
+	...
 })
 ~~~
 
@@ -121,7 +168,7 @@ Unlike basic views (such as Day, Month, Year etc.), multiple-resource views (tha
 ~~~js
 scheduler.createTimelineView({
      name:"timeline",
-    ...
+     ...
      y_unit:     
         [{key:1, label:"Room 1"},
          {key:2, label:"Room 2"},
@@ -205,6 +252,7 @@ scheduler.parse([
 
 View Modes
 ---------------------------
+
 The view has 4 modes:
 
 - **Bar**<br> <img src="timeline_bar_mode.png"/><br> {{sample 06_timeline/02_lines.html}} <br> <br>
@@ -216,28 +264,28 @@ The needed mode is set by the parameter [render](api/scheduler_createtimelinevie
 ~~~js
 scheduler.createTimelineView({
 	name: "timeline",
-	...
 	render: "bar"
 });
 ~~~
 
 'Days' mode details
 ----------------------------------------
+
 While working with the Days mode, please remember the following things: 
 
 <ol>
 	<li>Time scale must cover 1 day exactly. If your configuration specifies a shorter or longer period - timeline will be rendered incorrectly:
 ~~~js
 scheduler.createTimelineView({
-	name:	"timeline", 
+	name:"timeline", 
     render:"days", 
 	days:7,   
     //time scale is configured to cover 1 day /*!*/
-	x_unit:	"minute", /*!*/
-	x_date:	"%H:%i",/*!*/
-	x_step:	30,/*!*/
-	x_size: 24,/*!*/
-	x_start: 16/*!*/
+	x_unit:"minute", /*!*/
+	x_date:"%H:%i",  /*!*/
+	x_step:30,       /*!*/
+	x_size:24,       /*!*/
+	x_start:16       /*!*/
 });
 ~~~
 	</li>
@@ -264,34 +312,32 @@ scheduler.date.timeline_start = function (date) {
 
 
 
-Setting the time interval for the view cells
+Time interval for view cells
 ------------------------------------------------------
+
 By default, cells of the view have a one-day interval and locate events inside, according to this time. To change the default interval (for example, to leave only working hours and remove rarely used ones), use one of 2 ways:
 
-<ol>
-	<li>the <a href="api/scheduler_createtimelineview.md">first_hour</a> and <a href="api/scheduler_createtimelineview.md">last_hour</a> parameters:
+- the [first_hour](api/scheduler_createtimelineview.md) and [last_hour](api/scheduler_createtimelineview.md) parameters:
 
 ~~~js
-//the cell interval will be a day-time from 10.00 till 18.00
+//the cell interval will be daytime from 10.00 till 18.00
 scheduler.createTimelineView({
 	name:"timeline",
-    ...
 	first_hour:10,
 	last_hour:18
-
 });
 ~~~
 
 {{sample
 	11_scales/06_timeline_hours.html
 }}
-	</li>
-    <li>the <b>ignore_timeline</b> property. It is a function that takes the cell date as a parameter, and 'removes' the hours for which the 'true' value is returned:
+
+- the **ignore_timeline** property. It is a function that takes the cell date as a parameter, and 'removes' the hours for which the 'true' value is returned:
 
 ~~~js
-//the cell interval will be a day-time from 10.00 till 18.00
+//the cell interval will be daytime from 10.00 till 18.00
 scheduler.ignore_timeline = function(date){
-	//non-working hours
+	// non-working hours
 	if (date.getHours() < 10 || date.getHours() > 18) return true;
 };
 ~~~
@@ -299,12 +345,38 @@ scheduler.ignore_timeline = function(date){
 {{sample
 	11_scales/04_timeline_ignore.html
 }}
-	</li>
-</ol>
-
-<br>
+	
 
 <img src="timeline_scale_interval.png"/>
+
+{{note Please pay attention that you can't specify the ignored interval equal or larger than the common interval set for the timeline.}}
+
+For instance, if you set a one-day interval for a timeline and try to "ignore" some day via the **ignore_timeline** property, it won't work. 
+Scheduler will show the ignored day, although without rendering a scale with events for it.
+
+To skip the "ignored" interval in the described case, you need to dynamically change the **x_length** setting in the **scheduler._click.dhx_cal_next_button** function. For example, to ignore weekends 
+and totally remove them from the timeline, you can use the following code:
+
+~~~js
+scheduler._click.dhx_cal_next_button = function(dummy,step){
+  var mode = scheduler.getState().mode;
+  var minDate = scheduler.getState().min_date;
+  var formFunc = scheduler.date.date_to_str("%D");
+
+  // ignoring weekends
+  if(mode=='timeline'){    
+  if((formFunc(minDate)=='Fri' && step!=-1) || (formFunc(minDate)=='Mon' && step==-1))
+      scheduler.matrix['timeline'].x_length = 24*3;
+    else					
+      scheduler.matrix['timeline'].x_length = 24;				
+  }
+ scheduler.setCurrentView(scheduler.date.add( 
+ scheduler.date[scheduler._mode+"_start"](scheduler._date),(step||1),scheduler._mode));  
+};
+~~~
+
+{{editor 	http://docs.dhtmlx.com/scheduler/snippet/e4358367			Ignoring weekends}}
+
 
 Data for the Y-Axis sections in the 'Bar' and 'Cell' modes
 -------------------------------------------
@@ -396,6 +468,7 @@ scheduler.createTimelineView({
     y_unit:scheduler.serverList("sections"),
 });
 ~~~
+
 *where api/scheduler_serverlist.md  returns a list of options with the name 'sections'*.
 
 - On the server side 
@@ -519,7 +592,6 @@ scheduler.createTimelineView({
 <img src="stretching_events_01.png"/>
 
 
-
 **round_position:true**
 
 <img src="stretching_events_02.png"/>
@@ -531,7 +603,6 @@ of the [sort](api/scheduler_createtimelineview.md) parameter:
 
 
 This function will be called for each pair of adjacent values and return 1,-1 or 0:
-
 
 
 - **1** - an object with the first value in pair must go before the second one;
@@ -558,11 +629,6 @@ scheduler.createTimelineView({
 	}
 });
 ~~~
-
-
-
-
-
 
 
 Related guides

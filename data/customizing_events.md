@@ -7,4 +7,5 @@ Customizing Events
 - custom_events_content.md
 - tooltips.md
 - customizing_edit_select_bars.md
+- sizing.md
 }}

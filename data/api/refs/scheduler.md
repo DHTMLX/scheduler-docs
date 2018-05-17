@@ -1,6 +1,7 @@
 Scheduler API 
 =============
 
+
 <div class='h2'>Methods</div>
 
 {{api
@@ -50,12 +51,13 @@ Scheduler API
 - api/scheduler_getrecdates.md - returns all occurrences of a recurring event
 - api/scheduler_getrenderedevent.md - gets the object of the currently displayed event
 - api/scheduler_getsection.md - gets the object of the specified section in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+- api/scheduler_getshortcuthandler.md - gets a key navigation shortcut handler
 - api/scheduler_getstate.md - gets the current state of the scheduler
 - api/scheduler_getuserdata.md - gets the user data associated with the specified event
 - api/scheduler_hidecover.md - hides the lightbox modal overlay that blocks interactions with the remaining screen
 - api/scheduler_hidequickinfo.md - hides the pop-up event form (if it's currently active)
 - api/scheduler_highlighteventposition.md - highlights the event's duration on the time scale
-- api/scheduler_init.md - constructor. Initializes a dhtmlxScheduler object
+- api/scheduler_init.md - a constructor of a dhtmlxScheduler object
 - api/scheduler_invertzones.md - inverts the specified time zones
 - api/scheduler_iscalendarvisible.md - checks whether the calendar is currently opened in the scheduler
 - api/scheduler_isonedayevent.md - checks whether the specified event one-day or multi-day
@@ -154,14 +156,14 @@ Scheduler API
 - api/scheduler_oneventdropout_event.md - fires when a dragged event  is dropped onto the area out of the scheduler
 - api/scheduler_oneventidchange_event.md - fires when the id of an event is changed
 - api/scheduler_oneventloading_event.md - fires when an event is being loaded from the data source
-- api/scheduler_oneventpasted_event.md - fires when the user presses the 'CTRL+V' keyboard command (only with the 'keyboard navigation' extension enabled)
+- api/scheduler_oneventpasted_event.md - fires when the user presses the 'CTRL+V' keyboard command
 - api/scheduler_oneventsave_event.md - fires when the user clicks on the 'save' button in the lightbox (edit form)
 - api/scheduler_onexpand_event.md - fires when a user clicks on the expand icon to change the scheduler's size from original to 'full screen'.
 - api/scheduler_onexternaldragin_event.md - fires when some data is being dragged into the scheduler from an outside DHTMLX component (only with dnd extension enabled)
 - api/scheduler_onlightbox_event.md - fires after the user has opened the lightbox (edit form)
-- api/scheduler_onlightboxbutton_event.md - fires when the user clicks on a custom button in the lightbox
+- api/scheduler_onlightboxbutton_event.md - fires when the user clicks a custom button in the lightbox
 - api/scheduler_onlimitviolation_event.md - fires when the user tries to set for an event the time that is currently limited/blocked
-- api/scheduler_onloaderror_event.md - fires when some error happened while data loading
+- api/scheduler_onloaderror_event.md - fires if the scheduler has failed to parse data, or if the server has returned 4xx or 5xx response status
 - api/scheduler_onlocationerror_event.md - fires when the event location can't be found on the map (the Map view only)
 - api/scheduler_onmousedown_event.md - fires when the user clicks on a scheduler's element that doesn't have the predefined 'onlick' handler
 - api/scheduler_onmousemove_event.md - fires when the mouse cursor is moved over the scheduler
@@ -195,7 +197,7 @@ Scheduler API
 - api/scheduler_agenda_start_config.md - sets the date to start displaying events from
 - api/scheduler_ajax_error_config.md - specifies how to display the default error notification in case the XML data loading failed
 - api/scheduler_all_timed_config.md - 'says' to show multi-day events in  the regular way (as one-day events are displayed)
-- api/scheduler_api_date_config.md - sets the date format that will be used by the addEvent() method to parse the start_date, end_date properties in case they are specified as strings
+- api/scheduler_api_date_config.md - defines the date format for the <strong>api_date</strong> template
 - api/scheduler_auto_end_date_config.md - enables automatic changing of the end event date after changing the start date
 - api/scheduler_buttons_left_config.md - stores a collection of buttons resided in the left bottom corner of the lightbox
 - api/scheduler_buttons_right_config.md - stores a collection of buttons resided in the right bottom corner of the lightbox
@@ -208,7 +210,7 @@ Scheduler API
 - api/scheduler_day_date_config.md - sets the date format for the X-Axis of the Week and Units views
 - api/scheduler_dblclick_create_config.md - enables the possibility to create events by double click
 - api/scheduler_default_date_config.md - sets the date format used by the templates 'day_date', 'week_date', 'day_scale_date' for setting date in the views' headers
-- api/scheduler_delay_render_config.md - sets a timeout (in milliseconds) that wraps the api/scheduler_updateview.md and api/scheduler_setcurrentview.md calls  ( that cause re-drawing of the scheduler )
+- api/scheduler_delay_render_config.md - sets a timeout (in milliseconds) that wraps the api/scheduler_updateview.md and api/scheduler_setcurrentview.md calls (that cause re-drawing of the scheduler)
 - api/scheduler_details_on_create_config.md - 'says' to use the extended form while creating new events by drag or double click
 - api/scheduler_details_on_dblclick_config.md - 'says' to open the lightbox after double clicking on an event
 - api/scheduler_display_marked_timespans_config.md - defines whether the marked(blocked) time spans should be highlighted in the scheduler
@@ -295,7 +297,8 @@ Scheduler API
 - api/scheduler_touch_tip_config.md - enables/disables prompting messages in the right top corner of the screen
 - api/scheduler_touch_tooltip_config.md - disables dhtmxlScheduler's tooltips on the touch devices
 - api/scheduler_update_render_config.md - updates the mode when the scheduler fully repaints itself on any action
-- api/scheduler_use_select_menu_space_config.md - 'says' events to occupy the whole width of the cell
+- api/scheduler_use_select_menu_space_config.md - defines that events occupy the whole width of the cell
+- api/scheduler_wai_aria_application_role_config.md - defines whether role="application" will be used for the main scheduler container and minicalendar elements
 - api/scheduler_wai_aria_attributes_config.md - enables WAI-ARIA support to make the component recognizable for screen readers
 - api/scheduler_week_date_config.md - sets the format of the date in the sub-header of the Month view
 - api/scheduler_wide_form_config.md - enables/disables displaying the standard (wide) lightbox instead of the short one

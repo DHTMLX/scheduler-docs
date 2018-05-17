@@ -6,12 +6,11 @@ createTimelineView
 
 
 @params:
-- config	object	the configuration object of the Timeline view
-
+- config		object		the configuration object of the Timeline view
 
 
 @example: 
-//the time scale from 8AM to 8PM with 30 minutes step
+// the time scale from 8 AM to 8 PM with a 30-minutes step
 scheduler.createTimelineView({
      name:		"timeline",
      x_unit:	"minute",
@@ -20,12 +19,13 @@ scheduler.createTimelineView({
      x_size:	24,
      x_start:	16,
      x_length:	48,
-     y_unit:
-     	[	{key:1, label:"Section A"},
-        	{key:2, label:"Section B"},
-        	{key:3, label:"Section C"},
-        	{key:4, label:"Section D"}	],
-     y_property:"section_id",
+     y_unit:[	
+     	{key:1, label:"Section A"},
+        {key:2, label:"Section B"},
+        {key:3, label:"Section C"},
+        {key:4, label:"Section D"}	
+     ],
+     y_property: "section_id",
      render:	"bar"
 });
 
@@ -40,7 +40,8 @@ scheduler.createTimelineView({
     06_timeline/03_tree.html
     
 @descr: 
-The configuration object of the Units view can have the following properties:
+The configuration object of the Timeline view can have the following properties:
+
 <table class="webixdoc_links">
 	<tbody>
     	<tr>
@@ -105,11 +106,11 @@ The configuration object of the Units view can have the following properties:
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>first_hour</b></td>
-			<td>(<i>number</i>) sets the start hour of the cell's time interval. Optional</td>
+			<td>(<i>number</i>) sets the start hour of the cell's time interval. The attribute is applicable only if <b>x_unit="day"</b></td>
 		</tr>        
         <tr>
 			<td class="webixdoc_links0"><b>last_hour</b></td>
-			<td>(<i>number</i>) sets the end hour of the cell's time interval. Optional</td>
+			<td>(<i>number</i>) sets the end hour of the cell's time interval. The attribute is applicable only if <b>x_unit="day"</b></td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>show_unassigned</b></td>
@@ -170,23 +171,23 @@ The configuration object of the Units view can have the following properties:
 
 Dynamic changing of properties
 -------------------------------------
-All defined timeline objects are stored in the scheduler.matrix object.
-You can access the configuration  of any timeline view by its name and change any property. Changes will be applied as soon as you update the scheduler:
+
+All defined timeline objects are stored in the **scheduler.matrix** object.
+You can access the configuration of any timeline view by its name and change any property. Changes will be applied as soon as you update the scheduler:
 
 ~~~js
-scheduler.matrix['timeline'].x_size = 12;
-scheduler.setCurrentView();//redraws scheduler
+scheduler.matrix["timeline"].x_size = 12;
+scheduler.setCurrentView(); // redraws scheduler
 ~~~
 
-<br>
 
-where 'timeline' is the name of the timeline view as specified in the api/scheduler_createtimelineview.md method:
+where "timeline" is the name of the timeline view as specified in the api/scheduler_createtimelineview.md method:
 
 ~~~js
 scheduler.createTimelineView({
-name:'timeline',
-...
-})
+	name:"timeline",
+	...
+});
 ~~~
 
 @edition:pro

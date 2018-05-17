@@ -387,7 +387,7 @@ Provides a popup with an event details.
 
 ####Related resources
 
-Article:   touch_support.md, quick_info.md<br>
+Article:   touch_support.md<br>
 
 {{sample 03_extensions/29_quick_info.html}}
 

@@ -1,13 +1,13 @@
 onEventPasted
 =============
 
-@short: fires when the user presses the 'CTRL+V' keyboard command (only with the 'keyboard navigation' extension enabled)
+@short: fires when the user presses the 'CTRL+V' keyboard command
 	
 
 @params: 
-- isCopy	boolean indicates whether the event was copied or cut before pasting. The *true* value 'says' that the event was copied
-- pasted__ev	object	the object of the new data item (the event that is created after pasting)
-- original_ev	object	the object of the original data item (the event that was copied/cut)
+- isCopy			boolean 		indicates whether the event was copied or cut before pasting. The <em>true</em> value 'says' that the event was copied
+- pasted_ev			object			the object of the new data item (the event that is created after pasting)
+- original_ev		object			the object of the original data item (the event that was copied/cut)
 
 @example: 
 scheduler.attachEvent("onEventPasted", function(isCopy, pasted_ev, original_ev) {
@@ -18,6 +18,7 @@ scheduler.attachEvent("onEventPasted", function(isCopy, pasted_ev, original_ev) 
 
 @template:	api_event
 @descr: 
+The 'keyboard navigation' extension should be enabled.
 
 @require: key_nav
 
@@ -27,4 +28,3 @@ scheduler.attachEvent("onEventPasted", function(isCopy, pasted_ev, original_ev) 
 
 @relatedsample:
 	03_extensions/07_navigation_plugin.html
-	03_extensions/01_recurring_events.html

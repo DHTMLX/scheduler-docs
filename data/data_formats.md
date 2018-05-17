@@ -48,9 +48,12 @@ JSON
 
 ~~~js
 [
-{id:1, text:"Meeting",   start_date:"04/11/2013 14:00",end_date:"04/11/2013 17:00"},
-{id:2, text:"Conference",start_date:"04/15/2013 12:00",end_date:"04/18/2013 19:00"},
-{id:3, text:"Interview", start_date:"04/24/2013 09:00",end_date:"04/24/2013 10:00"}
+	{"id":"1", "text":"Meeting", "start_date":"04/11/2013 14:00",
+    	"end_date":"04/11/2013 17:00"},
+	{"id":"2", "text":"Conference", "start_date":"04/15/2013 12:00", 
+    	"end_date":"04/18/2013 19:00"},
+	{"id":"3", "text":"Interview", "start_date":"04/24/2013 09:00", 
+    	"end_date":"04/24/2013 10:00"}
 ]
 ~~~
 
@@ -92,13 +95,13 @@ For example, it is useful when you want to [load Timeline and Units sections fro
           "type":"2"
       }
    ], 
-   "collections": {
-      "sections":[
-         {"value":"1","label":"Simple"},
-         {"value":"2","label":"Complex"},
-         {"value":"3","label":"Unknown"}
-      ]
-   }
+   "collections": {							/*!*/
+      "sections":[							/*!*/
+         {"value":"1","label":"Simple"},	/*!*/
+         {"value":"2","label":"Complex"},	/*!*/
+         {"value":"3","label":"Unknown"}	/*!*/
+      ]										/*!*/
+   }										/*!*/
 }
 ~~~
 
@@ -161,12 +164,12 @@ Let's consider an example when the initial set (presented <a href="data_formats.
 ####JSON
 ~~~js
 [{
-	id:1,
-    text:"Meeting",
-    start_date:"04/11/2013 14:00", 
-    end_date:"04/11/2013 17:00",
-    room:327,
-    holder:"James"
+	"id":"1",
+    "text":"Meeting",
+    "start_date":"04/11/2013 14:00", 
+    "end_date":"04/11/2013 17:00",
+    "room":327,
+    "holder":"James"
 }]
 ~~~
 

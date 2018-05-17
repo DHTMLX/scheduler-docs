@@ -25,7 +25,7 @@ scheduler.load("data/events.php");
 @descr: 
 
 {{note
-The method should be called after the **scheduler.init()** call but before loading data into the scheduler
+The method should be called after the **scheduler.init()** call, but before loading data into the scheduler.
 }}
 
 By default, scheduler loads all data at once. But it may become problematic, when you are using big event collections. In such situations, you should load data by parts, necessary to fill the viewable area of the scheduler.
@@ -39,8 +39,11 @@ The **mode** parameter can take only one of the predefined set of values. The pr
 
 
 For example, if you set the 'month' mode, the scheduler will request data just for the current month and load the remaining ones on demand. 
+[Read more about the loading modes](loading_data.md#dynamicloading).
 
-Generated requests look like:
+####Request
+
+Generated requests look like this:
 
 ~~~php
 Data?from=DATEHERE&to=DATEHERE

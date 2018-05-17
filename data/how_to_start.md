@@ -5,7 +5,7 @@ How to Start
 In this tutorial we want to consider the creation of a standard scheduler that loads data from a database and saves it back. 
 The final code of the tutorial can be used as the start point while creating applications with dhtmlxScheduler.  
 
-![how_to_start_front_image.png](how_to_start_front_image.png)
+![init_scheduler_front.png](init_scheduler_front.png)
 
 {{sample
 	01_initialization_loading/05_loading_database.html
@@ -20,7 +20,7 @@ The required code files are:
 
 
 - *dhtmlxscheduler.js*
-- *dhtmlxscheduler.css*
+- *dhtmlxscheduler_material.css* (for Material skin; you can also [explore the available skins](skins.md))
 
 
 ~~~html
@@ -29,7 +29,8 @@ The required code files are:
 <head>
    <title>How to start</title>
    <script src="../scheduler/dhtmlxscheduler.js" type="text/javascript"></script>
-   <link rel="stylesheet" href="../scheduler/dhtmlxscheduler.css" type="text/css">
+   <link rel="stylesheet" href="../scheduler/dhtmlxscheduler_material.css" 
+   		type="text/css">
 </head>
 <body>
    	//your code will be here
@@ -119,21 +120,25 @@ The properties of a data object are:
 
 ~~~js
 var events = [
-{id:1, text:"Meeting",   start_date:"04/11/2013 14:00",end_date:"04/11/2013 17:00"},
-{id:2, text:"Conference",start_date:"04/15/2013 12:00",end_date:"04/18/2013 19:00"},
-{id:3, text:"Interview", start_date:"04/24/2013 09:00",end_date:"04/24/2013 10:00"}
+   {id:1, text:"Meeting",   start_date:"04/11/2018 14:00",end_date:"04/11/2018 17:00"},
+   {id:2, text:"Conference",start_date:"04/15/2018 12:00",end_date:"04/18/2018 19:00"},
+   {id:3, text:"Interview", start_date:"04/24/2018 09:00",end_date:"04/24/2018 10:00"}
 ];
 
 scheduler.parse(events, "json"); // takes the name and format of the data source
 ~~~
 
+You can also [load data from the server](#step7loadingdatafromtheserver). 
+
+{{note See details on integration with the server side in the server_integration.md article.}}
+
 ## Step 6. Database structure 
 
 {{note
-Read this and further steps if you want to load data from a database instead of from an inline object.
+Read this and further steps if you want to load data from a database instead of an inline object.
 }}
 
-Now, if you have decided to load data from the server - you need to create  a table in your database as in:
+Now, if you have decided to load data from the server, you need to create a table in your database as in:
 
 <img style="padding-top:15px;" src='db_table.png'/>
 
@@ -149,14 +154,11 @@ CREATE TABLE `events` (
 )
 ~~~
 
-Besides the aforementioned fields, you can create any number of extra ones, which then can be passed to the client side and 
-[mapped to the lightbox](custom_details_form.md#mapping_db_fields_to_the_form).
-
+Besides the aforementioned fields, you can create any number of extra ones, which then can be passed to the client side and [mapped to the lightbox](custom_details_form.md#mapping_db_fields_to_the_form).
 
 Beware, the format of the DataTime data type is '%Y-%m-%d %H:%i' that differs from the date format expected by the scheduler ('%m/%d/%Y %H:%i'). 
 So, to provide correct data conversion, you should change the default scheduler format. It can be achieved by specifying the api/scheduler_xml_date_config.md configuration option.
-  
-  
+    
 Note, any configuration options go BEFORE the initialization string, i.e.:
 
 ~~~js
@@ -168,8 +170,9 @@ scheduler.init('scheduler_here',new Date(),"month");
 ##Step 7. Loading data from the server
 
 To load data from a database, use the api/scheduler_load.md method where specify a file realizing server-side 'communication' as a parameter. 
-You may write the full server side by yourself, 
-but we recommend to use <a href="https://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">dhtmlxConnector</a>, as the easiest way.
+
+{{note You can use [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) library for a quick start, as shown in this tutorial, but for a new project
+we recommend implementing the backend API manually, for greater flexibility. See details in the server_integration.md article.}}
   
 So, for our task you need to call the method as shown below:
 
@@ -195,19 +198,33 @@ $conn = new SchedulerConnector($res);
 $conn->render_table("events","id","start_date,end_date,text");
 ~~~
 
-<br>
+###Mapping database columns
 
-Note, you can name the table fields, as you want. In any case, the scheduler interprets 3 first fields to load, as the required ones. For instance, if you load data as in:
-
-~~~php
-$conn->render_table("events","id","event_start,event_end,event_text");
+Please note that the order of columns in **$connector->render_table** is important. The first three columns in the columns list are mapped to *start_date/end_date/text* properties of the
+client-side task object respectively, no matter what column names you specify:
+ 
+~~~js
+$conn->render_table("events","EventId","Start,End,Name,details","");
+//JS: event.id, event.start_date, event.end_date, event.text, event.text, event.details
 ~~~
 
-the interpretation will be as follows:
+####Mapping other columns
 
-- *event_start* -> *start_date*;
-- *event_end* -> *end_date*;
-- *event_text* ->*text*. 
+All other columns will be mapped by their names without changes:
+
+~~~js
+$conn->render_table("events","id","start_date,end_date,text,custom,details","");
+// JS: event.start_date, event.end_date, event.text, event.custom, event.details
+~~~
+
+You can also use aliases, as follows:
+
+~~~js
+$conn->render_table("events","id",
+	"start_date,end_date,text,custom_column(customProperty),details","");
+//JS:event.start_date, event.end_date, event.text, event.customProperty, event.details
+~~~
+
 
 ## Step 9. Saving data 
 

@@ -1,5 +1,10 @@
 Week Agenda View 
 ==============
+
+{{pronote
+This view is available in the Scheduler PRO version only.
+}}
+
 The Week Agenda view is a combination of Week and Agenda views presenting a list of upcoming events within a week.
 
 <img src="weekagenda_view.png"/>

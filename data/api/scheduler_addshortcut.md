@@ -28,6 +28,7 @@ added in version 4.4
 In case the third parameter is not set, the handler will be attached to the scheduler scope.
 
 @relatedapi:
+api/scheduler_getshortcuthandler.md
 api/scheduler_removeshortcut.md
 api/scheduler_focus.md
 api/scheduler_key_nav_config.md

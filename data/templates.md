@@ -1,4 +1,4 @@
-Formatting Labels, Dates and Styles
+Formatting Labels, Dates, Styles
 ==============
 
 Follow the link of a view to see templates supported by it. 
