@@ -49,7 +49,7 @@ To enable the REST mode, use the [setTransactionMode()](https://docs.dhtmlx.com/
 ~~~js
 var dp = new dataProcessor("apiUrl");
 dp.init(scheduler);
-dp.setTransactionMode("POST", false);  /*!*/
+dp.setTransactionMode("REST", false);  /*!*/
 ~~~
 
 The list of possible requests and responses is:
