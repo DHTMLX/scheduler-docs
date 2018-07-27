@@ -29,6 +29,6 @@ scheduler.init('scheduler_here',new Date(2009,5,30),"week");
 By default, events scheduled to the same time are displayed one by one. If you want to present such events as a cascade, set the option to *true*. 
 
 <br>
-<img src="api/cascadeEventDisplay_property.png"/>
+<img src="api/cascade_event_display_property.png"/>
 
 @apigroup: Events/Cascade events

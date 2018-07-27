@@ -5,18 +5,20 @@ To create  a custom control (editor), define a new object in the next way:
 
 ~~~js
 scheduler.form_blocks["my_editor"]={
-	render:function(sns){ // sns - section configuration object
+	render:function(config){ // config- section configuration object
 		return "HTML code of the editor here";
 	},
-	set_value:function(node,value,ev){
+	set_value:function(node,value,ev,config){
 		// node - HTML object related to HTML defined above
 		// value - value defined by map_to property
 		// ev - event object
+        // config - section configuration object
 		... code to set value to the element ...
 	},
-	get_value:function(node,ev){
+	get_value:function(node,ev,config){
 		// node - HTML object related to HTML defined above
 		// event object
+        // config - section configuration object
 		return "current value from editor";
 	},
 	focus:function(node){
