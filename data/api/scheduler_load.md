@@ -33,3 +33,6 @@ While next portions of data will be loaded later, the callback function won't be
 
 If you need  to call the callback function each time data is loaded into Scheduler, you can make use of the api/scheduler_onxle_event.md event.
 
+@relatedapi:
+api/scheduler_onxle_event.md
+api/scheduler_onxls_event.md
