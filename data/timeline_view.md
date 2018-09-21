@@ -138,12 +138,13 @@ scheduler.init("timeline_tree",new Date(),"timeline");
 
 Dynamic changing of properties
 -------------------------------------
-All defined timeline objects are stored in the scheduler.matrix object.
-You can access the configuration  of any timeline view by its name and change any property. Changes will be applied as soon as you update the scheduler:
+
+All defined timeline objects are stored in the [scheduler.matrix](api/scheduler_matrix_other.md) object.
+You can access the configuration of any timeline view by its name and change any property. Changes will be applied as soon as you update the scheduler:
 
 ~~~js
 scheduler.matrix['timeline'].x_size = 12;
-scheduler.setCurrentView();//redraws scheduler
+scheduler.setCurrentView(); // redraws scheduler
 ~~~
 
 <br>
@@ -159,9 +160,10 @@ scheduler.createTimelineView({
 
 Loading data to the view
 ----------------------------------
+
 Unlike basic views (such as Day, Month, Year etc.), multiple-resource views (that are Units and Timeline) require data items to have one more mandatory field:
 
-* [y_property](api/scheduler_createtimelineview.md) - (string) the name of a data property that will be used to assign events to certain sections.
+* [y_property](api/scheduler_createtimelineview.md) - (*string*) the name of a data property that will be used to assign events to certain sections.
 
 <img src="timeline_loading.png"/>
 
@@ -332,15 +334,18 @@ scheduler.createTimelineView({
 	11_scales/06_timeline_hours.html
 }}
 
-- the **ignore_timeline** property. It is a function that takes the cell date as a parameter, and 'removes' the hours for which the 'true' value is returned:
+- the **ignore_{viewName}** property, where the **viewName** part is the value of the *name* option of the object passed to the api/scheduler_createtimelineview.md method.
+**ignore_{viewName}** is a function that takes the cell date as a parameter, and 'removes' the hours for which the 'true' value is returned:
 
 ~~~js
 //the cell interval will be daytime from 10.00 till 18.00
-scheduler.ignore_timeline = function(date){
+scheduler.ignore_timeline = function(date){   // "timeline" is the name of the view
 	// non-working hours
 	if (date.getHours() < 10 || date.getHours() > 18) return true;
 };
 ~~~
+
+The **ignore_{viewName}** method is described in more detail in the section custom_scales.md.
 
 {{sample
 	11_scales/04_timeline_ignore.html
@@ -351,7 +356,7 @@ scheduler.ignore_timeline = function(date){
 
 {{note Please pay attention that you can't specify the ignored interval equal or larger than the common interval set for the timeline.}}
 
-For instance, if you set a one-day interval for a timeline and try to "ignore" some day via the **ignore_timeline** property, it won't work. 
+For instance, if you set a one-day interval for a timeline and try to "ignore" some day via the **ignore_{viewName}** property, it won't work. 
 Scheduler will show the ignored day, although without rendering a scale with events for it.
 
 To skip the "ignored" interval in the described case, you need to dynamically change the **x_length** setting in the **scheduler._click.dhx_cal_next_button** function. For example, to ignore weekends 
