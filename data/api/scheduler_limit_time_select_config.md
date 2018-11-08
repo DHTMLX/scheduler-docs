@@ -1,6 +1,7 @@
 limit_time_select
 =============
-@short:sets the max and min values of the time selector in the lightbox to the values of the 'last_hour' and 'first_hour' options
+
+@short:sets max and min values of time selector in the lightbox to the values of the 'last_hour' and 'first_hour' options
 	
 
 @type:boolean
@@ -10,7 +11,6 @@ scheduler.config.limit_time_select = true;
 ...
 scheduler.init('scheduler_here',new Date(2013,0,10),"week");
 
-@require:minical
 @default:false
 
 @template:	api_config

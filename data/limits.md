@@ -1,33 +1,29 @@
- Blocking and Marking dates
+Blocking and Marking Dates
 ==============
 
 The library provides the **ext/dhtmlxscheduler_limit.js** extension that allows you to block and mark (highlight) certain dates or date ranges.
 
-{{note
 To start using the extension, include the **ext/dhtmlxscheduler_limit.js** file on the page. 
-}}
 
+{{note Note, if you use the timeline_view.md, the 'limit' extension file should go before the 'timeline' one:}}
 
-Note, if you use the timeline_view.md, the 'limit' extension file should go before the 'timeline' one:
-
-~~~js
-//the 'limit' file should go before the 'timeline' one
-<script src="codebase/ext/dhtmlxscheduler_limit.js"></script>
-<script src='codebase/ext/dhtmlxscheduler_timeline.js'></script>
-
+~~~html
+<script src="codebase/ext/dhtmlxscheduler_limit.js"></script> /*!*/
+<script src='codebase/ext/dhtmlxscheduler_timeline.js'></script> 
 ~~~
 
 
 ##Configuration options
+
 The extension gives at your disposal the next configuration options:
 
 {{links
-- api/scheduler_display_marked_timespans_config.md - defines whether the marked(blocked) time spans should be highlighted in the scheduler
+- api/scheduler_display_marked_timespans_config.md - defines whether the marked (blocked) time spans should be highlighted in the scheduler
 - api/scheduler_check_limits_config.md - activates/disables checking of limits
 - api/scheduler_mark_now_config.md - enables/disables the marker displaying the current time
 - api/scheduler_now_date_config.md - sets the date for the api/scheduler_mark_now_config.md option
-- api/scheduler_limit_end_config.md - sets the right border of the allowable date range
-- api/scheduler_limit_start_config.md - sets the left border of the allowable date range
+- api/scheduler_limit_end_config.md - sets the end limit of the allowable date range
+- api/scheduler_limit_start_config.md - sets the start limit of the allowable date range
 - api/scheduler_limit_view_config.md - limits viewing events
 }}
 
@@ -36,9 +32,11 @@ The extension gives at your disposal the next configuration options:
 }}
 
 ## Related events 
+
 If the scheduler detects an attempt to create/modify an event with a non-allowed date, the api/scheduler_onlimitviolation_event.md event will be generated.
 
 ##How to block certain dates?
+
 There are 3 methods you can specify a limit in the scheduler with:
 
 {{links
@@ -94,7 +92,7 @@ For example:
 
 
 ~~~js
-scheduler.addMarkedTimespan({ // blocks 4th July,2012 (this is Wednesday).
+scheduler.addMarkedTimespan({ // blocks 4th July, 2012 (this is Wednesday).
 	days:  new Date(2012,7,4),
 	zones: "fullday", 
 	type:  "dhx_time_block",
@@ -121,8 +119,8 @@ scheduler.addMarkedTimespan({
 As a result of calling these methods you will get the following:
 
 
-1.  First of all, the scheduler will block **each Sunday and Wednesday for the item (id=2) in the Timeline view** and **color them in gray**
-2.  Then, will block **4th July,2012** and **color it in red**
+1.  First of all, the scheduler will block **each Sunday and Wednesday for the item (id=2) in the Timeline view** and **color them in gray**.
+2.  Then, will block **4th July, 2012** and **color it in red**.
 3.  Finally, will block **each Sunday, Monday, Wednesday** and **color them in blue**.
 
 ![limits_priority.png](limits_priority.png)

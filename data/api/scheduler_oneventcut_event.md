@@ -4,7 +4,7 @@ onEventCut
 	
 
 @params: 
-- event		object 		the event's object 
+- ev		object 		the event's object 
 
 @example: 
 	

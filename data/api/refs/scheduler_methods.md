@@ -49,12 +49,13 @@ Methods
 - api/scheduler_getrecdates.md - returns all occurrences of a recurring event
 - api/scheduler_getrenderedevent.md - gets the object of the currently displayed event
 - api/scheduler_getsection.md - gets the object of the specified section in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+- api/scheduler_getshortcuthandler.md - gets a key navigation shortcut handler
 - api/scheduler_getstate.md - gets the current state of the scheduler
 - api/scheduler_getuserdata.md - gets the user data associated with the specified event
 - api/scheduler_hidecover.md - hides the lightbox modal overlay that blocks interactions with the remaining screen
 - api/scheduler_hidequickinfo.md - hides the pop-up event form (if it's currently active)
 - api/scheduler_highlighteventposition.md - highlights the event's duration on the time scale
-- api/scheduler_init.md - constructor. Initializes a dhtmlxScheduler object
+- api/scheduler_init.md - a constructor of a dhtmlxScheduler object
 - api/scheduler_invertzones.md - inverts the specified time zones
 - api/scheduler_iscalendarvisible.md - checks whether the calendar is currently opened in the scheduler
 - api/scheduler_isonedayevent.md - checks whether the specified event one-day or multi-day
@@ -149,6 +150,7 @@ Methods
 - api/scheduler_getrecdates.md
 - api/scheduler_getrenderedevent.md
 - api/scheduler_getsection.md
+- api/scheduler_getshortcuthandler.md
 - api/scheduler_getstate.md
 - api/scheduler_getuserdata.md
 - api/scheduler_hidecover.md

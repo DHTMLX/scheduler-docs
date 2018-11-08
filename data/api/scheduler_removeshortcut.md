@@ -28,6 +28,7 @@ added in version 4.4
 
 @relatedapi:
 api/scheduler_addshortcut.md
+api/scheduler_getshortcuthandler.md
 api/scheduler_focus.md
 api/scheduler_key_nav_config.md
 api/scheduler_key_nav_step_config.md

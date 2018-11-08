@@ -23,7 +23,7 @@ html, body{
 Scheduler isn't rendered in Internet Explorer correctly
 ---------------------------------------------------------
 If the scheduler wasn't rendered on the page properly only in the Internet Explorer browser, please, make sure that your page uses a full DOCTYPE declaration.
-Scheduler can work correctly in the standard modes of IE6, IE7 and IE8 but isn't purposed to be used with the quirks modes of IE.
+Scheduler can work correctly in the standard modes of IE, but isn't purposed to be used with the quirks modes of IE.
 
 For example,  HTML5 DOCTYPE is:
 

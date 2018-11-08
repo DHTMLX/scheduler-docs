@@ -1,5 +1,6 @@
-Hiding Time Units in the X-Axis of a View
+Hiding Time Units in X-Axis of View
 ================================================
+
 The library provides the possibility to hide unnecessary time units in the horizontal scale of a view. You can use this possibility, for example, to display only working days and hide weekends. 
 
 Technique

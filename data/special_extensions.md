@@ -1,14 +1,11 @@
 Special Extensions and Editions
-========================================
+=====================
 
 {{index
-- extensions_list.md
-- install_with_bower.md
-- backbone_integration.md
+- minicalendar.md
 - touch_support.md
+- content_security_policy.md
 - winjs_compatibility.md
-- integration_with_dhtmlxmessage.md
 - live_update.md
 - multiple_users.md
-- content_security_policy.md
 }}

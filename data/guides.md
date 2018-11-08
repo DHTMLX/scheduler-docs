@@ -1,9 +1,11 @@
 Guides
 ======
-The guidance information makes up the major part of the  documentation and helps you in actual use of the scheduler.
+
+The guidance information makes up the major part of the  documentation and helps you in actual use of dhtmlxScheduler.
 The chapter is divided into task-oriented manuals that assist you in performing both simple and difficult, often and seldom used tasks. 
 The articles come around key procedures and problem-solving activities. 
 
+Сheck the [features available in the Standard and PRO versions](editions_comparison.md) of the dhtmlxScheduler library.
 
 <table  style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 	<tbody>
@@ -25,42 +27,47 @@ The articles come around key procedures and problem-solving activities.
         attach events, etc.</td>
 	</tr>
 	<tr>
+		<td id="manipulations" class='topics'>
+		    <h4>
+		       Creating Scheduler on a Page
+		    </h4>
+		    <ul id="manipulations_sublist">
+            		<li>install_with_bower.md</li>
+                    <li>configuration.md</li>
+                    <li>scheduler_markup.md</li>
+                   	<li>localization.md</li>                
+                    <li>multiple_per_page.md</li>
+                    <li>accessibility.md</li>
+                    <li>extensions_list.md</li>
+            </ul>
+        </td>
+		<td class='topic_description'>Shows how to create Scheduler and configure it, create multiple schedulers on a page, localize Scheduler, enable accesibility support, etc.</td>
+	</tr>
+    <tr>
 		<td id="data" class='topics'>
 		    <h4>
-		        Loading and Storing Data
+		         Loading and Storing Data
 		    </h4>
 		    <ul id="data_sublist" >
                     <li>loading_data.md</li>
                     <li>server_integration.md</li>
             </ul>
         </td>
-		<td class='topic_description'>Discusses the ways of loading data into the scheduler: different data sources, formats, techniques.</td>
+		<td class='topic_description'>Discusses the ways of loading data into Scheduler: different data sources, formats, techniques, as well as explores the details of integration with the server side. </td>
 	</tr>
-	<tr>
+    <tr>
 		<td id="manipulations" class='topics'>
 		    <h4>
-		        Configuring the Scheduler
+		        Configuring Views
 		    </h4>
 		    <ul id="manipulations_sublist">
-                    <li>configuration.md</li>
-                    <li>scheduler_markup.md</li>
-                    <li>recurring_events.md</li>
-		    		<li>minicalendar.md</li>
-					<li>limits.md</li>
-                    <li>localization.md</li>
-                    <li>sizing.md</li>
+            		<li><a href="views.md">Views Overview</a></li>
                     <li>custom_scales.md</li>
-                    <li>readonly.md</li>
                     <li>custom_views.md</li>
-                    <li>multiple_per_page.md</li>
-                    <li>collisions.md</li>
-                    <li>quick_info.md</li>
-					<li>jquery_integration.md</li>
-                    <li>accessibility.md</li>
-                    <li>keyboard_navigation.md</li>
+                    <li>limits.md</li>
             </ul>
         </td>
-		<td class='topic_description'>Shows how to configure the scheduler: to provide support for recurring events, to change scale units, to block specific dates etc.</td>
+		<td class='topic_description'>Shows how to configure the views: change scale units, create a custom view, block specific dates.</td>
 	</tr>
 	<tr>
     	<td id="lightbox" class='topics'>
@@ -68,11 +75,11 @@ The articles come around key procedures and problem-solving activities.
     	        Configuring the Lightbox (Edit Form)
     	    </h4>
     	    <ul id="lightbox_sublist">
-                    <li><a href="lightbox_editors.md">Sections and Controls (editors)</a> </li>
+                    <li><a href="lightbox_editors.md">Sections and Controls (Editors)</a> </li>
                     <li><a href="custom_lightbox_editor.md">Custom Editors</a></li>
                     <li><a href="lightbox_editors_manipulations.md">Manipulations with Lightbox</a></li>
-                    <li><a href="custom_details_form.md">A Fully Custom Lightbox</a></li>
-                    <li><a href="changing_lightbox_buttons.md">Changing buttons</a></li>
+                    <li><a href="custom_details_form.md">Fully Custom Lightbox</a></li>
+                    <li><a href="changing_lightbox_buttons.md">Changing Buttons</a></li>
             </ul>
         </td>
         <td class='topic_description'>Focuses on how to work with the lightbox: add/delete controls, get/set controls' values, customize lightbox's appearance, etc.</td>
@@ -84,14 +91,17 @@ The articles come around key procedures and problem-solving activities.
             </h4>
             <ul id="events_sublist">
                     <li>event_object_operations.md</li>
-                    <li>settings_format.md</li>
-                    <li>date_formats.md</li>
                     <li>adding_events.md</li>
                     <li>filtering.md</li>
                     <li>dhtmlx_components_integration.md</li>
+                    <li>recurring_events.md</li>
+                    <li>readonly.md</li>
+                    <li>validation.md</li>
+                    <li>collisions.md</li>
             </ul>
         </td>
-        <td class='topic_description'>Covers the basics of performing general operations under events' objects, such as adding, deleting, setting the date format, filtering, etc.</td>
+        <td class='topic_description'>Covers the basics of performing various operations over events' objects, such as adding, deleting, filtering. Shows how to provide support for recurring events, make Scheduler
+        or its elements readonly, etc.</td>
     </tr>
     <tr>
     	<td id="customevent" class='topics'>
@@ -103,25 +113,13 @@ The articles come around key procedures and problem-solving activities.
                     <li><a href="custom_events_color.md">Color</a></li>
                     <li><a href="custom_events_content.md">Content (template)</a></li>
                     <li><a href="tooltips.md">Tooltip</a></li>
- 		    		<li><a href="customizing_edit_select_bars.md">Edit and Select bars of the event</a></li>
+ 		    		<li><a href="customizing_edit_select_bars.md">Edit and Select Bars of the Event</a></li>
+                    <li>sizing.md</li> 
             </ul>
         </td>
-        <td class='topic_description'>Describes how to customize different aspects of events starting from the text template and ending with the box appearance</td>
+        <td class='topic_description'>Describes how to customize different aspects of events starting from the text template and ending with the box appearance.</td>
     </tr>
-	<tr>
-		<td id="styling" class='topics'>
-		    <h4>
-		        Appearance and Styling 
-		    </h4>
-		    <ul id="styling_sublist">
-            	   <li>user_interface.md</li>
-                   <li>skins.md</li>
-                   <li>templates.md</li>
-            </ul>
-        </td>
-		<td class='topic_description'>Presents the scheduler GUI elements and the means of styling them. </td>
-	</tr>
-   <tr>
+    <tr>
         <td id="import" class='topics'>
             <h4>
                 Data Export/Import
@@ -131,41 +129,93 @@ The articles come around key procedures and problem-solving activities.
                     <li>pdf.md</li>
                     <li>png.md</li>
                     <li>excel.md</li>
-                    <li><a href="export.md"> XML, JSON, iCal and other formats</a></li>
+                    <li><a href="export.md"> XML, JSON, iCal and Other Formats</a></li>
             </ul>
         </td>
-        <td class='topic_description'>Covers the formats and techniques you can use to import/export the scheduler's data.</td>
+        <td class='topic_description'>Covers the formats and techniques you can use to import/export Scheduler's data.</td>
     </tr>
+	<tr>
+		<td id="styling" class='topics'>
+		    <h4>
+		        Appearance and Styling 
+		    </h4>
+		    <ul id="styling_sublist">
+                   <li>skins.md</li>
+                   <li>templates.md</li>
+                   <li>custom_skins.md</li>
+            </ul>
+        </td>
+		<td class='topic_description'>Presents the scheduler GUI elements and the means of styling them. </td>
+	</tr>
+    <tr>
+		<td id="styling" class='topics'>
+		    <h4>
+		        Working with Dates
+		    </h4>
+		    <ul id="styling_sublist">
+                  <li>settings_format.md</li>
+                  <li>date_formats.md</li>
+            </ul>
+        </td>
+		<td class='topic_description'>Discusses the topics you may need while working with dates in the Scheduler: converting dates to strings and backward, allowable characters in the date format, etc.</td>
+	</tr>
+    <tr>
+		<td id="styling" class='topics'>
+		    <h4>
+		        Integrations
+		    </h4>
+		    <ul id="styling_sublist">
+                  <li>backbone_integration.md</li>
+                  <li>integration_with_dhtmlxmessage.md</li>
+                  <li>scheduler_typescript.md</li>
+                  <li>jquery_integration.md</li>
+            </ul>
+        </td>
+		<td class='topic_description'>Describes available solutions for integrating Scheduler with third-party frameworks.</td>
+	</tr>
     <tr>
         <td id="internet" class='topics'>
             <h4>
                 Special Extensions and Editions
             </h4>
-            <ul id="internet_sublist">
-            		<li>extensions_list.md</li>
-                    <li>install_with_bower.md</li>
-                    <li>backbone_integration.md</li>
+            <ul id="internet_sublist">           		
+					<li>minicalendar.md</li>                 
 					<li>touch_support.md</li>
-                    <li>winjs_compatibility.md</li>
-                    <li>integration_with_dhtmlxmessage.md</li>
+                    <li>content_security_policy.md</li>         
+                    <li>winjs_compatibility.md</li>                   
                     <li>live_update.md</li>
-                    <li>multiple_users.md</li>
-                    <li>content_security_policy.md</li>
+                    <li>multiple_users.md</li>          
             </ul>
         </td>
-        <td class='topic_description'>Guides you through various extensions provided by the library for extending existing functionality.</td>
+        <td class='topic_description'>Guides you through various extensions provided by the library to extend the existing functionality.</td>
     </tr>
+    <tr>
+		<td id="data" class='topics'>
+		    <h4>
+		        User Interface Guide
+		    </h4>
+		    <ul id="data_sublist" >
+                    <li>user_interface.md</li>
+            </ul>
+        </td>
+		<td class='topic_description'>Describes the elements of Scheduler interface from the point of view of the end-user.</td>
+	</tr>
    	</tbody>
 </table>
 
 @index:
-
+- editions_comparison.md
 - howtostart_guides.md
-- loading_and_storing_data.md
 - configuring_the_scheduler.md
+- loading_and_storing_data.md
+- loading_and_storing_data.md
+- config_views.md
 - configuring_the_lightbox.md
 - managing_events.md
 - customizing_events.md
-- appearance_and_styling.md
 - data_export.md
+- appearance_and_styling.md
+- dates_in_scheduler.md
+- scheduler_integrations.md
 - special_extensions.md
+- user_interface.md

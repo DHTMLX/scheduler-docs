@@ -5,7 +5,7 @@ onViewMoreClick
 	
 
 @params:
-- date	object	the date of the cell that the user clicks on the 'View more' link in
+- date		object		the date of the cell inside which the user clicks on the 'View more' link 
 @example:
 scheduler.attachEvent("onViewMoreClick", function(date){
     //any custom logic here
@@ -25,3 +25,6 @@ The event is blockable. Return *false*, and the Month view won't be changed to t
 @relatedapi:
 	api/scheduler_max_month_events_config.md
     api/scheduler_month_events_link_template.md
+    
+@relatedsample:
+02_customization/31_view_more.html

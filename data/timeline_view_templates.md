@@ -1,9 +1,13 @@
-
-
 Timeline View Templates
 ==============
 
-{{links
+<img src="api/timeline_view_templates_01.png"/>
+
+<br>
+
+<img src="api/timeline_view_templates_02.png"/>
+
+
 - api/scheduler_event_bar_text_template.md - the event text
 - api/scheduler_event_class_template.md - the css style for the event container
 - api/scheduler_{timelinename}_cell_value_template.md - the value presenting  the number of scheduled events in a cell of the view
@@ -16,14 +20,9 @@ Timeline View Templates
 - api/scheduler_{timelinename}_date_template.md - the date in the header of the view
 - api/scheduler_{timelinename}_scale_date_template.md - the items of the X-Axis
 - api/scheduler_{timelinename}_second_scale_date_template.md - the items of the second X-Axis
-}}
 
 
-<br>
 
-<img src="api/timeline_view_templates_01.png"/>
 
-<br>
 
-<img src="api/timeline_view_templates_02.png"/>
 

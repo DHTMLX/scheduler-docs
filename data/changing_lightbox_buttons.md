@@ -1,8 +1,8 @@
 Changing Buttons in the Lightbox
 ==========================================
+
 There is a possibility to redefine the default buttons in the lightbox.
 
-<br>
 
 <img src="lightbox_buttons.png"/>
 
@@ -16,18 +16,32 @@ scheduler.config.buttons_right = ["dhx_delete_btn"];
 
 To redefine the default sets of buttons, follow the steps below:
 
-<ol>
-	<li>Specify new members of the <b>buttons_left</b> or  <b>buttons_right</b> array:
+
+1 . Specify new members of the **buttons_left** or **buttons_right** array like this:
+
 ~~~js
-scheduler.config.buttons_left=["dhx_save_btn","dhx_cancel_btn","locate_button"];
+scheduler.config.buttons_left = ["dhx_save_btn","dhx_cancel_btn","locate_button"];
 ~~~
-</li>
-	<li>Set the button label:
+
+2 . Set the button label as follows:
+
 ~~~js
- scheduler.locale.labels["locate_button"] = "Location";
+scheduler.locale.labels["locate_button"] = "Location";
 ~~~
-</li>
-	<li>To set the icon for the button (and/or apply some other styling) you should specify the CSS class as in:
+
+3 . Specify the desired colors for the buttons via the following selector - **{buttonName}_set**. For example:
+
+~~~js
+.dhx_save_btn_set{
+	background-color:#4CAF50;
+}
+~~~
+
+{{editor		https://docs.dhtmlx.com/scheduler/snippet/0af39c5f			Custom Color for Buttons}}
+
+
+4 . Set an icon for a button (and/or apply some other styling) by specifying the CSS class as in:
+
 ~~~js
 .locate_button
 {
@@ -36,8 +50,9 @@ scheduler.config.buttons_left=["dhx_save_btn","dhx_cancel_btn","locate_button"];
     width:20px;
 }
 ~~~
-</li>
-	<li>Specify the  api/scheduler_onlightboxbutton_event.md handler that will treat clicks on the button:
+
+5 . Define the api/scheduler_onlightboxbutton_event.md handler that will treat clicks on the button in the following way:
+
 ~~~js
 scheduler.attachEvent("onLightboxButton", function(button_id, node, e){
 	if(button_id == "locate_button"){
@@ -45,5 +60,4 @@ scheduler.attachEvent("onLightboxButton", function(button_id, node, e){
     }
 });
 ~~~
-</li>
-</ol>
+

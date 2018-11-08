@@ -11,6 +11,9 @@ These views use 2 templates to customize the events' text:
 - api/scheduler_event_header_template.md - specifies the event's header
 - api/scheduler_event_text_template.md - specifies the event's text
 
+There's also the api/scheduler_event_bar_text_template.md template that specifies the event's text of multi-day events. 
+It is used by the month_view.md and timeline_view.md.
+
 {{note
 We strongly encourage you to redefine templates within a handler function of the api/scheduler_ontemplatesready_event.md event, 
 as it ensures that your template won't be rewritten with the default one.

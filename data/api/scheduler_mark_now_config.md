@@ -1,12 +1,12 @@
 mark_now
 =============
-@short:enables/disables the marker displaying the current time
-	
+
+@short:enables/disables the marker displaying the current time	
 
 @type: boolean
 @require: limit
 @default:true
-@views:day, week
+@views:day, week, timeline
 @example:
 scheduler.config.mark_now = false;
 ...
@@ -16,14 +16,17 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 @template:	api_config
 @descr:
 
+{{note  Note that in case of the Timeline view the *ext/dhtmlxscheduler_limit.js* extension should be included on a page before the Timeline extension.}}
+
 <img src="api/weekView_properties.png"/>
+
 
 @relatedapi:
 	api/scheduler_now_date_config.md
 @related:limits.md
 @relatedsample:
 	02_customization/23_current_time.html
-    02_customization/26_linked_selects_in_lightbox.html
+    
 
 @apigroup: Time, time zones
     

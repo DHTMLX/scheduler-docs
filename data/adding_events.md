@@ -1,4 +1,4 @@
-Adding/deleting Events
+Adding/Deleting Events
 ===============================
 
 Adding events

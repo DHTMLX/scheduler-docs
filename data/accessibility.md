@@ -8,7 +8,7 @@ To make an easier access and interaction with DHTMLXScheduler for people with di
 
 - WAI-ARIA Attributes
 - Keyboard  Navigation
-- High-Contrast Theme
+- High-Contrast Themes
 
 WAI-ARIA Attributes
 ----------------------
@@ -18,11 +18,19 @@ These are additional attributes which make the component recognizable for screen
 
 You can find more information in the [official specification](https://www.w3.org/WAI/intro/aria) of WAI-ARIA.
 
-WAI-ARIA attributes in Scheduler are enabled by default, to disable them you can use the *wai_aria_attributes* property with the *false* value:
+WAI-ARIA attributes in Scheduler are enabled by default. If needed, you can disable them by using use the *wai_aria_attributes* property with the *false* value:
 
 ~~~js
-scheduler.config.wai_aria_attributes = true;
+scheduler.config.wai_aria_attributes = false;
 ~~~
+
+It is also possible to switch on/off the application of the [*role="application"* attribute](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics#Enter_WAI-ARIA) 
+for the main scheduler container and minicalendar elements via the api/scheduler_wai_aria_application_role_config.md property. It is set to *true* by default.
+
+~~~js
+scheduler.config.wai_aria_application_role = false;
+~~~
+
 
 Keyboard Navigation
 -------------------
@@ -48,7 +56,7 @@ There are two variants of contrast theme available:
 <link rel="stylesheet" href="../../codebase/dhtmlxscheduler_contrast_black.css">
 ~~~
 
-{{sample 07_skins/17_contrast_black.html}}
+{{sample 07_skins/04_contrast_black.html}}
 
 - contrast white skin
 
@@ -58,4 +66,7 @@ There are two variants of contrast theme available:
 <link rel="stylesheet" href="../../codebase/dhtmlxscheduler_contrast_white.css">
 ~~~
 
-{{sample 07_skins/21_contrast_white.html}}
+{{sample 07_skins/05_contrast_white.html}}
+
+@index:
+- keyboard_navigation.md

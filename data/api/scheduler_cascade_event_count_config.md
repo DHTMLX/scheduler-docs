@@ -1,11 +1,13 @@
 cascade_event_count
 =============
+
 @short:sets the maximum number of events in a cascade
 	
 
 @type: number
 @example:
-
+// how many events will be displayed in a cascade (max)
+scheduler.config.cascade_event_count = 4; 
 
 @template:	api_config
 @default:4

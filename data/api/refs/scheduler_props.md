@@ -8,7 +8,7 @@ Properties
 - api/scheduler_agenda_start_config.md - sets the date to start displaying events from
 - api/scheduler_ajax_error_config.md - specifies how to display the default error notification in case the XML data loading failed
 - api/scheduler_all_timed_config.md - 'says' to show multi-day events in  the regular way (as one-day events are displayed)
-- api/scheduler_api_date_config.md - sets the date format that will be used by the addEvent() method to parse the start_date, end_date properties in case they are specified as strings
+- api/scheduler_api_date_config.md - defines the date format for the <strong>api_date</strong> template
 - api/scheduler_auto_end_date_config.md - enables automatic changing of the end event date after changing the start date
 - api/scheduler_buttons_left_config.md - stores a collection of buttons resided in the left bottom corner of the lightbox
 - api/scheduler_buttons_right_config.md - stores a collection of buttons resided in the right bottom corner of the lightbox
@@ -21,7 +21,7 @@ Properties
 - api/scheduler_day_date_config.md - sets the date format for the X-Axis of the Week and Units views
 - api/scheduler_dblclick_create_config.md - enables the possibility to create events by double click
 - api/scheduler_default_date_config.md - sets the date format used by the templates 'day_date', 'week_date', 'day_scale_date' for setting date in the views' headers
-- api/scheduler_delay_render_config.md - sets a timeout (in milliseconds) that wraps the api/scheduler_updateview.md and api/scheduler_setcurrentview.md calls  ( that cause re-drawing of the scheduler )
+- api/scheduler_delay_render_config.md - sets a timeout (in milliseconds) that wraps the api/scheduler_updateview.md and api/scheduler_setcurrentview.md calls (that cause re-drawing of the scheduler)
 - api/scheduler_details_on_create_config.md - 'says' to use the extended form while creating new events by drag or double click
 - api/scheduler_details_on_dblclick_config.md - 'says' to open the lightbox after double clicking on an event
 - api/scheduler_display_marked_timespans_config.md - defines whether the marked(blocked) time spans should be highlighted in the scheduler
@@ -108,7 +108,8 @@ Properties
 - api/scheduler_touch_tip_config.md - enables/disables prompting messages in the right top corner of the screen
 - api/scheduler_touch_tooltip_config.md - disables dhtmxlScheduler's tooltips on the touch devices
 - api/scheduler_update_render_config.md - updates the mode when the scheduler fully repaints itself on any action
-- api/scheduler_use_select_menu_space_config.md - 'says' events to occupy the whole width of the cell
+- api/scheduler_use_select_menu_space_config.md - defines that events occupy the whole width of the cell
+- api/scheduler_wai_aria_application_role_config.md - defines whether role="application" will be used for the main scheduler container and minicalendar elements
 - api/scheduler_wai_aria_attributes_config.md - enables WAI-ARIA support to make the component recognizable for screen readers
 - api/scheduler_week_date_config.md - sets the format of the date in the sub-header of the Month view
 - api/scheduler_wide_form_config.md - enables/disables displaying the standard (wide) lightbox instead of the short one
@@ -224,6 +225,7 @@ Properties
 - api/scheduler_touch_tooltip_config.md
 - api/scheduler_update_render_config.md
 - api/scheduler_use_select_menu_space_config.md
+- api/scheduler_wai_aria_application_role_config.md
 - api/scheduler_wai_aria_attributes_config.md
 - api/scheduler_week_date_config.md
 - api/scheduler_wide_form_config.md

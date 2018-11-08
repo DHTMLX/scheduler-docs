@@ -14,3 +14,9 @@ scheduler.attachEvent("onXLS", function (){
 @descr: 
 
 
+@related:
+loading_data.md
+
+@relatedapi: 
+api/scheduler_onxle_event.md
+api/scheduler_load.md

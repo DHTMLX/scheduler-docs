@@ -18,9 +18,9 @@ To load data from an inline dataset, use the api/scheduler_parse.md method:
 scheduler.init('scheduler_here',new Date(2009,10,1),"month");
 ...
 scheduler.parse([
-	{text:"Meeting",    start_date:"04/11/2013 14:00", end_date:"04/11/2013 17:00"},
-	{text:"Conference", start_date:"04/15/2013 12:00", end_date:"04/18/2013 19:00"},
-	{text:"Interview",  start_date:"04/24/2013 09:00", end_date:"04/24/2013 10:00"}
+	{text:"Meeting",    start_date:"04/11/2018 14:00", end_date:"04/11/2018 17:00"},
+	{text:"Conference", start_date:"04/15/2018 12:00", end_date:"04/18/2018 19:00"},
+	{text:"Interview",  start_date:"04/24/2018 09:00", end_date:"04/24/2018 10:00"}
 ],"json");
 
 ~~~
@@ -36,7 +36,7 @@ Loading data from a data file
 To load data from a file, use the api/scheduler_load.md method:
 
 ~~~js
-scheduler.init('scheduler_here',new Date(2009,10,1),"month");
+scheduler.init('scheduler_here',new Date(2018,10,1),"month");
 ...
 scheduler.load("data.xml","xml"); //loading data from a file in the XML format
 ~~~
@@ -179,20 +179,66 @@ scheduler.setLoadMode("month");
 scheduler.load("some.php");
 ~~~
 
-*As a parameter the method takes the loading mode that defines the size of the data to load  - day, week, month or year.*
+As a parameter the method takes the loading mode that defines the size of the data to load: *day, week, month or year.*
 
 For example, if you set the 'week' mode, the scheduler will request data just for the current week and load remaining ones on demand.<br>
-Generated requests look like:
+
+####How loading modes work
+
+The predefined loading modes specify the interval of loading data within the set period. For example, you open the Week View in the scheduler for the following dates: from 2018-01-29 to 2018-02-05.
+Depending on the chosen mode, the dynamic loading will go like this:
+
+- for the "day" mode
+
+~~~js
+scheduler.setLoadMode("day");
+~~~
+
+Scheduler will request data by days, i.e.: from 2018-01-29 to 2018-02-05.
+
+- for the "month" mode
+
+~~~js
+scheduler.setLoadMode("month");
+~~~
+
+Scheduler will request data by whole months, i.e.: from 2018-01-01 to 2018-03-01.
+
+- for the "year" mode
+
+~~~js
+scheduler.setLoadMode("year");
+~~~
+
+Scheduler will request data by whole years, i.e.: from 2018-01-01 to 2019-01-01.
+
+
+In any case, the requested interval won't be smaller than the rendered one.
+
+The loading interval defines:
+
+- the frequency of dynamic loading calls
+
+The greater the loading interval is, the less the frequency of calls for dynamic loading will be. Scheduler keeps in memory the already loaded data portion and won't repeat a call for it.
+
+- the duration of processing a separate request
+
+The greater the loading interval is, the longer a request is being processed, since the more data are being loaded at once.
+
+
+####Request
+
+Generated requests look as in:
 
 ~~~js
 some.php?from=DATEHERE&to=DATEHERE
 ~~~
-*where DATEHERE - a valid date value in the format defined by the api/scheduler_load_date_config.md option.*
 
-<br>
+*where DATEHERE - a valid date value in the format defined by the api/scheduler_load_date_config.md option.* <br>
 
 If you are using <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">dhtmlxConnector</a> at the server side, 
 you don't need to do any additional server-side operations to parse the data.
+
 
 
 ###Loading spinner
@@ -204,7 +250,7 @@ To enable the loading spinner for the scheduler, set the api/scheduler_show_load
 ~~~js
 scheduler.config.show_loading = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"month");
+scheduler.init('scheduler_here',new Date(2018,0,10),"month");
 ~~~
 
 {{note
@@ -243,29 +289,29 @@ scheduler.load("data.json", "json");
    "data":[
       {
           "id":"1",
-          "start_date":"2015-03-02 00:00:00",
-          "end_date":"2015-03-04 00:00:00",
+          "start_date":"2018-03-02 00:00:00",
+          "end_date":"2018-03-04 00:00:00",
           "text":"dblclick me!",
           "type":"1"
       },
       {
           "id":"2",
-          "start_date":"2015-03-09 00:00:00",
-          "end_date":"2015-03-11 00:00:00",
+          "start_date":"2018-03-09 00:00:00",
+          "end_date":"2018-03-11 00:00:00",
           "text":"and me!",
           "type":"2"
       },
       {
           "id":"3",
-          "start_date":"2015-03-16 00:00:00",
-          "end_date":"2015-03-18 00:00:00",
+          "start_date":"2018-03-16 00:00:00",
+          "end_date":"2018-03-18 00:00:00",
           "text":"and me too!",
           "type":"3"
       },
       { 
           "id":"4",
-          "start_date":"2015-03-02 08:00:00",
-          "end_date":"2015-03-02 14:10:00",
+          "start_date":"2018-03-02 08:00:00",
+          "end_date":"2018-03-02 14:10:00",
           "text":"Type 2 event",
           "type":"2"
       }

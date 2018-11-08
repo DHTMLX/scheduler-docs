@@ -49,14 +49,14 @@ Events
 - api/scheduler_oneventdropout_event.md - fires when a dragged event  is dropped onto the area out of the scheduler
 - api/scheduler_oneventidchange_event.md - fires when the id of an event is changed
 - api/scheduler_oneventloading_event.md - fires when an event is being loaded from the data source
-- api/scheduler_oneventpasted_event.md - fires when the user presses the 'CTRL+V' keyboard command (only with the 'keyboard navigation' extension enabled)
+- api/scheduler_oneventpasted_event.md - fires when the user presses the 'CTRL+V' keyboard command
 - api/scheduler_oneventsave_event.md - fires when the user clicks on the 'save' button in the lightbox (edit form)
 - api/scheduler_onexpand_event.md - fires when a user clicks on the expand icon to change the scheduler's size from original to 'full screen'.
 - api/scheduler_onexternaldragin_event.md - fires when some data is being dragged into the scheduler from an outside DHTMLX component (only with dnd extension enabled)
 - api/scheduler_onlightbox_event.md - fires after the user has opened the lightbox (edit form)
-- api/scheduler_onlightboxbutton_event.md - fires when the user clicks on a custom button in the lightbox
+- api/scheduler_onlightboxbutton_event.md - fires when the user clicks a custom button in the lightbox
 - api/scheduler_onlimitviolation_event.md - fires when the user tries to set for an event the time that is currently limited/blocked
-- api/scheduler_onloaderror_event.md - fires when some error happened while data loading
+- api/scheduler_onloaderror_event.md - fires if the scheduler has failed to parse data, or if the server has returned 4xx or 5xx response status
 - api/scheduler_onlocationerror_event.md - fires when the event location can't be found on the map (the Map view only)
 - api/scheduler_onmousedown_event.md - fires when the user clicks on a scheduler's element that doesn't have the predefined 'onlick' handler
 - api/scheduler_onmousemove_event.md - fires when the mouse cursor is moved over the scheduler

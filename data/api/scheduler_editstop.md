@@ -21,4 +21,4 @@ scheduler.editStop(eventId);
 @descr: 
 
 
-<img src="api/editStop_method.png"/>
+<img src="api/edit_stop_method.png"/>

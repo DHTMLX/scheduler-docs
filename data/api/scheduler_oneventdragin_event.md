@@ -1,7 +1,7 @@
 onEventDragIn
 =============
 
-@short:fires when a dragged event is moved over the scheduler
+@short:fires when a dragged event is moved into the scheduler
 	
 
 @params:

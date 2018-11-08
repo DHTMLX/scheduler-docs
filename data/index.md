@@ -1,15 +1,15 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Scheduler 4.4</h2>
+    <h2>Meet Scheduler 5.0!</h2>
     
     <p>
-    Version 4.4 continues to bring new improvements and features:
+    Version 5.0 continues to bring new improvements and features:
     </p>
     <ul>
-        <li><a href="keyboard_navigation.md">Keyboard navigation</a></li>
-        <li><a href="accessibility.md#waiariaattributes">WAI-ARIA support</a></li>
-        <li><a href="accessibility.md#highcontrastthemes">High-contrast themes</a> 
+        <li><a href="skins.md#materialskin">New Material skin</a></li>
+        <li><a href="server_integration.md">Server-side integration with REST API</a></li>
+        <li><a href="custom_skins.md">Flexible skins customization</a></li>
     </ul>
     <p class='action_buttons'>
       <a class='action_button moredetails' href="what_s_new.html">More details</a>
@@ -44,9 +44,9 @@ Start
 @layout: index_layout
 
 @index:
+- api/refs/scheduler.md
 - what_s_new.md
 - views.md
 - guides.md
-- api/refs/scheduler.md
 - faq.md
 

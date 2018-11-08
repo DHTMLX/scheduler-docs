@@ -4,15 +4,15 @@ onBeforeEventDelete
 	
 
 @params: 
-- id	string	the event's id
-- e		Event	a native event object
+- id	string		the event's id
+- ev	object		the event's data object
 
 @returns: 
 - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>)
 
 
 @example:
-scheduler.attachEvent("onBeforeEventDelete", function(id,e){
+scheduler.attachEvent("onBeforeEventDelete", function(id,ev){
 	//any custom logic here
 	return true;
 });
