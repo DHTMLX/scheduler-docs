@@ -220,10 +220,10 @@ $.ajax({
 
 ### Adding custom parameters to the request
 
-There are a couple of ways to send additional parameters to requests.
+There are several ways to send additional parameters to requests.
 
 As you know, scheduler sends all properties of the data object back to the backend. 
-Thus, you can add an additional property directly to the data object and it will be sent to the backend:
+Thus, you can add an extra property directly to the *data object* and it will be sent to the backend:
 
 ~~~js
 scheduler.attachEvent("onEventCreated", function(id,e){
@@ -250,6 +250,26 @@ dp.setTransactionMode({
 });
 ~~~
 
+Payload will be added into the query string of the request.
+
+One more way to add custom parameters to a request is to use the [onBeforeUpdate](https://docs.dhtmlx.com/api__dataprocessor_onbeforeupdate_event.html) event of DataProcessor:
+
+~~~js
+var dp = new dataProcessor("data/events.php");
+
+dp.attachEvent("onBeforeUpdate", function(id, state, data){
+	data.productName = "Product 2";
+	return true;
+});
+~~~
+
+The event is called for each record sent to the backend and a custom parameter will be added to each Scheduler event, prefixed by an event id, like this:
+
+~~~js
+123_productName:Product 2
+~~~
+
+
 Triggering Data Saving from Script
 ------------------------------------
 
@@ -258,7 +278,6 @@ If you have dataProcessor initialized, any change made by the user or programmat
 Generally, to update a specific event programmatically, use the api/scheduler_addevent.md method:
 
 ~~~js
-
 scheduler.parse([
      { id:1, start_date:"2017-05-13 6:00", end_date:"2017-05-13 8:00", text:"Event 1"},
      { id:2, start_date:"2017-06-09 6:00", end_date:"2017-06-09 8:00", text:"Event 2"}
