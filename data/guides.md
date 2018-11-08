@@ -208,7 +208,6 @@ The articles come around key procedures and problem-solving activities.
 - howtostart_guides.md
 - configuring_the_scheduler.md
 - loading_and_storing_data.md
-- loading_and_storing_data.md
 - config_views.md
 - configuring_the_lightbox.md
 - managing_events.md
