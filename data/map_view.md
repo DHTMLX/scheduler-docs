@@ -17,16 +17,22 @@ By default, the left list of the view displays events beginning from the current
 Initialization
 -------------------------------
 
+{{note To use Google Maps, you need to [add your own google API key](https://developers.google.com/maps/documentation/javascript/get-api-key) on your page.}}
+
 To add the Map view  to the scheduler, follow these steps:
 
-<ol>
-	<li><b>Include the Map view and Google Maps code files on the page:</b>
-~~~js
-<script src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+1\. Include the Map view and Google Maps code files on the page:
+
+~~~html
+<-- use your own Google API key-->
+<script src="//maps.google.com/maps/api/js?key=[your Google API key]&sensor=false" 
+	type="text/javascript"></script>`
+
 <script src="../codebase/ext/dhtmlxscheduler_map_view.js"></script>
 ~~~
-    </li>
-    <li> <b>Add the view's tab to the scheduler's markup:</b>
+
+2\. Add the view's tab to the scheduler's markup:</b>
+
 ~~~html
 <div id="scheduler_here" class="dhx_cal_container" ...>
 	<div class="dhx_cal_navline">
@@ -36,35 +42,38 @@ To add the Map view  to the scheduler, follow these steps:
 	...	
 </div>
 ~~~
-	</li>
-    <li><b>Set the label for the tab:</b>
+
+3\. Set the label for the tab:
+
 ~~~js
 //'map_tab' is the name of our div
 scheduler.locale.labels.map_tab = "Map";
 ~~~
-	</li>
-    <li><b>Add an additional section to the lightbox to manage the event location:</b>
+
+4\. Define an additional section in the lightbox to manage the event location:
+
 ~~~js
-scheduler.config.lightbox.sections=[	
+scheduler.config.lightbox.sections=[
 	{name:"description", height:50,map_to:"text", type:"textarea", focus:true},
 	{name:"location", height:43, map_to:"event_location", type:"textarea"},
 	{name:"time", height:72, type:"time", map_to:"auto"}	
 ]
-
 ~~~
-	</li>
-    <li><b>Set the label for the section:</b>
+	
+    
+5\. Set the label for the section:
+
 ~~~js
 scheduler.locale.labels.section_location = "Location";
 ~~~
-	</li>    
-    <li><b>Initialize the scheduler:</b>
+
+6\. Initialize the scheduler:
+
 ~~~js
 //'map' is the default name of the Map view
 scheduler.init('scheduler_here',new Date(2013,8,1),"map");
 ~~~
-	</li>
-</ol>
+	
 
 {{sample
 	03_extensions/19_map_view.html
