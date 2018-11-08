@@ -15,12 +15,13 @@ If you are updating scheduler from an older version, check migration_from_older_
 
 1. New [Material skin](skins.html#materialskin) added
 2. [Server-side integration with REST API](server_integration.md)
+3. Flexible [skins customization](custom_skins.md)
 
 ###Minor Changes
 
 - Touch support for Microsoft devices is updated 
 - [Hebrew locale](localization.md) is added for recurring events form
-- [onLoadError](api/scheduler_onloaderror_event.md) for network and server errors is added 
+- [onLoadError](api/scheduler_onloaderror_event.md) is added for network and server errors
 
 ###Bug Fixes and Improvements
 

@@ -20,16 +20,16 @@ The update also fixes the **POST** (insert) route of dataProcessor in the **REST
 The following route:
 
 ~~~js
-POST api/{tempId}
+POST /api/{tempId}
 
 //e.g.
-POST api/1234567890
+POST /api/1234567890
 ~~~
 
 should be changed to this one:
 
 ~~~js
-POST api/
+POST /api
 ~~~
 
 ## 4.x -> 4.3

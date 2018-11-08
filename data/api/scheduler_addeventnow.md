@@ -34,8 +34,9 @@ scheduler.addEventNow({
 @relatedsample:
 	02_customization/28_lightbox_default_value.html
     09_api/06_hightlight_and_single_click_create.html
-@descr: 
+    07_skins/02_material.html
 
+@descr: 
 The event object can have the following properties:
 
 <table class="webixdoc_links">
