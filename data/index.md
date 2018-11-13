@@ -1,15 +1,15 @@
 Start
 =====
 <div class="newsblock">
-    <h2>Meet Scheduler 5.0!</h2>
+    <h2>Meet Scheduler 5.1!</h2>
     
     <p>
-    Version 5.0 continues to bring new improvements and features:
+    New version brings new improvements and features:
     </p>
     <ul>
-        <li><a href="skins.md#materialskin">New Material skin</a></li>
-        <li><a href="server_integration.md">Server-side integration with REST API</a></li>
-        <li><a href="custom_skins.md">Flexible skins customization</a></li>
+        <li><a href="timeline_view.md#horizontalscroll">Horizontal scroll in the Timeline view</a></li>
+        <li><a href="">Improved performance of the Timeline view</a></li>
+        <li><a href="">Integration with various server-side platforms</a></li>
     </ul>
     <p class='action_buttons'>
       <a class='action_button moredetails' href="what_s_new.html">More details</a>

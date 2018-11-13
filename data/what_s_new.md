@@ -3,6 +3,28 @@ What's New
 
 If you are updating scheduler from an older version, check migration_from_older_version.md for details.
 
+5.1
+------------
+
+###Breaking Changes
+
+The implementation of the horizontal scroll functionality affected the Timeline view structure. Read more in the [Migration](migration_from_older_version.md#5051) article.
+
+###Major Changes
+
+1. [Horizontal scroll in the Timeline view](timeline_view.md#horizontalscroll) (PRO version)
+2. Smart rendering and performance update for the timeline
+3. Integration with different server-side platforms. Check the related tutorials
+4. Update of Scheduler.NET to the actual version of dhtmlxScheduler
+
+###Minor Changes
+
+- [New API of the Timeline object](timeline_view.md#timelineobjectapi)
+- [Autoscroll in the Timeline view](timeline_view.md#autoscrollconfiguration)
+- Ability to [add a label into the header of the column with sections](timeline_view.md#headerofthesectionscolumn)
+- Updating styles of HTML controls
+
+
 5.0
 ------
 

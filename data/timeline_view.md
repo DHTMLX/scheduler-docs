@@ -43,19 +43,19 @@ scheduler.locale.labels.timeline_tab ="Timeline";
 ~~~js
 scheduler.createTimelineView({
      name:"timeline",
-     x_unit:"minute",//measuring unit of the X-Axis.
-     x_date:"%H:%i", //date format of the X-Axis
-     x_step:30,      //X-Axis step in 'x_unit's
-     x_size:24,      //X-Axis length specified as the total number of 'x_step's
-     x_start:16,     //X-Axis offset in 'x_unit's
-     x_length:48,    //number of 'x_step's that will be scrolled at a time
-     y_unit:         //sections of the view (titles of Y-Axis)
+     x_unit:"minute", // measuring unit of the X-Axis.
+     x_date:"%H:%i",  // date format of the X-Axis
+     x_step:30,       // X-Axis step in 'x_unit's
+     x_size:24,       // X-Axis length specified as the total number of 'x_step's
+     x_start:16,      // X-Axis offset in 'x_unit's
+     x_length:48,     // number of 'x_step's that will be scrolled at a time
+     y_unit:          // sections of the view (titles of Y-Axis)
         [{key:1, label:"Section A"},
          {key:2, label:"Section B"},
          {key:3, label:"Section C"},
          {key:4, label:"Section D"}],
-     y_property:"section_id", //mapped data property
-     render:"bar"             //view mode
+     y_property:"section_id", // mapped data property
+     render:"bar"             // view mode
 });
 ~~~
 	</li>
@@ -75,7 +75,7 @@ In the 'Days' mode, time scale must cover 1 day exactly. If your configuration s
 
 In spite of a big number of parameters used in the api/scheduler_createtimelineview.md method, it's quite simple. 
 
-Let's consider an example - the time scale from 09:00 to 15:00 with 30 minutes step that is scrolled by days.
+Let's consider an example: the time scale from 09:00 to 15:00 with 30 minutes step that is scrolled by days.
 
 <img src="timeline_scale_01.png"/>
 
@@ -95,7 +95,7 @@ Let's consider an example - the time scale from 09:00 to 15:00 with 30 minutes s
 ~~~
 
 
-Configuring Timeline View
+Timeline view configuration 
 ----------------------------------
 
 All template functions the names of which have *{timeline}_some* in their name should be specified after the view's creation, since 
@@ -136,7 +136,7 @@ scheduler.init("timeline_tree",new Date(),"timeline");
 ~~~
 
 
-Dynamic changing of properties
+Dynamic сhange of properties 
 -------------------------------------
 
 All defined timeline objects are stored in the [scheduler.matrix](api/scheduler_matrix_other.md) object.
@@ -154,11 +154,11 @@ where 'timeline' is the name of the timeline view as specified in the api/schedu
 scheduler.createTimelineView({
 	name:'timeline',
 	...
-})
+});
 ~~~
 
 
-Loading data to the view
+Data loading
 ----------------------------------
 
 Unlike basic views (such as Day, Month, Year etc.), multiple-resource views (that are Units and Timeline) require data items to have one more mandatory field:
@@ -193,10 +193,10 @@ scheduler.parse([
 }}
 
 
-Assigning events to several sections
+Assignment of events to several sections
 --------------------------------------------------------------
 
-Starting from version 4.1, you have a possibility to assign events to several sections.
+Scheduler provides the possibility to assign events to several sections.
 
 <img src="multiple_sections.png"/>
 
@@ -252,7 +252,7 @@ scheduler.parse([
 }}
 
 
-View Modes
+View modes
 ---------------------------
 
 The view has 4 modes:
@@ -262,7 +262,8 @@ The view has 4 modes:
 - **Tree**<br> <img src="timeline_tree_mode.png"/><br> {{sample 06_timeline/03_tree.html}} <br> <br>
 - **Days**<br> <img src="timeline_days_mode.png"/><br> {{sample 06_timeline/14_days_as_sections.html}}
 
-The needed mode is set by the parameter [render](api/scheduler_createtimelineview.md):
+The needed mode is set by the [render](api/scheduler_createtimelineview.md) parameter:
+
 ~~~js
 scheduler.createTimelineView({
 	name: "timeline",
@@ -301,7 +302,7 @@ scheduler.templates.timeline_scale_label = function(key, label, section){
 };
 ~~~
 	</li>
-    <li>To change the start day of the displayable interval, use the **scheduler.date.{timeline_name}_start** function:
+    <li>To change the start day of the displayable interval, use the <b>scheduler.date.{timeline_name}_start</b> function:
 ~~~js
 scheduler.date.timeline_start = function (date) {
 	date = scheduler.date.week_start(date);
@@ -383,7 +384,7 @@ scheduler._click.dhx_cal_next_button = function(dummy,step){
 {{editor 	http://docs.dhtmlx.com/scheduler/snippet/e4358367			Ignoring weekends}}
 
 
-Data for the Y-Axis sections in the 'Bar' and 'Cell' modes
+Data for Y-Axis sections in the 'Bar' and 'Cell' modes
 -------------------------------------------
 
 To set values for the Y-Axis in the 'Bar' and 'Cell' modes, use the [y_unit](api/scheduler_createtimelineview.md) parameter:
@@ -406,7 +407,7 @@ To be correctly processed, [y_unit](api/scheduler_createtimelineview.md) items m
 - **key** - the item's id
 - **label** - the item's label
 
-Data for the Y-Axis sections in the 'Tree' mode
+Data for Y-Axis sections in the 'Tree' mode
 -------------------------------------------
 
 The 'Tree' mode allows grouping items by creating multi-level folders. In addition to more convenient representation, it allows you to specify an event not only for individual event holder, but also for the whole folder (any level).
@@ -446,8 +447,10 @@ The [y_unit](api/scheduler_createtimelineview.md) items have:
   - **open** - specifies, whether the section will be opened initially
   - **children** - an array of nested items' objects
 
-Data for the Y-Axis sections in the 'Days' mode
+
+Data for Y-Axis sections in the 'Days' mode
 -------------------------------------------
+
 To set values for the Y-Axis in the 'Days' mode, use the [days](api/scheduler_createtimelineview.md) parameter:
 
 ~~~js
@@ -459,9 +462,9 @@ scheduler.createTimelineView({
 ~~~
 
 
-
-Data for the Y-Axis sections from the server
+Data for Y-Axis sections from the server
 -------------------------------------------
+
 To load Y-Axis sections from the server, use:
 
 - On the client side -  the api/scheduler_serverlist.md method:
@@ -518,7 +521,8 @@ scheduler.updateCollection("sections", new_sections_array);
 }}
 
 
-##Adding/deleting items dynamically
+Dynamic addition/removal of items
+-------------------------------
 
 To add/delete items on the fly, use the following methods:
 
@@ -549,12 +553,14 @@ scheduler.addSection( {key:"pm3", label:"James Smith"}, "p1");
 scheduler.addSection( {key:"s3", label:"Alex White"}, "sales");
 scheduler.deleteSection("p3");
 ~~~
+
 {{note
 To use the api/scheduler_addsection.md and api/scheduler_deletesection.md methods, the 'Tree' timeline must be currently opened in the scheduler.
 }}
 
 Second X-Axis
 ----------------------------------
+
 The second X-Axis is placed on top of the default one and serves to group time intervals of the original scale.
 
 <img src="timeline_second_axis.png"/>
@@ -579,13 +585,14 @@ You can add the second scale by using the [second_scale](api/scheduler_createtim
 
 
 
-Stretching events upon the entire cell width
-----------------------------------------------
+Stretching events over the cell 
+----------------------------------
+
 To make an event occupy the entire cell width, no matter how long this event lasts, use the [round_position](api/scheduler_createtimelineview.md) parameter:
 
 ~~~js
 scheduler.createTimelineView({
-    name:   "timeline",
+    name:"timeline",
     render:"bar",
     ...
     round_position:true
@@ -601,14 +608,14 @@ scheduler.createTimelineView({
 
 <img src="stretching_events_02.png"/>
 
-Sorting events
--------------------------------------------
+
+Sorting of events
+----------------------
+
 By default, the Timeline view sorts events by the start date. If you want to apply a custom sorting rule, define the related logic in a function and set this function as the value
 of the [sort](api/scheduler_createtimelineview.md) parameter:
 
-
 This function will be called for each pair of adjacent values and return 1,-1 or 0:
-
 
 - **1** - an object with the first value in pair must go before the second one;
 - **-1** - the second object goes before the first one;
@@ -635,9 +642,152 @@ scheduler.createTimelineView({
 });
 ~~~
 
+Horizontal scroll
+------------------------
+
+There is a possibility to enable a horizontal scroll in the Timeline view to switch between days/weeks/months without clicking the navigation buttons. 
+
+In order to add a horizontal scrollbar into the timeline, you can use two properties: **scrollable** and **column_width**, as it's shown in the example below: 
+
+~~~js
+scheduler.createTimelineView({
+	name: "timeline",
+	x_unit:	"minute",
+	x_date:	"%H:%i",
+	x_step:	30,
+	x_size: 24*7,
+	x_start: 16,
+	x_length: 48,
+	y_unit:	sections,
+	y_property:	"section_id",
+	render: "bar",
+	scrollable: true, /*!*/ // false by default
+	column_width: 70 /*!*/  // 100 by default
+});
+~~~
+
+Specifying the **column_width** property is optional.
+
+{{sample 06_timeline/02_lines_perfomance.html}}
+
+{{note Please note that the timeline scroll is not finite and the time range is limited. To switch between time intervals, you still need to use the navigation controls.}}
+
+Timeline object API
+---------------------
+
+There is a set of methods you can use to work with the horizontal scroll in the Timeline view. First, you need to create a timeline instance in the scheduler:
+
+~~~js
+scheduler.createTimelineView({
+    name:'timeline',
+    ...
+});
+
+var timeline = scheduler.matrix.timeline;
+~~~
+
+After that you can make use of the methods enumerated below.
+
+###Setting the scale range
+
+To specify the scale range, use the **setRange()** method. It takes two parameters:
+
+- **startDate**	- (*Date*) the start date of the range
+- **endDate** - (*Date*) the end date of the range
+
+~~~js
+timeline.setRange(startDate, endDate);
+~~~
+
+###Scrolling to particular position/date/section
+
+In case you need to scroll scheduler to a certain point, you should use the **scrollTo()** method. Its usage is rather versatile, depending on the passed parameters:
+
+- to scroll to a specific date, pass the date in question to the method:
+
+~~~js
+timeline.scrollTo(new Date());
+~~~
+
+- to scroll to specific position, pass the desired point as a pixel value:
+
+~~~js
+timeline.scrollTo(500);
+~~~
+
+- to scroll both horizontally and vertically to a specific section on a particular date, pass an object with the date and the section key:
+
+~~~js
+timeline.scrollTo({date:new Date(), section:4);
+~~~
+
+- to scroll to a specific position both horizontally and vertically, pass an object with left/top pixel values:
+
+~~~js
+timeline.scrollTo({left:300, top:500});
+~~~
+
+
+###Getting coordinates of a specific position
+
+- to get the x-coordinate of a specific date on the scale, use the **posFromDate()** method. Pass the date as a parameter: 
+
+~~~js
+var left = timeline.posFromDate(new Date());
+~~~
+
+!The method returns 0 or maxX for dates outside the scale.
+
+- to get the y-coordinate of a specific row, use the **posFromSection()** method. It takes as a parameter the number of the section:
+
+~~~js
+var top = timeline.posFromSection(section.key);
+~~~
+
+!The method returns -1 if a row is not found.
+
+Autoscroll configuration
+------------------------
+
+Autoscroll is enabled by default when you move/resize an event to the edge of the timeline viewport.
+
+There is a possibility to adjust sensibility and speed of autoscroll via the related properties of the **autoscroll** object:
+
+~~~js
+scheduler.createTimelineView({
+	name:"timeline",
+	...
+	autoscroll: {			/*!*/
+		range_x: 200, 		/*!*/
+		range_y: 100, 		/*!*/
+		speed_x: 20,  		/*!*/
+		speed_y: 10			/*!*/
+	}						/*!*/
+});
+~~~
+
+- **range_x** - (*number*) horizontal autoscroll distance from the edge of the data area
+- **range_y** - (*number*) vertical autoscroll distance from the edge of the data area
+- **speed_x** - (*number*) horizontal autoscroll speed
+- **speed_y** - (*number*) vertical autoscroll speed
+
+Header of the sections column
+--------------------------
+
+By default the header of the column with sections is empty. You can add a label into this header via the api/scheduler_locale_other.md object in the following way:
+
+~~~js
+scheduler.locale.labels.<timelineName>_scale_header = "Label";
+~~~
+
+where <timelineName> is the name of the timeline created with the api/scheduler_createtimelineview.md method. For example:
+
+~~~js
+scheduler.locale.labels.timeline_scale_header = "Users";
+~~~
 
 Related guides
-----------------------------------------
+---------------------
 
 - configuration.md
 - timeline_view_templates.md
@@ -648,3 +798,9 @@ Related guides
 
 
 @edition: pro
+
+@todo: check 4 sections:<br>
+- horizontal scroll<br>
+- timeline api<br>
+- autoscroll config<br>
+- header for the sections column
