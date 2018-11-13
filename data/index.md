@@ -46,13 +46,7 @@ Start
 @index:
 - api/refs/scheduler.md
 - what_s_new.md
-- migration_from_older_version.md
-- how_to_start.md
 - views.md
 - guides.md
 - faq.md
 
-
-@metadescr:
-
-Full dhtmlxScheduler documentation is at your disposal: start from the beginner step-by-step, explore detailed guides, look up in the API and check out live demos.

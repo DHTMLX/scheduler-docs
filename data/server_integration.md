@@ -3,7 +3,7 @@ Server-Side Integration
 
 <style>
 .dp_table td{
-	min-width:130px;
+	min-width:140px;
 
 }
 </style>
@@ -84,7 +84,6 @@ The list of possible requests and responses is:
 	</tr>
 </table>
 
-
 ####POST mode
 
 To use the POST mode, use the [setTransactionMode()](https://docs.dhtmlx.com/api__dataprocessor_settransactionmode.html) method of DataProcessor with necessary parameters:
@@ -107,6 +106,7 @@ The list of possible requests and responses is:
         <td>/apiUrl</td>
         <td><a href="data_formats.md#json">JSON format</a></td>
 	</tr>
+
 	<tr>
     	<td>update an event</td>
 		<td>POST</td>
@@ -114,7 +114,6 @@ The list of possible requests and responses is:
         <td>{"action":"inserted|updated|deleted",<br>"tid":"eventId"}</td>
 	</tr>
 </table>
-
 
 ####Dynamic loading
 
@@ -131,7 +130,6 @@ The request and response for dynamic loading are the following:
         <td><a href="data_formats.md#json">JSON format</a></td>
 	</tr>
 </table>
-
 
 ### Request parameters
 
@@ -154,11 +152,15 @@ Each request contains all the data needed to save changes in the database.
 As we initialized dataProcessor in the REST mode, it will use different HTTP verbs for each type of operation.
 
 Since we use REST API, it's possible to implement the server side using different frameworks and programming languages.
-Here's a list of available server-side implementations that you can use for Scheduler backend integration:
+Here's a list of available server side implementations that you can use for Scheduler backend integration:
 
-- [dhtmlxScheduler with NodeJs and MongoDB](https://github.com/DHTMLX/node-scheduler-demo) 
-- [dhtmlxScheduler with Ruby on Rails](https://dhtmlx.com/blog/use-dhtmlxscheduler-ruby-rails-part-1-tutorial/)
-- [dhtmlxScheduler with dhtmlxConnector](how_to_start.md)
+- server_php.md
+- server_nodejs.md
+- server_dotnet.md
+- server_ruby.md
+
+<br>
+If by some reason you don't want to use REST API, the best solution is [to use dhtmlxConnector library](using_connectors.md).
 
 
 Saving recurring events
@@ -258,7 +260,6 @@ If you have dataProcessor initialized, any change made by the user or programmat
 Generally, to update a specific event programmatically, use the api/scheduler_addevent.md method:
 
 ~~~js
-
 scheduler.parse([
      { id:1, start_date:"2017-05-13 6:00", end_date:"2017-05-13 8:00", text:"Event 1"},
      { id:2, start_date:"2017-06-09 6:00", end_date:"2017-06-09 8:00", text:"Event 2"}
@@ -344,6 +345,9 @@ Check the app_security.md article to learn the most vulnerable points of the com
 
 
 @index:
-app_security.md
-
-
+- app_security.md
+- using_connectors.md
+- server_php.md
+- server_nodejs.md
+- server_dotnet.md
+- server_ruby.md

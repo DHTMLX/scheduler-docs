@@ -1,10 +1,18 @@
-dhtmlxScheduler with dhtmlxConnector
-=================================
+dhtmlxScheduler with dhtmlxConnector 
+=====================================
 
 In this tutorial we want to consider the creation of a standard scheduler that loads data from a database and saves it back. 
 The final code of the tutorial can be used as the start point while creating applications with dhtmlxScheduler.  
 
-![init_scheduler_front.png](init_scheduler_front.png)
+This tutorial discusses the sequence of steps needed for implementing Scheduler with PHP. If you want to create Scheduler with a different language, 
+check the available options in the list below:
+
+- howtostart_php.md
+- howtostart_nodejs.md
+- howtostart_dotnet.md
+- howtostart_ruby.md
+
+![how_to_start_front_image.png](how_to_start_front_image.png)
 
 {{sample
 	01_initialization_loading/05_loading_database.html
@@ -22,7 +30,7 @@ The required code files are:
 - *dhtmlxscheduler.css*
 
 
-~~~html
+~~~js
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,6 +42,7 @@ The required code files are:
    	//your code will be here
 </body>
 </html>
+
 ~~~
 
 Let's quickly explore the structure of the dhtmlxScheduler package to find out where to look for the files. 
@@ -45,11 +54,17 @@ Let's quickly explore the structure of the dhtmlxScheduler package to find out w
 
 
 
+
+
+
 ## Step 2. Related DIV elements 
 
 Before initialization of the scheduler, you should define the related DIV containers for its elements.
   
+  
+ 
 The standard set of 'divs' (needed for the scheduler) looks like this:
+
 
 ~~~js
 <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
@@ -68,11 +83,10 @@ The standard set of 'divs' (needed for the scheduler) looks like this:
 ~~~
 
 
-## Step 3. Style
-
+## Step 3.  Style
 To work correctly in the full-screen mode in different browsers, define the following style for the scheduler:
 
-~~~css
+~~~js
 <style type="text/css" media="screen">
     html, body{
         margin:0px;
@@ -81,20 +95,21 @@ To work correctly in the full-screen mode in different browsers, define the foll
         overflow:hidden;
     }   
 </style>
+
 ~~~
 
 If you don't use the full-screen mode, you don't need to specify that style. Specify the desired css properties directly in the main **div**:
 
-~~~html
+~~~js
 <div id="scheduler_here" class="dhx_cal_container" 
-style="width:200px; height:300px; padding:10px;"/>
+style='width:200px; height:300px; padding:10px;'>
 ...
+
 ~~~
 
 
-##Step 4. Initialization
-
-After you have finished the preparations, you can move to initialization. Beware, the scheduler is a static object and can be instantiated on the page once. 
+## Step 4. Initialization
+After you have finished the preparations, you can move to initialization. Beware, the scheduler is a static object and can be instantiate on the page once. 
 To refer to the scheduler's instance, use **dhtmlxScheduler** or simply **scheduler**.
 
 ~~~js
@@ -103,7 +118,6 @@ scheduler.init('scheduler_here', new Date(),"month");
 
 
 ## Step 5. Loading data
-
 If you run the app now, you can already see a scheduler on the page. But it won't contain any data.
 
 To populate the scheduler, we will take the data from a sample data source. We will use the easiest of the ways and specify the data source as an inline object. <br>
@@ -123,11 +137,10 @@ var events = [
 {id:3, text:"Interview", start_date:"04/24/2013 09:00",end_date:"04/24/2013 10:00"}
 ];
 
-scheduler.parse(events, "json"); // takes the name and format of the data source
+scheduler.parse(events, "json");//takes the name and format of the data source
 ~~~
 
 ## Step 6. Database structure 
-
 {{note
 Read this and further steps if you want to load data from a database instead of from an inline object.
 }}
@@ -166,9 +179,9 @@ scheduler.init('scheduler_here',new Date(),"month");
 
 ##Step 7. Loading data from the server
 
-To load data from a database, use the api/scheduler_load.md method where specify a file realizing server-side 'communication' as a parameter. 
-You may write the full server side by yourself, 
-but we recommend to use <a href="https://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">dhtmlxConnector</a>, as the easiest way.
+To load data from a database, use the api/scheduler_load.md method where specify a file realizing server-side 'communication' as a parameter. You may write the full server side by yourself, 
+but we recommend to use <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">dhtmlxConnector</a>, as the easiest way.
+  
   
 So, for our task you need to call the method as shown below:
 
@@ -179,7 +192,6 @@ scheduler.load("data/connector.php");
 
 
 ## Step 8. Server-side script 
-
 The server-side script for dhtmlxScheduler is the following:
 
 ~~~php
@@ -194,38 +206,23 @@ $conn = new SchedulerConnector($res);
 $conn->render_table("events","id","start_date,end_date,text");
 ~~~
 
-###Mapping database columns
+<br>
 
-Please note that the order of columns in **$connector->render_table** is important. The first three columns in the columns list are mapped to *start_date/end_date/text* properties of the
-client-side task object respectively, no matter what column names you specify:
- 
-~~~js
-$conn->render_table("events","EventId","Start,End,Name,details","");
-//JS: event.id, event.start_date, event.end_date, event.text, event.text, event.details
+Note, you can name the table fields, as you want. In any case, the scheduler interprets 3 first fields to load, as the required ones. For instance, if you load data as in:
+
+~~~php
+$conn->render_table("events","id","event_start,event_end,event_text");
 ~~~
 
-####Mapping other columns
+the interpretation will be as follows:
 
-All other columns will be mapped by their names without changes:
-
-~~~js
-$conn->render_table("events","id","start_date,end_date,text,custom,details","");
-// JS: event.start_date, event.end_date, event.text, event.custom, event.details
-~~~
-
-You can also use aliases, as follows:
-
-~~~js
-$conn->render_table("events","id",
-	"start_date,end_date,text,custom_column(customProperty),details","");
-//JS:event.start_date, event.end_date, event.text, event.customProperty, event.details
-~~~
-
+- *event_start* -> *start_date*;
+- *event_end* -> *end_date*;
+- *event_text* ->*text*. 
 
 ## Step 9. Saving data 
-
 If you run the app now, you will see that the scheduler is able to load data from the database, but unable to save it back. 
-To 'force' the scheduler save data in the database, use <a href="https://docs.dhtmlx.com/doku.php?id=dhtmlxdataprocessor:toc">dataProcessor</a>.
+To 'force' the scheduler save data in the database, use <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxdataprocessor:toc">dataProcessor</a>.
 
 It's very easy to use dataProcessor. All you need is to initialize it and attach to the scheduler.
 
@@ -233,10 +230,12 @@ It's very easy to use dataProcessor. All you need is to initialize it and attach
 var dp = new dataProcessor("data/connector.php");
 dp.init(scheduler);
 ~~~
+
   
 That's all. A standard scheduler that can load data from the database and save it back is ready.
-    
-Now you may configure, change and customize it to meet all your needs. 
+  
+   
+Now you may configure, change and customize it further to meet all your needs. 
 
 
 {{sample

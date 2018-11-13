@@ -49,23 +49,50 @@ scheduler.load("data.xml","xml"); //loading data from a file in the XML format
 Loading data from a database
 -------------------------------------
 
-To load data from database table(s), use the api/scheduler_load.md method on the client side:
+There are two ways to load data from a database. In both cases, you need to deal with both the client and the server side.
 
-- **Client side**
-        
+1) The first way includes the usage of REST API for communication with server.
+
+- The server-side implementation depends on the framework you want to use. 
+For example, in case of Node.js we should add a server route for the URL to which Scheduler will send an AJAX request for data.
+
+It will generate the corresponding response in JSON format. 
+
+~~~js
+app.get('/data', function(req, res){
+	db.event.find().toArray(function(err, data){
+		//set id property for all records
+		for (var i = 0; i < data.length; i++)
+			data[i].id = data[i]._id;
+		
+		//output response
+		res.send(data);
+	});
+});
+~~~
+
+- On the client side we will use the api/scheduler_load.md method and specify the necessary URL where an AJAX request for Scheduler data will be sent:
+
 {{snippet
-Static loading from db. Client-side code
+Loading from a database. Client-side code
 }}
 ~~~js
 scheduler.init('scheduler_here', new Date(), "month");
-scheduler.load("events.php");
+scheduler.load("apiUrl");
 ~~~
-- **Server-side**
+
+{{note
+The detailed information on Scheduler server-side integration using REST API is given in the article server_integration.md.
+}}
+
+2) The second way presupposes loading data from database table(s) using [PHP Connector](http://docs.dhtmlx.com/connector__php__index.html).
+
+- On the server-side, realize the server script that returns data in the XML or JSON format:
         
 {{snippet
 Static loading from db. Server-side code
 }}
-~~~js
+~~~php
 include ('dhtmlxConnector/codebase/scheduler_connector.php');
  
 $res=mysql_connect("localhost","root","");
@@ -75,8 +102,19 @@ $calendar = new SchedulerConnector($res);
 $calendar->render_table("events","id","event_start,event_end,text","type");
 ~~~
 
+- On the client side, use the api/scheduler_load.md method where specify the path to the server-side script:
+        
+{{snippet
+Static loading from db. Client-side code
+}}
+~~~js
+scheduler.init('scheduler_here', new Date(), "month");
+scheduler.load("events.php");
+~~~
+
+
 {{note
-See the detailed information in the server_integration.md guide.
+See the detailed information in the using_connectors.md guide.
 }}
 
 Loading data from multiple sources
