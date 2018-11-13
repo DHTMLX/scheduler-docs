@@ -1,6 +1,10 @@
 Migration From Older Versions 
 ==============
 
+## 5.0 -> 5.1
+
+Since a horizontal scroll was added into the Timeline view, the HTML markup of the timeline was considerably changed. It may cause breaks of custom styles or code that rely on the previous timeline structure.
+
 ## 4.4 -> 5.0
 
 ###Removed skins
@@ -143,4 +147,5 @@ codebase/dhtmlxgrid_units.js => codebase/ext/dhtmlxgrid_units.js
 - scheduler_3.0.md
 
 
+@todo: complete 5.0 -> 5.1 migration notes
 
