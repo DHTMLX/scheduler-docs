@@ -12,7 +12,7 @@ check the available options in the list below:
 - howtostart_dotnet.md
 - howtostart_ruby.md
 
-![how_to_start_front_image.png](how_to_start_front_image.png)
+![init_scheduler_front.png](init_scheduler_front.png)
 
 {{sample
 	01_initialization_loading/05_loading_database.html
@@ -241,3 +241,5 @@ Now you may configure, change and customize it further to meet all your needs.
 {{sample
 	01_initialization_loading/05_loading_database.html
 }}
+
+@todo: check and compare to the current how to start

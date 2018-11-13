@@ -8,7 +8,7 @@ The Month view displays a single month of the calendar.
 
 Initialization
 --------------------
-The Month view is added to the  [basic scheduler's markup](how_to_start.md#step2relateddivelements) by default. That's why you don't need to provide any extra code for adding the view to the scheduler. 
+The Month view is added to the  [basic scheduler's markup](scheduler_markup.md) by default. That's why you don't need to provide any extra code for adding the view to the scheduler. 
 
 ~~~js
 //just usual initialization. The Month view will be added by default
@@ -24,7 +24,7 @@ scheduler.load("data/events.xml");
 
 Removing the Month view tab
 -----------------------------------------
-To remove the Month view tab from the scheduler, remove the related div from the [scheduler's markup](how_to_start.md#step2relateddivelements):
+To remove the Month view tab from the scheduler, remove the related div from the [scheduler's markup](scheduler_markup.md):
 
 ~~~js
 //remove this div to remove the Month tab
@@ -126,12 +126,11 @@ scheduler.init('scheduler_here',new Date(2010,0,10),"month");
 
 **Please, note:**
 
-<ul>
-	<li>The api/scheduler_resize_month_timed_config.md property has sense only with the api/scheduler_resize_month_events_config.md property enabled.</li>
-    <li>When the api/scheduler_resize_month_timed_config.md property is enabled, the single-day events change their look:
-    	<img src="api/resizemonthtimed_config.png"/>
-    </li>
-</ul>
+- The api/scheduler_resize_month_timed_config.md property makes sense only with the api/scheduler_resize_month_events_config.md property enabled.
+- When the api/scheduler_resize_month_timed_config.md property is enabled, single-day events change their look:
+
+<img src="api/resizemonthtimed_config.png"/>
+    
 
 Related guides
 ----------------------------------------

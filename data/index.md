@@ -46,6 +46,7 @@ Start
 @index:
 - api/refs/scheduler.md
 - what_s_new.md
+- migration_from_older_version.md
 - views.md
 - guides.md
 - faq.md

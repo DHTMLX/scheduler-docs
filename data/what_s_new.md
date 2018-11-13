@@ -14,7 +14,7 @@ The implementation of the horizontal scroll functionality affected the Timeline 
 
 1. [Horizontal scroll in the Timeline view](timeline_view.md#horizontalscroll) (PRO version)
 2. Smart rendering and performance update for the timeline
-3. Integration with different server-side platforms. Check the related tutorials
+3. Integration with different server-side platforms. [Check the related tutorials](howtostart_guides.md)
 4. Update of Scheduler.NET to the actual version of dhtmlxScheduler
 
 ###Minor Changes
@@ -302,7 +302,6 @@ The implementation of the horizontal scroll functionality affected the Timeline 
 + problem with incorrect recurring view, after resize in edit mode, is fixed 
 + event editor doesn't close, if "onClick" event is disabled (#617)
 + incorrect processing of 12AM, while parsing the string to date
-
 
 
 

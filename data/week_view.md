@@ -7,7 +7,7 @@ The Week view displays one or more weeks at a time.
 
 Initialization
 --------------------
-The Week view is added to the [basic scheduler's markup](how_to_start.md#step2relateddivelements) by default. That's why you don't need to provide any extra code for adding the view to the scheduler. 
+The Week view is added to the [basic scheduler's markup](scheduler_markup.md) by default. That's why you don't need to provide any extra code for adding the view to the scheduler. 
 
 ~~~js
 //just usual initialization. The Week view will be added by default
@@ -23,7 +23,7 @@ scheduler.load("data/events.xml");
 
 Removing the Week view tab
 -----------------------------------------
-To remove the Week view tab from the scheduler, remove the related div from the [scheduler's markup](how_to_start.md#step2relateddivelements):
+To remove the Week view tab from the scheduler, remove the related div from the [scheduler's markup](scheduler_markup.md):
 
 ~~~js
 //remove this div to remove the Week tab
