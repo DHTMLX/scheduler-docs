@@ -15,9 +15,9 @@ The articles come around key procedures and problem-solving activities.
 		         How to Start with dhtmlxScheduler
 		    </h4>
 		    <ul id="data_sublist" >
-                    <li>howtostart_php.md</li>
-                    <li>howtostart_nodejs.md</li>
-                    <li>howtostart_dotnet.md</li>
+            		<li>howtostart_nodejs.md</li>  
+                    <li>howtostart_php_laravel.md</li>
+                    <li>howtostart_php.md</li>                                  
                     <li>howtostart_ruby.md</li>
                     <li>howtostart_connector.md</li>
             </ul>

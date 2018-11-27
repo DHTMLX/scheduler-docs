@@ -138,7 +138,7 @@ The configuration object of the Timeline view can have the following properties:
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>resize_events</b></td>
-			<td>(<i>boolean</i>) specifies whether the height of individual events should be decreased, to make the total height equal to the height of one single event (but not less than the value of the <b>min_event_dy</b> property). By default, <i>true</i> </td>
+			<td>(<i>boolean</i>) specifies whether the height of individual events should be decreased, to make the total height equal to the height of one single event (but not less than the value of the <b>event_min_dy</b> property). By default, <i>true</i> </td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>fit_events</b></td>

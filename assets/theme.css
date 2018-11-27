@@ -43,13 +43,13 @@ body{
 }
 
 .page_start .hot-right{
-    line-height: 32px;
-    padding-right:35px;
+    line-height: 33px;
+    padding-right: 35px;
 }
 
 .page_start .hot-right a{
     background: url(index/icon1.svg) 0px center no-repeat;
-    padding-left: 40px;
+    padding-left: 32px;
     color: #424242;
 }
 .page_start .hot-right a:nth-child(2){
@@ -466,9 +466,14 @@ body{
 }
 .page_start .tablet{
     background: url(index/tablet.png);
-    position: absolute; right:56px; bottom:34px;
-    width: 436px; height:313px;
-    z-index:2;
+    position: absolute; 
+    right: 46px;
+    bottom: 10px;
+    width: 468px;
+    height: 344px;
+    z-index: 2;
+    background-repeat: no-repeat;
+    background-size: 468px 344px;
 }
 
 .inside-components-links h3{

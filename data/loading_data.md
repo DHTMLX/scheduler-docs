@@ -1,5 +1,6 @@
 Loading Data
 ===============================
+
 dhtmlxScheduler can load data of 3 formats which are:
 
 1. JSON;
@@ -155,15 +156,37 @@ scheduler.init('scheduler_here', new Date(2013, 3, 18), "week");
 ~~~
 
 ###Custom properties
+
 You are not limited to the mandatory properties listed above and can add any custom ones to data items. 
 Extra data properties will be parsed as strings and loaded to the client side where you can use them according to your needs.
 
 See examples of data with custom properties <a href="data_formats.md#datawithcustomproperties">here</a>.
 
+Database Structure
+-------------------
+
+When you set up a database, the expected structure for scheduler events is the following:
+
+- **id** - (*string/int/guid*) - the event id. Primary key, auto increment.
+- **start_date** - (*DateTime*) - the start date of event, not nullable.
+- **end_date** - (*DateTime*) - the start date of event, not nullable.
+- **text** - (*string*) - the description of a task.
+
+If you have recurring events, you need some extra columns for them:
+
+- **id** - (*string/int/guid*) - the event id. Primary key, auto increment.
+- **start_date** - (*DateTime*) - the start date of event, not nullable.
+- **end_date** - (*DateTime*) - the start date of event, not nullable.
+- **text** - (*string*) - the description of a task.
+- **event_pid** - (*string/int/guid*) - the reference to the parent event series id. Must be nullable or have an empty default value (empty string, numeric zero).
+- **event_length** - (*string/bigint*) - an event duration or a timestamp of modified occurrence. Must be nullable or have an empty default value (empty string, numeric zero). Max length (string values) is 10.
+- **rec_type** - (*string*) - a recurring rule. Must be nullable or have an empty string as a default value. Max length is 50.
+
+You can define any additional columns, they can be loaded to the client and made available for the client-side API.
 
 
 Dynamic loading
------------------------------------------------
+--------------------
  
 By default, dhtmlxScheduler loads all data at once. It may become problematic when you are using big event collections. 
 In such situations you may use the dynamic loading mode and load data by parts, necessary to fill the current viewable area  of the scheduler.
@@ -260,12 +283,11 @@ To change the spinner image - replace 'imgs/loading.gif' with your custom image.
 Loading data with Timeline and Units sections from the server
 --------------------------------------------
 
-While loading data into [Timeline](timeline_view.md#loadingdatatotheview) and [Units](units_view.md#loadingdatatotheview) views, 
-you need to set an array of sections that will be loaded into views. 
+While loading data into [Timeline](timeline_view.md#loadingdatatotheview) and [Units](units_view.md#loadingdatatotheview) views, you need to set an array of sections that will be loaded into views. 
 
 In order to load data containing Timeline and Units sections from the backend, you need to implement a more extended configuration: 
 
-- during Timeline view initialization, instead of sections array you should use the api/scheduler_serverlist.md method and pass the name of a collection as an argument
+- during Timeline view initialization, instead of sections array you should use the api/scheduler_serverlist.md method and pass the name of a collection as an argument:
 
 ~~~js
 scheduler.createTimelineView({
@@ -332,5 +354,6 @@ In the above example the "data" array contains calendar events, and the "collect
 @index:
 - data_formats.md
 
-
+@todo:
+check DB structure
 

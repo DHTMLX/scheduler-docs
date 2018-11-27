@@ -5,355 +5,430 @@ The current tutorial is intended for creating Scheduler with Node.js and REST AP
 If you use some other technology, check the list of available integration variants below:
 
 - howtostart_php.md
-- howtostart_dotnet.md
+- howtostart_php_laravel.md
 - howtostart_ruby.md
+- howtostart_connector.md
 
 Our implementation of Scheduler with Node.js will be based on REST API that will be used for communication with server. 
-Node.js has a set of ready-made solutions, so we won’t have to code everything from the very beginning.
+Node.js has a set of ready-made solutions, so we won't have to code everything from the very beginning.
 
-Have a look at the [demo](https://github.com/DHTMLX/node-scheduler-demo) on GitHub.
+This tutorial uses the [Express](http://expressjs.com/) framework and MySQL as a data storage.
+
+Have a look at the [demo](https://github.com/DHTMLX/scheduler-howto-node) on GitHub.
 
 
-Step 1. Making Preparations
+Step 1. Initializing the Project
 -------------------------------
 
-To begin with, we'll create a project folder and then add the required dependencies. We'll make use of the following modules:
+### Creating project
 
-- [Express](http://expressjs.com/) - a tiny framework for Node.js
-- [body-parser](https://www.npmjs.com/package/body-parser) - a Node.js parsing tool
-- [date-format-lite](https://github.com/litejs/date-format-lite) - a small library that will help us to convert dates of Scheduler entries into the proper format
-- [MongoDB](https://github.com/mongodb/node-mongodb-native) driver - adapter for the database access
+To begin with, create a new application using yarn:
 
-So, let's create a project folder and name it "scheduler-rest-node":
-
-~~~js
-mkdir scheduler-rest-node
-cd scheduler-rest-node
+~~~
+$ mkdir scheduler-howto-nodejs
+$ cd ./scheduler-howto-nodejs
+$ yarn init
 ~~~
 
-After that create a file *package.json*. We'll specify the dependencies in it with the following command:
+There is a set of simple questions you need to answer during initialization of a new app:
 
-~~~js
-npm init -y
+~~~
+$ question name (scheduler-howto-nodejs):
+$ question version (1.0.0):
+$ question description: My scheduler backend
+$ question entry point (index.js): server.js
+$ question repository url:
+$ question author: Me
+$ question license (MIT): MIT
+$ question private:
+$ success Saved package.json
 ~~~
 
-When the file is ready, open it and put the above listed dependencies into it. The result will look similar to this one:
+The package manager will create a *package.json* file that will look similar to this:
 
-~~~js
+~~~
 {
-  "name": "scheduler-rest-node",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "dependencies": {
-    "body-parser": "^1.15.0",
-    "date-format-lite": "^0.7.4",
-    "express": "^4.13.4",
-    "mongodb": "^2.1.14",
-    "mongoskin": "^2.0.3"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "scheduler-backend",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "Me",
+    "license": "MIT",
 }
 ~~~
 
-Finally, we need to install the added dependencies using the command below:
+### Adding dependencies and installing modules
 
-~~~js
-npm install
+As it was said at the beginning, the [Express](http://expressjs.com/) framework and MySQL are used for creating the demo.
+
+{{note You should setup your MySQL server, or use some service, e.g. [Free MySQL Hosting](https://www.freemysqlhosting.net/).}}
+
+Add express, mysql, body-parser and date-format-lite modules:
+
+~~~
+$ yarn add express mysql body-parser date-format-lite
 ~~~
 
-One more thing we should do at this step is to create an empty file *server.js*. We will need it later.
+**server.js** has been specified as the entry point above. Now you should create this file with the code below:
+
+{{snippet server.js}}
+~~~
+const express = require("express"); // use Express
+const bodyParser = require("body-parser"); // for parsing POST requests
+const app = express(); // create application
+const port = 3000; // port for listening
+
+// It's necessary for parsing POST requests
+// the line below is used for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended:true}));
+
+// start server
+app.listen(port, () => {
+    console.log("Server is running on port " + port + "...");
+});
+~~~
+
+Then open the **package.json** file, and add the "scripts" section:
+
+~~~
+"scripts": {
+    "start": "node index.js"
+}
+~~~
+
+After that **package.json** looks like this:
+
+~~~
+{
+    "name": "scheduler-backend",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "Me",
+    "license": "MIT",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "date-format-lite": "^17.7.0",
+        "express": "^4.16.4",
+        "mysql": "^2.16.0"
+    }
+}
+~~~
+
+Now you can start the server:
+
+~~~
+$ yarn start
+~~~
+
+or
+
+~~~
+$ npm start
+~~~
 
 
-Step 2. Initializing Scheduler
---------------------------
+Step 2. Adding Scheduler to the Page
+---------------------------------
 
-Firstly, create a folder with the name "public". This folder will contain the dhtmlxScheduler codebase and the main page of the application - *index.html*.
+Create a directory to place your frontend HTML/CSS/JS files:
 
-Let's add the *index.html* file into the public folder. Thus, the folder structure will be as follows:
+~~~
+$ mkdir ./public
+~~~
 
-<img src="node_folder_structure.png">
+Then create an *index.html* file in the **public** directory:
 
-Now, open the *index.html* file and fill it with the following content:
-
-{{snippet "index.html" file}}
+{{snippet public/index.html}}
 ~~~html
-<!DOCTYPE html>
+<!doctype html>
 <html>
-   <head>
-	  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-   </head>
-	   <script src="./codebase/sources/dhtmlxscheduler.js" type="text/javascript" 
-          charset="utf-8"></script>
-	   <link rel="stylesheet" href="../../codebase/dhtmlxscheduler.css" type="text/css" 
-          media="screen" title="no title" charset="utf-8">
-		
-    <style type="text/css" media="screen">
-		html, body{ margin:0px; padding:0px; height:100%; overflow:hidden; }	
-	</style>
+    <head>
+        <title>DHTMLX Sсheduler example</title>
+        <meta charset="utf-8">
+        <!-- scheduler -->
+        <script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js" 
+        	charset="utf-8"></script>
+      <link href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_material.css" 
+      		rel="stylesheet" type="text/css" charset="utf-8">
+        <style>
+            html, body{
+                margin:0px;
+                padding:0px;
+                height:100%;
+                overflow:hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="scheduler_here" class="dhx_cal_container" 
+        	style='width:100%; height:100%;'>
+            <div class="dhx_cal_navline">
+                <div class="dhx_cal_prev_button">&nbsp;</div>
+                <div class="dhx_cal_next_button">&nbsp;</div>
+                <div class="dhx_cal_today_button"></div>
+                <div class="dhx_cal_date"></div>
+                <div class="dhx_cal_tab" name="day_tab"></div>
+                <div class="dhx_cal_tab" name="week_tab"></div>
+                <div class="dhx_cal_tab" name="month_tab"></div>
+            </div>
+            <div class="dhx_cal_header"></div>
+            <div class="dhx_cal_data"></div>
+        </div>
+        <script>
+            // set format of dates in the data source
+            scheduler.config.xml_date="%Y-%m-%d %H:%i";
+            scheduler.init('scheduler_here', new Date(2018,0,20), "month");
 
-	<script type="text/javascript" charset="utf-8">
-		function init() {
-			scheduler.config.xml_date="%Y-%m-%d %H:%i";
-			
-			scheduler.init('scheduler_here',new Date(2016,3,1),"month");
-			scheduler.load("/data", "json");
-			
-			var dp = new dataProcessor("/data/");
-			dp.init(scheduler);
-			dp.setTransactionMode("REST");
-		}
-	</script>
+            scheduler.load("http://localhost:3000/data", "json");
 
-	<body onload="init();">
-	    <div id="scheduler_here" class="dhx_cal_container" 
-          style='width:100%; height:100%;'>
-			<div class="dhx_cal_navline">
-				<div class="dhx_cal_prev_button">&nbsp;</div>
-				<div class="dhx_cal_next_button">&nbsp;</div>
-				<div class="dhx_cal_today_button"></div>
-				<div class="dhx_cal_date"></div>
-				<div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
-				<div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
-				<div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>
-			</div>
-			<div class="dhx_cal_header">
-			</div>
-			<div class="dhx_cal_data">
-			</div>
-		</div>
-	</body>
+            var dp = new dataProcessor("http://localhost:3000/data");
+            // use RESTful API on the backend
+            dp.setTransactionMode("REST");
+            dp.init(scheduler);
+        </script>
+    </body>
 </html>
 ~~~
 
-Here we've created a simple page layout and added the required js and css files from scheduler codebase.
+The above code defines a simple HTML layout, adds sources of dhtmlxScheduler from CDN and initializes scheduler using the api/scheduler_init.md method.
+Note that 100% height is specified for the document body and for the scheduler container. Scheduler will use the size of its container, so some initial sizes are required.
 
-The code initializes a scheduler together with dataProcessor and sets the necessary configuration settings. 
-It also enables data loading for the scheduler.
+### Setup routes
 
-The “/data” URL will serve as a data source and the entry point for dataProcessor requests, we’ll consider it a bit later.
-The important point is that dataProcessor should be initialized in the REST mode. To get more information, read the server_integration.md#savingdatafromrestserver
-article.
+After you have added a new page, you need to make it accessible from a browser. For this tutorial, scheduler will be the default page of an app.
+
+Add the code below to **server.js** before `"app.listen(...);"`:
+
+{{snippet server.js}}
+~~~
+// return static pages from the "./public" directory
+app.use(express.static(__dirname + "/public"));
+~~~
+
+Run the app again to make sure it did the trick.
+
+Now when you open the URL *http://localhost:3000/* in a browser, you should see the *index.html* page.
+
+![Scheduler initialization](howtostart_nodejs_init.png)
 
 
 Step 3. Preparing a Database
 -------------------------
 
-The next step is to create a database. We'll make a simple database with two tables.
-
-Check a detailed example [here](howtostart_connector.md#step6databasestructure).
-
-Step 4. Making Connection to Database
---------------------------
-
-Now we need to connect to the database. Open the *server.js* file that we have added at the [Step 1](howtostart_nodejs.md#step1makingpreparations) and add
-the following code into it:
-
-~~~js
-var express = require('express');
-var bodyParser = require('body-parser');
-var path = require('path');
-require("date-format-lite");
-
-var port = 3000;
-var dateFormat = "YYYY-MM-DD hh:mm";
-
-var db = require('mongoskin').db("mongodb://localhost/testdb", { w: 0});
-    db.bind('event');
+So, you've got an empty scheduler. Let's connect it to the database and define methods to read and write events to it.
 
 
-var app = express();
-app.use(express.static(path.join(__dirname, "public")));
-app.use(bodyParser.urlencoded({ extended: true }));
+### Creating a database
 
+First things first, we need a database to work with. You can create a database with your favorite mysql-client, or via the console.
 
-app.get('/init', function(req, res){
-	db.event.insert({ 
-		text:"My test event A", 
-		start_date: new Date(2016,3,1),
-		end_date:	new Date(2016,3,5)
-	});
-	db.event.insert({ 
-		text:"My test event B", 
-		start_date: new Date(2016,3,19),
-		end_date:	new Date(2016,3,24)
-	});
-	db.event.insert({ 
-		text:"Morning event", 
-		start_date: new Date(2016,3,4,4,0),
-		end_date:	new Date(2016,3,4,14,0)
-	});
-	db.event.insert({ 
-		text:"One more test event", 
-		start_date: new Date(2016,3,3),
-		end_date:	new Date(2016,3,8),
-		color: "#DD8616"
-	});
+To create a database with a mysql-client, open it and execute the code below:
 
-	res.send("Test events were added to the database")
-});
+~~~
+CREATE DATABASE  IF NOT EXISTS `scheduler`;
+USE `scheduler`;
 
-app.listen(port, function(){
-	console.log("Server is running on port "+port+"...");
-});
+DROP TABLE IF EXISTS `events`;
+CREATE TABLE `events` (
+ `id` bigint(20) unsigned AUTO_INCREMENT,
+ `start_date` datetime NOT NULL,
+ `end_date` datetime NOT NULL,
+ `text` varchar(255) DEFAULT NULL,
+ PRIMARY KEY (`id`)
+) DEFAULT CHARSET=utf8;
 ~~~
 
-What we have done in this code:
+To import with a mysql-console, create a *dump.sql* file with the code above. And execute command in the shell:
 
-- opened MongoDB connection to our database (we’ll need it later, for now just make sure you’ve specified actual connection parameters)
-- specified the "public" folder as the root directory of an application
-- attached the application to 3000 port of the localhost
-
-
-We’ll implement an actual database loading and saving later, but now we can run the app and
-make sure everything goes as expected so far. Go to the project folder and run following line from command line:
- 
-~~~js
-node server.js
+~~~
+$ mysql -uuser -ppass scheduler < dump.sql
 ~~~
 
-Then open [http://127.0.0.1:3000]() in a browser. You should see a page with an empty scheduler like the one shown below:
+Let's define MySQL connection settings in a constant in **server.js**. They will be used later in the storage.
 
-<img src="node_empty_scheduler.png">
+{{snippet server.js}}
+~~~
+// MySQL will be used for db access and util to promisify queries
+const util = require("util");
+const mysql = require('mysql');
 
-Step 5. Loading Events into Scheduler
-----------------------------
-
-At the previous step we’ve added a function to load initial data. So, you can open [http://127.0.0.1:3000/init]() to load initial events.
-
-Now, let’s enable data loading. As you might remember, when we initialized scheduler in *index.html*, we've added following line:
-
-~~~js
-scheduler.load("/data", "json");
+// use your own parameters for database
+const mysqlConfig = {
+    "connectionLimit": 10,
+    "host": "localhost",
+    "user": "root",
+    "password": "",
+    "database": "scheduler_howto_node"
+};
 ~~~
 
-It will send an AJAX request to the specified URL ([see the details](server_integration.md#technique)), expecting to get a [JSON](data_formats.md#json) response with scheduler data.
+When it's done, you can connect to this database from the app as follows:
 
-Now we’ll add a server route for this URL which will generate an appropriate response.
-Open *server.js* and add the following code:
-
-~~~js
-app.get("/data", function(req, res){
-	db.event.find().toArray(function(err, data){
-		//set id property for all records
-		for (var i = 0; i < data.length; i++)
-		{
-			data[i].id = data[i]._id;
-			data[i].start_date = data[i].start_date.format(dateFormat);
-			data[i].end_date = data[i].end_date.format(dateFormat);
-		}
-		
-		//output response
-		res.send(data);
-	});
-});
+{{snippet server.js }}
+~~~
+// open connection to mysql
+const connectionPool = mysql.createPool(mysqlConfig);
+connectionPool.query = util.promisify(connectionPool.query);
 ~~~
 
-The code reads events from db and formats dates so the client side could parse them. 
-After that we’ll send the collected data to the HTTP response.
+Here [connection pooling](https://github.com/mysqljs/mysql#pooling-connections) is used and [queries are wrapped into Promises](https://nodejs.org/dist/latest-v8.x/docs/api/util.html#util_util_promisify_original).
+It's not strictly necessary for our app to work, but it will definitely look good later on.
 
-If we run application now and open [http://127.0.0.1:3000](), we should see that the test data we’ve previously added to the database is loaded into scheduler.
+At the next step all the database access will be put into a separate class called Storage. It'll handle database connection and all CRUD actions.
 
-<img src="node_scheduler_test_data.png">
 
-Step 6. Saving Data
----------------------
+Step 4. Implementing CRUD
+--------------------
 
-The last thing that we should implement is data saving. For this we need a code that will send updates happening on the client side back to the server.
+### Implementing data access
 
-The good news is that we already have such a code in the *index.html* file. Right here:
+All the read/write logic will be defined in a separate module `Storage`. It'll take mysql connection and a table name and perform simple CRUD to the specified table: read all the events,
+insert new events, update or delete the existing ones. 
 
-~~~js
-var dp = new dataProcessor("/data/");
-dp.init(scheduler);
-dp.setTransactionMode("REST");
+For this, create the file *storage.js* and add the code below into it:
+
+{{snippet storage.js}}
 ~~~
+require("date-format-lite"); // add date format
 
-Let's dive deeper and see what role it plays.
+class Storage {
+    constructor(connection, table) {
+        this._db = connection;
+        this.table = "events"table;
+    }
 
-###Requests and responses
+    // get events from the table, use dynamic loading if parameters sent
+    async getAll(params) {
+        let query = "SELECT * FROM ??";
+        let queryParams = [
+            this.table
+        ];
 
-Each time a user adds, modifies or deletes something from the scheduler, DataProcessor will send an AJAX request. The request will contain all 
-the parameters required to save changes into the database.
+        let result = await this._db.query(query, queryParams);
 
-Since DataProcessor is initialized in the REST mode, it will use different HTTP verbs for each type of operation. 
-The list of HTTP verbs together with request and response details is given in the [Server-Side Integration](server_integration.md#requestresponsedetails) article.
+        result.forEach((entry) => {
+            // format date and time
+            entry.start_date = entry.start_date.format("YYYY-MM-DD hh:mm");
+            entry.end_date = entry.end_date.format("YYYY-MM-DD hh:mm");
+        });
+        return result;
+    }
 
-Now we’ll add the required routes and handlers that will put changes into the database. Open the *server.js* file and add the following code:
+    // create new event
+    async insert(data) {
+        let result = await this._db.query(
+            "INSERT INTO ?? (`start_date`, `end_date`, `text`) VALUES (?,?,?)",
+            [this.table, data.start_date, data.end_date, data.text]);
 
-~~~js
-app.post("/data/:id", function(req, res){
-	var event = getEvent(req.body);
-	
-	db.event.insert(event, function(err, result){
-		sendResponse(res, "inserted", result ?result.ops[0]._id:null, err);
-	});
-});
+        return {
+            action: "inserted",
+            tid: result.insertId
+        }
+    }
 
-app.put("/data/:id", function(req, res){
-	var event = getEvent(req.body),
-		sid = req.params.id;
-	
-	db.event.updateById(sid, event, function(err, result){
-		sendResponse(res, "updated", null, err);
-	});
-});
+    // update event
+    async update(id, data) {
+        await this._db.query(
+            "UPDATE ?? SET `start_date` = ?, `end_date` = ?, `text` = ? WHERE id = ?",
+            [this.table, data.start_date, data.end_date, data.text, id]);
 
-app.delete("/data/:id", function(req,res){
-	var sid = req.params.id;
-	db.event.removeById(sid, function(err, result){
-		sendResponse(res, "deleted", null, err);
-	});
-});
+        return {
+            action: "updated"
+        }
+    }
 
+    // delete event
+    async delete(id) {
+        await this._db.query(
+            "DELETE FROM ?? WHERE `id`=? ;",
+            [this.table, id]);
 
-function sendResponse(res, mode, tid, error){
-	if(error)
-	{
-		console.log(error);
-		type = "error";
-	}
-	
-	var result = {
-		type: mode
-	};
-	if(tid !== undefined && tid !== null)
-		result.tid = tid;
-	
-	res.send(result);
+        return {
+            action: "deleted"
+        }
+    }
 }
 
-function getEvent(data){
-	var result = {};
-	for(var i in data){
-		result[i] = data[i];
-		if(i == "start_date" || i == "end_date")
-			result[i] = result[i].date();
-	}
-	return result;
-}
+module.exports = Storage;
 ~~~
 
-We have created the route for events entities. The *"/data/:id"* URL will serve for requests.
+### Routing
 
-The requests types are pretty simple:
+Then you need to set up routes, so the storage could be accessed by the scheduler you have placed on the page.
 
-- *POST* - to insert a new item into the database
-- *PUT* - to update an existing record
-- *DELETE* - to remove an item
+For this, create another helper module and call it `router`:
 
-The response will be a JSON object with the type of performed operation or "error" in case the code fails.
+{{snippet router.js}}
 
-The response for the POST request will also contain the database id of the new record. 
-It will be applied on the client side, so it will be possible to map a new item to the database entity.
+~~~
+function callMethod (method) {
+    return async (req, res) => {
+        let result;
 
-If we run application now and open [http://127.0.0.1:3000]() we should have a fully operational scheduler:
+        try {
+            result = await method(req, res);
+        } catch (e) {
+            result =  {
+                action: "error",
+                message: e.message
+            }
+        }
 
-<img src="node_ready_scheduler.png">
+        res.send(result);
+    }
+};
+
+module.exports = {
+    setRoutes (app, prefix, storage) {
+        app.get(`${prefix}`, callMethod((req) => {
+            return storage.getAll(req.query);
+        }));
+
+        app.post(`${prefix}`, callMethod((req) => {
+            return storage.insert(req.body);
+        }));
+
+        app.put(`${prefix}/:id`, callMethod((req) => {
+            return storage.update(req.params.id, req.body);
+        }));
+
+        app.delete(`${prefix}/:id`, callMethod((req) => {
+            return storage.delete(req.params.id);
+        }));
+    }
+};
+~~~
+
+All it does is sets up the application to listen request URLs that scheduler can send and calls the appropriate methods of the storage. 
+
+Note, that all methods are wrapped into `try-catch` blocks, for you to be able to capture any error and return an appropriate error response to the 
+client. Check more info on [error handling](https://docs.dhtmlx.com/scheduler/server_integration.html#errorhandling).
+
+Also note that we hide exception message to the response. It's pretty handy during the development, but in the production environment it can be a good idea 
+to hide these messages from the client side, since raw mysql exceptions that get there may contain sensitive data.
+
+### Getting it work together
+
+Finally, when all parts are done you can connect Storage to the application via Router:
+
+{{snippet server.js }}
+~~~
+const router = require("./router");
+
+// open connection to mysql
+const connectionPool = mysql.createPool(mysqlConfig);
+connectionPool.query = util.promisify(connectionPool.query);
+
+// add listeners to basic CRUD requests
+const Storage = require("./storage");
+const storage = new Storage(connectionPool, "events");
+router.setRoutes(app, "/events", storage);
+~~~
+
+If you restart the application now, you should be able to create delete and modify events in scheduler, all changes will be there after you reload the page.
+
+![Scheduler CRUD](howtostart_nodejs_crud.png)
+
+
