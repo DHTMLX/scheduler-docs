@@ -9,6 +9,16 @@ platforms to suit all tastes and preferences.
 	<tbody>    
     <tr>
         <td>
+		    <span style="font-size:15px;">howtostart_dotnet_core.md</span>
+            <br>
+         	A comprehensive tutorial that describes how to use Scheduler together with ASP.Net Core 2. 
+        </td> 
+         <td>
+        	<a href="howtostart_dotnet_core.md"><img src="dotnet_core_tutorial.png"></a>
+        </td>
+    </tr>	
+    <tr>
+        <td>
 		    <span style="font-size:15px;">howtostart_nodejs.md</span><br><br>
             A detailed tutorial which dwells on Scheduler implementation on a Nodejs platform. 
         </td>
@@ -22,7 +32,7 @@ platforms to suit all tastes and preferences.
             A comprehensive tutorial that discusses how to add Scheduler into a Laravel app. 
         </td>
         <td>
-        	<a href="howtostart_php.md"><img src="php_tutorial.png"></a>
+        	<a href="howtostart_php.md"><img src="laravel_tutorial.png"></a>
         </td>
     </tr> 
     <tr>
@@ -58,6 +68,7 @@ platforms to suit all tastes and preferences.
 
 
 @index:
+- howtostart_dotnet_core.md
 - howtostart_nodejs.md
 - howtostart_php_laravel.md
 - howtostart_php.md

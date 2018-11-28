@@ -154,13 +154,14 @@ As we initialized dataProcessor in the REST mode, it will use different HTTP ver
 Since we use REST API, it's possible to implement the server side using different frameworks and programming languages.
 Here's a list of available server side implementations that you can use for Scheduler backend integration:
 
-- server_php.md
-- server_nodejs.md
-- server_dotnet.md
-- server_ruby.md
+- howtostart_php.md
+- howtostart_php_laravel.md
+- howtostart_nodejs.md
+- howtostart_dotnet_core.md
+- howtostart_ruby.md
 
 <br>
-If by some reason you don't want to use REST API, the best solution is [to use dhtmlxConnector library](using_connectors.md).
+If by some reason you don't want to use REST API, the best solution is [to use dhtmlxConnector library](howtostart_connector.md).
 
 
 Saving recurring events
@@ -346,8 +347,4 @@ Check the app_security.md article to learn the most vulnerable points of the com
 
 @index:
 - app_security.md
-- using_connectors.md
-- server_php.md
-- server_nodejs.md
-- server_dotnet.md
-- server_ruby.md
+

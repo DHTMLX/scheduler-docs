@@ -7,9 +7,10 @@ The final code of the tutorial can be used as the start point while creating app
 This tutorial discusses the sequence of steps needed for implementing Scheduler with PHP. If you want to create Scheduler with a different language, 
 check the available options in the list below:
 
-- howtostart_php.md
 - howtostart_nodejs.md
-- howtostart_dotnet.md
+- howtostart_dotnet_core.md
+- howtostart_php.md
+- howtostart_php_laravel.md
 - howtostart_ruby.md
 
 ![init_scheduler_front.png](init_scheduler_front.png)

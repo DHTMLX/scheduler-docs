@@ -4,6 +4,7 @@ dhtmlxScheduler with Node.js
 The current tutorial is intended for creating Scheduler with Node.js and REST API on the server side. 
 If you use some other technology, check the list of available integration variants below:
 
+- howtostart_dotnet_core.md
 - howtostart_php.md
 - howtostart_php_laravel.md
 - howtostart_ruby.md
@@ -195,7 +196,7 @@ Then create an *index.html* file in the **public** directory:
 The above code defines a simple HTML layout, adds sources of dhtmlxScheduler from CDN and initializes scheduler using the api/scheduler_init.md method.
 Note that 100% height is specified for the document body and for the scheduler container. Scheduler will use the size of its container, so some initial sizes are required.
 
-### Setup routes
+### Setting up routes
 
 After you have added a new page, you need to make it accessible from a browser. For this tutorial, scheduler will be the default page of an app.
 
@@ -284,7 +285,7 @@ Step 4. Implementing CRUD
 
 ### Implementing data access
 
-All the read/write logic will be defined in a separate module `Storage`. It'll take mysql connection and a table name and perform simple CRUD to the specified table: read all the events,
+All the read/write logic will be defined in a separate module `Storage`. It'll take mysql connection and perform simple CRUD to the specified table: read all the events,
 insert new events, update or delete the existing ones. 
 
 For this, create the file *storage.js* and add the code below into it:
@@ -296,7 +297,7 @@ require("date-format-lite"); // add date format
 class Storage {
     constructor(connection, table) {
         this._db = connection;
-        this.table = "events"table;
+        this.table = "events";
     }
 
     // get events from the table, use dynamic loading if parameters sent
@@ -406,7 +407,7 @@ All it does is sets up the application to listen request URLs that scheduler can
 Note, that all methods are wrapped into `try-catch` blocks, for you to be able to capture any error and return an appropriate error response to the 
 client. Check more info on [error handling](https://docs.dhtmlx.com/scheduler/server_integration.html#errorhandling).
 
-Also note that we hide exception message to the response. It's pretty handy during the development, but in the production environment it can be a good idea 
+Also note that the exception message is written directly to the API response. It's pretty handy during the development, but in the production environment it can be a good idea 
 to hide these messages from the client side, since raw mysql exceptions that get there may contain sensitive data.
 
 ### Getting it work together
@@ -423,7 +424,7 @@ connectionPool.query = util.promisify(connectionPool.query);
 
 // add listeners to basic CRUD requests
 const Storage = require("./storage");
-const storage = new Storage(connectionPool, "events");
+const storage = new Storage(connectionPool);
 router.setRoutes(app, "/events", storage);
 ~~~
 
@@ -431,4 +432,264 @@ If you restart the application now, you should be able to create delete and modi
 
 ![Scheduler CRUD](howtostart_nodejs_crud.png)
 
+Dynamic loading
+---------------
+
+Currently scheduler loads all records from the *events* table on startup. It can work well if you know that the amount of data will remain small over time. But when scheduler is used for 
+something like a planning/booking application and you don't delete or move obsolete records to another table, the amounts of data will build up fairly quickly and in a couple of month of active usage 
+you may find that your app requests a couple of MBs of events each time a user loads the page.
+
+It can easily be avoided by using dynamic loading. Scheduler will add the displayed dates to the request parameters and you'll be able to return only the records that need to be displayed. 
+Each time the user switches to a new data range, scheduler will request a new portion of data.
+
+To enable dynamic loading in UI, you can set the *setLoadMode* option to any of the values: "day", "week", "month". For any practical reasons, "day" should work well.
+
+Firstly, enable dynamic loading on the client using the api/scheduler_setloadmode.md method:
+
+{{snippet public/index.html}}
+~~~
+scheduler.config.xml_date="%Y-%m-%d %H:%i";
+scheduler.init("scheduler_here", new Date(2018, 0, 20), "week");
+scheduler.setLoadMode("day"); /*!*/
+
+// load data from the backend
+scheduler.load("/events", "json");
+~~~
+
+Scheduler will sent `from` and `to` parameters in the request query, so you can add a simple `WHERE` clause in order to load only the requested range:
+
+{{snippet storage.js }}
+~~~
+async getAll(params) {
+	let query = "SELECT * FROM ??";
+	let queryParams = [
+		this.table
+	];
+
+	if (params.from && params.to) { /*!*/
+		query += " WHERE `end_date` >= ? AND `start_date` < ?";
+		queryParams.push(params.from);
+		queryParams.push(params.to);
+	}
+
+	let result = await this._db.query(query, queryParams);
+
+	result.forEach((entry) => {
+	// format date and time
+		entry.start_date = entry.start_date.format("YYYY-MM-DD hh:mm");
+		entry.end_date = entry.end_date.format("YYYY-MM-DD hh:mm");
+	});
+	return result;
+}
+~~~
+
+Recurring events
+-------------------
+
+In order to enable [recurring events](recurring_events.md) (e.g. "repeat event daily") you'll need to implement a couple of extra steps.
+
+### Enabling the extension
+
+Add an appropriate extension to the scheduler page:
+
+{{snippet public/index.html}}
+~~~js
+<!-- scheduler recurring tasks extension -->
+<script src="https://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_recurring.js"></script>
+~~~
+
+### Updating the model
+
+After that you need to update the model. It needs three additional fields:
+
+- event_pid
+- event_length
+- rec_type
+
+You can add these columns to the existing events table with the following query:
+
+~~~
+ALTER TABLE `events` ADD COLUMN `event_pid` bigint(20) unsigned DEFAULT '0';
+ALTER TABLE `events` ADD COLUMN `event_length` bigint(20) unsigned DEFAULT '0';
+ALTER TABLE `events` ADD COLUMN `rec_type` varchar(25) DEFAULT '""';
+~~~
+
+Or create a table from scratch:
+
+~~~
+CREATE TABLE `events` (
+ `id` bigint(20) unsigned AUTO_INCREMENT,
+ `start_date` datetime NOT NULL,
+ `end_date` datetime NOT NULL,
+ `text` varchar(255) DEFAULT NULL,
+ `event_pid` bigint(20) unsigned DEFAULT '0',
+ `event_length` bigint(20) unsigned DEFAULT '0',
+ `rec_type` varchar(25) DEFAULT '""',
+ PRIMARY KEY (`id`)
+) DEFAULT CHARSET=utf8;
+~~~
+
+### Updating the backend
+
+Finally, you'll need to [update the storage](recurring_events.md#editingdeletingacertainoccurrenceintheseries).
+
+Firstly, let's take a look at the `insert` method. Here you need to update the SQL query in order to add new columns.
+
+Secondly, you should process a special case for recurring events - deletion of a specific occurrence of the recurring series requires creating a new database record and the client 
+will call the *insert* action for it:
+
+{{snippet storage.js}}
+~~~
+// create a new event
+async insert(data) {
+   let sql = "INSERT INTO ?? " + 
+      "(`start_date`, `end_date`, `text`, `event_pid`, `event_length`, `rec_type`) " + /*!*/
+      "VALUES (?, ?, ?, ?, ?, ?)"; /*!*/
+      
+   const result = await this._db.query(
+      sql,
+      [
+         this.table,
+         data.start_date,
+         data.end_date,
+         data.text,
+         data.event_pid || 0, //!
+         data.event_length || 0, //!
+         data.rec_type //!
+      ]);
+        
+   // delete a single occurrence from a recurring series
+   let action = "inserted"; /*!*/
+   if (data.rec_type == "none") { /*!*/
+     action = "deleted"; /*!*/
+   } /*!*/
+   
+   return {
+     action: action,
+     tid: result.insertId
+   };
+}
+~~~
+
+The `update` action requires the same changes in the SQL query.
+Additionally, we need to handle a different special case there: when a recurring series is modified, you need to delete all the modified occurrences of that series:
+
+{{snippet storage.js}}
+~~~
+// update an event
+async update(id, data) {
+  if (data.rec_type && data.rec_type != "none") { /*!*/
+      //all modified occurrences must be deleted when you update a recurring series
+      //https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+      await this._db.query(
+        "DELETE FROM ?? WHERE `event_pid`= ?;",
+        [this.table, id]);
+  }
+
+  await this._db.query(
+      "UPDATE ?? SET " +
+      "`start_date` = ?, `end_date` = ?, `text` = ?, " +
+      "`event_pid` = ?, `event_length`= ?, `rec_type` = ? "+ /*!*/
+      "WHERE id = ?",
+      [
+          this.table,
+          data.start_date,
+          data.end_date,
+          data.text,
+          data.event_pid || 0, /*!*/
+          data.event_length || 0, /*!*/
+          data.rec_type, /*!*/
+          id
+      ]);
+
+  return {
+     action: "updated"
+  };
+}
+~~~
+
+Finally, let's update the `delete` action. Here you have to check two special cases:
+
+- if the event you are going to delete has a non-empty `event_pid`, it means a user deletes a modified instance of the recurring series. Instead of deleting such a record from the database, 
+you need to give it `rec_type='none'`, in order for scheduler to skip this occurrence.
+- if a user deletes a whole recurring series, you also need to delete all the modified instances of that series.
+
+{{snippet storage.js}}
+~~~
+// delete an event
+async delete(id) {
+    // some logic specific to the recurring events support
+    // https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+    let event = await this._db.query(
+        "SELECT * FROM ?? WHERE id=? LIMIT 1;",
+        [this.table, id]);
+
+    if (event.event_pid) {
+        // deleting modified occurrence from a recurring series
+        // If an event with the event_pid value was deleted, 
+        // it should be updated with "rec_type==none" instead of deleting.
+        event.rec_type = "none";
+        return await this.update(id, event);
+    }
+
+    if (event.rec_type && event.rec_type != "none") {
+        // if a recurring series deleted, delete all modified occurrences of the series
+        await this._db.query(
+            "DELETE FROM ?? WHERE `event_pid`=? ;",
+            [this.table, id]);
+    }
+
+    await this._db.query(
+        "DELETE FROM ?? WHERE `id`= ?;",
+        [this.table, id]);
+
+    return {
+        action: "deleted"
+    }
+}
+~~~
+
+Application security
+-----------------
+
+dhtmlxScheduler is a client-side component that doesn't have built-in security safeguards for the sake of flexibility. 
+Moreover, the client side only is not able to provide reliable security measures.
+
+It means that the application security is in the responsibility of a backend developer. The most obvious aspects to pay attention to are the following:
+
+- SQL injections. All operations done in this example use parameterized SQL queries which should be safe in terms of SQL injections.
+
+- XSS attacks. The client side doesn't sanitize neither user input before sending it to the backend, nor server data before displaying it on a page.
+
+A simple measure against the latter is using the [`helmet`](https://github.com/helmetjs/helmet) module, which will add basic checks for various risks.
+
+The *helmet* module can be installed as in:
+
+~~~
+$ yarn install helmet
+~~~
+
+Then add the following string to *server.js* before `app.listen(...)`:
+
+{{snippet server.js}}
+~~~
+const helmet = require("helmet");
+app.use(helmet());
+~~~
+
+## Error handling
+
+
+Due to our `router` implementation, the backend API returns an `error` status in case of a captured exception.
+You can process these errors on the client side using the [onAfterUpdate](https://docs.dhtmlx.com/api__dataprocessor_onafterupdate_event.html) event of the dataProcessor module:
+
+{{snippet public/index.html}}
+~~~
+dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
+   if (action == "error") {
+       // do something here
+        alert("Server error: " + response.message);
+   }
+});
+~~~
 

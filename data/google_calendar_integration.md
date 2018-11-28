@@ -61,27 +61,27 @@ where
   
 **Client-side:**
 
-<ol>
-	<li>Open the HTML file containing the initialized scheduler or initialize one in a standard way (see details in the article how_to_start.md).</li>
-	<li>Load Google Calendar's events to the scheduler through the api/scheduler_load.md method. The 1st parameter is the path to the 'data.php' file, the 2nd parameter - expected data format that should be 'json'.
+1\. Open the HTML file containing the initialized scheduler or initialize one in a standard way (see details in the [How to Start](howtostart_php.md#step2addingschedulertothepage) article.
+
+2\. Load Google Calendar's events to the scheduler through the api/scheduler_load.md method. The 1st parameter is the path to the 'data.php' file, the 2nd parameter - expected data format that should be 'json'.
    
 ~~~js
 scheduler.load("./data.php", "json");
 ~~~
-	</li>
-    <li>Initialize <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxdataprocessor:toc">dataProcessor</a>, to provide 2-way sync (if you need the readonly access - ignore this code). 
+
+3\. Initialize <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxdataprocessor:toc">dataProcessor</a>, to provide 2-way sync (if you need the readonly access - ignore this code). 
   
 ~~~js
 var dp =  new dataProcessor("./data.php");
 dp.init(scheduler);
 dp.setTransactionMode("POST", false);
 ~~~
-	</li>
-</ol>
+	
 
 
 How to pass additional information related to the event
 --------------------
+
 By default, the scheduler gets values of all Google Calendar fields, but processes only 4 of them. All other values are read-only. 
 
 **There is the following mapping between Google Calendar and Scheduler:**

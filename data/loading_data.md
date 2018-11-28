@@ -115,7 +115,7 @@ scheduler.load("events.php");
 
 
 {{note
-See the detailed information in the using_connectors.md guide.
+See the detailed information in the howtostart_connector.md guide.
 }}
 
 Loading data from multiple sources

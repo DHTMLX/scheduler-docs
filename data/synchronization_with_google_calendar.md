@@ -28,7 +28,8 @@ Once you are sure that the needed extension is enabled, you can move to setup.
 
 **Server-side:** 
 
-- Open the _'01_proxy.php'_ file placed at **[rootFolder] gCal_proxy server** in notepad.The file contains the standard proxy initialization code:
+- Open the _'01_proxy.php'_ file placed at **[rootFolder] gCal_proxy server** in notepad. The file contains the standard proxy initialization code:
+
 ~~~php
 <?php
 
@@ -42,8 +43,8 @@ $calendar = new GoogleCalendarProxy($email, $pass, $cal);
 $calendar->connect();
 
 ?>
-
 ~~~
+
 - Set values for 3 variables and leave the rest of the code, as it is.<br> Variables that you should set values for, are:
   - **$email**  - the user name of your Gmail account;
   - **$pass** - the password of your Gmail account;
@@ -56,8 +57,8 @@ Make sure that you wrote the correct values. For example, if the name of your ca
 **Client-side:**
   
 - Open the HTML file containing the initialized scheduler. If you don't have any scheduler initialized, create a new HTML file in the root folder of your web server.
-- Initialize scheduler in a standard way (see details in how_to_start.md).
--  Load Google Calendar's events to Scheduler through the api/scheduler_load.md method. Set its parameter to the path to the '_01_proxy.php_' file, which you've recently modified.
+- Initialize scheduler in a standard way (see details in [How to Start](howtostart_php.md#step2addingschedulertothepage)).
+- Load Google Calendar's events to Scheduler through the api/scheduler_load.md method. Set its parameter to the path to the '_01_proxy.php_' file, which you've recently modified.
    
 ~~~js
 scheduler.load("../gCal_proxy/server/01_proxy.php");
