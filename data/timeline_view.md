@@ -749,7 +749,7 @@ If *true*, date columns will not shrink less than the **column_width** value, a 
 - **column_width** - (*boolean*) optional, defines the minimal width of timeline date columns, 100 by default
 - **scroll_position** - (*Date*) optional, renders timeline scrolled to a specific position, takes the same arguments as `timeline.scrollTo()`, i.e. the date you want timeline to be scrolled to after rendering
 
-{{sample 06_timeline/02_lines_perfomance.html}}
+{{sample 06_timeline/16_lines_performance.html}}
 
 {{note Please note that the timeline scroll is not finite and the time range is limited. To switch between time intervals, you still need to use the navigation controls.}}
 
