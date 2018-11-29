@@ -164,6 +164,8 @@ timeline.setRange(startDate, endDate);
 
 ###Scrolling to particular position/date/section
 
+{{note The functionality described in this section works only for the Timeline with a [horizontal scroll enabled](#horizontalscroll).}}
+
 In case you need to scroll scheduler to a certain point, you should use the **scrollTo()** method. Its usage is rather versatile, depending on the passed parameters:
 
 - to scroll to a specific date, pass the date in question to the method:
@@ -721,7 +723,7 @@ Horizontal scroll
 
 There is a possibility to enable a horizontal scroll in the Timeline view to switch between days/weeks/months without clicking the navigation buttons. 
 
-In order to add a horizontal scrollbar into the timeline, you should use the **scrollable** property. There are also the **column_width** and **scroll_to** options that can be used to configure the horizontal scroll
+In order to add a horizontal scrollbar into the timeline, you should use the **scrollable** property. There are also the **column_width** and **scroll_position** options that can be used to configure the horizontal scroll
 as it's shown in the example below: 
 
 ~~~js
@@ -738,14 +740,14 @@ scheduler.createTimelineView({
 	render: "bar",
 	scrollable: true, /*!*/ 
 	column_width: 70, /*!*/
-    scroll_to:new Date(2018, 0, 15) /*!*/  
+    scroll_position:new Date(2018, 0, 15) /*!*/  
 });
 ~~~
 
 - **scrollable** - (*boolean*) enables horizontal scroll in the Timeline view, *false* by default. If *false* or undefined, date columns will shrink to fit the time scale into the viewport width.
 If *true*, date columns will not shrink less than the **column_width** value, a horizontal scroll bar will appear when necessary.
 - **column_width** - (*boolean*) optional, defines the minimal width of timeline date columns, 100 by default
-- **scroll_to** - (*Date*) optional, renders timeline scrolled to a specific position, takes the same arguments as `timeline.scrollTo()`, i.e. the date you want timeline to be scrolled to after rendering
+- **scroll_position** - (*Date*) optional, renders timeline scrolled to a specific position, takes the same arguments as `timeline.scrollTo()`, i.e. the date you want timeline to be scrolled to after rendering
 
 {{sample 06_timeline/02_lines_perfomance.html}}
 
@@ -792,21 +794,6 @@ where <timelineName> is the name of the timeline created with the api/scheduler_
 scheduler.locale.labels.timeline_scale_header = "Users";
 ~~~
 
-Smart rendering
-------------------
-
-By default timeline renders only those rows, columns and events that are visible on the screen at the moment. New elements are rendered automatically when a user scrolls the timeline.
-This feature allows rendering large timelines with horizontal scroll.
-
-If by some reason you need to disable the smart rendering functionality, make use of the **smart_rendering** configuration option in the api/scheduler_createtimelineview.md method:
-
-~~~js
-scheduler.createTimelineView({
-	name:	"timeline",
-	...
-	smart_rendering: false
-});
-~~~
 
 Related guides
 ---------------------
@@ -821,9 +808,8 @@ Related guides
 
 @edition: pro
 
-@todo: check 5 sections:<br>
+@todo: check the sections:<br>
 - horizontal scroll<br>
 - timeline api<br>
 - autoscroll config<br>
-- header for the sections column<br>
-- smart rendering
+- header for the sections column

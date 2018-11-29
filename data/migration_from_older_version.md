@@ -3,7 +3,7 @@ Migration From Older Versions
 
 ## 5.0 -> 5.1
 
-Smart rendering and horizontal scroll features required a complete rework of the timeline markup. It affected Timeline, TreeTimeline and all modes of these views.
+Smart rendering and horizontal scroll features required a complete remaking of the timeline markup. It affected Timeline, TreeTimeline and all modes of these views.
 
 The most notable change is that HTML elements TABLE, TR, TD were removed from the markup and replaced with DIVs with appropriate class names.
 
@@ -165,6 +165,4 @@ codebase/dhtmlxgrid_units.js => codebase/ext/dhtmlxgrid_units.js
 @index:
 - scheduler_3.0.md
 
-
-@todo: check 5.0 -> 5.1 migration notes
 

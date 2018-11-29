@@ -8,8 +8,8 @@ Start
     </p>
     <ul>
         <li><a href="timeline_view.md#horizontalscroll">Horizontal scroll in the Timeline view</a></li>
-        <li><a href="">Improved performance of the Timeline view</a></li>
-        <li><a href="">Integration with various server-side platforms</a></li>
+        <li><a href="timeline_view.md">Improved performance of the Timeline view</a></li>
+        <li><a href="howtostart_guides.md">Integration with various server-side platforms</a></li>
     </ul>
     <p class='action_buttons'>
       <a class='action_button moredetails' href="what_s_new.html">More details</a>

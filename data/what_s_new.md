@@ -8,7 +8,7 @@ If you are updating scheduler from an older version, check migration_from_older_
 
 ###Breaking Changes
 
-The implementation of the horizontal scroll functionality affected the Timeline view structure. Read more in the [Migration](migration_from_older_version.md#5051) article.
+HTML structure of the Timeline view has changed significantly, some code changes may be required in order to migrate. Read more in the [Migration](migration_from_older_version.md#5051) article.
 
 ###Major Changes
 
@@ -22,7 +22,6 @@ The implementation of the horizontal scroll functionality affected the Timeline 
 - [New API of the Timeline object](timeline_view.md#timelineobjectapi)
 - [Autoscroll in the Timeline view](timeline_view.md#autoscrollconfiguration)
 - Ability to [add a label into the header of the column with sections](timeline_view.md#headerofthesectionscolumn)
-
 
 
 5.0

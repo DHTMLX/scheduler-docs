@@ -36,7 +36,7 @@ $ composer require illuminate/database "~5.1"
 Step 2. Adding Scheduler to the Page
 ----------------------------
 
-The next step is to add a scheduler on a page. It includes two simple substeps, described below.
+The next step is to add a scheduler on a page. It includes two simple sub-steps, described below.
 
 ###Creating a view
 
@@ -531,9 +531,9 @@ $this->delete('/{id}', function (Request $request, Response $response, array $ar
 		// deleting a modified occurrence from a recurring series
 		// If an event with the event_pid value was deleted - it needs updating 
 		// with rec_type==none instead of deleting.
-		$subQueryText = 'UPDATE `recurring_events` SET `rec_type` = \'none\' WHERE `id`=? ;';
-		$subQuery = $db->prepare($subQueryText);
-		$query->execute($queryParams);
+	   $subQueryText='UPDATE `recurring_events` SET `rec_type`=\'none\' WHERE `id`=?;';
+	   $subQuery = $db->prepare($subQueryText);
+	   $query->execute($queryParams);
 
 		$result = [
 			'action' => 'deleted'

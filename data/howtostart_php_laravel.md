@@ -343,7 +343,7 @@ In order to enable this mode on the client go to `resources/views/scheduler.blad
 ~~~php
 scheduler.config.xml_date = "%Y-%m-%d %H:%i:%s";
 
-scheduler.setLoadMode("day");//!
+scheduler.setLoadMode("day"); /*!*/
 
 scheduler.init("scheduler_here", new Date(2018, 5, 6), "week");
 scheduler.load("/api/events", "json");
@@ -473,12 +473,12 @@ Finally, we will [configure the client side](server_integration.md#technique) to
 {{snippet resources/views/scheduler.blade.php}}
 ~~~js
 scheduler.config.xml_date = "%Y-%m-%d %H:%i:%s";
-scheduler.setLoadMode("day");//!
+scheduler.setLoadMode("day"); /*!*/
 
 scheduler.init("scheduler_here", new Date(2018, 11, 3), "week");
 
-scheduler.load("/api/events", "json");//!
-var dp = new dataProcessor("/api/events/");//!
+scheduler.load("/api/events", "json"); /*!*/
+var dp = new dataProcessor("/api/events/"); /*!*/
 dp.init(scheduler);
 dp.setTransactionMode("REST");
 ~~~
@@ -500,10 +500,10 @@ Firstly, go to **scheduler.blade.php** and add a recurring extension after *dhtm
 ~~~html
 <!DOCTYPE html>
 <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
-    <script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js"></script>
-    <script src="https://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_recurring.js"></script>
+  <script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js"></script>
+  <script src="https://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_recurring.js"></script>
 </head>
 ~~~
 
@@ -531,7 +531,7 @@ Or, you can create the following migration:
 ~~~php
 php artisan make:migration add_recurrings_to_events_table --table=events
 ~~~
-
+<br>
 ~~~php
 <?php
 
@@ -650,8 +650,8 @@ public function store(Request $request){
 }
 ~~~
 
-Modified occurrences of the series are stored as individual instances as well. They are linked to the recurring seriesand a timestamp of the default occurrences that has been modified, 
-so scheduler doesn’t render an occurrence created by the recurring rule. When user deletes the recurring instance, instead of deleting the modified instance, we must
+Modified occurrences of the series are stored as individual instances as well. They are linked to the recurring series and a timestamp of the default occurrences that has been modified, 
+so scheduler doesn't render an occurrence created by the recurring rule. When user deletes the recurring instance, instead of deleting the modified instance, we must
 mark this item as removed by setting *rec_type* to "none":
 
 ~~~js

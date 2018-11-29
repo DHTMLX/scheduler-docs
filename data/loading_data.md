@@ -167,20 +167,22 @@ Database Structure
 
 When you set up a database, the expected structure for scheduler events is the following:
 
-- **id** - (*string/int/guid*) - the event id. Primary key, auto increment.
-- **start_date** - (*DateTime*) - the start date of event, not nullable.
-- **end_date** - (*DateTime*) - the start date of event, not nullable.
-- **text** - (*string*) - the description of a task.
+- **events table** - specifies scheduler events
+	- **id** - (*string/int/guid*) - the event id. Primary key, auto increment.
+	- **start_date** - (*DateTime*) - the start date of event, not nullable.
+	- **end_date** - (*DateTime*) - the start date of event, not nullable.
+	- **text** - (*string*) - the description of a task.
 
 If you have recurring events, you need some extra columns for them:
 
-- **id** - (*string/int/guid*) - the event id. Primary key, auto increment.
-- **start_date** - (*DateTime*) - the start date of event, not nullable.
-- **end_date** - (*DateTime*) - the start date of event, not nullable.
-- **text** - (*string*) - the description of a task.
-- **event_pid** - (*string/int/guid*) - the reference to the parent event series id. Must be nullable or have an empty default value (empty string, numeric zero).
-- **event_length** - (*string/bigint*) - an event duration or a timestamp of modified occurrence. Must be nullable or have an empty default value (empty string, numeric zero). Max length (string values) is 10.
-- **rec_type** - (*string*) - a recurring rule. Must be nullable or have an empty string as a default value. Max length is 50.
+- **events table** - specifies scheduler events
+	- **id** - (*string/int/guid*) - the event id. Primary key, auto increment.
+	- **start_date** - (*DateTime*) - the start date of event, not nullable.
+	- **end_date** - (*DateTime*) - the start date of event, not nullable.
+	- **text** - (*string*) - the description of a task.
+	- **event_pid** - (*string/int/guid*) - the reference to the parent event series id. Must be nullable or have an empty default value (empty string, numeric zero).
+	- **event_length** - (*string/bigint*) - an event duration or a timestamp of modified occurrence. Must be nullable or have an empty default value (empty string, numeric zero). Max length (string values) is 10.
+	- **rec_type** - (*string*) - a recurring rule. Must be nullable or have an empty string as a default value. Max length is 50.
 
 You can define any additional columns, they can be loaded to the client and made available for the client-side API.
 
@@ -354,6 +356,5 @@ In the above example the "data" array contains calendar events, and the "collect
 @index:
 - data_formats.md
 
-@todo:
-check DB structure
+
 

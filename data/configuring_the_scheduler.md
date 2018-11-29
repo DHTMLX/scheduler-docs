@@ -2,6 +2,7 @@ Creating Scheduler on a Page
 ===========================================
 
 {{index
+- initialization.md
 - install_with_bower.md
 - configuration.md
 - scheduler_markup.md

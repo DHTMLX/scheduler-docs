@@ -388,7 +388,7 @@ namespace DHX.Scheduler
 
 Finally, you need to initialize and seed the database on the app startup. Normally, we'd want to use migrations for that, but for simplicity they aren't used here.
 
-Let's begin with creating a class where initialization will be done. Сreate the **SchedulerInitializerExtension.cs** file in the **Models** folder:
+Let's begin with creating a class where initialization will be done. Create the **SchedulerInitializerExtension.cs** file in the **Models** folder:
 
 {{snippet Models/SchedulerInitializerExtension.cs}} 
 ~~~
@@ -804,6 +804,7 @@ public ObjectResult Post([FromForm] WebAPIEvent apiEvent)
 
 In the`PUT` action we need to make sure to update all properties of the model.
 Additionally, we need to handle a different special case there: when a recurring series is modified, we need to delete all modified occurrences of that series:
+
 {{snippet Controllers/EventsController.cs}}
 ~~~
 // PUT api/events/5
@@ -821,8 +822,8 @@ public ObjectResult Put(int id, [FromForm] WebApiEvent apiEvent)
 
 	if (!string.IsNullOrEmpty(updatedEvent.RecType) && updatedEvent.RecType != "none")
 	{
-		// all modified occurrences must be deleted when we update recurring series
-		// https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+	 //all modified occurrences must be deleted when we update a recurring series
+	 //https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
 
 		_context.Events.RemoveRange(
 			_context.Events.Where(e => e.EventPID == id)
@@ -838,8 +839,7 @@ public ObjectResult Put(int id, [FromForm] WebApiEvent apiEvent)
 }
 ~~~
 
-And finally, the `DELETE` action.
-Here we have to check two special cases:
+And finally, the `DELETE` action. Here we have to check two special cases:
 
 - if the event you are going to delete has a non-empty `event_pid`, it means a user deletes a modified instance of the recurring series. Instead of deleting such a record from the database, 
 you need to give it `rec_type='none'`, in order for scheduler to skip this occurrence.
@@ -850,43 +850,42 @@ you need to give it `rec_type='none'`, in order for scheduler to skip this occur
 [HttpDelete("{id}")]
 public ObjectResult DeleteEvent(int id)
 {
-	var e = _context.Events.Find(id);
-	if (e != null)
-	{
-		// some logic specific to recurring events support
-		// https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+  var e = _context.Events.Find(id);
+  if (e != null)
+  {
+   //some logic specific to recurring events support
+   //https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
 
-		if (e.EventPID != default(int))
-		{
-			// deleting a modified occurrence from a recurring series
-			// If an event with the event_pid value was deleted - it needs updating 
-			// with rec_type==none instead of deleting.
+	 if (e.EventPID != default(int))
+	 {
+		// deleting a modified occurrence from a recurring series
+		// If an event with the event_pid value was deleted, it should be updated 
+		// with rec_type==none instead of deleting.
 
-			e.RecType = "none";
-		}
-		else
-		{
-			// if a recurring series was deleted - delete all modified occurrences of the series
-			if (!string.IsNullOrEmpty(e.RecType) && e.RecType != "none")
-			{
-				// all modified occurrences must be deleted when we update recurring series
-				// https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+		e.RecType = "none";
+	 }
+	 else
+	 {
+	  //if a recurring series deleted, delete all modified occurrences of the series
+	  if (!string.IsNullOrEmpty(e.RecType) && e.RecType != "none")
+	   {
+	//all modified occurrences must be deleted when we update recurring series
+	//https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+		 _context.Events.RemoveRange(
+			_context.Events.Where(ev => ev.EventPID == id)
+		);
+	   }
 
-				_context.Events.RemoveRange(
-					_context.Events.Where(ev => ev.EventPID == id)
-				);
-			}
+		_context.Events.Remove(e);
+	 }
 
-			_context.Events.Remove(e);
-		}
+	 _context.SaveChanges();
+  }
 
-		_context.SaveChanges();
-	}
-
-	return Ok(new
-	{
-		action = "deleted"
-	});
+  return Ok(new
+  {
+	 action = "deleted"
+  });
 }
 ~~~
 

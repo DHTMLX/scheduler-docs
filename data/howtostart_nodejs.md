@@ -133,7 +133,7 @@ $ npm start
 Step 2. Adding Scheduler to the Page
 ---------------------------------
 
-Create a directory to place your frontend HTML/CSS/JS files:
+Create a directory to place your front-end HTML/CSS/JS files:
 
 ~~~
 $ mkdir ./public

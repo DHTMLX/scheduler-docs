@@ -131,12 +131,12 @@ You should add scheduler js and css files here, so add following strings to head
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SchedulerRubyRest</title>
-  <%= stylesheet_link_tag 'application',media:'all','data-turbolinks-track'=>true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag 'dhtmlxscheduler',media:'all','data-turbolinks-track'=>true %>
-  <%= javascript_include_tag 'dhtmlxscheduler', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+ <title>SchedulerRubyRest</title>
+ <%= stylesheet_link_tag 'application',media:'all','data-turbolinks-track'=>true %>
+ <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+ <%= stylesheet_link_tag 'dhtmlxscheduler',media:'all','data-turbolinks-track'=>true %>
+ <%= javascript_include_tag 'dhtmlxscheduler', 'data-turbolinks-track' => true %>
+ <%= csrf_meta_tags %>
 </head>
 <body>
 

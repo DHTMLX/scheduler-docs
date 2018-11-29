@@ -35,7 +35,6 @@ Any template can be redefined with the implementation you find suitable.
 
 ##SQL Injections
 
-{{todo add a sentence about safety of how to start tutorials to the SQL Injections section}}
 
 Scheduler is a 100% client-side component, thus SQL injections have to be prevented on the backend by the developer.
 
@@ -46,7 +45,7 @@ There are two points to consider:
 
 Thus you'll need to have some kind of SQL injections escaping on your backend. If you use [dhtmlxConnector](howtostart_connector.md#step7loadingdatafromtheserver) and specify a table configuration as shown in the related 
 [documentation](https://docs.dhtmlx.com/connector__php__basis.html#loadingfromdatabase), all values will be escaped automatically. Otherwise, you'll have to use a safe CRUD implementation, 
-according to the good practices of the platform you use. 
+according to the good practices of [the platform you use](howtostart_guides.md). 
 
 
 ##CSRF Attacks

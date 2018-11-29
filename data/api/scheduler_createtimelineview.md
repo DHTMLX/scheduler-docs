@@ -175,7 +175,7 @@ The configuration object of the Timeline view can have the following properties:
 			<td>(<i>boolean</i>) defines the minimal width of timeline date columns, 100 by default</td>
 		</tr>
         <tr>
-			<td class="webixdoc_links0"><b>scroll_to</b></td>
+			<td class="webixdoc_links0"><b>scroll_position</b></td>
 			<td>(<i>Date</i>) renders timeline scrolled to a specific position, takes the same arguments as <b>timeline.scrollTo()</b>, i.e. the date you want timeline to be scrolled to after rendering</td>
 		</tr>
         <tr>
@@ -188,11 +188,7 @@ The configuration object of the Timeline view can have the following properties:
                     <li><b>speed_y</b> - (<i>number</i>) vertical autoscroll speed</li>
                 </ul>
             </td>
-		</tr>   
-        <tr>
-			<td class="webixdoc_links0"><b>smart_rendering</b></td>
-			<td>(<i>boolean</i>) enables smart rendering - the mode in which timeline renders only those rows, columns and events that are visible on the screen at the moment. This mode is enabled by default.</td>
-		</tr>
+		</tr>          
     </tbody>
 </table>
 

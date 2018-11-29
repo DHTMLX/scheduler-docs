@@ -5,7 +5,7 @@ first_hour
 	
 
 @type: number
-@default:zero (0)
+@default: 0 (zero)
 @views:day, week, units
 @example:
 scheduler.config.first_hour = 9;

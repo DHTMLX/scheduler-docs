@@ -15,6 +15,7 @@ The articles come around key procedures and problem-solving activities.
 		         How to Start with dhtmlxScheduler
 		    </h4>
 		    <ul id="data_sublist" >
+            		<li>howtostart_dotnet_core.md</li>
             		<li>howtostart_nodejs.md</li>  
                     <li>howtostart_php_laravel.md</li>
                     <li>howtostart_php.md</li>                                  
@@ -32,6 +33,7 @@ The articles come around key procedures and problem-solving activities.
 		       Creating Scheduler on a Page
 		    </h4>
 		    <ul id="manipulations_sublist">
+            		<li>initialization.md</li>
             		<li>install_with_bower.md</li>
                     <li>configuration.md</li>
                     <li>scheduler_markup.md</li>

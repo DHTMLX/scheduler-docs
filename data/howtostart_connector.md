@@ -74,9 +74,9 @@ The standard set of 'divs' (needed for the scheduler) looks like this:
         <div class="dhx_cal_next_button">&nbsp;</div>
         <div class="dhx_cal_today_button"></div>
         <div class="dhx_cal_date"></div>
-        <div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
-        <div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
-        <div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>
+        <div class="dhx_cal_tab" name="day_tab"></div>
+        <div class="dhx_cal_tab" name="week_tab"></div>
+        <div class="dhx_cal_tab" name="month_tab"></div>
    	</div>
     <div class="dhx_cal_header"></div>
     <div class="dhx_cal_data"></div>       
@@ -99,7 +99,7 @@ To work correctly in the full-screen mode in different browsers, define the foll
 
 ~~~
 
-If you don't use the full-screen mode, you don't need to specify that style. Specify the desired css properties directly in the main **div**:
+If you don't use the full-screen mode, you don't need to specify that style. Specify the desired CSS properties directly in the main **div**:
 
 ~~~js
 <div id="scheduler_here" class="dhx_cal_container" 
@@ -243,4 +243,3 @@ Now you may configure, change and customize it further to meet all your needs.
 	01_initialization_loading/05_loading_database.html
 }}
 
-@todo: check and compare to the current how to start
