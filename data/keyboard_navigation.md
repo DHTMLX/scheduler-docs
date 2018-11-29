@@ -55,13 +55,16 @@ to Scheduler and to its element, the shortcut attached to an element will be cal
 
 To create a new keyboard shortcut, you need to use the api/scheduler_addshortcut.md method and pass three parameters to it:
 
-- shortcut - (string) a new shortcut key or keys' combination name
-- handler - (function) a handler function that will be called on the shortcut call 
-- scope - (string) the name of the context element to attach the handler function to
+- **shortcut** - (*string*) a new shortcut key or keys' combination name
+- **handler** - (*function*) a handler function that will be called on the shortcut call 
+- **scope** - (*string*) the name of the context element to attach the handler function to
 
 ~~~js
 scheduler.addShortcut("shift+w", function(e){ 
-    var eventId = scheduler.locate(e); 
+    var target = e.target;
+    if(target.closest("[event_id]"))
+        var eventId = target.getAttribute("event_id");
+
     if(eventId) 
         scheduler.showQuickInfo(eventId);
 },"event");
@@ -71,8 +74,8 @@ scheduler.addShortcut("shift+w", function(e){
 
 To remove a shortcut from the scope, you need to use the api/scheduler_removeshortcut.md method. The method takes two parameters:
 
-- shortcut - (string) the name of the key or the keys' combination for shortcut 
-- scope - (string) the name of the context element to which the shortcut is attached
+- **shortcut** - (*string*) the name of the key or the keys' combination for shortcut 
+- **scope** - (*string*) the name of the context element to which the shortcut is attached
 
 ~~~js
 scheduler.removeShortcut("shift+w","event");

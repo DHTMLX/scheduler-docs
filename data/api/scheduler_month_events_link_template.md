@@ -1,13 +1,14 @@
 month_events_link
 =============
-@short:specifies the presentation of the 'View more' link in the cell of the Month view
+
+@short:specifies the presentation of the 'View more' link in a cell of the Month view
 	
 @params:
-- date	Date	the date of a month cell
-- count	number	the number of events in the cell
+- date		Date		the date of a month cell
+- count		number		the number of events in the cell
 
 @example:
-//default definition
+// default definition
 scheduler.templates.month_events_link = function(date, count){
 	return "<a>View more("+count+" events)</a>";
 };
@@ -25,3 +26,5 @@ scheduler.templates.month_events_link = function(date, count){
 @relatedapi:
 	api/scheduler_max_month_events_config.md
     api/scheduler_onviewmoreclick_event.md
+@relatedsample:
+02_customization/31_view_more.html

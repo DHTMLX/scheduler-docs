@@ -1,11 +1,15 @@
 serverList
 =============
+
 @short: 
 	returns a list of options
 
 @params: 
 - list_name	string 		the name of a list
-* options	array		an array of options
+* options	array		optional, an array of options
+
+@returns:
+- list		array 	a list of options
 
 @example: 
 //returns a list of options with the name 'my_list'
@@ -57,6 +61,5 @@ scheduler.createUnitsView({
 	size:20,
 	step:1
 });
-
 ~~~
 

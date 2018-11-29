@@ -1,25 +1,35 @@
 limit_end
 =============
-@short: sets the right border of the allowable date range
+
+@short: sets the end limit of the allowable date range
 	
 
 @type:Date 
 @default:null
 @require:limit
 @example:
-scheduler.config.limit_start = new Date(2013,5,15);
-scheduler.config.limit_end = new Date (2013,6,15);
+scheduler.config.limit_start = new Date(2018,5,15);
+scheduler.config.limit_end = new Date(2018,6,15);
 ...
-scheduler.init('scheduler_here',new Date(2013,5,30),"week");
+scheduler.init('scheduler_here',new Date(2018,5,30),"week");
 
 
 @template:	api_config
 @descr:
+The **limit_start/limit_end** configs allow limiting a range available for creating new events.
+You can also limit the possibility to view events outside the allowable date range, by using the api/scheduler_limit_view_config.md property:
+
+~~~js
+scheduler.config.limit_start = new Date(2018,5,15);
+scheduler.config.limit_end = new Date(2018,6,15);
+scheduler.config.limit_view  = true;
+~~~
 
 @related:limits.md
 @relatedsample:
 	03_extensions/16_limitation.html
 @relatedapi:
 	api/scheduler_limit_start_config.md
+    api/scheduler_limit_view_config.md
 
 @apigroup: Time, time zones

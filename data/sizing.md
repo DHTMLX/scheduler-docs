@@ -17,14 +17,15 @@ I want such short events not to overlap.](sizing.md#preventingshorteventsfromove
 **Problem 4:** [The default scale spacing is 1 hour. I want to change it and make, for example, 30 minutes.](sizing.md#howtochangethescalespacing)
 
 ##How to make short events fit the scale
+
 First, let's learn the default behavior of the events boxes:
 
 
 
-+ the default scale unit height is 42px (or the hour height).
-+ the minimum height of the event box is 42px. 
-+ events that last less than 1 hour take the size of 42px. So, 15-minute and 1-hour events  will look the same in the scheduler.
-+ events that last more than 1 hour take their height according to the side scale (assuming that 1 hour is equal to 42px - a 90-minutes event will take 63px in height).
++ the default scale unit height is 44px (or the hour height).
++ the minimum height of the event box is 44px. 
++ events that last less than 1 hour take the size of 44px. So, 15-minute and 1-hour events  will look the same in the scheduler.
++ events that last more than 1 hour take their height according to the side scale (assuming that 1 hour is equal to 44px - a 90-minutes event will take 63px in height).
 
 
 Let's assume you want 30-minute events to fit the scale. Then you have 2 solutions:
@@ -37,6 +38,7 @@ Let's assume you want 30-minute events to fit the scale. Then you have 2 solutio
 ![30-minute_custom_event.png](30-minute_custom_event.png)
 
 ###Solution 1. Changing the scale unit's height
+
 To change the height of the scale's unit you should use the api/scheduler_hour_size_px_config.md configuration option.
   
    
@@ -44,26 +46,26 @@ For example, to increase the unit's height twice you should call the option as i
 
 
 ~~~js
-scheduler.config.hour_size_px = 84;
-...
-scheduler.init(...);
+scheduler.config.hour_size_px = 88;
 
+scheduler.init(...);
 ~~~
 
 
-Now the scale unit's height is 84 px and the 30-minute event taking 42px will occupy the 30-minute height, as it's needed.
+Now the scale unit's height is 88 px and the 30-minute event taking 44px will occupy the 30-minute height, as it's needed.
 
 {{sample
 	02_customization/09_timestep.html
 }}
 
 ###Solution 2. Customizing the event box
+
 To customize the events boxes display, you should use the api/scheduler_renderevent.md method that allows you to set your own template for the events.
 
 
 ~~~js
 scheduler.renderEvent = function(container, ev) {
-                    //your customizing code
+	//your customizing code
 }
 ~~~
 
@@ -74,18 +76,19 @@ Read the details in the related chapter - custom_events_display.md.
 }}
 
 ##Preventing short events from overlapping
+
 To display short events separately and eliminate a possibility of their overlapping, 
 you should set the api/scheduler_separate_short_events_config.md option to *true*:
 
 ~~~js
 scheduler.config.separate_short_events = true;
-
 ~~~
 
 
 ![overlapping.png](overlapping.png)
 
 ##How to change the background according to the set scale 
+
 The scheduler background is set by a mere image.
   
 To change the background image you should redefine the related css class which is **.dhx_scale_holder**:
@@ -123,7 +126,7 @@ var step = 30;
 scheduler.templates.hour_scale = function(date){
 	html="";
 	for (var i=0; i<60/step; i++){
-		html+="<div style='height:21px;line-height:21px;'>"+format(date)+"</div>";
+		html+="<div style='height:22px;line-height:22px;'>"+format(date)+"</div>";
 		date = scheduler.date.add(date,step,"minute");
 	}
 	return html;

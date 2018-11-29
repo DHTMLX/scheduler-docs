@@ -246,3 +246,4 @@ Now you may configure, change and customize it to meet all your needs.
 {{sample
 	01_initialization_loading/05_loading_database.html
 }}
+

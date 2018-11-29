@@ -4,8 +4,8 @@ getLabel
 	gets the label of a select control in the lightbox
 
 @params: 
-- property	string	the name of a data property that the control is mapped to
-- key	string, number	 the option's id. This parameter is compared with the event's data property <br> to assign the select's option to an event
+- property		string				the name of a data property that the control is mapped to
+- key			string,number	 	the option's id. This parameter is compared with the event's data property <br> to assign the select's option to an event
 
 @example: 
 
@@ -13,9 +13,9 @@ scheduler.config.lightbox.sections=[
 	{name:"custom", type:"select", map_to:"unit_id", options:[
         {key:1, label:"James Smith"}, 
         {key:2, label:"John Williams"}]},
-	...
+		// more options
 ];
-...
+
 var holder2 = scheduler.getLabel("unit_id", 2);// ->"John Williams"
 
 @template:	api_method
@@ -44,4 +44,4 @@ scheduler.parse([
 
 ~~~
 
-<img src="api/getLabel_method.png"/>
+<img src="api/getlabel_method.png"/>

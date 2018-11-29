@@ -15,7 +15,7 @@ Here we highlight the most common types of attack and show possible ways to avoi
 Possible vectors for XSS attacks are unsafe CRUD implementation on the backend, [Scheduler template functions](api/refs/scheduler_templates.md) and [user input via UI](lightbox_editors.md):
 
 - the backend API that is used to save/load data into Scheduler (which lies within the responsibility of the developer) is expected to escape the input/output and provide Scheduler with safe data. 
-If you use [dhtmlxConnector](how_to_start.md#step7loadingdatafromtheserver), it will [escape and sanitize the client input automatically](https://docs.dhtmlx.com/connector__php__app_security.html#protectionfromcrosssitescringxss). 
+If you use [dhtmlxConnector](howtostart_connector.md#step7loadingdatafromtheserver), it will [escape and sanitize the client input automatically](https://docs.dhtmlx.com/connector__php__app_security.html#protectionfromcrosssitescringxss). 
 If you implement the backend on your own, you should consider escaping data you save to the database and load into Scheduler by yourself.
 
 As for template functions and the lightbox listed below, they can only pose a threat, if you don't clean your data on the server. Note that securing the backend is usually enough to prevent possible XSS attacks, and vice versa, no client-side measures will be effective if the backend is not secure.
@@ -35,7 +35,6 @@ Any template can be redefined with the implementation you find suitable.
 
 ##SQL Injections
 
-{{todo add a sentence about safety of how to start tutorials to the SQL Injections section}}
 
 Scheduler is a 100% client-side component, thus SQL injections have to be prevented on the backend by the developer.
 
@@ -44,14 +43,14 @@ There are two points to consider:
 - The lightbox doesn't have any default validation, which, if not handled, allows the user to enter any values into editable inputs.
 - your backend API can be called by a PUT/POST request containing dangerous values manually, bypassing the client-side UI.
 
-Thus you'll need to have some kind of SQL injections escaping on your backend. If you use [dhtmlxConnector](how_to_start.md) and specify a table configuration as shown in the related 
+Thus you'll need to have some kind of SQL injections escaping on your backend. If you use [dhtmlxConnector](howtostart_connector.md#step7loadingdatafromtheserver) and specify a table configuration as shown in the related 
 [documentation](https://docs.dhtmlx.com/connector__php__basis.html#loadingfromdatabase), all values will be escaped automatically. Otherwise, you'll have to use a safe CRUD implementation, 
-according to the good practices of the platform you use. 
+according to the good practices of [the platform you use](howtostart_guides.md). 
 
 
 ##CSRF Attacks
 
-If you use [dhtmlxConnector](how_to_start.md) on the backend, CSRF security can be enabled in the connector configuration. See the details
+If you use [dhtmlxConnector](howtostart_connector.md#step7loadingdatafromtheserver) on the backend, CSRF security can be enabled in the connector configuration. See the details
 [in the related article](https://docs.dhtmlx.com/connector__php__app_security.html#preventingcsrfandxsrfattacks).
 
 Otherwise, you'll have to handle it manually. Please check [this article](server_integration.md#customrequestheadersandparameters) for adding custom tokens of headers to a request sent by Scheduler to the backend. 

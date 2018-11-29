@@ -14,3 +14,10 @@ scheduler.attachEvent("onXLE", function (){
 @template:	api_event
 @descr: 
 
+@related:
+loading_data.md
+
+
+@relatedapi: 
+api/scheduler_onxls_event.md
+api/scheduler_load.md

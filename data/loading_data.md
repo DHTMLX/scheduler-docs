@@ -1,5 +1,6 @@
 Loading Data
 ===============================
+
 dhtmlxScheduler can load data of 3 formats which are:
 
 1. JSON;
@@ -49,23 +50,50 @@ scheduler.load("data.xml","xml"); //loading data from a file in the XML format
 Loading data from a database
 -------------------------------------
 
-To load data from database table(s), use the api/scheduler_load.md method on the client side:
+There are two ways to load data from a database. In both cases, you need to deal with both the client and the server side.
 
-- **Client side**
-        
+1) The first way includes the usage of REST API for communication with server.
+
+- The server-side implementation depends on the framework you want to use. 
+For example, in case of Node.js we should add a server route for the URL to which Scheduler will send an AJAX request for data.
+
+It will generate the corresponding response in JSON format. 
+
+~~~js
+app.get('/data', function(req, res){
+	db.event.find().toArray(function(err, data){
+		//set id property for all records
+		for (var i = 0; i < data.length; i++)
+			data[i].id = data[i]._id;
+		
+		//output response
+		res.send(data);
+	});
+});
+~~~
+
+- On the client side we will use the api/scheduler_load.md method and specify the necessary URL where an AJAX request for Scheduler data will be sent:
+
 {{snippet
-Static loading from db. Client-side code
+Loading from a database. Client-side code
 }}
 ~~~js
 scheduler.init('scheduler_here', new Date(), "month");
-scheduler.load("events.php");
+scheduler.load("apiUrl");
 ~~~
-- **Server-side**
+
+{{note
+The detailed information on Scheduler server-side integration using REST API is given in the article server_integration.md.
+}}
+
+2) The second way presupposes loading data from database table(s) using [PHP Connector](http://docs.dhtmlx.com/connector__php__index.html).
+
+- On the server-side, realize the server script that returns data in the XML or JSON format:
         
 {{snippet
 Static loading from db. Server-side code
 }}
-~~~js
+~~~php
 include ('dhtmlxConnector/codebase/scheduler_connector.php');
  
 $res=mysql_connect("localhost","root","");
@@ -75,8 +103,19 @@ $calendar = new SchedulerConnector($res);
 $calendar->render_table("events","id","event_start,event_end,text","type");
 ~~~
 
+- On the client side, use the api/scheduler_load.md method where specify the path to the server-side script:
+        
+{{snippet
+Static loading from db. Client-side code
+}}
+~~~js
+scheduler.init('scheduler_here', new Date(), "month");
+scheduler.load("events.php");
+~~~
+
+
 {{note
-See the detailed information in the server_integration.md guide.
+See the detailed information in the howtostart_connector.md guide.
 }}
 
 Loading data from multiple sources
@@ -117,15 +156,39 @@ scheduler.init('scheduler_here', new Date(2013, 3, 18), "week");
 ~~~
 
 ###Custom properties
+
 You are not limited to the mandatory properties listed above and can add any custom ones to data items. 
 Extra data properties will be parsed as strings and loaded to the client side where you can use them according to your needs.
 
 See examples of data with custom properties <a href="data_formats.md#datawithcustomproperties">here</a>.
 
+Database Structure
+-------------------
+
+When you set up a database, the expected structure for scheduler events is the following:
+
+- **events table** - specifies scheduler events
+	- **id** - (*string/int/guid*) - the event id. Primary key, auto increment.
+	- **start_date** - (*DateTime*) - the start date of event, not nullable.
+	- **end_date** - (*DateTime*) - the start date of event, not nullable.
+	- **text** - (*string*) - the description of a task.
+
+If you have recurring events, you need some extra columns for them:
+
+- **events table** - specifies scheduler events
+	- **id** - (*string/int/guid*) - the event id. Primary key, auto increment.
+	- **start_date** - (*DateTime*) - the start date of event, not nullable.
+	- **end_date** - (*DateTime*) - the start date of event, not nullable.
+	- **text** - (*string*) - the description of a task.
+	- **event_pid** - (*string/int/guid*) - the reference to the parent event series id. Must be nullable or have an empty default value (empty string, numeric zero).
+	- **event_length** - (*string/bigint*) - an event duration or a timestamp of modified occurrence. Must be nullable or have an empty default value (empty string, numeric zero). Max length (string values) is 10.
+	- **rec_type** - (*string*) - a recurring rule. Must be nullable or have an empty string as a default value. Max length is 50.
+
+You can define any additional columns, they can be loaded to the client and made available for the client-side API.
 
 
 Dynamic loading
------------------------------------------------
+--------------------
  
 By default, dhtmlxScheduler loads all data at once. It may become problematic when you are using big event collections. 
 In such situations you may use the dynamic loading mode and load data by parts, necessary to fill the current viewable area  of the scheduler.
@@ -222,12 +285,11 @@ To change the spinner image - replace 'imgs/loading.gif' with your custom image.
 Loading data with Timeline and Units sections from the server
 --------------------------------------------
 
-While loading data into [Timeline](timeline_view.md#loadingdatatotheview) and [Units](units_view.md#loadingdatatotheview) views, 
-you need to set an array of sections that will be loaded into views. 
+While loading data into [Timeline](timeline_view.md#loadingdatatotheview) and [Units](units_view.md#loadingdatatotheview) views, you need to set an array of sections that will be loaded into views. 
 
 In order to load data containing Timeline and Units sections from the backend, you need to implement a more extended configuration: 
 
-- during Timeline view initialization, instead of sections array you should use the api/scheduler_serverlist.md method and pass the name of a collection as an argument
+- during Timeline view initialization, instead of sections array you should use the api/scheduler_serverlist.md method and pass the name of a collection as an argument:
 
 ~~~js
 scheduler.createTimelineView({

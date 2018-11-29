@@ -10,7 +10,7 @@ createTimelineView
 
 
 @example: 
-// the time scale from 8 AM to 8 PM with a 30-minutes step
+// the time scale from 8 AM to 8 PM with a 30-minute step
 scheduler.createTimelineView({
      name:		"timeline",
      x_unit:	"minute",
@@ -46,7 +46,7 @@ The configuration object of the Timeline view can have the following properties:
 	<tbody>
     	<tr>
 			<td class="webixdoc_links0"><b>name</b></td>
-			<td>(<i>string</i>) the view's id. If you specify the name of some already existing Timeline view - it will be overwritten</td>
+			<td>(<i>string</i>) the view's id. If you specify the name of some already existing Timeline view, it will be overwritten</td>
 		</tr>
        <tr>
 			<td class="webixdoc_links0"><b>render</b></td>
@@ -60,10 +60,10 @@ The configuration object of the Timeline view can have the following properties:
 			<td class="webixdoc_links0"  style="vertical-align: top;"><b>y_unit</b></td>
 			<td>(<i>array of objects</i>) defines sections of the view.<br> Each object in the array specifies a single section and takes these properties:
             	<ul>
-                     <li><b>open</b> -   (<i>array</i>) an array of nested items' objects (for 'Tree' mode only)</li>
-					<li><b>key</b> -   (<i>string</i>) the section's id. This attribute is compared with the event's data property to assign the event to a section</li>
-					<li><b>label</b> -   (<i>string</i>) the section's label</li>
-                    <li><b>open</b> -   (<i>boolean</i>) specifies whether the section will be opened initially (for 'Tree' mode only)</li>
+                    <li><b>open</b> - (<i>array</i>) an array of nested items' objects (for 'Tree' mode only)</li>
+					<li><b>key</b> - (<i>string</i>) the section's id. This attribute is compared with the event's data property to assign the event to a section</li>
+					<li><b>label</b> - (<i>string</i>) the section's label</li>
+                    <li><b>open</b> - (<i>boolean</i>) specifies whether the section will be opened initially (for 'Tree' mode only)</li>
 				</ul>
              </td>
 		</tr>
@@ -138,7 +138,7 @@ The configuration object of the Timeline view can have the following properties:
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>resize_events</b></td>
-			<td>(<i>boolean</i>) specifies whether the height of individual events should be decreased, to make the total height equal to the height of one single event (but not less than the value of the <b>min_event_dy</b> property). By default, <i>true</i> </td>
+			<td>(<i>boolean</i>) specifies whether the height of individual events should be decreased, to make the total height equal to the height of one single event (but not less than the value of the <b>event_min_dy</b> property). By default, <i>true</i> </td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>fit_events</b></td>
@@ -160,16 +160,40 @@ The configuration object of the Timeline view can have the following properties:
 			<td class="webixdoc_links0" style="vertical-align: top;"><b>second_scale</b></td>
 			<td>(<i>object</i>) adds the second X-Axis on the top of the default one and serves to group time intervals on the original scale. Optional. Available from version 3.0. <br> The scale object has the following properties: 
             	<ul>
-                	<li><b>x_unit</b> -   (<i>minute, hour, day, week, month, year</i>) the measuring unit of the axis. By default, 'minute'</li>
-					<li><b>x_date</b> -   (<i>string</i>) the date format of the axis (settings_format.md). If not specified,  the api/scheduler_hour_date_config.md format is used</li>
+                	<li><b>x_unit</b> - (<i>minute, hour, day, week, month, year</i>) the measuring unit of the axis. By default, 'minute'</li>
+					<li><b>x_date</b> - (<i>string</i>) the date format of the axis (settings_format.md). If not specified,  the api/scheduler_hour_date_config.md format is used</li>
 				</ul>
             </td>
 		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>scrollable</b></td>
+			<td>(<i>boolean</i>) enables horizontal scroll in the Timeline view, false by default. If <i>false</i> or undefined, date columns will shrink to fit the time scale into the viewport width.
+            If <i>true</i>, date columns will not shrink less than the <b>column_width</b> value, a horizontal scroll bar will appear when necessary.</td>
+		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>column_width</b></td>
+			<td>(<i>boolean</i>) defines the minimal width of timeline date columns, 100 by default</td>
+		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>scroll_position</b></td>
+			<td>(<i>Date</i>) renders timeline scrolled to a specific position, takes the same arguments as <b>timeline.scrollTo()</b>, i.e. the date you want timeline to be scrolled to after rendering</td>
+		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>autoscroll</b></td>
+			<td>(<i>object</i>) allows configuring sensibility and speed of autoscroll. The autoscroll object has the properties below:
+            	<ul>
+                	<li><b>range_x</b> - (<i>number</i>) horizontal autoscroll distance from the edge of the data area</li>
+                	<li><b>range_y</b> - (<i>number</i>) vertical autoscroll distance from the edge of the data area</li>
+                    <li><b>speed_x</b> - (<i>number</i>) horizontal autoscroll speed</li>
+                    <li><b>speed_y</b> - (<i>number</i>) vertical autoscroll speed</li>
+                </ul>
+            </td>
+		</tr>          
     </tbody>
 </table>
 
 
-Dynamic changing of properties
+Dynamic change of properties
 -------------------------------------
 
 All defined timeline objects are stored in the **scheduler.matrix** object.
@@ -191,3 +215,6 @@ scheduler.createTimelineView({
 ~~~
 
 @edition:pro
+
+@todo:
+check new timeline properties

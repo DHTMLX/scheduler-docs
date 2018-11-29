@@ -9,12 +9,31 @@ The articles come around key procedures and problem-solving activities.
 
 <table  style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 	<tbody>
+    <tr>
+		<td id="data" class='topics'>
+		    <h4>
+		         How to Start with dhtmlxScheduler
+		    </h4>
+		    <ul id="data_sublist" >
+            		<li>howtostart_dotnet_core.md</li>
+            		<li>howtostart_nodejs.md</li>  
+                    <li>howtostart_php_laravel.md</li>
+                    <li>howtostart_php.md</li>                                  
+                    <li>howtostart_ruby.md</li>
+                    <li>howtostart_connector.md</li>
+            </ul>
+        </td>
+        <td class='topic_description'>Says how to build a standard Gantt chart on different server-side platforms and 
+        bring it to life: configure with specific settings, customize the default templates, 
+        attach events, etc.</td>
+	</tr>
 	<tr>
 		<td id="manipulations" class='topics'>
 		    <h4>
 		       Creating Scheduler on a Page
 		    </h4>
 		    <ul id="manipulations_sublist">
+            		<li>initialization.md</li>
             		<li>install_with_bower.md</li>
                     <li>configuration.md</li>
                     <li>scheduler_markup.md</li>
@@ -188,6 +207,7 @@ The articles come around key procedures and problem-solving activities.
 
 @index:
 - editions_comparison.md
+- howtostart_guides.md
 - configuring_the_scheduler.md
 - loading_and_storing_data.md
 - config_views.md

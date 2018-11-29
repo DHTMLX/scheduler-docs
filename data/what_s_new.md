@@ -3,6 +3,27 @@ What's New
 
 If you are updating scheduler from an older version, check migration_from_older_version.md for details.
 
+5.1
+------------
+
+###Breaking Changes
+
+HTML structure of the Timeline view has changed significantly, some code changes may be required in order to migrate. Read more in the [Migration](migration_from_older_version.md#5051) article.
+
+###Major Changes
+
+1. [Horizontal scroll in the Timeline view](timeline_view.md#horizontalscroll) (PRO version)
+2. [Smart rendering](timeline_view.md#smartrendering) and performance update for the Timeline view (PRO version)
+3. Integration with different server-side platforms. [Check the related tutorials](howtostart_guides.md)
+
+
+###Minor Changes
+
+- [New API of the Timeline object](timeline_view.md#timelineobjectapi)
+- [Autoscroll in the Timeline view](timeline_view.md#autoscrollconfiguration)
+- Ability to [add a label into the header of the column with sections](timeline_view.md#headerofthesectionscolumn)
+
+
 5.0
 ------
 
@@ -280,7 +301,6 @@ If you are updating scheduler from an older version, check migration_from_older_
 + problem with incorrect recurring view, after resize in edit mode, is fixed 
 + event editor doesn't close, if "onClick" event is disabled (#617)
 + incorrect processing of 12AM, while parsing the string to date
-
 
 
 

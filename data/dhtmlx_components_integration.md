@@ -12,7 +12,7 @@ Once the user drags some external element to the scheduler, the scheduler opens 
 <img src="external_dnd.png"/>
 
 {{sample
-10_integration/02_dhtmlxTree_outer_drag.html
+10_integration/02_dhtmlxtree_outer_drag.html
 }}
 
 <br>
@@ -61,7 +61,7 @@ scheduler.attachEvent("onExternalDragIn", function(id, source, event){
 </ol>
 
 {{sample
-10_integration/02_dhtmlxTree_outer_drag.html
+10_integration/02_dhtmlxtree_outer_drag.html
 }}
 
 

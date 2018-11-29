@@ -17,3 +17,7 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 For example, if we set a limit on the year 2010,  we can't move to the year 2009  - only 2010 and further.
 
 @apigroup: Time, time zones
+
+@relatedapi:
+api/scheduler_limit_start_config.md
+api/scheduler_limit_end_config.md

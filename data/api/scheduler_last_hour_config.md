@@ -21,7 +21,9 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 @relatedsample:
 	03_extensions/25_advanced_limitation.html
     03_extensions/26_multi_day_visible.html
+    
 @relatedapi:
 	api/scheduler_first_hour_config.md  
+    api/scheduler_limit_time_select_config.md
     
 @apigroup: General settings/Scale

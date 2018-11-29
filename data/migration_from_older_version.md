@@ -1,6 +1,29 @@
 Migration From Older Versions 
 ==============
 
+## 5.0 -> 5.1
+
+Smart rendering and horizontal scroll features required a complete remaking of the timeline markup. It affected Timeline, TreeTimeline and all modes of these views.
+
+The most notable change is that HTML elements TABLE, TR, TD were removed from the markup and replaced with DIVs with appropriate class names.
+
+If you use table tags in CSS selectors for styling the timeline, an action will be needed in order to migrate such CSS.
+The overall DOM structure didn't undergo many changes, thus migration would mostly require rewriting several CSS selectors in order for them to match the new markup.
+
+For the reference, here is a sample of CSS selectors before and after the update given below.
+
+Before:
+
+- **.dhx_cal_data > table > tbody > tr > td.dhx_matrix_scell** - the lefthand label column
+- **.dhx_cal_data > table > tbody > tr > td > div.dhx_matrix_line** - the timeline row with date cells
+- **.dhx_cal_data > table > tbody > tr > td > div.dhx_matrix_line > table > tbody > tr > td.dhx_matrix_cell** - a single date cell inside a timeline row
+
+After:
+
+- **.dhx_cal_data .dhx_timeline_table_wrapper .dhx_timeline_label_row .dhx_matrix_scell** - the lefthand label column
+- **.dhx_cal_data .dhx_timeline_data_wrapper .dhx_matrix_line** - the timeline row with date cells
+- **.dhx_cal_data .dhx_timeline_data_wrapper .dhx_matrix_line .dhx_matrix_cell** - a single date cell inside a timeline row
+
 ## 4.4 -> 5.0
 
 ###Removed skins
@@ -141,6 +164,5 @@ codebase/dhtmlxgrid_units.js => codebase/ext/dhtmlxgrid_units.js
 
 @index:
 - scheduler_3.0.md
-
 
 
