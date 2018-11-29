@@ -141,7 +141,7 @@ function init() {
 ~~~
 
 {{sample
-	10_integration/05_dhtmlxLayout_terrace.html
+	10_integration/05_dhtmlxlayout_terrace.html
 }}
 
 @edition: pro
