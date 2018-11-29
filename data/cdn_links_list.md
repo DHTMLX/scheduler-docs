@@ -1,15 +1,16 @@
 Full List of CDN Links
 =====================
 
-The given article presents the full set of links for including the Scheduler functionality from CDN. 
-Each section corresponds to a particular Scheduler version:
+The given article presents the full set of links for including the Scheduler functionality from CDN. Each section corresponds to a particular Scheduler version:
 
 - Core files - *dhtmlxscheduler.js* and *dthmlxscheduler.css* files containing main functionality
 - Skins - links for including all the available [skins](skins.md)
 - Extensions - links for including [extensions](extensions_list.md) available in the pointed version
 
-Latest version
+Latest Scheduler version
 ---------------
+
+To set path to the sources of the latest version of the library, specify the link as **http://cdn.dhtmlx.com/scheduler/edge/...**
 
 Core files: [JS](http://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js), [CSS](http://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css)
 
@@ -44,8 +45,10 @@ Extensions: [Active Links](http://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxschedu
 [Year View](http://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_year_view.js).
 
 
-Latest version, Uncompressed
+Latest Scheduler version, Uncompressed
 ---------------------------
+
+To set path to the uncompressed sources of the latest version of the library, specify the link as **http://cdn.dhtmlx.com/scheduler/edge/sources/...**
 
 Core files: [JS](http://cdn.dhtmlx.com/scheduler/edge/sources/dhtmlxscheduler.js), [CSS](http://cdn.dhtmlx.com/scheduler/edge/sources/skins/dhtmlxscheduler.css)
 
@@ -79,11 +82,14 @@ Extensions: [Active Links](http://cdn.dhtmlx.com/scheduler/edge/sources/ext/dhtm
 [URL](http://cdn.dhtmlx.com/scheduler/edge/sources/ext/dhtmlxscheduler_url.js),
 [Year View](http://cdn.dhtmlx.com/scheduler/edge/sources/ext/dhtmlxscheduler_year_view.js).
 
-Version 4.3
------------
+
+Particular Scheduler version
+--------------
+
+To set path to the sources of a certain version of the library, specify the link as **http://cdn.dhtmlx.com/scheduler/[version_number]/...**
+Links below point to the version 4.3.
 
 Core files: [JS](http://cdn.dhtmlx.com/scheduler/4.3/dhtmlxscheduler.js), [CSS](http://cdn.dhtmlx.com/scheduler/4.3/dhtmlxscheduler.css)
-
 
 Skins: [Glossy](http://cdn.dhtmlx.com/scheduler/4.3/dhtmlxscheduler_glossy.css),
 [Classic](http://cdn.dhtmlx.com/scheduler/4.3/dhtmlxscheduler_classic.css),
@@ -115,8 +121,11 @@ Extensions: [Active Links](http://cdn.dhtmlx.com/scheduler/4.3/ext/dhtmlxschedul
 [URL](http://cdn.dhtmlx.com/scheduler/4.3/ext/dhtmlxscheduler_url.js),
 [Year View](http://cdn.dhtmlx.com/scheduler/4.3/ext/dhtmlxscheduler_year_view.js).
 
-Version 4.3, Uncompressed
----------------------------
+Particular Scheduler version, Uncompressed 
+-------------------------------
+
+To set path to the uncompressed sources of a certain version of the library, specify the link as **http://cdn.dhtmlx.com/scheduler/[version_number]/sources/...**
+Links below point to the version 4.3.
 
 Core files: [JS](http://cdn.dhtmlx.com/scheduler/4.3/sources/dhtmlxscheduler.js), [CSS](http://cdn.dhtmlx.com/scheduler/4.3/sources/skins/dhtmlxscheduler.css)
 
