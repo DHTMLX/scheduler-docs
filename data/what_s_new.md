@@ -13,7 +13,7 @@ HTML structure of the Timeline view has changed significantly, some code changes
 ###Major Changes
 
 1. [Horizontal scroll in the Timeline view](timeline_view.md#horizontalscroll) (PRO version)
-2. [Smart rendering](timeline_view.md#smartrendering) and performance update for the Timeline view (PRO version)
+2. Smart rendering and performance update for the Timeline view (PRO version)
 3. Integration with different server-side platforms. [Check the related tutorials](howtostart_guides.md)
 
 
