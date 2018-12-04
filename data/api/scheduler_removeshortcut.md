@@ -7,7 +7,7 @@ removeShortcut
 @params:
 
 - shortcut		string		the key name or the name of keys combination for a shortcut (<a href="keyboard_navigation.md#shortcutsyntax">shortcut syntax</a>)
-- scope			object		the element to which the shortcut is attached (<a href="keyboard_navigation.md#scopes">list of scopes</a>)
+* scope			object		(optional) the element to which the shortcut is attached (<a href="keyboard_navigation.md#scopes">list of scopes</a>)
 
 
 @example:

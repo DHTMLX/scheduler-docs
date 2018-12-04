@@ -4,7 +4,7 @@ deleteMarkedTimespan
 	removes marking/blocking set by the addMarkedTimespan() and blockTime() methods
 
 @params: 
-- id	string	the timespan's id
+* id	string	the timespan's id
 	
 
 @example: 
