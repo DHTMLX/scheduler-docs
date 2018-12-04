@@ -24,7 +24,9 @@ scheduler.removeShortcut("shift+w","event");
 
 @template:	api_method
 @descr:
-added in version 4.4
+Added in version 4.4
+
+If the `scope` parameter is not provided the "scheduler" scope will be used by default.
 
 @relatedapi:
 api/scheduler_addshortcut.md

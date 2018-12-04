@@ -17,7 +17,9 @@ var shortcut_handler = scheduler.getShortcutHandler("ctrl+a", "event");
 @template:	api_method
 
 @descr:
-added in version 5.0
+Added in version 5.0
+
+If the `scope` parameter is not provided the "scheduler" scope will be used by default.
 
 @relatedapi:
 api/scheduler_addshortcut.md
