@@ -6,18 +6,20 @@ getShortcutHandler
 
 @params:
 - shortcut		string			the key name or the name of keys combination for a shortcut (<a href="keyboard_navigation.md#shortcutsyntax">shortcut syntax</a>)
-- scope 		string			the name of the context element to attach the handler function to (<a href="keyboard_navigation.md#scopes">list of scopes</a>)
+* scope 		string			(optional) the name of the context element to attach the handler function to (<a href="keyboard_navigation.md#scopes">list of scopes</a>)
 
 @returns:
 - shortcut_handler			function		the handler of the shortcut call
 
 @example:
-var shortcut_handler = scheduler.getShortcutHandler(shortcut, scope);
+var shortcut_handler = scheduler.getShortcutHandler("ctrl+a", "event");
 
 @template:	api_method
 
 @descr:
-added in version 5.0
+Added in version 5.0
+
+If the `scope` parameter is not provided the "scheduler" scope will be used by default.
 
 @relatedapi:
 api/scheduler_addshortcut.md

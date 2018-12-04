@@ -7,7 +7,7 @@ removeShortcut
 @params:
 
 - shortcut		string		the key name or the name of keys combination for a shortcut (<a href="keyboard_navigation.md#shortcutsyntax">shortcut syntax</a>)
-- scope			object		the element to which the shortcut is attached (<a href="keyboard_navigation.md#scopes">list of scopes</a>)
+* scope			object		(optional) the element to which the shortcut is attached (<a href="keyboard_navigation.md#scopes">list of scopes</a>)
 
 
 @example:
@@ -24,7 +24,9 @@ scheduler.removeShortcut("shift+w","event");
 
 @template:	api_method
 @descr:
-added in version 4.4
+Added in version 4.4
+
+If the `scope` parameter is not provided the "scheduler" scope will be used by default.
 
 @relatedapi:
 api/scheduler_addshortcut.md
