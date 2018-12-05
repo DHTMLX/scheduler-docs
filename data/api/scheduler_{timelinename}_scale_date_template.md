@@ -8,7 +8,7 @@
 @example:
 scheduler.templates.timeline_scale_date = function(date){
    var timeline = scheduler.matrix.timeline;
-   var func=scheduler.date.date_to_str(timeline.x_date||scheduler.config.hour_date);
+   var func = scheduler.date.date_to_str(timeline.x_date||scheduler.config.hour_date);
    return func(date);
 }
 
