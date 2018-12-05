@@ -265,9 +265,10 @@ scheduler.parse([
      { id:1, start_date:"2017-05-13 6:00", end_date:"2017-05-13 8:00", text:"Event 1"},
      { id:2, start_date:"2017-06-09 6:00", end_date:"2017-06-09 8:00", text:"Event 2"}
 ],"json");
- 
-scheduler.getEvent(1).text = "Conference"; //changes event's data
-scheduler.addEvent(1); // renders the updated event
+
+var event = scheduler.getEvent(1);
+event.text = "Conference"; //changes event's data
+scheduler.addEvent(event); // renders the updated event
 ~~~
 
 When called for an event that is already loaded into the scheduler, api/scheduler_addevent.md will trigger an *update* request, otherwise *insert* will be called.
