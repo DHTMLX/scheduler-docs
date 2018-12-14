@@ -281,8 +281,9 @@ scheduler.createUnitsView({
 	size:10,//the number of units that should be shown in the view 
 	step:5  //the number of units that will be scrolled at once
 });
-
 ~~~
+
+{{sample  03_extensions/18_scroll_units.html}}
 
 
 Skipping events that don't belong to any of the units
