@@ -272,16 +272,19 @@ scheduler.updateCollection("units", new_sections_array);
 
 Scrolling Units
 ------------------------
+
 If you have many units, you can enable horizontal scrolling by using the [size](api/scheduler_createunitsview.md), [step](api/scheduler_createunitsview.md) properties:
 
 ~~~js
 scheduler.createUnitsView({
 	name:"unit",
 	...
-	size:10,//the number of units that should be shown in the view 
-	step:5  //the number of units that will be scrolled at once
+	size:10, // the number of units that should be shown in the view 
+	step:5   // the number of units that will be scrolled at once
 });
 ~~~
+
+![Units scrolling](units_scroll.png)
 
 {{sample  03_extensions/18_scroll_units.html}}
 
