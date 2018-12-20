@@ -981,5 +981,17 @@ public static explicit operator WebAPIEvent(SchedulerEvent ev)
 
 Another approach would be to use a specialized library, e.g. [HtmlAgilityPack](https://html-agility-pack.net/) and completely strip any HTML event when we save/load data.
 
+Trouble shooting
+-----------------
 
+In case you've completed the above steps to implement Scheduler integration with ASP.NET Core, but Scheduler doesn't render events on a page, have a look at the troubleshooting.md article. It describes 
+the ways of identifying the roots of the problems.
+
+
+What's Next
+------------
+
+Now you have a fully functioning Scheduler. You can view the full code on [GitHub](https://github.com/DHTMLX/scheduler-howto-dotnet-core), clone or download it and use it for your projects.
+
+You can also check [guides on the numerous features of Scheduler](guides.md) or tutorials on [integration of Scheduler with other backend frameworks](howtostart_guides.md).
 

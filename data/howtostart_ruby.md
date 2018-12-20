@@ -475,3 +475,15 @@ recurring events on rails
 ~~~
 
 If you've precisely followed the given instructions, you should now have a ready-to-use scheduler with recurring events that perfectly works with Rails framework. 
+
+Trouble shooting
+-----------------
+
+In case you've completed the above steps to implement Scheduler integration with Ruby on Rails, but Scheduler doesn't render events on a page, have a look at the troubleshooting.md article. It describes 
+the ways of identifying the roots of the problems.
+
+
+What's Next
+------------
+
+You can also check [guides on the numerous features of Scheduler](guides.md) or tutorials on [integration of Scheduler with other backend frameworks](howtostart_guides.md).
