@@ -357,7 +357,7 @@ Allows dragging events from external DHTMLX components, i.e. dhtmlxTree.
 
 Article:   dhtmlx_components_integration.md<br>
 
-{{sample 10_integration/02_dhtmlxTree_outer_drag.html}}
+{{sample 10_integration/02_dhtmlxtree_outer_drag.html}}
 
 
 PDF

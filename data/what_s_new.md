@@ -3,6 +3,24 @@ What's New
 
 If you are updating scheduler from an older version, check migration_from_older_version.md for details.
 
+5.1.1
+------------
+
+###Fixes
+- Fixed keyboard navigation focus not being highlighted in the timeline
+- Fixed incorrect initial height of `timeline_scale_header` if `second_scale` specified
+- Fixed bug with `event_min_dy` not affecting section height if only one event is located inside a section
+- Fixed bug with quick info popup self-closing when the same event is clicked multiple times
+- Fixed script error which fired after deleting event in `Year view`
+- Fixed incorrect initial display of scrolled timeline if no events loaded into the scheduler
+- Fixed ability to enable smart rendering for non-scrollable timelines
+- Fixed issue with scroll position resetting on date change when key_nav extension is enabled in the timeline
+- Fixed incorrect value `old_date` argument of `onBeforeViewChange` event in some cases
+- Fixed incorrect display of scrollable timeline with ignored time cells
+- Fixed incorrect behavior if scrolling happened during drag-create of new events in day/week views
+- Fixed `onAfterSchedulerResize` event not firing in `Timeline view`
+- Performance improvement for event rendering in `Week view`
+
 5.1
 ------------
 
@@ -13,7 +31,7 @@ HTML structure of the Timeline view has changed significantly, some code changes
 ###Major Changes
 
 1. [Horizontal scroll in the Timeline view](timeline_view.md#horizontalscroll) (PRO version)
-2. [Smart rendering](timeline_view.md#smartrendering) and performance update for the Timeline view (PRO version)
+2. Smart rendering and performance update for the Timeline view (PRO version)
 3. Integration with different server-side platforms. [Check the related tutorials](howtostart_guides.md)
 
 

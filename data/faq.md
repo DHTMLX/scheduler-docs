@@ -19,7 +19,6 @@ html, body{
 
 
 
-
 Scheduler isn't rendered in Internet Explorer correctly
 ---------------------------------------------------------
 If the scheduler wasn't rendered on the page properly only in the Internet Explorer browser, please, make sure that your page uses a full DOCTYPE declaration.
@@ -54,6 +53,7 @@ Seems like the server-side script returns some whitespace characters before outp
 Make sure that all the includes used within the connector's script don't have any whitespaces beyond <br>
 the <b>&#60;?php</b> and  <b>?&#62;</b> tags. <br>
 
+
 How to set 12-hour time format (non-military time)?
 -----------------------------------
 By default, the scheduler uses 24-hour format (also called as military time) and displays time like 13:00. <br>
@@ -70,12 +70,14 @@ Note, the default scale unit height is 42px (or the hour height) and the minimum
 
 To fix it and make events fit the scale, you can use several ways.  Read about them  in the article sizing.md. 
 
+
 Calendar background grid and time scale are misaligned
 ----------------------------------------------------------------------------------------
 This may appear on non-default zoom levels.
 
 Such a behavior is expected and currently can't be avoided.
 The calendar layout is guaranteed to look correctly at 100% (default) zoom, on other levels some elements may be shifted due to browser scaling.
+
 
 Scheduler scalability limitations and the maximum number of events
 ----------------------------------------------------------
@@ -96,3 +98,17 @@ For example, the regular Day or Week modes of Scheduler won't be able to display
 
 Generally, the overall number of events is rarely an issue. Although, if you have a lot of Timeline sections (i.e. timeline with 200 rows), it may require some code tweaks to reduce the repainting time
 to some comfortable value.
+
+
+Scheduler doesn't show anything
+--------------------------
+
+There are two most obvious scenarios:
+
+1\. You try to implement the backend API either manually or following our [tutorials](howtostart_guides.md), but Scheduler doesn't show any events when you open the page.
+
+or
+
+2\. You have troubles with saving changes to the backend.
+
+Read the troubleshooting.md article that gives instructions on how to identify the reasons of the problems.

@@ -627,6 +627,19 @@ dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
 });
 ~~~
 
+Trouble shooting
+-----------------
+
+In case you've completed the above steps to implement Scheduler integration with PHP, but Scheduler doesn't render events on a page, have a look at the troubleshooting.md article. It describes 
+the ways of identifying the roots of the problems.
+
+
+What's Next
+------------
+
+Now you have a fully functioning Scheduler. You can view the full code on [GitHub](https://github.com/DHTMLX/scheduler-howto-php-slim), clone or download it and use it for your projects.
+
+You can also check [guides on the numerous features of Scheduler](guides.md) or tutorials on [integration of Scheduler with other backend frameworks](howtostart_guides.md).
 
 
 

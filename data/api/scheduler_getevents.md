@@ -7,6 +7,9 @@ getEvents
 * from	Date	 the start date of the period
 * to	Date	 the end date of the period
 
+@returns:
+- array	array	an array of event objects
+
 @example: 
 	
 var evs = scheduler.getEvents(new Date(2013,1,10),new Date(2013,2,10)); 

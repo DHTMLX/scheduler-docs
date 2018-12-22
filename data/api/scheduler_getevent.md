@@ -6,6 +6,9 @@ getEvent
 @params: 
 	- event_id  string, number   the  event's id
 
+@returns:
+- obj	object	the event object
+
 @example: 
 var eventId = scheduler.addEvent({
     start_date: "16-05-2013 09:00",
