@@ -1,7 +1,7 @@
 addMarkedTimespan
 =============
 @short: 
-	marks dates, but with certain settings makes blocking (unlike blockTime() allows setting custom styling for the limit) 
+	marks dates, but with certain settings makes blocking (allows setting custom styling for the limit) 
 
 @require:limit
 @params: 
@@ -34,7 +34,7 @@ scheduler.updateView();
 @relatedapi:
 	api/scheduler_deletemarkedtimespan.md
     api/scheduler_marktimespan.md
-    api/scheduler_blocktime.md
+   
 @relatedsample:
 	09_api/03_highlighted_timespans.html
     09_api/04_highlighted_sections_units.html
@@ -42,7 +42,7 @@ scheduler.updateView();
  The method is available from version 3.5.
  
 {{note
-Note, marking(blocking) won't be applied just after you've called the method. You should call api/scheduler_updateview.md to apply the marking.
+Note, marking (blocking) won't be applied just after you've called the method. You should call api/scheduler_updateview.md to apply the marking.
 }}
 
 <br>
@@ -83,7 +83,8 @@ start_date:new Date(2012,4,3)
     <tr>
 		<td colspan=2 style="text-align:left !important;" >
 ~~~js
-//denies creating events from 'start_date' till 3rd September,2012
+//denies creating events from 'start_date' 
+// till 3rd September,2012
 end_date:new Date(2012,8,3)
 ~~~
 		</td>
@@ -108,7 +109,8 @@ days:new Date(2012,6,1) //blocks 1st July,2012
     <tr>
 		<td colspan=2 style="text-align:left !important;" >
 ~~~js
-zones:[4*60,8*60,12*60,15*60] //2 limit blocks:04:00-08:00,12:00-15:00
+//2 limit blocks:04:00-08:00,12:00-15:00
+zones:[4*60,8*60,12*60,15*60] 
 zones:"fullday" //limits the entire day
 ~~~
 		</td>
@@ -131,7 +133,8 @@ css:"gray" //draws a DIV and applies the 'gray' css class to it
     <tr>
 		<td colspan=2 style="text-align:left !important;" >
 ~~~js
-html:"<b>Blocked</b>"//draws a DIV with this text over the marked range  
+//draws a DIV with this text over the marked range  
+html:"<b>Blocked</b>"
 ~~~
 		</td>
 	</tr>

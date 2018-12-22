@@ -37,11 +37,10 @@ If the scheduler detects an attempt to create/modify an event with a non-allowed
 
 ##How to block certain dates?
 
-There are 3 methods you can specify a limit in the scheduler with:
+There are a couple of methods you can specify a limit in the scheduler with:
 
 {{links
-- api/scheduler_addmarkedtimespan.md - marks dates, but with certain settings makes blocking (unlike blockTime() allows setting custom styling for the limit)
-- api/scheduler_blocktime.md - blocks the specified date and applies the default 'dimmed' style to it.
+- api/scheduler_addmarkedtimespan.md - marks dates, but with certain settings makes blocking (allows setting custom styling for the limit)
 - api/scheduler_marktimespan.md - marks and/or blocks date(s) by applying the default or a custom style to them. Marking is canceled right after any internal update occurs in the app. Can be used for highlighting
 }}
 
@@ -50,11 +49,11 @@ There are 3 methods you can specify a limit in the scheduler with:
 }}
 
 ##How to mark certain dates?
+
 There are 2 methods that can be used to mark the specified date(s):
 
-
 {{links
-- api/scheduler_addmarkedtimespan.md - marks dates, but with certain settings makes blocking (unlike blockTime() allows setting custom styling for the limit)
+- api/scheduler_addmarkedtimespan.md - marks dates, but with certain settings makes blocking (allows setting custom styling for the limit)
 - api/scheduler_marktimespan.md - marks and/or blocks date(s) by applying the default or a custom style to them. Marking is canceled right after any internal update occurs in the app. Can be used for highlighting
 }}
 
@@ -64,12 +63,11 @@ There are 2 methods that can be used to mark the specified date(s):
 
 ##Removing marking/blocking
 
-There are 3 methods that can be used to remove the currently marked/blocked time spans:
+There are a couple of methods that can be used to remove the currently marked/blocked time spans:
 
 {{links
-- api/scheduler_deletemarkedtimespan.md - removes marking/blocking, set by the api/scheduler_addmarkedtimespan.md and api/scheduler_blocktime.md methods
+- api/scheduler_deletemarkedtimespan.md - removes marking/blocking set by the api/scheduler_addmarkedtimespan.md method
 - api/scheduler_unmarktimespan.md - removes marking/blocking, set by the api/scheduler_marktimespan.md method
-- api/scheduler_unblocktime.md - removes blocking, set by the api/scheduler_blocktime.md method
 }}
 
 {{sample
@@ -77,6 +75,7 @@ There are 3 methods that can be used to remove the currently marked/blocked time
 }}
 
 ##Blocking priority
+
 When you call the 'blocking' methods several times and block different ranges, blocking will follow this priority (from highest to lowest):
 
 

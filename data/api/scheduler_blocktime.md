@@ -4,14 +4,24 @@ blockTime
 	blocks the specified date and applies the default 'dimmed' style to it.
 
 @params: 
-- date		Date, number   a date to block ( if a number is provided, the parameter will be treated as a week <br> day: '0' index refers to Sunday,'6' - to Saturday )
-- time_points		array	an array <b>[start_minute,end_minute,..,start_minute_N,end_minute_N]</b>, <br> where each pair sets a certain limit range. The array can have any number of <br> such pairs
-* items		object	defines specific items of  view(s) to block
+- date				Date,number   	a date to block ( if a number is provided, the parameter will be treated as a week <br> day: '0' index refers to Sunday,'6' - to Saturday )
+- time_points		array			an array <b>[start_minute,end_minute,..,start_minute_N,end_minute_N]</b>, <br> where each pair sets a certain limit range. The array can have any number of such pairs
+* items				object			defines specific items of  view(s) to block
 
 @example: 
 //blocks events from 0 till 8 hours for each Wednesday 
 //BUT only for the items with id=1, id=4 in the Units view
 scheduler.blockTime(3, [0,8*60], { unit: [1,4] });
+
+
+@deprecated:
+instead of it, you can use api/scheduler_addmarkedtimespan.md
+~~~
+var spanID = scheduler.addMarkedTimespan({  
+    days:  [0,1], 
+    zones: "fullday"              
+});
+~~~
 
 
 @require:limit
@@ -24,12 +34,6 @@ scheduler.blockTime(3, [0,8*60], { unit: [1,4] });
 @relatedsample:
 	03_extensions/25_advanced_limitation.html
 @descr: 
-  
-{{note
-The method is deprecated. We strongly encourage you to use the api/scheduler_addmarkedtimespan.md method instead
-}}
-
-  
 The method can be called in different ways as in:
 
 
@@ -162,3 +166,5 @@ sections: { unit: 5, timeline: [2,3]}
 	</tr> 
     </tbody>
 </table>
+
+@changelog: deprecated since v6.1

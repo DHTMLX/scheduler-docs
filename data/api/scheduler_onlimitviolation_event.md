@@ -22,10 +22,9 @@ Note, the event is called when the user tries to set for an event the time that 
 
 
 - the api/scheduler_limit_start_config.md and api/scheduler_limit_end_config.md configuration options
-- the  api/scheduler_blocktime.md or api/scheduler_addmarkedtimespan.md methods
+- the  api/scheduler_addmarkedtimespan.md method
 
 {{note
 If you return 'true' from the handler, the related event won't be blocked and can have non-allowed time.
-
 }}
 
