@@ -1,10 +1,34 @@
 What's New 
 ==============
 
-If you are updating scheduler from an older version, check migration_from_older_version.md for details.
+If you are updating Scheduler from an older version, check migration_from_older_version.md for details.
+
+<style>
+.release_date{
+	font-size: 13px;
+	margin-left: 20px;
+}
+</style>
+
+5.1.6
+------------
+
+<span class='release_date'>January 11, 2019. Bugfix release</span>
+
+###Fixes
+
+- Fix incorrect position of events scheduled on Sat-Sun with `start_on_monday = false` in the Month view
+- Fix script error in a scrollable timeline with the current time marker
+- Fix incorrect argument value of the `onYScaleClick` handler in a scrollable timeline after horizontal scrolling
+- Fix the bug that caused a scrollable timeline to be rendered empty until the next refresh after reloading sections
+- Fix the bug with a scrollable timeline which caused some cells of Tree timeline folders not being rendered after horizontal scrolling
+- Fix unexpected behavior of event resize with the `all_timed` extension, only the last event chunk should be resizeable
+- Fix event disappearing during resize in the `all_timed="short"` mode
 
 5.1.1
 ------------
+
+<span class='release_date'>December 14, 2018. Bugfix release</span>
 
 ###Fixes
 - Fixed keyboard navigation focus not being highlighted in the timeline
@@ -16,13 +40,15 @@ If you are updating scheduler from an older version, check migration_from_older_
 - Fixed ability to enable smart rendering for non-scrollable timelines
 - Fixed issue with scroll position resetting on date change when key_nav extension is enabled in the timeline
 - Fixed incorrect value `old_date` argument of `onBeforeViewChange` event in some cases
-- Fixed incorrect display of scrollable timeline with ignored time cells
+- Fixed incorrect display of a scrollable timeline with ignored time cells
 - Fixed incorrect behavior if scrolling happened during drag-create of new events in day/week views
 - Fixed `onAfterSchedulerResize` event not firing in `Timeline view`
 - Performance improvement for event rendering in `Week view`
 
 5.1
 ------------
+
+<span class='release_date'>November 29, 2018. Minor update</span>
 
 ###Breaking Changes
 
@@ -42,8 +68,10 @@ HTML structure of the Timeline view has changed significantly, some code changes
 - Ability to [add a label into the header of the column with sections](timeline_view.md#headerofthesectionscolumn)
 
 
-5.0
+<b>5.0</b>
 ------
+
+<span class='release_date'>May 17, 2018. Major update</span>
 
 ###Breaking Changes
 
@@ -68,9 +96,29 @@ HTML structure of the Timeline view has changed significantly, some code changes
 - Fixes in keyboard navigation support
 - Minor bugfixes
 
+4.4.9
+------------
+
+<span class='release_date'>June 6, 2017. Bugfix release</span>
+
+###Fixes
+
+- WAI-ARIA support – fix regression when WAI-ARIA attributes are disabled
+- WAI-ARIA support – various improvements for JAWS support
+- Keyboard navigation – various bugfixes and improvements
+- Samples – fix invalid server config snippets
+- Cookie extension – fix the conflict between cookie and ajax loading timeouts
+- Year view – fix the bug with creation of events in the Year view
+- Drag and drop – fix incorrect mouse position on a zoomed page
+- All-timed extension – fix drag and drop on touch devices
+- Dynamic loading – fix incorrect time range caused by the *server_utc* config
+- Minor fixes in locales
+
 
 4.4
 -----------
+
+<span class='release_date'>February 2, 2017. Minor update</span>
 
 ###Major Changes
 
@@ -102,8 +150,52 @@ HTML structure of the Timeline view has changed significantly, some code changes
 - various issues with container_autosize extension fixed
 - many other fixes
 
+
+4.3.35
+------------
+
+<span class='release_date'>May 26, 2016. Bugfix release</span>
+
+###Fixes
+
+- Update integration with the latest version of the DHTMLX Suite library
+- Added support for SVG elements inside scheduler
+- Fix drag and create event dates in a timeline with rounded dates
+- Double click on a marked timespan should take into account the *scheduler.config.dblclick_create* config
+- Fix incorrect `onXScaleClick` arguments in timelines with *scheduler.ignore_timeline* enabled
+- Minor improvements for layout misalignment when browser zoom is enabled
+- Fix ignored columns and the Year view
+- Fix errors on multi-touch screens
+- Fix keyboard focus on mobile devices
+- Fix various issues with DST
+- Events placed on the 31st day of the month are displayed incorrectly in Daily Timeline
+- `addEventNow` must return the id of a new event
+- Fix scheduler listening of `window.onresize` when scheduler container is removed from DOM
+
+4.3.25
+------------
+
+<span class='release_date'>March 3, 2016. Bugfix release</span>
+
+###Fixes
+
+- Touch support – trigger tap and double tap on multiday area of Day/Weeks/Units views
+- Touch support – fix regression with event disappearing on start of touch-drag
+- Timeline – fix onYScaleClick call when ignored columns are defined
+- Timeline – fix incorrect state of event object after canceling drag and drop
+- Tree Timeline – the *timeline_scale_class* template should be applied to folder items
+- dataProcessor – clearing scheduler during the dataProcessor request is in progress should not cause a JS error
+- dataProcessor – fix incorrect state while adding and modifying recurring series when autoUpdate is disabled
+- Day/Week views – fix event visibility when the first/last hours of calendar are enabled
+- Multiday Units View – fix default section on creating an event with a double click
+- General – occasional Chrome bug when the click and double click events stopped firing
+- General – fixes for daylight savings time bugs in Safari
+- and other small fixes
+
 4.3
 ------
+
+<span class='release_date'>February 4, 2015. Minor update</span>
 
 1. ["Days" mode for Timeline view](timeline_view.md#daysmodedetails) was added (PRO version)
 2. Ability to present [units for multiple days in the Units view](units_view.md#displayingunitsformultipledays) (PRO version)
@@ -119,6 +211,8 @@ HTML structure of the Timeline view has changed significantly, some code changes
 4.2
 -----------
 
+<span class='release_date'>November 12, 2014. Minor update</span>
+
 1. Ability to customize the layout of recurring form ([details](recurring_events.md#ustomcontrolforthelightboxsrecurringblock))
 2. Updated DataProcessor - REST mode and support of JSON response format ( [details](server_integration.md#savingdatafromrestserver))
 3. Updated D'n'D of the [multisection events](api/scheduler_multisection_shift_all_config.md) (PRO version)
@@ -131,6 +225,8 @@ HTML structure of the Timeline view has changed significantly, some code changes
 
 4.1
 ------
+
+<span class='release_date'>June 13, 2014. Minor update</span>
 
 1. New "Flat" skin  - ([details](skins.md#flatskin))
 2. Assigning events to several sections of [Timeline](timeline_view.md#assigningeventstoseveralsections) and [Units](units_view.md#assigningeventstoseveralunits) Views 
@@ -146,8 +242,10 @@ HTML structure of the Timeline view has changed significantly, some code changes
 10. Samples updated to work correctly in different time zones.
 
 
-4.0
+<b>4.0</b>
 -------
+
+<span class='release_date'>July 2, 2013. Major update</span>
 
 1. Flexible time scales - some days, hours can be removed from time scale ([details](custom_scales.md))
 2. Ability to show "more events" links in the Month view ([details](month_view.md#limitingthenumberofeventsinacell))
@@ -161,12 +259,16 @@ HTML structure of the Timeline view has changed significantly, some code changes
 3.7 
 -----
 
+<span class='release_date'>February 20, 2013. Minor update</span>
+
 1.  Touch support (tablets and touch monitors) ([details](touch_support.md))
 2.  Romanian locale added
 
 
 3.6 
 -----
+
+<span class='release_date'>December 3, 2012. Minor update</span>
 
 1.  Windows8 edition added ([details](winjs_compatibility.md)) 
 2.  Extended date format configuration for lightbox form
@@ -177,6 +279,8 @@ HTML structure of the Timeline view has changed significantly, some code changes
 
 3.5 
 -----
+
+<span class='release_date'>August 24, 2012. Minor update</span>
 
 1.  Ability to show [multiple schedulers](multiple_per_page.md) on the page
 2.  Support for loading JSON directly from Connectors ([details](server_integration.md#retrieving_data_in_json_format))
@@ -195,8 +299,10 @@ HTML structure of the Timeline view has changed significantly, some code changes
 
 
 
-3.0 
+<b>3.0</b>
 -------
+
+<span class='release_date'>July 27, 2011. Major update</span>
 
 1.  [WeekAgenda view](weekagenda_view.md) (PRO version)
 2.  Netbook friendly lightbox form ([details](lightbox_editors_manipulations.md#typesoflightbox))
@@ -213,6 +319,8 @@ HTML structure of the Timeline view has changed significantly, some code changes
 
 2.3 
 --------
+
+<span class='release_date'>August 30, 2010. Minor update</span>
 
 ###Major Changes 
 
@@ -248,6 +356,8 @@ HTML structure of the Timeline view has changed significantly, some code changes
 2.2 
 -------
 
+<span class='release_date'>April 14, 2010. Minor update</span>
+
 ###Major Changes 
 
 
@@ -278,6 +388,8 @@ HTML structure of the Timeline view has changed significantly, some code changes
 
 2.1 
 -------
+
+<span class='release_date'>December 2, 2009. Minor update</span>
 
 ###Major Changes  
 
@@ -322,8 +434,10 @@ HTML structure of the Timeline view has changed significantly, some code changes
 
 
 
-2.0 
+<b>2.0</b>
 ------
+
+<span class='release_date'>July 20, 2009. Major update</span>
 
 ###Major Changes 
 
@@ -334,4 +448,12 @@ HTML structure of the Timeline view has changed significantly, some code changes
 5.  Added ability to create custom views
 
 
+<b>1.0</b>
+--------
+
+<span class='release_date'>May 20, 2009. Initial release</span>
+
+- Day/Week/Month views
+- Drag-and-drop support
+- Support of Ajax-enabled web API
 
