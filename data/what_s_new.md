@@ -1,7 +1,7 @@
 What's New 
 ==============
 
-If you are updating scheduler from an older version, check migration_from_older_version.md for details.
+If you are updating Scheduler from an older version, check migration_from_older_version.md for details.
 
 <style>
 .release_date{
@@ -17,13 +17,13 @@ If you are updating scheduler from an older version, check migration_from_older_
 
 ###Fixes
 
-- Fix incorrect position of events scheduled on Sat-Sun with `start_on_monday = false` in Month view
-- Fix script error in scrollable timeline with the current time marker
-- Fix incorrect argument value of `onYScaleClick` handler in the scrollable timeline after horizontal scroll
-- Fix bug that caused the scrollable timeline to be rendered empty until next refresh after reloading sections
-- Fix bug with the scrollable timeline which caused some cells of Tree timeline folders not being rendered after horizontal scroll
-- Fix unexpected behavior of event resize with `all_timed` extension, only the last event chunk should be resizeable
-- Fix event disappearing during resize in `all_timed="short"` mode
+- Fix incorrect position of events scheduled on Sat-Sun with `start_on_monday = false` in the Month view
+- Fix script error in a scrollable timeline with the current time marker
+- Fix incorrect argument value of the `onYScaleClick` handler in a scrollable timeline after horizontal scrolling
+- Fix the bug that caused a scrollable timeline to be rendered empty until the next refresh after reloading sections
+- Fix the bug with a scrollable timeline which caused some cells of Tree timeline folders not being rendered after horizontal scrolling
+- Fix unexpected behavior of event resize with the `all_timed` extension, only the last event chunk should be resizeable
+- Fix event disappearing during resize in the `all_timed="short"` mode
 
 5.1.1
 ------------
@@ -40,7 +40,7 @@ If you are updating scheduler from an older version, check migration_from_older_
 - Fixed ability to enable smart rendering for non-scrollable timelines
 - Fixed issue with scroll position resetting on date change when key_nav extension is enabled in the timeline
 - Fixed incorrect value `old_date` argument of `onBeforeViewChange` event in some cases
-- Fixed incorrect display of scrollable timeline with ignored time cells
+- Fixed incorrect display of a scrollable timeline with ignored time cells
 - Fixed incorrect behavior if scrolling happened during drag-create of new events in day/week views
 - Fixed `onAfterSchedulerResize` event not firing in `Timeline view`
 - Performance improvement for event rendering in `Week view`
@@ -103,15 +103,15 @@ HTML structure of the Timeline view has changed significantly, some code changes
 
 ###Fixes
 
-- WAI-ARIA support – fix regression when wai-aria attributes are disabled
+- WAI-ARIA support – fix regression when WAI-ARIA attributes are disabled
 - WAI-ARIA support – various improvements for JAWS support
 - Keyboard navigation – various bugfixes and improvements
 - Samples – fix invalid server config snippets
 - Cookie extension – fix the conflict between cookie and ajax loading timeouts
-- Year view – fix bug with creation events in year view
-- Drag and drop – fix incorrect mouse position on zoomed page
+- Year view – fix the bug with creation of events in the Year view
+- Drag and drop – fix incorrect mouse position on a zoomed page
 - All-timed extension – fix drag and drop on touch devices
-- Dynamic loading – fix incorrect time range caused by server_utc config
+- Dynamic loading – fix incorrect time range caused by the *server_utc* config
 - Minor fixes in locales
 
 
@@ -158,19 +158,19 @@ HTML structure of the Timeline view has changed significantly, some code changes
 
 ###Fixes
 
-- Update integration with the latest DHTMLX Suite library
-- Added support svg elements inside scheduler
-- Fix drag and create event dates in timeline with rounded dates
-- Fix marked timespan double click should respect scheduler.config.dblclick_create config
-- Fix incorrect `onXScaleClick` arguments in timelines with scheduler.ignore_timeline enabled
-- Fix minor improvements for layout misalignment when browser zoom is enabled
-- Fix ignored columns and year view
+- Update integration with the latest version of the DHTMLX Suite library
+- Added support for SVG elements inside scheduler
+- Fix drag and create event dates in a timeline with rounded dates
+- Double click on a marked timespan should take into account the *scheduler.config.dblclick_create* config
+- Fix incorrect `onXScaleClick` arguments in timelines with *scheduler.ignore_timeline* enabled
+- Minor improvements for layout misalignment when browser zoom is enabled
+- Fix ignored columns and the Year view
 - Fix errors on multi-touch screens
 - Fix keyboard focus on mobile devices
 - Fix various issues with DST
-- Fix events placed on 31th day of the month are displayed incorrectly in Daily Timeline
-- Fix `addEventNow` must return id of new event
-- Fix scheduler listening `window.onresize` when scheduler container is removed from DOM
+- Events placed on the 31st day of the month are displayed incorrectly in Daily Timeline
+- `addEventNow` must return the id of a new event
+- Fix scheduler listening of `window.onresize` when scheduler container is removed from DOM
 
 4.3.25
 ------------
@@ -183,14 +183,14 @@ HTML structure of the Timeline view has changed significantly, some code changes
 - Touch support – fix regression with event disappearing on start of touch-drag
 - Timeline – fix onYScaleClick call when ignored columns are defined
 - Timeline – fix incorrect state of event object after canceling drag and drop
-- Tree Timeline – timeline_scale_class template should be applied to folder items
-- dataProcessor – clearing scheduler while dataProcessor request is in progress should not cause JS error
-- dataProcessor – fix incorrect state when adding and modifying recurring series when autoUpdate is disabled
-- Day/Week views – fix event visibility when first/last hours of calendar are enabled
-- Multiday Units View – fix default section on creation event with a double click
-- General – occasional Chrome bug, when click and double click events stopped firing
+- Tree Timeline – the *timeline_scale_class* template should be applied to folder items
+- dataProcessor – clearing scheduler during the dataProcessor request is in progress should not cause a JS error
+- dataProcessor – fix incorrect state while adding and modifying recurring series when autoUpdate is disabled
+- Day/Week views – fix event visibility when the first/last hours of calendar are enabled
+- Multiday Units View – fix default section on creating an event with a double click
+- General – occasional Chrome bug when the click and double click events stopped firing
 - General – fixes for daylight savings time bugs in Safari
-- and many other small fixes
+- and other small fixes
 
 4.3
 ------
