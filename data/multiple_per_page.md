@@ -55,10 +55,18 @@ function init() {
 In this sub-chapter we want to consider synchronizing multiple schedulers through a [dhtmlXDataStore](https://docs.dhtmlx.com/datastore__index.html) object, from which the schedulers are being populated with data 
 (so an event changed in one scheduler will be reflected in the other one).
 
-{{note Please note that dhtmlxDataStore is a part of the [dhtmlxSuite](https://dhtmlx.com/docs/products/dhtmlxSuite/) library, so you should [download dhtmlxSuite](https://dhtmlx.com/docs/products/dhtmlxSuite/download.shtml)
-additionally to use the component in your application.}}
+{{note Note that dhtmlxDataStore is a part of the [dhtmlxSuite](https://dhtmlx.com/docs/products/dhtmlxSuite/) library, so you should follow the steps below to use the component in your app.}}
 
-Common technique looks like this:
+- [Download dhtmlxDataStore package](https://files.dhtmlx.com/30d/33230caa09f4b5030ea5bfe374ef6d57/dhtmlxDataStore.zip)
+- Include *dhtmlxcommon.js* and *datastore.js* after dhtmlxscheduler.js on your page. Keep to the order of files given below:
+
+~~~js
+<script src="dhtmlxscheduler.js"></script>
+<script src="datastore/dhtmlxCommon/codebase/dhtmlxcommon.js"></script>
+<script src="datastore/datastore.js"></script>
+~~~
+
+The common technique of synchronizing Schedulers via DataStore looks like this:
 
 ~~~js
 function init() {
@@ -85,11 +93,10 @@ function init() {
 	scheduler2.init('scheduler_here_too',new Date(2009,05,12),"month");
 	scheduler2.sync(data, { copy:true });
 }
-
 ~~~
 
 
-Let's discuss what we do in the code snippet above.
+Let's discuss what we've done in the above code snippet.
 
 
 1.  First of all, we initialize dhtmlXDataStore in its usual way (for details, see chapters [Initialization](https://docs.dhtmlx.com/datastore__initialization.html),
@@ -124,10 +131,10 @@ So, in our case we use the parameter (**{copy:true}**) only to ensure the correc
 A good way to place schedulers on the page is using [dhtmlxLayout](https://docs.dhtmlx.com/layout__index.html). It not only provides a beautiful frame, but also ensures correct interacting
 with other elements on the page and acting according to the page size changes. 
 
-{{note Please note that dhtmlxLayout is a part of the [dhtmlxSuite](https://dhtmlx.com/docs/products/dhtmlxSuite/) library, so you should [download dhtmlxLayout](https://dhtmlx.com/docs/products/dhtmlxLayout/)
-additionally to use the component in your application.}}
+{{note Note that dhtmlxLayout is a part of the [dhtmlxSuite](https://dhtmlx.com/docs/products/dhtmlxSuite/) library, so you should purchase dhtmlxLayout additionally to use the component in your application.
+Please [check the licensing options](https://dhtmlx.com/docs/products/dhtmlxLayout/#editions-licenses).}}
 
-**To attach a dhtmlxScheduler instance to a layout cell**, use method [attachScheduler()](https://docs.dhtmlx.com/api__dhtmlxcell_attachscheduler.html).
+**To attach a dhtmlxScheduler instance to a layout cell**, use the [attachScheduler()](https://docs.dhtmlx.com/api__dhtmlxcell_attachscheduler.html) method.
   
 **Note**, attaching scheduler to a cell automatically initializes it. So, configure scheduler before placing it into the layout.
 
