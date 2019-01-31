@@ -52,7 +52,11 @@ function init() {
 
 ##Synchronization with dhtmlxDataStore
 
-In this sub-chapter we want to consider synchronizing multiple schedulers through a dhtmlXDataStore object, from which the schedulers are being populated with data (so an event changed in one scheduler will be reflected in the other one).
+In this sub-chapter we want to consider synchronizing multiple schedulers through a [dhtmlXDataStore](https://docs.dhtmlx.com/datastore__index.html) object, from which the schedulers are being populated with data 
+(so an event changed in one scheduler will be reflected in the other one).
+
+{{note Please note that dhtmlxDataStore is a part of the [dhtmlxSuite](https://dhtmlx.com/docs/products/dhtmlxSuite/) library, so you should [download dhtmlxSuite](https://dhtmlx.com/docs/products/dhtmlxSuite/download.shtml)
+additionally to use the component in your application.}}
 
 Common technique looks like this:
 
@@ -88,10 +92,11 @@ function init() {
 Let's discuss what we do in the code snippet above.
 
 
-1.  First of all, we initialize dhtmlXDataStore in its usual way (for details, see chapters [Initialization](http://docs.dhtmlx.com/doku.php?id=dhtmlxdatastore:initialization), [Data scheme](http://docs.dhtmlx.com/doku.php?id=dhtmlxdatastore:data_scheme) of the [dhtmlXDataStore documentation](http://docs.dhtmlx.com/doku.php?id=dhtmlxdatastore:toc)).
-2.  Then, we add 2 schedulers. Again, we do this in the usual manner, except for the use of the [sync](http://docs.dhtmlx.com/doku.php?id=dhtmlxdatastore:api_method_dhtmlxdatastore_sync) method.
+1.  First of all, we initialize dhtmlXDataStore in its usual way (for details, see chapters [Initialization](https://docs.dhtmlx.com/datastore__initialization.html),
+[Data scheme](https://docs.dhtmlx.com/datastore__data_scheme.html) of the [dhtmlXDataStore documentation](https://docs.dhtmlx.com/datastore__index.html)).
+2.  Then, we add 2 schedulers. Again, we do this in the usual manner, except for the use of the [sync](https://docs.dhtmlx.com/api__datastore_sync.html) method.
 
-The [sync](http://docs.dhtmlx.com/doku.php?id=dhtmlxdatastore:api_method_dhtmlxdatastore_sync) method binds schedulers with DataStore  and takes 2 parameters:
+The [sync](https://docs.dhtmlx.com/api__datastore_sync.html) method binds schedulers with DataStore and takes 2 parameters:
 
 
 + **data** - (mandatory) a dhtmlXDataStore instance, the scheduler will get data from.
@@ -116,9 +121,13 @@ So, in our case we use the parameter (**{copy:true}**) only to ensure the correc
 
 ##Integration with dhtmlxLayout
 
-A good way to place schedulers on the page is using [dhtmlxLayout](http://docs.dhtmlx.com/doku.php?id=dhtmlxlayout:toc). It not only provides a beautiful frame, but also ensures correct interacting with other elements on the page and acting according to the page size changes. 
+A good way to place schedulers on the page is using [dhtmlxLayout](https://docs.dhtmlx.com/layout__index.html). It not only provides a beautiful frame, but also ensures correct interacting
+with other elements on the page and acting according to the page size changes. 
 
-**To attach a dhtmlxScheduler instance to a layout cell**, use method [attachScheduler()](http://docs.dhtmlx.com/doku.php?id=dhtmlxlayout:api_method_dhtmlxlayoutpanel_attachscheduler).
+{{note Please note that dhtmlxLayout is a part of the [dhtmlxSuite](https://dhtmlx.com/docs/products/dhtmlxSuite/) library, so you should [download dhtmlxLayout](https://dhtmlx.com/docs/products/dhtmlxLayout/)
+additionally to use the component in your application.}}
+
+**To attach a dhtmlxScheduler instance to a layout cell**, use method [attachScheduler()](https://docs.dhtmlx.com/api__dhtmlxcell_attachscheduler.html).
   
 **Note**, attaching scheduler to a cell automatically initializes it. So, configure scheduler before placing it into the layout.
 
