@@ -7,7 +7,7 @@ checkCollision
 @params: 
 - event		object	the event object
 @returns:
-event	boolean	returns <i>true</i>, if the event time has already been occupied, otherwise - <i>false</i>.
+- result	boolean		returns <i>false</i>, if the event time has already been occupied, otherwise - <i>true</i>.
 
 @require: collision
 @example: 
@@ -17,7 +17,7 @@ var event = {
    end_date : new Date(2013, 02, 20, 14, 00)
 };
 
-var isOccupied = scheduler.checkCollision(event); //returns 'true' or 'false'
+var isOccupied = scheduler.checkCollision(event); // returns 'true' or 'false'
 
 
 
