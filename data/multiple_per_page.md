@@ -55,7 +55,8 @@ function init() {
 In this sub-chapter we want to consider synchronizing multiple schedulers through a [dhtmlXDataStore](https://docs.dhtmlx.com/datastore__index.html) object, from which the schedulers are being populated with data 
 (so an event changed in one scheduler will be reflected in the other one).
 
-{{note Note that dhtmlxDataStore is a part of the [dhtmlxSuite](https://dhtmlx.com/docs/products/dhtmlxSuite/) library, so you should follow the steps below to use the component in your app.}}
+{{note Note that dhtmlxDataStore is a part of the [dhtmlxSuite](https://dhtmlx.com/docs/products/dhtmlxSuite/), and it's not included in dhtmlxScheduler package. However, if you don't have dhtmlxSuite license, you can 
+still use dhtmlxDataStore with dhtmlxScheduler for free. Please follow the steps below to use the component in your app.}}
 
 - [Download dhtmlxDataStore package](https://files.dhtmlx.com/30d/33230caa09f4b5030ea5bfe374ef6d57/dhtmlxDataStore.zip)
 - Include *dhtmlxcommon.js* and *datastore.js* after dhtmlxscheduler.js on your page. Keep to the order of files given below:
@@ -131,8 +132,9 @@ So, in our case we use the parameter (**{copy:true}**) only to ensure the correc
 A good way to place schedulers on the page is using [dhtmlxLayout](https://docs.dhtmlx.com/layout__index.html). It not only provides a beautiful frame, but also ensures correct interacting
 with other elements on the page and acting according to the page size changes. 
 
-{{note Note that dhtmlxLayout is a part of the [dhtmlxSuite](https://dhtmlx.com/docs/products/dhtmlxSuite/) library, so you should purchase dhtmlxLayout additionally to use the component in your application.
+{{note Note that dhtmlxLayout is a separate product, not a part of the dhtmlxScheduler library. If you would like to use dhtmlxLayout in your application, you should purchase the license. 
 Please [check the licensing options](https://dhtmlx.com/docs/products/dhtmlxLayout/#editions-licenses).}}
+
 
 **To attach a dhtmlxScheduler instance to a layout cell**, use the [attachScheduler()](https://docs.dhtmlx.com/api__dhtmlxcell_attachscheduler.html) method.
   
