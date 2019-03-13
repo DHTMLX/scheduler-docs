@@ -19,8 +19,28 @@ scheduler.config.lightbox.sections = [
 }}
 
 
-One Time control is present at the lightbox by default, so you don't need to add it. However, you can configure its structure and behavior as it is described below.
-  
+Initialization
+-----------------------
+
+One Time control is added to the lightbox by default. To add another one, follow these steps:
+
+1\. Add the section to the lightbox configuration:
+
+~~~js
+scheduler.config.lightbox.sections = [
+	{ name:"text", ... },
+   	{ name:"time2", height:50, map_to:"location", type:"time"},
+	{ name:"time", ...}
+];
+~~~
+
+2\. Set a label for the section:
+
+~~~js
+scheduler.locale.labels.section_time2 = "Duration";
+~~~
+	
+
 
 Properties
 ------------------
@@ -97,3 +117,4 @@ time_format:["%H:%i", "%m", "%d"]
 time_format:["%H:%i", "%M", "%d", "%Y"] //"%m" was changed to "%M"
 ~~~
 
+{{todo   check that ability to add another time control is added, check the init section}}
