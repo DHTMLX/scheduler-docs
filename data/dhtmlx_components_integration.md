@@ -1,7 +1,7 @@
 Drag-and-Drop Operations 
 ==================================
 The library provides the **ext/dhtmlxscheduler_outerdrag.js** extension that allows creating new events by dragging elements from external 
-DHTMLX components or another schedulers. 
+DHTMLX components or other schedulers. 
 
 Dragging from external components
 --------------------------------------------

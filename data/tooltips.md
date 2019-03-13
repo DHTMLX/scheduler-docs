@@ -35,13 +35,15 @@ Configuration properties
 ------------------------------------
 
 - **className** -  the name of the CSS class that will be applied to tooltips
+- **timeout_to_display** - the delay in milliseconds, before tooltip is displayed for an event (by default, 50)
+- **timeout_to_hide** - the delay in milliseconds, before the tooltip hides (by default, 50)
 - **delta_x** - the right (if positive) offset of the cursor position (by default, 15)
 - **delta_y** - the top (if positive) offset of the cursor position (by default, -20)
-- **timeout_to_display** - the delay in milliseconds, before tooltip is displayed for an event (by default, 50)
 
 ~~~js
 dhtmlXTooltip.config.className = 'dhtmlXTooltip tooltip'; 
-dhtmlXTooltip.config.timeout_to_display = 50; 
+dhtmlXTooltip.config.timeout_to_display = 50;
+dhtmlXTooltip.config.timeout_to_hide = 50;
 dhtmlXTooltip.config.delta_x = 15; 
 dhtmlXTooltip.config.delta_y = -20; 
 ~~~
