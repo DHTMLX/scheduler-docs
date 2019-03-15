@@ -808,8 +808,3 @@ Related guides
 
 @edition: pro
 
-@todo: check the sections:<br>
-- horizontal scroll<br>
-- timeline api<br>
-- autoscroll config<br>
-- header for the sections column

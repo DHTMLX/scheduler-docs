@@ -1,7 +1,7 @@
 deleteAllSections
 =============
 
-@short: deletes all sections from  the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+@short: deletes all sections from  the currently active view 
 
 @example:
 
@@ -27,7 +27,9 @@ scheduler.deleteAllSections();
     api/scheduler_addsection.md
 @descr:
 
+{{pronote This functionality is available in the PRO edition only.}}
+
 {{note
-The method is used for the Tree mode only
+If the opened view isn't Timeline in the 'Tree' mode, the method will be ignored.
 }}
 @edition:pro

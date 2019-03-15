@@ -6,7 +6,7 @@ focus
 
 @params:
 
-
+@require:key_nav
 @example:
 scheduler.focus();
 
@@ -14,6 +14,7 @@ scheduler.focus();
 @descr:
 added in version 4.4
 
+{{note The method requires the **ext/dhtmlxscheduler_key_nav.js** to be included on the page.}}
 
 @relatedsample:
 13_accessibility/01_regular_skin_all_views.html

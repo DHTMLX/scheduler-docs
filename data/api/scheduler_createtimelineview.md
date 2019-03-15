@@ -39,7 +39,10 @@ scheduler.createTimelineView({
 	06_timeline/02_lines.html
     06_timeline/03_tree.html
     
-@descr: 
+@descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
+
 The configuration object of the Timeline view can have the following properties:
 
 <table class="webixdoc_links">
@@ -216,5 +219,3 @@ scheduler.createTimelineView({
 
 @edition:pro
 
-@todo:
-check new timeline properties

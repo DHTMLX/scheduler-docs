@@ -1,9 +1,8 @@
 closeSection
 =============
 
-
 @short: 
-	closes the specified section in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+	closes the specified section in the currently active view 
 
 @params: 
 - section_id	string	the section's id
@@ -12,7 +11,7 @@ closeSection
 @views: timeline
 @example: 
 scheduler.createTimelineView({
-    name:	"timeline",
+    name:"timeline",
     render:"tree",
     ...
 	y_unit:[
@@ -38,8 +37,12 @@ scheduler.closeSection("managers");
 	api/scheduler_closeallsections.md
     api/scheduler_openallsections.md
 
-@descr: 
+@descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 {{note
-The method is used for the Tree mode only
+If the opened view isn't Timeline in the 'Tree' mode, the method will be ignored.
 }}
+
+
 @edition:pro

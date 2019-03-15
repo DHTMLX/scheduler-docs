@@ -37,6 +37,8 @@ scheduler.parse([
 @views:units
 
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 The configuration object of the Units view can have the following properties:
 <table class="webixdoc_links">
 	<tbody>

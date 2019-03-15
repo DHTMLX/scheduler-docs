@@ -1,7 +1,8 @@
 closeAllSections
 =============
+
 @short: 
-	closes all sections in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+	closes all sections in the currently active view 
 
 @example: 
 scheduler.closeAllSections();
@@ -10,11 +11,12 @@ scheduler.closeAllSections();
 @require:treetimeline
 @views: timeline
 @template:	api_method
-@descr: 
-{{note
-The method is used for the Tree mode only
-}}
+@descr:
+{{pronote This functionality is available in the PRO edition only.}}
 
+{{note
+If the opened view isn't Timeline in the 'Tree' mode, the method will be ignored.
+}}
 
 @relatedapi:
 	api/scheduler_closesection.md
