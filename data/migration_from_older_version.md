@@ -1,5 +1,45 @@
 Migration From Older Versions 
 ==============
+## 5.1 -> 5.2
+
+### API Updates
+
+#### onXLE/onXLS events deprecated
+
+They still work, but will be removed in future. Here is how they should be replaced:
+
+~~~js
+scheduler.attachEvent("onXLS ", function(){...}); → scheduler.attachEvent("onLoadStart", function(){...});
+
+scheduler.attachEvent("onXLE", function(){...}); → scheduler.attachEvent("onLoadEnd", function(){...});
+~~~
+
+#### "vertical" setting of the [Multiselect](multiselect.md#properties) control can't take string value
+
+In previous versions it was possible to set the value of the *vertical* setting of the Multiselect control as a string, like this:
+
+~~~js
+{ name:"userselect", type:"multiselect", ..., vertical:"false" }
+~~~
+
+Since this behavior isn't expected, it has been removed. Now the property takes just a boolean value, i.e. *true* or *false*.
+
+~~~js
+{ name:"userselect", type:"multiselect", ..., vertical: false }
+~~~
+
+#### Default date format
+
+The default date format has changed. 
+
+- before v5.2 it was set by the **scheduler.config.xml_date** property and its value was "%m/%d/%Y %H:%i"
+- after v5.2 it is set by the **scheduler.config.date_format** property and its value is "%Y-%m-%d %H:%i"
+
+To restore the previous default date format, specify the settings below:
+
+~~~js
+scheduler.config.date_format = "%m/%d/%Y %H:%i";
+~~~
 
 ## 5.0 -> 5.1
 
