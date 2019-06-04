@@ -1,5 +1,6 @@
 unblockTime
 =============
+
 @short: 
 	removes blocking set by the blockTime() method 
 
@@ -31,4 +32,4 @@ scheduler.deleteMarkedTimespan(spanID);
 
 @template:	api_method
 
-@changelog: deprecated since v6.1
+@changelog: deprecated since v5.1

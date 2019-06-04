@@ -3,8 +3,7 @@ checkInMarkedTimespan
 
 @short:checks whether an event resides in a timespan of a specific type
 	
-@require:limit
-@require:treetimeline
+@require:limit,treetimeline
 @views: timeline
 @returns:
 isIn	boolean		<i>true</i>, if the event is in the timespan of the specified type

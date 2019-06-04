@@ -38,6 +38,7 @@ scheduler.createTimelineView({
 	06_timeline/01_slots.html
 	06_timeline/02_lines.html
     06_timeline/03_tree.html
+    06_timeline/14_days_as_sections.html
     
 @descr: 
 The configuration object of the Timeline view can have the following properties:
@@ -50,7 +51,7 @@ The configuration object of the Timeline view can have the following properties:
 		</tr>
        <tr>
 			<td class="webixdoc_links0"><b>render</b></td>
-			<td>(<i>'cell', 'bar', 'tree'</i>) the view's mode. By default, 'cell'</td>
+			<td>(<i>'cell', 'bar', 'tree', 'days'</i>) the view's mode. By default, 'cell'</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>y_property</b></td>
@@ -69,7 +70,7 @@ The configuration object of the Timeline view can have the following properties:
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>days</b></td>
-			<td>(<i>number</i>) a number of items(days) in the Y-Axis. Applicable to the 'Days' mode only</td>
+			<td>(<i>number</i>) a number of items (days) in the Y-Axis. Applicable to the 'Days' mode only</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>x_unit</b></td>
@@ -188,7 +189,11 @@ The configuration object of the Timeline view can have the following properties:
                     <li><b>speed_y</b> - (<i>number</i>) vertical autoscroll speed</li>
                 </ul>
             </td>
-		</tr>          
+		</tr> 
+        <tr>
+			<td class="webixdoc_links0"><b>cell_template</b></td>
+			<td>(<i>boolean</i>) enables rendering a template specified for a timeline</td>
+		</tr>
     </tbody>
 </table>
 
@@ -216,5 +221,4 @@ scheduler.createTimelineView({
 
 @edition:pro
 
-@todo:
-check new timeline properties
+

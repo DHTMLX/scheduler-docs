@@ -18,6 +18,7 @@ Properties
 - api/scheduler_check_limits_config.md - activates/disables checking of limits
 - api/scheduler_collision_limit_config.md - sets the maximum allowable number of events per time slot
 - api/scheduler_container_autoresize_config.md - forces the scheduler container to automatically change its size to show the whole content without scrolling
+- api/scheduler_date_format_config.md - sets the date format that is used to parse data from the data set
 - api/scheduler_day_date_config.md - sets the date format for the X-Axis of the Week and Units views
 - api/scheduler_dblclick_create_config.md - enables the possibility to create events by double click
 - api/scheduler_default_date_config.md - sets the date format used by the templates 'day_date', 'week_date', 'day_scale_date' for setting date in the views' headers
@@ -28,6 +29,7 @@ Properties
 - api/scheduler_displayed_event_color_config.md - sets the default background color for the events retrieved by the showEvent() method
 - api/scheduler_displayed_event_text_color_config.md - sets the default font color for the events retrieved by the showEvent() method
 - api/scheduler_drag_create_config.md - enables the possibility to create new events by drag-and-drop
+- api/scheduler_drag_event_body_config.md - allows dragging scheduler events by any part of the body
 - api/scheduler_drag_highlight_config.md - highlights the event's duration on the time scale when you drags an event over the scheduler
 - api/scheduler_drag_in_config.md - restrict dragging events to the calling scheduler from any other scheduler(s)
 - api/scheduler_drag_lightbox_config.md - enables the possibility to drag the lightbox by the header
@@ -52,9 +54,9 @@ Properties
 - api/scheduler_lightbox_config.md - specifies the lightbox object
 - api/scheduler_lightbox_recurring_config.md - defines the lightbox's behavior, when the user opens the lightbox to edit a recurring event
 - api/scheduler_limit_drag_out_config.md - denies to drag events out of the visible area of the scheduler
-- api/scheduler_limit_end_config.md - sets the right border of the allowable date range
-- api/scheduler_limit_start_config.md - sets the left border of the allowable date range
-- api/scheduler_limit_time_select_config.md - sets the max and min values of the time selector in the lightbox to the values of the 'last_hour' and 'first_hour' options
+- api/scheduler_limit_end_config.md - sets the end limit of the allowable date range
+- api/scheduler_limit_start_config.md - sets the start limit of the allowable date range
+- api/scheduler_limit_time_select_config.md - sets max and min values of time selector in the lightbox to the values of the 'last_hour' and 'first_hour' options
 - api/scheduler_limit_view_config.md - limits the date period during which the user can view the events
 - api/scheduler_load_date_config.md - sets the format of server request parameters 'from', 'to' in case of dynamic loading
 - api/scheduler_map_end_config.md - sets the date to display events until
@@ -81,6 +83,7 @@ Properties
 - api/scheduler_multisection_shift_all_config.md - specifies whether while dragging events that assigned to several sections of the Timeline or Units view, all  instances should be dragged at once ('true') or just the selected one ('false')
 - api/scheduler_now_date_config.md - sets the date for the current-time marker in the Limit extension (enabled by the configuration - mark_now)
 - api/scheduler_occurrence_timestamp_in_utc_config.md - allows working with recurring events independently of time zones
+- api/scheduler_parse_exact_format_config.md - defines whether scheduler automatically identifies the format of data
 - api/scheduler_positive_closing_config.md - defines the 'saving' behaviour for the case, when  the user edits the event's text directly in the event's box
 - api/scheduler_preserve_length_config.md - preserves the visible length of an event while dragging along a non-linear time scale
 - api/scheduler_preserve_scroll_config.md - cancels preserving of the current scroll position while navigating between dates of the same view
@@ -112,8 +115,7 @@ Properties
 - api/scheduler_wai_aria_application_role_config.md - defines whether role="application" will be used for the main scheduler container and minicalendar elements
 - api/scheduler_wai_aria_attributes_config.md - enables WAI-ARIA support to make the component recognizable for screen readers
 - api/scheduler_week_date_config.md - sets the format of the date in the sub-header of the Month view
-- api/scheduler_wide_form_config.md - enables/disables displaying the standard (wide) lightbox instead of the short one
-- api/scheduler_xml_date_config.md - sets the date format that is used to parse data from the data set
+- api/scheduler_wide_form_config.md - enables/disables displaying of the standard (wide) lightbox instead of the short one
 - api/scheduler_year_x_config.md - sets the number of rows in the Year view
 - api/scheduler_year_y_config.md - sets the number of columns in the Year view
 }}
@@ -134,6 +136,7 @@ Properties
 - api/scheduler_check_limits_config.md
 - api/scheduler_collision_limit_config.md
 - api/scheduler_container_autoresize_config.md
+- api/scheduler_date_format_config.md
 - api/scheduler_day_date_config.md
 - api/scheduler_dblclick_create_config.md
 - api/scheduler_default_date_config.md
@@ -144,6 +147,7 @@ Properties
 - api/scheduler_displayed_event_color_config.md
 - api/scheduler_displayed_event_text_color_config.md
 - api/scheduler_drag_create_config.md
+- api/scheduler_drag_event_body_config.md
 - api/scheduler_drag_highlight_config.md
 - api/scheduler_drag_in_config.md
 - api/scheduler_drag_lightbox_config.md
@@ -197,6 +201,7 @@ Properties
 - api/scheduler_multisection_shift_all_config.md
 - api/scheduler_now_date_config.md
 - api/scheduler_occurrence_timestamp_in_utc_config.md
+- api/scheduler_parse_exact_format_config.md
 - api/scheduler_positive_closing_config.md
 - api/scheduler_preserve_length_config.md
 - api/scheduler_preserve_scroll_config.md
@@ -229,7 +234,6 @@ Properties
 - api/scheduler_wai_aria_attributes_config.md
 - api/scheduler_week_date_config.md
 - api/scheduler_wide_form_config.md
-- api/scheduler_xml_date_config.md
 - api/scheduler_year_x_config.md
 - api/scheduler_year_y_config.md
 

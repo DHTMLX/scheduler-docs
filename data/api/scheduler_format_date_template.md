@@ -1,5 +1,9 @@
-xml_format
+format_date
 =============
+
+@todo:
+	check and improve
+
 @short:
 	a date object is converted into a string in conformity with this template. Used to send data back to the server
 
@@ -8,9 +12,9 @@ xml_format
 
 @example:
 var cfg = scheduler.config;
-var	date_to_str = scheduler.date.date_to_str(cfg.xml_date, cfg.server_utc);
+var	date_to_str = scheduler.date.date_to_str(cfg.date_format, cfg.server_utc);
 
-scheduler.templates.xml_format = function(date){
+scheduler.templates.format_date = function(date){
 	return date_to_str(date);
 };
 

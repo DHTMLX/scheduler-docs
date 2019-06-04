@@ -1,5 +1,6 @@
 blockTime
 =============
+
 @short: 
 	blocks the specified date and applies the default 'dimmed' style to it.
 
@@ -167,4 +168,4 @@ sections: { unit: 5, timeline: [2,3]}
     </tbody>
 </table>
 
-@changelog: deprecated since v6.1
+@changelog: deprecated since v5.1

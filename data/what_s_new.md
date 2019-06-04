@@ -10,6 +10,25 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+5.2
+--------------
+
+<span class='release_date'>June 5, 2019. Minor update</span>
+
+###Breaking Changes
+
+
+###Major Changes
+
+1. [Custom HTML content for timeline cells](timeline_view.md#customcontentincells) (PRO version)
+2. [Drag-n-drop of events by the body](migration_from_older_version.md#dnd)
+3. [Updates in API](migration_from_older_version.md#5152)
+
+###Minor Changes
+
+###Bug Fixes and Improvements
+
+
 5.1.6
 ------------
 
@@ -31,6 +50,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 <span class='release_date'>December 14, 2018. Bugfix release</span>
 
 ###Fixes
+
 - Fixed keyboard navigation focus not being highlighted in the timeline
 - Fixed incorrect initial height of `timeline_scale_header` if `second_scale` specified
 - Fixed bug with `event_min_dy` not affecting section height if only one event is located inside a section
@@ -49,6 +69,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 ------------
 
 ###Fixes
+
 - Fixed keyboard navigation focus not being highlighted in the timeline
 - Fixed incorrect initial height of `timeline_scale_header` if `second_scale` specified
 - Fixed bug with `event_min_dy` not affecting section height if only one event is located inside a section
