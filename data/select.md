@@ -178,5 +178,5 @@ scheduler.load("./data/types.php", 'json');
 ~~~
 
 {{sample
-	01_initialization_loading/11_connector_options_json.html
+	01_initialization_loading/09_connector_options.html
 }}

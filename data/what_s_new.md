@@ -17,16 +17,32 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 ###Breaking Changes
 
+This update changes behavior of multiple API methods. While they shouldn't cause any breaks in the existing code, be sure to check [Migration notes](migration_from_older_version.md#5152) to be on the safe side.
 
-###Major Changes
+###New functionality
 
 1. [Custom HTML content for timeline cells](timeline_view.md#customcontentincells) (PRO version)
 2. [Drag-n-drop of events by the body](migration_from_older_version.md#dnd)
-3. [Updates in API](migration_from_older_version.md#5152)
 
-###Minor Changes
+###Updates
 
-###Bug Fixes and Improvements
+-  The data format parameter of api/scheduler_load.md and api/scheduler_parse.md became optional, scheduler now detects format automatically
+- [Date-to-string functions](date_formats.md) can now auto-detect the date strings format, if it doesn't match the provided one
+- [dhtmlxConnector library](https://github.com/DHTMLX/connector-php) is no longer shipped with the dhtmlxScheduler package
+- dhtmlxScheduler package samples no longer require a php/apache server to work
+- New methods for the [timeline object](timeline_view.md#timelineobjectapi)
+- The multiselect.md control allows loading options in the JSON format
+- api/scheduler_onloadstart_event.md, api/scheduler_onbeforeparse_event.md, api/scheduler_onparse_event.md, api/scheduler_onloadend_event.md are introduced instead
+of the deprecated - **onXLS** and **onXLE** events
+
+###Fixes
+
+- Fix incorrect behavior which happened when api/scheduler_clearall.md was called before `scheduler.endLightbox(false)` while creating a new event
+- Fix flickering issue with [timeline horizontal scroll](timeline_view.md#horizontalscroll) on iPad
+- Fix various display issues with [scrollable timeline](timeline_view.md#horizontalscroll)
+- The Units view api/scheduler_{unitsname}_scale_text_template.md now provides a section date in arguments
+- Fix script error which was thrown from the [Units view](units_view.md) during an event creation if no sections are loaded
+- The multiselect.md control now expects only boolean values for `vertical` property `vertical:false` - string values as in `vertical:"false"` will be interpreted as boolean `true` 
 
 
 5.1.6

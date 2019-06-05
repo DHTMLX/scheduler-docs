@@ -1,9 +1,6 @@
 onLoadEnd
 =============
 
-@todo:
-	check 
-
 @short: fires after loading data from the data source has been completed 
 
 	
@@ -11,8 +8,14 @@ onLoadEnd
 @params:
 
 @example:
+
+
+scheduler.attachEvent("onLoadStart", function(){
+    scheduler.config.readonly = true;
+});
+
 scheduler.attachEvent("onLoadEnd", function(){
-    //any custom logic here
+    scheduler.config.readonly = false;
 });
 
 
@@ -20,5 +23,12 @@ scheduler.attachEvent("onLoadEnd", function(){
 @template:	api_event
 @descr:
 
+@related:
+	loading_data.md
+    server_integration.md
+
 @relatedapi:
+api/scheduler_load.md
 api/scheduler_onloadstart_event.md
+api/scheduler_onbeforeparse_event.md
+api/scheduler_onparse_event.md

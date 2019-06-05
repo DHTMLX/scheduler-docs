@@ -1,6 +1,7 @@
 Scheduler API 
 =============
 
+
 <div class='h2'>Methods</div>
 
 {{api
@@ -211,7 +212,7 @@ Scheduler API
 - api/scheduler_check_limits_config.md - activates/disables checking of limits
 - api/scheduler_collision_limit_config.md - sets the maximum allowable number of events per time slot
 - api/scheduler_container_autoresize_config.md - forces the scheduler container to automatically change its size to show the whole content without scrolling
-- api/scheduler_date_format_config.md - sets the date format that is used to parse data from the data set
+- api/scheduler_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
 - api/scheduler_day_date_config.md - sets the date format for the X-Axis of the Week and Units views
 - api/scheduler_dblclick_create_config.md - enables the possibility to create events by double click
 - api/scheduler_default_date_config.md - sets the date format used by the templates 'day_date', 'week_date', 'day_scale_date' for setting date in the views' headers
@@ -309,6 +310,7 @@ Scheduler API
 - api/scheduler_wai_aria_attributes_config.md - enables WAI-ARIA support to make the component recognizable for screen readers
 - api/scheduler_week_date_config.md - sets the format of the date in the sub-header of the Month view
 - api/scheduler_wide_form_config.md - enables/disables displaying of the standard (wide) lightbox instead of the short one
+- api/scheduler_xml_date_config.md - sets the date format that is used to parse data from the data set
 - api/scheduler_year_x_config.md - sets the number of rows in the Year view
 - api/scheduler_year_y_config.md - sets the number of columns in the Year view
 }}
@@ -336,7 +338,7 @@ Scheduler API
 - api/scheduler_event_date_template.md - specifies the time part of the start and end dates of the event. Mostly used by other templates for presenting time periods
 - api/scheduler_event_header_template.md - specifies the event's header
 - api/scheduler_event_text_template.md - specifies the event's text
-- api/scheduler_format_date_template.md - a date object is converted into a string in conformity with this template. Used to send data back to the server
+- api/scheduler_format_date_template.md - сonverts date object to a date string. Used to send data back to the server
 - api/scheduler_hour_scale_template.md - specifies the items of the Y-Axis
 - api/scheduler_load_format_template.md - specifies the format of requests in the dynamic loading mode
 - api/scheduler_map_date_template.md - specifies the date in the header of the view
@@ -349,7 +351,7 @@ Scheduler API
 - api/scheduler_month_day_template.md - specifies the format of the day in a cell
 - api/scheduler_month_events_link_template.md - specifies the presentation of the 'View more' link in a cell of the Month view
 - api/scheduler_month_scale_date_template.md - specifies the date format of the X-Axis of the view
-- api/scheduler_parse_date_template.md - a string is converted into a date object in conformity with this template
+- api/scheduler_parse_date_template.md - converts date string into a [Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
 - api/scheduler_quick_info_content_template.md - specifies the content of the pop-up edit form
 - api/scheduler_quick_info_date_template.md - specifies the date of the pop-up edit form
 - api/scheduler_quick_info_title_template.md - specifies the title of the pop-up edit form
@@ -382,6 +384,8 @@ Scheduler API
 - api/scheduler_{timelinename}_second_scale_date_template.md - specifies items of the second X-Axis
 - api/scheduler_{unitsname}_date_template.md - specifies the date in the header of the view
 - api/scheduler_{unitsname}_scale_text_template.md - specifies items of the X-Axis
+- api/scheduler_xml_date_template.md - a string from an XML file is converted into a date object in conformity with this template
+- api/scheduler_xml_format_template.md - a date object is converted into a string in conformity with this template. Used to send data back to the server
 }}
 
 

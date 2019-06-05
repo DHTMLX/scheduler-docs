@@ -7,9 +7,9 @@ Start
     New version brings new improvements and features:
     </p>
     <ul>
-        <li><a href="">Custom HTML content for timeline cells</a></li>
-        <li><a href="">Drag-n-drop of events by the body</a></li>
-        <li><a href="">Updates in API</a></li>
+        <li><a href="timeline_view.md#customcontentincells">Custom HTML content for timeline cells</a></li>
+        <li><a href="migration_from_older_version.md#dnd">Drag-n-drop of events by the body</a></li>
+        <li><a href="migration_from_older_version.md#5152">Updates in API</a></li>
     </ul>
     <p class='action_buttons'>
       <a class='action_button moredetails' href="what_s_new.html">More details</a>

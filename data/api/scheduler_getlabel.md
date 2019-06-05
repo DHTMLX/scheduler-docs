@@ -23,7 +23,7 @@ var holder2 = scheduler.getLabel("unit_id", 2);// ->"John Williams"
 
 @template:	api_method
 @relatedsample:
-	03_extensions/22_multiselect_initial_loading.html
+	03_extensions/21_multiselect_options.html
 @descr: 
 {{note
 The method is applied only to select controls in the lightbox, to get the label of a specific option.

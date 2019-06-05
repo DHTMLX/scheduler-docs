@@ -17,7 +17,7 @@ var str = scheduler.toJSON();
 @related:
 	export.md
 @relatedsample:
-	04_export/02_serialize_json.html
+	04_export/01_serialize_data.html
 @descr: 
 Custom attributes [can be configured](export.md) if necessary.
 

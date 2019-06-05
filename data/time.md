@@ -95,4 +95,3 @@ time_format:["%H:%i", "%m", "%d"]
 time_format:["%H:%i", "%M", "%d", "%Y"] //"%m" was changed to "%M"
 ~~~
 
-@todo: the ability to add another time control hasn't been added, maybe next version

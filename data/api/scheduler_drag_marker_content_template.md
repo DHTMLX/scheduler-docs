@@ -31,3 +31,4 @@ scheduler.templates.drag_marker_content = function(start, end, event){
 
 @relatedapi:
 	api/scheduler_drag_marker_class_template.md
+    

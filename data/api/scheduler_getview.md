@@ -1,9 +1,6 @@
 getView
 =============
 
-@todo:
-	check 
-
 @short:
 	returns a view object by its name. If no name is specified, returns the current view
 
@@ -21,6 +18,13 @@ getView
 var timeline = scheduler.getView(); 
 timeline.x_size = 8;
 scheduler.setCurrentView();
+
+@relatedsample:
+	06_timeline/17_timeline_cell_content.html
+    
+@related:
+	timeline_view.md
+    units_view.md
 
 
 @template:	api_method

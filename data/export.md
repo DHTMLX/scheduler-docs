@@ -1,8 +1,9 @@
-Data Serialization to XML, JSON and iCal 
+Data Serialization to XML, JSON, iCal 
 =========================================
 
-Making Preparations 
+Making preparations 
 -------------------------------
+
 To activate such functionality, include the **dhtmlxscheduler_serialize.js** extension file.
 
 ~~~js
@@ -10,9 +11,9 @@ To activate such functionality, include the **dhtmlxscheduler_serialize.js** ext
 ~~~
 
 
-
 Export to XML 
 -------------------------------
+
 To serialize scheduler data to an XML string, use the api/scheduler_toxml.md method:
 
 
@@ -22,13 +23,14 @@ var xml = scheduler.toXML(); //xml string
 ~~~
 
 {{sample
-	04_export/01_serialize_xml.html
+	04_export/01_serialize_data.html
 }}
 
 
 
 Export to JSON 
 --------------------------------
+
 To serialize scheduler data to a JSON string, use the api/scheduler_tojson.md method: 
 
 
@@ -37,17 +39,17 @@ var json_string = scheduler.toJSON(); //json string
 ~~~
 
 
-
 {{note
 Note, the method returns a JSON string, not object. If you need to get a JSON object - use the api/scheduler_getevents.md method.
 }}
 
 {{sample
-	04_export/02_serialize_json.html
+	04_export/01_serialize_data.html
 }}
 
 Export to iCal 
 ---------------------------------
+
 To serialize scheduler data to an ICal string, use the api/scheduler_toical.md method: 
 
 
@@ -59,7 +61,7 @@ var ical_string = scheduler.toICal(); //ical string
 Also, there is an [external script for iCal import-export operations](ical_export_import.md)
 
 {{sample
-	04_export/03_serialize_ical.html
+	04_export/01_serialize_data.html
 }}
 
 Attributes in serialization
@@ -71,15 +73,12 @@ The following technique is not applicable to the iCal format.
 
 By default export will include only standard attributes(properties):
 
-
-
 1.  id
 2.  text
-3.  start_date (*format of serialization is defined by the api/scheduler_xml_date_config.md property*)
+3.  start_date (*format of serialization is defined by the api/scheduler_date_format_config.md property*)
 4.  end_date
 
   
-
 If you need to include some custom attributes, you can redefine the **data_attributes** method. In the simplest case it will look as in:
 
 
@@ -90,10 +89,7 @@ scheduler.data_attributes = function(){
 		["custom_attribute"]
 	];
 };
-
 ~~~
-
-
 
 
 Basically, the method defines a list of attribute names. 
@@ -108,13 +104,14 @@ scheduler.data_attributes = function(){
 	return [
 		["id"],
 		["text"],
-		["start_date",scheduler.templates.xml_format],
-		["end_date",scheduler.templates.xml_format]];
+		["start_date",scheduler.templates.format_date],
+		["end_date",scheduler.templates.format_date]];
 }
 ~~~
 
 Serializing recurring events
 -----------------------------------------------
+
 {{note
 Below technique is not applicable for the iCal format. 
 }}
@@ -167,14 +164,12 @@ Serialization allows you to implement a simple routine of data saving, which doe
 ~~~
 
 
-
 ~~~js
 function save(){
 	var form = document.getElementById("xml_form");
 	form.elements.data.value = scheduler.toXML();
 	form.submit();
 }
-
 ~~~
 
 
@@ -185,10 +180,7 @@ function save(){
 <?php
 	file_put_contents("./data.xml",$_POST["data"]);
 ?>
-
 ~~~
-
-
 
 
 the empty data.xml is:
@@ -199,8 +191,6 @@ the empty data.xml is:
 ~~~
 
 
-
-
 That's all, now scheduler can be loaded from data.xml, pressing "save" button will serialize the current state of the scheduler to xml and save back to the file. 
 
 So, on next loading the scheduler will load events that have been saved previously. 
@@ -208,6 +198,7 @@ So, on next loading the scheduler will load events that have been saved previous
 
 
 ## Troubleshooting 
+
 If during data saving, you face unwanted data escaping (in the saved data), make sure that "magic_quotes" is disabled in php configuration. 
 
 @index:

@@ -22,7 +22,7 @@ Templates
 - api/scheduler_event_date_template.md - specifies the time part of the start and end dates of the event. Mostly used by other templates for presenting time periods
 - api/scheduler_event_header_template.md - specifies the event's header
 - api/scheduler_event_text_template.md - specifies the event's text
-- api/scheduler_format_date_template.md - a date object is converted into a string in conformity with this template. Used to send data back to the server
+- api/scheduler_format_date_template.md - сonverts date object to a date string. Used to send data back to the server
 - api/scheduler_hour_scale_template.md - specifies the items of the Y-Axis
 - api/scheduler_load_format_template.md - specifies the format of requests in the dynamic loading mode
 - api/scheduler_map_date_template.md - specifies the date in the header of the view
@@ -35,7 +35,7 @@ Templates
 - api/scheduler_month_day_template.md - specifies the format of the day in a cell
 - api/scheduler_month_events_link_template.md - specifies the presentation of the 'View more' link in a cell of the Month view
 - api/scheduler_month_scale_date_template.md - specifies the date format of the X-Axis of the view
-- api/scheduler_parse_date_template.md - a string is converted into a date object in conformity with this template
+- api/scheduler_parse_date_template.md - converts date string into a [Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
 - api/scheduler_quick_info_content_template.md - specifies the content of the pop-up edit form
 - api/scheduler_quick_info_date_template.md - specifies the date of the pop-up edit form
 - api/scheduler_quick_info_title_template.md - specifies the title of the pop-up edit form
@@ -68,6 +68,8 @@ Templates
 - api/scheduler_{timelinename}_second_scale_date_template.md - specifies items of the second X-Axis
 - api/scheduler_{unitsname}_date_template.md - specifies the date in the header of the view
 - api/scheduler_{unitsname}_scale_text_template.md - specifies items of the X-Axis
+- api/scheduler_xml_date_template.md - a string from an XML file is converted into a date object in conformity with this template
+- api/scheduler_xml_format_template.md - a date object is converted into a string in conformity with this template. Used to send data back to the server
 }}
 
 @index:
@@ -135,5 +137,7 @@ Templates
 - api/scheduler_{timelinename}_second_scale_date_template.md
 - api/scheduler_{unitsname}_date_template.md
 - api/scheduler_{unitsname}_scale_text_template.md
+- api/scheduler_xml_date_template.md
+- api/scheduler_xml_format_template.md
 
 

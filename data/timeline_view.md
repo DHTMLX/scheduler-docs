@@ -290,7 +290,7 @@ All defined timeline objects are stored in the [scheduler.matrix](api/scheduler_
 You can access the configuration of any timeline view by its name and change any property. Changes will be applied as soon as you update the scheduler:
 
 ~~~js
-scheduler.matrix['timeline'].x_size = 12;
+scheduler.getView('timeline').x_size = 12;
 scheduler.setCurrentView(); // redraws scheduler
 ~~~
 
@@ -881,7 +881,8 @@ To enable this functionality for a particular timeline, make use of the **cell_t
 
 ~~~js
 scheduler.createTimelineView({
-    cell_template: true
+    cell_template: true,
+    ...
 });
 ~~~
 
@@ -955,5 +956,3 @@ Related guides
 
 @edition: pro
 
-@todo:
-Custom content in cells section

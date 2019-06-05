@@ -1,9 +1,6 @@
 onParse
 =============
 
-@todo:
-	check 
-
 @short:
 	fires after data was parsed (became available for API) but before it was rendered in the Scheduler
 
@@ -20,4 +17,11 @@ scheduler.parse(events);
 @descr:
 
 @relatedapi:
+api/scheduler_load.md
+api/scheduler_parse.md
 api/scheduler_onbeforeparse_event.md
+api/scheduler_onloadstart_event.md
+api/scheduler_onloadend_event.md
+
+@related:
+	loading_data.md

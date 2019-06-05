@@ -1,5 +1,6 @@
- Multiselect 
+Multiselect 
 ==============
+
 A set of check boxes.
 
 <img src="multiselect_editor.png"/>
@@ -14,7 +15,7 @@ scheduler.locale.labels.section_userselect = "Participants";
 scheduler.config.lightbox.sections=[	
 	{ name:"description", height:50, map_to:"text", type:"textarea", focus:true },
 	{ name:"userselect", height:22, map_to:"user_id", type:"multiselect", 
-    options: scheduler.serverList("user_id"), vertical:"false" },
+    options: scheduler.serverList("users"), vertical:"false" },
 	{ name:"time", height:72, type:"time", map_to:"auto"}	
 ];
 ~~~
@@ -129,58 +130,67 @@ Items in the  [options](api/scheduler_lightbox_config.md) parameter must have 2 
 
 Populating check boxes from the server
 ------------------------------------------------------
+
 To retrieve checkbox values from the server, you need to use the api/scheduler_serverlist.md method:
 
 ~~~js
 scheduler.config.lightbox.sections = [
 	{name:"description", ...},
 	{ name:"userselect", height:22, map_to:"user_id", type:"multiselect", 
-    options: scheduler.serverList("user_id"), vertical:"false" },
+    options: scheduler.serverList("users"), vertical:"false" },
 	{name:"time", ...}
 ];
 
-scheduler.load("./data/data.php");
+scheduler.load("api/data");
 ~~~
 
-where the **data.php** is a server-side script, retrieving events loaded to the scheduler, and a collection of multiselect buttons values:
+where the **api/data** is a [server-side script](server_integration.md), retrieving events loaded to the scheduler, and a collection of multiselect buttons values
+as shown here data_formats.md#jsonwithcollections:
 
-~~~php
-//data.php
-<?php
-
-	include ('../../../../connector-php/codebase/scheduler_connector.php');
-	include ('../../../../connector-php/codebase/crosslink_connector.php');
-	require_once ('../../common/config.php');
-
-	$res=mysql_connect($server, $user, $pass);
-	mysql_select_db($db_name);
-
-	$cross = new CrossOptionsConnector($res, $dbtype);
-	$cross->options->render_table(
-          "user",
-          "user_id",
-          "user_id(value),username(label)"
-    );
-	$cross->link->render_table("event_user","event_id", "user_id,event_id");
-	
-	$scheduler = new SchedulerConnector($res, $dbtype);
-	
-	$scheduler->set_options("user_id", $cross->options);
-	$scheduler->render_table(
-          "events_ms",
-          "event_id",
-          "start_date,end_date,event_name,details"
-    );
-?>
+~~~js
+//response
+{ 
+   "data":[
+      {
+          "id":"1",
+          "start_date":"2019-03-02 00:00:00",
+          "end_date":"2019-03-04 00:00:00",
+          "text":"dblclick me!",
+          "user_id":"1,2"
+      },
+      {
+          "id":"2",
+          "start_date":"2019-03-09 00:00:00",
+          "end_date":"2019-03-11 00:00:00",
+          "text":"and me!",
+          "user_id":"2,3"
+      }
+   ], 
+   "collections": {                         
+      "users":[                          
+         {"value":"1","label":"Lisa"},    
+         {"value":"2","label":"Bob"},   
+         {"value":"3","label":"Mike"}    
+      ]                                     
+   }                                        
+}
 ~~~
 
 {{note
 Note, you can use the api/scheduler_updatecollection.md method to update the list of retrieving options
 }}
 
+~~~js
+var oldOptions = scheduler.serverList("users").slice();
+scheduler.updateCollection("users", [
+         {"value":"4","label":"John"},    
+         {"value":"5","label":"Paul"},   
+         {"value":"6","label":"Ringo"},   
+         {"value":"7","label":"George"}
+]);
+~~~
 
-- CrossOptionsConnector connector takes two tables: one, where options are stored and the second where relations are stored. 
-- The set_options() method is used to link the cross-link connector to the scheduler
+
 
 Dynamic loading
 ----------------------------------------------
@@ -199,40 +209,19 @@ To enable the dynamic mode, you should use the **script_url** property in additi
 scheduler.config.lightbox.sections = [
 	{name:"userselect", height:22, map_to:"user_id", type:"multiselect", 
 	options: scheduler.serverList("user_id"),
-    script_url:'data/events_multiselect_options.php'},
+    script_url:'api/options'},
     ...
 ];
 ~~~
 
-where the server-side is specified as in:
-~~~php
-<?php
-	include ('../../../../connector-php/codebase/scheduler_connector.php');
-	include ('../../../../connector-php/codebase/crosslink_connector.php');
-	require_once ('../../common/config.php');
+where `api/options` returns the following JSON:
 
-	$res=mysql_connect($server, $user, $pass);
-	mysql_select_db($db_name);
-    
-	$cross = new CrossOptionsConnector($res, $dbtype);
-	$cross->dynamic_loading(true);
-	$cross->options->render_table(
-         "user",
-         "user_id",
-         "user_id(value),username(label)"
-    );
-	$cross->link->render_table("event_user","event_id", "user_id,event_id");
-
-	$scheduler = new SchedulerConnector($res, $dbtype);
-		
-	$scheduler->set_options("user_id", $cross->options);
-
-	$scheduler->render_table(
-         "events_ms",
-         "event_id",
-         "start_date,end_date,event_name,details"
-    );
-?>
+~~~js
+[                          
+	{"value":"1","label":"Lisa"},    
+    {"value":"2","label":"Bob"},   
+    {"value":"3","label":"Mike"}    
+]
 ~~~
 
 

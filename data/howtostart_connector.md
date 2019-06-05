@@ -167,13 +167,13 @@ Besides the aforementioned fields, you can create any number of extra ones, whic
 
 
 Beware, the format of the DataTime data type is '%Y-%m-%d %H:%i' that differs from the date format expected by the scheduler ('%m/%d/%Y %H:%i'). 
-So, to provide correct data conversion, you should change the default scheduler format. It can be achieved by specifying the api/scheduler_xml_date_config.md configuration option.
+So, to provide correct data conversion, you should change the default scheduler format. It can be achieved by specifying the api/scheduler_date_format_config.md configuration option.
   
   
 Note, any configuration options go BEFORE the initialization string, i.e.:
 
 ~~~js
-scheduler.config.xml_date="%Y-%m-%d %H:%i";
+scheduler.config.date_format="%Y-%m-%d %H:%i";
 ...
 scheduler.init('scheduler_here',new Date(),"month");
 ~~~

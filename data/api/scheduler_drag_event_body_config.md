@@ -1,10 +1,6 @@
 drag_event_body
 =============
 
-@todo:
-	check 
-
-
 @short: allows dragging scheduler events by any part of the body
 
 	

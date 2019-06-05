@@ -247,4 +247,3 @@ codebase/dhtmlxgrid_units.js => codebase/ext/dhtmlxgrid_units.js
 @index:
 - scheduler_3.0.md
 
-@todo: check and improve migration for 5.1->5.2

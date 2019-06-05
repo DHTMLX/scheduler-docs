@@ -147,10 +147,10 @@ To be loaded from a database, data items should have one more mandatory property
 
 - **id** -  (*string, number*) the event id.
 
-The default date format for JSON and XML data is **'%m/%d/%Y %H:%i'** (see the <a href="settings_format.md"> date format specification</a>).<br> To change it, use the api/scheduler_xml_date_config.md configuration option.
+The default date format for JSON and XML data is **'%m/%d/%Y %H:%i'** (see the <a href="settings_format.md"> date format specification</a>).<br> To change it, use the api/scheduler_date_format_config.md configuration option.
 
 ~~~js
-scheduler.config.xml_date="%Y-%m-%d %H:%i";
+scheduler.config.date_format="%Y-%m-%d %H:%i";
 ...
 scheduler.init('scheduler_here', new Date(2013, 3, 18), "week");
 ~~~
