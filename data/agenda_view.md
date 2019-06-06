@@ -111,7 +111,7 @@ scheduler.date.add_agenda = function(date, inc){
 
 After that all buttons will work as usual.
 
-{{editor		http://snippet.dhtmlx.com/bb8b9437e			Next/Previous/Today buttons in Agenda view}}
+{{editor		https://snippet.dhtmlx.com/5a5d072f2			Next/Previous/Today buttons in Agenda view}}
 
 
 Width of columns
@@ -133,7 +133,7 @@ The width of columns in the Agenda view can be adjusted through the related CSS 
 ![Columns Width](agenda_columns_width.png)
 
 
-{{editor			http://snippet.dhtmlx.com/50c6a7562			Adjusting width of columns}}
+{{editor		https://snippet.dhtmlx.com/8a2c1eb40			Adjusting width of columns}}
 
 Related guides
 ---------------------
