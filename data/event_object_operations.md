@@ -82,3 +82,63 @@ To change the current id of an event, you may use the api/scheduler_changeeventi
 ~~~js
 scheduler.changeEventId("ev15", "ev25"); //changes the event id "ev15" -> "ev25"
 ~~~
+
+
+Setting the lightbox option's label as the text of the event
+---------------------------
+
+By default the text of a Scheduler event is set via the mapped text field from the lightbox. 
+
+<img src="default_event_text.png">
+
+It is also possible to redefine the default behavior and use the label of the option selected in the combobox as the text of the event.  
+
+<img src="option_event_text.png">
+
+The text of an event is specified by one of the following templates: api/scheduler_event_text_template.md or api/scheduler_event_bar_text_template.md, depending on the type of the view. So to change 
+the scheme of adding text into an event, you should redefine the corresponding template.
+
+~~~js
+scheduler.config.lightbox.sections = [
+	{ name:"type", height:21, inputWidth:400, map_to:"type", type:"select", 
+    	options:scheduler.serverList("options", [
+			{key:1, label:"Simple"},
+			{key:2, label:"Complex"},
+			{key:3, label:"Unknown"}
+		]
+    )},
+	{name:"time", height:72, type:"time", map_to:"auto"}
+];
+
+scheduler.templates.event_text = scheduler.templates.event_bar_text = function(start, end, event){
+	var options = scheduler.serverList("options");
+
+	for(var i = 0; i < options.length; i++){
+		if(options[i].key == event.type){
+			return options[i].label;
+		}
+	}
+	
+	return "";
+};
+~~~
+
+There are several notes concerning the above code:
+
+- The api/scheduler_serverlist.md method is used to provide options for the combobox and retrieve them inside the template. This method can also be used to load options with the rest of data using a connector and update them dynamically.
+
+- Inside the template there is a linear search for a selected item. In some cases when you have a lot of events/options, it may have a noticeable impact on performance, since these templates can be called quite often. To solve this issue, you can create a hash for a quick search instead of constantly iterating an array.
+
+- The client side should have the complete list of options in order to display them. Otherwise, you will need to load the options manually, e.g. if you use the autocomplete search functionality, which pulls the required options dynamically.
+
+
+
+
+
+
+
+
+
+
+
+

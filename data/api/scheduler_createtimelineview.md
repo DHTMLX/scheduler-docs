@@ -40,7 +40,10 @@ scheduler.createTimelineView({
     06_timeline/03_tree.html
     06_timeline/14_days_as_sections.html
     
-@descr: 
+@descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
+
 The configuration object of the Timeline view can have the following properties:
 
 <table class="webixdoc_links">
@@ -205,7 +208,7 @@ All defined timeline objects are stored in the **scheduler.matrix** object.
 You can access the configuration of any timeline view by its name and change any property. Changes will be applied as soon as you update the scheduler:
 
 ~~~js
-scheduler.matrix["timeline"].x_size = 12;
+scheduler.getView('timeline').x_size = 12;
 scheduler.setCurrentView(); // redraws scheduler
 ~~~
 
@@ -220,5 +223,4 @@ scheduler.createTimelineView({
 ~~~
 
 @edition:pro
-
 

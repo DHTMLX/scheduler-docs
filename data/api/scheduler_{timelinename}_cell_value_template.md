@@ -7,11 +7,11 @@
 @params:
 - evs	array 	an array of objects of events contained in a cell
 - date	Date	the date of a cell
-
+- section	object	the section object
 
 
 @example:
-scheduler.templates.timeline_cell_value = function(evs, date){
+scheduler.templates.timeline_cell_value = function(evs, date, section){
 	return evs?evs.length:"";
 };
 @template:	api_template
