@@ -1,10 +1,11 @@
 Custom Event's Color
 ============================
 
-There are 2 ways you can specify a custom color for an event:
+There are three ways you can specify a custom color for an event:
 
 1. [To set color values in properties of the event object](custom_events_color.md#specifyingcolorsinpropertiesoftheeventobject);
 2. [To attach additional CSS class(es) to the event](custom_events_color.md#attachingadditionalcssclassestoanevent).
+2. [To generate styles from data](custom_events_color.md#loadingcolorswithdata).
 
 <img src="custom_event_color.png"/>
 
@@ -22,8 +23,8 @@ Setting the event's color in the data object
 }}
 ~~~
 scheduler.parse([
-   {id:1, start_date:"2013-05-21",end_date:"2013-05-25",text:"Task1", color:"red"},
-   {id:2, start_date:"2013-06-02",end_date:"2013-06-05",text:"Task2", color:"blue"}
+   {id:1, start_date:"2019-05-21",end_date:"2019-05-25",text:"Task1", color:"red"},
+   {id:2, start_date:"2019-06-02",end_date:"2019-06-05",text:"Task2", color:"blue"}
 ],"json");
 ...
 scheduler.getEvent(1).color = "yellow";
@@ -123,3 +124,76 @@ scheduler.templates.event_class = function (start, end, event) {
 {{sample
 	02_customization/06_templates.html
 }}
+
+##Loading colors with data
+
+If colors are a part of your data which comes from the backend, e.g. when task color is associated with a stage or a resource assigned to a task which can't be hardcoded on the page, it may be a good solution to generate styles from your data manually.
+
+Let's suppose that you have the following collection of users that can be assigned to tasks. Task styles should be defined by the properties of user records:
+
+~~~js
+[
+    {"key":1, "label":"John", "backgroundColor":"#03A9F4", "textColor":"#FFF"},
+    {"key":2, "label":"Mike", "backgroundColor":"#f57730", "textColor":"#FFF"},
+    {"key":3, "label":"Anna", "backgroundColor":"#e157de", "textColor":"#FFF"},
+    {"key":4, "label":"Bill", "backgroundColor":"#78909C", "textColor":"#FFF"},
+    {"key":7, "label":"Floe", "backgroundColor":"#8D6E63", "textColor":"#FFF"}
+]
+~~~
+
+In this use case, users and their colors are created and managed by different parts of the app and scheduler generally doesn't know user ids and their colors in advance.
+
+This is what you can do in this case:
+
+- Define a named serverList for this collection
+
+~~~js
+scheduler.serverList("people");
+~~~
+
+- Load options to the page, either by using one of supported [data formats](data_formats.md#jsonwithcollections) or manually via a custom xhr
+
+- Once options are loaded, you can generate CSS styles from the data:
+
+~~~js
+scheduler.attachEvent("onLoadEnd", function(){
+    // use an arbitrary id for the style element
+    var styleId = "dynamicSchedulerStyles";
+ 
+    // in case you'll be reloading options with colors - reuse previously
+    // created style element
+ 
+    var element = document.getElementById(styleId);
+    if(!element){
+        element = document.createElement("style");
+        element.id = styleId;
+        document.querySelector("head").appendChild(element);
+    }
+    var html = [];
+    var resources = scheduler.serverList("people");
+ 
+    // generate css styles for each option and write css into the style element,
+ 
+    resources.forEach(function(r){
+        html.push(".dhx_cal_event_line.event_resource_" + r.key + "{" +
+            "background-color:"+r.backgroundColor+"; " +
+            "color:"+r.textColor+";" +
+        "}");
+    });
+    element.innerHTML = html.join("");
+});
+~~~
+
+- After that you'll be able to assign related classes you generated from the class template:
+
+~~~js
+scheduler.templates.event_class = function (start, end, event) {
+    var css = [];
+ 
+    if(task.owner_id){
+        css.push("event_resource_" + event.owner_id);
+    }
+ 
+    return css.join(" ");
+};
+~~~

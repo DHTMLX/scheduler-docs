@@ -119,10 +119,42 @@ scheduler.config.lightbox.sections = [
 	{name:"time", ...}
 ];
 
-scheduler.load("./data/types.php");
+scheduler.load("./data/types");
 ~~~
 
-where the **types.php** is a server-side script, retrieving the events loaded to the scheduler, and the 'type' options collection loaded to the Select control:
+The data response for the api/scheduler_load.md method should contain a collection with the server list name specified in JSON
+[of the following format](data_formats.md#jsonwithcollections):
+
+~~~js
+{ 
+   "data":[
+      {
+          "id":"1",
+          "start_date":"2019-03-02 15:00:00",
+          "end_date":"2019-03-04 16:00:00",
+          "text":"Interview",
+          "type":"1"
+      },
+      {
+          "id":"2",
+          "start_date":"2019-03-02 17:00:00",
+          "end_date":"2019-03-04 18:00:00",
+          "text":"Performance review",
+          "type":"2"
+      }
+   ], 
+   "collections": {/*!*/
+      "type":[/*!*/      
+         {"value":"1","label":"Interview"},/*!*/
+         {"value":"2","label":"Performance review"},/*!*/
+         {"value":"3","label":"Request"}/*!*/
+      ]/*!*/
+   }/*!*/
+}
+
+~~~
+
+If you use [PHP Connector](https://github.com/DHTMLX/connector-php) library, the server code may look like the following:
 
 ~~~php
 //types.php
@@ -130,10 +162,10 @@ where the **types.php** is a server-side script, retrieving the events loaded to
 	require_once('../../../../connector-php/codebase/scheduler_connector.php');
 	include ('../../common/config.php');
 
-	$list = new OptionsConnector($res, $dbtype);
+	$list = new JSONOptionsConnector($res, $dbtype);
 	$list->render_table("types","typeid","typeid(value),name(label)");
 	
-	$scheduler = new schedulerConnector($res, $dbtype);
+	$scheduler = new JSONSchedulerConnector($res, $dbtype);
 	$scheduler->set_options("type", $list);
 	$scheduler->render_table(
         "tevents",
@@ -148,35 +180,5 @@ where the **types.php** is a server-side script, retrieving the events loaded to
 }}
 
 {{note
-Note, you can use the api/scheduler_updatecollection.md method to update the list of retrieving options
-}}
-
-####Retrieving JSON data from the server
-To retrieve data from the server in JSON format, you need to:
-
-- Client side: specify the 2nd parameter in the api/scheduler_init.md method and set it to 'json' value
-
-~~~js
-scheduler.config.lightbox.sections = [
-	{name:"description", ...},
-	{name:"type",map_to:"type",type:"select",options:scheduler.serverList("type")},
-	{name:"time", ...}
-];
-
-scheduler.load("./data/types.php", 'json');
-~~~
-- Server side: use the JSONOptionsConnector connector
-
-~~~js
-<?php
-	require_once('../../../../connector-php/codebase/scheduler_connector.php');
-	include ('../../common/config.php');
-
-	$list = new JSONOptionsConnector($res, $dbtype);
-	$list->render_table("types","typeid","typeid(value),name(label)");
-?>
-~~~
-
-{{sample
-	01_initialization_loading/09_connector_options.html
+Note, you can use the api/scheduler_updatecollection.md method to update the list of retrieved options
 }}

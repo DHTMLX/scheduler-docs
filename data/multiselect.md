@@ -41,7 +41,7 @@ To add the Multiselect control to the lightbox, follow these steps:
 scheduler.config.lightbox.sections = 
 	{ name:"description", ... },
 	{ name:"userselect", height:22, map_to:"user_id", type:"multiselect", 
-    options: scheduler.serverList("user_id"), vertical:"false" },
+    options: scheduler.serverList("user_id"), vertical:false },
     { name:"time", ...}
 ];
 ~~~

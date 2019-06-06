@@ -110,7 +110,7 @@ Enabling the dynamic loading
 }}
 ~~~js
 scheduler.setLoadMode("month");
-scheduler.load("some.php");
+scheduler.load("/some");
 ~~~
 
 4) Check conflicting events on the server side via PHP connector validation. The details are given in the article devoted to 
@@ -130,7 +130,7 @@ occurs after validation error has fired before data sending
 dp.attachEvent("onValidationError", function(id, details){
    //reload actual data from the server
    scheduler.clearAll();
-   scheduler.load("data.php");
+   scheduler.load("/data");
 });
 ~~~
 
@@ -148,7 +148,7 @@ dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
      if(action == "invalid" || action == "error"){
           //reload actual data from the server
           scheduler.clearAll();
-          scheduler.load("data.php");
+          scheduler.load("/data");
      }
 });
 ~~~

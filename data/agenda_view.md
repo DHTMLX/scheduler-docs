@@ -1,4 +1,3 @@
-
  Agenda View 
 ==============
 The Agenda view displays to the user a list of upcoming events.
@@ -81,10 +80,10 @@ To set the range of displayable dates, use the api/scheduler_agenda_end_config.m
 
 ~~~js
 //to display dates from 1st June 2013
-scheduler.config.agenda_start = new Date(2013, 5, 1); 
+scheduler.config.agenda_start = new Date(2019, 5, 1); 
 
 //to display dates until 1st June,2014
-scheduler.config.agenda_end = new Date(2014,5,1);   
+scheduler.config.agenda_end = new Date(2020,5,1);   
 
 ~~~
 

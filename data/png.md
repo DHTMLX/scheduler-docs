@@ -36,9 +36,8 @@ To export the scheduler as a PNG image, do the following steps:
 <input value="Export to PNG" type="button" onclick='scheduler.exportToPNG()'>/*!*/
 
 <script>
-	scheduler.config.xml_date="%Y-%m-%d %H:%i";
-	scheduler.init('scheduler_here',new Date(2009,5,30),"month");
-	scheduler.load("data/events.xml");
+	scheduler.init('scheduler_here',new Date(2019,5,30),"month");
+	scheduler.load("data/events");
 </script>
 ~~~
 

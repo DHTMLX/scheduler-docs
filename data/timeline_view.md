@@ -333,7 +333,7 @@ scheduler.parse([
     room_id:"2"},
  	{text:"Conference", start_date:"17/09/2012 15:00", end_date:"18/09/2012 15:00", 
     room_id:"3"}
-],"json");                                 
+]);                                 
 ~~~
 {{sample
 	06_timeline/02_lines.html
@@ -391,7 +391,7 @@ scheduler.parse([
 	{ id:2, text:"Task B", section_id:'1,3', 	...},/*!*/
 	{ id:3, text:"Task C", section_id:'4', 		...},/*!*/
 	{ id:4, text:"Task D", section_id:'2,3,4', 	...}/*!*/
-],"json");
+]);
 ~~~
 
 {{sample

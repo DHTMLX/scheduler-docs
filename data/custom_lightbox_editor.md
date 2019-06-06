@@ -6,38 +6,50 @@ To create  a custom control (editor), define a new object in the next way:
 ~~~js
 scheduler.form_blocks["my_editor"]={
 	render:function(config){ // config- section configuration object
-		return "HTML code of the editor here";
+    	var height=(config.height||50)+"px";
+		return "<div class='dhx_cal_ltext' style='height:"+height+";'>" + 
+        	"<textarea></textarea></div>";
 	},
 	set_value:function(node,value,ev,config){
 		// node - HTML object related to HTML defined above
 		// value - value defined by map_to property
 		// ev - event object
         // config - section configuration object
-		... code to set value to the element ...
+        node.querySelector("textarea").value = value || "";
 	},
 	get_value:function(node,ev,config){
 		// node - HTML object related to HTML defined above
 		// event object
         // config - section configuration object
-		return "current value from editor";
+		return node.querySelector("textarea").value;
 	},
 	focus:function(node){
 		// node - HTML object related to HTML defined above
-		...code to set focus to the element...
+        node.querySelector("textarea").focus();
 	}
-}
+};
+~~~
+
+Usage:
+
+~~~js
+scheduler.locale.labels.section_details = "Details";
+scheduler.config.lightbox.sections=[	
+	{ name:"details", height:35, map_to:"text", type:"my_editor", focus:true},
+	{ name:"time", height:72, type:"time", map_to:"auto"}	
+];
 ~~~
 
 Make sure that you **don't** use the short closing syntax for tags inside the HTML code 
 returned by the "render" function, since that might cause parsing problems in the browser:
 
 ~~~js
-// this is WRONG
+// bad:
 render:function(){
 	return "<div id='box'/>";
 }
 
-// instead use opening and closing tags syntax:
+// good:
 render:function(){
     return "<div id='box'></div>";
 }
@@ -57,24 +69,30 @@ Let's consider how to create the following custom editor:
 ~~~js
 scheduler.form_blocks["my_editor"]={
 	render:function(sns){
-		return "<div class='dhx_cal_ltext' style='height:60px;'>Text&nbsp;<input type='text'><br/>Details&nbsp;<input type='text'></div>";
+		return "<div class='dhx_cal_ltext' style='height:60px;'>" +
+        	"Text&nbsp;<input name='text' type='text'><br/>" +
+            "Details&nbsp;<input name='location' type='text'></div>";
 	},
 	set_value:function(node,value,ev){
-		node.childNodes[1].value=value||"";
-		node.childNodes[4].value=ev.details||"";
+		node.querySelector("[name='text']").value = value||"";
+		node.querySelector("[name='location']").value= ev.location||"";
 	},
 	get_value:function(node,ev){
-		ev.location = node.childNodes[4].value;
-		return node.childNodes[1].value;
+		ev.location = node.querySelector("[name='location']").value;
+		return node.querySelector("[name='text']").value;
 	},
 	focus:function(node){
-		var a=node.childNodes[1]; a.select(); a.focus(); 
+		var input = node.querySelector("[name='text']"); 
+        input.select(); 
+        input.focus(); 
 	}
-}
+};
+
+scheduler.locale.labels.section_description = "Details";
 scheduler.config.lightbox.sections=[	
-	{ name:"description", height:200, map_to:"text", type:"my_editor" , focus:true},
+	{ name:"description", map_to:"text", type:"my_editor" , focus:true},
 	{ name:"time", height:72, type:"time", map_to:"auto"}	
-]
+];
 ~~~
 
 {{sample

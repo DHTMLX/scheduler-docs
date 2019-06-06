@@ -49,8 +49,8 @@ scheduler.createGridView({
              {id:"date", label:'Date', sort:'date', width:'*'},
              {id:"text", label:'Text', sort:'str',  width:200, align:'left'}
        ],
-       from:new Date(2009, 03, 10),//left border of the allowable date range
-       to:new Date(2009, 05,23)    //right border of the allowable date range
+       from:new Date(2019, 3, 10),//left border of the allowable date range
+       to:new Date(2019, 5, 23)    //right border of the allowable date range
 });
 ~~~
 	</li>
@@ -73,8 +73,8 @@ If, for example, you want to to limit active dates and set the allowable range f
 scheduler.createGridView({
  	name:"grid",
     ..
-    from:new Date(2010, 0, 1),
-    to:new Date(2011, 0, 1)
+    from:new Date(2019, 0, 1),
+    to:new Date(2020, 0, 1)
 });
 
 ~~~
