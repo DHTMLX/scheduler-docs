@@ -28,7 +28,7 @@ You can generate a date convert function as follows:
 
 ~~~js
 var formatFunc = scheduler.date.str_to_date("%d/%m/%Y");
-var date = formatFunc("29/06/2013"); // -> 29 June, 2013 00:00:00
+var date = formatFunc("29/06/2019"); // -> 29 June, 2019 00:00:00
 ~~~
 
 
@@ -38,8 +38,8 @@ Converting to UTC
 To convert local time to UTC, use the [convert_to_utc](api/scheduler_date_other.md) method:
 
 ~~~js
-//29 June, 2013 14:00 (local time) -> 29 June, 2013 12:00 (utc)
-var time = scheduler.date.convert_to_utc(new Date(2013, 05, 29, 14, 00));
+//29 June, 2019 14:00 (local time) -> 29 June, 2019 12:00 (utc)
+var time = scheduler.date.convert_to_utc(new Date(2019, 05, 29, 14, 00));
 ~~~
 
 Adding(subtracting) a time interval to(from) a date
@@ -47,8 +47,8 @@ Adding(subtracting) a time interval to(from) a date
 To add(subtract) a time interval to(from) the specified date, use the [add](api/scheduler_date_other.md) method:
 
 ~~~js
-//adds 1 year to the specified date: 29 June, 2013 -> 29 June, 2014
-var newDate = scheduler.date.add(new Date(2013, 05, 29), 1, 'year');
+//adds 1 year to the specified date: 29 June, 2019 -> 29 June, 2020
+var newDate = scheduler.date.add(new Date(2019, 05, 29), 1, 'year');
 ~~~
 
 {{sample

@@ -437,7 +437,7 @@ Provides support for serializing into ICal, XML, JSON formats.
 
 Article:   export.md<br>
  
-{{sample 04_export/01_serialize_xml.html}}
+{{sample 04_export/01_serialize_data.html}}
 
 
 Timeline

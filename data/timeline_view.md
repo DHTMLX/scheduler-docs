@@ -138,7 +138,11 @@ scheduler.init("timeline_tree",new Date(),"timeline");
 Timeline object API
 ---------------------
 
-There is a set of methods you can use to work with the Timeline view. First, you need to create a timeline instance in the scheduler:
+There is a set of methods you can use to work with the Timeline view. 
+
+### Creating a timeline view
+
+First, you need to create a timeline instance in the scheduler:
 
 ~~~js
 scheduler.createTimelineView({
@@ -150,6 +154,16 @@ var timeline = scheduler.matrix.timeline;
 ~~~
 
 After that you can make use of the methods enumerated below.
+
+### Getting a timeline view
+
+To get a timeline view object, use the api/scheduler_getview.md method. It takes the name of the view as a parameter. However, if no parameter has been passed, the method returns the current view.
+
+~~~js
+var timeline = scheduler.getView(); 
+timeline.x_size = 8;
+scheduler.setCurrentView();
+~~~
 
 ###Setting the scale range
 
@@ -212,6 +226,63 @@ var top = timeline.posFromSection(section.key);
 {{note The method returns -1 if the row is not found.}}
 
 
+###Getting scroll position 
+
+To return the current position of the scrollbar in the timeline, use the **timeline.getScrollPosition()** method. It returns an object with the current position of the scrollbar. 
+
+~~~js
+var timeline = scheduler.getView();
+timeline.getScrollPosition(); // { left: 0, top: 0 } 
+~~~
+
+The returned object contains two properties:	
+
+- **left** - (*number*)  the left coordinate of the scroll position
+- **top** - (*number*)  the top coordinate of the scroll position
+
+You can also use the **onScroll** event handler to catch the new scroll position. The handler function takes two parameters:
+
+- **left** - (*number*)  the left coordinate of the scroll position
+- **top** - (*number*)  the top coordinate of the scroll position
+
+~~~js
+var timeline = scheduler.getView();
+timeline.attachEvent("onScroll", function(left, top){});
+~~~
+
+ 
+###Getting events assigned to some section 
+ 
+It is possible to get an array of events assigned to the specified section with the **timeline.selectEvents()** method. It takes as a paramter the configuration object of a section of the following type:
+
+~~~js
+{
+	section: string|number 
+	date: Date
+	selectNested: boolean 
+}
+~~~
+
+where:
+
+- **section** - the id of a section
+- **date** - optional, if specified the method will return events overlapping the provided date column
+- **selectNested** - optional, if set to *true* and section is a *tree* timeline folder the method will select events from all nested sections
+
+and returns an array of event objects.
+
+~~~js
+var timeline = scheduler.getView();
+ 
+var events = timeline.selectEvents({
+    section: section.key,
+    date: date,
+    selectNested: true
+});
+~~~
+
+
+
 Dynamic сhange of properties 
 -------------------------------------
 
@@ -219,7 +290,7 @@ All defined timeline objects are stored in the [scheduler.matrix](api/scheduler_
 You can access the configuration of any timeline view by its name and change any property. Changes will be applied as soon as you update the scheduler:
 
 ~~~js
-scheduler.matrix['timeline'].x_size = 12;
+scheduler.getView('timeline').x_size = 12;
 scheduler.setCurrentView(); // redraws scheduler
 ~~~
 
@@ -262,7 +333,7 @@ scheduler.parse([
     room_id:"2"},
  	{text:"Conference", start_date:"17/09/2012 15:00", end_date:"18/09/2012 15:00", 
     room_id:"3"}
-],"json");                                 
+]);                                 
 ~~~
 {{sample
 	06_timeline/02_lines.html
@@ -320,7 +391,7 @@ scheduler.parse([
 	{ id:2, text:"Task B", section_id:'1,3', 	...},/*!*/
 	{ id:3, text:"Task C", section_id:'4', 		...},/*!*/
 	{ id:4, text:"Task D", section_id:'2,3,4', 	...}/*!*/
-],"json");
+]);
 ~~~
 
 {{sample
@@ -334,7 +405,7 @@ View modes
 The view has 4 modes:
 
 - **Bar**<br> <img src="timeline_bar_mode.png"/><br> {{sample 06_timeline/02_lines.html}} <br> <br>
-- **Cell**(default)<br> <img src="timeline_cell_mode.png"/><br> {{sample 06_timeline/01_slots.html}}  <br> <br>
+- **Cell** (default)<br> <img src="timeline_cell_mode.png"/><br> {{sample 06_timeline/01_slots.html}}  <br> <br>
 - **Tree**<br> <img src="timeline_tree_mode.png"/><br> {{sample 06_timeline/03_tree.html}} <br> <br>
 - **Days**<br> <img src="timeline_days_mode.png"/><br> {{sample 06_timeline/14_days_as_sections.html}}
 
@@ -653,7 +724,6 @@ You can add the second scale by using the [second_scale](api/scheduler_createtim
 });
 ~~~
 
-
 {{sample
 	06_timeline/07_second_scale.html
 }}
@@ -794,6 +864,84 @@ where <timelineName> is the name of the timeline created with the api/scheduler_
 scheduler.locale.labels.timeline_scale_header = "Users";
 ~~~
 
+Custom content in cells
+----------------------
+
+It is possible to render custom content in cell of a Timeline view, not only in the Cell mode, as it demonstrates the sample below:
+
+{{sample 06_timeline/01_slots.html}}
+
+You can also specify a template for the content of cells in all other modes of the Timeline view.
+
+![Custom content in Timeline cells](custom_cell_content.png)
+
+{{sample  06_timeline/17_timeline_cell_content.html}}
+
+To enable this functionality for a particular timeline, make use of the **cell_template** property while creating the timeline with the api/scheduler_createtimelineview.md method.
+
+~~~js
+scheduler.createTimelineView({
+    cell_template: true,
+    ...
+});
+~~~
+
+After that the template you've specified for this timeline will be called. For example, this is how you can show the number of events for each date in the "tree" timeline mode:
+
+~~~js
+<style>
+	.dhx_matrix_cell div.load-marker{
+		position: absolute;
+		width: 40%;
+		height: 25px;
+		transform: translate(70%, 20%);
+		line-height: 25px;
+		text-align: center;
+		border-radius: 7px;
+		color: white;
+	}
+	.load-marker-no{
+		background: #e0e0e0;
+	}
+	.load-marker-light{
+		background: #aed581;
+	}
+	.load-marker-high{
+		background: #ff8a65;
+	}
+
+</style>
+
+scheduler.templates.timeline_cell_value = function (evs, date, section){
+    if(section.children){
+        var timeline = scheduler.getView();
+ 
+        var events = timeline.selectEvents({
+            section: section.key,
+            date: date,
+            selectNested: true
+        });
+ 
+        var className = "";
+        if(!events.length){
+            className = "load-marker-no";
+        }else if(events.length < 3){
+            className = "load-marker-light";
+        }else{
+            className = "load-marker-high";
+        }
+ 
+        return "<div class='load-marker "+className+"'>"+
+            events.length
+        +"</div>";
+ 
+    }
+ 
+    return "";
+};
+~~~
+
+{{sample  06_timeline/17_timeline_cell_content.html}}
 
 Related guides
 ---------------------

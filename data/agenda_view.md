@@ -1,5 +1,6 @@
 Agenda View 
-==============
+=======
+
 
 The Agenda view allows displaying a list of upcoming events.
 
@@ -80,11 +81,11 @@ Setting the range of displayable dates
 To set the range of displayable dates, use the api/scheduler_agenda_end_config.md and  api/scheduler_agenda_start_config.md properties:
 
 ~~~js
-//to display dates from 1st June 2013
-scheduler.config.agenda_start = new Date(2013, 5, 1); 
+//to display dates from 1st June 2019
+scheduler.config.agenda_start = new Date(2019, 5, 1); 
 
-//to display dates until 1st June,2014
-scheduler.config.agenda_end = new Date(2014,5,1);   
+//to display dates until 1st June,2020
+scheduler.config.agenda_end = new Date(2020,5,1);   
 ~~~
 
 Enabling Next/Previous/Today buttons 
@@ -110,7 +111,7 @@ scheduler.date.add_agenda = function(date, inc){
 
 After that all buttons will work as usual.
 
-{{editor		http://snippet.dhtmlx.com/bb8b9437e			Next/Previous/Today buttons in Agenda view}}
+{{editor		https://snippet.dhtmlx.com/5a5d072f2			Next/Previous/Today buttons in Agenda view}}
 
 
 Width of columns
@@ -132,7 +133,7 @@ The width of columns in the Agenda view can be adjusted through the related CSS 
 ![Columns Width](agenda_columns_width.png)
 
 
-{{editor			http://snippet.dhtmlx.com/50c6a7562			Adjusting width of columns}}
+{{editor		https://snippet.dhtmlx.com/8a2c1eb40			Adjusting width of columns}}
 
 Related guides
 ---------------------

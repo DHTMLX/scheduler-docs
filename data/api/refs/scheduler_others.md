@@ -12,6 +12,7 @@ Others
 - api/scheduler_matrix_other.md - stores the configuration objects of all timelines specified on the page
 - api/scheduler_skin_other.md - returns the current skin of the scheduler
 - api/scheduler_templates_other.md - defines formatting of the templates for dates, titles and tooltips in the scheduler
+- api/scheduler_tooltip_other.md - displays tooltips for events
 - api/scheduler_version_other.md - returns the version of dhtmlxScheduler
 - api/scheduler_xy_other.md - specifies sizes of the scheduler's elements
 }}
@@ -26,6 +27,7 @@ Others
 - api/scheduler_matrix_other.md
 - api/scheduler_skin_other.md
 - api/scheduler_templates_other.md
+- api/scheduler_tooltip_other.md
 - api/scheduler_version_other.md
 - api/scheduler_xy_other.md
 

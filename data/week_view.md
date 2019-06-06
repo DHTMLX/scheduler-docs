@@ -11,9 +11,9 @@ The Week view is added to the [basic scheduler's markup](scheduler_markup.md) by
 
 ~~~js
 //just usual initialization. The Week view will be added by default
-scheduler.init('scheduler_here',new Date(2010,0,10),"week");
+scheduler.init('scheduler_here',new Date(2019,0,10),"week");
 ...
-scheduler.load("data/events.xml");
+scheduler.load("/data/events");
 ~~~
 
 {{sample

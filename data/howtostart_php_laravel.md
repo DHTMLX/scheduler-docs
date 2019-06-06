@@ -314,7 +314,7 @@ And finally, call this action from the view:
 
 {{snippet resources/views/scheduler.blade.php}}
 ~~~php
-scheduler.config.xml_date = "%Y-%m-%d %H:%i:%s";
+scheduler.config.date_format = "%Y-%m-%d %H:%i:%s";
 scheduler.init("scheduler_here", new Date(2018, 11, 3), "week");
 
 scheduler.load("/api/data", "json");
@@ -322,7 +322,7 @@ scheduler.load("/api/data", "json");
 
 [scheduler.load](api/scheduler_load.md) sends an AJAX request to the specified URL and will expect a JSON response as we've defined before.
 
-Also, note that we've specified the [xml_date](api/scheduler_xml_date_config.md) value. This is how we tell the scheduler which format of dates the data source will use, so the client side could parse them.
+Also, note that we've specified the api/scheduler_date_format_config.md value. This is how we tell the scheduler which format of dates the data source will use, so the client side could parse them.
 
 If you check the app now, you should see that there are now tasks in our scheduler:
 
@@ -341,7 +341,7 @@ In order to enable this mode on the client go to `resources/views/scheduler.blad
 
 {{snippet resources/views/scheduler.blade.php}}
 ~~~php
-scheduler.config.xml_date = "%Y-%m-%d %H:%i:%s";
+scheduler.config.date_format = "%Y-%m-%d %H:%i:%s";
 
 scheduler.setLoadMode("day"); /*!*/
 
@@ -473,7 +473,7 @@ Finally, we will [configure the client side](server_integration.md#technique) to
 
 {{snippet resources/views/scheduler.blade.php}}
 ~~~js
-scheduler.config.xml_date = "%Y-%m-%d %H:%i:%s";
+scheduler.config.date_format = "%Y-%m-%d %H:%i:%s";
 scheduler.setLoadMode("day"); /*!*/
 
 scheduler.init("scheduler_here", new Date(2018, 11, 3), "week");

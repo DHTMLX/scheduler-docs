@@ -22,9 +22,8 @@ To export scheduler's data to an Excel document, do the following steps:
 <input value="Export to Excel" type="button" onclick="scheduler.exportToExcel()">/*!*/
 
 <script>
-	scheduler.config.xml_date="%Y-%m-%d %H:%i";
-	scheduler.init("scheduler_here",new Date(2009,5,30),"month");
-	scheduler.load("data/events.xml");
+	scheduler.init("scheduler_here",new Date(2019,5,30),"month");
+	scheduler.load("data/events");
 </script>
 ~~~
 
@@ -95,9 +94,8 @@ To export scheduler's data to an iCal string, do the following steps:
 <input value="Export to iCal" type="button" onclick="scheduler.exportToICal()">/*!*/
 
 <script>
-	scheduler.config.xml_date="%Y-%m-%d %H:%i";
-	scheduler.init("scheduler_here",new Date(2009,5,30),"month");
-	scheduler.load("data/events.xml");
+	scheduler.init("scheduler_here",new Date(2019,5,30),"month");
+	scheduler.load("data/events");
 </script>
 ~~~
 

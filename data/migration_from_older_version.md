@@ -1,6 +1,88 @@
 Migration From Older Versions 
 ==============
 
+## 5.1 -> 5.2
+
+<h3 id="dnd">Drag-n-drop behavior</h3>
+
+Since version 5.2 it is possible to drag events by any part of the body, not just by the header as it worked in the earlier versions. If you want to restore the previous functionality, make use of the 
+api/scheduler_drag_event_body_config.md and set it to *false* (by default the property is enabled).
+
+~~~js
+scheduler.config.drag_event_body = false;
+~~~
+
+### onXLE/onXLS events are deprecated
+
+They still work, but will be removed in future. Here is how they should be replaced:
+
+~~~js
+scheduler.attachEvent("onXLS",function(){}); → 
+scheduler.attachEvent("onLoadStart",function(){});
+
+scheduler.attachEvent("onXLE",function(){}); → 
+scheduler.attachEvent("onLoadEnd",function(){});
+~~~
+
+
+### "xml_date" config and template, and "xml_format" templates are renamed
+
+Below there is the scheme of replacing previously used API:
+
+- scheduler.config.xml_date →  [scheduler.config.date_format](api/scheduler_date_format_config.md)
+- scheduler.templates.xml_date → [scheduler.templates.parse_date](api/scheduler_parse_date_template.md)
+- scheduler.templates.xml_format → [scheduler.templates.format_date](api/scheduler_format_date_template.md)
+
+
+Since v5.2 the default values of the **xml_date** config, and **xml_date** and **xml_format** templates are *undefined*. Thus if you haven't assigned any values to them, they won't work. 
+
+However, Scheduler will continue to use the old names of the config and templates, so if you've redefined those APIs in your code, they will work as before. For example:
+
+~~~js
+// will work correctly
+scheduler.templates.xml_date = function(datestring){
+    return new Date(datestring);
+};
+~~~
+
+#### Default date format has changed
+
+- before v5.2 it was set by the **scheduler.config.xml_date** property and its value was "%m/%d/%Y %H:%i"
+- after v5.2 it is set by the [scheduler.config.date_format](api/scheduler_date_format_config.md) property and its value is "%Y-%m-%d %H:%i"
+
+To restore the previous default date format, specify the setting below:
+
+~~~js
+scheduler.config.date_format = "%m/%d/%Y %H:%i";
+~~~
+
+#### Improved parsing of dates
+
+Since v5.2 Scheduler tries to automatically identify the format of dates that should be parsed, so there can be some changes in the work of related functions **scheduler.date.str_to_date**, 
+**scheduler.templates.format_date**, and **scheduler.templates.parse_date**. 
+
+If you want to restore previous behavior and get dates in the format defined by the user, use the api/scheduler_parse_exact_format_config.md configuration option:
+
+~~~js
+scheduler.config.parse_exact_format = true;
+~~~
+
+### "vertical" setting of the [Multiselect](multiselect.md#properties) control can't take string value
+
+In previous versions it was possible to set the value of the *vertical* setting of the Multiselect control as a string, like this:
+
+~~~js
+{ name:"userselect", type:"multiselect", ..., vertical:"false" }
+~~~
+
+Since v5.2 the property takes just a boolean value, i.e. *true* or *false*.
+
+~~~js
+{ name:"userselect", type:"multiselect", ..., vertical: false }
+~~~
+
+In case you've used the string "false" value for the **vertical** property, you need to change it into the boolean one.
+
 ## 5.0 -> 5.1
 
 Smart rendering and horizontal scroll features required a complete remaking of the timeline markup. It affected Timeline, TreeTimeline and all modes of these views.
@@ -164,5 +246,4 @@ codebase/dhtmlxgrid_units.js => codebase/ext/dhtmlxgrid_units.js
 
 @index:
 - scheduler_3.0.md
-
 

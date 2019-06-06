@@ -7,12 +7,11 @@ A standard scheduler used jQuery can be initialized as follows:
 ~~~js
 $(function(){
 	$(".myscheduler").dhx_scheduler({
-        xml_date:"%Y-%m-%d %H:%i",
-		date:new Date(2009,4,25),
+		date:new Date(2019,4,25),
 		mode:"month"
 	});
 		
-	scheduler.load("data/events.xml");
+	scheduler.load("data/events");
 });
 ~~~
 

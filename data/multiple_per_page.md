@@ -26,12 +26,12 @@ Let's take a simple example: 2 schedulers, one under another:
 ~~~js
 function init() {
     scheduler1  = Scheduler.getSchedulerInstance();
-	scheduler1.init('scheduler_here',new Date(2009,5,30),"week");
-	scheduler1.load("./data/events.xml")
+	scheduler1.init('scheduler_here',new Date(2019,5,30),"week");
+	scheduler1.load("/data/events")
 	
 	scheduler2 = Scheduler.getSchedulerInstance();
-	scheduler2.init('scheduler_here_2',new Date(2009,5,30),"month");
-	scheduler2.load("./data/events.xml")	
+	scheduler2.init('scheduler_here_2',new Date(2019,5,30),"month");
+	scheduler2.load("/data/events")	
 }
 
 ~~~
@@ -76,22 +76,20 @@ function init() {
 		scheme:{
 			$init:function(obj){
 				if (typeof obj.start_date == "string"){
-					obj.start_date = scheduler.templates.xml_date(obj.start_date);
-					obj.end_date = scheduler.templates.xml_date(obj.end_date);
+					obj.start_date = scheduler.templates.parse_date(obj.start_date);
+					obj.end_date = scheduler.templates.parse_date(obj.end_date);
 				}
 			}
 		}
 	});
 
     scheduler1 = Scheduler.getSchedulerInstance();
-    scheduler1.config.xml_date="%Y-%m-%d %H:%i";
-	scheduler1.init('scheduler_here',new Date(2009,05,12),"week");
+	scheduler1.init('scheduler_here',new Date(2019,05,12),"week");
 	scheduler1.sync(data, { copy:true });
 	
 
 	scheduler2 = Scheduler.getSchedulerInstance();
-    scheduler2.config.xml_date="%Y-%m-%d %H:%i";
-	scheduler2.init('scheduler_here_too',new Date(2009,05,12),"month");
+	scheduler2.init('scheduler_here_too',new Date(2019,05,12),"month");
 	scheduler2.sync(data, { copy:true });
 }
 ~~~
@@ -146,14 +144,12 @@ function init() {
 
 	sched1 = Scheduler.getSchedulerInstance();
 	sched1.config.multi_day = true;
-	sched1.config.xml_date="%Y-%m-%d %H:%i";
-	dhxLayout.cells("a").attachScheduler(new Date(2009,05,30),"week",null,sched1);
-	sched1.load("./data/units.xml")
+	dhxLayout.cells("a").attachScheduler(new Date(2019,05,30),"week",null,sched1);
+	sched1.load("/data/units")
 		
 	sched2 = Scheduler.getSchedulerInstance();
-	sched2.config.xml_date="%Y-%m-%d %H:%i";
-	dhxLayout.cells("b").attachScheduler(new Date(2009,05,30),"month",null,sched2);
-	sched2.load("./data/units.xml")
+	dhxLayout.cells("b").attachScheduler(new Date(2019,05,30),"month",null,sched2);
+	sched2.load("/data/units")
 }
 
 ~~~

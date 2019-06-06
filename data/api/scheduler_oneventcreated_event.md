@@ -1,5 +1,6 @@
 onEventCreated
 =============
+
 @short:fires when the user starts to create a new event (by double click or dragging)
 	
 
@@ -17,5 +18,5 @@ scheduler.attachEvent("onEventCreated", function(id,e){
 @descr: 
 
 
-@relatedsample:
-	08_shared_events/user_1_combined.html
+
+	

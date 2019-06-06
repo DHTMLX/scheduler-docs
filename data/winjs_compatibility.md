@@ -10,6 +10,7 @@ To make it easy to learn the topic, you can go through the step-by-step tutorial
 
 
 ##Files to include
+
 You need to include 4 files to work with the dhtmlxScheduler library:
 
 
@@ -25,13 +26,11 @@ Note, here is the minimum set of files needed to run an app with dhtmlxScheduler
 
 
 ##Initialization
+
 The scheduler is initialized in a standard way:
 
 
-
 - Firstly, in the app's start page  (by default, it's the  _default.html_ file), define a standard set of the div containers for scheduler's elements:
-  
-   
   
    
 ~~~js
@@ -54,7 +53,6 @@ The scheduler is initialized in a standard way:
 ~~~
  
 
-
 - And then, initialize the scheduler (you can put the initialization code right into the **ready** function within the **app.onactivated** event handler):
   
 ~~~js
@@ -76,6 +74,7 @@ app.onactivated = function (args) {
 
 
 ##Scheduler configuration
+
 Again, scheduler is [configured in a standard  way](configuration.md):
 
 
@@ -91,6 +90,7 @@ WinJS.Utilities.ready(function(){
  
 
 ##Loading data
+
 To load data to the scheduler you have to use the [parse](api/scheduler_parse.md) method:
 
 
@@ -110,12 +110,13 @@ WinJS.Utilities.ready(function(){
 
 
 ###Mandatory data properties
+
 You data items must contain the following mandatory properties:
 
 
 
-+ **start_date** - the date when a task is scheduled to begin. The date format defined by the api/scheduler_xml_date_config.md config option
-+ **end_date** - the date when a task is scheduled to be completed. The date format defined by the api/scheduler_xml_date_config.md config option
++ **start_date** - the date when a task is scheduled to begin. The date format defined by the api/scheduler_date_format_config.md config option
++ **end_date** - the date when a task is scheduled to be completed. The date format defined by the api/scheduler_date_format_config.md config option
 + **text**  - the text of a task
 
 ###Available formats
@@ -126,8 +127,8 @@ You data items must contain the following mandatory properties:
 + [iCal](data_formats.md#ical)
 
 ##Managing Create/Update/Delete operations
-Generally, scheduler uses DataProcessor to implement CRUD operations. But DataProcessor is incompatible with the Windows 8 apps. Therefore, in that apps you should use events and provide the processing logic manually.
 
+Generally, scheduler uses DataProcessor to implement CRUD operations. But DataProcessor is incompatible with the Windows 8 apps. Therefore, in that apps you should use events and provide the processing logic manually.
 
 
 + api/scheduler_onconfirmedbeforeeventdelete_event.md - fires after the user has clicked on the delete button and confirmed the deletion
@@ -135,7 +136,6 @@ Generally, scheduler uses DataProcessor to implement CRUD operations. But DataPr
 + api/scheduler_oneventadded_event.md - fires when the user adds a new event
 + _Note, when you create a new event in the scheduler, it gets an auto-generated id. When this event is saved in the data source, the auto-generated id can be replaced with the id given by the data source. 
 In case the event's id has been changed in the data source, you can use the api/scheduler_changeeventid.md method to change the event's id in the scheduler, accordingly._
-
 
 
 ~~~js
@@ -150,10 +150,10 @@ scheduler.attachEvent("onEventChanged", function (id, event) {
 scheduler.attachEvent("onEventAdded", function (id, event) {
        // your custom code
 });
-
 ~~~
 
 ## An example of CRUD logic for the IndexedDB database
+
 Here is a general example of implementing the 'insert' operation. The 'delete'/'update'/'read' operations can be implemented by analogy with the 'insert' operation.
 ~~~js
 //connects to indexedDb and fires the callback in case of success
@@ -211,6 +211,7 @@ scheduler.attachEvent("onEventAdded", function (id) {
 ~~~
 
 ##Not supported functionality 
+
 There are some features of a standard scheduler that aren't supported in Windows Store apps. They are:
 
 

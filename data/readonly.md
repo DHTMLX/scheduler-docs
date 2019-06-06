@@ -16,7 +16,7 @@ To make the entire scheduler read-only, set the api/scheduler_readonly_config.md
 ~~~js
 scheduler.config.readonly = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"month");
+scheduler.init('scheduler_here',new Date(2019, 5,11),"month");
 ~~~
 Note, when the entire scheduler is non-editable, users can't open the lightbox.
 
@@ -31,7 +31,7 @@ To leave for users the possibility to open the lightbox, but to forbid any editi
 ~~~js
 scheduler.config.readonly_form = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"month");
+scheduler.init('scheduler_here',new Date(2019, 5,11),"month");
 ~~~
 
 {{note

@@ -19,5 +19,3 @@ scheduler.attachEvent("onDblClick", function (id, e){
 @descr: 
 The event is blockable. Return *false* to cancel the default behaviour.
 
-@relatedsample:
-	08_shared_events/user_1_combined.html

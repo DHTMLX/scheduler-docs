@@ -142,7 +142,40 @@ scheduler.config.lightbox.sections = [
 scheduler.load("./data/types.php");
 ~~~
 
-where the **types.php** is a server-side script, retrieving events loaded to the scheduler, and a collection of radio buttons values:
+
+The data response for the api/scheduler_load.md method should contain a collection with the server list name specified in JSON
+[of the following format](data_formats.md#jsonwithcollections):
+
+~~~js
+{ 
+   "data":[
+      {
+          "id":"1",
+          "start_date":"2019-03-02 15:00:00",
+          "end_date":"2019-03-04 16:00:00",
+          "text":"Interview",
+          "priority":1
+      },
+      {
+          "id":"2",
+          "start_date":"2019-03-02 17:00:00",
+          "end_date":"2019-03-04 18:00:00",
+          "text":"Performance review",
+          "type":2
+      }
+   ], 
+   "collections": {/*!*/
+      "type":[/*!*/      
+         {"value":1,"label":"Low"},/*!*/
+         {"value":2,"label":"Medium"},/*!*/
+         {"value":3,"label":"High"}/*!*/
+      ]/*!*/
+   }/*!*/
+}
+
+~~~
+
+If you use [PHP Connector](https://github.com/DHTMLX/connector-php) library, the server code may look like the following:
 
 ~~~php
 //types.php
@@ -150,11 +183,11 @@ where the **types.php** is a server-side script, retrieving events loaded to the
 	require_once('../../../../connector-php/codebase/scheduler_connector.php');
 	include ('../../common/config.php');
 
-	$list = new OptionsConnector($res, $dbtype);
-	$list->render_table("priorities","optionid","optionid(value),name(label)");
+	$list = new JSONOptionsConnector($res, $dbtype);
+	$list->render_table("types","typeid","typeid(value),name(label)");
 	
-	$scheduler = new schedulerConnector($res, $dbtype);
-	$scheduler->set_options("priority", $list);
+	$scheduler = new JSONSchedulerConnector($res, $dbtype);
+	$scheduler->set_options("type", $list);
 	$scheduler->render_table(
         "tevents",
         "event_id",
@@ -164,5 +197,5 @@ where the **types.php** is a server-side script, retrieving events loaded to the
 ~~~
 
 {{note
-Note, you can use the api/scheduler_updatecollection.md method to update the list of retrieving options
+Note, you can use the api/scheduler_updatecollection.md method to update the list of retrieved options
 }}

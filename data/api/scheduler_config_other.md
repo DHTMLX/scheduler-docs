@@ -14,5 +14,5 @@ scheduler.init('scheduler_here', new Date(2013, 7, 5), "month");
 @template:	api_config
 @descr:
 
-The properties of the **config** object are described in a separate chapter of <br> the root API page <a href="api/refs/scheduler.md#properties">'Scheduler API: Properties'</a>.
+The properties of the **config** object are described in a separate chapter of the root API page [Scheduler API: Properties](api/refs/scheduler.md#properties).
 

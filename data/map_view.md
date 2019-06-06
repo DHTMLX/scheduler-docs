@@ -71,7 +71,7 @@ scheduler.locale.labels.section_location = "Location";
 
 ~~~js
 //'map' is the default name of the Map view
-scheduler.init('scheduler_here',new Date(2013,8,1),"map");
+scheduler.init('scheduler_here',new Date(2019,8,1),"map");
 ~~~
 	
 
@@ -84,8 +84,8 @@ Requirements to data items
 -------------------------------------------
 To be correctly rendered on the Map view, data items must contain a number of additional properties. The final list of mandatory properties (that data items should have) looks as in:
 
-- **start_date** (*Date* or *string*) - the date when the event is scheduled to begin. The default format - '%m/%d/%Y %H:%i'.
-- **end_date** (*Date* or *string*) - the date when the event is scheduled to be completed. The default format - '%m/%d/%Y %H:%i'.
+- **start_date** (*Date* or *string*) - the date when the event is scheduled to begin. The default format - '%Y-%m-%d %H:%i'.
+- **end_date** (*Date* or *string*) - the date when the event is scheduled to be completed. The default format - '%Y-%m-%d %H:%i'.
 - **text** (*string*) - the event's text.
 - **location** - (*string*) the location of an event.
 - **lat** - (*number*) the latitude of the event's location.

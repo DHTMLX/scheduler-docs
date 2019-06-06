@@ -12,9 +12,9 @@ The Month view is added to the  [basic scheduler's markup](scheduler_markup.md) 
 
 ~~~js
 //just usual initialization. The Month view will be added by default
-scheduler.init('scheduler_here',new Date(2010,0,10),"month");
+scheduler.init('scheduler_here',new Date(2019,0,10),"month");
 ...
-scheduler.load("data/events.xml");
+scheduler.load("/data/events");
 ~~~
 
 {{sample
@@ -43,7 +43,7 @@ To set the maximum number of events in a cell, use the  api/scheduler_max_month_
 ~~~
 scheduler.config.max_month_events = 3;
 ..
-scheduler.init('scheduler_here', new Date(2013,5,30),"month");
+scheduler.init('scheduler_here', new Date(2019,5,30),"month");
 ~~~
 
 If the number of assigned events exceeds the option's value, the scheduler will display the 'View more' link. 
@@ -107,7 +107,7 @@ To provide resizing of multi-day events by drag-n-drop, set the api/scheduler_re
 //resizing multi-day events by drag-n-drop
 scheduler.config.resize_month_events = true; /*!*/
 
-scheduler.init('scheduler_here',new Date(2010,0,10),"month");
+scheduler.init('scheduler_here',new Date(2019,0,10),"month");
 ~~~
 {{sample
 02_customization/32_resizable_month_events.html
@@ -121,7 +121,7 @@ To provide resizing both multi- and single-day events by drag-n-drop, set the ap
 //resizing both single- and multi-day events by drag-n-drop
 scheduler.config.resize_month_events = true;/*!*/
 scheduler.config.resize_month_timed= true;  /*!*/
-scheduler.init('scheduler_here',new Date(2010,0,10),"month");
+scheduler.init('scheduler_here',new Date(2019,0,10),"month");
 ~~~
 
 **Please, note:**

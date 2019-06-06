@@ -18,12 +18,12 @@ Shortly, the code of this app can look like this:
 ~~~js
 <script>
 	function init() {
-		scheduler.config.xml_date="%Y-%m-%d %H:%i";
-		scheduler.init('scheduler_here',new Date(2009,05,24),"week");
-		scheduler.load("php/scheduler.php");
+		scheduler.init('scheduler_here',new Date(2019,5,24),"week");
+		scheduler.load("api/scheduler");
 
-		var dp = new dataProcessor("php/scheduler.php");
+		var dp = new dataProcessor("api/scheduler");
 		dp.init(scheduler);
+        dp.setTransactionMode("REST", false);
 	}
 </script>
 
@@ -78,10 +78,11 @@ The mode is enabled by calling method **live_updates()** for the dataProcessor i
 
 
 ~~~js
-var dp = new dataProcessor("php/update.php");
+var dp = new dataProcessor("api/scheduler");
 
 dp.live_updates("http://localhost:8008/sync");
 dp.init(scheduler);
+dp.setTransactionMode("REST", false);
 
 ~~~
 

@@ -23,3 +23,4 @@ scheduler.templates.agenda_date = function(start, end) {
 
 @related:
 	agenda_view_templates.md
+    

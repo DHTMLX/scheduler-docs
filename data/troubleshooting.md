@@ -61,7 +61,7 @@ Take a look at the `id`, `start_date` and `end_date` properties.
 
 - `id` - items with the same id will be merged. If you have five events with matching id, Scheduler will display only one.
 
-- `start_date`, `end_date` - make sure date formats match the format you specify in the api/scheduler_xml_date_config.md config of Scheduler
+- `start_date`, `end_date` - make sure date formats match the format you specify in the api/scheduler_date_format_config.md config of Scheduler
 
 [Read details about the data properties](loading_data.md#dataproperties).
 
@@ -75,7 +75,8 @@ scheduler.config.xml_date="%Y-%m-%d %H:%i";
 
 ###If you find something unusual in the property values
 
-Check what is stored in your database, probably the issue is there. If date formats don't match, either change the `xml_date` config, or modify the code that serialized task dates before outputting them to the client.
+Check what is stored in your database, probably the issue is there. If date formats don't match, either change the api/scheduler_date_format_config.md config, 
+or modify the code that serialized task dates before outputting them to the client.
 
 ##Check what is loaded into the Scheduler
 
@@ -88,7 +89,7 @@ Check what is stored in your database, probably the issue is there. If date form
 ![Data check](data_check.png)
 
 Again, you can check the `start_date` and `end_date` properties of some records. You may notice either `invalid date` values or something obviously unexpected,
-e.g. year 1970 or year 2038. This will obviously indicate a problem with the `xml_date` format.
+e.g. year 1970 or year 2038. This will obviously indicate a problem with the api/scheduler_date_format_config.md format.
 
 {{note If you use the [recurring extension](recurring_events.md), [scheduler.getEvents()](api/scheduler_getevents.md) won't return any data, unless you limit the output by the `from`/`to` date parameters. 
 Try removing the recurring events extension from the page for this check.}}

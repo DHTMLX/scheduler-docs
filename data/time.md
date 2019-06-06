@@ -19,8 +19,6 @@ scheduler.config.lightbox.sections = [
 }}
 
 
-One Time control is present at the lightbox by default, so you don't need to add it. However, you can configure its structure and behavior as it is described below.
-  
 
 Properties
 ------------------

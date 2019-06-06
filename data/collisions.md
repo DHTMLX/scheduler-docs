@@ -21,6 +21,7 @@ From this moment on, the scheduler won't allow users to place 2 events in the sa
 
 Managing the allowable number of events in a time slot
 ----------------------------------------------------
+
 By default, the allowable number of events in a time slot is 1. To regulate this number, use the api/scheduler_collision_limit_config.md property:
 
 {{snippet
@@ -58,6 +59,7 @@ The api/scheduler_checkcollision.md method checks whether an event occurs at the
 
 Getting the number of events resided in a time slot
 ------------------------------------------------------------
+
 To get the number of events resided in a time slot, use the api/scheduler_getevents.md method: 
 
 {{snippet 
@@ -66,7 +68,6 @@ Getting the number of events in a time slot
 ~~~js
 var count = scheduler.getEvents(ev.start_date, ev.end_date).length;
 ~~~
-
 
 Note,  the api/scheduler_getevents.md method iterates over all events and compares their dates, so it may take a bit of time if you are using thousands of events. 
 
@@ -84,17 +85,19 @@ Below you'll find a list of steps you need to complete in order to avoid collisi
 2) Block creation of new events while data is being loaded from the server. 
 
 So, the user won't be able to create an event while data hasn't been loaded and the calendar is empty.
-For this purpose you should use the api/scheduler_onxle_event.md and api/scheduler_onxls_event.md event handlers and the api/scheduler_readonly_config.md property, as follows:
+For this purpose you should use the api/scheduler_onloadend_event.md and api/scheduler_onloadstart_event.md event handlers and the api/scheduler_readonly_config.md property, as follows:
 
 ~~~js
-// make the scheduler editable only after loading data from the data source is complete
-scheduler.attachEvent("onXLE", function (){
-	scheduler.config.readonly = false;
+// make the scheduler readonly 
+// before loading data from the data source has been started
+scheduler.attachEvent("onLoadStart", function(){
+    scheduler.config.readonly = true;
 });
 
-// make the scheduler readonly before loading data from the data source has been started
-scheduler.attachEvent("onXLS", function (){
-	scheduler.config.readonly = true;
+// make the scheduler editable 
+// only after loading data from the data source is completed
+scheduler.attachEvent("onLoadEnd", function(){
+    scheduler.config.readonly = false;
 });
 ~~~
 
@@ -107,7 +110,7 @@ Enabling the dynamic loading
 }}
 ~~~js
 scheduler.setLoadMode("month");
-scheduler.load("some.php");
+scheduler.load("/some");
 ~~~
 
 4) Check conflicting events on the server side via PHP connector validation. The details are given in the article devoted to 
@@ -116,7 +119,7 @@ scheduler.load("some.php");
 You can also reload data on the client side if checking fails. 
 
 To process the fail of checking, use DataProcessor Events [onValidationError](http://docs.dhtmlx.com/api__dataprocessor_onvalidationerror_event.html) and 
- [onAfterUpdate](http://docs.dhtmlx.com/api__dataprocessor_onafterupdate_event.html) and to reload data, make use of the Scheduler methods api/scheduler_clearall.md and api/scheduler_load.md:
+[onAfterUpdate](http://docs.dhtmlx.com/api__dataprocessor_onafterupdate_event.html) and to reload data, make use of the Scheduler methods api/scheduler_clearall.md and api/scheduler_load.md:
 
 
 a. [onValidationError](http://docs.dhtmlx.com/api__dataprocessor_onvalidationerror_event.html)
@@ -127,7 +130,7 @@ occurs after validation error has fired before data sending
 dp.attachEvent("onValidationError", function(id, details){
    //reload actual data from the server
    scheduler.clearAll();
-   scheduler.load("data.php");
+   scheduler.load("/data");
 });
 ~~~
 
@@ -145,7 +148,7 @@ dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
      if(action == "invalid" || action == "error"){
           //reload actual data from the server
           scheduler.clearAll();
-          scheduler.load("data.php");
+          scheduler.load("/data");
      }
 });
 ~~~

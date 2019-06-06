@@ -158,25 +158,23 @@ API templates
 	}
 	~~~
 
-- api/scheduler_xml_date_template.md - a string from an XML file is converted into a date object in conformity with this template
+- api/scheduler_parse_date_template.md - a string from an XML file is converted into a date object in conformity with this template
 
 	~~~js
 	var cfg = scheduler.config;
-	var str_to_date = scheduler.date.str_to_date(cfg.xml_date, cfg.server_utc);
+	var strToDate = scheduler.date.str_to_date(cfg.date_format, cfg.server_utc);
  
-	scheduler.templates.xml_date = function(date){
-    	return str_to_date(date);
+	scheduler.templates.parse_date = function(date){
+    	return strToDate (date);
 	};
 	~~~
 
-- api/scheduler_xml_format_template.md - a date object is converted into a string, in conformity with this template. Used to send data back to the server
+- api/scheduler_format_date_template.md - a date object is converted into a string, in conformity with this template. Used to send data back to the server
 
 	~~~js
-	var cfg = scheduler.config;
-	var date_to_str = scheduler.date.str_to_date(cfg.xml_date, cfg.server_utc);
- 
-	scheduler.templates.xml_format = function(date){
-    	return date_to_str(date);
+	var dateToStr = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
+	scheduler.templates.format_date = function(date){
+    	return dateToStr (date);
 	};
 	~~~
 

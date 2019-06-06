@@ -1,7 +1,8 @@
 deleteMarkedTimespan
 =============
+
 @short: 
-	removes marking/blocking set by the addMarkedTimespan() and blockTime() methods
+	removes marking/blocking set by the addMarkedTimespan() method
 
 @params: 
 * id	string	the timespan's id
@@ -20,7 +21,7 @@ scheduler.deleteMarkedTimespan(spanID);
 @require:limit
 @relatedapi:
 	api/scheduler_addmarkedtimespan.md
-    api/scheduler_blocktime.md
+    
 @relatedsample:
 	09_api/07_highlighted_timespans_month_view.html
 @descr: 
@@ -33,8 +34,7 @@ The method has 3 overloads:
 1.  **deleteMarkedTimespan()** - takes no parameters and removes all blocking/marking.
 2.  **deleteMarkedTimespan(id)** - takes the timespan's id.
 3.  **deleteMarkedTimespan(config)** -  takes certain configuration properties.
-   
-  
+     
    
 ~~~js
 var spanID = scheduler.addMarkedTimespan({  

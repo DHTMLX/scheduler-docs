@@ -146,7 +146,7 @@ To customize the format of dates presented in the mini calendar, you can use a n
 
 ~~~js
 scheduler.templates.calendar_month = scheduler.date.date_to_str("%M, %Y");
-scheduler.init('scheduler_here',new Date(2010,2,1),"day");
+scheduler.init('scheduler_here',new Date(2019,2,1),"day");
 ...
 var calendar = scheduler.renderCalendar({..});
 ~~~
@@ -207,7 +207,7 @@ To assign a custom CSS class to a day, you can use the api/scheduler_markcalenda
 <script>
 	var calendar = scheduler.renderCalendar({...});
  	...
-	scheduler.markCalendar(calendar, new Date(2013,3,1), "my_style");
+	scheduler.markCalendar(calendar, new Date(2019,3,1), "my_style");
 </script>
 ~~~
 
