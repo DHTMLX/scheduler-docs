@@ -10,6 +10,21 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+5.2.1
+------------
+
+<span class='release_date'>June 11, 2019. Bugfix release</span>
+
+###Fixes
+
+- Fix the issue with api/scheduler_load.md data type detection in IE11
+- Fix [timeline.scrollTo](timeline_view.md#timelineobjectapi) method in timeline without [horizontal scrollbar](timeline_view.md#horizontalscroll)
+- Fix not working api/scheduler_showevent.md method in the [Timeline view](timeline_view.md)
+- Fix incorrect behavior of vertical scroll in [scrollable timeline](timeline_view.md#horizontalscroll) with `smart_rendering:false`
+- Fix incorrect event position in the [multiday units view](units_view.md#displayingunitsformultipledays) with the [multisection](units_view.md#assigningeventstoseveralunits) extension when the [step](units_view.md#scrollingunits) option is specified
+- Fix incorrect size of some events in [Daily Timeline](timeline_view.md#daysmodedetails) 
+
+
 5.2
 --------------
 
@@ -26,7 +41,7 @@ This update changes behavior of multiple API methods. While they shouldn't cause
 
 ###Updates
 
--  The data format parameter of api/scheduler_load.md and api/scheduler_parse.md became optional, scheduler now detects format automatically
+- The data format parameter of api/scheduler_load.md and api/scheduler_parse.md became optional, scheduler now detects format automatically
 - [Date-to-string functions](date_formats.md) can now auto-detect the date strings format, if it doesn't match the provided one
 - [dhtmlxConnector library](https://github.com/DHTMLX/connector-php) is no longer shipped with the dhtmlxScheduler package
 - dhtmlxScheduler package samples no longer require a php/apache server to work
@@ -77,25 +92,6 @@ of the deprecated - **onXLS** and **onXLE** events
 - Fixed issue with scroll position resetting on date change when key_nav extension is enabled in the timeline
 - Fixed incorrect value `old_date` argument of `onBeforeViewChange` event in some cases
 - Fixed incorrect display of a scrollable timeline with ignored time cells
-- Fixed incorrect behavior if scrolling happened during drag-create of new events in day/week views
-- Fixed `onAfterSchedulerResize` event not firing in `Timeline view`
-- Performance improvement for event rendering in `Week view`
-
-5.1.1
-------------
-
-###Fixes
-
-- Fixed keyboard navigation focus not being highlighted in the timeline
-- Fixed incorrect initial height of `timeline_scale_header` if `second_scale` specified
-- Fixed bug with `event_min_dy` not affecting section height if only one event is located inside a section
-- Fixed bug with quick info popup self-closing when the same event is clicked multiple times
-- Fixed script error which fired after deleting event in `Year view`
-- Fixed incorrect initial display of scrolled timeline if no events loaded into the scheduler
-- Fixed ability to enable smart rendering for non-scrollable timelines
-- Fixed issue with scroll position resetting on date change when key_nav extension is enabled in the timeline
-- Fixed incorrect value `old_date` argument of `onBeforeViewChange` event in some cases
-- Fixed incorrect display of scrollable timeline with ignored time cells
 - Fixed incorrect behavior if scrolling happened during drag-create of new events in day/week views
 - Fixed `onAfterSchedulerResize` event not firing in `Timeline view`
 - Performance improvement for event rendering in `Week view`
