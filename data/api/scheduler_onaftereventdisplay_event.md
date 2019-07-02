@@ -5,11 +5,12 @@ onAfterEventDisplay
 	
 
 @params: 
-- id	string	the event's id
-- view	string	the name of a view used to display the event
+- event		object		the event's object
+- view		string		the name of a view used to display the event
+
 
 @example: 
-scheduler.attachEvent("onAfterEventDisplay", function(id,view){
+scheduler.attachEvent("onAfterEventDisplay", function(event,view){
 	//any custom logic here
 });
 
@@ -19,5 +20,6 @@ scheduler.attachEvent("onAfterEventDisplay", function(id,view){
 @descr: 
 
 
-
+@relatedapi:
+api/scheduler_onbeforeeventdisplay_event.md
 
