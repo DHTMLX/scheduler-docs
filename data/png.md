@@ -17,6 +17,11 @@ There are several export services available. You can install them on your comput
 Note that export services are not included into the Scheduler package, 
 read the [corresponding article](http://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
 
+Limits on request size
+--------------------
+
+There is a common API endpoint [https://export.dhtmlx.com/gantt](https://export.dhtmlx.com/gantt) which serves for export methods (*exportToPDF*, *exportToPNG*, etc.). **Max request size is 10 MB**.
+
 
 Default Export to PNG
 ----------------------

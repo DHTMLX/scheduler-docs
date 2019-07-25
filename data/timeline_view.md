@@ -793,8 +793,8 @@ Horizontal scroll
 
 There is a possibility to enable a horizontal scroll in the Timeline view to switch between days/weeks/months without clicking the navigation buttons. 
 
-In order to add a horizontal scrollbar into the timeline, you should use the **scrollable** property. There are also the **column_width** and **scroll_position** options that can be used to configure the horizontal scroll
-as it's shown in the example below: 
+In order to add a horizontal scrollbar into the timeline, you should use the **scrollable** property of the api/scheduler_createtimelineview.md method.
+There are also the **column_width** and **scroll_position** options that can be used to configure the horizontal scroll as it's shown in the example below: 
 
 ~~~js
 scheduler.createTimelineView({
@@ -818,6 +818,9 @@ scheduler.createTimelineView({
 If *true*, date columns will not shrink less than the **column_width** value, a horizontal scroll bar will appear when necessary.
 - **column_width** - (*boolean*) optional, defines the minimal width of timeline date columns, 100 by default
 - **scroll_position** - (*Date*) optional, renders timeline scrolled to a specific position, takes the same arguments as `timeline.scrollTo()`, i.e. the date you want timeline to be scrolled to after rendering
+
+The **smart rendering** feature is enabled in a scrollable Timeline by default. This functionality optimizes the performance of the Timeline view as it allows rendering only the rows, columns, and events
+visible on the screen, while other elements are being rendered during scrolling of the timeline.
 
 {{sample 06_timeline/16_lines_performance.html}}
 
