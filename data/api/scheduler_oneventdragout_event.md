@@ -1,7 +1,7 @@
 onEventDragOut
 =============
 
-@short:fires when a dragged event  is moved out of the scheduler
+@short:fires when a dragged event is moved out of the scheduler
 	
 
 @params:
@@ -18,3 +18,7 @@ scheduler.attachEvent("onEventDragOut", function (id, e){
 
 @template:	api_event
 @descr: 
+{{note The event fires only in case of drag-n-drop between schedulers.}}
+
+@related:
+dhtmlx_components_integration.md#draganddropbetweenschedulers
