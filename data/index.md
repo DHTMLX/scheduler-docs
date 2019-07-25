@@ -1,5 +1,6 @@
 Start
 =====
+
 <div class="newsblock">
     <h2>Meet Scheduler 5.2!</h2>
     
@@ -24,8 +25,8 @@ Start
 	<div class='inside-hot'>
     
     <div class='hot-right'>
-    	Check also
-    	<a class='first' href='http://docs.dhtmlx.com/gantt'>Gantt</a>
+    	Check also:
+    	<a class='first' href='https://docs.dhtmlx.com/gantt'>Gantt</a>
     	<a class='second' href='http://scheduler-net.com/'>Scheduler.Net</a>
 	</div>
     

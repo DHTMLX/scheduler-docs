@@ -18,5 +18,5 @@ scheduler.parse(demo_events);
 @relatedapi:
     api/scheduler_oneventloading_event.md
 	api/scheduler_onschedulerready_event.md
-    api/scheduler_onbeforesectionrender_event.md
+   
   

@@ -63,6 +63,7 @@ The required code files are:
 Let's quickly explore the structure of the dhtmlxScheduler package to find out where to look for the files. 
 
 - <b>sources</b> - the source code files of the library. The files are not minified and easy-to-read. The package is mostly intended to be used for component's debugging.
+{{note Note that the **Trial** version of the Scheduler library doesn't contain the **sources** folder.}}
 - <b>samples</b> - the code samples.
 - <b>docs</b> - the full documentation of the component.
 - <b>codebase</b> - the packed code files of the library. These files have much smaller size and intended for use in production. <b>In your apps you need to use files from this folder.</b>

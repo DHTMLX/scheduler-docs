@@ -86,7 +86,7 @@ However, fields **start_date** and **end_date** slightly change their meaning:
 - **start_date** - the start date of the first event in a series in the format 'yyyy-mm-dd hh:mm:ss' (settings_format.md).
 - **end_date** - the end date of the last event in a series in the format 'yyyy-mm-dd 00:00:00' (settings_format.md).
 
-For example, a recurring event that starts on January 3, 2013 at 10:00, repeats every day and ends on January 13, 2013 at 12:00, 
+For example, a recurring event that starts on January 3, 2019 at 10:00, repeats every day and ends on January 13, 2019 at 12:00, 
 will be presented in the database as follows:
 
 
