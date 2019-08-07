@@ -25,8 +25,7 @@ read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/ex
 Limits on request size
 --------------------
 
-There is a common API endpoint [https://export.dhtmlx.com/gantt](https://export.dhtmlx.com/gantt) which serves for export methods (*exportToPDF*, *exportToPNG*, etc.). **Max request size is 10 MB**.
-
+There is a common API endpoint [https://export.dhtmlx.com/scheduler](https://export.dhtmlx.com/scheduler) which serves for export methods (*exportToPDF*, *exportToPNG*, etc.). **Max request size is 10 MB**.
 
 
 Default Export to PDF
