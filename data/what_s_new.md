@@ -18,9 +18,9 @@ If you are updating Scheduler from an older version, check migration_from_older_
 ###Fixes
 
 - Add more helpful error messages for common misconfigurations
-- Fix script error which was thrown from on double click on any label in [readonly form](readonly.md#readonlymodefortheentirelightbox)
-- Fix incorrect display of the [Timeline view](timeline_view.md) when `smart_rendering:true` is used together with `section_autoheight:false`
-- Fix script error which was thrown from the [Year view](year_view.md#horizontalscroll) when days containing events were hidden using [scheduler.ignore_year](custom_scales.md) method
+- Fix the script error which was thrown from a double click on any label in a [readonly form](readonly.md#readonlymodefortheentirelightbox)
+- Fix incorrect displaying of the [Timeline view](timeline_view.md) when `smart_rendering:true` is used together with `section_autoheight:false`
+- Fix the script error which was thrown from the [Year view](year_view.md#horizontalscroll) when days containing events were hidden using the [scheduler.ignore_year](custom_scales.md) method
 
 5.2.1
 ------------
