@@ -6,7 +6,7 @@ Starting from version 4.2, dhtmlxScheduler provides  a possibility to export all
 Limits on request size
 --------------------
 
-There is a common API endpoint [https://export.dhtmlx.com/gantt](https://export.dhtmlx.com/gantt) which serves for export methods (*exportToPDF*, *exportToPNG*, etc.). **Max request size is 10 MB**.
+There is a common API endpoint [https://export.dhtmlx.com/scheduler](https://export.dhtmlx.com/scheduler) which serves for export methods (*exportToPDF*, *exportToPNG*, etc.). **Max request size is 10 MB**.
 
 
 Export to Excel
