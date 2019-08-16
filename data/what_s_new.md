@@ -21,7 +21,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 - Fix the issue in day_view.md / week_view.md which caused event to jump to the [multiday section](api/scheduler_multi_day_config.md) when moved to the end of a day
 - Fix a regression in `scroll_position` setting of the [scrollable Timeline](timeline_view.md#horizontalscroll)
 - Fix the issue which caused chunks of [multi-section events](timeline_view.md#assignmentofeventstoseveralsections) to obtain incorrect position after the mouse click
-
+- Fix the script error fired from the tooltip in `cell` mode of the [Timeline view](timeline_view.md#viewmodes) when [ignore_timeline](custom_scales.md) is used
 
 5.2.2
 ------------
