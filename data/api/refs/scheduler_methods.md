@@ -5,7 +5,7 @@ Methods
 {{api
 - api/scheduler_addevent.md - adds a new event
 - api/scheduler_addeventnow.md - adds a new event and opens the lightbox to confirm
-- api/scheduler_addmarkedtimespan.md - marks dates, but with certain settings makes blocking (unlike blockTime() allows setting custom styling for the limit)
+- api/scheduler_addmarkedtimespan.md - marks dates, but with certain settings makes blocking (allows setting custom styling for the limit)
 - api/scheduler_addsection.md - adds a section to the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
 - api/scheduler_addshortcut.md - adds a new keyboard shortcut
 - api/scheduler_attachevent.md - attaches the handler to an inner event of dhtmlxScheduler
@@ -26,7 +26,7 @@ Methods
 - api/scheduler_createunitsview.md - creates the Units view in the scheduler
 - api/scheduler_deleteallsections.md - deletes all sections from  the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
 - api/scheduler_deleteevent.md - deletes the specified event
-- api/scheduler_deletemarkedtimespan.md - removes marking/blocking set by the addMarkedTimespan() and blockTime() methods
+- api/scheduler_deletemarkedtimespan.md - removes marking/blocking set by the addMarkedTimespan() method
 - api/scheduler_deletesection.md - deletes a section from  the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
 - api/scheduler_destroycalendar.md - destroys previously created mini-calendar
 - api/scheduler_detachevent.md - detaches a handler from an event (which was attached before by the attachEvent method)
@@ -52,6 +52,7 @@ Methods
 - api/scheduler_getshortcuthandler.md - gets a key navigation shortcut handler
 - api/scheduler_getstate.md - gets the current state of the scheduler
 - api/scheduler_getuserdata.md - gets the user data associated with the specified event
+- api/scheduler_getview.md - returns a view object by its name. If no name is specified, returns the current view
 - api/scheduler_hidecover.md - hides the lightbox modal overlay that blocks interactions with the remaining screen
 - api/scheduler_hidequickinfo.md - hides the pop-up event form (if it's currently active)
 - api/scheduler_highlighteventposition.md - highlights the event's duration on the time scale
@@ -153,6 +154,7 @@ Methods
 - api/scheduler_getshortcuthandler.md
 - api/scheduler_getstate.md
 - api/scheduler_getuserdata.md
+- api/scheduler_getview.md
 - api/scheduler_hidecover.md
 - api/scheduler_hidequickinfo.md
 - api/scheduler_highlighteventposition.md

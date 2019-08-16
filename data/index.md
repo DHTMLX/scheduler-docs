@@ -1,15 +1,16 @@
 Start
 =====
+
 <div class="newsblock">
-    <h2>Meet Scheduler 5.1!</h2>
+    <h2>Meet Scheduler 5.2!</h2>
     
     <p>
     New version brings new improvements and features:
     </p>
     <ul>
-        <li><a href="timeline_view.md#horizontalscroll">Horizontal scroll in the Timeline view</a></li>
-        <li><a href="timeline_view.md">Improved performance of the Timeline view</a></li>
-        <li><a href="howtostart_guides.md">Integration with various server-side platforms</a></li>
+        <li><a href="timeline_view.md#customcontentincells">Custom HTML content for timeline cells</a></li>
+        <li><a href="migration_from_older_version.md#dnd">Drag-n-drop of events by the body</a></li>
+        <li><a href="migration_from_older_version.md#5152">Updates in API</a></li>
     </ul>
     <p class='action_buttons'>
       <a class='action_button moredetails' href="what_s_new.html">More details</a>
@@ -24,8 +25,8 @@ Start
 	<div class='inside-hot'>
     
     <div class='hot-right'>
-    	Check also
-    	<a class='first' href='http://docs.dhtmlx.com/gantt'>Gantt</a>
+    	Check also:
+    	<a class='first' href='https://docs.dhtmlx.com/gantt'>Gantt</a>
     	<a class='second' href='http://scheduler-net.com/'>Scheduler.Net</a>
 	</div>
     

@@ -54,7 +54,7 @@ To activate the big-buttons scheduler, include the ["Quick Info"](extensions_lis
 ~~~js
 <script src="../../codebase/ext/dhtmlxscheduler_quick_info.js"></script>
 <script>
-      scheduler.init('scheduler_here',new Date(2009,5,30),"day");
+      scheduler.init('scheduler_here',new Date(2019,5,30),"day");
       ...
 <script>
 ~~~

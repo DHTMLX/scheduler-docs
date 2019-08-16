@@ -11,10 +11,10 @@ As you have probably noticed at the very beginning of your work with the library
 
 Now, for the PRO version, we should rephrase that statement and say: _more than one instance_ of dhtmlxScheduler can exist on the page. You still have one default instance of scheduler, which can be accessed by the global **scheduler** object, but you can also create new scheduler objects.
 
-To create a new instance of dhtmlxScheduler, use the following command:
+To create a new instance of dhtmlxScheduler, use the **Scheduler.getSchedulerInstance()** method:
 
 ~~~js
-//Beware, 'Scheduler' in the command goes with the capital letter
+// Beware, 'Scheduler' in the command goes with the capital letter
 [instanceName] = Scheduler.getSchedulerInstance();
 ~~~
 
@@ -26,12 +26,12 @@ Let's take a simple example: 2 schedulers, one under another:
 ~~~js
 function init() {
     scheduler1  = Scheduler.getSchedulerInstance();
-	scheduler1.init('scheduler_here',new Date(2009,5,30),"week");
-	scheduler1.load("./data/events.xml")
+	scheduler1.init('scheduler_here',new Date(2019,5,30),"week");
+	scheduler1.load("/data/events")
 	
 	scheduler2 = Scheduler.getSchedulerInstance();
-	scheduler2.init('scheduler_here_2',new Date(2009,5,30),"month");
-	scheduler2.load("./data/events.xml")	
+	scheduler2.init('scheduler_here_2',new Date(2019,5,30),"month");
+	scheduler2.load("/data/events")	
 }
 
 ~~~
@@ -52,9 +52,22 @@ function init() {
 
 ##Synchronization with dhtmlxDataStore
 
-In this sub-chapter we want to consider synchronizing multiple schedulers through a dhtmlXDataStore object, from which the schedulers are being populated with data (so an event changed in one scheduler will be reflected in the other one).
+In this sub-chapter we want to consider synchronizing multiple schedulers through a [dhtmlXDataStore](https://docs.dhtmlx.com/datastore__index.html) object, from which the schedulers are being populated with data 
+(so an event changed in one scheduler will be reflected in the other one).
 
-Common technique looks like this:
+{{note Note that dhtmlxDataStore is a part of the [dhtmlxSuite](https://dhtmlx.com/docs/products/dhtmlxSuite/), and it's not included in dhtmlxScheduler package. However, if you don't have dhtmlxSuite license, you can 
+still use dhtmlxDataStore with dhtmlxScheduler for free. Please follow the steps below to use the component in your app.}}
+
+- [Download dhtmlxDataStore package](https://files.dhtmlx.com/30d/33230caa09f4b5030ea5bfe374ef6d57/dhtmlxDataStore.zip)
+- Include *dhtmlxcommon.js* and *datastore.js* after dhtmlxscheduler.js on your page. Keep to the order of files given below:
+
+~~~js
+<script src="dhtmlxscheduler.js"></script>
+<script src="datastore/dhtmlxCommon/codebase/dhtmlxcommon.js"></script>
+<script src="datastore/datastore.js"></script>
+~~~
+
+The common technique of synchronizing Schedulers via DataStore looks like this:
 
 ~~~js
 function init() {
@@ -63,35 +76,33 @@ function init() {
 		scheme:{
 			$init:function(obj){
 				if (typeof obj.start_date == "string"){
-					obj.start_date = scheduler.templates.xml_date(obj.start_date);
-					obj.end_date = scheduler.templates.xml_date(obj.end_date);
+					obj.start_date = scheduler.templates.parse_date(obj.start_date);
+					obj.end_date = scheduler.templates.parse_date(obj.end_date);
 				}
 			}
 		}
 	});
 
     scheduler1 = Scheduler.getSchedulerInstance();
-    scheduler1.config.xml_date="%Y-%m-%d %H:%i";
-	scheduler1.init('scheduler_here',new Date(2009,05,12),"week");
+	scheduler1.init('scheduler_here',new Date(2019,05,12),"week");
 	scheduler1.sync(data, { copy:true });
 	
 
 	scheduler2 = Scheduler.getSchedulerInstance();
-    scheduler2.config.xml_date="%Y-%m-%d %H:%i";
-	scheduler2.init('scheduler_here_too',new Date(2009,05,12),"month");
+	scheduler2.init('scheduler_here_too',new Date(2019,05,12),"month");
 	scheduler2.sync(data, { copy:true });
 }
-
 ~~~
 
 
-Let's discuss what we do in the code snippet above.
+Let's discuss what we've done in the above code snippet.
 
 
-1.  First of all, we initialize dhtmlXDataStore in its usual way (for details, see chapters [Initialization](http://docs.dhtmlx.com/doku.php?id=dhtmlxdatastore:initialization), [Data scheme](http://docs.dhtmlx.com/doku.php?id=dhtmlxdatastore:data_scheme) of the [dhtmlXDataStore documentation](http://docs.dhtmlx.com/doku.php?id=dhtmlxdatastore:toc)).
-2.  Then, we add 2 schedulers. Again, we do this in the usual manner, except for the use of the [sync](http://docs.dhtmlx.com/doku.php?id=dhtmlxdatastore:api_method_dhtmlxdatastore_sync) method.
+1.  First of all, we initialize dhtmlXDataStore in its usual way (for details, see chapters [Initialization](https://docs.dhtmlx.com/datastore__initialization.html),
+[Data scheme](https://docs.dhtmlx.com/datastore__data_scheme.html) of the [dhtmlXDataStore documentation](https://docs.dhtmlx.com/datastore__index.html)).
+2.  Then, we add 2 schedulers. Again, we do this in the usual manner, except for the use of the [sync](https://docs.dhtmlx.com/api__datastore_sync.html) method.
 
-The [sync](http://docs.dhtmlx.com/doku.php?id=dhtmlxdatastore:api_method_dhtmlxdatastore_sync) method binds schedulers with DataStore  and takes 2 parameters:
+The [sync](https://docs.dhtmlx.com/api__datastore_sync.html) method binds schedulers with DataStore and takes 2 parameters:
 
 
 + **data** - (mandatory) a dhtmlXDataStore instance, the scheduler will get data from.
@@ -116,9 +127,14 @@ So, in our case we use the parameter (**{copy:true}**) only to ensure the correc
 
 ##Integration with dhtmlxLayout
 
-A good way to place schedulers on the page is using [dhtmlxLayout](http://docs.dhtmlx.com/doku.php?id=dhtmlxlayout:toc). It not only provides a beautiful frame, but also ensures correct interacting with other elements on the page and acting according to the page size changes. 
+A good way to place schedulers on the page is using [dhtmlxLayout](https://docs.dhtmlx.com/layout__index.html). It not only provides a beautiful frame, but also ensures correct interacting
+with other elements on the page and acting according to the page size changes. 
 
-**To attach a dhtmlxScheduler instance to a layout cell**, use method [attachScheduler()](http://docs.dhtmlx.com/doku.php?id=dhtmlxlayout:api_method_dhtmlxlayoutpanel_attachscheduler).
+{{note Note that dhtmlxLayout is a separate product, not a part of the dhtmlxScheduler library. If you would like to use dhtmlxLayout in your application, you should purchase the license. 
+Please [check the licensing options](https://dhtmlx.com/docs/products/dhtmlxLayout/#editions-licenses).}}
+
+
+**To attach a dhtmlxScheduler instance to a layout cell**, use the [attachScheduler()](https://docs.dhtmlx.com/api__dhtmlxcell_attachscheduler.html) method.
   
 **Note**, attaching scheduler to a cell automatically initializes it. So, configure scheduler before placing it into the layout.
 
@@ -128,14 +144,12 @@ function init() {
 
 	sched1 = Scheduler.getSchedulerInstance();
 	sched1.config.multi_day = true;
-	sched1.config.xml_date="%Y-%m-%d %H:%i";
-	dhxLayout.cells("a").attachScheduler(new Date(2009,05,30),"week",null,sched1);
-	sched1.load("./data/units.xml")
+	dhxLayout.cells("a").attachScheduler(new Date(2019,05,30),"week",null,sched1);
+	sched1.load("/data/units")
 		
 	sched2 = Scheduler.getSchedulerInstance();
-	sched2.config.xml_date="%Y-%m-%d %H:%i";
-	dhxLayout.cells("b").attachScheduler(new Date(2009,05,30),"month",null,sched2);
-	sched2.load("./data/units.xml")
+	dhxLayout.cells("b").attachScheduler(new Date(2019,05,30),"month",null,sched2);
+	sched2.load("/data/units")
 }
 
 ~~~

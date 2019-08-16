@@ -1,16 +1,18 @@
 getSection
 =============
+
 @short: 
-	gets the object of the specified section in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+	gets the object of the specified section in the currently active view 
 
 
 @params: 
 - section_id	string	the section's id
+
 @require:treetimeline
 @views: timeline
 
 @returns:
--section	object	the section object
+- section	object	the section object
 
 
 @example: 
@@ -29,7 +31,6 @@ scheduler.createTimelineView({
 scheduler.getSection("sales");//->{key:"sales",label:"Sales and Marketing"}
 
 
-
 @template:	api_method
 
 
@@ -39,8 +40,10 @@ scheduler.getSection("sales");//->{key:"sales",label:"Sales and Marketing"}
     api/scheduler_openallsections.md
 
 @descr: 
+{{pronote This functionality is available in the PRO edition only.}}
+
 {{note
-The method is used for the Tree mode only
+If the opened view isn't Timeline in the 'Tree' mode, the method will be ignored.
 }}
 
 @edition:pro

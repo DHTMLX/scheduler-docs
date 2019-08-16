@@ -1,8 +1,7 @@
 How to Start with dhtmlxScheduler
 ===============================
 
-
-This section is dedicated to the very beginning of work with Gantt chart. Each chapter tells about basic Gantt initialization on different server-side
+This section is dedicated to the very beginning of work with Scheduler. Each chapter tells about basic Scheduler initialization on different server-side
 platforms to suit all tastes and preferences.
 
 <table style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">

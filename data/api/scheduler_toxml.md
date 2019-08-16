@@ -14,8 +14,8 @@ var str = scheduler.toXML();
 
 @template:	api_method
 @relatedsample:
-	04_export/01_serialize_xml.html
-    04_export/04_serialize_recurring.html
+	04_export/01_serialize_data.html
+   
 @descr: 
 - Custom attributes [can be configured](export.md) if necessary.
 - The method can be used with recurring events.

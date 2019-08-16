@@ -17,6 +17,11 @@ There are several export services available. You can install them on your comput
 Note that export services are not included into the Scheduler package, 
 read the [corresponding article](http://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
 
+Limits on request size
+--------------------
+
+There is a common API endpoint [https://export.dhtmlx.com/scheduler](https://export.dhtmlx.com/scheduler) which serves for export methods (*exportToPDF*, *exportToPNG*, etc.). **Max request size is 10 MB**.
+
 
 Default Export to PNG
 ----------------------
@@ -36,9 +41,8 @@ To export the scheduler as a PNG image, do the following steps:
 <input value="Export to PNG" type="button" onclick='scheduler.exportToPNG()'>/*!*/
 
 <script>
-	scheduler.config.xml_date="%Y-%m-%d %H:%i";
-	scheduler.init('scheduler_here',new Date(2009,5,30),"month");
-	scheduler.load("data/events.xml");
+	scheduler.init('scheduler_here',new Date(2019,5,30),"month");
+	scheduler.load("data/events");
 </script>
 ~~~
 

@@ -30,37 +30,42 @@ if (scheduler.getState().lightbox_id){
 }
 ~~~
 
-##Mapping DB fields to the lightbox sections
+##Mapping properties of an event object to the lightbox sections
 
-To map a DB field to a lightbox section, do the following:
+To map a property of an event object to a lightbox section, do the following:
 
-- On the server side, just add some field to the list of data fields:
-
-~~~php
-$scheduler->render_table(
-    "events_rec",
-    "event_id",
-    "start_date,end_date,text,rec_type"
-);
-~~~
-
-If you are generating XML by a custom code, just add the sub-tag to the event as:
-
-~~~xml
-<event id='50'>
-	<start_date><![CDATA[2009-06-10 00:00:00]]></start_date>
-	<end_date><![CDATA[2009-06-12  00:00:00]]></end_date>
-	<text><![CDATA[New event]]></text>
-	<rec_type><![CDATA[ some value ]]></rec_type>
-</event>
-~~~
-
-- On the client side, set the same name for the **map_to** attribute of a section:
+- Make sure your data source returns events in a [supported format](data_formats.md)
 
 ~~~js
-{name:"recurring", map_to:"rec_type" ...}
+{ 
+   "data":[
+      {
+          "id":"1",
+          "start_date":"2019-03-02 00:00:00",
+          "end_date":"2019-03-04 00:00:00",
+          "text":"Graduation ceremony",
+          "type":"1",
+          "location":"London"
+      },
+      ...
+   ]                                       
+}
 ~~~
-	
+
+Note, that all properties your data source returns will be added to event objects and will available for the [client-side API](event_object_operations.md).
+
+- In order to map a lightbox control to a specific property, assign the name of the event property to the **map_to** property of a section:
+
+~~~js
+scheduler.config.lightbox.sections=[
+    {name:"description", height:70, map_to:"text", type:"textarea" , focus:true},
+    {name:"locationInput", height:35, map_to:"location", type:"textarea" },
+    {name:"typeSelect", map_to:"type", type:"select", options:scheduler.serverList("types")},
+    {name:"time", type:"time", map_to:"auto"}
+];
+~~~
+
+Only exceptions are the [time](time.md) and the [recurring](recurring_events.md#recurringlightbox) controls that are always mapped to a fixed properties (**event.start_date/event.end_date** and **event.rec_type/event.event_length/event.event_pid** respectively).
 
 Automatic end date in the Time control
 --------------------------------------

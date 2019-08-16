@@ -4,6 +4,16 @@ Keyboard Navigation
 You can get access to Scheduler and its elements via keys or keys' combinations. This article will give you all the necessary information 
 on the peculiarities of keyboard navigation with Scheduler, including focus behavior, usage of ready shortcuts and creation of custom ones.
 
+
+##Enabling the functionality
+
+In order to use keyboard navigation in Scheduler, you need to include the **ext/dhtmlxscheduler_key_nav.js** extension on the page. 
+
+~~~html
+<script src="../../codebase/ext/dhtmlxscheduler_key_nav.js" type="text/javascript" 
+	charset="utf-8"></script>
+~~~
+
 ##Focus behavior during keyboard navigation
 
 ###Focus on Scheduler
@@ -19,6 +29,11 @@ When a modal window (a lightbox, a confirm window) opens, the focus moves from t
 navigation happens inside of it as in a simple form. When the window is closed, focus goes back to the Scheduler.
 
 To return focus back to Scheduler, you need to use the api/scheduler_focus.md method. 
+
+~~~js
+scheduler.focus();
+~~~
+
 When Scheduler gets focus again, it places the focus on the active element inside, or on the first row, or on the latest selected element.
 
 The default navigation actions in a modal window are as follows:
@@ -28,14 +43,6 @@ The default navigation actions in a modal window are as follows:
 
 If the focus is set on some button of the form, pressing *Space* or *Enter* will call pressing the button under focus and not the action.
 
-##Enabling the functionality
-
-In order to use keyboard navigation in Scheduler, you need to include the **ext/dhtmlxscheduler_key_nav.js** extension on the page. 
-
-~~~html
-<script src="../../codebase/ext/dhtmlxscheduler_key_nav.js" type="text/javascript" 
-	charset="utf-8"></script>
-~~~
 
 ##Scopes
 
@@ -55,7 +62,7 @@ to Scheduler and to its element, the shortcut attached to an element will be cal
 
 To create a new keyboard shortcut, you need to use the api/scheduler_addshortcut.md method and pass three parameters to it:
 
-- **shortcut** - (*string*) a new shortcut key or keys' combination name
+- **shortcut** - (*string*) a new shortcut key or a keys' combination name
 - **handler** - (*function*) a handler function that will be called on the shortcut call 
 - **scope** - (*string*) the name of the context element to attach the handler function to
 

@@ -19,9 +19,9 @@ To load data from an inline dataset, use the api/scheduler_parse.md method:
 scheduler.init('scheduler_here',new Date(2009,10,1),"month");
 ...
 scheduler.parse([
-	{text:"Meeting",    start_date:"04/11/2018 14:00", end_date:"04/11/2018 17:00"},
-	{text:"Conference", start_date:"04/15/2018 12:00", end_date:"04/18/2018 19:00"},
-	{text:"Interview",  start_date:"04/24/2018 09:00", end_date:"04/24/2018 10:00"}
+	{text:"Meeting",    start_date:"2019-04-11 14:00", end_date:"2019-04-11 17:00"},
+	{text:"Conference", start_date:"2019-04-15 12:00", end_date:"2019-04-18 19:00"},
+	{text:"Interview",  start_date:"2019-04-24 09:00", end_date:"2019-04-24 10:00"}
 ],"json");
 
 ~~~
@@ -39,7 +39,7 @@ To load data from a file, use the api/scheduler_load.md method:
 ~~~js
 scheduler.init('scheduler_here',new Date(2018,10,1),"month");
 ...
-scheduler.load("data.xml","xml"); //loading data from a file in the XML format
+scheduler.load("data.json"); //loading data from a file
 ~~~
 
 {{sample
@@ -129,7 +129,7 @@ Multiple sources can be used for both static and dynamic loading
 Include the aforementioned file on the page and use the same api/scheduler_load.md method as in:
 
 ~~~js
-scheduler.load(["first/source/some.xml","second/source/other.xml"]);
+scheduler.load(["first/source/some","second/source/other"]);
 ~~~
 
 Data Properties
@@ -147,12 +147,12 @@ To be loaded from a database, data items should have one more mandatory property
 
 - **id** -  (*string, number*) the event id.
 
-The default date format for JSON and XML data is **'%m/%d/%Y %H:%i'** (see the <a href="settings_format.md"> date format specification</a>).<br> To change it, use the api/scheduler_xml_date_config.md configuration option.
+The default date format for JSON and XML data is **'%Y-%m-%d %H:%i'** (see the <a href="settings_format.md"> date format specification</a>).<br> To change it, use the api/scheduler_date_format_config.md configuration option.
 
 ~~~js
-scheduler.config.xml_date="%Y-%m-%d %H:%i";
+scheduler.config.date_format="%Y-%m-%d %H:%i";
 ...
-scheduler.init('scheduler_here', new Date(2013, 3, 18), "week");
+scheduler.init('scheduler_here', new Date(2019, 3, 18), "week");
 ~~~
 
 ###Custom properties
@@ -302,7 +302,7 @@ scheduler.createTimelineView({
 - to load data into scheduler, use the api/scheduler_load.md method:
 
 ~~~js
-scheduler.load("data.json", "json");
+scheduler.load("data.json");
 ~~~
 
 - while implementing scheduler data response on the backend, use the following format:

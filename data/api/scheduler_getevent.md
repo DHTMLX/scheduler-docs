@@ -1,10 +1,11 @@
 getEvent
 =============
+
 @short: 
 	returns the event object by its id
 
 @params: 
-	- event_id  string, number   the  event's id
+- event_id  string,number   the event's id
 
 @returns:
 - obj	object	the event object
@@ -23,7 +24,7 @@ var eventObj = scheduler.getEvent(eventId);
 @template:	api_method
 @relatedsample:
 	02_customization/16_custom_form.html
-    08_shared_events/user_1_combined.html
+   
 @descr: 
 
 

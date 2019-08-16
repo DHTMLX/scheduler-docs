@@ -18,7 +18,7 @@ var str = scheduler.toICal("My calendar");
 @related:
 	export.md
 @relatedsample:
-	04_export/03_serialize_ical.html
+	04_export/01_serialize_data.html
 @descr: 
 {{note
 Custom attributes are not supported.

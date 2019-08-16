@@ -19,7 +19,6 @@ have [multiple schedulers on the page](multiple_per_page.md)).
 Beware, configuration options should go before the code line with scheduler initialization. 
 
 ~~~js
-scheduler.config.xml_date="%Y-%m-%d %H:%i";  /*!*/
 scheduler.config.first_hour = 8;/*!*/
 scheduler.config.last_hour = 17;/*!*/
 scheduler.config.start_on_monday = true;/*!*/

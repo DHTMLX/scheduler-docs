@@ -31,7 +31,7 @@ The library provides the following options to configure recurring events:
 scheduler.config.repeat_date = "%m/%d/%Y";
 scheduler.config.include_end_by = true;
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "month");
+scheduler.init('scheduler_here', new Date(2019, 7, 5), "month");
 ~~~
 
 {{sample
@@ -86,14 +86,14 @@ However, fields **start_date** and **end_date** slightly change their meaning:
 - **start_date** - the start date of the first event in a series in the format 'yyyy-mm-dd hh:mm:ss' (settings_format.md).
 - **end_date** - the end date of the last event in a series in the format 'yyyy-mm-dd 00:00:00' (settings_format.md).
 
-For example, a recurring event that starts on January 3, 2013 at 10:00, repeats every day and ends on January 13, 2013 at 12:00, 
+For example, a recurring event that starts on January 3, 2019 at 10:00, repeats every day and ends on January 13, 2019 at 12:00, 
 will be presented in the database as follows:
 
 
 ~~~js
 id:1,
-start_date:"2013-01-03 10:00:00",
-end_date:"2013-01-13 00:00:00",
+start_date:"2019-01-03 10:00:00",
+end_date:"2019-01-13 00:00:00",
 text:"some_text",
 details:"",
 rec_type:"day_1___",
@@ -139,7 +139,7 @@ There is a possibility to delete or edit a particular occurrence in a series.
 - Particular occurrences refer to the parent event through the **event_pid** property.
 - Once you have edited an occurrence in the series, the **event_length** field for this update 
 will store the time stamp of the date, when the occurrence should have happened if it wasn't edited, instead of the real event length. 
-So if the occurrence has happened on July 27,2012 at 15:00 and was moved to July 30,2012 15:00, the time stamp would reflect the first date. 
+So if the occurrence has happened on July 27, 2019 at 15:00 and was moved to July 30, 2019 15:00, the time stamp would reflect the first date. 
 The time stamp is measured in seconds from UNIX epoch.
 - Note that if your DB contains records of edited occurrences in the series and you decide to 'Edit series' via the lightbox, all the stored records will be deleted after saving. 
 The only record that will remain is the main recurring event, while its occurrences will lose their differences (will become identical).
@@ -183,6 +183,12 @@ In addition to extra fields, a specific logic needs to be added to the server-si
 - If an event with **rec_type!=none** was updated or deleted - all records with the related **event_pid** must be deleted.
 - If an event with the **event_pid** value was deleted - it needs updating with **rec_type==none** instead of deleting.
 
+{{note
+You can find complete code examples [here](howtostart_guides.md)
+}}
+
+
+If you use [PHP Connector](https://github.com/DHTMLX/connector-php) library, the server code may look like the following:
 
 ~~~php
 function delete_related($action){

@@ -1,4 +1,4 @@
-dhtmlxScheduler with PHP:Laravel 
+dhtmlxScheduler with PHP:Laravel
 =========================
 
 This tutorial describes how to add dhtmlxScheduler into a [Laravel](https://laravel.com/) app.
@@ -47,11 +47,11 @@ Firstly, we'll add a new page with dhtmlxScheduler to our app. Go to the *resour
 <!DOCTYPE html>
 <head>
    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
- 
+
    <script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js"></script>
-   <link href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css" 
+   <link href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css"
    		rel="stylesheet">
- 
+
    <style type="text/css">
        html, body{
            height:100%;
@@ -59,7 +59,7 @@ Firstly, we'll add a new page with dhtmlxScheduler to our app. Go to the *resour
            margin:0px;
            overflow: hidden;
        }
- 
+
    </style>
 </head>
 <body>
@@ -95,9 +95,9 @@ Go to *routes/web.php* and change the default route:
 {{snippet routes/web.php}}
 ~~~php
 <?php
- 
+
 Route::get('/', function () {
-    return view(scheduler);
+    return view('scheduler');
 });
 ~~~
 
@@ -246,9 +246,9 @@ And call table seeders from **DatabaseSeeder.php**:
 {{snippet database/seeds/DatabaseSeeder.php}}
 ~~~php
 <?php
- 
+
 use Illuminate\Database\Seeder;
- 
+
 class DatabaseSeeder extends Seeder
 {
     public function run()
@@ -266,13 +266,13 @@ php artisan db:seed
 
 ###Defining model classes
 
-The data is managed via the [Eloquent model](https://laravel.com/docs/eloquent) classes. We've already generated a class for events at the previous step. 
+The data is managed via the [Eloquent model](https://laravel.com/docs/eloquent) classes. We've already generated a class for events at the previous step.
 It is ready to use and doesn't require any changes to work with scheduler.
 
 Step 4. Loading Data
 ---------------------
 
-Once the database is created and the models are defined, we can load data into our scheduler. The client side requires dates of [the following format](data_formats.md#json), 
+Once the database is created and the models are defined, we can load data into our scheduler. The client side requires dates of [the following format](data_formats.md#json),
 so let's create a controller with an action that produces such a JSON. Execute the following command in the console:
 
 ~~~php
@@ -304,9 +304,9 @@ And register a route, so the client could call this action. Note that we'll add 
 {{snippet routes/api.php}}
 ~~~php
 <?php
- 
+
 use Illuminate\Http\Request;
- 
+
 Route::get('/data', 'EventController@index');
 ~~~
 
@@ -314,15 +314,15 @@ And finally, call this action from the view:
 
 {{snippet resources/views/scheduler.blade.php}}
 ~~~php
-scheduler.config.xml_date = "%Y-%m-%d %H:%i:%s";
+scheduler.config.date_format = "%Y-%m-%d %H:%i:%s";
 scheduler.init("scheduler_here", new Date(2018, 11, 3), "week");
-	
+
 scheduler.load("/api/data", "json");
 ~~~
 
 [scheduler.load](api/scheduler_load.md) sends an AJAX request to the specified URL and will expect a JSON response as we've defined before.
 
-Also, note that we've specified the [xml_date](api/scheduler_xml_date_config.md) value. This is how we tell the scheduler which format of dates the data source will use, so the client side could parse them.
+Also, note that we've specified the api/scheduler_date_format_config.md value. This is how we tell the scheduler which format of dates the data source will use, so the client side could parse them.
 
 If you check the app now, you should see that there are now tasks in our scheduler:
 
@@ -331,17 +331,17 @@ If you check the app now, you should see that there are now tasks in our schedul
 ###Dynamic loading
 
 Currently scheduler loads all records from the events table on startup. It can work well if you know that the amount of data will remain small over time. But when scheduler is used for something like a planning/booking
-application and you don't delete or move obsolete records to another table, the amounts of data will build up fairly quickly and in a couple of months of active usage you may find that your app requests a couple of MBs 
+application and you don't delete or move obsolete records to another table, the amounts of data will build up fairly quickly and in a couple of months of active usage you may find that your app requests a couple of MBs
 of events each time a user loads the page.
 
-It can be easily avoided by using dynamic loading. Scheduler will add the displayed dates to the request parameters and you'll be able to return only the records that need to be displayed. 
+It can be easily avoided by using dynamic loading. Scheduler will add the displayed dates to the request parameters and you'll be able to return only the records that need to be displayed.
 Each time a user switches to a new data range, scheduler will request a new portion of data.
 
 In order to enable this mode on the client go to `resources/views/scheduler.blade.php` and add the following line:
 
 {{snippet resources/views/scheduler.blade.php}}
 ~~~php
-scheduler.config.xml_date = "%Y-%m-%d %H:%i:%s";
+scheduler.config.date_format = "%Y-%m-%d %H:%i:%s";
 
 scheduler.setLoadMode("day"); /*!*/
 
@@ -366,11 +366,12 @@ class EventController extends Controller
 				where("start_date", "<", $to)->
 				where("end_date", ">=", $from)->get()
 		]);
+	}
 }
 ~~~
 
 
-Step 5. Saving Changes 
+Step 5. Saving Changes
 ------------------
 
 For now, our scheduler can read data from the backend. Let's make it write changes back to the database.
@@ -453,9 +454,9 @@ And a [route](http://laravel.com/docs/controllers#restful-resource-controllers) 
 {{snippet routes/api.php}}
 ~~~php
 <?php
- 
+
 use Illuminate\Http\Request;
- 
+
 Route::resource('events', 'EventController');
 ~~~
 
@@ -472,13 +473,13 @@ Finally, we will [configure the client side](server_integration.md#technique) to
 
 {{snippet resources/views/scheduler.blade.php}}
 ~~~js
-scheduler.config.xml_date = "%Y-%m-%d %H:%i:%s";
+scheduler.config.date_format = "%Y-%m-%d %H:%i:%s";
 scheduler.setLoadMode("day"); /*!*/
 
 scheduler.init("scheduler_here", new Date(2018, 11, 3), "week");
 
 scheduler.load("/api/events", "json"); /*!*/
-var dp = new dataProcessor("/api/events/"); /*!*/
+var dp = new dataProcessor("/api/events"); /*!*/
 dp.init(scheduler);
 dp.setTransactionMode("REST");
 ~~~
@@ -579,7 +580,7 @@ php artisan migrate
 
 Now, it's time to update the controller
 
-Data loading does not require any changes, but we'll need to update the write actions since editing recurring series 
+Data loading does not require any changes, but we'll need to update the write actions since editing recurring series
 [require some non-intuitive steps](recurring_events.md#editingdeletingacertainoccurrenceintheseries).
 
 Firstly, make sure to write new properties of the Event model in the "store" and "update" actions:
@@ -630,14 +631,14 @@ public function store(Request $request){
 
 	$event = new Event();
 
-	$event->text = $request->text;
+	$event->text = strip_tags($request->text);
 	$event->start_date = $request->start_date;
 	$event->end_date = $request->end_date;
 	$event->rec_type = $request->rec_type;
 	$event->event_length = $request->event_length;
 	$event->event_pid = $request->event_pid;
 	$event->save();
-	
+
 	$status = "inserted";
 	if($event->rec_type == "none"){
 		$status = "deleted";
@@ -650,7 +651,7 @@ public function store(Request $request){
 }
 ~~~
 
-Modified occurrences of the series are stored as individual instances as well. They are linked to the recurring series and a timestamp of the default occurrences that has been modified, 
+Modified occurrences of the series are stored as individual instances as well. They are linked to the recurring series and a timestamp of the default occurrences that has been modified,
 so scheduler doesn't render an occurrence created by the recurring rule. When user deletes the recurring instance, instead of deleting the modified instance, we must
 mark this item as removed by setting *rec_type* to "none":
 
@@ -663,17 +664,18 @@ public function destroy($id){
 		$event->rec_type = "none";
 		$event->save();
 	}else{
-		// delete regular instance
+		// delete a regular instance
 		$event->delete();
 	}
 
+	$this->deleteRelated($event);
 	return response()->json([
 		"action"=> "deleted"
 	]);
 }
 ~~~
 
-And finally, when user modifies or deletes a recurring series, we should delete all modified occurrences of that series. It is required, because modified occurrences are linked to the original ones via timestamps. 
+And finally, when user modifies or deletes a recurring series, we should delete all modified occurrences of that series. It is required, because modified occurrences are linked to the original ones via timestamps.
 
 ~~~php
 private function deleteRelated($event){
@@ -719,13 +721,13 @@ public function destroy($id){
 Application Security
 ---------------------
 
-Scheduler doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. 
+Scheduler doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks.
 It is important that responsibility for keeping an application safe is on the developers implementing the backend. Read the details [in the corresponding article](app_security.md).
 
 Trouble shooting
 -----------------
 
-In case you've completed the above steps to implement Scheduler integration with PHP, but Scheduler doesn't render events on a page, have a look at the troubleshooting.md article. It describes 
+In case you've completed the above steps to implement Scheduler integration with PHP, but Scheduler doesn't render events on a page, have a look at the troubleshooting.md article. It describes
 the ways of identifying the roots of the problems.
 
 

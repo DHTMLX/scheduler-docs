@@ -1,14 +1,15 @@
 deleteSection
 =============
+
 @short: 
-	deletes a section from  the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+	deletes a section from the currently active view 
 
 @params: 
-- section_id	string	the section's id
+- section_id	string		the section's id
 
 
 @returns:
-- isSuccess	boolean	returns **true**, if the section was deleted successfully and **false** in other cases (e.g. incorrect section was specified).
+- isSuccess			boolean			returns true, if the section was deleted successfully and false in other cases (e.g. if an incorrect section was specified).
 
 
 @require:treetimeline
@@ -40,9 +41,10 @@ scheduler.deleteSection("sales");
 	api/scheduler_deleteallsections.md
     api/scheduler_addsection.md
 @descr: 
+{{pronote This functionality is available in the PRO edition only.}}
 
 {{note
-The method is used for the Tree mode only
+If the opened view isn't Timeline in the 'Tree' mode, the method will be ignored.
 }}
 
 @edition:pro

@@ -54,7 +54,7 @@ scheduler.attachEvent("onTemplatesReady", function(){
 	};
 }); 
 ...
-scheduler.init('scheduler_here', new Date(2013, 6, 5), "week");
+scheduler.init('scheduler_here', new Date(2019, 6, 5), "week");
 ~~~
 
 
@@ -85,6 +85,6 @@ scheduler.attachEvent("onTemplatesReady", function(){
 	}
 }); 
 ...
-scheduler.init('scheduler_here', new Date(2013, 6, 5), "week");
+scheduler.init('scheduler_here', new Date(2019, 6, 5), "week");
 ~~~
 

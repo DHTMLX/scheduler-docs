@@ -20,3 +20,7 @@ scheduler.attachEvent("onEventDropOut", function (id,original, to, e){
 
 @template:	api_event
 @descr: 
+{{note The event fires only in case of drag-n-drop between schedulers.}}
+
+@related:
+dhtmlx_components_integration.md#draganddropbetweenschedulers

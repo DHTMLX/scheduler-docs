@@ -25,18 +25,18 @@ In this article you will find examples for all supported data formats.
 	<tbody>
 	<tr>
 		<td>Meeting</td>
-		<td>April 11, 2013 14:00</td>
-		<td>April 11, 2013 17:00</td>
+		<td>April 11, 2019 14:00</td>
+		<td>April 11, 2019 17:00</td>
 	</tr>
 	<tr>
 		<td>Conference</td>
-		<td>April 15, 2013 12:00</td>
-		<td>April 18, 2013 19:00</td>
+		<td>April 15, 2019 12:00</td>
+		<td>April 18, 2019 19:00</td>
 	</tr>
 	<tr>
 		<td>Interview </td>
-		<td>April 24, 2013 09:00</td>
-		<td>April 24, 2013 10:00</td>
+		<td>April 24, 2019 09:00</td>
+		<td>April 24, 2019 10:00</td>
 	</tr>
 	</tbody>
 </table>
@@ -48,12 +48,24 @@ JSON
 
 ~~~js
 [
-	{"id":"1", "text":"Meeting", "start_date":"04/11/2013 14:00",
-    	"end_date":"04/11/2013 17:00"},
-	{"id":"2", "text":"Conference", "start_date":"04/15/2013 12:00", 
-    	"end_date":"04/18/2013 19:00"},
-	{"id":"3", "text":"Interview", "start_date":"04/24/2013 09:00", 
-    	"end_date":"04/24/2013 10:00"}
+	{ 
+		"id":"1", 
+		"text":"Meeting", 
+		"start_date":"2019-04-11 14:00",
+		"end_date":"2019-04-11 17:00"
+	},
+	{
+		"id":"2", 
+		"text":"Conference", 
+		"start_date":"2019-04-15 12:00",
+		"end_date":"2019-04-18 19:00"
+    },
+	{
+		"id":"3", 
+		"text":"Interview", 
+		"start_date":"2019-04-24 09:00", 
+		"end_date":"2019-04-24 10:00"
+	}
 ]
 ~~~
 
@@ -68,29 +80,29 @@ For example, it is useful when you want to [load Timeline and Units sections fro
    "data":[
       {
           "id":"1",
-          "start_date":"2015-03-02 00:00:00",
-          "end_date":"2015-03-04 00:00:00",
+          "start_date":"2019-03-02 00:00:00",
+          "end_date":"2019-03-04 00:00:00",
           "text":"dblclick me!",
           "type":"1"
       },
       {
           "id":"2",
-          "start_date":"2015-03-09 00:00:00",
-          "end_date":"2015-03-11 00:00:00",
+          "start_date":"2019-03-09 00:00:00",
+          "end_date":"2019-03-11 00:00:00",
           "text":"and me!",
           "type":"2"
       },
       {
           "id":"3",
-          "start_date":"2015-03-16 00:00:00",
-          "end_date":"2015-03-18 00:00:00",
+          "start_date":"2019-03-16 00:00:00",
+          "end_date":"2019-03-18 00:00:00",
           "text":"and me too!",
           "type":"3"
       },
       { 
           "id":"4",
-          "start_date":"2015-03-02 08:00:00",
-          "end_date":"2015-03-02 14:10:00",
+          "start_date":"2019-03-02 08:00:00",
+          "end_date":"2019-03-02 14:10:00",
           "text":"Type 2 event",
           "type":"2"
       }
@@ -161,16 +173,30 @@ Let's consider an example when the initial set (presented <a href="data_formats.
 - **holder**  - the name of the person responsible for the event.
 
 
+
 ####JSON
 ~~~js
-[{
-	"id":"1",
-    "text":"Meeting",
-    "start_date":"04/11/2013 14:00", 
-    "end_date":"04/11/2013 17:00",
-    "room":327,
-    "holder":"James"
-}]
+[
+	{
+		"id":"1", 
+		"text":"Meeting", 
+		"start_date":"2019-04-11 14:00",
+		"end_date":"2019-04-11 17:00"
+		"room":327,
+		"holder":"James"
+	}
+]
+~~~
+
+Note, that all properties your data source returns will be added to event objects and will available for the [client-side API](event_object_operations.md).
+
+For example:
+
+~~~js
+scheduler.templates.event_text = function(start, end, event){
+   return event.holder;
+};
+
 ~~~
 
 ####XML

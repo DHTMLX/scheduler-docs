@@ -1,14 +1,14 @@
 addSection
 =============
 @short: 
-	adds a section to the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+	adds a section to the currently active view 
 
 @params: 
-- section	object	the object of the section to add
-- parent_id	string	the id of the parent section. Pass 'null' if you are adding a section to the root
+- section			object			the object of the section to add
+- parent_id			string			the id of the parent section. Pass 'null' if you are adding a section to the root
 
 @returns:
-- isSuccess	boolean	returns 'true', if the section was added successfully and 'false' in other cases (e.g. incorrect parent_id was specified).
+- isSuccess			boolean			returns 'true', if the section was added successfully and 'false' in other cases (e.g. incorrect parent_id was specified).
 
 @require:treetimeline
 @views: timeline
@@ -40,8 +40,10 @@ scheduler.addSection( {key:2, label:"Alex White"}, "sales");
     api/scheduler_deletesection.md
     api/scheduler_deleteallsections.md
 @descr: 
+{{pronote This functionality is available in the PRO edition only.}}
+
 {{note
-The method is used for the Tree mode only
+If the opened view isn't Timeline in the 'Tree' mode, the method will be ignored.
 }}
 
 @edition:pro

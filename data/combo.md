@@ -152,7 +152,7 @@ handle the server requests.
 
 ~~~js
 scheduler.config.lightbox.sections = [
-	{ name: "country", type: "combo", script_path: "data/combo_select.php", ... },
+	{ name: "country", type: "combo", script_path: "data/combo_select", ... },
 		...
 ];
 ~~~
@@ -161,13 +161,43 @@ The **script_path** property specifies an URL from which combo loads its options
 
 Combo selector is based on [dhtmlxCombo](http://docs.dhtmlx.com/combo__index.html), so the server should return data compatible with it.
 You can read about the ways of adding data into combo in the article [Loading Options](http://docs.dhtmlx.com/combo__adding_options.html). 
-We use the [dhtmlxConnector](http://docs.dhtmlx.com/connector__php__combo.html) for Combo in our examples to provide data compatibility.  
 
 The URL is requested in two cases:
 
 1) when the lightbox is opened and combo has some selected value - control sends request to the server and loads a label for the selected option.
 
+The request will have an **id** query param:
+
+~~~
+GET /url?id=1
+~~~
+
+The response should return an array containing only the item with the specified id in the following format:
+
+~~~
+[
+   { "value": 1, "text": "Marketing"}
+]
+~~~
+
+
 2) when a user starts inputting text into the select box input - the control loads filtered values.
+
+The client will send a request with an entered text in a **mask** param of the query:
+
+~~~
+GET /url?mask=al
+~~~
+
+The server response should return all items that match the mask value:
+~~~
+[
+   { "value": 1, "text": "Albania"},
+   { "value": 3, "text": "Algeria"},
+]
+~~~
+
+If you use [PHP Connector](https://github.com/DHTMLX/connector-php) library, the server code may look like the following:
 
 ~~~js
 <?php
@@ -187,6 +217,10 @@ The URL is requested in two cases:
 
 ?>
 ~~~
+
+{{sample
+	02_customization/18_combo_select_from_db.html
+}}
 
 Auto-filtering mode
 --------------------------

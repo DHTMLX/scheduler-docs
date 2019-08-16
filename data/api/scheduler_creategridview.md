@@ -1,13 +1,10 @@
 createGridView
 =============
+
 @short:creates the Grid view in the scheduler
 	
-
 @params:
 - config	object	the configuration object of the Grid view
-
-
-
 
 @example:
 scheduler.createGridView({
@@ -30,6 +27,8 @@ scheduler.createGridView({
 @related:
 	grid_view.md
 @descr:
+{{pronote This functionality is available in the PRO edition only.}}
+
 The configuration object of the Grid view can have the following properties:
 <table class="webixdoc_links">
 	<tbody>

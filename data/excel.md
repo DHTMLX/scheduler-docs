@@ -3,6 +3,11 @@ Export to Excel and iCal
 
 Starting from version 4.2, dhtmlxScheduler provides  a possibility to export all data from the scheduler to  the Excel and iCal formats. 
 
+Limits on request size
+--------------------
+
+There is a common API endpoint [https://export.dhtmlx.com/scheduler](https://export.dhtmlx.com/scheduler) which serves for export methods (*exportToPDF*, *exportToPNG*, etc.). **Max request size is 10 MB**.
+
 
 Export to Excel
 -------------------
@@ -22,9 +27,8 @@ To export scheduler's data to an Excel document, do the following steps:
 <input value="Export to Excel" type="button" onclick="scheduler.exportToExcel()">/*!*/
 
 <script>
-	scheduler.config.xml_date="%Y-%m-%d %H:%i";
-	scheduler.init("scheduler_here",new Date(2009,5,30),"month");
-	scheduler.load("data/events.xml");
+	scheduler.init("scheduler_here",new Date(2019,5,30),"month");
+	scheduler.load("data/events");
 </script>
 ~~~
 
@@ -95,9 +99,8 @@ To export scheduler's data to an iCal string, do the following steps:
 <input value="Export to iCal" type="button" onclick="scheduler.exportToICal()">/*!*/
 
 <script>
-	scheduler.config.xml_date="%Y-%m-%d %H:%i";
-	scheduler.init("scheduler_here",new Date(2009,5,30),"month");
-	scheduler.load("data/events.xml");
+	scheduler.init("scheduler_here",new Date(2019,5,30),"month");
+	scheduler.load("data/events");
 </script>
 ~~~
 

@@ -1,4 +1,3 @@
-
 Events
 =======
 
@@ -20,7 +19,7 @@ Events
 - api/scheduler_onbeforeexternaldragin_event.md - fires before some element starts to be dragged into the scheduler from an outside DHTMLX component (only with dnd extension enabled)
 - api/scheduler_onbeforefoldertoggle_event.md - fires before a tree branch will be opened or closed (the Timeline view, 'tree' mode only)
 - api/scheduler_onbeforelightbox_event.md - fires immediately before the user opens the lightbox (edit form)
-- api/scheduler_onbeforesectionrender_event.md - fires before a single Timeline section was configured, but not rendered yet (the Timeline view only)
+- api/scheduler_onbeforeparse_event.md - fires before data started to be parsed
 - api/scheduler_onbeforetodaydisplayed_event.md - fires when the user clicks on the 'Today' button in the scheduler
 - api/scheduler_onbeforetooltip_event.md - fires before the tooltip is displayed for a data item (only with the 'tooltip' extension enabled)
 - api/scheduler_onbeforeviewchange_event.md - fires before the user changes the current view to some other one
@@ -44,7 +43,7 @@ Events
 - api/scheduler_oneventcut_event.md - fires when the user presses the 'CTRL+X' keyboard command (only with the 'keyboard navigation' extension enabled)
 - api/scheduler_oneventdeleted_event.md - fires after the specified event was deleted (version 3.0+)
 - api/scheduler_oneventdrag_event.md - fires when the user drags/resizes events in the scheduler
-- api/scheduler_oneventdragin_event.md - fires when a dragged event is moved over the scheduler
+- api/scheduler_oneventdragin_event.md - fires when a dragged event is moved into the scheduler
 - api/scheduler_oneventdragout_event.md - fires when a dragged event  is moved out of the scheduler
 - api/scheduler_oneventdropout_event.md - fires when a dragged event  is dropped onto the area out of the scheduler
 - api/scheduler_oneventidchange_event.md - fires when the id of an event is changed
@@ -56,13 +55,16 @@ Events
 - api/scheduler_onlightbox_event.md - fires after the user has opened the lightbox (edit form)
 - api/scheduler_onlightboxbutton_event.md - fires when the user clicks a custom button in the lightbox
 - api/scheduler_onlimitviolation_event.md - fires when the user tries to set for an event the time that is currently limited/blocked
+- api/scheduler_onloadend_event.md - fires after loading data from the data source has been completed
 - api/scheduler_onloaderror_event.md - fires if the scheduler has failed to parse data, or if the server has returned 4xx or 5xx response status
+- api/scheduler_onloadstart_event.md - fires immediately before loading data from the data source has been started
 - api/scheduler_onlocationerror_event.md - fires when the event location can't be found on the map (the Map view only)
 - api/scheduler_onmousedown_event.md - fires when the user clicks on a scheduler's element that doesn't have the predefined 'onlick' handler
 - api/scheduler_onmousemove_event.md - fires when the mouse cursor is moved over the scheduler
 - api/scheduler_onoptionsload_event.md - fires after a collection of options or sections has been loaded from the server, but isn't parsed yet
 - api/scheduler_onoptionsloadfinal_event.md - fires after loading of an options(sections) collection  is complete (the Timeline view only)
 - api/scheduler_onoptionsloadstart_event.md - fires before a collection of options or sections  starts to be loaded from the server  (the Timeline view only)
+- api/scheduler_onparse_event.md - fires after data was parsed (became available for API) but before it was rendered in the Scheduler
 - api/scheduler_onquickinfo_event.md - fires when the pop-up edit form appears
 - api/scheduler_onsaveerror_event.md - fires when some error has happened during data updating
 - api/scheduler_onscaleadd_event.md - fires after a single view unit (column, section, day cell etc.) has been rendered in the scheduler
@@ -99,7 +101,7 @@ Events
 - api/scheduler_onbeforeexternaldragin_event.md
 - api/scheduler_onbeforefoldertoggle_event.md
 - api/scheduler_onbeforelightbox_event.md
-- api/scheduler_onbeforesectionrender_event.md
+- api/scheduler_onbeforeparse_event.md
 - api/scheduler_onbeforetodaydisplayed_event.md
 - api/scheduler_onbeforetooltip_event.md
 - api/scheduler_onbeforeviewchange_event.md
@@ -135,13 +137,16 @@ Events
 - api/scheduler_onlightbox_event.md
 - api/scheduler_onlightboxbutton_event.md
 - api/scheduler_onlimitviolation_event.md
+- api/scheduler_onloadend_event.md
 - api/scheduler_onloaderror_event.md
+- api/scheduler_onloadstart_event.md
 - api/scheduler_onlocationerror_event.md
 - api/scheduler_onmousedown_event.md
 - api/scheduler_onmousemove_event.md
 - api/scheduler_onoptionsload_event.md
 - api/scheduler_onoptionsloadfinal_event.md
 - api/scheduler_onoptionsloadstart_event.md
+- api/scheduler_onparse_event.md
 - api/scheduler_onquickinfo_event.md
 - api/scheduler_onsaveerror_event.md
 - api/scheduler_onscaleadd_event.md

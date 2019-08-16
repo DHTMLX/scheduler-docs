@@ -10,7 +10,7 @@ repeat_date
 @example:
 scheduler.config.repeat_date = "%m/%d/%Y";
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"month");
+scheduler.init('scheduler_here',new Date(2019,05,11),"month");
 
 
 @template:	api_config

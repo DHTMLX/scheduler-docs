@@ -1,7 +1,7 @@
 Drag-and-Drop Operations 
 ==================================
 The library provides the **ext/dhtmlxscheduler_outerdrag.js** extension that allows creating new events by dragging elements from external 
-DHTMLX components or another schedulers. 
+DHTMLX components or other schedulers. 
 
 Dragging from external components
 --------------------------------------------
@@ -45,7 +45,7 @@ tree.enableDragAndDrop(true);
     <li>Initialize and configure the scheduler:
 ~~~js
 ...
-scheduler.init('scheduler_here', new Date(2009, 5, 30), "timeline");
+scheduler.init('scheduler_here', new Date(2019, 5, 30), "timeline");
 ~~~
 </li>
 	<li>Attach a handler to the api/scheduler_onexternaldragin_event.md event to set how the text of the dragged element will be converted to a property of the event:
@@ -89,11 +89,11 @@ Enabling drag-and-drop support for several schedulers
 <link rel="stylesheet" href="codebase/dhtmlxscheduler.css" type="text/css">
 
 <script>
-scheduler.init('scheduler_here',new Date(2009,05,30),"week");
+scheduler.init('scheduler_here',new Date(2019, 5, 30),"week");
 scheduler.load("./data/units.xml");
 
 scheduler2 = Scheduler.getSchedulerInstance();
-scheduler2.init('scheduler_here_2',new Date(2009,05,30),"week");
+scheduler2.init('scheduler_here_2',new Date(2019, 5, 30),"week");
 </script>
 ~~~
 
@@ -105,11 +105,11 @@ To deny dragging events from a scheduler, set the api/scheduler_drag_out_config.
 
 ~~~js
 scheduler.config.drag_out = false;//restrict dragging events from this scheduler /*!*/
-scheduler.init('scheduler_here',new Date(2009,05,30),"week");
+scheduler.init('scheduler_here',new Date(2019, 5,30),"week");
 scheduler.load("./data/units.xml");
 
 scheduler2 = Scheduler.getSchedulerInstance();
-scheduler2.init('scheduler_here_2',new Date(2009,05,30),"week");
+scheduler2.init('scheduler_here_2',new Date(2019, 5, 30),"week");
 ~~~
 
 <br>
@@ -117,13 +117,13 @@ scheduler2.init('scheduler_here_2',new Date(2009,05,30),"week");
 To deny dragging events to a scheduler, set the api/scheduler_drag_in_config.md property to *false*:
 
 ~~~js
-scheduler.init('scheduler_here',new Date(2009,05,30),"week");
+scheduler.init('scheduler_here',new Date(2019, 5, 30),"week");
 scheduler.load("./data/units.xml");
 
 
 scheduler2.config.drag_in = false;//restrict dragging events to this scheduler /*!*/
 scheduler2 = Scheduler.getSchedulerInstance();
-scheduler2.init('scheduler_here_2',new Date(2009,05,30),"week");
+scheduler2.init('scheduler_here_2',new Date(2019, 5, 30),"week");
 ~~~
 
 Sample **"samples/20_multiple/06_drag_between_layout.html"** provided in the [Scheduler PRO package](http://www.dhtmlx.com/docs/products/dhtmlxScheduler/index.shtml).

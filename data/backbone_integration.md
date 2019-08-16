@@ -16,9 +16,8 @@ If you have a Backbone-based application and want to add the scheduler there (st
     <li> Initialize and configure the scheduler in a usual way:
 ~~~js
 scheduler.full_day = true;
-scheduler.config.xml_date = "%Y-%m-%d %h:%i";
 
-scheduler.init("scheduler_here",new Date(2010,0,6),"month");
+scheduler.init("scheduler_here",new Date(2019,0,6),"month");
 ~~~
 	</li>
     <li>Now you can create a data collection in backbone and link scheduler to it:

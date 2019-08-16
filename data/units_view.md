@@ -75,13 +75,13 @@ scheduler.createUnitsView({
 
 scheduler.init('scheduler_here');
 scheduler.parse([
-	{id:1, text:"Task1", start_date:"17/09/2012 12:00", end_date:"18/09/2012 21:00", 
+	{id:1, text:"Task1", start_date:"2019-09-17 12:00", end_date:"2019-09-18 21:00", 
     unit_id:"1"},
- 	{id:2, text:"Task2", start_date:"17/09/2012 09:00", end_date:"17/09/2012 21:00", 
+ 	{id:2, text:"Task2", start_date:"2019-09-17 09:00", end_date:"2019-09-17 21:00", 
     unit_id:"3"},
- 	{id:3, text:"Task3", start_date:"17/09/2012 15:00", end_date:"18/09/2012 15:00", 
+ 	{id:3, text:"Task3", start_date:"2019-09-17 15:00", end_date:"2019-09-18 15:00", 
     unit_id:"2"}
-],"json");                                 
+]);                                 
 ~~~
 By comparing **unit_id** and **list.key** values, the scheduler assigns events to certain units.
 
@@ -179,14 +179,14 @@ scheduler.createUnitsView({
 	property: "section_id", /*!*/
 	...
 });
-scheduler.init('scheduler_here', new Date(2012, 5, 30), "unit");
+scheduler.init('scheduler_here', new Date(2019, 5, 30), "unit");
 
 scheduler.parse([
 	{ id:1, text:"Task A", section_id:'1', 		...},/*!*/
 	{ id:2, text:"Task B", section_id:'1,3', 	...},/*!*/
 	{ id:3, text:"Task C", section_id:'4', 		...},/*!*/
 	{ id:4, text:"Task D", section_id:'2,3,4', 	...}/*!*/
-],"json");
+]);
 ~~~
 
 {{sample
@@ -236,7 +236,37 @@ scheduler.createUnitsView({
 - On the server side 
 
 The data response for the api/scheduler_load.md method should contain a collection with the server list name specified in JSON
-[of the following format](data_formats.md#jsonwithcollections).
+[of the following format](data_formats.md#jsonwithcollections):
+
+~~~js
+{ 
+   "data":[
+      {
+          "id":"1",
+          "start_date":"2019-03-02 15:00:00",
+          "end_date":"2019-03-04 16:00:00",
+          "text":"Team meeting",
+          "type_id":"1"
+      },
+      {
+          "id":"2",
+          "start_date":"2019-03-02 17:00:00",
+          "end_date":"2019-03-04 18:00:00",
+          "text":"Strategy meeting",
+          "type_id":"2"
+      }
+   ], 
+   "collections": {/*!*/
+      "units":[/*!*/      
+         {"value":"1","label":"Conference room 1"},/*!*/
+         {"value":"2","label":"Conference room 2"},/*!*/
+         {"value":"3","label":"Conference room 3"}/*!*/
+      ]/*!*/
+   }/*!*/
+}
+
+~~~
+
 
 You can also use the [OptionsConnector](http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:optionsconnector) connector:
 
