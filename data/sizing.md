@@ -124,7 +124,7 @@ var format = scheduler.date.date_to_str("%H:%i");
 var step = 30;
 		
 scheduler.templates.hour_scale = function(date){
-	html="";
+	var html="";
 	for (var i=0; i<60/step; i++){
 		html+="<div style='height:22px;line-height:22px;'>"+format(date)+"</div>";
 		date = scheduler.date.add(date,step,"minute");
