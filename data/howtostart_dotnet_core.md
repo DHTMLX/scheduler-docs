@@ -776,7 +776,7 @@ Lastly, we need to modify our PUT/POST/DELETE actions in order to [handle specia
 Firstly, let's take a look at the `POST` action.
 We need to process a special case for recurring events - deletion of a specific occurrence of the recurring series requires creating a new database record and the client will call the `insert` action for it:
 
-{{snippet Controllers/EventsController.php}}
+{{snippet Controllers/EventsController.cs}}
 ~~~
 // POST api/events
 [HttpPost]
@@ -802,7 +802,7 @@ public ObjectResult Post([FromForm] WebAPIEvent apiEvent)
 }
 ~~~
 
-In the`PUT` action we need to make sure to update all properties of the model.
+In the `PUT` action we need to make sure to update all properties of the model.
 Additionally, we need to handle a different special case there: when a recurring series is modified, we need to delete all modified occurrences of that series:
 
 {{snippet Controllers/EventsController.cs}}
