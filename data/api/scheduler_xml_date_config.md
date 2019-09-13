@@ -6,10 +6,7 @@ xml_date
 
 @type:string
 @example:
-scheduler.config.xml_date="%Y-%m-%d %H:%i";
-...
-scheduler.init('scheduler_here',new Date(2010,0,10),"week");
-scheduler.load("./data/events.xml");
+
 
 @template:	api_config
 @descr:
@@ -24,7 +21,7 @@ scheduler.load("./data/events.xml");
 @apigroup: Date format
 
 @deprecated:
-Use api/scheduler_date_format_config.md instead:
+The **xml_date** config is deprecated since v5.2. You need to use api/scheduler_date_format_config.md instead like this:
 
 ~~~js
 scheduler.config.date_format = "%Y-%m-%d %H:%i";
