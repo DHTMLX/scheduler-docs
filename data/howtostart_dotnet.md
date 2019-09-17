@@ -16,7 +16,7 @@ the [Entity Framework](http://www.asp.net/entity-framework). We will build our a
 
 Have a look at the [demo](https://github.com/DHTMLX/scheduler-howto-dotnet) on GitHub.
 
-Step 1. Creating a Project
+Step 1. Creating a project
 ----------------------------
 
 ###Creating a new Visual Studio Project
@@ -152,7 +152,7 @@ The server side itself will be implemented a bit later. For now, you can run the
 ![Scheduler initialization](how_to_start_net_scheduler_init.png)
 
 
-Step 3. Creating Models and Database
+Step 3. Creating models and database
 ---------------------------------
 
 ###Creating Models
@@ -726,3 +726,96 @@ public IHttpActionResult DeleteSchedulerEvent(int id)
     });
 }
 ~~~
+
+Error handling
+----------------
+
+[Exception filters](https://msdn.microsoft.com/en-us/library/gg416513(v=vs.98).aspx) can be used for capturing exceptions in CRUD handlers and returning a client response that can be
+[recognized](server_integration.md#errorhandling) by the client-side scheduler.
+
+To provide error handling for the scheduler, follow the steps below:
+
+Go to *App_Start* and add a new class called *SchedulerAPIExceptionFilterAttribute*:
+
+{{snippet App_Start/SchedulerAPIExceptionFilterAttribute.cs}}
+~~~
+using System;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http.Filters;
+
+namespace DHX.Scheduler.Web.App_Start
+{
+ public class SchedulerAPIExceptionFilterAttribute : ExceptionFilterAttribute
+  {
+   public override void OnException(HttpActionExecutedContext context)
+    {
+      context.Response = context.Request.CreateResponse(
+      	HttpStatusCode.InternalServerError, new
+        {
+          action = "error",
+          message = context.Exception.Message
+        });
+    }
+  }
+}
+~~~
+
+Then we will add this class to our WebAPI controller (SchedulerController) as in:
+
+{{snippet Controllers/SchedulerController.cs}}
+~~~
+namespace DHX.Scheduler.Web.Controllers
+{
+    [SchedulerAPIExceptionFilter]
+    public class SchedulerController : ApiController
+    {
+~~~
+
+Now if any Web API controller fires an exception while processing the request, the client side will receive an error status and an error message that can be either somehow processed or shown to the user.
+
+Note that returning an exception message to the client might not be the best idea for a production environment.
+
+Application Security
+----------------------
+
+Scheduler doesn't provide any means of preventing an application from various threats, such as SQL injections, XSS and CSRF attacks. The responsibility for keeping an application safe is on the developers who implement the backend. Read the details in the [corresponding article](app_security.md).
+
+
+###XSS protection
+
+A simple solution would be to encode the text properties of data items when we send them to the client side.
+
+For example, in the below code a built-in HtmlEncoder is used to escape HTML values in the text of events. That way our database will contain unmodified data, but the client side will receive safe values of `event.text`.
+
+{{snippet Model.WebAPIEvent.cs}}
+~~~
+using System.Text.Encodings.Web;
+
+public static explicit operator WebAPIEvent(SchedulerEvent schedulerEvent)
+{
+  return new WebAPIEvent
+    {
+      id = schedulerEvent.Id,
+      text = HtmlEncoder.Default.Encode(schedulerEvent.Text),
+      start_date = schedulerEvent.StartDate.ToString("yyyy-MM-dd HH:mm"),
+      end_date = schedulerEvent.EndDate.ToString("yyyy-MM-dd HH:mm")
+    };
+}
+~~~
+
+Another approach would be to use a specialized library, e.g. [HtmlAgilityPack](https://html-agility-pack.net/) and completely strip any HTML event when we save/load data.
+
+Troubleshooting
+---------------
+
+In case you've completed the above steps to implement Scheduler integration with ASP.NET MVC, but Scheduler doesn't render events on a page, have a look at the troubleshooting.md article. 
+It describes the ways of identifying the roots of the problems.
+
+
+What's next
+---------------
+
+Now you have a fully functioning Scheduler. You can view the full code on [GitHub](https://github.com/DHTMLX/scheduler-howto-dotnet), clone or download it and use it for your projects.
+
+You can also check [guides on the numerous features of Scheduler](guides.md) or [tutorials on integration of Scheduler with other backend frameworks](howtostart_guides.md).
