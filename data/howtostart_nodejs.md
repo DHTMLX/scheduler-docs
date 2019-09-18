@@ -5,6 +5,7 @@ The current tutorial is intended for creating Scheduler with Node.js and REST AP
 If you use some other technology, check the list of available integration variants below:
 
 - howtostart_dotnet_core.md
+- howtostart_dotnet.md
 - howtostart_php.md
 - howtostart_php_laravel.md
 - howtostart_ruby.md

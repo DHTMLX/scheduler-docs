@@ -6,6 +6,7 @@ In this article we'll show you how to create a Scheduler and implement server-si
 If you use some other technology, check the list of available integration variants below:
 
 - howtostart_dotnet_core.md
+- howtostart_dotnet.md
 - howtostart_nodejs.md
 - howtostart_php.md
 - howtostart_php_laravel.md

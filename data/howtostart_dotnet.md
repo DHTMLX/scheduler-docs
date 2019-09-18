@@ -10,6 +10,7 @@ You can also explore other server-side integration possibilities of Scheduler by
 - howtostart_php.md
 - howtostart_php_laravel.md
 - howtostart_ruby.md
+- howtostart_connector.md
 
 We will make use of the ASP.NET MVC 5 web platform and the Web API controller for REST API to create a Scheduler application. To organize communication with a database we will use 
 the [Entity Framework](http://www.asp.net/entity-framework). We will build our application with the help of the Visual Studio IDE.

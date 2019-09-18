@@ -6,6 +6,7 @@ In this tutorial you will find necessary information on how to create a Schedule
 There are tutorials intended for building server-side integration with the help of other platforms and frameworks:
 
 - howtostart_dotnet_core.md
+- howtostart_dotnet.md
 - howtostart_nodejs.md
 - howtostart_php_laravel.md
 - howtostart_ruby.md

@@ -9,6 +9,7 @@ check the available options in the list below:
 
 - howtostart_nodejs.md
 - howtostart_dotnet_core.md
+- howtostart_dotnet.md
 - howtostart_php.md
 - howtostart_php_laravel.md
 - howtostart_ruby.md

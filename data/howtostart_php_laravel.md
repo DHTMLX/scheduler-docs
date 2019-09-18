@@ -6,6 +6,7 @@ This tutorial describes how to add dhtmlxScheduler into a [Laravel](https://lara
 There are tutorials intended for building server-side integration with the help of other platforms:
 
 - howtostart_dotnet_core.md
+- howtostart_dotnet.md
 - howtostart_nodejs.md
 - howtostart_php.md
 - howtostart_ruby.md
