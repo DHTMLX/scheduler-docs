@@ -6,7 +6,7 @@ Methods
 - api/scheduler_addevent.md - adds a new event
 - api/scheduler_addeventnow.md - adds a new event and opens the lightbox to confirm
 - api/scheduler_addmarkedtimespan.md - marks dates, but with certain settings makes blocking (allows setting custom styling for the limit)
-- api/scheduler_addsection.md - adds a section to the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+- api/scheduler_addsection.md - adds a section to the currently active view
 - api/scheduler_addshortcut.md - adds a new keyboard shortcut
 - api/scheduler_attachevent.md - attaches the handler to an inner event of dhtmlxScheduler
 - api/scheduler_backbone.md - makes the scheduler reflect all data changes in the Backbone model and vice versa
@@ -18,16 +18,16 @@ Methods
 - api/scheduler_checkinmarkedtimespan.md - checks whether an event resides in a timespan of a specific type
 - api/scheduler_checklimitviolation.md - checks whether the specified event takes place at the blocked time period
 - api/scheduler_clearall.md - removes all events from the scheduler
-- api/scheduler_closeallsections.md - closes all sections in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
-- api/scheduler_closesection.md - closes the specified section in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+- api/scheduler_closeallsections.md - closes all sections in the currently active view
+- api/scheduler_closesection.md - closes the specified section in the currently active view
 - api/scheduler_collapse.md - collapses the expanded scheduler back to the normal size
 - api/scheduler_creategridview.md - creates the Grid view in the scheduler
 - api/scheduler_createtimelineview.md - creates the Timeline view in the scheduler
 - api/scheduler_createunitsview.md - creates the Units view in the scheduler
-- api/scheduler_deleteallsections.md - deletes all sections from  the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+- api/scheduler_deleteallsections.md - deletes all sections from  the currently active view
 - api/scheduler_deleteevent.md - deletes the specified event
 - api/scheduler_deletemarkedtimespan.md - removes marking/blocking set by the addMarkedTimespan() method
-- api/scheduler_deletesection.md - deletes a section from  the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+- api/scheduler_deletesection.md - deletes a section from the currently active view
 - api/scheduler_destroycalendar.md - destroys previously created mini-calendar
 - api/scheduler_detachevent.md - detaches a handler from an event (which was attached before by the attachEvent method)
 - api/scheduler_edit.md - opens the inline editor to alter the event's text  (the editor in the event's box)
@@ -48,7 +48,7 @@ Methods
 - api/scheduler_getlightbox.md - gets the lightbox's HTML object element
 - api/scheduler_getrecdates.md - returns all occurrences of a recurring event
 - api/scheduler_getrenderedevent.md - gets the object of the currently displayed event
-- api/scheduler_getsection.md - gets the object of the specified section in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
+- api/scheduler_getsection.md - gets the object of the specified section in the currently active view
 - api/scheduler_getshortcuthandler.md - gets a key navigation shortcut handler
 - api/scheduler_getstate.md - gets the current state of the scheduler
 - api/scheduler_getuserdata.md - gets the user data associated with the specified event

@@ -1,4 +1,3 @@
-
 Properties
 ==========
 
@@ -96,6 +95,7 @@ Properties
 - api/scheduler_repeat_precise_config.md - prevents including past days to events with the 'weekly' recurrence
 - api/scheduler_resize_month_events_config.md - enables the possibility to resize multi-day events in the Month view by drag-and-drop
 - api/scheduler_resize_month_timed_config.md - enables the possibility to resize single-day events in the Month view by drag-n-drop
+- api/scheduler_rtl_config.md - 
 - api/scheduler_scroll_hour_config.md - sets the initial position of the vertical scroll in the scheduler (an hour in the 24-hour clock format)
 - api/scheduler_section_delimiter_config.md - specifies the delimeter that will be used to separate several sections/units in the related data property of the event
 - api/scheduler_select_config.md - shows/hides the select bar in the event's box
@@ -215,6 +215,7 @@ Properties
 - api/scheduler_repeat_precise_config.md
 - api/scheduler_resize_month_events_config.md
 - api/scheduler_resize_month_timed_config.md
+- api/scheduler_rtl_config.md
 - api/scheduler_scroll_hour_config.md
 - api/scheduler_section_delimiter_config.md
 - api/scheduler_select_config.md

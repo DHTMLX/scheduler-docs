@@ -35,7 +35,7 @@ Templates
 - api/scheduler_month_day_template.md - specifies the format of the day in a cell
 - api/scheduler_month_events_link_template.md - specifies the presentation of the 'View more' link in a cell of the Month view
 - api/scheduler_month_scale_date_template.md - specifies the date format of the X-Axis of the view
-- api/scheduler_parse_date_template.md - converts date string into a [Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+- api/scheduler_parse_date_template.md - converts date string into a Date object
 - api/scheduler_quick_info_content_template.md - specifies the content of the pop-up edit form
 - api/scheduler_quick_info_date_template.md - specifies the date of the pop-up edit form
 - api/scheduler_quick_info_title_template.md - specifies the title of the pop-up edit form
