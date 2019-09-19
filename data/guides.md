@@ -37,6 +37,7 @@ The articles come around key procedures and problem-solving activities.
             		<li>install_with_bower.md</li>
                     <li>configuration.md</li>
                     <li>scheduler_markup.md</li>
+                    <li>rtl_mode.md</li>
                    	<li>localization.md</li>                
                     <li>multiple_per_page.md</li>
                     <li>accessibility.md</li>
