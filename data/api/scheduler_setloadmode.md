@@ -1,5 +1,6 @@
 setLoadMode
 =============
+
 @short: 
 	sets the mode that allows loading data by parts (enables the dynamic loading)
 
@@ -53,5 +54,5 @@ Data?from=DATEHERE&to=DATEHERE
 
 <br>
 
-If you are using <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">dhtmlxConnector</a> at the server side, you don't need to do any additional server-side operations to parse the data.
+If you are using <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">dhtmlxConnector</a> on the server side, you don't need to do any additional server-side operations to parse data.
 

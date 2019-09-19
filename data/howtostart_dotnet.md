@@ -159,7 +159,7 @@ Step 3. Creating models and database
 ###Creating Models
 
 Now we should define model classes for scheduler. You'll need a class for scheduler events. As you can see, dhtmlxScheduler uses a certain naming convention for data model that is different from 
-the one traditionally used in C#. The client-side model can also contain some properties that you don't need to store in a database, but which will be used either on the client or in the backend logic.
+the one traditionally used in C#. The client-side model can also contain some properties that you don't need to store in a database, but which will be used either in the client logic or in the backend one.
 
 Because of this, we'll go with the [Data Transfer Object](https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) pattern here: 
 we'll define domain model classes that will be used with EF and inside the app, and DTO classes that will be used to communicate with Web API. Then mapping between the two models will be implemented.
@@ -613,7 +613,7 @@ namespace DHX.Scheduler.Web.Models
 
 Lastly, we need to modify our PUT/POST/DELETE actions in order to handle [special rules of recurring events](recurring_events.md#editingdeletingacertainoccurrenceintheseries). 
 
-First, let's take a look at the POST action. We need to process a special case for recurring events - deletion of a specific occurrence of the recurring series 
+First, let's take a look at the POST action. We need to process a special case for recurring events: deletion of a specific occurrence of the recurring series 
 requires creating a new database record and the client will call the insert action for it:
 
 {{snippet Controllers/SchedulerEvent.cs}}
