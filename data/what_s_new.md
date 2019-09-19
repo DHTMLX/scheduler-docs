@@ -17,7 +17,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 ### Fixes
 
-- Fix the issue with the [readonly form](readonly.md#readonlymodefortheentirelightbox) which didn't allow changing the [configuration of the lightbox](lightbox_editors.md) after [initialization](api/scheduler_init.md) of the scheduler.
+- Fix the issue with the [readonly form](readonly.md#readonlymodefortheentirelightbox) which didn't allow changing the [configuration of the lightbox](lightbox_editors.md) after [initialization](api/scheduler_init.md) of Scheduler
 - Fix the issue with Angular 8 compatibility
 
 5.2.3
