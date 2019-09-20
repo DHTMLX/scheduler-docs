@@ -2,15 +2,15 @@ Start
 =====
 
 <div class="newsblock">
-    <h2>Meet Scheduler 5.2!</h2>
+    <h2>Meet Scheduler 5.3!</h2>
     
     <p>
     New version brings new improvements and features:
     </p>
     <ul>
-        <li><a href="timeline_view.md#customcontentincells">Custom HTML content for timeline cells</a></li>
-        <li><a href="migration_from_older_version.md#dnd">Drag-n-drop of events by the body</a></li>
-        <li><a href="migration_from_older_version.md#5152">Updates in API</a></li>
+        <li><a href="rtl_mode.md">RTL support</a></li>
+        <li><a href="initialization.md#makingschedulerresponsive">Improved responsiveness</a></li>
+        <li>Internal enhancements</li>
     </ul>
     <p class='action_buttons'>
       <a class='action_button moredetails' href="what_s_new.html">More details</a>

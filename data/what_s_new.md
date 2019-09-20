@@ -10,6 +10,16 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+5.3
+---------
+<span class='release_date'>September 24, 2019. Minor update</span>
+
+###New functionality
+
+1. [RTL support](rtl_mode.md)
+2. [Improved responsiveness](initialization.md#makingschedulerresponsive)
+
+
 5.2.1
 ------------
 

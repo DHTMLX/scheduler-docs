@@ -69,3 +69,13 @@ This is the list of the CSS classes that you can set:
 - <b>dhx_tooltip_rtl</b> - applies styles to the tooltip
 - <b>dhx_quick_info_rtl</b> - applies styles to the 'quick info' popup
 - <b>dhx_cal_light_rtl</b> - applies styles to the lightbox
+
+For instance:
+
+~~~js
+.dhx_cal_container_rtl .dhx_cal_event{
+	margin-right: -5px;
+}
+~~~
+
+All events of the scheduler container moves 5px to the right.

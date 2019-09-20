@@ -3,7 +3,15 @@ Initializing Scheduler on a Page
 
 When you develop an application with dhtmlxScheduler, the first thing you need is to initialize or, simply speaking, to display the Scheduler on the page.
 
-To display a basic Scheduler on the page, follow 3 steps: 
+There are two ways of initializing scheduler on a page:
+
+- via scheduler's markup
+- via layout configuration property
+
+Initializing Scheduler via Markup
+------------------------------------
+
+To display a basic Scheduler on the page through the markup, follow 3 steps: 
 
 1. Include the [dhtmlxScheduler code files](#requiredcodefiles) on the page.
 2. Create a DIV container on the page and define the related DIV containers for its elements.
@@ -44,7 +52,86 @@ To display a basic Scheduler on the page, follow 3 steps:
 {{sample
 	01_initialization_loading/01_basic_init.html
 }}
- 
+
+
+Initializing Scheduler via layout configuration property
+--------------------------------------------------------------
+
+You need to initialize scheduler this way to make it  [responsive](initialization.md#makingschedulerresponsive).
+
+To display a basic Scheduler on the page, take the following steps:
+
+1. Include the [dhtmlxScheduler code files](#requiredcodefiles) on the page.
+2. Create a DIV container on the page.
+3. Specify the structure of the scheduler in the layout configuration object. 
+4. Initialize dhtmlxScheduler in the newly created container with the api/scheduler_init.md method. As a parameter the method takes an HTML container (or its id) that the Scheduler will be displayed in.
+
+~~~html
+<!DOCTYPE html>
+<html>
+<head>
+   <script src="../scheduler/dhtmlxscheduler.js" type="text/javascript"></script>
+   <link rel="stylesheet" href="../scheduler/dhtmlxscheduler_material.css" 
+        type="text/css">
+</head>
+<body onload="init();">
+   <!--Container for Scheduler-->
+   <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+   </div>
+</body>   
+<script type="text/javascript">
+   //The structure of the scheduler
+   scheduler.config.layout = [
+			{ 
+				view: "navbar",
+				items: [
+				{
+					type: "button",
+					value: "prev"
+				},
+				{
+					type: "button",
+					value: "next"
+				},
+				{
+					type: "button",
+					value: "today"
+				},
+				{
+					type: "date"
+				},
+				{
+					type: "tab",
+					value: "day"
+				},
+				{
+					type: "tab",
+					value: "week"
+				},
+				{
+					type: "tab",
+					value: "week_unit"
+				},
+				{
+					type: "tab",
+					value: "single_unit"
+				},
+				{
+					type: "tab",
+					value: "month"
+				}
+			]},
+			{ view: "header" },
+			{ view: "dataArea" }
+		];
+   scheduler.init('scheduler_here',new Date(2018,0,1),"week"); /*!*/
+   </script>
+</html>
+~~~
+
+{{sample
+	01_initialization_loading/14_responsive_scheduler.html
+}}
  
 Required code files
 ---------------------
@@ -123,3 +210,36 @@ or:
 ~~~html
 <div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:800px;">
 ~~~
+
+Making Scheduler responsive
+-----------------------------
+
+When you initialize scheduler via [the layout configuration property](#initializingschedulervialayoutconfigurationproperty) it becomes responsive.
+
+###Header
+
+The elements of the scheduler header are rearranged depending on the screen size.
+
+<img src="header_responsive.png"/>
+
+In the image above scheduler is displayed on a small screen. To present all the header elements on the screen, the content of the header is set into 2 lines.
+
+###Lightbox
+
+Scheduler API provides the <b>responsive_lightbox</b> configuration option  that enables the responsiveness of the lightbox. 
+
+~~~~js
+scheduler.config.responsive_lightbox = true; //true by default
+//you need to set this value to false to disable the responsiveness of the lightbox
+~~~~
+The elements of the lightbox adapt to a small screen in the image below:
+
+<img src="lightbox_responsive.png"/>
+
+{{sample
+	01_initialization_loading/14_responsive_scheduler.html
+}}
+
+There is a possibility to customize the lightbox appearance when it is responsive. Set the additional CSS class <b>dhx_cal_light_responsive</b> for this purpose.
+
+
