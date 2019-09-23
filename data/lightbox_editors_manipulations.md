@@ -250,3 +250,49 @@ You can define the image used for the button through the following CSS class:
 }
 ~~~
 
+##Linking select controls
+
+You can make select controls in the lightbox dependent on each other. To do this use [the onchange property](select.md#properties) of the select control, as in:
+
+~~~js
+var update_select_options = function(select, options) { // helper function
+	select.options.length = 0;
+	for (var i=0; i<options.length; i++) {
+		var option = options[i];
+		select[i] = new Option(option.label, option.key);
+	}
+};
+
+var parent_onchange = function(event) {
+	var new_child_options = child_select_options[this.value];
+	update_select_options(scheduler.formSection('child').control, new_child_options);
+};
+scheduler.attachEvent("onBeforeLightbox", function(id){
+	var ev = scheduler.getEvent(id);
+	if (!ev.child_id) {
+		var parent_id = ev.parent_id||parent_select_options[0].key;
+		var new_child_options = child_select_options[parent_id];
+		update_select_options(
+        	scheduler.formSection('child').control, new_child_options
+        );
+	}
+	return true;
+});
+
+scheduler.config.lightbox.sections=[
+	...
+	{name:"parent", height:23, type:"select", options: parent_select_options, 
+     map_to:"parent_id", onchange:parent_onchange },
+	{name:"child", height:23, type:"select", options: child_select_options, 
+     map_to:"child_id" }
+	...
+];
+~~~
+
+{{sample
+	02_customization/26_linked_selects_in_lightbox.html
+}}
+
+<img src='linking_controls.png'>
+
+The <b>onchange</b> event is fired when a user changes the selected option of the parent section. The options of the child section will change accordingly. 
