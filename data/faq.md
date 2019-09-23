@@ -66,7 +66,7 @@ scheduler.init('scheduler_here', new Date(), "month");
 
 Events that last less then 1 hour look in the scheduler the same as the 1-hour events do
 ----------------------------------------------------------------------------------------
-Note, the default scale unit height is 42px (or the hour height) and the minimum height of the event box is 42px as well. Therefore, 15-minute and 1-hour events will look the same in the scheduler.
+Note, the default scale unit height is 44px (or the hour height) and the minimum height of the event box is 40px as well (in the material skin). Therefore, 15-minute and 1-hour events will look the same in the scheduler.
 
 To fix it and make events fit the scale, you can use several ways.  Read about them  in the article sizing.md. 
 
