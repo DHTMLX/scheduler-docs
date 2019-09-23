@@ -32,7 +32,7 @@ platforms to suit all tastes and preferences.
             An elaborated tutorial that explores the specificity of implementing Scheduler with ASP.NET MVC and ASP.NET WebAPI 2. 
         </td>
         <td>
-        	<a href="howtostart_dotnet.md"><img src="dotnet_core_tutorial.png"></a>
+        	<a href="howtostart_dotnet.md"><img src="dotnet_mvc_tutorial.png"></a>
         </td>
     </tr>
     <tr>
