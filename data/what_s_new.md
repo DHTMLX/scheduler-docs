@@ -10,6 +10,15 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+5.2.5
+------------
+
+<span class='release_date'>September 23, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix regression of tooltips.md extension introduced in [v5.2.4](#524)
+
 5.2.4
 ------------
 
