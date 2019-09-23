@@ -1,6 +1,55 @@
 FAQ
 ==============
 
+How to open samples
+---------------------
+
+The distributive of the component includes a demo backend app that can be used to run samples locally.
+The app requires [Node.js](https://nodejs.org/) and uses in-memory storage for demos which supposed to store data on the backend (i.e. no database setup is needed).
+
+### What you can do to run the examples
+
+1) Use the demo Node.js-based backend app: 
+
+- extract the package into some folder
+- open terminal (or cmd, PowerShell)
+- run `npm install`
+- run `npm run start`
+- open `http://localhost:9200` in your browser
+- you should see the index page identical to our online samples **https://docs.dhtmlx.com/scheduler/samples/**
+
+2) Use Apache web server
+
+- Install Apache web server from [https://www.ntu.edu.sg/home/ehchua/programming/howto/Apache_HowToInstall.html](https://www.ntu.edu.sg/home/ehchua/programming/howto/Apache_HowToInstall.html).
+- Put Scheduler samples into the apache document root directory 
+[https://www.ntu.edu.sg/home/ehchua/programming/howto/Apache_HowToInstall.html#zz-2](https://www.ntu.edu.sg/home/ehchua/programming/howto/Apache_HowToInstall.html#zz-2.).
+- When you run the Apache web server, you can access examples via the **http://localhost/yourfolder** url.
+
+3) Use a development web server built-in into your IDE
+
+Some IDEs provide a built-in development web server, for example: 
+[https://www.jetbrains.com/help/webstorm/creating-local-server-configuration.html](https://www.jetbrains.com/help/webstorm/creating-local-server-configuration.html).<br>
+You can look up whether the IDE you use supports something similar either out of the box or via plugins.
+
+### Why you may need it
+
+Some of the examples in our package load their data from JSON files using AJAX (xhr). In order for it to work, an example must be opened from a web server.
+
+If you open an example by a double click, it will be opened by a browser as a file. In this mode a browser will block AJAX calls and the component won't be able to load data files. 
+You'll see the *Invalid data* popup at the top right corner of the screen.
+
+In order to make sure the described behavior is actual for your case, you can check the URL in the navigation panel of the browser. If the *file:///* format is used in the URL, e.g.: <br>
+
+**file:///D:/www/scheduler-eval/samples/20_multiple/01_basic.html** 
+
+
+you can be sure that's the case. Samples that load data from files won't work in this mode.
+
+When you open an example from a web server, the URL will look like this (*http://* may be omitted): <br>
+
+**http://localhost/scheduler-eval/samples/20_multiple/01_basic.html**
+
+
 Scheduler isn't rendered correctly
 -----------------------------------------
 If the scheduler wasn't rendered on the page properly, please, check a CSS style for the scheduler container - it must have a valid size in pixels or percents.<br>

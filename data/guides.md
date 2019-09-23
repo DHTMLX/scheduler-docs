@@ -17,6 +17,7 @@ The articles come around key procedures and problem-solving activities.
 		    <ul id="data_sublist" >
             		<li>howtostart_dotnet_core.md</li>
             		<li>howtostart_nodejs.md</li>  
+                    <li>howtostart_dotnet.md</li>
                     <li>howtostart_php_laravel.md</li>
                     <li>howtostart_php.md</li>                                  
                     <li>howtostart_ruby.md</li>

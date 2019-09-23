@@ -11,10 +11,10 @@ As you have probably noticed at the very beginning of your work with the library
 
 Now, for the PRO version, we should rephrase that statement and say: _more than one instance_ of dhtmlxScheduler can exist on the page. You still have one default instance of scheduler, which can be accessed by the global **scheduler** object, but you can also create new scheduler objects.
 
-To create a new instance of dhtmlxScheduler, use the following command:
+To create a new instance of dhtmlxScheduler, use the **Scheduler.getSchedulerInstance()** method:
 
 ~~~js
-//Beware, 'Scheduler' in the command goes with the capital letter
+// Beware, 'Scheduler' in the command goes with the capital letter
 [instanceName] = Scheduler.getSchedulerInstance();
 ~~~
 

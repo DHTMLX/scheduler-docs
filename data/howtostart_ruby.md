@@ -6,6 +6,7 @@ In this article we'll show you how to create a Scheduler and implement server-si
 If you use some other technology, check the list of available integration variants below:
 
 - howtostart_dotnet_core.md
+- howtostart_dotnet.md
 - howtostart_nodejs.md
 - howtostart_php.md
 - howtostart_php_laravel.md
@@ -16,7 +17,7 @@ Otherwise, you should install the framework by following the steps described in 
 
 Once everything is ready, you can start completing the integration step by step.
 
-Step 1. Creating a Project
+Step 1. Creating a project
 -----------------------------
 
 To add a new project just run the following command in the terminal:
@@ -25,7 +26,7 @@ To add a new project just run the following command in the terminal:
 rails new path/to/your/project
 ~~~
 
-Step 2. Creating a Controller 
+Step 2. Creating a controller 
 ------------------------------------------
 
 Now you need to add a controller that will process users' request to the server through the application.
@@ -43,7 +44,7 @@ rails generate controller home index
 
 The output should confirm that new files were created.
 
-Step 3. Specifying Routing
+Step 3. Specifying routing
 -----------------------------
 
 To configure the routing, open the file *config/routes.rb*. Find the following line at the very beginning of this file:
@@ -74,7 +75,7 @@ Open *http://localhost:3000/* in your browser. The result should be like this:
 
 So the server is ready and you can proceed with views adding.
 
-Step 4. Including Source Files
+Step 4. Including source files
 -------------------------------
 
 To begin with, you should [download the dhtmlxScheduler package](https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml). 
@@ -119,7 +120,7 @@ Rails.application.config.assets.precompile += %w( dhtmlxscheduler.css )
 Rails.application.config.assets.precompile += %w( dhtmlxscheduler.js )
 ~~~
 
-Step 5. Creating Views
+Step 5. Creating views
 ------------------------
 
 Now you are ready to create a view. Views will visualize the information gathered by actions. 
@@ -177,7 +178,7 @@ After that have a look at the current result. Open *http://localhost:3000/* (the
 
 Thus you've got a scheduler where you can add events and modify them. But it lacks the saving ability. To provide it, you need to proceed with creating models.
 
-Step 6. Creating Models
+Step 6. Creating models
 ----------------------
 
 Since Scheduler operates events entities, you need to add a model for them.
@@ -227,7 +228,7 @@ Event.all
 Next you need to implement data loading and saving in the scheduler with the help of controllers.
 
 
-Step 7. Creating Event Controller
+Step 7. Creating event controller
 --------------------
 
 ###General technique of loading data using REST API
@@ -483,7 +484,7 @@ In case you've completed the above steps to implement Scheduler integration with
 the ways of identifying the roots of the problems.
 
 
-What's Next
+What's next
 ------------
 
-You can also check [guides on the numerous features of Scheduler](guides.md) or tutorials on [integration of Scheduler with other backend frameworks](howtostart_guides.md).
+You can check [guides on the numerous features of Scheduler](guides.md) or tutorials on [integration of Scheduler with other backend frameworks](howtostart_guides.md).

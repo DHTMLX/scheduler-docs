@@ -6,6 +6,7 @@ In this tutorial you will find necessary information on how to create a Schedule
 There are tutorials intended for building server-side integration with the help of other platforms and frameworks:
 
 - howtostart_dotnet_core.md
+- howtostart_dotnet.md
 - howtostart_nodejs.md
 - howtostart_php_laravel.md
 - howtostart_ruby.md
@@ -18,7 +19,7 @@ CRUD logic will rely on PDO and will be generic enough to be usable with any oth
 
 You can have a look at the [ready demo on GitHub](https://github.com/DHTMLX/scheduler-howto-php-slim). Follow the step-by-step guide to create such an application.
 
-Step 1. Initializing the Project
+Step 1. Initializing a project
 ----------------------------
 
 ###Creating a project
@@ -33,7 +34,7 @@ $ cd scheduler-slim-howto/
 $ composer require illuminate/database "~5.1"
 ~~~
 
-Step 2. Adding Scheduler to the Page
+Step 2. Adding Scheduler to the page
 ----------------------------
 
 The next step is to add a scheduler on a page. It includes two simple sub-steps, described below.
@@ -105,7 +106,7 @@ Now you can run the app to see that a scheduler is rendered on a page:
 
 ![Scheduler initialization](howtostart_slim_init.png)
 
-Step 3. Preparing Database
+Step 3. Preparing database
 -------------------------
 
 So, you've got an empty scheduler. It's time to create a database and connect it to our app.
@@ -173,7 +174,7 @@ $container['database'] = function($container) {
 ~~~
 
 
-Step 4. Loading Data
+Step 4. Loading data
 ------------------
 
 Our scheduler already calls the "/events" URL to retrieve events. Now we can add a handler for that request and populate scheduler with actual data.
@@ -246,7 +247,7 @@ $app->group('/events', function () {
 ~~~
 
 
-Step 5. Saving Changes
+Step 5. Saving changes
 ------------------------
 
 ###Implementing backend handlers
@@ -634,7 +635,7 @@ In case you've completed the above steps to implement Scheduler integration with
 the ways of identifying the roots of the problems.
 
 
-What's Next
+What's next
 ------------
 
 Now you have a fully functioning Scheduler. You can view the full code on [GitHub](https://github.com/DHTMLX/scheduler-howto-php-slim), clone or download it and use it for your projects.

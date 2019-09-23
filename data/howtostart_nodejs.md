@@ -5,6 +5,7 @@ The current tutorial is intended for creating Scheduler with Node.js and REST AP
 If you use some other technology, check the list of available integration variants below:
 
 - howtostart_dotnet_core.md
+- howtostart_dotnet.md
 - howtostart_php.md
 - howtostart_php_laravel.md
 - howtostart_ruby.md
@@ -18,7 +19,7 @@ This tutorial uses the [Express](http://expressjs.com/) framework and MySQL as a
 Have a look at the [demo](https://github.com/DHTMLX/scheduler-howto-node) on GitHub.
 
 
-Step 1. Initializing the Project
+Step 1. Initializing a project
 -------------------------------
 
 ### Creating project
@@ -130,7 +131,7 @@ $ npm start
 ~~~
 
 
-Step 2. Adding Scheduler to the Page
+Step 2. Adding Scheduler to the page
 ---------------------------------
 
 Create a directory to place your front-end HTML/CSS/JS files:
@@ -215,7 +216,7 @@ Now when you open the URL *http://localhost:3000/* in a browser, you should see 
 ![Scheduler initialization](howtostart_nodejs_init.png)
 
 
-Step 3. Preparing a Database
+Step 3. Preparing a database
 -------------------------
 
 So, you've got an empty scheduler. Let's connect it to the database and define methods to read and write events to it.
@@ -700,7 +701,7 @@ In case you've completed the above steps to implement Scheduler integration with
 the ways of identifying the roots of the problems.
 
 
-What's Next
+What's next
 ------------
 
 Now you have a fully functioning Scheduler. You can view the full code on [GitHub](https://github.com/DHTMLX/scheduler-howto-node), clone or download it and use it for your projects.

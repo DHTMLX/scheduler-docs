@@ -6,6 +6,7 @@ This tutorial describes how to add dhtmlxScheduler into a [Laravel](https://lara
 There are tutorials intended for building server-side integration with the help of other platforms:
 
 - howtostart_dotnet_core.md
+- howtostart_dotnet.md
 - howtostart_nodejs.md
 - howtostart_php.md
 - howtostart_ruby.md
@@ -13,7 +14,7 @@ There are tutorials intended for building server-side integration with the help 
 
 You can get the [ready demo on GitHub](https://github.com/DHTMLX/scheduler-howto-laravel) or follow a step-by-step guide below.
 
-Step 1. Initializing the Project
+Step 1. Initializing a project
 -----------------------
 
 ###Creating a project
@@ -35,7 +36,7 @@ At this step you should get a default Laravel page:
 
 <img src="howtostart_laravel_blank_page.png"/>
 
-Step 2. Adding Scheduler to the Page
+Step 2. Adding Scheduler to the page
 -----------------------
 
 ### Adding a View
@@ -106,7 +107,7 @@ Run the app again to make sure it did the trick:
 <img src="howtostart_laravel_empty_scheduler.png"/>
 
 
-Step 3. Preparing a Database
+Step 3. Preparing a database
 -------------------
 
 So, we've got an empty scheduler. Let's connect it to the database and populate it with data.
@@ -269,7 +270,7 @@ php artisan db:seed
 The data is managed via the [Eloquent model](https://laravel.com/docs/eloquent) classes. We've already generated a class for events at the previous step.
 It is ready to use and doesn't require any changes to work with scheduler.
 
-Step 4. Loading Data
+Step 4. Loading data
 ---------------------
 
 Once the database is created and the models are defined, we can load data into our scheduler. The client side requires dates of [the following format](data_formats.md#json),
@@ -371,7 +372,7 @@ class EventController extends Controller
 ~~~
 
 
-Step 5. Saving Changes
+Step 5. Saving changes
 ------------------
 
 For now, our scheduler can read data from the backend. Let's make it write changes back to the database.
@@ -385,7 +386,7 @@ Now we need to define a controller that handles actions on the model, create rou
 
 Let's start with controllers. We'll create one RESTful [resource controller](https://laravel.com/docs/controllers#resource-controllers) for each model. It will contain methods for adding/deleting and updating the model.
 
-####Controller for Events
+####Controller for events
 
 ~~~php
 <?php
@@ -490,7 +491,7 @@ Now you have a fully interactive Scheduler with the ability to view, add, update
 
 Please check more of [our guides](guides.md) for other features of dhtmlxGantt.
 
-Recurring Events
+Recurring events
 -----------
 
 In order to enable recurrence (e.g. "repeat event daily") you'll need to add an appropriate extension to the **scheduler.blade.php**, update the model and the code of the Events controller.
@@ -718,7 +719,7 @@ public function destroy($id){
 }
 ~~~
 
-Application Security
+Application security
 ---------------------
 
 Scheduler doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks.
@@ -731,7 +732,7 @@ In case you've completed the above steps to implement Scheduler integration with
 the ways of identifying the roots of the problems.
 
 
-What's Next
+What's next
 ------------
 
 Now you have a fully functioning Scheduler. You can view the full code on [GitHub](https://github.com/DHTMLX/scheduler-howto-laravel), clone or download it and use it for your projects.

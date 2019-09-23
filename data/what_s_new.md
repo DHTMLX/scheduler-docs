@@ -10,15 +10,49 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
-5.3
----------
-<span class='release_date'>September 24, 2019. Minor update</span>
+5.2.5
+------------
 
-###New functionality
+<span class='release_date'>September 23, 2019. Bugfix release</span>
 
-1. [RTL support](rtl_mode.md)
-2. [Improved responsiveness](initialization.md#makingschedulerresponsive)
+### Fixes
 
+- Fix regression of tooltips.md extension introduced in [v5.2.4](#524)
+
+5.2.4
+------------
+
+<span class='release_date'>September 19, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue with the [readonly form](readonly.md#readonlymodefortheentirelightbox) which didn't allow changing the [configuration of the lightbox](lightbox_editors.md) after [initialization](api/scheduler_init.md) of Scheduler
+- Fix the issue with Angular 8 compatibility
+
+5.2.3
+------------
+
+<span class='release_date'>August 20, 2019. Bugfix release</span>
+
+###Fixes
+
+- Fix incorrect animation of event bars in the [scrollable Timeline](timeline_view.md#horizontalscroll) during drag and drop
+- Fix the issue in day_view.md / week_view.md which caused an event to jump to the [multiday section](api/scheduler_multi_day_config.md) when being moved to the end of a day
+- Fix regression in the `scroll_position` setting of the [scrollable Timeline](timeline_view.md#horizontalscroll)
+- Fix the issue which caused chunks of [multi-section events](timeline_view.md#assignmentofeventstoseveralsections) to obtain incorrect position after a mouse click
+- Fix the script error fired from the tooltip in `cell` mode of the [Timeline view](timeline_view.md#viewmodes) when [ignore_timeline](custom_scales.md) is used
+
+5.2.2
+------------
+
+<span class='release_date'>August 7, 2019. Bugfix release</span>
+
+###Fixes
+
+- Add more helpful error messages for common misconfigurations
+- Fix the script error which was thrown from a double click on any label in a [readonly form](readonly.md#readonlymodefortheentirelightbox)
+- Fix incorrect displaying of the [Timeline view](timeline_view.md) when `smart_rendering:true` is used together with `section_autoheight:false`
+- Fix the script error which was thrown from the [Year view](year_view.md#horizontalscroll) when days containing events were hidden using the [scheduler.ignore_year](custom_scales.md) method
 
 5.2.1
 ------------

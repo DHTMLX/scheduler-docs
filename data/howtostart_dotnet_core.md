@@ -5,6 +5,7 @@ This tutorial gives you step-by-step instructions on how to create Scheduler wit
 
 You can also read tutorials on other server-side technologies:
 
+- howtostart_dotnet.md
 - howtostart_nodejs.md
 - howtostart_php.md
 - howtostart_php_laravel.md
@@ -16,7 +17,7 @@ To organize communication with database, the [Entity Framework Core](https://doc
 
 You can [check a ready demo on Github](https://github.com/DHTMLX/scheduler-howto-dotnet-core).
 
-Step 1. Creating a Project
+Step 1. Creating a project
 -------------------
 
 Launch Visual Studio 2017 and create a new project. Open the **File** menu and select: *New -> Project*.
@@ -157,7 +158,7 @@ Once you are done with it, an empty scheduler should appear on the page when you
 
 Next steps will show you how to create a backend API and connect scheduler to it.
 
-Step 3. Creating Models and Database
+Step 3. Creating models and database
 -------------------------
 
 Let's begin with data model. You'll need a class for scheduler events. dhtmlxScheduler uses [non-conventional names for model properties](data_formats.md#json) from the .NET world perspective.
@@ -770,13 +771,13 @@ namespace SchedulerApp.Models
 ~~~
 
 
-###Updating API Controller
+###Updating API controller
 
 Lastly, we need to modify our PUT/POST/DELETE actions in order to [handle special rules of recurring events](recurring_events.md#editingdeletingacertainoccurrenceintheseries).
 Firstly, let's take a look at the `POST` action.
 We need to process a special case for recurring events - deletion of a specific occurrence of the recurring series requires creating a new database record and the client will call the `insert` action for it:
 
-{{snippet Controllers/EventsController.php}}
+{{snippet Controllers/EventsController.cs}}
 ~~~
 // POST api/events
 [HttpPost]
@@ -802,7 +803,7 @@ public ObjectResult Post([FromForm] WebAPIEvent apiEvent)
 }
 ~~~
 
-In the`PUT` action we need to make sure to update all properties of the model.
+In the `PUT` action we need to make sure to update all properties of the model.
 Additionally, we need to handle a different special case there: when a recurring series is modified, we need to delete all modified occurrences of that series:
 
 {{snippet Controllers/EventsController.cs}}
@@ -890,7 +891,7 @@ public ObjectResult DeleteEvent(int id)
 ~~~
 
 
-Error Handling
+Error handling
 -------------
 
 In order to handle errors, we need to declare a special [middleware class](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/startup?view=aspnetcore-2.1#startup-filters) 
@@ -951,7 +952,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 The important thing is that you add it before the `UseMvc` call.
 
 
-Application Security
+Application security
 -------------------
 
 Scheduler doesn't provide any means of preventing an application from various threats, such as SQL injections, XSS and CSRF attacks. The responsibility for keeping an application safe is on the developers
@@ -988,7 +989,7 @@ In case you've completed the above steps to implement Scheduler integration with
 the ways of identifying the roots of the problems.
 
 
-What's Next
+What's next
 ------------
 
 Now you have a fully functioning Scheduler. You can view the full code on [GitHub](https://github.com/DHTMLX/scheduler-howto-dotnet-core), clone or download it and use it for your projects.
