@@ -81,6 +81,6 @@ Scheduler's elements that have the predefined 'onclick' handlers are listed in t
 </table>
 
 @example:
-scheduler.attachEvent("onMouseDown", function (className){
+scheduler.attachEvent("onMouseDown", function(className){
     //any custom logic here
 });
