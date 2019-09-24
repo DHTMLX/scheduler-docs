@@ -296,3 +296,58 @@ scheduler.config.lightbox.sections=[
 <img src='linking_controls.png'>
 
 The <b>onchange</b> event is fired when a user changes the selected option of the parent section. The options of the child section will change accordingly. 
+
+##Dynamic changing of the lightbox sections
+
+There is a possibility to change the lightbox sections dynamically. It means, that the sections of the lightbox can be hidden, blocked or displayed depending on the specified configuration.
+
+You can change the lightbox sections dynamically via [the resetLightbox()](api/scheduler_resetlightbox.md) method. For instance:
+
+1\. Create two arrays with the lightbox configuration that will contain two different sets of controls.
+
+~~~js
+var full_lightbox = [
+	{ name: "description", height: 200, map_to: "text", type: "textarea", focus: true},
+	{ name: "hidden", height: 23, map_to: "hidden", type: "textarea"},
+	{ name: "time", height: 72, type: "time", map_to: "auto"}
+];
+var restricted_lightbox = [
+	{ name: "description", height: 200, map_to: "text", type: "textarea", focus: true},
+	{ name: "time", height: 72, type: "time", map_to: "auto"}
+];
+~~~
+
+2\. At the next step you need to implement the following steps:
+
+- Before displaying a new lightbox, call the <b>resetLightbox()</b> method to remove the current set of controls of the edit form and generate a new lightbox object with another set of controls.
+
+- Get the event object by its id and and specify the condition depending on which this or that lightbox configuration will be applied. In the example below the condition is introduced via the "restricted" attribute.
+
+
+~~~js
+scheduler.attachEvent("onBeforeLightbox", function(event_id) {
+	scheduler.resetLightbox();
+	var ev = scheduler.getEvent(event_id);
+	scheduler.config.lightbox.sections = (ev.restricted) ?
+    	restricted_lightbox : full_lightbox;
+	return true;
+});
+~~~
+
+3\. Use the 'restricted' event propery to apply "restricted_lightbox" config. Otherwise, the full lightbox will be displayed.
+
+~~~js
+scheduler.init('scheduler_here', new Date(2017, 5, 30), "week");
+scheduler.parse([
+	{ start_date: "2017-06-27 04:00", end_date: "2017-06-27 7:00", 
+		text: "Restricted event", hidden: "You won't see me", restricted: true },
+	{ start_date: "2017-06-29 05:00", end_date: "2017-06-29 11:00", 
+        text: "Full access", hidden: "Hidden text" }
+]);
+~~~
+
+<img src='dinamicchanges_lightbox.png'>
+
+{{sample
+	02_customization/29_changing_lightbox_configurations.html
+}}

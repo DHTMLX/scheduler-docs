@@ -32,3 +32,5 @@ scheduler.attachEvent("onBeforeLightbox", function(event_id) {
 The method can be used to change the lightbox's configuration dynamically: you call the method to delete the current lightbox object and regenerate 
 a new one based on the <a href="api/scheduler_lightbox_config.md">lightbox configuration</a>.
 
+@related:
+lightbox_editors_manipulations.md#dinamicchangeofthelightbox
