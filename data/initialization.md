@@ -211,6 +211,20 @@ or:
 <div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:800px;">
 ~~~
 
+###Scheduler autoresizing
+
+There is a possibility to enable automatic resizing for the scheduler container. You just need to include the <b>ext/dhtmlxscheduler_container_autoresize.js</b> extension file on the page:
+
+~~~html
+<script src="../codebase/ext/dhtmlxscheduler_container_autoresize.js"></script>
+~~~
+
+{{sample
+03_extensions/28_container_autoresize.html
+}}
+
+As a result, scheduler container will change its size automatically and show the whole content without scrolling.
+
 Making Scheduler responsive
 -----------------------------
 

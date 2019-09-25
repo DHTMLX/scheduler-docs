@@ -8,4 +8,5 @@ Scheduler Integrations
 - jquery_integration.md
 - datastore_integration.md
 - dhxlayout_integration.md
+- integration_with_bootstrap.md
 }}
