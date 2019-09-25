@@ -173,6 +173,8 @@ The articles come around key procedures and problem-solving activities.
                   <li>integration_with_dhtmlxmessage.md</li>
                   <li>scheduler_typescript.md</li>
                   <li>jquery_integration.md</li>
+                  <li>datastore_integration.md</li>
+				  <li>dhxlayout_integration.md</li>
             </ul>
         </td>
 		<td class='topic_description'>Describes available solutions for integrating Scheduler with third-party frameworks.</td>
