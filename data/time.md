@@ -1,7 +1,7 @@
-Time
+Time and Date
 ============================
 
-A pair of date selectors for setting some date period.
+A pair of date selectors for setting some time and date period.
 
 <img src="time_editor.png"/>
 
@@ -17,7 +17,6 @@ scheduler.config.lightbox.sections = [
 {{sample
 	01_initialization_loading/01_basic_init.html
 }}
-
 
 
 Properties
@@ -95,3 +94,37 @@ time_format:["%H:%i", "%m", "%d"]
 time_format:["%H:%i", "%M", "%d", "%Y"] //"%m" was changed to "%M"
 ~~~
 
+Mini calendar in the lightbox
+----------------------------------
+The mini calendar (date picker) can be used in the lightbox for "start" and "end" dates selection.
+
+<img src="in_the_lightbox.png"/>
+
+To place the mini calendar in the lightbox, follow these steps:
+
+
+<ol>
+	<li>Include the extension file on the page:
+~~~js
+<script src='/ext/dhtmlxscheduler_minical.js' type="text/javascript"></script>
+~~~
+	</li>
+    <li>Set the <i>type</i> of the <b>time</b> section to <b>calendar_time</b> (instead of <b>time</b>):
+~~~js
+//default lightbox definition
+scheduler.config.lightbox.sections=[
+  {name:"description", height:200, map_to:"text", type:"textarea", focus:true},
+  {name:"time", height:72, type:"time", map_to:"auto"}
+];
+//change type:"time" -> type:"calendar_time"
+scheduler.config.lightbox.sections = [
+  {name:"description", height:200, map_to:"text", type:"textarea", focus:true},
+  {name:"time", height:72, type:"calendar_time", map_to:"auto" }
+];
+~~~
+	</li>
+</ol>
+
+{{sample
+	05_calendar/03_in_form.html
+}}
