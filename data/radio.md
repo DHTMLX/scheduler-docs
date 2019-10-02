@@ -199,3 +199,47 @@ If you use [PHP Connector](https://github.com/DHTMLX/connector-php) library, the
 {{note
 Note, you can use the api/scheduler_updatecollection.md method to update the list of retrieved options
 }}
+
+
+Event handling for the Radio Control
+------------------------------------
+
+By default, dhtmlxScheduler API doesn't provide any specific event handlers for radio buttons in the Scheduler lightbox.
+
+But you can assign a click handler for the Lightbox Radio controls like this:
+
+1\.  Get radio elements after the lightbox will be opened.
+
+~~~js
+
+scheduler.attachEvent("onLightbox", function(){
+    var node = scheduler.formSection("type").node;
+    var radios = node.getElementsByTagName("input");
+    ...
+});
+~~~
+
+2\. Attach the <b>onclick</b> event to the found radio buttons of Lightbox.
+
+~~~js
+
+scheduler.attachEvent("onLightbox", function(){
+	...
+    for(var i = 0; i < radios.length; i++){
+      radios[i].onclick = onRadioClick; 
+    }
+});
+~~~
+
+3\. Finally, you should specify a function that will be executed after clicking the radio button.
+
+~~~js
+function onRadioClick(event){
+	var e = event || window.event,
+        node = this;
+  
+	dhtmlx.message(node.value);
+}
+~~~
+
+{{editor	https://snippet.dhtmlx.com/5b62dd79e	Event handling for the Radio Control}}

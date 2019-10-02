@@ -3,7 +3,15 @@ Initializing Scheduler on a Page
 
 When you develop an application with dhtmlxScheduler, the first thing you need is to initialize or, simply speaking, to display the Scheduler on the page.
 
-To display a basic Scheduler on the page, follow 3 steps: 
+There are two ways of initializing scheduler on a page:
+
+- via the scheduler's markup
+- via the header configuration property
+
+Initializing Scheduler via markup
+------------------------------------
+
+To display a basic Scheduler on the page through the markup, follow 3 steps: 
 
 1. Include the [dhtmlxScheduler code files](#requiredcodefiles) on the page.
 2. Create a DIV container on the page and define the related DIV containers for its elements.
@@ -44,7 +52,52 @@ To display a basic Scheduler on the page, follow 3 steps:
 {{sample
 	01_initialization_loading/01_basic_init.html
 }}
- 
+
+
+Initializing Scheduler via header config
+--------------------------------------------------------------
+
+You need to initialize scheduler this way to make it [responsive](initialization.md#makingschedulerresponsive).
+
+To display a basic Scheduler on the page, take the following steps:
+
+1. Include the [dhtmlxScheduler code files](#requiredcodefiles) on the page.
+2. Create a DIV container on the page.
+3. Specify the structure of the scheduler in the api/scheduler_header_config.md configuration object. 
+4. Initialize dhtmlxScheduler in the newly created container with the api/scheduler_init.md method. As a parameter the method takes an HTML container (or its id) that the Scheduler will be displayed in.
+
+~~~html
+<!DOCTYPE html>
+<html>
+<head>
+   <script src="../scheduler/dhtmlxscheduler.js"></script>
+   <link rel="stylesheet" href="../scheduler/dhtmlxscheduler_material.css" 
+        type="text/css">
+</head>
+<body>
+   <!--Container for Scheduler-->
+   <div id="scheduler_here" style='width:100%; height:100%;'>
+   </div>
+</body>   
+<script>
+	//The structure of the scheduler
+	scheduler.config.header = [
+		"day",
+		"week",
+		"month",
+		"date",
+		"prev",
+		"today",
+		"next"
+	];
+	scheduler.init('scheduler_here',new Date(2020,0,1),"week"); /*!*/
+</script>
+</html>
+~~~
+
+{{sample
+	01_initialization_loading/13_touch_ui.html
+}}
  
 Required code files
 ---------------------
@@ -55,7 +108,7 @@ The required code files are:
 - *dhtmlxscheduler_material.css* (for Material skin; you can also [explore the available skins](skins.md))
 
 ~~~html
-<script src="../scheduler/dhtmlxscheduler.js" type="text/javascript"></script>
+<script src="../scheduler/dhtmlxscheduler.js"></script>
 <link rel="stylesheet" href="../scheduler/dhtmlxscheduler_material.css" 
    		type="text/css">
 ~~~
@@ -88,7 +141,7 @@ In our samples we usually make scheduler full-screen by giving 100% width and he
 </style>
 </head>
 <body>
- <div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:100%;"/>
+ <div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:100%;">
 ~~~
 
 It can easily go wrong if you place the *scheduler_here* element into a div with default sizes:
@@ -123,3 +176,27 @@ or:
 ~~~html
 <div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:800px;">
 ~~~
+
+###Scheduler autoresizing
+
+There is a possibility to enable automatic resizing for the scheduler container. You just need to include the <b>ext/dhtmlxscheduler_container_autoresize.js</b> extension file on the page:
+
+~~~html
+<script src="../codebase/ext/dhtmlxscheduler_container_autoresize.js"></script>
+~~~
+
+{{sample
+03_extensions/28_container_autoresize.html
+}}
+
+As a result, scheduler container will change its size automatically and show the whole content without scrolling.
+
+Making Scheduler responsive
+-----------------------------
+
+When you initialize Scheduler via [the header configuration property](#initializingschedulerviaheaderconfig) you'll be able to choose the header structure that fits the screen size of the client.
+It will also apply certain styles which will make elements and font sizes responsive on small screens.
+
+You can find more details in a separate article: touch_support.md.
+
+

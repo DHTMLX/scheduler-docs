@@ -78,7 +78,15 @@ The following properties are mostly important and commonly set for the 'select' 
 					<li><b>key</b> -   (<i>string</i>) the option's id. This attribute is compared with the event's data property to assign options to events</li>
 					<li><b>label</b> -   (<i>string</i>) the option's label</li>
 			</ul>
-             </td>
+             </td>  
+		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>onchange</b></td>
+			<td>(<i>function</i>) specifies the 'onchange' event handler function for the section's control 
+            {{sample
+	02_customization/26_linked_selects_in_lightbox.html
+}}
+</td>
 		</tr>
     </tbody>
 </table>

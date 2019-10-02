@@ -1,6 +1,27 @@
 Migration From Older Versions 
 ==============
 
+## 5.2 -> 5.3
+
+### Touch gestures
+
+The default handler for the [swipe gesture](touch_support.md#touchgesturesinthescheduler) has been disabled by default.
+
+You can re-enable it using the [scheduler.config.touch_swipe_dates](api/scheduler_touch_swipe_dates_config.md) config, as follows:
+
+~~~js
+scheduler.config.touch_swipe_dates = true;
+~~~
+
+### Markup and styles
+
+[Box-sizing mode](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing) of event elements in 
+month_view.md has been changed from **content-box** to **border-box** in all skins.
+
+The affected elements are: **.dhx_cal_event_clear** and **.dhx_cal_event_line**.
+
+It shouldn't cause any visible changes, but if you redefined the render of Month view events, or use a custom skin, you may need to take this change into account.
+
 ## 5.1 -> 5.2
 
 <h3 id="dnd">Drag-n-drop behavior</h3>

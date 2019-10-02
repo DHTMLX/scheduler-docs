@@ -1,6 +1,6 @@
-Mini Calendar 
+Mini Calendar (Date Picker) 
 ==============
-Mini calendar is a special extension that provides an ability to render a small month view in an HTML container on a page.
+Mini calendar (date picker) is a special extension that provides an ability to render a small month view in an HTML container on a page.
 
 <img src="mini_calendar.png"/>
 
@@ -15,7 +15,7 @@ To use the mini calendar in an app, include the **ext/dhtmlxscheduler_minical.js
 
 Mini calendar in the header
 -----------------------------------
-To place the mini calendar into the header of the scheduler (as shown in the image below), follow these steps:
+To place the mini calendar (date picker) into the header of the scheduler (as shown in the image below), follow these steps:
 
 <img src="calendar_in_header.png"/>
 
@@ -63,7 +63,7 @@ function show_minical(){
 
 Mini calendar in the lightbox
 ----------------------------------
-The mini calendar can be used in the lightbox for "start" and "end" dates selection.
+The mini calendar (date picker) can be used in the lightbox for "start" and "end" dates selection.
 
 <img src="in_the_lightbox.png"/>
 
@@ -98,7 +98,7 @@ scheduler.config.lightbox.sections = [
 
 Mini calendar in an HTML container outside the scheduler
 ---------------------------------------------------------------------
-The mini calendar can reside at any place on the page.
+The mini calendar (date picker) can reside at any place on the page.
 
 <img src="outside_the_scheduler.png"/>
 
@@ -142,7 +142,7 @@ Customizing the mini calendar
 ---------------------------------------
 
 ###Templates
-To customize the format of dates presented in the mini calendar, you can use a number of templates listed in the article mini_calendar_templates.md. 
+To customize the format of dates presented in the mini calendar (date picker), you can use a number of templates listed in the article mini_calendar_templates.md. 
 
 ~~~js
 scheduler.templates.calendar_month = scheduler.date.date_to_str("%M, %Y");
@@ -154,7 +154,7 @@ var calendar = scheduler.renderCalendar({..});
 <img src="mini_calendar_custom_template.png"/>
 
 ###CSS classes
-To customize the look of days in the mini calendar, you can redefine the following CSS classes: 
+To customize the look of days in the mini calendar (date picker), you can redefine the following CSS classes: 
 
 <table class="list"  cellspacing="0" cellpadding="5" border="0">
 	<thead>

@@ -250,3 +250,104 @@ You can define the image used for the button through the following CSS class:
 }
 ~~~
 
+##Linking select controls
+
+You can make select controls in the lightbox dependent on each other. To do this use [the onchange property](select.md#properties) of the select control, as in:
+
+~~~js
+var update_select_options = function(select, options) { // helper function
+	select.options.length = 0;
+	for (var i=0; i<options.length; i++) {
+		var option = options[i];
+		select[i] = new Option(option.label, option.key);
+	}
+};
+
+var parent_onchange = function(event) {
+	var new_child_options = child_select_options[this.value];
+	update_select_options(scheduler.formSection('child').control, new_child_options);
+};
+scheduler.attachEvent("onBeforeLightbox", function(id){
+	var ev = scheduler.getEvent(id);
+	if (!ev.child_id) {
+		var parent_id = ev.parent_id||parent_select_options[0].key;
+		var new_child_options = child_select_options[parent_id];
+		update_select_options(
+        	scheduler.formSection('child').control, new_child_options
+        );
+	}
+	return true;
+});
+
+scheduler.config.lightbox.sections=[
+	...
+	{name:"parent", height:23, type:"select", options: parent_select_options, 
+     map_to:"parent_id", onchange:parent_onchange },
+	{name:"child", height:23, type:"select", options: child_select_options, 
+     map_to:"child_id" }
+	...
+];
+~~~
+
+{{sample
+	02_customization/26_linked_selects_in_lightbox.html
+}}
+
+<img src='linking_controls.png'>
+
+The <b>onchange</b> event is fired when a user changes the selected option of the parent section. The options of the child section will change accordingly. 
+
+##Dynamic changing of the lightbox sections
+
+There is a possibility to change the lightbox sections dynamically. It means, that the sections of the lightbox can be hidden, blocked or displayed depending on the specified configuration.
+
+You can change the lightbox sections dynamically via [the resetLightbox()](api/scheduler_resetlightbox.md) method. For instance:
+
+1\. Create two arrays with the lightbox configuration that will contain two different sets of controls.
+
+~~~js
+var full_lightbox = [
+	{ name: "description", height: 200, map_to: "text", type: "textarea", focus: true},
+	{ name: "hidden", height: 23, map_to: "hidden", type: "textarea"},
+	{ name: "time", height: 72, type: "time", map_to: "auto"}
+];
+var restricted_lightbox = [
+	{ name: "description", height: 200, map_to: "text", type: "textarea", focus: true},
+	{ name: "time", height: 72, type: "time", map_to: "auto"}
+];
+~~~
+
+2\. At the next step you need to implement the following steps:
+
+- Before displaying a new lightbox, call the <b>resetLightbox()</b> method to remove the current set of controls of the edit form and generate a new lightbox object with another set of controls.
+
+- Get the event object by its id and and specify the condition depending on which this or that lightbox configuration will be applied. In the example below the condition is introduced via the "restricted" attribute.
+
+
+~~~js
+scheduler.attachEvent("onBeforeLightbox", function(event_id) {
+	scheduler.resetLightbox();
+	var ev = scheduler.getEvent(event_id);
+	scheduler.config.lightbox.sections = (ev.restricted) ?
+    	restricted_lightbox : full_lightbox;
+	return true;
+});
+~~~
+
+3\. Use the 'restricted' event propery to apply "restricted_lightbox" config. Otherwise, the full lightbox will be displayed.
+
+~~~js
+scheduler.init('scheduler_here', new Date(2017, 5, 30), "week");
+scheduler.parse([
+	{ start_date: "2017-06-27 04:00", end_date: "2017-06-27 7:00", 
+		text: "Restricted event", hidden: "You won't see me", restricted: true },
+	{ start_date: "2017-06-29 05:00", end_date: "2017-06-29 11:00", 
+        text: "Full access", hidden: "Hidden text" }
+]);
+~~~
+
+<img src='dinamicchanges_lightbox.png'>
+
+{{sample
+	02_customization/29_changing_lightbox_configurations.html
+}}

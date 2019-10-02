@@ -267,7 +267,7 @@ Article: map_view.md<br>
 {{sample 03_extensions/19_map_view.html}}
 
 
-Mini Calendar
+Mini Calendar (Date Picker)
 ---------------------------------------------
 A code file for the mini calendar.
 
@@ -277,7 +277,7 @@ A code file for the mini calendar.
 
 ####Related resources
 
-Article:  minicalendar.md<br>
+Article:  minicalendar.md, time.md#minicalendarinthelightbox<br>
 
 {{sample 05_calendar/01_select.html}}
 

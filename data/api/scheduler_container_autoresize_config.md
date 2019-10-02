@@ -20,3 +20,5 @@ Note, it's enough to include the extension file to enable the parameter.
 <img src="api/container_autoresize_property.png"/>
 
 @apigroup: General setting/View settings
+
+@relatedsample: 03_extensions/28_container_autoresize.html

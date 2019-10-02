@@ -1,3 +1,4 @@
+
 Events
 =======
 
@@ -44,7 +45,7 @@ Events
 - api/scheduler_oneventdeleted_event.md - fires after the specified event was deleted (version 3.0+)
 - api/scheduler_oneventdrag_event.md - fires when the user drags/resizes events in the scheduler
 - api/scheduler_oneventdragin_event.md - fires when a dragged event is moved into the scheduler
-- api/scheduler_oneventdragout_event.md - fires when a dragged event  is moved out of the scheduler
+- api/scheduler_oneventdragout_event.md - fires when a dragged event is moved out of the scheduler
 - api/scheduler_oneventdropout_event.md - fires when a dragged event  is dropped onto the area out of the scheduler
 - api/scheduler_oneventidchange_event.md - fires when the id of an event is changed
 - api/scheduler_oneventloading_event.md - fires when an event is being loaded from the data source

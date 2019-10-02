@@ -1,5 +1,6 @@
 showLightbox
 =============
+
 @short: 
 	opens the lightbox for the specified event
 
@@ -23,7 +24,8 @@ scheduler.showLightbox(eventId);
     02_customization/16_custom_form.html
 @descr: 
 
-
+@relatedapi:
+api/scheduler_hidelightbox.md
 
 
 

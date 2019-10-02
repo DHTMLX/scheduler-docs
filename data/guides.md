@@ -35,9 +35,11 @@ The articles come around key procedures and problem-solving activities.
 		    </h4>
 		    <ul id="manipulations_sublist">
             		<li>initialization.md</li>
+                    <li>touch_support.md</li>
             		<li>install_with_bower.md</li>
                     <li>configuration.md</li>
                     <li>scheduler_markup.md</li>
+                    <li>rtl_mode.md</li>
                    	<li>localization.md</li>                
                     <li>multiple_per_page.md</li>
                     <li>accessibility.md</li>
@@ -172,6 +174,8 @@ The articles come around key procedures and problem-solving activities.
                   <li>integration_with_dhtmlxmessage.md</li>
                   <li>scheduler_typescript.md</li>
                   <li>jquery_integration.md</li>
+                  <li>datastore_integration.md</li>
+				  <li>dhxlayout_integration.md</li>
             </ul>
         </td>
 		<td class='topic_description'>Describes available solutions for integrating Scheduler with third-party frameworks.</td>
@@ -183,7 +187,6 @@ The articles come around key procedures and problem-solving activities.
             </h4>
             <ul id="internet_sublist">           		
 					<li>minicalendar.md</li>                 
-					<li>touch_support.md</li>
                     <li>content_security_policy.md</li>         
                     <li>winjs_compatibility.md</li>                   
                     <li>live_update.md</li>
