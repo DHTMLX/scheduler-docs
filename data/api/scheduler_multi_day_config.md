@@ -3,7 +3,6 @@ multi_day
 
 @short:enables rendering of multi-day events
 
-
 @type: boolean
 @default:true
 @views:day,week,units
@@ -14,8 +13,8 @@ multi_day
 	api/scheduler_multi_day_height_limit_config.md
 @example:
 scheduler.config.multi_day = false;
-...		
-scheduler.init('scheduler_here',new Date(2013,7,11),"week");
+	
+scheduler.init('scheduler_here',new Date(2020,7,11),"week");
 
 @template:	api_config
 @descr:
