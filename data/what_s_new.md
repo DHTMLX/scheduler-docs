@@ -12,12 +12,27 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 5.3
 ---------
-<span class='release_date'>September 24, 2019. Minor update</span>
+<span class='release_date'>October 2, 2019. Minor update</span>
+
+###Breaking Changes
+
+This update changes behavior of of some parts of the component. While they shouldn't cause any breaks in the existing code, be sure to check [Migration notes](migration_from_older_version.md#53) to be on the safe side.
 
 ###New functionality
 
 1. [RTL support](rtl_mode.md)
-2. [Improved responsiveness](initialization.md#makingschedulerresponsive)
+2. [Improved mobile responsiveness](initialization.md#makingschedulerresponsive)
+3. [Integration with DHTMLX Suite 6 Layout](dhxlayout_integration.md#layoutv6x)
+
+###Updates
+
+1. Add [year range](time.md#properties) setting to the Date/Time lightbox control
+2. Changing Scheduler dates by horizontal swipe is disabled by default
+3. Add a way to set scheduler header from config rather than from the markup
+
+### Fixes
+
+- Fix [vertical](multiselect.md#properties) config of multiselect control, which didn't work in the [Material skin](skins.md#materialskin)
 
 5.2.5
 ------------

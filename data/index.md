@@ -9,7 +9,7 @@ Start
     </p>
     <ul>
         <li><a href="rtl_mode.md">RTL support</a></li>
-        <li><a href="initialization.md#makingschedulerresponsive">Improved responsiveness</a></li>
+        <li><a href="touch_support.md#makingschedulerresponsive">Improved responsiveness</a></li>
         <li>Internal enhancements</li>
     </ul>
     <p class='action_buttons'>

@@ -55,6 +55,7 @@ Scheduler API
 - api/scheduler_getuserdata.md - gets the user data associated with the specified event
 - api/scheduler_getview.md - returns a view object by its name. If no name is specified, returns the current view
 - api/scheduler_hidecover.md - hides the lightbox modal overlay that blocks interactions with the remaining screen
+- api/scheduler_hidelightbox.md - hides the lightbox without saving it
 - api/scheduler_hidequickinfo.md - hides the pop-up event form (if it's currently active)
 - api/scheduler_highlighteventposition.md - highlights the event's duration on the time scale
 - api/scheduler_init.md - a constructor of a dhtmlxScheduler object
@@ -70,6 +71,7 @@ Scheduler API
 - api/scheduler_opensection.md - opens the specified section in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
 - api/scheduler_parse.md - loads data from a client-side resource
 - api/scheduler_removeshortcut.md - removes a keyboard shortcut
+- api/scheduler_render.md - repaints the scheduler
 - api/scheduler_rendercalendar.md - creates a mini calendar
 - api/scheduler_renderevent.md - generates HTML content for a custom event's box
 - api/scheduler_resetlightbox.md - removes the current lightbox's HTML object element
@@ -233,6 +235,7 @@ Scheduler API
 - api/scheduler_first_hour_config.md - sets the minimum value for the hour scale (Y-Axis)
 - api/scheduler_fix_tab_position_config.md - moves views' tabs from the left to the right side
 - api/scheduler_full_day_config.md - enables setting of the event's duration to the full day
+- api/scheduler_header_config.md - provides a layout-like configuration for the scheduler header (navigation panel)
 - api/scheduler_highlight_displayed_event_config.md - specifies whether events retrieved by the showEvent method should be highlighted while displaying
 - api/scheduler_hour_date_config.md - sets the time format of Y-Axis. Also used in the default event and lighbox  templates for setting the time part.
 - api/scheduler_hour_size_px_config.md - sets the height of an hour unit in pixels
@@ -288,7 +291,8 @@ Scheduler API
 - api/scheduler_repeat_precise_config.md - prevents including past days to events with the 'weekly' recurrence
 - api/scheduler_resize_month_events_config.md - enables the possibility to resize multi-day events in the Month view by drag-and-drop
 - api/scheduler_resize_month_timed_config.md - enables the possibility to resize single-day events in the Month view by drag-n-drop
-- api/scheduler_rtl_config.md - 
+- api/scheduler_responsive_lightbox_config.md - makes lightbox responsive on small screens
+- api/scheduler_rtl_config.md - enables RTL (right-to-left) mode for the scheduler
 - api/scheduler_scroll_hour_config.md - sets the initial position of the vertical scroll in the scheduler (an hour in the 24-hour clock format)
 - api/scheduler_section_delimiter_config.md - specifies the delimeter that will be used to separate several sections/units in the related data property of the event
 - api/scheduler_select_config.md - shows/hides the select bar in the event's box
@@ -301,6 +305,7 @@ Scheduler API
 - api/scheduler_timeline_swap_resize_config.md - defines that during event resizing the end date of the event can be swapped for the start date (after the end date becomes scheduled before the start one)
 - api/scheduler_touch_config.md - enables/disables the touch support in the scheduler
 - api/scheduler_touch_drag_config.md - defines the time period in milliseconds that is used to differ the long touch gesture from the scroll gesture
+- api/scheduler_touch_swipe_dates_config.md - enables/disables switching active dates using horizontal swipe gesture on mobiles
 - api/scheduler_touch_tip_config.md - enables/disables prompting messages in the right top corner of the screen
 - api/scheduler_touch_tooltip_config.md - disables dhtmxlScheduler's tooltips on the touch devices
 - api/scheduler_update_render_config.md - updates the mode when the scheduler fully repaints itself on any action

@@ -1,6 +1,29 @@
 Migration From Older Versions 
 ==============
 
+## 5.2 -> 5.3
+
+### Responsive lightbox
+
+Since version 5.3 the [lightbox](lightbox_editors.md) has an additional css class **dhx_cal_light_responsive** which has media queries with new css styles assiciated with it. 
+These new styles will have effect only on smaller screen/window sizes (< 1024px) and can change look and feel of the lightbox on these screens.
+
+You can disable this behavior using [scheduler.config.responsive_lightbox](api/scheduler_responsive_lightbox_config.md) config:
+
+~~~js
+scheduler.config.responsive_lightbox = false;
+~~~
+
+### Touch gestures
+
+A default handler for the [swipe gesture](touch_support.md#touchgesturesinthescheduler) has been disabled by default.
+
+You can re-enable it using [scheduler.config.touch_swipe_dates](api/scheduler_touch_swipe_dates_config.md) config:
+
+~~~js
+scheduler.config.touch_swipe_dates = false;
+~~~
+
 ## 5.1 -> 5.2
 
 <h3 id="dnd">Drag-n-drop behavior</h3>
