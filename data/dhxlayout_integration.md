@@ -7,8 +7,8 @@ with other elements on the page and acting according to the page size changes.
 {{note Note that dhtmlxLayout is not a part of the dhtmlxScheduler library.
 There are two versions of Layout you can choose from, depending on the version of the dhtmlxSuite library.}}
 
-Layout v5.X
---------------------
+dhtmlxSuite v5+
+------------------------
 
 In this version dhtmlxLayout can be used as a separate product or as a part of the dhtmlxSuite library. To use dhtmlxLayout v5.X in your application, you should 
 [purchase the license](https://dhtmlx.com/docs/products/dhtmlxSuite5/).
@@ -37,14 +37,14 @@ function init() {
 	10_integration/05_dhtmlxlayout_terrace.html
 }}
 
-dhtmlx Suite v6+
+dhtmlxSuite v6+
 ------------------------
 
 Starting from dhtmlxSuite 6.0, dhtmlxLayout can't be obtained separately from the whole Suite library.
 If you're going to use this approach, you should purchase the license of
 the [Suite 6.X library](https://dhtmlx.com/docs/products/dhtmlxSuite/#licensing).
 
-The scheduler of [version 5.3](what_s_new.md#53) and newer, implements a common View interface used in dhtmlxSuite v6+ and can be [attached to any cell directly](https://docs.dhtmlx.com/suite/layout__api__layout_attach_method.html):
+dhtmlxScheduler of [version 5.3](what_s_new.md#53) and newer implements a common View interface used in dhtmlxSuite v6+ and can be [attached to any cell directly](https://docs.dhtmlx.com/suite/layout__api__layout_attach_method.html):
 
 
 ~~~js
@@ -78,10 +78,11 @@ const layout = new dhx.Layout("layout", {
 	}]
 });
 layout.cell("scheduler-cell").attach(scheduler);
-
 ~~~
+
+###Pay attention
 
 - Note, that `dhtmlxSuite Layout` is asynchronous, the scheduler won't be initialized right after the `.attach` call.
 - You'll need to capture "onSchedulerReady" for any post-initialization settings.
-- Also please note that currently there is no way to specify scheduler markup when it's used together with dhtmlxSuite v6+, 
-which means you'll need to use the api/scheduler_header_config.md config to specify the controls of the navigation panel.
+- Currently **there is no way to specify scheduler markup when it's used together with dhtmlxSuite v6+**, 
+which means you'll need to use the api/scheduler_header_config.md config to specify controls of the navigation panel.
