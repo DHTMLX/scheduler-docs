@@ -10,6 +10,15 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+5.3.1
+------------
+
+<span class='release_date'>October 2, 2019. Bugfix release</span>
+
+### Updates
+
+- api/scheduler_responsive_lightbox_config.md is disabled by default.
+
 5.3
 ---------
 
@@ -22,7 +31,7 @@ This update changes behavior of of some parts of the component. While they shoul
 ###New functionality
 
 1. [RTL support](rtl_mode.md)
-2. [Improved mobile responsiveness](initialization.md#makingschedulerresponsive)
+2. [Improved mobile responsiveness](touch_support.md)
 3. [Integration with DHTMLX Suite 6 Layout](dhxlayout_integration.md#dhtmlxsuitev6)
 
 ###Updates

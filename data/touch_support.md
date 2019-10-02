@@ -90,6 +90,8 @@ resetConfig();
 scheduler.attachEvent("onBeforeViewChange", resetConfig);
 scheduler.attachEvent("onSchedulerResize", resetConfig);
 
+scheduler.config.responsive_lightbox = true; // responsive lightbox
+
 scheduler.init("scheduler_here");
 ~~~
 
@@ -103,8 +105,8 @@ scheduler.init("scheduler_here");
 Scheduler API provides the [responsive_lightbox](api/scheduler_responsive_lightbox_config.md) configuration option that enables responsiveness of the lightbox. 
 
 ~~~~js
-scheduler.config.responsive_lightbox = true; //true by default
-//you need to set this value to false to disable the responsiveness of the lightbox
+scheduler.config.responsive_lightbox = true; //disabled by default
+//you need to set this value to true to enable the responsiveness of the lightbox
 ~~~~
 
 The elements of the lightbox adapt to a small screen in the image below:
@@ -117,6 +119,8 @@ The elements of the lightbox adapt to a small screen in the image below:
 
 There is a possibility to customize the lightbox appearance when it is responsive. The lightbox will have an additional CSS class <b>dhx_cal_light_responsive</b> which you can use in your selectors.
 
+By default, this class has some media queries associated with it. 
+These new styles will have effect only on smaller screen/window sizes (< 1024px) and can change look and feel of the lightbox on these screens.
 
 ## Touch configuration options 
 
@@ -128,7 +132,7 @@ Here is a list of configuration options related to the mobile/responsive support
 - api/scheduler_touch_drag_config.md - defines the time period (in milliseconds) that is used to differentiate a long touch gesture from a scroll gesture
 - api/scheduler_touch_tip_config.md - enables/disables prompting messages in the right top corner of the screen
 - api/scheduler_touch_swipe_dates_config.md - enables/disables prompting messages in the right top corner of the screen
-- api/scheduler_responsive_lightbox_config.md - enables responsive styles for the lightbox (enabled by default)
+- api/scheduler_responsive_lightbox_config.md - enables responsive styles for the lightbox (disabled by default)
 }}
 
 

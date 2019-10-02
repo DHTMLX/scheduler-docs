@@ -3,17 +3,6 @@ Migration From Older Versions
 
 ## 5.2 -> 5.3
 
-### Responsive lightbox
-
-Since version 5.3 the [lightbox](lightbox_editors.md) has an additional CSS class **dhx_cal_light_responsive** which has media queries with new CSS styles associated with it. 
-These new styles will have effect only on smaller screen/window sizes (< 1024px) and can change look and feel of the lightbox on these screens.
-
-You can disable this behavior using the [scheduler.config.responsive_lightbox](api/scheduler_responsive_lightbox_config.md) config, as in:
-
-~~~js
-scheduler.config.responsive_lightbox = false;
-~~~
-
 ### Touch gestures
 
 The default handler for the [swipe gesture](touch_support.md#touchgesturesinthescheduler) has been disabled by default.
