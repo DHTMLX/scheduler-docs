@@ -16,13 +16,22 @@ scheduler.config.responsive_lightbox = false;
 
 ### Touch gestures
 
-A default handler for the [swipe gesture](touch_support.md#touchgesturesinthescheduler) has been disabled by default.
+The default handler for the [swipe gesture](touch_support.md#touchgesturesinthescheduler) has been disabled by default.
 
 You can re-enable it using [scheduler.config.touch_swipe_dates](api/scheduler_touch_swipe_dates_config.md) config:
 
 ~~~js
-scheduler.config.touch_swipe_dates = false;
+scheduler.config.touch_swipe_dates = true;
 ~~~
+
+### Markup and styles
+
+[Box-sizing mode](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing) of event elements in 
+month_view.md has been changed from **content-box** to **border-box** in all skins.
+
+Affected elements: **.dhx_cal_event_clear** and **.dhx_cal_event_line**
+
+It shouldn't cause any visible changes, but if you redefined the render of month view events or if you use a custom skin, you may need to account for this change.
 
 ## 5.1 -> 5.2
 
