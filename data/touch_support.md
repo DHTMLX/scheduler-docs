@@ -23,26 +23,22 @@ _The scheduler will work on smartphones as well, but due to the lack of screen s
 
 ## Responsive layout
 
-When you initialize scheduler via [the header configuration property](#initializingschedulervialayoutconfigurationproperty) you'll be able to chose the header structure that fits the screen size of the client.
-It will also apply certain styles which will make elements and font sizes responsive on a small screens.
+When you [initialize Scheduler via the header configuration property](initialization.md#initializingschedulerviaheaderconfig), you'll be able to choose the header structure that fits the screen size of the client.
+It will also apply certain styles which will make elements and font sizes responsive on small screens.
 
 
 ###Header
-
 
 For example, you can rearrange the header into multiple rows:
 
 <img src="header_responsive.png"/>
 
-In the image above scheduler is displayed on a small screen. 
+In the image above Scheduler is displayed on a small screen. 
 
-This setting can be changed dynamically, which allows you to define separate header configuration for large and small screens:
-
+This setting can be changed dynamically, which allows you to define separate header configurations both for large and small screens:
 
 ~~~js
-
 // define configs
-
 const compactHeader = {
 	rows: [
 		{ 
@@ -74,7 +70,7 @@ const fullHeader = [
 	"next"
 ];
 
-// add a swicth to select an appropriate config for a current screen size
+// add a switch to select an appropriate config for a current screen size
 
 function resetConfig(){
 	let header;
@@ -95,7 +91,6 @@ scheduler.attachEvent("onBeforeViewChange", resetConfig);
 scheduler.attachEvent("onSchedulerResize", resetConfig);
 
 scheduler.init("scheduler_here");
-
 ~~~
 
 {{sample
@@ -105,12 +100,13 @@ scheduler.init("scheduler_here");
 
 ###Lightbox
 
-Scheduler API provides the [responsive_lightbox](api/scheduler_responsive_lightbox_config.md) configuration option that enables the responsiveness of the lightbox. 
+Scheduler API provides the [responsive_lightbox](api/scheduler_responsive_lightbox_config.md) configuration option that enables responsiveness of the lightbox. 
 
 ~~~~js
 scheduler.config.responsive_lightbox = true; //true by default
 //you need to set this value to false to disable the responsiveness of the lightbox
 ~~~~
+
 The elements of the lightbox adapt to a small screen in the image below:
 
 <img src="lightbox_responsive.png"/>
@@ -124,12 +120,12 @@ There is a possibility to customize the lightbox appearance when it is responsiv
 
 ## Touch configuration options 
 
-Here is a list of configuration options which is related to mobile/responsive support:
+Here is a list of configuration options related to the mobile/responsive support:
 
 {{links
 - api/scheduler_header_config.md - specifies the header layout
-- api/scheduler_touch_config.md - enables/disables the touch support in the scheduler
-- api/scheduler_touch_drag_config.md - defines the time period in milliseconds that is used to differentiate the long touch gesture from the scroll gesture
+- api/scheduler_touch_config.md - enables/disables touch support in the scheduler
+- api/scheduler_touch_drag_config.md - defines the time period (in milliseconds) that is used to differentiate a long touch gesture from a scroll gesture
 - api/scheduler_touch_tip_config.md - enables/disables prompting messages in the right top corner of the screen
 - api/scheduler_touch_swipe_dates_config.md - enables/disables prompting messages in the right top corner of the screen
 - api/scheduler_responsive_lightbox_config.md - enables responsive styles for the lightbox (enabled by default)
@@ -139,7 +135,7 @@ Here is a list of configuration options which is related to mobile/responsive su
 ##Touch gestures in the scheduler
 
 
-- **Double tap** -  works the same as double click in the normal scheduler (triggers event edition or creation);
+- **Double tap** -  works the same as a double click in the normal scheduler (triggers event edition or creation);
 - **Long tap and drag**  - moves or creates events;
 - **Swipe** - switches view to the next|prev time span ([disabled by default](api/scheduler_touch_swipe_dates_config.md)).
 

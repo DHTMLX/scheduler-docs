@@ -63,7 +63,7 @@ To display a basic Scheduler on the page, take the following steps:
 
 1. Include the [dhtmlxScheduler code files](#requiredcodefiles) on the page.
 2. Create a DIV container on the page.
-3. Specify the structure of the scheduler in the layout configuration object. 
+3. Specify the structure of the scheduler in the api/scheduler_header_config.md configuration object. 
 4. Initialize dhtmlxScheduler in the newly created container with the api/scheduler_init.md method. As a parameter the method takes an HTML container (or its id) that the Scheduler will be displayed in.
 
 ~~~html
