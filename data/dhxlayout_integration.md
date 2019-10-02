@@ -37,11 +37,51 @@ function init() {
 	10_integration/05_dhtmlxlayout_terrace.html
 }}
 
-Layout v6.X
+dhtmlx Suite v6+
 ------------------------
 
-In this version dhtmlxLayout can only be used as a part of the dhtmlxSuite library. To use dhtmlxLayout v6.0 in your application, you should purchase the license of
+Starting from dhtmlxSuite 6.0, dhtmlxLayout can't be obtained separately from the whole Suite library.
+If you're going to use this approach, you should purchase the license of
 the [Suite 6.X library](https://dhtmlx.com/docs/products/dhtmlxSuite/#licensing).
 
+The scheduler of [version 5.3](what_s_new.md#53) and newer, implements a common View interface used in dhtmlxSuite v6+ and can be [attached to any cell directly](https://docs.dhtmlx.com/suite/layout__api__layout_attach_method.html):
 
-{{todo complete 2nd section}}
+
+~~~js
+// create and configure the scheduler instance
+scheduler.config.header = [
+   "day",
+   "week",
+   "month",
+   "date",
+   "prev",
+   "today",
+   "next"
+];
+scheduler.config.multi_day = true;
+
+// after the scheduler is attached, onSchedulerReady will be fired
+scheduler.attachEvent("onSchedulerReady", function () {
+	requestAnimationFrame(function(){
+    	// here you can set the initial view and date and load the data
+		scheduler.setCurrentView(new Date(2017,5,3), "week");
+		scheduler.load("../common/events.json");
+	});
+	
+});
+
+const layout = new dhx.Layout("layout", {
+	rows: [{
+		id: "scheduler-cell",
+		header: "Appointment Scheduler",
+		html:"<div></div>"
+	}]
+});
+layout.cell("scheduler-cell").attach(scheduler);
+
+~~~
+
+- Note, that `dhtmlxSuite Layout` is asynchronous, the scheduler won't be initialized right after the `.attach` call.
+- You'll need to capture "onSchedulerReady" for any post-initialization settings.
+- Also please note that currently there is no way to specify scheduler markup when it's used together with dhtmlxSuite v6+, 
+which means you'll need to use the api/scheduler_header_config.md config to specify the controls of the navigation panel.
