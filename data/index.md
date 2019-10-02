@@ -9,8 +9,8 @@ Start
     </p>
     <ul>
         <li><a href="rtl_mode.md">RTL support</a></li>
-        <li><a href="initialization.md#makingschedulerresponsive">Improved responsiveness</a></li>
-        <li>Internal enhancements</li>
+        <li><a href="touch_support.md#makingschedulerresponsive">Improved responsiveness</a></li>
+        <li><a href="dhxlayout_integration.md#dhtmlxsuitev6"></a>Integration with DHTMLX Suite 6 Layout</li>
     </ul>
     <p class='action_buttons'>
       <a class='action_button moredetails' href="what_s_new.html">More details</a>

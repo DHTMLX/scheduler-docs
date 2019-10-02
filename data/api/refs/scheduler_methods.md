@@ -54,6 +54,7 @@ Methods
 - api/scheduler_getuserdata.md - gets the user data associated with the specified event
 - api/scheduler_getview.md - returns a view object by its name. If no name is specified, returns the current view
 - api/scheduler_hidecover.md - hides the lightbox modal overlay that blocks interactions with the remaining screen
+- api/scheduler_hidelightbox.md - hides the lightbox without saving it
 - api/scheduler_hidequickinfo.md - hides the pop-up event form (if it's currently active)
 - api/scheduler_highlighteventposition.md - highlights the event's duration on the time scale
 - api/scheduler_init.md - a constructor of a dhtmlxScheduler object
@@ -69,6 +70,7 @@ Methods
 - api/scheduler_opensection.md - opens the specified section in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
 - api/scheduler_parse.md - loads data from a client-side resource
 - api/scheduler_removeshortcut.md - removes a keyboard shortcut
+- api/scheduler_render.md - repaints the scheduler
 - api/scheduler_rendercalendar.md - creates a mini calendar
 - api/scheduler_renderevent.md - generates HTML content for a custom event's box
 - api/scheduler_resetlightbox.md - removes the current lightbox's HTML object element
@@ -156,6 +158,7 @@ Methods
 - api/scheduler_getuserdata.md
 - api/scheduler_getview.md
 - api/scheduler_hidecover.md
+- api/scheduler_hidelightbox.md
 - api/scheduler_hidequickinfo.md
 - api/scheduler_highlighteventposition.md
 - api/scheduler_init.md
@@ -171,6 +174,7 @@ Methods
 - api/scheduler_opensection.md
 - api/scheduler_parse.md
 - api/scheduler_removeshortcut.md
+- api/scheduler_render.md
 - api/scheduler_rendercalendar.md
 - api/scheduler_renderevent.md
 - api/scheduler_resetlightbox.md

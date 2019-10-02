@@ -40,7 +40,13 @@ The following properties are mostly important and commonly set for the 'time' co
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>type</b></td>
-			<td>(<i>textarea,time,select,template,multiselect,radio,checkbox</i>) the type of the section's control</td>
+			<td>(<i>textarea,time,select,template,multiselect,radio,checkbox</i>) the type of the section's control, "time" for a date-time control</td>
+		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>year_range </b></td>
+			<td>(<i>array, number</i>)  sets a range for the year selector. The range can be set in 2 ways:<br>
+			<b>year_range: [2005, 2025]</b> - a period from 2005 till 2025 year<br>
+			<b>year_range: 10</b> - a period [current year - 10 years; current year + 10 years]</td>
 		</tr>
     </tbody>
 </table>

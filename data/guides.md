@@ -35,6 +35,7 @@ The articles come around key procedures and problem-solving activities.
 		    </h4>
 		    <ul id="manipulations_sublist">
             		<li>initialization.md</li>
+                    <li>touch_support.md</li>
             		<li>install_with_bower.md</li>
                     <li>configuration.md</li>
                     <li>scheduler_markup.md</li>
@@ -186,7 +187,6 @@ The articles come around key procedures and problem-solving activities.
             </h4>
             <ul id="internet_sublist">           		
 					<li>minicalendar.md</li>                 
-					<li>touch_support.md</li>
                     <li>content_security_policy.md</li>         
                     <li>winjs_compatibility.md</li>                   
                     <li>live_update.md</li>
