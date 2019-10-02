@@ -1,10 +1,6 @@
 render
 =============
 
-
-@todo:
-	check
-
 @short: repaints the scheduler
 	
 

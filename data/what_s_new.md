@@ -12,6 +12,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 5.3
 ---------
+
 <span class='release_date'>October 2, 2019. Minor update</span>
 
 ###Breaking Changes
@@ -22,13 +23,15 @@ This update changes behavior of of some parts of the component. While they shoul
 
 1. [RTL support](rtl_mode.md)
 2. [Improved mobile responsiveness](initialization.md#makingschedulerresponsive)
-3. [Integration with DHTMLX Suite 6 Layout](dhxlayout_integration.md#layoutv6x)
+3. [Integration with DHTMLX Suite 6 Layout](dhxlayout_integration.md#dhtmlxsuitev6)
 
 ###Updates
 
-1. Add [year range](time.md#properties) setting to the Date/Time lightbox control
-2. Changing Scheduler dates by horizontal swipe is disabled by default
-3. Add a way to set scheduler header from config rather than from the markup
+1. The [year range](time.md#properties) setting is added to the Date/Time lightbox control
+2. [Changing Scheduler dates by horizontal swipe](touch_support.md#touchgesturesinthescheduler) is disabled by default
+3. The possibility [to set scheduler header from config](initialization.md#initializingschedulerviaheaderconfig) rather than from the markup is added
+4. The api/scheduler_render.md method is added as a more intuitive alias for setCurrentView() and updateView()
+5. The api/scheduler_hidelightbox.md method is added to the public API
 
 ### Fixes
 

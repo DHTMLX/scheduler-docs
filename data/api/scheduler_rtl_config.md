@@ -1,10 +1,6 @@
 rtl
 =============
 
-@todo:
-	check 
-
-
 @short: enables RTL (right-to-left) mode for the scheduler
 	
 
@@ -23,4 +19,5 @@ scheduler.init('scheduler_here',new Date(2018,0,1),"week");
 @relatedsample:
 14_rtl/01_basic_init.html
 
-
+@related:
+rtl_mode.md

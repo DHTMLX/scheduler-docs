@@ -11,6 +11,9 @@ After implementing the RTL mode, all the elements of the calendar will be displa
 
 <img src="rtl.png"/>
 
+{{sample 14_rtl/01_basic_init.html}}
+
+
 To reorder the elements of the scheduler header you need to redefine CSS classes of the elements, as in:
 
 ~~~js
@@ -78,4 +81,4 @@ For instance:
 }
 ~~~
 
-All events of the scheduler container moves 5px to the right.
+All events of the scheduler container are moved 5px to the right.

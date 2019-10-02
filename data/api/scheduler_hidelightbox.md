@@ -2,8 +2,6 @@ hideLightbox
 =============
 
 
-@todo: check
-
 @short: hides the lightbox without saving it
 	
 

@@ -5,10 +5,10 @@ When you develop an application with dhtmlxScheduler, the first thing you need i
 
 There are two ways of initializing scheduler on a page:
 
-- via scheduler's markup
-- via layout configuration property
+- via the scheduler's markup
+- via the header configuration property
 
-Initializing Scheduler via Markup
+Initializing Scheduler via markup
 ------------------------------------
 
 To display a basic Scheduler on the page through the markup, follow 3 steps: 
@@ -54,10 +54,10 @@ To display a basic Scheduler on the page through the markup, follow 3 steps:
 }}
 
 
-Initializing Scheduler via layout configuration property
+Initializing Scheduler via header config
 --------------------------------------------------------------
 
-You need to initialize scheduler this way to make it  [responsive](initialization.md#makingschedulerresponsive).
+You need to initialize scheduler this way to make it [responsive](initialization.md#makingschedulerresponsive).
 
 To display a basic Scheduler on the page, take the following steps:
 
@@ -194,9 +194,9 @@ As a result, scheduler container will change its size automatically and show the
 Making Scheduler responsive
 -----------------------------
 
-When you initialize scheduler via [the header configuration property](#initializingschedulervialayoutconfigurationproperty) you'll be able to chose the header structure that fits the screen size of the client.
-It will also apply certain styles which will make elements and font sizes responsive on a small screens.
+When you initialize Scheduler via [the header configuration property](#initializingschedulerviaheaderconfig) you'll be able to choose the header structure that fits the screen size of the client.
+It will also apply certain styles which will make elements and font sizes responsive on small screens.
 
-You can find more details in a separate article: touch_support.md
+You can find more details in a separate article: touch_support.md.
 
 

@@ -15,11 +15,10 @@ _The scheduler will work on smartphones as well, but due to the lack of screen s
 + Touch support is enabled by default and provided in all modes of the scheduler.
 + If your app is intended to be used on the touch devices, we strongly recommend to use the ['material' skin](skins.md#materialskin), as it provides reasonably big and easy-to-touch buttons.
 + Usually it is a good idea to use a [Quick Info](extensions_list.md#quickinfo) if you expect mobile users
-+ We recommend to add the meta tag on the page. It will automatically make all elements of the scheduler larger, which will make it so much easier for the end users
++ We recommend adding the meta tag below on the page. It will automatically make all elements of the scheduler larger, which will make it so much easier for the end users
    
 ~~~js
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 ~~~
 
 ## Responsive layout
