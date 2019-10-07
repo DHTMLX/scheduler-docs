@@ -12,7 +12,7 @@ calendar_date
 @example:
 const dayDate = scheduler.date.date_to_str("%d");
 scheduler.templates.calendar_date = function (date) {
-	// show number of events per day in a tooltip
+	// show the number of events per day in a tooltip of the calendar day-cell
 	const dayEnd = scheduler.date.add(date, 1, "day");
 	const events = scheduler.getEvents(date, dayEnd);
 	return "<div title='"+events.length+" events'>" +dayDate(date)+ "</div>";
