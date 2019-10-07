@@ -13,7 +13,7 @@ To use the mini calendar in an app, include the **ext/dhtmlxscheduler_minical.js
 }}
 
 
-Mini calendar in the header
+In the header
 -----------------------------------
 To place the mini calendar (date picker) into the header of the scheduler (as shown in the image below), follow these steps:
 
@@ -61,7 +61,7 @@ function show_minical(){
 }}
 
 
-Mini calendar in the lightbox
+In the lightbox
 ----------------------------------
 The mini calendar (date picker) can be used in the lightbox for "start" and "end" dates selection.
 
@@ -96,7 +96,7 @@ scheduler.config.lightbox.sections = [
 	05_calendar/03_in_form.html
 }}
 
-Mini calendar in an HTML container outside the scheduler
+Outside the scheduler
 ---------------------------------------------------------------------
 The mini calendar (date picker) can reside at any place on the page.
 
@@ -138,7 +138,7 @@ var calendar = scheduler.renderCalendar({
 	05_calendar/05_plain_structure.html
 }}
 
-Customizing the mini calendar
+Templates and styles
 ---------------------------------------
 
 ###Templates
@@ -152,6 +152,7 @@ var calendar = scheduler.renderCalendar({..});
 ~~~
 
 <img src="mini_calendar_custom_template.png"/>
+
 
 ###CSS classes
 To customize the look of days in the mini calendar (date picker), you can redefine the following CSS classes: 
@@ -215,7 +216,7 @@ To assign a custom CSS class to a day, you can use the api/scheduler_markcalenda
 <img src="mini_calendar_custom_marking.png"/>
 
 
-Related methods
+API
 --------------------------------------
 <table class="webixdoc_links">
 	<tbody>

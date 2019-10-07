@@ -12,8 +12,15 @@ scheduler.templates.calendar_time = scheduler.date.date_to_str("%d-%m-%Y");
 @template:	api_template
 @returns:
 - text    string     html text for rendering in the scheduler
-@descr:
 
+@descr:
+<img src="api/mini_calendar_templates.png"/>
 
 @related:
 	mini_calendar_templates.md
+	minicalendar.md
+
+@relatedapi:
+	api/scheduler_calendar_date_template.md
+	api/scheduler_calendar_month_template.md
+	api/scheduler_calendar_scale_date_template.md
