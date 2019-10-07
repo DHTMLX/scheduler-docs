@@ -1,7 +1,7 @@
 calendar_scale_date
 =============
 
-@short: specifies the format of week-days in the header of the Mini-Calendar datepicker
+@short: specifies the format of week-days in the header of the Mini-Calendar (date picker)
 	
 
 @require:minical

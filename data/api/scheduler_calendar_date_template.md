@@ -2,7 +2,7 @@ calendar_date
 =============
 
 @short:
-	specifies the content of day-cells in the Mini-Calendar date picker
+	specifies the content of day-cells in the Mini-Calendar (date picker)
 
 @require:minical
 

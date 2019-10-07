@@ -1,7 +1,7 @@
 calendar_month
 =============
 
-@short:specifies the date in the header of the Mini-Calendar datepicker
+@short:specifies the date in the header of the Mini-Calendar (date picker)
 
 @require:minical
 
