@@ -8,9 +8,9 @@ Templates
 - api/scheduler_agenda_text_template.md - specifies the text in the second column of the Agenda view
 - api/scheduler_agenda_time_template.md - specifies the date in the first column of the Agenda view
 - api/scheduler_api_date_template.md - specifies the format of dates that are set by means of API methods. Used to parse incoming dates
-- api/scheduler_calendar_date_template.md - specifies the format of the date in a cell
-- api/scheduler_calendar_month_template.md - specifies the date in the header of the calendar
-- api/scheduler_calendar_scale_date_template.md - specifies the day name in the week sub-header of the view
+- api/scheduler_calendar_date_template.md - specifies the content of day-cells in the Mini-Calendar (date picker)
+- api/scheduler_calendar_month_template.md - specifies the date in the header of the Mini-Calendar (date picker)
+- api/scheduler_calendar_scale_date_template.md - specifies the format of week-days in the header of the Mini-Calendar (date picker)
 - api/scheduler_calendar_time_template.md - specifies the date format of the lightbox's start and end date inputs
 - api/scheduler_day_date_template.md - specifies the date in the header of the Day and Units views
 - api/scheduler_day_scale_date_template.md - specifies the date in the sub-header of the Day view

@@ -305,7 +305,7 @@ Scheduler API
 - api/scheduler_timeline_swap_resize_config.md - defines that during event resizing the end date of the event can be swapped for the start date (after the end date becomes scheduled before the start one)
 - api/scheduler_touch_config.md - enables/disables the touch support in the scheduler
 - api/scheduler_touch_drag_config.md - defines the time period in milliseconds that is used to differ the long touch gesture from the scroll gesture
-- api/scheduler_touch_swipe_dates_config.md - enables/disables switching active dates using horizontal swipe gesture on mobiles
+- api/scheduler_touch_swipe_dates_config.md - enables/disables switching active dates using the horizontal swipe gesture on mobiles
 - api/scheduler_touch_tip_config.md - enables/disables prompting messages in the right top corner of the screen
 - api/scheduler_touch_tooltip_config.md - disables dhtmxlScheduler's tooltips on the touch devices
 - api/scheduler_update_render_config.md - updates the mode when the scheduler fully repaints itself on any action
@@ -328,9 +328,9 @@ Scheduler API
 - api/scheduler_agenda_text_template.md - specifies the text in the second column of the Agenda view
 - api/scheduler_agenda_time_template.md - specifies the date in the first column of the Agenda view
 - api/scheduler_api_date_template.md - specifies the format of dates that are set by means of API methods. Used to parse incoming dates
-- api/scheduler_calendar_date_template.md - specifies the format of the date in a cell
-- api/scheduler_calendar_month_template.md - specifies the date in the header of the calendar
-- api/scheduler_calendar_scale_date_template.md - specifies the day name in the week sub-header of the view
+- api/scheduler_calendar_date_template.md - specifies the content of day-cells in the Mini-Calendar (date picker)
+- api/scheduler_calendar_month_template.md - specifies the date in the header of the Mini-Calendar (date picker)
+- api/scheduler_calendar_scale_date_template.md - specifies the format of week-days in the header of the Mini-Calendar (date picker)
 - api/scheduler_calendar_time_template.md - specifies the date format of the lightbox's start and end date inputs
 - api/scheduler_day_date_template.md - specifies the date in the header of the Day and Units views
 - api/scheduler_day_scale_date_template.md - specifies the date in the sub-header of the Day view
