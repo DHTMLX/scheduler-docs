@@ -10,6 +10,16 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+5.3.2
+------------
+
+<span class='release_date'>October 9, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix incorrect work of the [Mini-Calendar](minicalendar.md) click [handler](api/scheduler_rendercalendar.md) when a custom [calendar_date template](api/scheduler_calendar_date_template.md) is defined
+- Fix date rounding of event end date when resizing events in [Day/Week views](views.md)
+
 5.3.1
 ------------
 
