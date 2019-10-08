@@ -9,9 +9,8 @@ drag_resize
 @views:day, week,units
 
 @example:
-scheduler.config.drag_resize= false;
-...
-scheduler.init('scheduler_here',new Date(2013,5,30),"week");
+scheduler.config.drag_resize = false;
+scheduler.init('scheduler_here', new Date(2020,5,30), "week");
 
 @template:	api_config
 

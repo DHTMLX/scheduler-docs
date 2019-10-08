@@ -17,8 +17,8 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 ### Fixes
 
-- Fix incorrect work of the [Mini-Calendar](minicalendar.md) click [handler](api/scheduler_rendercalendar.md) when a custom [calendar_date template](api/scheduler_calendar_date_template.md) is defined
-- Fix date rounding of event end date when resizing events in [Day/Week views](views.md)
+- Fix incorrect work of the click [handler](api/scheduler_rendercalendar.md) in the [Mini Calendar](minicalendar.md) when a custom [calendar_date template](api/scheduler_calendar_date_template.md) is defined
+- Fix rounding of the end date of the event when it is [resized](api/scheduler_drag_resize_config.md) in [Day/Week views](views.md)
 
 5.3.1
 ------------
