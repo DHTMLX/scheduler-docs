@@ -10,6 +10,16 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+5.3.3
+------------
+
+<span class='release_date'>October 30, 2019. Bugfix release</span>
+
+### Updates
+
+- More informative error messages for common misconfigurations are added
+- The html markup of some public samples is cleaned up
+
 5.3.2
 ------------
 
