@@ -18,7 +18,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 ### Updates
 
 - More informative error messages for common misconfigurations are added
-- The html markup of some public samples is cleaned up
+- HTML markup of some public samples is cleaned up
 
 5.3.2
 ------------
