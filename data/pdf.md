@@ -19,7 +19,7 @@ Using Export Services
 There are several export services available. You can install them on your computer and export Scheduler to PDF locally.
 
 Note that export services are not included into the Scheduler package, 
-read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxGantt/export.shtml) to learn the terms of using each of them.
+read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxScheduler/export.shtml) to learn the terms of using each of them.
 
 
 Limits on request size
