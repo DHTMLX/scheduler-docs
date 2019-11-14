@@ -142,7 +142,7 @@ Open your *src/settings.php* file, add an array with database settings, and upda
 'pdo' => [
 	'engine' => 'mysql',
 	'host' => 'localhost',
-	'database' => 'scheduler',
+	'database' => 'scheduler_howto_php',
 	'username' => 'user',
 	'password' => 'pass',
 	'charset' => 'utf8',
