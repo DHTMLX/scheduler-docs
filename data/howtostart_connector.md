@@ -14,8 +14,11 @@ check the available options in the list below:
 - howtostart_php_laravel.md
 - howtostart_ruby.md
 
+Follow the step-by-step guide to create such an application.
 
-You can have a look at the [ready demo on GitHub](https://github.com/DHTMLX/scheduler-howto-php-connector). Follow the step-by-step guide to create such an application.
+{{note
+The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-php-connector)
+}}
 
 ![init_scheduler_front.png](init_scheduler_front.png)
 
@@ -239,3 +242,5 @@ Now you may configure, change and customize it further to meet all your needs.
 {{sample
 	01_initialization_loading/05_loading_database.html
 }}
+
+You can view the full code on [GitHub](https://github.com/DHTMLX/scheduler-howto-php-connector), clone or download it and use it for your projects.
