@@ -14,6 +14,10 @@ There are tutorials intended for building server-side integration with the help 
 
 You can get the [ready demo on GitHub](https://github.com/DHTMLX/scheduler-howto-laravel) or follow a step-by-step guide below.
 
+{{note
+The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-laravel).
+}}
+
 Step 1. Initializing a project
 -----------------------
 

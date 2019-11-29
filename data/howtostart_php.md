@@ -19,6 +19,10 @@ CRUD logic will rely on PDO and will be generic enough to be usable with any oth
 
 You can have a look at the [ready demo on GitHub](https://github.com/DHTMLX/scheduler-howto-php-slim). Follow the step-by-step guide to create such an application.
 
+{{note
+The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-php-slim).
+}}
+
 Step 1. Initializing a project
 ----------------------------
 
@@ -142,7 +146,7 @@ Open your *src/settings.php* file, add an array with database settings, and upda
 'pdo' => [
 	'engine' => 'mysql',
 	'host' => 'localhost',
-	'database' => 'scheduler',
+	'database' => 'scheduler_howto_php',
 	'username' => 'user',
 	'password' => 'pass',
 	'charset' => 'utf8',
