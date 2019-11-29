@@ -53,11 +53,11 @@ The required code files are:
 
 ~~~
 
-Let's quickly explore the structure of the dhtmlxScheduler package to find out where to look for the files. 
+Let's quickly explore the structure of the dhtmlxScheduler package to find out where to look for the files.
 
-- <b>backend</b> - a node.js app that can be used to run package samples.
+- <b>backend</b> - the node.js app that can be used to run package samples.
 - <b>samples</b> - the code samples.
-- <b>codebase</b> - code files of the library. *codebase/source* contains not-minified files.
+- <b>codebase</b> - the code files of the library. The *codebase/source* folder contains not-minified files.
 
 ## Step 2. Related DIV elements 
 
