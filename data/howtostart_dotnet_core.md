@@ -16,7 +16,7 @@ You can also read tutorials on other server-side technologies:
 To organize communication with database, the [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) is used. The application is built with the help of the Visual Studio 2017.
 
 {{note
-The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-dotnet-core)
+The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-dotnet-core).
 }}
 
 Step 1. Creating a project

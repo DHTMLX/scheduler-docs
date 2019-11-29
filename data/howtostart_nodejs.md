@@ -17,7 +17,7 @@ Node.js has a set of ready-made solutions, so we won't have to code everything f
 This tutorial uses the [Express](http://expressjs.com/) framework and MySQL as a data storage.
 
 {{note
-The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-node)
+The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-node).
 }}
 
 Step 1. Initializing a project

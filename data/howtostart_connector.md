@@ -17,7 +17,7 @@ check the available options in the list below:
 Follow the step-by-step guide to create such an application.
 
 {{note
-The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-php-connector)
+The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-php-connector).
 }}
 
 ![init_scheduler_front.png](init_scheduler_front.png)
