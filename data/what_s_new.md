@@ -10,6 +10,17 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+5.3.4
+------------
+
+<span class='release_date'>December 13, 2019. Bugfix release</span>
+
+### Fixes
+
+- Correct vertical scroll in the [scrollable Timeline](timeline_view.md#horizontalscroll) when the user tries to scroll the sections column 
+- Correct serialization of nested objects by the [dataProcessor](server_integration.md)
+- Fix script error which fired when a new event is created using a [custom lightbox](custom_details_form.md)
+
 5.3.3
 ------------
 
