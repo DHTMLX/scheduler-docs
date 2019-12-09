@@ -13,11 +13,11 @@ If you are updating Scheduler from an older version, check migration_from_older_
 5.3.4
 ------------
 
-<span class='release_date'>December 13, 2019. Bugfix release</span>
+<span class='release_date'>December 10, 2019. Bugfix release</span>
 
 ### Fixes
 
-- Fix the incorrect work of the vertical scroll in a [scrollable Ttimeline](timeline_view.md#horizontalscroll)  when the mouse pointer is over the sections column
+- Fix the incorrect work of the vertical scroll in a [scrollable timeline](timeline_view.md#horizontalscroll) when the mouse pointer is over the sections column
 - Fix the incorrect serialization of nested objects by the [dataProcessor](server_integration.md)
 - Fix the script error which fired when creating a new event using a [custom lightbox](custom_details_form.md)
 
