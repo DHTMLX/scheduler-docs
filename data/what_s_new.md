@@ -17,8 +17,8 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 ### Fixes
 
-- Correct vertical scroll in the [scrollable Timeline](timeline_view.md#horizontalscroll) when the user tries to scroll the sections column 
-- Correct serialization of nested objects by the [dataProcessor](server_integration.md)
+- Fix the incorrect work of the vertical scroll in a [scrollable Ttimeline](timeline_view.md#horizontalscroll)  when the mouse pointer is over the sections column
+- Fix the incorrect serialization of nested objects by the [dataProcessor](server_integration.md)
 - Fix script error which fired when a new event is created using a [custom lightbox](custom_details_form.md)
 
 5.3.3
