@@ -19,7 +19,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 - Fix the incorrect work of the vertical scroll in a [scrollable Ttimeline](timeline_view.md#horizontalscroll)  when the mouse pointer is over the sections column
 - Fix the incorrect serialization of nested objects by the [dataProcessor](server_integration.md)
-- Fix script error which fired when a new event is created using a [custom lightbox](custom_details_form.md)
+- Fix the script error which fired when creating a new event using a [custom lightbox](custom_details_form.md)
 
 5.3.3
 ------------
