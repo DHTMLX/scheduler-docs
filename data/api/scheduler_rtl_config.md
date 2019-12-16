@@ -4,7 +4,7 @@ rtl
 @short: enables RTL (right-to-left) mode for the scheduler
 	
 
-@type: boolen
+@type: boolean
 @default: false
 @example:
 scheduler.config.rtl = true;
