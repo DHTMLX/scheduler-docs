@@ -47,7 +47,7 @@ Each object in the **sections** array can have the following properties:
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>type</b></td>
-			<td>(<i>textarea,time,select,template,multiselect,radio,checkbox</i>) the type of the section's control (editor)</td>
+			<td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) the type of the section's control (editor)</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>time_format</b></td>
