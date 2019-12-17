@@ -723,6 +723,13 @@ public function destroy($id){
 }
 ~~~
 
+### Parsing recurring series
+
+A recurring event is stored in the database as a single record that can be splitted up by Scheduler on the client side.
+If you need to get dates of separate events on the server side, use a helper library for parsing recurring events of dhtmlxScheduler on PHP. 
+<br>
+You will find [the ready library on GitHub](https://github.com/DHTMLX/scheduler-helper-php).
+
 Application security
 ---------------------
 

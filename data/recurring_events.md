@@ -126,7 +126,16 @@ Examples of the **rec_type** data:
   
 *The double or triple underline indicates that the related parameters of the string are omitted*.
 
+Parsing series on the backend
+------------------------------
 
+A recurring event is stored in the database as a single record that can be splitted up by Scheduler on the client side.
+If you need to get dates of separate events on the server side, use a helper library for parsing recurring events of dhtmlxScheduler on ASP.NET/ASP.NET Core/PHP. 
+
+You will find the ready libraries on our GitHub:
+
+- [for ASP.NET/ASP.NET Core](https://github.com/DHTMLX/scheduler-recurring-events-dotnet)
+- [for PHP 5.4+](https://github.com/DHTMLX/scheduler-helper-php)
 
 Editing/deleting a certain occurrence in the series 
 --------------------------------

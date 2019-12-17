@@ -496,7 +496,7 @@ $this->put('/{id}', function (Request $request, Response $response, array $args)
 
 	if ($body['rec_type'] && $body['rec_type'] != 'none') {/*!*/
 	  //all modified occurrences must be deleted when you update recurring series
-	  //https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+	  //https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents
 		$subQueryText = 'DELETE FROM `recurring_events` WHERE `event_pid`=? ;';
 		$subQuery = $db->prepare($subQueryText);
 		$subQuery->execute([$id]);
@@ -526,7 +526,7 @@ $this->delete('/{id}', function (Request $request, Response $response, array $ar
 	$id = $request->getAttribute('route')->getArgument('id');
 
 	// some logic specific to recurring events support
-	// https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+	// https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents
 	$subQueryText = 'SELECT * FROM `recurring_events` WHERE id=? LIMIT 1;';/*!*/
 	$subQuery = $db->prepare($subQueryText);/*!*/
 	$subQuery->execute([$id]);/*!*/
@@ -570,6 +570,12 @@ $this->delete('/{id}', function (Request $request, Response $response, array $ar
 	return $response->withJson($result);
 });
 ~~~
+
+### Parsing recurring series
+A recurring event is stored in the database as a single record that can be splitted up by Scheduler on the client side.
+If you need to get dates of separate events on the server side, use a helper library for parsing recurring events of dhtmlxScheduler on PHP. 
+<br>
+You will find [the ready library on GitHub](https://github.com/DHTMLX/scheduler-helper-php).
 
 Application security
 ------------------

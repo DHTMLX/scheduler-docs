@@ -164,10 +164,11 @@ Here's a list of available server side implementations that you can use for Sche
 If by some reason you don't want to use REST API, the best solution is [to use dhtmlxConnector library](howtostart_connector.md).
 
 
-Saving recurring events
+Recurring events
 ------------------------------
 
 Recurring events are stored in the database as records that contain both all [fields of a regular event](loading_data.md#dataproperties) and 3 additional fields: **rec_type**, **event_length** and **event_pid**. 
+
 Read more in the [Recurring Events](recurring_events.md#serversideintegration) article.
 
 In addition to extra fields, a specific logic needs to be added to the server-side controller:
@@ -180,7 +181,7 @@ In addition to extra fields, a specific logic needs to be added to the server-si
   - if **event.rec_type** is not empty and **event.rec_type !== 'none'**, all events where **event_pid == event.id** must be deleted
   - if **event.event_pid** is not empty, the event should be updated with **event.rec_type = 'none'** instead of deleting.
 
-You can have a look at the detailed example on editing and deleting recurring events in the [related section of the Recurring Events article](recurring_events.md#editingdeletingacertainoccurrenceintheseries).
+{{note You can have a look at the detailed example on editing and deleting recurring events in the [related section of the Recurring Events article](recurring_events.md#editingdeletingacertainoccurrenceintheseries).}}
 
 
 Custom Request Headers and Parameters 

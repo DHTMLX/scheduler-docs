@@ -221,6 +221,13 @@ the interpretation will be as follows:
 - *event_end* -> *end_date*;
 - *event_text* ->*text*. 
 
+{{note You can read about recurring events in the [Recurring Events](recurring_events.md#serversideintegration) article.
+}}
+
+{{note A recurring event is stored in the database as a single record that can be splitted up by Scheduler on the client side.
+If you need to get dates of separate events on the server side, use a helper library for parsing recurring events of dhtmlxScheduler on PHP. 
+
+You will find [the ready library on GitHub](https://github.com/DHTMLX/scheduler-helper-php).}}
 ## Step 9. Saving data 
 If you run the app now, you will see that the scheduler is able to load data from the database, but unable to save it back. 
 To 'force' the scheduler save data in the database, use [dataProcessor](server_integration.md#technique).
