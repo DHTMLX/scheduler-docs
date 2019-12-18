@@ -9,6 +9,9 @@ unmarkCalendar
 
 @require:minical
 @example: 
+// you can get the calendar object in one of two ways:
+
+// either via creating a mini calendar
 var calendar = scheduler.renderCalendar({
 	container:"cal_here", 
 	navigation:true,
@@ -16,6 +19,10 @@ var calendar = scheduler.renderCalendar({
 		scheduler.setCurrentView(date, scheduler._mode);
 	}
 });
+
+// or via using the selector of the container with the mini calendar
+var calendar = document.querySelector(".dhx_mini_calendar");
+
 scheduler.markCalendar(calendar, new Date(2010,3,1), "my_style");
 ...
 scheduler.unmarkCalendar(calendar, new Date(2010,3,1), "my_style");
