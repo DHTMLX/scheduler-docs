@@ -398,7 +398,7 @@ CREATE TABLE `events` (
   `text` varchar(255) DEFAULT NULL,
   `event_pid` int(11) DEFAULT 0,
   `event_length` bigint(20) unsigned DEFAULT 0,
-  `rec_type` varchar(25) DEFAULT '""',
+  `rec_type` varchar(25) DEFAULT '',
   PRIMARY KEY (`id`)
 ) DEFAULT CHARSET=utf8;
 ~~~
@@ -408,7 +408,7 @@ Or, you can update the events table from our previous step:
 ~~~
 ALTER TABLE `events` ADD COLUMN `event_pid` int(11) DEFAULT '0';
 ALTER TABLE `events` ADD COLUMN `event_length` bigint(20) unsigned DEFAULT '0';
-ALTER TABLE `events` ADD COLUMN `rec_type` varchar(25) DEFAULT '""';
+ALTER TABLE `events` ADD COLUMN `rec_type` varchar(25) DEFAULT '';
 ~~~
 
 ###Updating the backend
