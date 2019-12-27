@@ -41,7 +41,7 @@ platforms to suit all tastes and preferences.
             A step-by-step tutorial that discusses how to implement a Scheduler with plain PHP without any frameworks. 
         </td>
         <td>
-        	<a href="howtostart_php.md"><img src="php_tutorial.png"></a>
+        	<a href="howtostart_plain_php.md"><img src="php_tutorial.png"></a>
         </td>
     </tr>    
     <tr>
