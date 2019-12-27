@@ -8,6 +8,7 @@ There are tutorials intended for building server-side integration with the help 
 - howtostart_dotnet_core.md
 - howtostart_dotnet.md
 - howtostart_nodejs.md
+- howtostart_plain_php.md
 - howtostart_php.md
 - howtostart_ruby.md
 - howtostart_connector.md
@@ -335,7 +336,7 @@ If you check the app now, you should see that there are now tasks in our schedul
 
 ###Dynamic loading
 
-Currently scheduler loads all records from the events table on startup. It can work well if you know that the amount of data will remain small over time. But when scheduler is used for something like a planning/booking
+Currently, scheduler loads all records from the events table on startup. It can work well if you know that the amount of data will remain small over time. But when scheduler is used for something like a planning/booking
 application and you don't delete or move obsolete records to another table, the amounts of data will build up fairly quickly and in a couple of months of active usage you may find that your app requests a couple of MBs
 of events each time a user loads the page.
 

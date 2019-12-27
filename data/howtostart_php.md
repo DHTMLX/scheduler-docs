@@ -1,13 +1,14 @@
-dhtmlxScheduler with PHP 
-=====================
+dhtmlxScheduler with PHP:Slim 
+=================================
 
-In this tutorial you will find necessary information on how to create a Scheduler using PHP and REST API on the server side.
+In this tutorial you will find necessary information on how to create a PHP-based Scheduler using Slim Framework and REST API on the server side.
 
 There are tutorials intended for building server-side integration with the help of other platforms and frameworks:
 
 - howtostart_dotnet_core.md
 - howtostart_dotnet.md
 - howtostart_nodejs.md
+- howtostart_plain_php.md
 - howtostart_php_laravel.md
 - howtostart_ruby.md
 - howtostart_connector.md
@@ -209,7 +210,7 @@ Now if you add some events into the database, they will appear in your scheduler
 ###Dynamic loading
 
 Currently scheduler loads all records from the events table on startup. It can work well if you know that the amount of data will remain small over time. But when scheduler is used for something like a planning/booking
-application and you don't delete or move obsolete records to another table, the amounts of data will build up fairly quickly and in a couple of months of active usage you may find that your app requests a couple of MBs 
+application and you don't delete or move obsolete records to another table, the amounts of data will build up fairly quickly. As a result, in a couple of months of active usage you may find that your app requests a couple of MBs 
 of events each time a user loads the page.
 
 It can be easily avoided by using dynamic loading. Scheduler will add the displayed dates to the request parameters and you'll be able to return only the records that need to be displayed. 
