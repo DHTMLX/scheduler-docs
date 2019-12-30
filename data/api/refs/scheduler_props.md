@@ -111,7 +111,7 @@ Properties
 - api/scheduler_timeline_swap_resize_config.md - defines that during event resizing the end date of the event can be swapped for the start date (after the end date becomes scheduled before the start one)
 - api/scheduler_touch_config.md - enables/disables the touch support in the scheduler
 - api/scheduler_touch_drag_config.md - defines the time period in milliseconds that is used to differ the long touch gesture from the scroll gesture
-- api/scheduler_touch_swipe_dates_config.md - enables/disables switching active dates using horizontal swipe gesture on mobiles
+- api/scheduler_touch_swipe_dates_config.md - enables/disables switching active dates using the horizontal swipe gesture on mobiles
 - api/scheduler_touch_tip_config.md - enables/disables prompting messages in the right top corner of the screen
 - api/scheduler_touch_tooltip_config.md - disables dhtmxlScheduler's tooltips on the touch devices
 - api/scheduler_update_render_config.md - updates the mode when the scheduler fully repaints itself on any action

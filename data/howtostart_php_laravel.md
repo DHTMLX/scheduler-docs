@@ -8,11 +8,16 @@ There are tutorials intended for building server-side integration with the help 
 - howtostart_dotnet_core.md
 - howtostart_dotnet.md
 - howtostart_nodejs.md
+- howtostart_plain_php.md
 - howtostart_php.md
 - howtostart_ruby.md
 - howtostart_connector.md
 
 You can get the [ready demo on GitHub](https://github.com/DHTMLX/scheduler-howto-laravel) or follow a step-by-step guide below.
+
+{{note
+The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-laravel).
+}}
 
 Step 1. Initializing a project
 -----------------------
@@ -331,7 +336,7 @@ If you check the app now, you should see that there are now tasks in our schedul
 
 ###Dynamic loading
 
-Currently scheduler loads all records from the events table on startup. It can work well if you know that the amount of data will remain small over time. But when scheduler is used for something like a planning/booking
+Currently, scheduler loads all records from the events table on startup. It can work well if you know that the amount of data will remain small over time. But when scheduler is used for something like a planning/booking
 application and you don't delete or move obsolete records to another table, the amounts of data will build up fairly quickly and in a couple of months of active usage you may find that your app requests a couple of MBs
 of events each time a user loads the page.
 
@@ -718,6 +723,13 @@ public function destroy($id){
     ]);
 }
 ~~~
+
+### Parsing recurring series
+
+A recurring event is stored in the database as a single record that can be splitted up by Scheduler on the client side.
+If you need to get dates of separate events on the server side, use a helper library for parsing recurring events of dhtmlxScheduler on PHP. 
+<br>
+You will find [the ready library on GitHub](https://github.com/DHTMLX/scheduler-helper-php).
 
 Application security
 ---------------------

@@ -10,9 +10,16 @@ check the available options in the list below:
 - howtostart_nodejs.md
 - howtostart_dotnet_core.md
 - howtostart_dotnet.md
+- howtostart_plain_php.md
 - howtostart_php.md
 - howtostart_php_laravel.md
 - howtostart_ruby.md
+
+Follow the step-by-step guide to create such an application.
+
+{{note
+The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-php-connector).
+}}
 
 ![init_scheduler_front.png](init_scheduler_front.png)
 
@@ -47,17 +54,11 @@ The required code files are:
 
 ~~~
 
-Let's quickly explore the structure of the dhtmlxScheduler package to find out where to look for the files. 
+Let's quickly explore the structure of the dhtmlxScheduler package to find out where to look for the files.
 
-- <b>sources</b> - the source code files of the library. The files are not minified and easy-to-read. The package is mostly intended to be used for component's debugging.
+- <b>backend</b> - the node.js app that can be used to run package samples.
 - <b>samples</b> - the code samples.
-- <b>docs</b> - the full documentation of the component.
-- <b>codebase</b> - the packed code files of the library. These files have much smaller size and intended for use in production. <b>In your apps you need to use files from this folder.</b>
-
-
-
-
-
+- <b>codebase</b> - the code files of the library. The *codebase/source* folder contains not-minified files.
 
 ## Step 2. Related DIV elements 
 
@@ -89,7 +90,7 @@ The standard set of 'divs' (needed for the scheduler) looks like this:
 To work correctly in the full-screen mode in different browsers, define the following style for the scheduler:
 
 ~~~js
-<style type="text/css" media="screen">
+<style>
     html, body{
         margin:0px;
         padding:0px;
@@ -134,12 +135,12 @@ The properties of a data object are:
 
 ~~~js
 var events = [
-{id:1, text:"Meeting",   start_date:"04/11/2013 14:00",end_date:"04/11/2013 17:00"},
-{id:2, text:"Conference",start_date:"04/15/2013 12:00",end_date:"04/18/2013 19:00"},
-{id:3, text:"Interview", start_date:"04/24/2013 09:00",end_date:"04/24/2013 10:00"}
+{id:1, text:"Meeting",   start_date:"2019-11-14 14:00",end_date:"2019-11-14 17:00"},
+{id:2, text:"Conference",start_date:"2019-11-13 12:00",end_date:"2019-11-13 19:00"},
+{id:3, text:"Interview", start_date:"2019-11-14 09:00",end_date:"2019-11-14 10:00"}
 ];
 
-scheduler.parse(events, "json");//takes the name and format of the data source
+scheduler.parse(events);//takes the name and format of the data source
 ~~~
 
 ## Step 6. Database structure 
@@ -174,17 +175,15 @@ So, to provide correct data conversion, you should change the default scheduler 
 Note, any configuration options go BEFORE the initialization string, i.e.:
 
 ~~~js
-scheduler.config.date_format="%Y-%m-%d %H:%i";
-...
 scheduler.init('scheduler_here',new Date(),"month");
 ~~~
 
 ##Step 7. Loading data from the server
 
-To load data from a database, use the api/scheduler_load.md method where specify a file realizing server-side 'communication' as a parameter. You may write the full server side by yourself, 
-but we recommend to use <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">dhtmlxConnector</a>, as the easiest way.
+To load data from a database, use the api/scheduler_load.md method where specify the backend url as a parameter. 
+You can implement the backend by yourself using our [guides](howtostart_guides.md), but for this tutorial we'll cover the [PHP connector library](https://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start) as the quickest way.
   
-  
+
 So, for our task you need to call the method as shown below:
 
 ~~~js
@@ -194,18 +193,19 @@ scheduler.load("data/connector.php");
 
 
 ## Step 8. Server-side script 
+
+You can download the connector library from the official repository https://github.com/DHTMLX/connector-php
+
 The server-side script for dhtmlxScheduler is the following:
 
 ~~~php
 <?php 
-require_once("../codebase/connector/scheduler_connector.php");
- 
-$res=mysql_connect("localhost","root","");
-mysql_select_db("schedulerDB");
+require_once("./connector/scheduler_connector.php");
 
-$conn = new SchedulerConnector($res);
+$res = new PDO("mysql:host=localhost;dbname=scheduler", "username", "password");
 
-$conn->render_table("events","id","start_date,end_date,text");
+$connector = new SchedulerConnector($res);
+$connector->render_table("events","id","start_date,end_date,text");
 ~~~
 
 <br>
@@ -213,7 +213,7 @@ $conn->render_table("events","id","start_date,end_date,text");
 Note, you can name the table fields, as you want. In any case, the scheduler interprets 3 first fields to load, as the required ones. For instance, if you load data as in:
 
 ~~~php
-$conn->render_table("events","id","event_start,event_end,event_text");
+$connector->render_table("events","id","event_start,event_end,event_text");
 ~~~
 
 the interpretation will be as follows:
@@ -222,9 +222,16 @@ the interpretation will be as follows:
 - *event_end* -> *end_date*;
 - *event_text* ->*text*. 
 
+{{note You can read about recurring events in the [Recurring Events](recurring_events.md#serversideintegration) article.
+}}
+
+{{note A recurring event is stored in the database as a single record that can be splitted up by Scheduler on the client side.
+If you need to get dates of separate events on the server side, use a helper library for parsing recurring events of dhtmlxScheduler on PHP. 
+
+You will find [the ready library on GitHub](https://github.com/DHTMLX/scheduler-helper-php).}}
 ## Step 9. Saving data 
 If you run the app now, you will see that the scheduler is able to load data from the database, but unable to save it back. 
-To 'force' the scheduler save data in the database, use <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxdataprocessor:toc">dataProcessor</a>.
+To 'force' the scheduler save data in the database, use [dataProcessor](server_integration.md#technique).
 
 It's very easy to use dataProcessor. All you need is to initialize it and attach to the scheduler.
 
@@ -244,3 +251,4 @@ Now you may configure, change and customize it further to meet all your needs.
 	01_initialization_loading/05_loading_database.html
 }}
 
+You can view the full code on [GitHub](https://github.com/DHTMLX/scheduler-howto-php-connector), clone or download it and use it for your projects.

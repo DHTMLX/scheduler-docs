@@ -1,4 +1,3 @@
-
  Checkbox 
 ==============
 
@@ -72,7 +71,7 @@ The following properties are mostly important and commonly set for the 'checkbox
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>type</b></td>
-			<td>(<i>textarea,time,select,template,multiselect,radio,checkbox</i>) the type of the section's control</td>
+			<td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) the type of the section's control</td>
 		</tr>
 		<tr>
 			<td class="webixdoc_links0"><b>checked_value</b></td>

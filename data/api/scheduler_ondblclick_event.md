@@ -10,6 +10,7 @@ onDblClick
 @example: 
 scheduler.attachEvent("onDblClick", function (id, e){
 	//any custom logic here
+    return true;
 })
 
 @returns:  

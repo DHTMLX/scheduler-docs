@@ -1,24 +1,36 @@
 calendar_month
 =============
 
-
-@short:specifies the date in the header of the calendar
+@short:specifies the date in the header of the Mini-Calendar (date picker)
 
 @require:minical
 
 @params:
-- date	Date	the date which needs formatting
+- date	Date	the first day of a selected month
 
 
 @example:
-scheduler.templates.calendar_month = scheduler.date.date_to_str("%F %Y");
+
+const monthLabel = scheduler.date.date_to_str("%F %Y");
+scheduler.templates.calendar_month = function (date) {
+	return monthLabel(date);
+};
 
 @template:	api_template
 @returns:
-- text    string     html text for rendering in the scheduler
+- text    string     inner html of the month label element
+
 @descr:
+
+<img src="api/mini_calendar_templates.png"/>
 
 
 
 @related:
 	mini_calendar_templates.md
+	minicalendar.md
+
+@relatedapi:
+	api/scheduler_calendar_date_template.md
+	api/scheduler_calendar_time_template.md
+	api/scheduler_calendar_scale_date_template.md

@@ -6,6 +6,7 @@ If you use some other technology, check the list of available integration varian
 
 - howtostart_dotnet_core.md
 - howtostart_dotnet.md
+- howtostart_plain_php.md
 - howtostart_php.md
 - howtostart_php_laravel.md
 - howtostart_ruby.md
@@ -16,8 +17,9 @@ Node.js has a set of ready-made solutions, so we won't have to code everything f
 
 This tutorial uses the [Express](http://expressjs.com/) framework and MySQL as a data storage.
 
-Have a look at the [demo](https://github.com/DHTMLX/scheduler-howto-node) on GitHub.
-
+{{note
+The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-node).
+}}
 
 Step 1. Initializing a project
 -------------------------------
@@ -581,7 +583,7 @@ Additionally, we need to handle a different special case there: when a recurring
 async update(id, data) {
   if (data.rec_type && data.rec_type != "none") { /*!*/
       //all modified occurrences must be deleted when you update a recurring series
-      //https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+      //https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents
       await this._db.query(
         "DELETE FROM ?? WHERE `event_pid`= ?;",
         [this.table, id]);
@@ -620,7 +622,7 @@ you need to give it `rec_type='none'`, in order for scheduler to skip this occur
 // delete an event
 async delete(id) {
     // some logic specific to the recurring events support
-    // https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+    // https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents
     let event = await this._db.query(
         "SELECT * FROM ?? WHERE id=? LIMIT 1;",
         [this.table, id]);

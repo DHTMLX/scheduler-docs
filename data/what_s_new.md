@@ -10,6 +10,37 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+5.3.4
+------------
+
+<span class='release_date'>December 10, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect work of the vertical scroll in a [scrollable timeline](timeline_view.md#horizontalscroll) when the mouse pointer is over the sections column
+- Fix the incorrect serialization of nested objects by the [dataProcessor](server_integration.md)
+- Fix the script error which fired when creating a new event using a [custom lightbox](custom_details_form.md)
+
+5.3.3
+------------
+
+<span class='release_date'>October 30, 2019. Bugfix release</span>
+
+### Updates
+
+- More informative error messages for common misconfigurations are added
+- HTML markup of some public samples is cleaned up
+
+5.3.2
+------------
+
+<span class='release_date'>October 9, 2019. Bugfix release</span>
+
+### Fixes
+
+- Fix incorrect work of the click [handler](api/scheduler_rendercalendar.md) in the [Mini Calendar](minicalendar.md) when a custom [calendar_date template](api/scheduler_calendar_date_template.md) is defined
+- Fix rounding of the end date of an event when it is [resized](api/scheduler_drag_resize_config.md) in [Day/Week views](views.md)
+
 5.3.1
 ------------
 

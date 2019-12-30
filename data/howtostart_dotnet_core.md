@@ -7,6 +7,7 @@ You can also read tutorials on other server-side technologies:
 
 - howtostart_dotnet.md
 - howtostart_nodejs.md
+- howtostart_plain_php.md
 - howtostart_php.md
 - howtostart_php_laravel.md
 - howtostart_ruby.md
@@ -15,7 +16,9 @@ You can also read tutorials on other server-side technologies:
 
 To organize communication with database, the [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) is used. The application is built with the help of the Visual Studio 2017.
 
-You can [check a ready demo on Github](https://github.com/DHTMLX/scheduler-howto-dotnet-core).
+{{note
+The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-dotnet-core).
+}}
 
 Step 1. Creating a project
 -------------------
@@ -824,7 +827,7 @@ public ObjectResult Put(int id, [FromForm] WebApiEvent apiEvent)
 	if (!string.IsNullOrEmpty(updatedEvent.RecType) && updatedEvent.RecType != "none")
 	{
 	 //all modified occurrences must be deleted when we update a recurring series
-	 //https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+	 //https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents
 
 		_context.Events.RemoveRange(
 			_context.Events.Where(e => e.EventPID == id)
@@ -855,7 +858,7 @@ public ObjectResult DeleteEvent(int id)
   if (e != null)
   {
    //some logic specific to recurring events support
-   //https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+   //https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents
 
 	 if (e.EventPID != default(int))
 	 {
@@ -871,7 +874,7 @@ public ObjectResult DeleteEvent(int id)
 	  if (!string.IsNullOrEmpty(e.RecType) && e.RecType != "none")
 	   {
 	//all modified occurrences must be deleted when we update recurring series
-	//https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+	//https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents
 		 _context.Events.RemoveRange(
 			_context.Events.Where(ev => ev.EventPID == id)
 		);
@@ -890,6 +893,12 @@ public ObjectResult DeleteEvent(int id)
 }
 ~~~
 
+###Parsing recurring series 
+
+A recurring event is stored in the database as a single record that can be splitted up by Scheduler on the client side.
+If you need to get dates of separate events on the server side, use a helper library for parsing recurring events of dhtmlxScheduler on ASP.NET Core.  
+
+You will find [the ready library on GitHub](https://github.com/DHTMLX/scheduler-recurring-events-dotnet).
 
 Error handling
 -------------

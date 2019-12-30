@@ -32,6 +32,11 @@ To apply the 'Material' skin, include the CSS file as in:
 
 {{sample 07_skins/02_material.html}}
 
+By default, the material skin imports `Roboto` font from `https://fonts.googleapis.com`. Read more about Google Fonts [here](https://developers.google.com/fonts).
+~~~js
+@import (css) url(https://fonts.googleapis.com/css?family=Roboto:400,500,600);
+~~~
+You can remove Roboto font, if necessary, directly from **.less** files in **codebase/sources/less/skins/material** folder and then rebuild the skin as described in the custom_skins.md article.
 
 'Flat' skin
 -----------------------------

@@ -115,6 +115,85 @@ The list of possible requests and responses is:
 	</tr>
 </table>
 
+####JSON mode
+
+To use the JSON mode, use the [setTransactionMode()](https://docs.dhtmlx.com/api__dataprocessor_settransactionmode.html) method of DataProcessor with necessary parameters:
+
+~~~js
+var dp = new dataProcessor("apiUrl");
+dp.init(scheduler);
+dp.setTransactionMode("JSON", false); /*!*/
+~~~
+
+In this mode, the scheduler will send POST request to the server after each updating of data (similarly to the POST mode, except for the request format).
+
+The list of possible requests and responses is:
+
+<table class="dp_table">
+	<tr>
+    	<th><b>Action</b></th><th><b>HTTP Method</b></th><th><b>Request Body</b></th><th><b>Response</b></th>
+    </tr>
+	<tr>
+    	<td>load data</td>
+		<td>GET</td>
+        <td></td>
+        <td><a href="data_formats.md#json">JSON format</a></td>
+	</tr>
+    <tr>
+		<td>add a new event</td>
+		<td>POST</td>
+        <td>{
+                "id": temporaryId,
+                "action":"inserted", <br>
+                "data":{ <br>
+                    "start_date":"2019-12-18 00:00",
+                    "end_date":"2019-12-18 00:05",
+                    "text":"New event",
+                    ... 
+                } <br>
+            }
+        </td>
+        <td>{
+                "action":"inserted", 
+                "tid":"eventId"
+            }
+        </td>
+    </tr>
+	<tr>
+    	<td>update an event</td>
+		<td>POST</td>
+        <td>{   
+            "id": id,
+            "action":"updated",
+            "data":{ <br>
+                "start_date":"2019-12-18 00:00",
+                "end_date":"2019-12-18 00:05",
+                "text":"New event",
+                ...
+                } <br>
+            }
+        </td>
+        <td>{"action":"updated"}</td>
+	</tr>
+	<tr>
+    	<td>delete an event</td>
+		<td>POST</td>
+        <td>{   
+            "id": id,
+            "action":"deleted",
+            "data":{ <br>
+                "start_date":"2019-12-18 00:00",
+                "end_date":"2019-12-18 00:05",
+                "text":"New event",
+                ...
+                }<br>
+            }
+        </td>
+        <td>{"action":"deleted"}</td>
+	</tr>
+</table>
+
+
 ####Dynamic loading
 
 The request and response for dynamic loading are the following:
@@ -164,10 +243,11 @@ Here's a list of available server side implementations that you can use for Sche
 If by some reason you don't want to use REST API, the best solution is [to use dhtmlxConnector library](howtostart_connector.md).
 
 
-Saving recurring events
+Recurring events
 ------------------------------
 
 Recurring events are stored in the database as records that contain both all [fields of a regular event](loading_data.md#dataproperties) and 3 additional fields: **rec_type**, **event_length** and **event_pid**. 
+
 Read more in the [Recurring Events](recurring_events.md#serversideintegration) article.
 
 In addition to extra fields, a specific logic needs to be added to the server-side controller:
@@ -180,7 +260,7 @@ In addition to extra fields, a specific logic needs to be added to the server-si
   - if **event.rec_type** is not empty and **event.rec_type !== 'none'**, all events where **event_pid == event.id** must be deleted
   - if **event.event_pid** is not empty, the event should be updated with **event.rec_type = 'none'** instead of deleting.
 
-You can have a look at the detailed example on editing and deleting recurring events in the [related section of the Recurring Events article](recurring_events.md#editingdeletingacertainoccurrenceintheseries).
+{{note You can have a look at the detailed example on editing and deleting recurring events in the [related section of the Recurring Events article](recurring_events.md#editingdeletingacertainoccurrenceintheseries).}}
 
 
 Custom Request Headers and Parameters 

@@ -8,6 +8,7 @@ If you use some other technology, check the list of available integration varian
 - howtostart_dotnet_core.md
 - howtostart_dotnet.md
 - howtostart_nodejs.md
+- howtostart_plain_php.md
 - howtostart_php.md
 - howtostart_php_laravel.md
 - howtostart_connector.md

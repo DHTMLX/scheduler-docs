@@ -16,9 +16,16 @@ my_style{
 }                        // the css property will be applied to the specified date
 </style>
 <script>
+	// you can get the calendar object in one of two ways:
+
+	// either via creating a mini calendar
 	var calendar = scheduler.renderCalendar({...});
+
+	// or via using the selector of the container with the mini calendar
+	var calendar = document.querySelector(".dhx_mini_calendar");
+    
 	...
-	scheduler.markCalendar(calendar, new Date(2010,3,1), "my_style");
+    scheduler.markCalendar(calendar, new Date(2010,3,1), "my_style");
 </script>
 
 @related:
@@ -30,6 +37,7 @@ my_style{
 {{note
 Note, the method is applied to mini-calendar only, not to the scheduler!
 }}
+
 
 
 

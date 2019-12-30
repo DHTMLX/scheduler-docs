@@ -23,24 +23,11 @@ Make sure that you use **charset="utf-8"**, because all locales are stored as UT
 	01_initialization_loading/07_locale_usage.html
 }}
 
-###Recurring events
-
-If you are using recurring events, one more file needs including  - the localized form for recurring events.
-
-~~~html
-<script src="../codebase/dhtmlxscheduler.js" type="text/javascript"></script>
-<link rel="stylesheet" href="../codebase/dhtmlxscheduler.css" type="text/css">
-
-<script src="../sources/locale/locale_es.js" type="text/javascript"></script>
-<script src="../sources/locale/recurring/locale_recurring_es.js" ></script>
-~~~
-
 ##Included locales 
 
-**Note**, 
+{{note
 
-- Common locale files reside in the **scheduler/sources/locale/** folder.
-- Recurring locale files reside in the **scheduler/sources/locale/recurring/** folder.
+Both Common locale files and Recurring locale files reside in the **scheduler/sources/locale/** folder.}}
 
 
 dhtmlxScheduler includes localization for the following languages:
@@ -50,211 +37,151 @@ dhtmlxScheduler includes localization for the following languages:
  Language      
 </td><td markdown='1' style='font-weight:bold; border:1px solid #AAA;'>
  Common locale       
-</td><td markdown='1' style='font-weight:bold; border:1px solid #AAA;'>
- Recurring events form 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Arabic 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_ar.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- not translated 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Belarusian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_be.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_be.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Catalan 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_ca.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- not translated 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Chinese 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_cn.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_cn.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Czech 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_cs.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_cs.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Danish 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_da.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_da.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Dutch 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_nl.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_nl.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  English 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_en.js - default
-</td><td markdown='1' style='border:1px solid #AAA;'>
-  locale_recurring_en.js - default 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Finnish 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_fi.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_fi.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  French 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_fr.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_fr.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  German 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_de.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_de.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Greek 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_el.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_el.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Hebrew 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_he.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_he.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Hungarian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_hu.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- not translated 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Indonesian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_id.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- not translated 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Italian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_it.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_it.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Japanese 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_jp.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- not translated 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Norwegian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_no.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- not translated 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Norwegian Bokmål
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_nb.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_nb.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Polish 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_pl.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_pl.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Portuguese 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_pt.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_pt.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Romanian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_ro.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_ro.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Russian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_ru.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_ru.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Slovak 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_sk.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_sk.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Slovenian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_si.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- not translated 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Spanish 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_es.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_es.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Swedish 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_sv.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_sv.js 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Turkish 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_tr.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- not translated 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Ukrainian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
  locale_ua.js 
-</td><td markdown='1' style='border:1px solid #AAA;'>
- locale_recurring_ua.js 
 </td></tr>
 </table>
 
@@ -335,29 +262,39 @@ scheduler.locale = {
 		month:"Month",
 		day:"Day",
 		hour:"Hour",
-		minute:"Minute"
+		minute:"Minute",
+
+			/* recurring event components */
+		repeat_radio_day: "Daily",//name="repeat" value="day"
+		repeat_radio_week: "Weekly",//name="repeat" value="week
+		repeat_radio_month: "Monthly",
+		repeat_radio_year: "Yearly",
+		repeat_radio_day_type: "Every",
+		repeat_text_day_count: "day",
+		repeat_radio_day_type2: "Every workday",
+		repeat_week: " Repeat every",
+		repeat_text_week_count: "week next days:",
+		repeat_radio_month_type: "Repeat",
+		repeat_radio_month_start: "On",
+		repeat_text_month_day: "day every",
+		repeat_text_month_count: "month",
+		repeat_text_month_count2_before: "every",
+		repeat_text_month_count2_after: "month",
+		repeat_year_label: "On",
+		select_year_day2: "of",
+		repeat_text_year_day: "day",
+		select_year_month: "month",
+		repeat_radio_end: "No end date",
+		repeat_text_occurences_count: "occurrences",
+		repeat_radio_end2: "After",
+		repeat_radio_end3: "End by",
+		month_for_recurring: ["January", "February", "March", "April", "May", "June", 
+			"July", "August", "September", "October", "November", "December"],
+		day_for_recurring: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
+			"Friday", "Saturday"]
 	}
 };
 ~~~
-
-
-In case of recurring events, it requires a bit more complex operation. 
-In addition to the above step, you will need to made  a copy of the **sources/repeat_template.html** file
-and translate all text messages in it to the target language. After that, the translated html file needs converting in a single-line js string
-
-~~~php
-$source = "repeat_template_".$lang[$i].".html";
-$target = "locale_recurring_".$lang[$i].".js";
- 
-$data="";
-$data.="scheduler.__recurring_template='".preg_replace("|[\t ]+|"," ",
-preg_replace("|[\r\n]+|","",file_get_contents($source)))."';\n\n";
-file_put_contents(target,$data)."\n\n";
-~~~
-
-{{note
-To make things simpler, you can send the translated HTML form to support@dhtmlx.com, and we will reply with a converted js file (and include the translation into the next release).
-}}
 
 {{sample
 	01_initialization_loading/07_locale_usage.html

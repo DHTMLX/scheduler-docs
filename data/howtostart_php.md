@@ -1,13 +1,14 @@
-dhtmlxScheduler with PHP 
-=====================
+dhtmlxScheduler with PHP:Slim 
+=================================
 
-In this tutorial you will find necessary information on how to create a Scheduler using PHP and REST API on the server side.
+In this tutorial you will find necessary information on how to create a PHP-based Scheduler using Slim Framework and REST API on the server side.
 
 There are tutorials intended for building server-side integration with the help of other platforms and frameworks:
 
 - howtostart_dotnet_core.md
 - howtostart_dotnet.md
 - howtostart_nodejs.md
+- howtostart_plain_php.md
 - howtostart_php_laravel.md
 - howtostart_ruby.md
 - howtostart_connector.md
@@ -18,6 +19,10 @@ We will use the [Slim](https://www.slimframework.com/) framework together with R
 CRUD logic will rely on PDO and will be generic enough to be usable with any other framework.
 
 You can have a look at the [ready demo on GitHub](https://github.com/DHTMLX/scheduler-howto-php-slim). Follow the step-by-step guide to create such an application.
+
+{{note
+The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-php-slim).
+}}
 
 Step 1. Initializing a project
 ----------------------------
@@ -142,7 +147,7 @@ Open your *src/settings.php* file, add an array with database settings, and upda
 'pdo' => [
 	'engine' => 'mysql',
 	'host' => 'localhost',
-	'database' => 'scheduler',
+	'database' => 'scheduler_howto_php',
 	'username' => 'user',
 	'password' => 'pass',
 	'charset' => 'utf8',
@@ -205,7 +210,7 @@ Now if you add some events into the database, they will appear in your scheduler
 ###Dynamic loading
 
 Currently scheduler loads all records from the events table on startup. It can work well if you know that the amount of data will remain small over time. But when scheduler is used for something like a planning/booking
-application and you don't delete or move obsolete records to another table, the amounts of data will build up fairly quickly and in a couple of months of active usage you may find that your app requests a couple of MBs 
+application and you don't delete or move obsolete records to another table, the amounts of data will build up fairly quickly. As a result, in a couple of months of active usage you may find that your app requests a couple of MBs 
 of events each time a user loads the page.
 
 It can be easily avoided by using dynamic loading. Scheduler will add the displayed dates to the request parameters and you'll be able to return only the records that need to be displayed. 
@@ -394,7 +399,7 @@ CREATE TABLE `events` (
   `text` varchar(255) DEFAULT NULL,
   `event_pid` int(11) DEFAULT 0,
   `event_length` bigint(20) unsigned DEFAULT 0,
-  `rec_type` varchar(25) DEFAULT '""',
+  `rec_type` varchar(25) DEFAULT '',
   PRIMARY KEY (`id`)
 ) DEFAULT CHARSET=utf8;
 ~~~
@@ -404,7 +409,7 @@ Or, you can update the events table from our previous step:
 ~~~
 ALTER TABLE `events` ADD COLUMN `event_pid` int(11) DEFAULT '0';
 ALTER TABLE `events` ADD COLUMN `event_length` bigint(20) unsigned DEFAULT '0';
-ALTER TABLE `events` ADD COLUMN `rec_type` varchar(25) DEFAULT '""';
+ALTER TABLE `events` ADD COLUMN `rec_type` varchar(25) DEFAULT '';
 ~~~
 
 ###Updating the backend
@@ -492,7 +497,7 @@ $this->put('/{id}', function (Request $request, Response $response, array $args)
 
 	if ($body['rec_type'] && $body['rec_type'] != 'none') {/*!*/
 	  //all modified occurrences must be deleted when you update recurring series
-	  //https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+	  //https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents
 		$subQueryText = 'DELETE FROM `recurring_events` WHERE `event_pid`=? ;';
 		$subQuery = $db->prepare($subQueryText);
 		$subQuery->execute([$id]);
@@ -522,7 +527,7 @@ $this->delete('/{id}', function (Request $request, Response $response, array $ar
 	$id = $request->getAttribute('route')->getArgument('id');
 
 	// some logic specific to recurring events support
-	// https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+	// https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents
 	$subQueryText = 'SELECT * FROM `recurring_events` WHERE id=? LIMIT 1;';/*!*/
 	$subQuery = $db->prepare($subQueryText);/*!*/
 	$subQuery->execute([$id]);/*!*/
@@ -566,6 +571,12 @@ $this->delete('/{id}', function (Request $request, Response $response, array $ar
 	return $response->withJson($result);
 });
 ~~~
+
+### Parsing recurring series
+A recurring event is stored in the database as a single record that can be splitted up by Scheduler on the client side.
+If you need to get dates of separate events on the server side, use a helper library for parsing recurring events of dhtmlxScheduler on PHP. 
+<br>
+You will find [the ready library on GitHub](https://github.com/DHTMLX/scheduler-helper-php).
 
 Application security
 ------------------

@@ -35,6 +35,15 @@ platforms to suit all tastes and preferences.
         	<a href="howtostart_dotnet.md"><img src="dotnet_mvc_tutorial.png"></a>
         </td>
     </tr>
+     <tr>
+		<td>
+		    <span style="font-size:15px;">howtostart_plain_php.md</span><br><br>           
+            A step-by-step tutorial that discusses how to implement a Scheduler with plain PHP without any frameworks. 
+        </td>
+        <td>
+        	<a href="howtostart_plain_php.md"><img src="php_tutorial.png"></a>
+        </td>
+    </tr>    
     <tr>
 		<td>
 		    <span style="font-size:15px;">howtostart_php_laravel.md</span><br><br>           
@@ -47,10 +56,10 @@ platforms to suit all tastes and preferences.
     <tr>
 		<td>
 		    <span style="font-size:15px;">howtostart_php.md</span><br><br>           
-            A step-by-step tutorial that discusses how to implement a PHP-based Scheduler. 
+            A step-by-step tutorial that discusses how to implement a PHP-based Scheduler using Slim Framework. 
         </td>
         <td>
-        	<a href="howtostart_php.md"><img src="php_tutorial.png"></a>
+        	<a href="howtostart_php.md"><img src="scheduler_slim.png"></a>
         </td>
     </tr>    
     <tr>
@@ -80,6 +89,7 @@ platforms to suit all tastes and preferences.
 - howtostart_dotnet_core.md
 - howtostart_nodejs.md
 - howtostart_dotnet.md
+- howtostart_plain_php.md
 - howtostart_php_laravel.md
 - howtostart_php.md
 - howtostart_ruby.md

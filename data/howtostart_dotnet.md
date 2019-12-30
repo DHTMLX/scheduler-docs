@@ -7,6 +7,7 @@ You can also explore other server-side integration possibilities of Scheduler by
 
 - howtostart_dotnet_core.md
 - howtostart_nodejs.md
+- howtostart_plain_php.md
 - howtostart_php.md
 - howtostart_php_laravel.md
 - howtostart_ruby.md
@@ -15,7 +16,9 @@ You can also explore other server-side integration possibilities of Scheduler by
 We will make use of the ASP.NET MVC 5 web platform and the Web API controller for REST API to create a Scheduler application. To organize communication with a database we will use 
 the [Entity Framework](http://www.asp.net/entity-framework). We will build our application with the help of the Visual Studio IDE.
 
-Have a look at the [demo](https://github.com/DHTMLX/scheduler-howto-dotnet) on GitHub.
+{{note
+The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-dotnet).
+}}
 
 Step 1. Creating a project
 ----------------------------
@@ -659,7 +662,7 @@ public IHttpActionResult EditSchedulerEvent(int id, WebAPIEvent webAPIEvent)
     	updatedSchedulerEvent.RecType != "none")
     {
       //all modified occurrences must be deleted when we update a recurring series
-      //https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+      //https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents
       
       db.SchedulerEvents.RemoveRange(
          db.SchedulerEvents.Where(e => e.EventPID == id)
@@ -691,7 +694,7 @@ public IHttpActionResult DeleteSchedulerEvent(int id)
     if (schedulerEvent != null)
     {
      //some logic specific to recurring events support
-     //https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+     //https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents
           
      if(schedulerEvent.EventPID != default(int))
      {
@@ -709,7 +712,7 @@ public IHttpActionResult DeleteSchedulerEvent(int id)
          schedulerEvent.RecType != "none")
        {
        //all modified occurrences must be deleted when we update recurring series
-	  //https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+	  //https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents
             	
          db.SchedulerEvents.RemoveRange(
              db.SchedulerEvents.Where(ev => ev.EventPID == id)
@@ -727,6 +730,12 @@ public IHttpActionResult DeleteSchedulerEvent(int id)
     });
 }
 ~~~
+
+### Parsing recurring series
+
+A recurring event is stored in the database as a single record that can be splitted up by Scheduler on the client side.
+If you need to get dates of separate events on the server side, use a helper library for parsing recurring events of dhtmlxScheduler on ASP.NET. <br>
+You will find [the ready library on GitHub](https://github.com/DHTMLX/scheduler-recurring-events-dotnet).
 
 Error handling
 ----------------
