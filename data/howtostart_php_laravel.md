@@ -9,7 +9,7 @@ There are tutorials intended for building server-side integration with the help 
 - howtostart_dotnet.md
 - howtostart_nodejs.md
 - howtostart_plain_php.md
-- howtostart_php.md
+- howtostart_php_slim4.md
 - howtostart_ruby.md
 - howtostart_connector.md
 

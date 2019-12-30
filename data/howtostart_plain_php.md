@@ -11,7 +11,7 @@ There are tutorials intended for building server-side integration with the help 
 - howtostart_dotnet_core.md
 - howtostart_dotnet.md
 - howtostart_nodejs.md
-- howtostart_php.md
+- howtostart_php_slim4.md
 - howtostart_php_laravel.md
 - howtostart_ruby.md
 - howtostart_connector.md

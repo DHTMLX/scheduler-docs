@@ -1,7 +1,9 @@
-dhtmlxScheduler with PHP:Slim 
+dhtmlxScheduler with PHP:Slim 3
 =================================
 
-In this tutorial you will find necessary information on how to create a PHP-based Scheduler using Slim Framework and REST API on the server side.
+In this tutorial you will find necessary information on how to create a PHP-based Scheduler using Slim 3 Framework and REST API on the server side.
+
+{{note This tutorial uses an older Slim Framework v3.x. If you're looking for the most recent version of the tutorial, check instructions for [Slim Framework v4.x](howtostart_php_slim4.md).}}
 
 There are tutorials intended for building server-side integration with the help of other platforms and frameworks:
 
@@ -10,18 +12,19 @@ There are tutorials intended for building server-side integration with the help 
 - howtostart_nodejs.md
 - howtostart_plain_php.md
 - howtostart_php_laravel.md
+- howtostart_php_slim4.md
 - howtostart_ruby.md
 - howtostart_connector.md
 
 It seems obvious that while developing an application with PHP, one will use a ready framework instead of creating everything from scratch.
 
-We will use the [Slim](https://www.slimframework.com/) framework together with REST API on the server side and MySQL as a data storage to create a Scheduler.
+We will use the [Slim 3](https://www.slimframework.com/) framework together with REST API on the server side and MySQL as a data storage to create a Scheduler.
 CRUD logic will rely on PDO and will be generic enough to be usable with any other framework.
 
-You can have a look at the [ready demo on GitHub](https://github.com/DHTMLX/scheduler-howto-php-slim). Follow the step-by-step guide to create such an application.
+You can have a look at the [ready demo on GitHub](https://github.com/DHTMLX/scheduler-howto-php-slim/tree/slim-3.x). Follow the step-by-step guide to create such an application.
 
 {{note
-The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-php-slim).
+The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-php-slim/tree/slim-3.x).
 }}
 
 Step 1. Initializing a project
@@ -29,7 +32,7 @@ Step 1. Initializing a project
 
 ###Creating a project
 
-We will make use of a [skeleton application](https://github.com/slimphp/Slim-Skeleton) for the Slim framework.
+We will make use of a [skeleton application](https://github.com/slimphp/Slim-Skeleton) for the Slim 3 framework.
 
 So you should start with creating an application with the help of Composer:
 
@@ -649,7 +652,7 @@ the ways of identifying the roots of the problems.
 What's next
 ------------
 
-Now you have a fully functioning Scheduler. You can view the full code on [GitHub](https://github.com/DHTMLX/scheduler-howto-php-slim), clone or download it and use it for your projects.
+Now you have a fully functioning Scheduler. You can view the full code on [GitHub](https://github.com/DHTMLX/scheduler-howto-php-slim/tree/slim-3.x), clone or download it and use it for your projects.
 
 You can also check [guides on the numerous features of Scheduler](guides.md) or tutorials on [integration of Scheduler with other backend frameworks](howtostart_guides.md).
 
