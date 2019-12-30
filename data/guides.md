@@ -20,7 +20,7 @@ The articles come around key procedures and problem-solving activities.
                     <li>howtostart_dotnet.md</li>
                     <li>howtostart_plain_php.md</li>
                     <li>howtostart_php_laravel.md</li>
-                    <li>howtostart_php.md</li>                                  
+                    <li>howtostart_php_slim4.md</li>                                 
                     <li>howtostart_ruby.md</li>
                     <li>howtostart_connector.md</li>
             </ul>

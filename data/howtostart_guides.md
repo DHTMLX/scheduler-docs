@@ -55,11 +55,11 @@ platforms to suit all tastes and preferences.
     </tr> 
     <tr>
 		<td>
-		    <span style="font-size:15px;">howtostart_php.md</span><br><br>           
-            A step-by-step tutorial that discusses how to implement a PHP-based Scheduler using Slim Framework. 
+		    <span style="font-size:15px;">howtostart_php_slim4.md</span><br><br>           
+            A step-by-step tutorial that discusses how to implement a PHP-based Scheduler using Slim 4 Framework. 
         </td>
         <td>
-        	<a href="howtostart_php.md"><img src="scheduler_slim.png"></a>
+        	<a href="howtostart_php_slim4.md"><img src="scheduler_slim.png"></a>
         </td>
     </tr>    
     <tr>
@@ -91,7 +91,8 @@ platforms to suit all tastes and preferences.
 - howtostart_dotnet.md
 - howtostart_plain_php.md
 - howtostart_php_laravel.md
-- howtostart_php.md
+- howtostart_php_slim4.md
 - howtostart_ruby.md
 - howtostart_connector.md
+- howtostart_php.md
 
