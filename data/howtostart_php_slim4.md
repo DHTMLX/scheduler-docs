@@ -4,7 +4,7 @@ dhtmlxScheduler with PHP:Slim
 In this tutorial you will find necessary information on how to create a PHP-based Scheduler using Slim 4 Framework and REST API on the server side.
 
 {{note This tutorial uses Slim Framework v4.x.
-If you need a tutorial for an older version, check this tutorial for [Slim Framework v3.x](howtostart_php.html).}}
+If you need a tutorial for an older version, check the [Slim Framework v3.x](howtostart_php.html) guide.}}
 
 There are tutorials intended for building server-side integration with the help of other platforms and frameworks:
 
