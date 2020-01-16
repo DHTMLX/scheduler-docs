@@ -75,7 +75,7 @@ scheduler.config.header = [
 	"day",
 	"week",
 	"month",
-	{html:"click me!", click:function(){alert("done!")}}
+	{html:"click me!", click:function(){alert("done!")}},
 	"date",
 	"prev",
 	"today",

@@ -8,8 +8,10 @@ month_scale_date
 @views:month
 
 @example:
+const formatMonthScale = scheduler.date.date_to_str("%l");
+
 scheduler.templates.month_scale_date = function(date){
-	return scheduler.date.date_to_str(scheduler.config.week_date);
+    return formatMonthScale(date);
 };
 
 @template:	api_template
