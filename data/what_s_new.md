@@ -23,7 +23,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 ### Updates
 
-- If neither [header config](initialization.md#initializingschedulerviaheaderconfig) nor[default markup](initialization.md#initializingschedulerviamarkup) is specified while initializing the scheduler, a default value for the scheduler header will be auto-generated to escape a script error
+- If neither [header config](initialization.md#initializingschedulerviaheaderconfig) nor [default markup](initialization.md#initializingschedulerviamarkup) is specified while initializing the scheduler, a default value for the scheduler header will be auto-generated to escape a script error
 
 5.3.4
 ------------
