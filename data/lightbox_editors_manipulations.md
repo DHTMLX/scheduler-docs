@@ -17,6 +17,21 @@ scheduler.formSection('description').setValue('abc');
 	02_customization/22_opertions_with_lightbox.html
 }}
 
+## Opening the lightbox on a single click
+
+It is possible to open the existing lightbox on a single click. For this purpose, make use of the  api/scheduler_onclick_event.md event and api/scheduler_showlightbox.md method:
+
+~~~js
+scheduler.attachEvent("onClick", function (id, e){
+	scheduler.showLightbox(id);
+	return true;
+});
+~~~
+
+{{editor	https://snippet.dhtmlx.com/5/50e639d2a		Opening the lightbox on one click}}
+
+The lightbox will be opened when the user clicks the left mouse button on the event box. 
+
 ##Checking whether the lightbox is opened
 
 To check whether the lightbox is currently opened or closed, use the **lightbox_id** property of the state object returned by the api/scheduler_getstate.md method. 

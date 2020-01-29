@@ -26,3 +26,5 @@ The event is blockable. If non-true value is returned from the handler, the defa
 @relatedsample:
 	02_customization/10_without_toolbar.html
     03_extensions/12_readonly_form.html
+    
+@related: lightbox_editors_manipulations.md#openingthelightboxonasingleclick

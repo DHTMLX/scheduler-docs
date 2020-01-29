@@ -27,7 +27,7 @@ To display a basic Scheduler on the page through the markup, follow 3 steps:
 </head>
 <body>
 	<!--Container for Scheduler and the standard set of 'divs'-->
-   <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+   <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100vh;'>
 		<div class="dhx_cal_navline">
     		<div class="dhx_cal_prev_button">&nbsp;</div>
         	<div class="dhx_cal_next_button">&nbsp;</div>

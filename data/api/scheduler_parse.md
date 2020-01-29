@@ -10,8 +10,8 @@ parse
 
 @example: 
 scheduler.parse([
-     { start_date:"2013-05-13 6:00", end_date:"2009-05-13 8:00", text:"Event 1"},
-     { start_date:"2013-06-09 6:00", end_date:"2009-06-09 8:00", text:"Event 2"}
+     { start_date:"2020-05-13 6:00", end_date:"2020-05-13 8:00", text:"Event 1"},
+     { start_date:"2020-06-09 6:00", end_date:"2020-06-09 8:00", text:"Event 2"}
 ]);
 
 
@@ -27,3 +27,4 @@ scheduler.parse([
 @relatedapi:
 api/scheduler_onbeforeparse_event.md
 api/scheduler_onparse_event.md
+api/scheduler_parse_date_template.md
