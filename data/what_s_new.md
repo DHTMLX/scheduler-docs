@@ -13,7 +13,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 5.3.5
 ------------
 
-<span class='release_date'>January 29, 2020. Bugfix release</span>
+<span class='release_date'>January 31, 2020. Bugfix release</span>
 
 ### Fixes
 
