@@ -18,7 +18,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 ### Fixes
 
 - Fix styling of the 'next' button on the right side of the navigation panel in [Terrace skin](skins.md#defaultskin) when the scheduler is initialized using [header config](initialization.md#initializingschedulerviaheaderconfig)
-- Fix the incorrect work of the [Url extension](extensions_list.md#url) which failed to highlight events by url in some cases
+- Fix the incorrect work of the [URL extension](extensions_list.md#url) which failed to highlight events by url in some cases
 - Fix the incorrect work of the [Material skin](skins.md#materialskin) when scheduler styles are loaded using the `@import` command
 
 ### Updates
