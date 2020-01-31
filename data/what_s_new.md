@@ -10,6 +10,21 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+5.3.5
+------------
+
+<span class='release_date'>January 31, 2020. Bugfix release</span>
+
+### Fixes
+
+- Fix styling of the 'next' button on the right side of the navigation panel in [Terrace skin](skins.md#defaultskin) when the scheduler is initialized using [header config](initialization.md#initializingschedulerviaheaderconfig)
+- Fix the incorrect work of the [URL extension](extensions_list.md#url) which failed to highlight events by url in some cases
+- Fix the incorrect work of the [Material skin](skins.md#materialskin) when scheduler styles are loaded using the `@import` command
+
+### Updates
+
+- If neither [header config](initialization.md#initializingschedulerviaheaderconfig) nor [default markup](initialization.md#initializingschedulerviamarkup) is specified while initializing the scheduler, a default value for the scheduler header will be auto-generated to escape a script error
+
 5.3.4
 ------------
 
