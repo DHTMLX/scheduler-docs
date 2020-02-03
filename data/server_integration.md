@@ -12,7 +12,18 @@ The recommended approach to connect dhtmlxScheduler to a backend is to implement
 
 [DataProcessor](http://docs.dhtmlx.com/dataprocessor__index.html) is a client-side library included into dhtmlxScheduler.js. 
 It monitors data changes and gets the server requests on the client side.
- 
+
+It's possible to bind dhtmlxScheduler to the server side using REST API together with different frameworks and programming languages. 
+Here's a list of available server side implementations that you can use for Scheduler backend integration:
+
+- howtostart_php_slim4.md
+- howtostart_dotnet_core.md
+- howtostart_dotnet.md
+- howtostart_nodejs.md
+- howtostart_plain_php.md
+- howtostart_php_laravel.md
+- howtostart_ruby.md
+- howtostart_php.md
 
 Technique
 ------------------
@@ -230,18 +241,7 @@ On each action performed in Scheduler (adding, updating or deleting events), dat
 Each request contains all the data needed to save changes in the database.
 As we initialized dataProcessor in the REST mode, it will use different HTTP verbs for each type of operation.
 
-Since we use REST API, it's possible to implement the server side using different frameworks and programming languages.
-Here's a list of available server side implementations that you can use for Scheduler backend integration:
-
-- howtostart_php.md
-- howtostart_php_laravel.md
-- howtostart_nodejs.md
-- howtostart_dotnet_core.md
-- howtostart_ruby.md
-
-<br>
-If by some reason you don't want to use REST API, the best solution is [to use dhtmlxConnector library](howtostart_connector.md).
-
+{{note If by some reason you don't want to use REST API, the best solution is [to use dhtmlxConnector library](howtostart_connector.md).}}
 
 Recurring events
 ------------------------------
