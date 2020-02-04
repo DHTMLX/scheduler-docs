@@ -46,6 +46,10 @@ Here is an example of some custom look:
 Specifying a custom look for the event's box
 }}
 ~~~js
+scheduler.templates.event_class = function(start, end, event) {
+    return "my_event";
+};
+
 scheduler.renderEvent = function(container, ev) {
 	var container_width = container.style.width; // e.g. "105px"
 
