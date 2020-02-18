@@ -312,6 +312,7 @@ Scheduler API
 - api/scheduler_use_select_menu_space_config.md - defines that events occupy the whole width of the cell
 - api/scheduler_wai_aria_application_role_config.md - defines whether role="application" will be used for the main scheduler container and minicalendar elements
 - api/scheduler_wai_aria_attributes_config.md - enables WAI-ARIA support to make the component recognizable for screen readers
+- api/scheduler_week_agenda_select_config.md - highlights the selected event in the Week Agenda view
 - api/scheduler_week_date_config.md - sets the format of the date in the sub-header of the Month view
 - api/scheduler_wide_form_config.md - enables/disables displaying of the standard (wide) lightbox instead of the short one
 - api/scheduler_xml_date_config.md - sets the date format that is used to parse data from the data set
