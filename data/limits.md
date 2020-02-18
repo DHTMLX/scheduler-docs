@@ -84,7 +84,7 @@ When you call the 'blocking' methods several times and block different ranges, b
 3.  Dates specified through Date() objects;
 4.  Other dates.
 
-- A blocking/marking with the higher priority will overwrite ones with the lower priority. 
+- A blocking/marking with the higher priority will overwrite ones with the lower priority if they have the same **type**. 
 - Several blocking/marking methods with the same priority (located in the same time slot) will be applied simultaneously.
 
 For example:
