@@ -50,5 +50,6 @@ Start
 - migration_from_older_version.md
 - views.md
 - guides.md
+- copyright.md
 - faq.md
 
