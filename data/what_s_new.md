@@ -10,6 +10,16 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+5.3.6
+------------
+
+<span class='release_date'>February 27, 2020. Bugfix release</span>
+
+- Fix the incorrect displaying of events in the [Day Timeline view](timeline_view.md#viewmodes) when `scrollable:true` or `smart_rendering:true` is used
+- Fix the script error which happened in the [Day Timeline view](timeline_view.md#viewmodes) after dragging a new event when  `scrollable:true` was used together with [dataProcessor](server_integration.md)
+- Fix the script error which was thrown if no `date` element was included in the [header config](initialization.md#initializingschedulerviaheaderconfig) 
+- Fix styling of the `day` tab in the [Material skin](skins.md#materialskin) when the [header config](initialization.md#initializingschedulerviaheaderconfig) does not contain a `week` or `month` tab
+
 5.3.5
 ------------
 
