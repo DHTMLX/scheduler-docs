@@ -10,10 +10,10 @@ year_scale_date
 @require:year_view
 
 @example:
+const formatScaleDate = scheduler.date.date_to_str("%D");
 scheduler.templates.year_scale_date = function(date){
-	return scheduler.date.date_to_str("%D");
+    return formatScaleDate(date);
 };
-
 
 @template:	api_template
 @returns:

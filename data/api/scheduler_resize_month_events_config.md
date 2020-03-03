@@ -12,12 +12,12 @@ scheduler.init('scheduler_here',new Date(2010,0,10),"month");
 
 @template:	api_config
 @descr:
-<img src="api/resizemonthevents_config.png"/>
+<img src="api/resize_month_events.png"/>
 
 @relatedsample:
 	02_customization/32_resizable_month_events.html
 @related:
-	month_view.md#resizingeventsbydragndropver41
+	month_view.md#resizingeventsbydragndropver
 @relatedapi:
 	api/scheduler_resize_month_timed_config.md
 

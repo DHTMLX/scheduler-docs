@@ -104,8 +104,14 @@ The following properties are mostly important and commonly set for the 'combo' c
 			<td>(<i>string</i>) the path to dhtmlxCombo images</td>
 		</tr>
         <tr>
-			<td class="webixdoc_links0"><b>filtering</b></td>
-			<td>(<i>boolean</i>) activates the auto-filtering support (options will be filtered as you type). Optional</td>
+			<td class="webixdoc_links0" style="vertical-align: top;"><b>filtering</b></td>
+			<td>(<i>boolean, string</i>) activates the auto-filtering support (options will be filtered as you type). Optional <br> The parameter can take one of the following values:
+			<ul>
+					<li><b>false</b> -  disables filtering</li>
+					<li><b>true or "start"</b> -  enables filtering, performs searching from the item's beginning</li>
+					<li><b>"between"</b> -  enables filtering, searches for any occurrence of the typed text in items</li>
+			</ul>
+			</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>script_path</b></td>

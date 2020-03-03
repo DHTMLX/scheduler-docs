@@ -10,8 +10,9 @@ year_month
 @require:year_view
 
 @example:
+const formatMonth = scheduler.date.date_to_str("%F");
 scheduler.templates.year_month = function(date){
-	return scheduler.date.date_to_str("%F");
+    return formatMonth(date);
 };
 @template:	api_template
 @returns:

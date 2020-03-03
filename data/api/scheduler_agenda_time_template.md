@@ -9,12 +9,14 @@ agenda_time
 
 @require:agenda_view
 @example:
-scheduler.templates.agenda_time = function(start,end,ev){
-  if (ev._timed)
-   	return this.day_date(ev.start_date, ev.end_date, ev)+" "+this.event_date(start);
-  else
-    return scheduler.templates.day_date(start)+" &ndash; "+
-    scheduler.templates.day_date(end);
+const templates = scheduler.templates;
+scheduler.templates.agenda_time = function(start, end, event){
+  if (scheduler.isOneDayEvent(event)) {
+    return templates.day_date(event) + " " + templates.event_date(start);
+  } else {
+    return templates.day_date(start) + " &ndash; " + 
+        templates.day_date(end);
+  }
 };
 
 @views:agenda
