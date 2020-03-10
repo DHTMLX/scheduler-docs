@@ -97,7 +97,7 @@ The following properties are mostly important and commonly set for the 'radio' c
 		</tr>
 		<tr>
 			<td class="webixdoc_links0"><b>vertical</b></td>
-			<td>(<i>boolean</i>) specifies, whether radio buttons should be placed vertically(<i>true</i>) or horizontally  (<b>for the 'select' control only</b>)</td>
+			<td>(<i>boolean</i>) specifies, whether radio buttons should be placed vertically(<i>true</i>) or horizontally  (<b>for the 'multiselect' and 'radio'  controls</b>)</td>
 		</tr>
     </tbody>
 </table>
