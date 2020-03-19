@@ -72,7 +72,7 @@ Drag-and-drop between schedulers
 -----------------------------------------------
 
 {{note
-The functionality is available for the Enterprise license only
+The functionality is available for the Enterprise and Ultimate licenses only.
 }}
 
 
