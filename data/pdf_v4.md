@@ -1,6 +1,11 @@
 Export to PDF (version 4.0)
 ============================
 
+*The article refers to exporting of dhtmlxScheduler 4.0 or earlier versions. If you use dhtmlxScheduler 4.1+, see details [here](pdf.md).*
+
+Starting from version 4.1, dhtmlxScheduler provides a new approach for exporting the scheduler into the PDF format - 
+an [online export service](pdf.md#defaultexporttopdf). 
+
 ## Installation 
 
 The PHP version of the package: [https://github.com/DHTMLX/scheduler-to-pdf-php](https://github.com/DHTMLX/scheduler-to-pdf-php)

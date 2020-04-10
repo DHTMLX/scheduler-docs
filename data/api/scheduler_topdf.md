@@ -17,11 +17,11 @@ scheduler.toPDF("./service/generate.php","color");
 @relatedapi:
 	api/scheduler_toPDFRange.md
 @related:
-	pdf.md
-@relatedsample:
-	03_extensions/11_pdf_plugin.html
-    04_export/06_online_export.html
+	pdf_v4.md
+
 @descr: 
+
+{{note The method refers to [exporting of dhtmlxScheduler 4.0 or earlier versions](pdf_v4.md).}}
 
 The second parameter (**mode**) of the method can take only one of the values from the predefined set:
 
