@@ -10,6 +10,14 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+5.3.7
+----------
+
+<span class='release_date'>April 30, 2020. Bugfix release</span>
+
+- Fix the incorrect work of the [Container Autoresize](extensions_list.md#containerautoresize) extension when [a horizontal scrollbar is enabled in Timeline view](timeline_view.md#horizontalscroll)
+- Fix the incorrect work of the [show_unassigned](api/scheduler_createtimelineview.md) configuration option of the [Timeline view](timeline_view.md)
+
 5.3.6
 ------------
 
