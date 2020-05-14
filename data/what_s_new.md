@@ -1,4 +1,4 @@
-What's New 
+What's New
 ==============
 
 If you are updating Scheduler from an older version, check migration_from_older_version.md for details.
@@ -9,6 +9,21 @@ If you are updating Scheduler from an older version, check migration_from_older_
 	margin-left: 20px;
 }
 </style>
+
+5.3.8
+----------
+<span class='release_date'>May 14, 2020. Bugfix release</span>
+
+
+### Fixes
+
+- Fix the incorrect height of the modal overlay of the [Lightbox](lightbox_editors.md)
+- Fix the incorrect sizes of the scheduler when the scheduler initialized inside Bootstrap modals.
+
+### Updates
+
+- Scheduler now automatically tracks the container resizes and adjusts its own sizes accordingly.
+- Add [Mini Calendar](minicalendar.md) control for the [header config](api/scheduler_header_config.md)
 
 5.3.7
 ----------
@@ -25,7 +40,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 - Fix the incorrect displaying of events in the [Day Timeline view](timeline_view.md#viewmodes) when `scrollable:true` or `smart_rendering:true` is used
 - Fix the script error which happened in the [Day Timeline view](timeline_view.md#viewmodes) after dragging a new event when  `scrollable:true` was used together with [dataProcessor](server_integration.md)
-- Fix the script error which was thrown if no `date` element was included in the [header config](initialization.md#initializingschedulerviaheaderconfig) 
+- Fix the script error which was thrown if no `date` element was included in the [header config](initialization.md#initializingschedulerviaheaderconfig)
 - Fix styling of the `day` tab in the [Material skin](skins.md#materialskin) when the [header config](initialization.md#initializingschedulerviaheaderconfig) does not contain a `week` or `month` tab
 
 5.3.5
@@ -166,7 +181,7 @@ This update changes behavior of of some parts of the component. While they shoul
 - Fix not working api/scheduler_showevent.md method in the [Timeline view](timeline_view.md)
 - Fix incorrect behavior of vertical scroll in [scrollable timeline](timeline_view.md#horizontalscroll) with `smart_rendering:false`
 - Fix incorrect event position in the [multiday units view](units_view.md#displayingunitsformultipledays) with the [multisection](units_view.md#assigningeventstoseveralunits) extension when the [step](units_view.md#scrollingunits) option is specified
-- Fix incorrect size of some events in [Daily Timeline](timeline_view.md#daysmodedetails) 
+- Fix incorrect size of some events in [Daily Timeline](timeline_view.md#daysmodedetails)
 
 
 5.2
@@ -201,7 +216,7 @@ of the deprecated - **onXLS** and **onXLE** events
 - Fix various display issues with [scrollable timeline](timeline_view.md#horizontalscroll)
 - The Units view api/scheduler_{unitsname}_scale_text_template.md now provides a section date in arguments
 - Fix script error which was thrown from the [Units view](units_view.md) during an event creation if no sections are loaded
-- The multiselect.md control now expects only boolean values for `vertical` property `vertical:false` - string values as in `vertical:"false"` will be interpreted as boolean `true` 
+- The multiselect.md control now expects only boolean values for `vertical` property `vertical:false` - string values as in `vertical:"false"` will be interpreted as boolean `true`
 
 
 5.1.6
@@ -271,7 +286,7 @@ HTML structure of the Timeline view has changed significantly, some code changes
 ###Breaking Changes
 
 1. Classic and Glossy skins are removed. [Check the migration details](migration_from_older_version.md#4450)
-2. Scheduler went through the global CSS refactoring. [Learn how it will influence your applications](migration_from_older_version.md#4450)  
+2. Scheduler went through the global CSS refactoring. [Learn how it will influence your applications](migration_from_older_version.md#4450)
 
 ###Major Changes
 
@@ -281,7 +296,7 @@ HTML structure of the Timeline view has changed significantly, some code changes
 
 ###Minor Changes
 
-- Touch support for Microsoft devices is updated 
+- Touch support for Microsoft devices is updated
 - [Hebrew locale](localization.md) is added for recurring events form
 - [onLoadError](api/scheduler_onloaderror_event.md) is added for network and server errors
 
@@ -394,9 +409,9 @@ HTML structure of the Timeline view has changed significantly, some code changes
 
 1. ["Days" mode for Timeline view](timeline_view.md#daysmodedetails) was added (PRO version)
 2. Ability to present [units for multiple days in the Units view](units_view.md#displayingunitsformultipledays) (PRO version)
-3. New events for the ['expand' extension](extensions_list.md#expand) 
-4. New option - api/scheduler_now_date_config.md for the [Limit extension](extensions_list.md#limit) 
-5. New option - api/scheduler_touch_tooltip_config.md  for the [Tooltip extension](extensions_list.md#tooltip) 
+3. New events for the ['expand' extension](extensions_list.md#expand)
+4. New option - api/scheduler_now_date_config.md for the [Limit extension](extensions_list.md#limit)
+5. New option - api/scheduler_touch_tooltip_config.md  for the [Tooltip extension](extensions_list.md#tooltip)
 6. Ability to link events using the [URL extension](extensions_list.md#url)
 7. Fixes for DST issues
 8. Fix for an issue with creating new events on touch devices in the Timeline view
@@ -424,7 +439,7 @@ HTML structure of the Timeline view has changed significantly, some code changes
 <span class='release_date'>June 13, 2014. Minor update</span>
 
 1. New "Flat" skin  - ([details](skins.md#flatskin))
-2. Assigning events to several sections of [Timeline](timeline_view.md#assigningeventstoseveralsections) and [Units](units_view.md#assigningeventstoseveralunits) Views 
+2. Assigning events to several sections of [Timeline](timeline_view.md#assigningeventstoseveralsections) and [Units](units_view.md#assigningeventstoseveralunits) Views
 (PRO version)
 3. Ability to resize multi-day events in the Month view by drag-and-drop ([details](month_view.md#resizingeventsbydragndropver41))
 4. Drag-n-drop operations between schedulers ([details](dhtmlx_components_integration.md#draganddropbetweenschedulers))
@@ -451,7 +466,7 @@ HTML structure of the Timeline view has changed significantly, some code changes
 7. Scheduler can load json data from .Net web services
 8. Documentation greatly improved
 
-3.7 
+3.7
 -----
 
 <span class='release_date'>February 20, 2013. Minor update</span>
@@ -460,19 +475,19 @@ HTML structure of the Timeline view has changed significantly, some code changes
 2.  Romanian locale added
 
 
-3.6 
+3.6
 -----
 
 <span class='release_date'>December 3, 2012. Minor update</span>
 
-1.  Windows8 edition added ([details](winjs_compatibility.md)) 
+1.  Windows8 edition added ([details](winjs_compatibility.md))
 2.  Extended date format configuration for lightbox form
 3.  Sub-day navigation in timeline view
-4.  Ability to define custom sorting in timeline view 
+4.  Ability to define custom sorting in timeline view
 5.  Multi-page export to PDF ([details](pdf_multi.md))
 
 
-3.5 
+3.5
 -----
 
 <span class='release_date'>August 24, 2012. Minor update</span>
@@ -480,11 +495,11 @@ HTML structure of the Timeline view has changed significantly, some code changes
 1.  Ability to show [multiple schedulers](multiple_per_page.md) on the page
 2.  Support for loading JSON directly from Connectors ([details](server_integration.md#retrieving_data_in_json_format))
 3.  Custom events rendering ([details](custom_events_display.md))
-4.  Timeline view improved (support for drag, resize, event height control) 
+4.  Timeline view improved (support for drag, resize, event height control)
 5.  New 'dhx_terrace' skin ([details](skins.md#the_white_skin))
 6.  New options for blocking dates ([details](limits.md#how_to_block_certain_dates))
 7.  Marking time intervals ([details](limits.md#how_to_mark_certain_dates))
-8.  Highlighting time intervals ([details](api/scheduler_marktimespan.md)) 
+8.  Highlighting time intervals ([details](api/scheduler_marktimespan.md))
 9.  New API methods: api/scheduler_updateview.md, api/scheduler_showevent.md, api/scheduler_getrenderedevent.md, api/scheduler_getactiondata.md
 10.  JSMessage included ([details](http://dhtmlx.github.com/message/))
 11.  [Grid view](grid_view.md) (PRO version)
@@ -512,12 +527,12 @@ HTML structure of the Timeline view has changed significantly, some code changes
 
 
 
-2.3 
+2.3
 --------
 
 <span class='release_date'>August 30, 2010. Minor update</span>
 
-###Major Changes 
+###Major Changes
 
 
 1.  Map view was added ([details](map_view.md))
@@ -528,7 +543,7 @@ HTML structure of the Timeline view has changed significantly, some code changes
 6.  Ability to move events by drop-and-drag in Timeline mode
 7.  Ability to create new events by external drag and drop ([details](dhtmlx_components_integration.md))
 
-### Minor Changes 
+### Minor Changes
 
 
 + Week-number format option was added ([details](settings_format.md))
@@ -548,12 +563,12 @@ HTML structure of the Timeline view has changed significantly, some code changes
 + incorrect event rendering for overlapping events
 
 
-2.2 
+2.2
 -------
 
 <span class='release_date'>April 14, 2010. Minor update</span>
 
-###Major Changes 
+###Major Changes
 
 
 1.  Export to XML, iCal, JSON added ([details](export.md))
@@ -562,10 +577,10 @@ HTML structure of the Timeline view has changed significantly, some code changes
 4.  'Collision detection' extension was added ([details](collisions.md))
 5.  'Date-scale limitation' extension was added ([details](collisions.md#limitations))
 6.  Mini-calendar extension was added ([details](minicalendar.md))
-7.  [Timeline view](timeline_view.md) was added 
+7.  [Timeline view](timeline_view.md) was added
 8.  Auto-fetching option lists from the server ([details](select.md#populatingthecontrolwithdatafromtheserver))
- 
-###Minor Changes 
+
+###Minor Changes
 
 
 - hotkeys and some element's sizes are configurable now
@@ -579,14 +594,14 @@ HTML structure of the Timeline view has changed significantly, some code changes
 - many time-shifting related bugs
 - problems with recurring events in the Agenda view
 - problems with recurring events in the Year view
-  
 
-2.1 
+
+2.1
 -------
 
 <span class='release_date'>December 2, 2009. Minor update</span>
 
-###Major Changes  
+###Major Changes
 
 
 1.  Agenda view was added ([details](agenda_view.md))
@@ -595,7 +610,7 @@ HTML structure of the Timeline view has changed significantly, some code changes
 4.  Skin Builder for the scheduler was added
 5.  Count of samples was doubled
 
-###Full List of Updates 
+###Full List of Updates
 
 
 + agenda view
@@ -623,7 +638,7 @@ HTML structure of the Timeline view has changed significantly, some code changes
 + incorrect position of lightbox on scrollable page
 + summer|winter time transition is fixed
 + fixed issue with multi_day zone rendering, while deleting|adding events
-+ problem with incorrect recurring view, after resize in edit mode, is fixed 
++ problem with incorrect recurring view, after resize in edit mode, is fixed
 + event editor doesn't close, if "onClick" event is disabled (#617)
 + incorrect processing of 12AM, while parsing the string to date
 
@@ -634,7 +649,7 @@ HTML structure of the Timeline view has changed significantly, some code changes
 
 <span class='release_date'>July 20, 2009. Major update</span>
 
-###Major Changes 
+###Major Changes
 
 1.  Added support of [Recurring events](recurring_events.md)
 2.  Added ability to create [Units view](units_view.md) (PRO version)
