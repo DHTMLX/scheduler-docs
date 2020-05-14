@@ -22,7 +22,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 ### Updates
 
-- Scheduler now automatically tracks the container resizes and adjusts its own sizes accordingly
+- Scheduler now automatically tracks the container resize and adjusts its own sizes accordingly
 - Add [Mini Calendar](minicalendar.md) control for the [header config](api/scheduler_header_config.md)
 
 5.3.7
