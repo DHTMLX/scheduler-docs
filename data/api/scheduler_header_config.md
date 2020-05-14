@@ -2,7 +2,7 @@ header
 =============
 
 @short: provides a layout-like configuration for the scheduler header (navigation panel)
-	
+
 
 @type: array|object
 @default: null
@@ -33,14 +33,14 @@ Note, that the height of the header/navigation bar is still controlled by the [s
 scheduler.xy.nav_height = 80;
 scheduler.config.header = {
 	rows: [
-		{ 
+		{
 			cols: [
 				"prev",
 				"date",
 				"next",
 			]
 		},
-		{ 
+		{
 			cols: [
 				"day",
 				"week",
@@ -69,6 +69,7 @@ The supported values are:
  - **"day", "week", "month", etc.** - view tabs
  - **"spacer"** - a transparent element which takes the whole free space, can be used to push another element to the right side of the header
  - **{html: string, click: function, css: string}** - an object for injecting custom buttons or icons into the header
+ - **"minicalendar"** - a [Mini Calendar](minicalendar.md) toggle.
 
 ~~~js
 scheduler.config.header = [
@@ -84,6 +85,58 @@ scheduler.config.header = [
 scheduler.init("scheduler_here");
 ~~~
 
-@related: 
+#### Mini Calendar settings:
+
+The "minicalendar" value will display a minicalendar button with the following click handler:
+
+~~~
+function showCalendar () {
+	if (scheduler.isCalendarVisible()) {
+		scheduler.destroyCalendar();
+	} else {
+		scheduler.renderCalendar({
+			position: this,
+			date: scheduler.getState().date,
+			navigation: true,
+			handler: function (date, calendar) {
+				scheduler.setCurrentView(date);
+				scheduler.destroyCalendar();
+			}
+		});
+	}
+};
+~~~
+
+If you want to call api/scheduler_rendercalendar.md with different parameters, you need to provide your own onclick handler for the minicalendar button:
+
+~~~
+scheduler.config.header = [
+	"day",
+	"week",
+	"month",
+	{view: "minicalendar", click: function () {
+		if (scheduler.isCalendarVisible()) {
+			scheduler.destroyCalendar();
+		} else {
+			scheduler.renderCalendar({
+				position: this,
+				date: scheduler.getState().date,
+				navigation: true,
+				handler: function (date, calendar) {
+					scheduler.setCurrentView(date);
+					scheduler.destroyCalendar();
+				}
+			});
+		}
+	}},
+	"date",
+	"prev",
+	"today",
+	"next"
+];
+~~~
+
+@related:
 touch_support.md
 initialization.md#initializingschedulervialayoutconfigurationproperty
+minicalendar.md
