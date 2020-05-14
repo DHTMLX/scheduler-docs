@@ -18,11 +18,11 @@ If you are updating Scheduler from an older version, check migration_from_older_
 ### Fixes
 
 - Fix the incorrect height of the modal overlay of the [Lightbox](lightbox_editors.md)
-- Fix the incorrect sizes of the scheduler when the scheduler initialized inside Bootstrap modals.
+- Fix the incorrect sizes of the scheduler when the scheduler is initialized inside Bootstrap modals
 
 ### Updates
 
-- Scheduler now automatically tracks the container resizes and adjusts its own sizes accordingly.
+- Scheduler now automatically tracks the container resizes and adjusts its own sizes accordingly
 - Add [Mini Calendar](minicalendar.md) control for the [header config](api/scheduler_header_config.md)
 
 5.3.7

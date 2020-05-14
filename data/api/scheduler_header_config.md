@@ -87,7 +87,7 @@ scheduler.init("scheduler_here");
 
 #### Mini Calendar settings:
 
-A "minicalendar" value will display a minicalendar button with a following click handler:
+The "minicalendar" value will display a minicalendar button with the following click handler:
 
 ~~~
 function showCalendar () {
@@ -107,7 +107,7 @@ function showCalendar () {
 };
 ~~~
 
-If you want to call api/scheduler_rendercalendar.md with different parameters, you'll need to provide your own onclick handler for the minicalendar button:
+If you want to call api/scheduler_rendercalendar.md with different parameters, you need to provide your own onclick handler for the minicalendar button:
 
 ~~~
 scheduler.config.header = [
