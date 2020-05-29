@@ -19,14 +19,23 @@ for (var i=0; i<evs.length; i++){
 // or
 var evs = scheduler.getEvents();// will return all events 
 
-
-
 @template:	api_method
 @relatedsample:
 	03_extensions/01_recurring_events.html
     09_api/07_highlighted_timespans_month_view.html
 @descr: 
-If you don't specify any parameters,  the method will return all events 
+ 
+If support for [recurring events](recurring_events.md) is activated, the "from-to" parameters are required for the **getEvents** method. 
+
+~~~js
+var today = scheduler.date.day_start(new Date());
+var nextWeek = scheduler.date.add(today, 1, "week");
+var events = scheduler.getEvents(today, nextWeek);
+~~~
+
+Otherwise, the getEvents() method will return an empty array because the recurring extension allows setting endless sequences of events while the method can't return an endless array.
+
+If recurring events are disabled, the method will work correctly as with parameters as without them. But in case you don't specify any parameters,  the method will return all events.
 
 
 
