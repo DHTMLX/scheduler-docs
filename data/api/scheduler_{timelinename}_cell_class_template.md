@@ -25,5 +25,7 @@ scheduler.templates.timeline_cell_class = function(evs, date, section){
 
 @related:
 	timeline_view_templates.md
+    
+@relatedapi: api/scheduler_{timelinename}_row_class_template.md
 
 @edition:pro

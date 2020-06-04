@@ -29,5 +29,7 @@ The Timeline view, 'cell' mode only
 
 @related:
 	timeline_view_templates.md
+    
+@relatedapi: api/scheduler_{timelinename}_row_class_template.md
 
 @edition:pro

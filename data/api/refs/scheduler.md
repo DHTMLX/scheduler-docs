@@ -385,6 +385,7 @@ Scheduler API
 - api/scheduler_{timelinename}_scale_label_template.md - specifies items of the Y-Axis
 - api/scheduler_{timelinename}_tooltip_template.md - specifies the tooltip over a day cell containing some scheduled event(s)
 - api/scheduler_{timelinename}_date_template.md - specifies the date in the header of the view
+- api/scheduler_{timelinename}_row_class_template.md - specifies the CSS class that will be applied to a row of the Timeline view
 - api/scheduler_{timelinename}_scale_date_template.md - specifies items of the X-Axis
 - api/scheduler_{timelinename}_second_scale_date_template.md - specifies items of the second X-Axis
 - api/scheduler_{unitsname}_date_template.md - specifies the date in the header of the view

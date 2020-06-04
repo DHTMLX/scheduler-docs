@@ -10,6 +10,21 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+
+5.3.9
+----------
+<span class='release_date'>June 4, 2020. Bugfix release</span>
+
+
+### Fixes
+
+- Fix the incorrect display of a [scrollable timeline](timeline_view.md#horizontalscroll) after scrolling it down and dragging and dropping the last row 
+- Fix the incorrect display of events which happened after switching between two [scrollable timelines](timeline_view.md#horizontalscroll) 
+- Fix script error that fired when a [timeline](timeline_view.md) was scrolled on touch devices 
+- Fix the incorrect Content-Type of POST/PUT/DELETE requests sent by `dataProcessor` when [custom headers](server_integration.md#customrequestheadersandparameters) are specified
+- The [timeline_row_class](api/scheduler_{timelinename}_row_class_template.md ) template for CSS class of a timeline row is added
+
+
 5.3.8
 ----------
 <span class='release_date'>May 14, 2020. Bugfix release</span>
