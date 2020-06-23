@@ -449,7 +449,8 @@ dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
 In cases when you don't want to fully reload the data, you can delete a single event from only the client-side using the **silent** parameter of the [deleteEvent](api/scheduler_deleteevent.md) method:
 
 ~~~js
-scheduler.deleteEvent(id, true); // will delete event only from the client-side, with no server calls
+// removes the specified event only from the client-side, without server calls
+scheduler.deleteEvent(id, true); 
 ~~~
 
 XSS, CSRF and SQL Injection Attacks
