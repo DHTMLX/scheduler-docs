@@ -435,7 +435,22 @@ dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
 
 The response object may contain any number of additional properties, they can be accessed via the `response` argument of the onAfterUpdate handler.
 
+If the server responded with an error on some of your action but the changes were saved on the client side, the best way to synchronize their states is to clear the client's state, and reload the correct data from the server side:
 
+~~~js
+dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
+    if(action == "error"){
+        scheduler.clearAll();
+        scheduler.load(url);
+    }
+});
+~~~
+
+In cases when you don't want to fully reload the data, you can delete a single event from only the client-side using the **silent** parameter of the [deleteEvent](api/scheduler_deleteevent.md) method:
+
+~~~js
+scheduler.deleteEvent(id, true); // will delete event only from the client-side, with no server calls
+~~~
 
 XSS, CSRF and SQL Injection Attacks
 ----------------------------

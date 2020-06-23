@@ -28,3 +28,13 @@ scheduler.deleteEvent(3);
 
 @descr: 
 
+The method can also take the second parameter:
+
+- **silent** - (*boolean*) if set to *true*, **deleteEvent** will work only on the client-side, and won't trigger any server calls:
+
+~~~js
+// removes the specified event only from the client-side
+scheduler.deleteEvent(id, true); 
+~~~
+
+Usually, the second parameter is used for server-error handling purposes.
