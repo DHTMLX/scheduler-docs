@@ -686,12 +686,12 @@ And finally, when user modifies or deletes a recurring series, we should delete 
 ~~~php
 private function deleteRelated($event){
   if($event->event_pid && $event->event_pid !== "none"){
-  	RecurringEvent::where("event_pid", $event->id)->delete();
+  	Event::where("event_pid", $event->id)->delete();
   }
 }
 
 public function update($id, Request $request){
-		$event = RecurringEvent::find($id);
+		$event = Event::find($id);
 
 		$event->text = strip_tags($request->text);
 		$event->start_date = $request->start_date;
@@ -707,7 +707,7 @@ public function update($id, Request $request){
 }
 
 public function destroy($id){
-	$event = RecurringEvent::find($id);
+	$event = Event::find($id);
 
    	// delete the modified instance of the recurring series
     if($event->event_pid){
