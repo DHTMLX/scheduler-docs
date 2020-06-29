@@ -90,7 +90,7 @@ object has the following properties:
 	- <b>x_date</b> - (<i>string</i>) the date format of the axis (settings_format.md). If not specified,  the api/scheduler_hour_date_config.md format is used
 - <b>scrollable</b> - (<i>boolean</i>) enables horizontal scroll in the Timeline view, false by default. If <i>false</i> or undefined, date columns will shrink to fit the time scale into the viewport width.
 If <i>true</i>, date columns will not shrink less than the <b>column_width</b> value, a horizontal scroll bar will appear when necessary.
-- <b>column_width</b> - (<i>boolean</i>) defines the minimal width of timeline date columns, 100 by default
+- <b>column_width</b> - (<i>number</i>) defines the minimal width of timeline date columns, 100 by default
 - <b>scroll_position</b> - (<i>Date</i>) renders timeline scrolled to a specific position, takes the same arguments as <b>timeline.scrollTo()</b>, i.e. the date you want timeline to be scrolled to after rendering
 - <b>autoscroll</b> - (<i>object</i>) allows configuring sensibility and speed of autoscroll. The autoscroll object has the properties below:
 	- <b>range_x</b> - (<i>number</i>) horizontal autoscroll distance from the edge of the data area
