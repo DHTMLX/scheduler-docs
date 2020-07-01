@@ -78,7 +78,17 @@ scheduler.exportToExcel({
 });
 ~~~
 
+#### Setting date format
 
+To specify the format in which dates will be exported to an Excel file, use the **xml_format** template:
+
+~~~js
+scheduler.templates.xml_format = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
+~~~
+
+{{editor	https://snippet.dhtmlx.com/5/6d3de8fa2		Setting date format}}
+
+See the date format specification [here](settings_format.md).
 
 Export to iCal
 -------------------

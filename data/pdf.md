@@ -130,7 +130,7 @@ scheduler.exportToPDF({
 To add a header/footer to the output PDF file, use the **header**/**footer** properties in the parameter of the [exportToPDF](pdf.md#parametersoftheexportmethod) method:
 
 {{note
-Note, you can use any HTML while specifying the parameters. While specifying images, remember that you need to set global paths as values of the "src" attribute
+Note, you can use any HTML while specifying the parameters. While specifying images, remember that you need to set global paths as values of the "src" attribute.
 }}
 
 ~~~js
