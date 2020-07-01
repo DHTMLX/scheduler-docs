@@ -211,7 +211,7 @@ This update changes behavior of multiple API methods. While they shouldn't cause
 ###New functionality
 
 1. [Custom HTML content for timeline cells](timeline_view.md#customcontentincells) (PRO version)
-2. [Drag-n-drop of events by the body](migration_from_older_version.md#dnd)
+2. [Drag-n-drop of events by the body](api/scheduler_drag_event_body_config.md)
 
 ###Updates
 
