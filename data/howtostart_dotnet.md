@@ -408,7 +408,7 @@ namespace DHX.Scheduler.Web.Controllers
         }
 
         // GET: api/scheduler/5
-        public WebAPIEventGet(int id)
+        public WebAPIEvent Get(int id)
         {
             return (WebAPIEvent)db.SchedulerEvents.Find(id);
         }
