@@ -17,6 +17,6 @@ scheduler.init('scheduler_here',new Date(2013,0,10),"year");
 @relatedapi:
 	api/scheduler_year_y_config.md
 @descr:
-{{note The property is ignored in the Material skin. In the Material skin the number of rows in the Year view is controlled by CSS.}}
+{{note The property is ignored in the Material skin. In the Material skin, the number of rows in the Year view is controlled by CSS.}}
 
 @apigroup: Views/Year view
