@@ -60,6 +60,14 @@ The **exportToExcel()** method takes as a parameter an object with several prope
 			<td class="webixdoc_links0"><b>server</b></td>
 			<td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/scheduler</strong></td>
 		</tr>
+		<tr>
+			<td class="webixdoc_links0"><b>start</b></td>
+			<td>(<i>string|object</i>) sets the start date of the data range that will be presented in the output</td>
+		</tr>
+		<tr>
+			<td class="webixdoc_links0"><b>end</b></td>
+			<td>(<i>string|object</i>) sets the end date of the data range that will be presented in the output</td>
+		</tr>
     </tbody>
 </table>
 <br>
@@ -74,7 +82,9 @@ scheduler.exportToExcel({
 		{ id:"text",  header:"Title", width:150 },
         { id:"start_date",  header:"Start date", width:250 }
     ],
-    server:"https://myapp.com/myexport/scheduler"
+    server:"https://myapp.com/myexport/scheduler",
+	start: new Date(1999, 01, 01),
+    end:  new Date(2022, 01, 01)
 });
 ~~~
 
