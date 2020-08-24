@@ -12,19 +12,18 @@ callEvent
 
 
 @example:
-scheduler.callEvent
+scheduler.attachEvent("CustomEvent", function(param1, param2){
+	return true;
+});
+
+var res = scheduler.callEvent("CustomEvent", [param1, param2]);
+
+
 @template:	api_method
 @descr:
 Normally, events are called automatically and you don't need to use this method.
 
 
-
-@example:
-scheduler.attachEvent("CustomEvent", function(param1, param2){
- return true;
-});
-
-var res = scheduler.callEvent("CustomEvent", [param1, param2]);
 
 @relatedapi:
 	api/scheduler_attachevent.md
