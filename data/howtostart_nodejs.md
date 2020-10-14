@@ -1,7 +1,7 @@
-dhtmlxScheduler with Node.js 
+dhtmlxScheduler with Node.js
 ===================================
 
-The current tutorial is intended for creating Scheduler with Node.js and REST API on the server side. 
+The current tutorial is intended for creating Scheduler with Node.js and REST API on the server side.
 If you use some other technology, check the list of available integration variants below:
 
 - howtostart_dotnet_core.md
@@ -12,7 +12,7 @@ If you use some other technology, check the list of available integration varian
 - howtostart_ruby.md
 - howtostart_connector.md
 
-Our implementation of Scheduler with Node.js will be based on REST API that will be used for communication with server. 
+Our implementation of Scheduler with Node.js will be based on REST API that will be used for communication with server.
 Node.js has a set of ready-made solutions, so we won't have to code everything from the very beginning.
 
 This tutorial uses the [Express](http://expressjs.com/) framework and MySQL as a data storage.
@@ -54,7 +54,7 @@ The package manager will create a *package.json* file that will look similar to 
 {
     "name": "scheduler-backend",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "server.js",
     "author": "Me",
     "license": "MIT",
 }
@@ -95,7 +95,7 @@ Then open the **package.json** file, and add the "scripts" section:
 
 ~~~
 "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
 }
 ~~~
 
@@ -105,11 +105,11 @@ After that **package.json** looks like this:
 {
     "name": "scheduler-backend",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "server.js",
     "author": "Me",
     "license": "MIT",
     "scripts": {
-        "start": "node index.js"
+        "start": "node server.js"
     },
     "dependencies": {
         "body-parser": "^1.18.3",
@@ -152,9 +152,9 @@ Then create an *index.html* file in the **public** directory:
         <title>DHTMLX Sсheduler example</title>
         <meta charset="utf-8">
         <!-- scheduler -->
-        <script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js" 
+        <script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js"
         	charset="utf-8"></script>
-      <link href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_material.css" 
+      <link href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_material.css"
       		rel="stylesheet" type="text/css" charset="utf-8">
         <style>
             html, body{
@@ -166,7 +166,7 @@ Then create an *index.html* file in the **public** directory:
         </style>
     </head>
     <body>
-        <div id="scheduler_here" class="dhx_cal_container" 
+        <div id="scheduler_here" class="dhx_cal_container"
         	style='width:100%; height:100%;'>
             <div class="dhx_cal_navline">
                 <div class="dhx_cal_prev_button">&nbsp;</div>
@@ -188,9 +188,9 @@ Then create an *index.html* file in the **public** directory:
             scheduler.load("http://localhost:3000/data", "json");
 
             var dp = new dataProcessor("http://localhost:3000/data");
+            dp.init(scheduler);
             // use RESTful API on the backend
             dp.setTransactionMode("REST");
-            dp.init(scheduler);
         </script>
     </body>
 </html>
@@ -289,7 +289,7 @@ Step 4. Implementing CRUD
 ### Implementing data access
 
 All the read/write logic will be defined in a separate module `Storage`. It'll take mysql connection and perform simple CRUD to the specified table: read all the events,
-insert new events, update or delete the existing ones. 
+insert new events, update or delete the existing ones.
 
 For this, create the file *storage.js* and add the code below into it:
 
@@ -405,12 +405,12 @@ module.exports = {
 };
 ~~~
 
-All it does is sets up the application to listen request URLs that scheduler can send and calls the appropriate methods of the storage. 
+All it does is sets up the application to listen request URLs that scheduler can send and calls the appropriate methods of the storage.
 
-Note, that all methods are wrapped into `try-catch` blocks, for you to be able to capture any error and return an appropriate error response to the 
+Note, that all methods are wrapped into `try-catch` blocks, for you to be able to capture any error and return an appropriate error response to the
 client. Check more info on [error handling](https://docs.dhtmlx.com/scheduler/server_integration.html#errorhandling).
 
-Also note that the exception message is written directly to the API response. It's pretty handy during the development, but in the production environment it can be a good idea 
+Also note that the exception message is written directly to the API response. It's pretty handy during the development, but in the production environment it can be a good idea
 to hide these messages from the client side, since raw mysql exceptions that get there may contain sensitive data.
 
 ### Getting it work together
@@ -438,11 +438,11 @@ If you restart the application now, you should be able to create delete and modi
 Dynamic loading
 ---------------
 
-Currently scheduler loads all records from the *events* table on startup. It can work well if you know that the amount of data will remain small over time. But when scheduler is used for 
-something like a planning/booking application and you don't delete or move obsolete records to another table, the amounts of data will build up fairly quickly and in a couple of month of active usage 
+Currently scheduler loads all records from the *events* table on startup. It can work well if you know that the amount of data will remain small over time. But when scheduler is used for
+something like a planning/booking application and you don't delete or move obsolete records to another table, the amounts of data will build up fairly quickly and in a couple of month of active usage
 you may find that your app requests a couple of MBs of events each time a user loads the page.
 
-It can easily be avoided by using dynamic loading. Scheduler will add the displayed dates to the request parameters and you'll be able to return only the records that need to be displayed. 
+It can easily be avoided by using dynamic loading. Scheduler will add the displayed dates to the request parameters and you'll be able to return only the records that need to be displayed.
 Each time the user switches to a new data range, scheduler will request a new portion of data.
 
 To enable dynamic loading in UI, you can set the *setLoadMode* option to any of the values: "day", "week", "month". For any practical reasons, "day" should work well.
@@ -538,17 +538,17 @@ Finally, you'll need to [update the storage](recurring_events.md#editingdeleting
 
 Firstly, let's take a look at the `insert` method. Here you need to update the SQL query in order to add new columns.
 
-Secondly, you should process a special case for recurring events - deletion of a specific occurrence of the recurring series requires creating a new database record and the client 
+Secondly, you should process a special case for recurring events - deletion of a specific occurrence of the recurring series requires creating a new database record and the client
 will call the *insert* action for it:
 
 {{snippet storage.js}}
 ~~~
 // create a new event
 async insert(data) {
-   let sql = "INSERT INTO ?? " + 
+   let sql = "INSERT INTO ?? " +
       "(`start_date`, `end_date`, `text`, `event_pid`, `event_length`, `rec_type`) " + /*!*/
       "VALUES (?, ?, ?, ?, ?, ?)"; /*!*/
-      
+
    const result = await this._db.query(
       sql,
       [
@@ -560,13 +560,13 @@ async insert(data) {
          data.event_length || 0, //!
          data.rec_type //!
       ]);
-        
+
    // delete a single occurrence from a recurring series
    let action = "inserted"; /*!*/
    if (data.rec_type == "none") { /*!*/
      action = "deleted"; /*!*/
    } /*!*/
-   
+
    return {
      action: action,
      tid: result.insertId
@@ -613,7 +613,7 @@ async update(id, data) {
 
 Finally, let's update the `delete` action. Here you have to check two special cases:
 
-- if the event you are going to delete has a non-empty `event_pid`, it means a user deletes a modified instance of the recurring series. Instead of deleting such a record from the database, 
+- if the event you are going to delete has a non-empty `event_pid`, it means a user deletes a modified instance of the recurring series. Instead of deleting such a record from the database,
 you need to give it `rec_type='none'`, in order for scheduler to skip this occurrence.
 - if a user deletes a whole recurring series, you also need to delete all the modified instances of that series.
 
@@ -629,7 +629,7 @@ async delete(id) {
 
     if (event.event_pid) {
         // deleting modified occurrence from a recurring series
-        // If an event with the event_pid value was deleted, 
+        // If an event with the event_pid value was deleted,
         // it should be updated with "rec_type==none" instead of deleting.
         event.rec_type = "none";
         return await this.update(id, event);
@@ -655,7 +655,7 @@ async delete(id) {
 Application security
 -----------------
 
-dhtmlxScheduler is a client-side component that doesn't have built-in security safeguards for the sake of flexibility. 
+dhtmlxScheduler is a client-side component that doesn't have built-in security safeguards for the sake of flexibility.
 Moreover, the client side only is not able to provide reliable security measures.
 
 It means that the application security is in the responsibility of a backend developer. The most obvious aspects to pay attention to are the following:
@@ -699,7 +699,7 @@ dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
 Trouble shooting
 -----------------
 
-In case you've completed the above steps to implement Scheduler integration with Node.js, but Scheduler doesn't render events on a page, have a look at the troubleshooting.md article. It describes 
+In case you've completed the above steps to implement Scheduler integration with Node.js, but Scheduler doesn't render events on a page, have a look at the troubleshooting.md article. It describes
 the ways of identifying the roots of the problems.
 
 
