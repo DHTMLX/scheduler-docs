@@ -11,6 +11,18 @@ If you are updating Scheduler from an older version, check migration_from_older_
 </style>
 
 
+5.3.10
+----------
+<span class='release_date'>November 11, 2020. Bugfix release</span>
+
+
+### Fixes
+
+- Fix the incorrect work of [column_width](timeline_view.md#horizontalscroll) when some units are [hidden](custom_scales.md)
+- Fix touch support on iPad on Safari
+- Fix the incorrect work of the [onDblClick](api/scheduler_ondblclick_event.md) and [onClick](api/scheduler_onclick_event.md) events when handling *false* result in [Grid view](grid_view.md)
+- Fix the incorrect work of drag and drop in [Timeline view](timeline_view.md) which caused events to move to the next section after clicking on the bottom border of the event bar
+
 5.3.9
 ----------
 <span class='release_date'>June 4, 2020. Bugfix release</span>
