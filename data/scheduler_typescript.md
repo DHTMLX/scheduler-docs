@@ -1,26 +1,10 @@
 Using Scheduler with TypeScript
 ===============================
 
-You can use the dhtmlxScheduler library together with TypeScript. All the TypeScript definitions are stored in the [github repository](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/dhtmlxscheduler).
+You can use the dhtmlxScheduler library together with TypeScript. All the TypeScript definitions are stored in the **dhtmlxscheduler.d.ts** file.
 
 By using Scheduler with TypeScript you will get useful suggestions while working in any modern IDE. Besides, it guarantees the stability of code, since the used types will be 
 constantly checked.
-
-Getting TypeScript declarations
---------------------------
-
-It is possible to import TypeScript declarations from [DefinitelyTyped](http://definitelytyped.org/) with the following command:
-
-~~~js
-npm install @types/dhtmlxscheduler --save
-~~~
-
-and in your code you need to specify:
-
-~~~js
-import "dhtmlx-scheduler";
-import {} from "@types/dhtmlxscheduler";
-~~~
 
 
 Declaring global variables
