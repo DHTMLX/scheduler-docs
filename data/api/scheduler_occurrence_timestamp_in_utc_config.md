@@ -14,7 +14,8 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 @template:	api_config
 @descr:
 {{note
-Watch out! The option is intended for 'newborn' schedulers and won't affect the already running ones.
+Watch out! The option is intended for 'newborn' schedulers with no existing recurring events.
+Applying to the scheduler with already existing recurring events will break them.
 }}
 - If the option is enabled, timestamps of events are stored as UNIX time.
 - The option is available from version 3.5.
