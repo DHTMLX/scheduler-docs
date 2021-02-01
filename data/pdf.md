@@ -94,6 +94,17 @@ The **exportToPDF()** method takes as a parameter an object with a number of pro
 			<td class="webixdoc_links0"><b>server</b></td>
 			<td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/scheduler</strong></td>
 		</tr>
+        <tr>
+			<td class="webixdoc_links0"><b>additional_settings</b></td>
+			<td>(<i>object</i>) an object with additional settings. The object can contain the following attributes:
+			<ul>
+					<li><b>format</b> - (<i>string</i>) the format of the output file: <i>'A3', 'A4', 'A5', 'Legal', 'Letter', 'Tabloid'</i></li>
+					<li><b>landscape</b> - (<i>boolean</i>) the portrait or landscape orientation of the output file. The attribute works only when the "format" attribute is specified.</li>
+					<li><b>width</b> - (<i>string|number|"content"</i>) the width of the output page. The attribute is used when exporting multiple pages. </li>
+					<li><b>height</b> - (<i>string|number|"content"</i>) the height of the output page. The attribute is used when exporting multiple pages.</li>
+				</ul>
+			</td>
+		</tr>
     </tbody>
 </table>
 <br>
