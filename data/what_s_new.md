@@ -26,7 +26,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 ### Updates
 
 - The [onBeforeEventPasted](api/scheduler_onbeforeeventpasted_event.md) API event is added in order to allow validation or modifying the position of the pasted event
-- New api/scheduler_recurring_overflow_instances_config.md configuration option is added
+- New [recurring_overflow_instances](api/scheduler_recurring_overflow_instances_config.md) configuration option is added
 
 
 
