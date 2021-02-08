@@ -36,8 +36,8 @@ Methods
 - api/scheduler_event.md - attaches an event handler to an HTML element
 - api/scheduler_eventremove.md - removes an event handler from an HTML element
 - api/scheduler_expand.md - expands the scheduler to the full screen view
-- api/scheduler_exporttopdf.md - 
-- api/scheduler_exporttopng.md - 
+- api/scheduler_exporttopdf.md - exports a Scheduler into the PDF format
+- api/scheduler_exporttopng.md - exports a Scheduler into the PNG format
 - api/scheduler_focus.md - sets focus on the scheduler
 - api/scheduler_formsection.md - gives access to the objects of lightbox's sections
 - api/scheduler_getactiondata.md - returns the current cursor-pointed date and section (if defined)

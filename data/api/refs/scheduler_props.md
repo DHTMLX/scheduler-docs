@@ -92,6 +92,7 @@ Properties
 - api/scheduler_quick_info_detached_config.md - defines whether the event form will appear from the left/right side of the screen or near the selected event
 - api/scheduler_readonly_config.md - activates the read-only mode for the scheduler
 - api/scheduler_readonly_form_config.md - activates the read-only mode for the lightbox
+- api/scheduler_recurring_overflow_instances_config.md - 
 - api/scheduler_recurring_workdays_config.md - specifies working days that will affect the recurring event when the user selects the ""Every workday" option in the lightbox
 - api/scheduler_repeat_date_config.md - sets the date format of the 'End by' field in the 'recurring' lightbox
 - api/scheduler_repeat_precise_config.md - prevents including past days to events with the 'weekly' recurrence
@@ -216,6 +217,7 @@ Properties
 - api/scheduler_quick_info_detached_config.md
 - api/scheduler_readonly_config.md
 - api/scheduler_readonly_form_config.md
+- api/scheduler_recurring_overflow_instances_config.md
 - api/scheduler_recurring_workdays_config.md
 - api/scheduler_repeat_date_config.md
 - api/scheduler_repeat_precise_config.md

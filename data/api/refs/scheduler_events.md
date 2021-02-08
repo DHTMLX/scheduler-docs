@@ -16,7 +16,7 @@ Events
 - api/scheduler_onbeforeeventdisplay_event.md - fires when the 'showEvent' method is called to show a specific event and fires BEFORE the event is displayed
 - api/scheduler_onbeforeeventdragin_event.md - fires before a dragged event is moved over the scheduler
 - api/scheduler_onbeforeeventdragout_event.md - fires before the dragged event is moved out of the scheduler
-- api/scheduler_onbeforeeventpasted_event.md - 
+- api/scheduler_onbeforeeventpasted_event.md - fires before the user presses the 'CTRL+V' keyboard command
 - api/scheduler_onbeforeexpand_event.md - fires when a user clicks on the expand icon to change the scheduler's size from original to 'full screen'.
 - api/scheduler_onbeforeexternaldragin_event.md - fires before some element starts to be dragged into the scheduler from an outside DHTMLX component (only with dnd extension enabled)
 - api/scheduler_onbeforefoldertoggle_event.md - fires before a tree branch will be opened or closed (the Timeline view, 'tree' mode only)
@@ -52,8 +52,8 @@ Events
 - api/scheduler_oneventloading_event.md - fires when an event is being loaded from the data source
 - api/scheduler_oneventpasted_event.md - fires when the user presses the 'CTRL+V' keyboard command
 - api/scheduler_oneventsave_event.md - fires when the user clicks on the 'save' button in the lightbox (edit form)
-- api/scheduler_oneventselected_event.md - 
-- api/scheduler_oneventunselected_event.md - 
+- api/scheduler_oneventselected_event.md - fires when the user selects an event in the scheduler
+- api/scheduler_oneventunselected_event.md - fires when the user unselects an event by selecting some other event
 - api/scheduler_onexpand_event.md - fires when a user clicks on the expand icon to change the scheduler's size from original to 'full screen'.
 - api/scheduler_onexternaldragin_event.md - fires when some data is being dragged into the scheduler from an outside DHTMLX component (only with dnd extension enabled)
 - api/scheduler_onlightbox_event.md - fires after the user has opened the lightbox (edit form)
