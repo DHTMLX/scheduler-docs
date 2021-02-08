@@ -2,7 +2,7 @@ recurring_overflow_instances
 =============
 
 
-@short: defines the behavior of recurrences that occur the next month
+@short: defines the behavior of the recurrences that transfer to the next month
 	
 @default: undefined
 

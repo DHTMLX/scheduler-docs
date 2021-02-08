@@ -11,6 +11,25 @@ If you are updating Scheduler from an older version, check migration_from_older_
 </style>
 
 
+5.3.11
+----------
+<span class='release_date'>February 11, 2021. Bugfix release</span>
+
+### Fixes
+
+- Fix the script error occurred when changing dates in the scheduler when the [Cookie extension](extensions_list.md#cookie) is enabled
+- Fix the incorrect value of the Content-Type header when the [transaction mode](https://docs.dhtmlx.com/api__dataprocessor_settransactionmode.html) of dataProcessor is set to "JSON"
+- CSS corrections for the Lightbox on [mobile devices](touch_support.md) when the [Terrace](skins.md#terraceskin) skin is used
+- Fix issues with [recurring events](recurring_events.md) that caused some events to transfer to the next month when the target month doesn't have the appropriate date and "monthly" recurrence is used
+
+
+### Updates
+
+- The [onBeforeEventPasted](api/scheduler_onbeforeeventpasted_event.md) API event is added in order to allow validation or modifying the position of the pasted event
+- New api/scheduler_recurring_overflow_instances_config.md configuration option is added
+
+
+
 5.3.10
 ----------
 <span class='release_date'>November 11, 2020. Bugfix release</span>
