@@ -55,7 +55,7 @@ To export the scheduler as a PNG image, do the following steps:
 Parameters of the export method
 ----------------------------------------------------------
 
-The **exportToPNG()** method takes as a parameter an object with a number of properties (all the properties are optional):
+The [exportToPNG()](api/scheduler_exporttopng.md) method takes as a parameter an object with a number of properties (all the properties are optional):
 
 <table class="webixdoc_links">
 	<tbody>
@@ -108,7 +108,7 @@ scheduler.exportToPNG({
 ##Name of the output file
 
 To set a custom name for the output file, use the **name** property in the 
-<a href="export.md#parametersoftheexportmethod">exportToPNG</a> method:
+[exportToPNG](png.md#parametersoftheexportmethod) method:
 
 ~~~js
 scheduler.exportToPNG({
@@ -121,7 +121,7 @@ scheduler.exportToPNG({
 ##Header/footer of the output file
 
 To add the header/footer to the output PNG file, use the **header**/**footer** properties in the 
-<a href="export.md#parametersoftheexportmethod">exportToPNG</a> method:
+[exportToPNG](png.md#parametersoftheexportmethod) method:
 
 {{note
 Note, you can use any HTML while specifying the parameters. While specifying images, remember that you need to set global paths as values of the "src" attribute

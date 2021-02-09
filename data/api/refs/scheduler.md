@@ -37,6 +37,8 @@ Scheduler API
 - api/scheduler_event.md - attaches an event handler to an HTML element
 - api/scheduler_eventremove.md - removes an event handler from an HTML element
 - api/scheduler_expand.md - expands the scheduler to the full screen view
+- api/scheduler_exporttopdf.md - exports a Scheduler into the PDF format
+- api/scheduler_exporttopng.md - exports a Scheduler into the PNG format
 - api/scheduler_focus.md - sets focus on the scheduler
 - api/scheduler_formsection.md - gives access to the objects of lightbox's sections
 - api/scheduler_getactiondata.md - returns the current cursor-pointed date and section (if defined)
@@ -125,6 +127,7 @@ Scheduler API
 - api/scheduler_onbeforeeventdisplay_event.md - fires when the 'showEvent' method is called to show a specific event and fires BEFORE the event is displayed
 - api/scheduler_onbeforeeventdragin_event.md - fires before a dragged event is moved over the scheduler
 - api/scheduler_onbeforeeventdragout_event.md - fires before the dragged event is moved out of the scheduler
+- api/scheduler_onbeforeeventpasted_event.md - fires before the user presses the 'CTRL+V' keyboard command
 - api/scheduler_onbeforeexpand_event.md - fires when a user clicks on the expand icon to change the scheduler's size from original to 'full screen'.
 - api/scheduler_onbeforeexternaldragin_event.md - fires before some element starts to be dragged into the scheduler from an outside DHTMLX component (only with dnd extension enabled)
 - api/scheduler_onbeforefoldertoggle_event.md - fires before a tree branch will be opened or closed (the Timeline view, 'tree' mode only)
@@ -160,6 +163,8 @@ Scheduler API
 - api/scheduler_oneventloading_event.md - fires when an event is being loaded from the data source
 - api/scheduler_oneventpasted_event.md - fires when the user presses the 'CTRL+V' keyboard command
 - api/scheduler_oneventsave_event.md - fires when the user clicks on the 'save' button in the lightbox (edit form)
+- api/scheduler_oneventselected_event.md - fires when the user selects an event in the scheduler
+- api/scheduler_oneventunselected_event.md - fires when the user unselects an event by selecting some other event
 - api/scheduler_onexpand_event.md - fires when a user clicks on the expand icon to change the scheduler's size from original to 'full screen'.
 - api/scheduler_onexternaldragin_event.md - fires when some data is being dragged into the scheduler from an outside DHTMLX component (only with dnd extension enabled)
 - api/scheduler_onlightbox_event.md - fires after the user has opened the lightbox (edit form)
@@ -286,6 +291,7 @@ Scheduler API
 - api/scheduler_quick_info_detached_config.md - defines whether the event form will appear from the left/right side of the screen or near the selected event
 - api/scheduler_readonly_config.md - activates the read-only mode for the scheduler
 - api/scheduler_readonly_form_config.md - activates the read-only mode for the lightbox
+- api/scheduler_recurring_overflow_instances_config.md - defines the behavior of the recurrences that transfer to the next month
 - api/scheduler_recurring_workdays_config.md - specifies working days that will affect the recurring event when the user selects the ""Every workday" option in the lightbox
 - api/scheduler_repeat_date_config.md - sets the date format of the 'End by' field in the 'recurring' lightbox
 - api/scheduler_repeat_precise_config.md - prevents including past days to events with the 'weekly' recurrence

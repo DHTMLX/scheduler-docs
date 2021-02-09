@@ -61,7 +61,7 @@ To export scheduler as a PDF document, do the following steps:
 Parameters of the export method
 ----------------------------------------------------------
 
-The **exportToPDF()** method takes as a parameter an object with a number of properties (all of the properties are optional):
+The [exportToPDF()](api/scheduler_exporttopdf.md) method takes as a parameter an object with a number of properties (all of the properties are optional):
 
 
 <table class="webixdoc_links">
