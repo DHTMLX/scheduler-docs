@@ -13,7 +13,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 5.3.11
 ----------
-<span class='release_date'>February 11, 2021. Bugfix release</span>
+<span class='release_date'>February 9, 2021. Bugfix release</span>
 
 ### Fixes
 
@@ -21,6 +21,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 - Fix the incorrect value of the Content-Type header when the [transaction mode](https://docs.dhtmlx.com/api__dataprocessor_settransactionmode.html) of dataProcessor is set to "JSON"
 - CSS corrections for the Lightbox on [mobile devices](touch_support.md) when the [Terrace](skins.md#terraceskin) skin is used
 - Fix issues with [recurring events](recurring_events.md) that caused some events to transfer to the next month when the target month doesn't have the appropriate date and "monthly" recurrence is used
+- Fix the issue that caused the modal overlay to stay visible after the Lightbox was closed via calling [scheduler.updateCollection()](api/scheduler_updatecollection.md)
 
 
 ### Updates
