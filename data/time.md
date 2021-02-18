@@ -134,3 +134,6 @@ scheduler.config.lightbox.sections = [
 {{sample
 	05_calendar/03_in_form.html
 }}
+
+
+To customize the mini calendar you can use [Mini Calendar Templates](mini_calendar_templates.md). 
