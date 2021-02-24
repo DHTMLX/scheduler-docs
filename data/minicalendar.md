@@ -60,6 +60,293 @@ function show_minical(){
 	05_calendar/01_select.html
 }}
 
+In the header (Third party Date Picker)
+-------------------------------------
+
+In this section we'll demonstrate you how to add a third party mini calendar (date picker) into the header of the scheduler.
+
+<img src="custom_minicalendar.png"/>
+
+{{editor	https://snippet.dhtmlx.com/5/3dfb95a3f	3rd party Mini Calendar in the header}}
+
+In our sample, we will add a mini calendar on the base of a jQuery plugin and Bootstrap Datepicker. If you use other libraries, you'll need to modify the code but the main approach should stay the same:
+
+1\. *Show the date picker when clicking the calendar header*
+
+Firstly, you need to define the DIV container for the mini calendar (or any other control) in the scheduler header.
+If you use the [markup approach for initialization](initialization.md#initializingschedulerviamarkup), you can do this, as in:
+
+~~~js
+<div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:100%;">
+  <div class="dhx_cal_navline">
+    <div class="dhx_cal_prev_button">&nbsp;</div>
+    <div class="dhx_cal_next_button">&nbsp;</div>
+    <div class="dhx_cal_today_button"></div>
+    <div class="dhx_cal_date"></div>
+    <!--- HERE -->
+    <div class="input-group date" style="display: none;">
+      <input type="text" class="form-control">
+      <div class="dhx_minical_icon input-group-addon" id="dhx_minical_icon">&nbsp;</div>
+    </div>
+    <!--- end HERE -->
+~~~
+
+If you use the [header config](initialization.md#initializingschedulerviaheaderconfig), you'll need to add [a custom element](api/scheduler_header_config.md) there:
+
+~~~js
+scheduler.config.header = [
+  "day",
+  "week",
+  "month",
+  {html:'<div class="input-group date" style="display: none;">'+
+    '<input type="text" class="form-control">'+
+    '<div class="dhx_minical_icon input-group-addon" id="dhx_minical_icon">&nbsp;</div>'+
+   	'</div>'},
+  "date",
+  "prev",
+  "today",
+  "next"
+];
+scheduler.init("scheduler_here");
+~~~
+
+To display the date picker on clicking the date in the navigation panel of the scheduler, we initialize the click event as soon as the scheduler is ready:
+
+~~~js
+scheduler.attachEvent("onSchedulerReady", function(){
+
+	var $node = $('#scheduler_here .input-group.date').datepicker({
+    	autoclose: true,
+    	todayHighlight: true,
+    	todayBtn: "linked",
+   	});
+
+   	$("#scheduler_here").delegate(".dhx_cal_date", "click", function () {
+   		$node.datepicker("show");
+   	});
+
+   	$node.datepicker().on("show", function () {
+    	$node.datepicker("update", scheduler.getState().date);
+
+   		// center popup below date label
+    	centerDatepicker($(".dhx_cal_date"));
+	});
+	...
+	
+});
+~~~
+
+`centerDatepicker` is an auxiliary function that we implement to render the dropdown date picker in the necessary place:
+
+~~~js
+	...
+	function centerDatepicker(referenceElement) {
+
+		if (!$('.datepicker-dropdown').is(':visible')) {
+    		return;
+   		}
+		// center popup below date label
+		var offset = $(".dhx_cal_date").offset();
+		var width = $(".dhx_cal_date").width();
+		var popupWidth = $(".datepicker-dropdown").width();
+		$(".datepicker-dropdown").css({
+			top: offset.bottom + "px",
+			left: (width - popupWidth) / 2 + "px"
+		});
+	}
+~~~
+
+2\. *Switch the scheduler to the selected date when the user clicks the date in the date picker*
+
+Once we display the datepicker on demand, we need to change the scheduler date when selecting a day in the calendar:
+
+~~~js
+	$node.datepicker().on("changeDate", function () {
+    	scheduler.setCurrentView($node.datepicker("getDate"));
+	});
+~~~
+
+3\. *Highlight current dates in the datepicker*
+
+To highlight the dates of the date picker that are currently displayed in the scheduler we use a simple css class:
+
+~~~js
+.datepicker table .scheduler-date{
+    background-color: #fff3e4;
+}
+~~~
+
+All cells of the date picker, that are currently visible in the scheduler, will receive this class:
+
+~~~js
+	function fillDatepicker(scheduler) {
+  		// reset highlighted events and active dates
+  		...
+  		$(".datepicker-dropdown").find("[data-date]").removeClass("scheduler-date");
+
+  		// highlight scheduler date
+  		var visibleDates = getVisibleDates(scheduler);
+  		visibleDates.forEach(function (date) {
+    		$(".datepicker-dropdown").find(
+				"[data-date='" + date + "']"
+			).addClass("scheduler-date");
+  		});
+  		...
+	}
+~~~
+
+In order to get the dates that are currently visible, you can use `scheduler.getState`:
+
+~~~js
+	function getVisibleDates(scheduler) {
+		var minVisible = scheduler.getState().min_date;
+		var maxVisible = scheduler.getState().max_date;
+
+		var current = minVisible;
+		var result = [];
+		while (current.valueOf() < maxVisible.valueOf()) {
+			var currentUTC = Date.UTC(
+				current.getFullYear(),current.getMonth(),current.getDate()
+			);
+    		result.push(currentUTC.valueOf());
+
+    		current = scheduler.date.add(current, 1, "day");
+  		}
+ 		return result;
+	}
+~~~
+
+4\. *Highlight days with events in the date picker*
+
+Next, we want the date picker to highlight the dates of the events specified in the scheduler.
+For that, we use the same approach as in the previous step and add a css class:
+
+~~~js
+.datepicker table .has-event::after {
+    content: " ";
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    background-color: #6b96f7;
+    border-radius: 4px;
+}
+~~~
+
+As you can see from the above example, we highlight the dates of the mini calendar that contain events. 
+
+To show the tooltip with the amount of events for the date that the user hovers over with the cursor, we need to get the events of the months currently displayed in the date picker:
+
+~~~js
+	function getVisibleEvents(calendarDate, scheduler) {
+      	var min = scheduler.date.month_start(new Date(calendarDate));
+      	var max = scheduler.date.add(calendarDate, 1, "month");
+      	min = scheduler.date.week_start(min);
+      	if(scheduler.date.week_start(new Date(max)) < max){
+         	max = scheduler.date.week_start(new Date(max));
+         	max = scheduler.date.add(max, 1, "week");
+      	}
+      	var events = scheduler.getEvents(min, max);
+      	var days = {};
+      	debugger;
+      	events.forEach(function (event) {
+         	var eventDate = event.start_date;
+         	while(eventDate < event.end_date){
+           		var day = Date.UTC(
+             		eventDate.getFullYear(),
+             		eventDate.getMonth(),
+            		eventDate.getDate()
+           		);
+
+          		if (!days[day.valueOf()]) {
+             		days[day.valueOf()] = 0;
+           		}
+           		days[day.valueOf()]++;  
+           		eventDate = scheduler.date.add(eventDate, 1, "day");
+           		eventDate = scheduler.date.day_start(eventDate);
+         	}
+      	});
+
+      	var result = [];
+      	for (var i in days) {
+         	result.push({ timestamp: i, count: days[i] });
+      	}
+      	return result;
+   	}
+~~~
+
+In the example above, we get information of the events from the scheduler. It means, that we'll only be able to highlight the events that are already loaded into the scheduler. This approach won't work particularly well if you use dynamic loading, since only a small part of all events will be loaded into the scheduler at the time. <br>
+The alternative approach would be to request data on the events from the server.
+
+When we have data on the timestamps of the cells that contain events and the amount of events per cell, we can populate the date picker with this information, as in:
+
+~~~js
+	function fillDatepicker(scheduler) {
+		// reset highlighted events and active dates
+		$(".datepicker-dropdown").find("[data-date]").removeClass("has-event");
+		$(".datepicker-dropdown").find("[data-date]").removeAttr("title");
+		...
+
+		// highlight events
+		var eventCells = getVisibleEvents($node.datepicker("getDate"), scheduler);
+		eventCells.forEach(function (cellEvents) {
+			$(".datepicker-dropdown").find(
+				"[data-date='" + cellEvents.timestamp + "']"
+			).addClass("has-event");
+    		$(".datepicker-dropdown").find(
+				"[data-date='" + cellEvents.timestamp + "']"
+			).attr("title", cellEvents.count + " events");
+  		});
+	}
+~~~
+
+5\. *Synchronize the displayed label of the date with the active date in the scheduler*
+
+Finally, we need to recenter the date picker if the size of the window changes, and apply the highlighting when the user changes the current date in the date picker:
+
+~~~js
+	$(window).on('resize', function () {
+    	setTimeout(function(){
+        	centerDatepicker($(".dhx_cal_date"));
+    	}, 10);
+	});
+	$node.datepicker().on("changeDate", function () {
+      	scheduler.setCurrentView($node.datepicker("getDate"));
+   	});
+	$node.datepicker().on("changeMonth", function () {
+      	refreshDatepicker(scheduler);
+	});
+	$node.datepicker().on("changeYear", function () {
+    	refreshDatepicker(scheduler);
+	});
+	$node.datepicker().on("changeDecade", function () {
+    	refreshDatepicker(scheduler);
+	});
+	$node.datepicker().on("changeCentury", function () {
+    	refreshDatepicker(scheduler);
+	});
+	function refreshDatepicker(scheduler) {
+    	// call from timeout so code fires after the datepicker popup is updated
+    	setTimeout(function () {
+        	fillDatepicker(scheduler);
+    	});
+	}
+~~~
+
+If you use a separate element to display the active date of the scheduler, you'll need to capture the [onViewChange](api/scheduler_onviewchange_event.md) event of the scheduler and update the date label from there:
+
+~~~js
+scheduler.attachEvent("onViewChange", function (newMode , newDate){
+    var state = scheduler.getState();
+    var minDate = state.min_date;
+    var maxDate = state.max_date;
+    var dateToStr = scheduler.date.str_to_date("%d-%m-%Y");
+
+    $(dateHeader).html(dateToStr(minDate) + " - " + dateToStr(minDate));
+});
+~~~
+
+Note, that we don't use this handler in our code sample, since we rely on the built-in date header of the scheduler which is updated automatically. You need to use such code only if you [hide the default date header](scheduler_markup.md#hidingtheschedulersheader), or if you need to display the active date in multiple places.
+
 
 In the lightbox
 ----------------------------------
@@ -250,4 +537,7 @@ API
 	</tr>
 	</tbody>
 </table>
+
+
+
 
