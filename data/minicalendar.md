@@ -60,7 +60,7 @@ function show_minical(){
 	05_calendar/01_select.html
 }}
 
-In the header (Third party Date Picker)
+In the header (Third-party Date Picker)
 -------------------------------------
 
 In this section we'll demonstrate you how to add a third party mini calendar (date picker) into the header of the scheduler.
