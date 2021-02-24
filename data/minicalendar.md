@@ -67,9 +67,9 @@ In this section we'll demonstrate you how to add a third party mini calendar (da
 
 <img src="custom_minicalendar.png"/>
 
-{{editor	https://snippet.dhtmlx.com/5/3dfb95a3f	3rd party Mini Calendar in the header}}
+{{editor	http://snippet.dhtmlx.com/5/0dca14de9	3rd party Mini Calendar in the header}}
 
-In our sample, we will add a mini calendar on the base of a jQuery plugin and Bootstrap Datepicker. If you use other libraries, you'll need to modify the code but the main approach should stay the same:
+In our sample, we will add a mini calendar on the base of [jQuery](https://jquery.com) and [Bootstrap Datepicker](https://bootstrap-datepicker.readthedocs.io/en/latest/). If you use other libraries, you'll need to modify the code but the main approach should stay the same:
 
 1\. *Show the date picker when clicking the calendar header*
 
