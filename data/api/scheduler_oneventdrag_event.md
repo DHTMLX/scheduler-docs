@@ -12,7 +12,6 @@ onEventDrag
 @example:
 scheduler.attachEvent("onEventDrag", function (id, mode, e){
 	//any custom logic here
-	return true;
 });
 
 
