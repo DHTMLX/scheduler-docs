@@ -88,3 +88,6 @@ dp.setTransactionMode("REST", false);
 
 
 The demo application you can download [here](http://dhtmlx.com/x/download/regular/tutorials/dhtmlxScheduler.LiveUpdate.zip).
+
+@index:
+- how_to_start.md
