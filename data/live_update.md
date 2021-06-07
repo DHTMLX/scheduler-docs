@@ -8,7 +8,7 @@ and doesn't require page refreshes (updates just a component it's applied to).
 In this article we would like to give you a step-by-step tutorial to quickly dive into the topic.
 
 ##Before you begin
-To start this tutorial you must have a complete running dhtmlxScheduler application integrated with the server side, i.e. one that loads data from DB and saves changes back (see details [here](how_to_start.html)).
+To start this tutorial you must have a complete running dhtmlxScheduler application integrated with the server side, i.e. one that loads data from DB and saves changes back (see details [here](howtostart_guides.md)).
 
 ![default_skin.png](default_skin.png)
 

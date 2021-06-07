@@ -6,7 +6,7 @@
 	"export"			: "./export/",
 	"samples"			: "../scheduler/samples/",
 	"samples_http"		: "../scheduler/samples/",
-	"forum_http"		: "https://forum.dhtmlx.com/viewforum.php?f=6",
+	"forum_http"		: "https://forum.dhtmlx.com/c/scheduler-all/scheduler",
 	"support_http"		: "https://dhtmlx.com/docs/technical-support.shtml",
 	"logo_http"			: "https://dhtmlx.com",
 	"docs_http"			: "https://docs.dhtmlx.com/scheduler/",
