@@ -26,7 +26,7 @@ Start
     
     <div class='hot-right'>
     	Check also:
-    	<a class='first' href='https://docs.dhtmlx.com/gantt'>Gantt</a>
+    	<a class='first' href='https://docs.dhtmlx.com/gantt/'>Gantt</a>
     	<a class='second' href='http://scheduler-net.com/'>Scheduler.Net</a>
 	</div>
     
