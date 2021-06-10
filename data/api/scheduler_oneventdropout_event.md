@@ -12,7 +12,7 @@ onEventDropOut
 
 
 @example:
-scheduler.attachEvent("onEventDropOut", function (id,original, to, e){
+scheduler.attachEvent("onEventDropOut", function (id, ev, to, e){
 	//any custom logic here
 });
 

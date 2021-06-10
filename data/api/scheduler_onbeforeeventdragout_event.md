@@ -11,7 +11,7 @@ onBeforeEventDragOut
 
 
 @example:
-scheduler.attachEvent("onBeforeEventDragIn", function (id, ev, e){
+scheduler.attachEvent("onBeforeEventDragOut", function (id, ev, e){
 	//any custom logic here
 	return true;
 });
