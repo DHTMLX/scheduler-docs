@@ -1,14 +1,14 @@
 Ways to Install Scheduler 
 ================================
 
-You can use [NuGet](http://www.nuget.org/), [Bower](http://bower.io/) or [npm](https://www.npmjs.com/) package managers to install the dhtmlxScheduler package into your project.
+You can use [NuGet](https://www.nuget.org/), [Bower](https://bower.io/) or [npm](https://www.npmjs.com/) package managers to install the dhtmlxScheduler package into your project.
 
 It's also possible to include the necessary JS/CSS files from CDN.
 
 
 NuGet
 -------------------------
-To install dhtmlxScheduler through [NuGet](http://www.nuget.org/), execute the following command line:
+To install dhtmlxScheduler through [NuGet](https://www.nuget.org/), execute the following command line:
 
 ~~~html
 nuget install DHTMLX.Scheduler
@@ -23,7 +23,7 @@ install-package DHTMLX.Scheduler
 
 Bower
 -------------------------
-To install Scheduler through [Bower](http://bower.io/), execute the following command line:
+To install Scheduler through [Bower](https://bower.io/), execute the following command line:
 
 ~~~html
 bower install scheduler
