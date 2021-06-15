@@ -528,7 +528,7 @@ scheduler._click.dhx_cal_next_button = function(dummy,step){
 };
 ~~~
 
-{{editor 	http://docs.dhtmlx.com/scheduler/snippet/e4358367			Ignoring weekends}}
+{{editor 	https://docs.dhtmlx.com/scheduler/snippet/e4358367			Ignoring weekends}}
 
 
 Data for Y-Axis sections in the 'Bar' and 'Cell' modes
@@ -630,7 +630,7 @@ scheduler.createTimelineView({
 
 The data response for the api/scheduler_load.md method should contain a collection with the server list name specified in JSON [of the following format](data_formats.md#jsonwithcollections).
 
-You can also use the [OptionsConnector](http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:optionsconnector) connector:
+You can also use the [OptionsConnector](https://docs.dhtmlx.com/connector__php__optionsconnector.html) connector:
 
 ~~~php
 <?php

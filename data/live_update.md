@@ -51,7 +51,7 @@ We won't go into detail on setting up the platform ( as it really doesn't concer
 3.  Unzip the package and copy the **nodejs** folder into the root directory of your web server.
 4.  Execute in the command line: **node nodejs/server.js**.
 
-Other required information on this topic you can read on the respective sites, e.g. here - [https://nodejs.org/](https://nodejs.org/).
+Other required information on this topic you can read on the respective sites, e.g. here - [https://nodejs.org/en/](https://nodejs.org/en/).
 
 
 

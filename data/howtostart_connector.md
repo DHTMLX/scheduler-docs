@@ -181,7 +181,7 @@ scheduler.init('scheduler_here',new Date(),"month");
 ##Step 7. Loading data from the server
 
 To load data from a database, use the api/scheduler_load.md method where specify the backend url as a parameter. 
-You can implement the backend by yourself using our [guides](howtostart_guides.md), but for this tutorial we'll cover the [PHP connector library](https://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start) as the quickest way.
+You can implement the backend by yourself using our [guides](howtostart_guides.md), but for this tutorial we'll cover the [PHP connector library](https://docs.dhtmlx.com/connector__php__index.html) as the quickest way.
   
 
 So, for our task you need to call the method as shown below:

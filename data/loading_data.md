@@ -86,7 +86,7 @@ scheduler.load("apiUrl");
 The detailed information on Scheduler server-side integration using REST API is given in the article server_integration.md.
 }}
 
-2) The second way presupposes loading data from database table(s) using [PHP Connector](http://docs.dhtmlx.com/connector__php__index.html).
+2) The second way presupposes loading data from database table(s) using [PHP Connector](https://docs.dhtmlx.com/connector__php__index.html).
 
 - On the server-side, realize the server script that returns data in the XML or JSON format:
         
@@ -261,7 +261,7 @@ some.php?from=DATEHERE&to=DATEHERE
 
 *where DATEHERE - a valid date value in the format defined by the api/scheduler_load_date_config.md option.* <br>
 
-If you are using <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:start">dhtmlxConnector</a> at the server side, 
+If you are using <a href="https://docs.dhtmlx.com/connector__php__index.html">dhtmlxConnector</a> at the server side, 
 you don't need to do any additional server-side operations to parse the data.
 
 

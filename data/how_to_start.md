@@ -229,7 +229,7 @@ $conn->render_table("events","id",
 ## Step 9. Saving data 
 
 If you run the app now, you will see that the scheduler is able to load data from the database, but unable to save it back. 
-To 'force' the scheduler save data in the database, use <a href="https://docs.dhtmlx.com/doku.php?id=dhtmlxdataprocessor:toc">dataProcessor</a>.
+To 'force' the scheduler save data in the database, use <a href="https://docs.dhtmlx.com/dataprocessor__index.html">dataProcessor</a>.
 
 It's very easy to use dataProcessor. All you need is to initialize it and attach to the scheduler.
 

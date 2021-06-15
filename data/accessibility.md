@@ -16,7 +16,7 @@ WAI-ARIA Attributes
 DHTMLXScheduler provides WAI-ARIA support that implies the use of special attributes in the component's markup.
 These are additional attributes which make the component recognizable for screen readers. 
 
-You can find more information in the [official specification](https://www.w3.org/WAI/intro/aria) of WAI-ARIA.
+You can find more information in the [official specification](https://www.w3.org/WAI/standards-guidelines/aria/) of WAI-ARIA.
 
 WAI-ARIA attributes in Scheduler are enabled by default. If needed, you can disable them by using use the *wai_aria_attributes* property with the *false* value:
 

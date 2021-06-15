@@ -165,7 +165,7 @@ are no longer available in the Standard Edition that is distributed under GNU GP
 
 If you still want to use them, you may either continue using the version 4.2 (or older), or obtain either Commercial or Enterprise license.
 
-Please check the license details [here](http://dhtmlx.com/docs/products/dhtmlxScheduler/#licenses).
+Please check the license details [here](https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing).
 
 ## 3.6 -> 4.0
 

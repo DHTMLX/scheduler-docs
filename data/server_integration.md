@@ -10,7 +10,7 @@ Server-Side Integration
 
 The recommended approach to connect dhtmlxScheduler to a backend is to implement RESTful API on the server and use dhtmlxDataProcessor on the client.
 
-[DataProcessor](http://docs.dhtmlx.com/dataprocessor__index.html) is a client-side library included into dhtmlxScheduler.js. 
+[DataProcessor](https://docs.dhtmlx.com/dataprocessor__index.html) is a client-side library included into dhtmlxScheduler.js. 
 It monitors data changes and gets the server requests on the client side.
 
 It's possible to bind dhtmlxScheduler to the server side using REST API together with different frameworks and programming languages. 

@@ -25,12 +25,12 @@ As for template functions and the lightbox listed below, they can only pose a th
 Templates allow inserting a custom markup (formatted text, icons, buttons, etc.) into Scheduler elements by design. However, it creates a possibility for injecting a remote code into the page. 
 Any template can be redefined with the implementation you find suitable.
 
-{{editor		http://snippet.dhtmlx.com/db4ac67b8			Template XSS}}
+{{editor		https://snippet.dhtmlx.com/5/db4ac67b8			Template XSS}}
 
 
 - the lightbox doesn't have any default validation of a client input, which, if not handled, also creates a gateway for XSS attacks. Please [check the article on the client-side validation](validation.md).
 
-{{editor		http://snippet.dhtmlx.com/f30760ae0			Lightbox XSS}}
+{{editor		https://snippet.dhtmlx.com/5/f30760ae0			Lightbox XSS}}
 
 
 ##SQL Injections

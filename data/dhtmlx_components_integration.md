@@ -23,21 +23,21 @@ Let's consider external drag-and-drop in the context of the <a src="http://docs.
 Follow these steps, to integrate the scheduler with <a src="http://docs.dhtmlx.com/doku.php?id=dhtmlxtree:toc">dhtmlxTree</a>: 
 
 <ol>
-	<li><a href="http://dhtmlx.com/docs/download.shtml">Download</a> the  dhtmlxTree package and unzip its content to [YOUR APPLICATION ROOT] folder</li>
+	<li><a href="https://dhtmlx.com/docs/download.shtml">Download</a> the  dhtmlxTree package and unzip its content to [YOUR APPLICATION ROOT] folder</li>
     <li>Include the necessary <b>js</b> and <b>css</b> files on the page:
 ~~~html
 <script src='ext/dhtmlxscheduler_outerdrag.js' type="text/javascript"></script>
 ...
 ~~~
 	</li>
-    <li>Initialize dhtmlxTree component (see instructions <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxtree:initialization_of_dhtmlxtree">here</a>) :
+    <li>Initialize dhtmlxTree component (see instructions <a href="https://docs.dhtmlx.com/tree__initialization_of_dhtmlxtree.html">here</a>) :
 ~~~js
 var tree = new dhtmlXTreeObject("treebox", "100%", "100%", 0);
 tree.setImagePath("../common/dhtmlxTree/imgs/csh_yellowbooks/");
 tree.loadXML("./data/tree.xml");
 ~~~
 	</li>
-    <li>Enable drag-and-drop in the dhtmlxTree component (see instructions <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxtree:drag_and_drop_handling">here</a>) :
+    <li>Enable drag-and-drop in the dhtmlxTree component (see instructions <a href="https://docs.dhtmlx.com/tree__drag_and_drop_handling.html">here</a>) :
 ~~~js
 tree.enableDragAndDrop(true);
 ~~~
@@ -97,7 +97,7 @@ scheduler2.init('scheduler_here_2',new Date(2019, 5, 30),"week");
 </script>
 ~~~
 
-Sample **"samples/20_multiple/06_drag_between_layout.html"** provided in the [Scheduler PRO package](http://www.dhtmlx.com/docs/products/dhtmlxScheduler/index.shtml).
+Sample **"samples/20_multiple/06_drag_between_layout.html"** provided in the [Scheduler PRO package](https://dhtmlx.com/docs/products/dhtmlxScheduler/).
 
 
 ###Denying dragging events to/from one of schedulers
@@ -126,7 +126,7 @@ scheduler2 = Scheduler.getSchedulerInstance();
 scheduler2.init('scheduler_here_2',new Date(2019, 5, 30),"week");
 ~~~
 
-Sample **"samples/20_multiple/06_drag_between_layout.html"** provided in the [Scheduler PRO package](http://www.dhtmlx.com/docs/products/dhtmlxScheduler/index.shtml).
+Sample **"samples/20_multiple/06_drag_between_layout.html"** provided in the [Scheduler PRO package](https://dhtmlx.com/docs/products/dhtmlxScheduler/).
 
 
 ###Drag events

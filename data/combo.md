@@ -1,7 +1,7 @@
  Combo
 ==============
 
-A combo box presented by the <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxcombo:toc">DHTMLX Combo component</a>.
+A combo box presented by the <a href="https://docs.dhtmlx.com/combo__index.html">DHTMLX Combo component</a>.
 
 <img src="combo_editor.png"/>
 
@@ -33,7 +33,7 @@ Initialization
 To add the Combo control to the lightbox, follow these steps:
 
 <ol>
-	<li><b>Include the <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxcombo:toc">dhtmlxCombo</a> files and the 'ext/dhtmlxscheduler_editors.js' extension file on the page:</b>
+	<li><b>Include the <a href="https://docs.dhtmlx.com/combo__index.html">dhtmlxCombo</a> files and the 'ext/dhtmlxscheduler_editors.js' extension file on the page:</b>
 ~~~js
 <script src="../codebase/dhtmlxscheduler.js" ...></script>
 <link rel="stylesheet" href="../codebase/dhtmlxscheduler.css" ...>
@@ -165,8 +165,8 @@ scheduler.config.lightbox.sections = [
 
 The **script_path** property specifies an URL from which combo loads its options, i.e. if script_path is specified - combo will try to load data from that URL via AJAX.
 
-Combo selector is based on [dhtmlxCombo](http://docs.dhtmlx.com/combo__index.html), so the server should return data compatible with it.
-You can read about the ways of adding data into combo in the article [Loading Options](http://docs.dhtmlx.com/combo__adding_options.html). 
+Combo selector is based on [dhtmlxCombo](https://docs.dhtmlx.com/combo__index.html), so the server should return data compatible with it.
+You can read about the ways of adding data into combo in the article [Loading Options](https://docs.dhtmlx.com/combo__adding_options.html). 
 
 The URL is requested in two cases:
 
@@ -244,4 +244,4 @@ Note, you can use the auto-filtering mode, regardless of the source, you load da
 }}
 
 
-Read more on the topic in the dhtmlxCombo documentation <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxcombo:filtering">dhtmlxCombo. Filtering</a> .
+Read more on the topic in the dhtmlxCombo documentation <a href="https://docs.dhtmlx.com/combo__filtering.html">dhtmlxCombo. Filtering</a> .

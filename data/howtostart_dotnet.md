@@ -14,7 +14,7 @@ You can also explore other server-side integration possibilities of Scheduler by
 - howtostart_connector.md
 
 We will make use of the ASP.NET MVC 5 web platform and the Web API controller for REST API to create a Scheduler application. To organize communication with a database we will use 
-the [Entity Framework](http://www.asp.net/entity-framework). We will build our application with the help of the Visual Studio IDE.
+the [Entity Framework](https://docs.microsoft.com/en-us/aspnet/entity-framework). We will build our application with the help of the Visual Studio IDE.
 
 {{note
 The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-dotnet).

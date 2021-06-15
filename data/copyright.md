@@ -44,7 +44,7 @@ Underscore may be freely distributed under the MIT license.
 (c) 2010-2013 Jeremy Ashkenas, DocumentCloud Inc.<br>
 Backbone may be freely distributed under the MIT license.<br>
 For all details and documentation:<br>
-[http://backbonejs.org](http://backbonejs.org)
+[https://backbonejs.org/](https://backbonejs.org/)
 
 ###body-parser 1.19.0
 

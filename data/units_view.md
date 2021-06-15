@@ -268,7 +268,7 @@ The data response for the api/scheduler_load.md method should contain a collecti
 ~~~
 
 
-You can also use the [OptionsConnector](http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:optionsconnector) connector:
+You can also use the [OptionsConnector](https://docs.dhtmlx.com/connector__php__optionsconnector.html) connector:
 
 ~~~php
 <?php

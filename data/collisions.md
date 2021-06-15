@@ -114,15 +114,15 @@ scheduler.load("/some");
 ~~~
 
 4) Check conflicting events on the server side via PHP connector validation. The details are given in the article devoted to 
-[data validation](http://docs.dhtmlx.com/connector__php__validation.html#processingincaseofvalidationerror).
+[data validation](https://docs.dhtmlx.com/connector__php__validation.html#processingincaseofvalidationerror).
 
 You can also reload data on the client side if checking fails. 
 
-To process the fail of checking, use DataProcessor Events [onValidationError](http://docs.dhtmlx.com/api__dataprocessor_onvalidationerror_event.html) and 
-[onAfterUpdate](http://docs.dhtmlx.com/api__dataprocessor_onafterupdate_event.html) and to reload data, make use of the Scheduler methods api/scheduler_clearall.md and api/scheduler_load.md:
+To process the fail of checking, use DataProcessor Events [onValidationError](https://docs.dhtmlx.com/api__dataprocessor_onvalidationerror_event.html) and 
+[onAfterUpdate](https://docs.dhtmlx.com/api__dataprocessor_onafterupdate_event.html) and to reload data, make use of the Scheduler methods api/scheduler_clearall.md and api/scheduler_load.md:
 
 
-a. [onValidationError](http://docs.dhtmlx.com/api__dataprocessor_onvalidationerror_event.html)
+a. [onValidationError](https://docs.dhtmlx.com/api__dataprocessor_onvalidationerror_event.html)
 
 occurs after validation error has fired before data sending
 
@@ -139,7 +139,7 @@ Parameters:
 - id - (string) id of the item for which error occurs
 - details -	(object) error details
 
-b. [onAfterUpdate](http://docs.dhtmlx.com/api__dataprocessor_onafterupdate_event.html)
+b. [onAfterUpdate](https://docs.dhtmlx.com/api__dataprocessor_onafterupdate_event.html)
 
 fires after server side response has been received and processed
 

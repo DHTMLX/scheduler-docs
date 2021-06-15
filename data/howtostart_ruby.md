@@ -1,7 +1,7 @@
 dhtmlxScheduler with Ruby on Rails 
 =========================
 
-In this article we'll show you how to create a Scheduler and implement server-side integration based on [Ruby on Rails](http://rubyonrails.org/) framework and REST API.
+In this article we'll show you how to create a Scheduler and implement server-side integration based on [Ruby on Rails](https://rubyonrails.org/) framework and REST API.
 
 If you use some other technology, check the list of available integration variants below:
 
@@ -14,7 +14,7 @@ If you use some other technology, check the list of available integration varian
 - howtostart_connector.md
 
 If you have Ruby on Rails installed, you can begin to implement the integration at once. 
-Otherwise, you should install the framework by following the steps described in the [installation guide](http://guides.rubyonrails.org/getting_started.html#installing-rails).
+Otherwise, you should install the framework by following the steps described in the [installation guide](https://guides.rubyonrails.org/getting_started.html#installing-rails).
 
 Once everything is ready, you can start completing the integration step by step.
 

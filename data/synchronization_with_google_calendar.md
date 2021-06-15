@@ -64,7 +64,7 @@ Make sure that you wrote the correct values. For example, if the name of your ca
 scheduler.load("../gCal_proxy/server/01_proxy.php");
 ~~~
 
-- Initialize <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxdataprocessor:toc">dataProcessor</a>, to provide 2-way sync. 
+- Initialize <a href="https://docs.dhtmlx.com/dataprocessor__index.html">dataProcessor</a>, to provide 2-way sync. 
   
 -  Include one more file.
   

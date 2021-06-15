@@ -242,4 +242,4 @@ function onRadioClick(event){
 }
 ~~~
 
-{{editor	https://snippet.dhtmlx.com/5b62dd79e	Event handling for the Radio Control}}
+{{editor	https://snippet.dhtmlx.com/5/5b62dd79e	Event handling for the Radio Control}}

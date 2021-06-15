@@ -22,4 +22,4 @@ Visit these pages to get the detailed information:
 
 
 - The library main page - <a href="http://dhtmlx.github.com/message">http://dhtmlx.github.com/message</a>
-- The documentation - <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxmessage:toc">http://docs.dhtmlx.com/doku.php?id=dhtmlxmessage:toc</a>
+- The documentation - <a href="https://docs.dhtmlx.com/message__index.html">https://docs.dhtmlx.com/message__index.html</a>

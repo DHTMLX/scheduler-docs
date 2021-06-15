@@ -20,7 +20,7 @@ Note, that the sync is 2-way, i.e. any changes you make to events in either Sche
 
 To start the integration, do the following preparations: 
 
-1. Login to the **Google API console** - <a href="https://code.google.com/apis/console">https://code.google.com/apis/console</a>.
+1. Login to the **Google API console** - <a href="https://console.cloud.google.com/cloud-resource-manager">https://console.cloud.google.com/cloud-resource-manager</a>.
 2. Click on the **"Create new project"** button. The **"Google apis"** screen opens.
 3. Enable the **"Calendar API"** service in the **"Services"** tab.
 4. Go to the "API Access" tab and click on **"Create an OAuth2.0 Client ID"** button. The **"Create Client ID"** form opens.
@@ -69,7 +69,7 @@ where
 scheduler.load("./data.php", "json");
 ~~~
 
-3\. Initialize <a href="http://docs.dhtmlx.com/doku.php?id=dhtmlxdataprocessor:toc">dataProcessor</a>, to provide 2-way sync (if you need the readonly access - ignore this code). 
+3\. Initialize <a href="https://docs.dhtmlx.com/dataprocessor__index.html">dataProcessor</a>, to provide 2-way sync (if you need the readonly access - ignore this code). 
   
 ~~~js
 var dp =  new dataProcessor("./data.php");

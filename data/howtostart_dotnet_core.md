@@ -316,7 +316,7 @@ Create the *appsettings.json* file (or open it if we have it already) and add a 
 
 
 After that you can register the database context via 
-[dependency injection](https://docs.microsoft.com/en-us/ef/core/get-started/aspnetcore/new-db?view=aspnetcore-2.1&tabs=visual-studio#register-your-context-with-dependency-injection).
+[dependency injection](https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-2.1&tabs=visual-studio).
 
 Add the following namespaces to **Startup.cs**:
 
