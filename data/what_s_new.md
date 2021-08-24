@@ -10,6 +10,17 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+5.3.12
+----------
+<span class='release_date'>August 24, 2021. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue with [Tree Timeline](timeline_view.md#dataforyaxissectionsinthetreemode) view which caused it to enter an infinite loop when the list of sections contains duplicated keys
+- Fix the incorrect work of the monthly [recurring events](recurring_events.md) when `After N occurrences` limitation is used
+- Fix the incorrect work of the [recurring_overflow_instances](api/scheduler_recurring_overflow_instances_config.md) config in the `lastDay` mode which caused the event instance to lose the minutes/seconds part of its date
+- Fix the issue with blocking [the dragged event from being moved out of the scheduler](dhtmlx_components_integration.md#draganddropbetweenschedulers) when returning `false` from the [onBeforeEventDragOut](api/scheduler_onbeforeeventdragout_event.md) event
+- The default CSS of [Tree Timeline](timeline_view.md#dataforyaxissectionsinthetreemode) section [labels](api/scheduler_{timelinename}_scale_label_template.md) is changed to prevent unexpected line break when the label is too long for the cell
 
 5.3.11
 ----------
