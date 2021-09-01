@@ -47,4 +47,4 @@ scheduler.parse([
 
 ~~~
 
-<img src="api/getlabel_method.png"/>
+<img src="api/getlabel_method_copy.png"/>
