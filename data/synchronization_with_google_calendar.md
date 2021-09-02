@@ -23,7 +23,7 @@ Once you are sure that the needed extension is enabled, you can move to setup.
 
 **To sync Scheduler with Google Calendar, do the following:**
 
-- Download the '**gCal_proxy_v2**' package. ([download link](http://dhtmlx.com/x/download/regular/gCal_proxy_v2.zip))
+- Download the '**gCal_proxy_v2**' package.
 - Unzip the package into the root directory of your web server.
 
 **Server-side:** 
