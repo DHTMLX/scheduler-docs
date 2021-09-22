@@ -50,7 +50,7 @@ The configuration object of the Timeline view can have the following properties:
 - <b>render</b> - (<i>'cell', 'bar', 'tree', 'days'</i>) the view's mode. By default, 'cell'
 - <b>y_property</b> - (<i>string</i>) the name of a data property that will be used to assign events to certain sections
 - <b>y_unit</b></td> - (<i>array of objects</i>) defines sections of the view.<br> Each object in the array specifies a single section and takes these properties:
-	- <b>open</b> - (<i>array</i>) an array of nested items' objects (for 'Tree' mode only)
+	- <b>children</b> - (<i>array</i>) an array of nested items' objects (for 'Tree' mode only)
     - <b>key</b> - (<i>string</i>) the section's id. This attribute is compared with the event's data property to assign the event to a section
     - <b>label</b> - (<i>string</i>) the section's label
     - <b>open</b> - (<i>boolean</i>) specifies whether the section will be opened initially (for 'Tree' mode only)

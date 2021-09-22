@@ -23,6 +23,7 @@ The library provides the following options to configure recurring events:
 {{links
 - api/scheduler_repeat_date_config.md - sets the date format of the 'End by' field in the 'recurring' lightbox
 - api/scheduler_include_end_by_config.md - defines whether the date specified in the 'End by' field should be exclusive or inclusive
+- api/scheduler_recurring_overflow_instances_config.md - defines the behavior of the recurrences that transfer to the next month
 - api/scheduler_repeat_precise_config.md - prevents including past days to events with the 'weekly' recurrence
 - api/scheduler_occurrence_timestamp_in_utc_config.md - allows working with recurring events independently of time zones
 }}

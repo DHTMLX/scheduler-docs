@@ -65,7 +65,7 @@ Events
 - api/scheduler_onlocationerror_event.md - fires when the event location can't be found on the map (the Map view only)
 - api/scheduler_onmousedown_event.md - fires when the user clicks on a scheduler's element that doesn't have the predefined 'onlick' handler
 - api/scheduler_onmousemove_event.md - fires when the mouse cursor is moved over the scheduler
-- api/scheduler_onoptionsload_event.md - fires after a collection of options or sections has been loaded from the server, but isn't parsed yet
+- api/scheduler_onoptionsload_event.md - fires after sections of the Timeline/Units view have been updated
 - api/scheduler_onoptionsloadfinal_event.md - fires after loading of an options(sections) collection  is complete (the Timeline view only)
 - api/scheduler_onoptionsloadstart_event.md - fires before a collection of options or sections  starts to be loaded from the server  (the Timeline view only)
 - api/scheduler_onparse_event.md - fires after data was parsed (became available for API) but before it was rendered in the Scheduler
