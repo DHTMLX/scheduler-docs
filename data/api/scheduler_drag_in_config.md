@@ -19,7 +19,7 @@ scheduler2.init('scheduler_here_2',new Date(2009,05,30),"week");
 @template:	api_config
 @descr:
 {{note
-This property is available for Scheduler PRO ( Enterprise license ) only
+This property is available for Scheduler PRO ( Commercial, Enterprise and Ultimate licenses ) only
 }}
 
 @related:

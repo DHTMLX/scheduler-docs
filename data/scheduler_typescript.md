@@ -13,7 +13,7 @@ Declaring global variables
 *dhtmlxscheduler.js* declares two global variables you may need: *window.scheduler* and *window.Scheduler*: 
 
 - The *scheduler* variable contains the default instance of Scheduler. 
-- *Scheduler* is declared in the Enterprise version of the component only and provides the factory method for creating new scheduler instances. Check the multiple_per_page.md article for details. 
+- *Scheduler* is declared in the Commercial (since October 6, 2021), Enterprise and Ultimates versions of the component only and provides the factory method for creating new scheduler instances. Check the multiple_per_page.md article for details. 
 
 Since *dhtmlxscheduler.js* is a regular browser JS library, it can't export TypeScript modules explicitly. Thus, "scheduler" (or "Scheduler") has to be declared in TypeScript manually, so that you could refer to them without a compiler error. There are two possible ways for this:
 

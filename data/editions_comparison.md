@@ -23,7 +23,7 @@ The PRO edition includes all the functionality of the Standard version and also 
     	{"name":"Multisection Events\n","url":"api__scheduler_multisection_config.html","standard":false,"pro":true},
     	{"name":"Single/multi-day events\n","url":"api__scheduler_multi_day_config.html","standard":true,"pro":true},
     	{"name":"Recurring events\n","url":"recurring_events.html","standard":true,"pro":true},
-    	{"name":"Multiple schedulers on page (<strong>Enterprise and Ultimate licenses only</strong>)\n","url":"multiple_per_page.html","standard":false,"pro":true},
+    	{"name":"Multiple schedulers on page (<strong>Commercial, Enterprise and Ultimate licenses since October 6, 2021</strong>)\n","url":"multiple_per_page.html","standard":false,"pro":true},
     	{"name":"Customizable time scales\n", "url":"sizing.html","standard":true,"pro":true},
    	 	{"name":"Ability to specify color for hours/days in calendar\n","url":"limits.html","standard":true,"pro":true},
     	{"name":"Ability to block hours/days\n","url":"limits.html","standard":true,"pro":true},
