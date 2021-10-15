@@ -2,7 +2,7 @@ Creating Multiple Schedulers on a Page
 ==============
 
 {{pronote
-This functionality is available in the Scheduler PRO version (Enterprise and Ultimate licenses) only.
+This functionality is available in the Scheduler PRO version (Commercial, Enterprise and Ultimate licenses) only.
 }}
 
 As you have probably noticed at the very beginning of your work with the library, dhtmlxScheduler is a static object, i.e. _only one instance_ of dhtmlxScheduler can exist on the page.
