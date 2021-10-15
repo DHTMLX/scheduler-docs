@@ -136,7 +136,7 @@ Article:  timeline_view.md
 Drag-n-Drop between Schedulers
 ----------------------------
 
-{{note This extension is available in the Scheduler PRO version (Commercial, Enterprise and Ultimate licenses since October 6, 2021) only.}}
+{{note This extension is available in the Scheduler PRO version (Commercial (since October 6, 2021), Enterprise and Ultimate licenses) only.}}
 
 Enables drag-and-drop operations between multiple schedulers, which makes it possible to drag events from one scheduler to another and vice versa.
 
