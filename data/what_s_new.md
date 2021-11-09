@@ -10,6 +10,20 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+5.3.13
+-------------
+<span class='release_date'>November 9, 2021. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue that caused the edited [recurring series](recurring_events.md) to disappear after closing [Lightbox](configuring_the_lightbox.md) via [scheduler.hideLightbox](api/scheduler_hidelightbox.md)
+- Fix the issue with disabling the [auto_end_date](api/scheduler_auto_end_date_config.md) config dynamically
+- Fix the incorrect work of [modified instances](recurring_events.md#editingdeletingacertainoccurrenceintheseries) of a recurring series when the `start_date` of the series event contains non-empty milliseconds part
+- Fix the issue with the [Keyboard Navigation](keyboard_navigation.md) module that changed the scroll position of the scheduler when resizing an event in some cases
+- Now, when [Keyboard Navigation](keyboard_navigation.md) is enabled, "trap modal focus" of the [Lightbox](configuring_the_lightbox.md) and `dhtmlx.modalbox` should respect the tabindex of elements
+- Now, when the "Today" button is pressed, the [Keyboard Navigation](keyboard_navigation.md) focuses on the first cell of the Today column rather than the first cell of the first column of the [Week View](week_view.md)
+- Fix the incorrect work of [scheduler.showEvent](api/scheduler_showevent.md) in the [Timeline view](timeline_view.md#horizontalscroll) when the [Smart Rendering](api/scheduler_createtimelineview.md) is enabled
+
 5.3.12
 ----------
 <span class='release_date'>August 24, 2021. Bugfix release</span>
