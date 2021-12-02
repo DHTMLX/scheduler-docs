@@ -24,7 +24,20 @@ scheduler.parse([
     02_customization/24_cascade_event_display.html
 @descr: 
 
+
+### Migration
+
+In v5.2 and upper, scheduler detects the format of data automatically. 
+
+But before v5.2, the method included two parameters:
+
+- **data** - (*object*)	a string or object which represents data;
+- **type** - (*string*)	optional, (<i>'json', 'xml', 'ical'</i>) the data type. The default value - <i>'xml'</i>
+
 @relatedapi:
 api/scheduler_onbeforeparse_event.md
 api/scheduler_onparse_event.md
 api/scheduler_parse_date_template.md
+
+@changelog: 
+The second **type** parameter of the method has been removed in v5.2.
