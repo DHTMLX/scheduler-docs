@@ -115,10 +115,10 @@ Items in the  [options](api/scheduler_lightbox_config.md) parameter must have 2 
 - **key** - the option's id
 - **label** - the option's label
 
-Populating the control with data from the server
+Changing options dynamically
 ------------------------------------------------------
 To populate the control from the server, set the [options](api/scheduler_lightbox_config.md) option
-to the value returned by the api/scheduler_serverlist.md method:
+to the value returned by the [serverList](api/scheduler_serverlist.md) method:
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -129,6 +129,8 @@ scheduler.config.lightbox.sections = [
 
 scheduler.load("./data/types");
 ~~~
+
+{{note The details on the **serverList** method are given in the [related article](api/scheduler_serverlist.md).}}
 
 The data response for the api/scheduler_load.md method should contain a collection with the server list name specified in JSON
 [of the following format](data_formats.md#jsonwithcollections):
@@ -159,34 +161,22 @@ The data response for the api/scheduler_load.md method should contain a collecti
       ]/*!*/
    }/*!*/
 }
-
-~~~
-
-If you use [PHP Connector](https://github.com/DHTMLX/connector-php) library, the server code may look like the following:
-
-~~~php
-//types.php
-<?php
-	require_once('../../../../connector-php/codebase/scheduler_connector.php');
-	include ('../../common/config.php');
-
-	$list = new JSONOptionsConnector($res, $dbtype);
-	$list->render_table("types","typeid","typeid(value),name(label)");
-	
-	$scheduler = new JSONSchedulerConnector($res, $dbtype);
-	$scheduler->set_options("type", $list);
-	$scheduler->render_table(
-        "tevents",
-        "event_id",
-        "start_date,end_date,event_name,type"
-    );
-?>
 ~~~
 
 {{sample
 	01_initialization_loading/09_connector_options.html
 }}
 
-{{note
-Note, you can use the api/scheduler_updatecollection.md method to update the list of retrieved options
-}}
+The [parse](api/scheduler_parse.md) method can be also used if you need to load options after initialization of the scheduler.
+
+In case you need to update the specified options of the control with new ones, you can use the api/scheduler_updatecollection.md method:
+
+~~~js
+scheduler.updateCollection("type", [      
+    {"key":"1","label":"Interview"},
+    {"key":"2","label":"Performance review"},
+    {"key":"3","label":"Request"}
+]);
+~~~
+
+Check the details in the [scheduler.serverList](api/scheduler_serverlist.md) article.

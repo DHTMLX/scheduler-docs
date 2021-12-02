@@ -2,7 +2,7 @@ serverList
 =============
 
 @short: 
-	returns a list of options
+	defines a named collection that can be loaded into Units, Timeline views, or the Lightbox
 
 @params: 
 - list_name	string 		the name of a list
@@ -41,25 +41,57 @@ Lists, created with the method, can be after updated with the api/scheduler_upda
 That's why, if there is a need to update collections, e.g. select options, a list of units in  the Timeline, Units view, 
 it's a good idea to create them as a named list of options.
 
-
 ~~~js
-// with such declaration it would be possible to update options 
-// in the select element through the list named 'goods'
+scheduler.serverList("sections", [
+	{ key: 1, label: "Section A" },
+	{ key: 2, label: "Section B" },
+	{ key: 3, label: "Section C" },
+	{ key: 4, label: "Section D" }
+]);
 
-scheduler.config.lightbox.sections=[   
-	{name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
-	{name:"items", height:23, type:"select", 
-    options:serverList("goods", goods_array), map_to:"section_id" }, 
-	{name:"time", height:72, type:"time", map_to:"auto"}
+scheduler.config.lightbox.sections = [
+	{ 
+		name: "description", height: 130, map_to: "text", type: "textarea", 
+	  	focus: true 
+	},
+	{ 
+		name: "sections", type: "select",
+	  	options: scheduler.serverList("sections"), map_to: "section_id"  /*!*/
+	},
+	{ 
+		name: "time", height: 72, type: "time", map_to: "auto" 
+	}
 ]; 
 ...
 // the same, but with the "units" list
 scheduler.createUnitsView({
-	name:"unit",
-	property:"section_id",
-	list:scheduler.serverList("units", sections),
-	size:20,
-	step:1
+	name: "unit",
+	property: "section_id",
+	list: scheduler.serverList("sections") /*!*/ 
 });
+
+scheduler.createTimelineView({
+	name: "timeline",
+	x_unit: "minute",
+	x_date: "%H:%i",
+	x_step: 30,
+	x_size: 24,
+	x_start: 16,
+	x_length: 48,
+	y_unit: scheduler.serverList("sections"), /*!*/
+	y_property: "section_id",
+	render: "bar"
+});
+
+scheduler.init("scheduler_here", new Date(), "unit");
 ~~~
 
+Then, at a later point in time, it will be possible to change options on all these places by calling [scheduler.updateCollection](api/scheduler_updatecollection.md):
+
+~~~js
+scheduler.updateCollection("sections", [
+	{ key: 5, label: "Section E" },
+	{ key: 6, label: "Section F" },
+	{ key: 7, label: "Section G" }
+]);
+~~~

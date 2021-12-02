@@ -304,6 +304,9 @@ scheduler.createTimelineView({
 });
 ~~~
 
+### Changing sections dynamically
+
+If you need to dynamically update a list of units in the Timeline view, check the following methods: [serverList](api/scheduler_serverlist.md) and [updateCollection](api/scheduler_updatecollection.md) ones.
 
 Data loading
 ----------------------------------

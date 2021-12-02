@@ -89,6 +89,10 @@ By comparing **unit_id** and **list.key** values, the scheduler assigns events t
 	03_extensions/02_units_view.html
 }}
 
+## Changing sections dynamically
+
+If you need to dynamically update a list of units in the Units view, check the following methods: [serverList](api/scheduler_serverlist.md) and [updateCollection](api/scheduler_updatecollection.md) ones.
+
 Displaying units for multiple days 
 -------------------------------------
 To display units for multiple days, use  the [days](api/scheduler_createunitsview.md) parameter:
