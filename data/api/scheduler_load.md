@@ -30,8 +30,21 @@ While next portions of data will be loaded later, the callback function won't be
 
 If you need to call the callback function each time data is loaded into Scheduler, you can make use of the api/scheduler_onloadend_event.md event.
 
+### Migration
+
+In v5.2 and upper, scheduler detects the format of data automatically. 
+
+But before v5.2, the method included three parameters:
+
+- **url** - (*string*)  the server-side URL (may be a static file or a server-side script which outputs data as XML)
+- **type** - (*string*) <i>('json', 'xml', 'ical')</i> the data type. The default value - <i>'xml'</i>
+- **callback** - (*function*) the callback function
+
 @relatedapi:
 api/scheduler_onloadend_event.md
 api/scheduler_onloadstart_event.md
 api/scheduler_onbeforeparse_event.md
 api/scheduler_onparse_event.md
+
+@changelog: 
+The second **type** parameter of the method has been removed in v5.2.

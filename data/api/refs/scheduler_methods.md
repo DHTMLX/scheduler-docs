@@ -78,7 +78,7 @@ Methods
 - api/scheduler_resetlightbox.md - removes the current lightbox's HTML object element
 - api/scheduler_scrollunit.md - scrolls the specified number of units in the Units view
 - api/scheduler_select.md - selects the specified event
-- api/scheduler_serverlist.md - returns a list of options
+- api/scheduler_serverlist.md - defines a named collection that can be loaded into Units, Timeline views, or the Lightbox
 - api/scheduler_setcurrentview.md - displays the specified view and date
 - api/scheduler_setevent.md - adds a new event to the scheduler's data pool
 - api/scheduler_seteventenddate.md - sets the event's end date
