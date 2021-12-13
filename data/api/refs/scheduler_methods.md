@@ -3,11 +3,15 @@ Methods
 =======
 
 {{api
+- api/scheduler_dataprocessor.md - 
+- api/scheduler_promise.md - 
 - api/scheduler_addevent.md - adds a new event
 - api/scheduler_addeventnow.md - adds a new event and opens the lightbox to confirm
 - api/scheduler_addmarkedtimespan.md - marks dates, but with certain settings makes blocking (allows setting custom styling for the limit)
 - api/scheduler_addsection.md - adds a section to the currently active view
 - api/scheduler_addshortcut.md - adds a new keyboard shortcut
+- api/scheduler_alert.md - 
+- api/scheduler_attachall.md - 
 - api/scheduler_attachevent.md - attaches the handler to an inner event of dhtmlxScheduler
 - api/scheduler_backbone.md - makes the scheduler reflect all data changes in the Backbone model and vice versa
 - api/scheduler_blocktime.md - blocks the specified date and applies the default 'dimmed' style to it.
@@ -21,6 +25,8 @@ Methods
 - api/scheduler_closeallsections.md - closes all sections in the currently active view
 - api/scheduler_closesection.md - closes the specified section in the currently active view
 - api/scheduler_collapse.md - collapses the expanded scheduler back to the normal size
+- api/scheduler_confirm.md - 
+- api/scheduler_createdataprocessor.md - 
 - api/scheduler_creategridview.md - creates the Grid view in the scheduler
 - api/scheduler_createtimelineview.md - creates the Timeline view in the scheduler
 - api/scheduler_createunitsview.md - creates the Units view in the scheduler
@@ -29,6 +35,7 @@ Methods
 - api/scheduler_deletemarkedtimespan.md - removes marking/blocking set by the addMarkedTimespan() method
 - api/scheduler_deletesection.md - deletes a section from the currently active view
 - api/scheduler_destroycalendar.md - destroys previously created mini-calendar
+- api/scheduler_destructor.md - 
 - api/scheduler_detachevent.md - detaches a handler from an event (which was attached before by the attachEvent method)
 - api/scheduler_edit.md - opens the inline editor to alter the event's text  (the editor in the event's box)
 - api/scheduler_editstop.md - closes the inline event editor, if it's currently open
@@ -68,9 +75,12 @@ Methods
 - api/scheduler_load.md - loads data to the scheduler from an external data source
 - api/scheduler_markcalendar.md - applies a css class to the specified date
 - api/scheduler_marktimespan.md - marks and/or blocks date(s) by applying the default or a custom style to them. Marking is cancelled right after any internal update in the app. Can be used for highlighting
+- api/scheduler_message.md - 
+- api/scheduler_modalbox.md - 
 - api/scheduler_openallsections.md - opens all sections in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
 - api/scheduler_opensection.md - opens the specified section in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
 - api/scheduler_parse.md - loads data from a client-side resource
+- api/scheduler_plugins.md - 
 - api/scheduler_removeshortcut.md - removes a keyboard shortcut
 - api/scheduler_render.md - repaints the scheduler
 - api/scheduler_rendercalendar.md - creates a mini calendar
@@ -78,6 +88,7 @@ Methods
 - api/scheduler_resetlightbox.md - removes the current lightbox's HTML object element
 - api/scheduler_scrollunit.md - scrolls the specified number of units in the Units view
 - api/scheduler_select.md - selects the specified event
+- api/scheduler_serialize.md - 
 - api/scheduler_serverlist.md - defines a named collection that can be loaded into Units, Timeline views, or the Lightbox
 - api/scheduler_setcurrentview.md - displays the specified view and date
 - api/scheduler_setevent.md - adds a new event to the scheduler's data pool
@@ -109,11 +120,15 @@ Methods
 }}
 
 @index:
+- api/scheduler_dataprocessor.md
+- api/scheduler_promise.md
 - api/scheduler_addevent.md
 - api/scheduler_addeventnow.md
 - api/scheduler_addmarkedtimespan.md
 - api/scheduler_addsection.md
 - api/scheduler_addshortcut.md
+- api/scheduler_alert.md
+- api/scheduler_attachall.md
 - api/scheduler_attachevent.md
 - api/scheduler_backbone.md
 - api/scheduler_blocktime.md
@@ -127,6 +142,8 @@ Methods
 - api/scheduler_closeallsections.md
 - api/scheduler_closesection.md
 - api/scheduler_collapse.md
+- api/scheduler_confirm.md
+- api/scheduler_createdataprocessor.md
 - api/scheduler_creategridview.md
 - api/scheduler_createtimelineview.md
 - api/scheduler_createunitsview.md
@@ -135,6 +152,7 @@ Methods
 - api/scheduler_deletemarkedtimespan.md
 - api/scheduler_deletesection.md
 - api/scheduler_destroycalendar.md
+- api/scheduler_destructor.md
 - api/scheduler_detachevent.md
 - api/scheduler_edit.md
 - api/scheduler_editstop.md
@@ -174,9 +192,12 @@ Methods
 - api/scheduler_load.md
 - api/scheduler_markcalendar.md
 - api/scheduler_marktimespan.md
+- api/scheduler_message.md
+- api/scheduler_modalbox.md
 - api/scheduler_openallsections.md
 - api/scheduler_opensection.md
 - api/scheduler_parse.md
+- api/scheduler_plugins.md
 - api/scheduler_removeshortcut.md
 - api/scheduler_render.md
 - api/scheduler_rendercalendar.md
@@ -184,6 +205,7 @@ Methods
 - api/scheduler_resetlightbox.md
 - api/scheduler_scrollunit.md
 - api/scheduler_select.md
+- api/scheduler_serialize.md
 - api/scheduler_serverlist.md
 - api/scheduler_setcurrentview.md
 - api/scheduler_setevent.md

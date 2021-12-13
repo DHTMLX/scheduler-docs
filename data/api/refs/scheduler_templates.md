@@ -42,6 +42,7 @@ Templates
 - api/scheduler_time_picker_template.md - specifies the drop-down time selector in the lightbox
 - api/scheduler_tooltip_date_format_template.md - specifies the format of start and end dates displayed in the tooltip
 - api/scheduler_tooltip_text_template.md - specifies the text of tooltips
+- api/scheduler_week_agenda_date_template.md - 
 - api/scheduler_week_agenda_event_text_template.md - specifies the event's text
 - api/scheduler_week_agenda_scale_date_template.md - the date of a day cell of the view
 - api/scheduler_week_date_template.md - specifies the date in the header of the view
@@ -112,6 +113,7 @@ Templates
 - api/scheduler_time_picker_template.md
 - api/scheduler_tooltip_date_format_template.md
 - api/scheduler_tooltip_text_template.md
+- api/scheduler_week_agenda_date_template.md
 - api/scheduler_week_agenda_event_text_template.md
 - api/scheduler_week_agenda_scale_date_template.md
 - api/scheduler_week_date_template.md

@@ -18,6 +18,7 @@ Properties
 - api/scheduler_check_limits_config.md - activates/disables checking of limits
 - api/scheduler_collision_limit_config.md - sets the maximum allowable number of events per time slot
 - api/scheduler_container_autoresize_config.md - forces the scheduler container to automatically change its size to show the whole content without scrolling
+- api/scheduler_csp_config.md - 
 - api/scheduler_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
 - api/scheduler_day_date_config.md - sets the date format for the X-Axis of the Week and Units views
 - api/scheduler_dblclick_create_config.md - enables the possibility to create events by double click
@@ -37,6 +38,7 @@ Properties
 - api/scheduler_drag_out_config.md - restrict dragging events from the calling scheduler to any other scheduler(s)
 - api/scheduler_drag_resize_config.md - enables the possibility to resize events by drag-and-drop
 - api/scheduler_edit_on_create_config.md - 'says' to open the lightbox while creating new events
+- api/scheduler_event_attribute_config.md - 
 - api/scheduler_event_duration_config.md - sets the initial duration of events in minutes
 - api/scheduler_first_hour_config.md - sets the minimum value for the hour scale (Y-Axis)
 - api/scheduler_fix_tab_position_config.md - moves views' tabs from the left to the right side
@@ -143,6 +145,7 @@ Properties
 - api/scheduler_check_limits_config.md
 - api/scheduler_collision_limit_config.md
 - api/scheduler_container_autoresize_config.md
+- api/scheduler_csp_config.md
 - api/scheduler_date_format_config.md
 - api/scheduler_day_date_config.md
 - api/scheduler_dblclick_create_config.md
@@ -162,6 +165,7 @@ Properties
 - api/scheduler_drag_out_config.md
 - api/scheduler_drag_resize_config.md
 - api/scheduler_edit_on_create_config.md
+- api/scheduler_event_attribute_config.md
 - api/scheduler_event_duration_config.md
 - api/scheduler_first_hour_config.md
 - api/scheduler_fix_tab_position_config.md

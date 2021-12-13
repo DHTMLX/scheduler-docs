@@ -22,6 +22,7 @@ Events
 - api/scheduler_onbeforefoldertoggle_event.md - fires before a tree branch will be opened or closed (the Timeline view, 'tree' mode only)
 - api/scheduler_onbeforelightbox_event.md - fires immediately before the user opens the lightbox (edit form)
 - api/scheduler_onbeforeparse_event.md - fires before data started to be parsed
+- api/scheduler_onbeforerender_event.md - 
 - api/scheduler_onbeforetodaydisplayed_event.md - fires when the user clicks on the 'Today' button in the scheduler
 - api/scheduler_onbeforetooltip_event.md - fires before the tooltip is displayed for a data item (only with the 'tooltip' extension enabled)
 - api/scheduler_onbeforeviewchange_event.md - fires before the user changes the current view to some other one
@@ -34,6 +35,7 @@ Events
 - api/scheduler_oncontextmenu_event.md - fires when the user calls the context menu by clicking the right mouse button inside the scheduler
 - api/scheduler_ondatarender_event.md - fires after data has been rendered on the page
 - api/scheduler_ondblclick_event.md - fires when the user double clicks on an event
+- api/scheduler_ondestroy_event.md - 
 - api/scheduler_ondragend_event.md - fires when the drag/resize operation is finished
 - api/scheduler_onemptyclick_event.md - fires when the user clicks on an empty space in the scheduler (not on events)
 - api/scheduler_oneventadded_event.md - fires when the user adds a new event to the scheduler
@@ -107,6 +109,7 @@ Events
 - api/scheduler_onbeforefoldertoggle_event.md
 - api/scheduler_onbeforelightbox_event.md
 - api/scheduler_onbeforeparse_event.md
+- api/scheduler_onbeforerender_event.md
 - api/scheduler_onbeforetodaydisplayed_event.md
 - api/scheduler_onbeforetooltip_event.md
 - api/scheduler_onbeforeviewchange_event.md
@@ -119,6 +122,7 @@ Events
 - api/scheduler_oncontextmenu_event.md
 - api/scheduler_ondatarender_event.md
 - api/scheduler_ondblclick_event.md
+- api/scheduler_ondestroy_event.md
 - api/scheduler_ondragend_event.md
 - api/scheduler_onemptyclick_event.md
 - api/scheduler_oneventadded_event.md
