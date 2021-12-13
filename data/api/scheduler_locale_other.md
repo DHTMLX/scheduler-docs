@@ -6,7 +6,7 @@ locale
 @type:object
 
 @example:
-scheduler.locale = {
+scheduler.i18n.setLocale({
 	date:{
 		month_full:["January", "February", "March", "April", "May", "June", 
         	"July", "August", "September", "October", "November", "December"],
@@ -72,10 +72,29 @@ scheduler.locale = {
 		hour:"Hour",
 		minute:"Minute"
 	}
-};
+)};
+
+console.log(scheduler.locale);
 
 @template:	api_config
 @descr:
+The current locale is available in the **scheduler.locale** object and can be modified directly, as in:
+
+~~~js
+scheduler.locale.labels.day_tab = "Day";
+~~~
+
+Which is equal to:
+
+~~~js
+scheduler.i18n.setLocale({
+	labels: {
+		day_tab: "Day"
+	}
+});	
+~~~
+
+Both approaches are valid and supported. We recommend using the [scheduler.i18n](api/scheduler_i18n_other.md) object API.
 
 @related:
 	localization.md

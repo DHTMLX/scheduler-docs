@@ -1,6 +1,53 @@
 Migration From Older Versions 
 ==============
 
+
+## 5.3 -> 6.0
+
+he newest update v6.0 introduces two major changes in the structure of the Scheduler package:
+
+1) All files of extensions are now bundled with the *dhtmlxscheduler.js* file. 
+Therefore, in order to activate any of extra extensions provided by dhtmlx Scheduler you need to use the API call.
+
+- If you have already included any extension files from the built-in package on your page, for example:
+
+~~~js
+<script src="../codebase/dhtmlxscheduler.js"></script>
+<script src="../codebase/ext/dhtmlxscheduler_active_links.js"></script>
+~~~
+
+or
+
+~~~js
+import "dhtmlx-scheduler";
+import "dhtmlx-scheduler/ext/dhtmlxscheduler_active_links";
+~~~
+
+Then you need to remove the extension file and enable the extension using the **scheduler.plugins** method:
+
+~~~js
+scheduler.plugins({
+   active_links: true
+});
+~~~
+
+See the full list of extensions [here](extensions_list.md).
+
+- If you use a modified version of extension files or have developed custom extensions, include them as files on a page and they will work. 
+
+- **Note**, that the **dhtmlxscheduler_csp.js** extension is completely removed and does not need to be enabled manually.
+<br>
+
+2) All locales are now embedded into the *dhtmlxscheduler.js* file. To activate them, use the API call.
+
+- If you have included any locale on a page, you need to remove it from the page and enable the required locale using **scheduler.i18n.setLocale**:
+
+~~~js
+scheduler.i18n.setLocale("de");
+~~~
+
+- If you use a custom locale file, it can be loaded as before.
+
 ## 5.2 -> 5.3
 
 ### Touch gestures
