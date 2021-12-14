@@ -46,7 +46,7 @@ To load data from the server side using the PHP Connector, you need to:
 scheduler.init('scheduler_here', new Date(), "month");
 scheduler.load("events.php");
 
-var dp = new dataProcessor("events.php");
+var dp = scheduler.createDataProcessor("events.php");
 dp.init(scheduler);
 ~~~
 	

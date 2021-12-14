@@ -187,7 +187,7 @@ Then create an *index.html* file in the **public** directory:
 
             scheduler.load("http://localhost:3000/data", "json");
 
-            var dp = new dataProcessor("http://localhost:3000/data");
+            var dp = scheduler.createDataProcessor("http://localhost:3000/data");
             dp.init(scheduler);
             // use RESTful API on the backend
             dp.setTransactionMode("REST");

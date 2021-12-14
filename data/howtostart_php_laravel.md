@@ -485,7 +485,7 @@ scheduler.setLoadMode("day"); /*!*/
 scheduler.init("scheduler_here", new Date(2018, 11, 3), "week");
 
 scheduler.load("/api/events", "json"); /*!*/
-var dp = new dataProcessor("/api/events"); /*!*/
+var dp = scheduler.createDataProcessor("/api/events"); /*!*/
 dp.init(scheduler);
 dp.setTransactionMode("REST");
 ~~~

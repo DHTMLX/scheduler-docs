@@ -77,7 +77,7 @@ scheduler.load("../gCal_proxy/server/01_proxy.php");
   
    
 ~~~js
-var dp =  new dataProcessor("../gCal_proxy/server/01_proxy.php");
+var dp =  scheduler.createDataProcessor("../gCal_proxy/server/01_proxy.php");
 dp.init(scheduler);//'scheduler' is the name of the scheduler instance.
 
 ~~~

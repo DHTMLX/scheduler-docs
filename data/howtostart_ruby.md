@@ -317,7 +317,7 @@ scheduler.config.xml_date="%Y-%m-%d %H:%i";
 scheduler.init("scheduler_here", new Date(2016,4,27), "week");
 scheduler.load("<%= data_path %>/", "json");
 
-var dp = new dataProcessor("<%= data_path %>/");
+var dp = scheduler.createDataProcessor("<%= data_path %>/");
 dp.init(scheduler);
 dp.setTransactionMode("REST");
 ~~~

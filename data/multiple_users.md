@@ -26,7 +26,7 @@ The same code can be used in a more complex scenario: users see all the events, 
 
 ~~~js
 //enable saving for the first data feed
-var dp =  new dataProcessor("events.php?user");
+var dp =  scheduler.createDataProcessor("events.php?user");
 dp.init(scheduler);
 		
 //allow edit operations only for own events

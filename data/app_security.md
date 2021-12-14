@@ -57,10 +57,10 @@ Otherwise, you'll have to handle it manually. Please check [this article](server
 
 ##Content Security Policy
 
-The library provides a special extension that allows you to adjust the code of your application created with dhtmlxScheduler to comply with the CSP (Content Security Policy) standard. 
+The library provides a special config that allows you to adjust the code of your application created with dhtmlxScheduler to comply with the CSP (Content Security Policy) standard. 
 It helps preventing various code injection attacks and improve the safety of applications. 
 
-[Read more about applying the CSP standard to a dhtmlxScheduler application](content_security_policy.md).
+[Read more about applying the CSP standard to a dhtmlxScheduler application](api/scheduler_csp_config.md).
 
 
 @linkclass:hidden

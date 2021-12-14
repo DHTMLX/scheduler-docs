@@ -22,6 +22,8 @@ scheduler.event("divId", "click", function(e){
 @template:	api_method
 @descr:
 
+All event listeners attached using **event** will be detached automatically when the [destructor](api/scheduler_destructor.md) is called.
+
 @relatedapi:
 api/scheduler_eventremove.md
 

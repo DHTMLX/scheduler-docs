@@ -106,7 +106,7 @@ Open the newly created view and put the following code into it:
             // initiating data loading
             scheduler.load("/api/scheduler");
             // initializing dataProcessor
-            var dp = new dataProcessor("/api/scheduler");
+            var dp = scheduler.createDataProcessor("/api/scheduler");
             // and attaching it to scheduler
             dp.init(scheduler);
             // setting the REST mode for dataProcessor
@@ -144,7 +144,7 @@ And also we told the scheduler that it's going to work with the RESTful API on a
 ~~~
 scheduler.load("/api/scheduler");
 // initializing dataProcessor
-var dp = new dataProcessor("/api/scheduler");
+var dp = scheduler.createDataProcessor("/api/scheduler");
 // and attaching it to scheduler
 dp.init(scheduler);
 // setting the REST mode for dataProcessor

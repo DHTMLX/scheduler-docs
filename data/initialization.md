@@ -198,4 +198,169 @@ It will also apply certain styles which will make elements and font sizes respon
 
 You can find more details in a separate article: touch_support.md.
 
+Import files into ES6/7 and TypeScript apps
+---------------------------------------------
+
+Use the following command to import files:
+
+~~~js
+import { scheduler } from 'dhtmlx-scheduler';
+~~~
+
+For the Commercial, Enterprise or Ultimate version the command looks like this:
+
+~~~js
+import { scheduler, Scheduler } from 'dhtmlx-scheduler';
+~~~
+
+React example
+------------------
+
+An example of importing dhtmlxScheduler files into a React-based app:
+
+~~~js
+import React, { Component } from 'react';
+import { gantt } from 'dhtmlx-gantt';
+import 'dhtmlx-gantt/codebase/dhtmlxgantt.css';
+ 
+export default class Gantt extends Component {
+  componentDidUpdate() {
+    gantt.render();
+  }
+  componentDidMount() {
+    gantt.init(this.ganttContainer);
+    gantt.parse(this.props.tasks);
+  }
+ 
+  render() {
+    return (
+      <div
+        ref={(input) => { this.ganttContainer = input }}
+        style={{ width: '100%', height: '100%' }}
+      ></div>
+    );
+  }
+}
+~~~
+
+Angular example
+-----------------
+
+An example of importing dhtmlxScheduler files into an Angular-based app:
+
+~~~js
+import {Component,ElementRef,OnInit,ViewChild,ViewEncapsulation} from '@angular/core';
+import {TaskService} from '../services/task.service';
+import {LinkService} from '../services/link.service';
+import {Task} from '../models/task';
+import {Link} from '../models/link';
+ 
+ 
+import { gantt, Gantt } from 'dhtmlx-gantt';
+ 
+@Component({
+    encapsulation: ViewEncapsulation.None,
+    selector: 'gantt',
+    styleUrls: ['./gantt.component.css'],
+    providers: [TaskService, LinkService],
+    template: `<div #gantt_here class='gantt-chart'></div>`,
+})
+export class GanttComponent implements OnInit {
+    @ViewChild('gantt_here') ganttContainer: ElementRef;
+ 
+    constructor(private taskService:TaskService, private linkService:LinkService){ }
+ 
+    ngOnInit() {
+        gantt.config.xml_date = '%Y-%m-%d %H:%i';
+        gantt.init(this.ganttContainer.nativeElement);
+        Promise.all([this.taskService.get(), this.linkService.get()])
+            .then(([data, links]) => {
+                gantt.parse({ data, links });
+            });
+    }
+}
+~~~
+
+Include files into a RequireJS-based app
+------------------------------------------- 
+
+To include dhtmlxScheduler files into a RequireJS-based app, you need to follow the logic shown in the example below:
+
+~~~js
+requirejs(["codebase/dhtmlxgantt"], function(dhx){
+  var gantt = dhx.gantt;
+  var Gantt = dhx.Gantt;// for Enterprise builds
+ 
+  gantt.init("gantt_here");
+  gantt.parse({
+    data: [
+      { id:1, text:"Project #2", start_date:"01-04-2018", 
+      	duration:18, progress:0.4, open:true },
+      { id:2, text:"Task #1", start_date:"02-04-2018", 
+      	duration:8, progress:0.6, parent:1 },
+      { id:3, text:"Task #2", start_date:"11-04-2018", 
+      	duration:8, progress:0.6, parent:1 }
+    ],
+    links: [
+      { id:1, source:1, target:2, type:"1" },
+      { id:2, source:2, target:3, type:"0" }
+    ]
+  });
+});
+~~~
+
+The dhtmlxScheduler library will return an object with fields `scheduler` and `Scheduler` (in Commercial, Enterprise or Ultimate versions) - the *scheduler* and *Scheduler* objects described [here](multiple_per_page.md).
+
+{{note  When using Gantt with custom extensions in RequireJS, you should specify the `shim` config for RequireJS and directly set the dependency of extensions from Scheduler in it.}}
+
+The example below demonstrates how a custom extension file *custom_tooltip_plugin.js* can be set in the correct way:
+
+~~~js
+requirejs.config({
+  paths: {
+    "dhtmlxgantt": "../../codebase/dhtmlxgantt",
+    "ext/dhtmlxgantt_custom_tooltip": "../custom_tooltip_plugin"
+  },
+  shim: {
+    "ext/dhtmlxgantt_custom_tooltip": ["dhtmlxgantt"]
+  }
+});
+ 
+requirejs(["dhtmlxgantt"], 
+function (dhx) {
+  var gantt = dhx.gantt;
+
+  var date_to_str = gantt.date.date_to_str(gantt.config.task_date);
+  var today = new Date(2018, 3, 5);
+  gantt.addMarker({
+    start_date: today,
+    css: "today",
+    text: "Today",
+    title: "Today: " + date_to_str(today)
+  });
+ 
+  gantt.init("gantt_here");
+  gantt.parse({
+    data: [
+      { id:1, text:"Project #2", start_date:"01-04-2018",
+      	duration:18, progress:0.4, open:true },
+      { id:2, text:"Task #1", start_date:"02-04-2018", 
+      	duration:8, progress:0.6, parent:1 },
+      { id:3, text:"Task #2", start_date:"11-04-2018", 
+      	duration:8, progress:0.6, parent:1 }
+    ],
+    links: [
+      { id:1, source:1, target:2, type:"1" },
+      { id:2, source:2, target:3, type:"0" }
+    ]
+  });
+});
+~~~
+
+Check that the module name for any file inside the package is specified as *a relative path inside the 'codebase' folder of the package* plus *the filename*, for instance:
+
+**core library:**
+
+- "dhtmlxscheduler": "./vendor/dhtmlxscheduler/dhtmlxscheduler"
+
 
