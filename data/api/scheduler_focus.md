@@ -14,7 +14,7 @@ scheduler.focus();
 @descr:
 added in version 4.4
 
-{{note The method requires the **ext/dhtmlxscheduler_key_nav.js** to be included on the page.}}
+{{note The method requires the [key_nav](extensions_list.md#keyboardnavigation) extension to be included on the page.}}
 
 @relatedsample:
 13_accessibility/01_regular_skin_all_views.html

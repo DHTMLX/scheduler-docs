@@ -151,7 +151,7 @@ JSONSchedulerConnector generates the 'JSON' data feed as in:
 
 Saving data in an XML file
 ----------------------------------------------
-The library includes a special extension **ext/dhtmlxScheduler_serialize.js** that allows storing data in an XML file, 
+The library includes a special extension [serialize](extensions_list.md#serialize) that allows storing data in an XML file, 
 without dealing with the database routine.
 
 Read more on the topic in the chapter <a href="export.html#savingdatainanxmlfile"> Serializing data to XML, JSON, iCal formats</a>.

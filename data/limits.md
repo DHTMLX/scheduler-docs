@@ -1,15 +1,17 @@
 Blocking and Marking Dates
 ==============
 
-The library provides the **ext/dhtmlxscheduler_limit.js** extension that allows you to block and mark (highlight) certain dates or date ranges.
+The library provides the **Limit** extension that allows you to block and mark (highlight) certain dates or date ranges.
 
-To start using the extension, include the **ext/dhtmlxscheduler_limit.js** file on the page. 
+To start using the plugin, activate it on the page. 
 
-{{note Note, if you use the timeline_view.md, the 'limit' extension file should go before the 'timeline' one:}}
+{{note Note, if you use the timeline_view.md, the 'limit' extension should be enabled before the 'timeline' one:}}
 
-~~~html
-<script src="codebase/ext/dhtmlxscheduler_limit.js"></script> /*!*/
-<script src='codebase/ext/dhtmlxscheduler_timeline.js'></script> 
+~~~js
+scheduler.plugins({
+    limit: true, /*!*/
+	timeline: true
+});
 ~~~
 
 

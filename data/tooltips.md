@@ -1,10 +1,12 @@
 Tooltips 
 ==============
 
-To display tooltips for events, you should include the **dhtmlxscheduler_tooltip.js** extension once on the page.
+To display tooltips for events, you should activate the **Tooltip** extension once on the page.
 
 ~~~js
-<script src="codebase/ext/dhtmlxscheduler_tooltip.js"></script>
+scheduler.plugins({
+    tooltip: true
+});
 ~~~
 
 After that tooltips will be displayed with the default settings.

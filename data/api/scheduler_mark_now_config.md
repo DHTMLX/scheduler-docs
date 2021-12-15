@@ -16,7 +16,7 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 @template:	api_config
 @descr:
 
-{{note  Note that in case of the Timeline view the *ext/dhtmlxscheduler_limit.js* extension should be included on a page before the Timeline extension.}}
+{{note  Note that in case of the Timeline view the [limit](extensions_list.md#limit) extension should be included on a page before the [Timeline](extensions_list.md#timeline) extension.}}
 
 <img src="api/weekView_properties.png"/>
 

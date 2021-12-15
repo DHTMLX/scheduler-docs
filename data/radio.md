@@ -6,11 +6,15 @@ A set of radio buttons
 <img src="radio_editor.png"/>
 
 {{note
-Include the **ext/dhtmlxscheduler_editors.js** file to use the control in the lightbox
+Enable the **editors** extension to use the control in the lightbox
 }}
 
 
 ~~~js
+scheduler.plugins({
+    editors: true /*!*/
+});
+
 var priorities = [
 	{ key: 1, label: 'High' },
 	{ key: 2, label: 'Medium' },

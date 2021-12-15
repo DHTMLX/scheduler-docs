@@ -103,7 +103,13 @@ Tooltips
 You have the possibility to create tooltips over events, regardless of the type of a view. 
 This can be used to display additional event information, without the need of 'opening' the event.
 
-To take the possibility, include the tooltip extension file (**ext/dhtmlxScheduler_tooltip.js**) on the page. 
+To take the possibility, include the Tooltip extension on the page.
+
+~~~js
+scheduler.plugins({
+    tooltip: true
+});
+~~~
 
 <img src="api/tooltip_templates.png"/>
 

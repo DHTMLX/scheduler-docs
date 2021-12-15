@@ -151,12 +151,14 @@ Specially for providing touch functionality, the library is extended with the ["
 The extension allows you to replace the standard sidebar buttons and the simplified edit form 
 (which are quite small and hard-to-target on touch devices) with new ones, bigger and handier.
 
-To activate the big-buttons scheduler, include the ["Quick Info"](extensions_list.md#quickinfo) extension file on the page:
+To activate the big-buttons scheduler, include the ["Quick Info"](extensions_list.md#quickinfo) extension on the page:
 
 ~~~js
-<script src="../../codebase/ext/dhtmlxscheduler_quick_info.js"></script>
 <script>
-      scheduler.init('scheduler_here',new Date(2019,5,30),"day");
+	scheduler.plugins({
+    	quick_info: true
+	});
+    scheduler.init('scheduler_here',new Date(2019,5,30),"day");
       ...
 <script>
 ~~~

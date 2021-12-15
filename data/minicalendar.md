@@ -9,7 +9,7 @@ Mini calendar (date picker) is a special extension that provides an ability to r
 }}
 
 {{note
-To use the mini calendar in an app, include the **ext/dhtmlxscheduler_minical.js** file on the page.
+To use the mini calendar in an app, include the **minical** extension on the page.
 }}
 
 
@@ -22,7 +22,9 @@ To place the mini calendar (date picker) into the header of the scheduler (as sh
 <ol>
 	<li>Include the extension file on the page:
 ~~~js
-<script src='/ext/dhtmlxscheduler_minical.js' type="text/javascript"></script>
+scheduler.plugins({
+    minical: true
+});
 ~~~
 	</li>
     <li>Specify the container for the mini calendar and add it to the scheduler markup:

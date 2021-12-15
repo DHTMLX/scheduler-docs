@@ -15,12 +15,19 @@ Initialization
 To add the Timeline view to the scheduler, follow these steps:
 
 <ol>
-	<li><b>Include the Timeline code file on the page:</b>
+	<li><b>Activate the Timeline extension on the page:</b>
     	<ul>
-        	<li> <i>ext/dhtmlxscheduler_timeline.js</i> - for the 'Bar' and 'Cell' modes </li>
-            <li> <i>ext/dhtmlxscheduler_timeline.js, ext/dhtmlxscheduler_treetimeline.js</i> - for the 'Tree' mode</li>
-            <li> <i>ext/dhtmlxscheduler_timeline.js, ext/dhtmlxscheduler_daytimeline.js</i> - for the 'Days' mode</li>
+        	<li> <i>Timeline</i> - for the 'Bar' and 'Cell' modes</li>
+            <li> <i>Timeline, Treetimeline</i> - for the 'Tree' mode</li>
+            <li> <i>Timeline, Daytimeline</i> - for the 'Days' mode</li>
         </ul>
+~~~js
+scheduler.plugins({
+    timeline: true,
+	treetimeline: true,
+	daytimeline: true  
+});
+~~~	
     </li>
     <li> <b>Add the view's tab to the scheduler's markup:</b>
 ~~~html
@@ -354,19 +361,20 @@ Scheduler provides the possibility to assign events to several sections.
 
 To enable the possibility: 
 
-1. Include the **ext/dhtmlxscheduler_multisection.js** file on the page
+1. Activate the **Multisection** extension on the page
 2. Set the api/scheduler_multisection_config.md property to *true*
-3. (Optional) Include "ext/dhtmlxscheduler_multiselect.js" file on the page to use multiselect.md control in the scheduler (a comfortable way to switch between sections)
+3. (Optional) Activate the "Multiselect" extension on the page to use multiselect.md control in the scheduler (a comfortable way to switch between sections)
 
 ~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
-<script src="codebase/ext/dhtmlxscheduler_multisection.js"></script> /*!*/
 <link rel="stylesheet" href="codebase/dhtmlxscheduler.css" type="text/css">
 
-<script src="codebase/ext/dhtmlxscheduler_timeline.js"></script>
-<script src="codebase/ext/dhtmlxscheduler_multiselect.js"></script>
-
 <script>
+	scheduler.plugins({
+    	multisection: true, /*!*/
+		multiselect: true,
+		timeline: true
+	});
 	scheduler.config.multisection = true; /*!*/
 	scheduler.init('scheduler_here');
 </script>

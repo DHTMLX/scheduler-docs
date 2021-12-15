@@ -18,9 +18,11 @@ Initialization
 To add the Week Agenda view  to the scheduler,  follow these steps:
 
 <ol>
-	<li><b>Include the Week Agenda code file on the page:</b>
+	<li><b>Activate the Week Agenda extension on the page:</b>
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_week_agenda.js" ></script>
+scheduler.plugins({
+    week_agenda: true
+});
 ~~~
     </li>
     <li> <b>Add the view's tab to the scheduler's markup:</b>

@@ -55,7 +55,7 @@ var dp = scheduler.createDataProcessor({
 
 Check the detailed info in the next section.
 
-### Creating DataProcessor
+<h3 id="createdp">Creating DataProcessor</h3>
 
 While creating a DataProcessor via the API method [createDataProcessor](api/scheduler_createdataprocessor.md) you have several possible options for passing parameters.
 
@@ -499,6 +499,64 @@ scheduler.attachEvent('onEventChanged', function(id, event) {
 
 scheduler.attachEvent('onEventDeleted', function(id) {
   eventService.delete(id);
+});
+~~~
+
+Custom Routing
+----------------
+
+In case RESTful AJAX API isn't what you need on the backend, or if you want to manually control what is sent to the server, you can make use of custom routing.
+
+For example, if you use Angular, React, or any other framework where a component on a page doesn't send changes directly to the server, but passes them to a different component which is responsible for data saving.
+
+To provide custom routing options for DataProcessor, you should use the [**createDataProcessor()**](#createdp) method:
+
+~~~js
+scheduler.createDataProcessor(function(entity, action, data, id) { 
+    switch(action) {
+        case "create":
+            return scheduler.ajax.post(
+                server + "/" + entity,
+                data
+            );
+        break;
+        case "update":
+            return scheduler.ajax.put(
+                server + "/" + entity + "/" + id,
+                data
+            );
+        break;
+        case "delete":
+            return scheduler.ajax.del(
+                server + "/" + entity + "/" + id
+           );
+        break;
+    }
+});
+~~~
+
+### Using AJAX for setting custom routers
+
+[Scheduler AJAX module](api/scheduler_ajax_other.md) can be useful for setting custom routes. Scheduler expects a custom router to return a Promise object as a result of an operation, which allows catching the end of an action. 
+The AJAX module supports promises and is suitable for usage inside of custom routers. Scheduler will get Promise and process the content of Promise, when it is resolved.  
+
+In the example below a new task is created. If the server response includes the id of a newly created task, Scheduler will be able to apply it.
+
+~~~js
+scheduler.createDataProcessor(function(entity, action, data, id){
+...
+ 
+    switch (action) {
+        case "create":
+            return scheduler.ajax.post({
+                headers: { 
+                    "Content-Type": "application/json" 
+                },
+                url: server + "/" + entity + "/" + id,
+                data: JSON.stringify(data)
+            });
+        break;
+    }
 });
 ~~~
 

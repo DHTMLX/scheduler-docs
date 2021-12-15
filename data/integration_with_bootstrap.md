@@ -3,12 +3,10 @@ Integration with Bootstrap
 
 You can integrate the Scheduler library with the Bootstrap framework. To add Scheduler in a Bootstrap application follow the steps given below:
 
-1\. Include the dhtmlxScheduler files to the app:
+1\. Include the dhtmlxScheduler file to the app:
 
 ~~~html
-<script src="../../codebase/dhtmlxscheduler.js?v=5.2.5" 
-	type="text/javascript" charset="utf-8"></script>
-<script src="../../codebase/ext/dhtmlxscheduler_year_view.js?v=5.2.5" 
+<script src="../../codebase/dhtmlxscheduler.js" 
 	type="text/javascript" charset="utf-8"></script>
 ~~~
 
@@ -33,6 +31,9 @@ You can integrate the Scheduler library with the Bootstrap framework. To add Sch
 3\. Initialize and configure Scheduler in a usual way:
 
 ~~~js
+scheduler.plugins({
+	year_view: true,
+});
 scheduler.config.first_hour = 8;
 scheduler.config.limit_time_select = true;
 
