@@ -18,9 +18,11 @@ scheduler.templates.week_agenda_scale_date = function(date) {
 @returns:
 - text    string     html text for rendering in the scheduler
 @descr:
+{{note The template requires the [week_agenda](extensions_list.md#weekagenda) plugin to be activated.}}
+
 @related:
 	weekagenda_view_templates.md
-@require: week_agenda
+
 @views:weekagenda
 
 @edition:pro

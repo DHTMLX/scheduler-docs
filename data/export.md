@@ -4,10 +4,12 @@ Data Serialization to XML, JSON, iCal
 Making preparations 
 -------------------------------
 
-To activate such functionality, include the **dhtmlxscheduler_serialize.js** extension file.
+To activate such functionality, enable the **serialize** extension.
 
 ~~~js
-<script src='codebase/ext/dhtmlxscheduler_serialize.js'></script>
+scheduler.plugins({
+    serialize: true
+});
 ~~~
 
 
@@ -138,10 +140,12 @@ Saving data in an XML file
 
 Serialization allows you to implement a simple routine of data saving, which doesn't require DB - data will be stored in an XML file. 
 
-- First of all, include the serialization extension:
+- First of all, enable the **serialize** extension:
 
-~~~xml
-<script src='codebase/ext/dhtmlxscheduler_serialize.js'></script>
+~~~js
+scheduler.plugins({
+    serialize: true
+});
 ~~~
 
 
@@ -158,7 +162,7 @@ Serialization allows you to implement a simple routine of data saving, which doe
 - Place the "Save" button on the page
 
 
-~~~js
+~~~html
 <input type="button" name="save" value="save" onclick="save()" >
 
 ~~~

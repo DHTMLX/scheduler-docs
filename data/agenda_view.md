@@ -24,13 +24,15 @@ Initialization
 
 To add the Agenda view  to the scheduler, follow these steps:
 
-1) Include the Agenda code file on the page:
+1) Activate the Agenda extension on the page:
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_agenda_view.js" ></script>
+scheduler.plugins({
+    agenda_view: true
+});
 ~~~
     
-2) Add the view's tab to the scheduler's markup:
+1) Add the view's tab to the scheduler's markup:
 
 ~~~html
 <div id="scheduler_here" class="dhx_cal_container" ...>

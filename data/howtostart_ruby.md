@@ -438,35 +438,20 @@ class HomeController < ApplicationController
 end
 ~~~
 
-After that open *config/initializers/assets.rb* and add the **dhtmlxscheduler_recurring** extension to the precompile array.
+Next open the *app/views/home/index.html.erb* file and add the **recurring** plugin call:
 
-For this, add the line below:
+~~~js
+scheduler.plugins({
+    recurring: true
+});
 
-~~~
-Rails.application.config.assets.precompile += %w( ext/dhtmlxscheduler_recurring.js )
-~~~
+scheduler.init("scheduler_here", new Date(2016,4,27), "week");
+scheduler.load("<%= data_path %>/", "json");
 
-Next open *views/layouts/application.html.erb* and include the **dhtmlxscheduler_recurring.js** extension.
-
-~~~
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Scheduler on Rails</title>
- 		<%= csrf_meta_tags %>
- 		<%= stylesheet_link_tag  'application', media: 'all', 
- 			'data-turbolinks-track' => true %>
- 		<%= stylesheet_link_tag 'dhtmlxscheduler', media: 'all', 
- 			'data-turbolinks-track' => true %>
- 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
- 		<%= javascript_include_tag 'dhtmlxscheduler','data-turbolinks-track' => true %>
- 		<%= javascript_include_tag 'ext/dhtmlxscheduler_recurring', 
- 			'data-turbolinks-track' => true %>
-	</head>
-<body>
-	<%= yield %>
-</body>
-</html>
+var dp = scheduler.createDataProcessor({
+    url: "<%= data_path %>/",
+    mode: "REST"
+});
 ~~~
 
 Finally, run the server once again to check scheduler with recurring events:

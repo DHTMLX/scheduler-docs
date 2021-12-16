@@ -18,12 +18,12 @@ scheduler.templates.timeline_cell_value = function(evs, date, section){
 @returns:
 - text    string     html text for rendering in the scheduler
 @descr:
+{{note The template requires the [timeline](extensions_list.md#timeline) plugin to be activated.}}
+
 {{note
 The Timeline view, 'cell' mode only
 }}
 
-	
-@require:timeline
 @views:timeline
 
 

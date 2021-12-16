@@ -20,7 +20,6 @@ scheduler.createGridView({
 
 @template:	api_method
 
-@require:grid_view
 @views:grid
 @relatedsample:
 	03_extensions/27_grid_view.html
@@ -28,6 +27,8 @@ scheduler.createGridView({
 	grid_view.md
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
+
+{{note The method requires the [grid_view](extensions_list.md#gridview) plugin to be activated.}}
 
 The configuration object of the Grid view can have the following properties:
 <table class="webixdoc_links">

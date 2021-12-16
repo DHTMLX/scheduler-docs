@@ -33,17 +33,22 @@ Initialization
 To add the Combo control to the lightbox, follow these steps:
 
 <ol>
-	<li><b>Include the <a href="https://docs.dhtmlx.com/combo__index.html">dhtmlxCombo</a> files and the 'ext/dhtmlxscheduler_editors.js' extension file on the page:</b>
+	<li><b>Include the <a href="https://docs.dhtmlx.com/combo__index.html">dhtmlxCombo</a> files:</b>
 ~~~js
 <script src="../codebase/dhtmlxscheduler.js" ...></script>
 <link rel="stylesheet" href="../codebase/dhtmlxscheduler.css" ...>
-
-<script src="../codebase/ext/dhtmlxscheduler_editors.js" ...></script>
 
 <link rel="stylesheet" href="common/dhtmlxCombo/dhtmlxcombo.css" ..>
 <script src="common/dhtmlxCombo/dhtmlxcombo.js" ...></script>
 ~~~
     </li>
+	<li><b>Activate the <a href="extensions_list.md#editors">editors</a> extension on the page</b>:
+~~~js
+scheduler.plugins({
+    editors: true
+});
+~~~
+	</li>
     <li><b>Add the section to the lightbox configuration:</b>
 ~~~js
 scheduler.config.lightbox.sections = [

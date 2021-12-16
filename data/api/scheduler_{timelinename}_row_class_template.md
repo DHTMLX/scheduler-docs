@@ -19,6 +19,7 @@ scheduler.templates.timeline_row_class = function(section, timeline){
 @returns:
 - css_class    string     css class for related element
 @descr:
+{{note The template requires the [timeline](extensions_list.md#timeline) plugin to be activated.}}
 
 The default value of the template is:
 
@@ -30,8 +31,7 @@ scheduler.templates.{timelineName}_row_class = function(section, timeline){
 	return "";
 };
 ~~~
-	
-@require:timeline
+
 @views:timeline
 
 

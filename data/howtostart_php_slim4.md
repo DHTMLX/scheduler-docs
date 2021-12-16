@@ -385,7 +385,18 @@ Recurring events
 In order to enable recurrence (e.g. "repeat event daily") you'll need to add an appropriate extension to the scheduler page:
 
 ~~~html
-<script src="https://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_recurring.js" ></script>
+...
+<body>
+    ...
+    <script>
+        scheduler.plugins({
+            recurring: true /*!*/
+        });
+        scheduler.config.xml_date="%Y-%m-%d %H:%i";
+        scheduler.init("scheduler_here", new Date(2019, 0, 20), "week");
+        ...
+   </script> 
+</body>
 ~~~
 
 The "events" table needs additional columns to store recurrence info. Here is an SQL query for creating recurring events table:

@@ -15,8 +15,6 @@ week_agenda_select
 
 @views: weekagenda
 
-@require: week_agenda
-
 @example:
 scheduler.config.week_agenda_select= false; /*!*/
 scheduler.init('scheduler_here',new Date(2013,0,10),"agenda_week");
@@ -26,6 +24,8 @@ scheduler.init('scheduler_here',new Date(2013,0,10),"agenda_week");
 
 
 @descr:
+
+{{note The property requires the [week_agenda](extensions_list.md#weekagenda) plugin to be activated.}}
 
 <img src="week_agenda_select.png">
 

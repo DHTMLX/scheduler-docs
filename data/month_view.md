@@ -78,9 +78,11 @@ To display days in the view's cells as clickable links:
 
 <ol>
 	<li>
-Include the <b>ext/dhtmlxscheduler_active_links.js</b> extension file on the page:
-~~~html
-  <script src="../codebase/ext/dhtmlxscheduler_active_links.js"></script>
+Enable the <b>active_links</b> extension on the page:
+~~~js
+scheduler.plugins({
+    active_links: true
+});
 ~~~
 	</li>
 	<li> (<i>Optionally</i>) Specify the api/scheduler_active_link_view_config.md to set the view you want to open month's days in. By default, it's the day_view.md:

@@ -17,10 +17,9 @@ scheduler.templates.unit_date = function(date){
 @returns:
 - text    string     html text for rendering in the scheduler
 @descr:
+{{note The template requires the [units](extensions_list.md#units) plugin to be activated.}}
 
 
-	
-@require:units
 @views:units
 
 

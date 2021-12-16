@@ -6,7 +6,7 @@ year_date
 - date	Date	the date which needs formatting
 
 @views:year
-@require:year_view
+
 @example:
 var date_to_str=scheduler.date.date_to_str(scheduler.locale.labels.year_tab +" %Y");
 
@@ -18,6 +18,8 @@ scheduler.templates.year_date = function(date){
 @returns:
 - text    string     html text for rendering in the scheduler
 @descr:
+
+{{note The template requires the [year_view](extensions_list.md#year) plugin to be activated.}}
 
 @related:
 	year_view_templates.md

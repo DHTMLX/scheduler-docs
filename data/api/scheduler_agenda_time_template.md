@@ -7,7 +7,6 @@ agenda_time
 @returns:
 - text    string     html text for rendering in the scheduler
 
-@require:agenda_view
 @example:
 const templates = scheduler.templates;
 scheduler.templates.agenda_time = function(start, end, event){
@@ -27,6 +26,7 @@ scheduler.templates.agenda_time = function(start, end, event){
 - event	object	the event object
 
 @descr:
+{{note The template requires the [agenda_view](extensions_list.md#agendaview) plugin to be activated.}}
 
 @related:
 	agenda_view_templates.md

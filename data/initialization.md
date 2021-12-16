@@ -178,10 +178,12 @@ or:
 
 ###Scheduler autoresizing
 
-There is a possibility to enable automatic resizing for the scheduler container. You just need to include the <b>ext/dhtmlxscheduler_container_autoresize.js</b> extension file on the page:
+There is a possibility to enable automatic resizing for the scheduler container. You just need to enable the <b>container_autoresize</b> extension on the page:
 
-~~~html
-<script src="../codebase/ext/dhtmlxscheduler_container_autoresize.js"></script>
+~~~js
+scheduler.plugins({
+    container_autoresize: true
+});
 ~~~
 
 {{sample

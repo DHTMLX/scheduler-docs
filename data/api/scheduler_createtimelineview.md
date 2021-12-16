@@ -12,27 +12,27 @@ createTimelineView
 @example: 
 // the time scale from 8 AM to 8 PM with a 30-minute step
 scheduler.createTimelineView({
-     name:		"timeline",
-     x_unit:	"minute",
-     x_date:	"%H:%i",
-     x_step:	30,
-     x_size:	24,
-     x_start:	16,
-     x_length:	48,
-     y_unit:[	
+    name: "timeline",
+    x_unit:	"minute",
+    x_date:	"%H:%i",
+    x_step:	30,
+    x_size:	24,
+    x_start: 16,
+    x_length: 48,
+    y_unit:[	
      	{key:1, label:"Section A"},
         {key:2, label:"Section B"},
         {key:3, label:"Section C"},
         {key:4, label:"Section D"}	
-     ],
-     y_property: "section_id",
-     render:	"bar"
+    ],
+    y_property: "section_id",
+    render:	"bar"
 });
 
 
 
 @template:	api_method
-@require:timeline
+
 @views:timeline
 @relatedsample:
 	06_timeline/01_slots.html
@@ -42,6 +42,8 @@ scheduler.createTimelineView({
     
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
+
+{{note The method requires the [timeline](extensions_list.md#timeline) plugin to be activated.}}
 
 
 The configuration object of the Timeline view can have the following properties:

@@ -493,12 +493,14 @@ In order to enable [recurring events](recurring_events.md) (e.g. "repeat event d
 
 ### Enabling the extension
 
-Add an appropriate extension to the scheduler page:
+Activate an appropriate extension on the scheduler page:
 
 {{snippet public/index.html}}
 ~~~js
 <!-- scheduler recurring tasks extension -->
-<script src="https://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_recurring.js"></script>
+scheduler.plugins({
+    recurring: true
+});
 ~~~
 
 ### Updating the model

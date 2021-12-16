@@ -60,7 +60,7 @@ The state object reflects inner UI configuration of the scheduler and has the fo
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>expanded</b></td>
-			<td>(<i>boolean</i>) gets <i>true</i>, when the scheduler is expanded. 'Undefined' or 'null', if the scheduler is in its normal size or the 'dhtmlxscheduler_expand.js' isn't enabled in the app.</td>
+			<td>(<i>boolean</i>) gets <i>true</i>, when the scheduler is expanded. 'Undefined' or 'null', if the scheduler is in its normal size or the <a href="extensions_list.md#expand">expand</a> extension isn't enabled in the app.</td>
 		</tr>
         <tr>
 			<td class="webixdoc_links0"><b>drag_id</b></td>

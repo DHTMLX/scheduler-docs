@@ -519,11 +519,12 @@ public IEnumerable<WebAPIEvent> Get(DateTime from, DateTime to)
 Recurring events
 -------------------
 
-In order to enable recurrence (e.g. "repeat event daily"), you'll need to add an appropriate extension to the scheduler page: 
+In order to enable recurrence (e.g. "repeat event daily"), you'll need to enable an appropriate extension on the scheduler page: 
 
-~~~
-<script src="https://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_recurring.js">
-	</script>
+~~~js
+scheduler.plugins({
+    recurring: true
+});
 ~~~
 
 ###Updating the Models

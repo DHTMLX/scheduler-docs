@@ -6,16 +6,18 @@ In many use cases you may need to limit the count of events per time slot. For e
 Activating the monitoring for collisions
 ---------------------------------------------------
 
-To control the number of events in a time slot, use the ['collision' extension](extensions_list.md#collision).
+To control the number of events in a time slot, use the [**collision**](extensions_list.md#collision) extension.
 
 {{snippet
 Activating the 'collision' extension
 }}
-~~~html
-<script src="../codebase/ext/dhtmlxscheduler_collision.js"></script>
+~~~js
+scheduler.plugins({
+    collision: true
+});
 ~~~
 
-*Once you include the extension file on the page, the extension will be activated.
+*Once you enable the extension on the page, the extension will be activated.
 From this moment on, the scheduler won't allow users to place 2 events in the same time slot (create or move).*
 
 
@@ -78,8 +80,10 @@ Below you'll find a list of steps you need to complete in order to avoid collisi
 
 1) Include the *collision* extension on the page:
 
-~~~html
-<script src="../codebase/ext/dhtmlxscheduler_collision.js"></script>
+~~~js
+scheduler.plugins({
+    collision: true
+});
 ~~~
 
 2) Block creation of new events while data is being loaded from the server. 

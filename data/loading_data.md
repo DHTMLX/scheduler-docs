@@ -120,7 +120,13 @@ See the detailed information in the howtostart_connector.md guide.
 
 Loading data from multiple sources
 -----------------------------------
-To load data from multiple sources, use a special extension  - *'multisource'* provided in the  **ext/dhtmlxscheduler_multisource.js** file.
+To load data from multiple sources, use a special extension  - **multisource**:
+
+~~~js
+scheduler.plugins({
+   multisource: true
+});
+~~~
 
 {{note
 Multiple sources can be used for both static and dynamic loading

@@ -360,9 +360,11 @@ To place the mini calendar in the lightbox, follow these steps:
 
 
 <ol>
-	<li>Include the extension file on the page:
+	<li>Enable the extension on the page:
 ~~~js
-<script src='/ext/dhtmlxscheduler_minical.js' type="text/javascript"></script>
+scheduler.plugins({
+    minical: true
+});
 ~~~
 	</li>
     <li>Set the <i>type</i> of the <b>time</b> section to <b>calendar_time</b> (instead of <b>time</b>):
@@ -394,9 +396,11 @@ The mini calendar (date picker) can reside at any place on the page.
 To place the  mini calendar in some HTML container outside the scheduler, follow these steps:
 
 <ol>
-	<li>Include the extension file on the page:
+	<li>Enable the extension on the page:
 ~~~js
-<script src='/ext/dhtmlxscheduler_minical.js' type="text/javascript"></script>
+scheduler.plugins({
+    minical: true
+});
 ~~~
 	</li>
     <li>Specify the container for the mini calendar on the page:

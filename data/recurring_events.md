@@ -1,11 +1,13 @@
 Recurring Events 
 ==============
 
-By default, the scheduler doesn't support recurring events. To enable such support, you need to include a special extension file on the page - **ext/dhtmlxscheduler_recurring.js**. 
+By default, the scheduler doesn't support recurring events. To enable such support, you need to enable a special extension on the page - **recurring**. 
 
 
-~~~html
-<script src="ext/ext/dhtmlxscheduler_recurring.js" type="text/javascript"></script>
+~~~js
+scheduler.plugins({
+    recurring: true
+});
 ~~~
 
 

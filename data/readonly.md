@@ -35,7 +35,7 @@ scheduler.init('scheduler_here',new Date(2019, 5,11),"month");
 ~~~
 
 {{note
-The api/scheduler_readonly_config.md option is provided in the **dhtmlxscheduler_readonly.js** extension and to use it, include the extension file on the page.
+The api/scheduler_readonly_config.md option is provided in the [readonly](extensions_list.md#readonly) extension and to use it, enable the extension  on the page.
 }}
 
 {{sample
@@ -72,7 +72,7 @@ scheduler.getEvent(id).readonly = true;
 ~~~
 
 {{note
-The functionality is provided in the **dhtmlxscheduler_readonly.js** extension and to use it, include the extension file on the page.
+The functionality is provided in the [readonly](extensions_list.md#readonly) extension and to use it, enable the extension on the page.
 }}
 
 {{sample
