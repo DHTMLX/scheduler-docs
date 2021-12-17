@@ -6,14 +6,10 @@ expand
 @example: 
 scheduler.expand();
 
-
-
-@require:expand	
-
-
 @relatedapi:
 	api/scheduler_collapse.md
 @template:	api_method
-@descr: 
+@descr:
+{{note The method requires the [expand](extensions_list.md#expand) plugin to be enabled.}} 
 
 <img src="api/collapse_method.png"/>

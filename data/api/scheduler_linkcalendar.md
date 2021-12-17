@@ -7,7 +7,6 @@ linkCalendar
 - shift			function	a function that defines the difference between active dates in the mini-calendar <br> and the scheduler. The function takes the scheduler's date as a parameter and <br> returns the date that should be displayed in the mini calendar
 
 
-@require:minical
 @example: 
 var calendar = scheduler.renderCalendar({
 	container:"cal_here", 
@@ -29,5 +28,5 @@ scheduler.linkCalendar(calendar, function(date){
 @relatedsample:
 	05_calendar/05_plain_structure.html
 @descr: 
-
+{{note The method requires the [minical](extensions_list.md#minicalendardatepicker) plugin to be activated.}} 
 

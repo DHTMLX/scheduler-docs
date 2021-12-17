@@ -3,7 +3,6 @@ include_end_by
 
 @short:defines whether the date specified in the 'End by' field should be exclusive or inclusive
 	
-@require:recurring
 @type:boolean
 @default:false
 @example:
@@ -16,6 +15,8 @@ scheduler.init('scheduler_here', new Date(2019, 7, 5), "week");
 @relatedapi:
 	api/scheduler_repeat_date_config.md
 @descr:
+{{note The property requires the [recurring](extensions_list.md#recurring) extension to be enabled.}}
+
 By default, the date set in the 'End by' field is exclusive.
 
 For example, if the user specifies value '01.15.2019' in the 'End by' field then:

@@ -6,7 +6,6 @@ markTimespan
 @params: 
 - config	object	the configuration object of the timespan to mark/block	
 
-@require:limit
 @example: 
 //marks dates
 scheduler.markTimespan({  
@@ -32,6 +31,8 @@ scheduler.markTimespan({
 {{note
  The method is available from version 3.5.
 }}
+
+{{note The method requires the [limit](extensions_list.md#limit) plugin to be activated.}}
 
 Configuration object properties
 ---------------------------------------

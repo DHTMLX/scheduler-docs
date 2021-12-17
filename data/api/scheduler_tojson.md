@@ -5,7 +5,6 @@ toJSON
 
 @returns:
 -string	string	a data string in the JSON format
-@require:serialize
 	
 
 @example: 
@@ -18,6 +17,8 @@ var str = scheduler.toJSON();
 	export.md
 @relatedsample:
 	04_export/01_serialize_data.html
-@descr: 
+@descr:
+{{note The method requires the [serialize](extensions_list.md#serialize) plugin to be enabled.}}
+
 Custom attributes [can be configured](export.md) if necessary.
 

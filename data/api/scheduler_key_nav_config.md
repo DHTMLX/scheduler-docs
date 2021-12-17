@@ -6,13 +6,14 @@ key_nav
 
 @type: boolean
 @default:true
-@require:key_nav
+
 @example:
 
 scheduler.config.key_nav = true;
 
 @template:	api_config
 @descr:
+{{note The property requires the [key_nav](extensions_list.md#keyboardnavigation) extension to be enabled.}}
 
 @related:
 	extensions_list.md#keyboardnavigation

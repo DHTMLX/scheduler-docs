@@ -3,7 +3,6 @@ addMarkedTimespan
 @short: 
 	marks dates, but with certain settings makes blocking (allows setting custom styling for the limit) 
 
-@require:limit
 @params: 
 - config	object	the configuration object of the timespan to mark/block
 
@@ -39,8 +38,10 @@ scheduler.updateView();
 	09_api/03_highlighted_timespans.html
     09_api/04_highlighted_sections_units.html
 @descr: 
- The method is available from version 3.5.
- 
+The method is available from version 3.5.
+
+{{note The method requires the [limit](extensions_list.md#limit) plugin to be activated.}}
+
 {{note
 Note, marking (blocking) won't be applied just after you've called the method. You should call api/scheduler_updateview.md to apply the marking.
 }}

@@ -2,7 +2,6 @@ tooltip_text
 =============
 @short:specifies the text of tooltips
 	
-@require:tooltip
 @views:agenda, day, map, month, week, weekagenda, units
 @params: 
 - start	Date	the date when an event is scheduled to begin
@@ -20,7 +19,7 @@ scheduler.templates.tooltip_text = function(start,end,ev){
 @returns:
 - text    string     html text for rendering in the scheduler
 @descr:
-
+{{note The template requires the [tooltip](extensions_list.md#tooltip) plugin to be enabled.}}
 
 @relatedapi:
 	 api/scheduler_tooltip_date_format_template.md

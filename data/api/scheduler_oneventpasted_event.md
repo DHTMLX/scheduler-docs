@@ -18,9 +18,7 @@ scheduler.attachEvent("onEventPasted", function(isCopy, pasted_ev, original_ev) 
 
 @template:	api_event
 @descr: 
-The 'keyboard navigation' extension should be enabled.
-
-@require: key_nav
+{{note The event requires the [key_nav](extensions_list.md#keyboardnavigation) extension to be enabled.}}
 
 @related:
     api/scheduler_oneventcopied_event.md

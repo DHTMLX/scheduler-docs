@@ -5,7 +5,7 @@ readonly_form
 
 @type: boolean
 @default:false
-@require:readonly
+
 @example:
 scheduler.config.readonly_form = true;
 ...
@@ -16,6 +16,8 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"month");
 
 @template:	api_config
 @descr:
+{{note The property requires the [readonly](extensions_list.md#readonly) plugin to be enabled.}}
+
 
 @relatedapi:
 	api/scheduler_readonly_config.md

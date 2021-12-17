@@ -14,11 +14,13 @@ scheduler.attachEvent("onQuickInfo",function(eventId){
     // your code here
 });
 
-@require:quick_info
 @template:	api_event
 
 
 @descr:
+{{note The event requires the [quick_info](extensions_list.html#quickinfo) plugin to be activated.}}
+
+@changelog:
 added in version 4.4
 
 @related:

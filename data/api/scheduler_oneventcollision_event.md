@@ -16,8 +16,9 @@ scheduler.attachEvent("onEventCollision", function (ev, evs){
 @returns: 
 - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>)
 
-@require:collision
 @template:	api_event
-@descr: 
+@descr:
+{{note The event requires the [collision](extensions_list.md#collision) plugin to be activated.}}
+
 Returning <i>true</i> from the handler function blocks the event from being added/edited. Returning <i>false</i>  - allows the collision, i.e. adding/editing events.
 

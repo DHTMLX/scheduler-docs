@@ -2,9 +2,6 @@ calendar_scale_date
 =============
 
 @short: specifies the format of week-days in the header of the Mini-Calendar (date picker)
-	
-
-@require:minical
 
 @params:
 - date	Date	the date of a week-day for a header cell
@@ -19,6 +16,7 @@ scheduler.templates.calendar_scale_date = function (date) {
 };
 
 @descr:
+{{note The template requires the [minical](extensions_list.md#minicalendardatepicker) plugin to be activated.}}
 
 <img src="api/mini_calendar_templates.png"/>
 

@@ -23,8 +23,9 @@ scheduler.updateCalendar(calendar, new Date(2013,01,01));
 	minicalendar.md
 
 @template:	api_method
-@require: minical
-@descr: 
+
+@descr:
+{{note The method requires the [minical](extensions_list.md#minicalendardatepicker) plugin to be activated.}} 
 
 
 

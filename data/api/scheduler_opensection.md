@@ -7,7 +7,6 @@ openSection
 - section_id	string	the section's id
 
 
-@require:treetimeline
 @views: timeline
 @example: 
 scheduler.createTimelineView({
@@ -31,7 +30,8 @@ scheduler.createTimelineView({
 scheduler.openSection("managers");
 
 @template:	api_method
-@descr: 
+@descr:
+{{note The method requires the [treetimeline](extensions_list.md#treetimeline) plugin to be activated.}}
 
 @relatedapi:
 	api/scheduler_closesection.md

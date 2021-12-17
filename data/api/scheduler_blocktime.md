@@ -25,7 +25,6 @@ var spanID = scheduler.addMarkedTimespan({
 ~~~
 
 
-@require:limit
 @template:	api_method
 
 @relatedapi:
@@ -34,7 +33,10 @@ var spanID = scheduler.addMarkedTimespan({
     api/scheduler_unblocktime.md
 @relatedsample:
 	03_extensions/25_advanced_limitation.html
-@descr: 
+@descr:
+
+{{note The method requires the [limit](extensions_list.md#limit) plugin to be activated.}}
+
 The method can be called in different ways as in:
 
 

@@ -6,7 +6,7 @@ container_autoresize
 
 @type: boolean
 @default:true
-@require:container_autoresize
+
 @example:
 scheduler.config.container_autoresize = false;
 ...
@@ -14,9 +14,9 @@ scheduler.init('scheduler_here',new Date(2013,0,10),"week");
 
 @template:	api_config
 @descr:
-{{note
-Note, it's enough to include the extension file to enable the parameter.
-}}
+
+{{note The property will be enabled after you enable the [container_autoresize](extensions_list.md#containerautoresize) plugin.}} 
+
 <img src="api/container_autoresize_property.png"/>
 
 @apigroup: General setting/View settings

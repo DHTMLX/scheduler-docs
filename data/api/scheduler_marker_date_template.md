@@ -9,7 +9,6 @@ marker_date
 - end	Date	the date when an event is scheduled to be completed
 - event	object	the event object
 
-@require:map_view
 @views:map
 
 @example:
@@ -22,6 +21,8 @@ scheduler.templates.marker_date = function(date){
 @returns:
 - text    string     html text for rendering in the scheduler
 @descr:
+
+{{note The template requires the [map_view](extensions_list.html#mapview) plugin to be activated.}}
 
 @related:
 	map_view_templates.md

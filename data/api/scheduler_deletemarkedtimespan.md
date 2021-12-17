@@ -18,7 +18,7 @@ scheduler.deleteMarkedTimespan(spanID);
 
 
 @template:	api_method
-@require:limit
+
 @relatedapi:
 	api/scheduler_addmarkedtimespan.md
     
@@ -28,6 +28,8 @@ scheduler.deleteMarkedTimespan(spanID);
 {{note
 Available from version 3.5.
 }}
+
+{{note The method requires the [limit](extensions_list.md#limit) plugin to be activated.}}
 
 The method has 3 overloads:
 

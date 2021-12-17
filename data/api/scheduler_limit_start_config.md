@@ -5,7 +5,7 @@ limit_start
 	
 
 @type: Date
-@require:limit
+
 @default:null
 @example:
 scheduler.config.limit_start = new Date(2018,5,15);
@@ -15,6 +15,8 @@ scheduler.init('scheduler_here',new Date(2018,5,30),"week");
 
 @template:	api_config
 @descr:
+{{note The property requires the [limit](extensions_list.md#limit) plugin to be activated.}}
+
 The **limit_start/limit_end** configs allow limiting a range available for creating new events.
 You can also limit the possibility to view events outside the allowable date range, by using the api/scheduler_limit_view_config.md property:
 

@@ -16,9 +16,6 @@ scheduler.config.cascade_event_count = 4;
 Events 'exceeding' the set value will be drawn over the cascade. 
 
 
-<br>
-<img src="api/cascadeEventDisplay_property.png"/>
-
 
 @relatedapi:
 	api/scheduler_cascade_event_display_config.md

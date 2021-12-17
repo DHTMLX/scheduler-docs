@@ -18,14 +18,11 @@ scheduler.attachEvent("onExternalDragIn", function (id, source, e){
 @returns: 
 - result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>)
 
-
-@require:outerdrag
 @relatedapi:api/scheduler_onbeforeexternaldragin_event.md
 
 @template:	api_event
 @descr: 
-
-
+{{note The event requires the [outerdrag](extensions_list.md#outerdrag) plugin to be activated.}}
 
 - The event can be used to customize newly-created events (which are the result of drag-in operations).
 - The event is blockable. Return *false*,  and dragging won't produce a new event. 

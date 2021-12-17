@@ -20,8 +20,10 @@ var isBlocked = scheduler.checkLimitViolation(event); //returns 'true' or 'false
 
 @relatedapi:
 	api/scheduler_onLimitViolation_event.md
-@require:limit
+
 @template:	api_method
-@descr: 
+@descr:
+{{note The method requires the [limit](extensions_list.md#limit) plugin to be activated.}}
+
 Note, the method invokes the api/scheduler_onlimitviolation_event.md event.
 

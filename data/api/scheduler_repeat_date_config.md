@@ -6,7 +6,7 @@ repeat_date
 
 @type: string
 @default:"%m.%d.%Y"
-@require:recurring
+
 @example:
 scheduler.config.repeat_date = "%m/%d/%Y";
 ...
@@ -18,6 +18,7 @@ scheduler.init('scheduler_here',new Date(2019,05,11),"month");
 @relatedapi:
 	api/scheduler_include_end_by_config.md
 @descr:
+{{note The property requires the [recurring](extensions_list.md#recurring) extension to be enabled.}}
 
 By default, the date in the 'End by' field is exclusive.
 

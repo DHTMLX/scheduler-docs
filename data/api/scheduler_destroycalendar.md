@@ -6,7 +6,6 @@ destroyCalendar
 @params: 
 * name	object	the mini-calendar's object (if not specified, the scheduler attempts <br> to destroy the last created mini calendar)
 
-@require:minical
 @example: 
 var calendar = scheduler.renderCalendar(...);
 ...
@@ -24,7 +23,7 @@ scheduler.destroyCalendar(calendar);
 	05_calendar/01_select.html
     05_calendar/06_recurring_form.html
 @descr: 
-
+{{note The method requires the [minical](extensions_list.md#minicalendardatepicker) plugin to be activated.}} 
 
 
 

@@ -2,7 +2,6 @@ renderCalendar
 =============
 @short: creates a mini calendar
 
-@require:minical
 @params: 
 - config	object	the calendar configuration object 
 
@@ -24,6 +23,7 @@ var calendar = scheduler.renderCalendar({
 	05_calendar/01_select.html
     05_calendar/02_without_scheduler.html
 @descr: 
+{{note The method requires the [minical](extensions_list.md#minicalendardatepicker) plugin to be activated.}} 
 
 The configuration object can have the following properties:
 

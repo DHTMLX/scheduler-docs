@@ -13,11 +13,9 @@ scheduler.attachEvent("onEventCut", function(ev) {
 	scheduler.updateEvent(ev.id);
 });
 
-
-@require: key_nav
-
 @template:	api_event
 @descr: 
+{{note The event requires the [key_nav](extensions_list.md#keyboardnavigation) extension to be enabled.}}
 
 @related:
 	api/scheduler_oneventcopied_event.md

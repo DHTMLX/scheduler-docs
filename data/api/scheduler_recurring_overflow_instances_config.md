@@ -7,7 +7,6 @@ recurring_overflow_instances
 @default: undefined
 
 @values: "skip"|"lastDay"|"none"
-@require:recurring
 
 @type: string
 @example:
@@ -15,6 +14,7 @@ scheduler.config.recurring_overflow_instances = "lastDay";
 
 @template:	api_config
 @descr:
+{{note The property requires the [recurring](extensions_list.md#recurring) extension to be enabled.}}
 
 Let's take an event that occurs every month on the 30th and consider its behavior in February for each option:
 

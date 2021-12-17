@@ -10,11 +10,11 @@ min_grid_size
 @example:
 scheduler.config.min_grid_size = 30;
 
-
-@require:container_autoresize
-
 @template:	api_config
 @descr:
+{{note The property requires the [container_autoresize](extensions_list.md#containerautoresize) plugin to be enabled.}} 
+
+@changelog:
 added in version 4.4
 
 @relatedapi:

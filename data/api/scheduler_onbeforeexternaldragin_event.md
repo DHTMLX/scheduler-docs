@@ -22,9 +22,11 @@ scheduler.attachEvent("onBeforeExternalDragIn",function(source,dhtmlx,tArea,tNod
 });
 
 
-@require:outerdrag
 @relatedapi:api/scheduler_onexternaldragin_event.md
 
 @template:	api_event
 @descr: 
+
+{{note The event requires the [outerdrag](extensions_list.md#outerdrag) plugin to be activated.}}
+
 The event is blockable. Return *false* and  the external element won't be dragged to the scheduler. 

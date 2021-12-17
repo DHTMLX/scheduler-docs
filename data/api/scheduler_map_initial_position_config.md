@@ -5,7 +5,7 @@ map_initial_position
 
 @type:LatLng 
 @default:google.maps.LatLng(48.724, 8.215)
-@require:map_view
+
 @views:map
 
 @example:
@@ -18,6 +18,7 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"map");
 @relatedapi:
 	 api/scheduler_map_initial_zoom_config.md
 @descr:
+{{note The property requires the [map_view](extensions_list.html#mapview) plugin to be activated.}}
 
 @apigroup: Views/Map view
 

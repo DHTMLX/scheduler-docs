@@ -6,7 +6,7 @@ fix_tab_position
 
 @type: boolean
 @views:day, week, units
-@require:dhx_terrace
+
 @default:true
 @example:
 scheduler.config.fix_tab_position = false;

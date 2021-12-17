@@ -4,7 +4,7 @@ mark_now
 @short:enables/disables the marker displaying the current time	
 
 @type: boolean
-@require: limit
+
 @default:true
 @views:day, week, timeline
 @example:
@@ -15,6 +15,8 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 
 @template:	api_config
 @descr:
+
+{{note The property requires the [limit](extensions_list.md#limit) plugin to be activated.}}
 
 {{note  Note that in case of the Timeline view the [limit](extensions_list.md#limit) extension should be included on a page before the [Timeline](extensions_list.md#timeline) extension.}}
 

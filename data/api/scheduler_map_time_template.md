@@ -8,7 +8,7 @@ map_time
 - event	object	the event object
 
 @views:map
-@require:map_view
+
 @example:
 scheduler.templates.map_time = function(start,end,ev){
 	if (ev._timed)
@@ -23,6 +23,7 @@ scheduler.templates.map_time = function(start,end,ev){
 @returns:
 - text    string     html text for rendering in the scheduler
 @descr:
+{{note The template requires the [map_view](extensions_list.html#mapview) plugin to be activated.}}
 
 @related:
 	map_view_templates.md

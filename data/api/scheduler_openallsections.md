@@ -8,10 +8,11 @@ openAllSections
 scheduler.openAllSections();
 
 
-@require:treetimeline
 @views: timeline
 @template:	api_method
-@descr: 
+@descr:
+{{note The method requires the [treetimeline](extensions_list.md#treetimeline) plugin to be activated.}}
+
 {{note
 The method is used for the Tree mode only
 }}

@@ -9,12 +9,11 @@ invertZones
 @example: 
 var zones = scheduler.invertZones([500, 1000]); // => [0, 500, 1000, 1440]
 
-@require:limit
 @template:	api_method
-@descr: 
+@descr:
 {{note
 Available from version 3.5
 }}
 
-
+{{note The method requires the [limit](extensions_list.md#limit) plugin to be activated.}}
 

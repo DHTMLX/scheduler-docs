@@ -10,6 +10,8 @@ scheduler.init('scheduler_here', new Date(2010, 7, 5), "week");
 
 @template:	api_config
 @descr:
+{{note The property requires the [limit](extensions_list.md#limit) plugin to be enabled.}}
+
 The option is applicable to the [Limit extension](limits.md) only.
 
 
@@ -18,7 +20,5 @@ The option is applicable to the [Limit extension](limits.md) only.
     
 @related:
 	limits.md
-    
-@required:limit
-
+	
 @apigroup: Time, time zones
