@@ -1,10 +1,28 @@
 Migration From Older Versions 
 ==============
 
+<style>
+	table.my_table {
+    	width: 100%;
+    }
+	table.my_table td {
+		text-align: left;
+		vertical-align: middle;
+        width: 50%;
+	}
+	table.my_table td.type_info {
+		text-align: center;
+        background-color: #E3F6FF;
+	}
+	table.my_table td.version_info {
+		text-align: center;
+        background-color: #FFDAFF;
+	}
+</style>
 
 ## 5.3 -> 6.0
 
-he newest update v6.0 introduces two major changes in the structure of the Scheduler package:
+The newest update v6.0 introduces two major changes in the structure of the Scheduler package:
 
 1) All files of extensions are now bundled with the *dhtmlxscheduler.js* file. 
 Therefore, in order to activate any of extra extensions provided by dhtmlx Scheduler you need to use the API call.
@@ -47,6 +65,42 @@ scheduler.i18n.setLocale("de");
 ~~~
 
 - If you use a custom locale file, it can be loaded as before.
+
+### Deprecated API
+
+There are methods and global objects that have been deprecated in v6.0.
+
+1) The following methods have been deprecated and replaced with:
+
+<table class="my_table">
+
+<tr><td class="version_info">Obsolete methods</td><td class="version_info">Working methods</td></tr>
+
+<tr><td>dhtmlx.alert</td><td>scheduler.alert</td></tr>
+<tr><td>dhtmlx.confirm</td><td>scheduler.confirm</td></tr>
+<tr><td>dhtmlx.modalbox</td><td>scheduler.modalbox</td></tr>
+<tr><td>dhtmlx.uid</td><td>scheduler.uid</td></tr>
+<tr><td>dhtmlx.copy</td><td>scheduler.copy</td></tr>
+<tr><td>dhtmlx.mixin</td><td>scheduler.mixin</td></tr>
+<tr><td>dhtmlx.defined</td><td>scheduler.defined</td></tr>
+<tr><td>dhtmlx.bind</td><td>scheduler.bind</td></tr>
+<tr><td>dhtmlx.assert</td><td>scheduler.assert</td></tr>
+<tr><td>window.dataProcessor</td><td>scheduler.DataProcessor</td></tr>
+</table>
+
+No changes in the arguments or behavior of the methods were made.
+
+The old methods will continue working in v6.x, but will trigger a console warning (not visible to the end users) each time they are called.
+
+2) The following global objects have been deprecated:
+
+- dhtmlxAjax
+- dtmlXMLLoaderObject
+- dhtmlDragAndDropObject
+- dhtmlxEventable
+- dhtmlxError
+
+If you still need these objects in you application, include the **dhtmlxscheduler.legacy.js** file on the page.
 
 ## 5.2 -> 5.3
 

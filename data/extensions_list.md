@@ -12,8 +12,6 @@ Active Links
 Presents the numbers of days in the Month and Week views as clickable links that open the related day in the specified view.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_active_links.js"></script>
-
 scheduler.plugins({
     active_links: true
 });
@@ -33,8 +31,6 @@ Agenda View
 The Agenda view code file.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_agenda_view.js"></script>
-
 scheduler.plugins({
     agenda_view: true
 });
@@ -52,8 +48,6 @@ All Timed
 Shows multi-day events in the regular way (as one-day events are displayed).
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_all_timed.js"></script>
-
 scheduler.plugins({
     all_timed: true
 });
@@ -72,8 +66,6 @@ Collision
 Manages the number of events in a time slot.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_collision.js"></script>
-
 scheduler.plugins({
     collision: true
 });
@@ -93,8 +85,6 @@ Container Autoresize
 Enables autoresizing for the scheduler container (size is changed to fit the content).
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_container_autoresize.js"></script>
-
 scheduler.plugins({
     container_autoresize: true
 });
@@ -108,36 +98,15 @@ API: api/scheduler_container_autoresize_config.md <br>
 {{sample 03_extensions/28_container_autoresize.html}}
 
 
-Content Security Policy
-----------------------
-
-Allows working with dhtmlxScheduler in case Content Security Policy (CSP) is enabled in the application.
-
-~~~js
-<script src="../codebase/ext/dhtmlxscheduler_csp.js"></script>
-
-scheduler.plugins({
-    csp: true
-});
-~~~
-
-####Related resources
-
-Article: content_security_policy.md
-
-
 Cookie
 ---------------------------------------------
 Saves the scheduler current state (mode and date ) in cookies.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_cookie.js"></script>
-
 scheduler.plugins({
     cookie: true
 });
 ~~~
-
 
 ####Related resources
 
@@ -152,8 +121,6 @@ Daytimeline
 A code file for the "Days" mode of the Timeline view.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_daytimeline.js"></script>
-
 scheduler.plugins({
     daytimeline: true
 });
@@ -175,8 +142,6 @@ Drag-n-Drop between Schedulers
 Enables drag-and-drop operations between multiple schedulers, which makes it possible to drag events from one scheduler to another and vice versa.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_drag_between.js"></script>
-
 scheduler.plugins({
     drag_between: true
 });
@@ -193,8 +158,6 @@ A code file for the <a href="lightbox_editors.md#radio">radio</a>, <a href="ligh
 <a href="lightbox_editors.md#checkbox">checkbox</a> controls of the lightbox.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_editors.js"></script>
-
 scheduler.plugins({
     editors: true
 });
@@ -215,8 +178,6 @@ Adds the "expand" icon to the right corner of the scheduler. A click on this ico
 the scheduler's size from original to 'full screen' and vice versa.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_expand.js"></script>
-
 scheduler.plugins({
     expand: true
 });
@@ -238,8 +199,6 @@ Grid View
 The Grid view code file.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_grid_view.js"></script>
-
 scheduler.plugins({
     grid_view: true
 });
@@ -258,8 +217,6 @@ HTML Templates
 Allows defining templates as an HTML code.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_html_templates.js"></script>
-
 scheduler.plugins({
     html_templates: true
 });
@@ -279,8 +236,6 @@ Keyboard Navigation
 Enables the keyboard navigation.
 
 ~~~js
-<script src="../../codebase/ext/dhtmlxscheduler_key_nav.js"></script>
-
 scheduler.plugins({
     key_nav: true
 });
@@ -299,8 +254,6 @@ Limit
 Provides functionality for blocking and highlighting dates.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_limit.js"></script>
-
 scheduler.plugins({
     limit: true
 });
@@ -319,8 +272,6 @@ Map View
 The Map view code file.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_map_view.js"></script>
-
 scheduler.plugins({
     map_view: true
 });
@@ -335,11 +286,9 @@ Article: map_view.md<br>
 
 Mini Calendar (Date Picker)
 ---------------------------------------------
-A code file for the mini calendar.
+A plugin for the mini calendar.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_minical.js"></script>
-
 scheduler.plugins({
     minical: true
 });
@@ -359,8 +308,6 @@ Multisection
 Gives the possibility to assign events to several sections in Timeline view or several units in the Units view.
 
 ~~~js
-<script src="codebase/ext/dhtmlxscheduler_multisection.js"></script>
-
 scheduler.plugins({
     multisection: true
 });
@@ -375,11 +322,9 @@ API: api/scheduler_multisection_config.md
 
 Multiselect
 ---------------------------------------------
-A code file for the <a href="lightbox_editors.md#multiselect">multiselect</a> control of the lightbox.
+A plugin for the <a href="lightbox_editors.md#multiselect">multiselect</a> control of the lightbox.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_multiselect.js"></script>
-
 scheduler.plugins({
     multiselect: true
 });
@@ -397,8 +342,6 @@ Multisource
 Provides functionality for loading data from multiple sources.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_multisource.js"></script>
-
 scheduler.plugins({
     multisource: true
 });
@@ -416,8 +359,6 @@ MVC
 Provides functionality for Backbone integration.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_mvc.js"></script>
-
 scheduler.plugins({
     mvc: true
 });
@@ -435,8 +376,6 @@ Outerdrag
 Allows dragging events from external DHTMLX components, i.e. dhtmlxTree.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_outerdrag.js"></script>
-
 scheduler.plugins({
     outerdrag: true
 });
@@ -455,8 +394,6 @@ PDF
 Provides export to a PDF document.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_pdf.js"></script>
-
 scheduler.plugins({
     pdf: true
 });
@@ -475,8 +412,6 @@ Quick Info
 Provides a popup with an event details.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_quick_info.js"></script>
-
 scheduler.plugins({
     quick_info: true
 });
@@ -495,8 +430,6 @@ Readonly
 Provides the read-only mode for the lightbox and specific events.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_readonly.js"></script>
-
 scheduler.plugins({
     readonly: true
 });
@@ -515,8 +448,6 @@ Recurring
 Provides support for recurring events.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_recurring.js"></script>
-
 scheduler.plugins({
     recurring: true
 });
@@ -535,8 +466,6 @@ Serialize
 Provides support for serializing into ICal, XML, JSON formats.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_serialize.js"></script>
-
 scheduler.plugins({
     serialize: true
 });
@@ -554,11 +483,9 @@ Timeline
 ---------------------------------------------
 {{note This extension is available in PRO version only}}
 
-The Timeline view code file.
+The Timeline view plugin.
 
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_timeline.js"></script>
-
 scheduler.plugins({
     timeline: true
 });
@@ -594,7 +521,7 @@ Treetimeline
 ---------------------------------------------
 {{note This extension is available in PRO version only}}
 
-A code file for the "Tree" mode of the Timeline view.
+An extension for the "Tree" mode of the Timeline view.
 
 ~~~js
 scheduler.plugins({
@@ -614,7 +541,7 @@ Units
 ---------------------------------------------
 {{note This extension is available in PRO version only}}
 
-The Units view code file.
+The Units view extension.
 
 ~~~js
 scheduler.plugins({
@@ -678,7 +605,6 @@ scheduler.plugins({
     year_view: true
 });
 ~~~
-
 
 ####Related resources
 

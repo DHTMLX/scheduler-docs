@@ -10,6 +10,24 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+6.0
+---------------------
+<span class='release_date'>December 29, 2021. Bugfix release</span>
+
+### Functionality
+
+- [Destructors for Scheduler and DataProcessor instances](multiple_per_page.md#destructorofscheduleranddataprocessorinstances)
+- Public helpers for [popup messages](integration_with_dhtmlxmessage.md) added
+### Updates
+
+- All extensions must be activated now via the [plugins()](api/scheduler_plugins.md) method
+- Locale files were removed from the package, [new API](api/scheduler_i18n_other.md) for the Scheduler localization is added
+- `Scheduler.getSchedulerInstance` now [can take a configuration object](multiple_per_page.md#schedulerinstanceconfiguration) while creating a new Scheduler instance
+- The CSP extension was removed from the package, the [csp mode is enabled by default](api/scheduler_csp_config.md)
+- The `settings` object as the third parameter of the [attachEvent()](api/scheduler_attachevent.md) method is added
+- [Routing options for DataProcessor](server_integration.md#customrouting)
+- Ability to [import dhtmlxScheduler as an ES6 module](initialization.md#importfilesintoes67andtypescriptapps)
+
 5.3.13
 -------------
 <span class='release_date'>November 9, 2021. Bugfix release</span>
