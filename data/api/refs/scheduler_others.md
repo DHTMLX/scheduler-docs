@@ -6,7 +6,7 @@ Others
 - api/scheduler_ajax_other.md - scheduler ajax module
 - api/scheduler_config_other.md - defines configuration options for dates, scale, controls
 - api/scheduler_date_other.md - a set of date formatting methods
-- api/scheduler_env_other.md - 
+- api/scheduler_env_other.md - a set of flags which describe current environment
 - api/scheduler_ext_other.md - an object that stores various extensions
 - api/scheduler_i18n_other.md - a set of methods for Scheduler localization
 - api/scheduler_ical_other.md - specifies ICal serialization and parsing

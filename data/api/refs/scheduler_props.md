@@ -107,7 +107,7 @@ Properties
 - api/scheduler_select_config.md - shows/hides the select bar in the event's box
 - api/scheduler_separate_short_events_config.md - allows preventing short events from overlapping
 - api/scheduler_server_utc_config.md - enables converting server-side dates from UTC to a local time zone (and backward) while sending data to the server
-- api/scheduler_show_errors_config.md - 
+- api/scheduler_show_errors_config.md - enables showing error alerts in case of unexpected behavior
 - api/scheduler_show_loading_config.md - enables showing a progress/spinner while data is loading (useful for dynamic loading)
 - api/scheduler_show_quick_info_config.md - activates/disables the 'quick_info' extension (pop-up task's details form)
 - api/scheduler_start_on_monday_config.md - sets the start day of weeks
