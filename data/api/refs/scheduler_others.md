@@ -3,14 +3,12 @@ Others
 =======
 
 {{api
-- api/scheduler_$container_other.md - 
-- api/scheduler_$root_other.md - 
-- api/scheduler_ajax_other.md - 
+- api/scheduler_ajax_other.md - scheduler ajax module
 - api/scheduler_config_other.md - defines configuration options for dates, scale, controls
 - api/scheduler_date_other.md - a set of date formatting methods
 - api/scheduler_env_other.md - 
 - api/scheduler_ext_other.md - 
-- api/scheduler_i18n_other.md - 
+- api/scheduler_i18n_other.md - a set of methods for Scheduler localization
 - api/scheduler_ical_other.md - specifies ICal serialization and parsing
 - api/scheduler_json_other.md - specifies JSON serialization and parsing
 - api/scheduler_keys_other.md - defines the hot keys for the scheduler
@@ -24,8 +22,6 @@ Others
 }}
 
 @index:
-- api/scheduler_$container_other.md
-- api/scheduler_$root_other.md
 - api/scheduler_ajax_other.md
 - api/scheduler_config_other.md
 - api/scheduler_date_other.md

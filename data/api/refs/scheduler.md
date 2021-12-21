@@ -4,15 +4,14 @@ Scheduler API
 <div class='h2'>Methods</div>
 
 {{api
-- api/scheduler_dataprocessor.md - 
-- api/scheduler_promise.md - 
+- api/scheduler_dataprocessor.md - DataProcessor constructor
+- api/scheduler_promise.md - Promise object constructor
 - api/scheduler_addevent.md - adds a new event
 - api/scheduler_addeventnow.md - adds a new event and opens the lightbox to confirm
 - api/scheduler_addmarkedtimespan.md - marks dates, but with certain settings makes blocking (allows setting custom styling for the limit)
 - api/scheduler_addsection.md - adds a section to the currently active view
 - api/scheduler_addshortcut.md - adds a new keyboard shortcut
-- api/scheduler_alert.md - 
-- api/scheduler_attachall.md - 
+- api/scheduler_alert.md - calls an alert message box
 - api/scheduler_attachevent.md - attaches the handler to an inner event of dhtmlxScheduler
 - api/scheduler_backbone.md - makes the scheduler reflect all data changes in the Backbone model and vice versa
 - api/scheduler_blocktime.md - blocks the specified date and applies the default 'dimmed' style to it.
@@ -26,8 +25,8 @@ Scheduler API
 - api/scheduler_closeallsections.md - closes all sections in the currently active view
 - api/scheduler_closesection.md - closes the specified section in the currently active view
 - api/scheduler_collapse.md - collapses the expanded scheduler back to the normal size
-- api/scheduler_confirm.md - 
-- api/scheduler_createdataprocessor.md - 
+- api/scheduler_confirm.md - calls a confirm message box
+- api/scheduler_createdataprocessor.md - creates a new dataProcessor instance and attaches it to scheduler
 - api/scheduler_creategridview.md - creates the Grid view in the scheduler
 - api/scheduler_createtimelineview.md - creates the Timeline view in the scheduler
 - api/scheduler_createunitsview.md - creates the Units view in the scheduler
@@ -36,7 +35,7 @@ Scheduler API
 - api/scheduler_deletemarkedtimespan.md - removes marking/blocking set by the addMarkedTimespan() method
 - api/scheduler_deletesection.md - deletes a section from the currently active view
 - api/scheduler_destroycalendar.md - destroys previously created mini-calendar
-- api/scheduler_destructor.md - 
+- api/scheduler_destructor.md - destroys the scheduler instance
 - api/scheduler_detachevent.md - detaches a handler from an event (which was attached before by the attachEvent method)
 - api/scheduler_edit.md - opens the inline editor to alter the event's text  (the editor in the event's box)
 - api/scheduler_editstop.md - closes the inline event editor, if it's currently open
@@ -76,12 +75,12 @@ Scheduler API
 - api/scheduler_load.md - loads data to the scheduler from an external data source
 - api/scheduler_markcalendar.md - applies a css class to the specified date
 - api/scheduler_marktimespan.md - marks and/or blocks date(s) by applying the default or a custom style to them. Marking is cancelled right after any internal update in the app. Can be used for highlighting
-- api/scheduler_message.md - 
-- api/scheduler_modalbox.md - 
+- api/scheduler_message.md - calls a message box of the specified type
+- api/scheduler_modalbox.md - calls a modalbox
 - api/scheduler_openallsections.md - opens all sections in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
 - api/scheduler_opensection.md - opens the specified section in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
 - api/scheduler_parse.md - loads data from a client-side resource
-- api/scheduler_plugins.md - 
+- api/scheduler_plugins.md - activates specified extensions
 - api/scheduler_removeshortcut.md - removes a keyboard shortcut
 - api/scheduler_render.md - repaints the scheduler
 - api/scheduler_rendercalendar.md - creates a mini calendar
@@ -89,7 +88,6 @@ Scheduler API
 - api/scheduler_resetlightbox.md - removes the current lightbox's HTML object element
 - api/scheduler_scrollunit.md - scrolls the specified number of units in the Units view
 - api/scheduler_select.md - selects the specified event
-- api/scheduler_serialize.md - 
 - api/scheduler_serverlist.md - defines a named collection that can be loaded into Units, Timeline views, or the Lightbox
 - api/scheduler_setcurrentview.md - displays the specified view and date
 - api/scheduler_setevent.md - adds a new event to the scheduler's data pool
@@ -144,7 +142,6 @@ Scheduler API
 - api/scheduler_onbeforefoldertoggle_event.md - fires before a tree branch will be opened or closed (the Timeline view, 'tree' mode only)
 - api/scheduler_onbeforelightbox_event.md - fires immediately before the user opens the lightbox (edit form)
 - api/scheduler_onbeforeparse_event.md - fires before data started to be parsed
-- api/scheduler_onbeforerender_event.md - 
 - api/scheduler_onbeforetodaydisplayed_event.md - fires when the user clicks on the 'Today' button in the scheduler
 - api/scheduler_onbeforetooltip_event.md - fires before the tooltip is displayed for a data item (only with the 'tooltip' extension enabled)
 - api/scheduler_onbeforeviewchange_event.md - fires before the user changes the current view to some other one
@@ -157,7 +154,7 @@ Scheduler API
 - api/scheduler_oncontextmenu_event.md - fires when the user calls the context menu by clicking the right mouse button inside the scheduler
 - api/scheduler_ondatarender_event.md - fires after data has been rendered on the page
 - api/scheduler_ondblclick_event.md - fires when the user double clicks on an event
-- api/scheduler_ondestroy_event.md - 
+- api/scheduler_ondestroy_event.md - fires after scheduler has been cleared by the api/scheduler_destructor.md method
 - api/scheduler_ondragend_event.md - fires when the drag/resize operation is finished
 - api/scheduler_onemptyclick_event.md - fires when the user clicks on an empty space in the scheduler (not on events)
 - api/scheduler_oneventadded_event.md - fires when the user adds a new event to the scheduler
@@ -230,7 +227,7 @@ Scheduler API
 - api/scheduler_check_limits_config.md - activates/disables checking of limits
 - api/scheduler_collision_limit_config.md - sets the maximum allowable number of events per time slot
 - api/scheduler_container_autoresize_config.md - forces the scheduler container to automatically change its size to show the whole content without scrolling
-- api/scheduler_csp_config.md - 
+- api/scheduler_csp_config.md - defines internal implementation of the code of date formatting methods
 - api/scheduler_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
 - api/scheduler_day_date_config.md - sets the date format for the X-Axis of the Week and Units views
 - api/scheduler_dblclick_create_config.md - enables the possibility to create events by double click
@@ -423,14 +420,12 @@ Scheduler API
 
 
 {{api
-- api/scheduler_$container_other.md - 
-- api/scheduler_$root_other.md - 
-- api/scheduler_ajax_other.md - 
+- api/scheduler_ajax_other.md - scheduler ajax module
 - api/scheduler_config_other.md - defines configuration options for dates, scale, controls
 - api/scheduler_date_other.md - a set of date formatting methods
 - api/scheduler_env_other.md - 
 - api/scheduler_ext_other.md - 
-- api/scheduler_i18n_other.md - 
+- api/scheduler_i18n_other.md - a set of methods for Scheduler localization
 - api/scheduler_ical_other.md - specifies ICal serialization and parsing
 - api/scheduler_json_other.md - specifies JSON serialization and parsing
 - api/scheduler_keys_other.md - defines the hot keys for the scheduler
