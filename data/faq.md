@@ -160,3 +160,19 @@ or
 2\. You have troubles with saving changes to the backend.
 
 Read the troubleshooting.md article that gives instructions on how to identify the reasons of the problems.
+
+An error alert appears in the right top corner
+-----------------------------------------
+
+<img src="error_alert.png">
+
+Firstly, you need to find out what causes the error. 
+
+The messages appear when the component can not perform properly. 
+They usually indicate a real issue with the data or with the application logic. So simply hiding them will only camouflage the issue while it can appear in other parts of the app.
+
+However, you may want to disable these messages before shipping your application to end users. In this case you can use the api/scheduler_show_errors_config.md config:
+
+~~~js
+scheduler.config.show_errors = false;
+~~~

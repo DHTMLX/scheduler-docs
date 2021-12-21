@@ -11,8 +11,10 @@ Methods
 - api/scheduler_addsection.md - adds a section to the currently active view
 - api/scheduler_addshortcut.md - adds a new keyboard shortcut
 - api/scheduler_alert.md - calls an alert message box
+- api/scheduler_assert.md - 
 - api/scheduler_attachevent.md - attaches the handler to an inner event of dhtmlxScheduler
 - api/scheduler_backbone.md - makes the scheduler reflect all data changes in the Backbone model and vice versa
+- api/scheduler_bind.md - 
 - api/scheduler_blocktime.md - blocks the specified date and applies the default 'dimmed' style to it.
 - api/scheduler_callevent.md - calls an inner event
 - api/scheduler_changeeventid.md - changes the event's id
@@ -25,10 +27,12 @@ Methods
 - api/scheduler_closesection.md - closes the specified section in the currently active view
 - api/scheduler_collapse.md - collapses the expanded scheduler back to the normal size
 - api/scheduler_confirm.md - calls a confirm message box
+- api/scheduler_copy.md - 
 - api/scheduler_createdataprocessor.md - creates a new dataProcessor instance and attaches it to scheduler
 - api/scheduler_creategridview.md - creates the Grid view in the scheduler
 - api/scheduler_createtimelineview.md - creates the Timeline view in the scheduler
 - api/scheduler_createunitsview.md - creates the Units view in the scheduler
+- api/scheduler_defined.md - 
 - api/scheduler_deleteallsections.md - deletes all sections from  the currently active view
 - api/scheduler_deleteevent.md - deletes the specified event
 - api/scheduler_deletemarkedtimespan.md - removes marking/blocking set by the addMarkedTimespan() method
@@ -75,6 +79,7 @@ Methods
 - api/scheduler_markcalendar.md - applies a css class to the specified date
 - api/scheduler_marktimespan.md - marks and/or blocks date(s) by applying the default or a custom style to them. Marking is cancelled right after any internal update in the app. Can be used for highlighting
 - api/scheduler_message.md - calls a message box of the specified type
+- api/scheduler_mixin.md - 
 - api/scheduler_modalbox.md - calls a modalbox
 - api/scheduler_openallsections.md - opens all sections in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
 - api/scheduler_opensection.md - opens the specified section in the currently active view (if the opened view isn't Timeline in the 'Tree' mode - the method will be ignored)
@@ -126,8 +131,10 @@ Methods
 - api/scheduler_addsection.md
 - api/scheduler_addshortcut.md
 - api/scheduler_alert.md
+- api/scheduler_assert.md
 - api/scheduler_attachevent.md
 - api/scheduler_backbone.md
+- api/scheduler_bind.md
 - api/scheduler_blocktime.md
 - api/scheduler_callevent.md
 - api/scheduler_changeeventid.md
@@ -140,10 +147,12 @@ Methods
 - api/scheduler_closesection.md
 - api/scheduler_collapse.md
 - api/scheduler_confirm.md
+- api/scheduler_copy.md
 - api/scheduler_createdataprocessor.md
 - api/scheduler_creategridview.md
 - api/scheduler_createtimelineview.md
 - api/scheduler_createunitsview.md
+- api/scheduler_defined.md
 - api/scheduler_deleteallsections.md
 - api/scheduler_deleteevent.md
 - api/scheduler_deletemarkedtimespan.md
@@ -190,6 +199,7 @@ Methods
 - api/scheduler_markcalendar.md
 - api/scheduler_marktimespan.md
 - api/scheduler_message.md
+- api/scheduler_mixin.md
 - api/scheduler_modalbox.md
 - api/scheduler_openallsections.md
 - api/scheduler_opensection.md

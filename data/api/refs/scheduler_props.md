@@ -38,7 +38,7 @@ Properties
 - api/scheduler_drag_out_config.md - restrict dragging events from the calling scheduler to any other scheduler(s)
 - api/scheduler_drag_resize_config.md - enables the possibility to resize events by drag-and-drop
 - api/scheduler_edit_on_create_config.md - 'says' to open the lightbox while creating new events
-- api/scheduler_event_attribute_config.md - 
+- api/scheduler_event_attribute_config.md - sets the name of the attribute that will specify the id of the event's HTML element
 - api/scheduler_event_duration_config.md - sets the initial duration of events in minutes
 - api/scheduler_first_hour_config.md - sets the minimum value for the hour scale (Y-Axis)
 - api/scheduler_fix_tab_position_config.md - moves views' tabs from the left to the right side
@@ -107,6 +107,7 @@ Properties
 - api/scheduler_select_config.md - shows/hides the select bar in the event's box
 - api/scheduler_separate_short_events_config.md - allows preventing short events from overlapping
 - api/scheduler_server_utc_config.md - enables converting server-side dates from UTC to a local time zone (and backward) while sending data to the server
+- api/scheduler_show_errors_config.md - 
 - api/scheduler_show_loading_config.md - enables showing a progress/spinner while data is loading (useful for dynamic loading)
 - api/scheduler_show_quick_info_config.md - activates/disables the 'quick_info' extension (pop-up task's details form)
 - api/scheduler_start_on_monday_config.md - sets the start day of weeks
@@ -234,6 +235,7 @@ Properties
 - api/scheduler_select_config.md
 - api/scheduler_separate_short_events_config.md
 - api/scheduler_server_utc_config.md
+- api/scheduler_show_errors_config.md
 - api/scheduler_show_loading_config.md
 - api/scheduler_show_quick_info_config.md
 - api/scheduler_start_on_monday_config.md
