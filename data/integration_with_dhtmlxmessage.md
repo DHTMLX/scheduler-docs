@@ -41,10 +41,14 @@ To create a necessary message box, you need to define the *type* property with t
 
 ~~~js
 // creating an error message box
-scheduler.message({type:"error", text:"Invalid data format"});
+scheduler.message({
+    text: "Click on the buttons to explore Scheduler message types", 
+    expire: -1, 
+    type: "error"
+});
 ~~~
 
-{{sample 04_customization/20_message_types.html}}
+{{sample 09_api\11_popups_and_messages.html}}
 
 To apply different styles to a message box you need to specify a CSS class through the type parameter as described [here](#styling).
 
@@ -56,8 +60,6 @@ that overlay the parent application and block its work. You can change the posit
 ~~~js
 scheduler.message.position = 'bottom';
 ~~~
-
-{{editor	https://snippet.dhtmlx.com/5/13007a8d2		Message position}}
 
 There are four possible values for the message position:
 
@@ -141,8 +143,8 @@ scheduler.alert("Text");
 ~~~js
 scheduler.alert({
     text: "some text",
-    title: "Error!",
-    ok: "Yes",
+    title: "Alert",
+    ok: "Ok",
 	callback: function(){...}
 });
 ~~~
@@ -165,12 +167,17 @@ scheduler.confirm("ConfirmText");
 
 ~~~js
 scheduler.confirm({
-    text: "Continue?",
-    ok:"Yes", 
-    cancel:"No",
-    callback: function(result){
-        scheduler.message("Result: "+result);
-    }
+	title:"Confirm",
+	text:"This is a simple confirm",
+	ok:"Ok",
+	cancel:"Cancel",
+	callback: function(result){
+		if(result){
+			scheduler.message("You clicked Ok");
+		}else{
+			scheduler.message("You clicked Cancel");
+		}
+	}
 });
 ~~~
 
@@ -348,8 +355,6 @@ There are some rules related to setting the 'type' parameter you should keep in 
 
 scheduler.message({ type:"myCss", text:"some text" });
 ~~~
-
-{{editor	https://snippet.dhtmlx.com/5/f0c608393	Styling message boxes}}
 
 ## Modal Windows and Keyboard Interaction
 
