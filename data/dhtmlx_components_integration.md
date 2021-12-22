@@ -80,7 +80,7 @@ Drag-and-drop between schedulers
 -----------------------------------------------
 
 {{note
-The functionality is available for the Commercial, Enterprise and Ultimate licenses only.
+The functionality is available for the Commercial (since October 6, 2021), Enterprise and Ultimate licenses only.
 }}
 
 
