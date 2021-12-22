@@ -68,7 +68,7 @@ scheduler.i18n.setLocale("de");
 
 ### Deprecated API
 
-There are methods and global objects that have been deprecated in v6.0.
+The **dhtmlx** object definition was removed from dhtmlxscheduler.js. Thus, some methods and global objects have been deprecated in v6.0. 
 
 1) The following methods have been deprecated and replaced with:
 

@@ -18,6 +18,21 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 - [Destructors for Scheduler and DataProcessor instances](multiple_per_page.md#destructorofscheduleranddataprocessorinstances)
 - Public helpers for [popup messages](integration_with_dhtmlxmessage.md) added
+- [env](api/scheduler_env_other.md)
+- [ext](api/scheduler_ext_other.md)
+- [Timeline Extension](timeline_ext.md)
+- [week_agenda_date](api/scheduler_week_agenda_date_template.md) template
+- [show_errors](api/scheduler_show_errors_config.md) configuration property
+- [onError](api/scheduler_onerror_event.md) event
+- [ajax](api/scheduler_ajax_other.md) object
+- [i18n](api/scheduler_i18n_other.md) object
+- [createDataProcessor()](api/scheduler_createdataprocessor.md) method
+- [Promise](api/scheduler_promise.md)
+- [destructor()](api/scheduler_destructor.md) method
+- [onDestroy](api/scheduler_ondestroy_event.md) event
+- [alert()](api/scheduler_alert.md), [confirm()](api/scheduler_confirm.md), [message()](api/scheduler_message.md), [modalbox()](api/scheduler_modalbox.md) methods
+- [assert()](api/scheduler_assert.md), [bind()](api/scheduler_bind.md), [copy()](api/scheduler_copy.md), [defined()](api/scheduler_defined.md), [mixin()](api/scheduler_mixin.md),  [DataProcessor](api/scheduler_dataprocessor.md)
+
 ### Updates
 
 - All extensions must be activated now via the [plugins()](api/scheduler_plugins.md) method

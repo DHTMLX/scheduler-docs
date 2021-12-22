@@ -27,3 +27,5 @@ dhtmlxScheduler codebase uses **scheduler.assert()** to detect an invalid state 
 Error display can be changed using the api/scheduler_show_errors_config.md config.
 
 Errors can be traced programmatically, using the api/scheduler_onerror_event.md event.
+
+@changelog: added in v6.0
