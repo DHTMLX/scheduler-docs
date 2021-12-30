@@ -62,6 +62,13 @@ var date = formatFunc(new Date(2019, 05, 29)); // -> "29/06/2019"
 var date = scheduler.date.day_start(new Date(2019, 05, 29, 14, 30, 10));
 ~~~
 
+>**Note**, the date passed to the method will be actually changed. You may prevent the original date from being changed by wrapping the input date with *new Date*. For instance:
+
+~~~js
+var date1 = new Date(2019, 05, 29, 14, 30, 10))
+var date2 = scheduler.date.day_start(new Date(date1))
+~~~
+
 - **getISOWeek**(date)- returns the week number of the date
 	- **date** - (<i>Date</i>) the date object to format
 
