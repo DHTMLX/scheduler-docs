@@ -483,6 +483,7 @@ Everything is ready. You can run the application and see the fully-fledged Sched
 
 [You can find a ready demo at github](https://github.com/DHTMLX/scheduler-howto-dotnet).
 
+{{note In case Scheduler doesn't render events on a page, check the troubleshooting.md article.}}
 
 Dynamic loading
 ---------------
@@ -515,6 +516,7 @@ public IEnumerable<WebAPIEvent> Get(DateTime from, DateTime to)
 }
 ~~~
 
+{{note In case Scheduler doesn't render events on a page, check the troubleshooting.md article.}}
 
 Recurring events
 -------------------
@@ -619,7 +621,7 @@ Lastly, we need to modify our PUT/POST/DELETE actions in order to handle [specia
 First, let's take a look at the POST action. We need to process a special case for recurring events: deletion of a specific occurrence of the recurring series 
 requires creating a new database record and the client will call the insert action for it:
 
-{{snippet Controllers/SchedulerEvent.cs}}
+{{snippet Controllers/SchedulerController.cs}}
 ~~~
 // POST: api/scheduler/5
 [HttpPost]
