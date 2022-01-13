@@ -417,7 +417,7 @@ namespace DHX.Scheduler.Web.Controllers
         [HttpPut]
         public IHttpActionResult EditSchedulerEvent(int id, WebAPIEvent webAPIEvent)
         {
-            var updatedSchedulerEvent = (SchedulerEvent)WebAPIEvent;
+            var updatedSchedulerEvent = (SchedulerEvent)webAPIEvent;
             updatedSchedulerEvent.Id = id;
             db.Entry(updatedSchedulerEvent).State = EntityState.Modified;
             db.SaveChanges();
@@ -432,7 +432,7 @@ namespace DHX.Scheduler.Web.Controllers
         [HttpPost]
         public IHttpActionResult CreateSchedulerEvent(WebAPIEvent webAPIEvent)
         {
-            var newSchedulerEvent = (SchedulerEvent)WebAPIEvent;
+            var newSchedulerEvent = (SchedulerEvent)webAPIEvent;
             db.SchedulerEvents.Add(newSchedulerEvent);
             db.SaveChanges();
 
