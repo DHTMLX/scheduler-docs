@@ -25,14 +25,11 @@ Step 1. Creating a project
 
 Launch Visual Studio 2022 and create a new project. Select "Create a new project".
 
-
 ![Scheduler App](howtostart_dotnetcore_newapp.png)
 
-Next select "ASP.NET Core Web App" 
+Next select "ASP.NET Core Web App" and name it *SchedulerApp*
 
 ![Scheduler App](howtostart_dotnetcore_app.png)
-
-and name it *SchedulerApp*
 
 ![Scheduler App](howtostart_dotnetcore_configapp.png)
 
@@ -109,7 +106,9 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    // The default HSTS value is 30 days. 
+    // You may want to change this for production scenarios, 
+    // see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -315,8 +314,7 @@ The declaration will look like this:
 ~~~
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<SchedulerContext>(
-    options => options.UseSqlServer(connectionString)
-);
+    options => options.UseSqlServer(connectionString));
 ~~~
 
 To enable controllers, call the `services.AddControllers()` method.
