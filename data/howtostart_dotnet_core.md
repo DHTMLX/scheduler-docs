@@ -14,7 +14,7 @@ You can also read tutorials on other server-side technologies:
 - howtostart_connector.md
 
 
-To organize communication with database, the [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) is used. The application is built with the help of the Visual Studio 2017.
+To organize communication with database, the [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) is used. The application is built with the help of the Visual Studio 2022.
 
 {{note
 The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-dotnet-core).
@@ -23,15 +23,17 @@ The complete source code is [available on GitHub](https://github.com/DHTMLX/sche
 Step 1. Creating a project
 -------------------
 
-Launch Visual Studio 2017 and create a new project. Open the **File** menu and select: *New -> Project*.
-
-Next select ASP.NET Core Web Application and name it *SchedulerApp*.
+Launch Visual Studio 2022 and create a new project. Select "Create a new project".
 
 ![Scheduler App](howtostart_dotnetcore_newapp.png)
 
-Select an API template.
+Next select "ASP.NET Core Web App" and name it *SchedulerApp*
 
-![API template](howtostart_dotnetcore_apitemplate.png)
+![Scheduler App](howtostart_dotnetcore_app.png)
+
+![Scheduler App](howtostart_dotnetcore_configapp.png)
+
+![API template](howtostart_dotnetcore_additional.png)
 
 
 Thus you've created a project and can proceed to add markup and script for Scheduler.
@@ -87,73 +89,53 @@ Note, that scheduler files are [added from CDN](install_with_bower.md#cdn) in th
 </html>
 ~~~
 
-Next go to **Startup.cs** and tell the application to use the **index.html** page. In order to do so, we need to configure the app to serve static files from the *wwwroot* folder.
-It's done in the `Configure` method by calling the `app.UseStaticFiles()` method. 
+Next go to **Program.cs** and tell the application to use the **index.html** page. In order to do so, we need to configure the app to serve static files from the *wwwroot* folder.
+You need to add the `app.UseDefaultFiles()` method.
 You can [find more details here](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-2.1&tabs=aspnetcore2x).
 
-You also need to add the required middleware to **Startup.cs**, by replacing the "Hello world" stub in the `Configure()` method with two highlighted lines of code:
-
-{{snippet Startup.cs }}
+{{snippet Program.cs }}
 ~~~js
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+var builder = WebApplication.CreateBuilder(args);
 
-namespace SchedulerApp
+// Add services to the container.
+builder.Services.AddRazorPages();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
 {
-    public class Startup
-    {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. 
-        // Use it to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-          services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-        }
-
-		// This method gets called by the runtime. 
-        // Use it to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseHsts();
-            }
-            app.UseDefaultFiles(); /*!*/
-            app.UseStaticFiles();  /*!*/
-
-            app.UseHttpsRedirection();
-            app.UseMvc();
-        }
-    }
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. 
+    // You may want to change this for production scenarios, 
+    // see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
 }
+
+app.UseHttpsRedirection();
+
+app.UseDefaultFiles(); /*!*/
+
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapRazorPages();
+
+app.Run();
 ~~~
 
+`app.UseDefaultFiles()` allows serving default files. It will search the **wwwroot** folder for the following files:
 
-The 2 added middleware are:
+- index.html
+- index.htm
+- default.html
+- default.htm
 
-- `app.UseDefaultFiles()` – allows serving default files. It will search the **wwwroot** folder for the following files:
-	- index.html
-	- index.htm
-	- default.html
-	- default.htm
 Thus, you can choose any of them, while in this tutorial "index.html" is used.
 `UseDefaultFiles()` is just an URL-rewriter that doesn't actually serve the file. For this purpose you need to also add the `UseStaticFiles()` file.
-
-- `app.UseStaticFiles()` – is responsible for serving all [static files present in the **wwwroot** folder](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-2.1).
-
 
 Once you are done with it, an empty scheduler should appear on the page when you run the application.
 
@@ -185,14 +167,12 @@ This is how the model can look like:
 
 {{snippet SchedulerApp/Models/SchedulerEvent.cs}}
 ~~~js
-using System;
-
 namespace SchedulerApp.Models
 {
     public class SchedulerEvent
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }
@@ -202,7 +182,7 @@ namespace SchedulerApp.Models
 Note, that scheduler events can have all kinds of additional properties, which can be utilized in the calendar. We're showing you the basic stuff here.
 
 
-###Database context
+### Database context
 
 Firstly, we need to install the Entity Framework for ASP.NET Core. You can either do it via the NuGet package manager:
 
@@ -212,12 +192,14 @@ Or use the Package Manager command line:
 
 ~~~
 PM> Install-Package Microsoft.EntityFrameworkCore.SqlServer
+PM> Install-Package Microsoft.EntityFrameworkCore
+PM> Install-Package Microsoft.EntityFrameworkCore.Design
 ~~~
 
 The Entity Framework Core will be used to manage communication of the app with a database.
 
 
-###Creating Entity Context
+### Creating Entity Context
 
 Next you need to define a session with the database and enable loading and saving data. For this, create a Context class:
 
@@ -236,14 +218,13 @@ namespace SchedulerApp.Models
            : base(options)
         {
         }
-        public DbSet<SchedulerEvent> Events { get; set; }
-
+        public DbSet<SchedulerEvent> Events { get; set; } = null!;
     }
 }
 ~~~
 
 
-###Adding first records to database
+### Adding first records to database
 
 Now we can add records to the database. Let's create the database initializer that will populate the database with events. 
 
@@ -297,9 +278,9 @@ namespace SchedulerApp.Models
 
 
 
-###Registering Database
+### Registering Database
 
-Now you should register the database in **Startup.cs**. But first you need a connection string for it. It will be stored
+Now you should register the database in **Program.cs**. But first you need a connection string for it. It will be stored
 [in a JSON file in the application settings](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment). 
 If you used `API` template when created the project, this file should already exist in project folder. If you used `Empty template`, you’ll need to create one.
 
@@ -318,9 +299,9 @@ Create the *appsettings.json* file (or open it if we have it already) and add a 
 After that you can register the database context via 
 [dependency injection](https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-2.1&tabs=visual-studio).
 
-Add the following namespaces to **Startup.cs**:
+Add the following namespaces to **Program.cs**:
 
-{{snippet Startup.cs }}
+{{snippet Program.cs }}
 ~~~
 using Microsoft.EntityFrameworkCore;
 using SchedulerApp.Models;
@@ -329,65 +310,68 @@ using Microsoft.Extensions.Configuration;
 
 The declaration will look like this:
 
-{{snippet Startup.cs }}
+{{snippet Program.cs }}
 ~~~
-public IConfiguration Configuration { get; }
-public Startup(IConfiguration configuration)
-{
-    Configuration = configuration;
-}
- 
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddDbContext<SchedulerContext>(options => 
-        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-}
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<SchedulerContext>(
+    options => options.UseSqlServer(connectionString));
 ~~~
 
-Here is the complete code of **Startup.cs**:
+To enable controllers, call the `services.AddControllers()` method.
 
-{{snippet Startup.cs }}
+{{snippet Program.cs }}
 ~~~
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
- 
+builder.Services.AddControllers();
+~~~
+
+
+Here is the complete code of **Program.cs**:
+
+{{snippet Program.cs }}
+~~~
 using Microsoft.EntityFrameworkCore;
-using DHX.Scheduler.Models;
+using SchedulerApp.Models;
 using Microsoft.Extensions.Configuration;
- 
-namespace DHX.Scheduler
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddRazorPages();
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<SchedulerContext>(
+    options => options.UseSqlServer(connectionString));
+
+builder.Services.AddControllers();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
 {
- public class Startup
-   {
-    public IConfiguration Configuration { get; }
-    public Startup(IConfiguration configuration)
-     {
-        Configuration = configuration;
-     }
- 
- 
-     //This method is called by the runtime. Use it to add services to the container.
-     //More info on app config here - https://go.microsoft.com/fwlink/?LinkID=398940
-     public void ConfigureServices(IServiceCollection services)
-     {
-       services.AddDbContext<SchedulerContext>(options => 
-         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-     }
- 
-     //The method is called by the runtime. Use it to configure HTTP request pipeline.
-     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-     {
-       if (env.IsDevelopment())
-       {
-          app.UseDeveloperExceptionPage();
-       }
- 
-       app.UseDefaultFiles();
-       app.UseStaticFiles();
-     }
-  }
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. 
+    // You may want to change this for production scenarios, 
+    // see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
 }
+
+app.UseHttpsRedirection();
+
+app.UseDefaultFiles();
+
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapRazorPages();
+
+app.MapControllers();
+
+app.Run();
+
 ~~~
 
 Finally, you need to initialize and seed the database on the app startup. Normally, we'd want to use migrations for that, but for simplicity they aren't used here.
@@ -403,15 +387,16 @@ namespace SchedulerApp.Models
 {
  public static class SchedulerInitializerExtension
    {
-    public static IWebHost InitializeDatabase(this IWebHost webHost)
+    public static IHost InitializeDatabase(this IHost webHost)
      {
       var serviceScopeFactory =
-      (IServiceScopeFactory)webHost.Services.GetService(typeof(IServiceScopeFactory));
+      (IServiceScopeFactory?)webHost.Services.GetService(typeof(IServiceScopeFactory));
 
-        using (var scope = serviceScopeFactory.CreateScope())
+        using (var scope = serviceScopeFactory!.CreateScope())
         {
            var services = scope.ServiceProvider;
            var dbContext = services.GetRequiredService<SchedulerContext>();
+           dbContext.Database.EnsureDeleted();
            dbContext.Database.EnsureCreated();
            SchedulerSeeder.Seed(dbContext);
         }
@@ -423,37 +408,16 @@ namespace SchedulerApp.Models
 ~~~
 
 
-Next call **InitializeDatabase()** in the **Program.Main** pipeline:
+Next call **InitializeDatabase()**:
 
 {{snippet Program.cs }} 
 ~~~
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using SchedulerApp.Models;
-
-namespace SchedulerApp
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateWebHostBuilder(args)
-                .Build()
-                .InitializeDatabase() //!
-                .Run();
-        }
-
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
-    }
-}
+app.InitializeDatabase();
 ~~~
-
 
 The current part is finished, let's return to Scheduler.
 
-###Define DTOs and Mapping
+### Define DTOs and Mapping
 
 It is high time to define DTO classes that will be used for Web API. Let's begin with the DTO class for SchedulerEvent. In the **Models** folder create a file and define the **WebAPIEvent.cs** class:
 
@@ -466,9 +430,9 @@ namespace SchedulerApp.Models
     public class WebAPIEvent
     {
         public int id { get; set; }
-        public string text { get; set; }
-        public string start_date { get; set; }
-        public string end_date { get; set; }
+        public string? text { get; set; }
+        public string? start_date { get; set; }
+        public string? end_date { get; set; }
 
         public static explicit operator WebAPIEvent(SchedulerEvent ev)
         {
@@ -487,10 +451,10 @@ namespace SchedulerApp.Models
             {
                 Id = ev.id,
                 Name = ev.text,
-                StartDate = DateTime.Parse(ev.start_date,
-                    System.Globalization.CultureInfo.InvariantCulture),
-                EndDate = DateTime.Parse(ev.end_date,
-                    System.Globalization.CultureInfo.InvariantCulture)
+                StartDate = ev.start_date != null ? DateTime.Parse(ev.start_date,
+                  System.Globalization.CultureInfo.InvariantCulture) : new DateTime(),
+                EndDate = ev.end_date != null ? DateTime.Parse(ev.end_date,
+                  System.Globalization.CultureInfo.InvariantCulture) : new DateTime()
             };
         }
     }
@@ -506,40 +470,13 @@ Now we can run the app in order to check that everything is in place. If we don'
 Step 4. Implementing Web API
 ---------------------------
 
-Now it's time for the actual REST API implementation. Go to **Startup.cs** and enable MVC routing, if it's not enabled yet:
+Now it's time for the actual REST API implementation.
 
-{{snippet Startup.cs}}
-~~~
-public void ConfigureServices(IServiceCollection services)
-{
-  services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1); /*!*/
-  services.AddDbContext<SchedulerContext>(options =>
-     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-}
- 
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-{
-   if (env.IsDevelopment())
-   {
-      app.UseDeveloperExceptionPage();
-   }
-   else
-   {
-      app.UseHsts();
-   }
-   app.UseDefaultFiles();
-   app.UseStaticFiles();
-
-   app.UseHttpsRedirection();
-   app.UseMvc();/*!*/
-}
-~~~
-
-###Adding API Controller
+### Adding API Controller
 
 Create the **Controllers** folder and create an empty API controller for our events::
 
-{{snippet Controllers/EventController.cs}}
+{{snippet Controllers/EventsController.cs}}
 ~~~
 using System.Collections.Generic;
 using System.Linq;
@@ -569,9 +506,9 @@ namespace SchedulerApp.Controllers
 
         // GET api/events/5
         [HttpGet("{id}")]
-        public WebAPIEvent Get(int id)
+        public SchedulerEvent? Get(int id)
         {
-            return (WebAPIEvent)_context
+            return _context
                 .Events
                 .Find(id);
         }
@@ -594,10 +531,14 @@ namespace SchedulerApp.Controllers
 
         // PUT api/events/5
         [HttpPut("{id}")]
-        public ObjectResult Put(int id, [FromForm] WebAPIEvent apiEvent)
+        public ObjectResult? Put(int id, [FromForm] WebAPIEvent apiEvent)
         {
             var updatedEvent = (SchedulerEvent)apiEvent;
             var dbEvent = _context.Events.Find(id);
+            if (dbEvent == null)
+            {
+                return null;
+            }
             dbEvent.Name = updatedEvent.Name;
             dbEvent.StartDate = updatedEvent.StartDate;
             dbEvent.EndDate = updatedEvent.EndDate;
@@ -630,13 +571,13 @@ namespace SchedulerApp.Controllers
 }
 ~~~
 
-###Configuring the Client
+### Configuring the Client
 
 Web API is done, now we can return to our HTML page and configure scheduler to make use of it:
 
 {{snippet wwwroot/index.html }}
 ~~~
-scheduler.config.xml_date = "%Y-%m-%d %H:%i";
+scheduler.config.date_format = "%Y-%m-%d %H:%i";
 scheduler.init("scheduler_here", new Date(2019, 0, 20), "week");
 
 // load data from backend
@@ -693,7 +634,7 @@ In order to enable recurrence (e.g. "repeat event daily") you'll need to add an 
 ~~~
 
 
-###Updating the model
+### Updating the model
 
 We also need to update our model in order for it to store recurrence info:
 
@@ -707,12 +648,12 @@ namespace SchedulerApp.Models
     public class SchedulerEvent
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
         public int EventPID { get; set; } /*!*/
-        public string RecType { get; set; } /*!*/
+        public string? RecType { get; set; } /*!*/
         public long EventLength { get; set; } /*!*/
 
     }
@@ -731,12 +672,12 @@ namespace SchedulerApp.Models
     public class WebAPIEvent
     {
         public int id { get; set; }
-        public string text { get; set; }
-        public string start_date { get; set; }
-        public string end_date { get; set; }
+        public string? text { get; set; }
+        public string? start_date { get; set; }
+        public string? end_date { get; set; }
 
         public int? event_pid { get; set; } /*!*/
-        public string rec_type { get; set; } /*!*/
+        public string? rec_type { get; set; } /*!*/
         public long? event_length { get; set; } /*!*/
 
         public static explicit operator WebAPIEvent(SchedulerEvent ev)
@@ -744,7 +685,7 @@ namespace SchedulerApp.Models
             return new WebAPIEvent
             {
                 id = ev.Id,
-                text = HtmlEncoder.Default.Encode(ev.Name), 
+                text = HtmlEncoder.Default.Encode(ev.Name != null ? ev.Name : ""), 
                 start_date = ev.StartDate.ToString("yyyy-MM-dd HH:mm"),
                 end_date = ev.EndDate.ToString("yyyy-MM-dd HH:mm"),
                 event_pid  = ev.EventPID,
@@ -759,10 +700,10 @@ namespace SchedulerApp.Models
             {
                 Id = ev.id,
                 Name = ev.text,
-                StartDate = DateTime.Parse(ev.start_date,
-                    System.Globalization.CultureInfo.InvariantCulture),
-                EndDate = DateTime.Parse(ev.end_date,
-                    System.Globalization.CultureInfo.InvariantCulture),
+                StartDate = ev.start_date != null ? DateTime.Parse(ev.start_date,
+                  System.Globalization.CultureInfo.InvariantCulture) : new DateTime(),
+                EndDate = ev.end_date != null ? DateTime.Parse(ev.end_date,
+                  System.Globalization.CultureInfo.InvariantCulture) : new DateTime(),
     ///
                 EventPID = ev.event_pid != null ? ev.event_pid.Value : 0, 
                 EventLength = ev.event_length != null ? ev.event_length.Value : 0,
@@ -774,7 +715,7 @@ namespace SchedulerApp.Models
 ~~~
 
 
-###Updating API controller
+### Updating API controller
 
 Lastly, we need to modify our PUT/POST/DELETE actions in order to [handle special rules of recurring events](recurring_events.md#editingdeletingacertainoccurrenceintheseries).
 Firstly, let's take a look at the `POST` action.
@@ -813,16 +754,20 @@ Additionally, we need to handle a different special case there: when a recurring
 ~~~
 // PUT api/events/5
 [HttpPut("{id}")]
-public ObjectResult Put(int id, [FromForm] WebApiEvent apiEvent)
+public ObjectResult? Put(int id, [FromForm] WebAPIEvent apiEvent)
 {
 	var updatedEvent = (SchedulerEvent)apiEvent;
-	var dbEveht = _context.Events.Find(id);
-	dbEveht.Name = updatedEvent.Name;
-	dbEveht.StartDate = updatedEvent.StartDate;
-	dbEveht.EndDate = updatedEvent.EndDate;
-	dbEveht.EventPID = updatedEvent.EventPID;
-	dbEveht.RecType = updatedEvent.RecType;
-	dbEveht.EventLength = updatedEvent.EventLength;
+	var dbEvent = _context.Events.Find(id);
+    if (dbEvent == null)
+    {
+        return null;
+    }
+	dbEvent.Name = updatedEvent.Name;
+	dbEvent.StartDate = updatedEvent.StartDate;
+	dbEvent.EndDate = updatedEvent.EndDate;
+	dbEvent.EventPID = updatedEvent.EventPID;
+	dbEvent.RecType = updatedEvent.RecType;
+	dbEvent.EventLength = updatedEvent.EventLength;
 
 	if (!string.IsNullOrEmpty(updatedEvent.RecType) && updatedEvent.RecType != "none")
 	{
@@ -893,7 +838,7 @@ public ObjectResult DeleteEvent(int id)
 }
 ~~~
 
-###Parsing recurring series 
+### Parsing recurring series 
 
 A recurring event is stored in the database as a single record that can be splitted up by Scheduler on the client side.
 If you need to get dates of separate events on the server side, use a helper library for parsing recurring events of dhtmlxScheduler on ASP.NET Core.  
@@ -909,6 +854,18 @@ that will capture runtime exceptions and write responses. Next it will be added 
 1\. Create a middleware class from a template in the project folder.
 
 ![Create middleware class](howtostart_dotnetcore_middleware.png)
+
+You need to install the JSON framework for ASP.NET Core and ASP.NET Core HTTP object model for HTTP requests and responses.
+You can either do it via the NuGet package manager:
+
+![Nuget PM](howtostart_dotnetcore_nuget.png)
+
+Or use the Package Manager command line:
+
+~~~
+PM> Install-Package Microsoft.AspNetCore.Http.Abstractions
+PM> Install-Package Microsoft.Newtonsoft.Json
+~~~
 
 2\. Find the **invoke** method and note the *_next* call. Some handlers can throw exceptions, so let's catch them. Wrap the *_next* call with a `try-catch` block and run our handler if an error is captured.
 
@@ -936,29 +893,26 @@ private static Task HandleExceptionAsync(HttpContext context, Exception exceptio
 }
 ~~~
 
-3\. The middleware is ready. Now go to **Startup.cs** and connect the middleware in the **Configure()** method:
+Add the following namespaces to **SchedulerErrorMiddleware.cs**:
 
-{{snippet Startup.cs }}
+{{snippet SchedulerErrorMiddleware.cs }}
 ~~~
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-{
-   if (env.IsDevelopment())
-   {
-       app.UseDeveloperExceptionPage();
-   }
-   else
-   {
-     app.UseHsts();
-   }
-   app.UseDefaultFiles();
-   app.UseStaticFiles();
-   app.UseSchedulerErrorMiddleware(); /*!*/
-   app.UseHttpsRedirection();
-   app.UseMvc();
-}
+using Newtonsoft.Json;
 ~~~
 
-The important thing is that you add it before the `UseMvc` call.
+3\. The middleware is ready. Now go to **Program.cs** and connect the middleware. Add the following namespaces:
+
+{{snippet Program.cs }}
+~~~
+using SchedulerApp;
+~~~
+
+Next call **app.UseSchedulerErrorMiddleware()**:
+
+{{snippet Program.cs }}
+~~~
+app.UseSchedulerErrorMiddleware();
+~~~
 
 
 Application security
@@ -982,7 +936,7 @@ public static explicit operator WebAPIEvent(SchedulerEvent ev)
   return new WebAPIEvent
     {
       id = ev.Id,
-      text = HtmlEncoder.Default.Encode(ev.Name), 
+      text = HtmlEncoder.Default.Encode(ev.Name != null ? ev.Name : ""), 
       start_date = ev.StartDate.ToString("yyyy-MM-dd HH:mm"),
       end_date = ev.EndDate.ToString("yyyy-MM-dd HH:mm")
     };
