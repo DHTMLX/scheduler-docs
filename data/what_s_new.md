@@ -12,7 +12,11 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 6.0
 ---------------------
-<span class='release_date'>May 20, 2022. Bugfix release</span>
+<span class='release_date'>May 19, 2022. Bugfix release</span>
+
+### Breaking Changes
+
+This update brings some changes in the structure of the Scheduler package and behavior of functionality. Be sure to check [Migration notes](migration_from_older_version.md#5360) to be on the safe side.
 
 ### Functionality
 
@@ -30,7 +34,6 @@ If you are updating Scheduler from an older version, check migration_from_older_
 - The `settings` object as the third parameter of the [attachEvent()](api/scheduler_attachevent.md) method is added
 - [Routing options for DataProcessor](server_integration.md#customrouting)
 - Ability to [import dhtmlxScheduler as an ES6 module](initialization.md#importfilesintoes67andtypescriptapps)
-
 
 ### API
 

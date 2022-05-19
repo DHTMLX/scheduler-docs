@@ -25,7 +25,7 @@ Migration From Older Versions
 The newest update v6.0 introduces two major changes in the structure of the Scheduler package:
 
 1) All files of extensions are now bundled with the *dhtmlxscheduler.js* file. 
-Therefore, in order to activate any of extra extensions provided by dhtmlx Scheduler you need to use the API call.
+Therefore, in order to activate any of extra extensions provided by DHTMLX Scheduler, you need to use the API call.
 
 - If you have already included any extension files from the built-in package on your page, for example:
 
