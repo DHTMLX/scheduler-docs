@@ -12,7 +12,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 6.0
 ---------------------
-<span class='release_date'>May 19, 2022. Bugfix release</span>
+<span class='release_date'>May 19, 2022. Major update</span>
 
 ### Breaking Changes
 
