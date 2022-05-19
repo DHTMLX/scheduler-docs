@@ -11,8 +11,6 @@ deleteSection
 @returns:
 - isSuccess			boolean			returns true, if the section was deleted successfully and false in other cases (e.g. if an incorrect section was specified).
 
-
-@require:treetimeline
 @views: timeline
 @example: 
 scheduler.createTimelineView({
@@ -42,6 +40,8 @@ scheduler.deleteSection("sales");
     api/scheduler_addsection.md
 @descr: 
 {{pronote This functionality is available in the PRO edition only.}}
+
+{{note The method requires the [treetimeline](extensions_list.md#treetimeline) plugin to be activated.}}
 
 {{note
 If the opened view isn't Timeline in the 'Tree' mode, the method will be ignored.

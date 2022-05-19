@@ -10,7 +10,7 @@ scheduler.attachEvent("onExpand",function(){
 
 @template:	api_event
 @descr:
-@require:expand
+{{note The event requires the [expand](extensions_list.md#expand) extension to be enabled.}}
 
 
 @relatedapi:

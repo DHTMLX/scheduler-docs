@@ -20,14 +20,13 @@ The .NET version of the package: [https://github.com/DHTMLX/scheduler-to-pdf-net
 
 ## Necessary includes 
 
-On the scheduler page, include one more extension:
+On the scheduler page, enable one more extension:
 
-~~~html
-<script src="codebase/ext/dhtmlxscheduler_pdf.js"></script>
+~~~js
+scheduler.plugins({
+    pdf: true
+});
 ~~~
-
-
-In older versions of the scheduler this file can be missed in the codebase folder. In such a case, use the _dhtmlxscheduler_pdf.js_ from the latest package.
 
 
 ## Triggering the export 

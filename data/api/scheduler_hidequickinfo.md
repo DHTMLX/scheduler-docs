@@ -2,8 +2,6 @@ hideQuickInfo
 =============
 @short: 
 	hides the pop-up event form (if it's currently active)
-	
-@require:quick_info
  
 @example: 
 	
@@ -14,7 +12,8 @@ scheduler.hideQuickInfo();
 
 
 @template:	api_method
-@descr: 
+@descr:
+{{note The method requires the [quick_info](extensions_list.html#quickinfo) plugin to be activated.}}
 
 @related:
 	touch_support.md

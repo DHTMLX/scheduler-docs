@@ -3,8 +3,6 @@ calendar_month
 
 @short:specifies the date in the header of the Mini-Calendar (date picker)
 
-@require:minical
-
 @params:
 - date	Date	the first day of a selected month
 
@@ -22,8 +20,9 @@ scheduler.templates.calendar_month = function (date) {
 
 @descr:
 
-<img src="api/mini_calendar_templates.png"/>
+{{note The template requires the [minical](extensions_list.md#minicalendardatepicker) plugin to be activated.}} 
 
+<img src="api/mini_calendar_templates.png"/>
 
 
 @related:

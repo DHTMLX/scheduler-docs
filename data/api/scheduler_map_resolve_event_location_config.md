@@ -6,7 +6,7 @@ map_resolve_event_location
 
 @type: boolean
 @default:true
-@require:map_view
+
 @views:map
 
 @example:
@@ -16,7 +16,7 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 
 @template:	api_config
 @descr:
-
+{{note The property requires the [map_view](extensions_list.html#mapview) plugin to be activated.}}
 
 
 - If the option is set to *true*, and an event in the database doesn't have the 'lat' and 'lng' values, the scheduler will make an attempt to resolve coordinates based on the

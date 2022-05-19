@@ -12,10 +12,10 @@ scheduler.init('scheduler_here', new Date(2010, 0, 10), "agenda");
 
 @template:	api_config
 @default:the current user's date
-@require:agenda_view
+
 @views:agenda
 @descr:
-
+{{note The property requires the [agenda_view](extensions_list.md#agendaview) plugin to be activated.}}
 
 @relatedsample:
 	03_extensions/03_agenda_view.html

@@ -7,7 +7,6 @@ year_scale_date
 - date	Date	the date which needs formatting
 
 @views:year
-@require:year_view
 
 @example:
 const formatScaleDate = scheduler.date.date_to_str("%D");
@@ -22,4 +21,4 @@ scheduler.templates.year_scale_date = function(date){
 	year_view_templates.md
 @descr:
 
-
+{{note The template requires the [year_view](extensions_list.md#year) plugin to be activated.}}

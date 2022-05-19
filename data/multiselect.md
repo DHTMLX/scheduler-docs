@@ -6,10 +6,14 @@ A set of check boxes.
 <img src="multiselect_editor.png"/>
 
 {{note
-Include the **ext/dhtmlxscheduler_multiselect.js** file to use the control in the lightbox
+Activate the **multiselect** extension to use the control in the lightbox
 }}
 
 ~~~js
+scheduler.plugins({
+    multiselect: true /*!*/
+});
+
 scheduler.locale.labels.section_userselect = "Participants";
  
 scheduler.config.lightbox.sections=[	
@@ -30,10 +34,11 @@ Initialization
 To add the Multiselect control to the lightbox, follow these steps:
 
 <ol>
-	<li><b>Include the 'ext/dhtmlxscheduler_multiselect.js' extension file on the page:</b>
+	<li><b>Activate the 'multiselect' extension on the page:</b>
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_multiselect.js"></script>
-
+scheduler.plugins({
+    multiselect: true
+});
 ~~~
 	</li>
     <li><b>Add the section to the lightbox configuration:</b>

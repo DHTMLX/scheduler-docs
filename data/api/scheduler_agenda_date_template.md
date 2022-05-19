@@ -15,11 +15,11 @@ scheduler.templates.agenda_date = function(start, end) {
 @returns: 
 - text      string       the html text which will be rendered
 
-@require:agenda_view
 @views:agenda
 
 @template:	api_template
 @descr:
+{{note The template requires the [agenda_view](extensions_list.md#agendaview) plugin to be activated.}}
 
 @related:
 	agenda_view_templates.md

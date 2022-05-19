@@ -4,7 +4,7 @@ all_timed
 	
 
 @type: boolean, string
-@require:all_timed
+
 @default:'short'
 @views: day, week, units
 @example:
@@ -12,6 +12,8 @@ all_timed
 
 @template:	api_config
 @descr:
+{{note The property requires the [all_timed](extensions_list.md#alltimed) plugin to be activated.}}
+
 As a string the parameter can take the only value - *'short'*.
 
 <br>

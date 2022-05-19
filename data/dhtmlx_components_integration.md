@@ -1,6 +1,6 @@
 Drag-and-Drop Operations 
 ==================================
-The library provides the **ext/dhtmlxscheduler_outerdrag.js** extension that allows creating new events by dragging elements from external 
+The library provides the **outerdrag** extension that allows creating new events by dragging elements from external 
 DHTMLX components or other schedulers. 
 
 Dragging from external components
@@ -26,8 +26,16 @@ Follow these steps, to integrate the scheduler with <a src="http://docs.dhtmlx.c
 	<li><a href="https://dhtmlx.com/docs/download.shtml">Download</a> the  dhtmlxTree package and unzip its content to [YOUR APPLICATION ROOT] folder</li>
     <li>Include the necessary <b>js</b> and <b>css</b> files on the page:
 ~~~html
-<script src='ext/dhtmlxscheduler_outerdrag.js' type="text/javascript"></script>
+<script src="../codebase/dhtmlxscheduler.js" ...></script>
+<link rel="stylesheet" href="../codebase/dhtmlxscheduler.css" ...>
 ...
+~~~
+	</li>
+	<li>Activate the <a href="extensions_list.md#outerdrag">outerdrag</a> extension on the page:
+~~~js
+scheduler.plugins({
+    outerdrag: true
+});
 ~~~
 	</li>
     <li>Initialize dhtmlxTree component (see instructions <a href="https://docs.dhtmlx.com/tree__initialization_of_dhtmlxtree.html">here</a>) :
@@ -72,23 +80,26 @@ Drag-and-drop between schedulers
 -----------------------------------------------
 
 {{note
-The functionality is available for the Commercial, Enterprise and Ultimate licenses only.
+The functionality is available for the Commercial (since October 6, 2021), Enterprise and Ultimate licenses only.
 }}
 
 
 If you display  [multiple schedulers on a page](multiple_per_page.md), you can enable drag-and-drop operations between them so users could drag events from one scheduler to another and vice versa.
 
-To enable drag-and-drop support for scheduler,  just include the "**ext/dhtmlxscheduler_drag_between.js**" file on the page:
+To enable drag-and-drop support for scheduler, just include the "**drag_between**" extension on the page:
 
 {{snippet
 Enabling drag-and-drop support for several schedulers
 }}
 ~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
-<script src="codebase/ext/dhtmlxscheduler_drag_between.js"></script> /*!*/
 <link rel="stylesheet" href="codebase/dhtmlxscheduler.css" type="text/css">
 
 <script>
+scheduler.plugins({
+    drag_between: true
+});
+
 scheduler.init('scheduler_here',new Date(2019, 5, 30),"week");
 scheduler.load("./data/units.xml");
 

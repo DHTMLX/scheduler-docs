@@ -7,7 +7,6 @@ unmarkCalendar
 - date		Date	the date to unmark
 - css		string	the name of a css class to remove
 
-@require:minical
 @example: 
 // you can get the calendar object in one of two ways:
 
@@ -31,7 +30,9 @@ scheduler.unmarkCalendar(calendar, new Date(2010,3,1), "my_style");
 @related:
 	minicalendar.md
 @template:	api_method
-@descr: 
+@descr:
+{{note The method requires the [minical](extensions_list.md#minicalendardatepicker) plugin to be activated.}} 
+
 {{note
 Note, the method is applied to mini-calendar only, not to the scheduler!
 }}

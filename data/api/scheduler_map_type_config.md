@@ -3,7 +3,7 @@ map_type
 @short: sets the type of Google Maps
 	
 @views:map
-@require:map_view
+
 @default: ROADMAP
 @type: MapTypeId
 
@@ -19,6 +19,7 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"map");
 - <b>SATELLITE</b> - displays satellite images.
 - <b> TERRAIN</b> - displays maps with physical features such as terrain and vegetation.
 @descr:
+{{note The property requires the [map_view](extensions_list.html#mapview) plugin to be activated.}}
 
 @apigroup: Views/Map view
 

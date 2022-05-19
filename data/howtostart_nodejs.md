@@ -187,7 +187,7 @@ Then create an *index.html* file in the **public** directory:
 
             scheduler.load("http://localhost:3000/data", "json");
 
-            var dp = new dataProcessor("http://localhost:3000/data");
+            var dp = scheduler.createDataProcessor("http://localhost:3000/data");
             dp.init(scheduler);
             // use RESTful API on the backend
             dp.setTransactionMode("REST");
@@ -493,12 +493,14 @@ In order to enable [recurring events](recurring_events.md) (e.g. "repeat event d
 
 ### Enabling the extension
 
-Add an appropriate extension to the scheduler page:
+Activate an appropriate extension on the scheduler page:
 
 {{snippet public/index.html}}
 ~~~js
 <!-- scheduler recurring tasks extension -->
-<script src="https://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_recurring.js"></script>
+scheduler.plugins({
+    recurring: true
+});
 ~~~
 
 ### Updating the model

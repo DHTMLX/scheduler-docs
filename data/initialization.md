@@ -33,9 +33,9 @@ To display a basic Scheduler on the page through the markup, follow 3 steps:
         	<div class="dhx_cal_next_button">&nbsp;</div>
         	<div class="dhx_cal_today_button"></div>
         	<div class="dhx_cal_date"></div>
-        	<div class="dhx_cal_tab" name="day_tab"></div>
-        	<div class="dhx_cal_tab" name="week_tab" ></div>
-       		<div class="dhx_cal_tab" name="month_tab"></div>
+        	<div class="dhx_cal_tab" data-tab="day"></div>
+        	<div class="dhx_cal_tab" data-tab="week" ></div>
+       		<div class="dhx_cal_tab" data-tab="month"></div>
    		</div>
     	<div class="dhx_cal_header"></div>
     	<div class="dhx_cal_data"></div>       
@@ -178,10 +178,12 @@ or:
 
 ###Scheduler autoresizing
 
-There is a possibility to enable automatic resizing for the scheduler container. You just need to include the <b>ext/dhtmlxscheduler_container_autoresize.js</b> extension file on the page:
+There is a possibility to enable automatic resizing for the scheduler container. You just need to enable the <b>container_autoresize</b> extension on the page:
 
-~~~html
-<script src="../codebase/ext/dhtmlxscheduler_container_autoresize.js"></script>
+~~~js
+scheduler.plugins({
+    container_autoresize: true
+});
 ~~~
 
 {{sample
@@ -197,5 +199,256 @@ When you initialize Scheduler via [the header configuration property](#initializ
 It will also apply certain styles which will make elements and font sizes responsive on small screens.
 
 You can find more details in a separate article: touch_support.md.
+
+Import files into ES6/7 and TypeScript apps
+---------------------------------------------
+
+Use the following command to import files:
+
+~~~js
+import { scheduler } from 'dhtmlx-scheduler';
+~~~
+
+For the Commercial, Enterprise or Ultimate version the command looks like this:
+
+~~~js
+import { scheduler, Scheduler } from 'dhtmlx-scheduler';
+~~~
+
+React example
+------------------
+
+An example of importing dhtmlxScheduler files into a React-based app:
+
+~~~js
+import React, { Component } from 'react';
+import { scheduler } from 'dhtmlx-scheduler';
+import 'dhtmlx-scheduler/codebase/dhtmlxscheduler.css';
+ 
+export default class Scheduler extends Component {
+    componentDidUpdate() {
+        scheduler.render();
+    }
+    componentDidMount() {
+        scheduler.config.header = [
+            "day",
+            "week",
+            "month",
+            "date",
+            "prev",
+            "today",
+            "next"
+        ];
+        scheduler.init(this.schedulerContainer, new Date(), "week");
+        scheduler.parse(this.props.events);
+    }
+ 
+    render() {
+        return (
+            <div
+              ref={(input) => { this.schedulerContainer = input }}
+              style=width: '100%', height: '100%'
+            ></div>
+        );
+    }
+}
+~~~
+
+For the **Commercial, Enterprise or Ultimate** versions creating a new [scheduler object](multiple_per_page.md#destructorofscheduleranddataprocessorinstances) instead of the global instance is recommended:
+
+~~~js
+import React, { Component } from 'react';
+import { Scheduler } from 'dhtmlx-scheduler';
+import 'dhtmlx-scheduler/codebase/dhtmlxscheduler.css';
+ 
+export default class Scheduler extends Component {
+    componentDidUpdate() {
+        this.scheduler.render();
+    }
+    componentDidMount() {
+    	this.scheduler = Scheduler.getSchedulerInstance();
+        const scheduler = this.scheduler;
+        scheduler.config.header = [
+            "day",
+            "week",
+            "month",
+            "date",
+            "prev",
+            "today",
+            "next"
+        ];
+        scheduler.init(this.schedulerContainer, new Date(), "week");
+        scheduler.parse(this.props.events);
+    }
+    
+    componentDidUnmount() {
+        this.scheduler.destructor();
+        this.scheduler = null;
+    }
+ 
+    render() {
+        return (
+            <div
+              ref={(input) => { this.schedulerContainer = input }}
+              style=width: '100%', height: '100%'
+            ></div>
+        );
+    }
+}
+~~~
+
+
+Angular example
+-----------------
+
+An example of importing dhtmlxScheduler files into an Angular-based app:
+
+~~~js
+import {Component,ElementRef,OnInit,ViewChild,ViewEncapsulation} from '@angular/core';
+import {CalendarEventsService} from '../services/calendar.events.service';
+import {Event} from '../models/event';
+ 
+import { scheduler, Scheduler } from 'dhtmlx-scheduler';
+ 
+@Component({
+    encapsulation: ViewEncapsulation.None,
+    selector: 'scheduler',
+    styleUrls: ['./scheduler.component.css'],
+    providers: [CalendarEventsService],
+    template: `<div #scheduler_here class='scheduler-contaier'></div>`,
+})
+export class SchedulerComponent implements OnInit {
+    @ViewChild('scheduler_here') schedulerContainer: ElementRef;
+ 
+    constructor(private eventsService:CalendarEventsService){ }
+ 
+    ngOnInit() {
+        scheduler.config.header = [
+            "day",
+            "week",
+            "month",
+            "date",
+            "prev",
+            "today",
+            "next"
+        ];
+        scheduler.init('scheduler_here',new Date(),"week");
+        this.eventsService.get().then((events) => {
+            scheduler.parse(events);
+        });
+    }
+}
+~~~
+
+For the **Commercial, Enterprise or Ultimate** versions creating a new [scheduler object](multiple_per_page.md#destructorofscheduleranddataprocessorinstances) instead of the global instance is recommended:
+
+~~~js
+import {Component,ElementRef,OnInit,ViewChild,ViewEncapsulation} from '@angular/core';
+import {CalendarEventsService} from '../services/calendar.events.service';
+import {Event} from '../models/event';
+ 
+import { Scheduler } from 'dhtmlx-scheduler';
+ 
+@Component({
+    encapsulation: ViewEncapsulation.None,
+    selector: 'scheduler',
+    styleUrls: ['./scheduler.component.css'],
+    providers: [CalendarEventsService],
+    template: `<div #scheduler_here class='scheduler-contaier'></div>`,
+})
+export class SchedulerComponent implements OnInit {
+    @ViewChild('scheduler_here') schedulerContainer: ElementRef;
+ 
+    constructor(private eventsService:CalendarEventsService){ }
+ 
+    ngOnInit() {
+        this.scheduler = Scheduler.getSchedulerInstance();
+        const scheduler = this.scheduler;
+        scheduler.config.header = [
+            "day",
+            "week",
+            "month",
+            "date",
+            "prev",
+            "today",
+            "next"
+        ];
+        scheduler.init('scheduler_here',new Date(),"week");
+        this.eventsService.get().then((events) => {
+            scheduler.parse(events);
+        });
+    }
+    ngOnDestroy() {
+        this.scheduler.destructor();
+        this.scheduler = null;
+    }
+}
+~~~
+
+
+Include files into a RequireJS-based app
+------------------------------------------- 
+
+To include dhtmlxScheduler files into a RequireJS-based app, you need to follow the logic shown in the example below:
+
+~~~js
+requirejs(["codebase/dhtmlxscheduler"], function(dhx){
+    var scheduler = dhx.scheduler;
+    var Scheduler = dhx.Scheduler;// for Enterprise builds
+ 
+    scheduler.init('scheduler_here',new Date(),"week");
+    scheduler.parse([
+        {
+            id: 1, text: "Event 1", start_date: "2022-07-15 09:00", 
+            end_date: "2022-07-15 10:00"
+        },
+        {
+            id: 2, text: "Event 2", start_date: "2022-07-15 10:00", 
+            end_date: "2022-07-15 11:00"
+        }
+    ]);
+});
+~~~
+
+The dhtmlxScheduler library will return an object with fields `scheduler` and `Scheduler` (in Commercial, Enterprise or Ultimate versions) - the *scheduler* and *Scheduler* objects described [here](multiple_per_page.md).
+
+{{note  When using Scheduler with custom extensions in RequireJS, you should specify the `shim` config for RequireJS and directly set the dependency of extensions from Scheduler in it.}}
+
+The example below demonstrates how a custom extension file *custom_tooltip_plugin.js* can be set in the correct way:
+
+~~~js
+requirejs.config({
+    paths: {
+        "dhtmlxscheduler": "../../codebase/dhtmlxscheduler",
+        "ext/dhtmlxscheduler_custom_tooltip": "../custom_tooltip_plugin"
+    },
+    shim: {
+        "ext/dhtmlxscheduler_custom_tooltip": ["dhtmlxscheduler"]
+    }
+});
+ 
+requirejs(["dhtmlxscheduler"], 
+function (dhx) {
+    var scheduler = dhx.scheduler;
+ 
+    scheduler.init('scheduler_here',new Date(),"week");
+    scheduler.parse([
+        {
+            id: 1, text: "Event 1", start_date: "2022-07-15 09:00", 
+            end_date: "2022-07-15 10:00"
+        },
+        {
+            id: 2, text: "Event 2", start_date: "2022-07-15 10:00", 
+            end_date: "2022-07-15 11:00"
+        }
+    ]);
+});
+~~~
+
+Check that the module name for any file inside the package is specified as *a relative path inside the 'codebase' folder of the package* plus *the filename*, for instance:
+
+**core library:**
+
+- "dhtmlxscheduler": "./vendor/dhtmlxscheduler/dhtmlxscheduler"
 
 

@@ -18,9 +18,11 @@ Initialization
 To add the Grid view to the scheduler, follow these steps:
 
 <ol>
-	<li><b>Include the Grid code file on the page:</b>
+	<li><b>Activate the "grid view" extension on the page:</b>
 ~~~js
-<script src="ext/dhtmlxscheduler_grid_view.js"></script>
+scheduler.plugins({
+    grid_view: true
+});
 ~~~
     </li>
     <li> <b>Add the view's tab to the scheduler's markup:</b>
@@ -43,14 +45,14 @@ scheduler.locale.labels.grid_tab = "Grid";
     <li> <b>Call the api/scheduler_creategridview.md method:</b> 
 ~~~js
 scheduler.createGridView({
-       name:"grid",
-       fields:[    // defines columns of the grid
-             {id:"id",   label:'Id',   sort:'int',  width:80,  align:'right'},
-             {id:"date", label:'Date', sort:'date', width:'*'},
-             {id:"text", label:'Text', sort:'str',  width:200, align:'left'}
-       ],
-       from:new Date(2019, 3, 10),//left border of the allowable date range
-       to:new Date(2019, 5, 23)    //right border of the allowable date range
+    name:"grid",
+    fields:[    // defines columns of the grid
+        {id:"id",   label:'Id',   sort:'int',  width:80,  align:'right'},
+        {id:"date", label:'Date', sort:'date', width:'*'},
+        {id:"text", label:'Text', sort:'str',  width:200, align:'left'}
+    ],
+    from:new Date(2019, 3, 10),//left border of the allowable date range
+    to:new Date(2019, 5, 23)    //right border of the allowable date range
 });
 ~~~
 	</li>

@@ -10,7 +10,6 @@ addSection
 @returns:
 - isSuccess			boolean			returns 'true', if the section was added successfully and 'false' in other cases (e.g. incorrect parent_id was specified).
 
-@require:treetimeline
 @views: timeline
 @example: 
 scheduler.createTimelineView({
@@ -41,6 +40,8 @@ scheduler.addSection( {key:2, label:"Alex White"}, "sales");
     api/scheduler_deleteallsections.md
 @descr: 
 {{pronote This functionality is available in the PRO edition only.}}
+
+{{note The method requires the [treetimeline](extensions_list.md#treetimeline) plugin to be activated.}}
 
 {{note
 If the opened view isn't Timeline in the 'Tree' mode, the method will be ignored.

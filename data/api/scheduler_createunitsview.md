@@ -33,11 +33,12 @@ scheduler.parse([
 	03_extensions/02_units_view.html
     03_extensions/17_connector_units.html
 
-@require:units_view
 @views:units
 
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
+
+{{note The method requires the [units](extensions_list.md#units) plugin to be activated.}}
 
 The configuration object of the Units view can have the following properties:
 <table class="webixdoc_links">

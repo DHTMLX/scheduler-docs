@@ -14,9 +14,11 @@ Initialization
 To add the Units view to the scheduler, follow these steps:
 
 <ol>
-	<li><b>Include the Units code file on the page:</b>
+	<li><b>Activate the Units extension on the page:</b>
 ~~~js
-<script src="codebase/ext/dhtmlxscheduler_units.js"></script>
+scheduler.plugins({
+    units: true
+});
 ~~~
     </li>
     <li> <b>Add the view's tab to the scheduler's markup:</b>
@@ -150,19 +152,20 @@ Starting from version 4.1, you have a possibility to assign events to several un
 
 To enable the possibility: 
 
-1. Include the **ext/dhtmlxscheduler_multisection.js** file on the page
+1. Activate the **Multisection** extension on the page
 2. Set the api/scheduler_multisection_config.md property to *true*
-3. (Optional) Include "ext/dhtmlxscheduler_multiselect.js" file on the page to use multiselect.md control in the scheduler (a comfortable way to switch between sections)
+3. (Optional) Activate the "multiselect" extension on the page to use multiselect.md control in the scheduler (a comfortable way to switch between sections)
 
 ~~~js
 <script src="codebase/dhtmlxscheduler.js"></script>
-<script src="codebase/ext/dhtmlxscheduler_multisection.js"></script> /*!*/
 <link rel="stylesheet" href="codebase/dhtmlxscheduler.css" type="text/css">
 
-<script src="codebase/ext/dhtmlxscheduler_units.js"></script>
-<script src="codebase/ext/dhtmlxscheduler_multiselect.js"></script>
-
 <script>
+    scheduler.plugins({
+        multisection: true, /*!*/
+        multiselect: true,
+        units: true
+    });
 	scheduler.config.multisection = true; /*!*/
 	scheduler.init('scheduler_here');
 </script>

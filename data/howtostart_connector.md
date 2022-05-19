@@ -236,7 +236,7 @@ To 'force' the scheduler save data in the database, use [dataProcessor](server_i
 It's very easy to use dataProcessor. All you need is to initialize it and attach to the scheduler.
 
 ~~~js
-var dp = new dataProcessor("data/connector.php");
+var dp = scheduler.createDataProcessor("data/connector.php");
 dp.init(scheduler);
 ~~~
 

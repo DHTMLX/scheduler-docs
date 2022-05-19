@@ -14,9 +14,11 @@ Initialization
 To add the Year view  to the scheduler, follow these steps:
 
 <ol>
-	<li><b>Include the Year code file on the page:</b>
+	<li><b>Activate the Year extension on the page:</b>
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_year_view.js" ></script>
+scheduler.plugins({
+    year_view: true
+});
 ~~~
     </li>
     <li> <b>Add the view's tab to the scheduler's markup:</b>

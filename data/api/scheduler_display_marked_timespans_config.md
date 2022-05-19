@@ -6,7 +6,7 @@ display_marked_timespans
 	
 
 @type: boolean	
-@require:limit
+
 @default:true
 @related:limits.md
 @example:
@@ -18,6 +18,8 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 @template:	api_config
 @descr:
 The property is available from version 3.5.
+
+{{note The property requires the [limit](extensions_list.md#limit) plugin to be activated.}}
 
 If you set the option to *false*, time spans will continue to be blocked, but will be displayed as usual scheduler cells. 
 

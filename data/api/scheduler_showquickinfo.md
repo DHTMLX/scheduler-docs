@@ -17,10 +17,10 @@ window.setTimeout(function(){
 },1);	
 
 
-@require:quick_info
 @template:	api_method
 
-@descr: 
+@descr:
+{{note The method requires the [quick_info](extensions_list.html#quickinfo) plugin to be activated.}}
 
 @related:
 	touch_support.md

@@ -14,10 +14,10 @@ scheduler.init('scheduler_here', new Date(2013, 0, 10), "agenda");
 
 @template:	api_config
 @default: 'agenda_start' (value) + 1 year
-@require:agenda_view
+
 @views:agenda
 @descr:
-
+{{note The property requires the [agenda_view](extensions_list.md#agendaview) plugin to be activated.}}
 
 @relatedsample:
 	03_extensions/03_agenda_view.html

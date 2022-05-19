@@ -6,11 +6,15 @@ A set of radio buttons
 <img src="radio_editor.png"/>
 
 {{note
-Include the **ext/dhtmlxscheduler_editors.js** file to use the control in the lightbox
+Enable the **editors** extension to use the control in the lightbox
 }}
 
 
 ~~~js
+scheduler.plugins({
+    editors: true /*!*/
+});
+
 var priorities = [
 	{ key: 1, label: 'High' },
 	{ key: 2, label: 'Medium' },
@@ -37,10 +41,11 @@ Initialization
 To add the Radio control to the lightbox, follow these steps:
 
 <ol>
-	<li><b>Include the 'ext/dhtmlxscheduler_editors.js' extension file on the page:</b>
+	<li><b>Enable the 'editors' extension on the page:</b>
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_editors.js"></script>
-
+scheduler.plugins({
+    editors: true
+});
 ~~~
 	</li>
     <li><b>Add the section to the lightbox configuration:</b>

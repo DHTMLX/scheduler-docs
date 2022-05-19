@@ -1,6 +1,6 @@
 Backbone Integration
 ===========================================
-From the version 4.0, the library provides a special extension **'ext/dhtmlxscheduler_mvc.js'** that allows you to integrate the scheduler  with the Backbone library.
+From the version 4.0, the library provides a special extension [**mvc**](extensions_list.md#mvc) that allows you to integrate the scheduler  with the Backbone library.
 
 If you have a Backbone-based application and want to add the scheduler there (still managing data with Backbone), use the following technique:
 
@@ -9,10 +9,16 @@ If you have a Backbone-based application and want to add the scheduler there (st
     Include the dhtmlxScheduler files to the app:
 ~~~js
 <script src="../../codebase/dhtmlxscheduler.js" ></script>
-<script src="../../codebase/ext/dhtmlxscheduler_mvc.js?!"></script>
 <link rel="stylesheet" href="../../codebase/dhtmlxscheduler.css">
 ~~~
 	</li>
+    <li> Activate the <b>mvc</b> extension on the page:
+~~~js
+scheduler.plugins({
+    mvc: true
+});
+~~~
+    </li>
     <li> Initialize and configure the scheduler in a usual way:
 ~~~js
 scheduler.full_day = true;

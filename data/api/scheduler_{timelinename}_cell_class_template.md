@@ -18,9 +18,10 @@ scheduler.templates.timeline_cell_class = function(evs, date, section){
 @returns:
 - css_class    string     css class for related element
 @descr:
+{{note The template requires the [timeline](extensions_list.md#timeline) plugin to be activated.}}
 	
-@require:timeline
 @views:timeline
+
 
 
 @related:

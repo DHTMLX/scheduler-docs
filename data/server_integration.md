@@ -34,15 +34,105 @@ Generally, to load data from the server side using REST API, you need to:
 
 1) Call the api/scheduler_load.md method, where as a parameter specify the URL that returns Scheduler data in the [JSON](data_formats.md#json) format
 
-2) Initialize dataProcessor and attach it to the dhtmlxScheduler object. The dataProcessor constructor accepts the path to the same server-side script:
+2) Initialize dataProcessor and attach it to the dhtmlxScheduler object. The scheduler.DataProcessor constructor accepts the path to the same server-side script:
            
 ~~~js
 scheduler.init("scheduler_here", new Date(), "month");
 scheduler.load("apiUrl");
 
-var dp = new dataProcessor("apiUrl");
+var dp = new scheduler.DataProcessor("apiUrl");
 dp.init(scheduler);
 ~~~
+
+Call the [createDataProcessor](api/scheduler_createdataprocessor.md) method and pass an object with configuration options as its parameter:
+
+~~~js
+var dp = scheduler.createDataProcessor({
+    url: "apiUrl",
+    mode: "REST"
+});
+~~~
+
+Check the detailed info in the next section.
+
+<h3 id="createdp">Creating DataProcessor</h3>
+
+While creating a DataProcessor via the API method [createDataProcessor](api/scheduler_createdataprocessor.md) you have several possible options for passing parameters.
+
+1\. Use one of the predefined request modes, as in:
+
+~~~js
+var dp = scheduler.createDataProcessor({
+    url: "/api",
+    mode: "REST"
+});
+~~~
+
+where:
+
+- **url** - the URL to the server side
+- **mode** - the mode of sending data to the server: "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
+
+2\. Provide a custom **router** object:
+
+~~~js
+var dp = scheduler.createDataProcessor(router);
+~~~
+
+where the router is either a function:
+
+~~~js
+// entity - "event"
+// action - "create"|"update"|"delete"
+// data - an object with event data
+// id – the id of a processed object (event)
+var dp = scheduler.createDataProcessor(function(entity, action, data, id) { 
+    switch(action) {
+        case "create":
+           	return scheduler.ajax.post(
+                server + "/" + entity,
+                data
+           	);
+        break;
+        case "update":
+           	return scheduler.ajax.put(
+                server + "/" + entity + "/" + id,
+                data
+            );
+        break;
+        case "delete":
+           	return scheduler.ajax.del(
+                server + "/" + entity + "/" + id
+           	);
+        break;
+   	}
+});
+~~~
+
+or an object of the following structure:
+
+~~~js
+var dp = scheduler.createDataProcessor({ 
+   event: {
+      create: function(data) {},
+      update: function(data, id) {},
+      delete: function(id) {}
+   }
+});
+~~~
+
+All the functions of the router object should return either a Promise or a data response object. This is needed for the dataProcessor to apply the database id and to hook **onAfterUpdate** event of the data processor.
+
+~~~js
+router = function(entity, action, data, id) {
+    return new scheduler.Promise(function(resolve, reject) {
+        // … some logic
+        return resolve({tid: databaseId});
+    });
+}
+~~~
+
+Thus you can use DataProcessor for saving data in localStorage, or any other storage which is not linked to a certain URL, or in case if there are two different servers (URLs) responsible for creation and deletion of objects.
 	
 <h3 id="requestresponsedetails">Request and response details</h3>
 
@@ -58,7 +148,7 @@ where "api" is the url you've specified in the dataProcessor configuration.
 To enable the REST mode, use the [setTransactionMode()](https://docs.dhtmlx.com/api__dataprocessor_settransactionmode.html) method of DataProcessor:
 
 ~~~js
-var dp = new dataProcessor("apiUrl");
+var dp = scheduler.createDataProcessor("apiUrl");
 dp.init(scheduler);
 dp.setTransactionMode("REST", false);  /*!*/
 ~~~
@@ -100,7 +190,7 @@ The list of possible requests and responses is:
 To use the POST mode, use the [setTransactionMode()](https://docs.dhtmlx.com/api__dataprocessor_settransactionmode.html) method of DataProcessor with necessary parameters:
 
 ~~~js
-var dp = new dataProcessor("apiUrl");
+var dp = scheduler.createDataProcessor("apiUrl");
 dp.init(scheduler);
 dp.setTransactionMode("POST", false);  /*!*/
 ~~~
@@ -131,7 +221,7 @@ The list of possible requests and responses is:
 To use the JSON mode, use the [setTransactionMode()](https://docs.dhtmlx.com/api__dataprocessor_settransactionmode.html) method of DataProcessor with necessary parameters:
 
 ~~~js
-var dp = new dataProcessor("apiUrl");
+var dp = scheduler.createDataProcessor("apiUrl");
 dp.init(scheduler);
 dp.setTransactionMode("JSON", false); /*!*/
 ~~~
@@ -276,7 +366,7 @@ For example, let's suppose that you need to add an authorization token to your r
 scheduler.init("scheduler_here");
 scheduler.load("/api");
  
-var dp = new dataProcessor("/api");
+var dp = scheduler.createDataProcessor("/api");
 dp.init(scheduler);
 dp.setTransactionMode({
     mode:"REST",
@@ -323,7 +413,7 @@ the [setTransactionMode](https://docs.dhtmlx.com/api__dataprocessor_settransacti
 scheduler.init("gantt_here");
 scheduler.load("/api");
  
-var dp = new dataProcessor("/api");
+var dp = scheduler.createDataProcessor("/api");
 dp.init(scheduler);
 dp.setTransactionMode({
     mode:"REST",
@@ -338,7 +428,7 @@ Payload will be added into the query string of the request.
 One more way to add custom parameters to a request is to use the [onBeforeUpdate](https://docs.dhtmlx.com/api__dataprocessor_onbeforeupdate_event.html) event of DataProcessor:
 
 ~~~js
-var dp = new dataProcessor("data/events.php");
+var dp = scheduler.createDataProcessor("data/events.php");
 
 dp.attachEvent("onBeforeUpdate", function(id, state, data){
 	data.productName = "Product 2";
@@ -412,6 +502,64 @@ scheduler.attachEvent('onEventDeleted', function(id) {
 });
 ~~~
 
+Custom Routing
+----------------
+
+In case RESTful AJAX API isn't what you need on the backend, or if you want to manually control what is sent to the server, you can make use of custom routing.
+
+For example, if you use Angular, React, or any other framework where a component on a page doesn't send changes directly to the server, but passes them to a different component which is responsible for data saving.
+
+To provide custom routing options for DataProcessor, you should use the [**createDataProcessor()**](#createdp) method:
+
+~~~js
+scheduler.createDataProcessor(function(entity, action, data, id) { 
+    switch(action) {
+        case "create":
+            return scheduler.ajax.post(
+                server + "/" + entity,
+                data
+            );
+        break;
+        case "update":
+            return scheduler.ajax.put(
+                server + "/" + entity + "/" + id,
+                data
+            );
+        break;
+        case "delete":
+            return scheduler.ajax.del(
+                server + "/" + entity + "/" + id
+           );
+        break;
+    }
+});
+~~~
+
+### Using AJAX for setting custom routers
+
+[Scheduler AJAX module](api/scheduler_ajax_other.md) can be useful for setting custom routes. Scheduler expects a custom router to return a Promise object as a result of an operation, which allows catching the end of an action. 
+The AJAX module supports promises and is suitable for usage inside of custom routers. Scheduler will get Promise and process the content of Promise, when it is resolved.  
+
+In the example below a new task is created. If the server response includes the id of a newly created task, Scheduler will be able to apply it.
+
+~~~js
+scheduler.createDataProcessor(function(entity, action, data, id){
+...
+ 
+    switch (action) {
+        case "create":
+            return scheduler.ajax.post({
+                headers: { 
+                    "Content-Type": "application/json" 
+                },
+                url: server + "/" + entity + "/" + id,
+                data: JSON.stringify(data)
+            });
+        break;
+    }
+});
+~~~
+
 Error Handling
 ------------------------------------------
 
@@ -424,7 +572,7 @@ A server can inform Scheduler that an action has failed by returning the "action
 Such a response can be captured on the client with the help of dataProcessor:
 
 ~~~js
-var dp = new dataProcessor("apiUrl");
+var dp = scheduler.createDataProcessor("apiUrl");
 dp.init(scheduler);
 dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
     if(action == "error"){

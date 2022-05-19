@@ -8,7 +8,6 @@ markCalendar
 - date		Date	the date to mark
 - css		string	the name of a css class
 
-@require: minical
 @example: 
 <style>
 my_style{
@@ -34,6 +33,8 @@ my_style{
 	api/scheduler_unmarkcalendar.md
 @template:	api_method
 @descr: 
+{{note The method requires the [minical](extensions_list.md#minicalendardatepicker) plugin to be activated.}}
+
 {{note
 Note, the method is applied to mini-calendar only, not to the scheduler!
 }}

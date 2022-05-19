@@ -15,7 +15,7 @@ scheduler.attachEvent("onBeforeExpand",function(){
 
 @template:	api_event
 @descr:
-@require:expand
+{{note The event requires the [expand](extensions_list.md#expand) plugin to be enabled.}}
 
 
 @relatedapi:

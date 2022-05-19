@@ -6,7 +6,7 @@ key_nav_step
 	defines the minimal step (in minutes) for navigating events
 	
 @type:number    
-@require:key_nav
+
 @default:30
  
 @example:
@@ -15,6 +15,7 @@ scheduler.config.key_nav_step = 40;
 
 @template:	api_config
 @descr:
+{{note The property requires the [key_nav](extensions_list.md#keyboardnavigation) extension to be enabled.}}
 
 @related:
 	extensions_list.md#keyboardnavigation

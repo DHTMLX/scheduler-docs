@@ -19,6 +19,6 @@ scheduler.detachEvent(myEvent);
 	 api/scheduler_attachevent.md
 @descr: 
 
-
+All event listeners attached using [event](api/scheduler_event.md) will be detached automatically when the [destructor](api/scheduler_destructor.md) is called.
 
 

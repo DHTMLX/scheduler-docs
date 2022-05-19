@@ -15,7 +15,7 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 
 @template:	api_config
 @descr:
-<img src="api/dayView_properties.png"/>
+<img src="api/day_view_properties.png"/>
 
 @relatedsample:
 	06_timeline/05_week_lines.html

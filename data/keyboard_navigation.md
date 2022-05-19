@@ -7,11 +7,12 @@ on the peculiarities of keyboard navigation with Scheduler, including focus beha
 
 ##Enabling the functionality
 
-In order to use keyboard navigation in Scheduler, you need to include the **ext/dhtmlxscheduler_key_nav.js** extension on the page. 
+In order to use keyboard navigation in Scheduler, you need to enable the **key_nav** extension on the page. 
 
-~~~html
-<script src="../../codebase/ext/dhtmlxscheduler_key_nav.js" type="text/javascript" 
-	charset="utf-8"></script>
+~~~js
+scheduler.plugins({
+    key_nav: true
+});
 ~~~
 
 ##Focus behavior during keyboard navigation

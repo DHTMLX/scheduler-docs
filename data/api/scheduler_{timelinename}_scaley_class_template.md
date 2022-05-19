@@ -19,9 +19,8 @@ scheduler.templates.timeline_scaley_class = function(key, label,  section){
 @returns:
 - css_class    string     css class for related element
 @descr:
+{{note The template requires the [timeline](extensions_list.md#timeline) plugin to be activated.}}
 
-	
-@require:timeline
 @views:timeline
 
 

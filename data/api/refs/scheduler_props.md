@@ -18,6 +18,7 @@ Properties
 - api/scheduler_check_limits_config.md - activates/disables checking of limits
 - api/scheduler_collision_limit_config.md - sets the maximum allowable number of events per time slot
 - api/scheduler_container_autoresize_config.md - forces the scheduler container to automatically change its size to show the whole content without scrolling
+- api/scheduler_csp_config.md - defines internal implementation of the code of date formatting methods
 - api/scheduler_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
 - api/scheduler_day_date_config.md - sets the date format for the X-Axis of the Week and Units views
 - api/scheduler_dblclick_create_config.md - enables the possibility to create events by double click
@@ -37,6 +38,7 @@ Properties
 - api/scheduler_drag_out_config.md - restrict dragging events from the calling scheduler to any other scheduler(s)
 - api/scheduler_drag_resize_config.md - enables the possibility to resize events by drag-and-drop
 - api/scheduler_edit_on_create_config.md - 'says' to open the lightbox while creating new events
+- api/scheduler_event_attribute_config.md - sets the name of the attribute that will specify the id of the event's HTML element
 - api/scheduler_event_duration_config.md - sets the initial duration of events in minutes
 - api/scheduler_first_hour_config.md - sets the minimum value for the hour scale (Y-Axis)
 - api/scheduler_fix_tab_position_config.md - moves views' tabs from the left to the right side
@@ -84,6 +86,7 @@ Properties
 - api/scheduler_multisection_shift_all_config.md - specifies whether while dragging events that assigned to several sections of the Timeline or Units view, all  instances should be dragged at once ('true') or just the selected one ('false')
 - api/scheduler_now_date_config.md - sets the date for the current-time marker in the Limit extension (enabled by the configuration - mark_now)
 - api/scheduler_occurrence_timestamp_in_utc_config.md - allows working with recurring events independently of time zones
+- api/scheduler_overwrite_marked_timespans_config.md - enables blocking priority for marked timespans
 - api/scheduler_parse_exact_format_config.md - defines whether scheduler automatically identifies the format of data
 - api/scheduler_positive_closing_config.md - defines the 'saving' behaviour for the case, when  the user edits the event's text directly in the event's box
 - api/scheduler_preserve_length_config.md - preserves the visible length of an event while dragging along a non-linear time scale
@@ -105,6 +108,7 @@ Properties
 - api/scheduler_select_config.md - shows/hides the select bar in the event's box
 - api/scheduler_separate_short_events_config.md - allows preventing short events from overlapping
 - api/scheduler_server_utc_config.md - enables converting server-side dates from UTC to a local time zone (and backward) while sending data to the server
+- api/scheduler_show_errors_config.md - enables showing error alerts in case of unexpected behavior
 - api/scheduler_show_loading_config.md - enables showing a progress/spinner while data is loading (useful for dynamic loading)
 - api/scheduler_show_quick_info_config.md - activates/disables the 'quick_info' extension (pop-up task's details form)
 - api/scheduler_start_on_monday_config.md - sets the start day of weeks
@@ -143,6 +147,7 @@ Properties
 - api/scheduler_check_limits_config.md
 - api/scheduler_collision_limit_config.md
 - api/scheduler_container_autoresize_config.md
+- api/scheduler_csp_config.md
 - api/scheduler_date_format_config.md
 - api/scheduler_day_date_config.md
 - api/scheduler_dblclick_create_config.md
@@ -162,6 +167,7 @@ Properties
 - api/scheduler_drag_out_config.md
 - api/scheduler_drag_resize_config.md
 - api/scheduler_edit_on_create_config.md
+- api/scheduler_event_attribute_config.md
 - api/scheduler_event_duration_config.md
 - api/scheduler_first_hour_config.md
 - api/scheduler_fix_tab_position_config.md
@@ -209,6 +215,7 @@ Properties
 - api/scheduler_multisection_shift_all_config.md
 - api/scheduler_now_date_config.md
 - api/scheduler_occurrence_timestamp_in_utc_config.md
+- api/scheduler_overwrite_marked_timespans_config.md
 - api/scheduler_parse_exact_format_config.md
 - api/scheduler_positive_closing_config.md
 - api/scheduler_preserve_length_config.md
@@ -230,6 +237,7 @@ Properties
 - api/scheduler_select_config.md
 - api/scheduler_separate_short_events_config.md
 - api/scheduler_server_utc_config.md
+- api/scheduler_show_errors_config.md
 - api/scheduler_show_loading_config.md
 - api/scheduler_show_quick_info_config.md
 - api/scheduler_start_on_monday_config.md

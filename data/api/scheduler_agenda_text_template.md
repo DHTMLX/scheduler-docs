@@ -3,7 +3,6 @@ agenda_text
 @short:specifies the text in the second column of the Agenda view
 	
 
-@require:agenda_view
 @example:
 scheduler.templates.agenda_text = function(start,end,ev){
 	 return ev.text;
@@ -21,6 +20,8 @@ scheduler.templates.agenda_text = function(start,end,ev){
 @related:
 	agenda_view_templates.md
 @descr:
+{{note The template requires the [agenda_view](extensions_list.md#agendaview) plugin to be activated.}}
+
 Note, if the **agenda_text** template isn't specified, 
 the 'd-m-y' part of the date will be set according to the [day_date](api__scheduler_day_date_template.html) template. 
 

@@ -5,7 +5,7 @@ map_end
 	
 
 @type: Date
-@require:map_view
+
 @views:map
 @default: 'map_start' (value) + 1 year
 @example:
@@ -16,7 +16,7 @@ scheduler.init('scheduler_here', new Date(2013, 0, 10), "map");
 
 @template:	api_config
 @descr:
-
+{{note The property requires the [map_view](extensions_list.html#mapview) plugin to be activated.}}
 
 @relatedsample:
 	03_extensions/23_map_view_timeframes.html

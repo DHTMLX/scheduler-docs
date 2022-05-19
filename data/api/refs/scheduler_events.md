@@ -34,8 +34,10 @@ Events
 - api/scheduler_oncontextmenu_event.md - fires when the user calls the context menu by clicking the right mouse button inside the scheduler
 - api/scheduler_ondatarender_event.md - fires after data has been rendered on the page
 - api/scheduler_ondblclick_event.md - fires when the user double clicks on an event
+- api/scheduler_ondestroy_event.md - fires after scheduler has been cleared by the api/scheduler_destructor.md method
 - api/scheduler_ondragend_event.md - fires when the drag/resize operation is finished
 - api/scheduler_onemptyclick_event.md - fires when the user clicks on an empty space in the scheduler (not on events)
+- api/scheduler_onerror_event.md - fires when api/scheduler_assert.md receives 'false' value, i.e. when assertion fails
 - api/scheduler_oneventadded_event.md - fires when the user adds a new event to the scheduler
 - api/scheduler_oneventcancel_event.md - fires when the user clicks on the 'Cancel' button in the lightbox (edit form)
 - api/scheduler_oneventchanged_event.md - occurs after the user has edited an event and saved the changes (after clicking on the edit and save buttons in the event's bar or in the details window)
@@ -119,8 +121,10 @@ Events
 - api/scheduler_oncontextmenu_event.md
 - api/scheduler_ondatarender_event.md
 - api/scheduler_ondblclick_event.md
+- api/scheduler_ondestroy_event.md
 - api/scheduler_ondragend_event.md
 - api/scheduler_onemptyclick_event.md
+- api/scheduler_onerror_event.md
 - api/scheduler_oneventadded_event.md
 - api/scheduler_oneventcancel_event.md
 - api/scheduler_oneventchanged_event.md

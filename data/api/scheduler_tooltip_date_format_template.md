@@ -5,7 +5,6 @@ tooltip_date_format
 @params:
 - date	Date	the date which needs formatting
 
-@require:tooltip
 @example:
 scheduler.templates.tooltip_date_format=function (date){
 	var formatFunc = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
@@ -17,6 +16,7 @@ scheduler.templates.tooltip_date_format=function (date){
 @returns:
 - text    string     html text for rendering in the scheduler
 @descr:
+{{note The template requires the [tooltip](extensions_list.md#tooltip) plugin to be enabled.}}
 
 @relatedapi:
 	api/scheduler_tooltip_text_template.md

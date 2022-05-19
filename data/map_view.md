@@ -21,17 +21,23 @@ Initialization
 
 To add the Map view  to the scheduler, follow these steps:
 
-1\. Include the Map view and Google Maps code files on the page:
+1\. Include Google Maps code file on the page:
 
 ~~~html
 <-- use your own Google API key-->
 <script src="//maps.google.com/maps/api/js?key=[your Google API key]&sensor=false" 
-	type="text/javascript"></script>`
-
-<script src="../codebase/ext/dhtmlxscheduler_map_view.js"></script>
+	type="text/javascript"></script>
 ~~~
 
-2\. Add the view's tab to the scheduler's markup:</b>
+2\. Activate the **Map view** extension:
+
+~~~js
+scheduler.plugins({
+    map_view: true
+});
+~~~
+
+3\. Add the view's tab to the scheduler's markup:</b>
 
 ~~~html
 <div id="scheduler_here" class="dhx_cal_container" ...>
@@ -43,14 +49,14 @@ To add the Map view  to the scheduler, follow these steps:
 </div>
 ~~~
 
-3\. Set the label for the tab:
+4\. Set the label for the tab:
 
 ~~~js
 //'map_tab' is the name of our div
 scheduler.locale.labels.map_tab = "Map";
 ~~~
 
-4\. Define an additional section in the lightbox to manage the event location:
+5\. Define an additional section in the lightbox to manage the event location:
 
 ~~~js
 scheduler.config.lightbox.sections=[
@@ -61,13 +67,13 @@ scheduler.config.lightbox.sections=[
 ~~~
 	
     
-5\. Set the label for the section:
+6\. Set the label for the section:
 
 ~~~js
 scheduler.locale.labels.section_location = "Location";
 ~~~
 
-6\. Initialize the scheduler:
+7\. Initialize the scheduler:
 
 ~~~js
 //'map' is the default name of the Map view

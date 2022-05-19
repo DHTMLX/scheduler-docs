@@ -485,7 +485,7 @@ scheduler.setLoadMode("day"); /*!*/
 scheduler.init("scheduler_here", new Date(2018, 11, 3), "week");
 
 scheduler.load("/api/events", "json"); /*!*/
-var dp = new dataProcessor("/api/events"); /*!*/
+var dp = scheduler.createDataProcessor("/api/events"); /*!*/
 dp.init(scheduler);
 dp.setTransactionMode("REST");
 ~~~
@@ -501,17 +501,23 @@ Recurring events
 
 In order to enable recurrence (e.g. "repeat event daily") you'll need to add an appropriate extension to the **scheduler.blade.php**, update the model and the code of the Events controller.
 
-Firstly, go to **scheduler.blade.php** and add a recurring extension after *dhtmlxscheduler.js*:
+Firstly, go to **scheduler.blade.php** and enable a recurring extension:
 
 {{snippet resources\views\scheduler.blade.php }}
 ~~~html
 <!DOCTYPE html>
-<head>
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-
-  <script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js"></script>
-  <script src="https://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_recurring.js"></script>
-</head>
+...
+<body>
+    ...
+    <script type="text/javascript">
+        scheduler.plugins({
+            recurring: true /*!*/
+        });
+        
+        scheduler.config.date_format = "%Y-%m-%d %H:%i:%s";
+        scheduler.init("scheduler_here", new Date(2018, 11, 3), "week");
+    </script> 
+</body>
 ~~~
 
 Now, update the model.

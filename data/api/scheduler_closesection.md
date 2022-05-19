@@ -7,7 +7,6 @@ closeSection
 @params: 
 - section_id	string	the section's id
 
-@require:treetimeline
 @views: timeline
 @example: 
 scheduler.createTimelineView({
@@ -39,6 +38,8 @@ scheduler.closeSection("managers");
 
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
+
+{{note The method requires the [treetimeline](extensions_list.md#treetimeline) plugin to be activated.}}
 
 {{note
 If the opened view isn't Timeline in the 'Tree' mode, the method will be ignored.

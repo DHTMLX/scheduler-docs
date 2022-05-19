@@ -4,7 +4,7 @@ unmarkTimespan
 @short: removes marking/blocking set by the markTimespan() method 
 @params: 
 - divs	HTMLElement, array	 a timespan to remove marking/blocking from (or an array of timespans)
-@require:limit
+
 @relatedapi:
 	api/scheduler_marktimespan.md
 @example: 
@@ -27,3 +27,5 @@ scheduler.unmarkTimespan(spanDIV);
 {{note
 Available from version 3.5
 }}
+
+{{note The method requires the [limit](extensions_list.md#limit) plugin to be activated.}}

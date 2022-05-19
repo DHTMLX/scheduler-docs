@@ -3,7 +3,6 @@ checkInMarkedTimespan
 
 @short:checks whether an event resides in a timespan of a specific type
 	
-@require:limit,treetimeline
 @views: timeline
 @returns:
 isIn	boolean		<i>true</i>, if the event is in the timespan of the specified type
@@ -35,3 +34,4 @@ scheduler.checkInMarkedTimespan(scheduler.getEvent(eventId), "discount"); //->tr
 @template:	api_method
 @descr:
 
+{{note The method requires the [limit](extensions_list.md#limit) and [treetimeline](extensions_list.md#treetimeline) plugins to be activated.}}

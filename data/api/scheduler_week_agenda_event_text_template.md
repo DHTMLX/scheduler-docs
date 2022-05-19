@@ -21,8 +21,8 @@ scheduler.templates.week_agenda_event_text = function(start,end,event,cellDate,p
 @returns:
 - text    string     html text for rendering in the scheduler
 @descr:
+{{note The template requires the [week_agenda](extensions_list.md#weekagenda) plugin to be activated.}}
 
-@require:week_agenda
 @views: weekagenda
 
 @related:

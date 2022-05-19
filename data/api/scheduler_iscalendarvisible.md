@@ -5,7 +5,7 @@ isCalendarVisible
 
 @returns: 
 - cal	boolean, HTMLElement	<ul><li><b>the HTML object element of the mini calendar </b> - if the mini calendar is currently open </li> <li><b>false</b> - if the mini calendar is currently closed </li> </ul>
-@require:minical
+
 @example: 
 //if the mini calendar is opened
 var check= scheduler.isCalendarVisible();// -><div class=​"dhx_minical_popup">​…​</div>​
@@ -23,7 +23,7 @@ var check= scheduler.isCalendarVisible();// -><div class=​"dhx_minical_popup">
     05_calendar/06_recurring_form.html
 
 @descr: 
- 
+{{note The method requires the [minical](extensions_list.md#minicalendardatepicker) plugin to be activated.}}  
 
 
 

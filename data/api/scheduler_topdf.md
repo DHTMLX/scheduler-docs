@@ -3,7 +3,6 @@ toPDF
 
 @short: exports the  current view to a PDF document (can be used for printing)
 
-@require:pdf
 @params: 
 - url	string	the path to the server-side PDF converter
 * mode	string	the color map of the resulting PDF document
@@ -19,7 +18,8 @@ scheduler.toPDF("./service/generate.php","color");
 @related:
 	pdf_v4.md
 
-@descr: 
+@descr:
+{{note The method requires the [pdf](extensions_list.md#pdf) plugin to be enabled.}} 
 
 {{note The method refers to [exporting of dhtmlxScheduler 4.0 or earlier versions](pdf_v4.md).}}
 

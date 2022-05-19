@@ -4,7 +4,7 @@ map_error_position
 	
 
 @type:LatLng
-@require:map_view
+
 @views:map
 @default:google.maps.LatLng(15, 15)
 @example:
@@ -18,6 +18,8 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"map");
 	api/scheduler_map_resolve_event_location_config.md
 	
 @descr:
+{{note The property requires the [map_view](extensions_list.html#mapview) plugin to be activated.}}
+
 The 'error position' will be applied in 2 cases:
 
 1. An event doesn't have one of the coordinates (or both of them) specified (i.e. a coordinate has value '0', 'null', 'undefined') and the api/scheduler_map_resolve_event_location_config.md option is disabled.

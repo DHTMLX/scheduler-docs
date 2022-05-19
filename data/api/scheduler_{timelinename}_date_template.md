@@ -20,11 +20,10 @@ scheduler.templates.timeline_date = function(date1, date2){
 - text    string     html text for rendering in the scheduler
 @descr:
 
+{{note The template requires the [timeline](extensions_list.md#timeline) plugin to be activated.}}
+
 Note, if the [timeline_date](api__scheduler_%7Btimelinename%7D_date_template.html) template isn't specified, the date in the header will be set according to the [week_date](api__scheduler_week_date_template.html) template.
 
-
-	
-@require:timeline
 @views:timeline
 
 

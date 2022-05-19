@@ -89,7 +89,7 @@ Create a * basic.html* file in the `app` app/templates folder:
             scheduler.init('scheduler_here', new Date(2019,0,20), "week");
             scheduler.load("/events", "json");
  
-            var dp = new dataProcessor("/events");
+            var dp = scheduler.createDataProcessor("/events");
             dp.init(scheduler);
             dp.setTransactionMode("REST"); // use to transfer data with REST
         </script> 
@@ -369,7 +369,7 @@ scheduler.setLoadMode("day");
 scheduler.load("/events", "json");
  
 // send updates to the backend
-var dp = new dataProcessor("/events"); dp.init(scheduler); /*!*/ 
+var dp = scheduler.createDataProcessor("/events"); dp.init(scheduler); /*!*/ 
 // set data exchange mode
 dp.setTransactionMode("REST"); /*!*/
 ~~~
@@ -385,7 +385,18 @@ Recurring events
 In order to enable recurrence (e.g. "repeat event daily") you'll need to add an appropriate extension to the scheduler page:
 
 ~~~html
-<script src="https://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_recurring.js" ></script>
+...
+<body>
+    ...
+    <script>
+        scheduler.plugins({
+            recurring: true /*!*/
+        });
+        scheduler.config.xml_date="%Y-%m-%d %H:%i";
+        scheduler.init("scheduler_here", new Date(2019, 0, 20), "week");
+        ...
+   </script> 
+</body>
 ~~~
 
 The "events" table needs additional columns to store recurrence info. Here is an SQL query for creating recurring events table:

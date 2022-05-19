@@ -21,6 +21,7 @@ scheduler.templates.timeline_scale_label = function(key, label, section){
 
 
 @descr:
+{{note The template requires the [timeline](extensions_list.md#timeline) plugin to be activated.}}
 
 If you insert long text into the header of the folder when the Tree mode of the Timeline view is used, the text will be shown incorrectly by default.
 
@@ -78,7 +79,6 @@ If you use v5.3.11 and lower, the long text will be wrapped to another line and,
 
 <img src="long_text_1.png"/>
 
-@require:timeline
 @views:timeline
 
 

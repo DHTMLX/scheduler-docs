@@ -72,7 +72,7 @@ scheduler.load("./data.php", "json");
 3\. Initialize <a href="https://docs.dhtmlx.com/dataprocessor__index.html">dataProcessor</a>, to provide 2-way sync (if you need the readonly access - ignore this code). 
   
 ~~~js
-var dp =  new dataProcessor("./data.php");
+var dp =  scheduler.createDataProcessor("./data.php");
 dp.init(scheduler);
 dp.setTransactionMode("POST", false);
 ~~~

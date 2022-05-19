@@ -10,10 +10,11 @@ min_map_size
 @example:
 scheduler.config.min_map_size = 450;
 
-@require:container_autoresize
-
 @template:	api_config
 @descr:
+{{note The property requires the [container_autoresize](extensions_list.md#containerautoresize) plugin to be enabled.}} 
+
+@changelog:
 added in version 4.4
 
 

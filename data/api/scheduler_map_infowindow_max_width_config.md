@@ -6,7 +6,7 @@ map_infowindow_max_width
 
 @type: number
 @default:300
-@require:map_view
+
 @views:map
 
 @example:
@@ -17,6 +17,7 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 
 @template:	api_config
 @descr:
+{{note The property requires the [map_view](extensions_list.html#mapview) plugin to be activated.}}
 
 @apigroup: Views/Map view
 

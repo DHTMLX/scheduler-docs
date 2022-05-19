@@ -2,7 +2,6 @@ toXML
 =============
 @short: converts scheduler's data into the XML format
 
-@require:serialize
 @returns:
 - string	string	a data string in the XML format
 	
@@ -17,6 +16,8 @@ var str = scheduler.toXML();
 	04_export/01_serialize_data.html
    
 @descr: 
+{{note The method requires the [serialize](extensions_list.md#serialize) plugin to be enabled.}}
+
 - Custom attributes [can be configured](export.md) if necessary.
 - The method can be used with recurring events.
 

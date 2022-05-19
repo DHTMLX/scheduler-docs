@@ -2,7 +2,6 @@ getRecDates
 =============
 @short: returns all occurrences of a recurring event
 
-@require:recurring
 @params: 
 - id	string	the id of a recurring event
 - number	number	the maximum number of occurrences to return (by default, 100)
@@ -16,7 +15,8 @@ var dates = scheduler.getRecDates(22);
 
 
 @template:	api_method
-@descr: 
+@descr:
+{{note The property requires the [recurring](extensions_list.md#recurring) extension to be enabled.}}
 
 For example, there is a recurring event (id: 22) which takes place every 2 days from 14.00 till 15.00, starting from 12th November, 2010; there are 3 occurrences in total. The api/scheduler_getrecdates.md 
 method for this event will return the following array:

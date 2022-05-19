@@ -3,7 +3,6 @@ toPDFRange
 
 @short:exports several scheduler's views to a PDF document (can be used for printing)
 	
-@require:pdf
 @params:
 - from	Date	the date to start export events from
 - to	Date	the date to export events until
@@ -23,6 +22,7 @@ scheduler.toPDFRange(new Date(2012,0,1), new Date(2012, 1,1),'week',
 	api/scheduler_topdf.md
 @template:	api_method
 @descr:
+{{note The method requires the [pdf](extensions_list.md#pdf) plugin to be enabled.}}
 
 The **color** parameter of the method can take only one of the values from the predefined set:
 

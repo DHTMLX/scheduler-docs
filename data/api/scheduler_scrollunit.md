@@ -3,8 +3,6 @@ scrollUnit
 
 @short:scrolls the specified number of units in the Units view
 
-@require:units_view
-
 @views:units
 	
 
@@ -20,5 +18,7 @@ scheduler.scrollUnit(-5); // scrolls 5 units to the left
 @template:	api_method
 @descr:
 {{pronote This functionality is available in the PRO edition only.}}
+
+{{note The method requires the [units](extensions_list.md#units) plugin to be activated.}}
 
 @edition:pro

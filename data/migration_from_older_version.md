@@ -1,6 +1,149 @@
 Migration From Older Versions 
 ==============
 
+<style>
+	table.my_table {
+    	width: 100%;
+    }
+	table.my_table td {
+		text-align: left;
+		vertical-align: middle;
+        width: 50%;
+	}
+	table.my_table td.type_info {
+		text-align: center;
+        background-color: #E3F6FF;
+	}
+	table.my_table td.version_info {
+		text-align: center;
+        background-color: #FFDAFF;
+	}
+</style>
+
+## 5.3 -> 6.0
+
+The newest update v6.0 introduces two major changes in the structure of the Scheduler package:
+
+1) All files of extensions are now bundled with the *dhtmlxscheduler.js* file. 
+Therefore, in order to activate any of extra extensions provided by DHTMLX Scheduler, you need to use the API call.
+
+- If you have already included any extension files from the built-in package on your page, for example:
+
+~~~js
+<script src="../codebase/dhtmlxscheduler.js"></script>
+<script src="../codebase/ext/dhtmlxscheduler_active_links.js"></script>
+~~~
+
+or
+
+~~~js
+import "dhtmlx-scheduler";
+import "dhtmlx-scheduler/ext/dhtmlxscheduler_active_links";
+~~~
+
+Then you need to remove the extension file and enable the extension using the **scheduler.plugins** method:
+
+~~~js
+scheduler.plugins({
+   active_links: true
+});
+~~~
+
+See the full list of extensions [here](extensions_list.md).
+
+- If you use a modified version of extension files or have developed custom extensions, include them as files on a page and they will work. 
+
+- **Note**, that the **dhtmlxscheduler_csp.js** extension is completely removed and does not need to be enabled manually.
+<br>
+
+2) All locales are now embedded into the *dhtmlxscheduler.js* file. To activate them, use the API call.
+
+- If you have included any locale on a page, you need to remove it from the page and enable the required locale using **scheduler.i18n.setLocale**:
+
+~~~js
+scheduler.i18n.setLocale("de");
+~~~
+
+- If you use a custom locale file, it can be loaded as before.
+
+### DataProcessor initialization
+
+DataProcessor constructor has moved from the global **dataProcessor** function to the **scheduler.DataProcessor** function.
+
+If you use the dataProcessor in your app, you'll need to update the code that initializes the dataProcessor:
+
+~~~js
+// obsolete
+var dp = new dataProcessor("/scheduler/backend/events");
+dp.init(scheduler);
+dp.setTransactionMode("REST", false);
+~~~
+
+This code above should be replaced with the following:
+
+~~~
+// good
+var dp = new scheduler.DataProcessor("/scheduler/backend/events");
+dp.init(scheduler);
+dp.setTransactionMode("REST", false);
+~~~
+
+The recommended approach is to use the **scheduler.createDataProcessor** function:
+
+~~~
+// even better
+var dp = scheduler.createDataProcessor({
+    url: "/scheduler/backend/events",
+    mode: "REST"
+});
+~~~
+
+In this case, **DataProcessor.init(scheduler)** call is no longer required, **DataProcessor.setTransactionMode** can be called as usual if needed.
+
+### Deprecated API
+
+The **dhtmlx** object definition was removed from dhtmlxscheduler.js. Thus, some methods and global objects have been deprecated in v6.0. 
+
+1) The following methods have been deprecated and replaced with:
+
+<table class="my_table">
+
+<tr><td class="version_info">Obsolete methods</td><td class="version_info">Working methods</td></tr>
+
+<tr><td>dhtmlx.alert</td><td>scheduler.alert</td></tr>
+<tr><td>dhtmlx.confirm</td><td>scheduler.confirm</td></tr>
+<tr><td>dhtmlx.modalbox</td><td>scheduler.modalbox</td></tr>
+<tr><td>dhtmlx.uid</td><td>scheduler.uid</td></tr>
+<tr><td>dhtmlx.copy</td><td>scheduler.copy</td></tr>
+<tr><td>dhtmlx.mixin</td><td>scheduler.mixin</td></tr>
+<tr><td>dhtmlx.defined</td><td>scheduler.defined</td></tr>
+<tr><td>dhtmlx.bind</td><td>scheduler.bind</td></tr>
+<tr><td>dhtmlx.assert</td><td>scheduler.assert</td></tr>
+<tr><td>window.dataProcessor</td><td>scheduler.DataProcessor</td></tr>
+</table>
+
+No changes in the arguments or behavior of the methods were made.
+
+The old methods will continue working in v6.x, but will trigger a console warning (not visible to the end users) each time they are called.
+
+2) The following global objects have been deprecated:
+
+- dhtmlxAjax
+- dtmlXMLLoaderObject
+- dhtmlDragAndDropObject
+- dhtmlxEventable
+- dhtmlxError
+
+If you still need these objects in you application, enable the **legacy** plugin:
+
+~~~js
+scheduler.plugins({
+    legacy: true
+});
+
+~~~
+
+
 ## 5.2 -> 5.3
 
 ### Touch gestures

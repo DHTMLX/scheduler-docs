@@ -16,10 +16,8 @@ scheduler.templates.timeline_scale_date = function(date){
 @returns:
 - text    string     html text for rendering in the scheduler
 @descr:
+{{note The template requires the [timeline](extensions_list.md#timeline) plugin to be activated.}}
 
-
-	
-@require:timeline
 @views:timeline
 
 

@@ -1,18 +1,20 @@
 	<!DOCTYPE HTML>
 <html>
+	<head>
+		<link rel="stylesheet" href="./freid/scripts/freid.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<script src="https://maps.google.com/maps/api/js?key=AIzaSyAmBpYILZc2Ktp2Qw8rRBX_ur7_qOGiJEk" type="text/javascript"></script>
+
 	<script src="./freid/scripts/freid.js" type="text/javascript" charset="utf-8"></script>
 	<script src="./freid/scripts/jung.js" type="text/javascript" charset="utf-8"></script>
 	<script src="./freid/scripts/berne.js" type="text/javascript" charset="utf-8"></script>
 	<script src="./freid/scripts/webixcore.js" type="text/javascript" charset="utf-8"></script>
-	<link rel="stylesheet" href="./freid/scripts/freid.css" type="text/css" media="screen" title="no title" charset="utf-8">
-
 	<script src="../../scheduler/codebase/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script>
 
 	<script type="text/javascript">
-		var google = { maps:{ 
+		/*var google = { maps:{ 
 			LatLng:function(){ return null; },
 			MapTypeId:{ ROADMAP : 1 }
-		} }; 
+		} }; */
 
 		(function(){
 			var n =1;
@@ -24,12 +26,38 @@
 			}
 		})();
 	</script>
-
-<script src='../../scheduler/codebase/ext/dhtmlxscheduler_dhx_terrace.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_recurring.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_active_links.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_agenda_view.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_expand.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_html_templates.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_key_nav.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_readonly.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_url.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_year_view.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_serialize.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_pdf.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_collision.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_minical.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_timeline.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_limit.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_outerdrag.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_map_view.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_week_agenda.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_treetimeline.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_multiselect.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_tooltip.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_editors.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_units.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_offline.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_all_timed.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_grid_view.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_quick_info.js'></script><script src='../../scheduler/codebase/ext/dhtmlxscheduler_container_autoresize.js'></script>
-<script src='../../scheduler/codebase/ext/dhtmlxscheduler_mvc.js'></script>
-
-
-
+	<script>
+		scheduler.plugins({
+			recurring:true,
+			active_links: true,
+			agenda_view: true,
+			expand: true,
+			html_templates: true,
+			key_nav: true,
+			readonly: true,
+			url: true,
+			year_view: true,
+			serialize: true,
+			pdf: true,
+			collision: true,
+			minical: true,
+			timeline: true,
+			limit: true,
+			outerdrag: true,
+			map_view: true,
+			week_agenda: true,
+			treetimeline: true,
+			multiselect: true,
+			tooltip: true,
+			editors: true,
+			units: true,
+			all_timed: true,
+			grid_view: true,
+			quick_info: true,
+			container_autoresize: true,
+			mvc: true
+		});
+	</script>
 	<script src="../../scheduler/sources/core/docs.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../index.php?action=freid" type="text/javascript" charset="utf-8"></script>
 
@@ -40,17 +68,13 @@
 
 			//fill templates
 			scheduler.skin = "terrace";
-			scheduler.ev_ontemplatesready = null;
-			scheduler.init_templates();
-			scheduler._skin_init();
 
-			//private namespaces
-			delete scheduler.lightbox;
-			delete scheduler.grid;
+			scheduler.init("scheduler")
 
 			Freid.analize();
 		};
 	</script>
+	</head>
 	<body onload="run_onload()">
 	<div style="border-bottom: 1px dashed #909090; margin-bottom: 10px; padding-bottom: 10px;">
 		<input type='button' value='Generate Docs' onclick="Freid.generate('touch')">
@@ -66,5 +90,6 @@
 		<td align="left" valign="top" id="views_here_id"></td>
 		<td align="left" valign="top" id="methods_here_id"></td>
 	</table>
+	<div id="scheduler" style="display:none">
 	</body>
 </html> 

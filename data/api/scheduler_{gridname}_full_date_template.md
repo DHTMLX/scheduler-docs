@@ -18,13 +18,14 @@ scheduler.templates.grid_full_date = function(start,end,event){
 		return scheduler.templates.day_date(start)+" &ndash; "
    		+scheduler.templates.day_date(end);
 };
-@require:grid_view
+
 @views:grid
 
 @template:	api_template
 @returns:
 - text    string     html text for rendering in the scheduler
 @descr:
+{{note The template requires the [grid_view](extensions_list.md#gridview) plugin to be activated.}}
 
 @related:
 	grid_view_templates.md

@@ -24,10 +24,11 @@ Initialization
 To add the Checkbox control to the lightbox, follow these steps:
 
 <ol>
-	<li><b>Include the 'ext/dhtmlxscheduler_editors.js' extension file on the page:</b>
+	<li><b>Activate the **editors** extension on the page:</b>
 ~~~js
-<script src="../codebase/ext/dhtmlxscheduler_editors.js"></script>
-
+scheduler.plugins({
+    editors: true
+});
 ~~~
 	</li>
     <li><b>Add the section to the lightbox configuration:</b>

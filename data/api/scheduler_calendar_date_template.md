@@ -4,8 +4,6 @@ calendar_date
 @short:
 	specifies the content of day-cells in the Mini-Calendar (date picker)
 
-@require:minical
-
 @params:
 - date	Date	the cell's date
 
@@ -23,6 +21,7 @@ scheduler.templates.calendar_date = function (date) {
 - text    string     inner html for the date cell of the Mini_calendar
 
 @descr:
+{{note The template requires the [minical](extensions_list.md#minicalendardatepicker) plugin to be activated.}} 
 
 <img src="api/mini_calendar_templates.png"/>
 

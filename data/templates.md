@@ -50,8 +50,8 @@ scheduler.templates.event_text=function(start, end, event){
 
 ###Specifying templates via markup
 
-Alternatively, templates can be defined in the declarative way from HTML. This approach requires adding the *ext/dhtmlxscheduler_html_templates.js* extension to the page.
-Once you've included the extension file on the page, you may specify templates as in:
+Alternatively, templates can be defined in the declarative way from HTML. This approach requires adding the [html_templates](extensions_list.md#htmltemplates) extension to the page.
+Once you've activate the extension on the page, you may specify templates as in:
 
 ~~~html
 <div class="template:event_text">

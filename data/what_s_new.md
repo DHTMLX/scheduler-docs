@@ -10,6 +10,45 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+6.0
+---------------------
+<span class='release_date'>May 19, 2022. Bugfix release</span>
+
+### Breaking Changes
+
+This update brings some changes in the structure of the Scheduler package and behavior of functionality. Be sure to check [Migration notes](migration_from_older_version.md#5360) to be on the safe side.
+
+### New functionality
+
+- [Destructors for Scheduler and DataProcessor instances](multiple_per_page.md#destructorofscheduleranddataprocessorinstances)
+- Ability to specify the [height of Timeline sections](timeline_view.md#changingheightsofsections)
+- Ability to specify [multiple columns](timeline_view.md#:~:text=Specifying%20columns%20of%20the%20left%2Dhand%20panel) in the left-hand panel of timeline_view.md
+- New **resolvePosition**, **dateFromPos**, **getEventTop** methods of the [Timeline object](timeline_view.md#:~:text=timeline.resolvePosition) 
+
+### API
+
+- New [week_agenda_date](api/scheduler_week_agenda_date_template.md) template
+- The [ajax](api/scheduler_ajax_other.md), [env](api/scheduler_env_other.md), [i18n](api/scheduler_i18n_other.md) objects are added
+- New [Promise](api/scheduler_promise.md) method
+- New [destructor()](api/scheduler_destructor.md) method and [onDestroy](api/scheduler_ondestroy_event.md) event
+- Debug helpers are added: [assert()](api/scheduler_assert.md) method, [show_errors](api/scheduler_show_errors_config.md) property, [onError](api/scheduler_onerror_event.md) event
+- New methods are added: [bind()](api/scheduler_bind.md), [copy()](api/scheduler_copy.md), [defined()](api/scheduler_defined.md), [mixin()](api/scheduler_mixin.md) 
+- The constructor function of the dataProcessor has moved from the global scope to the scheduler object (window.dataProcessor -> [scheduler.DataProcessor](api/scheduler_dataprocessor.md))
+- New [createDataProcessor()](api/scheduler_createdataprocessor.md) method
+- Public helpers for [popup messages](integration_with_dhtmlxmessage.md) has moved from the **dhtmlx** to **scheduler** object
+- New [serialize()](api/scheduler_serialize.md) method
+- New [overwrite_marked_timespans](api/scheduler_overwrite_marked_timespans_config.md) property
+
+### Updates
+
+- All extensions must be activated now via the [plugins()](api/scheduler_plugins.md) method
+- Locale files were removed from the package, [new API](api/scheduler_i18n_other.md) for the Scheduler localization is added
+- `Scheduler.getSchedulerInstance` now [can take a configuration object](multiple_per_page.md#schedulerinstanceconfiguration) while creating a new Scheduler instance
+- The CSP extension was removed from the package, the [csp mode is enabled by default](api/scheduler_csp_config.md)
+- The `settings` object as the third parameter of the [attachEvent()](api/scheduler_attachevent.md) method is added
+- [Routing options for DataProcessor](server_integration.md#customrouting)
+- Ability to [import dhtmlxScheduler as an ES6 module](initialization.md#importfilesintoes67andtypescriptapps)
+
 5.3.14
 -------------
 <span class='release_date'>March 29, 2022. Bugfix release</span>

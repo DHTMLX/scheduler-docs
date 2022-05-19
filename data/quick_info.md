@@ -6,13 +6,16 @@ to replace standard sidebar buttons and simplified edit form with new (bigger an
 
 Activating the big-buttons scheduler
 -------------------------------
-To activate the big-buttons scheduler, include the ["Quick Info"](extensions_list.md#quickinfo) extension file on the page:
+To activate the big-buttons scheduler, enable the ["Quick Info"](extensions_list.md#quickinfo) extension on the page:
 
 ~~~js
-<script src="../../codebase/ext/dhtmlxscheduler_quick_info.js"></script>
+
 <script>
-      scheduler.init('scheduler_here',new Date(2009,5,30),"day");
-      ...
+    scheduler.plugins({
+        quick_info: true
+    });
+    scheduler.init('scheduler_here',new Date(2009,5,30),"day");
+    ...
 <script>
 ~~~
 {{sample

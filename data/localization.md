@@ -1,23 +1,27 @@
  Localization 
 ==============
 
-The library  supports scheduler's localization  by providing a number of predefined locales and means of creating custom ones.
+The library  supports scheduler's localization  by providing a number of predefined locales and means of creating custom ones. By default, DHTMLX Scheduler uses [English locale](api/scheduler_locale_other.md).
 
 ##Activation
 
-To set the desired language for the scheduler, include the related locale '*js*' file on the page. For example, to present the scheduler in Spanish you need to have the following files included on the page:
+To set the desired language for the scheduler, you need to activate the necessary locale via the **setLocale** method of the [scheduler.i18n](api/scheduler_i18n_other.md) object. 
 
-
-~~~html
-<script src="../codebase/dhtmlxscheduler.js"></script>
-<link rel="stylesheet" href="../codebase/dhtmlxscheduler.css">
-
-<script src="../sources/locale/locale_es.js" charset="utf-8"></script>
+~~~js
+scheduler.i18n.setLocale("fr");	
 ~~~
 
+You can use and update any of the [predefined locales](#includedlocales) that are bundled with the dhtmlxscheduler.js file or define a custom locale.
+
 {{note
-Make sure that you use **charset="utf-8"**, because all locales are stored as UTF-8 text.
+  The locale can be switched dynamically but the changes will be applied only after a complete redrawing of the Scheduler either with the **scheduler.render()** or **scheduler.init()** call.
 }}
+
+~~~js
+scheduler.i18n.setLocale("fr");
+scheduler.init("scheduler_here");
+~~~
+
 
 {{sample
 	01_initialization_loading/07_locale_usage.html
@@ -27,7 +31,7 @@ Make sure that you use **charset="utf-8"**, because all locales are stored as UT
 
 {{note
 
-Both Common locale files and Recurring locale files reside in the **scheduler/sources/locale/** folder.}}
+Both Common locale files and Recurring locale files reside in the **dhtmlxscheduler.js** file.}}
 
 
 dhtmlxScheduler includes localization for the following languages:
@@ -36,169 +40,206 @@ dhtmlxScheduler includes localization for the following languages:
 <tr><td markdown='1' style='font-weight:bold; border:1px solid #AAA;'>
  Language      
 </td><td markdown='1' style='font-weight:bold; border:1px solid #AAA;'>
- Common locale       
+ Language code       
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Arabic 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_ar.js 
+ ar 
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Belarusian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_be.js 
+ be
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Catalan 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_ca.js 
+ ca
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Chinese 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_cn.js 
+ cn
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Czech 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_cs.js 
+ cs
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Danish 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_da.js 
+ da
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Dutch 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_nl.js 
+ nl
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  English 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_en.js - default
+ en (default)
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Finnish 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_fi.js 
+ fi
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  French 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_fr.js 
+ fr
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  German 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_de.js 
+ de
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Greek 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_el.js 
+ el
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Hebrew 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_he.js 
+ he
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Hungarian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_hu.js 
+ hu
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Indonesian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_id.js 
+ id
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Italian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_it.js 
+ it
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Japanese 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_jp.js 
+ jp
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Norwegian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_no.js 
+ no
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Norwegian Bokmål
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_nb.js 
+ nb
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Polish 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_pl.js 
+ pl
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Portuguese 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_pt.js 
+ pt
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Romanian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_ro.js 
+ ro
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Russian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_ru.js 
+ ru
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Slovak 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_sk.js 
+ sk
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Slovenian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_si.js 
+ si
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Spanish 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_es.js 
+ es
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Swedish 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_sv.js 
+ sv
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Turkish 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_tr.js 
+ tr
 </td></tr>
 <tr><td markdown='1' style='border:1px solid #AAA;'>
  Ukrainian 
 </td><td markdown='1' style='border:1px solid #AAA;'>
- locale_ua.js 
+ ua
 </td></tr>
 </table>
 
 ## Creating custom locale 
 
-The easiest way to create a custom locale is to make a copy of the default (English) locale  - **scheduler/sources/locale/locale.js**, and translate all strings from it into the required language. 
+{{note The [scheduler.i18n](api/scheduler_i18n_other.md) object is added in v6.0. In previous versions, the [scheduler.locale](api/scheduler_locale_other.md) object was used. For more information, see the [Migration article](migration_from_older_version.md#5360).}}
+
+The easiest way to create a custom locale is to make a copy of the default (English) locale from the sample below, and translate all strings from it into the required language. 
+
+The custom locale can be applied to the Scheduler in two ways:
+
+- either override the current locale via passing an object of the locale as a parameter to the **setLocale** method:
+
+~~~js
+scheduler.i18n.setLocale(localeObject);	
+~~~
+
+Note, if you provide a partial locale object, the scheduler will add your labels into the current locale:
+
+~~~js
+scheduler.i18n.setLocale({
+	labels: {
+		day_tab: "Day",
+	}
+});	
+~~~
+
+- or, if you need to switch between several locales, define the locale with a custom language code and switch the scheduler to it later:
+
+~~~js
+scheduler.i18n.addLocale("lang", localeObject);	
+scheduler.i18n.setLocale("lang");
+~~~
 
 {{note
 Note, activating a custom locale in the app will cause changes in the app's interface. Check and redefine (if required) all locale-dependent elements 
 to be sure that the scheduler looks fine in its new language. 
 }}
 
-**You can send your custom locale file to support@dhtmlx.com - so we will include it in the next release**.
+**Note**, 
+
+- You can send your custom locale file to **support@dhtmlx.com** - so we will include it in the next release;
+- The currently active locale is also available in the **scheduler.locale** object;
+- **monthFull** - the full names of months starting from January;
+- **monthShort** - the short names of months starting from January;
+- **dayFull** - the full names of week days starting from Sunday;
+- **dayShort** - the short names of week days starting from Sunday.
 
 
+{{snippet
+English locale definition
+}}
 ~~~js
-scheduler.locale = {
+scheduler.i18n.setLocale({
 	date:{
 		month_full:["January", "February", "March", "April", "May", "June", 
         	"July", "August", "September", "October", "November", "December"],
@@ -293,7 +334,7 @@ scheduler.locale = {
 		day_for_recurring: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
 			"Friday", "Saturday"]
 	}
-};
+});
 ~~~
 
 {{sample

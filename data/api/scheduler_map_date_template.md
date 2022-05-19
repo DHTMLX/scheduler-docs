@@ -13,7 +13,6 @@ scheduler.templates.map_date = function(start, end) {
  	return '';
 };
 
-@require:map_view
 @views:map
 
 
@@ -21,7 +20,7 @@ scheduler.templates.map_date = function(start, end) {
 @returns:
 - text    string     html text for rendering in the scheduler
 @descr:
-
+{{note The template requires the [map_view](extensions_list.html#mapview) plugin to be activated.}}
 
 @related:
 	map_view_templates.md

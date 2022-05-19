@@ -9,7 +9,6 @@ checkCollision
 @returns:
 - result	boolean		returns <i>false</i>, if the event time has already been occupied, otherwise - <i>true</i>.
 
-@require: collision
 @example: 
 var event = {
    text : "New Event",
@@ -27,6 +26,7 @@ var isOccupied = scheduler.checkCollision(event); // returns 'true' or 'false'
 @related:
 	collisions.md
 @descr: 
+{{note The method requires the [collision](extensions_list.md#collision) plugin to be activated.}}
 
 Note, the method invokes the api/scheduler_oneventcollision_event.md event.
 

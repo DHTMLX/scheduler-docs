@@ -6,15 +6,16 @@ focus
 
 @params:
 
-@require:key_nav
 @example:
 scheduler.focus();
 
 @template:	api_method
 @descr:
-added in version 4.4
 
-{{note The method requires the **ext/dhtmlxscheduler_key_nav.js** to be included on the page.}}
+{{note The method requires the [key_nav](extensions_list.md#keyboardnavigation) extension to be enabled.}}
+
+@changelog:
+added in version 4.4
 
 @relatedsample:
 13_accessibility/01_regular_skin_all_views.html

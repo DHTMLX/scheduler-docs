@@ -75,7 +75,7 @@ Saving data
 The following [client-side](server_integration.md#technique) code is responsible for sending updates that happen on the client side back to the server:
 
 ~~~js
-var dp = new dataProcessor("/data/");
+var dp = scheduler.createDataProcessor("/data/");
 dp.init(scheduler);
 dp.setTransactionMode("REST");
 ~~~

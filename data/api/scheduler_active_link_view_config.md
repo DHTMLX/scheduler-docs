@@ -11,9 +11,11 @@ scheduler.init('scheduler_here',new Date(2012,7,6),"month");
 
 @template:	api_config
 @default:day
-@require:active_links
+
 @views:month
 @descr:
+{{note The property requires the [active_links](extensions_list.md#activelinks) plugin to be activated.}}
+
 The property should be set to the name of the view you want to open month's days in.
 
 @relatedsample:

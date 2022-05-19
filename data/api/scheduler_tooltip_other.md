@@ -1,12 +1,8 @@
 tooltip
 =============
 
-@require:tooltip
-
 @short:
 	displays tooltips for events
-
-@require:tooltip
 
 @type: object
 
@@ -18,7 +14,7 @@ tooltip.show(event, text);
 @template:	api_config
 
 @descr:
-
+{{note The option requires the [tooltip](extensions_list.md#tooltip) plugin to be enabled.}}
 
 @related:
 tooltips.md

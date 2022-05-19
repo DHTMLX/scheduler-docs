@@ -74,7 +74,7 @@ Create an `index.html` file in the `scheduler-howto-php-plain` folder and fill i
         scheduler.init('scheduler_here', new Date(2019,0,20), "week");
         scheduler.load("data/api.php");
  
-        var dp = new dataProcessor("data/api.php");
+        var dp = scheduler.createDataProcessor("data/api.php");
         dp.init(scheduler);
         dp.setTransactionMode("JSON"); // use to transfer data with JSON
 
@@ -335,7 +335,7 @@ scheduler.setLoadMode("day");
 scheduler.load("data/api.php"); /*!*/
  
 // send updates to the backend
-var dp = new dataProcessor("data/api.php"); /*!*/
+var dp = scheduler.createDataProcessor("data/api.php"); /*!*/
 dp.init(scheduler);  /*!*/
 // set data exchange mode
 dp.setTransactionMode("JSON"); /*!*/
@@ -353,7 +353,17 @@ Recurring events
 In order to enable recurrence (e.g. "repeat event daily") you'll need to add an appropriate extension to the scheduler page:
 
 ~~~html
-<script src="https://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_recurring.js" ></script>
+...
+<body>
+    ...
+    <script>
+        scheduler.plugins({
+            recurring: true /*!*/
+        });
+        scheduler.init('scheduler_here', new Date(2019,0,20), "week");
+        ...
+    </script> 
+</body>
 ~~~
 
 The "events" table needs additional columns to store info of recurring events. Here is an SQL query for creating a recurring events table:

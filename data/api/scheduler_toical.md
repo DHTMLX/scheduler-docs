@@ -7,7 +7,7 @@ toICal
 
 @returns: 
 - string	string	a data string in the ICal format
-@require:serialize
+
 @example: 
 var str = scheduler.toICal();
 //or
@@ -19,7 +19,9 @@ var str = scheduler.toICal("My calendar");
 	export.md
 @relatedsample:
 	04_export/01_serialize_data.html
-@descr: 
+@descr:
+{{note The method requires the [serialize](extensions_list.md#serialize) plugin to be enabled.}}
+
 {{note
 Custom attributes are not supported.
 }}

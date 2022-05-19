@@ -15,12 +15,19 @@ Initialization
 To add the Timeline view to the scheduler, follow these steps:
 
 <ol>
-	<li><b>Include the Timeline code file on the page:</b>
+	<li><b>Activate the Timeline extension on the page:</b>
     	<ul>
-        	<li> <i>ext/dhtmlxscheduler_timeline.js</i> - for the 'Bar' and 'Cell' modes </li>
-            <li> <i>ext/dhtmlxscheduler_timeline.js, ext/dhtmlxscheduler_treetimeline.js</i> - for the 'Tree' mode</li>
-            <li> <i>ext/dhtmlxscheduler_timeline.js, ext/dhtmlxscheduler_daytimeline.js</i> - for the 'Days' mode</li>
+        	<li> <i>Timeline</i> - for the 'Bar' and 'Cell' modes</li>
+            <li> <i>Timeline, Treetimeline</i> - for the 'Tree' mode</li>
+            <li> <i>Timeline, Daytimeline</i> - for the 'Days' mode</li>
         </ul>
+~~~js
+scheduler.plugins({
+    timeline: true,
+	treetimeline: true,
+	daytimeline: true  
+});
+~~~	
     </li>
     <li> <b>Add the view's tab to the scheduler's markup:</b>
 ~~~html
@@ -176,6 +183,49 @@ To specify the scale range, use the **setRange()** method. It takes two paramete
 timeline.setRange(startDate, endDate);
 ~~~
 
+### Specifying columns of the left-hand panel
+
+The content of the left-hand panel can be defined in two ways.
+
+By default, the left-hand panel consists of a single column. The content of section labels is taken from the **label** property of the **y_unit** object, which can be overridden using 
+the [timeline_scale_label](api/scheduler_{timelinename}_scale_label_template.md) template.
+
+
+In order to specify multiple columns, use the **columns** property of the api/scheduler_createtimelineview.md method:
+
+~~~js
+scheduler.createTimelineView({
+  name:	"timeline",
+  x_unit:	"minute",
+  x_date:	"%H:%i",
+  x_step:	30,
+  x_size: 24,
+  x_start: 16,
+  x_length:	48,
+  y_unit:	sections,
+  event_dy: "full",
+  y_property:	"section_id",
+  render:"bar",
+  columns: [
+    { label: "Room #",  width: 70, template: function(obj){ return obj.room_no; } },
+    { label: "Type",  width: 90, template: function(obj){ return obj.room_type; } },
+    { label: "Status",  width: 90, template: function(obj){ return obj.room_status; } }
+  ]
+});
+
+~~~
+
+The column's object accepts the following properties:
+
+- label - `string` - optional, the header label
+- width - `number` - optional, the width of the column
+- template - `function` - the template function for the cell, the function takes the section object as an argument
+
+{{sample
+	06_timeline/19_columns_sidebar.html
+}}
+
+
 ###Scrolling to particular position/date/section
 
 {{note The functionality described in this section works only for the Timeline with a [horizontal scroll enabled](#horizontalscroll).}}
@@ -224,6 +274,26 @@ var top = timeline.posFromSection(section.key);
 ~~~
 
 {{note The method returns -1 if the row is not found.}}
+
+
+- to get the Date and Section that matches a specific coordinates of the timeline, use the **resolvePosition** method. Pass the `{left: number, top: number}` object as a parameter:
+
+~~~js
+const position = timeline.resolvePosition({top: 120, left: 400});
+~~~
+
+
+- to get the `Date` of a specific `left` coordinate of the time scale, use the **dateFromPos** method. Pass the number as a parameter:
+
+~~~js
+const date = timeline.dateFromPos(300);
+~~~
+
+- to get the `top` coordinate of a specific event, use the **getEventTop** method. Pass the event object as a parameter:
+
+~~~js
+const top = timeline.getEventTop(scheduler.getEvent(event.id));
+~~~
 
 
 ###Getting scroll position 
@@ -354,19 +424,20 @@ Scheduler provides the possibility to assign events to several sections.
 
 To enable the possibility: 
 
-1. Include the **ext/dhtmlxscheduler_multisection.js** file on the page
+1. Activate the **Multisection** extension on the page
 2. Set the api/scheduler_multisection_config.md property to *true*
-3. (Optional) Include "ext/dhtmlxscheduler_multiselect.js" file on the page to use multiselect.md control in the scheduler (a comfortable way to switch between sections)
+3. (Optional) Activate the "Multiselect" extension on the page to use multiselect.md control in the scheduler (a comfortable way to switch between sections)
 
 ~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
-<script src="codebase/ext/dhtmlxscheduler_multisection.js"></script> /*!*/
 <link rel="stylesheet" href="codebase/dhtmlxscheduler.css" type="text/css">
 
-<script src="codebase/ext/dhtmlxscheduler_timeline.js"></script>
-<script src="codebase/ext/dhtmlxscheduler_multiselect.js"></script>
-
 <script>
+	scheduler.plugins({
+    	multisection: true, /*!*/
+		multiselect: true,
+		timeline: true
+	});
 	scheduler.config.multisection = true; /*!*/
 	scheduler.init('scheduler_here');
 </script>
@@ -948,6 +1019,35 @@ scheduler.templates.timeline_cell_value = function (evs, date, section){
 ~~~
 
 {{sample  06_timeline/17_timeline_cell_content.html}}
+
+
+Changing heights of sections
+----------------------
+
+
+By default, sections and events get their sizes from the **dy** and **event_dy** settings of the api/scheduler_createtimelineview.md method.
+
+If the section object have the **height** property specified, it will use it instead of the **dy** value:
+
+~~~js
+
+scheduler.createTimelineView({
+	name:	"timeline",
+	...
+	y_unit:	[
+		{key: 1, label: "Room 1", height: 60},
+		{key: 2, label: "Room 2", height: 60},
+		{key: 3, label: "Room 3", height: 120},
+		{key: 4, label: "Room 4", height: 900},
+	],
+~~~
+
+The value of the **height** property can be changed dynamically after initialization of the scheduler.
+
+
+{{sample  06_timeline/18_collapse_section.html}}
+
+
 
 Related guides
 ---------------------

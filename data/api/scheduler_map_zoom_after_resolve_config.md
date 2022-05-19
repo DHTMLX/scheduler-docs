@@ -7,7 +7,7 @@ map_zoom_after_resolve
 @type: number
 @default:15
 @views:map
-@require:map_view
+
 @example:
 scheduler.config.map_zoom_after_resolve = 10;
 ...
@@ -15,5 +15,6 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 
 @template:	api_config
 @descr:
+{{note The property requires the [map_view](extensions_list.html#mapview) plugin to be activated.}}
 
 @apigroup: Views/Map view

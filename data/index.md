@@ -2,15 +2,16 @@ Start
 =====
 
 <div class="newsblock">
-    <h2>Meet Scheduler 5.3!</h2>
+    <h2>Meet Scheduler 6.0!</h2>
     
     <p>
     New version brings new improvements and features:
     </p>
     <ul>
-        <li><a href="rtl_mode.md">RTL support</a></li>
-        <li><a href="touch_support.md#makingschedulerresponsive">Improved responsiveness</a></li>
-        <li><a href="dhxlayout_integration.md#dhtmlxsuitev6"></a>Integration with DHTMLX Suite 6 Layout</li>
+        <li><a href="multiple_per_page.md#destructorofscheduleranddataprocessorinstances">Destructors for Scheduler and DataProcessor</a></li>
+        <li><a href="server_integration.md#customrouting">Routing options for DataProcessor</a></li>
+        <li><a href="timeline_view.md#:~:text=Specifying%20columns%20of%20the%20left%2Dhand%20panel">Columns config for the Timeline panel</a></li>
+        <li><a href="timeline_view.md#changingheightsofsections">Individual sizing of Timeline rows</a></li>
     </ul>
     <p class='action_buttons'>
       <a class='action_button moredetails' href="what_s_new.html">More details</a>

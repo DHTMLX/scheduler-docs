@@ -7,7 +7,6 @@ year_month
 - date	Date	the date which needs formatting
 
 @views:year
-@require:year_view
 
 @example:
 const formatMonth = scheduler.date.date_to_str("%F");
@@ -21,4 +20,5 @@ scheduler.templates.year_month = function(date){
 	year_view_templates.md
 @descr:
 
+{{note The template requires the [year_view](extensions_list.md#year) plugin to be activated.}}
 

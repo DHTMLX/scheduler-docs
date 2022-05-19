@@ -4,7 +4,7 @@ limit_view
 	
 
 @type: boolean
-@require:limit
+
 @default:false
 @example:
 scheduler.init('scheduler_here',new Date(2022,5,17),"week");

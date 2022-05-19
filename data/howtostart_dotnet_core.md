@@ -583,7 +583,7 @@ scheduler.init("scheduler_here", new Date(2019, 0, 20), "week");
 // load data from backend
 scheduler.load("/api/events", "json");
 // connect backend to scheduler
-var dp = new dataProcessor("/api/events");
+var dp = scheduler.createDataProcessor("/api/events");
 dp.init(scheduler);
 // set data exchange mode
 dp.setTransactionMode("REST");
@@ -627,10 +627,12 @@ public IEnumerable<WebAPIEvent> Get([FromQuery] DateTime from, [FromQuery] DateT
 Recurring events
 ---------------
 
-In order to enable recurrence (e.g. "repeat event daily") you'll need to add an appropriate extension to the scheduler page:
+In order to enable recurrence (e.g. "repeat event daily") you'll need to enable an appropriate extension on the scheduler page:
 
-~~~
-<script src="https://cdn.dhtmlx.com/scheduler/edge/ext/dhtmlxscheduler_recurring.js" ></script>
+~~~js
+scheduler.plugins({
+    recurring: true
+});
 ~~~
 
 

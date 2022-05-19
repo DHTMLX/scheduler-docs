@@ -82,11 +82,13 @@ Note, all the xy' properties have the data type 'number'.
 
 ##Extensions
 
-There is a number of extension code files that can be included into the page to provide special possibilities for the Scheduler component. 
-For example, you can include the **dhtmlxscheduler_cookie.js** extension that will allow saving the current state (mode and date) of scheduler in cookies.
+There is a number of extensions that can be enabled on the page to provide special possibilities for the Scheduler component. 
+For example, you can activate the **cookie** extension that will allow saving the current state (mode and date) of scheduler in cookies.
 
-~~~html
-<script src="../codebase/ext/dhtmlxscheduler_cookie.js"></script>
+~~~js
+scheduler.plugins({
+    cookie: true
+});
 ~~~
  
 {{sample  03_extensions/08_cookies_plugin.html}}
