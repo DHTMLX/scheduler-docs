@@ -10,7 +10,7 @@ platforms to suit all tastes and preferences.
         <td>
 		    <span style="font-size:15px;">howtostart_dotnet_core.md</span>
             <br>
-         	A comprehensive tutorial that describes how to use Scheduler together with ASP.Net Core 2. 
+         	A comprehensive tutorial that describes how to use Scheduler together with ASP.Net Core. 
         </td> 
          <td>
         	<a href="howtostart_dotnet_core.md"><img src="dotnet_core_tutorial.png"></a>

@@ -18,22 +18,12 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 This update brings some changes in the structure of the Scheduler package and behavior of functionality. Be sure to check [Migration notes](migration_from_older_version.md#5360) to be on the safe side.
 
-### Functionality
+### New functionality
 
 - [Destructors for Scheduler and DataProcessor instances](multiple_per_page.md#destructorofscheduleranddataprocessorinstances)
 - Ability to specify the [height of Timeline sections](timeline_view.md#changingheightsofsections)
 - Ability to specify [multiple columns](timeline_view.md#:~:text=Specifying%20columns%20of%20the%20left%2Dhand%20panel) in the left-hand panel of timeline_view.md
 - New **resolvePosition**, **dateFromPos**, **getEventTop** methods of the [Timeline object](timeline_view.md#:~:text=timeline.resolvePosition) 
-
-### Updates
-
-- All extensions must be activated now via the [plugins()](api/scheduler_plugins.md) method
-- Locale files were removed from the package, [new API](api/scheduler_i18n_other.md) for the Scheduler localization is added
-- `Scheduler.getSchedulerInstance` now [can take a configuration object](multiple_per_page.md#schedulerinstanceconfiguration) while creating a new Scheduler instance
-- The CSP extension was removed from the package, the [csp mode is enabled by default](api/scheduler_csp_config.md)
-- The `settings` object as the third parameter of the [attachEvent()](api/scheduler_attachevent.md) method is added
-- [Routing options for DataProcessor](server_integration.md#customrouting)
-- Ability to [import dhtmlxScheduler as an ES6 module](initialization.md#importfilesintoes67andtypescriptapps)
 
 ### API
 
@@ -45,9 +35,31 @@ This update brings some changes in the structure of the Scheduler package and be
 - New methods are added: [bind()](api/scheduler_bind.md), [copy()](api/scheduler_copy.md), [defined()](api/scheduler_defined.md), [mixin()](api/scheduler_mixin.md) 
 - The constructor function of the dataProcessor has moved from the global scope to the scheduler object (window.dataProcessor -> [scheduler.DataProcessor](api/scheduler_dataprocessor.md))
 - New [createDataProcessor()](api/scheduler_createdataprocessor.md) method
-- Public helpers for [popup messages](integration_with_dhtmlxmessage.md) has moved from the **dhtml** to **scheduler** object
+- Public helpers for [popup messages](integration_with_dhtmlxmessage.md) has moved from the **dhtmlx** to **scheduler** object
 - New [serialize()](api/scheduler_serialize.md) method
 - New [overwrite_marked_timespans](api/scheduler_overwrite_marked_timespans_config.md) property
+
+### Updates
+
+- All extensions must be activated now via the [plugins()](api/scheduler_plugins.md) method
+- Locale files were removed from the package, [new API](api/scheduler_i18n_other.md) for the Scheduler localization is added
+- `Scheduler.getSchedulerInstance` now [can take a configuration object](multiple_per_page.md#schedulerinstanceconfiguration) while creating a new Scheduler instance
+- The CSP extension was removed from the package, the [csp mode is enabled by default](api/scheduler_csp_config.md)
+- The `settings` object as the third parameter of the [attachEvent()](api/scheduler_attachevent.md) method is added
+- [Routing options for DataProcessor](server_integration.md#customrouting)
+- Ability to [import dhtmlxScheduler as an ES6 module](initialization.md#importfilesintoes67andtypescriptapps)
+
+5.3.14
+-------------
+<span class='release_date'>March 29, 2022. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect work of drag and drop for recurring events that was added via the [scheduler.addEvent()](api/scheduler_addevent.md) method 
+- Fix the script error that was thrown from [scheduler.formSection()](api/scheduler_formsection.md) when recurring events were enabled
+- Fix the issue that caused the scheduler to display events that shouldn't be visible due to the value of the [first_hour](api/scheduler_first_hour_config.md) config
+- Removed the unexpected call of the [onEventUnselected](api/scheduler_oneventunselected_event.md) event that fired on every empty click when no events were previously selected
+- Now the [onEventUnselected](api/scheduler_oneventunselected_event.md) event will fire when the selected event is deleted
 
 5.3.13
 -------------
