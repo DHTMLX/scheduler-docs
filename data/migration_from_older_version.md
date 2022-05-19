@@ -100,7 +100,15 @@ The old methods will continue working in v6.x, but will trigger a console warnin
 - dhtmlxEventable
 - dhtmlxError
 
-If you still need these objects in you application, include the **dhtmlxscheduler.legacy.js** file on the page.
+If you still need these objects in you application, enable the **legacy** plugin:
+
+~~~js
+scheduler.plugins({
+    legacy: true
+});
+
+~~~
+
 
 ## 5.2 -> 5.3
 

@@ -33,9 +33,9 @@ To display a basic Scheduler on the page through the markup, follow 3 steps:
         	<div class="dhx_cal_next_button">&nbsp;</div>
         	<div class="dhx_cal_today_button"></div>
         	<div class="dhx_cal_date"></div>
-        	<div class="dhx_cal_tab" name="day_tab"></div>
-        	<div class="dhx_cal_tab" name="week_tab" ></div>
-       		<div class="dhx_cal_tab" name="month_tab"></div>
+        	<div class="dhx_cal_tab" data-tab="day"></div>
+        	<div class="dhx_cal_tab" data-tab="week" ></div>
+       		<div class="dhx_cal_tab" data-tab="month"></div>
    		</div>
     	<div class="dhx_cal_header"></div>
     	<div class="dhx_cal_data"></div>       
@@ -254,6 +254,50 @@ export default class Scheduler extends Component {
 }
 ~~~
 
+For the **Commercial, Enterprise or Ultimate** creating a new [scheduler object](multiple_per_page.md#destructorofscheduleranddataprocessorinstances) instead of the global instance is recommended:
+
+~~~js
+import React, { Component } from 'react';
+import { Scheduler } from 'dhtmlx-scheduler';
+import 'dhtmlx-scheduler/codebase/dhtmlxscheduler.css';
+ 
+export default class Scheduler extends Component {
+    componentDidUpdate() {
+        this.scheduler.render();
+    }
+    componentDidMount() {
+    	this.scheduler = Scheduler.getSchedulerInstance();
+        const scheduler = this.scheduler;
+        scheduler.config.header = [
+            "day",
+            "week",
+            "month",
+            "date",
+            "prev",
+            "today",
+            "next"
+        ];
+        scheduler.init(this.schedulerContainer, new Date(), "week");
+        scheduler.parse(this.props.events);
+    }
+    
+    componentDidUnmount() {
+        this.scheduler.destructor();
+        this.scheduler = null;
+    }
+ 
+    render() {
+        return (
+            <div
+              ref={(input) => { this.schedulerContainer = input }}
+              style=width: '100%', height: '100%'
+            ></div>
+        );
+    }
+}
+~~~
+
+
 Angular example
 -----------------
 
@@ -295,6 +339,52 @@ export class SchedulerComponent implements OnInit {
     }
 }
 ~~~
+
+For the **Commercial, Enterprise or Ultimate** creating a new [scheduler object](multiple_per_page.md#destructorofscheduleranddataprocessorinstances) instead of the global instance is recommended:
+
+~~~js
+import {Component,ElementRef,OnInit,ViewChild,ViewEncapsulation} from '@angular/core';
+import {CalendarEventsService} from '../services/calendar.events.service';
+import {Event} from '../models/event';
+ 
+import { Scheduler } from 'dhtmlx-scheduler';
+ 
+@Component({
+    encapsulation: ViewEncapsulation.None,
+    selector: 'scheduler',
+    styleUrls: ['./scheduler.component.css'],
+    providers: [CalendarEventsService],
+    template: `<div #scheduler_here class='scheduler-contaier'></div>`,
+})
+export class SchedulerComponent implements OnInit {
+    @ViewChild('scheduler_here') schedulerContainer: ElementRef;
+ 
+    constructor(private eventsService:CalendarEventsService){ }
+ 
+    ngOnInit() {
+        this.scheduler = Scheduler.getSchedulerInstance();
+        const scheduler = this.scheduler;
+        scheduler.config.header = [
+            "day",
+            "week",
+            "month",
+            "date",
+            "prev",
+            "today",
+            "next"
+        ];
+        scheduler.init('scheduler_here',new Date(),"week");
+        this.eventsService.get().then((events) => {
+            scheduler.parse(events);
+        });
+    }
+    ngOnDestroy() {
+        this.scheduler.destructor();
+        this.scheduler = null;
+    }
+}
+~~~
+
 
 Include files into a RequireJS-based app
 ------------------------------------------- 

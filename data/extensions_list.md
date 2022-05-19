@@ -249,6 +249,22 @@ Article: keyboard_navigation.md<br>
 {{sample 03_extensions/07_navigation_plugin.html}}
 
 
+Legacy
+---------------------------------------------
+Enables deprecated API.
+
+~~~js
+scheduler.plugins({
+    legacy: true
+});
+~~~
+
+####Related resources
+
+Article: migration_from_older_version.md<br>
+
+
+
 Limit
 ---------------------------------------------
 Provides functionality for blocking and highlighting dates.

@@ -125,3 +125,10 @@ As a result of calling these methods you will get the following:
 3.  Finally, will block **each Sunday, Monday, Wednesday** and **color them in blue**.
 
 ![limits_priority.png](limits_priority.png)
+
+In order to change this behavior and display all markers regardless of their priority, you can use the api/scheduler_overwrite_marked_timespans_config.md setting:
+
+~~~js
+scheduler.config.overwrite_marked_timespans_config = false;
+~~~
+

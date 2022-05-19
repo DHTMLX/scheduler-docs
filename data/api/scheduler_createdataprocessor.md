@@ -16,7 +16,7 @@ createDataProcessor
 
 
 @example:
-var dp = gantt.createDataProcessor({
+var dp = scheduler.createDataProcessor({
 	url: "/api",
 	mode: "REST"
 });
@@ -91,7 +91,7 @@ All the functions of the router object should return either a Promise or a data 
 
 ~~~js
 router = function(entity, action, data, id) {
-	return new gantt.Promise(function(resolve, reject) {
+	return new scheduler.Promise(function(resolve, reject) {
     	// … some logic
         return resolve({tid: databaseId});
  	});

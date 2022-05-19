@@ -183,6 +183,49 @@ To specify the scale range, use the **setRange()** method. It takes two paramete
 timeline.setRange(startDate, endDate);
 ~~~
 
+### Specifying columns of the lefthand panel
+
+The content of the lefthand panel can be defined in two ways.
+
+By default, the lefthand panel consists of a single column. The content of section labels is taken from **label** property of **y_unit** object, which can be overriden using 
+[timeline_scale_label](api/scheduler_{timelinename}_scale_label_template.md) template.
+
+
+In order to specify multiple columns, use the **columns** property of api/scheduler_createtimelineview.md method:
+
+~~~js
+scheduler.createTimelineView({
+  name:	"timeline",
+  x_unit:	"minute",
+  x_date:	"%H:%i",
+  x_step:	30,
+  x_size: 24,
+  x_start: 16,
+  x_length:	48,
+  y_unit:	sections,
+  event_dy: "full",
+  y_property:	"section_id",
+  render:"bar",
+  columns: [
+    { label: "Room #",  width: 70, template: function(obj){ return obj.room_no; } },
+    { label: "Type",  width: 90, template: function(obj){ return obj.room_type; } },
+    { label: "Status",  width: 90, template: function(obj){ return obj.room_status; } }
+  ]
+});
+
+~~~
+
+The column object accepts the following properties:
+
+- label - `string` - optional, the header label
+- width - `number` - optional, the width of the column
+- template - `function` - the template function for the cell, the function takes the section object as an argument
+
+{{sample
+	06_timeline/19_columns_sidebar.html
+}}
+
+
 ###Scrolling to particular position/date/section
 
 {{note The functionality described in this section works only for the Timeline with a [horizontal scroll enabled](#horizontalscroll).}}
@@ -231,6 +274,29 @@ var top = timeline.posFromSection(section.key);
 ~~~
 
 {{note The method returns -1 if the row is not found.}}
+
+
+- to get the Date and Section that matches a specific coordinates of the timeline, use the **resolvePosition** method. Pass the `{left: number, top: number}` object as a parameter:
+
+~~~js
+
+const position = timeline.resolvePosition({top: 120, left: 400});
+~~~
+
+
+- to get the `Date` of a specific `left` coordinate of the time scale, use the **dateFromPos** method. Pass the number as a parameter:
+
+~~~js
+
+const date = timeline.dateFromPos(300);
+~~~
+
+- to get the `top` coordinate of a specific event, use the **getEventTop** method. Pass the event object as a parameter:
+
+~~~js
+
+const top = timeline.getEventTop(scheduler.getEvent(event.id));
+~~~
 
 
 ###Getting scroll position 
@@ -956,6 +1022,35 @@ scheduler.templates.timeline_cell_value = function (evs, date, section){
 ~~~
 
 {{sample  06_timeline/17_timeline_cell_content.html}}
+
+
+Changing heights of sections
+----------------------
+
+
+By default, sections and events get their sizes from **dy** and **event_dy** settings of the api/scheduler_createtimelineview.md method.
+
+If the section object have the **height** property specified, it will use it instead of the **dy** value:
+
+~~~js
+
+scheduler.createTimelineView({
+	name:	"timeline",
+	...
+	y_unit:	[
+		{key: 1, label: "Room 1", height: 60},
+		{key: 2, label: "Room 2", height: 60},
+		{key: 3, label: "Room 3", height: 120},
+		{key: 4, label: "Room 4", height: 900},
+	],
+~~~
+
+The value of the **height** property can be changed dynamically after the initialization of the scheduler.
+
+
+{{sample  06_timeline/18_collapse_section.html}}
+
+
 
 Related guides
 ---------------------

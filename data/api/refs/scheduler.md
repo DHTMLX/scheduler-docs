@@ -1,6 +1,31 @@
 Scheduler API 
 =============
 
+@groupindex:
+- Views
+- Views/Year view
+- Views/Month view
+- Views/Agenda view
+- Views/Map view
+- Views/Timeline view
+- General settings
+- General settings/Touch support
+- General settings/Quick info
+- General settings/Scale
+- General settings/Readonly mode
+- General setting/View settings
+- Events
+- Events/Drag-and-Drop operations
+- Events/Select bar
+- Events/Cascade events
+- Events/Reccuring events
+- Events/Multi-day events
+- Events/Multisection events
+- Date format
+- Lightbox
+- Time, time zones
+
+
 <div class='h2'>Methods</div>
 
 {{api
@@ -93,6 +118,7 @@ Scheduler API
 - api/scheduler_resetlightbox.md - removes the current lightbox's HTML object element
 - api/scheduler_scrollunit.md - scrolls the specified number of units in the Units view
 - api/scheduler_select.md - selects the specified event
+- api/scheduler_serialize.md - 
 - api/scheduler_serverlist.md - defines a named collection that can be loaded into Units, Timeline views, or the Lightbox
 - api/scheduler_setcurrentview.md - displays the specified view and date
 - api/scheduler_setevent.md - adds a new event to the scheduler's data pool
@@ -301,6 +327,7 @@ Scheduler API
 - api/scheduler_multisection_shift_all_config.md - specifies whether while dragging events that assigned to several sections of the Timeline or Units view, all  instances should be dragged at once ('true') or just the selected one ('false')
 - api/scheduler_now_date_config.md - sets the date for the current-time marker in the Limit extension (enabled by the configuration - mark_now)
 - api/scheduler_occurrence_timestamp_in_utc_config.md - allows working with recurring events independently of time zones
+- api/scheduler_overwrite_marked_timespans_config.md - enables blocking priority for marked timespans
 - api/scheduler_parse_exact_format_config.md - defines whether scheduler automatically identifies the format of data
 - api/scheduler_positive_closing_config.md - defines the 'saving' behaviour for the case, when  the user edits the event's text directly in the event's box
 - api/scheduler_preserve_length_config.md - preserves the visible length of an event while dragging along a non-linear time scale
@@ -411,13 +438,13 @@ Scheduler API
 - api/scheduler_{timelinename}_scale_label_template.md - specifies items of the Y-Axis
 - api/scheduler_{timelinename}_tooltip_template.md - specifies the tooltip over a day cell containing some scheduled event(s)
 - api/scheduler_{timelinename}_date_template.md - specifies the date in the header of the view
-- api/scheduler_{timelinename}_row_class_template.md - specifies the CSS class that will be applied to a row of the Timeline view
 - api/scheduler_{timelinename}_scale_date_template.md - specifies items of the X-Axis
 - api/scheduler_{timelinename}_second_scale_date_template.md - specifies items of the second X-Axis
 - api/scheduler_{unitsname}_date_template.md - specifies the date in the header of the view
 - api/scheduler_{unitsname}_scale_text_template.md - specifies items of the X-Axis
 - api/scheduler_xml_date_template.md - a string from an XML file is converted into a date object in conformity with this template
 - api/scheduler_xml_format_template.md - a date object is converted into a string in conformity with this template. Used to send data back to the server
+- api/scheduler_{timelinename}_row_class_template.md - specifies the CSS class that will be applied to a row of the Timeline view
 }}
 
 
@@ -431,7 +458,6 @@ Scheduler API
 - api/scheduler_config_other.md - defines configuration options for dates, scale, controls
 - api/scheduler_date_other.md - a set of date formatting methods
 - api/scheduler_env_other.md - a set of flags which describe current environment
-- api/scheduler_ext_other.md - an object that stores various extensions
 - api/scheduler_i18n_other.md - a set of methods for Scheduler localization
 - api/scheduler_ical_other.md - specifies ICal serialization and parsing
 - api/scheduler_json_other.md - specifies JSON serialization and parsing

@@ -86,6 +86,7 @@ Properties
 - api/scheduler_multisection_shift_all_config.md - specifies whether while dragging events that assigned to several sections of the Timeline or Units view, all  instances should be dragged at once ('true') or just the selected one ('false')
 - api/scheduler_now_date_config.md - sets the date for the current-time marker in the Limit extension (enabled by the configuration - mark_now)
 - api/scheduler_occurrence_timestamp_in_utc_config.md - allows working with recurring events independently of time zones
+- api/scheduler_overwrite_marked_timespans_config.md - enables blocking priority for marked timespans
 - api/scheduler_parse_exact_format_config.md - defines whether scheduler automatically identifies the format of data
 - api/scheduler_positive_closing_config.md - defines the 'saving' behaviour for the case, when  the user edits the event's text directly in the event's box
 - api/scheduler_preserve_length_config.md - preserves the visible length of an event while dragging along a non-linear time scale
@@ -214,6 +215,7 @@ Properties
 - api/scheduler_multisection_shift_all_config.md
 - api/scheduler_now_date_config.md
 - api/scheduler_occurrence_timestamp_in_utc_config.md
+- api/scheduler_overwrite_marked_timespans_config.md
 - api/scheduler_parse_exact_format_config.md
 - api/scheduler_positive_closing_config.md
 - api/scheduler_preserve_length_config.md
