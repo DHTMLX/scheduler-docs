@@ -66,6 +66,40 @@ scheduler.i18n.setLocale("de");
 
 - If you use a custom locale file, it can be loaded as before.
 
+### DataProcessor initialization
+
+DataProcessor constructor has moved from the global **dataProcessor** function to the **scheduler.DataProcessor** function.
+
+If you use the dataProcessor in your app, you'll need to update the code that initializes the dataProcessor:
+
+~~~js
+// obsolete
+var dp = new dataProcessor("/scheduler/backend/events");
+dp.init(scheduler);
+dp.setTransactionMode("REST", false);
+~~~
+
+This code above should be replaced with the following:
+
+~~~
+// good
+var dp = new scheduler.DataProcessor("/scheduler/backend/events");
+dp.init(scheduler);
+dp.setTransactionMode("REST", false);
+~~~
+
+The recommended approach is to use the **scheduler.createDataProcessor** function:
+
+~~~
+// even better
+var dp = scheduler.createDataProcessor({
+    url: "/scheduler/backend/events",
+    mode: "REST"
+});
+~~~
+
+In this case, **DataProcessor.init(scheduler)** call is no longer required, **DataProcessor.setTransactionMode** can be called as usual if needed.
+
 ### Deprecated API
 
 The **dhtmlx** object definition was removed from dhtmlxscheduler.js. Thus, some methods and global objects have been deprecated in v6.0. 
