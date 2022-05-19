@@ -35,3 +35,5 @@ scheduler.config.overwrite_marked_timespans = false;
 
 limits.md#blockingpriority
 
+@changelog: added in v6.0
+

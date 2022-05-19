@@ -10,7 +10,7 @@ Start
     <ul>
         <li><a href="multiple_per_page.md#destructorofscheduleranddataprocessorinstances">Destructors for Scheduler and DataProcessor</a></li>
         <li><a href="server_integration.md#customrouting">Routing options for DataProcessor</a></li>
-        <li><a href="timeline_view.ms#:~:text=Specifying%20columns%20of%20the%20lefthand%20panel">Columns config for the Timeline panel</a></li>
+        <li><a href="timeline_view.md#:~:text=Specifying%20columns%20of%20the%20left%2Dhand%20panel">Columns config for the Timeline panel</a></li>
         <li><a href="timeline_view.md#changingheightsofsections">Individual sizing of Timeline rows</a></li>
     </ul>
     <p class='action_buttons'>

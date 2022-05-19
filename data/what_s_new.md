@@ -18,7 +18,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 - [Destructors for Scheduler and DataProcessor instances](multiple_per_page.md#destructorofscheduleranddataprocessorinstances)
 - Ability to specify the [height of Timeline sections](timeline_view.md#changingheightsofsections)
-- Ability to specify the [multiple columns](timeline_view.md#:~:text=Specifying%20columns%20of%20the%20lefthand%20panel) in the lefthand panel of timeline_view.md
+- Ability to specify the [multiple columns](timeline_view.md#:~:text=Specifying%20columns%20of%20the%20left%2Dhand%20panel) in the left-hand panel of timeline_view.md
 - New methods of the [Timeline object](timeline_view.md#:~:text=timeline.resolvePosition) 
 
 
@@ -36,9 +36,10 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 
 ### API
-- [env](api/scheduler_env_other.md)
+
+- [env](api/scheduler_env_other.md) object
 - [week_agenda_date](api/scheduler_week_agenda_date_template.md) template
-- [show_errors](api/scheduler_show_errors_config.md) configuration property
+- [show_errors](api/scheduler_show_errors_config.md) property
 - [onError](api/scheduler_onerror_event.md) event
 - [ajax](api/scheduler_ajax_other.md) object
 - [i18n](api/scheduler_i18n_other.md) object
@@ -48,7 +49,9 @@ If you are updating Scheduler from an older version, check migration_from_older_
 - [onDestroy](api/scheduler_ondestroy_event.md) event
 - [alert()](api/scheduler_alert.md), [confirm()](api/scheduler_confirm.md), [message()](api/scheduler_message.md), [modalbox()](api/scheduler_modalbox.md) methods
 - [assert()](api/scheduler_assert.md), [bind()](api/scheduler_bind.md), [copy()](api/scheduler_copy.md), [defined()](api/scheduler_defined.md), [mixin()](api/scheduler_mixin.md),  [DataProcessor](api/scheduler_dataprocessor.md)
-- Public helpers for [popup messages](integration_with_dhtmlxmessage.md) were moved from `dhtmlx` to `scheduler` object.
+- Public helpers for [popup messages](integration_with_dhtmlxmessage.md) were moved from `dhtmlx` to `scheduler` object
+- [serialize()](api/scheduler_serialize.md) method
+- [overwrite_marked_timespans](api/scheduler_overwrite_marked_timespans_config.md) property
 
 5.3.13
 -------------

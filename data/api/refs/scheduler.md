@@ -93,7 +93,7 @@ Scheduler API
 - api/scheduler_resetlightbox.md - removes the current lightbox's HTML object element
 - api/scheduler_scrollunit.md - scrolls the specified number of units in the Units view
 - api/scheduler_select.md - selects the specified event
-- api/scheduler_serialize.md - 
+- api/scheduler_serialize.md - serializes all events loaded into the scheduler
 - api/scheduler_serverlist.md - defines a named collection that can be loaded into Units, Timeline views, or the Lightbox
 - api/scheduler_setcurrentview.md - displays the specified view and date
 - api/scheduler_setevent.md - adds a new event to the scheduler's data pool
@@ -402,24 +402,24 @@ Scheduler API
 - api/scheduler_year_tooltip_template.md - specifies the tooltip over a day cell containing some scheduled event(s)
 - api/scheduler_lightbox_header_template.md - specifies the lightbox's header
 - api/scheduler_{gridname}_date_template.md - specifies the date in the header of the view
+- api/scheduler_{gridname}_field_template.md - specifies the text in the columns
 - api/scheduler_{gridname}_full_date_template.md - specifies the format of dates in columns with id='date'
 - api/scheduler_{gridname}_single_date_template.md - specifies the format of dates in columns with id='start_date' or id='end_date'
-- api/scheduler_{gridname}_field_template.md - specifies the text in the columns
-- api/scheduler_{timelinename}_cell_value_template.md - specifies the number of scheduled events in a cell of the view
 - api/scheduler_{timelinename}_cell_class_template.md - specifies the CSS class that will be applied to a cell of the view
-- api/scheduler_{timelinename}_scalex_class_template.md - specifies the name of a CSS class that will be applied to items of the X-Axis
-- api/scheduler_{timelinename}_second_scalex_class_template.md - specifies the name of a CSS class that will be applied to items of the second X-Axis
-- api/scheduler_{timelinename}_scaley_class_template.md - specifies the name of a CSS class that will be applied to items of the Y-Axis
-- api/scheduler_{timelinename}_scale_label_template.md - specifies items of the Y-Axis
-- api/scheduler_{timelinename}_tooltip_template.md - specifies the tooltip over a day cell containing some scheduled event(s)
+- api/scheduler_{timelinename}_cell_value_template.md - specifies the number of scheduled events in a cell of the view
 - api/scheduler_{timelinename}_date_template.md - specifies the date in the header of the view
+- api/scheduler_{timelinename}_row_class_template.md - specifies the CSS class that will be applied to a row of the Timeline view
 - api/scheduler_{timelinename}_scale_date_template.md - specifies items of the X-Axis
+- api/scheduler_{timelinename}_scale_label_template.md - specifies items of the Y-Axis
+- api/scheduler_{timelinename}_scalex_class_template.md - specifies the name of a CSS class that will be applied to items of the X-Axis
+- api/scheduler_{timelinename}_scaley_class_template.md - specifies the name of a CSS class that will be applied to items of the Y-Axis
 - api/scheduler_{timelinename}_second_scale_date_template.md - specifies items of the second X-Axis
+- api/scheduler_{timelinename}_second_scalex_class_template.md - specifies the name of a CSS class that will be applied to items of the second X-Axis
+- api/scheduler_{timelinename}_tooltip_template.md - specifies the tooltip over a day cell containing some scheduled event(s)
 - api/scheduler_{unitsname}_date_template.md - specifies the date in the header of the view
 - api/scheduler_{unitsname}_scale_text_template.md - specifies items of the X-Axis
 - api/scheduler_xml_date_template.md - a string from an XML file is converted into a date object in conformity with this template
 - api/scheduler_xml_format_template.md - a date object is converted into a string in conformity with this template. Used to send data back to the server
-- api/scheduler_{timelinename}_row_class_template.md - specifies the CSS class that will be applied to a row of the Timeline view
 }}
 
 

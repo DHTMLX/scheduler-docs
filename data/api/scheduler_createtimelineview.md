@@ -102,7 +102,7 @@ If <i>true</i>, date columns will not shrink less than the <b>column_width</b> v
 - <b>cell_template</b> - (<i>boolean</i>) enables rendering a template specified for a timeline
 - **smart_rendering** - (*boolean*) enables smart rendering functionality in a timeline (allows rendering only the rows, columns, and events visible on the screen, while other elements are being rendered 
 during scrolling of the timeline). Note that in a [scrollable timeline](timeline_view.md#horizontalscroll) this setting is enabled by default.
-- <b>columns</b>- (<i>array</i>) list of columns for the lefthand panel. If not specified, [timeline_scale_label](api/scheduler_{timelinename}_scale_label_template.md) template will be used for the content of the panel.
+- <b>columns</b>- (<i>array</i>) a list of columns for the left-hand panel. If not specified, the [timeline_scale_label](api/scheduler_{timelinename}_scale_label_template.md) template will be used for the content of the panel.
 
 Dynamic change of properties
 -------------------------------------

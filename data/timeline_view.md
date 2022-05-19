@@ -183,15 +183,15 @@ To specify the scale range, use the **setRange()** method. It takes two paramete
 timeline.setRange(startDate, endDate);
 ~~~
 
-### Specifying columns of the lefthand panel
+### Specifying columns of the left-hand panel
 
-The content of the lefthand panel can be defined in two ways.
+The content of the left-hand panel can be defined in two ways.
 
-By default, the lefthand panel consists of a single column. The content of section labels is taken from **label** property of **y_unit** object, which can be overriden using 
-[timeline_scale_label](api/scheduler_{timelinename}_scale_label_template.md) template.
+By default, the left-hand panel consists of a single column. The content of section labels is taken from the **label** property of the **y_unit** object, which can be overridden using 
+the [timeline_scale_label](api/scheduler_{timelinename}_scale_label_template.md) template.
 
 
-In order to specify multiple columns, use the **columns** property of api/scheduler_createtimelineview.md method:
+In order to specify multiple columns, use the **columns** property of the api/scheduler_createtimelineview.md method:
 
 ~~~js
 scheduler.createTimelineView({
@@ -215,7 +215,7 @@ scheduler.createTimelineView({
 
 ~~~
 
-The column object accepts the following properties:
+The column's object accepts the following properties:
 
 - label - `string` - optional, the header label
 - width - `number` - optional, the width of the column
@@ -279,7 +279,6 @@ var top = timeline.posFromSection(section.key);
 - to get the Date and Section that matches a specific coordinates of the timeline, use the **resolvePosition** method. Pass the `{left: number, top: number}` object as a parameter:
 
 ~~~js
-
 const position = timeline.resolvePosition({top: 120, left: 400});
 ~~~
 
@@ -287,14 +286,12 @@ const position = timeline.resolvePosition({top: 120, left: 400});
 - to get the `Date` of a specific `left` coordinate of the time scale, use the **dateFromPos** method. Pass the number as a parameter:
 
 ~~~js
-
 const date = timeline.dateFromPos(300);
 ~~~
 
 - to get the `top` coordinate of a specific event, use the **getEventTop** method. Pass the event object as a parameter:
 
 ~~~js
-
 const top = timeline.getEventTop(scheduler.getEvent(event.id));
 ~~~
 
@@ -1028,7 +1025,7 @@ Changing heights of sections
 ----------------------
 
 
-By default, sections and events get their sizes from **dy** and **event_dy** settings of the api/scheduler_createtimelineview.md method.
+By default, sections and events get their sizes from the **dy** and **event_dy** settings of the api/scheduler_createtimelineview.md method.
 
 If the section object have the **height** property specified, it will use it instead of the **dy** value:
 
@@ -1045,7 +1042,7 @@ scheduler.createTimelineView({
 	],
 ~~~
 
-The value of the **height** property can be changed dynamically after the initialization of the scheduler.
+The value of the **height** property can be changed dynamically after initialization of the scheduler.
 
 
 {{sample  06_timeline/18_collapse_section.html}}

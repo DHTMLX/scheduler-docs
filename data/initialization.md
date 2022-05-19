@@ -254,7 +254,7 @@ export default class Scheduler extends Component {
 }
 ~~~
 
-For the **Commercial, Enterprise or Ultimate** creating a new [scheduler object](multiple_per_page.md#destructorofscheduleranddataprocessorinstances) instead of the global instance is recommended:
+For the **Commercial, Enterprise or Ultimate** versions creating a new [scheduler object](multiple_per_page.md#destructorofscheduleranddataprocessorinstances) instead of the global instance is recommended:
 
 ~~~js
 import React, { Component } from 'react';
@@ -340,7 +340,7 @@ export class SchedulerComponent implements OnInit {
 }
 ~~~
 
-For the **Commercial, Enterprise or Ultimate** creating a new [scheduler object](multiple_per_page.md#destructorofscheduleranddataprocessorinstances) instead of the global instance is recommended:
+For the **Commercial, Enterprise or Ultimate** versions creating a new [scheduler object](multiple_per_page.md#destructorofscheduleranddataprocessorinstances) instead of the global instance is recommended:
 
 ~~~js
 import {Component,ElementRef,OnInit,ViewChild,ViewEncapsulation} from '@angular/core';
