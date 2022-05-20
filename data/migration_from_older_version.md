@@ -124,8 +124,6 @@ The **dhtmlx** object definition was removed from dhtmlxscheduler.js. Thus, some
 
 No changes in the arguments or behavior of the methods were made.
 
-The old methods will continue working in v6.x, but will trigger a console warning (not visible to the end users) each time they are called.
-
 2) The following global objects have been deprecated:
 
 - dhtmlxAjax
