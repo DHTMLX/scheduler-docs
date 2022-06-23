@@ -10,6 +10,18 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+6.0.1
+-------------
+<span class='release_date'>June 23, 2022. Bugfix release</span>
+
+### Fixes
+
+- Fix compatibility with Salesforce LWC
+- Fix the incorrect placement of the [Tooltip](tooltips.md) that caused the tooltip to be cut in some cases
+- Fix the display of [columns](timeline_view.md#:~:text=Specifying%20columns%20of%20the%20left%2Dhand%20panel) in the [Tree Timeline](timeline_view.md) view
+- Disabling the [show_quick_info](api/scheduler_show_quick_info_config.md) config now stops the [Quick Info](touch_support.md#quickinfoextension) from appearing after the mouse click on an event, but allows opening the popup via calling the [showQuickInfo](api/scheduler_showquickinfo.md) method
+- Fix the incorrect work of the [repeat_date](api/scheduler_repeat_date_config.md) config in some cases
+
 6.0
 ---------------------
 <span class='release_date'>May 19, 2022. Major update</span>
