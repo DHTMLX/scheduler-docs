@@ -23,13 +23,13 @@ The complete source code is [available on GitHub](https://github.com/DHTMLX/sche
 Step 1. Creating a project
 ----------------------------
 
-###Creating a new Visual Studio Project
-
-Let's start by running Visual Studio and creating a new project. For this, open the File menu tab and choose:<br> New -> Project. Then Select ASP.NET Web Application and press Next.
+Launch Visual Studio 2022 and select *Create a new project*.
 
 ![New project](how_to_start_net_create_project.png)
 
-Enter the project name *DHX.Scheduler.Web* and choose the location (if needed): 
+Next select "ASP.NET Web Application" and name it *DHX.Scheduler.Web*. If you can't find the necessary template, check the [Troubleshooting](#troubleshooting) section.
+
+![New project](how_to_start_net_project_template.png)
 
 ![Project config](how_to_start_net_project_config.png)
 
@@ -41,7 +41,7 @@ Select an Empty project among available templates and check MVC and Web API chec
 Step 2. Adding Scheduler to the page
 ------------------------------------
 
-###Creating a Controller
+### Creating a Controller
 
 Now we have an empty project and everything is ready for implementing our scheduler.
 
@@ -56,10 +56,6 @@ HomeController has the *Index()* method of the *ActionResult* class by default, 
 
 {{snippet Controllers/HomeController.cs}}
 ~~~
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace DHX.Scheduler.Web.Controllers
@@ -75,7 +71,7 @@ namespace DHX.Scheduler.Web.Controllers
 }
 ~~~
 
-###Creating a View
+### Creating a View
 
 Now it's time to create our index page. Go to View/Home and add an empty view named Index: 
 
@@ -83,8 +79,8 @@ Now it's time to create our index page. Go to View/Home and add an empty view na
 
 Open the newly created view and put the following code into it: 
 
-{{snippet Views/Home/Index.html}}
-~~~
+{{snippet Views/Home/Index.cshtml}}
+~~~html
 @{
     Layout = null;
 }
@@ -101,7 +97,7 @@ Open the newly created view and put the following code into it:
     <script>
         document.addEventListener("DOMContentLoaded", function(event) {
             // initializing scheduler
-            scheduler.init("scheduler_here", new Date(2019,0,15));
+            scheduler.init("scheduler_here", new Date(2022,0,15));
 
             // initiating data loading
             scheduler.load("/api/scheduler");
@@ -168,7 +164,7 @@ Because of this, we'll go with the [Data Transfer Object](https://docs.microsoft
 we'll define domain model classes that will be used with EF and inside the app, and DTO classes that will be used to communicate with Web API. Then mapping between the two models will be implemented.
 
 
-####Scheduler Event Model
+#### Scheduler Event Model
 
 First we will create a class for Event. This is how the model can look like:
 
@@ -192,9 +188,9 @@ namespace DHX.Scheduler.Web.Models
 Note that scheduler events can have all kinds of additional properties, which can be utilized in the calendar. We're showing you the basic stuff here.
 
 
-###Configuring Database Connection
+### Configuring Database Connection
 
-####Installing Entity Framework
+#### Installing Entity Framework
 
 You can either install the framework via the NuGet package manager:
 
@@ -206,7 +202,7 @@ or you can run the following command in the Package Manager Console:
 PM> Install-Package EntityFramework
 ~~~
 
-####Creating Database Context
+#### Creating Database Context
 
 The next step is to create Context. Context represents a session with the Database. It allows getting and saving data.
 
@@ -225,7 +221,7 @@ namespace DHX.Scheduler.Web.Models
 }
 ~~~
 
-####Adding initial records to database
+#### Adding initial records to database
 
 Now we can add some records into the database.
 
@@ -242,8 +238,6 @@ The full code of the *SchedulerInitializer* class is given below:
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 using DHX.Scheduler.Web.Models;
 
@@ -259,22 +253,22 @@ namespace DHX.Scheduler.Web.App_Start
                 {
                     Id = 1,
                     Text = "Event 1",
-                    StartDate = new DateTime(2019, 1, 15, 2, 0, 0),
-                    EndDate = new DateTime(2019, 1, 15, 4, 0, 0)
+                    StartDate = new DateTime(2022, 1, 11, 2, 0, 0),
+                    EndDate = new DateTime(2022, 1, 11, 4, 0, 0)
                 },
                 new SchedulerEvent()
                 {
                     Id = 2,
                     Text = "Event 2",
-                    StartDate = new DateTime(2019, 1, 17, 3, 0, 0),
-                    EndDate = new DateTime(2019, 1, 17, 6, 0, 0)
+                    StartDate = new DateTime(2022, 1, 14, 3, 0, 0),
+                    EndDate = new DateTime(2022, 1, 14, 6, 0, 0)
                 },
                 new SchedulerEvent()
                 {
                     Id = 3,
                     Text = "Multiday event",
-                    StartDate = new DateTime(2019, 1, 15, 0, 0, 0),
-                    EndDate = new DateTime(2019, 1, 20, 0, 0, 0)
+                    StartDate = new DateTime(2022, 1, 11, 0, 0, 0),
+                    EndDate = new DateTime(2022, 1, 16, 0, 0, 0)
                 }
             };
 
@@ -317,19 +311,14 @@ namespace DHX.Scheduler.Web
 }
 ~~~
 
-###Defining DTOs and Mapping
+### Defining DTOs and Mapping
 
 It's time to declare DTO classes that will be used for Web API. As for mapping between Model and DTO, we'll define an explicit conversion operator for our classes.
   
 The WebAPIEvent class will look like this: 
 
-{{snippet WebAPIEvent.cs}}
+{{snippet Models/WebAPIEvent.cs}}
 ~~~
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 namespace DHX.Scheduler.Web.Models
 {
     public class WebAPIEvent
@@ -372,7 +361,7 @@ namespace DHX.Scheduler.Web.Models
 Step 4. Implementing Web API
 --------------------------
 
-###Scheduler Controller
+### Scheduler Controller
 
 To create a new controller:
 
@@ -387,7 +376,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Http;
 
 using DHX.Scheduler.Web.App_Start;
@@ -559,9 +547,6 @@ as well as the DTO:
 {{snippet Models/WebAPIEvent.cs}}
 ~~~
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace DHX.Scheduler.Web.Models
 {
@@ -615,7 +600,7 @@ namespace DHX.Scheduler.Web.Models
 }
 ~~~
 
-###Updating API Controller
+### Updating API Controller
 
 Lastly, we need to modify our PUT/POST/DELETE actions in order to handle [special rules of recurring events](recurring_events.md#editingdeletingacertainoccurrenceintheseries). 
 
@@ -628,7 +613,7 @@ requires creating a new database record and the client will call the insert acti
 [HttpPost]
 public IHttpActionResult CreateSchedulerEvent(WebAPIEvent webAPIEvent)
 {
-  var newSchedulerEvent = (SchedulerEvent)WebAPIEvent;
+  var newSchedulerEvent = (SchedulerEvent)webAPIEvent;
   db.SchedulerEvents.Add(newSchedulerEvent);
   db.SaveChanges();
 
@@ -657,7 +642,7 @@ is modified, we need to delete all modified occurrences of that series:
 [HttpPut]
 public IHttpActionResult EditSchedulerEvent(int id, WebAPIEvent webAPIEvent)
 {
-	var updatedSchedulerEvent = (SchedulerEvent)WebAPIEvent;
+	var updatedSchedulerEvent = (SchedulerEvent)webAPIEvent;
     updatedSchedulerEvent.Id = id;
     db.Entry(updatedSchedulerEvent).State = EntityState.Modified;
 
@@ -752,7 +737,6 @@ Go to *App_Start* and add a new class called *SchedulerAPIExceptionFilterAttribu
 
 {{snippet App_Start/SchedulerAPIExceptionFilterAttribute.cs}}
 ~~~
-using System;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http.Filters;
@@ -795,9 +779,15 @@ Application Security
 Scheduler doesn't provide any means of preventing an application from various threats, such as SQL injections, XSS and CSRF attacks. The responsibility for keeping an application safe is on the developers who implement the backend. Read the details in the [corresponding article](app_security.md).
 
 
-###XSS protection
+### XSS protection
 
 A simple solution would be to encode the text properties of data items when we send them to the client side.
+
+Install the encoder package if you don't already have it. You can run the following command in the Package Manager Console:
+
+~~~
+PM> Install-Package System.Text.Encodings.Web -Version 6.0.0
+~~~
 
 For example, in the below code a built-in HtmlEncoder is used to escape HTML values in the text of events. That way our database will contain unmodified data, but the client side will receive safe values of `event.text`.
 
@@ -821,6 +811,26 @@ Another approach would be to use a specialized library, e.g. [HtmlAgilityPack](h
 
 Troubleshooting
 ---------------
+
+### ASP.NET Web Application template is absent
+
+If you can't find the necessary "ASP.NET Web Application" project template in Visual Studio 2022, follow the steps below:
+
+1\. Close Visual Studio 2022
+
+2\. Start Menu -> Visual Studio Installer
+
+3\. Find *Visual Studio Community 2022* -> click on *Modify*
+
+<img src="vsinstaller.png">
+
+4\. In the window opened, select *Individual components*, check *".NET Framework Project and item templates"* point in the list and click on *Modify*
+
+<img src="components.png">
+
+After that, you can launch Visual Studio 2022 and find the necessary template.
+
+### Issues with rendering tasks and links
 
 In case you've completed the above steps to implement Scheduler integration with ASP.NET MVC, but Scheduler doesn't render events on a page, have a look at the troubleshooting.md article. 
 It describes the ways of identifying the roots of the problems.
