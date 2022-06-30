@@ -2,10 +2,12 @@
  iCal export/import 
 ==============
 
-You have the possibility to import/export data of iCal format by using either ready-to-use utility or API methods. 
+{{pronote
+**This tool is deprecated and no longer supported. So please, don't use it in your applications!**
+}}
 
-Download the **iCal exporter** utility:
-[http://dhtmlx.com/x/download/regular/ical2scheduler.zip](http://dhtmlx.com/x/download/regular/ical2scheduler.zip)
+
+You have the possibility to import/export data of iCal format by using either ready-to-use utility or API methods. 
 
  iCal exporter (Front-end) 
 --------------------------------------
