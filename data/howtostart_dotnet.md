@@ -319,6 +319,8 @@ The WebAPIEvent class will look like this:
 
 {{snippet Models/WebAPIEvent.cs}}
 ~~~
+using System;
+
 namespace DHX.Scheduler.Web.Models
 {
     public class WebAPIEvent
