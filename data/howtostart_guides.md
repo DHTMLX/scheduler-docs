@@ -69,7 +69,7 @@ platforms to suit all tastes and preferences.
          	An extensive tutorial that helps you to realize a Scheduler inside SalesForce Lightning Web Component. 
         </td> 
          <td>
-        	<a href="howtostart_salesforce.md"></a>
+        	<a href="howtostart_salesforce.md"><img src="salesforce_tutorial.png"></a>
         </td>
     </tr>    
     <tr>
