@@ -13,6 +13,7 @@ There are tutorials intended for building server-side integration with the help 
 - howtostart_nodejs.md
 - howtostart_plain_php.md
 - howtostart_php_laravel.md
+- howtostart_salesforce.md
 - howtostart_ruby.md
 - howtostart_connector.md
 

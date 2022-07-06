@@ -61,6 +61,16 @@ platforms to suit all tastes and preferences.
         <td>
         	<a href="howtostart_php_slim4.md"><img src="scheduler_slim.png"></a>
         </td>
+    </tr>
+    <tr>
+        <td>
+		    <span style="font-size:15px;">howtostart_salesforce.md</span>
+            <br>
+         	An extensive tutorial that helps you to realize a Scheduler inside SalesForce Lightning Web Component. 
+        </td> 
+         <td>
+        	<a href="howtostart_salesforce.md"></a>
+        </td>
     </tr>    
     <tr>
         <td>
@@ -92,6 +102,7 @@ platforms to suit all tastes and preferences.
 - howtostart_plain_php.md
 - howtostart_php_laravel.md
 - howtostart_php_slim4.md
+- howtostart_salesforce.md
 - howtostart_ruby.md
 - howtostart_connector.md
 - howtostart_php.md

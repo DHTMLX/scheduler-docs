@@ -10,6 +10,7 @@ You can also explore other server-side integration possibilities of Scheduler by
 - howtostart_plain_php.md
 - howtostart_php_slim4.md
 - howtostart_php_laravel.md
+- howtostart_salesforce.md
 - howtostart_ruby.md
 - howtostart_connector.md
 
