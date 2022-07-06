@@ -13,6 +13,7 @@ check the available options in the list below:
 - howtostart_plain_php.md
 - howtostart_php_slim4.md
 - howtostart_php_laravel.md
+- howtostart_salesforce.md
 - howtostart_ruby.md
 
 Follow the step-by-step guide to create such an application.

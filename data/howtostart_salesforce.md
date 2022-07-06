@@ -27,6 +27,7 @@ Step 1. Creating a project
 ------------------------------
 
 [Sign up](https://developer.salesforce.com/) for a free developer account if you don't have one. See [this article](https://webkul.com/blog/create-free-developer-account-in-salesforce/) for installation guidance.
+
 On the left in the search bar, find and select *Dev Hub*:
 
 ![](sf_devhub.png)
@@ -407,7 +408,7 @@ Pick "App Page" then page name and layout.
 
 ![](sf_app_page.png)
 
-![](sf_new_lightning_page.png)
+<img style='width:702px' src='sf_new_lightning_page.png'>
 
 ![](sf_page_layout.png)
 
@@ -421,7 +422,7 @@ Activate the page.
 
 Save the changes.
 
-![](sf_activation.png)
+<img style='width:702px' src='sf_activation.png'>
 
 ![](sf_add_page_to_nm.png)
 
@@ -429,7 +430,7 @@ Save the changes.
 
 Open the application page. It should be accessible in the app launcher if you click it and type Scheduler.
 
-![](sf_home_scheduler.png)
+<img style='width:702px' src='sf_home_scheduler.png'>
 
 If everything went well, you should see a simple Scheduler demo running in the Lightning Page.
 
