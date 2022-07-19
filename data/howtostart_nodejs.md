@@ -104,19 +104,18 @@ After that **package.json** looks like this:
 
 ~~~
 {
-    "name": "scheduler-backend",
+    "name": "scheduler-howto-node",
     "version": "1.0.0",
     "main": "server.js",
-    "author": "Me",
     "license": "MIT",
     "scripts": {
         "start": "node server.js"
     },
     "dependencies": {
-        "body-parser": "^1.18.3",
+        "body-parser": "^1.20.0",
         "date-format-lite": "^17.7.0",
-        "express": "^4.16.4",
-        "mysql": "^2.16.0"
+        "express": "^4.18.1",
+        "mysql": "^2.18.1",
     }
 }
 ~~~
@@ -182,16 +181,18 @@ Then create an *index.html* file in the **public** directory:
             <div class="dhx_cal_data"></div>
         </div>
         <script>
-            // set format of dates in the data source
-            scheduler.config.xml_date="%Y-%m-%d %H:%i";
-            scheduler.init('scheduler_here', new Date(2018,0,20), "month");
-
-            scheduler.load("http://localhost:3000/data", "json");
-
-            var dp = scheduler.createDataProcessor("http://localhost:3000/data");
-            dp.init(scheduler);
-            // use RESTful API on the backend
-            dp.setTransactionMode("REST");
+            scheduler.config.load_date="%Y-%m-%d %H:%i";
+            scheduler.init("scheduler_here", new Date(2022, 0, 20), "week");
+            scheduler.setLoadMode("day");
+ 
+            // load data from backend
+            scheduler.load("/events", "json");
+ 
+            // connect backend to scheduler
+            const dp = scheduler.createDataProcessor({
+                url: "/events",
+                mode: "REST"
+            });
         </script>
     </body>
 </html>
@@ -216,8 +217,7 @@ Run the app again to make sure it did the trick.
 
 Now when you open the URL *http://localhost:3000/* in a browser, you should see the *index.html* page.
 
-![Scheduler initialization](howtostart_nodejs_init.png)
-
+<img style='width:702px' src='howtostart_nodejs_init.png'/>
 
 Step 3. Preparing a database
 -------------------------
@@ -265,7 +265,7 @@ const mysqlConfig = {
     "host": "localhost",
     "user": "root",
     "password": "",
-    "database": "scheduler_howto_node"
+    "database": "scheduler"
 };
 ~~~
 
@@ -434,7 +434,7 @@ router.setRoutes(app, "/events", storage);
 
 If you restart the application now, you should be able to create delete and modify events in scheduler, all changes will be there after you reload the page.
 
-![Scheduler CRUD](howtostart_nodejs_crud.png)
+<img style='width:702px' src='howtostart_nodejs_crud.png'/>
 
 Dynamic loading
 ---------------
@@ -452,11 +452,11 @@ Firstly, enable dynamic loading on the client using the api/scheduler_setloadmod
 
 {{snippet public/index.html}}
 ~~~
-scheduler.config.xml_date="%Y-%m-%d %H:%i";
-scheduler.init("scheduler_here", new Date(2018, 0, 20), "week");
+scheduler.config.load_date="%Y-%m-%d %H:%i";
+scheduler.init("scheduler_here", new Date(2022, 0, 20), "week");
 scheduler.setLoadMode("day"); /*!*/
-
-// load data from the backend
+ 
+// load data from backend
 scheduler.load("/events", "json");
 ~~~
 
