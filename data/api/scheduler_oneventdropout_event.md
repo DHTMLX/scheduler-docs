@@ -11,9 +11,13 @@ onEventDropOut
 - e 		Event 			a native event object
 
 
+@returns: 
+- result     boolean       defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>)
+
 @example:
 scheduler.attachEvent("onEventDropOut", function (id, ev, to, e){
 	//any custom logic here
+    return true;
 });
 
 
