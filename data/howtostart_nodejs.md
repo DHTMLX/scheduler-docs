@@ -27,12 +27,12 @@ Step 1. Initializing a project
 
 ### Creating project
 
-To begin with, create a new application using yarn:
+To begin with, create a new application using yarn or npm:
 
 ~~~
 $ mkdir scheduler-howto-nodejs
 $ cd ./scheduler-howto-nodejs
-$ yarn init
+$ yarn init // or npm init
 ~~~
 
 There is a set of simple questions you need to answer during initialization of a new app:
@@ -71,6 +71,9 @@ Add express, mysql, body-parser and date-format-lite modules:
 
 ~~~
 $ yarn add express mysql body-parser date-format-lite
+
+// or
+$ npm install express mysql body-parser date-format-lite
 ~~~
 
 **server.js** has been specified as the entry point above. Now you should create this file with the code below:
