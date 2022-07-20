@@ -71,8 +71,11 @@ Add express, mysql, body-parser and date-format-lite modules:
 
 ~~~
 $ yarn add express mysql body-parser date-format-lite
+~~~
 
-// or
+or
+
+~~~
 $ npm install express mysql body-parser date-format-lite
 ~~~
 
