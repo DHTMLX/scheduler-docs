@@ -26,6 +26,8 @@ If you are updating Scheduler from an older version, check migration_from_older_
 ---------------------
 <span class='release_date'>May 19, 2022. Major update</span>
 
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlx-scheduler-6-0/)
+
 ### Breaking Changes
 
 This update brings some changes in the structure of the Scheduler package and behavior of functionality. Be sure to check [Migration notes](migration_from_older_version.md#5360) to be on the safe side.
@@ -238,6 +240,8 @@ This update brings some changes in the structure of the Scheduler package and be
 
 <span class='release_date'>October 2, 2019. Minor update</span>
 
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlxscheduler-5-3-minor-update-rtl-support-improved-responsiveness/)
+
 ###Breaking Changes
 
 This update changes behavior of of some parts of the component. While they shouldn't cause any breaks in the existing code, be sure to check [Migration notes](migration_from_older_version.md#53) to be on the safe side.
@@ -324,6 +328,8 @@ This update changes behavior of of some parts of the component. While they shoul
 
 <span class='release_date'>June 6, 2019. Minor update</span>
 
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlxscheduler-5-2-custom-content-timeline-view-enhanced-drag-n-drop/)
+
 ###Breaking Changes
 
 This update changes behavior of multiple API methods. While they shouldn't cause any breaks in the existing code, be sure to check [Migration notes](migration_from_older_version.md#5152) to be on the safe side.
@@ -395,6 +401,8 @@ of the deprecated - **onXLS** and **onXLE** events
 
 <span class='release_date'>November 29, 2018. Minor update</span>
 
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlxscheduler-5-1-horizontal-scroll-and-new-server-side-integrations/)
+
 ###Breaking Changes
 
 HTML structure of the Timeline view has changed significantly, some code changes may be required in order to migrate. Read more in the [Migration](migration_from_older_version.md#5051) article.
@@ -417,6 +425,8 @@ HTML structure of the Timeline view has changed significantly, some code changes
 ------
 
 <span class='release_date'>May 17, 2018. Major update</span>
+
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlxscheduler-5-0-material-design/)
 
 ###Breaking Changes
 
@@ -464,6 +474,8 @@ HTML structure of the Timeline view has changed significantly, some code changes
 -----------
 
 <span class='release_date'>February 2, 2017. Minor update</span>
+
+[Review of release on the blog](https://dhtmlx.com/blog/scheduler-4-4-released-accessibility-support-minor-improvements/)
 
 ###Major Changes
 
