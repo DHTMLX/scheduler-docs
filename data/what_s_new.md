@@ -10,6 +10,18 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+
+6.0.2
+-------------
+<span class='release_date'>July 25, 2022. Bugfix release</span>
+
+### Fixes
+
+- Fix the regression in scripts for building [Custom Skins](custom_skins.md)
+- Fix the script errors occurred on pages with enabled Content Security Policy
+- Fix the incorrect work of the DataProcessor when it is initialized with the [router object](server_integration.md#customrouting)
+- Fix the typo in the name of the DOM attribute for cells of the [Year view](year_view.md)
+
 6.0.1
 -------------
 <span class='release_date'>June 23, 2022. Bugfix release</span>

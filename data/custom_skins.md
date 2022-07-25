@@ -131,26 +131,56 @@ It is not required for the file name to match the folder name, since the paths a
 
 3) Modify **codebase/sources/less/package.json** to add a build command for your new skin: 
 
-- build a skin using the "lessc" command, e.g.:
+- build a skin using the following command, e.g.:
 
 ~~~
-lessc ./dhtmlxscheduler_custom.less ../../dhtmlxscheduler_custom.css
+node scripts.js --file=dhtmlxscheduler_custom
 ~~~
 
-- find the "scripts" section and append the command to the "build" script:
+where *dhtmlxscheduler_custom* is the name of your custom skin file without the extension
 
-~~~
-&& lessc ./dhtmlxscheduler_custom.less ../../dhtmlxscheduler_custom.css 
-~~~
-
-- or add a new script in the following way: 
+- find the "scripts" section and add a new script in one of the following ways:
 
 ~~~
 "scripts": {
- "build": "...",
- "build-custom": "lessc ./dhtmlxscheduler_custom.less ../../dhtmlxscheduler_custom.css"
- "watch": "npm-watch build"
+    "build": "...",
+    ...
+    "build-custom": "node scripts.js --file=dhtmlxscheduler_custom"
+    " watch": "npm-watch build"
 }
+~~~
+
+or
+
+~~~
+"scripts": {
+    "build": "... && npm run build-custom",
+    ...
+    "build-custom": "node scripts.js –file=dhtmlxscheduler_custom"
+    "watch": "npm-watch build"
+}
+~~~
+
+<br>
+**Note**, that scheduler may apply some predefined settings to the calendar based on the applied skin.
+When you create a new skin by copying an existing one, you may need to specify the name of the original skin in order for these predefined settings to remain applied.
+
+For this, use the **scheduler.skin** property as in:
+
+~~~js
+// if you create a custom skin by copying the 'material' skin:
+scheduler.skin = "material";
+...
+scheduler.init("scheduler_here", new Date(), "week");
+~~~
+
+or
+
+~~~js
+// if you create a custom skin by copying the 'flat' skin:
+scheduler.skin = "flat";
+...
+scheduler.init("scheduler_here", new Date(), "week");
 ~~~
 
 JS styling settings
