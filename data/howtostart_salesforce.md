@@ -161,7 +161,7 @@ Name it "Start Date". It stores the JSON-serialized Task properties.
 
 <img style='width:702px' src='sf_start_date.png'>
 
-Press the "Next" button (accepting all default settings) until the "Save & New" button is not available.
+Press the "Next" button (accepting all default settings) until the "Save & New" button is available.
 
 - **End Date**
 
@@ -169,7 +169,7 @@ Create a "End Date" field. Select "Date/Time" as the Data Type.
 
 <img style='width:702px' src='sf_end_date.png'>
 
-Press the "Next" button (accepting all default settings) until the "Save & New" button is not available.
+Press the "Next" button (accepting all default settings) until the "Save & New" button is available.
 
 - **Text**
 
@@ -177,7 +177,7 @@ Create a "Text" field. Select "Text" as the Data Type.
 
 <img style='width:702px' src='sf_text.png'>
 
-Press the "Next" button (accepting all default settings) until the "Save" button is not available.
+Press the "Next" button (accepting all default settings) until the "Save" button is available.
 
 In the end it should look like this:
 
