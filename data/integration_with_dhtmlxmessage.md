@@ -48,7 +48,7 @@ scheduler.message({
 });
 ~~~
 
-{{sample 09_api\11_popups_and_messages.html}}
+{{sample 09_api/11_popups_and_messages.html}}
 
 To apply different styles to a message box you need to specify a CSS class through the type parameter as described [here](#styling).
 

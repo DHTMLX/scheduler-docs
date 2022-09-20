@@ -660,7 +660,7 @@ HTML structure of the Timeline view has changed significantly, some code changes
 7.  Marking time intervals ([details](limits.md#how_to_mark_certain_dates))
 8.  Highlighting time intervals ([details](api/scheduler_marktimespan.md))
 9.  New API methods: api/scheduler_updateview.md, api/scheduler_showevent.md, api/scheduler_getrenderedevent.md, api/scheduler_getactiondata.md
-10.  JSMessage included ([details](http://dhtmlx.github.com/message/))
+10.  JSMessage included
 11.  [Grid view](grid_view.md) (PRO version)
 12.  New configuration options
 13.  Simplified access to lightbox section objects ([details](api/scheduler_formsection.md))
