@@ -37,7 +37,7 @@ scheduler.locale.labels["locate_button"] = "Location";
 }
 ~~~
 
-{{editor		https://docs.dhtmlx.com/scheduler/snippet/0af39c5f			Custom Color for Buttons}}
+{{editor		https://snippet.dhtmlx.com/1sjwldpb			Custom Color for Buttons}}
 
 
 4 . Set an icon for a button (and/or apply some other styling) by specifying the CSS class as in:

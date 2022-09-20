@@ -602,7 +602,7 @@ scheduler._click.dhx_cal_next_button = function(dummy,step){
 };
 ~~~
 
-{{editor 	https://docs.dhtmlx.com/scheduler/snippet/e4358367			Ignoring weekends}}
+{{editor 	https://snippet.dhtmlx.com/r48113ix			Ignoring weekends}}
 
 
 Data for Y-Axis sections in the 'Bar' and 'Cell' modes
