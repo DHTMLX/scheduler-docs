@@ -26,7 +26,7 @@ Latest Scheduler version, Uncompressed
 
 To set path to the uncompressed sources of the latest version of the library, specify the link as **https://cdn.dhtmlx.com/scheduler/edge/sources/...**
 
-Core files: [JS](https://cdn.dhtmlx.com/scheduler/edge/sources/dhtmlxscheduler.js), [CSS](https://cdn.dhtmlx.com/scheduler/edge/sources/skins/dhtmlxscheduler.css)
+Core files: [JS](https://cdn.dhtmlx.com/scheduler/edge/sources/dhtmlxscheduler.js), [CSS](https://cdn.dhtmlx.com/scheduler/edge/sources/dhtmlxscheduler.css)
 
 Skins: [Terrace](https://cdn.dhtmlx.com/scheduler/edge/sources/skins/dhtmlxscheduler_terrace.css),
 [Material](https://cdn.dhtmlx.com/scheduler/edge/sources/skins/dhtmlxscheduler_material.css),
