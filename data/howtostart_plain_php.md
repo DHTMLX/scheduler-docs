@@ -74,11 +74,6 @@ Create an `index.html` file in the `scheduler-howto-php-plain` folder and fill i
     <script>
         scheduler.init('scheduler_here', new Date(2019,0,20), "week");
         scheduler.load("data/api.php");
- 
-        var dp = scheduler.createDataProcessor("data/api.php");
-        dp.init(scheduler);
-        dp.setTransactionMode("JSON"); // use to transfer data with JSON
-
     </script> 
     </body> 
 </html>
@@ -336,10 +331,10 @@ scheduler.setLoadMode("day");
 scheduler.load("data/api.php"); /*!*/
  
 // send updates to the backend
-var dp = scheduler.createDataProcessor("data/api.php"); /*!*/
-dp.init(scheduler);  /*!*/
-// set data exchange mode
-dp.setTransactionMode("JSON"); /*!*/
+var dp = scheduler.createDataProcessor({ /*!*/
+	url: "data/api.php", /*!*/
+	mode: "JSON" /*!*/
+}); /*!*/
 ~~~
 
 If you restart the application now, you should be able to create delete and modify events in scheduler, all changes will be there after you reload the page.
