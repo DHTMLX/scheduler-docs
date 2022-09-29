@@ -409,18 +409,9 @@ PDF
 ---------------------------------------------
 Provides export to a PDF document.
 
-~~~js
-scheduler.plugins({
-    pdf: true
-});
-~~~
+- [Export to PDF (version 4.0)](pdf_v4.md)
 
-
-####Related resources
-
-Article:   pdf.md<br>
-
-{{sample 04_export/06_online_export.html}}
+- [Export to PDF (version 4.1+)](pdf.md)
 
 
 Quick Info
