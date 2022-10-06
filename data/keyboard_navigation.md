@@ -44,6 +44,17 @@ The default navigation actions in a modal window are as follows:
 
 If the focus is set on some button of the form, pressing *Space* or *Enter* will call pressing the button under focus and not the action.
 
+## Styling cells in focus
+
+When you set focus on a cell it is highlighted in grey/yellow color. If you need to change this style, use the **.dhx_focus_slot** CSS class:
+
+~~~js
+<style>
+    .dhx_focus_slot{
+        background-color: #fff;
+    }
+</style>
+~~~
 
 ##Scopes
 
