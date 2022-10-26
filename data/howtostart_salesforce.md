@@ -14,9 +14,15 @@ If you use some other technology, check the list of available integration varian
 - howtostart_connector.md
 
 We will use [SalesForce CLI](https://developer.salesforce.com/tools/sfdxcli) to create Lightning Web Component and upload it to an organization. See [this article](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm) for installation guidance. You can also install [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) to Visual Studio Code for working with development orgs.
+
 {{note
 The complete source code is [available on GitHub](https://github.com/DHTMLX/salesforce-scheduler-demo).
 }}
+
+
+You can have a look at the video guide that shows how to create Scheduler with Salesforce LWC.
+
+<iframe width="704" height="400" src="https://www.youtube.com/embed/IceDT8O1Pys" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Prerequisites
 -------------
