@@ -10,6 +10,17 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+6.0.3
+---------------
+<span class='release_date'>November 4, 2022. Bugfix release</span>
+
+### Fixes
+
+- Fix the regression in the [Year view](year_view.md) which caused incorrect date arguments for the [onEmptyClick](api/scheduler_onemptyclick_event.md) event handler
+- Fix work of the ['height' property of the 'time' section of the lightbox](time.md)
+- Fix the issue with the incorrect height of the time scale in the timeline view when the [second_scale](timeline_view.md#secondxaxis) was specified
+- Fix the value of the new event flag in the [onEventCancel](api/scheduler_oneventcancel_event.md) event arguments (the flag must have a boolean value) 
+- Fix the script error which happened on scroll in the [Tree Timeline](timeline_view.md) view when [smart_rendering](api/scheduler_createtimelineview.md) was enabled and sections were initially loaded in the [closed](timeline_view.md#dataforyaxissectionsinthetreemode) state
 
 6.0.2
 -------------
