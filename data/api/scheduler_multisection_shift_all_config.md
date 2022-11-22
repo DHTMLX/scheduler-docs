@@ -11,6 +11,7 @@ scheduler.init('scheduler_here', new Date(2012, 5, 30), "timeline");
 
 @template:	api_config
 @descr:
+{{note The property affects only dragging events vertically (between sections)}}
 
 @related:
 	units_view.md#displayingthesameeventsinseveralunits
