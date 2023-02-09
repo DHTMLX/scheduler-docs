@@ -5,8 +5,7 @@ deleteMarkedTimespan
 	removes marking/blocking set by the addMarkedTimespan() method
 
 @params: 
-* id	string	the timespan's id
-* config	object	the timespan's configuration properties
+* config    string | object  the timespan's id or the timespan's configuration properties
 
 @example: 
 var spanID = scheduler.addMarkedTimespan({  
