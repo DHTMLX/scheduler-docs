@@ -6,7 +6,7 @@ deleteMarkedTimespan
 
 @params: 
 * id	string	the timespan's id
-	
+* config	object	the timespan's configuration properties
 
 @example: 
 var spanID = scheduler.addMarkedTimespan({  
