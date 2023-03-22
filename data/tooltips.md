@@ -28,8 +28,8 @@ Methods
 	- *text* - tooltip content, will be added to innerHTML of the tooltip element
 
 ~~~js
-dhtmlXTooltip.hide();
-dhtmlXTooltip.show(event,text);
+tooltip.hide();
+tooltip.show(event, text);
 ~~~
 
 
@@ -43,11 +43,11 @@ Configuration properties
 - **delta_y** - the top (if positive) offset of the cursor position (by default, -20)
 
 ~~~js
-dhtmlXTooltip.config.className = 'dhtmlXTooltip tooltip'; 
-dhtmlXTooltip.config.timeout_to_display = 50;
-dhtmlXTooltip.config.timeout_to_hide = 50;
-dhtmlXTooltip.config.delta_x = 15; 
-dhtmlXTooltip.config.delta_y = -20; 
+scheduler.config.className = 'dhtmlXTooltip tooltip'; 
+scheduler.config.timeout_to_display = 50;
+scheduler.config.timeout_to_hide = 50;
+scheduler.config.delta_x = 15; 
+scheduler.config.delta_y = -20; 
 ~~~
 
 Templates
