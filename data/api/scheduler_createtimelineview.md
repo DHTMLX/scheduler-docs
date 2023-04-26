@@ -19,6 +19,7 @@ scheduler.createTimelineView({
     x_size:	24,
     x_start: 16,
     x_length: 48,
+    fit_events_offset: 15,
     y_unit:[	
      	{key:1, label:"Section A"},
         {key:2, label:"Section B"},
@@ -82,6 +83,7 @@ to fill all free space). By default, 50
 of the <b>event_min_dy</b> property). By default, <i>true</i> 
 - <b>fit_events</b> - (<i>boolean</i>) specifies whether the section's height should be increased, to fit all events in this section, or should be fixed (the <b>dy</b> parameter). Available from 
 version 3.0. By default, <i>true</i>
+- <b>fit_events_offset</b> - (<i>number</i>) adds extra space (in pixels) under the last event. It is applied when <b>fit_events</b> is set to <i>true</i>
 - <b>round_position</b></td> - (<i>boolean</i>)'stretches' the events all over the entire cell width, no matter how long the event lasts. By default, <i>false</i>. For 'Bar' and 'Tree' modes only 
 - <b>folder_events_available</b> - (<i>boolean</i>) should be set as <i>true</i>, if you want to have the possibility to specify events not only for an individual holder, but also for the whole folder (any 
 level). Applicable to the 'Tree' mode only. By default, <i>false</i> 
