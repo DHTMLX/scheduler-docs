@@ -10,6 +10,18 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+6.0.4
+---------------
+<span class='release_date'>May 31, 2023. Bugfix release</span>
+
+### Fixes
+
+ - Fix the incorrect work of the [dataProcessor](server_integration.md) when an instance of the [Recurring series](recurring_events.md) is edited.
+ - Fix the issue that caused [Recurring series](recurring_events.md) to lose custom properties assigned to them.
+ - Fix the script error that happens after [scheduler.destructor()](api/scheduler_destructor.md) call when the [container_autoresize](extensions_list.md#containerautoresize) extension is enabled.
+ - Fix the regression in the [Timeline view](timeline_view.md) that prevented autoscroll during event drag and drop.
+ - The attached [onContextMenu](api/scheduler_oncontextmenu_event.html) event handler now prevents the default context automatically.
+
 6.0.3
 ---------------
 <span class='release_date'>November 4, 2022. Bugfix release</span>
