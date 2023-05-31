@@ -20,7 +20,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
  - Fix the issue that caused [Recurring series](recurring_events.md) to lose custom properties assigned to them.
  - Fix the script error that happens after [scheduler.destructor()](api/scheduler_destructor.md) call when the [container_autoresize](extensions_list.md#containerautoresize) extension is enabled.
  - Fix the regression in the [Timeline view](timeline_view.md) that prevented autoscroll during event drag and drop.
- - The attached [onContextMenu](api/scheduler_oncontextmenu_event.html) event handler now prevents the default context automatically.
+ - The attached [onContextMenu](api/scheduler_oncontextmenu_event.md) event handler now prevents the default context automatically.
 
 6.0.3
 ---------------
