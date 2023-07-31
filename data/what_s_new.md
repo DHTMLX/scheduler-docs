@@ -10,6 +10,19 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+6.0.5
+---------------
+<span class='release_date'>July 31, 2023. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue where the [lightbox](lightbox_editors.md) was not functioning in SalesForce LWC
+- Fix for the [container_autoresize](extensions_list.md#containerautoresize) issue that occurred with [ignore_week](custom_scales.md) when the week started on a hidden day
+
+### Enhancements
+
+- Updated type definitions to include [scheduler.form_blocks](custom_lightbox_editor.md)
+
 6.0.4
 ---------------
 <span class='release_date'>May 31, 2023. Bugfix release</span>
