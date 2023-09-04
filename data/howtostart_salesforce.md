@@ -52,7 +52,7 @@ Create a Salesforce DX project via CLI:
 
 ~~~js
 $ cd ~/salesforce
-$ sfdx force:project:create -n scheduler-salesforce-app
+$ sfdx project generate -n scheduler-salesforce-app
     target dir = C:\Users\User\salesforce
         create scheduler-salesforce-app\config\project-scratch-def.json
         create scheduler-salesforce-app\README.md
@@ -86,7 +86,7 @@ Step 2. Authorization
 [Authorize an Org](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm) using the Web Server Flow:
 
 ~~~js
-$ sfdx force:auth:web:login --setdefaultdevhubusername
+$ sfdx org login web -d
 
 Successfully authorized ...@...com with org ID ...
 ~~~
@@ -103,9 +103,23 @@ Update your project configuration file (*sfdx-project.json*). Set the "sfdcLogin
 Create a Scratch Org:
 
 ~~~js
-$ sfdx force:org:create -f config/project-scratch-def.json -s
+$ sfdx org create scratch -f config/project-scratch-def.json -d
 
-Successfully created scratch org: ..., username: test-...@example.com
+
+Creating Scratch Org...
+RequestId: 2SR8a000000PLf5GAG (https://xbs2-dev-ed.my.salesforce.com/2SR8a000000PLf5GAG)
+OrgId: 00D8G000000EEMs
+Username: test-3baxo2k0tpej@example.com
+✓ Prepare Request
+✓ Send Request
+✓ Wait For Org
+✓ Available
+✓ Authenticate
+✓ Deploy Settings
+Done
+
+
+Your scratch org is ready. 
 ~~~
 
 
@@ -116,7 +130,7 @@ In order to start using the library, we need to upload it inside Salesforce as a
 Resource. Thus, open your scratch org:
 
 ~~~js
-$ sfdx force:org:open
+$ sfdx org open
 ~~~
 
 Now, open the "Static Resources" tab and press the "New" button
@@ -134,7 +148,7 @@ Now we have dhtmlxScheduler inside Salesforce.
 Step 4. Creating Data Model
 --------------------------------------
 
-The core dhtmlxScheduler entities are Events. A good approach is to store all properties of dhtmlxScheduler entities as plain JSON inside Salesforce. Let's create an Event object. Open the Object Manager and select "Create" then "Custom Object":
+The core dhtmlxScheduler entities are Events. A good approach is to store all properties of dhtmlxScheduler entities as plain JSON inside Salesforce. Let's create an Event object. Open the Object Manager and select "Create", then "Custom Object":
 
 ![](sf_new_object.png)
 
@@ -171,7 +185,7 @@ Press the "Next" button (accepting all default settings) until the "Save & New" 
 
 - **End Date**
 
-Create a "End Date" field. Select "Date/Time" as the Data Type.
+Create the "End Date" field. Select "Date/Time" as the Data Type.
 
 <img style='width:702px' src='sf_end_date.png'>
 
@@ -195,11 +209,12 @@ Step 5. Creating a Lightning Web Component
 To create a Lightning Web Component, run the command:
 
 ~~~js
-$ sfdx force:lightning:component:create --type lwc -n scheduler -d force-app/main/default/lwc
+$ sfdx lightning generate component --type lwc -n scheduler -d force-app/main/default/lwc
 
 target dir = C:\Users\User\source\salesforce\scheduler-salesforce-app\force-app\main\default\lwc
    create force-app\main\default\lwc\scheduler\scheduler.js
    create force-app\main\default\lwc\scheduler\scheduler.html
+   create force-app\main\default\lwc\scheduler\__tests__\scheduler.test.js
    create force-app\main\default\lwc\scheduler\scheduler.js-meta.xml
 ~~~
 
@@ -209,7 +224,7 @@ Change the component definition in *scheduler.js-meta.xml* to expose it in the L
 ~~~html
 <?xml version="1.0" encoding="UTF-8"?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>54.0</apiVersion>
+    <apiVersion>57.0</apiVersion>
     <isExposed>true</isExposed>
     <targets>
         <target>lightning__AppPage</target>
@@ -294,8 +309,7 @@ export default class SchedulerView extends LightningElement {
         const root = this.template.querySelector(".thescheduler");
         root.style.height = this.height + "px";
  
-        //uncomment the following line if you use the Enterprise or Ultimate version
-        //const scheduler = window.Scheduler.getSchedulerInstance();
+        const scheduler = window.Scheduler.getSchedulerInstance();
         scheduler.templates.parse_date = (date) => new Date(date);
         scheduler.templates.format_date = (date) => date.toISOString();
         scheduler.config.header = [
@@ -364,7 +378,7 @@ Step 6. Creating an Apex class
 The next step is to create a class that will make possible the interactions between the Lighting Component and our data model.
 
 ~~~js
-$ sfdx force:apex:class:create -n SchedulerData -d force-app/main/default/classes
+$ sfdx apex generate class -n SchedulerData -d force-app/main/default/classes
 
 target dir = C:\Users\User\salesforce\scheduler-salesforce-app\force-app\main\default\classes
    create force-app\main\default\classes\SchedulerData.cls
@@ -395,13 +409,13 @@ public with sharing class SchedulerData {
 Pull Source from the Scratch Org to Your Project:
 
 ~~~js
-$ sfdx force:source:pull
+$ sfdx project retrieve start
 ~~~
 
 and then push the sources to the Scratch Org:
 
 ~~~js
-$ sfdx force:source:push
+$ sfdx project deploy start
 ~~~
 
 Step 7. Creating Lightning Page
@@ -446,7 +460,7 @@ If everything went well, you should see a simple Scheduler demo running in the L
 Application security
 ----------------------
 
-Scheduler doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the application. Read the details [in the corresponding article](app_security.md). Salesforce is built with security to protect your data and applications. You can also implement your own security scheme to reflect the structure and needs of your organization. For more information, please see the [Salesforce Security Guide](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/salesforce_security_guide.htm). [Here](https://developer.salesforce.com/docs/atlas.en-us.secure_coding_guide.meta/secure_coding_guide/secure_coding_lightning_security.htm) you can find out what do you need to be secure.
+Scheduler doesn't provide any means of preventing an application from various threats, such as SQL injections or XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the application. Read the details [in the corresponding article](app_security.md). Salesforce is built with security to protect your data and applications. You can also implement your own security scheme to reflect the structure and needs of your organization. For more information, please see the [Salesforce Security Guide](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/salesforce_security_guide.htm). [Here](https://developer.salesforce.com/docs/atlas.en-us.secure_coding_guide.meta/secure_coding_guide/secure_coding_lightning_security.htm) you can find out what you need to be secure.
 
 Trouble shooting
 -------------------
