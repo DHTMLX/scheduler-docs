@@ -33,6 +33,7 @@ scheduler.updateView();
 @relatedapi:
 	api/scheduler_deletemarkedtimespan.md
     api/scheduler_marktimespan.md
+	api/scheduler_checkinmarkedtimespan.md
    
 @relatedsample:
 	09_api/03_highlighted_timespans.html
