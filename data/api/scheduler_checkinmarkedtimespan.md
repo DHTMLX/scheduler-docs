@@ -34,4 +34,4 @@ scheduler.checkInMarkedTimespan(scheduler.getEvent(eventId), "discount"); //->tr
 @template:	api_method
 @descr:
 
-{{note The method requires the [limit](extensions_list.md#limit) and [treetimeline](extensions_list.md#treetimeline) plugins to be activated.}}
+{{note The method requires the [limit](extensions_list.md#limit) plugin to be activated.}}
