@@ -28,7 +28,7 @@ Start
     <div class='hot-right'>
     	Check also:
     	<a class='first' href='https://docs.dhtmlx.com/gantt/'>Gantt</a>
-    	<a class='second' href='http://scheduler-net.com/'>Scheduler.Net</a>
+    	<a class='second' href='https://scheduler-net.com/'>Scheduler.Net</a>
 	</div>
     
     <form method="get" action="search.php">
