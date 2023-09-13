@@ -47,7 +47,7 @@ We won't go into detail on setting up the platform ( as it really doesn't concer
 
 
 1.  Install **Node.js**;
-2.  Download the **gridLive_nodejs.zip** package. Don't be confused by the name of the package, it's used for all supported components including dhtmlxScheduler ([download link](http://dhtmlx.com/x/download/regular/gridLive_nodejs.zip));
+2.  Download the **gridLive_nodejs.zip** package. Don't be confused by the name of the package, it's used for all supported components including dhtmlxScheduler ([download link](https://dhtmlx.com/x/download/regular/gridLive_nodejs.zip));
 3.  Unzip the package and copy the **nodejs** folder into the root directory of your web server.
 4.  Execute in the command line: **node nodejs/server.js**.
 
@@ -87,5 +87,5 @@ dp.setTransactionMode("REST", false);
 ~~~
 
 
-The demo application you can download [here](http://dhtmlx.com/x/download/regular/tutorials/dhtmlxScheduler.LiveUpdate.zip).
+The demo application you can download [here](https://dhtmlx.com/x/download/regular/tutorials/dhtmlxScheduler.LiveUpdate.zip).
 
