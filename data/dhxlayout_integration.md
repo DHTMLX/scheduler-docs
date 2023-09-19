@@ -44,7 +44,7 @@ Starting from dhtmlxSuite 6.0, dhtmlxLayout can't be obtained separately from th
 If you're going to use this approach, you should purchase the license of
 the [Suite 6.X library](https://dhtmlx.com/docs/products/dhtmlxSuite/#licensing).
 
-dhtmlxScheduler of [version 5.3](what_s_new.md#53) and newer implements a common View interface used in dhtmlxSuite v6+ and can be [attached to any cell directly](https://docs.dhtmlx.com/suite/layout__api__layout_attach_method.html):
+dhtmlxScheduler of [version 5.3](what_s_new.md#53) and newer implements a common View interface used in dhtmlxSuite v6+ and can be [attached to any cell directly](https://docs.dhtmlx.com/suite/layout__api__layout_attach_method/):
 
 
 ~~~js

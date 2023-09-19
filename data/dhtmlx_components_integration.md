@@ -23,7 +23,7 @@ Let's consider external drag-and-drop in the context of the <a src="http://docs.
 Follow these steps, to integrate the scheduler with <a src="http://docs.dhtmlx.com/doku.php?id=dhtmlxtree:toc">dhtmlxTree</a>: 
 
 <ol>
-	<li><a href="https://dhtmlx.com/docs/download.shtml">Download</a> the  dhtmlxTree package and unzip its content to [YOUR APPLICATION ROOT] folder</li>
+	<li><a href="https://dhtmlx.com/docs/download/">Download</a> the  dhtmlxTree package and unzip its content to [YOUR APPLICATION ROOT] folder</li>
     <li>Include the necessary <b>js</b> and <b>css</b> files on the page:
 ~~~html
 <script src="../codebase/dhtmlxscheduler.js" ...></script>
