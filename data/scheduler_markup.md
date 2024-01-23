@@ -10,9 +10,9 @@ The standard scheduler's markup looks like this:
         <div class="dhx_cal_next_button">&nbsp;</div>
         <div class="dhx_cal_today_button"></div>
         <div class="dhx_cal_date"></div>
-        <div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
-        <div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
-        <div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>
+        <div class="dhx_cal_tab" data-tab="day"></div>
+        <div class="dhx_cal_tab" data-tab="week"></div>
+        <div class="dhx_cal_tab" data-tab="month"></div>
    	</div>
     <div class="dhx_cal_header"></div>
     <div class="dhx_cal_data"></div>       
@@ -24,7 +24,11 @@ The standard scheduler's markup looks like this:
 Tabs positioning 
 --------------------------
 
-###Default ('terrace') skin
+Starting from v7.0 **.dhx_cal_navline** element is flex container and tabs are located according to **order** style.
+
+### Versions 6.0 and older
+
+####Default ('terrace') skin
 Initially, the default ('terrace') skin ignores the CSS properties used to set the tab's position (e.g. style="right:204px;") and locates the tab using its specific logic: the default views are presented 
 as a segmented button at the left side but additional views are placed as individual buttons at the right side.
 
@@ -46,23 +50,11 @@ Notice that you can use the following CSS classes to create a segmented button:
 
 For example, to set the 'day'-'week'-'month' segmented button in the default skin manually, you can specify the markup as in:
 ~~~html
-<div class="dhx_cal_tab dhx_cal_tab_first" name="day_tab" style="left:14px;"></div>
-<div class="dhx_cal_tab" name="week_tab"  style="left: 75px;"></div>
-<div class="dhx_cal_tab dhx_cal_tab_last" name="month_tab" style="left:136px"></div>
+<div class="dhx_cal_tab dhx_cal_tab_first" data-tab="day" style="left:14px;"></div>
+<div class="dhx_cal_tab" data-tab="week"  style="left: 75px;"></div>
+<div class="dhx_cal_tab dhx_cal_tab_last" data-tab="month" style="left:136px"></div>
 ~~~
 
-###'Glossy' and 'Classic' skins
-The 'classic', 'glossy' skins apply the coordinates specified in the scheduler's markup initially and don't require disabling of the default behavior.
-
-~~~html
-<div class="dhx_cal_navline">
-	...
-	<div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
-	<div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
-	<div class="dhx_cal_tab" name="agenda_tab" style="right:280px;"></div>
-	<div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>
-</div>
-~~~
 
 Adding/deleting views' tabs 
 ---------------------------
@@ -72,14 +64,14 @@ To add a new tab to the header, add a div with the **"dhx_cal_tab"** class as a 
 ~~~html
 <div class="dhx_cal_navline">
 	...
-	<div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
-	<div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
-	<div class="dhx_cal_tab" name="timeline_tab" style="right:280px;"></div>
-	<div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>
+	<div class="dhx_cal_tab" data-tab="day"></div>
+	<div class="dhx_cal_tab" data-tab="week"></div>
+	<div class="dhx_cal_tab" data-tab="timeline"></div>
+	<div class="dhx_cal_tab" data-tab="month"></div>
 </div>
 ~~~
 
-The view that will be opened on a tab click is defined by the **name** attribute and specified as **{viewName}_tab**.
+The view that will be opened on a tab click is defined by the **data-tab** attribute and specified as **{viewName}**.
 
 {{note
 Note, the tab can have several CSS classes applied, but the **"dhx_cal_tab"** class must go first.
@@ -95,8 +87,8 @@ Removing the 'month' tab from the header
 ~~~html
 <div class="dhx_cal_navline">
 	...
-	<div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
-	<div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
+	<div class="dhx_cal_tab" data-tab="day"></div>
+	<div class="dhx_cal_tab" data-tab="week"></div>
 </div>
 ~~~
 
@@ -134,11 +126,14 @@ Hiding the navigation buttons in the header
 
 Hiding the scheduler's header
 --------------------------------
-To hide the entire scheduler's header, set the [nav_height](api/scheduler_xy_other.md) property to 0: 
+To hide the entire scheduler's header, set the 'display:none': 
 
-~~~js
-scheduler.xy.nav_height = 0;
-...
-scheduler.init('scheduler_here', new Date(2010, 0, 10), "month");
+~~~html
+<style>
+	.dhx_cal_navline{
+		display:none;
+	}
+</style>
+
 ~~~
 

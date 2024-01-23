@@ -1,10 +1,86 @@
 Skins Customization
 ========================
 
+Starting from v7.0 Scheduler skins use css variables that can be used for customization of build in skins.
+
+{{sample
+	07_skins/07_themes.html
+}}
+
+Here is a list of primary variables you might need for customizing the skin:
+
+~~~
+:root {
+	--dhx-scheduler_font-family: Inter, Helvetica, Arial, sans-serif;
+	--dhx-scheduler_font-size: 14px;
+
+	--dhx-scheduler_base-colors-primary: #537CFA;
+	--dhx-scheduler_base-colors-warning: #FAB936;
+	--dhx-scheduler_base-colors-error: #E3334E;
+	--dhx-scheduler_base-colors-error-text: #FFFFFF;
+	--dhx-scheduler_base-colors-success: #1BC297;
+	--dhx-scheduler_base-colors-secondary: rgba(0, 0, 0, 0.04);
+
+	--dhx-scheduler_base-colors-select: #EFF3FF;
+	--dhx-scheduler_base-colors-border: #D0DBE3;
+	--dhx-scheduler_base-colors-icons: #A1A4A6;
+
+	--dhx-scheduler_base-colors-disabled: #E9E9E9;
+	--dhx-scheduler_base-colors-readonly: var(--dhx-scheduler_base-colors-icons);
+	--dhx-scheduler_base-colors-text-light: #44494E;
+	--dhx-scheduler_base-colors-text-base: #23272A;
+	--dhx-scheduler_base-colors-background: #FFFFFF;
+
+	--dhx-scheduler_container-background: var(--dhx-scheduler_base-colors-background);
+	--dhx-scheduler_container-color: var(--dhx-scheduler_base-colors-text-base);	
+
+	--dhx-scheduler_base-padding: 4px;
+	--dhx-scheduler_border-radius: var(--dhx-scheduler_base-module);
+
+	--dhx-scheduler_event-colors-primary: #537CFA;
+	--dhx-scheduler_event-text-primary: rgba(255, 255, 255, 0.90);
+
+	--dhx-scheduler_toolbar-height: 40px;
+
+	--dhx-scheduler_header-border: var(--dhx-scheduler_default-border);
+	--dhx-scheduler_halfhour-border: 1px dotted var(--dhx-scheduler_base-colors-border);
+
+	/* events */
+
+	--dhx-scheduler_event-background-primary: var(--dhx-scheduler_base-colors-primary);
+
+	--dhx-scheduler_event-blue: linear-gradient(180deg, #527CFF 0%, #9751FC 100%);
+	--dhx-scheduler-event-green: linear-gradient(180deg, #12D979 0%, #1ECDEB 100%);
+	--dhx-scheduler-event-violet: linear-gradient(180deg, #D071EF 0%, #EE71D5 100%);
+	--dhx-scheduler-event-yellow: linear-gradient(180deg, #FFB725 0%, #FFBB25 31.25%, #FAEA27 100%);
+
+	--dhx-scheduler_event-menu-background: var(--dhx-scheduler_popup-background);
+	--dhx-scheduler_event-menu-color: var(--dhx-scheduler_base-colors-primary);
+
+	--dhx-scheduler_event-background: var(--dhx-scheduler_event-blue);
+	--dhx-scheduler_event-border: none;
+	--dhx-scheduler_event-color: var(--dhx-scheduler_event-text-primary);
+	--dhx-scheduler_event-line-text: var(--dhx-scheduler_container-color);
+
+	--dhx-scheduler_event-marker-color: var(--dhx-scheduler_event-background);
+
+	--dhx-scheduler_popup-background: var(--dhx-scheduler_container-background);
+	--dhx-scheduler_popup-color: var(--dhx-scheduler_container-color);
+	--dhx-scheduler_popup-border: none;
+	--dhx-scheduler_popup-border-radius: var(--dhx-scheduler_border-radius);
+
+}
+
+~~~
+
+
+All variables can be found in **codebase/sources/less/src/themes/variables.less** file of the package.
+
+
 dhtmlxScheduler is shipped with style files in the following forms:
 
-- **codebase/dhtmlxscheduler*.css** - prebuilt compressed CSS files for skins, ready for production use;
-- **codebase/sources/skins/dhtmlxscheduler*.css** - prebuilt readable CSS files;
+- **codebase/dhtmlxscheduler.css** - prebuilt compressed CSS file for skins, ready for production use;
+- **codebase/sources/skins/dhtmlxscheduler.css** - prebuilt readable CSS files;
 - **codebase/sources/less/dhtmlxscheduler*.less** - source less files of Scheduler skins.
 
 The latter can be used for deep customization of existing skins or for creating a new skin.

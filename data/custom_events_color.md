@@ -72,6 +72,23 @@ Let's assume, you want to have the events assigned to managers and employees in 
 {{snippet
 Redefining the default CSS classes
 }}
+
+~~~html
+<style>
+    .manager_event {
+        --dhx-scheduler_event-background: #009966;
+        --dhx-scheduler_event-color: black;
+    }
+
+    .employee_event {
+        --dhx-scheduler_event-background: #FF9933;
+        --dhx-scheduler_event-color: black;
+    }
+</style>
+~~~
+
+For older versions of Scheduler (v6.0 and earlier), CSS variables are not available and events can be colored with following styles:
+
 ~~~html
 <style>
 	/*event in day or week view*/
@@ -175,10 +192,10 @@ scheduler.attachEvent("onLoadEnd", function(){
     // generate css styles for each option and write css into the style element,
  
     resources.forEach(function(r){
-        html.push(".dhx_cal_event_line.event_resource_" + r.key + "{" +
-            "background-color:"+r.backgroundColor+"; " +
-            "color:"+r.textColor+";" +
-        "}");
+        html.push(`.event_resource_${r.key} {
+            --dhx-scheduler_event-background:${r.backgroundColor};
+            --dhx-scheduler_event-color:${r.textColor};
+        }`);
     });
     element.innerHTML = html.join("");
 });
