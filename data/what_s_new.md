@@ -10,6 +10,36 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+7.0.0
+---------------
+<span class='release_date'>January 31, 2024. Major release</span>
+
+### Breaking Changes
+
+This update brings some changes in the structure of the Scheduler package and behavior of functionality. Be sure to check [Migration notes](migration_from_older_version.md) to be on the safe side.
+
+### Updates
+
+- Refreshed Terrace skin
+- New Dark skin
+- All skins can be customized using CSS variables
+- New Agenda view
+- Ability to customize markers of Map View
+- Default display for short events in Day/Week/Units views
+- Day/Week/Units no longer use image for hour grid
+- Bluebird Promise library no longer included into the library
+- Better default display of navigation panel in smaller containers
+- User-friendly API for custom Tooltips
+
+### Fixes
+
+- Fix incorrect display of recurring form when French locale is used
+- Fix the incorrect duration of events after drag and drop in Timeline when first_hour/last_hour settings are used
+- Fix unexpected scroll behavior when mousewheel scroll over lefthand panel of the Timeline
+- Fix visual lag on vertical scroll in Timeline on high definition screens when Smart Rendering is enabled
+- Fix not working drag and drop in Units view when all_timed extension is enabled
+- Multiselect plugin is restored in GPL builds
+
 6.0.5
 ---------------
 <span class='release_date'>July 31, 2023. Bugfix release</span>

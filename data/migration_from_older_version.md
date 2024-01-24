@@ -20,6 +20,109 @@ Migration From Older Versions
 	}
 </style>
 
+## 6.0 -> 7.0
+
+The v7.0 update introduces several breaking changes.
+
+
+### Skins switched to css variables
+
+CSS skins (themes) are completely reworked and now use CSS variables. While HTML structure of the component and css classnames mostly remained unchanged, CSS styles writen for older versions of Scheduler are likely no longer work as expected with v7.0.
+
+For example, following style is used to change the backgound color of event:
+
+~~~html
+<style>
+	/*event in day or week view*/
+    .dhx_cal_event.manager_event div{
+        background-color: #009966 !important;
+        color: black !important;
+    }
+    /*multi-day event in month view*/
+    .dhx_cal_event_line.manager_event{
+        background-color: #009966 !important;
+        color: black !important;
+    }
+    /*event with fixed time, in month view*/
+    .dhx_cal_event_clear.manager_event{
+        color: black !important;
+    }
+</style>
+~~~
+
+Starting from v7.0 the same is done with the following style:
+
+~~~html
+<style>
+	.manager_event {
+		--dhx-scheduler_event-background: #009966;
+		--dhx-scheduler_event-color: black;
+	}
+</style>
+~~~
+
+Check available variables at custom_skins.md page.
+
+Migration will require rewriting existing CSS to achieve required design.
+
+### Single css file
+
+All themes are now embedded into single **dhtmlxscheduler.css** file.
+
+To activate specific skin use `scheduler.skin` property:
+
+~~~js
+scheduler.skin = "material";
+~~~
+
+Or api/scheduler_setskin.md method:
+
+~~~js
+scheduler.setSkin("material");
+~~~
+
+Note, `scheduler.setSkin` will repaint the Scheduler.
+
+
+### Obsolete `scheduler.xy` settings
+
+Following `scheduler.xy` properties are no longer used:
+
+- scheduler.xy.nav_height
+- scheduler.xy.event_header_height
+
+Height of appropriate elements is set by styles:
+
+~~~html
+.dhx_cal_navline {
+	height: 40px;
+}
+
+.dhx_cal_event dhx_title {
+	height: 30px;
+}
+~~~
+
+
+### Material skin font
+
+**Material** skin no longer import Roboto font by default.
+
+If you use Material skin you need to import font manually:
+
+~~~html
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
+~~~
+
+### New API for Tooltips
+
+Tooltips got new API that allows easily attaching the tooltip to custom elements. See more details in the related article: tooltips.md
+
+
+### Promise implementation
+
+**Bluebird** library excluded from the library, api/scheduler_promise.md now uses native Promise implementation.
+
 ## 5.3 -> 6.0
 
 The newest update v6.0 introduces two major changes in the structure of the Scheduler package:

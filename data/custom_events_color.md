@@ -93,31 +93,31 @@ For older versions of Scheduler (v6.0 and earlier), CSS variables are not availa
 <style>
 	/*event in day or week view*/
     .dhx_cal_event.manager_event div{
-    	background-color: #009966 !important;
+        background-color: #009966 !important;
         color: black !important;
     }
-	.dhx_cal_event.employee_event div{
-		background-color: #FF9933 !important;
-		color: black !important;
-	}
+    .dhx_cal_event.employee_event div{
+        background-color: #FF9933 !important;
+        color: black !important;
+    }
  
     /*multi-day event in month view*/
     .dhx_cal_event_line.manager_event{
-    	background-color: #009966 !important;
-		color: black !important;
-	}
-	.dhx_cal_event_line.employee_event{
-    	background-color: #FF9933 !important;
-		color: black !important;
-	}
- 
-	/*event with fixed time, in month view*/
-	.dhx_cal_event_clear.manager_event{
-    	color: black !important;
-	}
-	.dhx_cal_event_clear.employee_event{
-    	color: black !important;
-	}
+        background-color: #009966 !important;
+        color: black !important;
+    }
+    .dhx_cal_event_line.employee_event{
+        background-color: #FF9933 !important;
+        color: black !important;
+    }
+
+    /*event with fixed time, in month view*/
+    .dhx_cal_event_clear.manager_event{
+        color: black !important;
+    }
+    .dhx_cal_event_clear.employee_event{
+        color: black !important;
+    }
 </style>
 ~~~
     </li>
