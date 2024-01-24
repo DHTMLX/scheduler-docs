@@ -6,6 +6,9 @@ markTimespan
 @params: 
 - config	object	the configuration object of the timespan to mark/block	
 
+@returns:
+- divs	array	returns an array of HTML elements
+
 @example: 
 //marks dates
 scheduler.markTimespan({  
