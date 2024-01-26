@@ -120,3 +120,6 @@ Related guides
 - loading_data.md
 - skins.md
 - localization.md
+
+@index:
+agenda_view_old.md

@@ -1,4 +1,4 @@
-Sizing the Scale and Events Boxes  
+Sizing the Scale and Events Boxes (v6.0)
 ==============
 
 *The article refers to dhtmlxScheduler 6.0 or earlier versions. If you use dhtmlxScheduler 7.0+, see details [here](sizing.md).*

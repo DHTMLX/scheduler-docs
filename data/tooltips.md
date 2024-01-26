@@ -235,4 +235,6 @@ scheduler.attachEvent("onSchedulerReady", function(){
 scheduler.init("scheduler_here");
 ~~~
 
+@index:
+tooltips_old.md
 

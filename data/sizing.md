@@ -97,3 +97,6 @@ scheduler.templates.hour_scale = function(date){
 }}
 
 
+
+@index:
+sizing_old.md

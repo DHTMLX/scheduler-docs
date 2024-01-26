@@ -1,4 +1,4 @@
-Agenda View 
+Agenda View (v6.0)
 =======
 
 *The article refers to dhtmlxScheduler 6.0 or earlier versions. If you use dhtmlxScheduler 7.0+, see details [here](agenda_view.md).*
@@ -142,7 +142,11 @@ Related guides
 ---------------------
 
 - configuration.md
-- agenda_view_templates.md
+- agenda_view_templates_old.md
 - loading_data.md
 - skins.md
 - localization.md
+
+
+@index:
+agenda_view_templates_old.md
