@@ -5,6 +5,7 @@ Templates
 
 {{api
 - api/scheduler_agenda_date_template.md - specifies the date in the header of the view
+- api/scheduler_agenda_day_template.md - 
 - api/scheduler_agenda_text_template.md - specifies the text in the second column of the Agenda view
 - api/scheduler_agenda_time_template.md - specifies the date in the first column of the Agenda view
 - api/scheduler_api_date_template.md - specifies the format of dates that are set by means of API methods. Used to parse incoming dates
@@ -40,6 +41,8 @@ Templates
 - api/scheduler_quick_info_date_template.md - specifies the date of the pop-up edit form
 - api/scheduler_quick_info_title_template.md - specifies the title of the pop-up edit form
 - api/scheduler_time_picker_template.md - specifies the drop-down time selector in the lightbox
+- api/scheduler_time_slot_class_template.md - 
+- api/scheduler_time_slot_text_template.md - 
 - api/scheduler_tooltip_date_format_template.md - specifies the format of start and end dates displayed in the tooltip
 - api/scheduler_tooltip_text_template.md - specifies the text of tooltips
 - api/scheduler_week_agenda_date_template.md - specifies the date in the header of the Week Agenda view
@@ -54,28 +57,29 @@ Templates
 - api/scheduler_year_tooltip_template.md - specifies the tooltip over a day cell containing some scheduled event(s)
 - api/scheduler_lightbox_header_template.md - specifies the lightbox's header
 - api/scheduler_{gridname}_date_template.md - specifies the date in the header of the view
-- api/scheduler_{gridname}_field_template.md - specifies the text in the columns
 - api/scheduler_{gridname}_full_date_template.md - specifies the format of dates in columns with id='date'
 - api/scheduler_{gridname}_single_date_template.md - specifies the format of dates in columns with id='start_date' or id='end_date'
-- api/scheduler_{timelinename}_cell_class_template.md - specifies the CSS class that will be applied to a cell of the view
+- api/scheduler_{gridname}_field_template.md - specifies the text in the columns
 - api/scheduler_{timelinename}_cell_value_template.md - specifies the number of scheduled events in a cell of the view
-- api/scheduler_{timelinename}_date_template.md - specifies the date in the header of the view
-- api/scheduler_{timelinename}_row_class_template.md - specifies the CSS class that will be applied to a row of the Timeline view
-- api/scheduler_{timelinename}_scale_date_template.md - specifies items of the X-Axis
-- api/scheduler_{timelinename}_scale_label_template.md - specifies items of the Y-Axis
+- api/scheduler_{timelinename}_cell_class_template.md - specifies the CSS class that will be applied to a cell of the view
 - api/scheduler_{timelinename}_scalex_class_template.md - specifies the name of a CSS class that will be applied to items of the X-Axis
-- api/scheduler_{timelinename}_scaley_class_template.md - specifies the name of a CSS class that will be applied to items of the Y-Axis
-- api/scheduler_{timelinename}_second_scale_date_template.md - specifies items of the second X-Axis
 - api/scheduler_{timelinename}_second_scalex_class_template.md - specifies the name of a CSS class that will be applied to items of the second X-Axis
+- api/scheduler_{timelinename}_scaley_class_template.md - specifies the name of a CSS class that will be applied to items of the Y-Axis
+- api/scheduler_{timelinename}_scale_label_template.md - specifies items of the Y-Axis
 - api/scheduler_{timelinename}_tooltip_template.md - specifies the tooltip over a day cell containing some scheduled event(s)
+- api/scheduler_{timelinename}_date_template.md - specifies the date in the header of the view
+- api/scheduler_{timelinename}_scale_date_template.md - specifies items of the X-Axis
+- api/scheduler_{timelinename}_second_scale_date_template.md - specifies items of the second X-Axis
 - api/scheduler_{unitsname}_date_template.md - specifies the date in the header of the view
 - api/scheduler_{unitsname}_scale_text_template.md - specifies items of the X-Axis
 - api/scheduler_xml_date_template.md - a string from an XML file is converted into a date object in conformity with this template
 - api/scheduler_xml_format_template.md - a date object is converted into a string in conformity with this template. Used to send data back to the server
+- api/scheduler_{timelinename}_row_class_template.md - specifies the CSS class that will be applied to a row of the Timeline view
 }}
 
 @index:
 - api/scheduler_agenda_date_template.md
+- api/scheduler_agenda_day_template.md
 - api/scheduler_agenda_text_template.md
 - api/scheduler_agenda_time_template.md
 - api/scheduler_api_date_template.md
@@ -111,6 +115,8 @@ Templates
 - api/scheduler_quick_info_date_template.md
 - api/scheduler_quick_info_title_template.md
 - api/scheduler_time_picker_template.md
+- api/scheduler_time_slot_class_template.md
+- api/scheduler_time_slot_text_template.md
 - api/scheduler_tooltip_date_format_template.md
 - api/scheduler_tooltip_text_template.md
 - api/scheduler_week_agenda_date_template.md
@@ -125,23 +131,23 @@ Templates
 - api/scheduler_year_tooltip_template.md
 - api/scheduler_lightbox_header_template.md
 - api/scheduler_{gridname}_date_template.md
-- api/scheduler_{gridname}_field_template.md
 - api/scheduler_{gridname}_full_date_template.md
 - api/scheduler_{gridname}_single_date_template.md
-- api/scheduler_{timelinename}_cell_class_template.md
+- api/scheduler_{gridname}_field_template.md
 - api/scheduler_{timelinename}_cell_value_template.md
-- api/scheduler_{timelinename}_date_template.md
-- api/scheduler_{timelinename}_row_class_template.md
-- api/scheduler_{timelinename}_scale_date_template.md
-- api/scheduler_{timelinename}_scale_label_template.md
+- api/scheduler_{timelinename}_cell_class_template.md
 - api/scheduler_{timelinename}_scalex_class_template.md
-- api/scheduler_{timelinename}_scaley_class_template.md
-- api/scheduler_{timelinename}_second_scale_date_template.md
 - api/scheduler_{timelinename}_second_scalex_class_template.md
+- api/scheduler_{timelinename}_scaley_class_template.md
+- api/scheduler_{timelinename}_scale_label_template.md
 - api/scheduler_{timelinename}_tooltip_template.md
+- api/scheduler_{timelinename}_date_template.md
+- api/scheduler_{timelinename}_scale_date_template.md
+- api/scheduler_{timelinename}_second_scale_date_template.md
 - api/scheduler_{unitsname}_date_template.md
 - api/scheduler_{unitsname}_scale_text_template.md
 - api/scheduler_xml_date_template.md
 - api/scheduler_xml_format_template.md
+- api/scheduler_{timelinename}_row_class_template.md
 
 

@@ -12,7 +12,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 7.0.0
 ---------------
-<span class='release_date'>January 31, 2024. Major release</span>
+<span class='release_date'>January 30, 2024. Major release</span>
 
 ### Breaking Changes
 
@@ -20,25 +20,30 @@ This update brings some changes in the structure of the Scheduler package and be
 
 ### Updates
 
-- Refreshed Terrace skin
-- New Dark skin
-- All skins can be customized using CSS variables
-- New Agenda view
-- Ability to customize markers of Map View
-- Default display for short events in Day/Week/Units views
-- Day/Week/Units no longer use image for hour grid
-- Bluebird Promise library no longer included into the library
-- Better default display of navigation panel in smaller containers
-- User-friendly API for custom Tooltips
+- Updated the [Terrace skin](skins.md#terraceskin)
+- Introduced a new [Dark skin](skins.html#darkskin)
+- Enabled [customization of all skins](custom_skins.md) using CSS variables
+- Added a new [Agenda view](agenda_view.md)
+- Enhanced the ability to customize markers in the [Map View](map_view.md)
+- Improved default display for [short events](sizing.md) in Day/Week/Units views
+- Updated [Day](day_view.md)/[Week](week_view.md)/[Units](units_view.md) views to no longer use images for the background grid
+- Removed the [Bluebird Promise](api/scheduler_promise.md) library from the core library
+- Various improvements for scaling on high-definition screens and responsiveness on smaller screens
+- Provided a new user-friendly API for the [Tooltip extension](tooltips.md)
+- Added ability to reserve free space in columns of [Day](day_view.md)/[Week](week_view.md)/[Units](units_view.md) views
+- New api/scheduler_onbeforequickinfo_event.md
+- New api/scheduler_time_slot_class_template.md and api/scheduler_time_slot_text.md templates
+- Updated type definitions
 
 ### Fixes
 
-- Fix incorrect display of recurring form when French locale is used
-- Fix the incorrect duration of events after drag and drop in Timeline when first_hour/last_hour settings are used
-- Fix unexpected scroll behavior when mousewheel scroll over lefthand panel of the Timeline
-- Fix visual lag on vertical scroll in Timeline on high definition screens when Smart Rendering is enabled
-- Fix not working drag and drop in Units view when all_timed extension is enabled
-- Multiselect plugin is restored in GPL builds
+- Corrected the display issues of the [recurring form](recurring_events.md) when the [French locale](localization.md) is used
+- Fixed the incorrect duration of events after drag-and-drop actions in the [Timeline view](timeline_view.md) when using the first_hour/last_hour settings
+- Addressed unexpected scroll behavior when using the mouse wheel over the left-hand panel of the [Timeline view](timeline_view.md)
+- Resolved visual lag during vertical scrolling in the [Timeline view](timeline_view.md) on high-definition screens with Smart Rendering enabled
+- Fixed the non-functional drag-and-drop in the [Units view](units_view.md) when the `all_timed` extension is active
+- Restored the Multiselect plugin in GPL builds
+
 
 6.0.5
 ---------------

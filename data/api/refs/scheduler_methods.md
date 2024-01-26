@@ -101,6 +101,7 @@ Methods
 - api/scheduler_seteventtext.md - sets the event's text
 - api/scheduler_setlightboxsize.md - forces the lightbox to resize
 - api/scheduler_setloadmode.md - sets the mode that allows loading data by parts (enables the dynamic loading)
+- api/scheduler_setskin.md - 
 - api/scheduler_setuserdata.md - sets the user data associated with the specified event
 - api/scheduler_showcover.md - shows the lightbox modal overlay that blocks interactions with the remaining screen
 - api/scheduler_showevent.md - shows and highlights the specified event in the current or specified view
@@ -222,6 +223,7 @@ Methods
 - api/scheduler_seteventtext.md
 - api/scheduler_setlightboxsize.md
 - api/scheduler_setloadmode.md
+- api/scheduler_setskin.md
 - api/scheduler_setuserdata.md
 - api/scheduler_showcover.md
 - api/scheduler_showevent.md

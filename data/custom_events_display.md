@@ -4,7 +4,7 @@ Custom Event's Box
 dhtmlxScheduler provides the possibility to define custom display for events.
 
 {{note
-Applicable to the day_view.md and week_view.md only
+Applicable to the day_view.md, week_view.md and units_view.md only
 }}
 
 ##Technique
@@ -84,33 +84,30 @@ and the related CSS is the following:
 
 ~~~html
 <style type="text/css" >
-	html, body {
-		margin: 0;
-		padding: 0;
-	}
-	/* the background color for the whole container and its border*/
+	/* background color for whole container and it's border*/
 	.my_event {
-		background-color: #add8e6;
-        border: 1px solid #778899;
-        overflow: hidden;
-	}    
-	/* disabling the default color for the select menu */
-	.dhx_cal_select_menu.my_event div {
-		border: 0;
-		background-color: transparent;
+		background: #add8e6;
 		color: black;
-	}    
-	/* styles for the event content */
+		border: 1px solid #778899;
+		overflow: hidden;
+		display: block;
+	}
+
+	.dhx_cal_event_clear.my_event {
+		height: 22px;
+	}
+
+	/* styles for event content */
 	.dhx_cal_event.my_event .my_event_body {
 		padding-top: 3px;
 		padding-left: 5px;
-	}	
-    /* event's date information */
-	.my_event .event_date {			
-        font-weight: bold;
+	}
+	/* event's date information */
+	.my_event .event_date {
+		font-weight: bold;
 		padding-right: 5px;
-	}	
-    /* event's resizing section */
+	}
+	/* event's resizing section */
 	.my_event_resize {
 		height: 3px;
 		position: absolute;
@@ -126,6 +123,22 @@ and the related CSS is the following:
 </style>
 ~~~
 
+You can also use css variables instead of fixed color values:
+
+~~~html
+<style>
+--dhx-scheduler-event-background);
+
+.my_event {
+	--dhx-scheduler-event-background: #add8e6;
+	--dhx-scheduler-event-color: black;
+	--dhx-scheduler-event-border: 1px solid #778899;
+
+	overflow: hidden;
+	display: block;
+}
+</style>
+~~~
 
 {{sample
 	02_customization/27_custom_event_box.html

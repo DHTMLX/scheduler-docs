@@ -1,66 +1,42 @@
 Sizing the Scale and Events Boxes  
 ==============
 
-In this article we would like to consider scale's and event box's sizing through the example of solving 4 problems:
+*If you use dhtmlxScheduler 6.0 or earlier, see details [here](agenda_view_old.md).*
 
-**Problem 1:** [Events that last less then 1 hour look in the scheduler the same as the 1-hour events do. 
-I want short events to fit the scale.](sizing.md#howtomakeshorteventsfitthescale)
-  
-  
-**Problem 2:** [Events that last less then 1 hour and occur at the different times but within one hour overlap. 
-I want such short events not to overlap.](sizing.md#preventingshorteventsfromoverlapping)
-  
-  
-**Problem 3:** [I change the scale unit height and want to change the striped background accordingly.](sizing.md#howtochangethebackgroundaccordingtothesetscale)
-  
-  
-**Problem 4:** [The default scale spacing is 1 hour. I want to change it and make, for example, 30 minutes.](sizing.md#howtochangethescalespacing)
+In this article we consider how you can manage sizes of events and of the time scale.
 
-##How to make short events fit the scale
+## Short events display
 
 First, let's learn the default behavior of the events boxes:
 
 
 
-+ the default scale unit height is 44px (or the hour height).
-+ the minimum height of the event box is 44px. 
-+ events that last less than 1 hour take the size of 44px. So, 15-minute and 1-hour events  will look the same in the scheduler.
-+ events that last more than 1 hour take their height according to the side scale (assuming that 1 hour is equal to 44px - a 90-minutes event will take 63px in height).
++ the default scale unit height is 44px (or the hour height), as defined by api/scheduler_hour_size_px_config.md.
++ the minimum height of the event box is 20px, as defined by **scheduler.xy.min_event_height** setting. 
++ since the event can be less than 20px height, both 15min and 5min events will have the same height.
 
++ events that have less than 42px height use special display mode and receive extra css class to enable display of shorter events
++ + `.dhx_cal_event--small` - events less than 42px
++ + `.dhx_cal_event--xsmall` - events less than 30px
 
-Let's assume you want 30-minute events to fit the scale. Then you have 2 solutions:
+![30_minute_short_event.png](30_minute_short_event.png)
 
-
-
-- To increase the height of the scale's unit 
-- To customize the event box
-
-![30-minute_custom_event.png](30-minute_custom_event.png)
-
-###Solution 1. Changing the scale unit's height
-
-To change the height of the scale's unit you should use the api/scheduler_hour_size_px_config.md configuration option.
-  
-   
-For example, to increase the unit's height twice you should call the option as in:
-
+You can increase the height of the time scale to improve visibility of such events:
 
 ~~~js
-scheduler.config.hour_size_px = 88;
-
-scheduler.init(...);
+scheduler.config.hour_size_px = 90;
+scheduler.render();// or scheduler.init(...)
 ~~~
 
+![30_minute_long_event.png](30_minute_long_event.png)
 
-Now the scale unit's height is 88 px and the 30-minute event taking 44px will occupy the 30-minute height, as it's needed.
 
-{{sample
-	02_customization/09_timestep.html
-}}
 
-###Solution 2. Customizing the event box
 
-To customize the events boxes display, you should use the api/scheduler_renderevent.md method that allows you to set your own template for the events.
+### Customizing the event box
+
+It is possible co completely override the render function of the event box.
+To do so you should use the api/scheduler_renderevent.md method that allows you to set your own template for the events.
 
 
 ~~~js
@@ -84,32 +60,8 @@ you should set the api/scheduler_separate_short_events_config.md option to *true
 scheduler.config.separate_short_events = true;
 ~~~
 
+This config is enabled by default starting from v7.0, you need to enable it manually only if you use the earlier version of the Scheduler.
 
-![overlapping.png](overlapping.png)
-
-##How to change the background according to the set scale 
-
-The scheduler background is set by a mere image.
-  
-To change the background image you should redefine the related css class which is **.dhx_scale_holder**:
-
-
-~~~js
-<style>
-.dhx_scale_holder {
-	 background-image: url("imgs/myNewImage.png");
-}
-</style>
-
-~~~
-
-~~~js
-scheduler.init(...);
-
-~~~
-
-
-![changing_background.png](changing_background.png)
 
 
 ##How to change the scale spacing

@@ -1,6 +1,31 @@
 Scheduler API 
 =============
 
+@groupindex:
+- Views
+- Views/Year view
+- Views/Month view
+- Views/Agenda view
+- Views/Map view
+- Views/Timeline view
+- General settings
+- General settings/Touch support
+- General settings/Quick info
+- General settings/Scale
+- General settings/Readonly mode
+- General setting/View settings
+- Events
+- Events/Drag-and-Drop operations
+- Events/Select bar
+- Events/Cascade events
+- Events/Reccuring events
+- Events/Multi-day events
+- Events/Multisection events
+- Date format
+- Lightbox
+- Time, time zones
+
+
 <div class='h2'>Methods</div>
 
 {{api
@@ -102,6 +127,7 @@ Scheduler API
 - api/scheduler_seteventtext.md - sets the event's text
 - api/scheduler_setlightboxsize.md - forces the lightbox to resize
 - api/scheduler_setloadmode.md - sets the mode that allows loading data by parts (enables the dynamic loading)
+- api/scheduler_setskin.md - 
 - api/scheduler_setuserdata.md - sets the user data associated with the specified event
 - api/scheduler_showcover.md - shows the lightbox modal overlay that blocks interactions with the remaining screen
 - api/scheduler_showevent.md - shows and highlights the specified event in the current or specified view
@@ -148,6 +174,7 @@ Scheduler API
 - api/scheduler_onbeforefoldertoggle_event.md - fires before a tree branch will be opened or closed (the Timeline view, 'tree' mode only)
 - api/scheduler_onbeforelightbox_event.md - fires immediately before the user opens the lightbox (edit form)
 - api/scheduler_onbeforeparse_event.md - fires before data started to be parsed
+- api/scheduler_onbeforequickinfo_event.md - 
 - api/scheduler_onbeforetodaydisplayed_event.md - fires when the user clicks on the 'Today' button in the scheduler
 - api/scheduler_onbeforetooltip_event.md - fires before the tooltip is displayed for a data item (only with the 'tooltip' extension enabled)
 - api/scheduler_onbeforeviewchange_event.md - fires before the user changes the current view to some other one
@@ -236,6 +263,7 @@ Scheduler API
 - api/scheduler_container_autoresize_config.md - forces the scheduler container to automatically change its size to show the whole content without scrolling
 - api/scheduler_csp_config.md - defines internal implementation of the code of date formatting methods
 - api/scheduler_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
+- api/scheduler_day_column_padding_config.md - 
 - api/scheduler_day_date_config.md - sets the date format for the X-Axis of the Week and Units views
 - api/scheduler_dblclick_create_config.md - enables the possibility to create events by double click
 - api/scheduler_default_date_config.md - sets the date format used by the templates 'day_date', 'week_date', 'day_scale_date' for setting date in the views' headers
@@ -330,6 +358,10 @@ Scheduler API
 - api/scheduler_start_on_monday_config.md - sets the start day of weeks
 - api/scheduler_time_step_config.md - sets the minimum step (in minutes) for event's time values
 - api/scheduler_timeline_swap_resize_config.md - defines that during event resizing the end date of the event can be swapped for the start date (after the end date becomes scheduled before the start one)
+- api/scheduler_tooltip_hide_timeout_config.md - 
+- api/scheduler_tooltip_offset_x_config.md - 
+- api/scheduler_tooltip_offset_y_config.md - 
+- api/scheduler_tooltip_timeout_config.md - 
 - api/scheduler_touch_config.md - enables/disables the touch support in the scheduler
 - api/scheduler_touch_drag_config.md - defines the time period in milliseconds that is used to differ the long touch gesture from the scroll gesture
 - api/scheduler_touch_swipe_dates_config.md - enables/disables switching active dates using the horizontal swipe gesture on mobiles
@@ -353,6 +385,7 @@ Scheduler API
 
 {{api
 - api/scheduler_agenda_date_template.md - specifies the date in the header of the view
+- api/scheduler_agenda_day_template.md - 
 - api/scheduler_agenda_text_template.md - specifies the text in the second column of the Agenda view
 - api/scheduler_agenda_time_template.md - specifies the date in the first column of the Agenda view
 - api/scheduler_api_date_template.md - specifies the format of dates that are set by means of API methods. Used to parse incoming dates
@@ -388,6 +421,8 @@ Scheduler API
 - api/scheduler_quick_info_date_template.md - specifies the date of the pop-up edit form
 - api/scheduler_quick_info_title_template.md - specifies the title of the pop-up edit form
 - api/scheduler_time_picker_template.md - specifies the drop-down time selector in the lightbox
+- api/scheduler_time_slot_class_template.md - 
+- api/scheduler_time_slot_text_template.md - 
 - api/scheduler_tooltip_date_format_template.md - specifies the format of start and end dates displayed in the tooltip
 - api/scheduler_tooltip_text_template.md - specifies the text of tooltips
 - api/scheduler_week_agenda_date_template.md - specifies the date in the header of the Week Agenda view
@@ -402,24 +437,24 @@ Scheduler API
 - api/scheduler_year_tooltip_template.md - specifies the tooltip over a day cell containing some scheduled event(s)
 - api/scheduler_lightbox_header_template.md - specifies the lightbox's header
 - api/scheduler_{gridname}_date_template.md - specifies the date in the header of the view
-- api/scheduler_{gridname}_field_template.md - specifies the text in the columns
 - api/scheduler_{gridname}_full_date_template.md - specifies the format of dates in columns with id='date'
 - api/scheduler_{gridname}_single_date_template.md - specifies the format of dates in columns with id='start_date' or id='end_date'
-- api/scheduler_{timelinename}_cell_class_template.md - specifies the CSS class that will be applied to a cell of the view
+- api/scheduler_{gridname}_field_template.md - specifies the text in the columns
 - api/scheduler_{timelinename}_cell_value_template.md - specifies the number of scheduled events in a cell of the view
-- api/scheduler_{timelinename}_date_template.md - specifies the date in the header of the view
-- api/scheduler_{timelinename}_row_class_template.md - specifies the CSS class that will be applied to a row of the Timeline view
-- api/scheduler_{timelinename}_scale_date_template.md - specifies items of the X-Axis
-- api/scheduler_{timelinename}_scale_label_template.md - specifies items of the Y-Axis
+- api/scheduler_{timelinename}_cell_class_template.md - specifies the CSS class that will be applied to a cell of the view
 - api/scheduler_{timelinename}_scalex_class_template.md - specifies the name of a CSS class that will be applied to items of the X-Axis
-- api/scheduler_{timelinename}_scaley_class_template.md - specifies the name of a CSS class that will be applied to items of the Y-Axis
-- api/scheduler_{timelinename}_second_scale_date_template.md - specifies items of the second X-Axis
 - api/scheduler_{timelinename}_second_scalex_class_template.md - specifies the name of a CSS class that will be applied to items of the second X-Axis
+- api/scheduler_{timelinename}_scaley_class_template.md - specifies the name of a CSS class that will be applied to items of the Y-Axis
+- api/scheduler_{timelinename}_scale_label_template.md - specifies items of the Y-Axis
 - api/scheduler_{timelinename}_tooltip_template.md - specifies the tooltip over a day cell containing some scheduled event(s)
+- api/scheduler_{timelinename}_date_template.md - specifies the date in the header of the view
+- api/scheduler_{timelinename}_scale_date_template.md - specifies items of the X-Axis
+- api/scheduler_{timelinename}_second_scale_date_template.md - specifies items of the second X-Axis
 - api/scheduler_{unitsname}_date_template.md - specifies the date in the header of the view
 - api/scheduler_{unitsname}_scale_text_template.md - specifies items of the X-Axis
 - api/scheduler_xml_date_template.md - a string from an XML file is converted into a date object in conformity with this template
 - api/scheduler_xml_format_template.md - a date object is converted into a string in conformity with this template. Used to send data back to the server
+- api/scheduler_{timelinename}_row_class_template.md - specifies the CSS class that will be applied to a row of the Timeline view
 }}
 
 

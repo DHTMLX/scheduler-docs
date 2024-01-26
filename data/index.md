@@ -8,7 +8,7 @@ Start
     New version brings new improvements and features:
     </p>
     <ul>
-        <li><a href="custom_skins.md">Refreshed themes with CSS variables</a></li>
+        <li><a href="custom_skins.md">Updated themes with CSS variables</a></li>
         <li><a href="skins.md#dark">New Dark theme</a></li>
         <li><a href="agenda_view.md">New Agenda View</a></li>
         <li><a href="tooltips.md">Updated Tooltip API</a></li>

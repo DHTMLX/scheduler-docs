@@ -27,9 +27,9 @@ The v7.0 update introduces several breaking changes.
 
 ### Skins switched to css variables
 
-CSS skins (themes) are completely reworked and now use CSS variables. While HTML structure of the component and css classnames mostly remained unchanged, CSS styles writen for older versions of Scheduler are likely no longer work as expected with v7.0.
+CSS skins (themes) have been completely reworked and now utilize CSS variables. While the HTML structure of the component and CSS class names have mostly remained unchanged, CSS styles written for older versions of the Scheduler are likely no longer effective with v7.0.
 
-For example, following style is used to change the backgound color of event:
+For example, the following style was used to change the background color of an event:
 
 ~~~html
 <style>
@@ -50,26 +50,26 @@ For example, following style is used to change the backgound color of event:
 </style>
 ~~~
 
-Starting from v7.0 the same is done with the following style:
+Starting from v7.0, the same effect is achieved with the following style:
 
 ~~~html
 <style>
 	.manager_event {
-		--dhx-scheduler_event-background: #009966;
-		--dhx-scheduler_event-color: black;
+		--dhx-scheduler-event-background: #009966;
+		--dhx-scheduler-event-color: black;
 	}
 </style>
 ~~~
 
-Check available variables at custom_skins.md page.
+Check the available variables on the custom_skins.md page.
 
-Migration will require rewriting existing CSS to achieve required design.
+Migration will require the rewriting of existing CSS to achieve the required design.
 
 ### Single css file
 
-All themes are now embedded into single **dhtmlxscheduler.css** file.
+All themes are now embedded into a single **dhtmlxscheduler.css** file.
 
-To activate specific skin use `scheduler.skin` property:
+To activate a specific skin, use the `scheduler.skin` property:
 
 ~~~js
 scheduler.skin = "material";
@@ -86,12 +86,12 @@ Note, `scheduler.setSkin` will repaint the Scheduler.
 
 ### Obsolete `scheduler.xy` settings
 
-Following `scheduler.xy` properties are no longer used:
+The following `scheduler.xy` properties are no longer used:
 
 - scheduler.xy.nav_height
 - scheduler.xy.event_header_height
 
-Height of appropriate elements is set by styles:
+The height of appropriate elements is set by styles:
 
 ~~~html
 .dhx_cal_navline {
@@ -106,9 +106,9 @@ Height of appropriate elements is set by styles:
 
 ### Material skin font
 
-**Material** skin no longer import Roboto font by default.
+The **Material** skin no longer imports the Roboto font by default.
 
-If you use Material skin you need to import font manually:
+If you use the Material skin, you need to import the font manually:
 
 ~~~html
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
@@ -116,12 +116,20 @@ If you use Material skin you need to import font manually:
 
 ### New API for Tooltips
 
-Tooltips got new API that allows easily attaching the tooltip to custom elements. See more details in the related article: tooltips.md
+Tooltips have a new API that allows easy attachment of the tooltip to custom elements. See more details in the related article: tooltips.md.
 
+
+### Padding in columns of Day/Week views
+
+Day/Week/Units view now have small padding that ensures there is always small empty space at the side of the column, allowing users to create new events by double-clicking on these empty areas.
+
+To remove this padding, use api/scheduler_day_column_padding_config.md:
+
+scheduler.config.day_column_padding = 0;
 
 ### Promise implementation
 
-**Bluebird** library excluded from the library, api/scheduler_promise.md now uses native Promise implementation.
+The **Bluebird** library has been excluded from the Scheduler bundle. api/scheduler_promise.md now uses the native Promise implementation.
 
 ## 5.3 -> 6.0
 

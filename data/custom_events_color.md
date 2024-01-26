@@ -76,13 +76,13 @@ Redefining the default CSS classes
 ~~~html
 <style>
     .manager_event {
-        --dhx-scheduler_event-background: #009966;
-        --dhx-scheduler_event-color: black;
+        --dhx-scheduler-event-background: #009966;
+        --dhx-scheduler-event-color: black;
     }
 
     .employee_event {
-        --dhx-scheduler_event-background: #FF9933;
-        --dhx-scheduler_event-color: black;
+        --dhx-scheduler-event-background: #FF9933;
+        --dhx-scheduler-event-color: black;
     }
 </style>
 ~~~
@@ -193,8 +193,8 @@ scheduler.attachEvent("onLoadEnd", function(){
  
     resources.forEach(function(r){
         html.push(`.event_resource_${r.key} {
-            --dhx-scheduler_event-background:${r.backgroundColor};
-            --dhx-scheduler_event-color:${r.textColor};
+            --dhx-scheduler-event-background:${r.backgroundColor};
+            --dhx-scheduler-event-color:${r.textColor};
         }`);
     });
     element.innerHTML = html.join("");

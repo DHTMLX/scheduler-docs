@@ -11,63 +11,63 @@ Here is a list of primary variables you might need for customizing the skin:
 
 ~~~
 :root {
-	--dhx-scheduler_font-family: Inter, Helvetica, Arial, sans-serif;
-	--dhx-scheduler_font-size: 14px;
+	--dhx-scheduler-font-family: Inter, Helvetica, Arial, sans-serif;
+	--dhx-scheduler-font-size: 14px;
 
-	--dhx-scheduler_base-colors-primary: #537CFA;
-	--dhx-scheduler_base-colors-warning: #FAB936;
-	--dhx-scheduler_base-colors-error: #E3334E;
-	--dhx-scheduler_base-colors-error-text: #FFFFFF;
-	--dhx-scheduler_base-colors-success: #1BC297;
-	--dhx-scheduler_base-colors-secondary: rgba(0, 0, 0, 0.04);
+	--dhx-scheduler-base-colors-primary: #537CFA;
+	--dhx-scheduler-base-colors-warning: #FAB936;
+	--dhx-scheduler-base-colors-error: #E3334E;
+	--dhx-scheduler-base-colors-error-text: #FFFFFF;
+	--dhx-scheduler-base-colors-success: #1BC297;
+	--dhx-scheduler-base-colors-secondary: rgba(0, 0, 0, 0.04);
 
-	--dhx-scheduler_base-colors-select: #EFF3FF;
-	--dhx-scheduler_base-colors-border: #D0DBE3;
-	--dhx-scheduler_base-colors-icons: #A1A4A6;
+	--dhx-scheduler-base-colors-select: #EFF3FF;
+	--dhx-scheduler-base-colors-border: #D0DBE3;
+	--dhx-scheduler-base-colors-icons: #A1A4A6;
 
-	--dhx-scheduler_base-colors-disabled: #E9E9E9;
-	--dhx-scheduler_base-colors-readonly: var(--dhx-scheduler_base-colors-icons);
-	--dhx-scheduler_base-colors-text-light: #44494E;
-	--dhx-scheduler_base-colors-text-base: #23272A;
-	--dhx-scheduler_base-colors-background: #FFFFFF;
+	--dhx-scheduler-base-colors-disabled: #E9E9E9;
+	--dhx-scheduler-base-colors-readonly: var(--dhx-scheduler-base-colors-icons);
+	--dhx-scheduler-base-colors-text-light: #44494E;
+	--dhx-scheduler-base-colors-text-base: #23272A;
+	--dhx-scheduler-base-colors-background: #FFFFFF;
 
-	--dhx-scheduler_container-background: var(--dhx-scheduler_base-colors-background);
-	--dhx-scheduler_container-color: var(--dhx-scheduler_base-colors-text-base);	
+	--dhx-scheduler-container-background: var(--dhx-scheduler-base-colors-background);
+	--dhx-scheduler-container-color: var(--dhx-scheduler-base-colors-text-base);	
 
-	--dhx-scheduler_base-padding: 4px;
-	--dhx-scheduler_border-radius: var(--dhx-scheduler_base-module);
+	--dhx-scheduler-base-padding: 4px;
+	--dhx-scheduler-border-radius: var(--dhx-scheduler-base-module);
 
-	--dhx-scheduler_event-colors-primary: #537CFA;
-	--dhx-scheduler_event-text-primary: rgba(255, 255, 255, 0.90);
+	--dhx-scheduler-event-colors-primary: #537CFA;
+	--dhx-scheduler-event-text-primary: rgba(255, 255, 255, 0.90);
 
-	--dhx-scheduler_toolbar-height: 40px;
+	--dhx-scheduler-toolbar-height: 40px;
 
-	--dhx-scheduler_header-border: var(--dhx-scheduler_default-border);
-	--dhx-scheduler_halfhour-border: 1px dotted var(--dhx-scheduler_base-colors-border);
+	--dhx-scheduler-header-border: var(--dhx-scheduler-default-border);
+	--dhx-scheduler-halfhour-border: 1px dotted var(--dhx-scheduler-base-colors-border);
 
 	/* events */
 
-	--dhx-scheduler_event-background-primary: var(--dhx-scheduler_base-colors-primary);
+	--dhx-scheduler-event-background-primary: var(--dhx-scheduler-base-colors-primary);
 
-	--dhx-scheduler_event-blue: linear-gradient(180deg, #527CFF 0%, #9751FC 100%);
+	--dhx-scheduler-event-blue: linear-gradient(180deg, #527CFF 0%, #9751FC 100%);
 	--dhx-scheduler-event-green: linear-gradient(180deg, #12D979 0%, #1ECDEB 100%);
 	--dhx-scheduler-event-violet: linear-gradient(180deg, #D071EF 0%, #EE71D5 100%);
 	--dhx-scheduler-event-yellow: linear-gradient(180deg, #FFB725 0%, #FFBB25 31.25%, #FAEA27 100%);
 
-	--dhx-scheduler_event-menu-background: var(--dhx-scheduler_popup-background);
-	--dhx-scheduler_event-menu-color: var(--dhx-scheduler_base-colors-primary);
+	--dhx-scheduler-event-menu-background: var(--dhx-scheduler-popup-background);
+	--dhx-scheduler-event-menu-color: var(--dhx-scheduler-base-colors-primary);
 
-	--dhx-scheduler_event-background: var(--dhx-scheduler_event-blue);
-	--dhx-scheduler_event-border: none;
-	--dhx-scheduler_event-color: var(--dhx-scheduler_event-text-primary);
-	--dhx-scheduler_event-line-text: var(--dhx-scheduler_container-color);
+	--dhx-scheduler-event-background: var(--dhx-scheduler-event-blue);
+	--dhx-scheduler-event-border: none;
+	--dhx-scheduler-event-color: var(--dhx-scheduler-event-text-primary);
+	--dhx-scheduler-event-line-text: var(--dhx-scheduler-container-color);
 
-	--dhx-scheduler_event-marker-color: var(--dhx-scheduler_event-background);
+	--dhx-scheduler-event-marker-color: var(--dhx-scheduler-event-background);
 
-	--dhx-scheduler_popup-background: var(--dhx-scheduler_container-background);
-	--dhx-scheduler_popup-color: var(--dhx-scheduler_container-color);
-	--dhx-scheduler_popup-border: none;
-	--dhx-scheduler_popup-border-radius: var(--dhx-scheduler_border-radius);
+	--dhx-scheduler-popup-background: var(--dhx-scheduler-container-background);
+	--dhx-scheduler-popup-color: var(--dhx-scheduler-container-color);
+	--dhx-scheduler-popup-border: none;
+	--dhx-scheduler-popup-border-radius: var(--dhx-scheduler-border-radius);
 
 }
 

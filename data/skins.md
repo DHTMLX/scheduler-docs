@@ -31,7 +31,7 @@ To apply the default skin, include the default CSS file:
 
 - **dhtmlxscheduler.css**
 
-![terrace_skin.png](terrace_skin.png)
+![DHTMLX Scheduler - Light Theme](terrace_skin.png)
 
 {{sample 07_skins/01_default.html}}
 
@@ -53,7 +53,7 @@ And set skin via **scheduler.skin** property:
 scheduler.skin = "dark";
 ~~~
 
-![terrace_skin.png](terrace_skin.png)
+![DHTMLX Scheduler - Dark Theme](dark_skin.png)
 
 {{sample 07_skins/06_dark.html}}
 
@@ -65,7 +65,7 @@ To apply the 'Material' skin, use **scheduler.skin** property:
 scheduler.skin = "material";
 ~~~
 
-![](material_skin.png)
+![DHTMLX Scheduler - Material](material_skin.png)
 
 {{sample 07_skins/02_material.html}}
 
@@ -83,7 +83,7 @@ To apply the 'Flat' skin, use **scheduler.skin** property:
 scheduler.skin = "flat";
 ~~~
 
-![flat_skin.png](flat_skin.png)
+![DHTMLX Scheduler - Flat Theme](flat_skin.png)
 
 {{sample 07_skins/03_flat.html}}
 
@@ -96,7 +96,7 @@ To apply the 'Contrast Black' skin, use **scheduler.skin** property:
 scheduler.skin = "contrast-black";
 ~~~
 
-![contrast_black_skin](contrast_black_skin.png)
+![DHTMLX Scheduler - Contrast Black Theme](contrast_black_skin.png)
 
 {{sample 07_skins/04_contrast_black.html}}
 
@@ -109,7 +109,7 @@ To apply the 'Contrast White' skin, use **scheduler.skin** property:
 scheduler.skin = "contrast-white";
 ~~~
 
-![contrast_white_skin](contrast_white_skin.png)
+![DHTMLX Scheduler - Contrast White Theme](contrast_white_skin.png)
 
 {{sample 07_skins/05_contrast_white.html}}
 
