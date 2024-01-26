@@ -24,6 +24,7 @@ This update brings some changes in the structure of the Scheduler package and be
 - Introduced a new [Dark skin](skins.html#darkskin)
 - Enabled [customization of all skins](custom_skins.md) using CSS variables
 - Added a new [Agenda view](agenda_view.md)
+- Professional versions of the Scheduler can be [installed via npm](install_with_bower.md).
 - Enhanced the ability to customize markers in the [Map View](map_view.md)
 - Improved default display for [short events](sizing.md) in Day/Week/Units views
 - Updated [Day](day_view.md)/[Week](week_view.md)/[Units](units_view.md) views to no longer use images for the background grid
@@ -32,7 +33,7 @@ This update brings some changes in the structure of the Scheduler package and be
 - Provided a new user-friendly API for the [Tooltip extension](tooltips.md)
 - Added ability to reserve free space in columns of [Day](day_view.md)/[Week](week_view.md)/[Units](units_view.md) views
 - New api/scheduler_onbeforequickinfo_event.md
-- New api/scheduler_time_slot_class_template.md and api/scheduler_time_slot_text.md templates
+- New api/scheduler_time_slot_class_template.md and api/scheduler_time_slot_text_template.md templates
 - Updated type definitions
 
 ### Fixes

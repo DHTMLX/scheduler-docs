@@ -1,40 +1,44 @@
 Ways to Install Scheduler 
 ================================
 
-You can use [NuGet](https://www.nuget.org/), [Bower](https://bower.io/) or [npm](https://www.npmjs.com/) package managers to install the dhtmlxScheduler package into your project.
+You can use [Bower](https://bower.io/) or [npm](https://www.npmjs.com/) package managers to install the dhtmlxScheduler package into your project.
 
 It's also possible to include the necessary JS/CSS files from CDN.
 
-
-NuGet
+npm
 -------------------------
-To install dhtmlxScheduler through [NuGet](https://www.nuget.org/), execute the following command line:
 
+
+**Standard (Free) version**
+
+You can install a Stardard version of Scheduler from [npmjs.com](https://www.npmjs.com/package/dhtmlx-scheduler), execute the following command line:
 ~~~html
-nuget install DHTMLX.Scheduler
+npm install dhtmlx-scheduler
 ~~~
 
-If you are using Microsoft Visual Studio, run the following command from the Package Manager Console:
+A trial and paid versions of Scheduler can be installed from DHTMLX npm registry using following commands:
 
+**Professional Evaluation version:**
 ~~~html
-install-package DHTMLX.Scheduler
+npm config set @dhx\:registry https://npm.dhtmlx.com
+npm install @dhx/trial-scheduler
 ~~~
+
+**Professional version:**
+~~~html
+npm config set @dhx\:registry https://npm.dhtmlx.com
+npm install @dhx/scheduler
+~~~
+
+{{note Only the Standard version of the Scheduler is available at [npmjs.com](https://www.npmjs.com/package/dhtmlx-scheduler) }}
 
 
 Bower
 -------------------------
-To install Scheduler through [Bower](https://bower.io/), execute the following command line:
+To install a Stardard version of Scheduler through [Bower](https://bower.io/), execute the following command line:
 
 ~~~html
 bower install scheduler
-~~~
-
-npm
--------------------------
-To install Scheduler through [npm](https://www.npmjs.com/package/dhtmlx-scheduler), execute the following command line:
-
-~~~html
-npm install dhtmlx-scheduler
 ~~~
 
 CDN
@@ -54,8 +58,11 @@ You can find the full list of links you can include from CDN, depending on the v
 Adding PRO Edition into Project
 ---------------------------------
 
-All public sources (CDN, NuGet, Bower, and npm) contain a Stardard edition of the component, which is distributed under the GPL license.
-Currently we don't have corresponding private servers from where the Professional version of the component can be installed. There are two possible ways out:
+All public sources (CDN, Bower, and npm) contain a Stardard edition of the component, which is distributed under the GPL license.
+
+We also provide our [private npm registry](#npm) from where the Professional and Evaluation versions of the component can be installed. 
+
+If for some reason methods described above are not available to you, there are two possible ways out:
  
 - you can add the Pro version to your project by hand.
 - you can make a package out of the Pro version of the component by yourself and add it to your projects from a local directory.
