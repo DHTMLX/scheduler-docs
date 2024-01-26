@@ -23,7 +23,7 @@ scheduler.templates.time_slot_class=function(date){
 @template:	api_template
 @descr:
 
-![time_slot_template.png](time_slot_template.png)
+<img src="time_slot_template.png" style="border: 1px solid #E4E4E4"/>
 
 Background of the of the Day/Week views consists of 30-minute blocks. The template can be used to add custom css class to any background cell in the calendar.
 

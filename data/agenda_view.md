@@ -5,7 +5,7 @@ Agenda View
 The Agenda view allows displaying a list of upcoming events.
 
 
-<img src="agenda_view.png"/>
+<img src="agenda_view.png"  style="border: 1px solid #E4E4E4"/>
 
 
 

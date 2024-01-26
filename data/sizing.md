@@ -1,7 +1,7 @@
 Sizing the Scale and Events Boxes  
 ==============
 
-*If you use dhtmlxScheduler 6.0 or earlier, see details [here](agenda_view_old.md).*
+*If you use dhtmlxScheduler 6.0 or earlier, see details [here](sizing_old.md).*
 
 In this article we consider how you can manage sizes of events and of the time scale.
 
@@ -19,7 +19,8 @@ First, let's learn the default behavior of the events boxes:
 + + `.dhx_cal_event--small` - events less than 42px
 + + `.dhx_cal_event--xsmall` - events less than 30px
 
-![30_minute_short_event.png](30_minute_short_event.png)
+
+<img src="30_minute_short_event.png" style="border: 1px solid #E4E4E4"/>
 
 You can increase the height of the time scale to improve visibility of such events:
 
@@ -28,7 +29,7 @@ scheduler.config.hour_size_px = 90;
 scheduler.render();// or scheduler.init(...)
 ~~~
 
-![30_minute_long_event.png](30_minute_long_event.png)
+<img src="30_minute_long_event.png" style="border: 1px solid #E4E4E4"/>
 
 
 

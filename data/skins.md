@@ -31,7 +31,7 @@ To apply the default skin, include the default CSS file:
 
 - **dhtmlxscheduler.css**
 
-![DHTMLX Scheduler - Light Theme](terrace_skin.png)
+<img alt="DHTMLX Scheduler - Light Theme" src="terrace_skin.png" style="border: 1px solid #E4E4E4"/>
 
 {{sample 07_skins/01_default.html}}
 
@@ -53,7 +53,7 @@ And set skin via **scheduler.skin** property:
 scheduler.skin = "dark";
 ~~~
 
-![DHTMLX Scheduler - Dark Theme](dark_skin.png)
+<img alt="DHTMLX Scheduler - Dark Theme" src="dark_skin.png" style="border: 1px solid #E4E4E4"/>
 
 {{sample 07_skins/06_dark.html}}
 

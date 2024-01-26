@@ -26,12 +26,14 @@ Events can extend to the full width of the view columns. The `day_column_padding
 scheduler.config.day_column_padding = 0;
 ~~~
 
-![Scheduler - no padding in day columns](day_column_padding_none.png)
+<img style="border: 1px solid #E4E4E4" src="day_column_padding_none.png" alt="Scheduler - no padding in day columns">
+
 
 **Enabled padding**
 ~~~
 scheduler.config.day_column_padding = 8;
 ~~~
-![Scheduler - padding inside day columns](day_column_padding_set.png)
+<img style="border: 1px solid #E4E4E4" src="day_column_padding_set.png" alt="Scheduler - padding inside day columns">
+
 
 @changelog: added in v7.0
