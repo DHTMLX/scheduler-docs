@@ -133,6 +133,10 @@ If you redefine `--dhx-scheduler-container-color` at a lower level in the DOM tr
 </style>
 ~~~
 
+
+How to use source codes
+------------
+
 dhtmlxScheduler is shipped with style files in the following forms:
 
 - **codebase/dhtmlxscheduler.css** - prebuilt compressed CSS file for skins, ready for production use;
