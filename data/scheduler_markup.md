@@ -1,7 +1,7 @@
 Scheduler Markup
 =====================================
-The standard scheduler's markup looks like this:
 
+The standard scheduler's markup looks like this:
 
 ~~~html
 <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
@@ -24,14 +24,14 @@ The standard scheduler's markup looks like this:
 Tabs positioning 
 --------------------------
 
-Starting from v7.0 **.dhx_cal_navline** element is flex container and tabs are located according to **order** style.
+Starting from v7.0, the **.dhx_cal_navline** element is a flex container and tabs are located according to the **order** style.
 
 ### Versions 6.0 and older
 
-####Default ('terrace') skin
+#### Default ('terrace') skin
+
 Initially, the default ('terrace') skin ignores the CSS properties used to set the tab's position (e.g. style="right:204px;") and locates the tab using its specific logic: the default views are presented 
 as a segmented button at the left side but additional views are placed as individual buttons at the right side.
-
 
 To set the position manually (e.g. in the markup), set the api/scheduler_fix_tab_position_config.md parameter to *false* to disable the default behaviour and set the coordinates with CSS properties:
 
@@ -58,7 +58,9 @@ For example, to set the 'day'-'week'-'month' segmented button in the default ski
 
 Adding/deleting views' tabs 
 ---------------------------
-###Adding a tab
+
+### Adding a tab
+
 To add a new tab to the header, add a div with the **"dhx_cal_tab"** class as a child node of the **"dhx_cal_navline"** element:
 
 ~~~html
@@ -77,7 +79,8 @@ The view that will be opened on a tab click is defined by the **data-tab** attri
 Note, the tab can have several CSS classes applied, but the **"dhx_cal_tab"** class must go first.
 }}
 
-###Deleting a tab
+### Deleting a tab
+
 To remove a tab from the header, remove the related div from the markup:
 
 {{snippet
@@ -99,7 +102,8 @@ Even if the tab is removed, the related view is still accessible programmaticall
 
 Hiding the navigation buttons
 --------------------------------
-To hide the navigation buttons in the scheduler's header, set the 'display:none' style for the related divs as in:
+
+To hide the navigation buttons in the scheduler's header, set the *'display:none'* style for the related divs as in:
 
 {{snippet
 Hiding the navigation buttons in the header
@@ -124,9 +128,10 @@ Hiding the navigation buttons in the header
 ~~~
 
 
-Hiding the scheduler's header
+Hiding the header of scheduler
 --------------------------------
-To hide the entire scheduler's header, set the 'display:none': 
+
+To hide the entire scheduler's header, set *'display:none'*: 
 
 ~~~html
 <style>
