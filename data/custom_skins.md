@@ -1,13 +1,13 @@
 Skins Customization
 ========================
 
-Starting from v7.0 Scheduler skins use css variables that can be used for customization of build in skins.
+Starting from v7.0 Scheduler skins use CSS variables that you can use for customization and styling.
 
 {{sample
 	07_skins/07_themes.html
 }}
 
-Here is a list of primary variables you might need for customizing the skin:
+Key CSS Variables:
 
 ~~~
 :root {
@@ -32,7 +32,8 @@ Here is a list of primary variables you might need for customizing the skin:
 	--dhx-scheduler-base-colors-background: #FFFFFF;
 
 	--dhx-scheduler-container-background: var(--dhx-scheduler-base-colors-background);
-	--dhx-scheduler-container-color: var(--dhx-scheduler-base-colors-text-base);	
+	--dhx-scheduler-container-color: var(--dhx-scheduler-base-colors-text-base);
+	--dhx-scheduler-scale-color: var(--dhx-scheduler-container-color);
 
 	--dhx-scheduler-base-padding: 4px;
 	--dhx-scheduler-border-radius: var(--dhx-scheduler-base-module);
@@ -52,7 +53,8 @@ Here is a list of primary variables you might need for customizing the skin:
 	--dhx-scheduler-event-blue: linear-gradient(180deg, #527CFF 0%, #9751FC 100%);
 	--dhx-scheduler-event-green: linear-gradient(180deg, #12D979 0%, #1ECDEB 100%);
 	--dhx-scheduler-event-violet: linear-gradient(180deg, #D071EF 0%, #EE71D5 100%);
-	--dhx-scheduler-event-yellow: linear-gradient(180deg, #FFB725 0%, #FFBB25 31.25%, #FAEA27 100%);
+	--dhx-scheduler-event-yellow: linear-gradient(180deg, #FFB725 0%, #FFBB25 31.25%, 
+      #FAEA27 100%);
 
 	--dhx-scheduler-event-menu-background: var(--dhx-scheduler-popup-background);
 	--dhx-scheduler-event-menu-color: var(--dhx-scheduler-base-colors-primary);
@@ -73,15 +75,69 @@ Here is a list of primary variables you might need for customizing the skin:
 
 ~~~
 
-
 All variables can be found in **codebase/sources/less/src/themes/variables.less** file of the package.
 
+How to customize skins
+-----------------
+
+The easiest method to customize the Scheduler's appearance is by overriding the relevant CSS variables in your stylesheet. Here's an example:
+
+~~~html
+
+<style>
+:root {
+  --dhx-scheduler-base-colors-primary: #01579B;
+  --dhx-scheduler-event-background: #33B579;
+  --dhx-scheduler-event-color: #FFFFFF;
+  --dhx-scheduler-base-colors-border: #B0B8CD;
+  --dhx-scheduler-border-radius:2px;
+}
+</style>
+~~~
+
+{{sample
+	07_skins/07_themes.html
+}}
+
+By defining variables in this manner, you can redefine the default styles, ensuring that your custom styles are applied to the Scheduler.
+
+{{note For correct inheritance of values across the entire theme, define variables at the :root element.}}
+
+It's important to define these styles at the **:root** element to ensure proper inheritance and application throughout the component. This approach guarantees that when a variable, which is utilized by other variables, is redefined, it correctly influences related styles across the component.
+
+For instance, the variable `--dhx-scheduler-scale-color` inherits from the primary text color variable `--dhx-scheduler-container-color`. By redefining `--dhx-scheduler-container-color` at the **:root** level, you ensure that `--dhx-scheduler-scale-color` also reflects this change. 
+
+~~~html
+<style>
+:root {
+    /* --dhx-scheduler-scale-color and other
+  variables that inherit `--dhx-scheduler-container-color`
+  will be affected
+  */
+  --dhx-scheduler-container-color: #222;
+
+}
+</style>
+~~~
+
+If you redefine `--dhx-scheduler-container-color` at a lower level in the DOM tree, such as within **.dhx_cal_container**, it won't affect the `--dhx-scheduler-scale-color` variable.
+
+~~~html
+<style>
+.dhx_cal_container {
+    /* only elements that directly 
+  use --dhx-scheduler-container-color will be affected
+  */
+  --dhx-scheduler-container-color: #222;
+}
+</style>
+~~~
 
 dhtmlxScheduler is shipped with style files in the following forms:
 
 - **codebase/dhtmlxscheduler.css** - prebuilt compressed CSS file for skins, ready for production use;
-- **codebase/sources/skins/dhtmlxscheduler.css** - prebuilt readable CSS files;
-- **codebase/sources/less/dhtmlxscheduler*.less** - source less files of Scheduler skins.
+- **codebase/sources/dhtmlxscheduler.css** - prebuilt readable CSS files;
+- **codebase/sources/less/** - source less files of Scheduler skins.
 
 The latter can be used for deep customization of existing skins or for creating a new skin.
 
@@ -123,141 +179,75 @@ You can find declarations of colors/fonts/sizes and other aspects of the Schedul
 Structure
 ------------
 
-The structure of the **less** folder for version 5.0 (may be changed in future versions) is given below:
+The structure of the **less** folder for version 7.0 (may be changed in future versions) is given below:
 
 ###Images
 
-- **./imgs** - common/fallback images for all skins
-- **./imgs_contrast_black** - images used by the contrast black skin
-- **./imgs_contrast_white** - images used by the contrast white skin
-- **./imgs_dhx_material** - images used by the material skin
-- **./imgs_dhx_terrace** - images used by the terrace skin
-- **./imgs_flat** - images used by the flat skin
+- **./src/imgs** - svg icons used by all skins
+- **./src/iconfont** - icons are prebuilt into web font
 
 ###Skin definitions
 
-- **./skins**
-  - *./basic* - common styles and variables used by all skins
-  - *./contrast_black* - contrast black skin definition
-  - *./contrast_white* - contrast white skin definition
-  - *./material* - material skin definition
-  - *./terrace* - terrace skin definition
-  - *./flat* - flat skin definition
+The default set of variables is defined in `terrace` skin, other skins redefine appropriate variables and add styles.
+
+- **./src/themes**
+  - *./src/themes/variables.less* - common variables used by all skins, `terrace` skin
+  - *./src/themes/contrast_black* - contrast black skin variables
+  - *./src/themes/contrast_white* - contrast white skin variables
+  - *./src/themes/material* - material skin variables
+  - *./src/themes/dark* - dark skin variables
+  - *./src/themes/flat* - flat skin variables
 
 ###Entry points for building skins
 
-- dhtmlxscheduler_contrast_black.less 
-- dhtmlxscheduler_contrast_white.less
-- dhtmlxscheduler_flat.less
-- dhtmlxscheduler_material.less
-- dhtmlxscheduler_terrace.less
-- dhtmlxscheduler.less
+- theme.less
 - package.json
 
-###Structure of a skin folder
-
-- **less/skins/material/**
-  - **./index.less** - main imports
-  - **./skin.less** - micro variables
-  - **./add_styles.less** - additional styles
-
-###Import
-
-Currently, for most skins **index.less** includes the following imports:
-
-~~~
-/* import default variables*/
-@import "./../basic/skin"; 
-/* import own variables */
-@import "./skin"; 
-/* import common stylesheet */
-@import "./../basic/suite"; 
-/* apply additional styles on the top of the common stylesheet*/
-@import "./add_styles";
-~~~
 
 Creating custom skin
 -------------------
 
-In order to create a new skin, you can copy and rename one of the existing skins from the **sources/less/skins** folder. Follow the steps below:
+In order to create a new skin, you can copy and rename one of the existing skins from the **sources/less/src/themes** folder. Follow the steps below:
 
-1) Copy and rename one of the existing folders from the **sources/less/skins** folder, e.g.:
+1) Copy and rename one of the existing folders from the **sources/less/src/themes** folder, e.g.:
 
 ~~~
 -> copy:
-codebase/sources/less/skins/material
+codebase/sources/less/src/themes/material.ess
 
 -> rename to:
-codebase/sources/less/skins/custom
+codebase/sources/less/src/themes/material.ess
 ~~~
 
-2) Create an entry point in the **codebase/sources/less** folder, like this:
+2) Import new file in  **sources/less/src/themes/index.less**, like this:
 
 ~~~
-codebase/sources/less/dhtmlxscheduler_custom.less
+@import "./custom";
 ~~~
 
 And add the content as in:
 
 ~~~
-@import "./skins/custom/index";
-~~~
+:root[data-scheduler-theme='custom'] {
+	--dhx-scheduler-theme: custom;
+	--dhx-scheduler-font-family: Roboto, Helvetica, Arial, sans-serif;
 
-It is not required for the file name to match the folder name, since the paths are specified explicitly.
+	--dhx-scheduler-base-colors-primary: #0288D1;
 
-3) Modify **codebase/sources/less/package.json** to add a build command for your new skin: 
-
-- build a skin using the following command, e.g.:
-
-~~~
-node scripts.js --file=dhtmlxscheduler_custom
-~~~
-
-where *dhtmlxscheduler_custom* is the name of your custom skin file without the extension
-
-- find the "scripts" section and add a new script in one of the following ways:
-
-~~~
-"scripts": {
-    "build": "...",
-    ...
-    "build-custom": "node scripts.js --file=dhtmlxscheduler_custom"
-    " watch": "npm-watch build"
 }
 ~~~
 
-or
+Note that the skin variables should be defined under `:root` elements, using `data-scheduler-there` selector.
 
-~~~
-"scripts": {
-    "build": "... && npm run build-custom",
-    ...
-    "build-custom": "node scripts.js –file=dhtmlxscheduler_custom"
-    "watch": "npm-watch build"
-}
-~~~
+New theme must include **--dhx-scheduler-theme** variable with theme name.
+
+
+3) Rebuild skins
 
 <br>
 **Note**, that scheduler may apply some predefined settings to the calendar based on the applied skin.
-When you create a new skin by copying an existing one, you may need to specify the name of the original skin in order for these predefined settings to remain applied.
+When you create a new skin by copying an existing one, you may need to apply appropriate settings to the scheduler manually.
 
-For this, use the **scheduler.skin** property as in:
-
-~~~js
-// if you create a custom skin by copying the 'material' skin:
-scheduler.skin = "material";
-...
-scheduler.init("scheduler_here", new Date(), "week");
-~~~
-
-or
-
-~~~js
-// if you create a custom skin by copying the 'flat' skin:
-scheduler.skin = "flat";
-...
-scheduler.init("scheduler_here", new Date(), "week");
-~~~
 
 JS styling settings
 ---------------------
@@ -266,13 +256,3 @@ Note, that not all aspects of Scheduler styling are controlled from CSS, some pa
 
 - api/scheduler_hour_size_px_config.md
 - and all settings of the [scheduler.xy](api/scheduler_xy_other.md) object 
-
-Currently, Scheduler uses two subsets of default settings, depending on skin applied: one for material skin and another for all other skins. The applied subset is 
-[defined by the name of the applied CSS file automatically](skins.md#skindetection). In case of a custom skin such a detection may fail and you'll need to specify the skinset manually. 
-It can be done using the **scheduler.skin** property:
-
-~~~js
-scheduler.skin = "material"; // for skins based on material
-~~~
-
-Values that include the "material" string will be interpreted as a material skin set. All other values will produce terrace/flat skin defaults.

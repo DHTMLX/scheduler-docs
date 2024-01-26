@@ -93,12 +93,6 @@ The **xy** object has the following properties:
 		<td>month</td>
 	</tr>
 	<tr>
-		<td><a href="#day">nav_height</a></td>
-		<td>the height of the navigation bar</td>
-		<td>22</td>
-		<td>all views</td>
-	</tr>
-	<tr>
 		<td><a href="#day">scale_height</a></td>
 		<td>the height of the X-Axis</td>
 		<td>20</td>
@@ -144,3 +138,7 @@ Note, all the **xy'** properties have the data type 'number'.
 
 <h3 id="lightbox">Lightbox</h3> 
 <img src="api/lightbox_xy_property.png"/>
+
+@changelog:
+
+- **nav_height** property was removed in v7.0, the toolbar can be sized by css.
