@@ -87,6 +87,24 @@ scheduler.setSkin("material");
 Note that `scheduler.setSkin()` will repaint the Scheduler.
 }}
 
+If you use a skin other than the **terrace** the following migration step is required:
+
+1) Replace the css file of the skin with the `dhtmlxscheduler.css` file
+
+~~~html
+<!-- OLD -->
+<link rel="stylesheet" href="./codebase/dhtmlxscheduler_material.css" type="text/css">
+<!-- NEW -->
+<link rel="stylesheet" href="./codebase/dhtmlxscheduler.css" type="text/css">
+~~~
+
+2) Enable the required skin from javascript:
+
+~~~js
+scheduler.setSkin("material");
+scheduler.init("scheduler_here");
+~~~
+
 ### Obsolete `scheduler.xy` settings
 
 The following `scheduler.xy` properties are no longer used:
@@ -106,6 +124,9 @@ The height of the corresponding elements is set by the styles below:
 }
 ~~~
 
+### Changed defaults
+
+api/scheduler_details_on_create_config.md and api/scheduler_details_on_dblclick_config.md default values has changed from `false` to `true`.
 
 ### Material skin font
 

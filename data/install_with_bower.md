@@ -19,16 +19,15 @@ npm install dhtmlx-scheduler
 A trial and paid versions of Scheduler can be installed from DHTMLX npm registry using following commands:
 
 **Professional Evaluation version**
-~~~html
-npm config set @dhx\:registry https://npm.dhtmlx.com
-npm install @dhx/trial-scheduler
-~~~
+
+- **npm config set @dhx<wbr />:registry https://npm.dhtmlx.com**
+- **npm install @dhx/trial-scheduler**
+
 
 **Professional version**
-~~~html
-npm config set @dhx\:registry https://npm.dhtmlx.com
-npm install @dhx/scheduler
-~~~
+
+- **npm config set @dhx<wbr />:registry https://npm.dhtmlx.com**
+- **npm install @dhx/scheduler**
 
 {{note Only the Standard version of the Scheduler is available at [npmjs.com](https://www.npmjs.com/package/dhtmlx-scheduler) }}
 
