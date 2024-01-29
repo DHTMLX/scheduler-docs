@@ -63,7 +63,9 @@ Starting from v7.0, the same effect is achieved with the following style:
 
 Check the available variables on the custom_skins.md page.
 
+{{note
 Migration will require the rewriting of existing CSS to achieve the required design.
+}}
 
 ### Single css file
 
@@ -75,17 +77,19 @@ To activate a specific skin, use the `scheduler.skin` property:
 scheduler.skin = "material";
 ~~~
 
-Or api/scheduler_setskin.md method:
+Or the api/scheduler_setskin.md method:
 
 ~~~js
 scheduler.setSkin("material");
 ~~~
 
-Note, `scheduler.setSkin` will repaint the Scheduler.
+{{note
+Note that `scheduler.setSkin()` will repaint the Scheduler.
+}}
 
-If you use skin other than the **terrace** the following migration step is required:
+If you use a skin other than the **terrace** the following migration step is required:
 
-1. Replace the css file of the skin with `dhtmlxscheduler.css` file
+1) Replace the css file of the skin with the `dhtmlxscheduler.css` file
 
 ~~~html
 <!-- OLD -->
@@ -94,13 +98,12 @@ If you use skin other than the **terrace** the following migration step is requi
 <link rel="stylesheet" href="./codebase/dhtmlxscheduler.css" type="text/css">
 ~~~
 
-2. Enable required skin from javascript:
+2) Enable the required skin from javascript:
 
 ~~~js
 scheduler.setSkin("material");
 scheduler.init("scheduler_here");
 ~~~
-
 
 ### Obsolete `scheduler.xy` settings
 
@@ -109,9 +112,9 @@ The following `scheduler.xy` properties are no longer used:
 - scheduler.xy.nav_height
 - scheduler.xy.event_header_height
 
-The height of appropriate elements is set by styles:
+The height of the corresponding elements is set by the styles below:
 
-~~~html
+~~~css
 .dhx_cal_navline {
 	height: 40px;
 }
@@ -131,22 +134,25 @@ The **Material** skin no longer imports the Roboto font by default.
 
 If you use the Material skin, you need to import the font manually:
 
-~~~html
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
+~~~js
+@import url(
+'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap'
+);
 ~~~
 
 ### New API for Tooltips
 
 Tooltips have a new API that allows easy attachment of the tooltip to custom elements. See more details in the related article: tooltips.md.
 
+### Padding in columns of the Day/Week views
 
-### Padding in columns of Day/Week views
-
-Day/Week/Units view now have small padding that ensures there is always small empty space at the side of the column, allowing users to create new events by double-clicking on these empty areas.
+Day/Week/Units view now have small padding that ensures there is always small empty space at the side of the column. It allows users to create new events by double-clicking on these empty areas.
 
 To remove this padding, use api/scheduler_day_column_padding_config.md:
 
+~~~js
 scheduler.config.day_column_padding = 0;
+~~~
 
 ### Promise implementation
 

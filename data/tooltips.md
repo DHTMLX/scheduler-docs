@@ -45,15 +45,15 @@ scheduler.templates.tooltip_text = function(start,end,event) {
 Tooltip API
 -----------
 
-###Tooltip object
+### Tooltip object
 
 You can access the object of tooltip as **scheduler.ext.tooltips.tooltip**. This object allows manipulating the position, content and visibility of tooltip via a set of methods:
 
 - **getNode()** - returns the HTML element of the tooltip  
-- **setViewport()** - locks the position of tooltip to the boundaries of the specified HTML element
-	- **node** - (*HTMLElement*) the HTML element under the question
-- **show()** - displays the tooltip at specific coordinates (relative to document.body). The method can take different parameters, depending on the position your want show tooltip at:
-	- To display tooltip at specific coordinates (relative to document.body), pass: 
+- **setViewport()** - locks the position of the tooltip to the boundaries of the specified HTML element
+	- **node** - (*HTMLElement*) the HTML element in question
+- **show()** - displays the tooltip at specific coordinates (relative to document.body). The method can take different parameters, depending on the position your want to show the tooltip at:
+	- To display the tooltip at specific coordinates (relative to document.body), pass: 
     	- **left** - (*number*) the X coordinate
     	- **top** - (*number*) the Y coordinate 
 	- To display tooltip at the mouse event coordinates (*tooltip_offset_x/y* and viewport will be taken into account), pass:
@@ -62,40 +62,40 @@ You can access the object of tooltip as **scheduler.ext.tooltips.tooltip**. This
 - **setContent()**- puts HTML content into the tooltip. Takes as a parameter:
 	- **html** - (*string*) a string with HTML content for the tooltip
 
-###Methods
+### Methods
 
 There are several methods that allow controlling behavior of the tooltip while hovering over DOM elements.
 
 <h4 id="attach">scheduler.ext.tooltips.attach()</h4>
 
-adds tooltip with extended configuration. The method takes an object with tooltip settings as a parameter. The settings that can be adjusted via the method are the following:
+adds a tooltip with an extended configuration. The method takes an object with the tooltip settings as a parameter. The settings that can be adjusted via the method are the following:
 
-- **selector** - (*string*) defines CSS-selector for the elements to listen to mouse events on
+- **selector** - (*string*) defines a CSS-selector for the elements to listen to mouse events on
 - **onmouseenter** - (*function*) a handler called when the mouse pointer enters the element. The parameters are:
- 	- **event** - (*Event*) a native mouse event
+ 	- **event** - (*Event*) the native mouse event
     - **node** -  (*HTMLElement*) the HTML node
 - **onmousemove** - (*function*) a handler called when the mouse pointer moves inside the element. The parameters are:
-    - **event** - (*Event*) a native mouse event
+    - **event** - (*Event*) the native mouse event
     - **node** -  (*HTMLElement*) the HTML node
 - **onmouseleave** - (*function*) a handler called when the mouse pointer leaves the element. The parameters are:	
-	- **event** - (*Event*) a native mouse event
+	- **event** - (*Event*) the native mouse event
     - **node** -  (*HTMLElement*) the HTML node
-- **global** - (*boolean*) defines whether the module listens to mouse events on the whole page (*true*) or only inside a scheduler element (*false*). By default the option is set to *false*.
+- **global** - (*boolean*) defines whether the module listens to the mouse events on the whole page (*true*) or only inside a scheduler element (*false*). By default the option is set to *false*.
 
 <h4 id="tooltipfor">scheduler.ext.tooltips.tooltipFor()</h4>
 
-adds a tooltip for the specified Scheduler element. It is a more simplified version of the **attach()** method. The method takes as a parameter *an object with tooltip details*. This object has the following properties:
+adds a tooltip for the specified Scheduler element. It is a more simplified version of the **attach()** method. The method takes as a parameter *an object with the tooltip details*. This object has the following properties:
 
-- **selector** - (*string*) a CSS-selector of the Scheduler element to add a tooltip to
+- **selector** - (*string*) the CSS-selector of the Scheduler element to add a tooltip to
 - **html** - (*function*) a template for the tooltip. The template function takes two parameters in its turn:
-	- **event** - (*Event*) a native mouse event
+	- **event** - (*Event*) the native mouse event
     - **node** -  (*HTMLElement*) the HTML node
 	and returns a string with a template.
-- **global** - (*boolean*) optional, defines whether the module listens to mouse events on the whole page (*true*) or only inside a scheduler element (*false*). By default the option is set to *false*. 
+- **global** - (*boolean*) optional, defines whether the module listens to the mouse events on the whole page (*true*) or only inside a scheduler element (*false*). By default the option is set to *false*. 
 
 <h4 id="detach">scheduler.ext.tooltips.detach()</h4> 
 
-removes tooltip. As a parameter the method takes:
+removes a tooltip. As a parameter the method takes:
 
 - **selector** - (*string*) the CSS selector of a Scheduler element
 
@@ -128,7 +128,7 @@ scheduler.attachEvent("onSchedulerReady", function(){
 
 {{sample 06_timeline/12_section_tooltip.html}}
 
-Or you can use the way as in:
+Or you can use the following way:
 
 ~~~js
 scheduler.init("scheduler_here");
@@ -144,18 +144,17 @@ scheduler.ext.tooltips.tooltipFor({
 });
 ~~~
 
-
-A tooltip added in this way will follow the mouse pointer and use the settings *api/scheduler_tooltip_offset_x_config.md*, *api/scheduler_tooltip_offset_y_config.md*, *api/scheduler_tooltip_timeout_config.md*,
-api/scheduler_tooltip_hide_timeout_config.md.
+A tooltip added in this way will follow the mouse pointer and use the *api/scheduler_tooltip_offset_x_config.md*, *api/scheduler_tooltip_offset_y_config.md*, *api/scheduler_tooltip_timeout_config.md*, and
+api/scheduler_tooltip_hide_timeout_config.md settings.
 
 - the [**scheduler.ext.tooltips.attach()**](#attach) method 
 
-This method allows adding a tooltip with an extended configuration to adjust tooltip behavior to the movement of the mouse pointer.
+This method allows adding a tooltip with an extended configuration to adjust the tooltip behavior to the movement of the mouse pointer.
 
 Customization of tooltip behavior
 ------------------------------
 
-There is a possibility to modify the default behavior of tooltip. It can be achieved by removing the default tooltip handler and adding a custom one:
+There is a possibility to modify the default behavior of the tooltip. It can be achieved by removing the default tooltip handler and adding a custom one. Follow the steps below:
 
 - Remove the built-in tooltip handler from tasks with the [**scheduler.ext.tooltips.detach**](#detach) method:
 
@@ -164,7 +163,7 @@ There is a possibility to modify the default behavior of tooltip. It can be achi
 scheduler.ext.tooltips.detach(`[${scheduler.config.event_attribute}]`);
 ~~~
 
-- Add the desired tooltip behavior via the [**scheduler.ext.tooltips.attach()**](#attach) method. In the example below tooltip is shown only above the table:
+- Add the desired tooltip behavior via the [**scheduler.ext.tooltips.attach()**](#attach) method. In the example below the tooltip is shown only above the table:
 
 ~~~js
 scheduler.ext.tooltips.tooltipFor({
@@ -191,7 +190,7 @@ Timeout
 
 You can configure the time of tooltips showing and hiding via the related settings.
 
-To specify the time period in milliseconds before a tooltip for a task will appear, use the api/scheduler_tooltip_timeout_config.md:
+To specify the time period (in milliseconds) before a tooltip for a task will appear, use the api/scheduler_tooltip_timeout_config.md property:
 
 ~~~js
 scheduler.config.tooltip_timeout = 50;
@@ -209,7 +208,7 @@ scheduler.init("scheduler_here");
 Position
 ----------
 
-The position of a tooltip can be configured by changing offsets of its default position via the two configuration properties:
+The position of a tooltip can be configured by changing the offsets of its default position via the two configuration properties:
 
 - api/scheduler_tooltip_offset_x_config.md - sets the horizontal offset of the tooltip position
 - api/scheduler_tooltip_offset_y_config.md - sets the vertical offset of the tooltip position
@@ -224,7 +223,7 @@ scheduler.init("scheduler_here");
 Displaying area
 -------------
 
-By default tooltips are attached to **document.body**. If necessary, you can limit tooltips inside a container by using the code below before initialization of Scheduler:
+By default tooltips are attached to **document.body**. If necessary, you can limit showing of tooltips to the container before initialization of Scheduler by using the code below:
 
 ~~~js
 scheduler.attachEvent("onSchedulerReady", function(){

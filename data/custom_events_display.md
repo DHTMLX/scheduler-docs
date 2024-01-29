@@ -7,9 +7,9 @@ dhtmlxScheduler provides the possibility to define custom display for events.
 Applicable to the day_view.md, week_view.md and units_view.md only
 }}
 
-##Technique
+## Technique
 
-Events customizing is achieved with the help of the api/scheduler_renderevent.md method:
+Customization of events is achieved with the help of the api/scheduler_renderevent.md method:
 
 ~~~js
 scheduler.renderEvent = function(container, ev) {
@@ -24,8 +24,7 @@ scheduler.renderEvent = function(container, ev) {
 	02_customization/27_custom_event_box.html
 }}
 
-##Important tips
-
+## Important tips
 
 - Returning _true_ applies the custom logic, returning _false_ applies the default logic.
 - Some CSS classes have special purpose (they must go first in the className of the element):
@@ -36,7 +35,7 @@ scheduler.renderEvent = function(container, ev) {
 var html = "<div class='dhx_event_move my_event_move' "
 ~~~
 
-##Example
+## Example
 
 Here is an example of some custom look:
 
@@ -57,21 +56,21 @@ scheduler.renderEvent = function(container, ev) {
 	var html = "<div class='dhx_event_move my_event_move' style='width: " + 
     container_width + "'></div>";
 
-	// container for event's content
+	// a container for the event's content
 	html+= "<div class='my_event_body'>";
 	html += "<span class='event_date'>";
-	//two options here:show only start date for short events or start+end for long
-	if ((ev.end_date - ev.start_date)/60000>40){//if event is longer than 40 minutes
+	//two options here:show only start date for short events or start+end for long ones
+	if ((ev.end_date - ev.start_date)/60000>40){//if an event is longer than 40 minutes
 		html += scheduler.templates.event_header(ev.start_date, ev.end_date, ev);
 		html += "</span><br/>";
 	} else {
 		html += scheduler.templates.event_date(ev.start_date) + "</span>";
 	}
-	// displaying event's text
+	// displaying the event's text
 	html += "<span>" + scheduler.templates.event_text(ev.start_date,ev.end_date,ev)+
     "</span>" + "</div>";
 
-	// resize section
+	// the resize section
 	html += "<div class='dhx_event_resize my_event_resize' style='width: " +
     container_width + "'></div>";
 
@@ -84,7 +83,7 @@ and the related CSS is the following:
 
 ~~~html
 <style type="text/css" >
-	/* background color for whole container and it's border*/
+	/* the background color for the whole container and its border*/
 	.my_event {
 		background: #add8e6;
 		color: black;
@@ -97,7 +96,7 @@ and the related CSS is the following:
 		height: 22px;
 	}
 
-	/* styles for event content */
+	/* styles for the event content */
 	.dhx_cal_event.my_event .my_event_body {
 		padding-top: 3px;
 		padding-left: 5px;
@@ -123,12 +122,10 @@ and the related CSS is the following:
 </style>
 ~~~
 
-You can also use css variables instead of fixed color values:
+You can also use CSS variables instead of the fixed color values as follows:
 
 ~~~html
 <style>
---dhx-scheduler-event-background);
-
 .my_event {
 	--dhx-scheduler-event-background: #add8e6;
 	--dhx-scheduler-event-color: black;
