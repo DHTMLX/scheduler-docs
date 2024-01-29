@@ -151,7 +151,7 @@ Map-related configuration options
 Customizing markers
 ---------------------------------------
 
-Starting from v7.0 you can customize the shape of markers by redefining the `createMarker` method of the Map View:
+Starting from v7.0 you can customize the shape of markers by redefining the `createMarker()` method of the Map View:
 
 ~~~js
 const { AdvancedMarkerElement, 
@@ -167,7 +167,8 @@ scheduler.ext.mapView.createMarker = function(config){
 };
 ~~~
 
-https://developers.google.com/maps/documentation/javascript/advanced-markers/basic-customization
+You can find more information in the [Google Maps documentation](
+https://developers.google.com/maps/documentation/javascript/advanced-markers/basic-customization).
 
 Related guides
 ----------------------------------------
