@@ -5,20 +5,15 @@ Agenda View (v6.0)
 
 The Agenda view allows displaying a list of upcoming events.
 
-
 <img src="agenda_view_old.png"/>
-
 
 {{sample
 	03_extensions/03_agenda_view.html
 }}
 
-
 {{note
 By default, the left list of the view displays events beginning from the current date. To change such behavior, use the api/scheduler_agenda_start_config.md, api/scheduler_agenda_end_config.md properties.
 }}
-
-
 
 Initialization
 -------------------------------
@@ -33,7 +28,7 @@ scheduler.plugins({
 });
 ~~~
     
-1) Add the view's tab to the scheduler's markup:
+2) Add the view's tab to the scheduler's markup:
 
 ~~~html
 <div id="scheduler_here" class="dhx_cal_container" ...>
@@ -52,11 +47,9 @@ scheduler.plugins({
 scheduler.locale.labels.agenda_tab="My Agenda"; 
 ~~~
 
-
 {{sample
 	03_extensions/03_agenda_view.html
 }}
-
 
 GUI details 
 -------------------------------------------
@@ -70,18 +63,16 @@ Localization Tips
 
 The Agenda view has 3 labels defined in the locale:
 
-
 - **scheduler.locale.labels.{agendaName}_tab** - the name of the view tab
 - **scheduler.locale.labels.date** - the header of the date column
 - **scheduler.locale.labels.description** - the header of the description column
-
 
 The first label is commonly specified while adding the view tab to the scheduler, but the remaining labels should be redefined only if you localize the application to a language, different from English.
 
 Setting the range of displayable dates
 ---------------------------------------
 
-To set the range of displayable dates, use the api/scheduler_agenda_end_config.md and  api/scheduler_agenda_start_config.md properties:
+To set the range of displayable dates, use the api/scheduler_agenda_end_config.md and api/scheduler_agenda_start_config.md properties:
 
 ~~~js
 //to display dates from 1st June 2019
@@ -97,8 +88,7 @@ Enabling Next/Previous/Today buttons
 It is possible to enable the Next/Previous and Today buttons in the Agenda view. You can implement it by redefining the **scheduler.date.agenda_start()/scheduler.date.add_agenda()** functions.
 
 **scheduler.date.agenda_start(date)** returns the start of the displayed interval of the view for a given date. 
-The default implementation of the agenda view always returns a fixed date value, that's why the agenda view doesn't react 
-on the change of dates on "next/prev" button clicks.
+The default implementation of the agenda view always returns a fixed date value, that's why the agenda view doesn't react on the change of dates on the "next/prev" buttons clicks.
 
 You can redefine these functions, for example, to return the current month:
 
@@ -122,7 +112,7 @@ Width of columns
 
 The width of columns in the Agenda view can be adjusted through the related CSS classes:
 
-~~~js
+~~~css
 <style>
   .dhx_agenda_line div{
      width: 300px; 
@@ -135,7 +125,6 @@ The width of columns in the Agenda view can be adjusted through the related CSS 
 
 ![Columns Width](agenda_columns_width.png)
 
-
 {{editor		https://snippet.dhtmlx.com/5/8a2c1eb40			Adjusting width of columns}}
 
 Related guides
@@ -146,7 +135,6 @@ Related guides
 - loading_data.md
 - skins.md
 - localization.md
-
 
 @index:
 agenda_view_templates_old.md
