@@ -19,7 +19,7 @@ scheduler.config.day_column_padding = 20;
 @template:	api_config
 @descr:
 
-Events can extend to the full width of the view columns. The `day_column_padding` setting limits the maximum width that events can occupy within cells. This ensures that there is always some empty space at the sides of the column, allowing users to create new events by double-clicking on these empty areas.`
+Events can extend to the full width of the view columns. The `day_column_padding` setting limits the maximum width that events can occupy within cells. This ensures that there is always some empty space at the sides of the column, allowing users to create new events by double-clicking on these empty areas.
 
 **Disabled padding**
 ~~~

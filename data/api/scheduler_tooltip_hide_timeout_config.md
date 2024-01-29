@@ -1,6 +1,6 @@
 tooltip_hide_timeout
 =============
-@short:sets the length of time, in milliseconds, before the tooltip hides
+@short:sets the length of time in milliseconds before the tooltip hides
 	
 
 @type:number
