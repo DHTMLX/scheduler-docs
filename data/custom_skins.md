@@ -217,10 +217,10 @@ In order to create a new skin, you can copy and rename one of the existing skins
 
 ~~~
 -> copy:
-codebase/sources/less/src/themes/material.ess
+codebase/sources/less/src/themes/material.less
 
 -> rename to:
-codebase/sources/less/src/themes/material.ess
+codebase/sources/less/src/themes/custom.less
 ~~~
 
 2) Import new file in  **sources/less/src/themes/index.less**, like this:
