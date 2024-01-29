@@ -32,7 +32,7 @@ This update brings some changes in the structure of the Scheduler package and be
 - Various improvements for scaling on high-definition screens and responsiveness on smaller screens
 - Provided a new user-friendly API for the [Tooltip extension](tooltips.md)
 - Added ability to reserve free space in columns of [Day](day_view.md)/[Week](week_view.md)/[Units](units_view.md) views
-- New api/scheduler_onbeforequickinfo_event.md
+- New api/scheduler_onbeforequickinfo_event.md event
 - New api/scheduler_time_slot_class_template.md and api/scheduler_time_slot_text_template.md templates
 - Updated type definitions
 
