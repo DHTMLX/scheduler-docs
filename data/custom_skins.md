@@ -178,9 +178,6 @@ Or
 
 The script will rebuild CSS files from sources and put them into the *codebase* folder of the scheduler package, replacing the existing ones.
 
-You can find declarations of colors/fonts/sizes and other aspects of the Scheduler design in <br> **less/skins/&#60;skin name&#62;/skin.less** files.
-
-
 Structure
 ------------
 
@@ -189,7 +186,7 @@ The structure of the **less** folder for version 7.0 (may be changed in future v
 ### Images
 
 - **./src/imgs** - svg icons used by all skins
-- **./src/iconfont** - icons are prebuilt into web font
+- **./src/iconfont** - icons prebuilt into the web font
 
 ### Skin definitions
 
@@ -246,10 +243,17 @@ Note that the skin variables should be defined under the `:root` elements, using
 
 A new theme must include the **--dhx-scheduler-theme** variable with the theme name.
 
-3) Rebuild skins
+3) Rebuild skins by running: 
 
-**Note** that scheduler may apply some predefined settings to the calendar based on the applied skin.
-When you create a new skin by copying an existing one, you may need to apply the appropriate settings to the scheduler manually.
+~~~
+npm run build
+~~~
+
+<br>
+{{note
+Note that scheduler may apply some predefined settings to the calendar based on the applied skin.
+When you create a new skin by copying an existing one, you may need to apply the corresponding settings to the scheduler manually.
+}}
 
 
 JS styling settings
