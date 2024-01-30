@@ -28,26 +28,29 @@ Default Export to PNG
 
 To export the scheduler as a PNG image, do the following steps:
 
-<ol>
-	<li>Include the <b>"https://export.dhtmlx.com/scheduler/api.js"</b> file on the page to enable the online export service:
-~~~html
-<script src="codebase/dhtmlxscheduler.js"></script>
-<script src="https://export.dhtmlx.com/scheduler/api.js"></script>  /*!*/
-<link rel="stylesheet" href="codebase/dhtmlxscheduler.css" type="text/css">
+- To use the online export service, enable the <b>export_api</b> plugin via the api/scheduler_plugins.md method:
+
+~~~js
+scheduler.plugins({
+  	export_api: true
+});
 ~~~
-</li>
-	<li>Call the <a href="png.md#parametersoftheexportmethod">exportToPNG</a> method to export the scheduler: 
+
+{{note If you use the Scheduler version older than 7.0, you need to include the **https://export.dhtmlx.com/scheduler/api.js** on your page to enable the online export service, e.g.:
+
+~~~js
+<script src="codebase/dhtmlxscheduler.js"></script>
+<script src="https://export.dhtmlx.com/scheduler/api.js"></script>
+~~~
+}}
+
+- Call the <a href="#parametersoftheexportmethods">exportToPNG</a> method to export the Scheduler: 
+
 ~~~html
 <input value="Export to PNG" type="button" onclick='scheduler.exportToPNG()'>/*!*/
 
-<script>
-	scheduler.init('scheduler_here',new Date(2019,5,30),"month");
-	scheduler.load("data/events");
-</script>
 ~~~
 
-</li>
-</ol>
 {{sample
 04_export/06_online_export.html
 }}

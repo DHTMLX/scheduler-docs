@@ -191,6 +191,22 @@ Events: api/scheduler_onbeforeexpand_event.md, api/scheduler_onbeforecollapse_ev
  
 {{sample 03_extensions/05_expand_plugin.html}}
 
+Export service
+-----------
+
+Provides the possibility to enable the online export service.
+
+~~~js
+scheduler.plugins({
+    export_api: true
+});
+~~~
+
+####Related resources
+
+Article: pdf.md , png.md
+
+{{sample 04_export/06_online_export.html}}
 
 Grid View
 ---------------------------------------------

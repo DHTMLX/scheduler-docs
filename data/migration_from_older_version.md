@@ -154,6 +154,25 @@ To remove this padding, use api/scheduler_day_column_padding_config.md:
 scheduler.config.day_column_padding = 0;
 ~~~
 
+### Export service
+
+From v7.0, the import/export functionality is included into the Scheduler library. 
+
+Therefore, if you have already included the **https://export.dhtmlx.com/scheduler/api.js** on your page to enable the online export service, for example:
+
+~~~js
+<script src="codebase/dhtmlxscheduler.js"></script>
+<script src="https://export.dhtmlx.com/scheduler/api.js"></script>
+~~~
+
+Then you need to remove the file and enable the **export_api** extension using the **scheduler.plugins** method:
+
+~~~js
+scheduler.plugins({
+    export_api: true
+});
+~~~
+
 ### Promise implementation
 
 The **Bluebird** library has been excluded from the Scheduler bundle. api/scheduler_promise.md now uses the native Promise implementation.
