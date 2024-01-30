@@ -10,9 +10,9 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
-7.0.0
+<b>7.0</b>
 ---------------
-<span class='release_date'>January 30, 2024. Major release</span>
+<span class='release_date'>January 31, 2024. Major update</span>
 
 ### Breaking Changes
 
@@ -105,7 +105,7 @@ This update brings some changes in the structure of the Scheduler package and be
 - Disabling the [show_quick_info](api/scheduler_show_quick_info_config.md) config now stops the [Quick Info](touch_support.md#quickinfoextension) from appearing after the mouse click on an event, but allows opening the popup via calling the [showQuickInfo](api/scheduler_showquickinfo.md) method
 - Fix the incorrect work of the [repeat_date](api/scheduler_repeat_date_config.md) config in some cases
 
-6.0
+<b>6.0</b>
 ---------------------
 <span class='release_date'>May 19, 2022. Major update</span>
 
