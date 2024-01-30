@@ -10,7 +10,7 @@ npm
 
 **Standard (Free) version**
 
-You can install a Stardard version of Scheduler from [npmjs.com](https://www.npmjs.com/package/dhtmlx-scheduler) by executing the following command line:
+You can install the Standard version of Scheduler from [npmjs.com](https://www.npmjs.com/package/dhtmlx-scheduler) by executing the following command line:
 
 ~~~html
 npm install dhtmlx-scheduler
@@ -34,7 +34,7 @@ The trial and licensed (paid) versions of Scheduler can be installed from DHTMLX
 Bower
 -------------------------
 
-To install the Stardard version of Scheduler through [Bower](https://bower.io/), execute the following command line:
+To install the Standard version of Scheduler through [Bower](https://bower.io/), execute the following command line:
 
 ~~~html
 bower install scheduler
@@ -54,10 +54,10 @@ To include JS/CSS files from CDN, you should set direct links to **dhtmlxschedul
 
 You can find the full list of links you can include from CDN, depending on the version of dhtmlxScheduler in a [separate article](cdn_links_list.md).
 
-Installing the PRO Version
+Alternative installation ways
 ---------------------------------
 
-All public sources (CDN, Bower, and npm) contain the Stardard edition of the component which is distributed under the GPL license.
+All public sources (CDN, Bower, and npm) contain the Standard edition of the component which is distributed under the GPL license.
 
 We also provide our [private npm registry](#npm) from where the Professional and Evaluation versions of the component can be installed. 
 

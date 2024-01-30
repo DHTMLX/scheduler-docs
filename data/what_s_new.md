@@ -16,35 +16,34 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 ### Breaking Changes
 
-This update brings some changes in the structure of the Scheduler package and behavior of functionality. Be sure to check [Migration notes](migration_from_older_version.md) to be on the safe side.
+This update brings some changes in the structure of the Scheduler package and behavior of the functionality. Make sure to check the [Migration notes](migration_from_older_version.md) to be on the safe side.
+
+### New functionality
+
+- [Skins customization](custom_skins.md) with CSS variables
+- New [Dark skin](skins.html#darkskin) is introduced
+- New [Agenda view](agenda_view.md) is added
 
 ### Updates
 
-- Updated the [Terrace skin](skins.md#terraceskin)
-- Introduced a new [Dark skin](skins.html#darkskin)
-- Enabled [customization of all skins](custom_skins.md) using CSS variables
-- Added a new [Agenda view](agenda_view.md)
-- Professional versions of the Scheduler can be [installed via npm](install_with_bower.md).
-- Enhanced the ability to customize markers in the [Map View](map_view.md)
-- Improved default display for [short events](sizing.md) in Day/Week/Units views
-- Updated [Day](day_view.md)/[Week](week_view.md)/[Units](units_view.md) views to no longer use images for the background grid
-- Removed the [Bluebird Promise](api/scheduler_promise.md) library from the core library
+- [Terrace skin](skins.md#terraceskin) is updated
+- Ability to [install the professional versions of the Scheduler via npm](install_with_bower.md)
+- Enhanced ability to customize markers in the [Map View](map_view.md)   
+- Improvements in the default display for [short events](sizing.md) in the Day/Week/Units views 
+- [Day](day_view.md)/[Week](week_view.md)/[Units](units_view.md) views don't use images for the background grid any more
+- [Bluebird Promise](api/scheduler_promise.md) library is **removed** from the core library
 - Various improvements for scaling on high-definition screens and responsiveness on smaller screens
-- Provided a new user-friendly API for the [Tooltip extension](tooltips.md)
-- Added ability to [reserve free space](api/scheduler_day_column_padding_config.md) in columns of [Day](day_view.md)/[Week](week_view.md)/[Units](units_view.md) views
-- New api/scheduler_onbeforequickinfo_event.md event
-- New api/scheduler_time_slot_class_template.md and api/scheduler_time_slot_text_template.md templates
+- Columns of the [Day](day_view.md)/[Week](week_view.md)/[Units](units_view.md) views are now able to [reserve free space](api/scheduler_day_column_padding_config.md)
 - Updated type definitions
 
 ### Fixes
 
-- Corrected the display issues of the [recurring form](recurring_events.md) when the [French locale](localization.md) is used
-- Fixed the incorrect duration of events after drag-and-drop actions in the [Timeline view](timeline_view.md) when using the first_hour/last_hour settings
-- Addressed unexpected scroll behavior when using the mouse wheel over the left-hand panel of the [Timeline view](timeline_view.md)
-- Resolved visual lag during vertical scrolling in the [Timeline view](timeline_view.md) on high-definition screens with Smart Rendering enabled
-- Fixed the non-functional drag-and-drop in the [Units view](units_view.md) when the `all_timed` extension is active
-- Restored the Multiselect plugin in GPL builds
-
+- Display issues of the [recurring form](recurring_events.md) when the [French locale](localization.md) is used
+- Incorrect duration of events after drag-and-drop actions in the [Timeline view](timeline_view.md) when using the first_hour/last_hour settings
+- Unexpected scroll behavior when using the mouse wheel over the left-hand panel of the [Timeline view](timeline_view.md)
+- Visual lag during vertical scrolling in the [Timeline view](timeline_view.md) on high-definition screens with Smart Rendering enabled
+- Non-functional drag-and-drop in the [Units view](units_view.md) when the `all_timed` extension is active
+- The Multiselect plugin in GPL builds is restored
 
 6.0.5
 ---------------
