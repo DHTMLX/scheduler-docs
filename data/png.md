@@ -26,7 +26,7 @@ There is a common API endpoint **https://export.dhtmlx.com/scheduler** which ser
 Default Export to PNG
 ----------------------
 
-To export the scheduler as a PNG image, do the following steps:
+To export a scheduler as a PNG image, do the following steps:
 
 - To use the online export service, enable the <b>export_api</b> plugin via the api/scheduler_plugins.md method:
 
@@ -36,7 +36,7 @@ scheduler.plugins({
 });
 ~~~
 
-{{note If you use the Scheduler version older than 7.0, you need to include the **https://export.dhtmlx.com/scheduler/api.js** on your page to enable the online export service, e.g.:
+{{note If you use the Scheduler version older than 7.0, you need to include the **https://export.dhtmlx.com/scheduler/api.js** file on your page to enable the online export service, e.g.:
 
 ~~~js
 <script src="codebase/dhtmlxscheduler.js"></script>
@@ -44,11 +44,10 @@ scheduler.plugins({
 ~~~
 }}
 
-- Call the <a href="#parametersoftheexportmethods">exportToPNG</a> method to export the Scheduler: 
+- Call the <a href="#parametersoftheexportmethod">exportToPNG</a> method to export the Scheduler: 
 
 ~~~html
 <input value="Export to PNG" type="button" onclick='scheduler.exportToPNG()'>/*!*/
-
 ~~~
 
 {{sample

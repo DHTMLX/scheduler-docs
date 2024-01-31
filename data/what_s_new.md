@@ -35,7 +35,7 @@ This update brings some changes in the structure of the Scheduler package and be
 - Various improvements for scaling on high-definition screens and responsiveness on smaller screens
 - Columns of the [Day](day_view.md)/[Week](week_view.md)/[Units](units_view.md) views are now able to [reserve free space](api/scheduler_day_column_padding_config.md)
 - Updated type definitions
-- The export API is included into [scheduler.plugins](extensions_list.md#exportservice) and no longer requires adding additional JS file. Check the [Migration](migration_from_older_version.md) article
+- The export API is included into [scheduler.plugins](extensions_list.md#exportservice) and no longer requires including an additional JS file. Check the [Migration](migration_from_older_version.md) article for details
 
 ### Fixes
 

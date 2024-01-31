@@ -25,7 +25,7 @@ Migration From Older Versions
 The v7.0 update introduces several breaking changes.
 
 
-### Skins switched to css variables
+### Skins switched to CSS variables
 
 CSS skins (themes) have been completely reworked and now utilize CSS variables. While the HTML structure of the component and CSS class names have mostly remained unchanged, CSS styles written for older versions of the Scheduler are likely no longer effective with v7.0.
 
@@ -67,7 +67,7 @@ Check the available variables on the custom_skins.md page.
 Migration will require the rewriting of existing CSS to achieve the required design.
 }}
 
-### Single css file
+### Single CSS file
 
 All themes are now embedded into a single **dhtmlxscheduler.css** file.
 
@@ -87,9 +87,9 @@ scheduler.setSkin("material");
 Note that `scheduler.setSkin()` will repaint the Scheduler.
 }}
 
-If you use a skin other than the **terrace** the following migration step is required:
+If you use a skin other than the **terrace**, the following migration steps are required:
 
-1) Replace the css file of the skin with the `dhtmlxscheduler.css` file
+1) Replace the CSS file of the skin with the `dhtmlxscheduler.css` file:
 
 ~~~html
 <!-- OLD -->
@@ -126,7 +126,7 @@ The height of the corresponding elements is set by the styles below:
 
 ### Changed defaults
 
-api/scheduler_details_on_create_config.md and api/scheduler_details_on_dblclick_config.md default values has changed from `false` to `true`.
+The default values of api/scheduler_details_on_create_config.md and api/scheduler_details_on_dblclick_config.md properties have changed from `false` to `true`.
 
 ### Material skin font
 
@@ -142,11 +142,11 @@ If you use the Material skin, you need to import the font manually:
 
 ### New API for Tooltips
 
-Tooltips have a new API that allows easy attachment of the tooltip to custom elements. See more details in the related article: tooltips.md.
+Tooltips have a new API that provides easy attachment of tooltip to custom elements. See more details in the related article: tooltips.md.
 
 ### Padding in columns of the Day/Week views
 
-Day/Week/Units view now have small padding that ensures there is always small empty space at the side of the column. It allows users to create new events by double-clicking on these empty areas.
+The Day/Week/Units views now have small padding that ensures there is always small empty space at the side of the column. It allows users to create new events by double-clicking on these empty areas.
 
 To remove this padding, use api/scheduler_day_column_padding_config.md:
 
@@ -156,16 +156,16 @@ scheduler.config.day_column_padding = 0;
 
 ### Export service
 
-From v7.0, the import/export functionality is included into the Scheduler library. 
+Starting from v7.0, the import/export functionality is included into the Scheduler library. 
 
-Therefore, if you have already included the **https://export.dhtmlx.com/scheduler/api.js** on your page to enable the online export service, for example:
+Therefore, if you have already included **https://export.dhtmlx.com/scheduler/api.js** on your page to enable the online export service, for example:
 
 ~~~js
 <script src="codebase/dhtmlxscheduler.js"></script>
 <script src="https://export.dhtmlx.com/scheduler/api.js"></script>
 ~~~
 
-Then you need to remove the file and enable the **export_api** extension using the **scheduler.plugins** method:
+You need to remove the file and enable the **export_api** extension using the **scheduler.plugins** method:
 
 ~~~js
 scheduler.plugins({
