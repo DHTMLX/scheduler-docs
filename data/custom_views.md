@@ -7,7 +7,7 @@ If the available views don't meet your needs, you can create your custom view.
 Creating a custom view starts from adding a new tab to the scheduler - the tab of your future view. Mostly it looks like in:
 
 ~~~js
-<div class="dhx_cal_tab" name="workweek_tab" style="right:280px;"></div>
+<div class="dhx_cal_tab" data-tab="workweek"></div>
 ~~~
 
 Remember:

@@ -10,6 +10,42 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+<b>7.0</b>
+---------------
+<span class='release_date'>January 31, 2024. Major update</span>
+
+### Breaking Changes
+
+This update brings some changes in the structure of the Scheduler package and behavior of the functionality. Make sure to check the [Migration notes](migration_from_older_version.md) to be on the safe side.
+
+### New functionality
+
+- [Skins customization](custom_skins.md) with CSS variables
+- New [Dark skin](skins.html#darkskin) is introduced
+- New [Agenda view](agenda_view.md) is added
+
+### Updates
+
+- [Terrace skin](skins.md#terraceskin) is updated
+- Ability to [install the professional versions of the Scheduler via npm](install_with_bower.md)
+- Enhanced ability to customize markers in the [Map View](map_view.md)   
+- Improvements in the default display for [short events](sizing.md) in the Day/Week/Units views 
+- [Day](day_view.md)/[Week](week_view.md)/[Units](units_view.md) views don't use images for the background grid any more
+- [Bluebird Promise](api/scheduler_promise.md) library is **removed** from the core library
+- Various improvements for scaling on high-definition screens and responsiveness on smaller screens
+- Columns of the [Day](day_view.md)/[Week](week_view.md)/[Units](units_view.md) views are now able to [reserve free space](api/scheduler_day_column_padding_config.md)
+- Updated type definitions
+- The export API is included into [scheduler.plugins](extensions_list.md#exportservice) and no longer requires including an additional JS file. Check the [Migration](migration_from_older_version.md) article for details
+
+### Fixes
+
+- Display issues of the [recurring form](recurring_events.md) when the [French locale](localization.md) is used
+- Incorrect duration of events after drag-and-drop actions in the [Timeline view](timeline_view.md) when using the first_hour/last_hour settings
+- Unexpected scroll behavior when using the mouse wheel over the left-hand panel of the [Timeline view](timeline_view.md)
+- Visual lag during vertical scrolling in the [Timeline view](timeline_view.md) on high-definition screens with Smart Rendering enabled
+- Non-functional drag-and-drop in the [Units view](units_view.md) when the `all_timed` extension is active
+- The Multiselect plugin in GPL builds is restored
+
 6.0.5
 ---------------
 <span class='release_date'>July 31, 2023. Bugfix release</span>
@@ -70,7 +106,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 - Disabling the [show_quick_info](api/scheduler_show_quick_info_config.md) config now stops the [Quick Info](touch_support.md#quickinfoextension) from appearing after the mouse click on an event, but allows opening the popup via calling the [showQuickInfo](api/scheduler_showquickinfo.md) method
 - Fix the incorrect work of the [repeat_date](api/scheduler_repeat_date_config.md) config in some cases
 
-6.0
+<b>6.0</b>
 ---------------------
 <span class='release_date'>May 19, 2022. Major update</span>
 

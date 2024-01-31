@@ -5,7 +5,7 @@ details_on_create
 	
 
 @type: boolean
-@default:false
+@default:true
 @views:day, week,units
 @example:
 scheduler.config.details_on_create=true;
@@ -20,3 +20,6 @@ scheduler.init('scheduler_here',new Date(2013,0,10),"week");
     02_customization/12_full_day_event.html
 
 @apigroup: Events
+
+@changelog:
+Default value changed to `true` in v7.0

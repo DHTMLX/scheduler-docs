@@ -147,6 +147,29 @@ Map-related configuration options
 <a href="api/scheduler_xy_other.md">scheduler.xy.map_date_width</a> - the width of the date column<br>
 <a href="api/scheduler_xy_other.md">scheduler.xy.map_description_width</a> - the width of the description column
 
+
+Customizing markers
+---------------------------------------
+
+Starting from v7.0 you can customize the shape of markers by redefining the `createMarker()` method of the Map View:
+
+~~~js
+const { AdvancedMarkerElement, 
+	PinElement } = await google.maps.importLibrary("marker");
+scheduler.ext.mapView.createMarker = function(config){
+    const pinViewGlyph = new PinElement({
+        glyphColor: "white",
+    });
+    return new AdvancedMarkerElement({
+        ...config,
+        content: pinViewGlyph.element,
+    });
+};
+~~~
+
+You can find more information in the [Google Maps documentation](
+https://developers.google.com/maps/documentation/javascript/advanced-markers/basic-customization).
+
 Related guides
 ----------------------------------------
 

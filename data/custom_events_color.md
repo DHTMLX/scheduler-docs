@@ -72,35 +72,52 @@ Let's assume, you want to have the events assigned to managers and employees in 
 {{snippet
 Redefining the default CSS classes
 }}
+
+~~~html
+<style>
+    .manager_event {
+        --dhx-scheduler-event-background: #009966;
+        --dhx-scheduler-event-color: black;
+    }
+
+    .employee_event {
+        --dhx-scheduler-event-background: #FF9933;
+        --dhx-scheduler-event-color: black;
+    }
+</style>
+~~~
+
+For older versions of Scheduler (v6.0 and earlier), CSS variables are not available and events can be colored with following styles:
+
 ~~~html
 <style>
 	/*event in day or week view*/
     .dhx_cal_event.manager_event div{
-    	background-color: #009966 !important;
+        background-color: #009966 !important;
         color: black !important;
     }
-	.dhx_cal_event.employee_event div{
-		background-color: #FF9933 !important;
-		color: black !important;
-	}
+    .dhx_cal_event.employee_event div{
+        background-color: #FF9933 !important;
+        color: black !important;
+    }
  
     /*multi-day event in month view*/
     .dhx_cal_event_line.manager_event{
-    	background-color: #009966 !important;
-		color: black !important;
-	}
-	.dhx_cal_event_line.employee_event{
-    	background-color: #FF9933 !important;
-		color: black !important;
-	}
- 
-	/*event with fixed time, in month view*/
-	.dhx_cal_event_clear.manager_event{
-    	color: black !important;
-	}
-	.dhx_cal_event_clear.employee_event{
-    	color: black !important;
-	}
+        background-color: #009966 !important;
+        color: black !important;
+    }
+    .dhx_cal_event_line.employee_event{
+        background-color: #FF9933 !important;
+        color: black !important;
+    }
+
+    /*event with fixed time, in month view*/
+    .dhx_cal_event_clear.manager_event{
+        color: black !important;
+    }
+    .dhx_cal_event_clear.employee_event{
+        color: black !important;
+    }
 </style>
 ~~~
     </li>
@@ -175,10 +192,10 @@ scheduler.attachEvent("onLoadEnd", function(){
     // generate css styles for each option and write css into the style element,
  
     resources.forEach(function(r){
-        html.push(".dhx_cal_event_line.event_resource_" + r.key + "{" +
-            "background-color:"+r.backgroundColor+"; " +
-            "color:"+r.textColor+";" +
-        "}");
+        html.push(`.event_resource_${r.key} {
+            --dhx-scheduler-event-background:${r.backgroundColor};
+            --dhx-scheduler-event-color:${r.textColor};
+        }`);
     });
     element.innerHTML = html.join("");
 });

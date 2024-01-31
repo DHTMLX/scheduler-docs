@@ -20,6 +20,7 @@ Properties
 - api/scheduler_container_autoresize_config.md - forces the scheduler container to automatically change its size to show the whole content without scrolling
 - api/scheduler_csp_config.md - defines internal implementation of the code of date formatting methods
 - api/scheduler_date_format_config.md - sets the date format that is used to parse data from a data set and to send dates back to the server
+- api/scheduler_day_column_padding_config.md - adds padding to a view column
 - api/scheduler_day_date_config.md - sets the date format for the X-Axis of the Week and Units views
 - api/scheduler_dblclick_create_config.md - enables the possibility to create events by double click
 - api/scheduler_default_date_config.md - sets the date format used by the templates 'day_date', 'week_date', 'day_scale_date' for setting date in the views' headers
@@ -114,6 +115,10 @@ Properties
 - api/scheduler_start_on_monday_config.md - sets the start day of weeks
 - api/scheduler_time_step_config.md - sets the minimum step (in minutes) for event's time values
 - api/scheduler_timeline_swap_resize_config.md - defines that during event resizing the end date of the event can be swapped for the start date (after the end date becomes scheduled before the start one)
+- api/scheduler_tooltip_hide_timeout_config.md - sets the length of time in milliseconds before the tooltip hides
+- api/scheduler_tooltip_offset_x_config.md - sets the right (if positive) offset of the tooltip's position
+- api/scheduler_tooltip_offset_y_config.md - sets the top (if positive) offset of the tooltip's position
+- api/scheduler_tooltip_timeout_config.md - sets the timeout in milliseconds before the tooltip is displayed for a task
 - api/scheduler_touch_config.md - enables/disables the touch support in the scheduler
 - api/scheduler_touch_drag_config.md - defines the time period in milliseconds that is used to differ the long touch gesture from the scroll gesture
 - api/scheduler_touch_swipe_dates_config.md - enables/disables switching active dates using the horizontal swipe gesture on mobiles
@@ -149,6 +154,7 @@ Properties
 - api/scheduler_container_autoresize_config.md
 - api/scheduler_csp_config.md
 - api/scheduler_date_format_config.md
+- api/scheduler_day_column_padding_config.md
 - api/scheduler_day_date_config.md
 - api/scheduler_dblclick_create_config.md
 - api/scheduler_default_date_config.md
@@ -243,6 +249,10 @@ Properties
 - api/scheduler_start_on_monday_config.md
 - api/scheduler_time_step_config.md
 - api/scheduler_timeline_swap_resize_config.md
+- api/scheduler_tooltip_hide_timeout_config.md
+- api/scheduler_tooltip_offset_x_config.md
+- api/scheduler_tooltip_offset_y_config.md
+- api/scheduler_tooltip_timeout_config.md
 - api/scheduler_touch_config.md
 - api/scheduler_touch_drag_config.md
 - api/scheduler_touch_swipe_dates_config.md

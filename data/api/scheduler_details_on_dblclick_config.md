@@ -5,7 +5,7 @@ details_on_dblclick
 	
 
 @type:boolean
-@default:false
+@default:true
 @views:day, week, units
 @example:
 scheduler.config.details_on_dblclick = true;
@@ -20,3 +20,6 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 @descr:
 
 @apigroup: Lightbox
+
+@changelog:
+Default value changed to `true` in v7.0

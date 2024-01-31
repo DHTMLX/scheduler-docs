@@ -22,6 +22,7 @@ Events
 - api/scheduler_onbeforefoldertoggle_event.md - fires before a tree branch will be opened or closed (the Timeline view, 'tree' mode only)
 - api/scheduler_onbeforelightbox_event.md - fires immediately before the user opens the lightbox (edit form)
 - api/scheduler_onbeforeparse_event.md - fires before data started to be parsed
+- api/scheduler_onbeforequickinfo_event.md - fires immediately before the Quick Info popup is displayed for an event
 - api/scheduler_onbeforetodaydisplayed_event.md - fires when the user clicks on the 'Today' button in the scheduler
 - api/scheduler_onbeforetooltip_event.md - fires before the tooltip is displayed for a data item (only with the 'tooltip' extension enabled)
 - api/scheduler_onbeforeviewchange_event.md - fires before the user changes the current view to some other one
@@ -37,7 +38,7 @@ Events
 - api/scheduler_ondestroy_event.md - fires after scheduler has been cleared by the api/scheduler_destructor.md method
 - api/scheduler_ondragend_event.md - fires when the drag/resize operation is finished
 - api/scheduler_onemptyclick_event.md - fires when the user clicks on an empty space in the scheduler (not on events)
-- api/scheduler_onerror_event.md - fires when api/scheduler_assert.md receives 'false' value, i.e. when assertion fails
+- api/scheduler_onerror_event.md - fires when api/scheduler_assert.md receives the 'false' value, i.e. when assertion fails
 - api/scheduler_oneventadded_event.md - fires when the user adds a new event to the scheduler
 - api/scheduler_oneventcancel_event.md - fires when the user clicks on the 'Cancel' button in the lightbox (edit form)
 - api/scheduler_oneventchanged_event.md - occurs after the user has edited an event and saved the changes (after clicking on the edit and save buttons in the event's bar or in the details window)
@@ -109,6 +110,7 @@ Events
 - api/scheduler_onbeforefoldertoggle_event.md
 - api/scheduler_onbeforelightbox_event.md
 - api/scheduler_onbeforeparse_event.md
+- api/scheduler_onbeforequickinfo_event.md
 - api/scheduler_onbeforetodaydisplayed_event.md
 - api/scheduler_onbeforetooltip_event.md
 - api/scheduler_onbeforeviewchange_event.md

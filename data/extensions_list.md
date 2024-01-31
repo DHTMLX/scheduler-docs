@@ -3,7 +3,7 @@ Full List of Extensions
 
 dhtmlxScheduler includes a number of extensions which add extra functionality to the standard behavior. 
 
-To use an extension, you should it with the help of the [scheduler.plugins](api/scheduler_plugins.md) method.
+To use an extension, you should activate it with the help of the [scheduler.plugins](api/scheduler_plugins.md) method.
 
 {{note In v6.0, the extensions code files has been removed from the **ext** folder of the scheduler's codebase and included into the *dhtmlxscheduler.js* file. <br>If you use dhtmlxScheduler 5.3 and earlier versions, check the [migration article](migration_from_older_version.md#5360).}}
 
@@ -191,6 +191,22 @@ Events: api/scheduler_onbeforeexpand_event.md, api/scheduler_onbeforecollapse_ev
  
 {{sample 03_extensions/05_expand_plugin.html}}
 
+Export service
+-----------
+
+Provides the possibility to enable the online export service.
+
+~~~js
+scheduler.plugins({
+    export_api: true
+});
+~~~
+
+####Related resources
+
+Article: pdf.md , png.md
+
+{{sample 04_export/06_online_export.html}}
 
 Grid View
 ---------------------------------------------

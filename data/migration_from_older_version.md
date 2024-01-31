@@ -20,6 +20,163 @@ Migration From Older Versions
 	}
 </style>
 
+## 6.0 -> 7.0
+
+The v7.0 update introduces several breaking changes.
+
+
+### Skins switched to CSS variables
+
+CSS skins (themes) have been completely reworked and now utilize CSS variables. While the HTML structure of the component and CSS class names have mostly remained unchanged, CSS styles written for older versions of the Scheduler are likely no longer effective with v7.0.
+
+For example, the following style was used to change the background color of an event:
+
+~~~html
+<style>
+	/*event in day or week view*/
+    .dhx_cal_event.manager_event div{
+        background-color: #009966 !important;
+        color: black !important;
+    }
+    /*multi-day event in month view*/
+    .dhx_cal_event_line.manager_event{
+        background-color: #009966 !important;
+        color: black !important;
+    }
+    /*event with fixed time, in month view*/
+    .dhx_cal_event_clear.manager_event{
+        color: black !important;
+    }
+</style>
+~~~
+
+Starting from v7.0, the same effect is achieved with the following style:
+
+~~~html
+<style>
+	.manager_event {
+		--dhx-scheduler-event-background: #009966;
+		--dhx-scheduler-event-color: black;
+	}
+</style>
+~~~
+
+Check the available variables on the custom_skins.md page.
+
+{{note
+Migration will require the rewriting of existing CSS to achieve the required design.
+}}
+
+### Single CSS file
+
+All themes are now embedded into a single **dhtmlxscheduler.css** file.
+
+To activate a specific skin, use the `scheduler.skin` property:
+
+~~~js
+scheduler.skin = "material";
+~~~
+
+Or the api/scheduler_setskin.md method:
+
+~~~js
+scheduler.setSkin("material");
+~~~
+
+{{note
+Note that `scheduler.setSkin()` will repaint the Scheduler.
+}}
+
+If you use a skin other than the **terrace**, the following migration steps are required:
+
+1) Replace the CSS file of the skin with the `dhtmlxscheduler.css` file:
+
+~~~html
+<!-- OLD -->
+<link rel="stylesheet" href="./codebase/dhtmlxscheduler_material.css" type="text/css">
+<!-- NEW -->
+<link rel="stylesheet" href="./codebase/dhtmlxscheduler.css" type="text/css">
+~~~
+
+2) Enable the required skin from javascript:
+
+~~~js
+scheduler.setSkin("material");
+scheduler.init("scheduler_here");
+~~~
+
+### Obsolete `scheduler.xy` settings
+
+The following `scheduler.xy` properties are no longer used:
+
+- scheduler.xy.nav_height
+- scheduler.xy.event_header_height
+
+The height of the corresponding elements is set by the styles below:
+
+~~~css
+.dhx_cal_navline {
+	height: 40px;
+}
+
+.dhx_cal_event dhx_title {
+	height: 30px;
+}
+~~~
+
+### Changed defaults
+
+The default values of api/scheduler_details_on_create_config.md and api/scheduler_details_on_dblclick_config.md properties have changed from `false` to `true`.
+
+### Material skin font
+
+The **Material** skin no longer imports the Roboto font by default.
+
+If you use the Material skin, you need to import the font manually:
+
+~~~js
+@import url(
+'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap'
+);
+~~~
+
+### New API for Tooltips
+
+Tooltips have a new API that provides easy attachment of tooltip to custom elements. See more details in the related article: tooltips.md.
+
+### Padding in columns of the Day/Week views
+
+The Day/Week/Units views now have small padding that ensures there is always small empty space at the side of the column. It allows users to create new events by double-clicking on these empty areas.
+
+To remove this padding, use api/scheduler_day_column_padding_config.md:
+
+~~~js
+scheduler.config.day_column_padding = 0;
+~~~
+
+### Export service
+
+Starting from v7.0, the import/export functionality is included into the Scheduler library. 
+
+Therefore, if you have already included **https://export.dhtmlx.com/scheduler/api.js** on your page to enable the online export service, for example:
+
+~~~js
+<script src="codebase/dhtmlxscheduler.js"></script>
+<script src="https://export.dhtmlx.com/scheduler/api.js"></script>
+~~~
+
+You need to remove the file and enable the **export_api** extension using the **scheduler.plugins** method:
+
+~~~js
+scheduler.plugins({
+    export_api: true
+});
+~~~
+
+### Promise implementation
+
+The **Bluebird** library has been excluded from the Scheduler bundle. api/scheduler_promise.md now uses the native Promise implementation.
+
 ## 5.3 -> 6.0
 
 The newest update v6.0 introduces two major changes in the structure of the Scheduler package:
