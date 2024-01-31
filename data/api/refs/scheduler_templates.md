@@ -5,7 +5,7 @@ Templates
 
 {{api
 - api/scheduler_agenda_date_template.md - specifies the date in the header of the view
-- api/scheduler_agenda_day_template.md - 
+- api/scheduler_agenda_day_template.md - specifies the content of the day cell of the Agenda view
 - api/scheduler_agenda_text_template.md - specifies the text in the second column of the Agenda view
 - api/scheduler_agenda_time_template.md - specifies the date in the first column of the Agenda view
 - api/scheduler_api_date_template.md - specifies the format of dates that are set by means of API methods. Used to parse incoming dates
@@ -41,8 +41,8 @@ Templates
 - api/scheduler_quick_info_date_template.md - specifies the date of the pop-up edit form
 - api/scheduler_quick_info_title_template.md - specifies the title of the pop-up edit form
 - api/scheduler_time_picker_template.md - specifies the drop-down time selector in the lightbox
-- api/scheduler_time_slot_class_template.md - 
-- api/scheduler_time_slot_text_template.md - 
+- api/scheduler_time_slot_class_template.md - specifies the CSS class of the background cell in the Day/Week views
+- api/scheduler_time_slot_text_template.md - specifies the content of the background cell in the Day/Week views
 - api/scheduler_tooltip_date_format_template.md - specifies the format of start and end dates displayed in the tooltip
 - api/scheduler_tooltip_text_template.md - specifies the text of tooltips
 - api/scheduler_week_agenda_date_template.md - specifies the date in the header of the Week Agenda view
