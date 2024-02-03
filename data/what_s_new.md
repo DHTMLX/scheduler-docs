@@ -10,6 +10,21 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+7.0.1
+---------------
+<span class='release_date'>February 5, 2024. Bugfix release</span>
+
+### Fixes
+
+- Fixed a regression in the [Units](units_view.md) that caused layout issues when the scheduler was displayed on the current date.
+- Corrected the position of the [Quick Info](touch_support.md#quickinfoextension) popup in the [scrollable timeline](timeline_view.md#horizontalscroll).
+- Resolved the incorrect positioning of the selected time slot by the [Keyboard Navigation](keyboard_navigation.md) module when [RTL](rtl_mode.md) mode is active.
+- Fixed an issue that prevented the creation of multi-day events in the [Month](month_view.md) view after performing a drag-resize action in the [Day](day_view.md)/[Week](week_view.md) views.
+
+### Enhancements
+
+- The [height of the multi-day section](api/scheduler_multi_day_height_limit_config.md) in [Day](day_view.md)/[Week](week_view.md) views is now limited to 200px by default.
+
 <b>7.0</b>
 ---------------
 <span class='release_date'>January 31, 2024. Major update</span>
