@@ -105,7 +105,7 @@ Required code files
 The required code files are:
 
 - *dhtmlxscheduler.js*
-- *dhtmlxscheduler_material.css* (for Material skin; you can also [explore the available skins](skins.md))
+- *dhtmlxscheduler.css* (you can also [explore the available skins](skins.md))
 
 ~~~html
 <script src="../scheduler/dhtmlxscheduler.js"></script>
