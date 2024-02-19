@@ -160,7 +160,7 @@ Then create an *index.html* file in the **public** directory:
         <!-- scheduler -->
         <script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js"
         	charset="utf-8"></script>
-      <link href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_material.css"
+      <link href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css"
       		rel="stylesheet" type="text/css" charset="utf-8">
         <style>
             html, body{

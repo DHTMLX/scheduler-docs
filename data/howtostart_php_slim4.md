@@ -59,7 +59,7 @@ Create a * basic.html* file in the `app` app/templates folder:
     <title> Getting started with dhtmlxScheduler</title>
       <meta charset="utf-8">
        <script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js"></script>
-       <link href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_material.css" 
+       <link href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css" 
             rel="stylesheet" type="text/css" charset="utf-8">
         <style>
             html, body{

@@ -22,7 +22,7 @@ To display a basic Scheduler on the page through the markup, follow 3 steps:
 <html>
 <head>
    <script src="../scheduler/dhtmlxscheduler.js" type="text/javascript"></script>
-   <link rel="stylesheet" href="../scheduler/dhtmlxscheduler_material.css" 
+   <link rel="stylesheet" href="../scheduler/dhtmlxscheduler.css" 
         type="text/css">
 </head>
 <body>
@@ -71,7 +71,7 @@ To display a basic Scheduler on the page, take the following steps:
 <html>
 <head>
    <script src="../scheduler/dhtmlxscheduler.js"></script>
-   <link rel="stylesheet" href="../scheduler/dhtmlxscheduler_material.css" 
+   <link rel="stylesheet" href="../scheduler/dhtmlxscheduler.css" 
         type="text/css">
 </head>
 <body>
@@ -109,8 +109,7 @@ The required code files are:
 
 ~~~html
 <script src="../scheduler/dhtmlxscheduler.js"></script>
-<link rel="stylesheet" href="../scheduler/dhtmlxscheduler_material.css" 
-   		type="text/css">
+<link rel="stylesheet" href="../scheduler/dhtmlxscheduler.css" type="text/css">
 ~~~
 
 Let's quickly explore the structure of the dhtmlxScheduler package to find out where to look for the files. 

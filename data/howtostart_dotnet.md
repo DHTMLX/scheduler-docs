@@ -92,7 +92,7 @@ Open the newly created view and put the following code into it:
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    <link href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_material.css"
+    <link href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css"
           rel="stylesheet" type="text/css" />
     <script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js"></script>
     <script>
