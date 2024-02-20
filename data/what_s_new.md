@@ -10,6 +10,18 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+7.0.2
+---------------
+<span class='release_date'>February 20, 2024. Bugfix release</span>
+
+- Fixed compatibility regressions with [DHTMLX Suite](https://docs.dhtmlx.com/suite/)
+- Fixed the regression affecting the [mark_now](api/scheduler_mark_now_config.md) marker in the [Timeline view](timeline_view.md)
+- Fixed the [theme initialization](skins.md) problem that resulted in incorrect Scheduler layout display in some scenarios
+- Fixed the issue where selected events in [Grid view](grid_view.md) lost their selection styling after sorting
+- Fixed the issue in the [Timeline's smart rendering mode](timeline_view.md#horizontalscroll), where events appeared twice during drag and drop
+- Corrections to the [Greek locale](localization.md)
+- Fixed memory leaks to ensure Scheduler instances are properly released upon calling the [destructor](api/scheduler_destructor.md)
+
 7.0.1
 ---------------
 <span class='release_date'>February 5, 2024. Bugfix release</span>
