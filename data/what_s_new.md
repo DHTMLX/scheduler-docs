@@ -10,6 +10,16 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+7.0.3
+---------------
+<span class='release_date'>March 15, 2024. Bugfix release</span>
+
+### Fixes
+
+- Issue with [textColor](custom_events_color.md) property not applying in the [Month view](month_view.md) view has been resolved
+- Fix for the [color](custom_events_color.md) property not functioning in the [Agenda view](agenda_view.md)
+- Corrected an error that occurred when using [Keyboard Navigation](keyboard_navigation.md) in [Day Timeline view](timeline_view.md).
+
 7.0.2
 ---------------
 <span class='release_date'>February 20, 2024. Bugfix release</span>
