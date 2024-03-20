@@ -17,8 +17,22 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"map");
 @template:	api_config
 @relatedapi:
 	 api/scheduler_map_initial_zoom_config.md
+     
+@deprecated:
+instead you can use:
+
+~~~
+scheduler.config.map_settings = {
+	initial_position: {
+	   lat: 48.724,
+	   lng: 8.215
+	}
+}
+~~~
+
 @descr:
 {{note The property requires the [map_view](extensions_list.html#mapview) plugin to be activated.}}
 
 @apigroup: Views/Map view
-
+@changelog:
+deprecated since v7.1

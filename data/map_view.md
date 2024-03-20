@@ -1,7 +1,7 @@
 Map View 
 ==============
 
-The Map view presents a list of upcoming events and Google Maps to show or edit the event's location or to set the location for new events.
+The Map view presents a list of upcoming events and maps to show or edit the event's location or to set the location for new events.
 
 <img src="map_view.png"/>
 
@@ -131,16 +131,44 @@ Map-related configuration options
 
 {{links
 - api/scheduler_map_end_config.md - sets the date to display events until
-- api/scheduler_map_error_position_config.md - sets the position that will be displayed on the map, in case the event location can't be identified
-- api/scheduler_map_infowindow_max_width_config.md - the maximum width of the Google Maps's popup marker in the Map view
-- api/scheduler_map_initial_position_config.md - sets the initial position of the map
-- api/scheduler_map_initial_zoom_config.md - sets the initial zoom of Google Maps in the Map view
-- api/scheduler_map_resolve_event_location_config.md - activates attempts to resolve the event's location, if the database doesn't have the event's coordinates stored
-- api/scheduler_map_resolve_user_location_config.md - enables/disables prompts, asking the user to share his location for displaying on the map
 - api/scheduler_map_start_config.md - sets the date to start displaying events from
-- api/scheduler_map_type_config.md - sets the type of Google Maps
-- api/scheduler_map_zoom_after_resolve_config.md - sets the zoom that will be used to show the user's location, if the user agrees to the browser's offer to show it
 }}
+
+Starting from v7.1, other map configuration options are specified within object of the api/scheduler_map_settings_config.md property:
+
+~~~js
+scheduler.config.map_settings = {
+    initial_position: {
+       lat: 48.724,
+       lng: 8.215
+    },
+    error_position: {
+       lat: 15,
+       lng: 15
+    },
+    initial_zoom: 1,
+    zoom_after_resolve: 15,
+    info_window_max_width: 300,
+    resolve_user_location: true,
+    resolve_event_location: true,
+    view_provider: "googleMap"
+}
+...
+scheduler.init('scheduler_here',new Date(2024,05,11),"map");
+~~~
+
+The configuration object contains the following properties:
+
+- **initial_position** - sets the initial position of the map
+- **error_position** - sets the position that will be displayed on the map in case the event's location can't be identified
+- **initial_zoom** - sets the initial zoom of the map in the Map view
+- **zoom_after_resolve** - sets the zoom that will be used to show the user's location, if the user agrees to the browser's offer to show it
+- **info_window_max_width** - the maximum width of the maps' popup marker in the Map view
+- **resolve_user_location** - enables/disables prompts, asking the user to share his location for displaying on the map
+- **resolve_event_location** - activates attempts to resolve the event's location, if the database doesn't have the event's coordinates stored
+- **view_provider** - specifies the map provider
+
+
 
 ###scheduler.xy object
 
@@ -151,7 +179,7 @@ Map-related configuration options
 Customizing markers
 ---------------------------------------
 
-Starting from v7.0 you can customize the shape of markers by redefining the `createMarker()` method of the Map View:
+Starting from v7.0 you can customize the shape of markers by redefining the **`createMarker()`** method of the Map View:
 
 ~~~js
 const { AdvancedMarkerElement, 

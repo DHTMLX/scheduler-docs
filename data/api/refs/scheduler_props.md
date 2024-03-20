@@ -70,8 +70,10 @@ Properties
 - api/scheduler_map_initial_zoom_config.md - sets the initial zoom of Google Maps in the Map view
 - api/scheduler_map_resolve_event_location_config.md - activates attempts to resolve the event's location, if the database doesn't have  the event's coordinates stored
 - api/scheduler_map_resolve_user_location_config.md - enables/disables prompts asking the user to share his location for displaying on the map
+- api/scheduler_map_settings_config.md - provides map-related configuration settings
 - api/scheduler_map_start_config.md - sets the date to start displaying events from
 - api/scheduler_map_type_config.md - sets the type of Google Maps
+- api/scheduler_map_view_provider_config.md - specifies the map provider
 - api/scheduler_map_zoom_after_resolve_config.md - sets the zoom that will be used to show the user's location, if the user agrees to the browser's offer to show it
 - api/scheduler_mark_now_config.md - enables/disables the marker displaying the current time
 - api/scheduler_max_month_events_config.md - sets the maximum number of events displayable in a cell
@@ -124,6 +126,7 @@ Properties
 - api/scheduler_touch_swipe_dates_config.md - enables/disables switching active dates using the horizontal swipe gesture on mobiles
 - api/scheduler_touch_tip_config.md - enables/disables prompting messages in the right top corner of the screen
 - api/scheduler_touch_tooltip_config.md - disables dhtmxlScheduler's tooltips on the touch devices
+- api/scheduler_undo_deleted_config.md - 
 - api/scheduler_update_render_config.md - updates the mode when the scheduler fully repaints itself on any action
 - api/scheduler_use_select_menu_space_config.md - defines that events occupy the whole width of the cell
 - api/scheduler_wai_aria_application_role_config.md - defines whether role="application" will be used for the main scheduler container and minicalendar elements
@@ -204,8 +207,10 @@ Properties
 - api/scheduler_map_initial_zoom_config.md
 - api/scheduler_map_resolve_event_location_config.md
 - api/scheduler_map_resolve_user_location_config.md
+- api/scheduler_map_settings_config.md
 - api/scheduler_map_start_config.md
 - api/scheduler_map_type_config.md
+- api/scheduler_map_view_provider_config.md
 - api/scheduler_map_zoom_after_resolve_config.md
 - api/scheduler_mark_now_config.md
 - api/scheduler_max_month_events_config.md
@@ -258,6 +263,7 @@ Properties
 - api/scheduler_touch_swipe_dates_config.md
 - api/scheduler_touch_tip_config.md
 - api/scheduler_touch_tooltip_config.md
+- api/scheduler_undo_deleted_config.md
 - api/scheduler_update_render_config.md
 - api/scheduler_use_select_menu_space_config.md
 - api/scheduler_wai_aria_application_role_config.md

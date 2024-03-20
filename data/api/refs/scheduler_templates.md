@@ -27,6 +27,7 @@ Templates
 - api/scheduler_hour_scale_template.md - specifies the items of the Y-Axis
 - api/scheduler_load_format_template.md - specifies the format of requests in the dynamic loading mode
 - api/scheduler_map_date_template.md - specifies the date in the header of the view
+- api/scheduler_map_info_content_template.md - 
 - api/scheduler_map_text_template.md - specifies the text in the second column of the view
 - api/scheduler_map_time_template.md - specifies the date in the first column of the view
 - api/scheduler_marker_date_template.md - specifies the date of the event in the Google Maps popup marker
@@ -101,6 +102,7 @@ Templates
 - api/scheduler_hour_scale_template.md
 - api/scheduler_load_format_template.md
 - api/scheduler_map_date_template.md
+- api/scheduler_map_info_content_template.md
 - api/scheduler_map_text_template.md
 - api/scheduler_map_time_template.md
 - api/scheduler_marker_date_template.md
