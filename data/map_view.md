@@ -19,15 +19,17 @@ Initialization
 
 {{note To use Google Maps, you need to [add your own google API key](https://developers.google.com/maps/documentation/javascript/get-api-key) on your page.}}
 
-To add the Map view  to the scheduler, follow these steps:
+To add the Map view to the scheduler, follow these steps:
 
-1\. Include Google Maps code file on the page:
+1\. Include the code file of the desired map on the page as follows:
 
 ~~~html
-<-- use your own Google API key-->
+<-- use your own Google API key to include Google Maps-->
 <script src="//maps.google.com/maps/api/js?key=[your Google API key]&sensor=false" 
 	type="text/javascript"></script>
 ~~~
+
+You can [change the map provider and its settings](map_view.md#settingthemapprovider) later on, if needed. The changes will be applied on the next rendering of the map.
 
 2\. Activate the **Map view** extension:
 
@@ -65,9 +67,8 @@ scheduler.config.lightbox.sections=[
 	{name:"time", height:72, type:"time", map_to:"auto"}	
 ]
 ~~~
-	
     
-6\. Set the label for the section:
+6\. Set a label for the section:
 
 ~~~js
 scheduler.locale.labels.section_location = "Location";
@@ -80,49 +81,61 @@ scheduler.locale.labels.section_location = "Location";
 scheduler.init('scheduler_here',new Date(2019,8,1),"map");
 ~~~
 	
-
 {{sample
 	03_extensions/19_map_view.html
 }}
 
+Setting the map provider
+-----------------------
 
-Requirements to data items
--------------------------------------------
-To be correctly rendered on the Map view, data items must contain a number of additional properties. The final list of mandatory properties (that data items should have) looks as in:
+dhtmlxScheduler supports the following map providers: Google Maps, OpenStreetMaps и Mapbox.
 
-- **start_date** (*Date* or *string*) - the date when the event is scheduled to begin. The default format - '%Y-%m-%d %H:%i'.
-- **end_date** (*Date* or *string*) - the date when the event is scheduled to be completed. The default format - '%Y-%m-%d %H:%i'.
-- **text** (*string*) - the event's text.
-- **location** - (*string*) the location of an event.
-- **lat** - (*number*) the latitude of the event's location.
-- **lng** - (*number*) the longitude of the event's location.
-  
-{{note
-Make sure that your .php file conforms to your database data.
-}}
+To use some map provider, you need to:
 
+1\. Include the corresponding map library on the page, for example, Google Maps:
 
-GUI details 
--------------------------------------------
+~~~html
+<-- use your own Google API key to include Google Maps-->
+<script src="//maps.google.com/maps/api/js?key=[your Google API key]&sensor=false" 
+	type="text/javascript"></script>
+~~~
 
-- Selected events are highlighted. If the selected event occupies several days, all related records are highlighted. 
-- To create a new event -  double click on an empty cell in the list or on the desired location on the map.
-- To edit or delete an event - double click on the 'details' icon on the left side of the event's description. 
-- To overview event - click on the event's marker on the map.
+2\. If necessary, specify the necessary settings via the api/scheduler_map_settings_config.md configuration option, e.g.:
 
-Localization tips
-----------------------------------------------
+~~~js
+scheduler.config.map_settings = {
+    initial_position: {
+       lat: 48.724,
+       lng: 8.215
+    }
+}
+...
+scheduler.init('scheduler_here',new Date(2024,05,11),"map");
+~~~
+ 
+[Check the details below](map_view.md#maprelatedconfigurationoptions)
 
-The Map view has 4 labels defined in the locale:
+3\. Set the name of the chosen map provider in one of the following ways:
 
-- **scheduler.locale.labels.{mapName}_tab** - the name of the map's tab
-- **scheduler.locale.labels.section_{sectionName}** - the section label in the lightbox
-- **scheduler.locale.labels.marker_geo_success** - the text in the marker's tooltip in case of successful geolocation response
-- **scheduler.locale.labels.marker_geo_fail** -  the text in the marker's tooltip in case of unsuccessful geolocation response
+- via the api/scheduler_map_view_provider_config.md configuration option:
 
+~~~js
+scheduler.config.map_view_provider = "googleMap";
+...
+scheduler.init('scheduler_here',new Date(2024,05,11),"map");
+~~~
 
-The 2 first labels are commonly specified, while adding the view tab to the scheduler, but the remaining marker labels should be redefined, only if 
-you localize the application to a language, different from English.
+Possible values are the following: *"googleMap", "openStreetMaps", "mapbox"*.
+
+- via the **view_provider** attribute of the api/scheduler_map_settings_config.md configuration option:
+
+~~~js
+scheduler.config.map_settings = {
+    view_provider: "googleMap"
+}
+...
+scheduler.init('scheduler_here',new Date(2024,05,11),"map");
+~~~
 
 Map-related configuration options
 ---------------------------------------
@@ -179,6 +192,45 @@ scheduler.config.map_settings.accessToken = "pk.eyJ...";
 <a href="api/scheduler_xy_other.md">scheduler.xy.map_date_width</a> - the width of the date column<br>
 <a href="api/scheduler_xy_other.md">scheduler.xy.map_description_width</a> - the width of the description column
 
+
+Requirements to data items
+-------------------------------------------
+
+To be correctly rendered on the Map view, data items must contain a number of additional properties. The final list of mandatory properties (that data items should have) looks as in:
+
+- **start_date** (*Date* or *string*) - the date when the event is scheduled to begin. The default format - '%Y-%m-%d %H:%i'.
+- **end_date** (*Date* or *string*) - the date when the event is scheduled to be completed. The default format - '%Y-%m-%d %H:%i'.
+- **text** (*string*) - the event's text.
+- **location** - (*string*) the location of an event.
+- **lat** - (*number*) the latitude of the event's location.
+- **lng** - (*number*) the longitude of the event's location.
+  
+{{note
+Make sure that your .php file conforms to your database data.
+}}
+
+
+GUI details 
+-------------------------------------------
+
+- Selected events are highlighted. If the selected event occupies several days, all related records are highlighted. 
+- To create a new event -  double click on an empty cell in the list or on the desired location on the map.
+- To edit or delete an event - double click on the 'details' icon on the left side of the event's description. 
+- To overview event - click on the event's marker on the map.
+
+Localization tips
+----------------------------------------------
+
+The Map view has 4 labels defined in the locale:
+
+- **scheduler.locale.labels.{mapName}_tab** - the name of the map's tab
+- **scheduler.locale.labels.section_{sectionName}** - the section label in the lightbox
+- **scheduler.locale.labels.marker_geo_success** - the text in the marker's tooltip in case of successful geolocation response
+- **scheduler.locale.labels.marker_geo_fail** -  the text in the marker's tooltip in case of unsuccessful geolocation response
+
+
+The 2 first labels are commonly specified, while adding the view tab to the scheduler, but the remaining marker labels should be redefined, only if 
+you localize the application to a language, different from English.
 
 Customizing markers
 ---------------------------------------

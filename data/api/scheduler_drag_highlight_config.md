@@ -1,8 +1,7 @@
 drag_highlight
 =============
-@short:highlights the event's duration on the time scale when you drags an event over the scheduler
+@short:highlights the event's duration on the time scale and the event's initial position when you are dragging an event over the scheduler
 
-	
 
 @type: boolean	
 @default:true
@@ -24,3 +23,8 @@ scheduler.load("./data/events.xml");
 
 @apigroup: General settings/Scale
     
+@changelog:
+Highlighting of the event's initial position was added in v7.1
+
+@todo:
+	check
