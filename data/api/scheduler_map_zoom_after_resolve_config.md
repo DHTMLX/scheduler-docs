@@ -17,4 +17,6 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 @descr:
 {{note The property requires the [map_view](extensions_list.html#mapview) plugin to be activated.}}
 
+You can also specify the **zoom_after_resolve** setting inside the api/scheduler_map_settings_config.md configuration object.
+
 @apigroup: Views/Map view

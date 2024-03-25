@@ -1,5 +1,6 @@
 map_resolve_user_location
 =============
+
 @short:enables/disables prompts asking the user to share his location for displaying on the map
 	
 
@@ -17,7 +18,9 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 @descr:
 {{note The property requires the [map_view](extensions_list.html#mapview) plugin to be activated.}}
 
-Some browsers open up the opportunity to determine the user's location. And if this option is set to *true*, such opportunity will be offered while the map is being loaded.
+You can also specify the **resolve_user_location** setting inside the api/scheduler_map_settings_config.md configuration object.
+
+Some browsers open up the opportunity to determine the user's location. And if this option is set to *true*, such an opportunity will be offered while the map is being loaded.
 
 @apigroup: Views/Map view
 
