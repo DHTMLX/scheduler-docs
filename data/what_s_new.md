@@ -10,6 +10,26 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+7.1
+---------------
+<span class='release_date'>March X, 2024. Minor update</span>
+
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlx-scheduler-7-1/)
+
+### New functionality
+
+- Storing recurring events in the RRULE format 
+- Map view [supports different map providers](map_view.md)
+- The ability to [undo an event's deletion](api/scheduler_undo_deleted_config.md)
+
+### Updates
+
+- Scheduler [highlights the original position of a calendar event during the drag and drop](api/scheduler_drag_highlight_config.md)
+
+### Fixes
+
+todo
+
 7.0.3
 ---------------
 <span class='release_date'>March 15, 2024. Bugfix release</span>

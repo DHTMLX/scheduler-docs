@@ -1,6 +1,6 @@
 drag_highlight
 =============
-@short:highlights the event's duration on the time scale and the event's initial position when you are dragging an event over the scheduler
+@short:highlights the event's initial position and duration on the time scale when you are dragging an event over the scheduler
 
 
 @type: boolean	

@@ -19,6 +19,7 @@ scheduler.load("./data/events.xml");
 
 @template:	api_config
 @descr:
+<img src="api/undo_deleted_config.png"/>
 
 @changelog:
 Added in v7.1

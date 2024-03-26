@@ -2,16 +2,16 @@ Start
 =====
 
 <div class="newsblock">
-    <h2>Meet Scheduler 7.0!</h2>
+    <h2>Meet Scheduler 7.1!</h2>
     
     <p>
     New version brings new improvements and features:
     </p>
     <ul>
-        <li><a href="custom_skins.md">Updated themes with CSS variables</a></li>
-        <li><a href="skins.md#dark">New Dark theme</a></li>
-        <li><a href="agenda_view.md">New Agenda View</a></li>
-        <li><a href="tooltips.md">Updated Tooltip API</a></li>
+        <li><a href="">Storing recurring events in the RRULE format</a></li>
+        <li><a href="map_view.md">Map view supports different map providers</a></li>
+        <li><a href="api/scheduler_undo_deleted_config.md">The ability to undo deletion of an event</a></li>
+        <li><a href="api/scheduler_drag_highlight_config.md">Highlighting initial event position during D-n-D</a></li>
     </ul>
     <p class='action_buttons'>
       <a class='action_button moredetails' href="what_s_new.html">More details</a>
