@@ -20,6 +20,55 @@ Migration From Older Versions
 	}
 </style>
 
+## 7.0 -> 7.1
+
+The v7.1 update introduces breaking changes for the Map view configuration options.
+
+### Deprecated properties
+
+The following properties are deprecated and included into the api/scheduler_map_settings_config.md configuration object:
+
+- **scheduler.config.map_error_position**
+- **scheduler.config.map_initial_position**
+- **scheduler.config.map_type**
+
+The new usage of these properties looks like this:
+
+~~~js
+scheduler.config.map_settings = {
+    initial_position: {
+       lat: 48.724,
+       lng: 8.215
+    },
+    error_position: {
+       lat: 15,
+       lng: 15
+    },
+    type: google.maps.MapTypeId.HYBRID
+}
+...
+scheduler.init('scheduler_here',new Date(2024,05,11),"map");
+~~~
+
+### Properties available to be used separately and in the common object
+
+The new api/scheduler_map_view_provider_config.md property can be specified both separately and inside the api/scheduler_map_settings_config.md configuration object like this:
+
+~~~js
+scheduler.config.map_settings = {
+    view_provider: "googleMap"
+}
+...
+scheduler.init('scheduler_here',new Date(2024,05,11),"map");
+~~~
+
+### Properties used separately
+
+The map properties listed below are used outside the api/scheduler_map_settings_config.md configuration object:
+
+- api/scheduler_map_end_config.md
+- api/scheduler_map_start_config.md
+
 ## 6.0 -> 7.0
 
 The v7.0 update introduces several breaking changes.

@@ -147,7 +147,8 @@ Map-related configuration options
 - api/scheduler_map_start_config.md - sets the date to start displaying events from
 }}
 
-Starting from v7.1, other map configuration options are specified within object of the api/scheduler_map_settings_config.md property:
+Starting from v7.1, other map configuration options are specified within the object of the api/scheduler_map_settings_config.md property. The default map settings are the 
+following:
 
 ~~~js
 scheduler.config.map_settings = {
@@ -192,6 +193,45 @@ scheduler.config.map_settings.accessToken = "pk.eyJ...";
 <a href="api/scheduler_xy_other.md">scheduler.xy.map_date_width</a> - the width of the date column<br>
 <a href="api/scheduler_xy_other.md">scheduler.xy.map_description_width</a> - the width of the description column
 
+Creating a custom map adapter
+------------------------------
+
+If the default map providers don't suit your needs, you can create a custom map adapter by adding a class that will implement the interface of your map adapter. It should
+contain the following methods:
+
+~~~js
+interface IMapAdapter {
+	// initializes a map instance with the provided options
+    initialize(container: HTMLElement, options: IMapSettings): void;
+    
+    // removes the map instance when user switches from the map view,releases resources
+    destroy(container: HTMLElement): void;
+    
+    // adds a marker on the map based on the event details
+    addEventMarker(event: ICalendarEvent): void;
+    
+    // removes the marker corresponding to the eventId
+    removeEventMarker(eventId: string): void;
+    
+    // updates the marker based on the event details
+    updateEventMarker(event: ICalendarEvent): void;
+    
+    // removes all events from the map
+    clearEventMarkers(): void;
+    
+    // centers the Map view at the specific location
+    setView(latitude: number, longitude: number, zoom: number): void;
+    
+    // called when an event in the scheduler is clicked
+    onEventClick(event: ICalendarEvent): void;
+    
+    // takes a string address as an argument and must resolve 
+    // with the {lat: number, lng: number} object with the corresponding address
+    resolveAddress(address: string): Promise<IMapPosition>;
+}
+~~~
+
+[Check the example on creating a custom map adapter]
 
 Requirements to data items
 -------------------------------------------
@@ -208,15 +248,6 @@ To be correctly rendered on the Map view, data items must contain a number of ad
 {{note
 Make sure that your .php file conforms to your database data.
 }}
-
-
-GUI details 
--------------------------------------------
-
-- Selected events are highlighted. If the selected event occupies several days, all related records are highlighted. 
-- To create a new event -  double click on an empty cell in the list or on the desired location on the map.
-- To edit or delete an event - double click on the 'details' icon on the left side of the event's description. 
-- To overview event - click on the event's marker on the map.
 
 Localization tips
 ----------------------------------------------
@@ -253,6 +284,14 @@ scheduler.ext.mapView.createMarker = function(config){
 
 You can find more information in the [Google Maps documentation](
 https://developers.google.com/maps/documentation/javascript/advanced-markers/basic-customization).
+
+GUI details 
+-------------------------------------------
+
+- Selected events are highlighted. If the selected event occupies several days, all related records are highlighted. 
+- To create a new event -  double click on an empty cell in the list or on the desired location on the map.
+- To edit or delete an event - double click on the 'details' icon on the left side of the event's description. 
+- To overview event - click on the event's marker on the map.
 
 Related guides
 ----------------------------------------

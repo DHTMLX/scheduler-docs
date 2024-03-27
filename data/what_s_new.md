@@ -16,6 +16,10 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 [Review of release on the blog](https://dhtmlx.com/blog/dhtmlx-scheduler-7-1/)
 
+### Breaking Changes
+
+This update brings changes for some map configuration properties. Check the [Migration notes](migration_from_older_version.md) for details.
+
 ### New functionality
 
 - Storing recurring events in the RRULE format 
@@ -387,7 +391,7 @@ This update brings some changes in the structure of the Scheduler package and be
 
 ###Breaking Changes
 
-This update changes behavior of of some parts of the component. While they shouldn't cause any breaks in the existing code, be sure to check [Migration notes](migration_from_older_version.md#53) to be on the safe side.
+This update changes behavior of some parts of the component. While they shouldn't cause any breaks in the existing code, be sure to check [Migration notes](migration_from_older_version.md#53) to be on the safe side.
 
 ###New functionality
 
