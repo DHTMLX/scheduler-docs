@@ -10,6 +10,18 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+7.0.4
+---------------
+<span class='release_date'>May 22, 2024. Bugfix release</span>
+
+### Fixes
+
+- Add a **placeholder** setting for the [textarea](textarea.md) control
+- Fix incorrect cell selection in [Keyboard Navigation](keyboard_navigation.md)
+- Fix the [Quick Info](touch_support.md#quickinfoextension) in [Agenda view](agenda_view.md)
+- Fix type definitions for [Agenda view](agenda_view.md) templates
+- Fix the incorrect display of multi-day events in [Month view](month_view.md) when api/scheduler_start_on_monday_config.md is disabled and several columns are [hidden](custom_scales.md) from view
+
 7.0.3
 ---------------
 <span class='release_date'>March 15, 2024. Bugfix release</span>
