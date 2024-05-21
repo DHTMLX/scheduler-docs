@@ -16,6 +16,9 @@ scheduler.templates.drag_marker_class = function(start, end, event){
 	return "";
 };
 
+@returns:
+- classname    string     css class for related element
+
 @template:	api_template
 @descr:
 For example: 

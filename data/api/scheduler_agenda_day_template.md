@@ -15,6 +15,9 @@ scheduler.templates.agenda_day = function(date){
 	<div class="dhx_agenda_day_dow">${dayDowToStr(date)}</div>`;
 };
 
+@returns:
+- text    string     html text for rendering in the scheduler
+
 
 @template:	api_template
 @descr:
