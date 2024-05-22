@@ -67,7 +67,7 @@ The following properties are mostly important and commonly set for the 'textarea
 		</tr>
 		<tr>
 			<td class="webixdoc_links0"><b>placeholder</b></td>
-			<td>(<i>string</i>) the placeholder value for empty textarea</td>
+			<td>(<i>string</i>) the placeholder value for an empty textarea</td>
 		</tr>
     </tbody>
 </table>

@@ -16,11 +16,11 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 ### Fixes
 
-- Add a **placeholder** setting for the [textarea](textarea.md) control
+- Add the `placeholder` setting for the [textarea](textarea.md) control
 - Fix incorrect cell selection in [Keyboard Navigation](keyboard_navigation.md)
-- Fix the [Quick Info](touch_support.md#quickinfoextension) in [Agenda view](agenda_view.md)
-- Fix type definitions for [Agenda view](agenda_view.md) templates
-- Fix the incorrect display of multi-day events in [Month view](month_view.md) when api/scheduler_start_on_monday_config.md is disabled and several columns are [hidden](custom_scales.md) from view
+- Fix the [Quick Info](touch_support.md#quickinfoextension) popup in [Agenda view](agenda_view.md)
+- Fix type definitions for the [Agenda view](agenda_view.md) templates
+- Fix the incorrect display of multi-day events in [Month view](month_view.md) when api/scheduler_start_on_monday_config.md is disabled and several columns are [hidden](custom_scales.md) from the view
 
 7.0.3
 ---------------
