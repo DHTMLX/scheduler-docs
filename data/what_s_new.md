@@ -10,6 +10,16 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+7.0.5
+---------------
+<span class='release_date'>May 30, 2024. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect height of the [Timeline](timeline_view.md) sections when the `event_dy:"full"` setting is used
+- Fix the missing "today" marker in the [Year view](year_view.md)
+- Correct the positioning of events in the [Day](day_view.md)/[Week](week_view.md) views
+
 7.0.4
 ---------------
 <span class='release_date'>May 22, 2024. Bugfix release</span>
