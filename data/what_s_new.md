@@ -16,9 +16,9 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 ### Fixes
 
-- Fix the incorrect height of the [Timeline](timeline_view.md) sections when the event_dy:"full" setting is used
-- Fix the missing "today" marker in [Year view](year_view.md)
-- Correct the positioning of events in [Day](day_view.md)/[Week](week_view.md) views
+- Fix the incorrect height of the [Timeline](timeline_view.md) sections when the `event_dy:"full"` setting is used
+- Fix the missing "today" marker in the [Year view](year_view.md)
+- Correct the positioning of events in the [Day](day_view.md)/[Week](week_view.md) views
 
 7.0.4
 ---------------
