@@ -1,21 +1,14 @@
 Recurring Events 
 ==============
 
-Recurring events are a common feature in event calendar applications, allowing users to create events that repeat at specified intervals. Starting from v7.1 the Scheduler use [RFC-5545](https://datatracker.ietf.org/doc/html/rfc5545) based format for recurring events. 
+*The article refers to the legacy format of recurring events for DHTMLX Scheduler. If you use DHTMLX Scheduler v7.1+ see the details on the current version [here](recurring_events.md).*
 
-This article will explain how to use the recurring events in the Scheduler and how to store them the database.
-
-{{note
-You can find a description of the legacy formatof recurring events [here](recurring_events_legacy.md)
-}}
-
-
-By default, the scheduler doesn't support recurring events. To enable such support, you need to enable a special extension on the page - **recurring**. 
+By default, the scheduler doesn't support recurring events. To enable such support, you need to enable a special extension on the page - **recurring_legacy**. 
 
 
 ~~~js
 scheduler.plugins({
-    recurring: true
+    recurring_legacy: true
 });
 ~~~
 
@@ -35,10 +28,13 @@ The library provides the following options to configure recurring events:
 - api/scheduler_repeat_date_config.md - sets the date format of the 'End by' field in the 'recurring' lightbox
 - api/scheduler_include_end_by_config.md - defines whether the date specified in the 'End by' field should be exclusive or inclusive
 - api/scheduler_recurring_overflow_instances_config.md - defines the behavior of the recurrences that transfer to the next month
+- api/scheduler_repeat_precise_config.md - prevents including past days to events with the 'weekly' recurrence
+- api/scheduler_occurrence_timestamp_in_utc_config.md - allows working with recurring events independently of time zones
 }}
 
 ~~~js
 scheduler.config.repeat_date = "%m/%d/%Y";
+scheduler.config.include_end_by = true;
 ...
 scheduler.init('scheduler_here', new Date(2019, 7, 5), "month");
 ~~~
@@ -71,98 +67,80 @@ Also, it's required to place the "time" section **after** the "recurring" one.
 }}
 
 
-Format description
+Server-side Integration 
 ---------------------------
 
-A recurring event is stored in the database as a single record that contains all fields of a regular event plus 6 additional: 
+A recurring event is stored in the database as a single record that contains all fields of a regular event plus 3 additional: 
 
-1.  **stdate** - (_datetime_) defines the start date of the series
-2.  **dtend** - (_datetime_) defines the end date of the series
-3.  **rrule** - (_string_) defines the rule of repetition 
-4.  **recurring_event_id** - (_string|int_) id of the parent series, only filled for modified or deleted occurrences of the series
-5.  **original_start** - (_datetime_) the original date of the edited instance, only filled for modified or deleted occurrences of the series
-6.  **deleted** - (_boolean_) specifies the deleted instance of the series, only filled for deleted occurrences of the series
+1.  **rec_type** - (_varchar_) defines the logic of repetition. This field is filled in automatically
+2.  **event_length** - (_long int_) the actual time length of an event in seconds
+3.  **event_pid** - (_int_) the parent id of a series of events
 
-**rrule** Follows the iCalendar format as specified in RFC-5545, detailing the frequency, interval, and other parameters that control the recurrence pattern.
+So, the connector query will have a look similar to the next one:
 
-### Differences from iCalendar Format
-
-Our format differs from the iCalendar format in two key ways:
-
-#### Separate Storage of STDATE and DTEND:
-
-In the iCalendar format, the start and end dates of a recurring series are typically included as part of the **RRULE** string as **STDATE** and **DTEND** properties.
-In our format, **stdate** and **dtend** are stored as separate fields. This separation allows for easier manipulation and querying of recurring events by date without the need to parse the **RRULE** string.
-
-Here is the example of the recurring event series that is set to repeat every Monday starting from June 1st 2024 up until December 1st 2024:
-~~~
-{
-  "id": 1,
-  "text": "Weekly Team Meeting",
-  "start_date": "2024-06-01 09:00:00",
-  "end_date": "2024-06-01 10:00:00",
-  "dstart": "2024-06-01 09:00:00",
-  "dtend": "2024-12-01 10:00:00",
-  "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
-  "recurring_event_id": null,
-  "original_start": null
-}
+~~~php
+$scheduler->render_table("events_rec","event_id",
+"start_date,end_date,text,rec_type,event_pid,event_length");
 ~~~
 
-#### Handling Exceptions
+In a usual case, in addition to the mandatory fields you can extract any extra data from the DB.
 
-Exceptions, also referred as modified or deleted occurrences of the series, are stored as separate event records that are linked to their parent series.
-Exceptions have three additional properties: **recurring_event_id**, **original_start**, and **deleted**. These properties allow us to easily identify modified or deleted instances and their relationship to the parent series.
+However, fields **start_date** and **end_date** slightly change their meaning:
 
-Note, that unlike the traditional iCalendar format, exceptions (modified or deleted instances) are **not** stored in the **EXDATE** property of the **RRULE** of the series.
 
-Here is the example of the recurring series with one modified and one deleted occurrence:
-~~~
-[
-  {
-    "id": 1,
-    "text": "Weekly Team Meeting",
-    "start_date": "2024-06-03 09:00:00",
-    "end_date": "2024-06-03 10:00:00",
-    "dstart": "2024-06-03 09:00:00",
-    "dtend": "2024-12-02 10:00:00",
-    "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
-    "recurring_event_id": null,
-    "original_start": null
-  },
-  {
-    "id": 2,
-    "text": "Special Team Meeting",
-    "start_date": "2024-06-10 09:00:00",
-    "end_date": "2024-06-10 11:00:00",
-    "dstart": null,
-    "dtend": null,
-    "rrule": null,
-    "recurring_event_id": 1,
-    "original_start": "2024-06-10 09:00:00"
-  },
-  {
-    "id": 3,
-    "text": "Deleted Team Meeting",
-    "start_date": "2024-06-17 09:00:00",
-    "end_date": "2024-06-17 10:00:00",
-    "dstart": null,
-    "dtend": null,
-    "rrule": null,
-    "recurring_event_id": 1,
-    "original_start": "2024-06-17 09:00:00",
-    "deleted": true
-  }
-]
+- **start_date** - the start date of the first event in a series in the format 'yyyy-mm-dd hh:mm:ss' (settings_format.md).
+- **end_date** - the end date of the last event in a series in the format 'yyyy-mm-dd 00:00:00' (settings_format.md).
+
+For example, a recurring event that starts on January 3, 2019 at 10:00, repeats every day and ends on January 13, 2019 at 12:00, 
+will be presented in the database as follows:
+
+
+~~~js
+id:1,
+start_date:"2019-01-03 10:00:00",
+end_date:"2019-01-13 00:00:00",
+text:"some_text",
+details:"",
+rec_type:"day_1___",
+event_length:"7200",
+event_pid:"0" //0 for the parent events or the ID of parent events for sub-events
 ~~~
 
-The repeated event scheduled for `2024-06-10 09:00:00` will be replaced with `Special Team Meeting` record, and the event scheduled for `2024-06-17 09:00:00` will be skipped.
 
-Note, that **dstart**, **dtend**, and **rrule** of modified or deleted occurrences are ignored. 
+The client side gets data from the **rec_type** field as a string of the following format:
 
-**text**, **start_date**, and **end_date** of deleted instances are also ignored and values of these fields won't affect the behavior of the Scheduler.
+~~~html
+[type]_[count]_[day]_[count2]_[days]#[extra]
+~~~
+
+where:
+
+- *type* - the type of repetition: 'day','week','month','year'.
+- *count* - the interval between events in the "type" units.
+- *day* and *count2* - define a day of a month ( first Monday, third Friday, etc ).
+- *days* - a comma-separated list of affected week days.
+- *extra* - extra info that can be used to change the presentation of recurring details.
+
+Examples of the **rec_type** data:
 
 
+- *"day_3___"* - each three days
+- *"month _2___"* - each two months
+- *"month_1_1_2_"* - second Monday of each month
+- *"week_2___1,5"* - Monday and Friday of each second week 
+  
+*The double or triple underline indicates that the related parameters of the string are omitted*.
+
+Parsing series on the backend
+------------------------------
+
+A recurring event is stored in the database as a single record that can be splitted up by Scheduler on the client side.
+If you need to get dates of separate events on the server side, use a helper library for parsing recurring events of dhtmlxScheduler on ASP.NET/ASP.NET Core/PHP. 
+
+You will find the ready libraries on our GitHub:
+
+- [for ASP.NET/ASP.NET Core](https://github.com/DHTMLX/scheduler-recurring-events-dotnet)
+- [for PHP 5.4+](https://github.com/DHTMLX/scheduler-helper-php)
 
 Editing/deleting a certain occurrence in the series 
 --------------------------------
@@ -172,28 +150,114 @@ There is a possibility to delete or edit a particular occurrence in a series.
 ###Important tips
 
 - For each update of the recurring event a separate record is created in the DB.
-- Particular occurrences refer to the parent event through the **recurring_event_id** property.
-- Once you have edited an occurrence in the series, the **original_start** field for this update 
-will store the Date, when the occurrence should have happened if it wasn't edited, instead of the real event length. 
-So if the occurrence has happened on July 27, 2024 at 15:00 and was moved to July 30, 2024 15:00, the time stamp would reflect the first date.
+- Particular occurrences refer to the parent event through the **event_pid** property.
+- Once you have edited an occurrence in the series, the **event_length** field for this update 
+will store the time stamp of the date, when the occurrence should have happened if it wasn't edited, instead of the real event length. 
+So if the occurrence has happened on July 27, 2019 at 15:00 and was moved to July 30, 2019 15:00, the time stamp would reflect the first date. 
+The time stamp is measured in seconds from UNIX epoch.
+- Note that if your DB contains records of edited occurrences in the series and you decide to 'Edit series' via the lightbox, all the stored records will be deleted after saving. 
+The only record that will remain is the main recurring event, while its occurrences will lose their differences (will become identical).
+
+###Let's consider an example
+
+You are a fan of the Olympic Games and want to watch the upcoming London Olympic Games 2012 (*27 July - 12 August*) as much as possible. 
+So you decide to create a recurring event that *starts at 17.00* (the end of your work day) and *ends at 23.00* (the time for you to be asleep).
+But as the Opening Ceremony *starts only at 19.00* you want to edit the first event in the series (at this particular day) and set the time period 
+*from 19.00 to 23.00*. Also, you remember that on *August 1, 2012* you have deadline and most probably you will be at home too late to watch anything. 
+So you need to delete *August 1, 2012* from the series as well. 
+
+####Shortly, your actions are the following:
+
+1.  To create a recurring event **_(17.00-23.00)_** from **July 27,2012** till **August 12,2012**.
+2.  To edit a particular occurrence on **July 27,2012** - to change the time period **_from 17.00-23.00 to 19.00-23.00_**.
+3.  To delete a particular occurrence on **August 1,2012** from the series.
+
+Consequently, we should have 3 records referring to our recurring event in the DB.
+
+####What happens in DB as we follow action by action:
+
+Creating the recurring event:
+
+![create_a_recurring_event.png](create_a_recurring_event.png)
+
+Editing **July 27,2012**:
+
+![edit_a_recurring_event.png](edit_a_recurring_event.png)
+
+Deleting **August 1,2012**: 
+
+![delete_an_occurrence.png](delete_an_occurrence.png)
 
 
 ###Server-side logic 
 
 In addition to extra fields, a specific logic needs to be added to the server-side controller:
 
-- If a deleted instance was inserted - the server response must have the "deleted" status.
-- - Deleted instance can be identified by non empty value of the **deleted** property.
-- If a series was modified - all modified and deleted occurrences of the series should be deleted.
-- - Series can be identified by non-empty value of **rrule** property and empty value of **recurring_event_id**.
-- - Modified occurrences of the series are all records which **recurring_event_id** matches the **id** of the series.
-- If an event with non-empty **recurring_event_id** was deleted - it needs updating with **deleted=true** instead of deleting.
-
+- If an event with **rec_type==none** was inserted - the response must have the "deleted" status.
+- If an event with **rec_type!=none** was updated or deleted - all records with the related **event_pid** must be deleted.
+- If an event with the **event_pid** value was deleted - it needs updating with **rec_type==none** instead of deleting.
 
 {{note
 You can find complete code examples [here](howtostart_guides.md)
 }}
 
+
+If you use [PHP Connector](https://github.com/DHTMLX/connector-php) library, the server code may look like the following:
+
+~~~php
+function delete_related($action){
+	global $scheduler;
+	
+    $status = $action->get_status();
+	$type =$action->get_value("rec_type");
+	$pid =$action->get_value("event_pid");
+	//when series changed or deleted we need to remove all linked events
+	if (($status == "deleted" || $status == "updated") && $type!=""){
+		$scheduler->sql->query("DELETE FROM events_rec WHERE 
+        event_pid='".$scheduler->sql->escape($action->get_id())."'");
+	}
+	if ($status == "deleted" && $pid != 0){
+		$scheduler->sql->query("UPDATE events_rec SET rec_type='none' WHERE 
+        event_id='".$scheduler->sql->escape($action->get_id())."'");
+		$action->success();
+	}
+}
+function insert_related($action){
+	$status = $action->get_status();
+	$type =$action->get_value("rec_type");
+	if ($status == "inserted" && $type == "none")
+		$action->set_status("deleted");
+}
+
+$scheduler->event->attach("beforeProcessing","delete_related");
+$scheduler->event->attach("afterProcessing","insert_related");
+~~~
+
+Dragging all sequence 
+-----------------------
+
+To add for users the possibility to move the entire sequence while dragging recurring events, add the next code before scheduler initialization:
+
+~~~js
+scheduler.attachEvent("onBeforeEventChanged",function(dev){
+	var parts = scheduler.getState().drag_id.toString().split("#");
+ 	if (parts.length > 1) {
+
+  		var series = this.getEvent(parts[0]);
+
+  		series.start_date.setHours(dev.start_date.getHours());
+  		series.start_date.setMinutes(dev.start_date.getMinutes());
+  		series.event_length = (dev.end_date - dev.start_date) / 1000;
+
+  		setTimeout(function(){
+   			scheduler.addEvent(series);
+  		}, 1);
+
+  		return false;
+ 	}
+ 	return true;
+});
+~~~
 
 Custom control for the lightbox's recurring block
 ------------------------------------
@@ -349,7 +413,7 @@ You can remove any type or predefine it in a hidden input:
 
 ~~~html
 <input type="hidden" name="end" value="date_of_end" />
-<input type="hidden" name="date_of_end" value="01.01.2024" />
+<input type="hidden" name="date_of_end" value="01.01.2016" />
 ~~~
 	
 ###Notes for changing the recurring block
@@ -381,10 +445,7 @@ For example:
 addEventListener(node, "click", function(){...})
 ~~~
 
-Legacy format of Recurring events
------------------------
 
-Until v7.1 the Scheduler used custom format for recurring events, you can find the format details [here](recurring_events_legacy.md)
 
 
 
