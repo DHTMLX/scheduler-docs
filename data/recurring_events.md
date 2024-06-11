@@ -1,17 +1,15 @@
 Recurring Events 
 ==============
 
-Recurring events are a common feature in event calendar applications, allowing users to create events that repeat at specified intervals. Starting from v7.1 the Scheduler use [RFC-5545](https://datatracker.ietf.org/doc/html/rfc5545) based format for recurring events. 
+Recurring events are a common feature in event calendar applications, allowing users to create events that repeat at specified intervals. Starting from v7.1 the Scheduler uses [RFC-5545](https://datatracker.ietf.org/doc/html/rfc5545) based format for recurring events. 
 
-This article will explain how to use the recurring events in the Scheduler and how to store them the database.
+This article will explain how to use recurring events in the Scheduler and how to store them in the database.
 
 {{note
-You can find a description of the legacy formatof recurring events [here](recurring_events_legacy.md)
+You can find the description of the legacy format of recurring events [here](recurring_events_legacy.md)
 }}
 
-
-By default, the scheduler doesn't support recurring events. To enable such support, you need to enable a special extension on the page - **recurring**. 
-
+By default, Scheduler doesn't support recurring events. To provide such a support, you need to enable a special extension on the page - **recurring**: 
 
 ~~~js
 scheduler.plugins({
@@ -19,14 +17,12 @@ scheduler.plugins({
 });
 ~~~
 
-
 Once the support for recurring events is activated, the lightbox starts looking as shown below: 
-
 
 <img src="recurring_lightbox.png"/>
 
 
-Configuration Options
+Configuration options
 ---------------------------------------
 
 The library provides the following options to configure recurring events:
@@ -47,7 +43,7 @@ scheduler.init('scheduler_here', new Date(2019, 7, 5), "month");
 	03_extensions/01_recurring_events.html
 }}
 
-'Recurring' Lightbox
+'Recurring' lightbox
 ------------------------------------------
 
 By default, once the recurring extension is enabled, the lightbox starts to have one more section  - "Repeat event". 
@@ -79,7 +75,7 @@ A recurring event is stored in the database as a single record that contains all
 1.  **stdate** - (_datetime_) defines the start date of the series
 2.  **dtend** - (_datetime_) defines the end date of the series
 3.  **rrule** - (_string_) defines the rule of repetition 
-4.  **recurring_event_id** - (_string|int_) id of the parent series, only filled for modified or deleted occurrences of the series
+4.  **recurring_event_id** - (_string|number_) id of the parent series, only filled for modified or deleted occurrences of the series
 5.  **original_start** - (_datetime_) the original date of the edited instance, only filled for modified or deleted occurrences of the series
 6.  **deleted** - (_boolean_) specifies the deleted instance of the series, only filled for deleted occurrences of the series
 
@@ -87,14 +83,15 @@ A recurring event is stored in the database as a single record that contains all
 
 ### Differences from iCalendar Format
 
-Our format differs from the iCalendar format in two key ways:
+Our format differs from the iCalendar format in the two key moments:
 
-#### Separate Storage of STDATE and DTEND:
+#### Separate storage of STDATE and DTEND:
 
-In the iCalendar format, the start and end dates of a recurring series are typically included as part of the **RRULE** string as **STDATE** and **DTEND** properties.
+In the iCalendar format, the start and end dates of a recurring series are typically included as a part of the **RRULE** string as **STDATE** and **DTEND** properties.
 In our format, **stdate** and **dtend** are stored as separate fields. This separation allows for easier manipulation and querying of recurring events by date without the need to parse the **RRULE** string.
 
-Here is the example of the recurring event series that is set to repeat every Monday starting from June 1st 2024 up until December 1st 2024:
+Here is an example of the recurring event series which is set to repeat every Monday starting from June 1, 2024 up until December 1, 2024:
+
 ~~~
 {
   "id": 1,
@@ -109,12 +106,15 @@ Here is the example of the recurring event series that is set to repeat every Mo
 }
 ~~~
 
-#### Handling Exceptions
+#### Handling exceptions
 
-Exceptions, also referred as modified or deleted occurrences of the series, are stored as separate event records that are linked to their parent series.
-Exceptions have three additional properties: **recurring_event_id**, **original_start**, and **deleted**. These properties allow us to easily identify modified or deleted instances and their relationship to the parent series.
+Exceptions, also referred to as modified or deleted occurrences of the series, are stored as separate event records that are linked to their parent series.
+Exceptions have three additional properties: **recurring_event_id**, **original_start**, and **deleted**. 
+These properties allow us to identify modified or deleted instances and their relationship to the parent series easily.
 
+{{note
 Note, that unlike the traditional iCalendar format, exceptions (modified or deleted instances) are **not** stored in the **EXDATE** property of the **RRULE** of the series.
+}}
 
 Here is the example of the recurring series with one modified and one deleted occurrence:
 ~~~
@@ -158,9 +158,9 @@ Here is the example of the recurring series with one modified and one deleted oc
 
 The repeated event scheduled for `2024-06-10 09:00:00` will be replaced with `Special Team Meeting` record, and the event scheduled for `2024-06-17 09:00:00` will be skipped.
 
-Note, that **dstart**, **dtend**, and **rrule** of modified or deleted occurrences are ignored. 
+Note, that **dstart**, **dtend**, and **rrule** of the modified or deleted occurrences are ignored. 
 
-**text**, **start_date**, and **end_date** of deleted instances are also ignored and values of these fields won't affect the behavior of the Scheduler.
+**text**, **start_date**, and **end_date** of deleted instances are also ignored and the values of these fields won't affect the behavior of the Scheduler.
 
 
 
@@ -183,15 +183,14 @@ So if the occurrence has happened on July 27, 2024 at 15:00 and was moved to Jul
 In addition to extra fields, a specific logic needs to be added to the server-side controller:
 
 - If a deleted instance was inserted - the server response must have the "deleted" status.
-- - Deleted instance can be identified by non empty value of the **deleted** property.
-- If a series was modified - all modified and deleted occurrences of the series should be deleted.
-- - Series can be identified by non-empty value of **rrule** property and empty value of **recurring_event_id**.
-- - Modified occurrences of the series are all records which **recurring_event_id** matches the **id** of the series.
-- If an event with non-empty **recurring_event_id** was deleted - it needs updating with **deleted=true** instead of deleting.
-
+	- A deleted instance can be identified by the non-empty value of the **deleted** property.
+- If a series was modified, all the modified and deleted occurrences of the series should be deleted.
+	- Series can be identified by the non-empty value of the **rrule** property and the empty value of the **recurring_event_id** one.
+	- Modified occurrences of the series are all the records in which **recurring_event_id** matches the **id** of the series.
+- If an event with the non-empty **recurring_event_id** was deleted, it needs to be updated with **deleted=true** instead of deleting.
 
 {{note
-You can find complete code examples [here](howtostart_guides.md)
+You can find the complete code examples [here](howtostart_guides.md)
 }}
 
 
@@ -204,13 +203,14 @@ Starting from version 4.2, dhtxmlScheduler allows you to specify a custom HTML f
 
 1. To change the form markup
 2. To delete unnecessary elements (e.g., the 'yearly' repeat type and all related inputs)
-3. To set some default values for inputs (e.g., you need that all series are created with 'no end date'. Then, you make the 'no end date' option checked and hide  the 
+3. To set some default values for inputs (e.g., you need all series to be created with 'no end date'. Then, you make the 'no end date' option checked and hide the 
 whole block for specifying the recurrence end.
 
 
 ### Usage example
 
-Lets start with an example. Let's imagine you want to remove the 'monthly' and 'yearly' repeat types and have the 'no end date' option for all events (i.e. remove the block for specifying the recurrence end). 
+Let's start with an example. Imagine that you want to remove the 'monthly' and 'yearly' repeat types and have 
+the 'no end date' option for all events (i.e. remove the block for specifying the recurrence end). 
 
 <ol> 
 <li>Define the markup of a custom form and place it somewhere on the page (you can start by copying the default template, which can be found at <b>'scheduler\sources\locale\recurring\'</b>):
@@ -264,16 +264,16 @@ scheduler.config.lightbox.sections = [
 ###Main parts
 
 You can find the default HTML structure of the lightbox's recurring block for different languages at the <b>'scheduler\sources\locale\recurring\'</b> directory.<br>
-For example,for the English locale you need to see the  <b>'scheduler\sources\locale\recurring\repeat_template_en.htm'</b> file.
+For example, for the English locale you need to check the <b>'scheduler\sources\locale\recurring\repeat_template_en.htm'</b> file.
 
 Basically, the recurring block of the lightbox contains 3 groups of controls:
 
-1) Controls for choosing the type of recurrence. These inputs have the name 'repeat' and one of the following values: 'daily', 'weekly', 'monthly', 'yearly'.
-The form must have at least one 'repeat' input with the value. You can use radio buttons, selects or set the default type in the hidden input.
+1) Controls for choosing the type of recurrence. These inputs have the 'repeat' name and one of the following values: 'daily', 'weekly', 'monthly', 'yearly'.
+The form must have at least one 'repeat' input with a value. You can use radio buttons, selects or set the default type in the hidden input.
 
-Consider the following examples, each of those is a valid way for selecting the type of recurrence in the form. 
+Consider the following examples, each of them is a valid way for selecting the type of recurrence in the form. 
 
-- Radiobuttons
+- Radiobuttons:
 
 ~~~html
 <label><input type="radio" name="repeat" value="day" />Daily</label><br />
@@ -282,7 +282,7 @@ Consider the following examples, each of those is a valid way for selecting the 
 <label><input type="radio" name="repeat" value="year" />Yearly</label>
 ~~~
 
-- Select input, without 'Monthly' and 'Yearly' options:
+- Select input, without the 'Monthly' and 'Yearly' options:
 
 ~~~html
 <select name="repeat">
@@ -291,7 +291,7 @@ Consider the following examples, each of those is a valid way for selecting the 
 </select>
 ~~~
 
-- Hidden input (the lightbox will create only 'Daily' series):
+- Hidden input (the lightbox will create only the 'Daily' series):
 
 ~~~html
 <input type="hidden" name="repeat" value="day" />
@@ -314,14 +314,13 @@ Consider the following examples, each of those is a valid way for selecting the 
      </label>
   </div>
 ...
-</div>
-         
+</div>         
 ~~~
 
 Note, that the markup which is related to a specific type of recurrence can be wrapped in a div with the <b>id</b> in the following format <b>"dhx_repeat_&lt;repeat type&gt;"</b>, e.g. "dhx_repeat_day".
 In this case it will be displayed only when the appropriate repeat type is selected.
 
-3) Controls for specifying the end of recurrence. The end of recurrence is defined by input with the name 'end'.
+3) Controls for specifying the end of recurrence. The end of recurrence is defined by the input with the 'end' name.
 <br>Possible values are <b>'no'</b>, <b>'date_of_end'</b>, <b>'occurences_count'</b>.
 
 Similar to the 'repeat' controls, the form must have at least one input of this type.
@@ -342,7 +341,7 @@ Similar to the 'repeat' controls, the form must have at least one input of this 
 ~~~
 
 The date for the <b>'date_of_end'</b> mode must be defined in an input named 'date_of_end'. The same works for the <b>'occurences_count'</b> mode, 
-that takes the number of occurrences  from an input named 'occurences_count'.
+that takes the number of occurrences from an input named 'occurences_count'.
 <br>
 
 You can remove any type or predefine it in a hidden input:
@@ -356,14 +355,14 @@ You can remove any type or predefine it in a hidden input:
 
 Please, before starting to apply a custom configuration to the lightbox's recurring block, note the following things: 
 
-1. The 'name' attribute is  hardcoded for all inputs -  the inputs with different names will be ignored.
-2. The 'value' attribute is fixed for all inputs except for ones that imply direct input.
-3. When you specify a new form - dhtmlxScheduler doesn't use it directly and just  replicates your HTML structure into the lightbox's template.
-It means that all event handlers or custom properties that have been attached to  DOMElements of your form from the code won't be applied to the form in the lightbox.
-If you want to attach event handlers, you need to either specify it as an inline HTML attribute, or attach a handler to the form when it's shown in the lightbox.
+1. The 'name' attribute is hardcoded for all inputs: the inputs with different names will be ignored.
+2. The 'value' attribute is fixed for all inputs except for ones that imply the direct input.
+3. When you specify a new form, dhtmlxScheduler doesn't use it directly and just replicates your HTML structure in the lightbox's template.
+It means that all event handlers or custom properties that have been attached to DOMElements of your form from the code won't be applied to the form in the lightbox.
+If you want to attach an event handler, you need either to specify it as an inline HTML attribute, or attach a handler to the form when it's shown in the lightbox.
 
 {{note
-Beware, dhtmlxScheduler doesn't work with your original HTML form and just creates it's copy in the lightbox's template.
+Beware, dhtmlxScheduler doesn't work with your original HTML form and just creates its copy in the lightbox's template.
 }}
 
 
@@ -381,12 +380,14 @@ For example:
 addEventListener(node, "click", function(){...})
 ~~~
 
-Legacy format of Recurring events
+Legacy format of recurring events
 -----------------------
 
-Until v7.1 the Scheduler used custom format for recurring events, you can find the format details [here](recurring_events_legacy.md)
+Until v7.1 Scheduler used a custom format for recurring events, you can find the format details [here](recurring_events_legacy.md).
 
+@index:
 
+- recurring_events_legacy.md
 
 
 
