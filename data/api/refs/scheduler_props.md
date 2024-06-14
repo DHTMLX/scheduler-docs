@@ -32,7 +32,7 @@ Properties
 - api/scheduler_displayed_event_text_color_config.md - sets the default font color for the events retrieved by the showEvent() method
 - api/scheduler_drag_create_config.md - enables the possibility to create new events by drag-and-drop
 - api/scheduler_drag_event_body_config.md - allows dragging scheduler events by any part of the body
-- api/scheduler_drag_highlight_config.md - highlights the event's duration on the time scale when you drags an event over the scheduler
+- api/scheduler_drag_highlight_config.md - highlights the event's initial position and duration on the time scale when you are dragging an event over the scheduler
 - api/scheduler_drag_in_config.md - restrict dragging events to the calling scheduler from any other scheduler(s)
 - api/scheduler_drag_lightbox_config.md - enables the possibility to drag the lightbox by the header
 - api/scheduler_drag_move_config.md - enables the possibility to move events by drag-and-drop
@@ -65,9 +65,9 @@ Properties
 - api/scheduler_load_date_config.md - sets the format of server request parameters 'from', 'to' in case of dynamic loading
 - api/scheduler_map_end_config.md - sets the date to display events until
 - api/scheduler_map_error_position_config.md - sets the position that will be displayed on the map in case the event's location can't be identified
-- api/scheduler_map_infowindow_max_width_config.md - the maximum width of the Google Maps's popup marker in the Map view
+- api/scheduler_map_infowindow_max_width_config.md - the maximum width of the map's popup marker in the Map view
 - api/scheduler_map_initial_position_config.md - sets the initial position of the map
-- api/scheduler_map_initial_zoom_config.md - sets the initial zoom of Google Maps in the Map view
+- api/scheduler_map_initial_zoom_config.md - sets the initial zoom of the map in the Map view
 - api/scheduler_map_resolve_event_location_config.md - activates attempts to resolve the event's location, if the database doesn't have  the event's coordinates stored
 - api/scheduler_map_resolve_user_location_config.md - enables/disables prompts asking the user to share his location for displaying on the map
 - api/scheduler_map_settings_config.md - provides map-related configuration settings
@@ -126,7 +126,7 @@ Properties
 - api/scheduler_touch_swipe_dates_config.md - enables/disables switching active dates using the horizontal swipe gesture on mobiles
 - api/scheduler_touch_tip_config.md - enables/disables prompting messages in the right top corner of the screen
 - api/scheduler_touch_tooltip_config.md - disables dhtmxlScheduler's tooltips on the touch devices
-- api/scheduler_undo_deleted_config.md - 
+- api/scheduler_undo_deleted_config.md - provides the Undo popup when you delete an event
 - api/scheduler_update_render_config.md - updates the mode when the scheduler fully repaints itself on any action
 - api/scheduler_use_select_menu_space_config.md - defines that events occupy the whole width of the cell
 - api/scheduler_wai_aria_application_role_config.md - defines whether role="application" will be used for the main scheduler container and minicalendar elements

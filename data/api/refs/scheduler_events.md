@@ -3,11 +3,13 @@ Events
 =======
 
 {{api
+- api/scheduler_onafterbatchupdate_event.md - fires after the api/scheduler_batchupdate.md method has been called
 - api/scheduler_onaftereventdisplay_event.md - fires when the scheduler switches views, days, time etc. to show the event specified by the 'showEvent' method and fires AFTER the event is displayed
 - api/scheduler_onafterfoldertoggle_event.md - fires after a tree branch was opened or closed (the Timeline view, 'tree' mode only)
 - api/scheduler_onafterlightbox_event.md - fires after the user has closed the lightbox (edit form)
 - api/scheduler_onafterquickinfo_event.md - fires after the pop-up event form is closed
 - api/scheduler_onafterschedulerresize_event.md - fires after the scheduler has changed its size and data area was repainted
+- api/scheduler_onbeforebatchupdate_event.md - fires before the api/scheduler_batchupdate.md method is called
 - api/scheduler_onbeforecollapse_event.md - fires when a user clicks on the expand icon to change the scheduler's size from 'full screen' to original.
 - api/scheduler_onbeforedrag_event.md - fires when the user starts the drag/resize operation (version 2.1+)
 - api/scheduler_onbeforeeventchanged_event.md - fires when the event has been changed by drag-n-drop, but the changes aren't saved yet.
@@ -91,11 +93,13 @@ Events
 }}
 
 @index:
+- api/scheduler_onafterbatchupdate_event.md
 - api/scheduler_onaftereventdisplay_event.md
 - api/scheduler_onafterfoldertoggle_event.md
 - api/scheduler_onafterlightbox_event.md
 - api/scheduler_onafterquickinfo_event.md
 - api/scheduler_onafterschedulerresize_event.md
+- api/scheduler_onbeforebatchupdate_event.md
 - api/scheduler_onbeforecollapse_event.md
 - api/scheduler_onbeforedrag_event.md
 - api/scheduler_onbeforeeventchanged_event.md

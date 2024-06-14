@@ -1,9 +1,6 @@
 map_settings
 =============
 
-@todo:
-	check 
-
 
 @short:provides map-related configuration settings
 	

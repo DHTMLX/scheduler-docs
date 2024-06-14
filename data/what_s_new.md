@@ -22,10 +22,10 @@ This update brings changes for some map configuration properties. Check the [Mig
 
 ### New functionality
 
-- Storing recurring events in the RRULE format 
+- Storing [recurring events](recurring_events.md) in the RRULE format 
 - Map view [supports different map providers](map_view.md)
 - The ability to [undo an event's deletion](api/scheduler_undo_deleted_config.md)
-- Add api/scheduler_batchupdate.md method
+- The api/scheduler_batchupdate.md method for updating multiple events at once
 
 ### Updates
 
@@ -34,13 +34,13 @@ This update brings changes for some map configuration properties. Check the [Mig
 ### Fixes
 
 - Fix the incorrect height of the [Timeline view](timeline_view.md) section when `event_dy` is set to "full"
-- Fix the issue where dynamically changing the `x_date` property of the [Timeline view](timeline_view.md) did not affect the template
+- Fix the issue when dynamically changing the `x_date` property of the [Timeline view](timeline_view.md) did not affect the template
 - Fix the header misalignment in the multiday [Units view](units_view.md)
 - Fix the script error that occurred after the [destructor](api/scheduler_destructor.md) is called when the [drag_between](dhtmlx_components_integration.md#draganddropbetweenschedulers) extension is active
 - Fix the incorrect behavior of the [limit](limits.md) extension, which prevented editing [recurring series](recurring_events.md)
-- Fix the performance issue with event drag and drop in the [Tree Timeline view](timeline_view.md) when the `show_unassigned` option is set to `true`
+- Fix the performance issue with events drag and drop in the [Tree Timeline view](timeline_view.md) when the `show_unassigned` option is set to `true`
 - Fix the incorrect behavior of the scrollable [Timeline view](timeline_view.md) when smart_rendering is set to false
-- Fix the incorrect scroll position after a view change in scrollable [Timeline view](timeline_view.md)
+- Fix the incorrect scroll position after a view change in a scrollable [Timeline view](timeline_view.md)
 
 7.0.3
 ---------------

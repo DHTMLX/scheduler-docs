@@ -30,8 +30,6 @@ Templates
 - api/scheduler_map_info_content_template.md - 
 - api/scheduler_map_text_template.md - specifies the text in the second column of the view
 - api/scheduler_map_time_template.md - specifies the date in the first column of the view
-- api/scheduler_marker_date_template.md - specifies the date of the event in the Google Maps popup marker
-- api/scheduler_marker_text_template.md - specifies the text of the event in the Google Maps popup marker
 - api/scheduler_month_date_template.md - specifies the date in the header of the view
 - api/scheduler_month_date_class_template.md - specifies the CSS class that will be applied to a day cell
 - api/scheduler_month_day_template.md - specifies the format of the day in a cell
@@ -105,8 +103,6 @@ Templates
 - api/scheduler_map_info_content_template.md
 - api/scheduler_map_text_template.md
 - api/scheduler_map_time_template.md
-- api/scheduler_marker_date_template.md
-- api/scheduler_marker_text_template.md
 - api/scheduler_month_date_template.md
 - api/scheduler_month_date_class_template.md
 - api/scheduler_month_day_template.md

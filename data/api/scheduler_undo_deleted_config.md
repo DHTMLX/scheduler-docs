@@ -1,10 +1,6 @@
 undo_deleted
 =============
 
-@todo:
-	check 
-
-
 @short:provides the Undo popup when you delete an event 
 	
 

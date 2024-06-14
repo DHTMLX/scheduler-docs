@@ -14,6 +14,7 @@ Methods
 - api/scheduler_assert.md - if the specified expression is false, an errorMessage is shown in a red popup at the top right corner of the screen
 - api/scheduler_attachevent.md - attaches the handler to an inner event of dhtmlxScheduler
 - api/scheduler_backbone.md - makes the scheduler reflect all data changes in the Backbone model and vice versa
+- api/scheduler_batchupdate.md - updates multiple events at once
 - api/scheduler_bind.md - creates a new function that when called has its <i>this</i> keyword set to the provided value
 - api/scheduler_blocktime.md - blocks the specified date and applies the default 'dimmed' style to it.
 - api/scheduler_callevent.md - calls an inner event
@@ -136,6 +137,7 @@ Methods
 - api/scheduler_assert.md
 - api/scheduler_attachevent.md
 - api/scheduler_backbone.md
+- api/scheduler_batchupdate.md
 - api/scheduler_bind.md
 - api/scheduler_blocktime.md
 - api/scheduler_callevent.md

@@ -1,5 +1,6 @@
 batchUpdate
 =============
+
 @short:updates multiple events at once
 
 @params:
@@ -25,3 +26,5 @@ You can use this method to update multiple events at once with a single re-rende
 
 
 @relatedapi:
+- api/scheduler_onbeforebatchupdate_event.md
+- api/scheduler_onafterbatchupdate_event.md

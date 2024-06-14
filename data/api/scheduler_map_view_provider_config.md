@@ -1,10 +1,6 @@
 map_view_provider
 =============
 
-@todo:
-	check 
-
-
 @short:specifies the map provider 
 	
 

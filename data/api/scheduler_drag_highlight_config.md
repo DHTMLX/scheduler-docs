@@ -1,5 +1,6 @@
 drag_highlight
 =============
+
 @short:highlights the event's initial position and duration on the time scale when you are dragging an event over the scheduler
 
 
@@ -26,5 +27,3 @@ scheduler.load("./data/events.xml");
 @changelog:
 Highlighting of the event's initial position was added in v7.1
 
-@todo:
-	check
