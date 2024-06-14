@@ -34,7 +34,7 @@ scheduler.plugin({
 });
 ~~~
 
-Since the new plugin uses different set of properties to define recurring events, no straightforward data migration is available at the moment. You can continue using the [old engine for Recurring events](recurring_events_legacy.md) events until you're ready to perform the migration:
+Since the new plugin uses a different set of properties to define recurring events, no straightforward data migration is available at the moment. You can continue using the [old engine for Recurring events](recurring_events_legacy.md) events until you're ready to perform the migration, by using the setting below:
 
 ~~~js
 scheduler.plugin({
@@ -44,13 +44,13 @@ scheduler.plugin({
 
 ### Undo popup
 
-The new api/scheduler_undo_deleted_config.md config is enabled by default. You can disable it via config if you don't want this behavior:
+The new api/scheduler_undo_deleted_config.md config is enabled by default. You can disable it via the config, if this behavior doesn't suit your needs:
 
 ~~~js
 scheduler.config.undo_deleted = false;
 ~~~
 
-### Changed in the Map View
+### Changes in the Map View
 
 The following properties are deprecated and included into the api/scheduler_map_settings_config.md configuration object:
 
@@ -76,7 +76,7 @@ scheduler.config.map_settings = {
 scheduler.init('scheduler_here',new Date(2024,05,11),"map");
 ~~~
 
-The following templates of the Map view are deprecated and are replaced by api/scheduler_map_info_content.md
+The following templates of the Map view are deprecated and are replaced by api/scheduler_map_info_content_template.md:
 
 - **scheduler.templates.marker_date**
 - **scheduler.templates.marker_text**

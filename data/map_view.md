@@ -100,7 +100,7 @@ To use some map provider, you need to:
 	type="text/javascript"></script>
 ~~~
 
-2\. If necessary, specify the necessary settings via the api/scheduler_map_settings_config.md configuration option, e.g.:
+2\. If necessary, specify the settings via the api/scheduler_map_settings_config.md configuration option, e.g.:
 
 ~~~js
 scheduler.config.map_settings = {
@@ -289,7 +289,7 @@ GUI details
 - Selected events are highlighted. If the selected event occupies several days, all related records are highlighted. 
 - To create a new event -  double click on an empty cell in the list or on the desired location on the map.
 - To edit or delete an event - double click on the 'details' icon on the left side of the event's description. 
-- To overview event - click on the event's marker on the map.
+- To overview an event - click on the event's marker on the map.
 
 Related guides
 ----------------------------------------
