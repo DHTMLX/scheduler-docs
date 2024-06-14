@@ -231,8 +231,6 @@ interface IMapAdapter {
 }
 ~~~
 
-[Check the example on creating a custom map adapter]
-
 Requirements to data items
 -------------------------------------------
 
