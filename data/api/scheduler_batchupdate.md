@@ -7,7 +7,7 @@ batchUpdate
 * noRedraw  boolean     optional, specifies if Scheduler should repaint the chart after the callback function; <i>true</i> - not to repaint and <i>false</i> (by default) - to repaint
 
 @example:
-scheduler.batchUpdate(function () {
+scheduler.batchUpdate(function(){
     const events = scheduler.getEvents();
     for(var i = 0; i < events.length; i++){
         const event = events[i];

@@ -2,7 +2,7 @@ onAfterBatchUpdate
 =============
 
 @short:
-	fires after the api/scheduler_batchupdate.md method was called
+	fires after the api/scheduler_batchupdate.md method has been called
 
 @params:
 
