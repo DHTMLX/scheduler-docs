@@ -214,6 +214,20 @@ For the Commercial, Enterprise or Ultimate version the command looks like this:
 import { scheduler, Scheduler } from 'dhtmlx-scheduler';
 ~~~
 
+Using Scheduler with Vite
+--------------------------
+
+If you use Vite in your project, the following setting is required for the **vite.config.js** file to ensure that Scheduler is correctly included into the app:
+
+{{snippet vite.config.js}}
+~~~js 
+optimizeDeps: {
+	include: [
+		'dhtmlx-scheduler',
+	]
+}
+~~~
+
 React example
 ------------------
 

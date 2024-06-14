@@ -65,5 +65,9 @@ The following properties are mostly important and commonly set for the 'textarea
 			<td class="webixdoc_links0"><b>type</b></td>
 			<td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) the type of the section's control</td>
 		</tr>
+		<tr>
+			<td class="webixdoc_links0"><b>placeholder</b></td>
+			<td>(<i>string</i>) the placeholder value for an empty textarea</td>
+		</tr>
     </tbody>
 </table>

@@ -16,6 +16,9 @@ scheduler.templates.drag_marker_content = function(start, end, event){
 	return "";
 };
 
+@returns:
+- text    string     html text for rendering in the scheduler
+
 @template:	api_template
 @descr:
 For example: 

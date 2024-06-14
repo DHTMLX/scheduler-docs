@@ -10,6 +10,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+
 7.1
 ---------------
 <span class='release_date'>June X, 2024. Minor update</span>
@@ -41,6 +42,27 @@ This update brings changes for some map configuration properties. Check the [Mig
 - Fix the performance issue with events drag and drop in the [Tree Timeline view](timeline_view.md) when the `show_unassigned` option is set to `true`
 - Fix the incorrect behavior of the scrollable [Timeline view](timeline_view.md) when smart_rendering is set to false
 - Fix the incorrect scroll position after a view change in a scrollable [Timeline view](timeline_view.md)
+7.0.5
+---------------
+<span class='release_date'>May 30, 2024. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect height of the [Timeline](timeline_view.md) sections when the `event_dy:"full"` setting is used
+- Fix the missing "today" marker in the [Year view](year_view.md)
+- Correct the positioning of events in the [Day](day_view.md)/[Week](week_view.md) views
+
+7.0.4
+---------------
+<span class='release_date'>May 22, 2024. Bugfix release</span>
+
+### Fixes
+
+- Add the `placeholder` setting for the [textarea](textarea.md) control
+- Fix incorrect cell selection in [Keyboard Navigation](keyboard_navigation.md)
+- Fix the [Quick Info](touch_support.md#quickinfoextension) popup in [Agenda view](agenda_view.md)
+- Fix type definitions for the [Agenda view](agenda_view.md) templates
+- Fix the incorrect display of multi-day events in [Month view](month_view.md) when api/scheduler_start_on_monday_config.md is disabled and several columns are [hidden](custom_scales.md) from the view
 
 7.0.3
 ---------------
