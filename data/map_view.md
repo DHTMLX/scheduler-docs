@@ -45,7 +45,7 @@ scheduler.plugins({
 <div id="scheduler_here" class="dhx_cal_container" ...>
 	<div class="dhx_cal_navline">
 	   ...
-	   <div class="dhx_cal_tab" name="map_tab" style="right:280px;"></div>
+	   <div class="dhx_cal_tab" data-tab="map"></div>
     </div>
 	...	
 </div>
@@ -78,7 +78,7 @@ scheduler.locale.labels.section_location = "Location";
 
 ~~~js
 //'map' is the default name of the Map view
-scheduler.init('scheduler_here',new Date(2019,8,1),"map");
+scheduler.init('scheduler_here',new Date(2024,5,11),"map");
 ~~~
 	
 {{sample
@@ -110,7 +110,7 @@ scheduler.config.map_settings = {
     }
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,05,11),"map");
+scheduler.init('scheduler_here',new Date(2024,5,11),"map");
 ~~~
  
 [Check the details below](map_view.md#maprelatedconfigurationoptions)
@@ -122,7 +122,7 @@ scheduler.init('scheduler_here',new Date(2024,05,11),"map");
 ~~~js
 scheduler.config.map_view_provider = "googleMap";
 ...
-scheduler.init('scheduler_here',new Date(2024,05,11),"map");
+scheduler.init('scheduler_here',new Date(2024,5,11),"map");
 ~~~
 
 Possible values are the following: *"googleMap", "openStreetMaps", "mapbox"*.
@@ -134,7 +134,7 @@ scheduler.config.map_settings = {
     view_provider: "googleMap"
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,05,11),"map");
+scheduler.init('scheduler_here',new Date(2024,5,11),"map");
 ~~~
 
 Map-related configuration options
@@ -168,7 +168,7 @@ scheduler.config.map_settings = {
     view_provider: "googleMap"
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,05,11),"map");
+scheduler.init('scheduler_here',new Date(2024,5,11),"map");
 ~~~
 
 The configuration object contains the following properties:
