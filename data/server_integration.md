@@ -316,8 +316,8 @@ The request and response for dynamic loading are the following:
 Create/Update/Delete requests will contain all public properties of a client-side event object:
 
 - **id**: 71
-- **start_date**: 2014-11-04 15:00
-- **end_date**: 2014-11-04 18:00
+- **start_date**: 2024-11-04 15:00
+- **end_date**: 2024-11-04 18:00
 - **text**:  Recinto Ferial - Valencia 
 - **details**: Details for  Recinto Ferial - Valencia 
 - **!nativeeditor_status**: updated
@@ -336,19 +336,19 @@ As we initialized dataProcessor in the REST mode, it will use different HTTP ver
 Recurring events
 ------------------------------
 
-Recurring events are stored in the database as records that contain both all [fields of a regular event](loading_data.md#dataproperties) and 3 additional fields: **rec_type**, **event_length** and **event_pid**. 
+Recurring events are stored in the database as records that contain both all [fields of a regular event](loading_data.md#dataproperties) and 6 additional fields: **stdate**, **dtend**, **rrule**, **recurring_event_id**, **original_start**, **deleted**.
 
 Read more in the [Recurring Events](recurring_events.md#serversideintegration) article.
 
 In addition to extra fields, a specific logic needs to be added to the server-side controller:
 
 - for the **insert** action:
-  - if **event.rec_type === 'none'**, the response must have the 'deleted' status
+  - if **event.deleted === true**, the response must have the 'deleted' status
 - for the **update** action:
-  - if **event.rec_type** is not empty and **event.rec_type !== 'none'**, all events where **event_pid == event.id** must be deleted
+  - if **event.rrule** is not empty and **event.recurring_event_id** is empty, all events where **recurring_event_id == event.id** must be deleted
 - for the **delete** action:
-  - if **event.rec_type** is not empty and **event.rec_type !== 'none'**, all events where **event_pid == event.id** must be deleted
-  - if **event.event_pid** is not empty, the event should be updated with **event.rec_type = 'none'** instead of deleting.
+  - if **event.rrule** is not empty and **event.recurring_event_id** is empty, all events where **recurring_event_id == event.id** must be deleted
+  - if **event.recurring_event_id** is not empty, the event should be updated with **event.deleted = true** instead of deleting.
 
 {{note You can have a look at the detailed example on editing and deleting recurring events in the [related section of the Recurring Events article](recurring_events.md#editingdeletingacertainoccurrenceintheseries).}}
 
