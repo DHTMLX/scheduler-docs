@@ -483,6 +483,19 @@ Article:   recurring_events.md<br>
 
 {{sample 03_extensions/01_recurring_events.html}} 
 
+Recurring Legacy
+---------------------------------------------
+Legacy engine for recurring events.
+
+~~~js
+scheduler.plugins({
+    recurring_legacy: true
+});
+~~~
+
+####Related resources
+
+Article:   recurring_events_legacy.md<br>
 
 Serialize
 ---------------------------------------------
