@@ -19,7 +19,7 @@ ng new my-angular-scheduler-app
 
 The above command will install all the necessary tools and dependencies, so you don't need any additional commands. 
 
-## Installation of dependencies
+### Installation of dependencies
 
 After that go to the app directory by running:
 
@@ -48,11 +48,11 @@ Now the app should be running on [http://localhost:4200](http://localhost:4200).
 Now we should get the DHTMLX Scheduler code. Firstly, we need to stop the app by pressing `Ctrl+C` in the command line.
 Then we can proceed with installing the Scheduler package.
 
-### Step 1. Package installation
+## Step 1. Package installation
 
 There are two options available: you can install the Pro package from a local folder, or install the trial version using `npm` or `yarn`.
 
-#### Installing the package from a local folder
+### Installing the package from a local folder
 
 Copy the Scheduler package into some local directory inside the project. In the project directory run the command below replacing *scheduler-local-package-path* with the actual path:
 
@@ -78,7 +78,7 @@ or
 yarn add "./scheduler_7.0.0_enterprise"
 ~~~
 
-#### Installing the trial version via a package manager
+### Installing the trial version via a package manager
 
 To install the trial version of the Scheduler, you need to create a file with the type **.npmrc** and add the string **&#64;dhx:registry=https://npm.dhtmlx.com/**.
 
@@ -97,3 +97,329 @@ npm install @dhx/trial-scheduler
 yarn add @dhx/trial-scheduler
 ~~~
 
+## Step 2. Component creation
+
+Now we should create a component to add a Scheduler into the application. Let's create the **scheduler** folder in the **src/app/** directory, 
+add new files into it and call them **scheduler.component.ts**, **scheduler.component.css** and **scheduler.component.html**.
+
+The newly created **scheduler.component.html** file inside the **scheduler** folder will contain the template for the scheduler. Let's add the following lines of code:
+
+~~~js
+<div #scheduler_here class="dhx_cal_container" style="width: 100%; height:100vh">
+   <div class="dhx_cal_navline">
+       <div class="dhx_cal_prev_button"></div>
+       <div class="dhx_cal_next_button"></div>
+       <div class="dhx_cal_today_button"></div>
+       <div class="dhx_cal_date"></div>
+       <div class="dhx_cal_tab" data-tab="day"></div>
+       <div class="dhx_cal_tab" data-tab="week"></div>
+       <div class="dhx_cal_tab" data-tab="month"></div>
+   </div>
+   <div class="dhx_cal_header"></div>
+   <div class="dhx_cal_data"></div>
+</div>
+~~~
+
+We'll declare scheduler styles in a separate file named **scheduler.component.css**. The default styles can look like this:
+
+~~~css
+@import "@dhx/trial-scheduler/codebase/dhtmlxscheduler.css";
+:host {
+   display: block;
+   position: relative;
+   height: 100%;
+   width: 100%;
+}
+~~~
+
+To make the Scheduler container occupy the entire space of the body, you need to add the following styles to the **styles.css** file located in the **src** folder:
+
+~~~css
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+~~~
+
+### Importing source files
+
+Open the ***scheduler.component.ts*** file and import Scheduler source files. Note that:
+
+- if you've installed the Scheduler package from a local folder, your import paths will look like this:
+
+{{snippet scheduler.component.ts}}
+~~~
+import { Scheduler, SchedulerStatic } from 'dhtmlx-scheduler';
+~~~
+
+
+{{snippet scheduler.component.css}}
+~~~
+@import "@dhtmlx-scheduler/codebase/dhtmlxgantt.css";
+~~~
+
+- if you've chosen to install the trial version, the import paths should be as in:
+
+{{snippet scheduler.component.ts}}
+~~~
+import { Scheduler, SchedulerStatic } from '@dhx/trial-scheduler';
+~~~
+
+
+{{snippet scheduler.component.css}}
+~~~
+@import "@dhx/trial-scheduler/codebase/dhtmlxgantt.css";
+~~~
+
+In this tutorial we will use the trial version of Scheduler.
+
+### Setting the container and adding Scheduler
+
+To display Scheduler on the page, we need to set the container to render the component inside. Use the code below:
+
+~~~
+import { Scheduler, SchedulerStatic } from "@dhx/trial-scheduler";
+import { Component, ElementRef, OnInit, OnDestroy, 
+	ViewChild, ViewEncapsulation } from "@angular/core";
+
+@Component({
+  encapsulation: ViewEncapsulation.None,
+  selector: "scheduler",
+  styleUrls: ["./scheduler.component.css"],
+  templateUrl: 'scheduler.component.html'
+})
+
+export class SchedulerComponent implements OnInit, OnDestroy {
+  @ViewChild("scheduler_here", { static: true }) schedulerContainer!: ElementRef;
+  private _scheduler?: SchedulerStatic;
+
+  ngOnInit() {
+    let scheduler = Scheduler.getSchedulerInstance();
+    scheduler.init(
+      this.schedulerContainer.nativeElement,
+      new Date(2024, 9, 7),
+      "week", 
+    );
+    this._scheduler = scheduler;
+  }
+
+  ngOnDestroy() {
+    if (this._scheduler) this._scheduler.destructor();
+  }
+}
+~~~
+
+In the above code we've used the **ngOnInit()** method of Angular and also specified the **ngOnDestroy()** method that 
+contains the [**scheduler.destructor()**](api/scheduler_destructor.md) call to clear the component when it is no longer needed.
+
+## Step 3. Adding Scheduler into the app
+
+Now it's time to add the component into our app. Open **src/app/app.component.ts** and use *SchedulerComponent* instead of the default content by inserting the code below:
+
+~~~
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `<scheduler></scheduler>`,
+})
+export class AppComponent {
+  name = '';
+}
+~~~
+
+Then create the ***app.module.ts*** file in the **src/app/** directory and insert the *SchedulerComponent* as provided below:
+
+~~~
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+ 
+import { AppComponent } from "./app.component";
+import { SchedulerComponent } from "./scheduler/scheduler.component";
+ 
+@NgModule({
+  declarations: [AppComponent, SchedulerComponent],
+  imports: [BrowserModule],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+~~~
+
+The last step is to open the ***src/main.ts*** file and replace the existing code with the following one:
+
+{{snippet main.ts}}
+~~~
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+import { AppModule } from "./app/app.module";
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));
+~~~
+
+After that, when we start the app, we should see an empty Scheduler on a page. 
+
+![Adding Scheduler into an app](frontend_frameworks_howtostart/scheduler_angular_init.png)
+
+## Step 4. Providing Data
+
+To add data loading to the Angular Scheduler, you need to add an event service. But before that, let's define the event model.
+
+For creating the event model, run the following command:
+
+~~~
+ng generate class models/event --skip-tests
+~~~
+
+In the newly created ***event.ts*** file inside the ***models*** folder, we will add the following lines of code:
+
+~~~
+export class Event {
+	id!:  number;
+    start_date!: string;
+    end_date!: string;
+    text!: string;
+}
+~~~
+
+Now let's create an event service. A service is a class that will be responsible for creating a specific event. Services in Angular can be injected by
+using the Dependency Injection mechanism. They can include data, functions or some features necessary for the application. You need to create a data service 
+that will be used to provide the scheduler with events.
+
+For creating an event service, run the following command:
+
+~~~
+ng generate service services/event --flat --skip-tests
+~~~
+
+In the newly created ***event.service.ts*** file inside the ***services*** folder it is required to add the following lines of code:
+
+~~~
+import { Injectable } from '@angular/core';
+import { Event } from "../models/event";
+
+@Injectable()
+export class EventService {
+    get(): Promise<Event[]>{
+        return Promise.resolve([
+            { id: 1, start_date: "2023-05-16 09:00", end_date: "2023-05-16 13:00", 
+            	text: "Event 1" },
+            { id: 2, start_date: "2023-05-18 10:00", end_date: "2023-05-18 14:00", 
+            	text: "Event 2" },
+        ]);
+    }
+}
+~~~
+
+We've added the **@Injectable()** decorator to our service. It marks a class as available to an injector for instantiation. We'll inject it into our component further.
+
+Currently, the **get()** method returns a resolved promise with hardcoded data. However, you can load data from the server side and also return a promise.
+The scheduler component is supposed to use **EventService** to get events. To enable this, let's add **EventService** to the component. 
+First, import the necessary module for the service in ***scheduler.component.ts***:
+
+You should also specify **EventService** as a provider in the **@Component** decorator:
+
+~~~
+@Component({
+  encapsulation: ViewEncapsulation.None,
+  selector: "scheduler",
+  providers: [EventService],
+  styleUrls: ["./scheduler.component.css"],
+  templateUrl: 'scheduler.component.html'
+})
+~~~
+
+Now, every time a new *SchedulerComponent* is initialized, a fresh instance of the service will be created. The service should be prepared to be injected into the component.
+For this purpose, add the following constructor to the **SchedulerComponent** class:
+
+~~~
+constructor(private eventService: EventService){}
+~~~
+
+Modify the **ngOnInit()** function:
+
+- set the data format for loading events (XML in this case)
+- call the services to get the function and then wait for a response to put the data to the scheduler
+
+~~~
+scheduler.config.date_format = "%Y-%m-%d %H:%i";
+scheduler.init(this.schedulerContainer.nativeElement, new Date(2024, 9, 7));
+this.eventService.get()
+    .then((data) => {
+         scheduler.parse(data);
+    });
+~~~
+
+The complete code of the ***scheduler.components.ts*** file will look like this:
+
+~~~
+import { Scheduler, SchedulerStatic } from "@dhx/trial-scheduler";
+import { Component, ElementRef, OnInit, OnDestroy, 
+	ViewChild, ViewEncapsulation } from "@angular/core";
+import {EventService} from "../services/event.service";
+
+@Component({
+  encapsulation: ViewEncapsulation.None,
+  selector: "scheduler",
+  providers: [EventService],
+  styleUrls: ['scheduler.component.css'],
+  templateUrl: 'scheduler.component.html'
+})
+
+export class SchedulerComponent implements OnInit, OnDestroy {
+  @ViewChild("scheduler_here", { static: true }) schedulerContainer!: ElementRef;
+  private _scheduler?: SchedulerStatic;
+  constructor(private eventService: EventService) { }
+
+  ngOnInit() {
+    let scheduler = Scheduler.getSchedulerInstance();
+    scheduler.config.date_format = "%Y-%m-%d %H:%i";
+    scheduler.init(
+      this.schedulerContainer.nativeElement,
+      new Date(2024, 9, 7),
+      "week", 
+    );
+    this.eventService.get().then((data) => {scheduler.parse(data);});
+    this._scheduler = scheduler;
+  }
+
+  ngOnDestroy() {
+    if (this._scheduler) this._scheduler.destructor();
+  }
+}
+~~~
+
+Now, if you reopen the app page, you should see a Scheduler with events.
+
+![Scheduler with Angular events](frontend_frameworks_howtostart/scheduler_angular_events.png)
+
+## Step 5. Saving Data
+
+To capture changes made in the Scheduler, you can use a [dataProcessor](https://docs.dhtmlx.com/dataprocessor__index.html) 
+handler that lets you "communicate" with the server-side backend. The handler can be declared either as a function or a router object.
+The scheduler accepts Promise response from the handler, so the scheduler will correctly process the completion of an action. 
+
+So, you can create a **DataProcessor** via the **createDataProcessor()** API method and capture changes, like this:
+
+~~~
+scheduler.createDataProcessor(function(entity, action, data, id) {​
+    scheduler.message(`${​entity} ${​action}`);
+});
+~~~
+
+If your service changes the event id after creating a new record (which it usually does), make sure that your Promise returns an object with 
+**{id: databaseId}** or **{tid: databaseId}** as a result, so the Scheduler could apply the new database id to the record.
+Get [more information about server side](server_integration.md).
+
+Well, Angular Scheduler is ready, you are welcome to [check out the full demo on GitHub](https://github.com/DHTMLX/angular-scheduler-demo).
+
+## XSS, CSRF and SQL Injection Attacks
+
+Pay attention that Scheduler doesn't provide any means of preventing an application from various threats, such as SQL injections or 
+XSS and CSRF attacks. It is important that responsibility for keeping an application safe is on the developers implementing the backend.
+
+Check the [Application Security](app_security.md) article to learn the most vulnerable points of the component and the measures you can take to improve the safety of your application.

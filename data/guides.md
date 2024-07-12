@@ -12,7 +12,18 @@ The articles come around key procedures and problem-solving activities.
     <tr>
 		<td id="data" class='topics'>
 		    <h4>
-		         How to Start with dhtmlxScheduler
+		         How to Start with dhtmlxScheduler and Front-End Frameworks
+		    </h4>
+		    <ul id="data_sublist" >
+            		<li>howtostart_angular.md</li>
+            </ul>
+        </td>
+        <td class='topic_description'>Says how to build and configure a standard Scheduler with popular front-end frameworks.</td>
+	</tr>
+    <tr>
+		<td id="data" class='topics'>
+		    <h4>
+		         How to Start with dhtmlxScheduler on Server-Side Platforms
 		    </h4>
 		    <ul id="data_sublist" >
             		<li>howtostart_dotnet_core.md</li>
@@ -213,6 +224,7 @@ The articles come around key procedures and problem-solving activities.
 
 @index:
 - editions_comparison.md
+- howtostart_frontend_frameworks.md
 - howtostart_guides.md
 - configuring_the_scheduler.md
 - loading_and_storing_data.md
