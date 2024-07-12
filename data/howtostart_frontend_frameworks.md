@@ -18,11 +18,11 @@ frameworks.
     </tr>	
     <tr>
         <td>
-		    <span style="font-size:15px;">howtostart_nodejs.md</span><br><br>
-            A detailed tutorial which dwells on Scheduler implementation on a Nodejs platform. 
+		    <span style="font-size:15px;">howtostart_react.md</span><br><br>
+            Learn how to integrate Scheduler with the React framework.
         </td>
         <td>
-        	<a href="howtostart_nodejs.md"><img src=""></a>
+        	<a href="howtostart_react.md"><img src=""></a>
         </td>
     </tr>    
     <tr>
@@ -49,3 +49,4 @@ frameworks.
 
 @index:
 - howtostart_angular.md
+- howtostart_react.md

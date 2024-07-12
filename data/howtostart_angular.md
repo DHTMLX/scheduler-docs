@@ -58,11 +58,7 @@ Copy the Scheduler package into some local directory inside the project. In the 
 
 ~~~
 npm install ./scheduler-local-package-path
-~~~
-
-or
-
-~~~
+// or
 yarn add "./scheduler-local-package-path"
 ~~~
 
@@ -70,11 +66,7 @@ For example:
 
 ~~~
 npm install ./scheduler_7.0.0_enterprise
-~~~
-
-or
-
-~~~
+// or
 yarn add "./scheduler_7.0.0_enterprise"
 ~~~
 
