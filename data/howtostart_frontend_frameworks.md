@@ -26,27 +26,29 @@ frameworks.
         </td>
     </tr>    
     <tr>
-        <td>
-		    <span style="font-size:15px;">howtostart_dotnet.md</span>
-            <br>
-            An elaborated tutorial that explores the specificity of implementing Scheduler with ASP.NET MVC and ASP.NET WebAPI 2. 
+		<td>
+		    <span style="font-size:15px;">howtostart_vue.md</span><br><br>           
+            Learn how to integrate Scheduler with the Vue framework. 
         </td>
         <td>
-        	<a href="howtostart_dotnet.md"><img src=""></a>
+        	<a href="howtostart_vue.md"><img src=""></a>
         </td>
     </tr>
-     <tr>
-		<td>
-		    <span style="font-size:15px;">howtostart_plain_php.md</span><br><br>           
-            A step-by-step tutorial that discusses how to implement a Scheduler with plain PHP without any frameworks. 
+    <tr>
+        <td>
+		    <span style="font-size:15px;">howtostart_svelte.md</span>
+            <br>
+            Learn how to integrate Scheduler with the Svelte framework. 
         </td>
         <td>
-        	<a href="howtostart_plain_php.md"><img src=""></a>
+        	<a href="howtostart_svelte.md"><img src=""></a>
         </td>
-    </tr>    
+    </tr>
     </tbody>
 </table>
 
 @index:
 - howtostart_angular.md
 - howtostart_react.md
+- howtostart_vue.md
+- howtostart_svelte.md

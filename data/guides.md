@@ -16,6 +16,9 @@ The articles come around key procedures and problem-solving activities.
 		    </h4>
 		    <ul id="data_sublist" >
             		<li>howtostart_angular.md</li>
+                    <li>howtostart_react.md</li>
+                    <li>howtostart_vue.md</li>
+                    <li>howtostart_svelte.md</li>
             </ul>
         </td>
         <td class='topic_description'>Says how to build and configure a standard Scheduler with popular front-end frameworks.</td>
