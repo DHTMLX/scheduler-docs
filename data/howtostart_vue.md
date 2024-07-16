@@ -85,7 +85,7 @@ yarn add "./scheduler_7.0.0_enterprise"
 
 ### Installing the trial version via a package manager
 
-To install the trial version of the Scheduler, you need to create a file with type *.npmrc* and add this string: **&#64;dhx:registry=https://npm.dhtmlx.com/**.
+To install the trial version of the Scheduler, you need to create a file with the *.npmrc* type and add the **&#64;dhx:registry=https://npm.dhtmlx.com/** string into it.
 
 After that, you can install the trial version of Scheduler using **npm** or **yarn** commands:
 
@@ -114,7 +114,7 @@ Open the newly created ***Scheduler.vue*** file and import Scheduler source file
 
 - if you've installed the Scheduler package from a local folder, your import paths will look like this:
 
-{{Scheduler.vue}}
+{{snippet Scheduler.vue}}
 ~~~
 import { Scheduler } from "dhtmlx-scheduler";
 …
@@ -125,7 +125,7 @@ import { Scheduler } from "dhtmlx-scheduler";
 
 - if you've chosen to install the trial version, the import paths should be as in:
 
-{{Scheduler.vue}}
+{{snippet Scheduler.vue}}
 ~~~
 import { Scheduler } from "@dhx/trial-scheduler";
 …
@@ -140,7 +140,7 @@ In this tutorial we will use the **trial** version of Scheduler.
 
 To display Scheduler on the page, we need to set the container to render the component inside. Check the code below:
 
-{{Scheduler.vue}}
+{{snippet Scheduler.vue}}
 ~~~html
 <script>
 import { Scheduler } from "@dhx/trial-scheduler";
@@ -167,7 +167,8 @@ export default {
 To make the Scheduler container occupy the entire space of the body, you need to remove the default 
 styles from the ***main.css*** file located in the ***src/assets*** folder and add the following one:
 
-~~~
+{{snippet src/assets/main.css}}
+~~~css
 #app {
   margin: 0;
   padding: 0;
@@ -181,6 +182,7 @@ styles from the ***main.css*** file located in the ***src/assets*** folder and a
 Now it's time to add the component into our app. Open ***src/App.vue*** and use the Scheduler component 
 instead of the default content by inserting the code below:
 
+{{snippet src/App.vue}}
 ~~~html
 <script>
 import Scheduler from "./components/Scheduler.vue";
@@ -203,8 +205,8 @@ After that, when we start the app, we should see an empty Scheduler on a page:
 
 To add data into the Scheduler, we need to provide a data set. Let's create the ***data.js*** file in the ***src/*** directory and add some data into it:
 
-{{src/data.js}}
-~~~
+{{snippet src/data.js}}
+~~~js
 export function getData() {
     const data = [
         {
@@ -224,8 +226,9 @@ export function getData() {
 }
 ~~~
 
-And into App.vue we should [pass props (our data)](https://vuejs.org/guide/components/props.html) to a Scheduler component:
+We should [pass props (our data)](https://vuejs.org/guide/components/props.html) to a Scheduler component in ***App.vue***:
 
+{{snippet App.vue}}
 ~~~html
 <script>
 import Scheduler from "./components/Scheduler.vue";
@@ -246,8 +249,9 @@ export default {
 </template>
 ~~~
 
-And use props in the **scheduler.parse()** method in the Scheduler component:
+And then use props in the **scheduler.parse()** method in the Scheduler component:
 
+{{snippet Scheduler.vue}}
 ~~~html
 <script>
 import { Scheduler } from "@dhx/trial-scheduler";
@@ -282,7 +286,7 @@ Now, if you reopen the app page, you should see a Scheduler with events:
 
 To capture changes made in the Scheduler, you can use the [dataProcessor](https://docs.dhtmlx.com/dataprocessor__index.html) handler that lets you  
 "communicate" with the server-side backend. The handler can be declared either as a function or as a router object.
-Scheduler accepts a Promise response from the handler, so the scheduler will correctly process the completion of an action. 
+Scheduler accepts a Promise response from the handler, so Scheduler will correctly process the completion of an action. 
 
 You can create a **DataProcessor** via the **createDataProcessor()** API method and capture changes like this:
 
@@ -292,9 +296,9 @@ scheduler.createDataProcessor(function(entity, action, data, id) {​
 });
 ~~~
 
-If your service changes th eevent id after creating a new record (which it usually does), make sure that 
+If your service changes the event id after creating a new record (which it usually does), make sure that 
 your Promise returns an object with **{id: databaseId}** or **{tid: databaseId}** as a result, so 
-Scheduler could apply the new database id to the record. Get [more information about server side](server_integration.md).
+Scheduler could apply the new database id to the record. Get [more information about the server side](server_integration.md).
 
 Well, Vue Scheduler is ready, you are welcome to [check out the full demo on GitHub](https://github.com/DHTMLX/vue-scheduler-demo).
 

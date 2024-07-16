@@ -45,12 +45,12 @@ Now the app should be running on [http://localhost:4200](http://localhost:4200).
 
 ## Creating Scheduler
 
-Now we should get the DHTMLX Scheduler code. Firstly, we need to stop the app by pressing `Ctrl+C` in the command line.
+Now we should get the DHTMLX Scheduler code. Firstly, we need to stop the app by pressing **Ctrl+C** in the command line.
 Then we can proceed with installing the Scheduler package.
 
 ## Step 1. Package installation
 
-There are two options available: you can install the Pro package from a local folder, or install the trial version using `npm` or `yarn`.
+There are two options available: you can install the **Pro** package from a local folder, or install the **trial** version using **npm** or **yarn**.
 
 ### Installing the package from a local folder
 
@@ -72,8 +72,7 @@ yarn add "./scheduler_7.0.0_enterprise"
 
 ### Installing the trial version via a package manager
 
-To install the trial version of the Scheduler, you need to create a file with the type **.npmrc** and add the string **&#64;dhx:registry=https://npm.dhtmlx.com/**.
-
+To install the trial version of the Scheduler, you need to create a file with the **.npmrc** type and add the **&#64;dhx:registry=https://npm.dhtmlx.com/** string into it.
 
 After that, you can install the trial version of Scheduler using **npm** or **yarn** commands:
 
@@ -94,9 +93,10 @@ yarn add @dhx/trial-scheduler
 Now we should create a component to add a Scheduler into the application. Let's create the **scheduler** folder in the **src/app/** directory, 
 add new files into it and call them **scheduler.component.ts**, **scheduler.component.css** and **scheduler.component.html**.
 
-The newly created **scheduler.component.html** file inside the **scheduler** folder will contain the template for the scheduler. Let's add the following lines of code:
+The newly created **scheduler.component.html** file inside the **scheduler** folder will contain the template for the scheduler. Let's add the following lines of code into it:
 
-~~~js
+{{snippet scheduler/scheduler.component.html}}
+~~~html
 <div #scheduler_here class="dhx_cal_container" style="width: 100%; height:100vh">
    <div class="dhx_cal_navline">
        <div class="dhx_cal_prev_button"></div>
@@ -114,6 +114,7 @@ The newly created **scheduler.component.html** file inside the **scheduler** fol
 
 We'll declare scheduler styles in a separate file named **scheduler.component.css**. The default styles can look like this:
 
+{{snippet scheduler/scheduler.component.css}}
 ~~~css
 @import "@dhx/trial-scheduler/codebase/dhtmlxscheduler.css";
 :host {
@@ -126,6 +127,7 @@ We'll declare scheduler styles in a separate file named **scheduler.component.cs
 
 To make the Scheduler container occupy the entire space of the body, you need to add the following styles to the **styles.css** file located in the **src** folder:
 
+{{snippet src/styles.css}}
 ~~~css
 html,
 body {
@@ -138,7 +140,7 @@ body {
 
 ### Importing source files
 
-Open the ***scheduler.component.ts*** file and import Scheduler source files. Note that:
+Open the ***scheduler.component.ts*** and ***scheduler.component.css*** files and import Scheduler source files. Note that:
 
 - if you've installed the Scheduler package from a local folder, your import paths will look like this:
 
@@ -146,7 +148,6 @@ Open the ***scheduler.component.ts*** file and import Scheduler source files. No
 ~~~
 import { Scheduler, SchedulerStatic } from 'dhtmlx-scheduler';
 ~~~
-
 
 {{snippet scheduler.component.css}}
 ~~~
@@ -160,19 +161,19 @@ import { Scheduler, SchedulerStatic } from 'dhtmlx-scheduler';
 import { Scheduler, SchedulerStatic } from '@dhx/trial-scheduler';
 ~~~
 
-
 {{snippet scheduler.component.css}}
 ~~~
 @import "@dhx/trial-scheduler/codebase/dhtmlxgantt.css";
 ~~~
 
-In this tutorial we will use the trial version of Scheduler.
+In this tutorial we will use the **trial** version of Scheduler.
 
 ### Setting the container and adding Scheduler
 
 To display Scheduler on the page, we need to set the container to render the component inside. Use the code below:
 
-~~~
+{{snippet scheduler.component.ts}}
+~~~js
 import { Scheduler, SchedulerStatic } from "@dhx/trial-scheduler";
 import { Component, ElementRef, OnInit, OnDestroy, 
 	ViewChild, ViewEncapsulation } from "@angular/core";

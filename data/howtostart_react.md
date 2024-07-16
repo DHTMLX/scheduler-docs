@@ -80,7 +80,7 @@ yarn add "./scheduler_7.0.0_enterprise"
 
 ### Installing the trial version via a package manager
 
-To install the trial version of the Scheduler, you need to create a file with the type `.npmrc` and add the following string: **&#64;dhx:registry=https://npm.dhtmlx.com/**.
+To install the trial version of the Scheduler, you need to create a file with the *.npmrc* type and add the **&#64;dhx:registry=https://npm.dhtmlx.com/** string into it.
 
 After that, you can install the **trial** version of Scheduler using **npm** or **yarn** commands:
 
@@ -196,7 +196,7 @@ export default function SchedulerView( ) {
 
 ## Step 3. Adding Scheduler into the app
 
-Now it's time to add the component into our app. Open ***src/app.jsx*** and use the *Scheduler* component instead of the default content by inserting the code below:
+Now it's time to add the component into our app. Open ***src/App.jsx*** and use the *Scheduler* component instead of the default content by inserting the code below:
 
 {{snippet src/App.jsx}}
 ~~~
@@ -262,6 +262,7 @@ export default App;
 
 And use props in the **scheduler.parse()** method in the Scheduler component:
 
+{{snippet Scheduler.jsx}}
 ~~~
 import { useEffect, useRef } from "react";
 import { Scheduler } from "@dhx/trial-scheduler";
@@ -304,7 +305,7 @@ Now, if you reopen the app page, you should see a Scheduler with events:
 
 To capture changes made in the Scheduler, you can use the [dataProcessor](https://docs.dhtmlx.com/dataprocessor__index.html) handler that lets you  
 "communicate" with the server-side backend. The handler can be declared either as a function or as a router object.
-Scheduler accepts a Promise response from the handler, so the scheduler will correctly process the completion of an action. 
+Scheduler accepts a Promise response from the handler, so Scheduler will correctly process the completion of an action. 
 
 You can create a **DataProcessor** via the **createDataProcessor()** API method and capture changes like this:
 
@@ -314,9 +315,9 @@ scheduler.createDataProcessor(function(entity, action, data, id) {​
 });
 ~~~
 
-If your service changes th eevent id after creating a new record (which it usually does), make sure that 
+If your service changes the event id after creating a new record (which it usually does), make sure that 
 your Promise returns an object with **{id: databaseId}** or **{tid: databaseId}** as a result, so 
-Scheduler could apply the new database id to the record. Get [more information about server side](server_integration.md).
+Scheduler could apply the new database id to the record. Get [more information about the server side](server_integration.md).
 
 Well, React Scheduler is ready, you are welcome to [check out the full demo on GitHub](https://github.com/DHTMLX/react-scheduler-demo).
 
