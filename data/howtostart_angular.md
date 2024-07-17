@@ -210,9 +210,10 @@ contains the [**scheduler.destructor()**](api/scheduler_destructor.md) call to c
 
 ## Step 3. Adding Scheduler into the app
 
-Now it's time to add the component into our app. Open **src/app/app.component.ts** and use *SchedulerComponent* instead of the default content by inserting the code below:
+Now it's time to add the component into our app. Open **src/app/app.component.ts** and use the Scheduler Component instead of the default content by inserting the code below:
 
-~~~
+{{snippet src/app/app.component.ts}}
+~~~js
 import { Component } from '@angular/core';
 
 @Component({
@@ -224,9 +225,10 @@ export class AppComponent {
 }
 ~~~
 
-Then create the ***app.module.ts*** file in the **src/app/** directory and insert the *SchedulerComponent* as provided below:
+Then create the ***app.module.ts*** file in the **src/app/** directory and insert *SchedulerComponent* as provided below:
 
-~~~
+{{snippet src/app/app.module.ts}}
+~~~js
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
  
@@ -244,8 +246,8 @@ export class AppModule {}
 
 The last step is to open the ***src/main.ts*** file and replace the existing code with the following one:
 
-{{snippet main.ts}}
-~~~
+{{snippet src/main.ts}}
+~~~js
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 import { AppModule } from "./app/app.module";
 
@@ -270,6 +272,7 @@ ng generate class models/event --skip-tests
 
 In the newly created ***event.ts*** file inside the ***models*** folder, we will add the following lines of code:
 
+{{snippet models/event.ts}}
 ~~~
 export class Event {
 	id!:  number;
@@ -291,6 +294,7 @@ ng generate service services/event --flat --skip-tests
 
 In the newly created ***event.service.ts*** file inside the ***services*** folder it is required to add the following lines of code:
 
+{{snippet services/event.service.ts}}
 ~~~
 import { Injectable } from '@angular/core';
 import { Event } from "../models/event";
@@ -308,14 +312,20 @@ export class EventService {
 }
 ~~~
 
-We've added the **@Injectable()** decorator to our service. It marks a class as available to an injector for instantiation. We'll inject it into our component further.
+We've added the **@Injectable()** decorator to our service. It marks a class as available for an injector to instantiate. We'll inject it into our component further.
 
 Currently, the **get()** method returns a resolved promise with hardcoded data. However, you can load data from the server side and also return a promise.
 The scheduler component is supposed to use **EventService** to get events. To enable this, let's add **EventService** to the component. 
 First, import the necessary module for the service in ***scheduler.component.ts***:
 
+{{snippet scheduler.component.ts}}
+~~~
+import {EventService} from "../services/event.service";
+~~~
+
 You should also specify **EventService** as a provider in the **@Component** decorator:
 
+{{snippet scheduler.component.ts}}
 ~~~
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -329,6 +339,7 @@ You should also specify **EventService** as a provider in the **@Component** dec
 Now, every time a new *SchedulerComponent* is initialized, a fresh instance of the service will be created. The service should be prepared to be injected into the component.
 For this purpose, add the following constructor to the **SchedulerComponent** class:
 
+{{snippet scheduler.component.ts}}
 ~~~
 constructor(private eventService: EventService){}
 ~~~
@@ -338,6 +349,7 @@ Modify the **ngOnInit()** function:
 - set the data format for loading events (XML in this case)
 - call the services to get the function and then wait for a response to put the data to the scheduler
 
+{{snippet scheduler.component.ts}}
 ~~~
 scheduler.config.date_format = "%Y-%m-%d %H:%i";
 scheduler.init(this.schedulerContainer.nativeElement, new Date(2024, 9, 7));
@@ -349,6 +361,7 @@ this.eventService.get()
 
 The complete code of the ***scheduler.components.ts*** file will look like this:
 
+{{snippet scheduler.component.ts}}
 ~~~
 import { Scheduler, SchedulerStatic } from "@dhx/trial-scheduler";
 import { Component, ElementRef, OnInit, OnDestroy, 
@@ -396,7 +409,7 @@ To capture changes made in the Scheduler, you can use a [dataProcessor](https://
 handler that lets you "communicate" with the server-side backend. The handler can be declared either as a function or a router object.
 The scheduler accepts Promise response from the handler, so the scheduler will correctly process the completion of an action. 
 
-So, you can create a **DataProcessor** via the **createDataProcessor()** API method and capture changes, like this:
+You can create a **DataProcessor** via the **createDataProcessor()** API method and capture changes, like this:
 
 ~~~
 scheduler.createDataProcessor(function(entity, action, data, id) {​
@@ -406,7 +419,7 @@ scheduler.createDataProcessor(function(entity, action, data, id) {​
 
 If your service changes the event id after creating a new record (which it usually does), make sure that your Promise returns an object with 
 **{id: databaseId}** or **{tid: databaseId}** as a result, so the Scheduler could apply the new database id to the record.
-Get [more information about server side](server_integration.md).
+Get [more information about the server side](server_integration.md).
 
 Well, Angular Scheduler is ready, you are welcome to [check out the full demo on GitHub](https://github.com/DHTMLX/angular-scheduler-demo).
 
