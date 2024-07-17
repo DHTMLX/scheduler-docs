@@ -151,7 +151,7 @@ import { Scheduler, SchedulerStatic } from 'dhtmlx-scheduler';
 
 {{snippet scheduler.component.css}}
 ~~~
-@import "@dhtmlx-scheduler/codebase/dhtmlxgantt.css";
+@import "@dhtmlx-scheduler/codebase/dhtmlxscheduler.css";
 ~~~
 
 - if you've chosen to install the trial version, the import paths should be as in:
@@ -163,7 +163,7 @@ import { Scheduler, SchedulerStatic } from '@dhx/trial-scheduler';
 
 {{snippet scheduler.component.css}}
 ~~~
-@import "@dhx/trial-scheduler/codebase/dhtmlxgantt.css";
+@import "@dhx/trial-scheduler/codebase/dhtmlxscheduler.css";
 ~~~
 
 In this tutorial we will use the **trial** version of Scheduler.
