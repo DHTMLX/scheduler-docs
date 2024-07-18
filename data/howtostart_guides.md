@@ -1,17 +1,12 @@
 How to Start with dhtmlxScheduler 
 ===============================
 
-This section is dedicated to the beginning of work with Scheduler. Each chapter tells about basic Scheduler initialization on different server-side
-platforms to suit all tastes and preferences.
+<h2>How to Start with Scheduler and Front-End</h2>
+
+Here's the overview of guides which tell you about basic Scheduler initialization with popular front-end frameworks.
 
 <table style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
 <tbody> 
-    <tr>
-		<td id="data" class='topics'>
-		    <h4>
-		         How to Start with Scheduler and Front-End 
-		    </h4>
-        </td> 
        <tr>
         	<td>
 		    	<span style="font-size:15px;">initialization.md</span><br><br> 
@@ -57,13 +52,16 @@ platforms to suit all tastes and preferences.
         		<a href="howtostart_svelte.md"><img src=""></a>
         	</td>
     	</tr>	
-	</tr>
-    <tr>
-		<td id="data" class='topics'>
-		    <h4>
-		         How to Start with Scheduler on Server Side 
-		    </h4>        
-		</td>  
+</tbody>
+</table>   
+   
+ <h2>How to Start with Scheduler on Server Side</h2>  
+ 
+ 
+Below you will find a brief overview of the guides which tell you about basic Scheduler initialization on different server-side platforms to suit all tastes and preferences.
+ 
+<table style='border-left:none !important;' cellspacing="0" cellpadding="5" border="0">
+<tbody>  
     	<tr>
         	<td>
 		    	<span style="font-size:15px;">howtostart_dotnet_core.md</span><br><br> 
@@ -145,7 +143,6 @@ platforms to suit all tastes and preferences.
         		<a href="howtostart_connector.md"><img src="connector_tutorial.png"></a>
         	</td>
     	</tr>
-    </tr>
 </tbody>
 </table>
 
