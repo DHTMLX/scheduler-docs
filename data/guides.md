@@ -12,21 +12,35 @@ The articles come around key procedures and problem-solving activities.
     <tr>
 		<td id="data" class='topics'>
 		    <h4>
-		         How to Start with dhtmlxScheduler and Front-End Frameworks
+		         Creating Scheduler on a Page 
+		    </h4>
+		    <ul id="data_sublist" >  
+            		<li><a href="initialization.md">Initializing Scheduler</a></li>
+                    <li>install_with_bower.md</li>
+                    <li>extensions_list.md</li>            		
+            </ul>
+        </td>
+        <td class='topic_description'>Shows how to install and initialize Scheduler and provides the list of available extensions.</td>
+	</tr>
+    <tr>
+		<td id="data" class='topics'>
+		    <h4>
+		         How to Start with Scheduler and Front-End 
 		    </h4>
 		    <ul id="data_sublist" >
+            		<li>initialization.md</li>
             		<li>howtostart_angular.md</li>
                     <li>howtostart_react.md</li>
                     <li>howtostart_vue.md</li>
                     <li>howtostart_svelte.md</li>
             </ul>
         </td>
-        <td class='topic_description'>Says how to build and configure a standard Scheduler with popular front-end frameworks.</td>
+        <td class='topic_description'>Says how to build and configure a standard Scheduler on the front-end.</td>
 	</tr>
     <tr>
 		<td id="data" class='topics'>
 		    <h4>
-		         How to Start with dhtmlxScheduler on Server-Side Platforms
+		         How to Start with Scheduler on Server-Side 
 		    </h4>
 		    <ul id="data_sublist" >
             		<li>howtostart_dotnet_core.md</li>
@@ -47,22 +61,20 @@ The articles come around key procedures and problem-solving activities.
 	<tr>
 		<td id="manipulations" class='topics'>
 		    <h4>
-		       Creating Scheduler on a Page
+		       Configuring Scheduler
 		    </h4>
-		    <ul id="manipulations_sublist">
-            		<li>initialization.md</li>
-                    <li>touch_support.md</li>
-            		<li>install_with_bower.md</li>
+		    <ul id="manipulations_sublist">            		
+                    <li>touch_support.md</li>            		
                     <li>configuration.md</li>
                     <li>scheduler_markup.md</li>
                     <li>rtl_mode.md</li>
                    	<li>localization.md</li>                
                     <li>multiple_per_page.md</li>
                     <li>accessibility.md</li>
-                    <li>extensions_list.md</li>
+                    
             </ul>
         </td>
-		<td class='topic_description'>Shows how to create Scheduler and configure it, create multiple schedulers on a page, localize Scheduler, enable accesibility support, etc.</td>
+		<td class='topic_description'>Shows how to configure Scheduler, create multiple schedulers on a page, localize Scheduler, enable accesibility support, etc.</td>
 	</tr>
     <tr>
 		<td id="data" class='topics'>
@@ -227,7 +239,7 @@ The articles come around key procedures and problem-solving activities.
 
 @index:
 - editions_comparison.md
-- howtostart_frontend_frameworks.md
+- creating_scheduler.md
 - howtostart_guides.md
 - configuring_the_scheduler.md
 - loading_and_storing_data.md

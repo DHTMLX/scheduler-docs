@@ -1,4 +1,4 @@
-Initializing Scheduler on a Page
+dhtmlxScheduler in Plain JS/HTML
 ================================
 
 When you develop an application with dhtmlxScheduler, the first thing you need is to initialize or, simply speaking, to display the Scheduler on the page.
