@@ -102,7 +102,7 @@ To get Scheduler under the proprietary license, refer to the [Support Center](ht
 
 ## Step 2. Component creation
 
-Now we should create a Svelte component, to add a Scheduler into the application. Let's create a new file in the ***/src*** directory and name it ***Scheduler.svelte***.
+Now we should create a Svelte component, to add a Scheduler into the application. Let's create a new file in the ***src/*** directory and name it ***Scheduler.svelte***.
 
 ### Importing source files
 
@@ -152,7 +152,7 @@ To display Scheduler on the page, we need to set the container to render the com
 ~~~
 
 To make the Scheduler container occupy the entire space of the body, you need to remove the default 
-styles from the ***app.css*** file located in the ***/src*** folder and add the following one:
+styles from the ***app.css*** file located in the ***src/*** folder and add the following one:
 
 {{snippet src/app.css}}
 ~~~css

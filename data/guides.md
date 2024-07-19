@@ -40,7 +40,7 @@ The articles come around key procedures and problem-solving activities.
     <tr>
 		<td id="data" class='topics'>
 		    <h4>
-		         How to Start with Scheduler on Server-Side 
+		         How to Start with Scheduler on Server Side 
 		    </h4>
 		    <ul id="data_sublist" >
             		<li>howtostart_dotnet_core.md</li>

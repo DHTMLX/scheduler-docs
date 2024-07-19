@@ -90,10 +90,11 @@ yarn add @dhx/trial-scheduler
 
 ## Step 2. Component creation
 
-Now we should create a component to add a Scheduler into the application. Let's create the **scheduler** folder in the **src/app/** directory, 
-add new files into it and call them **scheduler.component.ts**, **scheduler.component.css** and **scheduler.component.html**.
+Now we should create a component to add a Scheduler into the application. Let's create the ***scheduler*** folder in the ***src/app/*** directory, 
+add new files into it and call them ***scheduler.component.ts***, ***scheduler.component.css*** and ***scheduler.component.html***.
 
-The newly created **scheduler.component.html** file inside the **scheduler** folder will contain the template for the scheduler. Let's add the following lines of code into it:
+The newly created ***scheduler.component.html*** file inside the ***scheduler*** folder will contain the template for the scheduler. Let's add the following 
+lines of code into it:
 
 {{snippet scheduler/scheduler.component.html}}
 ~~~html
@@ -112,7 +113,7 @@ The newly created **scheduler.component.html** file inside the **scheduler** fol
 </div>
 ~~~
 
-We'll declare scheduler styles in a separate file named **scheduler.component.css**. The default styles can look like this:
+We'll declare scheduler styles in a separate file named ***scheduler.component.css***. The default styles can look like this:
 
 {{snippet scheduler/scheduler.component.css}}
 ~~~css
@@ -125,7 +126,7 @@ We'll declare scheduler styles in a separate file named **scheduler.component.cs
 }
 ~~~
 
-To make the Scheduler container occupy the entire space of the body, you need to add the following styles to the **styles.css** file located in the **src** folder:
+To make the Scheduler container occupy the entire space of the body, you need to add the following styles to the ***styles.css*** file located in the ***src*** folder:
 
 {{snippet src/styles.css}}
 ~~~css
@@ -210,7 +211,8 @@ contains the [**scheduler.destructor()**](api/scheduler_destructor.md) call to c
 
 ## Step 3. Adding Scheduler into the app
 
-Now it's time to add the component into our app. Open **src/app/app.component.ts** and use the Scheduler Component instead of the default content by inserting the code below:
+Now it's time to add the component into our app. Open ***src/app/app.component.ts*** and use the Scheduler Component instead of the default content by inserting
+the code below:
 
 {{snippet src/app/app.component.ts}}
 ~~~js
@@ -225,7 +227,7 @@ export class AppComponent {
 }
 ~~~
 
-Then create the ***app.module.ts*** file in the **src/app/** directory and insert *SchedulerComponent* as provided below:
+Then create the ***app.module.ts*** file in the ***src/app/*** directory and insert *SchedulerComponent* as provided below:
 
 {{snippet src/app/app.module.ts}}
 ~~~js
@@ -407,7 +409,7 @@ Now, if you reopen the app page, you should see a Scheduler with events.
 
 To capture changes made in the Scheduler, you can use a [dataProcessor](https://docs.dhtmlx.com/dataprocessor__index.html) 
 handler that lets you "communicate" with the server-side backend. The handler can be declared either as a function or a router object.
-The scheduler accepts Promise response from the handler, so the scheduler will correctly process the completion of an action. 
+Scheduler accepts Promise response from the handler, so Scheduler will correctly process the completion of an action. 
 
 You can create a **DataProcessor** via the **createDataProcessor()** API method and capture changes, like this:
 
@@ -418,7 +420,7 @@ scheduler.createDataProcessor(function(entity, action, data, id) {​
 ~~~
 
 If your service changes the event id after creating a new record (which it usually does), make sure that your Promise returns an object with 
-**{id: databaseId}** or **{tid: databaseId}** as a result, so the Scheduler could apply the new database id to the record.
+**{id: databaseId}** or **{tid: databaseId}** as a result, so that Scheduler could apply the new database id to the record.
 Get [more information about the server side](server_integration.md).
 
 Well, Angular Scheduler is ready, you are welcome to [check out the full demo on GitHub](https://github.com/DHTMLX/angular-scheduler-demo).
