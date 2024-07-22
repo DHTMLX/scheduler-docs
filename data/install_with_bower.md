@@ -5,16 +5,19 @@ You can use [Bower](https://bower.io/) or [npm](https://www.npmjs.com/) package 
 
 It's also possible to include the necessary JS/CSS files from CDN.
 
-npm
+npm - standard free version
 -------------------------
-
-**Standard (Free) version**
 
 You can install the Standard version of Scheduler from [npmjs.com](https://www.npmjs.com/package/dhtmlx-scheduler) by executing the following command line:
 
 ~~~html
 npm install dhtmlx-scheduler
 ~~~
+
+{{note Only the Standard version of the Scheduler is available at [npmjs.com](https://www.npmjs.com/package/dhtmlx-scheduler) }}
+
+npm - Evaluation and PRO versions
+-----------------------------------
 
 The trial and licensed (paid) versions of Scheduler can be installed from DHTMLX npm registry using the following commands:
 
@@ -29,7 +32,7 @@ The trial and licensed (paid) versions of Scheduler can be installed from DHTMLX
 - **npm config set @dhx<wbr />:registry https://npm.dhtmlx.com**
 - **npm install @dhx/scheduler**
 
-{{note Only the Standard version of the Scheduler is available at [npmjs.com](https://www.npmjs.com/package/dhtmlx-scheduler) }}
+
 
 Bower
 -------------------------
@@ -59,7 +62,7 @@ Alternative installation ways
 
 All public sources (CDN, Bower, and npm) contain the Standard edition of the component which is distributed under the GPL license.
 
-We also provide our [private npm registry](#npm) from where the Professional and Evaluation versions of the component can be installed. 
+We also provide our [private npm registry](#npmevaluationandproversions) from where the Professional and Evaluation versions of the component can be installed. 
 
 If for some reason the methods described above are not available to you, there are two possible ways out:
  

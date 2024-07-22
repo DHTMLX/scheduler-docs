@@ -13,7 +13,7 @@ Here's the overview of guides which tell you about basic Scheduler initializatio
          		A basic tutorial that describes how to create Scheduler using plain JavaScript and HTML. 
         	</td> 
          	<td>
-        		<a href="initialization.md"><img src=""></a>
+        		<a href="initialization.md"><img src="frontend_frameworks_howtostart/scheduler_plainjs.png"></a>
         	</td>
     	</tr>	
         <tr>
@@ -22,7 +22,7 @@ Here's the overview of guides which tell you about basic Scheduler initializatio
          		A comprehensive tutorial that describes how to create Scheduler using Angular. 
         	</td> 
          	<td>
-        		<a href="howtostart_angular.md"><img src=""></a>
+        		<a href="howtostart_angular.md"><img src="frontend_frameworks_howtostart/scheduler_angular.png"></a>
         	</td>
     	</tr>	
         <tr>
@@ -31,7 +31,7 @@ Here's the overview of guides which tell you about basic Scheduler initializatio
          		A detailed tutorial that describes how to create Scheduler using React. 
         	</td> 
          	<td>
-        		<a href="howtostart_react.md"><img src=""></a>
+        		<a href="howtostart_react.md"><img src="frontend_frameworks_howtostart/scheduler_react.png"></a>
         	</td>
     	</tr>
         <tr>
@@ -40,7 +40,7 @@ Here's the overview of guides which tell you about basic Scheduler initializatio
          		An extensive tutorial that describes how to create Scheduler using Vue.js. 
         	</td> 
          	<td>
-        		<a href="howtostart_vue.md"><img src=""></a>
+        		<a href="howtostart_vue.md"><img src="frontend_frameworks_howtostart/scheduler_vue.png"></a>
         	</td>
     	</tr>
         <tr>
@@ -49,7 +49,7 @@ Here's the overview of guides which tell you about basic Scheduler initializatio
          		A step-by-step tutorial that describes how to create Scheduler using Svelte. 
         	</td> 
          	<td>
-        		<a href="howtostart_svelte.md"><img src=""></a>
+        		<a href="howtostart_svelte.md"><img src="frontend_frameworks_howtostart/scheduler_svelte.png"></a>
         	</td>
     	</tr>	
 </tbody>

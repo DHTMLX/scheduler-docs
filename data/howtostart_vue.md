@@ -286,7 +286,7 @@ Now, if you reopen the app page, you should see a Scheduler with events:
 
 To capture changes made in the Scheduler, you can use the [dataProcessor](https://docs.dhtmlx.com/dataprocessor__index.html) handler that lets you  
 "communicate" with the server-side backend. The handler can be declared either as a function or as a router object.
-Scheduler accepts a Promise response from the handler, so Scheduler will correctly process the completion of an action. 
+dhtmlxScheduler accepts Promise response from the handler, so your Scheduler will correctly process the completion of an action.  
 
 You can create a **DataProcessor** via the **createDataProcessor()** API method and capture changes like this:
 
