@@ -5,7 +5,7 @@ dhtmlxScheduler includes a number of extensions which add extra functionality to
 
 To use an extension, you should activate it with the help of the [scheduler.plugins](api/scheduler_plugins.md) method.
 
-{{note In v6.0, the extensions code files has been removed from the **ext** folder of the scheduler's codebase and included into the *dhtmlxscheduler.js* file. <br>If you use dhtmlxScheduler 5.3 and earlier versions, check the [migration article](migration_from_older_version.md#5360).}}
+{{note In v6.0, the extensions code files were removed from the **ext** folder of the scheduler's codebase and included into the *dhtmlxscheduler.js* file. <br>If you use dhtmlxScheduler 5.3 and earlier versions, check the [migration article](migration_from_older_version.md#5360).}}
 
 Active Links
 -------------------------------------------
@@ -90,8 +90,9 @@ scheduler.plugins({
 });
 ~~~
 
-
 ####Related resources
+
+Article: initialization.md#containerautoresizing <br>
 
 API: api/scheduler_container_autoresize_config.md <br>
 

@@ -177,9 +177,17 @@ or:
 <div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:800px;">
 ~~~
 
-###Scheduler autoresizing
+###Scheduler autoresizing {#containerautoresizing}
 
-There is a possibility to enable automatic resizing for the scheduler container. You just need to enable the <b>container_autoresize</b> extension on the page:
+The **container_autoresize** extension for dhtmlxScheduler alters the default resizing behavior of the scheduler. By default, dhtmlxScheduler automatically resizes to fit its container and uses internal scrollbars to make all data accessible within the fixed size of the container.
+
+When the **container_autoresize** extension is enabled, Scheduler dynamically resizes itself to fit all of its content. It means that Scheduler will expand in height and/or width to display all events and data without the need for internal scrollbars. 
+
+This behavior ensures that all the content is visible without scrolling within the scheduler, making it ideal for use cases where complete visibility of the scheduler content is required without manual scrolling.
+
+#### Usage
+
+To enable the **container_autoresize** extension, include the extension in your scheduler setup as follows:
 
 ~~~js
 scheduler.plugins({
@@ -191,7 +199,58 @@ scheduler.plugins({
 03_extensions/28_container_autoresize.html
 }}
 
-As a result, scheduler container will change its size automatically and show the whole content without scrolling.
+This simple configuration change will activate the **container_autoresize** behavior, allowing Scheduler to adjust its size based on the content it contains.
+
+#### Handling headers with container_autoresize
+
+When the **container_autoresize** extension is activated, Scheduler adjusts its size to fit all the content. This may result in Scheduler exceeding the screen size, which will cause an outer container or the page scrollbar appearing. 
+
+In this mode scrolling the page will also scroll the navigation and time headers, making them no longer visible when the page is scrolled down. While this is usually the intended behavior, there are scenarios where you may want the headers to remain fixed. This can be achieved with some additional code and styles.
+
+To keep the headers fixed, you can use the sticky position along with some additional styles, for example:
+
+~~~js
+<style>
+    
+  .dhx_cal_container{
+    overflow: visible!important;
+   }
+  .dhx_cal_navline,
+  .dhx_cal_header {
+      position: sticky;
+      z-index: 10;
+      background:var(--dhx-scheduler-container-background);
+    
+  }
+  .dhx_cal_navline{
+      z-index: 11;
+      top:0;
+  }
+  .dhx_cal_header{
+      /* top coordinate is assigned from JS */
+      margin-left: -1px;
+      box-shadow: 0 1px 0px 0px var(--dhx-scheduler-base-colors-border);
+  }
+</style>
+~~~
+
+Additionally, you need some JavaScript to ensure the correct top position of the sticky time scale, positioning it just below the navigation panel.
+
+Since the navigation panel is flexible and can adjust its height based on other styles and content, you need to dynamically calculate its height and apply it as the top coordinate for the header, as follows:
+
+~~~js
+scheduler.attachEvent("onViewChange", function(){
+   const navBar = scheduler.$container.querySelector(".dhx_cal_navline");
+   const header = scheduler.$container.querySelector(".dhx_cal_header");
+   if(navBar && header){
+       header.style.top = `${navBar.offsetHeight}px`;
+   }
+});
+~~~
+
+Check the complete demo in the snippet below:
+
+{{editor	https://snippet.dhtmlx.com/syo8wm9s		Container autoresize and sticky header}}
 
 Making Scheduler responsive
 -----------------------------
