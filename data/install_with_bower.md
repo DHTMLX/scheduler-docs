@@ -53,7 +53,7 @@ To include JS/CSS files from CDN, you should set direct links to **dhtmlxschedul
 
 You can find the full list of links you can include from CDN, depending on the version of dhtmlxScheduler in a [separate article](cdn_links_list.md).
 
-Alternative installation ways
+Adding PRO Edition into Project
 ---------------------------------
 
 All public sources (CDN, Bower, and npm) contain the Standard edition of the component which is distributed under the GPL license.
@@ -64,6 +64,8 @@ If for some reason the methods described above are not available to you, there a
  
 - you can add the Pro version to your project by hand
 - you can install the Pro version to your project via npm from a local directory
+
+### Installing the package from a local folder {#installfromlocalfolder}
 
 If case of **npm** you can install the Pro package from a local folder using  [`npm install ./local_path`](https://docs.npmjs.com/cli/install) or [`npm link`](https://docs.npmjs.com/cli/link) commands.
 There are step-by-step instructions for both variants:

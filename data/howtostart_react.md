@@ -54,35 +54,10 @@ in the command line. Then we can proceed with installing the Scheduler package.
 
 ## Step 1. Package installation
 
-There are two options available: you can install the **Pro** package from a local folder, or install the **trial** version using **npm** or **yarn**.
+The PRO versions of the library are available for the **npm/yarn** install from our private repository, please follow 
+[this instruction](install_with_bower.md#npmevaluationandproversions) to gain access to it.
 
-### Installing the package from a local folder
-
-The instructions are the following:
-
-1\. Copy the Scheduler package into some local directory inside the project
-
-2\. In the project directory run the command below replacing *scheduler-local-package-path* with the actual path:
-
-~~~
-npm install ./scheduler-local-package-path
-// or
-yarn add "./scheduler-local-package-path"
-~~~
-
-For example:
-
-~~~
-npm install ./scheduler_7.0.0_enterprise
-// or
-yarn add "./scheduler_7.0.0_enterprise"
-~~~
-
-### Installing the trial version via a package manager
-
-To install the trial version of the Scheduler, you need to create a file with the *.npmrc* type and add the **&#64;dhx:registry=https://npm.dhtmlx.com/** string into it.
-
-After that, you can install the **trial** version of Scheduler using **npm** or **yarn** commands:
+After you've got the Evaluation version of the Scheduler, you can install it with the following commands:
 
 - for npm:
 
@@ -96,7 +71,8 @@ npm install @dhx/trial-scheduler
 yarn add @dhx/trial-scheduler
 ~~~
 
-To get Scheduler under the proprietary license, refer to the [Support Center](https://dhtmlx.com/docs/technical-support.shtml)!
+Alternatively, since the zip-package of the library is structured as an **npm** module, you can 
+[install it from a local folder](install_with_bower.md#installfromlocalfolder).
 
 ## Step 2. Component creation
 
