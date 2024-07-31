@@ -76,11 +76,11 @@ A recurring event is stored in the database as a single record that contains all
 2.  **end_date** - (_datetime_) defines the end date of the series
 3.  **rrule** - (_string_) defines the rule of repetition
 4.  **duration** - (_number_) the duration of the recurring instance
-5.  **recurring_event_id** - (_string|number_) id of the parent series, only filled for modified or deleted occurrences of the series
+5.  **recurring_event_id** - (_string|number_) the id of the parent series, only filled for modified or deleted occurrences of the series
 6.  **original_start** - (_datetime_) the original date of the edited instance, only filled for modified or deleted occurrences of the series
 7.  **deleted** - (_boolean_) specifies the deleted instance of the series, only filled for deleted occurrences of the series
 
-**rrule** Follows the iCalendar format as specified in RFC-5545, detailing the frequency, interval, and other parameters that control the recurrence pattern.
+**rrule** follows the iCalendar format as specified in RFC-5545, detailing the frequency, interval, and other parameters that control the recurrence pattern.
 
 ### Differences from iCalendar Format
 

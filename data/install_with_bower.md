@@ -19,11 +19,6 @@ npm install dhtmlx-scheduler
 npm - Evaluation and PRO versions
 -----------------------------------
 
-{{note Only the Standard version of the Scheduler is available at [npmjs.com](https://www.npmjs.com/package/dhtmlx-scheduler) }}
-
-npm - Evaluation and PRO versions
------------------------------------
-
 **Professional Evaluation version**
 
 Download the [trial Scheduler package](https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml) and follow the steps mentioned in the README file. 
