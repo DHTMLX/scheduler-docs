@@ -34,21 +34,21 @@ This update brings changes for some map configuration properties. Check the [Mig
 
 ### Fixes
 
-- Fix the incorrect height of the [Timeline view](timeline_view.md) section when `event_dy` is set to "full"
-- Fix the issue when dynamically changing the `x_date` property of the [Timeline view](timeline_view.md) did not affect the template
+- Fix the issue when dynamically changing the **x_date** property of the [Timeline view](timeline_view.md) did not affect the template
 - Fix the header misalignment in the multiday [Units view](units_view.md)
 - Fix the script error that occurred after the [destructor](api/scheduler_destructor.md) is called when the [drag_between](dhtmlx_components_integration.md#draganddropbetweenschedulers) extension is active
 - Fix the incorrect behavior of the [limit](limits.md) extension, which prevented editing [recurring series](recurring_events.md)
-- Fix the performance issue with events drag and drop in the [Tree Timeline view](timeline_view.md) when the `show_unassigned` option is set to `true`
-- Fix the incorrect behavior of the scrollable [Timeline view](timeline_view.md) when smart_rendering is set to false
+- Fix the performance issue with events drag and drop in the [Tree Timeline view](timeline_view.md) when the **show_unassigned** option is set to *true*
+- Fix the incorrect behavior of the scrollable [Timeline view](timeline_view.md) when smart_rendering is set to *false*
 - Fix the incorrect scroll position after a view change in a scrollable [Timeline view](timeline_view.md)
+
 7.0.5
 ---------------
 <span class='release_date'>May 30, 2024. Bugfix release</span>
 
 ### Fixes
 
-- Fix the incorrect height of the [Timeline](timeline_view.md) sections when the `event_dy:"full"` setting is used
+- Fix the incorrect height of the [Timeline](timeline_view.md) sections when the **event_dy:"full"** setting is used
 - Fix the missing "today" marker in the [Year view](year_view.md)
 - Correct the positioning of events in the [Day](day_view.md)/[Week](week_view.md) views
 
