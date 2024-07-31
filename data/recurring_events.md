@@ -70,14 +70,15 @@ Also, it's required to place the "time" section **after** the "recurring" one.
 Format description
 ---------------------------
 
-A recurring event is stored in the database as a single record that contains all fields of a regular event plus 6 additional: 
+A recurring event is stored in the database as a single record that contains all fields of a regular event plus several additional properties: 
 
-1.  **stdate** - (_datetime_) defines the start date of the series
-2.  **dtend** - (_datetime_) defines the end date of the series
-3.  **rrule** - (_string_) defines the rule of repetition 
-4.  **recurring_event_id** - (_string|number_) id of the parent series, only filled for modified or deleted occurrences of the series
-5.  **original_start** - (_datetime_) the original date of the edited instance, only filled for modified or deleted occurrences of the series
-6.  **deleted** - (_boolean_) specifies the deleted instance of the series, only filled for deleted occurrences of the series
+1.  **start_date** - (_datetime_) defines the start date of the series
+2.  **end_date** - (_datetime_) defines the end date of the series
+3.  **rrule** - (_string_) defines the rule of repetition
+4.  **duration** - (_number_) the duration of the recurring instance
+5.  **recurring_event_id** - (_string|number_) id of the parent series, only filled for modified or deleted occurrences of the series
+6.  **original_start** - (_datetime_) the original date of the edited instance, only filled for modified or deleted occurrences of the series
+7.  **deleted** - (_boolean_) specifies the deleted instance of the series, only filled for deleted occurrences of the series
 
 **rrule** Follows the iCalendar format as specified in RFC-5545, detailing the frequency, interval, and other parameters that control the recurrence pattern.
 
@@ -97,13 +98,12 @@ Here is an example of the recurring event series which is set to repeat every Mo
   "id": 1,
   "text": "Weekly Team Meeting",
   "start_date": "2024-06-01 09:00:00",
-  "end_date": "2024-06-01 10:00:00",
-  "dstart": "2024-06-01 09:00:00",
-  "dtend": "2024-12-01 10:00:00",
+  "end_date": "2024-12-01 10:00:00",
+  "duration": 3600,
   "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
   "recurring_event_id": null,
-  "original_start": null
-}
+  "orig
+
 ~~~
 
 #### Handling exceptions
@@ -123,9 +123,8 @@ Here is the example of the recurring series with one modified and one deleted oc
     "id": 1,
     "text": "Weekly Team Meeting",
     "start_date": "2024-06-03 09:00:00",
-    "end_date": "2024-06-03 10:00:00",
-    "dstart": "2024-06-03 09:00:00",
-    "dtend": "2024-12-02 10:00:00",
+    "duration": 3600,
+    "end_date": "2024-12-02 10:00:00",
     "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
     "recurring_event_id": null,
     "original_start": null
@@ -135,8 +134,6 @@ Here is the example of the recurring series with one modified and one deleted oc
     "text": "Special Team Meeting",
     "start_date": "2024-06-10 09:00:00",
     "end_date": "2024-06-10 11:00:00",
-    "dstart": null,
-    "dtend": null,
     "rrule": null,
     "recurring_event_id": 1,
     "original_start": "2024-06-10 09:00:00"
@@ -146,8 +143,6 @@ Here is the example of the recurring series with one modified and one deleted oc
     "text": "Deleted Team Meeting",
     "start_date": "2024-06-17 09:00:00",
     "end_date": "2024-06-17 10:00:00",
-    "dstart": null,
-    "dtend": null,
     "rrule": null,
     "recurring_event_id": 1,
     "original_start": "2024-06-17 09:00:00",
@@ -158,7 +153,7 @@ Here is the example of the recurring series with one modified and one deleted oc
 
 The repeated event scheduled for `2024-06-10 09:00:00` will be replaced with `Special Team Meeting` record, and the event scheduled for `2024-06-17 09:00:00` will be skipped.
 
-Note, that **dstart**, **dtend**, and **rrule** of the modified or deleted occurrences are ignored. 
+Note, that **rrule** of the modified or deleted occurrences is ignored. 
 
 **text**, **start_date**, and **end_date** of deleted instances are also ignored and the values of these fields won't affect the behavior of the Scheduler.
 
