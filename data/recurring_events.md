@@ -97,13 +97,13 @@ Here is an example of the recurring event series which is set to repeat every Mo
 {
   "id": 1,
   "text": "Weekly Team Meeting",
-  "start_date": "2024-06-01 09:00:00",
-  "end_date": "2024-12-01 10:00:00",
+  "start_date": "2024-06-03 09:00:00",
   "duration": 3600,
+  "end_date": "2024-12-02 10:00:00",
   "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
   "recurring_event_id": null,
-  "orig
-
+  "original_start": null
+}
 ~~~
 
 #### Handling exceptions
