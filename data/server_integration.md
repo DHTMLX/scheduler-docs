@@ -336,7 +336,7 @@ As we initialized dataProcessor in the REST mode, it will use different HTTP ver
 Recurring events
 ------------------------------
 
-Recurring events are stored in the database as records that contain both all [fields of a regular event](loading_data.md#dataproperties) and 6 additional fields: **stdate**, **dtend**, **rrule**, **recurring_event_id**, **original_start**, **deleted**.
+Recurring events are stored in the database as records that contain both all [fields of a regular event](loading_data.md#dataproperties) and several additional fields: **rrule**, **duration**, **recurring_event_id**, **original_start**, **deleted**.
 
 Read more in the [Recurring Events](recurring_events.md#serversideintegration) article.
 

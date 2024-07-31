@@ -13,7 +13,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 7.1
 ---------------
-<span class='release_date'>June X, 2024. Minor update</span>
+<span class='release_date'>July 31, 2024. Minor update</span>
 
 [Review of release on the blog](https://dhtmlx.com/blog/dhtmlx-scheduler-7-1/)
 
