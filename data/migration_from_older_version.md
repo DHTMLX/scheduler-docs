@@ -83,10 +83,10 @@ The following templates of the Map view are deprecated and are replaced by api/s
 
 The usage of the new template looks like this:
 
-~~~js
+~~~
 scheduler.templates.map_info_content = function(event){
     const formatDate = scheduler.templates.tooltip_date_format;
-    return `<div><b>Event's text:</b> ${event.text}
+    return `<div><b>Text:</b> ${event.text}
         <div><b>Location:</b> ${event.event_location}</div>
         <div><b>Starts:</b> ${formatDate(event.start_date)}</div>
         <div><b>Ends:</b> ${formatDate(event.end_date)}</div>
