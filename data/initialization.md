@@ -5,10 +5,15 @@ When you develop an application with dhtmlxScheduler, the first thing you need i
 
 This guide tells about initialization of dhtmlxScheduler in plain JS and HTML. You can also check the guides on integration with front-end frameworks:
 
+- howtostart_angular.md
+- howtostart_react.md
+- howtostart_vue.md
+- howtostart_svelte.md
+
 There are two ways of initializing scheduler on a page:
 
-- via the scheduler's markup
-- via the header configuration property
+- [via the scheduler's markup](#initializingschedulerviamarkup)
+- [via the header configuration property](#initializingschedulerviaheaderconfig)
 
 Initializing Scheduler via markup
 ------------------------------------
