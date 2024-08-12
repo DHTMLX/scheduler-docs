@@ -2,7 +2,7 @@ Creating Scheduler
 ====================
 
 {{index
-- <a href="initialization.md">Initializing Scheduler</a>
+- initialization.md
 - install_with_bower.md
 - extensions_list.md
 }}
