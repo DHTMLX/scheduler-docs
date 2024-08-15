@@ -267,10 +267,10 @@ var left = timeline.posFromDate(new Date());
 
 {{note The method returns 0 or the maximum X-coordinate for dates outside the scale.}}
 
-- to get the Y-coordinate of a specific row, use the **posFromSection()** method. It takes as a parameter the number of the section:
+- to get the Y-coordinate of a specific row, use the **getSectionTop()** method. It takes as a parameter the number of the section:
 
 ~~~js
-var top = timeline.posFromSection(section.key);
+var top = timeline.getSectionTop(section.key);
 ~~~
 
 {{note The method returns -1 if the row is not found.}}
