@@ -3,12 +3,25 @@ dhtmlxScheduler in Plain JS/HTML
 
 When you develop an application with dhtmlxScheduler, the first thing you need is to initialize or, simply speaking, to display the Scheduler on the page.
 
-This guide tells about initialization of dhtmlxScheduler in plain JS and HTML. You can also check the guides on integration with front-end frameworks:
+This guide tells about initialization of dhtmlxScheduler in plain JS and HTML. You can also check the guides on integration with front-end frameworks:<br><br>
 
-- howtostart_angular.md
-- howtostart_react.md
-- howtostart_vue.md
-- howtostart_svelte.md
+<table>
+	<tbody style="text-align:center">
+	<tr>
+    	<td><a href="howtostart_angular.md"><img src="frontend_frameworks_howtostart//angular_icon.png"></a></td>
+        <td><a href="howtostart_react.md"><img src="frontend_frameworks_howtostart/react_icon.png"></a></td>
+        <td><a href="howtostart_svelte.md"><img src="frontend_frameworks_howtostart/svelte_icon.png"></a></td>
+        <td><a href="howtostart_vue.md"><img src="frontend_frameworks_howtostart/vue_icon.png"></a></td>
+    </tr>
+	<tr>
+		<td><a href="howtostart_angular.md">Angular</a></td>
+        <td><a href="howtostart_react.md">React</a></td>
+        <td><a href="howtostart_svelte.md">Svelte</a></td>
+        <td><a href="howtostart_vue.md">Vue.js</a></td>
+	</tr>
+    </tbody>
+</table>
+<br>
 
 There are two ways of initializing scheduler on a page:
 
