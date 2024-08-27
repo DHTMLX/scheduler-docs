@@ -10,6 +10,18 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+7.1.1
+---------------
+<span class='release_date'>August 27, 2024. Bugfix release</span>
+
+- Fix the issue where the [DataProcessor](api/scheduler_createdataprocessor.md) did not allow sending false values
+- Fix the issue where the [Tooltip](tooltips.md) disappeared on mobile devices after a click
+- Fix the [Tooltip](tooltips.md) position issue during page scroll
+- Fix the issue where the [container_autoresize](extensions_list.md#containerautoresize) plugin hid the multiday section
+- Fix the issue where the [Quick Info](touch_support.md#quickinfoextension) popup appeared outside of the container
+- Fix the issue where unconfirmed events disappeared during scrolling with smart rendering enabled in the [Timeline view](timeline_view.md)
+- Fix the incorrect sections height in the [Timeline view](timeline_view.md) after calling [scheduler.updateCollection()](api/scheduler_updatecollection.md) with active smart rendering
+
 
 7.1
 ---------------
