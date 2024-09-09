@@ -46,7 +46,7 @@ const dp = scheduler.createDataProcessor({
 });
 ~~~
 
-Alternatively, create the dataProcessor using constuctor and attach it to the dhtmlxScheduler object. The scheduler.DataProcessor constructor accepts the path to the same server-side script:
+Alternatively, create a dataProcessor using the constructor and attach it to the dhtmlxScheduler object. The scheduler.DataProcessor() constructor accepts the path to the same server-side script:
            
 ~~~js
 scheduler.init("scheduler_here", new Date(), "month");
@@ -128,7 +128,7 @@ const dp = scheduler.createDataProcessor({
 });
 ~~~
 
-All the functions of the router object should return either a Promise or a data response object. This is needed for the dataProcessor to apply the database id and to hook **onAfterUpdate** event of the data processor.
+All the functions of the router object should return either a Promise or a data response object. This is needed for the dataProcessor to apply the database id and to hook the **onAfterUpdate** event of the data processor.
 
 ~~~js
 const router = function(entity, action, data, id) {
@@ -152,7 +152,7 @@ where "api" is the url you've specified in the dataProcessor configuration.
 
 ####REST mode
 
-To enable the REST mode, specify the `mode` property of api/scheduler_createdataprocessor.md configuration object:
+To enable the REST mode, set the `mode` property of the api/scheduler_createdataprocessor.md configuration object to the "REST" value:
 
 ~~~js
 const dp = scheduler.createDataProcessor({
@@ -195,7 +195,7 @@ The list of possible requests and responses is:
 
 ####REST-JSON mode
 
-To use the REST-JSON mode, specify the `mode` property of api/scheduler_createdataprocessor.md configuration object:
+To use the REST-JSON mode, set the `mode` property of the api/scheduler_createdataprocessor.md configuration object to the "REST-JSON" value:
 ~~~js
 const dp = scheduler.createDataProcessor({
     url: "apiUrl",
@@ -204,7 +204,7 @@ const dp = scheduler.createDataProcessor({
 
 ~~~
 
-In this mode, the scheduler will send POST/PUT/DELETE requests using application/json content type.
+In this mode, the scheduler will send POST/PUT/DELETE requests using the `application/json` content type.
 
 The list of possible requests and responses is:
 
@@ -215,6 +215,7 @@ The list of possible requests and responses is:
 	<tr>
     	<td>load data</td>
 		<td>GET</td>
+        <td>/apiUrl</td>
         <td></td>
         <td><a href="data_formats.md#json">JSON format</a></td>
 	</tr>
@@ -260,7 +261,7 @@ The list of possible requests and responses is:
 
 ####POST mode
 
-To enable the POST mode, specify the `mode` property of api/scheduler_createdataprocessor.md configuration object:
+To enable the POST mode, set the `mode` property of the api/scheduler_createdataprocessor.md configuration object to the "POST" value:
 
 ~~~js
 const dp = scheduler.createDataProcessor({
@@ -293,7 +294,7 @@ The list of possible requests and responses is:
 
 ####JSON mode
 
-To enable the JSON mode, specify the `mode` property of api/scheduler_createdataprocessor.md configuration object:
+To enable the JSON mode, set the `mode` property of the api/scheduler_createdataprocessor.md configuration object to the "JSON" value:
 
 ~~~js
 const dp = scheduler.createDataProcessor({
