@@ -125,7 +125,7 @@ Properties
 - api/scheduler_touch_drag_config.md - defines the time period in milliseconds that is used to differ the long touch gesture from the scroll gesture
 - api/scheduler_touch_swipe_dates_config.md - enables/disables switching active dates using the horizontal swipe gesture on mobiles
 - api/scheduler_touch_tip_config.md - enables/disables prompting messages in the right top corner of the screen
-- api/scheduler_touch_tooltip_config.md - disables dhtmxlScheduler's tooltips on the touch devices
+- api/scheduler_touch_tooltip_config.md - allows displaying dhtmxlScheduler's tooltips on the touch devices
 - api/scheduler_undo_deleted_config.md - provides the Undo popup when you delete an event
 - api/scheduler_update_render_config.md - updates the mode when the scheduler fully repaints itself on any action
 - api/scheduler_use_select_menu_space_config.md - defines that events occupy the whole width of the cell
