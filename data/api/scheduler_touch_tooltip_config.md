@@ -1,11 +1,13 @@
 touch_tooltip
 =============
-@short:disables dhtmxlScheduler's tooltips on the touch devices
+
+@short: allows displaying dhtmxlScheduler's tooltips on the touch devices
 	
 @default: false
 @type: boolean
 @example:
-scheduler.config.touch_tooltip = true; //disables tooltips
+// enables displaying tooltips on the touch devices
+scheduler.config.touch_tooltip = true; 
 
 @template:	api_config
 @descr:
