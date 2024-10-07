@@ -16,7 +16,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 - Fix the incorrect position of events pasted using [Ctrl+C/Ctrl+V](keyboard_navigation.md) when the [multisection](units_view.md#assigningeventstoseveralunits) extension is enabled
 - Ensure the [Collision extension](collisions.md) works properly with new [recurring events](recurring_events.md)
-- Correct the sections' height after calling calling [scheduler.updateCollection()](api/scheduler_updatecollection.md) when smart rendering enabled in the [Timeline view](timeline_view.md)
+- Correct the sections' height after calling [scheduler.updateCollection()](api/scheduler_updatecollection.md) when smart rendering enabled in the [Timeline view](timeline_view.md)
 - Resolve the issue where smart rendering hides parts of new [multisection](units_view.md#assigningeventstoseveralunits) events when api/scheduler_onbeforelightbox_event.md is canceled
 - Fix incorrect behavior of the api/scheduler_getevents.md method with [recurring events](recurring_events.md)
 - Correct the handling of [recurring events](recurring_events.md) with custom daily properties
