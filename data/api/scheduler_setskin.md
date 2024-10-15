@@ -24,7 +24,7 @@ If called before initialization, the method will have the same effect as the ass
 scheduler.skin = "flat";
 ~~~
 
-@related
+@related:
 	skins.md
 @relatedsample:
 	07_skins/07_themes.html

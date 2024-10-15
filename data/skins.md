@@ -16,7 +16,7 @@ Starting from v7.0, all skins are bundled in the main **dhtmlxscheduler.css** fi
 scheduler.skin = "dark";
 ~~~
 
-Or by calling the **scheduler.setSkin** method:
+Or by calling the [scheduler.setSkin()](api/scheduler_setskin.md) method:
 
 ~~~js
 scheduler.setSkin("dark");
