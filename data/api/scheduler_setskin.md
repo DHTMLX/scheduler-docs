@@ -16,7 +16,7 @@ scheduler.setSkin("flat");
 @template:	api_method
 @descr:
 
-If the method is called after a scheduler is initialized, it will trigger the [repaint](api/scheduler_render.md) method. 
+If the method is called after a scheduler is initialized, it will trigger the [render](api/scheduler_render.md) method. 
 
 If called before initialization, the method will have the same effect as the assignment of the `scheduler.skin` property:
 
