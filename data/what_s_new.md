@@ -15,8 +15,8 @@ If you are updating Scheduler from an older version, check migration_from_older_
 ---------------
 <span class='release_date'>November 19, 2024. Bugfix release</span>
 
-- Fix the issue where the initial position of events was not [highlighted during drag and drop](api/scheduler_drag_highlight_config.md) in [Timeline](timeline_view.md) and [Units](units_view.md) views
-- Fix the issue where the `last_hour` setting caused incorrect behavior of drag and drop in the[Timeline view](timeline_view.md)
+- Fix the issue where the initial position of events was not [highlighted during drag and drop](api/scheduler_drag_highlight_config.md) in the [Timeline](timeline_view.md) and [Units](units_view.md) views
+- Fix the issue where the `last_hour` setting caused incorrect behavior of drag and drop in the [Timeline view](timeline_view.md)
 - Prevent [recurring occurrences](recurring_events.md) from disappearing in certain time zones during DST transitions
 - Fix repeated end date increments when toggling [Full day](api/scheduler_full_day_config.md) in the [Mini Calendar](minicalendar.md#inthelightbox) control of the lightbox
 - Restore functionality of the [ignore_year](custom_scales.md) and [ignore_agenda](custom_scales.md) methods
