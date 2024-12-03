@@ -132,7 +132,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 ~~~
 
-The next step is to create [model classes](https://laravel.com/docs/eloquent#defining-models) and [migrations](https://laravel.com/docs/migrations#generating-migrations).
+The next step is to create [model classes](https://laravel.com/docs/11.x/eloquent#defining-models) and [migrations](https://laravel.com/docs/migrations#generating-migrations).
 You can generate classes and migration files using the Artisan command:
 
 ~~~js
@@ -214,7 +214,7 @@ class AppServiceProvider extends ServiceProvider
 [Here are more details on this particular error](https://laravel-news.com/laravel-5-4-key-too-long-error).
 
 
-While we are at the migration, we can generate some test data for our app. Generate a [seeder](https://laravel.com/docs/seeding) class using the artisan command:
+While we are at the migration, we can generate some test data for our app. Generate a [seeder](https://laravel.com/docs/11.x/seeding) class using the artisan command:
 
 ~~~php
 php artisan make:seeder EventsTableSeeder
@@ -273,7 +273,7 @@ php artisan db:seed
 
 ###Defining model classes
 
-The data is managed via the [Eloquent model](https://laravel.com/docs/eloquent) classes. We've already generated a class for events at the previous step.
+The data is managed via the [Eloquent model](https://laravel.com/docs/11.x/eloquent) classes. We've already generated a class for events at the previous step.
 It is ready to use and doesn't require any changes to work with scheduler.
 
 Step 4. Loading data
@@ -456,7 +456,7 @@ class EventController extends Controller
 }
 ~~~
 
-And a [route](http://laravel.com/docs/controllers#restful-resource-controllers) for it:
+And a [route](https://laravel.com/docs/controllers#resource-controllers) for it:
 
 {{snippet routes/api.php}}
 ~~~php

@@ -161,7 +161,7 @@ Step 3. Creating models and database
 Now we should define model classes for scheduler. You'll need a class for scheduler events. As you can see, dhtmlxScheduler uses a certain naming convention for data model that is different from 
 the one traditionally used in C#. The client-side model can also contain some properties that you don't need to store in a database, but which will be used either in the client logic or in the backend one.
 
-Because of this, we'll go with the [Data Transfer Object](https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) pattern here: 
+Because of this, we'll go with the [Data Transfer Object](https://learn.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) pattern here: 
 we'll define domain model classes that will be used with EF and inside the app, and DTO classes that will be used to communicate with Web API. Then mapping between the two models will be implemented.
 
 
@@ -731,7 +731,7 @@ You will find [the ready library on GitHub](https://github.com/DHTMLX/scheduler-
 Error handling
 ----------------
 
-[Exception filters](https://msdn.microsoft.com/en-us/library/gg416513(v=vs.98).aspx) can be used for capturing exceptions in CRUD handlers and returning a client response that can be
+[Exception filters](https://learn.microsoft.com/en-us/previous-versions/aspnet/gg416513(v=vs.98)) can be used for capturing exceptions in CRUD handlers and returning a client response that can be
 [recognized](server_integration.md#errorhandling) by the client-side scheduler.
 
 To provide error handling for the scheduler, follow the steps below:

@@ -15,7 +15,7 @@ You can also read tutorials on other server-side technologies:
 - howtostart_connector.md
 
 
-To organize communication with database, the [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) is used. The application is built with the help of the Visual Studio 2022.
+To organize communication with database, the [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/) is used. The application is built with the help of the Visual Studio 2022.
 
 {{note
 The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-dotnet-core).
@@ -149,7 +149,7 @@ Step 3. Creating models and database
 
 Let's begin with data model. You'll need a class for scheduler events. dhtmlxScheduler uses [non-conventional names for model properties](data_formats.md#json) from the .NET world perspective.
 
-To deal with this, the [Data Transfer Object (DTO)](https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) pattern will be used. Two kinds of models will be defined:
+To deal with this, the [Data Transfer Object (DTO)](https://learn.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) pattern will be used. Two kinds of models will be defined:
 
 - domain model classes that will be used with EF Core and inside the app
 - DTO classes that will be used to communicate with Web API.
