@@ -153,6 +153,7 @@ Scheduler API
 - api/scheduler_onbeforelightbox_event.md - fires immediately before the user opens the lightbox (edit form)
 - api/scheduler_onbeforeparse_event.md - fires before data started to be parsed
 - api/scheduler_onbeforequickinfo_event.md - fires immediately before the Quick Info popup is displayed for an event
+- api/scheduler_onbeforesectionrender_event.md - fires before a single Timeline section was configured, but not rendered yet (the Timeline view only)
 - api/scheduler_onbeforetodaydisplayed_event.md - fires when the user clicks on the 'Today' button in the scheduler
 - api/scheduler_onbeforetooltip_event.md - fires before the tooltip is displayed for a data item (only with the 'tooltip' extension enabled)
 - api/scheduler_onbeforeviewchange_event.md - fires before the user changes the current view to some other one
@@ -346,7 +347,7 @@ Scheduler API
 - api/scheduler_touch_drag_config.md - defines the time period in milliseconds that is used to differ the long touch gesture from the scroll gesture
 - api/scheduler_touch_swipe_dates_config.md - enables/disables switching active dates using the horizontal swipe gesture on mobiles
 - api/scheduler_touch_tip_config.md - enables/disables prompting messages in the right top corner of the screen
-- api/scheduler_touch_tooltip_config.md - disables dhtmxlScheduler's tooltips on the touch devices
+- api/scheduler_touch_tooltip_config.md - allows displaying dhtmxlScheduler's tooltips on the touch devices
 - api/scheduler_undo_deleted_config.md - provides the Undo popup when you delete an event
 - api/scheduler_update_render_config.md - updates the mode when the scheduler fully repaints itself on any action
 - api/scheduler_use_select_menu_space_config.md - defines that events occupy the whole width of the cell

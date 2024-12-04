@@ -1,4 +1,4 @@
-Recurring Events 
+Recurring Events (up to v7.1)
 ==============
 
 *The article refers to the legacy format of recurring events for DHTMLX Scheduler. If you use DHTMLX Scheduler v7.1+ see the details on the current version [here](recurring_events.md).*

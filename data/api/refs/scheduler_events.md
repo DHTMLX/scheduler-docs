@@ -25,6 +25,7 @@ Events
 - api/scheduler_onbeforelightbox_event.md - fires immediately before the user opens the lightbox (edit form)
 - api/scheduler_onbeforeparse_event.md - fires before data started to be parsed
 - api/scheduler_onbeforequickinfo_event.md - fires immediately before the Quick Info popup is displayed for an event
+- api/scheduler_onbeforesectionrender_event.md - fires before a single Timeline section was configured, but not rendered yet (the Timeline view only)
 - api/scheduler_onbeforetodaydisplayed_event.md - fires when the user clicks on the 'Today' button in the scheduler
 - api/scheduler_onbeforetooltip_event.md - fires before the tooltip is displayed for a data item (only with the 'tooltip' extension enabled)
 - api/scheduler_onbeforeviewchange_event.md - fires before the user changes the current view to some other one
@@ -115,6 +116,7 @@ Events
 - api/scheduler_onbeforelightbox_event.md
 - api/scheduler_onbeforeparse_event.md
 - api/scheduler_onbeforequickinfo_event.md
+- api/scheduler_onbeforesectionrender_event.md
 - api/scheduler_onbeforetodaydisplayed_event.md
 - api/scheduler_onbeforetooltip_event.md
 - api/scheduler_onbeforeviewchange_event.md

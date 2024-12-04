@@ -5,8 +5,11 @@ renderCalendar
 @params: 
 - config	object	the calendar configuration object 
 
+@returns:
+- div			HTMLElement		the HTML element of the calendar
+
 @example: 
-var calendar = scheduler.renderCalendar({
+const calendar = scheduler.renderCalendar({
     container:"cal_here", 
     navigation:true,
     handler:function(date, calendar){
@@ -53,17 +56,17 @@ The configuration object can have the following properties:
 </table>
 
 ~~~js
-var calendar = scheduler.renderCalendar({
+const calendar = scheduler.renderCalendar({
     container:"for_calendar",
 	date:new Date()
 });
 //
-var calendar = scheduler.renderCalendar({
+const calendar = scheduler.renderCalendar({
     position:"some_id",
 	date:new Date()
 });
 //
-var calendar = scheduler.renderCalendar({
+const calendar = scheduler.renderCalendar({
     position: { left: 100, top: 50 },
 	date:new Date()
 });

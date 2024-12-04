@@ -1,6 +1,8 @@
 recurring_overflow_instances
 =============
 
+@deprecated:
+The property works only in the [legacy extension for recurring events](recurring_events_legacy.md).
 
 @short: defines the behavior of the recurrences that transfer to the next month
 	
@@ -13,6 +15,8 @@ recurring_overflow_instances
 scheduler.config.recurring_overflow_instances = "lastDay";
 
 @template:	api_config
+
+
 @descr:
 {{note The property requires the [recurring](extensions_list.md#recurring) extension to be enabled.}}
 
@@ -25,3 +29,4 @@ Let's take an event that occurs every month on the 30th and consider its behavio
 If the option is undefined, the "skip" behavior will be applied.
 
 @changelog: added in v5.3.11
+

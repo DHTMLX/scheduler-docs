@@ -11,6 +11,40 @@ If you are updating Scheduler from an older version, check migration_from_older_
 </style>
 
 
+7.1.3
+---------------
+<span class='release_date'>November 19, 2024. Bugfix release</span>
+
+- Fix the issue where the initial position of events was not [highlighted during drag and drop](api/scheduler_drag_highlight_config.md) in the [Timeline](timeline_view.md) and [Units](units_view.md) views
+- Fix the issue where the `last_hour` setting caused incorrect behavior of drag and drop in the [Timeline view](timeline_view.md)
+- Prevent [recurring occurrences](recurring_events.md) from disappearing in certain time zones during DST transitions
+- Fix repeated end date increments when toggling [Full day](api/scheduler_full_day_config.md) in the [Mini Calendar](minicalendar.md#inthelightbox) control of the lightbox
+- Restore functionality of the [ignore_year](custom_scales.md) and [ignore_agenda](custom_scales.md) methods
+
+7.1.2
+---------------
+<span class='release_date'>October 8, 2024. Bugfix release</span>
+
+- Fix the incorrect position of events pasted using [Ctrl+C/Ctrl+V](keyboard_navigation.md) when the [multisection](units_view.md#assigningeventstoseveralunits) extension is enabled
+- Ensure the [Collision extension](collisions.md) works properly with new [recurring events](recurring_events.md)
+- Correct the sections' height after calling [scheduler.updateCollection()](api/scheduler_updatecollection.md) when smart rendering enabled in the [Timeline view](timeline_view.md)
+- Resolve the issue where smart rendering hides parts of new [multisection](units_view.md#assigningeventstoseveralunits) events when api/scheduler_onbeforelightbox_event.md is canceled
+- Fix incorrect behavior of the api/scheduler_getevents.md method with [recurring events](recurring_events.md)
+- Correct the handling of [recurring events](recurring_events.md) with custom daily properties
+
+7.1.1
+---------------
+<span class='release_date'>August 27, 2024. Bugfix release</span>
+
+- Fix the issue where the [DataProcessor](api/scheduler_createdataprocessor.md) did not allow sending false values
+- Fix the issue where the [Tooltip](tooltips.md) disappeared on mobile devices after a click
+- Fix the [Tooltip](tooltips.md) position issue during page scroll
+- Fix the issue where the [container_autoresize](extensions_list.md#containerautoresize) plugin hid the multiday section
+- Fix the issue where the [Quick Info](touch_support.md#quickinfoextension) popup appeared outside of the container
+- Fix the issue where unconfirmed events disappeared during scrolling with smart rendering enabled in the [Timeline view](timeline_view.md)
+- Fix the incorrect sections height in the [Timeline view](timeline_view.md) after calling [scheduler.updateCollection()](api/scheduler_updatecollection.md) with active smart rendering
+
+
 7.1
 ---------------
 <span class='release_date'>July 31, 2024. Minor update</span>

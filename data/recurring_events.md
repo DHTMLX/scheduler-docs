@@ -25,13 +25,10 @@ Once the support for recurring events is activated, the lightbox starts looking 
 Configuration options
 ---------------------------------------
 
-The library provides the following options to configure recurring events:
+The library provides the following option to configure recurring events:
 
-{{links
 - api/scheduler_repeat_date_config.md - sets the date format of the 'End by' field in the 'recurring' lightbox
-- api/scheduler_include_end_by_config.md - defines whether the date specified in the 'End by' field should be exclusive or inclusive
-- api/scheduler_recurring_overflow_instances_config.md - defines the behavior of the recurrences that transfer to the next month
-}}
+
 
 ~~~js
 scheduler.config.repeat_date = "%m/%d/%Y";

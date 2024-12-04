@@ -1,6 +1,9 @@
 include_end_by
 =============
 
+@deprecated:
+The property works only in the [legacy extension for recurring events](recurring_events_legacy.md).
+
 @short:defines whether the date specified in the 'End by' field should be exclusive or inclusive
 	
 @type:boolean
