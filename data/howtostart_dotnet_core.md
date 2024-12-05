@@ -92,7 +92,7 @@ Note, that scheduler files are [added from CDN](install_with_bower.md#cdn) in th
 
 Next go to **Program.cs** and tell the application to use the **index.html** page. In order to do so, we need to configure the app to serve static files from the *wwwroot* folder.
 You need to add the `app.UseDefaultFiles()` method.
-You can [find more details here](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-2.1&tabs=aspnetcore2x).
+You can [find more details here](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-2.1&tabs=aspnetcore2x).
 
 {{snippet Program.cs }}
 ~~~js
@@ -282,7 +282,7 @@ namespace SchedulerApp.Models
 ### Registering Database
 
 Now you should register the database in **Program.cs**. But first you need a connection string for it. It will be stored
-[in a JSON file in the application settings](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment). 
+[in a JSON file in the application settings](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment). 
 If you used `API` template when created the project, this file should already exist in project folder. If you used `Empty template`, you’ll need to create one.
 
 Create the *appsettings.json* file (or open it if we have it already) and add a connection string to the database:
@@ -298,7 +298,7 @@ Create the *appsettings.json* file (or open it if we have it already) and add a 
 
 
 After that you can register the database context via 
-[dependency injection](https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-2.1&tabs=visual-studio).
+[dependency injection](https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-2.1&tabs=visual-studio).
 
 Add the following namespaces to **Program.cs**:
 
@@ -851,7 +851,7 @@ You will find [the ready library on GitHub](https://github.com/DHTMLX/scheduler-
 Error handling
 -------------
 
-In order to handle errors, we need to declare a special [middleware class](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/startup?view=aspnetcore-2.1#startup-filters) 
+In order to handle errors, we need to declare a special [middleware class](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/startup?view=aspnetcore-2.1#startup-filters) 
 that will capture runtime exceptions and write responses. Next it will be added to the app request pipeline. Follow the steps below:
 
 1\. Create a middleware class from a template in the project folder.
