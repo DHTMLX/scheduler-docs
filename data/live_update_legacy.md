@@ -1,4 +1,5 @@
-# Live Update Mode (Legacy)
+Live Update Mode (Legacy)
+======================================
 
 {{note This article refers to the legacy implementation of the Live Updates mode for DHTMLX Scheduler. See the details on the current version [here](live_update.md). }}
 

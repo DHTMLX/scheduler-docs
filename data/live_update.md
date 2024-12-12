@@ -1,4 +1,5 @@
-# Live Update Mode
+Live Update Mode
+======================================
 
 This article describes how to implement server-side support for the real-time updates module of DHTMLX Scheduler.
 
