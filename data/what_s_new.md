@@ -10,11 +10,11 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
-7.2.0
+7.2
 ---------------
 <span class='release_date'>December 17, 2024. Minor update</span>
 
-[Review of release on the blog](https://dhtmlx.com/blog/dhtmlx-scheduler-7-2/)
+[Review of the release on the blog](https://dhtmlx.com/blog/dhtmlx-scheduler-7-2/)
 
 ### Breaking Changes
 
@@ -33,8 +33,8 @@ This update brings changes for some map configuration properties. Check the [Mig
 ### Fixes
 
 - Fix the issue with container resize listeners in LWC environment
-- Fix the issue with event drag and drop when the events end date is past api/scheduler_last_hour_config.md
-- Fix the incorrect display of events in api/scheduler_cascade_event_display_config.md mode
+- Fix the issue with event drag and drop when the event's end date is past the api/scheduler_last_hour_config.md
+- Fix the incorrect display of events in the api/scheduler_cascade_event_display_config.md mode
 
 
 7.1.3
@@ -75,7 +75,7 @@ This update brings changes for some map configuration properties. Check the [Mig
 ---------------
 <span class='release_date'>July 31, 2024. Minor update</span>
 
-[Review of release on the blog](https://dhtmlx.com/blog/dhtmlx-scheduler-7-1/)
+[Review of the release on the blog](https://dhtmlx.com/blog/dhtmlx-scheduler-7-1/)
 
 ### Breaking Changes
 
@@ -166,6 +166,8 @@ This update brings changes for some map configuration properties. Check the [Mig
 <b>7.0</b>
 ---------------
 <span class='release_date'>January 31, 2024. Major update</span>
+
+[Review of the release on the blog](https://dhtmlx.com/blog/dhtmlx-scheduler-7-0/)
 
 ### Breaking Changes
 

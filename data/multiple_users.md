@@ -29,7 +29,7 @@ The same code can be used in a more complex scenario: users see all the events, 
 var dp =  scheduler.createDataProcessor("events.php?user");
 dp.init(scheduler);
 		
-//allow edit operations only for own events
+//allow editing operations only for own events
 function allow_own(id){
 	var ev = this.getEvent(id);
 	return ev.userId == 1;
@@ -40,6 +40,8 @@ scheduler.attachEvent("onDblClick",allow_own);
 //default properties of a new event
 scheduler.attachEvent("onEventCreated",function(id){
 	const ev = this.getEvent(id);
-	ev.userId = CURRENT_USER_ID; // userId will be sent to the backend by DataProcessor, be sure to verify
+    // userId will be sent to the backend by DataProcessor,
+    // make sure to verify 
+	ev.userId = CURRENT_USER_ID; 
 });
 ~~~
