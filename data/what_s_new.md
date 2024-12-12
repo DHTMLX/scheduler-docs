@@ -10,6 +10,32 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+7.2.0
+---------------
+<span class='release_date'>December 17, 2024. Minor update</span>
+
+[Review of release on the blog](https://dhtmlx.com/blog/dhtmlx-scheduler-7-2/)
+
+### Breaking Changes
+
+This update brings changes for some map configuration properties. Check the [Migration notes](migration_from_older_version.md) for details.
+
+### New functionality
+
+- Ability to edit [this and following](recurring_events.md) recurring events of the series 
+- New [Live-Update module](live_update.md) for collaborative editing
+
+### Updates
+
+- Improved display of overnight events
+- Date functions are now non-mutating
+
+### Fixes
+
+- Fix the issue with container resize listeners in LWC environment
+- Fix the issue with event drag and drop when the events end date is past api/scheduler_last_hour_config.md
+- Fix the incorrect display of events in api/scheduler_cascade_event_display_config.md mode
+
 
 7.1.3
 ---------------

@@ -39,7 +39,7 @@ scheduler.attachEvent("onDblClick",allow_own);
 
 //default properties of a new event
 scheduler.attachEvent("onEventCreated",function(id){
-	var ev = this.getEvent(id);
-	ev.userId = 1; //just for rendering on client, will not affect server data
+	const ev = this.getEvent(id);
+	ev.userId = CURRENT_USER_ID; // userId will be sent to the backend by DataProcessor, be sure to verify
 });
 ~~~

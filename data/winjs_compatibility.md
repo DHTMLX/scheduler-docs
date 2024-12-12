@@ -218,3 +218,6 @@ There are some features of a standard scheduler that aren't supported in Windows
 + DataProcessor
 + Map view
 + Export to PDF
+
+
+@deprecated: The described functionality is deprecated and is no longer maintained.
