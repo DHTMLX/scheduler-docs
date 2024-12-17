@@ -132,14 +132,14 @@ DB_USERNAME=root
 DB_PASSWORD=
 ~~~
 
-The next step is to create [model classes](https://laravel.com/docs/11.x/eloquent#defining-models) and [migrations](https://laravel.com/docs/migrations#generating-migrations).
+The next step is to create [model classes](https://laravel.com/docs/11.x/eloquent#defining-models) and [migrations](https://laravel.com/docs/11.x/migrations#generating-migrations).
 You can generate classes and migration files using the Artisan command:
 
 ~~~js
 php artisan make:model Event --migration
 ~~~
 
-After that find the migrations in the `database/migrations` folder and define a [database schema](https://laravel.com/docs/migrations#migration-structure).
+After that find the migrations in the `database/migrations` folder and define a [database schema](https://laravel.com/docs/11.x/migrations#migration-structure).
 Have a look at the [database schema expected by Scheduler](loading_data.md#databasestructure).
 
 The code for the Events table looks like this:

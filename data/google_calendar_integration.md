@@ -27,7 +27,7 @@ To start the integration, do the following preparations:
 5. Fill in the form  and click the **"Next"** button. The next screen of the form opens.
 6. Select the **"Service account"** option and click on the **"Create client ID"** button. As a result, you will have the private key file, Client ID and Email address - they will be necessary later.
 8. Login to  Google Calendar, which you want to use for the app, and share it on the Email address, which was used for login to the **Google API console** (step 1).
-9. Locate and save the calendar id (location of the calendar's id - <a href="https://drupal.org/node/589310">https://drupal.org/node/589310</a>).
+9. Locate and save the calendar id (you can find the calendar id in the settings section of each calendar).
 
 
 

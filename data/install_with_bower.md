@@ -67,7 +67,7 @@ If for some reason the methods described above are not available to you, there a
 
 ### Installing the package from a local folder {#installfromlocalfolder}
 
-If case of **npm** you can install the Pro package from a local folder using  [`npm install ./local_path`](https://docs.npmjs.com/cli/install) or [`npm link`](https://docs.npmjs.com/cli/link) commands.
+If case of **npm** you can install the Pro package from a local folder using  [`npm install ./local_path`](https://docs.npmjs.com/cli/install/) or [`npm link`](https://docs.npmjs.com/cli/link/) commands.
 There are step-by-step instructions for both variants:
 
 ### npm install
