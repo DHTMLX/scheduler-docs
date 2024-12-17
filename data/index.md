@@ -8,9 +8,10 @@ Start
     New version brings new improvements and features:
     </p>
     <ul>
-        <li><a href="recurring_events.md">Ability to Edit a Series Starting from a Specific Event</a></li>  
-        <li><a href="multiuser_live_updates.md">Support for Real-Time Updates</a></li>  
-        <li><a href="api/scheduler_all_timed_config.md">Improved Display of Overnight Events</a></li>  
+        <li><a href="recurring_events.md">Editing a series starting from a specific event</a></li>  
+        <li><a href="multiuser_live_updates.md">Support for real-time updates</a></li>  
+        <li><a href="api/scheduler_all_timed_config.md">Improved display of overnight events</a></li>  
+        <li><a href="minicalendar.md#eventhandling">Updated event handlers for the Mini Calendar</a></li>
     </ul>
     <p class='action_buttons'>
       <a class='action_button moredetails' href="what_s_new.html">More details</a>

@@ -52,8 +52,7 @@ This section describes how to build a backend supporting live updates.
 
 ### Simplified Example
 
-- Frontend Example: [Scheduler Snippet]
-- Backend (Node.js): Download Example Code
+- [Check the example on GitHub](https://github.com/DHTMLX/scheduler-multiuser-backend-demo)
 
 To test the implementation:
 

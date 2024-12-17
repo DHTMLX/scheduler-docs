@@ -20,11 +20,12 @@ As a string the parameter can take the only value - *'short'*.
 
 So, there are 3 possible values that the parameter can take:
 
-- **'short'**  - to show only multi-day events that last less than 24 hours ( starts one day and ends another) in the regular way.
-- **true** - to show all multi-day events in the regular way.
-- **false** - to show all multi-day events as lines in the upper part of the scheduler (the standard display mode for multi-day events). 
+- **'short'**  - to show only multi-day events that last less than 24 hours (starts one day and ends another) in the regular way
+- **true** - to show all multi-day events in the regular way
+- **false** - to show all multi-day events as lines in the upper part of the scheduler (the standard display mode for multi-day events)
 
-For finer control over which events are displayed in the multi-day section and which are displayed in the day columns, redefine the `isMainAreaEvent` method of the module:
+To provide better control over which events are displayed in the multi-day section and which are displayed in the day columns, 
+redefine the `isMainAreaEvent` method of the module in the following way:
 
 ~~~js
 const { isMainAreaEvent } = scheduler.ext.allTimed;
