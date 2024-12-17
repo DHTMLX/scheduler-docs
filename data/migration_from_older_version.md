@@ -20,6 +20,46 @@ Migration From Older Versions
 	}
 </style>
 
+## 7.1 -> 7.2
+
+The v7.2 update changes several default settings.
+
+### `all_timed` plugin is active by default
+
+The [all_timed](api/scheduler_all_timed_config.md) plugin is enabled by default, allowing the display of overnight events. The previous behavior can be restored via the configuration:
+
+~~~js
+scheduler.config.all_timed = false;
+~~~
+
+### Date functions are now non-mutating
+
+Previously, date functions such as `scheduler.date.day_start`, `scheduler.date.week_start`, and `scheduler.date.date_part` would modify the argument:
+
+~~~js
+const date = new Date(2025, 1, 15, 13, 00);
+const dayStart = scheduler.date.day_start(date);
+
+console.log(dayStart);
+// 2025-02-15 00:00:00
+
+console.log(date);
+// 2025-02-15 00:00:00
+~~~
+
+Starting from v7.2, the argument is no longer modified:
+
+~~~js
+const date = new Date(2025, 1, 15, 13, 00);
+const dayStart = scheduler.date.day_start(date);
+
+console.log(dayStart);
+// 2025-02-15 00:00:00
+
+console.log(date);
+// 2025-02-15 13:00:00
+~~~
+
 ## 7.0 -> 7.1
 
 The v7.1 update introduces several breaking changes

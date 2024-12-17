@@ -22,20 +22,23 @@ This update brings changes for some map configuration properties. Check the [Mig
 
 ### New functionality
 
-- Ability to edit [this and following](recurring_events.md) recurring events of the series 
-- New [Live-Update module](live_update.md) for collaborative editing
+- Ability to edit the [current and following](recurring_events.md) recurring events 
+- New [Live-Update module](multiuser_live_updates.md) for collaborative editing
 
 ### Updates
 
-- Improved display of overnight events
-- Date functions are now non-mutating
+- Improved display of [overnight events](api/scheduler_all_timed_config.md)
+- [Date functions](api/scheduler_date_other.md) are now non-mutating
 
 ### Fixes
 
-- Fix the issue with container resize listeners in LWC environment
-- Fix the issue with event drag and drop when the event's end date is past the api/scheduler_last_hour_config.md
-- Fix the incorrect display of events in the api/scheduler_cascade_event_display_config.md mode
-
+- Fix the issue with container resize listeners in the LWC environment  
+- Fix the issue with event drag and drop when the event's end date is past the [scheduler_last_hour](api/scheduler_last_hour_config.md) configuration  
+- Fix the incorrect display of events in the [cascade_event_display](api/scheduler_cascade_event_display_config.md) mode  
+- Fix the incorrect behavior of drag-resize when a new event is resized to the bottom of the day column while the `all_timed` extension is active  
+- Fix the incorrect behavior of vertical scrolling in the scrollable [Timeline view](timeline_view.md) when smart rendering is disabled  
+- Fix the incorrect display of scroll buttons in the [Units](units_view.md) view  
+- Fix the incorrect display of unassigned events in the [Units](units_view.md) view when the `skip_incorrect` setting is set to `false`
 
 7.1.3
 ---------------

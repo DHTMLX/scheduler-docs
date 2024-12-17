@@ -2,16 +2,15 @@ Start
 =====
 
 <div class="newsblock">
-    <h2>Meet Scheduler 7.1!</h2>
+    <h2>Meet Scheduler 7.2!</h2>
     
     <p>
     New version brings new improvements and features:
     </p>
     <ul>
-        <li><a href="recurring_events.md">Storing recurring events in the RRULE format</a></li>
-        <li><a href="map_view.md">Map view supports different map providers</a></li>
-        <li><a href="api/scheduler_undo_deleted_config.md">The ability to undo deletion of an event</a></li>
-        <li><a href="api/scheduler_drag_highlight_config.md">Highlighting initial event position during D-n-D</a></li>
+        <li><a href="recurring_events.md">Ability to Edit a Series Starting from a Specific Event</a></li>  
+        <li><a href="multiuser_live_updates.md">Support for Real-Time Updates</a></li>  
+        <li><a href="api/scheduler_all_timed_config.md">Improved Display of Overnight Events</a></li>  
     </ul>
     <p class='action_buttons'>
       <a class='action_button moredetails' href="what_s_new.html">More details</a>

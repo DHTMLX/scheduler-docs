@@ -117,7 +117,7 @@ To display the date picker on clicking the date in the navigation panel of the s
 ~~~js
 scheduler.attachEvent("onSchedulerReady", function(){
 
-	var $node = $('#scheduler_here .input-group.date').datepicker({
+	const $node = $('#scheduler_here .input-group.date').datepicker({
     	autoclose: true,
     	todayHighlight: true,
     	todayBtn: "linked",
@@ -249,7 +249,7 @@ To show the tooltip with the amount of events for the date that the user hovers 
       	}
       	var events = scheduler.getEvents(min, max);
       	var days = {};
-      	debugger;
+
       	events.forEach(function (event) {
          	var eventDate = event.start_date;
          	while(eventDate < event.end_date){
@@ -259,7 +259,7 @@ To show the tooltip with the amount of events for the date that the user hovers 
             		eventDate.getDate()
            		);
 
-          		if (!days[day.valueOf()]) {
+			if (!days[day.valueOf()]) {
              		days[day.valueOf()] = 0;
            		}
            		days[day.valueOf()]++;  
@@ -289,7 +289,7 @@ When we have data on the timestamps of the cells that contain events and the amo
 		...
 
 		// highlight events
-		var eventCells = getVisibleEvents($node.datepicker("getDate"), scheduler);
+		const eventCells = getVisibleEvents($node.datepicker("getDate"), scheduler);
 		eventCells.forEach(function (cellEvents) {
 			$(".datepicker-dropdown").find(
 				"[data-date='" + cellEvents.timestamp + "']"
@@ -338,10 +338,10 @@ If you use a separate element to display the active date of the scheduler, you'l
 
 ~~~js
 scheduler.attachEvent("onViewChange", function (newMode , newDate){
-    var state = scheduler.getState();
-    var minDate = state.min_date;
-    var maxDate = state.max_date;
-    var dateToStr = scheduler.date.str_to_date("%d-%m-%Y");
+    const state = scheduler.getState();
+    const minDate = state.min_date;
+    const maxDate = state.max_date;
+    const dateToStr = scheduler.date.str_to_date("%d-%m-%Y");
 
     $(dateHeader).html(dateToStr(minDate) + " - " + dateToStr(minDate));
 });
@@ -416,7 +416,7 @@ scheduler.plugins({
 	</li>
     <li> Call the api/scheduler_rendercalendar.md method to render the mini calendar on the page:
 ~~~js
-var calendar = scheduler.renderCalendar({
+const calendar = scheduler.renderCalendar({
 	container:"cal_here", 
 	navigation:true,
 	handler:function(date){
@@ -441,7 +441,7 @@ To customize the format of dates presented in the mini calendar (date picker), y
 scheduler.templates.calendar_month = scheduler.date.date_to_str("%M, %Y");
 scheduler.init('scheduler_here',new Date(2019,2,1),"day");
 ...
-var calendar = scheduler.renderCalendar({..});
+const calendar = scheduler.renderCalendar({..});
 ~~~
 
 <img src="mini_calendar_custom_template.png"/>
@@ -483,7 +483,7 @@ To customize the look of days in the mini calendar (date picker), you can redefi
 }
 </style>
 <script>
-	var calendar = scheduler.renderCalendar({...});
+	const calendar = scheduler.renderCalendar({...});
 </script>
 ~~~
 
@@ -499,7 +499,7 @@ To assign a custom CSS class to a day, you can use the api/scheduler_markcalenda
 }
 </style>
 <script>
-	var calendar = scheduler.renderCalendar({...});
+	const calendar = scheduler.renderCalendar({...});
  	...
 	scheduler.markCalendar(calendar, new Date(2019,3,1), "my_style");
 </script>
@@ -545,5 +545,37 @@ API
 </table>
 
 
+
+Event handling
+--------------------------------------
+
+The mini calendar provides callbacks for common user actions, such as changing the visible month, hovering over a date, and clicking on dates. These callbacks can be specified in the `events` property of the configuration object:
+
+~~~js
+const dateToStr = (date) => date ? scheduler.templates.format_date(date) : null;
+const calendar = scheduler.renderCalendar({
+	container: "cal_here",
+	navigation: true,
+	events: {
+		onBeforeMonthChange: function(oldDate, newDate) {
+			scheduler.message(`Before change from ${dateToStr(oldDate)} 
+				to ${dateToStr(newDate)}`);
+			return true;
+		},
+		onMonthChange: function(oldDate, newDate) {
+			scheduler.message(`Changed from ${dateToStr(oldDate)} 
+				to ${dateToStr(newDate)}`);
+		},
+		onDateClick: function(date, e) {
+			scheduler.setCurrentView(date);
+			scheduler.message(`Selected date ${dateToStr(date)}`);
+		},
+		onDateMouseOver: function(date, e){
+			scheduler.message(`Mouse over ${dateToStr(date)}`)
+
+		}
+	}
+});
+~~~
 
 
