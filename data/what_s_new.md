@@ -18,9 +18,9 @@ If you are updating Scheduler from an older version, check migration_from_older_
 - Fix the script error that occurred when editing newly created [recurring events](recurring_events.md).
 - Fix the incorrect display of [occurrences](recurring_events.md) after loading data from the back-end.
 - Fix the error encountered when adjusting the `size` property in the [Units view](units_view.md) that exceeds the available columns.
-- Ensure multi-level folders in the [Tree Timeline view](timeline_view.md) display correctly at all depth levels.
-- Fix the issue with the `readonly_form` configuration causing errors when opening the lightbox for recurring events.
-- Fix the issue with recurring patterns when modifying "this and following" occurrences of weekly recurring events that span certain weekdays.
+- Ensure multi-level folders in the [Tree Timeline view](timeline_view.md) display correctly at all nesting levels.
+- Fix the issue with the `readonly_form` configuration option causing errors when opening the lightbox for recurring events.
+- Fix the issue with recurring patterns when modifying "the current and the following" occurrences of weekly recurring events that span certain weekdays.
 
 7.2
 ---------------
