@@ -12,7 +12,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 7.2.1
 ---------------
-<span class='release_date'>January 16, 2024. Bugfix release</span>
+<span class='release_date'>January 16, 2025. Bugfix release</span>
 
 - Prevent [recurring occurrences](recurring_events.md) from disappearing during daylight saving time (DST) transitions.
 - Fix the script error that occurred when editing newly created [recurring events](recurring_events.md).
