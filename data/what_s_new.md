@@ -12,7 +12,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 7.2.2
 ---------------
-<span class='release_date'>February 14, 2025. Bugfix release</span>
+<span class='release_date'>February 13, 2025. Bugfix release</span>
 
 - Fix the issue where filtering did not work correctly for modified occurrences of [recurring events](recurring_events.md)
 - Ensure the api/scheduler_month_date_template.md template properly affects the [Year view](year_view.md)
