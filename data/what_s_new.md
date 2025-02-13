@@ -10,6 +10,16 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+7.2.2
+---------------
+<span class='release_date'>February 14, 2025. Bugfix release</span>
+
+- Fix the issue where filtering did not work correctly for modified occurrences of [recurring events](recurring_events.md)
+- Ensure the api/scheduler_month_date_template.md template properly affects the [Year view](year_view.md)
+- Fix the incorrect behavior when using [multisection](units_view.md#assigningeventstoseveralunits) events in the [Timeline view](timeline_view.md) with `round_position: true`
+- Prevent [recurring events](recurring_events.md) occurrences from being cut off when they fall outside the visible range of the [Timeline view](timeline_view.md)
+- Fix issues with editing a [recurring events](recurring_events.md) using the "This and Following" option
+
 7.2.1
 ---------------
 <span class='release_date'>January 16, 2025. Bugfix release</span>
