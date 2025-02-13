@@ -18,7 +18,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 - Ensure the api/scheduler_month_date_template.md template properly affects the [Year view](year_view.md)
 - Fix the incorrect behavior when using [multisection](units_view.md#assigningeventstoseveralunits) events in the [Timeline view](timeline_view.md) with `round_position: true`
 - Prevent [recurring events](recurring_events.md) occurrences from being cut off when they fall outside the visible range of the [Timeline view](timeline_view.md)
-- Fix issues with editing a [recurring events](recurring_events.md) using the "This and Following" option
+- Fix issues with editing [recurring events](recurring_events.md) using the "the current and the following" option
 
 7.2.1
 ---------------
