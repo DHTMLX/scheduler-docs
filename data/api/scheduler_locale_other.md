@@ -34,12 +34,14 @@ scheduler.i18n.setLocale({
 		full_day:"Full day",
 
 		/*recurring events*/
-		confirm_recurring:"Do you want to edit the whole set of repeated events?",
+		confirm_recurring:"Edit recurring event",
 		section_recurring:"Repeat event",
 		button_recurring:"Disabled",
 		button_recurring_open:"Enabled",
-		button_edit_series:"Edit series",
-		button_edit_occurrence:"Edit occurrence",
+		button_edit_series: "All events",
+		button_edit_occurrence: "This event",
+		button_edit_occurrence_and_following: "This and following events",
+
 
 		/*agenda view extension*/
 		agenda_tab:"Agenda",
