@@ -37,7 +37,7 @@ scheduler.init('scheduler_here', new Date(2019, 7, 5), "month");
 ~~~
 
 {{sample
-	03_extensions/01_recurring_events.html
+  03_extensions/01_recurring_events.html
 }}
 
 'Recurring' lightbox
@@ -47,20 +47,15 @@ By default, once the recurring extension is enabled, the lightbox starts to have
 And the default definition of the 'recurring' lightbox starts to be as in:
 
 ~~~js
-[	 
-	{name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
-	{name:"recurring", height:115, type:"recurring", map_to:"rec_type", 
-    	button:"recurring"},
-	{name:"time", height:72, type:"time", map_to:"auto"}
+scheduler.config.lightbox.sections = [
+    { name: "description", map_to: "text", type: "textarea", focus: true },
+    { name: "recurring", type: "recurring", map_to: "rrule" },
+    { name: "time", height: 72, type: "time", map_to: "auto" }
 ];
 ~~~
 
-You may add any extra sections, but need to preserve both the "recurring" and "time" sections. 
-Also, it's required to place the "time" section **after** the "recurring" one.
-
-
 {{sample
-	03_extensions/01_recurring_events.html
+  03_extensions/01_recurring_events.html
 }}
 
 
@@ -90,16 +85,16 @@ In our format, **stdate** and **dtend** are stored as separate fields. This sepa
 
 Here is an example of the recurring event series which is set to repeat every Monday starting from June 1, 2024 up until December 1, 2024:
 
-~~~
+~~~js
 {
-  "id": 1,
-  "text": "Weekly Team Meeting",
-  "start_date": "2024-06-03 09:00:00",
-  "duration": 3600,
-  "end_date": "2024-12-02 10:00:00",
-  "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
-  "recurring_event_id": null,
-  "original_start": null
+    "id": 1,
+    "text": "Weekly Team Meeting",
+    "start_date": "2024-06-03 09:00:00",
+    "duration": 3600,
+    "end_date": "2024-12-02 10:00:00",
+    "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
+    "recurring_event_id": null,
+    "original_start": null
 }
 ~~~
 
@@ -114,37 +109,38 @@ Note, that unlike the traditional iCalendar format, exceptions (modified or dele
 }}
 
 Here is the example of the recurring series with one modified and one deleted occurrence:
-~~~
+
+~~~js
 [
-  {
-    "id": 1,
-    "text": "Weekly Team Meeting",
-    "start_date": "2024-06-03 09:00:00",
-    "duration": 3600,
-    "end_date": "2024-12-02 10:00:00",
-    "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
-    "recurring_event_id": null,
-    "original_start": null
-  },
-  {
-    "id": 2,
-    "text": "Special Team Meeting",
-    "start_date": "2024-06-10 09:00:00",
-    "end_date": "2024-06-10 11:00:00",
-    "rrule": null,
-    "recurring_event_id": 1,
-    "original_start": "2024-06-10 09:00:00"
-  },
-  {
-    "id": 3,
-    "text": "Deleted Team Meeting",
-    "start_date": "2024-06-17 09:00:00",
-    "end_date": "2024-06-17 10:00:00",
-    "rrule": null,
-    "recurring_event_id": 1,
-    "original_start": "2024-06-17 09:00:00",
-    "deleted": true
-  }
+    {
+        "id": 1,
+        "text": "Weekly Team Meeting",
+        "start_date": "2024-06-03 09:00:00",
+        "duration": 3600,
+        "end_date": "2024-12-02 10:00:00",
+        "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
+        "recurring_event_id": null,
+        "original_start": null
+    },
+    {
+        "id": 2,
+        "text": "Special Team Meeting",
+        "start_date": "2024-06-10 09:00:00",
+        "end_date": "2024-06-10 11:00:00",
+        "rrule": null,
+        "recurring_event_id": 1,
+        "original_start": "2024-06-10 09:00:00"
+    },
+    {
+        "id": 3,
+        "text": "Deleted Team Meeting",
+        "start_date": "2024-06-17 09:00:00",
+        "end_date": "2024-06-17 10:00:00",
+        "rrule": null,
+        "recurring_event_id": 1,
+        "original_start": "2024-06-17 09:00:00",
+        "deleted": true
+    }
 ]
 ~~~
 
@@ -154,14 +150,12 @@ Note, that **rrule** of the modified or deleted occurrences is ignored.
 
 **text**, **start_date**, and **end_date** of deleted instances are also ignored and the values of these fields won't affect the behavior of the Scheduler.
 
-
-
 Editing/deleting a certain occurrence in the series 
 --------------------------------
 
 There is a possibility to delete or edit a particular occurrence in a series. 
 
-###Important tips
+### Important tips
 
 - For each update of the recurring event a separate record is created in the DB.
 - Particular occurrences refer to the parent event through the **recurring_event_id** property.
@@ -170,15 +164,15 @@ will store the Date, when the occurrence should have happened if it wasn't edite
 So if the occurrence has happened on July 27, 2024 at 15:00 and was moved to July 30, 2024 15:00, the time stamp would reflect the first date.
 
 
-###Server-side logic 
+### Server-side logic 
 
 In addition to extra fields, a specific logic needs to be added to the server-side controller:
 
 - If a deleted instance was inserted - the server response must have the "deleted" status.
-	- A deleted instance can be identified by the non-empty value of the **deleted** property.
+  - A deleted instance can be identified by the non-empty value of the **deleted** property.
 - If a series was modified, all the modified and deleted occurrences of the series should be deleted.
-	- Series can be identified by the non-empty value of the **rrule** property and the empty value of the **recurring_event_id** one.
-	- Modified occurrences of the series are all the records in which **recurring_event_id** matches the **id** of the series.
+  - Series can be identified by the non-empty value of the **rrule** property and the empty value of the **recurring_event_id** one.
+  - Modified occurrences of the series are all the records in which **recurring_event_id** matches the **id** of the series.
 - If an event with the non-empty **recurring_event_id** was deleted, it needs to be updated with **deleted=true** instead of deleting.
 
 {{note
@@ -189,172 +183,279 @@ You can find the complete code examples [here](howtostart_guides.md)
 Custom control for the lightbox's recurring block
 ------------------------------------
 
-Starting from version 4.2, dhtxmlScheduler allows you to specify a custom HTML form for the 'recurring' block of the lightbox.
+Starting from version 4.2, Scheduler allows you to specify a custom HTML for the 'recurring' block of the lightbox.
 
-####What customizations can you do?
+#### What customizations can you do?
 
-1. To change the form markup
-2. To delete unnecessary elements (e.g., the 'yearly' repeat type and all related inputs)
-3. To set some default values for inputs (e.g., you need all series to be created with 'no end date'. Then, you make the 'no end date' option checked and hide the 
-whole block for specifying the recurrence end.
+1. Change the markup
+2. Delete unnecessary elements (e.g., the "yearly" repeat type)
+3. Set some default values for inputs (e.g., you need all series to be created with "no end date")
 
+### Default template of the control for the lightbox's recurring block
 
-### Usage example
+The default template of the control for the lightbox's recurring block looks like the following code, 
+where the `loc` object is a [locale](api/scheduler_locale_other.md) object (region-specific labels) of the Scheduler:
 
-Let's start with an example. Imagine that you want to remove the 'monthly' and 'yearly' repeat types and have 
-the 'no end date' option for all events (i.e. remove the block for specifying the recurrence end). 
-
-<ol> 
-<li>Define the markup of a custom form and place it somewhere on the page (you can start by copying the default template, which can be found at <b>'scheduler\sources\locale\recurring\'</b>):
 ~~~html
-<div class="dhx_form_repeat" id="my_recurring_form"> /*!*/
-  <form>
-    <div>
-      <select name="repeat">
-        <option value="day">Daily</option>
-        <option value="week">Weekly</option>
-      </select>
+<div class="dhx_form_rrule">
+    <div class="dhx_form_repeat_pattern">
+        <select>
+            <option value="NEVER">${loc.repeat_never}</option>
+            <option value="DAILY">${loc.repeat_daily}</option>
+            <option value="WEEKLY">${loc.repeat_weekly}</option>
+            <option value="MONTHLY">${loc.repeat_monthly}</option>
+            <option value="YEARLY">${loc.repeat_yearly}</option>
+            <option value="WORKDAYS">${loc.repeat_workdays}</option>
+            <option value="CUSTOM">${loc.repeat_custom}</option>
+        </select>
     </div>
-    <div>
-      <div style="display:none;" id="dhx_repeat_day">
-        <input type="hidden" name="day_type" value="d"/>
-        <input type="hidden" name="day_count" value="1" />
-      </div>
-      <div style="display:none;" id="dhx_repeat_week">
-        Repeat every week next days:<br />
+    <div class="dhx_form_repeat_custom dhx_hidden">
+        <div class="dhx_form_repeat_custom_interval">
+            <input name="repeat_interval_value" type="number" min="1">
+            <select name="repeat_interval_unit">
+              <option value="DAILY">${loc.repeat_freq_day}</option>
+              <option value="WEEKLY">${loc.repeat_freq_week}</option>
+              <option value="MONTHLY">${loc.repeat_freq_month}</option>
+              <option value="YEARLY">${loc.repeat_freq_year}</option>
+            </select>
+        </div>
 
-       <label><input type="checkbox" name="week_day" value="1" />Monday</label>
-       <label><input type="checkbox" name="week_day" value="2" />Tuesday</label>
-       <label><input type="checkbox" name="week_day" value="3" />Wednesday</label>
-       <label><input type="checkbox" name="week_day" value="4" />Thursday</label>
-       <label><input type="checkbox" name="week_day" value="5" />Friday</label>
-       <label><input type="checkbox" name="week_day" value="6" />Saturday</label>
-       <label><input type="checkbox" name="week_day" value="0" />Sunday</label>
-       <input type="hidden" name="week_count" value="1" />
-      </div>
+    <div class="dhx_form_repeat_custom_additional">
+        <div class="dhx_form_repeat_custom_week dhx_hidden">
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="MO" />${loc.day_for_recurring[1]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="TU" />${loc.day_for_recurring[2]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="WE" />${loc.day_for_recurring[3]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="TH" />${loc.day_for_recurring[4]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="FR" />${loc.day_for_recurring[5]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="SA" />${loc.day_for_recurring[6]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="SU" />${loc.day_for_recurring[0]}</label>
+        </div>
+
+        <div class="dhx_form_repeat_custom_month dhx_hidden">
+            <select name="dhx_custom_month_option">
+                <option value="month_date"></option>
+                <option value="month_nth_weekday"></option>
+            </select>
+        </div>
+
+        <div class="dhx_form_repeat_custom_year dhx_hidden">
+            <select name="dhx_custom_year_option">
+                <option value="month_date"></option>
+                <option value="month_nth_weekday"></option>
+            </select>
+        </div>
     </div>
 
-    <input type="hidden" value="no" name="end">
-  </form>
+    <div class="dhx_form_repeat_ends">
+        <div>${loc.repeat_ends}</div>
+            <div class="dhx_form_repeat_ends_options">
+                <select name="dhx_custom_repeat_ends">
+                    <option value="NEVER">${loc.repeat_never}</option>
+                    <option value="AFTER">${loc.repeat_radio_end2}</option>
+                    <option value="ON">${loc.repeat_on_date}</option>
+                </select>
+                <div class="dhx_form_repeat_ends_extra">
+                    <div class="dhx_form_repeat_ends_after dhx_hidden">
+                        <label><input name="dhx_form_repeat_ends_after" type="number" 
+                          min="1">${loc.repeat_text_occurrences_count}</label>
+                    </div>
+                    <div class="dhx_form_repeat_ends_on dhx_hidden">
+                      <input type="date" name="dhx_form_repeat_ends_ondate">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 ~~~
-</li>
-<li> Set the 'form' parameter of the 'recurring' section to the id of your custom form: 
+
+#### The main recurring select control
+
+Basically, the recurring block of the lightbox contains the main recurring select control that has 5 
+default types of recurrence with the following options: "Every day", "Every week", "Every month", 
+"Every year", "Every weekday". Additionally, it includes the "Custom" option for creating the required
+type and the "Never" option to disable the recurrence:
+
+~~~html
+<div class="dhx_form_repeat_pattern">
+    <select>
+        <option value="NEVER">Never</option>
+        <option value="DAILY">Every day</option>
+        <option value="WEEKLY">Every week</option>
+        <option value="MONTHLY">Every month</option>
+        <option value="YEARLY">Every year</option>
+        <option value="WORKDAYS">Every weekday</option>
+        <option value="CUSTOM">Custom</option>
+    </select>
+</div>
+~~~
+
+For the "Custom" repeat type there are special repeat type units: "Day", "Week", "Month", "Year" and the repeat interval input.
+The "Week", "Month" and "Year" units have their own sections with specific repetition options (by default these sections are hidden until you select the required type):
+
+~~~html
+<div class="dhx_form_repeat_custom ">
+    <div class="dhx_form_repeat_custom_interval">
+        <input name="repeat_interval_value" type="number" min="1">
+        <select name="repeat_interval_unit">
+            <option value="DAILY">${loc.repeat_freq_day}</option>
+            <option value="WEEKLY">${loc.repeat_freq_week}</option>
+            <option value="MONTHLY">${loc.repeat_freq_month}</option>
+            <option value="YEARLY">${loc.repeat_freq_year}</option>
+        </select>
+    </div>
+
+    <div class="dhx_form_repeat_custom_additional">
+        <div class="dhx_form_repeat_custom_week dhx_hidden">
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="MO" />${loc.day_for_recurring[1]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="TU" />${loc.day_for_recurring[2]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="WE" />${loc.day_for_recurring[3]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="TH" />${loc.day_for_recurring[4]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="FR" />${loc.day_for_recurring[5]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="SA" />${loc.day_for_recurring[6]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="SU" />${loc.day_for_recurring[0]}</label>
+        </div>
+
+        <div class="dhx_form_repeat_custom_month dhx_hidden">
+            <select name="dhx_custom_month_option">
+                <option value="month_date"></option>
+                <option value="month_nth_weekday"></option>
+            </select>
+        </div>
+
+        <div class="dhx_form_repeat_custom_year dhx_hidden">
+            <select name="dhx_custom_year_option">
+                <option value="month_date"></option>
+                <option value="month_nth_weekday"></option>
+            </select>
+        </div>
+    </div>
+</div>
+~~~
+
+#### The block for specifying the end of the recurrence
+
+The end of recurrence is defined by the select control with the following values: "NEVER", "ON", "AFTER". If the "AFTER" option is selected, there will be an additional 
+input for the amount of repeat events. If the "ON" option is selected, there will be an additional date input:
+
+~~~html
+<div class="dhx_form_repeat_ends">
+    <div>${loc.repeat_ends}</div>
+        <div class="dhx_form_repeat_ends_options">
+            <select name="dhx_custom_repeat_ends">
+                <option value="NEVER">${loc.repeat_never}</option>
+                <option value="AFTER">${loc.repeat_radio_end2}</option>
+                <option value="ON">${loc.repeat_on_date}</option>
+            </select>
+            <div class="dhx_form_repeat_ends_extra">
+                <div class="dhx_form_repeat_ends_after dhx_hidden">
+                  <label><input name="dhx_form_repeat_ends_after" type="number" 
+                    min="1">${loc.repeat_text_occurrences_count}</label>
+                </div>
+            <div class="dhx_form_repeat_ends_on dhx_hidden">
+                <input type="date" name="dhx_form_repeat_ends_ondate">
+            </div>
+        </div>
+    </div>
+</div>
+~~~
+
+### Example of a custom recurring block
+
+Let's create an example of a custom recurring block. Imagine that you want to remove the "monthly" and "yearly" repeat types and have the "no end date" option
+for all events (i.e. remove the block for specifying the recurrence end). 
+
+1\. Define the markup of a custom form and place it somewhere on the page 
+(you can start by copying the default template):
+
+~~~html
+<!-- note that you need to specify the id of your custom recurring form  -->
+<div class="dhx_form_rrule" id="my_recurring_form" style="display:none;">
+    <div class="dhx_form_repeat_pattern">
+        <select>
+            <option value="NEVER">Never</option>
+            <option value="DAILY">Every day</option>
+            <option value="WEEKLY">Every week</option>
+            <option value="WORKDAYS">Every weekday</option>
+            <option value="CUSTOM">Custom</option>
+        </select>
+    </div>
+    <div class="dhx_form_repeat_custom">
+        <div class="dhx_form_repeat_custom_interval">
+            <input name="repeat_interval_value" type="number" min="1">
+            <select name="repeat_interval_unit">
+                <option value="DAILY">Day</option>
+                <option value="WEEKLY">Week</option>
+            </select>
+        </div>
+
+        <div class="dhx_form_repeat_custom_additional">
+            <div class="dhx_form_repeat_custom_week dhx_hidden">
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="MO" />Monday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="TU" />Tuesday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="WE" />Wednesday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="TH" />Thursday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="FR" />Friday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="SA" />Saturday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="SU" />Sunday</label>
+            </div>
+        </div>
+    </div>
+</div>
+~~~
+
+2\. Set the **form** parameter of the "recurring" section to the id of your custom form:
+
 ~~~js
 scheduler.config.lightbox.sections = [
-	{name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
-	{name:"recurring", type:"recurring", map_to:"rec_type", button:"recurring", 
-      form:"my_recurring_form"},/*!*/
-	{name:"time", height:72, type:"time", map_to:"auto"}
+    { name: "description", type: "textarea", map_to: "text", focus: true },
+    { name: "recurring", type: "recurring", map_to: "rrule", 
+        form: "my_recurring_form" }, /*!*/
+    { name: "time", type: "time", map_to: "auto", height: 72 },
 ];
 ~~~
-</li>
-</ol>
+
+The resulting lightbox with a custom recurring block is shown in the image below:
 
 <div style="text-align:center;"><img src="custom_recurring_form.png"/></div>
 
-###Main parts
+The following snippet demonstrates how a lightbox with a custom recurring block given above can be implemented:
 
-You can find the default HTML structure of the lightbox's recurring block for different languages at the <b>'scheduler\sources\locale\recurring\'</b> directory.<br>
-For example, for the English locale you need to check the <b>'scheduler\sources\locale\recurring\repeat_template_en.htm'</b> file.
-
-Basically, the recurring block of the lightbox contains 3 groups of controls:
-
-1) Controls for choosing the type of recurrence. These inputs have the 'repeat' name and one of the following values: 'daily', 'weekly', 'monthly', 'yearly'.
-The form must have at least one 'repeat' input with a value. You can use radio buttons, selects or set the default type in the hidden input.
-
-Consider the following examples, each of them is a valid way for selecting the type of recurrence in the form. 
-
-- Radiobuttons:
-
-~~~html
-<label><input type="radio" name="repeat" value="day" />Daily</label><br />
-<label><input type="radio" name="repeat" value="week"/>Weekly</label><br />
-<label><input type="radio" name="repeat" value="month" />Monthly</label><br />
-<label><input type="radio" name="repeat" value="year" />Yearly</label>
-~~~
-
-- Select input, without the 'Monthly' and 'Yearly' options:
-
-~~~html
-<select name="repeat">
-  <option value="day">Daily</option>
-  <option value="week">Weekly</option>
-</select>
-~~~
-
-- Hidden input (the lightbox will create only the 'Daily' series):
-
-~~~html
-<input type="hidden" name="repeat" value="day" />
-~~~
-
-2) A block for configuring the recurrence depending on the repeat type. For example, for the 'Daily' repeat type, the block will take the following structure:
-
-~~~html
-<div class="dhx_repeat_center">
-   <div style="display:none;" id="dhx_repeat_day">
-	 <label>
-       <input class="dhx_repeat_radio" type="radio" 
-       		name="day_type" value="d"/>Every
-     </label>
-       <input class="dhx_repeat_text" type="text" 
-       		name="day_count" value="1" />day<br>
-     <label>
-       <input class="dhx_repeat_radio" type="radio" 
-       		name="day_type" checked value="w"/>Every workday
-     </label>
-  </div>
-...
-</div>         
-~~~
-
-Note, that the markup which is related to a specific type of recurrence can be wrapped in a div with the <b>id</b> in the following format <b>"dhx_repeat_&lt;repeat type&gt;"</b>, e.g. "dhx_repeat_day".
-In this case it will be displayed only when the appropriate repeat type is selected.
-
-3) Controls for specifying the end of recurrence. The end of recurrence is defined by the input with the 'end' name.
-<br>Possible values are <b>'no'</b>, <b>'date_of_end'</b>, <b>'occurences_count'</b>.
-
-Similar to the 'repeat' controls, the form must have at least one input of this type.
-
-~~~html
-<div class="dhx_repeat_right">
-  <label>
-    <input type="radio" name="end" value="no" checked/>No end date
-  </label><br />
-  <label>
-    <input type="radio" name="end" value="date_of_end" />After</label>
-    <input type="text" name="date_of_end" />
-  <br />
-  <label>
-    <input type="radio" name="end" value="occurences_count" />After</label>
-    <input type="text" name="occurences_count" value="1" />Occurrences
-</div>
-~~~
-
-The date for the <b>'date_of_end'</b> mode must be defined in an input named 'date_of_end'. The same works for the <b>'occurences_count'</b> mode, 
-that takes the number of occurrences from an input named 'occurences_count'.
-<br>
-
-You can remove any type or predefine it in a hidden input:
-
-~~~html
-<input type="hidden" name="end" value="date_of_end" />
-<input type="hidden" name="date_of_end" value="01.01.2024" />
-~~~
-	
-###Notes for changing the recurring block
+{{editor		https://snippet.dhtmlx.com/0ha0edlk		Lightbox with a custom recurring block }}
+  
+### Notes for changing the recurring block
 
 Please, before starting to apply a custom configuration to the lightbox's recurring block, note the following things: 
 
-1. The 'name' attribute is hardcoded for all inputs: the inputs with different names will be ignored.
-2. The 'value' attribute is fixed for all inputs except for ones that imply the direct input.
-3. When you specify a new form, dhtmlxScheduler doesn't use it directly and just replicates your HTML structure in the lightbox's template.
+1. The **name** attribute is hardcoded for all inputs: the inputs with different names will be ignored.
+2. The **value** attribute is fixed for all inputs except for ones that imply direct input.
+3. When you specify a new form, Scheduler doesn't use it directly and just replicates your HTML structure in the lightbox's template.
 It means that all event handlers or custom properties that have been attached to DOMElements of your form from the code won't be applied to the form in the lightbox.
 If you want to attach an event handler, you need either to specify it as an inline HTML attribute, or attach a handler to the form when it's shown in the lightbox.
 
 {{note
-Beware, dhtmlxScheduler doesn't work with your original HTML form and just creates its copy in the lightbox's template.
+Beware, Scheduler doesn't work with your original HTML form and just creates its copy in the lightbox's template.
 }}
 
 
