@@ -12,7 +12,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 7.2.3
 ---------------
-<span class='release_date'>April 7, 2025. Bugfix release</span>
+<span class='release_date'>April 9, 2025. Bugfix release</span>
 
 ### Fixes
 
@@ -20,10 +20,10 @@ If you are updating Scheduler from an older version, check migration_from_older_
 - Fix the issue in the [multiUserBackend](multiuser_live_updates.md) extension that caused incorrect behavior when editing all events in a recurring series
 - Fix the issue where the `timeline_scalex_class` added the class twice in the [Timeline view](timeline_view.md)
 - Fix the issue where `scrollTo({section: x})` did not scroll to the first section in the [Timeline view](timeline_view.md)
-- Fix the issue where section height setting in the [lightbox](lightbox_editors.md) was not applied correctly
+- Fix the issue where the section height setting in the [lightbox](lightbox_editors.md) was not applied correctly
 - Fix the issue where the [Mini Calendar](minicalendar.md) ignored the `rtl` configuration
 - Fix the issue where smart rendering worked only in the first [Timeline view](timeline_view.md) when multiple timelines were used with `smart_rendering:true` and `scrollable:false`
-- Fix the issue where using `first_hour`/`last_hour` with `round_position` caused date corruption when dragging tasks in the [Timeline view](timeline_view.md)
+- Fix the issue where using `first_hour`/`last_hour` with `round_position` caused incorrect dates of events when dragging events in the [Timeline view](timeline_view.md)
 
 7.2.2
 ---------------
