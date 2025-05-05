@@ -10,6 +10,19 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+7.2.4
+---------------
+<span class='release_date'>May 6, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect behavior of the [ignore_timeline](timeline_view.md#ignoringthetimelinebehavior) setting when moving or resizing events in the [Timeline view](timeline_view.md)
+- Fix the issue with incorrect `end_date` calculation when creating new events with [ignore_timeline](timeline_view.md#ignoringthetimelinebehavior) enabled
+- Fix the issue where [lightbox](lightbox_editors.md) button configurations were mixed up after being saved to storage
+- Fix the issue where the [container_autoresize](extensions_list.md#containerautoresize) plugin unexpectedly increased container size in an empty [Agenda view](agenda_view.md)
+- Fix the script error in the [Units view](units_view.md) that occurred with certain values of `size` setting and [mark_now](api/scheduler_mark_now_config.md) enabled
+- Fix the incorrect behavior of horizontal scroll in the [Timeline view](timeline_view.md) when `smart_rendering` is set to `false`
+
 7.2.3
 ---------------
 <span class='release_date'>April 9, 2025. Bugfix release</span>
