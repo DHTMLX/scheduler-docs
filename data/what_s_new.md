@@ -10,6 +10,16 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+7.2.5
+---------------
+<span class='release_date'>May 20, 2025. Bugfix release</span>
+
+- Ensure that the [Lightbox time control](time.md) displays the correct number of days for each month in the day selectors
+- Fix the script error occurring in the trial build in Salesforce
+- Fix the regression introduced in Scheduler v7.2 where the "Today" cell was not highlighted in the [Month view](month_view.md)
+- Fix the issue with incorrect `end_date` calculation when resizing events with [round_position](timeline_view.md#stretchingeventsoverthecell) enabled
+- Fix the issue where the [Tooltip](tooltips.md) shifted off-screen when displaying long content
+
 7.2.4
 ---------------
 <span class='release_date'>May 6, 2025. Bugfix release</span>
