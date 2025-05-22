@@ -4,10 +4,7 @@ dhtmlxScheduler with Angular
 You should be familiar with the basic concepts and patterns of Angular to use this documentation.
 If you are not, please refer to the [Angular documentation](https://angular.io/docs) for a getting-started tutorial. 
 
-DHTMLX Scheduler is compatible with Angular. We have prepared code examples of how to use DHTMLX Scheduler with Angular.
-To check online samples, please refer to the corresponding [Example on Replit](https://replit.com/@dhtmlx/dhtmlx-scheduler-with-angular). 
-
-You can also [check the demo on GitHub](https://github.com/DHTMLX/angular-scheduler-demo).
+DHTMLX Scheduler is compatible with Angular. You can check the corresponding example on GitHub: [DHTMLX Scheduler with Angular Demo](https://github.com/DHTMLX/angular-scheduler-demo).
 
 ## Creating a project
 
