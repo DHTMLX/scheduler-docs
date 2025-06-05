@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 COMPONENT=$1
+LANGUAGE=$2
+
 PATH=$PATH:/root/.local/bin
 
 #read samples
@@ -24,6 +26,6 @@ php -d memory_limit=512M index.php sphinx
 cd search && zip -qr ../${COMPONENT}.docs.xml.zip ./ && cd ..
 
 #store generated docs
-aws --quiet s3 cp ./${COMPONENT}.docs.html.zip s3://dhtmlx-packages/docs/${COMPONENT}_${LATEST}.html.zip
-aws --quiet s3 cp ./${COMPONENT}.docs.xml.zip s3://dhtmlx-packages/docs/${COMPONENT}_${LATEST}.xml.zip
-aws --quiet s3 cp ./latest.txt s3://dhtmlx-packages/docs/${COMPONENT}.latest.txt
+aws --quiet s3 cp ./${COMPONENT}.docs.html.zip s3://dhtmlx-packages/docs/${COMPONENT}_${LATEST}_${LANGUAGE}.html.zip
+aws --quiet s3 cp ./${COMPONENT}.docs.xml.zip s3://dhtmlx-packages/docs/${COMPONENT}_${LATEST}_${LANGUAGE}.xml.zip
+aws --quiet s3 cp ./latest.txt s3://dhtmlx-packages/docs/${COMPONENT}_${LANGUAGE}.latest.txt
