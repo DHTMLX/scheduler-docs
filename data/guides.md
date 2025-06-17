@@ -217,7 +217,7 @@ The articles come around key procedures and problem-solving activities.
 					<li>minicalendar.md</li>                 
                     <li>content_security_policy.md</li>         
                     <li>winjs_compatibility.md</li>                   
-                    <li>live_update.md</li>
+                    <li>multiuser_live_updates.md</li>
                     <li>multiple_users.md</li>          
             </ul>
         </td>

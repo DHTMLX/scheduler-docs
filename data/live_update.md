@@ -1,7 +1,7 @@
 Live Updates Mode (Legacy)
 ======================================
 
-{{note This article refers to the legacy implementation of the Live Updates mode for DHTMLX Scheduler. See the details on the current version [here](live_update.md). }}
+{{note This article refers to the legacy implementation of the Live Updates mode for DHTMLX Scheduler. See the details on the current version [here](multiuser_live_updates.md). }}
 
 Live Update is a mode that provides synchronous data updates in real time.
 
