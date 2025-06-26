@@ -16,7 +16,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 ### Fixes
 
-- Fix the issue with seconds-level precision in event timing
+- Fix the issue with seconds-level precision in the event timing
 - Fix the incorrect drag behavior in the [Timeline view](timeline_view.md) during short months
 - Fix the incorrect rounding of events in the [Timeline view](timeline_view.md)
 - Prevent [DataProcessor](server_integration.md) from adding the `!nativeeditor_status` property to [custom router](server_integration.md#customrouting) arguments
