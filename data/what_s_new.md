@@ -10,6 +10,17 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+7.2.6
+---------------
+<span class='release_date'>June 26, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue with seconds-level precision in the event timing
+- Fix the incorrect drag behavior in the [Timeline view](timeline_view.md) during short months
+- Fix the incorrect rounding of events in the [Timeline view](timeline_view.md)
+- Prevent [DataProcessor](server_integration.md) from adding the `!nativeeditor_status` property to [custom router](server_integration.md#customrouting) arguments
+
 7.2.5
 ---------------
 <span class='release_date'>May 20, 2025. Bugfix release</span>
