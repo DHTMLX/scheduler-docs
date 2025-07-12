@@ -43,7 +43,7 @@ npm install
 npm run dev
 ~~~
 
-You should now have your Vue project running on [http://localhost:5173](http://localhost:5173).
+You should now have your Vue project running on **http://localhost:5173**.
 
 ![Scheduler Vue.js app running](frontend_frameworks_howtostart/scheduler_vue_app_run.png)
 

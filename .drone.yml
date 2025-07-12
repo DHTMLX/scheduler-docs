@@ -10,6 +10,12 @@ pipeline:
     commands:
       - ln -s /madoka ../madoka
       - ./build.sh scheduler 2>&1
-      - curl "https://docs.dhtmlx.com/hooks/docs-release?token=$$HOOK_TOKEN&name=scheduler"
+      - curl "https://docs.dhtmlx.com/hooks/docs-release?token=$$HOOK_TOKEN&name=scheduler&branch=${DRONE_BRANCH}"
     when:
-      branch: master
+      branch:
+        - master
+        - ru
+        - de
+        - cn
+        - ko
+        - en

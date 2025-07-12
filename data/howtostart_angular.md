@@ -36,7 +36,7 @@ or
 npm start
 ~~~
 
-Now the app should be running on [http://localhost:4200](http://localhost:4200).
+Now the app should be running on **http://localhost:4200**.
 
 ![Scheduler with Angular](frontend_frameworks_howtostart/scheduler_angular_front.png)
 

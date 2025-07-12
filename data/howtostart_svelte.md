@@ -42,7 +42,7 @@ npm install
 npm run dev
 ~~~
 
-You should now have your Svelte project running on [http://localhost:5173](http://localhost:5173).
+You should now have your Svelte project running on **http://localhost:5173**.
 
 ![Scheduler Svelte app running](frontend_frameworks_howtostart/scheduler_svelte_app_run.png)
 
