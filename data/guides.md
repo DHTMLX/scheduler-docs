@@ -198,6 +198,7 @@ The articles come around key procedures and problem-solving activities.
 		        Integrations
 		    </h4>
 		    <ul id="styling_sublist">
+                  <li>firebase_integration.md</li>
                   <li>backbone_integration.md</li>
                   <li>integration_with_dhtmlxmessage.md</li>
                   <li>scheduler_typescript.md</li>
