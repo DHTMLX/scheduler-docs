@@ -2,6 +2,7 @@ Scheduler Integrations
 =======================
 
 {{index
+- firebase_integration.md
 - backbone_integration.md
 - scheduler_typescript.md
 - jquery_integration.md
