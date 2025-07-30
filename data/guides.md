@@ -67,7 +67,7 @@ The articles come around key procedures and problem-solving activities.
                 <li>react.md</li>
             </ul>
         </td>
-        <td class='topic_description'>Learn how to integrate Scheduler into modern front-end frameworks - React, Vue and Angular (coming soon) - using official wrapper components. This section covers installation, adding the component to your template, passing configs via props/slots and handling data and events in the framework's native state management style.</td>
+        <td class='topic_description'>Learn how to integrate Scheduler into modern front-end frameworks - React, Vue and Angular (coming soon) - using official wrapper components.</td>
 	</tr>
 	<tr>
 		<td id="manipulations" class='topics'>
