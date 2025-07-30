@@ -31,8 +31,6 @@ If you are updating Scheduler from an older version, check migration_from_older_
 - Fix the issue where the [time_step](api/scheduler_time_step_config.md) setting corrupted parsed event data
 
 
-Human copy
-
 7.2.6
 ---------------
 <span class='release_date'>June 26, 2025. Bugfix release</span>
