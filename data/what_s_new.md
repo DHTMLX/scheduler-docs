@@ -10,6 +10,27 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+
+
+7.2.7
+---------------
+<span class='release_date'>July 30, 2025. Bugfix release</span>
+
+### New
+
+- Samples for [React Scheduler](react.md) were added to the Commercial, Enterprise, Ultimate, and Evaluation packages
+
+### Fixes
+
+- Fix the issue where dragging a [recurring event](recurring_events.md) after deleting its subsequent occurrences behaved incorrectly
+- Ensure "Repeat Event" control of the [lightbox](lightbox_editors.md) is disabled for modified [series instances](recurring_events.md#editingdeletingacertainoccurrenceintheseries)
+- Fix the incorrect display of legacy labels for [recurring events](recurring_events.md)
+- Fix the conflict between the [max_month_events](api/scheduler_max_month_events_config.md) setting and [multi-day events](month_view.md), which caused events to disappear or overlap in the [Month view](month_view.md)
+- Ensure cookies set by Scheduler over HTTPS now include the **Secure** attribute
+- Fix the issue where the [event_duration](api/scheduler_event_duration_config.md) setting corrupted parsed event data
+- Fix the issue where the [time_step](api/scheduler_time_step_config.md) setting corrupted parsed event data
+
+
 7.2.6
 ---------------
 <span class='release_date'>June 26, 2025. Bugfix release</span>

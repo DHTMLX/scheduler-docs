@@ -58,6 +58,17 @@ The articles come around key procedures and problem-solving activities.
         bring it to life: configure with specific settings, customize the default templates, 
         attach events, etc.</td>
 	</tr>
+    <tr>
+		<td id="data" class='topics'>
+		    <h4>
+		         Framework Versions 
+		    </h4>
+		    <ul id="data_sublist" >
+                <li>react.md</li>
+            </ul>
+        </td>
+        <td class='topic_description'>Learn how to integrate Scheduler into modern front-end frameworks - React, Vue and Angular (coming soon) - using official wrapper components. This section covers installation, adding the component to your template, passing configs via props/slots and handling data and events in the framework's native state management style.</td>
+	</tr>
 	<tr>
 		<td id="manipulations" class='topics'>
 		    <h4>
@@ -239,6 +250,7 @@ The articles come around key procedures and problem-solving activities.
 </table>
 
 @index:
+- react.md
 - editions_comparison.md
 - creating_scheduler.md
 - howtostart_guides.md
