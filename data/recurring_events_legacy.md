@@ -16,7 +16,7 @@ scheduler.plugins({
 Once the support for recurring events is activated, the lightbox starts looking as shown below: 
 
 
-<img src="recurring_lightbox.png"/>
+<img src="recurring_lightbox_legacy.png"/>
 
 
 Configuration Options
@@ -323,7 +323,7 @@ scheduler.config.lightbox.sections = [
 </li>
 </ol>
 
-<div style="text-align:center;"><img src="custom_recurring_form.png"/></div>
+<div style="text-align:center;"><img src="custom_recurring_form_legacy.png"/></div>
 
 ###Main parts
 
