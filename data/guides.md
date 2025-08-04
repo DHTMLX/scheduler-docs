@@ -58,6 +58,17 @@ The articles come around key procedures and problem-solving activities.
         bring it to life: configure with specific settings, customize the default templates, 
         attach events, etc.</td>
 	</tr>
+    <tr>
+		<td id="data" class='topics'>
+		    <h4>
+		         Framework Versions 
+		    </h4>
+		    <ul id="data_sublist" >
+                <li>react.md</li>
+            </ul>
+        </td>
+        <td class='topic_description'>Learn how to integrate Scheduler into modern front-end frameworks - React, Vue and Angular (coming soon) - using official wrapper components.</td>
+	</tr>
 	<tr>
 		<td id="manipulations" class='topics'>
 		    <h4>
@@ -198,6 +209,7 @@ The articles come around key procedures and problem-solving activities.
 		        Integrations
 		    </h4>
 		    <ul id="styling_sublist">
+                  <li>firebase_integration.md</li>
                   <li>backbone_integration.md</li>
                   <li>integration_with_dhtmlxmessage.md</li>
                   <li>scheduler_typescript.md</li>
@@ -217,7 +229,7 @@ The articles come around key procedures and problem-solving activities.
 					<li>minicalendar.md</li>                 
                     <li>content_security_policy.md</li>         
                     <li>winjs_compatibility.md</li>                   
-                    <li>live_update.md</li>
+                    <li>multiuser_live_updates.md</li>
                     <li>multiple_users.md</li>          
             </ul>
         </td>
@@ -238,6 +250,7 @@ The articles come around key procedures and problem-solving activities.
 </table>
 
 @index:
+- react.md
 - editions_comparison.md
 - creating_scheduler.md
 - howtostart_guides.md

@@ -4,10 +4,7 @@ dhtmlxScheduler with Svelte
 You should be familiar with the basic concepts and patterns of Svelte to use this documentation. If 
 you are not, please refer to the [Svelte documentation](https://svelte.dev/) for a getting-started tutorial.
 
-DHTMLX Scheduler is compatible with Svelte. We have prepared code examples of how to use 
-DHTMLX Scheduler with Svelte. To check online samples, please refer to the corresponding [Example on Replit](https://replit.com/@dhtmlx/dhtmlx-scheduler-with-svelte).
-
-You can also [check the demo on GitHub](https://github.com/DHTMLX/svelte-scheduler-demo).
+DHTMLX Scheduler is compatible with Svelte. You can check the corresponding example on GitHub: [DHTMLX Scheduler with Svelte Demo](https://github.com/DHTMLX/svelte-scheduler-demo).
 
 ## Creating a project
 
@@ -45,7 +42,7 @@ npm install
 npm run dev
 ~~~
 
-You should now have your Svelte project running on [http://localhost:5173](http://localhost:5173).
+You should now have your Svelte project running on **http://localhost:5173**.
 
 ![Scheduler Svelte app running](frontend_frameworks_howtostart/scheduler_svelte_app_run.png)
 

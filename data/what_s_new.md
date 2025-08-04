@@ -10,6 +10,76 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+
+
+7.2.8
+---------------
+<span class='release_date'>July 30, 2025. Bugfix release</span>
+
+### New
+
+- Samples for [React Scheduler](react.md) were added to the Commercial, Enterprise, Ultimate, and Evaluation packages
+
+### Fixes
+
+- Fix the issue where dragging a [recurring event](recurring_events.md) after deleting its subsequent occurrences behaved incorrectly
+- Ensure "Repeat Event" control of the [lightbox](lightbox_editors.md) is disabled for modified [series instances](recurring_events.md#editingdeletingacertainoccurrenceintheseries)
+- Fix the incorrect display of legacy labels for [recurring events](recurring_events.md)
+- Fix the conflict between the [max_month_events](api/scheduler_max_month_events_config.md) setting and [multi-day events](month_view.md), which caused events to disappear or overlap in the [Month view](month_view.md)
+- Ensure cookies set by Scheduler over HTTPS now include the **Secure** attribute
+- Fix the issue where the [event_duration](api/scheduler_event_duration_config.md) setting corrupted parsed event data
+- Fix the issue where the [time_step](api/scheduler_time_step_config.md) setting corrupted parsed event data
+
+
+7.2.6
+---------------
+<span class='release_date'>June 26, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue with seconds-level precision in the event timing
+- Fix the incorrect drag behavior in the [Timeline view](timeline_view.md) during short months
+- Fix the incorrect rounding of events in the [Timeline view](timeline_view.md)
+- Prevent [DataProcessor](server_integration.md) from adding the `!nativeeditor_status` property to [custom router](server_integration.md#customrouting) arguments
+
+7.2.5
+---------------
+<span class='release_date'>May 20, 2025. Bugfix release</span>
+
+- Ensure that the [Lightbox time control](time.md) displays the correct number of days for each month in the day selectors
+- Fix the script error occurring in the trial build in Salesforce
+- Fix the regression introduced in Scheduler v7.2 where the "Today" cell was not highlighted in the [Month view](month_view.md)
+- Fix the issue with incorrect `end_date` calculation when resizing events with [round_position](timeline_view.md#stretchingeventsoverthecell) enabled
+- Fix the issue where the [Tooltip](tooltips.md) shifted off-screen when displaying long content
+
+7.2.4
+---------------
+<span class='release_date'>May 6, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect behavior of the [ignore_timeline](timeline_view.md#ignoringthetimelinebehavior) setting when moving or resizing events in the [Timeline view](timeline_view.md)
+- Fix the issue with incorrect `end_date` calculation when creating new events with [ignore_timeline](timeline_view.md#ignoringthetimelinebehavior) enabled
+- Fix the issue where [lightbox](lightbox_editors.md) button configurations were mixed up after being saved to storage
+- Fix the issue where the [container_autoresize](extensions_list.md#containerautoresize) plugin unexpectedly increased container size in an empty [Agenda view](agenda_view.md)
+- Fix the script error in the [Units view](units_view.md) that occurred with certain values of the `size` setting with the [mark_now](api/scheduler_mark_now_config.md) config enabled
+- Fix the incorrect behavior of horizontal scroll in the [Timeline view](timeline_view.md) when `smart_rendering` is set to `false`
+
+7.2.3
+---------------
+<span class='release_date'>April 9, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue where grid cells were not focused when tasks were outside the chart's visible time range
+- Fix the issue in the [multiUserBackend](multiuser_live_updates.md) extension that caused incorrect behavior when editing all events in a recurring series
+- Fix the issue where the `timeline_scalex_class` added the class twice in the [Timeline view](timeline_view.md)
+- Fix the issue where `scrollTo({section: x})` did not scroll to the first section in the [Timeline view](timeline_view.md)
+- Fix the issue where the section `height` setting in the [lightbox](lightbox_editors.md) was not applied correctly
+- Fix the issue where the [Mini Calendar](minicalendar.md) ignored the `rtl` configuration
+- Fix the issue where smart rendering worked only in the first [Timeline view](timeline_view.md) when multiple timelines were used with `smart_rendering:true` and `scrollable:false`
+- Fix the issue where using `first_hour`/`last_hour` with `round_position` caused incorrect dates of events when dragging events in the [Timeline view](timeline_view.md)
+
 7.2.2
 ---------------
 <span class='release_date'>February 13, 2025. Bugfix release</span>

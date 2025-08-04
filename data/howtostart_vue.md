@@ -4,10 +4,7 @@ dhtmlxScheduler with Vue.js
 You should be familiar with the basic concepts and patterns of [Vue](https://vuejs.org/) to use this documentation.
 If you are not, please refer to the [Vue 3 documentation](https://vuejs.org/guide/introduction.html#getting-started) for a getting-started tutorial.
 
-DHTMLX Scheduler is compatible with Vue. We have prepared code examples of how to use DHTMLX Scheduler with Vue. 
-To check online samples, please refer to the corresponding [Example on Replit](https://replit.com/@dhtmlx/dhtmlx-scheduler-with-vue3).
-
-You can also [check the demo on GitHub](https://github.com/DHTMLX/vue-scheduler-demo).
+DHTMLX Scheduler is compatible with Vue. You can check the corresponding example on GitHub: [DHTMLX Scheduler with Vue Demo](https://github.com/DHTMLX/vue-scheduler-demo).
 
 ## Creating a project
 
@@ -46,7 +43,7 @@ npm install
 npm run dev
 ~~~
 
-You should now have your Vue project running on [http://localhost:5173](http://localhost:5173).
+You should now have your Vue project running on **http://localhost:5173**.
 
 ![Scheduler Vue.js app running](frontend_frameworks_howtostart/scheduler_vue_app_run.png)
 
