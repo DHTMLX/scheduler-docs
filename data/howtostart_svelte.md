@@ -179,7 +179,7 @@ export function getData() {
 }
 ~~~
 
-And we should [pass props (our data)](https://learn.svelte.dev/tutorial/declaring-props) to a Scheduler component in ***App.svelte***:
+And we should [pass props (our data)](https://svelte.dev/tutorial/svelte/declaring-props) to a Scheduler component in ***App.svelte***:
 
 {{snippet App.svelte}}
 ~~~html

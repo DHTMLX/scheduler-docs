@@ -2,7 +2,7 @@ dhtmlxScheduler with React
 ============================
 
 You should be familiar with the basic concepts and patterns of [React](https://react.dev/) to use this documentation.
-If you are not, please refer to the [React documentation](https://legacy.reactjs.org/docs/getting-started.html) for a getting-started tutorial.
+If you are not, please refer to the [React documentation](https://react.dev/learn) for a getting-started tutorial.
 
 DHTMLX Scheduler is compatible with React. You can check the corresponding example on GitHub: [DHTMLX Scheduler with React Demo](https://github.com/DHTMLX/react-scheduler-demo).
 
