@@ -2,13 +2,13 @@ dhtmlxScheduler with Angular
 ==============================
 
 You should be familiar with the basic concepts and patterns of Angular to use this documentation.
-If you are not, please refer to the [Angular documentation](https://angular.io/docs) for a getting-started tutorial. 
+If you are not, please refer to the [Angular documentation](https://angular.dev/overview) for a getting-started tutorial. 
 
 DHTMLX Scheduler is compatible with Angular. You can check the corresponding example on GitHub: [DHTMLX Scheduler with Angular Demo](https://github.com/DHTMLX/angular-scheduler-demo).
 
 ## Creating a project
 
-Before you start to create a new project, install [Angular CLI](https://angular.io/cli) and [Node.js](https://nodejs.org/en/). Then run the following command:
+Before you start to create a new project, install [Angular CLI](https://angular.dev/tools/cli) and [Node.js](https://nodejs.org/en/). Then run the following command:
 
 ~~~
 ng new my-angular-scheduler-app
