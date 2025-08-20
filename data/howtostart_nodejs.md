@@ -16,7 +16,7 @@ If you use some other technology, check the list of available integration varian
 Our implementation of Scheduler with Node.js will be based on REST API that will be used for communication with server.
 Node.js has a set of ready-made solutions, so we won't have to code everything from the very beginning.
 
-This tutorial uses the [Express](http://expressjs.com/) framework and MySQL as a data storage.
+This tutorial uses the [Express](https://expressjs.com/) framework and MySQL as a data storage.
 
 {{note
 The complete source code is [available on GitHub](https://github.com/DHTMLX/scheduler-howto-node).
@@ -63,7 +63,7 @@ The package manager will create a *package.json* file that will look similar to 
 
 ### Adding dependencies and installing modules
 
-As it was said at the beginning, the [Express](http://expressjs.com/) framework and MySQL are used for creating the demo.
+As it was said at the beginning, the [Express](https://expressjs.com/) framework and MySQL are used for creating the demo.
 
 {{note You should setup your MySQL server, or use some service, e.g. [Free MySQL Hosting](https://www.freemysqlhosting.net/).}}
 

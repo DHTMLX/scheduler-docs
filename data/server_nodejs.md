@@ -19,7 +19,7 @@ Making preparations
 We need to begin with adding some dependencies on the server side.
 The necessary dependencies are:
 
-- [Express](http://expressjs.com/) module
+- [Express](https://expressjs.com/) module
 - [body-parser](https://www.npmjs.com/package/body-parser) module
 - [date-format-lite](https://www.npmjs.com/package/date-format-lite) - a small module that will be used to convert dates of Scheduler entries into the format 
 compatible with the client-side Scheduler API

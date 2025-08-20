@@ -390,7 +390,7 @@ Now we need to define a controller that handles actions on the model, create rou
 
 ###Adding controllers
 
-Let's start with controllers. We'll create one RESTful [resource controller](https://laravel.com/docs/controllers#resource-controllers) for each model. It will contain methods for adding/deleting and updating the model.
+Let's start with controllers. We'll create one RESTful [resource controller](https://laravel.com/docs/12.x/controllers#resource-controllers) for each model. It will contain methods for adding/deleting and updating the model.
 
 ####Controller for events
 
@@ -456,7 +456,7 @@ class EventController extends Controller
 }
 ~~~
 
-And a [route](https://laravel.com/docs/controllers#resource-controllers) for it:
+And a [route](https://laravel.com/docs/12.x/controllers#resource-controllers) for it:
 
 {{snippet routes/api.php}}
 ~~~php
