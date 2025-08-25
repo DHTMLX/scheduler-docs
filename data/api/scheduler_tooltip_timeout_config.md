@@ -10,8 +10,8 @@ scheduler.plugins({
     tooltip: true
 });
 
-scheduler.config.tooltip_hide_timeout = 5000;
-scheduler.init('scheduler_here',new Date(2023,10,20),"week");
+scheduler.config.tooltip_timeout = 1000;
+scheduler.init("scheduler_here", new Date(2026, 10, 20), "week");
 
 
 @template:	api_config
