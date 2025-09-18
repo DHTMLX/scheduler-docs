@@ -20,8 +20,8 @@ If you are updating Scheduler from an older version, check migration_from_older_
 - Fix compatibility issue between the [container_autoresize](extensions_list.md#containerautoresize) plugin and the [Week Agenda](weekagenda_view.md) view
 - Fix the issue where the [onScaleDblClick](api/scheduler_onscaledblclick_event.md) was not triggered as expected
 - Fix inconsistent behavior of [onEventSave](api/scheduler_oneventsave_event.md) and [DataProcessor](api/scheduler_createdataprocessor.md) when working with [recurring events](recurring_events.md)
-- Fix the issue in [React Scheduler](react.md) where multiple instances of the component caused duplicated templates
-- Fix incorrect handling of `events` props changes in [React Scheduler](react.md)
+- Fix the [React Scheduler](react.md) issue where multiple instances of the component caused duplicated templates
+- Fix incorrect handling of the `events` prop's changes in [React Scheduler](react.md)
 
 7.2.8
 ---------------
