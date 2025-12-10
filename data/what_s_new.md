@@ -16,7 +16,7 @@ If you are updating Scheduler from an older version, check migration_from_older_
 
 ### Fixes
 
-- Fix the issue where events jumped to the left when dragged from the last column in the [multiday Units view](units_view.md#displayingunitsformultipledays)
+- Fix the issue where events jumped to the left when being dragged from the last column in the [multiday Units view](units_view.md#displayingunitsformultipledays)
 - Fix the issue where some date cells were missing in specific months in the [Month view](month_view.md)
 - Fix the drag-create issue on mobile devices when using the [container_autoresize](extensions_list.md#containerautoresize) plugin
 - Fix the issue that prevented event creation on double-click after horizontal scrolling in the [Units view](units_view.md)
