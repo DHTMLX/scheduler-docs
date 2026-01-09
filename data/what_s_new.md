@@ -10,6 +10,21 @@ If you are updating Scheduler from an older version, check migration_from_older_
 }
 </style>
 
+7.2.11
+-------------
+<span class='release_date'>January 12, 2025. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue where new events were duplicated in [React Scheduler](react.md) if the `save` handler did not return a new ID
+- Fix the issue where [Timeline view](timeline_view.md) templates were not applied in [React Scheduler](react.md)
+- Fix the incorrect binding of events to sections in [Timeline view](timeline_view.md) when filtering is used in [React Scheduler](react.md)
+- Fix the script error in the [Agenda view](agenda_view.md) when the `date` section is not included in the [header configuration](initialization.md#initializingschedulerviaheaderconfig)
+- Fix the incorrect display of header elements in the [Year](year_view.md) and [Agenda](agenda_view.md) views when using the [Material skin](skins.md#materialskin)
+- Fix the broken layout in [React Scheduler](react.md) when switching from a plugin-based initial view to standard views
+- Fix the issue where a phantom event block appeared when an all-day [recurring event](recurring_events.md) had a duration of exactly 24 hours
+- Fix the issue where the [Lightbox](configuring_the_lightbox.md) failed to open when creating multiple events via drag on the same day in the [Month view](month_view.md) with the `year_view` plugin activated
+
 7.2.10
 -------------
 <span class='release_date'>December 10, 2025. Bugfix release</span>
