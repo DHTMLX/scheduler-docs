@@ -1,6 +1,6 @@
 <h1 align="center"><a href="https://docs.dhtmlx.com/scheduler/">DHTMLX Scheduler Documentation</a></h1>
 
-New Scheduler description here
+DHTMLX Scheduler is a JavaScript library for developing scheduling applications.
 
 ## Explore documentation locally
 
