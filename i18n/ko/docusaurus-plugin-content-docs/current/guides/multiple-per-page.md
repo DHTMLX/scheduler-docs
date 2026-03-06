@@ -164,4 +164,4 @@ dp.destructor();
 ## 관련 문서
 
 
-- ["dhtmlxLayout와의 통합"](integrations/legacy/dhxlayout-integration.md)
+- ["dhtmlxLayout와의 통합"](integrations/other/dhxlayout-integration.md)

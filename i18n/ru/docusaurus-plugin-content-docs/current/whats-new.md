@@ -537,7 +537,7 @@ sidebar_label: "Что нового"
 
 1. Добавлена [поддержка RTL](guides/rtl-mode.md).
 2. Улучшена мобильная адаптивность ([[Мобильная адаптивность Scheduler](guides/touch-support.md)]).
-3. Интеграция с DHTMLX Suite 6 Layout [Интеграция с dhtmlxLayout](integrations/legacy/dhxlayout-integration.md#dhtmlxsuite-v6).
+3. Интеграция с DHTMLX Suite 6 Layout [Интеграция с dhtmlxLayout](integrations/other/dhxlayout-integration.md#dhtmlxsuite-v6).
 
 ### Обновления
 

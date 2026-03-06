@@ -163,4 +163,4 @@ Wenn Sie ein Paket verwenden, das keine mehreren Scheduler-Instanzen unterstütz
 
 ## Verwandte Artikel
 
-- [Integration mit dhtmlxLayout](integrations/legacy/dhxlayout-integration.md)
+- [Integration mit dhtmlxLayout](integrations/other/dhxlayout-integration.md)

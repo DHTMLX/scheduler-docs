@@ -138,8 +138,9 @@ module.exports = {
                         title: 'Legacy integrations',
                     },
                     items: [
+                        "integrations/other/dhxlayout-integration",
                         "integrations/other/howtostart-php",
-                        "integrations/other/howtostart-connector",
+                        
                         "integrations/other/jquery-integration",
                         "integrations/other/bootstrap",
                         {
@@ -149,10 +150,15 @@ module.exports = {
                         },
                         {
                             type: "doc",
-                            id: "integrations/legacy/dhxlayout-integration",
+                            id: "integrations/other/howtostart-connector",
                             className: "deprecated",
                         },
-                        "integrations/legacy/dhtmlx-dnd",
+                        {
+                            type: "doc",
+                            id: "integrations/legacy/dhtmlx-dnd",
+                            className: "deprecated",
+                        },
+                        
                     ]
                 },
             ]

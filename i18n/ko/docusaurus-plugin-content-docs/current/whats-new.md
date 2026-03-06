@@ -535,7 +535,7 @@ sidebar_label: "What's New"
 
 1. [RTL 지원](guides/rtl-mode.md)이 추가되었습니다.
 2. 모바일 반응성 개선([["Mobile Responsive Scheduler"](guides/touch-support.md)]).
-3. DHTMLX Suite 6 Layout과 통합(["dhtmlxLayout와의 통합"](integrations/legacy/dhxlayout-integration.md)).
+3. DHTMLX Suite 6 Layout과 통합(["dhtmlxLayout와의 통합"](integrations/other/dhxlayout-integration.md)).
 
 ### 업데이트
 

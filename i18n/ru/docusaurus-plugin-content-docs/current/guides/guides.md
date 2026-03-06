@@ -62,7 +62,7 @@ sidebar_label: "Руководства"
   <td class='topic_description'>Рассматривает важные вопросы работы с датами в Scheduler, включая преобразование дат в строки и обратно, а также допустимые символы в форматах дат.</td>
   </tr>
   <tr>
-  <td id="styling" class='topics'><h4> Интеграции </h4> <ul id="styling_sublist"> <li>[Всплывающие сообщения и модальные окна](guides/popups-and-modals.md)</li> <li>[Использование Scheduler с TypeScript](guides/scheduler-typescript.md)</li> <li>[Интеграция с jQuery](integrations/other/jquery-integration.md)</li>  <li>[Интеграция с dhtmlxLayout](integrations/legacy/dhxlayout-integration.md)</li> </ul></td>
+  <td id="styling" class='topics'><h4> Интеграции </h4> <ul id="styling_sublist"> <li>[Всплывающие сообщения и модальные окна](guides/popups-and-modals.md)</li> <li>[Использование Scheduler с TypeScript](guides/scheduler-typescript.md)</li> <li>[Интеграция с jQuery](integrations/other/jquery-integration.md)</li>  <li>[Интеграция с dhtmlxLayout](integrations/other/dhxlayout-integration.md)</li> </ul></td>
   <td class='topic_description'>Описывает доступные варианты интеграции Scheduler с сторонними фреймворками.</td>
   </tr>
   <tr>

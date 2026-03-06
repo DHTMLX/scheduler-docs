@@ -62,7 +62,7 @@ sidebar_label: "指南"
   <td class='topic_description'>讨论 Scheduler 中与日期相关的重要主题，包括日期与字符串的相互转换，以及日期格式中允许的字符。</td>
   </tr>
   <tr>
-  <td id="styling" class='topics'><h4> 集成 </h4> <ul id="styling_sublist"> <li>[Popup Messages and Modal Boxes](guides/popups-and-modals.md)</li> <li>[타입스크립트와 함께 Scheduler 사용하기](guides/scheduler-typescript.md)</li> <li>[jQuery 통합](integrations/other/jquery-integration.md)</li>  <li>[dhtmlxLayout와의 통합](integrations/legacy/dhxlayout-integration.md)</li> </ul></td>
+  <td id="styling" class='topics'><h4> 集成 </h4> <ul id="styling_sublist"> <li>[Popup Messages and Modal Boxes](guides/popups-and-modals.md)</li> <li>[타입스크립트와 함께 Scheduler 사용하기](guides/scheduler-typescript.md)</li> <li>[jQuery 통합](integrations/other/jquery-integration.md)</li>  <li>[dhtmlxLayout와의 통합](integrations/other/dhxlayout-integration.md)</li> </ul></td>
   <td class='topic_description'>详细介绍 Scheduler 与第三方框架的集成选项。</td>
   </tr>
   <tr>

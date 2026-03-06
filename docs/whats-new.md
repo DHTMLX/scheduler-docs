@@ -610,7 +610,7 @@ This update changes behavior of some parts of the component. While they shouldn'
 
 1. [RTL support](guides/rtl-mode.md)
 2. [Improved mobile responsiveness](guides/touch-support.md)
-3. [Integration with DHTMLX Suite 6 Layout](integrations/legacy/dhxlayout-integration.md#dhtmlxsuite-v6)
+3. [Integration with DHTMLX Suite 6 Layout](integrations/other/dhxlayout-integration.md#dhtmlxsuite-v6)
 
 ### Updates
 

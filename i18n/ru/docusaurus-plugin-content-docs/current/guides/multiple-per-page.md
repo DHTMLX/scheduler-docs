@@ -164,4 +164,4 @@ dp.destructor();
 ## Связанные статьи
 
 
-- [Интеграция с dhtmlxLayout](integrations/legacy/dhxlayout-integration.md)
+- [Интеграция с dhtmlxLayout](integrations/other/dhxlayout-integration.md)

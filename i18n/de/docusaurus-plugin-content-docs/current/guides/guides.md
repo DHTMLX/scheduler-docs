@@ -62,7 +62,7 @@ Werfen Sie einen Blick auf die [Funktionen der Standard- und PRO-Versionen](guid
   <td class='topic_description'>Behandelt wichtige Themen rund um Datumsangaben im Scheduler, darunter das Konvertieren von Datumswerten in Zeichenketten und zurück sowie die zulässigen Zeichen in Datumsformaten.</td>
   </tr>
   <tr>
-  <td id="styling" class='topics'><h4> Integrationen </h4> <ul id="styling_sublist"> <li>[Popup-Nachrichten und Modale Fenster](guides/popups-and-modals.md)</li> <li>[Verwendung des Schedulers mit TypeScript](guides/scheduler-typescript.md)</li> <li>[jQuery-Integration](integrations/other/jquery-integration.md)</li> <li>[Integration mit dhtmlxLayout](integrations/legacy/dhxlayout-integration.md)</li> </ul></td>
+  <td id="styling" class='topics'><h4> Integrationen </h4> <ul id="styling_sublist"> <li>[Popup-Nachrichten und Modale Fenster](guides/popups-and-modals.md)</li> <li>[Verwendung des Schedulers mit TypeScript](guides/scheduler-typescript.md)</li> <li>[jQuery-Integration](integrations/other/jquery-integration.md)</li> <li>[Integration mit dhtmlxLayout](integrations/other/dhxlayout-integration.md)</li> </ul></td>
   <td class='topic_description'>Beschreibt die verfügbaren Möglichkeiten zur Integration des Schedulers mit Drittanbieter-Frameworks.</td>
   </tr>
   <tr>

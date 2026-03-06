@@ -534,7 +534,7 @@ Dieses Update passt das Verhalten einiger Komponenten an. Es werden keine Brüch
 
 1. [RTL-Unterstützung](guides/rtl-mode.md) hinzugefügt.
 2. Verbesserte mobile Responsivität ([[Mobile Responsive Scheduler](guides/touch-support.md)]).
-3. Integration mit DHTMLX Suite 6 Layout ([Integration mit dhtmlxLayout](integrations/legacy/dhxlayout-integration.md#dhtmlxsuite-v6).
+3. Integration mit DHTMLX Suite 6 Layout ([Integration mit dhtmlxLayout](integrations/other/dhxlayout-integration.md#dhtmlxsuite-v6).
 
 ### Updates
 
