@@ -1,6 +1,6 @@
 ---
 title: "Two-way sync with Google Calendar (Node.js)"
-sidebar_label: "Two-way sync (Node.js)"
+sidebar_label: "Google Calendar"
 description: "Implement a Node.js + Express integration that syncs DHTMLX Scheduler events with Google Calendar using OAuth 2.0 and Google Calendar API v3."
 ---
 
