@@ -1,0 +1,62 @@
+{
+  "link.title.Development center": {
+    "message": "개발 센터",
+    "description": "하단 영역에 있는 'Development center' 제목의 링크 컬럼 제목"
+  },
+  "link.title.Community": {
+    "message": "커뮤니티",
+    "description": "하단 영역에 있는 'Community' 제목의 링크 컬럼 제목"
+  },
+  "link.title.Company": {
+    "message": "회사",
+    "description": "하단 영역에 있는 'Company' 제목의 링크 컬럼 제목"
+  },
+  "link.item.label.Download Scheduler": {
+    "message": "스케줄러 다운로드",
+    "description": "https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml 페이지로 연결되는 하단 링크 'Download Scheduler'의 라벨"
+  },
+  "link.item.label.Examples": {
+    "message": "예제",
+    "description": "https://docs.dhtmlx.com/scheduler/samples/ 페이지로 연결되는 하단 링크 'Examples'의 라벨"
+  },
+  "link.item.label.Blog": {
+    "message": "블로그",
+    "description": "https://dhtmlx.com/blog/ 페이지로 연결되는 하단 링크 'Blog'의 라벨"
+  },
+  "link.item.label.Forum": {
+    "message": "포럼",
+    "description": "https://forum.dhtmlx.com/c/scheduler/15 페이지로 연결되는 하단 링크 'Forum'의 라벨"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "https://github.com/DHTMLX 페이지로 연결되는 하단 링크 'GitHub'의 라벨"
+  },
+  "link.item.label.Youtube": {
+    "message": "유튜브",
+    "description": "https://www.youtube.com/user/dhtmlx 페이지로 연결되는 하단 링크 'Youtube'의 라벨"
+  },
+  "link.item.label.Facebook": {
+    "message": "페이스북",
+    "description": "https://www.facebook.com/dhtmlx 페이지로 연결되는 하단 링크 'Facebook'의 라벨"
+  },
+  "link.item.label.Twitter": {
+    "message": "트위터",
+    "description": "https://twitter.com/dhtmlx 페이지로 연결되는 하단 링크 'Twitter'의 라벨"
+  },
+  "link.item.label.Linkedin": {
+    "message": "링크드인",
+    "description": "https://www.linkedin.com/groups/3345009/ 페이지로 연결되는 하단 링크 'Linkedin'의 라벨"
+  },
+  "link.item.label.About us": {
+    "message": "회사 소개",
+    "description": "https://dhtmlx.com/docs/company.shtml 페이지로 연결되는 하단 링크 'About us'의 라벨"
+  },
+  "link.item.label.Contact us": {
+    "message": "문의하기",
+    "description": "https://dhtmlx.com/docs/contact.shtml 페이지로 연결되는 하단 링크 'Contact us'의 라벨"
+  },
+  "link.item.label.Licensing": {
+    "message": "라이선스",
+    "description": "https://dhtmlx.com/docs/products/dhtmlxEventCalendar/#licensing 페이지로 연결되는 하단 링크 'Licensing'의 라벨"
+  }
+}

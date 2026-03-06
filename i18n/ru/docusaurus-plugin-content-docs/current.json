@@ -1,0 +1,162 @@
+{
+  "version.label": {
+    "message": "Следующая",
+    "description": "Метка для текущей версии"
+  },
+  "sidebar.docs.category.Scheduler API": {
+    "message": "API Scheduler",
+    "description": "Метка категории API Scheduler в боковом меню документации"
+  },
+  "sidebar.docs.category.Methods": {
+    "message": "Методы",
+    "description": "Метка категории Методы в боковом меню документации"
+  },
+  "sidebar.docs.category.Properties": {
+    "message": "Свойства",
+    "description": "Метка категории Свойства в боковом меню документации"
+  },
+  "sidebar.docs.category.Events": {
+    "message": "События",
+    "description": "Метка категории События в боковом меню документации"
+  },
+  "sidebar.docs.category.Templates": {
+    "message": "Шаблоны",
+    "description": "Метка категории Шаблоны в боковом меню документации"
+  },
+  "sidebar.docs.category.Others": {
+    "message": "Прочее",
+    "description": "Метка категории Прочее в боковом меню документации"
+  },
+  "sidebar.docs.category.Views": {
+    "message": "Виды",
+    "description": "Метка категории Виды в боковом меню документации"
+  },
+  "sidebar.docs.category.Guides": {
+    "message": "Руководства",
+    "description": "Метка категории Руководства в боковом меню документации"
+  },
+  "sidebar.docs.category.Creating Scheduler": {
+    "message": "Создание Scheduler",
+    "description": "Метка категории Создание Scheduler в боковом меню документации"
+  },
+  "sidebar.docs.category.Creating Scheduler.link.generated-index.title": {
+    "message": "Создание Scheduler",
+    "description": "Название страницы сгенерированного индекса для категории Создание Scheduler в боковом меню документации"
+  },
+  "sidebar.docs.category.Ways to Install Scheduler": {
+    "message": "Способы установки Scheduler",
+    "description": "Метка категории Способы установки Scheduler в боковом меню документации"
+  },
+  "sidebar.docs.category.How to Start with dhtmlxScheduler": {
+    "message": "Как начать с dhtmlxScheduler",
+    "description": "Метка категории Как начать с dhtmlxScheduler в боковом меню документации"
+  },
+  "sidebar.docs.category.Configuring Scheduler": {
+    "message": "Настройка Scheduler",
+    "description": "Метка категории Настройка Scheduler в боковом меню документации"
+  },
+  "sidebar.docs.category.Configuring Scheduler.link.generated-index.title": {
+    "message": "Настройка Scheduler",
+    "description": "Название страницы сгенерированного индекса для категории Настройка Scheduler в боковом меню документации"
+  },
+  "sidebar.docs.category.Accessibility": {
+    "message": "Доступность",
+    "description": "Метка категории Доступность в боковом меню документации"
+  },
+  "sidebar.docs.category.Loading and Storing Data": {
+    "message": "Загрузка и хранение данных",
+    "description": "Метка категории Загрузка и хранение данных в боковом меню документации"
+  },
+  "sidebar.docs.category.Loading and Storing Data.link.generated-index.title": {
+    "message": "Загрузка и хранение данных",
+    "description": "Название страницы сгенерированного индекса для категории Загрузка и хранение данных в боковом меню документации"
+  },
+  "sidebar.docs.category.Loading Data": {
+    "message": "Загрузка данных",
+    "description": "Метка категории Загрузка данных в боковом меню документации"
+  },
+  "sidebar.docs.category.Configuring Views": {
+    "message": "Настройка видов",
+    "description": "Метка категории Настройка видов в боковом меню документации"
+  },
+  "sidebar.docs.category.Configuring Views.link.generated-index.title": {
+    "message": "Настройка видов",
+    "description": "Название страницы сгенерированного индекса для категории Настройка видов в боковом меню документации"
+  },
+  "sidebar.docs.category.Configuring the Lightbox": {
+    "message": "Настройка лайтбокса",
+    "description": "Метка категории Настройка лайтбокса в боковом меню документации"
+  },
+  "sidebar.docs.category.Configuring the Lightbox.link.generated-index.title": {
+    "message": "Настройка лайтбокса",
+    "description": "Название страницы сгенерированного индекса для категории Настройка лайтбокса в боковом меню документации"
+  },
+  "sidebar.docs.category.Managing Scheduler Events": {
+    "message": "Управление событиями Scheduler",
+    "description": "Метка категории Управление событиями Scheduler в боковом меню документации"
+  },
+  "sidebar.docs.category.Managing Scheduler Events.link.generated-index.title": {
+    "message": "Управление событиями Scheduler",
+    "description": "Название страницы сгенерированного индекса для категории Управление событиями Scheduler в боковом меню документации"
+  },
+  "sidebar.docs.category.Customizing Events": {
+    "message": "Настройка событий",
+    "description": "Метка категории Настройка событий в боковом меню документации"
+  },
+  "sidebar.docs.category.Customizing Events.link.generated-index.title": {
+    "message": "Настройка событий",
+    "description": "Название страницы сгенерированного индекса для категории Настройка событий в боковом меню документации"
+  },
+  "sidebar.docs.category.Data Export and Import": {
+    "message": "Экспорт и импорт данных",
+    "description": "Метка категории Экспорт и импорт данных в боковом меню документации"
+  },
+  "sidebar.docs.category.Data Export and Import.link.generated-index.title": {
+    "message": "Экспорт и импорт данных",
+    "description": "Название страницы сгенерированного индекса для категории Экспорт и импорт данных в боковом меню документации"
+  },
+  "sidebar.docs.category.Integration with Google Calendar": {
+    "message": "Интеграция с Google Calendar",
+    "description": "Метка категории Интеграция с Google Calendar в боковом меню документации"
+  },
+  "sidebar.docs.category.Export to PDF": {
+    "message": "Экспорт в PDF",
+    "description": "Метка категории Экспорт в PDF в боковом меню документации"
+  },
+  "sidebar.docs.category.Data Serialization to XML, JSON, iCal": {
+    "message": "Сериализация данных в XML, JSON, iCal",
+    "description": "Метка категории Сериализация данных в XML, JSON, iCal в боковом меню документации"
+  },
+  "sidebar.docs.category.Appearance and Styling": {
+    "message": "Внешний вид и стили",
+    "description": "Метка категории Внешний вид и стили в боковом меню документации"
+  },
+  "sidebar.docs.category.Appearance and Styling.link.generated-index.title": {
+    "message": "Внешний вид и стили",
+    "description": "Название страницы сгенерированного индекса для категории Внешний вид и стили в боковом меню документации"
+  },
+  "sidebar.docs.category.Working with Dates": {
+    "message": "Работа с датами",
+    "description": "Метка категории Работа с датами в боковом меню документации"
+  },
+  "sidebar.docs.category.Working with Dates.link.generated-index.title": {
+    "message": "Работа с датами",
+    "description": "Название страницы сгенерированного индекса для категории Работа с датами в боковом меню документации"
+  },
+  "sidebar.docs.category.Scheduler Integrations": {
+    "message": "Интеграции Scheduler",
+    "description": "Метка категории Интеграции Scheduler в боковом меню документации"
+  },
+  "sidebar.docs.category.Scheduler Integrations.link.generated-index.title": {
+    "message": "Интеграции Scheduler",
+    "description": "Название страницы сгенерированного индекса для категории Интеграции Scheduler в боковом меню документации"
+  },
+  "sidebar.docs.category.Special Extensions and Editions": {
+    "message": "Специальные расширения и редакции",
+    "description": "Метка категории Специальные расширения и редакции в боковом меню документации"
+  },
+  "sidebar.docs.category.Special Extensions and Editions.link.generated-index.title": {
+    "message": "Специальные расширения и редакции",
+    "description": "Название страницы сгенерированного индекса для категории Специальные расширения и редакции в боковом меню документации"
+  }
+}

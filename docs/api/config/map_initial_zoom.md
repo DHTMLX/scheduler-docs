@@ -1,0 +1,36 @@
+---
+sidebar_label: map_initial_zoom
+title: "map_initial_zoom config"
+description: "sets the initial zoom of the map in the Map view"
+---
+
+# map_initial_zoom
+
+### Description
+
+@short: Sets the initial zoom of the map in the Map view
+
+@signature: map_initial_zoom: number
+
+### Example
+
+~~~jsx
+scheduler.config.map_initial_zoom = 7;
+...
+scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+~~~
+
+**Default value:** 1
+
+**Applicable views:** [Map view](views/map.md)
+
+### Details
+
+:::note
+ The property requires the [map_view](guides/extensions-list.md#map-view) plugin to be activated. 
+:::
+
+You can also specify the **initial_zoom** setting inside the [map_settings](api/config/map_settings.md) configuration object.
+
+### Related API
+- [map_initial_position](api/config/map_initial_position.md)

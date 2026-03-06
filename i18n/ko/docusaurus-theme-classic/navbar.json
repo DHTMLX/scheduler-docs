@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "JavaScript 스케줄러 문서",
+    "description": "네비게이션 바의 제목"
+  },
+  "logo.alt": {
+    "message": "DHTMLX JavaScript 스케줄러 로고",
+    "description": "네비게이션 바 로고의 대체 텍스트"
+  },
+  "item.label.Examples": {
+    "message": "예제",
+    "description": "예제 라벨이 있는 네비게이션 바 항목"
+  },
+  "item.label.Forum": {
+    "message": "포럼",
+    "description": "포럼 라벨이 있는 네비게이션 바 항목"
+  },
+  "item.label.Support": {
+    "message": "지원",
+    "description": "지원 라벨이 있는 네비게이션 바 항목"
+  },
+  "item.label.Download": {
+    "message": "다운로드",
+    "description": "다운로드 라벨이 있는 네비게이션 바 항목"
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docs.category.Scheduler API": {
+    "message": "Scheduler API",
+    "description": "The label for category Scheduler API in sidebar docs"
+  },
+  "sidebar.docs.category.Methods": {
+    "message": "Methods",
+    "description": "The label for category Methods in sidebar docs"
+  },
+  "sidebar.docs.category.Properties": {
+    "message": "Properties",
+    "description": "The label for category Properties in sidebar docs"
+  },
+  "sidebar.docs.category.Events": {
+    "message": "Events",
+    "description": "The label for category Events in sidebar docs"
+  },
+  "sidebar.docs.category.Templates": {
+    "message": "Templates",
+    "description": "The label for category Templates in sidebar docs"
+  },
+  "sidebar.docs.category.Others": {
+    "message": "Others",
+    "description": "The label for category Others in sidebar docs"
+  },
+  "sidebar.docs.category.Views": {
+    "message": "Views",
+    "description": "The label for category Views in sidebar docs"
+  },
+  "sidebar.docs.category.Guides": {
+    "message": "Guides",
+    "description": "The label for category Guides in sidebar docs"
+  },
+  "sidebar.docs.category.Creating Scheduler": {
+    "message": "Creating Scheduler",
+    "description": "The label for category Creating Scheduler in sidebar docs"
+  },
+  "sidebar.docs.category.Creating Scheduler.link.generated-index.title": {
+    "message": "Creating Scheduler",
+    "description": "The generated-index page title for category Creating Scheduler in sidebar docs"
+  },
+  "sidebar.docs.category.Ways to Install Scheduler": {
+    "message": "Ways to Install Scheduler",
+    "description": "The label for category Ways to Install Scheduler in sidebar docs"
+  },
+  "sidebar.docs.category.How to Start with dhtmlxScheduler": {
+    "message": "How to Start with dhtmlxScheduler",
+    "description": "The label for category How to Start with dhtmlxScheduler in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Scheduler": {
+    "message": "Configuring Scheduler",
+    "description": "The label for category Configuring Scheduler in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Scheduler.link.generated-index.title": {
+    "message": "Configuring Scheduler",
+    "description": "The generated-index page title for category Configuring Scheduler in sidebar docs"
+  },
+  "sidebar.docs.category.Accessibility": {
+    "message": "Accessibility",
+    "description": "The label for category Accessibility in sidebar docs"
+  },
+  "sidebar.docs.category.Loading and Storing Data": {
+    "message": "Loading and Storing Data",
+    "description": "The label for category Loading and Storing Data in sidebar docs"
+  },
+  "sidebar.docs.category.Loading and Storing Data.link.generated-index.title": {
+    "message": "Loading and Storing Data",
+    "description": "The generated-index page title for category Loading and Storing Data in sidebar docs"
+  },
+  "sidebar.docs.category.Loading Data": {
+    "message": "Loading Data",
+    "description": "The label for category Loading Data in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Views": {
+    "message": "Configuring Views",
+    "description": "The label for category Configuring Views in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring Views.link.generated-index.title": {
+    "message": "Configuring Views",
+    "description": "The generated-index page title for category Configuring Views in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring the Lightbox": {
+    "message": "Configuring the Lightbox",
+    "description": "The label for category Configuring the Lightbox in sidebar docs"
+  },
+  "sidebar.docs.category.Configuring the Lightbox.link.generated-index.title": {
+    "message": "Configuring the Lightbox",
+    "description": "The generated-index page title for category Configuring the Lightbox in sidebar docs"
+  },
+  "sidebar.docs.category.Managing Scheduler Events": {
+    "message": "Managing Scheduler Events",
+    "description": "The label for category Managing Scheduler Events in sidebar docs"
+  },
+  "sidebar.docs.category.Managing Scheduler Events.link.generated-index.title": {
+    "message": "Managing Scheduler Events",
+    "description": "The generated-index page title for category Managing Scheduler Events in sidebar docs"
+  },
+  "sidebar.docs.category.Customizing Events": {
+    "message": "Customizing Events",
+    "description": "The label for category Customizing Events in sidebar docs"
+  },
+  "sidebar.docs.category.Customizing Events.link.generated-index.title": {
+    "message": "Customizing Events",
+    "description": "The generated-index page title for category Customizing Events in sidebar docs"
+  },
+  "sidebar.docs.category.Data Export and Import": {
+    "message": "Data Export and Import",
+    "description": "The label for category Data Export and Import in sidebar docs"
+  },
+  "sidebar.docs.category.Data Export and Import.link.generated-index.title": {
+    "message": "Data Export and Import",
+    "description": "The generated-index page title for category Data Export and Import in sidebar docs"
+  },
+  "sidebar.docs.category.Integration with Google Calendar": {
+    "message": "Integration with Google Calendar",
+    "description": "The label for category Integration with Google Calendar in sidebar docs"
+  },
+  "sidebar.docs.category.Export to PDF": {
+    "message": "Export to PDF",
+    "description": "The label for category Export to PDF in sidebar docs"
+  },
+  "sidebar.docs.category.Data Serialization to XML, JSON, iCal": {
+    "message": "Data Serialization to XML, JSON, iCal",
+    "description": "The label for category Data Serialization to XML, JSON, iCal in sidebar docs"
+  },
+  "sidebar.docs.category.Appearance and Styling": {
+    "message": "Appearance and Styling",
+    "description": "The label for category Appearance and Styling in sidebar docs"
+  },
+  "sidebar.docs.category.Appearance and Styling.link.generated-index.title": {
+    "message": "Appearance and Styling",
+    "description": "The generated-index page title for category Appearance and Styling in sidebar docs"
+  },
+  "sidebar.docs.category.Working with Dates": {
+    "message": "Working with Dates",
+    "description": "The label for category Working with Dates in sidebar docs"
+  },
+  "sidebar.docs.category.Working with Dates.link.generated-index.title": {
+    "message": "Working with Dates",
+    "description": "The generated-index page title for category Working with Dates in sidebar docs"
+  },
+  "sidebar.docs.category.Scheduler Integrations": {
+    "message": "Scheduler Integrations",
+    "description": "The label for category Scheduler Integrations in sidebar docs"
+  },
+  "sidebar.docs.category.Scheduler Integrations.link.generated-index.title": {
+    "message": "Scheduler Integrations",
+    "description": "The generated-index page title for category Scheduler Integrations in sidebar docs"
+  },
+  "sidebar.docs.category.Special Extensions and Editions": {
+    "message": "Special Extensions and Editions",
+    "description": "The label for category Special Extensions and Editions in sidebar docs"
+  },
+  "sidebar.docs.category.Special Extensions and Editions.link.generated-index.title": {
+    "message": "Special Extensions and Editions",
+    "description": "The generated-index page title for category Special Extensions and Editions in sidebar docs"
+  }
+}

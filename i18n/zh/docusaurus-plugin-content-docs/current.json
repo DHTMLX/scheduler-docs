@@ -1,0 +1,162 @@
+{
+	"version.label": {
+		"message": "下一个",
+		"description": "当前版本的标签"
+	},
+	"sidebar.docs.category.Scheduler API": {
+		"message": "调度器 API",
+		"description": "侧边栏文档中调度器 API 分类标签"
+	},
+	"sidebar.docs.category.Methods": {
+		"message": "方法",
+		"description": "侧边栏文档中方法分类标签"
+	},
+	"sidebar.docs.category.Properties": {
+		"message": "属性",
+		"description": "侧边栏文档中属性分类标签"
+	},
+	"sidebar.docs.category.Events": {
+		"message": "事件",
+		"description": "侧边栏文档中事件分类标签"
+	},
+	"sidebar.docs.category.Templates": {
+		"message": "模板",
+		"description": "侧边栏文档中模板分类标签"
+	},
+	"sidebar.docs.category.Others": {
+		"message": "其他",
+		"description": "侧边栏文档中其他分类标签"
+	},
+	"sidebar.docs.category.Views": {
+		"message": "视图",
+		"description": "侧边栏文档中视图分类标签"
+	},
+	"sidebar.docs.category.Guides": {
+		"message": "指南",
+		"description": "侧边栏文档中指南分类标签"
+	},
+	"sidebar.docs.category.Creating Scheduler": {
+		"message": "创建调度器",
+		"description": "侧边栏文档中创建调度器分类标签"
+	},
+	"sidebar.docs.category.Creating Scheduler.link.generated-index.title": {
+		"message": "创建调度器",
+		"description": "侧边栏文档中创建调度器分类的生成索引页面标题"
+	},
+	"sidebar.docs.category.Ways to Install Scheduler": {
+		"message": "安装调度器的方法",
+		"description": "侧边栏文档中安装调度器的方法分类标签"
+	},
+	"sidebar.docs.category.How to Start with dhtmlxScheduler": {
+		"message": "如何开始使用 dhtmlxScheduler",
+		"description": "侧边栏文档中如何开始使用 dhtmlxScheduler 分类标签"
+	},
+	"sidebar.docs.category.Configuring Scheduler": {
+		"message": "配置调度器",
+		"description": "侧边栏文档中配置调度器分类标签"
+	},
+	"sidebar.docs.category.Configuring Scheduler.link.generated-index.title": {
+		"message": "配置调度器",
+		"description": "侧边栏文档中配置调度器分类的生成索引页面标题"
+	},
+	"sidebar.docs.category.Accessibility": {
+		"message": "无障碍",
+		"description": "侧边栏文档中无障碍分类标签"
+	},
+	"sidebar.docs.category.Loading and Storing Data": {
+		"message": "数据加载与存储",
+		"description": "侧边栏文档中数据加载与存储分类标签"
+	},
+	"sidebar.docs.category.Loading and Storing Data.link.generated-index.title": {
+		"message": "数据加载与存储",
+		"description": "侧边栏文档中数据加载与存储分类的生成索引页面标题"
+	},
+	"sidebar.docs.category.Loading Data": {
+		"message": "数据加载",
+		"description": "侧边栏文档中数据加载分类标签"
+	},
+	"sidebar.docs.category.Configuring Views": {
+		"message": "配置视图",
+		"description": "侧边栏文档中配置视图分类标签"
+	},
+	"sidebar.docs.category.Configuring.Views.link.generated-index.title": {
+		"message": "配置视图",
+		"description": "侧边栏文档中配置视图分类的生成索引页面标题"
+	},
+	"sidebar.docs.category.Configuring the Lightbox": {
+		"message": "配置弹出框",
+		"description": "侧边栏文档中配置弹出框分类标签"
+	},
+	"sidebar.docs.category.Configuring the Lightbox.link.generated-index.title": {
+		"message": "配置弹出框",
+		"description": "侧边栏文档中配置弹出框分类的生成索引页面标题"
+	},
+	"sidebar.docs.category.Managing Scheduler Events": {
+		"message": "管理调度器事件",
+		"description": "侧边栏文档中管理调度器事件分类标签"
+	},
+	"sidebar.docs.category.Managing Scheduler Events.link.generated-index.title": {
+		"message": "管理调度器事件",
+		"description": "侧边栏文档中管理调度器事件分类的生成索引页面标题"
+	},
+	"sidebar.docs.category.Customizing Events": {
+		"message": "自定义事件",
+		"description": "侧边栏文档中自定义事件分类标签"
+	},
+	"sidebar.docs.category.Customizing Events.link.generated-index.title": {
+		"message": "自定义事件",
+		"description": "侧边栏文档中自定义事件分类的生成索引页面标题"
+	},
+	"sidebar.docs.category.Data Export and Import": {
+		"message": "数据导入与导出",
+		"description": "侧边栏文档中数据导入与导出分类标签"
+	},
+	"sidebar.docs.category.Data Export and Import.link.generated-index.title": {
+		"message": "数据导入与导出",
+		"description": "侧边栏文档中数据导入与导出分类的生成索引页面标题"
+	},
+	"sidebar.docs.category.Integration with Google Calendar": {
+		"message": "与谷歌日历集成",
+		"description": "侧边栏文档中与谷歌日历集成分类标签"
+	},
+	"sidebar.docs.category.Export to PDF": {
+		"message": "导出为 PDF",
+		"description": "侧边栏文档中导出为 PDF 分类标签"
+	},
+	"sidebar.docs.category.Data Serialization to XML, JSON, iCal": {
+		"message": "数据序列化至 XML、JSON、iCal",
+		"description": "侧边栏文档中数据序列化至 XML、JSON、iCal 分类标签"
+	},
+	"sidebar.docs.category.Appearance and Styling": {
+		"message": "外观与样式",
+		"description": "侧边栏文档中外观与样式分类标签"
+	},
+	"sidebar.docs.category.Appearance and Styling.link.generated-index.title": {
+		"message": "外观与样式",
+		"description": "侧边栏文档中外观与样式分类的生成索引页面标题"
+	},
+	"sidebar.docs.category.Working with Dates": {
+		"message": "日期操作",
+		"description": "侧边栏文档中日期操作分类标签"
+	},
+	"sidebar.docs.category.Working with Dates.link.generated-index.title": {
+		"message": "日期操作",
+		"description": "侧边栏文档中日期操作分类的生成索引页面标题"
+	},
+	"sidebar.docs.category.Scheduler Integrations": {
+		"message": "调度器集成",
+		"description": "侧边栏文档中调度器集成分类标签"
+	},
+	"sidebar.docs.category.Scheduler Integrations.link.generated-index.title": {
+		"message": "调度器集成",
+		"description": "侧边栏文档中调度器集成分类的生成索引页面标题"
+	},
+	"sidebar.docs.category.Special Extensions and Editions": {
+		"message": "特殊扩展与版本",
+		"description": "侧边栏文档中特殊扩展与版本分类标签"
+	},
+	"sidebar.docs.category.Special Extensions and Editions.link.generated-index.title": {
+		"message": "特殊扩展与版本",
+		"description": "侧边栏文档中特殊扩展与版本分类的生成索引页面标题"
+	}
+}

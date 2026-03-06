@@ -1,0 +1,62 @@
+{
+  "link.title.Development center": {
+    "message": "Центр разработки",
+    "description": "Заголовок колонки ссылок в подвале с заголовком Центр разработки"
+  },
+  "link.title.Community": {
+    "message": "Сообщество",
+    "description": "Заголовок колонки ссылок в подвале с заголовком Сообщество"
+  },
+  "link.title.Company": {
+    "message": "Компания",
+    "description": "Заголовок колонки ссылок в подвале с заголовком Компания"
+  },
+  "link.item.label.Download Scheduler": {
+    "message": "Скачать Scheduler",
+    "description": "Метка ссылки в подвале с меткой Скачать Scheduler, ведущей на https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml"
+  },
+  "link.item.label.Examples": {
+    "message": "Примеры",
+    "description": "Метка ссылки в подвале с меткой Примеры, ведущей на https://docs.dhtmlx.com/scheduler/samples/"
+  },
+  "link.item.label.Blog": {
+    "message": "Блог",
+    "description": "Метка ссылки в подвале с меткой Блог, ведущей на https://dhtmlx.com/blog/"
+  },
+  "link.item.label.Forum": {
+    "message": "Форум",
+    "description": "Метка ссылки в подвале с меткой Форум, ведущей на https://forum.dhtmlx.com/c/scheduler/15"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Метка ссылки в подвале с меткой GitHub, ведущей на https://github.com/DHTMLX"
+  },
+  "link.item.label.Youtube": {
+    "message": "YouTube",
+    "description": "Метка ссылки в подвале с меткой YouTube, ведущей на https://www.youtube.com/user/dhtmlx"
+  },
+  "link.item.label.Facebook": {
+    "message": "Facebook",
+    "description": "Метка ссылки в подвале с меткой Facebook, ведущей на https://www.facebook.com/dhtmlx"
+  },
+  "link.item.label.Twitter": {
+    "message": "Twitter",
+    "description": "Метка ссылки в подвале с меткой Twitter, ведущей на https://twitter.com/dhtmlx"
+  },
+  "link.item.label.Linkedin": {
+    "message": "Linkedin",
+    "description": "Метка ссылки в подвале с меткой Linkedin, ведущей на https://www.linkedin.com/groups/3345009/"
+  },
+  "link.item.label.About us": {
+    "message": "О нас",
+    "description": "Метка ссылки в подвале с меткой О нас, ведущей на https://dhtmlx.com/docs/company.shtml"
+  },
+  "link.item.label.Contact us": {
+    "message": "Связаться с нами",
+    "description": "Метка ссылки в подвале с меткой Связаться с нами, ведущей на https://dhtmlx.com/docs/contact.shtml"
+  },
+  "link.item.label.Licensing": {
+    "message": "Лицензирование",
+    "description": "Метка ссылки в подвале с меткой Лицензирование, ведущей на https://dhtmlx.com/docs/products/dhtmlxEventCalendar/#licensing"
+  }
+}

@@ -1,0 +1,62 @@
+{
+	"link.title.Development center": {
+		"message": "开发中心",
+		"description": "页脚链接栏目标题为开发中心"
+	},
+	"link.title.Community": {
+		"message": "社区",
+		"description": "页脚链接栏目标题为社区"
+	},
+	"link.title.Company": {
+		"message": "公司",
+		"description": "页脚链接栏目标题为公司"
+	},
+	"link.item.label.Download Scheduler": {
+		"message": "下载调度器",
+		"description": "链接到 https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml 的页脚链接标签"
+	},
+	"link.item.label.Examples": {
+		"message": "示例",
+		"description": "链接到 https://docs.dhtmlx.com/scheduler/samples/ 的页脚链接标签"
+	},
+	"link.item.label.Blog": {
+		"message": "博客",
+		"description": "链接到 https://dhtmlx.com/blog/ 的页脚链接标签"
+	},
+	"link.item.label.Forum": {
+		"message": "论坛",
+		"description": "链接到 https://forum.dhtmlx.com/c/scheduler/15 的页脚链接标签"
+	},
+	"link.item.label.GitHub": {
+		"message": "GitHub",
+		"description": "链接到 https://github.com/DHTMLX 的页脚链接标签"
+	},
+	"link.item.label.Youtube": {
+		"message": "YouTube",
+		"description": "链接到 https://www.youtube.com/user/dhtmlx 的页脚链接标签"
+	},
+	"link.item.label.Facebook": {
+		"message": "Facebook",
+		"description": "链接到 https://www.facebook.com/dhtmlx 的页脚链接标签"
+	},
+	"link.item.label.Twitter": {
+		"message": "Twitter",
+		"description": "链接到 https://twitter.com/dhtmlx 的页脚链接标签"
+	},
+	"link.item.label.Linkedin": {
+		"message": "领英",
+		"description": "链接到 https://www.linkedin.com/groups/3345009/ 的页脚链接标签"
+	},
+	"link.item.label.About us": {
+		"message": "关于我们",
+		"description": "链接到 https://dhtmlx.com/docs/company.shtml 的页脚链接标签"
+	},
+	"link.item.label.Contact us": {
+		"message": "联系我们",
+		"description": "链接到 https://dhtmlx.com/docs/contact.shtml 的页脚链接标签"
+	},
+	"link.item.label.Licensing": {
+		"message": "许可信息",
+		"description": "链接到 https://dhtmlx.com/docs/products/dhtmlxEventCalendar/#licensing 的页脚链接标签"
+	}
+}

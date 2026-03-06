@@ -1,0 +1,36 @@
+---
+sidebar_label: unblockTime
+title: "unblockTime method"
+description: "removes blocking set by the blockTime() method"
+---
+
+# unblockTime
+:::warning 
+The method is deprecated. 
+:::
+### Description
+
+@short: Removes blocking set by the blockTime() method
+
+@signature: unblockTime: (days: any, zones?: any[], sections?: any) =\> void
+
+### Parameters
+
+- `days` - (required) *any* - (<i>Date, number,array, string</i>) days that should be limited
+- `zones` - (optional) *array* - the period in minutes that should be limited. Can be set to 'fullday' value <br> to limit the entire day
+- `sections` - (optional) *object* - allows blocking date(s) just for specific items of specific views. BTW, the specified date(s) will be blocked just in the related view(s)
+
+### Example
+
+~~~jsx
+var spanId = scheduler.blockTime(new Date(2013,2,5), "fullday");
+...
+//cancels blocking from 0 till 8 and from 18 till 24 hours for February 5, 2013
+scheduler.unblockTime(new Date(2013,2,5), [0,10*60]);
+~~~
+
+### Related API
+- [blockTime](api/method/blocktime.md)
+
+### Change log
+- deprecated since v5.1

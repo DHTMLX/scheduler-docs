@@ -1,0 +1,162 @@
+{
+  "version.label": {
+    "message": "다음",
+    "description": "현재 버전에 대한 라벨"
+  },
+  "sidebar.docs.category.Scheduler API": {
+    "message": "스케줄러 API",
+    "description": "사이드바 문서의 'Scheduler API' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Methods": {
+    "message": "메서드",
+    "description": "사이드바 문서의 'Methods' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Properties": {
+    "message": "속성",
+    "description": "사이드바 문서의 'Properties' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Events": {
+    "message": "이벤트",
+    "description": "사이드바 문서의 'Events' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Templates": {
+    "message": "템플릿",
+    "description": "사이드바 문서의 'Templates' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Others": {
+    "message": "기타",
+    "description": "사이드바 문서의 'Others' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Views": {
+    "message": "뷰",
+    "description": "사이드바 문서의 'Views' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Guides": {
+    "message": "가이드",
+    "description": "사이드바 문서의 'Guides' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Creating Scheduler": {
+    "message": "스케줄러 생성",
+    "description": "사이드바 문서의 'Creating Scheduler' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Creating Scheduler.link.generated-index.title": {
+    "message": "스케줄러 생성",
+    "description": "사이드바 문서 'Creating Scheduler' 카테고리의 생성된 인덱스 페이지 제목"
+  },
+  "sidebar.docs.category.Ways to Install Scheduler": {
+    "message": "스케줄러 설치 방법",
+    "description": "사이드바 문서의 'Ways to Install Scheduler' 카테고리 라벨"
+  },
+  "sidebar.docs.category.How to Start with dhtmlxScheduler": {
+    "message": "dhtmlxScheduler 시작 방법",
+    "description": "사이드바 문서의 'How to Start with dhtmlxScheduler' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Configuring Scheduler": {
+    "message": "스케줄러 구성",
+    "description": "사이드바 문서의 'Configuring Scheduler' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Configuring Scheduler.link.generated-index.title": {
+    "message": "스케줄러 구성",
+    "description": "사이드바 문서 'Configuring Scheduler' 카테고리의 생성된 인덱스 페이지 제목"
+  },
+  "sidebar.docs.category.Accessibility": {
+    "message": "접근성",
+    "description": "사이드바 문서의 'Accessibility' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Loading and Storing Data": {
+    "message": "데이터 로딩 및 저장",
+    "description": "사이드바 문서의 'Loading and Storing Data' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Loading and Storing Data.link.generated-index.title": {
+    "message": "데이터 로딩 및 저장",
+    "description": "사이드바 문서 'Loading and Storing Data' 카테고리의 생성된 인덱스 페이지 제목"
+  },
+  "sidebar.docs.category.Loading Data": {
+    "message": "데이터 로딩",
+    "description": "사이드바 문서의 'Loading Data' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Configuring Views": {
+    "message": "뷰 구성",
+    "description": "사이드바 문서의 'Configuring Views' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Configuring Views.link.generated-index.title": {
+    "message": "뷰 구성",
+    "description": "사이드바 문서 'Configuring Views' 카테고리의 생성된 인덱스 페이지 제목"
+  },
+  "sidebar.docs.category.Configuring the Lightbox": {
+    "message": "라이트박스 구성",
+    "description": "사이드바 문서의 'Configuring the Lightbox' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Configuring the Lightbox.link.generated-index.title": {
+    "message": "라이트박스 구성",
+    "description": "사이드바 문서 'Configuring the Lightbox' 카테고리의 생성된 인덱스 페이지 제목"
+  },
+  "sidebar.docs.category.Managing Scheduler Events": {
+    "message": "스케줄러 이벤트 관리",
+    "description": "사이드바 문서의 'Managing Scheduler Events' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Managing Scheduler Events.link.generated-index.title": {
+    "message": "스케줄러 이벤트 관리",
+    "description": "사이드바 문서 'Managing Scheduler Events' 카테고리의 생성된 인덱스 페이지 제목"
+  },
+  "sidebar.docs.category.Customizing Events": {
+    "message": "이벤트 사용자 지정",
+    "description": "사이드바 문서의 'Customizing Events' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Customizing Events.link.generated-index.title": {
+    "message": "이벤트 사용자 지정",
+    "description": "사이드바 문서 'Customizing Events' 카테고리의 생성된 인덱스 페이지 제목"
+  },
+  "sidebar.docs.category.Data Export and Import": {
+    "message": "데이터 내보내기 및 가져오기",
+    "description": "사이드바 문서의 'Data Export and Import' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Data Export and Import.link.generated-index.title": {
+    "message": "데이터 내보내기 및 가져오기",
+    "description": "사이드바 문서 'Data Export and Import' 카테고리의 생성된 인덱스 페이지 제목"
+  },
+  "sidebar.docs.category.Integration with Google Calendar": {
+    "message": "구글 캘린더 통합",
+    "description": "사이드바 문서의 'Integration with Google Calendar' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Export to PDF": {
+    "message": "PDF 내보내기",
+    "description": "사이드바 문서의 'Export to PDF' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Data Serialization to XML, JSON, iCal": {
+    "message": "XML, JSON, iCal 데이터 직렬화",
+    "description": "사이드바 문서의 'Data Serialization to XML, JSON, iCal' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Appearance and Styling": {
+    "message": "외형 및 스타일링",
+    "description": "사이드바 문서의 'Appearance and Styling' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Appearance and Styling.link.generated-index.title": {
+    "message": "외형 및 스타일링",
+    "description": "사이드바 문서 'Appearance and Styling' 카테고리의 생성된 인덱스 페이지 제목"
+  },
+  "sidebar.docs.category.Working with Dates": {
+    "message": "날짜 다루기",
+    "description": "사이드바 문서의 'Working with Dates' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Working with Dates.link.generated-index.title": {
+    "message": "날짜 다루기",
+    "description": "사이드바 문서 'Working with Dates' 카테고리의 생성된 인덱스 페이지 제목"
+  },
+  "sidebar.docs.category.Scheduler Integrations": {
+    "message": "스케줄러 통합",
+    "description": "사이드바 문서의 'Scheduler Integrations' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Scheduler Integrations.link.generated-index.title": {
+    "message": "스케줄러 통합",
+    "description": "사이드바 문서 'Scheduler Integrations' 카테고리의 생성된 인덱스 페이지 제목"
+  },
+  "sidebar.docs.category.Special Extensions and Editions": {
+    "message": "특별 확장 및 에디션",
+    "description": "사이드바 문서의 'Special Extensions and Editions' 카테고리 라벨"
+  },
+  "sidebar.docs.category.Special Extensions and Editions.link.generated-index.title": {
+    "message": "특별 확장 및 에디션",
+    "description": "사이드바 문서 'Special Extensions and Editions' 카테고리의 생성된 인덱스 페이지 제목"
+  }
+}

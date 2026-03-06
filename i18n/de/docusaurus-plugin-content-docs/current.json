@@ -1,0 +1,162 @@
+{
+  "version.label": {
+    "message": "Nächste",
+    "description": "Das Label für die aktuelle Version"
+  },
+  "sidebar.docs.category.Scheduler API": {
+    "message": "Scheduler API",
+    "description": "Das Label für die Kategorie Scheduler API im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Methods": {
+    "message": "Methoden",
+    "description": "Das Label für die Kategorie Methoden im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Properties": {
+    "message": "Eigenschaften",
+    "description": "Das Label für die Kategorie Eigenschaften im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Events": {
+    "message": "Ereignisse",
+    "description": "Das Label für die Kategorie Ereignisse im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Templates": {
+    "message": "Vorlagen",
+    "description": "Das Label für die Kategorie Vorlagen im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Others": {
+    "message": "Andere",
+    "description": "Das Label für die Kategorie Andere im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Views": {
+    "message": "Ansichten",
+    "description": "Das Label für die Kategorie Ansichten im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Guides": {
+    "message": "Anleitungen",
+    "description": "Das Label für die Kategorie Anleitungen im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Creating Scheduler": {
+    "message": "Scheduler erstellen",
+    "description": "Das Label für die Kategorie Scheduler erstellen im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Creating Scheduler.link.generated-index.title": {
+    "message": "Scheduler erstellen",
+    "description": "Der Titel der generierten Indexseite für die Kategorie Scheduler erstellen im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Ways to Install Scheduler": {
+    "message": "Wege zur Installation des Scheduler",
+    "description": "Das Label für die Kategorie Wege zur Installation des Scheduler im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.How to Start with dhtmlxScheduler": {
+    "message": "Wie man mit dhtmlxScheduler beginnt",
+    "description": "Das Label für die Kategorie Wie man mit dhtmlxScheduler beginnt im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Scheduler": {
+    "message": "Scheduler konfigurieren",
+    "description": "Das Label für die Kategorie Scheduler konfigurieren im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Scheduler.link.generated-index.title": {
+    "message": "Scheduler konfigurieren",
+    "description": "Der Titel der generierten Indexseite für die Kategorie Scheduler konfigurieren im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Accessibility": {
+    "message": "Barrierefreiheit",
+    "description": "Das Label für die Kategorie Barrierefreiheit im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Loading and Storing Data": {
+    "message": "Daten laden und speichern",
+    "description": "Das Label für die Kategorie Daten laden und speichern im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Loading and Storing Data.link.generated-index.title": {
+    "message": "Daten laden und speichern",
+    "description": "Der Titel der generierten Indexseite für die Kategorie Daten laden und speichern im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Loading Data": {
+    "message": "Daten laden",
+    "description": "Das Label für die Kategorie Daten laden im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Views": {
+    "message": "Ansichten konfigurieren",
+    "description": "Das Label für die Kategorie Ansichten konfigurieren im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring Views.link.generated-index.title": {
+    "message": "Ansichten konfigurieren",
+    "description": "Der Titel der generierten Indexseite für die Kategorie Ansichten konfigurieren im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring the Lightbox": {
+    "message": "Lightbox konfigurieren",
+    "description": "Das Label für die Kategorie Lightbox konfigurieren im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Configuring the Lightbox.link.generated-index.title": {
+    "message": "Lightbox konfigurieren",
+    "description": "Der Titel der generierten Indexseite für die Kategorie Lightbox konfigurieren im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Managing Scheduler Events": {
+    "message": "Scheduler-Ereignisse verwalten",
+    "description": "Das Label für die Kategorie Scheduler-Ereignisse verwalten im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Managing Scheduler Events.link.generated-index.title": {
+    "message": "Scheduler-Ereignisse verwalten",
+    "description": "Der Titel der generierten Indexseite für die Kategorie Scheduler-Ereignisse verwalten im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Customizing Events": {
+    "message": "Ereignisse anpassen",
+    "description": "Das Label für die Kategorie Ereignisse anpassen im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Customizing Events.link.generated-index.title": {
+    "message": "Ereignisse anpassen",
+    "description": "Der Titel der generierten Indexseite für die Kategorie Ereignisse anpassen im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Data Export and Import": {
+    "message": "Datenexport und -import",
+    "description": "Das Label für die Kategorie Datenexport und -import im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Data Export and Import.link.generated-index.title": {
+    "message": "Datenexport und -import",
+    "description": "Der Titel der generierten Indexseite für die Kategorie Datenexport und -import im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Integration with Google Calendar": {
+    "message": "Integration mit Google Kalender",
+    "description": "Das Label für die Kategorie Integration mit Google Kalender im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Export to PDF": {
+    "message": "Als PDF exportieren",
+    "description": "Das Label für die Kategorie Als PDF exportieren im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Data Serialization to XML, JSON, iCal": {
+    "message": "Daten-Serialisierung zu XML, JSON, iCal",
+    "description": "Das Label für die Kategorie Daten-Serialisierung zu XML, JSON, iCal im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Appearance and Styling": {
+    "message": "Erscheinungsbild und Gestaltung",
+    "description": "Das Label für die Kategorie Erscheinungsbild und Gestaltung im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Appearance and Styling.link.generated-index.title": {
+    "message": "Erscheinungsbild und Gestaltung",
+    "description": "Der Titel der generierten Indexseite für die Kategorie Erscheinungsbild und Gestaltung im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Working with Dates": {
+    "message": "Arbeiten mit Daten",
+    "description": "Das Label für die Kategorie Arbeiten mit Daten im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Working with Dates.link.generated-index.title": {
+    "message": "Arbeiten mit Daten",
+    "description": "Der Titel der generierten Indexseite für die Kategorie Arbeiten mit Daten im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Scheduler Integrations": {
+    "message": "Scheduler-Integrationen",
+    "description": "Das Label für die Kategorie Scheduler-Integrationen im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Scheduler Integrations.link.generated-index.title": {
+    "message": "Scheduler-Integrationen",
+    "description": "Der Titel der generierten Indexseite für die Kategorie Scheduler-Integrationen im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Special Extensions and Editions": {
+    "message": "Spezielle Erweiterungen und Editionen",
+    "description": "Das Label für die Kategorie Spezielle Erweiterungen und Editionen im Seitenleisten-Dokumentation"
+  },
+  "sidebar.docs.category.Special Extensions and Editions.link.generated-index.title": {
+    "message": "Spezielle Erweiterungen und Editionen",
+    "description": "Der Titel der generierten Indexseite für die Kategorie Spezielle Erweiterungen und Editionen im Seitenleisten-Dokumentation"
+  }
+}
