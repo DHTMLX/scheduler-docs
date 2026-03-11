@@ -47,7 +47,7 @@ module.exports = {
             type: "category",
             label: "Integrations",
             collapsible: true,
-            collapsed: true,
+            collapsed: false,
             link: {
                 type: 'doc',
                 id: "integrations/howtostart-guides",
@@ -104,6 +104,17 @@ module.exports = {
                              type: 'doc',
                              id: "integrations/react/copyright"
                         },
+                    ]
+                },
+                {
+                    type: "category",
+                    label: "AI Tools",
+                    link: {
+                        type: "doc",
+                        id: "integrations/ai-tools/index"
+                    },
+                    items: [
+                        "integrations/ai-tools/mcp-server"
                     ]
                 },
                 "integrations/vue/howtostart-vue",
