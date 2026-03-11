@@ -46,7 +46,7 @@ scheduler.locale.labels.section_location = "Location";
 
 ## Eigenschaften
 
-Hier sind einige der wichtigsten Eigenschaften, die häufig mit dem 'textarea'-Steuerelement verwendet werden (die vollständige Liste finden Sie <a href="[lightbox](api/config/lightbox.md)">hier</a>):
+Hier sind einige der wichtigsten Eigenschaften, die häufig mit dem 'textarea'-Steuerelement verwendet werden (die vollständige Liste finden Sie [lightbox](api/config/lightbox.md)):
 
 <table class="webixdoc_links">
   <tbody>

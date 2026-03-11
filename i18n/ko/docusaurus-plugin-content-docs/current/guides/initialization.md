@@ -13,7 +13,7 @@ dhtmlxScheduler로 애플리케이션을 개발할 때, 가장 먼저 해야 할
 
 <div className="framework-grid">
 
-  <a className="framework-card" href="integrations/react/quick-start/">
+  <a className="framework-card" href="../../integrations/react/quick-start/">
     <FrameworkIcon name="react" className="framework-icon" />
     <div className="framework-title">React</div>
     <div className="framework-desc">
@@ -21,7 +21,7 @@ dhtmlxScheduler로 애플리케이션을 개발할 때, 가장 먼저 해야 할
     </div>
   </a>
 
-  <a className="framework-card" href="integrations/angular/howtostart-angular/">
+  <a className="framework-card" href="../../integrations/angular/howtostart-angular/">
     <FrameworkIcon name="angular" className="framework-icon" />
     <div className="framework-title">Angular</div>
     <div className="framework-desc">
@@ -29,7 +29,7 @@ dhtmlxScheduler로 애플리케이션을 개발할 때, 가장 먼저 해야 할
     </div>
   </a>
 
-  <a className="framework-card" href="integrations/vue/howtostart-vue/">
+  <a className="framework-card" href="../../integrations/vue/howtostart-vue/">
     <FrameworkIcon name="vue" className="framework-icon" />
     <div className="framework-title">Vue</div>
     <div className="framework-desc">
@@ -37,13 +37,22 @@ dhtmlxScheduler로 애플리케이션을 개발할 때, 가장 먼저 해야 할
     </div>
   </a>
 
-  <a className="framework-card" href="integrations/svelte/howtostart-svelte/">
+  <a className="framework-card" href="../../integrations/svelte/howtostart-svelte/">
     <FrameworkIcon name="svelte" className="framework-icon" />
     <div className="framework-title">Svelte</div>
     <div className="framework-desc">
       Embed Scheduler in Svelte with a simple component that binds config and events.
     </div>
   </a>
+
+  <a className="framework-card" href="../../integrations/salesforce/howtostart-salesforce/">
+    <FrameworkIcon name="salesforce" className="framework-icon" />
+    <div className="framework-title">Salesforce</div>
+    <div className="framework-desc">
+      Use Scheduler in Salesforce Lightning Web Components and connect it to org data.
+    </div>
+  </a>
+
 </div>
 
 

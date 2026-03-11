@@ -24,7 +24,7 @@ scheduler.config.lightbox.sections = [
 
 ## Eigenschaften {#properties}
 
-Hier sind einige der wichtigsten Eigenschaften, die häufig mit dem 'time'-Steuerelement verwendet werden (eine vollständige Liste finden Sie <a href="[lightbox](api/config/lightbox.md)">hier</a>):
+Hier sind einige der wichtigsten Eigenschaften, die häufig mit dem 'time'-Steuerelement verwendet werden (eine vollständige Liste finden Sie [lightbox](api/config/lightbox.md)):
 
 <table class="webixdoc_links">
   <tbody>

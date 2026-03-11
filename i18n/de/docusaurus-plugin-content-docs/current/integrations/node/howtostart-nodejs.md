@@ -218,7 +218,7 @@ Starten Sie die App neu, damit die Änderungen wirksam werden.
 
 Wenn Sie nun *http://localhost:3000/* im Browser öffnen, wird die *index.html*-Seite angezeigt.
 
-<img src='/img/howtostart_nodejs_init.png'/>
+![howtostart_nodejs_init](/img/howtostart_nodejs_init.png)
 
 ## Schritt 3. Datenbank vorbereiten
 
@@ -422,7 +422,7 @@ router.setRoutes(app, "/events", storage);
 
 Nach dem Neustart der Anwendung sollten Sie in der Lage sein, im Scheduler Termine zu erstellen, zu löschen und zu bearbeiten, wobei alle Änderungen auch nach dem Neuladen der Seite erhalten bleiben.
 
-<img src='/img/howtostart_nodejs_crud.png'/>
+![howtostart_nodejs_crud](/img/howtostart_nodejs_crud.png)
 
 ## Dynamisches Laden
 

@@ -144,7 +144,7 @@ Beachten Sie diesen und die folgenden Schritte, wenn Sie Daten aus einer Datenba
 
 Wenn Sie Daten vom Server laden möchten, beginnen Sie mit dem Erstellen einer Datenbanktabelle wie folgt:
 
-<img src='/img/db_table.png'/>
+![db_table.png](/img/db_table.png)
 
 Sie können sie mit folgendem SQL anlegen:
 

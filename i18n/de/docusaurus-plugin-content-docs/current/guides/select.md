@@ -51,7 +51,7 @@ scheduler.locale.labels.section_select = "Alert";
 
 ## Eigenschaften {#properties}
 
-Hier sind einige wichtige Eigenschaften, die üblicherweise für das 'select'-Steuerelement gesetzt werden (die vollständige Liste finden Sie <a href="[lightbox](api/config/lightbox.md)">hier</a>):
+Hier sind einige wichtige Eigenschaften, die üblicherweise für das 'select'-Steuerelement gesetzt werden (die vollständige Liste finden Sie [lightbox](api/config/lightbox.md)):
 
 <table class="webixdoc_links">
   <tbody>

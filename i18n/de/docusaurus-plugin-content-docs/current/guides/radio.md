@@ -69,7 +69,7 @@ scheduler.locale.labels.section_priority = 'Priority';
 
 ## Eigenschaften
 
-Hier sind die wichtigsten Eigenschaften, die üblicherweise für das 'radio'-Steuerelement gesetzt werden (die vollständige Liste finden Sie <a href="[lightbox](api/config/lightbox.md)">hier</a>):
+Hier sind die wichtigsten Eigenschaften, die üblicherweise für das 'radio'-Steuerelement gesetzt werden (die vollständige Liste finden Sie [lightbox](api/config/lightbox.md)):
 
 <table class="webixdoc_links">
   <tbody>

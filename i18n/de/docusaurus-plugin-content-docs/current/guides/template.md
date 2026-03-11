@@ -58,7 +58,7 @@ scheduler.attachEvent("onBeforeLightbox", function(id) {
 
 ## Eigenschaften
 
-Hier sind einige wichtige Eigenschaften, die häufig für das 'template'-Control gesetzt werden (die vollständige Liste ist <a href="[lightbox](api/config/lightbox.md)">hier</a> verfügbar):
+Hier sind einige wichtige Eigenschaften, die häufig für das 'template'-Control gesetzt werden (die vollständige Liste ist [lightbox](api/config/lightbox.md) verfügbar):
 
 <table class="webixdoc_links">
   <tbody>
