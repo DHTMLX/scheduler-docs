@@ -17,7 +17,7 @@ sidebar_label: "dhtmlxScheduler с SalesForce LWC"
 - [dhtmlxScheduler с Ruby on Rails](integrations/other/howtostart-ruby.md)
 - [dhtmlxScheduler с dhtmlxConnector](integrations/other/howtostart-connector.md)
 
-Мы будем использовать [SalesForce CLI](https://developer.salesforce.com/tools/salesforcecli) для создания Lightning Web Component и его деплоя в вашу организацию. Для информации по установке обратитесь к [этой статье](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm). Дополнительно вы можете установить [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName="salesforce.salesforcedx-vscode)" для Visual Studio Code, чтобы упростить работу с организациями для разработки.
+Мы будем использовать [SalesForce CLI](https://developer.salesforce.com/tools/salesforcecli) для создания Lightning Web Component и его деплоя в вашу организацию. Для информации по установке обратитесь к [этой статье](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm). Дополнительно вы можете установить [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) для Visual Studio Code, чтобы упростить работу с организациями для разработки.
 
 :::note
 Полный исходный код доступен [на GitHub](https://github.com/DHTMLX/salesforce-scheduler-demo).

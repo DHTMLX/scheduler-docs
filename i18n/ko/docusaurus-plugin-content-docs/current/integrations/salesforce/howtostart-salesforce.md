@@ -17,7 +17,7 @@ sidebar_label: "dhtmlxScheduler와 SalesForce LWC 통합하기"
 - ["dhtmlxScheduler와 Ruby on Rails 연동하기"](integrations/other/howtostart-ruby.md)
 - ["dhtmlxScheduler와 dhtmlxConnector 연동하기"](integrations/other/howtostart-connector.md)
 
-이 가이드에서는 [SalesForce CLI](https://developer.salesforce.com/tools/salesforcecli)를 사용하여 Lightning Web Component를 생성하고, 이를 조직에 배포하는 과정을 다룹니다. 설치 관련 자세한 내용은 [이 문서](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)를 참고하세요. 또한, Visual Studio Code에서 개발 환경을 더욱 편리하게 사용하려면 [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName="salesforce.salesforcedx-vscode)을" 설치할 수 있습니다.
+이 가이드에서는 [SalesForce CLI](https://developer.salesforce.com/tools/salesforcecli)를 사용하여 Lightning Web Component를 생성하고, 이를 조직에 배포하는 과정을 다룹니다. 설치 관련 자세한 내용은 [이 문서](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)를 참고하세요. 또한, Visual Studio Code에서 개발 환경을 더욱 편리하게 사용하려면 [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode)을 설치할 수 있습니다.
 
 :::note
 전체 소스 코드는 [GitHub](https://github.com/DHTMLX/salesforce-scheduler-demo)에서 확인하실 수 있습니다.
