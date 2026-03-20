@@ -471,7 +471,7 @@ For example:
 addEventListener(node, "click", function(){...})
 ~~~
 
-## Custom confirmation modal
+## Custom confirmation modal {#customconfirmationmodal}
 
 When a user edits or drags a recurring event, the scheduler displays a built-in modal that asks whether to modify just this occurrence, this and following events, or the entire series. You can replace it with your own UI by overriding `scheduler.ext.recurring.confirm`.
 

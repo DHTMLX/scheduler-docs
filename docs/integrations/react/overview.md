@@ -351,7 +351,7 @@ The delete confirmation dialog can be overridden via `modals`.
 />
 ```
 
-### Customizing the Recurrence Confirmation Modal
+### Customizing the Recurrence Confirmation Modal {#customizingtherecurrenceconfirmationmodal}
 
 When a user edits or drags a recurring event, a confirmation modal asks whether to modify just this occurrence, this and following events, or the entire series. You can replace this built-in dialog with your own using `modals.onRecurrenceConfirm`.
 
@@ -367,22 +367,7 @@ The callback receives a context object and must return a decision (or a Promise 
 
 Return value (`RecurrenceDecision`): `"occurrence"`, `"following"`, `"series"`, or `null` to cancel.
 
-Minimal example using `window.confirm`:
-
-```tsx
-<ReactScheduler
-  modals={{
-    onRecurrenceConfirm: (context) => {
-      const choice = window.prompt(
-        `${context.labels.title}\nOptions: ${context.options.join(", ")}`
-      );
-      return context.options.includes(choice) ? choice : null;
-    },
-  }}
-/>
-```
-
-Full example with a custom React dialog:
+Example:
 
 ```tsx
 import { useState, useCallback } from "react";
