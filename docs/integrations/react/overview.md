@@ -351,6 +351,60 @@ The delete confirmation dialog can be overridden via `modals`.
 />
 ```
 
+### Customizing the Recurrence Confirmation Modal {#customizingtherecurrenceconfirmationmodal}
+
+When a user edits or drags a recurring event, a confirmation modal asks whether to modify just this occurrence, this and following events, or the entire series. You can replace this built-in dialog with your own using `modals.onRecurrenceConfirm`.
+
+The callback receives a context object and must return a decision (or a Promise that resolves to one):
+
+| Field | Type | Description |
+|---|---|---|
+| `origin` | `"lightbox" \| "dnd"` | Whether the action was triggered from the lightbox or drag-and-drop |
+| `occurrence` | `any` | The specific occurrence being edited |
+| `series` | `any` | The parent recurring event |
+| `labels` | `object` | Localized labels: `title`, `ok`, `cancel`, `occurrence`, `following`, `series` |
+| `options` | `string[]` | Available choices, e.g. `["occurrence", "following", "series"]` |
+
+Return value (`RecurrenceDecision`): `"occurrence"`, `"following"`, `"series"`, or `null` to cancel.
+
+Example:
+
+```tsx
+import { useState, useCallback } from "react";
+
+function App() {
+  const [recurrencePrompt, setRecurrencePrompt] = useState(null);
+
+  const onRecurrenceConfirm = useCallback((context) => {
+    return new Promise((resolve) => {
+      setRecurrencePrompt({ context, resolve });
+    });
+  }, []);
+
+  return (
+    <>
+      <ReactScheduler
+        modals={{ onRecurrenceConfirm }}
+      />
+      {recurrencePrompt && (
+        <MyRecurrenceDialog
+          options={recurrencePrompt.context.options}
+          labels={recurrencePrompt.context.labels}
+          onSelect={(choice) => {
+            recurrencePrompt.resolve(choice);
+            setRecurrencePrompt(null);
+          }}
+          onCancel={() => {
+            recurrencePrompt.resolve(null);
+            setRecurrencePrompt(null);
+          }}
+        />
+      )}
+    </>
+  );
+}
+```
+
 ## Filtering
 
 Use the `filter` prop to control which events are displayed:

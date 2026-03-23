@@ -471,6 +471,48 @@ For example:
 addEventListener(node, "click", function(){...})
 ~~~
 
+## Custom confirmation modal {#customconfirmationmodal}
+
+When a user edits or drags a recurring event, the scheduler displays a built-in modal that asks whether to modify just this occurrence, this and following events, or the entire series. You can replace it with your own UI by overriding `scheduler.ext.recurring.confirm`.
+
+~~~js
+scheduler.ext.recurring.confirm = function(context) {
+  // context contains:
+  // - origin: "lightbox" | "dnd"
+  // - occurrence: the occurrence event object
+  // - series: the parent series event object
+  // - labels: { title, ok, cancel, occurrence, following, series }
+  // - options: ["occurrence", "following", "series"]
+  //
+  // Return one of: "occurrence", "following", "series", or null to cancel.
+  // Can return a Promise for async UI.
+
+  return new Promise(function(resolve) {
+    myCustomDialog.show({
+      title: context.labels.title,
+      options: context.options,
+      onSelect: function(choice) { resolve(choice); },
+      onCancel: function() { resolve(null); }
+    });
+  });
+};
+~~~
+
+The context object has the following properties:
+
+| Property | Type | Description |
+|---|---|---|
+| `origin` | `"lightbox" \| "dnd"` | Whether the action was triggered from the lightbox or drag-and-drop |
+| `occurrence` | `object` | The specific occurrence being edited |
+| `series` | `object` | The parent recurring event |
+| `labels` | `object` | Localized strings: `title`, `ok`, `cancel`, `occurrence`, `following`, `series` |
+| `options` | `string[]` | Available choices, e.g. `["occurrence", "following", "series"]` |
+
+The function must return `"occurrence"`, `"following"`, `"series"`, or `null` to cancel. It can return the value directly or as a Promise.
+
+For a React implementation, see the [React Scheduler documentation](integrations/react/overview.md#customizing-the-recurrence-confirmation-modal).
+
+
 ## Legacy format of recurring events
 
 Until v7.1 Scheduler used a custom format for recurring events, you can find the format details [here](guides/recurring-events-legacy.md).

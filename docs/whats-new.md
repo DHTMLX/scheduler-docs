@@ -7,6 +7,25 @@ sidebar_label: "What's New"
 
 If you are updating Scheduler from an older version, check [Migration From Older Versions](migration.md) for details.
 
+7.2.12
+-------------
+<span class='release_date'>March 23, 2026. Bugfix release</span>
+
+### Fixes
+
+- Fix the crash on page reload in [React Scheduler](integrations/react/overview.md) when using non-default themes with the [cookie](guides/extensions-list.md#cookie) plugin enabled
+- Fix the regression where the `save` URL in the `data` prop was not applied correctly in [React Scheduler](integrations/react/overview.md)
+- Fix the issue where editing a non-first occurrence of a [recurring event](guides/recurring-events.md) in "This and following events" mode did not apply all [lightbox](guides/configuring-the-lightbox.md) field changes
+- Fix the issue where dynamically changing [Quick Info](guides/quick-info.md) buttons based on event conditions did not update the popup correctly
+- Fix the issue where modifying the text of a single [recurring event](guides/recurring-events.md) occurrence was overwritten after editing a subsequent occurrence in "This and following events" mode
+- Fix the overflow styles of the [Quick Info](guides/quick-info.md) popup to properly handle long event descriptions
+- Fix the script error in [React Scheduler](integrations/react/overview.md) that occurred when adding events to an existing dataset via the `useState` function
+
+### Updates
+
+- Add the ability to replace the [recurring event confirmation modal](guides/recurring-events.md#customconfirmationmodal) with a custom dialog.
+- Add the ability to replace the [recurring event confirmation modal](integrations/react/overview.md#customizingtherecurrenceconfirmationmodal) in [React Scheduler](integrations/react/overview.md) via the modals.onRecurrenceConfirm prop
+
 7.2.11
 -------------
 <span class='release_date'>January 12, 2026. Bugfix release</span>
