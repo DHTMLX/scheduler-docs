@@ -7,6 +7,17 @@ sidebar_label: "What's New"
 
 If you are updating Scheduler from an older version, check [Migration From Older Versions](migration.md) for details.
 
+
+7.2.13
+-------------
+<span class='release_date'>March 31, 2026. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect trial warning in [React Scheduler](integrations/react/overview.md)
+- Fix the regression with remote updates in [React Scheduler](integrations/react/overview.md) where editing an event did not apply changes to the existing event
+
+
 7.2.12
 -------------
 <span class='release_date'>March 23, 2026. Bugfix release</span>
