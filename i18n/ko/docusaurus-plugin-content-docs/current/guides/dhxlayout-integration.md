@@ -13,7 +13,7 @@ dhtmlxLayout는 dhtmlxScheduler 라이브러리에 포함되어 있지 않습니
 
 ## dhtmlxSuite v5+
 
-이 버전에서는 dhtmlxLayout를 독립형 제품 또는 dhtmlxSuite 라이브러리의 일부로 사용할 수 있습니다. 프로젝트에 dhtmlxLayout v5.X를 포함하려면 [라이선스 구매](https://dhtmlx.com/docs/products/dhtmlxSuite5/)가 필요합니다.
+이 버전에서는 dhtmlxLayout를 독립형 제품 또는 dhtmlxSuite 라이브러리의 일부로 사용할 수 있습니다. 프로젝트에 dhtmlxLayout v5.X를 포함하려면 [라이선스 구매](https://dhtmlx.com/docs/products/dhtmlxSuite/)가 필요합니다.
 
 **dhtmlxScheduler 인스턴스를 레이아웃 셀에 추가하려면** [attachScheduler()](https://docs.dhtmlx.com/api__dhtmlxcell_attachscheduler.html) 메서드를 사용하세요.
   

@@ -20,8 +20,7 @@ There are two versions of Layout you can choose from, depending on the version o
 ## dhtmlxSuite v5+
 
 In this version dhtmlxLayout can be used as a separate product or as a part of the dhtmlxSuite library. To use dhtmlxLayout v5.X in your application, you should 
-[purchase the license](https://dhtmlx.com/docs/products/dhtmlxSuite5/).
-
+[purchase the license](https://dhtmlx.com/docs/products/dhtmlxSuite/).
 
 **To attach a dhtmlxScheduler instance to a layout cell**, use the [attachScheduler()](https://docs.dhtmlx.com/api__dhtmlxcell_attachscheduler.html) method.
   

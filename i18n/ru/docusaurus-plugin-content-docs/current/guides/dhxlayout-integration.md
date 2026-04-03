@@ -13,7 +13,7 @@ sidebar_label: "Интеграция с dhtmlxLayout"
 
 ## dhtmlxSuite v5+
 
-В этой версии dhtmlxLayout может использоваться как самостоятельный продукт или как часть библиотеки dhtmlxSuite. Для включения dhtmlxLayout v5.X в ваш проект требуется [покупка лицензии](https://dhtmlx.com/docs/products/dhtmlxSuite5/).
+В этой версии dhtmlxLayout может использоваться как самостоятельный продукт или как часть библиотеки dhtmlxSuite. Для включения dhtmlxLayout v5.X в ваш проект требуется [покупка лицензии](https://dhtmlx.com/docs/products/dhtmlxSuite/).
 
 **Чтобы добавить экземпляр dhtmlxScheduler в ячейку layout**, используйте метод [attachScheduler()](https://docs.dhtmlx.com/api__dhtmlxcell_attachscheduler.html).
   
