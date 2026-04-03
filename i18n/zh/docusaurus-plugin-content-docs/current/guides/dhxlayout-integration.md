@@ -13,7 +13,7 @@ sidebar_label: "与 dhtmlxLayout 集成"
 
 ## dhtmlxSuite v5+
 
-在该版本中，dhtmlxLayout 可以作为独立产品或 dhtmlxSuite 库的一部分使用。要在项目中引入 dhtmlxLayout v5.X，您需要[购买许可证](https://dhtmlx.com/docs/products/dhtmlxSuite5/)。
+在该版本中，dhtmlxLayout 可以作为独立产品或 dhtmlxSuite 库的一部分使用。要在项目中引入 dhtmlxLayout v5.X，您需要[购买许可证](https://dhtmlx.com/docs/products/dhtmlxSuite/)。
 
 **要将 dhtmlxScheduler 实例添加到 layout 单元格中**，请使用 [attachScheduler()](https://docs.dhtmlx.com/api__dhtmlxcell_attachscheduler.html) 方法。
   

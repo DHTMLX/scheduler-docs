@@ -13,7 +13,7 @@ Beachten Sie, dass dhtmlxLayout nicht in der dhtmlxScheduler-Bibliothek enthalte
 
 ## dhtmlxSuite v5+
 
-In dieser Version kann dhtmlxLayout als eigenständiges Produkt oder als Teil der dhtmlxSuite-Bibliothek verwendet werden. Um dhtmlxLayout v5.X in Ihr Projekt einzubinden, ist ein [Lizenzerwerb](https://dhtmlx.com/docs/products/dhtmlxSuite5/) erforderlich.
+In dieser Version kann dhtmlxLayout als eigenständiges Produkt oder als Teil der dhtmlxSuite-Bibliothek verwendet werden. Um dhtmlxLayout v5.X in Ihr Projekt einzubinden, ist ein [Lizenzerwerb](https://dhtmlx.com/docs/products/dhtmlxSuite/) erforderlich.
 
 **Um eine dhtmlxScheduler-Instanz zu einer Layout-Zelle hinzuzufügen**, verwenden Sie die Methode [attachScheduler()](https://docs.dhtmlx.com/api__dhtmlxcell_attachscheduler.html).
   

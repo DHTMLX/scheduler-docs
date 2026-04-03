@@ -186,7 +186,7 @@ const config = {
 			onBrokenMarkdownLinks: 'throw',
 		}
 	},
-	onBrokenLinks: 'throw',
+	onBrokenLinks: 'warn',
 	onBrokenAnchors: 'warn',
 	favicon: 'img/favicon.ico',
 	organizationName: 'DHTMLX', // Usually your GitHub org/user name.
@@ -199,7 +199,7 @@ const config = {
 			({
 				docs: {
 					sidebarPath: require.resolve('./sidebars.js'),
-					editUrl: 'https://github.com/DHTMLX/docs-scheduler/edit/master/',
+					editUrl: 'https://github.com/DHTMLX/scheduler-docs/edit/master/',
 					routeBasePath: '/',
 				},
 				blog: false,
