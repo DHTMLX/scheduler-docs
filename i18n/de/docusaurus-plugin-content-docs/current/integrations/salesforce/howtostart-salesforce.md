@@ -17,7 +17,7 @@ Wenn Sie mit einer anderen Technologie arbeiten, finden Sie unten weitere Integr
 - [dhtmlxScheduler mit Ruby on Rails](/integrations/other/howtostart-ruby.md)
 - [dhtmlxScheduler mit dhtmlxConnector](/integrations/other/howtostart-connector.md)
 
-Wir verwenden die [SalesForce CLI](https://developer.salesforce.com/tools/salesforcecli), um die Lightning Web Component zu erstellen und in Ihre Organisation zu deployen. Details zur Installation finden Sie in [diesem Artikel](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm). Zusätzlich können Sie das [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName="salesforce.salesforcedx-vscode)" für Visual Studio Code installieren, um die Arbeit mit Entwicklungsumgebungen zu erleichtern.
+Wir verwenden die [SalesForce CLI](https://developer.salesforce.com/tools/salesforcecli), um die Lightning Web Component zu erstellen und in Ihre Organisation zu deployen. Details zur Installation finden Sie in [diesem Artikel](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm). Zusätzlich können Sie das [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) für Visual Studio Code installieren, um die Arbeit mit Entwicklungsumgebungen zu erleichtern.
 
 :::note
 Der vollständige Quellcode ist [auf GitHub](https://github.com/DHTMLX/salesforce-scheduler-demo) verfügbar.
