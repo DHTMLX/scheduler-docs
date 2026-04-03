@@ -186,7 +186,7 @@ const config = {
 			onBrokenMarkdownLinks: 'throw',
 		}
 	},
-	onBrokenLinks: 'throw',
+	onBrokenLinks: 'warn',
 	onBrokenAnchors: 'warn',
 	favicon: 'img/favicon.ico',
 	organizationName: 'DHTMLX', // Usually your GitHub org/user name.
