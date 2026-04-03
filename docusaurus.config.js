@@ -199,7 +199,7 @@ const config = {
 			({
 				docs: {
 					sidebarPath: require.resolve('./sidebars.js'),
-					editUrl: 'https://github.com/DHTMLX/docs-scheduler/edit/master/',
+					editUrl: 'https://github.com/DHTMLX/scheduler-docs/edit/master/',
 					routeBasePath: '/',
 				},
 				blog: false,
