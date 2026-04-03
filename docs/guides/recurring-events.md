@@ -510,7 +510,7 @@ The context object has the following properties:
 
 The function must return `"occurrence"`, `"following"`, `"series"`, or `null` to cancel. It can return the value directly or as a Promise.
 
-For a React implementation, see the [React Scheduler documentation](integrations/react/overview.md#customizing-the-recurrence-confirmation-modal).
+For a React implementation, see the [React Scheduler documentation](integrations/react/overview.md#customizingtherecurrenceconfirmationmodal).
 
 
 ## Legacy format of recurring events
