@@ -5,43 +5,46 @@ sidebar_label: "Fully Custom Lightbox"
 
 # Fully Custom Lightbox
 
-To specify for the scheduler a fully custom lightbox you need to redefine the [showLightbox](api/method/showlightbox.md) method:
+To specify a fully custom lightbox for the scheduler, redefine the [`showLightbox()`](api/method/showlightbox.md) method:
 
 ~~~js
-scheduler.showLightbox = function(id){
+scheduler.showLightbox = (id) => {
     // id - id of event
     ... code to show any custom form ...
-}
+};
 ~~~
 
-There are 2 helper methods you can use to simplify implementation:
+There are 2 helper methods you can use to simplify the implementation:
 
-- [startLightbox](api/method/startlightbox.md) - shows a custom lightbox in the specified HTML container centered on the screen.
-- [endLightbox](api/method/endlightbox.md) - closes the lightbox
+- [`startLightbox()`](api/method/startlightbox.md) - shows a custom lightbox in the specified HTML container centered on the screen
+- [`endLightbox()`](api/method/endlightbox.md) - closes the lightbox
 
-Let's assume that you have the **#custom_form** HTML container somewhere on the page. Then, to implement a custom lightbox you can use this: 
+Assume that you have the `#custom_form` HTML container somewhere on the page. Then you can implement a custom lightbox like this:
 
 ~~~js
-var custom_form = document.getElementById("custom_form");
+const customForm = document.getElementById("custom_form");
 
-scheduler.showLightbox = function(id){
-    var ev = scheduler.getEvent(id);
-    scheduler.startLightbox(id, custom_form );
+scheduler.showLightbox = (id) => {
+    const event = scheduler.getEvent(id);
+    scheduler.startLightbox(id, customForm);
     ...'here you need to set values in the form'...
-    //document.getElementById("some_input").value = ev.text;
-}
-//needs to be attached to the 'save' button
-function save_form() {
-    var ev = scheduler.getEvent(scheduler.getState().lightbox_id);
+    // document.getElementById("some_input").value = event.text;
+};
+
+// needs to be attached to the 'save' button
+const saveForm = () => {
+    const event = scheduler.getEvent(scheduler.getState().lightbox_id);
     ...'here you need to retrieve values from the form'...
-    //ev.text = document.getElementById("some_input").value;
-    scheduler.endLightbox(true, custom_form);
-}
-//needs to be attached to the 'cancel' button
-function close_form(argument) {
-    scheduler.endLightbox(false, custom_form);
-}
+    // event.text = document.getElementById("some_input").value;
+    scheduler.endLightbox(true, customForm);
+};
+
+// needs to be attached to the 'cancel' button
+const closeForm = () => {
+    scheduler.endLightbox(false, customForm);
+};
 ~~~
 
+### Related samples
 
-[Fully custom lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/16_custom_form.html)
+- [Fully custom lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/16_custom_form.html)
