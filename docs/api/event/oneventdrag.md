@@ -10,7 +10,7 @@ description: "fires when the user drags/resizes events in the scheduler"
 
 @short: Fires when the user drags/resizes events in the scheduler
 
-@signature: onEventDrag: (id: string, mode: string, ev: Event) =\> void;
+@signature: onEventDrag: (id: string, mode: string, e: Event) =\> void;
 
 ### Parameters
 
@@ -21,8 +21,8 @@ description: "fires when the user drags/resizes events in the scheduler"
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onEventDrag", function (id, mode, e){
-    //any custom logic here
+scheduler.attachEvent("onEventDrag", (id, mode, e) => {
+    // any custom logic here
 });
 ~~~
 
@@ -34,6 +34,6 @@ scheduler.attachEvent("onEventDrag", function (id, mode, e){
 
 Modes description:
 
-- **move** - the user drags the event over the scheduler.
-- **resize** - the user resizes the event by drag-and-drop.
-- **new-size** - the user creates a new event by drag-and-drop.
+- `move` - the user drags the event over the Scheduler
+- `resize` - the user resizes the event by drag-and-drop
+- `new-size` - the user creates a new event by drag-and-drop
