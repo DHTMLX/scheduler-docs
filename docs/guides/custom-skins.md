@@ -7,8 +7,8 @@ sidebar_label: "Skins Customization"
 
 Starting from v7.0 Scheduler skins use CSS variables that you can use for customization and styling.
 
-
-[Customize and switch between themes](https://docs.dhtmlx.com/scheduler/samples/07_skins/07_themes.html)
+### Related samples
+- [Customize and switch between themes](https://docs.dhtmlx.com/scheduler/samples/07_skins/07_themes.html)
 
 
 Key CSS Variables:
@@ -88,40 +88,39 @@ The easiest method to customize the Scheduler's appearance is by overriding the 
 ~~~html
 <style>
 :root {
-  --dhx-scheduler-base-colors-primary: #01579B;
-  --dhx-scheduler-event-background: #33B579;
-  --dhx-scheduler-event-color: #FFFFFF;
-  --dhx-scheduler-base-colors-border: #B0B8CD;
-  --dhx-scheduler-border-radius:2px;
+    --dhx-scheduler-base-colors-primary: #01579B;
+    --dhx-scheduler-event-background: #33B579;
+    --dhx-scheduler-event-color: #FFFFFF;
+    --dhx-scheduler-base-colors-border: #B0B8CD;
+    --dhx-scheduler-border-radius: 2px;
 }
 </style>
 ~~~
 
-
-[Customize and switch between themes](https://docs.dhtmlx.com/scheduler/samples/07_skins/07_themes.html)
+### Related samples
+- [Customize and switch between themes](https://docs.dhtmlx.com/scheduler/samples/07_skins/07_themes.html)
 
 
 By defining variables in this manner, you can redefine the default styles, ensuring that your custom styles are applied to the Scheduler.
 
 :::note
-For correct inheritance of values across the entire theme, define variables at the :root element.
+For correct inheritance of values across the entire theme, define variables at the `:root` element.
 :::
 
-It's important to define these styles at the **:root** element to ensure proper inheritance and application throughout the component. This approach guarantees that when a variable utilized by other variables is redefined, it correctly influences related styles across the component.
+It's important to define these styles at the `:root` element to ensure proper inheritance and application throughout the component. This approach guarantees that when a variable used by other variables is redefined, it correctly influences related styles across the component.
 
 For instance, the variable `--dhx-scheduler-scale-color` inherits from the primary text color variable `--dhx-scheduler-container-color`.
 
-- If you redefine `--dhx-scheduler-container-color` at the **:root** level, you ensure that `--dhx-scheduler-scale-color` reflects this change. 
+- If you redefine `--dhx-scheduler-container-color` at the `:root` level, you ensure that `--dhx-scheduler-scale-color` reflects this change.
 
 ~~~html
 <style>
 :root {
     /* --dhx-scheduler-scale-color and other
-  variables that inherit `--dhx-scheduler-container-color`
-  will be affected
-  */
-  --dhx-scheduler-container-color: #222;
-
+       variables that inherit `--dhx-scheduler-container-color`
+       will be affected
+    */
+    --dhx-scheduler-container-color: #222;
 }
 </style>
 ~~~
@@ -131,10 +130,10 @@ For instance, the variable `--dhx-scheduler-scale-color` inherits from the prima
 ~~~html
 <style>
 .dhx_cal_container {
-    /* only elements that directly 
-  use --dhx-scheduler-container-color will be affected
-  */
-  --dhx-scheduler-container-color: #222;
+    /* only elements that directly
+       use --dhx-scheduler-container-color will be affected
+    */
+    --dhx-scheduler-container-color: #222;
 }
 </style>
 ~~~
@@ -152,29 +151,29 @@ The latter can be used for deep customization of existing skins or for creating 
 
 ## How to start
 
-You can initialize **codebase/sources/less** as an NPM package. 
-The sources will contain two types of files: 
+You can initialize `codebase/sources/less` as an NPM package.
+The sources will contain two types of files:
 
-- style sheets; 
+- style sheets;
 - files with micro variables declaration which you can use for fine-tuning the scheduler view or for creating a new skin.
 
 ## How to build skins
 
-In **codebase/sources/less/** run:
+In `codebase/sources/less/` run:
 
-~~~
+~~~sh
 > npm install
 ~~~
 
 After install is completed, you can rebuild CSS files using the following commands:
 
-~~~
+~~~sh
 > npm run build
 ~~~
 
-Or 
+Or
 
-~~~
+~~~sh
 > npm run watch
 ~~~
 
@@ -182,11 +181,11 @@ The script will rebuild CSS files from sources and put them into the *codebase* 
 
 ## Structure
 
-The structure of the **less** folder for version 7.0 (may be changed in future versions) is given below:
+The structure of the `less` folder for version 7.0 (may change in future versions) is given below:
 
 ### Images
 
-- **./src/imgs** - svg icons used by all skins
+- **./src/imgs** - SVG icons used by all skins
 - **./src/iconfont** - icons prebuilt into the web font
 
 ### Skin definitions
@@ -209,11 +208,11 @@ The default set of variables is defined in the `terrace` skin, other skins redef
 
 ## Creating custom skin
 
-In order to create a new skin, you can copy and rename one of the existing skins from the **sources/less/src/themes** folder. Follow the steps below:
+In order to create a new skin, you can copy and rename one of the existing skins from the `sources/less/src/themes` folder. Follow the steps below:
 
-1) Copy and rename one of the existing files from the **sources/less/src/themes** folder, e.g.:
+1. Copy and rename one of the existing files from the `sources/less/src/themes` folder, for example:
 
-~~~
+~~~text
 -> copy:
 codebase/sources/less/src/themes/material.less
 
@@ -221,9 +220,9 @@ codebase/sources/less/src/themes/material.less
 codebase/sources/less/src/themes/custom.less
 ~~~
 
-2) Import the new file in **sources/less/src/themes/index.less**, like this:
+2. Import the new file in `sources/less/src/themes/index.less`, like this:
 
-~~~
+~~~less
 @import "./custom";
 ~~~
 
@@ -239,13 +238,13 @@ And add the content as in:
 }
 ~~~
 
-Note that the skin variables should be defined under the `:root` elements, using the `data-scheduler-there` selector.
+Note that the skin variables should be defined under the `:root` element, using the `data-scheduler-there` selector.
 
-A new theme must include the **--dhx-scheduler-theme** variable with the theme name.
+A new theme must include the `--dhx-scheduler-theme` variable with the theme name.
 
-3) Rebuild skins by running: 
+3. Rebuild skins by running:
 
-~~~
+~~~sh
 npm run build
 ~~~
 
