@@ -8,8 +8,7 @@ sidebar_label: "Export to PDF"
 *The article refers to exporting of dhtmlxScheduler 4.1+. If you use dhtmlxScheduler 4.0 or earlier versions, see details [here](export/pdf-legacy.md).*
 
 
-Starting from version 4.1, dhtmlxScheduler provides a new approach for exporting the scheduler into the PDF format - 
-an [online export service](export/pdf.md#default-export-to-pdf).
+Starting from version 4.1, dhtmlxScheduler provides a new approach for exporting the scheduler into the PDF format: an [online export service](export/pdf.md#default-export-to-pdf).
 
 
 :::info
@@ -21,49 +20,50 @@ during the valid support period (12 months for all PRO licenses).
 
 There are several export services available. You can install them on your computer and export Scheduler to PDF locally.
 
-Note that export services are not included into the Scheduler package, 
+Note that export services are not included in the Scheduler package,
 read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxScheduler/export.shtml) to learn the terms of using each of them.
 
 
 ## Limits on request size
 
-There is a common API endpoint <b>*https://export.dhtmlx.com/scheduler*</b> which serves for export methods (*exportToPDF*, *exportToPNG*, etc.). **Max request size is 10 MB**.
+There is a common API endpoint `https://export.dhtmlx.com/scheduler` that serves export methods such as `exportToPDF()` and `exportToPNG()`. Max request size is 10 MB.
 
 
 ## Default Export to PDF
 
 To export a scheduler as a PDF document, complete the following steps:
 
-- To use the online export service, enable the <b>export_api</b> plugin via the [plugins](api/method/plugins.md) method:
+- To use the online export service, enable the `export_api` plugin via the [`plugins()`](api/method/plugins.md) method:
 
 ~~~js
 scheduler.plugins({
-      export_api: true
+    export_api: true
 });
 ~~~
 
 :::note
-If you use the Scheduler version older than 7.0, you need to include the **https://export.dhtmlx.com/scheduler/api.js** file on your page to enable the online export service, e.g.:
+If you use the Scheduler version older than 7.0, you need to include the `https://export.dhtmlx.com/scheduler/api.js` file on your page to enable the online export service, e.g.:
 
-~~~js
+~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
 <script src="https://export.dhtmlx.com/scheduler/api.js"></script>
 ~~~
 :::
 
-- Call the <a href="#parametersoftheexportmethod">exportToPDF</a> method to export Scheduler: 
+- Call the [`exportToPDF()`](#parameters-of-the-export-method) method to export Scheduler:
 
-~~~html
-<input value="Export to PDF" type="button" onclick='scheduler.exportToPDF()'>/*!*/
+~~~html {1}
+<input value="Export to PDF" type="button" onclick='scheduler.exportToPDF()'>
 ~~~
 
 
-[Export to PDF/PNG](https://docs.dhtmlx.com/scheduler/samples/04_export/06_online_export.html)
+### Related samples
+- [Export to PDF/PNG](https://docs.dhtmlx.com/scheduler/samples/04_export/06_online_export.html)
 
 
 ## Parameters of the export method
 
-The [exportToPDF()](api/method/exporttopdf.md) method takes as a parameter an object with a number of properties (all of the properties are optional):
+The [`exportToPDF()`](api/method/exporttopdf.md) method takes an object with a number of properties as a parameter. All of the properties are optional:
 
 
 <table class="webixdoc_links">
@@ -103,45 +103,44 @@ The [exportToPDF()](api/method/exporttopdf.md) method takes as a parameter an ob
   </tbody>
 </table>
 
-
-[Calling the export method with optional properties](Calling the export method with optional properties)
+### Calling the export method with optional properties
 ~~~js
 scheduler.exportToPDF({
-    name:"myscheduler.pdf",
-    format:"A4",
-    orientation:"portrait",
-    zoom:1,
-    header:"<h1>My company</h1>",
-    footer:"<h4>Bottom line</h4>",
-    server:"https://myapp.com/myexport/scheduler"
+    name: "myscheduler.pdf",
+    format: "A4",
+    orientation: "portrait",
+    zoom: 1,
+    header: "<h1>My company</h1>",
+    footer: "<h4>Bottom line</h4>",
+    server: "https://myapp.com/myexport/scheduler"
 });
 ~~~
 
 
 ## Name of the output file
 
-To set a custom name for the output file, use the **name** property in the in the parameter of the [exportToPDF](export/pdf.md#parameters-of-the-export-method) method:
+To set a custom name for the output file, use the `name` property in the parameter of the [`exportToPDF()`](export/pdf.md#parameters-of-the-export-method) method:
 
-~~~js
+~~~js {2}
 scheduler.exportToPDF({
-    name:"my_beautiful_scheduler.pdf"/*!*/
+    name: "my_beautiful_scheduler.pdf"
 });
 ~~~
 
 
 ## Header/footer of the output file
 
-To add a header/footer to the output PDF file, use the **header**/**footer** properties in the parameter of the [exportToPDF](export/pdf.md#parameters-of-the-export-method) method:
+To add a header/footer to the output PDF file, use the `header`/`footer` properties in the parameter of the [`exportToPDF()`](export/pdf.md#parameters-of-the-export-method) method:
 
 :::note
 Note, you can use any HTML while specifying the parameters. While specifying images, remember that you need to set global paths as values of the "src" attribute.
 :::
 
-~~~js
+~~~js {3-4}
 scheduler.exportToPDF({
-    name:"myscheduler.pdf",
-    header:"<h1>My company</h1>",/*!*/
-    footer:"<h4>Bottom line</h4>"/*!*/
+    name: "myscheduler.pdf",
+    header: "<h1>My company</h1>",
+    footer: "<h4>Bottom line</h4>"
 });
 ~~~
 
@@ -152,34 +151,34 @@ To apply a custom style for the scheduler, provide the stylesheet with your cust
 
 - through a link:
 
-~~~js
+~~~js {3}
 scheduler.exportToPDF({
-    name:"calendar.pdf",
-    header:'<link rel="stylesheet" href="http://mysite.com/custom.css">' /*!*/
+    name: "calendar.pdf",
+    header: '<link rel="stylesheet" href="http://mysite.com/custom.css">'
 });
 ~~~
 
 - or through the 'style' tag:
 
-~~~js
+~~~js {3}
 scheduler.exportToPDF({
-    name:"calendar.pdf",
-    header:'<style>... custom css classes here ...</style>' /*!*/
+    name: "calendar.pdf",
+    header: '<style>... custom css classes here ...</style>'
 });
 ~~~
 
 
-Note, the aforementioned solution works for the global HTTP reference. If you have CSS classes specified in an Intranet/local environment, you can embed all styles as in:
+Note, the aforementioned solution works for the global HTTP reference. If you have CSS classes specified in an intranet/local environment, you can embed all styles as follows:
 
 ~~~js
 scheduler.exportToPDF({
-    header:"<style>.tier1{background: red; color:white;}</style>"
+    header: "<style>.tier1{background: red; color:white;}</style>"
 });
 ~~~
 
 ## Exporting HTML elements
 
-While exporting the Scheduler to the PDF format, you should note that export of HTML elements is limited due to their possible insecurity. 
+While exporting the Scheduler to the PDF format, note that export of HTML elements is limited due to their possible insecurity.
 
 There are HTML elements which are not entirely allowed for export, such as `<canvas>`, `<svg>`, `<script>` and images with the *src* attribute that contains a Base64 image. However, there are safe ways of exporting images in the SVG and Base64 formats:
 
