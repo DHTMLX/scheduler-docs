@@ -10,18 +10,18 @@ description: "fires after the current view has been changed to some other one"
 
 @short: Fires after the current view has been changed to some other one
 
-@signature: onViewChange: (new_mode: string, new_date: object) =\> void
+@signature: onViewChange: (new_mode: string, new_date: Date) =\> void
 
 ### Parameters
 
 - `new_mode` - (required) *string* - a new view
-- `new_date` - (required) *object* - a new date
+- `new_date` - (required) *Date* - a new date
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onViewChange", function (new_mode , new_date){
-    //any custom logic here
+scheduler.attachEvent("onViewChange", (new_mode, new_date) => {
+    // any custom logic here
 });
 ~~~
 
