@@ -17,7 +17,7 @@ description: "控制是否提示用户共享其位置以显示在地图上"
 ~~~jsx
 scheduler.config.map_resolve_user_location = false;  
 ...  
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.init('scheduler_here', new Date(2027,05,11), "week");
 ~~~
 
 **Default value:** true

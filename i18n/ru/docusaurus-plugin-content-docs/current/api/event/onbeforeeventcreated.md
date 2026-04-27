@@ -1,33 +1,33 @@
 ---
-sidebar_label: "onBeforeEventCreated"
+sidebar_label: onBeforeEventCreated
 title: "onBeforeEventCreated event"
-description: "срабатывает, когда пользователь создает новое событие, перетаскивая курсор по scheduler"
+description: "срабатывает, когда пользователь создает новое событие путем перетаскивания курсора над scheduler"
 ---
 
 # onBeforeEventCreated
 
 ### Description
 
-@short: Срабатывает, когда пользователь создает новое событие, перетаскивая курсор по scheduler
+@short: Срабатывает, когда пользователь создает новое событие перетаскиванием курсора над scheduler
 
-@signature: onBeforeEventCreated: (e: Event) =\> boolean
+@signature: onBeforeEventCreated: (e: Event) => boolean
 
 ### Parameters
 
-- `e` - (required) *Event* - нативный объект события
+- `e` - (required) *Event* - нативный Object-событие
 
 ### Returns
-- ` result` - (boolean) - указывает, будет ли выполнено действие по умолчанию для события (<b>true</b>) или оно будет отменено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onBeforeEventCreated", function (e){
-    //здесь можно добавить пользовательскую логику
+    // любая ваша логика здесь
     return true;
 });
 ~~~
 
 ### Details
 
-Учтите, что это событие срабатывает только если включена опция конфигурации [drag_create](api/config/drag_create.md).
+Примечание: событие срабатывает только если включена конфигурационная опция [drag_create](api/config/drag_create.md).

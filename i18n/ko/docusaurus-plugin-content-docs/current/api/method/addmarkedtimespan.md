@@ -83,8 +83,8 @@ scheduler.updateView();
   <tr>
   <td colspan="2">
 ~~~js
-// 2012년 5월 3일부터 'end_date'까지 이벤트 생성 차단
-start_date:new Date(2012,4,3)
+// 2027년 5월 3일부터 'end_date'까지 이벤트 생성 차단
+start_date:new Date(2027,4,3)
 ~~~
   </td>
   </tr>
@@ -95,8 +95,8 @@ start_date:new Date(2012,4,3)
   <tr>
   <td colspan="2" >
 ~~~js
-// 'start_date'부터 2012년 9월 3일까지 이벤트 생성 차단
-end_date:new Date(2012,8,3)
+// 'start_date'부터 2027년 9월 3일까지 이벤트 생성 차단
+end_date:new Date(2027,8,3)
 ~~~
   </td>
   </tr>
@@ -109,7 +109,7 @@ end_date:new Date(2012,8,3)
 ~~~js
 days:[0, 2, 6] // 일요일, 화요일, 토요일 제한
 days:"fullweek" // 주 전체 제한
-days:new Date(2012,6,1) // 2012년 7월 1일 차단
+days:new Date(2027,6,1) // 2027년 7월 1일 차단
 ~~~
   </td>
   </tr>
@@ -227,7 +227,7 @@ sections: { unit: 5, timeline: [2,3]}
   </td>
   <td>
 ~~~js
-var config ={
+const config ={
     days:  1, 
     zones: [9*60, 15*60], 
     css: "cssClassName", 
@@ -252,9 +252,9 @@ var config ={
   </td>
   <td>
 ~~~js
-var config ={
-    start_date: new Date(2013,7,13),
-    end_date:   new Date(2013,7,14),
+const config ={
+    start_date: new Date(2027,7,13),
+    end_date:   new Date(2027,7,14),
     css: "cssClassName",
     sections: {
          unit: 5

@@ -176,7 +176,7 @@ export class SchedulerComponent implements OnInit, OnDestroy {
     let scheduler = Scheduler.getSchedulerInstance();
     scheduler.init(
       this.schedulerContainer.nativeElement,
-      new Date(2024, 9, 7),
+      new Date(2027, 9, 7),
       "week", 
     );
     this._scheduler = scheduler;
@@ -284,9 +284,9 @@ import { Event } from "../models/event";
 export class EventService {
     get(): Promise<Event[]>{
         return Promise.resolve([
-            { id: 1, start_date: "2023-05-16 09:00", end_date: "2023-05-16 13:00", 
+            { id: 1, start_date: "2027-05-16 09:00", end_date: "2027-05-16 13:00", 
                 text: "Event 1" },
-            { id: 2, start_date: "2023-05-18 10:00", end_date: "2023-05-18 14:00", 
+            { id: 2, start_date: "2027-05-18 10:00", end_date: "2027-05-18 14:00", 
                 text: "Event 2" },
         ]);
     }
@@ -333,7 +333,7 @@ Modify the **ngOnInit()** function:
 
 ~~~ts title="scheduler.component.ts"
 scheduler.config.date_format = "%Y-%m-%d %H:%i";
-scheduler.init(this.schedulerContainer.nativeElement, new Date(2024, 9, 7));
+scheduler.init(this.schedulerContainer.nativeElement, new Date(2027, 9, 7));
 this.eventService.get()
     .then((data) => {
          scheduler.parse(data);
@@ -367,7 +367,7 @@ export class SchedulerComponent implements OnInit, OnDestroy {
     scheduler.config.date_format = "%Y-%m-%d %H:%i";
     scheduler.init(
       this.schedulerContainer.nativeElement,
-      new Date(2024, 9, 7),
+      new Date(2027, 9, 7),
       "week", 
     );
     this.eventService.get().then((data) => {scheduler.parse(data);});

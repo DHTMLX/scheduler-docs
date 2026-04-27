@@ -39,9 +39,9 @@ scheduler.showEvent(someId);
 예를 들어, 프로그래밍 방식으로 새 이벤트를 추가한 후 다음과 같이 스케줄러에 표시할 수 있습니다:
 
 ~~~js
-var eventId = scheduler.addEvent({
-    start_date: "08-06-2013 09:00",
-    end_date:   "08-06-2013 11:00",
+const eventId = scheduler.addEvent({
+    start_date: "08-06-2027 09:00",
+    end_date:   "08-06-2027 11:00",
     text:   "Meeting"
 });
 ...

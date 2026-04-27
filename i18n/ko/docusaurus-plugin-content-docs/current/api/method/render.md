@@ -26,7 +26,7 @@ scheduler.render();
 
 
 // 다른 날짜로 변경
-scheduler.render(new Date(2020,7,4));
+scheduler.render(new Date(2027,7,4));
 
 // 다른 뷰로 변경
 scheduler.render(null, "week");

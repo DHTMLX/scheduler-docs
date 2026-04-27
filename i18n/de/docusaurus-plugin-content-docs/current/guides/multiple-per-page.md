@@ -6,23 +6,23 @@ sidebar_label: "Mehrere Scheduler auf einer Seite erstellen"
 # Mehrere Scheduler auf einer Seite erstellen
 
 :::info
-Diese Funktion ist nur in der Scheduler PRO-Version verfügbar (kommerziell seit dem 6. Oktober 2021, Enterprise- und Ultimate-Lizenzen).
+Diese Funktionalität ist nur in der Scheduler PRO-Version verfügbar (Commercial (seit dem 6. Oktober 2021), Enterprise- und Ultimate-Lizenzen).
 :::
 
-Zu Beginn der Arbeit mit der Bibliothek ist Ihnen vielleicht aufgefallen, dass dhtmlxScheduler ein statisches Objekt ist. Das bedeutet, dass _nur eine Instanz_ von dhtmlxScheduler auf der Seite existieren kann.
+Wie Sie wahrscheinlich zu Beginn Ihrer Arbeit mit der Bibliothek bemerkt haben, ist dhtmlxScheduler ein statisches Objekt, d.h. _nur eine Instanz_ von dhtmlxScheduler kann auf der Seite existieren.
 
-Mit der PRO-Version ändert sich das jedoch: _mehrere Instanzen_ von dhtmlxScheduler können nun auf derselben Seite koexistieren. Es gibt weiterhin die Standard-Scheduler-Instanz, die über das globale **scheduler**-Objekt zugänglich ist, aber Sie können zusätzlich weitere Scheduler-Objekte erstellen.
+Nun, für die PRO-Version sollten wir diese Aussage umformulieren und sagen: _mehr als eine Instanz_ von dhtmlxScheduler kann auf der Seite existieren. Sie haben weiterhin eine Standardinstanz des Schedulers, auf die über das globale **scheduler**-Objekt zugegriffen wird, aber Sie können auch neue Scheduler-Objekte erstellen.
 
-## Konfiguration einer Scheduler-Instanz {#schedulerinstanceconfiguration}
+## Scheduler-Instanz-Konfiguration
 
-Um eine neue dhtmlxScheduler-Instanz zu erstellen, verwenden Sie die Methode **Scheduler.getSchedulerInstance()**:
+Um eine neue Instanz von dhtmlxScheduler zu erstellen, verwenden Sie die Methode **Scheduler.getSchedulerInstance()**:
 
 ~~~js
-// Beachten Sie, dass 'Scheduler' mit einem Großbuchstaben beginnt
+// Vorsicht, 'Scheduler' im Befehl beginnt mit Großbuchstabe
 const scheduler = Scheduler.getSchedulerInstance();
 ~~~
 
-Diese Methode kann ein Konfigurationsobjekt als Argument entgegennehmen:
+Die Methode kann ein Konfigurationsobjekt als Parameter übernehmen:
 
 ~~~js
 const scheduler = Scheduler.getSchedulerInstance({
@@ -36,37 +36,37 @@ const scheduler = Scheduler.getSchedulerInstance({
     },
     data: {
         events: [
-            { id:1, start_date: "2022-04-18 09:00", end_date: "2022-04-18 12:00", 
+            { id:1, start_date: "2027-04-18 09:00", end_date: "2027-04-18 12:00", 
                 text:"English lesson", subject: 'english' },
-            { id:2, start_date: "2022-04-20 10:00", end_date: "2022-04-21 16:00", 
+            { id:2, start_date: "2027-04-20 10:00", end_date: "2027-04-21 16:00", 
                 text:"Math exam", subject: 'math' },
-            { id:3, start_date: "2022-04-21 10:00", end_date: "2022-04-21 14:00", 
+            { id:3, start_date: "2027-04-21 10:00", end_date: "2027-04-21 14:00", 
                 text:"Science lesson", subject: 'science' },
-            { id:4, start_date: "2022-04-23 16:00", end_date: "2022-04-23 17:00", 
+            { id:4, start_date: "2027-04-23 16:00", end_date: "2027-04-23 17:00", 
                 text:"English lesson", subject: 'english' },
-            { id:5, start_date: "2022-04-22 09:00", end_date: "2022-04-22 17:00", 
+            { id:5, start_date: "2027-04-22 09:00", end_date: "2027-04-22 17:00", 
                 text:"Usual event" }
         ]
     }
 });
 ~~~
 
-Das Konfigurationsobjekt kann folgende Eigenschaften enthalten:
+Das Konfigurationsobjekt kann die folgenden Eigenschaften enthalten:
 
-- **container** - (*string|HTMLElement*) Der HTML-Container (oder dessen ID), in dem der Scheduler gerendert wird. Wenn nicht angegeben, wird der Scheduler ohne Container initialisiert.
-- **config** - (*object*) Konfigurationseinstellungen für den Scheduler
-- **xy** - (*object*) Größen der Scheduler-Elemente, siehe [](api/other/xy.md)
-- **templates** - (*object*) Template-Konfiguration
-- **events** - (*object*) Ereignis-Handler. 
+- **container** - (*string|HTMLElement*) ein HTML-Container (oder dessen ID), in dem der Scheduler angezeigt wird. Falls nicht angegeben, wird der Scheduler ohne Container initialisiert.
+- **config** - (*object*) ein Objekt mit Konfigurationseinstellungen des Scheduler
+- **xy** - (*object*) ein Objekt mit [Größen der Scheduler-Elemente](api/other/xy.md)
+- **templates** - (*object*) ein Objekt mit Templates 
+- **events** - (*object*) ein Objekt mit Event-Handlern.
 
 
-Wenn Sie Ereignis-Handler für eine neue Scheduler-Instanz angeben, verwenden Sie folgendes Format:
+Für die Angabe von Event-Handlern für eine neue Scheduler-Instanz verwenden Sie folgendes Format:
 
 ~~~js
 const scheduler = Scheduler.getSchedulerInstance({
     events: {
         onEventCreated: function(id, e){
-            var task = scheduler.getEvent(id);
+            const task = scheduler.getEvent(id);
             task.owner = null;
             return true;
         },
@@ -78,55 +78,54 @@ const scheduler = Scheduler.getSchedulerInstance({
 });
 ~~~
 
-- **data** - (*object|string*) Zu ladende Daten oder eine URL, von der die Daten geladen werden sollen
-- **plugins** - (*object*) Zu aktivierende Erweiterungen
-- **locale** - (*string|object*) Entweder ein zweistelliger Sprachcode oder ein Locale-Objekt zur Aktivierung
+- **data** - (*object|string*) ein Objekt mit Daten zum Laden oder die URL, von der Daten geladen werden sollen
+- **plugins** - (*object*) Erweiterungen, die aktiviert werden müssen
+- **locale** - (*string|object*) ein zweibuchstabiger Sprachcode oder ein Objekt der Locale, die aktiviert werden muss
 
-**Hinweis:** Wenn Sie **Scheduler.getSchedulerInstance()** ohne Parameter aufrufen, erhalten Sie ein Scheduler-Objekt mit den Standard-Einstellungen. Sie müssen Ihre neue Instanz wie gewohnt konfigurieren, initialisieren und mit Daten befüllen.
+**Hinweis**, dass der Aufruf der **Scheduler.getSchedulerInstance()**-Methode ohne Parameter das Scheduler-Objekt mit Standardkonfigurationseinstellungen zurückgibt. Daher müssen Sie Ihre neue Instanz wie gewohnt konfigurieren, initialisieren und mit Daten füllen.
 
-Hier ein einfaches Beispiel mit zwei untereinander angeordneten Schedulern:
-
+Nehmen wir ein einfaches Beispiel: 2 Scheduler, einer unter dem anderen:
 
 ~~~js
 window.addEventListener("DOMContentLoaded", function(){
-    var scheduler1  = Scheduler.getSchedulerInstance();
-    scheduler1.init('scheduler_here',new Date(2019,5,30),"week");
-    scheduler1.load("/data/events");
+    const scheduler1  = Scheduler.getSchedulerInstance();
+    scheduler1.init('scheduler_here',new Date(2027,5,30),"week");
+    scheduler1.load("/data/events")
     
-    var scheduler2 = Scheduler.getSchedulerInstance();
-    scheduler2.init('scheduler_here_2',new Date(2019,5,30),"month");
-    scheduler2.load("/data/events");    
-});
+    const scheduler2 = Scheduler.getSchedulerInstance();
+    scheduler2.init('scheduler_here_2',new Date(2027,5,30),"month");
+    scheduler2.load("/data/events")    
+)};
 
 <body>
-    <div id="scheduler_here"></div>
-    <div id="scheduler_here_2"></div>    
+    <div id="scheduler_here" style="width:100%; height: 50%;"></div>
+    <div id="scheduler_here_2" style="width:100%; height: 50%;"></div>    
 </body>
 ~~~
 
-## Destruktor von Scheduler- und DataProcessor-Instanzen {#destructor-of-scheduler-and-dataprocessor-instances}
+## Destruktor von Scheduler- und DataProcessor-Instanzen
 
-Ab Version 6.0 stellt dhtmlxScheduler eine [destructor](api/method/destructor.md) bereit, um nicht mehr benötigte Scheduler-Instanzen zu entfernen.
+Ab Version 6.0 verfügt das dhtmlxScheduler-Objekt über einen [Destruktor](api/method/destructor.md), mit dem unnötige Instanzen des Scheduler entsorgt werden können.
 
-Sie können den Destruktor einer Scheduler-Instanz wie folgt verwenden:
+Der Destruktor der Scheduler-Instanz kann wie folgt verwendet werden:
 
 ~~~js
-var myScheduler = Scheduler.getSchedulerInstance();
+const myScheduler = Scheduler.getSchedulerInstance();
  
-// Scheduler-Instanz zerstören
+//Zerstören einer Scheduler-Instanz
 myScheduler.destructor();
 ~~~
 
-Der Destruktor führt folgende Aktionen aus:
+Der Destruktor führt folgende Aufgaben aus:
 
-- löscht die in der Scheduler-Instanz geladenen Daten
-- zerstört den DataProcessor, falls vorhanden
-- entfernt den Scheduler aus dem DOM
-- entfernt alle über die Methode [scheduler.event()](api/method/event.md) hinzugefügten DOM-Events
+- löscht die in eine Scheduler-Instanz geladenen Daten
+- zerstört den DataProcessor (falls er an den Scheduler angehängt ist)
+- trennt den Scheduler vom DOM
+- trennt alle DOM-Ereignisse, die über die Methode [scheduler.event()](api/method/event.md) an den Scheduler gebunden sind
 
 ### Verwendung des Destruktors mit Angular
 
-So können Sie den Destruktor verwenden, um eine Scheduler-Instanz bei der Arbeit mit Angular aufzuräumen:
+Hier ein Beispiel der Verwendung des Destruktors zum Bereinigen einer Scheduler-Instanz im Angular-Framework:
 
 ~~~js
 @Component({selector: 'app-scheduler', template: `...`})
@@ -144,13 +143,13 @@ class MySchedulerComponent implements OnDestroy {
 }
 ~~~
 
-### DataProcessor abtrennen
+### Abtrennen des DataProcessor
 
-Der Aufruf des Destruktors eines DataProcessors entfernt die Instanz und trennt sie vom Scheduler. Beispiel:
+Durch Aufruf des Destruktors des DataProcessors wird die DataProcessor-Instanz bereinigt und vom Scheduler getrennt. Zum Beispiel:
 
 ~~~js
-var scheduler = Scheduler.getSchedulerInstance();
-var dp = new scheduler.DataProcessor("url");
+const scheduler = Scheduler.getSchedulerInstance();
+const dp = new scheduler.DataProcessor("url");
 dp.init(scheduler);
 
 // zerstört den DataProcessor und trennt ihn vom Scheduler
@@ -158,9 +157,5 @@ dp.destructor();
 ~~~
 
 :::note
-Wenn Sie ein Paket verwenden, das keine mehreren Scheduler-Instanzen unterstützt (wie GPL- oder Commercial-Editionen), wird der Scheduler nach dem Aufruf des Destruktors nicht mehr verfügbar sein, bis die Seite neu geladen wird.
+If you use a package that does not allow creating multiple instances of the scheduler object (GPL or Commercial editions), calling the scheduler destructor will make the scheduler inaccessible until page reload.
 :::
-
-## Verwandte Artikel
-
-- [Integration mit dhtmlxLayout](integrations/other/dhxlayout-integration.md)

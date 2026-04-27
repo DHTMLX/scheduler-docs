@@ -1,14 +1,14 @@
 ---
-sidebar_label: "buttons_left"
-title: "buttons_left config"
-description: "содержит набор кнопок, расположенных в левом нижнем углу лайтбокса"
+sidebar_label: buttons_left
+title: "buttons_left конфигурация"
+description: "сохраняет коллекцию кнопок, размещённых в левом нижнем углу лайтбокса"
 ---
 
 # buttons_left
 
 ### Description
 
-@short: Содержит набор кнопок, расположенных в левом нижнем углу лайтбокса
+@short: Хранит коллекцию кнопок, размещённых в левом нижнем углу лайтбокса
 
 @signature: buttons_left: any[]
 
@@ -24,7 +24,7 @@ description: "содержит набор кнопок, расположенны
 <script>
     scheduler.config.buttons_left = ["custom_btn_info"];
     scheduler.locale.labels["custom_btn_info"] = "Info";
-    scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+    scheduler.init('scheduler_here',new Date(2027,05,11),"week");
     ...
     scheduler.attachEvent("onLightboxButton", function(button_id, node, e){
         if(button_id == "custom_btn_info"){
@@ -34,7 +34,7 @@ description: "содержит набор кнопок, расположенны
 </script>
 ~~~
 
-**Default value:** ["dhx_save_btn", "dhx_cancel_btn"]
+**Значение по умолчанию:** ["dhx_save_btn", "dhx_cancel_btn"]
 
 ### Details
 

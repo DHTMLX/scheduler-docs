@@ -5,32 +5,30 @@ sidebar_label: "迷你日历（日期选择器）"
 
 # 迷你日历（日期选择器）
 
-迷你日历（日期选择器）是一个实用的扩展，可以让你在页面的 HTML 容器中显示一个紧凑的月份视图。
+迷你日历（日期选择器）是一种特殊扩展，提供在页面的 HTML 容器中呈现小型月份视图的能力。
 
 ![mini_calendar](/img/mini_calendar.png)
 
-
-[Mini calendar without the scheduler](https://docs.dhtmlx.com/scheduler/samples/05_calendar/02_without_scheduler.html)
-
+[无调度器的迷你日历](https://docs.dhtmlx.com/scheduler/samples/05_calendar/02_without_scheduler.html)
 
 :::note
-要在你的应用中使用迷你日历，请确保在页面上添加 **minical** 扩展。
+要在应用中使用迷你日历，请在页面上包含 **minical** 扩展。
 :::
 
 
-## 在头部添加 {#intheheader}
+## 在页眉中
 
-要将迷你日历（日期选择器）添加到调度器的头部（如下图所示），请按照以下步骤操作:
+要将迷你日历（日期选择器）放入调度程序的页眉中（如下图所示），请按以下步骤操作：
 
 ![calendar_in_header](/img/calendar_in_header.png)
 
-1. 在页面上引入扩展文件:
+1. 在页面上包含扩展文件：
 ~~~js
 scheduler.plugins({
     minical: true
 });
 ~~~
-2. 定义迷你日历的容器，并将其添加到调度器的标记中:
+2. 为迷你日历指定容器并将其添加到调度程序标记中：
 ~~~js
 <div class="dhx_cal_navline">
     ...
@@ -39,7 +37,7 @@ scheduler.plugins({
     onclick="show_minical()">&nbsp;</div>
 </div>
 ~~~
-3. 实现初始化（使用 [renderCalendar](api/method/rendercalendar.md) 方法）和销毁（使用 [destroyCalendar](api/method/destroycalendar.md) 方法）迷你日历的逻辑:
+3. 提供初始化（[renderCalendar](api/method/rendercalendar.md) 方法）和销毁（[destroyCalendar](api/method/destroycalendar.md) 方法）迷你日历的逻辑：
 ~~~js
 function show_minical(){
     if (scheduler.isCalendarVisible()){
@@ -59,46 +57,47 @@ function show_minical(){
 ~~~
 
 
-[Mini calendar in the scheduler header](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
+[调度程序页眉中的迷你日历](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
 
 
-## 在头部集成第三方日期选择器 {#intheheaderthirdpartydatepicker}
+## 在页眉中（第三方日期选择器）
 
-本节展示如何将第三方迷你日历（日期选择器）集成到调度器的头部。
+在本节中，我们将演示如何将第三方迷你日历（日期选择器）添加到调度程序的页眉中。
 
 ![custom_minicalendar](/img/custom_minicalendar.png)
 
-**Related sample** [3rd party Mini Calendar in the header](https://snippet.dhtmlx.com/5/0dca14de9)
+**相关示例** [3rd party Mini Calendar in the header](https://snippet.dhtmlx.com/5/0dca14de9)
 
-我们的示例使用 [jQuery](https://jquery.com) 和 [Bootstrap Datepicker](https://bootstrap-datepicker.readthedocs.io/en/latest/) 来添加迷你日历。如果你使用其他库，需要相应调整代码，但整体思路类似:
+在我们的示例中，我们将基于 [jQuery](https://jquery.com) 和 [Bootstrap Datepicker](https://bootstrap-datepicker.readthedocs.io/en/latest/) 添加一个迷你日历。如果你使用其他库，需要修改代码，但总体思路应保持不变：
 
-1. *点击日历头部时显示日期选择器*
+1. *在单击日历头部时显示日期选择器*
 
-首先，在调度器头部内定义一个用于迷你日历（或其他控件）的 DIV 容器。采用 [标记初始化方式](guides/initialization.md#initializing-scheduler-via-markup) 时，类似如下:
+首先，需要在调度程序头部定义迷你日历（或其他控件）的 DIV 容器。
+如果使用 [markup initialization method]，可以像下面这样做：
 
 ~~~js
-<div id="scheduler_here" class="dhx_cal_container">
+<div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:100%;">
   <div class="dhx_cal_navline">
     <div class="dhx_cal_prev_button">&nbsp;</div>
     <div class="dhx_cal_next_button">&nbsp;</div>
     <div class="dhx_cal_today_button"></div>
     <div class="dhx_cal_date"></div>
     <!--- HERE -->
-    <div class="input-group date">
+    <div class="input-group date" style="display: none;">
       <input type="text" class="form-control">
       <div class="dhx_minical_icon input-group-addon" id="dhx_minical_icon">&nbsp;</div>
     </div>
     <!--- end HERE -->
 ~~~
 
-如果你使用 [header config](guides/initialization.md#initializing-scheduler-via-header-config)，可以像这样添加 [自定义元素](api/config/header.md):
+如果你使用 [header config](guides/initialization.md#initializing-scheduler-via-header-config)，则需要在其中添加 [一个自定义元素](api/config/header.md) ：
 
 ~~~js
 scheduler.config.header = [
   "day",
   "week",
   "month",
-  {html:'<div class="input-group date">'+
+  {html:'<div class="input-group date" style="display: none;">'+
     '<input type="text" class="form-control">'+
     '<div class="dhx_minical_icon input-group-addon" id="dhx_minical_icon">&nbsp;</div>'+
        '</div>'},
@@ -110,7 +109,7 @@ scheduler.config.header = [
 scheduler.init("scheduler_here");
 ~~~
 
-接下来，在调度器准备好后，设置点击调度器导航面板中的日期时显示日期选择器的事件:
+为了在单击调度程序导航面板中的日期时显示日期选择器，我们在调度程序就绪时初始化点击事件：
 
 ~~~js
 scheduler.attachEvent("onSchedulerReady", function(){
@@ -136,7 +135,7 @@ scheduler.attachEvent("onSchedulerReady", function(){
 });
 ~~~
 
-`centerDatepicker` 函数用于正确定位下拉日期选择器:
+`centerDatepicker` 是我们实现的辅助函数，用于在必要位置呈现下拉日期选择器：
 
 ~~~js
     ...
@@ -146,9 +145,9 @@ scheduler.attachEvent("onSchedulerReady", function(){
             return;
            }
         // 将弹出层居中显示在日期标签下方
-        var offset = $(".dhx_cal_date").offset();
-        var width = $(".dhx_cal_date").width();
-        var popupWidth = $(".datepicker-dropdown").width();
+        let offset = $(".dhx_cal_date").offset();
+        let width = $(".dhx_cal_date").width();
+        let popupWidth = $(".datepicker-dropdown").width();
         $(".datepicker-dropdown").css({
             top: offset.bottom + "px",
             left: (width - popupWidth) / 2 + "px"
@@ -156,9 +155,9 @@ scheduler.attachEvent("onSchedulerReady", function(){
     }
 ~~~
 
-2. *用户选择日期时更新调度器当前日期*
+2. *当用户在日期选择器中单击日期时，将调度程序切换到所选日期*
 
-显示日期选择器后，当选择某天时更新调度器的日期:
+一旦按需显示日期选择器，我们需要在日历中选择日期时更改调度程序的日期：
 
 ~~~js
     $node.datepicker().on("changeDate", function () {
@@ -166,9 +165,9 @@ scheduler.attachEvent("onSchedulerReady", function(){
     });
 ~~~
 
-3. *在日期选择器中高亮显示当前日期*
+3. *在日期选择器中高亮当前日期*
 
-为了突出显示调度器当前显示的日期，可以应用一个简单的 CSS 类:
+要高亮显示在调度程序中当前显示的日期选择器日期，我们使用一个简单的 css 类：
 
 ~~~js
 .datepicker table .scheduler-date{
@@ -176,7 +175,7 @@ scheduler.attachEvent("onSchedulerReady", function(){
 }
 ~~~
 
-调度器中可见的所有日期单元格都会添加此类:
+所有在调度程序中当前可见的日期单元格都会获得此类：
 
 ~~~js
     function fillDatepicker(scheduler) {
@@ -185,7 +184,7 @@ scheduler.attachEvent("onSchedulerReady", function(){
           $(".datepicker-dropdown").find("[data-date]").removeClass("scheduler-date");
 
           // 高亮调度器日期
-          var visibleDates = getVisibleDates(scheduler);
+          const visibleDates = getVisibleDates(scheduler);
           visibleDates.forEach(function (date) {
             $(".datepicker-dropdown").find(
                 "[data-date='" + date + "']"
@@ -195,17 +194,17 @@ scheduler.attachEvent("onSchedulerReady", function(){
     }
 ~~~
 
-要获取当前可见日期，可使用 `scheduler.getState`：
+要获取当前可见的日期，可以使用 `scheduler.getState`：
 
 ~~~js
     function getVisibleDates(scheduler) {
-        var minVisible = scheduler.getState().min_date;
-        var maxVisible = scheduler.getState().max_date;
+        const minVisible = scheduler.getState().min_date;
+        const maxVisible = scheduler.getState().max_date;
 
-        var current = minVisible;
-        var result = [];
+        let current = minVisible;
+        let result = [];
         while (current.valueOf() < maxVisible.valueOf()) {
-            var currentUTC = Date.UTC(
+            let currentUTC = Date.UTC(
                 current.getFullYear(),current.getMonth(),current.getDate()
             );
             result.push(currentUTC.valueOf());
@@ -216,9 +215,10 @@ scheduler.attachEvent("onSchedulerReady", function(){
     }
 ~~~
 
-4. *在日期选择器中标记有事件的日期*
+4. *在日期选择器中高亮带有事件的日期*
 
-为了高亮显示调度器中有事件的日期，可以添加另一个 CSS 类:
+接下来，我们希望日期选择器高亮显示在调度程序中指定事件的日期。
+为此，我们使用与上一步相同的方法添加一个 css 类：
 
 ~~~js
 .datepicker table .has-event::after {
@@ -231,26 +231,26 @@ scheduler.attachEvent("onSchedulerReady", function(){
 }
 ~~~
 
-这将高亮显示迷你日历中有事件的日期。
+如上所示，我们高亮显示包含事件的迷你日历日期。
 
-要在鼠标悬停日期时显示事件数量的提示，可以获取当前日期选择器所显示月份的事件:
+要在用户将光标悬停在日期上时显示该日期的事件数量提示，需要获取日期选择器当前显示月份中的事件：
 
 ~~~js
     function getVisibleEvents(calendarDate, scheduler) {
-          var min = scheduler.date.month_start(new Date(calendarDate));
-          var max = scheduler.date.add(calendarDate, 1, "month");
+          const min = scheduler.date.month_start(new Date(calendarDate));
+          const max = scheduler.date.add(calendarDate, 1, "month");
           min = scheduler.date.week_start(min);
           if(scheduler.date.week_start(new Date(max)) < max){
              max = scheduler.date.week_start(new Date(max));
              max = scheduler.date.add(max, 1, "week");
           }
-          var events = scheduler.getEvents(min, max);
-          var days = {};
+          const events = scheduler.getEvents(min, max);
+          let days = {};
 
           events.forEach(function (event) {
-             var eventDate = event.start_date;
+             let eventDate = event.start_date;
              while(eventDate < event.end_date){
-                   var day = Date.UTC(
+                   let day = Date.UTC(
                      eventDate.getFullYear(),
                      eventDate.getMonth(),
                     eventDate.getDate()
@@ -265,20 +265,19 @@ scheduler.attachEvent("onSchedulerReady", function(){
              }
           });
 
-          var result = [];
-          for (var i in days) {
+          let result = [];
+          for (let i in days) {
              result.push({ timestamp: i, count: days[i] });
           }
           return result;
        }
 ~~~
 
-该方法从调度器中获取事件数据，因此只会高亮当前已加载的事件。如果你的应用使用动态加载，可能无法覆盖所有事件，因为只加载了一部分。
+在上面的示例中，我们从调度程序获取事件信息。这意味着我们只能高亮显示已加载到调度程序中的事件。当使用动态加载时，这种方法并不特别好，因为在某一时刻只有一小部分事件会被加载到调度程序中。
 
+另一种方法是从服务器请求事件数据。
 
-另一种方式是从服务器请求事件数据。
-
-获得事件时间戳和数量后，可以如下更新日期选择器:
+当我们获得包含事件时间戳以及每个单元格的事件数量的数据后，我们可以用这些信息填充日期选择器，如下所示：
 
 ~~~js
     function fillDatepicker(scheduler) {
@@ -300,9 +299,9 @@ scheduler.attachEvent("onSchedulerReady", function(){
     }
 ~~~
 
-5. *保持显示的日期标签与调度器当前日期同步*
+5. *将显示的日期标签与调度程序中的活动日期同步*
 
-最后，在窗口尺寸变化时重新居中日期选择器，并在用户更改日期时更新高亮:
+最后，我们需要在窗口大小变化时重新居中日期选择器，并在用户在日期选择器中更改当前日期时应用高亮：
 
 ~~~js
     $(window).on('resize', function () {
@@ -333,7 +332,7 @@ scheduler.attachEvent("onSchedulerReady", function(){
     }
 ~~~
 
-如果你使用独立元素显示调度器当前日期，可以监听 [onViewChange](api/event/onviewchange.md) 事件并在其中更新标签:
+如果你使用一个单独的元素来显示调度程序的活动日期，你需要捕获调度程序的 [onViewChange](api/event/onviewchange.md) 事件，并从那里更新日期标签：
 
 ~~~js
 scheduler.attachEvent("onViewChange", function (newMode , newDate){
@@ -346,31 +345,32 @@ scheduler.attachEvent("onViewChange", function (newMode , newDate){
 });
 ~~~
 
-请注意，该处理器在示例代码中未使用，因为内置日期头会自动更新。只有在你 [隐藏默认日期头](guides/scheduler-markup.md#hidingtheheaderofscheduler) 或需要在多个地方显示当前日期时，才需要这样做。
+请注意，我们在代码示例中没有使用此处理程序，因为我们依赖调度程序内置的日期头，该头会自动更新。只有在 [隐藏默认日期头](guides/scheduler-markup.md#hiding-the-header-of-scheduler)，或需要在多个位置显示活动日期时，才需要使用这种代码。
 
 
-## 在弹窗（lightbox）中使用 {#inthelightbox}
+## 在灯箱中
 
-迷你日历（日期选择器）也可以在弹窗中用于选择"开始"和"结束"日期。
+迷你日历（日期选择器）可以在灯箱中用于选择“开始”和“结束”日期。
 
 ![in_the_lightbox](/img/in_the_lightbox.png)
 
-要在弹窗中添加迷你日历，请按照以下步骤操作:
+要将迷你日历放置在灯箱中，请按照以下步骤：
 
-1. 在页面上启用扩展:
+
+1. 在页面上启用扩展：
 ~~~js
 scheduler.plugins({
     minical: true
 });
 ~~~
-2. 将 time 区块的 type 属性从 time 修改为 calendar_time:
+2. 将 <i>time</i> 部分的 <b>type</b> 设置为 <b>calendar_time</b>（而不是 <b>time</b>）：
 ~~~js
-// 默认弹窗配置
-scheduler.config.lightbox.sections="["
+//默认灯箱定义
+scheduler.config.lightbox.sections= [
   {name:"description", height:200, map_to:"text", type:"textarea", focus:true},
   {name:"time", height:72, type:"time", map_to:"auto"}
 ];
-// 修改 type:"time" -> type:"calendar_time"
+//将 type:"time" -> type:"calendar_time"
 scheduler.config.lightbox.sections = [
   {name:"description", height:200, map_to:"text", type:"textarea", focus:true},
   {name:"time", height:72, type:"calendar_time", map_to:"auto" }
@@ -378,34 +378,34 @@ scheduler.config.lightbox.sections = [
 ~~~
 
 
-[Mini calendar in the lightbox](https://docs.dhtmlx.com/scheduler/samples/05_calendar/03_in_form.html)
+[调度程序灯箱中的迷你日历](https://docs.dhtmlx.com/scheduler/samples/05_calendar/03_in_form.html)
 
 
-## 在调度器外部使用 {#outsidethescheduler}
+## 调度程序之外
 
 迷你日历（日期选择器）可以放置在页面的任意位置。
 
 ![outside_the_scheduler](/img/outside_the_scheduler.png)
 
-要在调度器外的 HTML 容器中添加迷你日历，请按照以下步骤操作:
+要将迷你日历放在调度程序之外的某个 HTML 容器中，请执行以下步骤：
 
-1. 在页面上启用扩展:
+1. 在页面上启用扩展：
 ~~~js
 scheduler.plugins({
     minical: true
 });
 ~~~
-2. 在页面上定义迷你日历的容器:
+2. 指定页面上迷你日历的容器：
 ~~~js
 <div id="scheduler_here" class="dhx_cal_container" ...>
 ...
 </div>
 
-<div>
-        <div id="cal_here"></div>
+<div style='float: left; padding:10px;'>
+        <div id="cal_here" style='width:250px;'></div>
 </div>
 ~~~
-3. 调用 [renderCalendar](api/method/rendercalendar.md) 方法来渲染迷你日历:
+3. 调用 [renderCalendar](api/method/rendercalendar.md) 方法在页面上呈现迷你日历：
 ~~~js
 const calendar = scheduler.renderCalendar({
     container:"cal_here", 
@@ -417,13 +417,13 @@ const calendar = scheduler.renderCalendar({
 ~~~
 
 
-[Mini calendar outside the scheduler](https://docs.dhtmlx.com/scheduler/samples/05_calendar/05_plain_structure.html)
+[调度程序外部的迷你日历](https://docs.dhtmlx.com/scheduler/samples/05_calendar/05_plain_structure.html)
 
 
-## 模板与样式 {#templatesandstyles}
+## 模板与样式
 
 ### 模板
-您可以通过使用 [Mini Calendar Templates](guides/mini-calendar-templates.md) 文章中描述的各种模板，轻松更改日期在迷你日历（日期选择器）中的显示方式。
+要自定义在迷你日历（日期选择器）中显示的日期格式，您可以使用本文中列出的多种模板，详见文章 [Mini Calendar Templates]。 
 
 ~~~js
 scheduler.templates.calendar_month = scheduler.date.date_to_str("%M, %Y");
@@ -434,30 +434,31 @@ const calendar = scheduler.renderCalendar({..});
 
 ![mini_calendar_custom_template](/img/mini_calendar_custom_template.png)
 
+
 ### CSS 类
-要调整迷你日历（日期选择器）中日期的外观，您可以覆盖以下 CSS 类:
+要自定义迷你日历（日期选择器）中日期的外观，您可以重新定义以下 CSS 类： 
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">
   <thead>
-  <th>CSS 类</th>
-  <th>应用于</th>
+  <th>CSS class</th>
+  <th>Applied to</th>
   </thead>
   <tbody>
   <tr>
-  <td>.dhx_cal_container.dhx_mini_calendar .dhx_month_head</td>
-  <td>单天的单元格</td>
+  <td style="width:490px;text-align:left;font-weight: bold;">.dhx_cal_container.dhx_mini_calendar .dhx_month_head</td>
+  <td>a day's cell</td>
   </tr>
   <tr>
-  <td>.dhx_cal_container.dhx_mini_calendar .dhx_month_head.dhx_year_event</td>
-  <td>带有分配事件的单天单元格</td>
+  <td style="text-align:left;font-weight: bold;">.dhx_cal_container.dhx_mini_calendar .dhx_month_head.dhx_year_event</td>
+  <td>a day's cell with the assigned event(s)</td>
   </tr>
   <tr>
-  <td>.dhx_cal_container.dhx_mini_calendar .dhx_now .dhx_month_head</td>
-  <td>当前日期的单天单元格</td>
+  <td style="text-align:left;font-weight: bold;">.dhx_cal_container.dhx_mini_calendar .dhx_now .dhx_month_head</td>
+  <td>a day's cell with the current date</td>
   </tr>
   <tr>
-  <td>.dhx_cal_container.dhx_mini_calendar .dhx_calendar_click</td>
-  <td>当前活动日期的单天单元格</td>
+  <td style="text-align:left;font-weight: bold;">.dhx_cal_container.dhx_mini_calendar .dhx_calendar_click</td>
+  <td>a day's cell with the currently active date</td>
   </tr>
   </tbody>
 </table>
@@ -475,8 +476,8 @@ const calendar = scheduler.renderCalendar({..});
 
 ![mini_calendar_custom_css](/img/mini_calendar_custom_css.png)
 
-### 使用 markCalendar() 方法标记日期
-要为某一天分配特定的 CSS 类，可以使用 [markCalendar](api/method/markcalendar.md) 方法:
+### Marking days with the markCalendar() method
+要为某一天分配自定义 CSS 类，您可以使用 [markCalendar](api/method/markcalendar.md) 方法：
 
 ~~~js
 <style>
@@ -491,19 +492,21 @@ const calendar = scheduler.renderCalendar({..});
 </script>
 ~~~
 
+
 ![mini_calendar_custom_marking](/img/mini_calendar_custom_marking.png)
 
-## API {#api}
+
+## API
 
 <table class="webixdoc_links">
   <tbody>
   <tr>
   <td class="webixdoc_links0">[destroyCalendar](api/method/destroycalendar.md)</td>
-  <td>移除先前创建的迷你日历</td>
+  <td>销毁之前创建的迷你日历</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[isCalendarVisible](api/method/iscalendarvisible.md)</td>
-  <td>检查日历当前是否在调度器中打开</td>
+  <td>检查日历当前是否在调度程序中打开</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[linkCalendar](api/method/linkcalendar.md)</td>
@@ -511,7 +514,7 @@ const calendar = scheduler.renderCalendar({..});
   </tr>
   <tr>
   <td class="webixdoc_links0">[markCalendar](api/method/markcalendar.md)</td>
-  <td>为指定日期应用 CSS 类</td>
+  <td>为指定日期应用一个 CSS 类</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[renderCalendar](api/method/rendercalendar.md)</td>
@@ -519,7 +522,7 @@ const calendar = scheduler.renderCalendar({..});
   </tr>
   <tr>
   <td class="webixdoc_links0">[unmarkCalendar](api/method/unmarkcalendar.md)</td>
-  <td>移除指定日期的 CSS 类</td>
+  <td>从指定日期移除一个 CSS 类</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[updateCalendar](api/method/updatecalendar.md)</td>
@@ -528,9 +531,10 @@ const calendar = scheduler.renderCalendar({..});
   </tbody>
 </table>
 
-## 事件处理 {#eventhandling}
 
-迷你日历支持对典型用户交互的回调，如更改可见月份、悬停日期和点击日期。这些可以在配置对象的 `events` 属性中设置:
+## 事件处理
+
+迷你日历提供用于常见用户操作的回调，例如切换可见月份、悬停在日期上以及点击日期。这些回调可以在配置对象的 `events` 属性中指定：
 
 ~~~js
 const dateToStr = (date) => date ? scheduler.templates.format_date(date) : null;

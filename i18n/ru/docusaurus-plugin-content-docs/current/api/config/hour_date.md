@@ -1,14 +1,14 @@
 ---
-sidebar_label: "hour_date"
-title: "hour_date config"
-description: "Определяет формат времени, отображаемый на оси Y. Также применяется в стандартных шаблонах событий и lightbox для форматирования временной части."
+sidebar_label: hour_date
+title: "hour_date конфигурация"
+description: "устанавливает формат времени оси Y. Также используется в шаблонах по умолчанию для событий и lightbox-шаблонов для задания временной части."
 ---
 
 # hour_date
 
 ### Description
 
-@short: Определяет формат времени, отображаемый на оси Y. Также применяется в стандартных шаблонах событий и lightbox для форматирования временной части.
+@short: Задает формат времени оси Y. Также используется в шаблонах по умолчанию для событий и lightbox-шаблонов для задания временной части.
 
 @signature: hour_date: string
 
@@ -17,16 +17,16 @@ description: "Определяет формат времени, отобража
 ~~~jsx
 scheduler.config.hour_date = "%H:%i:%s";
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
-**Default value:** "%H:%i"
+**Ззначение по умолчанию:** "%H:%i"
 
-**Applicable views:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
+**Поддерживаемые представления:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
 
 ### Related samples
-- [Setting the Y-Axis format](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/02_hour_scale_format.html)
-- [Removing needless hours from the time scale](https://docs.dhtmlx.com/scheduler/samples/06_timeline/09_drag_duration.html)
+- [Формат Y-оси](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/02_hour_scale_format.html)
+- [Удаление лишних часов с временной шкалы](https://docs.dhtmlx.com/scheduler/samples/06_timeline/09_drag_duration.html)
 
 ### Details
 

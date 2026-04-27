@@ -19,11 +19,11 @@ description: "scheduler ajax module"
 {status: "ok", data: "value", data2: "value2"}
 
 
-var xhr = scheduler.ajax;
+const xhr = scheduler.ajax;
 
 // HTTP GET
 xhr.get("server.php").then(function(response) {
-    var res = JSON.parse(response.responseText); 
+    const res = JSON.parse(response.responseText); 
     if (res && res.status == "ok") {
         // response is ok
     }
@@ -36,7 +36,7 @@ xhr.post({
            paramName: "paramValue"
     }
 }).then(function(response){
-    var res = JSON.parse(response.responseText); 
+    const res = JSON.parse(response.responseText); 
     if (res && res.status == "ok") {
         // response is ok
     }
@@ -107,7 +107,7 @@ scheduler.ajax.post({
            paramName: "paramValue"
     },
     callback: function(result){
-           var response = result.xmlDoc;
+           const response = result.xmlDoc;
        
            alert(response.responseText);
     }
@@ -221,7 +221,7 @@ dhtmlxScheduler supports usage of promises (including IE8+). For work with promi
 To create a promise, you need to use the following constructor:
 
 ~~~js
-var promise = new scheduler.Promise(function(resolve, reject) {...});
+const promise = new scheduler.Promise(function(resolve, reject) {...});
 ~~~
 
 Promise is declared inside Scheduler, not globally for the application.

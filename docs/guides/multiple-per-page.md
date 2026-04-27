@@ -36,15 +36,15 @@ const scheduler = Scheduler.getSchedulerInstance({
     },
     data: {
         events: [
-            { id:1, start_date: "2022-04-18 09:00", end_date: "2022-04-18 12:00", 
+            { id:1, start_date: "2027-04-18 09:00", end_date: "2027-04-18 12:00", 
                 text:"English lesson", subject: 'english' },
-            { id:2, start_date: "2022-04-20 10:00", end_date: "2022-04-21 16:00", 
+            { id:2, start_date: "2027-04-20 10:00", end_date: "2027-04-21 16:00", 
                 text:"Math exam", subject: 'math' },
-            { id:3, start_date: "2022-04-21 10:00", end_date: "2022-04-21 14:00", 
+            { id:3, start_date: "2027-04-21 10:00", end_date: "2027-04-21 14:00", 
                 text:"Science lesson", subject: 'science' },
-            { id:4, start_date: "2022-04-23 16:00", end_date: "2022-04-23 17:00", 
+            { id:4, start_date: "2027-04-23 16:00", end_date: "2027-04-23 17:00", 
                 text:"English lesson", subject: 'english' },
-            { id:5, start_date: "2022-04-22 09:00", end_date: "2022-04-22 17:00", 
+            { id:5, start_date: "2027-04-22 09:00", end_date: "2027-04-22 17:00", 
                 text:"Usual event" }
         ]
     }
@@ -66,7 +66,7 @@ You need to use the following format while specifying event handlers for a new i
 const scheduler = Scheduler.getSchedulerInstance({
     events: {
         onEventCreated: function(id, e){
-            var task = scheduler.getEvent(id);
+            const task = scheduler.getEvent(id);
             task.owner = null;
             return true;
         },
@@ -90,12 +90,12 @@ Let's take a simple example: 2 schedulers, one under another:
 
 ~~~js
 window.addEventListener("DOMContentLoaded", function(){
-    var scheduler1  = Scheduler.getSchedulerInstance();
-    scheduler1.init('scheduler_here',new Date(2019,5,30),"week");
+    const scheduler1  = Scheduler.getSchedulerInstance();
+    scheduler1.init('scheduler_here',new Date(2027,5,30),"week");
     scheduler1.load("/data/events")
     
-    var scheduler2 = Scheduler.getSchedulerInstance();
-    scheduler2.init('scheduler_here_2',new Date(2019,5,30),"month");
+    const scheduler2 = Scheduler.getSchedulerInstance();
+    scheduler2.init('scheduler_here_2',new Date(2027,5,30),"month");
     scheduler2.load("/data/events")    
 )};
 
@@ -112,7 +112,7 @@ Starting from version 6.0, the dhtmlxScheduler object has a [destructor](api/met
 The destructor of the scheduler instance can be used as follows:
 
 ~~~js
-var myScheduler = Scheduler.getSchedulerInstance();
+const myScheduler = Scheduler.getSchedulerInstance();
  
 //destroying a scheduler instance
 myScheduler.destructor();
@@ -150,8 +150,8 @@ class MySchedulerComponent implements OnDestroy {
 Calling the destructor of data processor will clear the dataProcessor instance and detach it from the scheduler. For example:
 
 ~~~js
-var scheduler = Scheduler.getSchedulerInstance();
-var dp = new scheduler.DataProcessor("url");
+const scheduler = Scheduler.getSchedulerInstance();
+const dp = new scheduler.DataProcessor("url");
 dp.init(scheduler);
 
 // destroys data processor and detaches it from the scheduler

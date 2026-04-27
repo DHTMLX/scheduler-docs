@@ -29,7 +29,7 @@ scheduler.createGridView({
         {id:"text",     label:'Votes',         width:200,    align:'left',    sort:'int'}
     ],
     from:new  Date(2000, 00, 01),
-    to:new Date(2013, 00, 01)
+    to:new Date(2027, 00, 01)
 });
 ~~~
 

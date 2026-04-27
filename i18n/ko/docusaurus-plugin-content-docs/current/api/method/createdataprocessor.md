@@ -22,7 +22,7 @@ description: "새로운 dataProcessor 인스턴스를 생성하고 이를 schedu
 ### Example
 
 ~~~jsx
-var dp = scheduler.createDataProcessor({
+const dp = scheduler.createDataProcessor({
     url: "/api",
     mode: "REST"
 });
@@ -35,7 +35,7 @@ var dp = scheduler.createDataProcessor({
 1\. `{url:string, mode:string}` 형태의 객체로, 데이터를 전송하는 사전 정의된 방식을 지정합니다.
 
 ~~~js
-var dp = scheduler.createDataProcessor({
+const dp = scheduler.createDataProcessor({
    url: "/api",
    mode: "REST"
 });
@@ -49,7 +49,7 @@ var dp = scheduler.createDataProcessor({
 2\. 또는, 커스텀 라우터 객체를 제공할 수 있습니다:
 
 ~~~js
-var dp = scheduler.createDataProcessor(router);
+const dp = scheduler.createDataProcessor(router);
 ~~~
 
 라우터는 함수일 수 있습니다:
@@ -59,7 +59,7 @@ var dp = scheduler.createDataProcessor(router);
 // action - "create"|"update"|"delete"
 // data - 이벤트 상세 정보를 담은 객체
 // id – 처리 중인 객체(event)의 id
-var dp = scheduler.createDataProcessor(function(entity, action, data, id) { 
+const dp = scheduler.createDataProcessor(function(entity, action, data, id) { 
     switch(action) {
         case "create":
                return scheduler.ajax.post(
@@ -85,7 +85,7 @@ var dp = scheduler.createDataProcessor(function(entity, action, data, id) {
 또는 다음과 같은 구조의 객체일 수 있습니다:
 
 ~~~js
-var dp = scheduler.createDataProcessor({ 
+const dp = scheduler.createDataProcessor({ 
    event: {
       create: function(data) {},
       update: function(data, id) {},

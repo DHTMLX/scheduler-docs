@@ -98,7 +98,7 @@ scheduler.init("scheduler_here");
 
 The "minicalendar" value will display a minicalendar button with the following click handler:
 
-~~~
+~~~js
 function showCalendar () {
     if (scheduler.isCalendarVisible()) {
         scheduler.destroyCalendar();
@@ -118,7 +118,7 @@ function showCalendar () {
 
 If you want to call [renderCalendar](api/method/rendercalendar.md) with different parameters, you need to provide your own onclick handler for the minicalendar button:
 
-~~~
+~~~js
 scheduler.config.header = [
     "day",
     "week",

@@ -16,7 +16,7 @@ description: "동적 로딩 시 서버 요청 파라미터 'from'과 'to'의 형
 
 ~~~jsx
 scheduler.config.load_date = "%Y.%m.%d";
-scheduler.init('scheduler_here',new Date(2009,10,1),"month");
+scheduler.init('scheduler_here',new Date(2027,10,1),"month");
 
 scheduler.setLoadMode("month");
 scheduler.load("data/events.php");

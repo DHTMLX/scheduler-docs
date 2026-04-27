@@ -18,7 +18,7 @@ description: "ruiert den aktuellen Zustand des Schedulers ab"
 ### Example
 
 ~~~jsx
-var mode = scheduler.getState().mode;
+const mode = scheduler.getState().mode;
 if(mode == "day"){
     // benutzerdefinierte Logik hier
 }

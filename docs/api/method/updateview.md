@@ -22,10 +22,10 @@ description: "displays the specified view and date (doesn't invoke any events)"
 ~~~jsx
 //displays the current view and date. Doesn't change anything, just refreshes 
 scheduler.updateView();
-// displays the 4th July,2012 in the currently active view
-scheduler.updateView(new Date(2012,7,4));
-// displays the 3rd May,2012 in the Week view
-scheduler.updateView(new Date(2012,5,3), "week");
+// displays the 4th July,2027 in the currently active view
+scheduler.updateView(new Date(2027,7,4));
+// displays the 3rd May,2027 in the Week view
+scheduler.updateView(new Date(2027,5,3), "week");
 ~~~
 
 ### Related samples

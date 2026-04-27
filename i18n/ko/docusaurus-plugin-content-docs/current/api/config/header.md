@@ -96,7 +96,7 @@ scheduler.init("scheduler_here");
 
 "minicalendar" 옵션은 다음과 같은 클릭 핸들러를 가진 미니 캘린더 토글 버튼을 추가합니다:
 
-~~~
+~~~js
 function showCalendar () {
     if (scheduler.isCalendarVisible()) {
         scheduler.destroyCalendar();
@@ -116,7 +116,7 @@ function showCalendar () {
 
 다른 매개변수로 미니 캘린더 동작을 커스터마이즈하려면, 다음과 같이 minicalendar 버튼에 대한 자체 클릭 핸들러를 제공하세요:
 
-~~~
+~~~js
 scheduler.config.header = [
     "day",
     "week",

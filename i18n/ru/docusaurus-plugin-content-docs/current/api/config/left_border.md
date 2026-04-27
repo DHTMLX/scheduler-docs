@@ -1,14 +1,14 @@
 ---
-sidebar_label: "left_border"
-title: "left_border config"
-description: "включает пунктирную левую границу в scheduler"
+sidebar_label: left_border
+title: "Конфигурация left_border"
+description: "добавляет пунктирную левую границу к планировщику"
 ---
 
 # left_border
 
 ### Description
 
-@short: Включает пунктирную левую границу в scheduler
+@short: Добавляет пунктирную левую границу к планировщику
 
 @signature: left_border: boolean
 
@@ -17,13 +17,11 @@ description: "включает пунктирную левую границу в
 ~~~jsx
 scheduler.config.left_border = true;
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "month");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "month");
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
 ### Details
-
-<br>
 
 ![leftBorder_property](/img/leftBorder_property.png)

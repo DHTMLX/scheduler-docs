@@ -19,7 +19,7 @@ description: "entfernt einen zuvor angehängten Event-Handler (einen, der mit de
 ### Example
 
 ~~~jsx
-var myEvent = scheduler.attachEvent("onClick", function (id){
+const myEvent = scheduler.attachEvent("onClick", function (id){
     ...//Event-Handler-Code
 });
 ...

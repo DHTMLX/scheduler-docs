@@ -16,7 +16,7 @@ sidebar_label: "Дневной вид"
 
 ~~~js
 // стандартная инициализация. Дневной вид добавляется автоматически
-scheduler.init('scheduler_here', new Date(2019,0,10), "week");
+scheduler.init('scheduler_here', new Date(2027,0,10), "week");
 ...
 scheduler.load("/data/events");
 ~~~

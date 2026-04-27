@@ -24,8 +24,8 @@ description: "커스텀 이벤트 박스의 HTML 콘텐츠를 생성합니다"
 
 ~~~jsx
 scheduler.renderEvent = function(container, ev) {
-    var container_width = container.style.width;
-    var html = "<div class='dhx_event_move my_event_move' style='width:" +
+    const container_width = container.style.width;
+    let html = "<div class='dhx_event_move my_event_move' style='width:" +
     + container_width + "'></div>";
     ...
     container.innerHTML = html;

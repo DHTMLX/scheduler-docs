@@ -1,16 +1,16 @@
 ---
-title: "Combo"
-sidebar_label: "Combo"
+title: "Комбо"
+sidebar_label: "Комбо"
 ---
 
-# Combo
+# Комбо
 
-В этом разделе рассматривается комбобокс, предоставляемый компонентом <a href="https://docs.dhtmlx.com/combo__index.html">DHTMLX Combo</a>.
+Выпадающий список, представленный компонентом <a href="https://docs.dhtmlx.com/combo__index.html">DHTMLX Combo component</a>.
 
 ![combo_editor](/img/combo_editor.png)
 
 ~~~js
-var holders = [
+const holders = [
     { key: 1, label: 'James' },
     { key: 2, label: 'Alex' },
     { key: 3, label: 'Antony' },
@@ -25,17 +25,15 @@ scheduler.config.lightbox.sections = [
     image_path:"../common/dhtmlxCombo/imgs/", height:30, filtering:true},
     { name:"time", height:72, type:"time", map_to:"auto"}
 ];
-~~~ 
-
+~~~
 
 [Combo box in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/15_combo_select.html)
-
 
 ## Инициализация
 
 Чтобы добавить элемент управления Combo в lightbox, выполните следующие шаги:
 
-1. Подключите файлы dhtmlxCombo:
+1. <b>Включите файлы <a href="https://docs.dhtmlx.com/combo__index.html">dhtmlxCombo</a>:</b>
 ~~~js
 <script src="../codebase/dhtmlxscheduler.js" ...></script>
 <link rel="stylesheet" href="../codebase/dhtmlxscheduler.css" ...>
@@ -43,13 +41,13 @@ scheduler.config.lightbox.sections = [
 <link rel="stylesheet" href="common/dhtmlxCombo/dhtmlxcombo.css" ..>
 <script src="common/dhtmlxCombo/dhtmlxcombo.js" ...></script>
 ~~~
-2. Включите расширение editors на странице:
+2. <b>Активируйте расширение [editors](guides/extensions-list.md#editors) на странице</b>:
 ~~~js
 scheduler.plugins({
     editors: true
 });
 ~~~
-3. Добавьте секцию в конфигурацию lightbox:
+3. <b>Добавьте секцию в конфигурацию lightbox:</b>
 ~~~js
 scheduler.config.lightbox.sections = [
     { name:"description", ... },
@@ -58,66 +56,61 @@ scheduler.config.lightbox.sections = [
     { name:"time", ...}
 ];
 ~~~
-4. Задайте метку для секции:
+4. <b>Установите метку для раздела:</b>
 ~~~js
 scheduler.locale.labels.section_holders = "Holder";
 ~~~
 
-  
-
-
 [Combo box in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/15_combo_select.html)
-
 
 ## Свойства
 
-Ниже приведены основные и часто используемые свойства для контрола 'combo' (полный список смотрите [здесь](api/config/lightbox.md)):
+Следующие свойства наиболее важны и обычно настраиваются для элемента управления 'combo' (полный список смотрите [здесь](api/config/lightbox.md)):
 
 <table class="webixdoc_links">
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>name</b></td>
-  <td>(<i>string</i>) имя секции</td>
+  <td>(<i>string</i>) имя раздела</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>height</b></td>
-  <td>(<i>number</i>) высота секции</td>
+  <td>(<i>number</i>) высота раздела</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>map_to</b></td>
-  <td>(<i>string</i>) имя свойства данных, которое будет связано с данной секцией</td>
+  <td>(<i>string</i>) имя свойства данных, которое будет сопоставлено разделу</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>type</b></td>
-  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) тип элемента управления секции</td>
+  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) тип элемента управления раздела</td>
   </tr>
   <tr>
-  <td class="webixdoc_links0"><b>options</b></td>
-  <td>(<i>array of objects</i>) определяет опции выбора для контрола (<b>для контролов 'select', 'multiselect', 'radio', 'combo'</b>). Каждый объект в массиве описывает одну опцию и содержит следующие свойства: <ul> <li><b>key</b> - (<i>string</i>) id опции. Это значение сравнивается со свойством данных события для назначения опций событиям</li> <li><b>label</b> - (<i>string</i>) текст метки опции</li> </ul></td>
+  <td class="webixdoc_links0" style="vertical-align: top;"><b>options</b></td>
+  <td>(<i>array of objects</i>) определяет варианты выбора управления (<b>для 'select', 'multiselect', 'radio', 'combo' controls</b>). Каждый объект в массиве задаёт один вариант и имеет следующие свойства: <ul> <li><b>key</b> - (<i>string</i>) идентификатор варианта. Это свойство сравнивается со свойством данных события для присвоения вариантов событиям</li> <li><b>label</b> - (<i>string</i>) подпись варианта</li> </ul></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>image_path</b></td>
   <td>(<i>string</i>) путь к изображениям dhtmlxCombo</td>
   </tr>
   <tr>
-  <td class="webixdoc_links0"><b>filtering</b></td>
-  <td>(<i>boolean, string</i>) включает поддержку автофильтрации (опции фильтруются по мере ввода текста). Необязательный параметр. Параметр может принимать следующие значения: <ul> <li><b>false</b> - отключает фильтрацию</li> <li><b>true или "start"</b> - включает фильтрацию, поиск с начала элемента</li> <li><b>"between"</b> - включает фильтрацию, ищет любое вхождение введённого текста в элементах</li> </ul></td>
+  <td class="webixdoc_links0" style="vertical-align: top;"><b>filtering</b></td>
+  <td>(<i>boolean, string</i>) включает режим автофильтрации (опции будут отфильтрованы по мере набора текста). Необязательно Значение может принимать одно из следующих значений: <ul> <li><b>false</b> - отключает фильтрацию</li> <li><b>true or "start"</b> - включает фильтрацию, поиск начинается с начала элемента</li> <li><b>"between"</b> - включает фильтрацию, поиск по любому вхождению набранного текста в элементах</li> </ul></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>script_path</b></td>
-  <td>(<i>string</i>) путь к серверному скрипту, который будет предоставлять опции combo с сервера. Необязательный параметр</td>
+  <td>(<i>string</i>) путь к серверному скрипту, который будет обеспечивать загрузку вариантов Combo с сервера. Необязательно</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>cache</b></td>
-  <td>(<i>boolean</i>) включает или отключает кеширование ответов скрипта (рекомендуется включить). Необязательный параметр</td>
+  <td>(<i>boolean</i>) включает/выключает кеширование ответов скриптов (рекомендуется включать данное свойство). Необязательно</td>
   </tr>
   </tbody>
 </table>
 
+## Заполнение элемента управления данными
 
-## Заполнение контрола данными
-
-Чтобы задать значения для контрола Combo, используйте параметр [options](api/config/lightbox.md):
+В целом, чтобы задать значения для элемента управления Combo, следует использовать параметр [options](api/config/lightbox.md):
 
 ~~~js
 scheduler.config.lightbox.sections = 
@@ -134,14 +127,14 @@ scheduler.config.lightbox.sections =
 ];
 ~~~
 
-Каждый элемент в параметре [options](api/config/lightbox.md) должен содержать два обязательных свойства:
+Элементы в параметре [options](api/config/lightbox.md) должны иметь 2 обязательных свойства:
 
-- **key** - id опции
-- **label** - текст метки опции
+- **key** - идентификатор варианта
+- **label** - подпись варианта
 
-## Заполнение контрола данными с сервера
+## Заполнение элемента управления данными с сервера
 
-Чтобы загрузить опции Combo с сервера, используйте свойство **script_path** для указания URL серверного скрипта, обрабатывающего запросы.
+Чтобы заполнить элемент управления Combo данными с сервера, используйте свойство **script_path**, указывая путь к серверному скрипту, который будет обрабатывать запросы к серверу.
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -150,22 +143,22 @@ scheduler.config.lightbox.sections = [
 ];
 ~~~
 
-Свойство **script_path** определяет URL, с которого combo загружает свои опции через AJAX.
+Свойство **script_path** задаёт URL, с которого Combo будет загружать свои варианты, то есть если script_path указан - Combo попытается загрузить данные по этому URL через AJAX.
 
-Так как селектор combo основан на [dhtmlxCombo](https://docs.dhtmlx.com/combo__index.html), сервер должен возвращать данные в совместимом формате.
-Подробнее о добавлении данных в combo можно узнать в статье [Loading Options](https://docs.dhtmlx.com/combo__adding_options.html). 
+Селектор Combo основан на [dhtmlxCombo](https://docs.dhtmlx.com/combo__index.html), поэтому сервер должен возвращать данные, совместимые с ним.
+Подробнее о способах добавления данных в Combo читайте в статье [Loading Options](https://docs.dhtmlx.com/combo__adding_options.html).
 
-Запросы выполняются в двух случаях:
+URL запрашивается в двух случаях:
 
-1) Когда открывается lightbox и в combo выбрано значение, контрол отправляет запрос для загрузки метки для этой опции.
+1) когда lightbox открывается и у Combo есть выбранное значение - управление отправляет запрос на сервер и загружает метку для выбранного варианта.
 
-В запросе передаётся параметр **id**:
+Запрос будет иметь параметр запроса **id**:
 
 ~~~
 GET /url?id="1"
 ~~~
 
-Ответ должен быть массивом, содержащим только элемент с указанным id, в следующем формате:
+Ответ должен вернуть массив, содержащий только элемент с указанным id в следующем формате:
 
 ~~~
 [
@@ -173,17 +166,15 @@ GET /url?id="1"
 ]
 ~~~
 
+2) когда пользователь начинает вводить текст в поле ввода списка - управление загружает отфильтрованные значения.
 
-2) Когда пользователь начинает вводить текст в поле combo, контрол загружает отфильтрованные опции.
-
-В запросе передаётся введённый текст в параметре **mask**:
+Клиент отправит запрос с введённым текстом в параметре запроса **mask**:
 
 ~~~
 GET /url?mask="al"
 ~~~
 
-Сервер должен вернуть все элементы, соответствующие маске:
-
+Ответ сервера должен вернуть все элементы, которые соответствуют значению mask:
 ~~~
 [
    { "value": 1, "text": "Albania"},
@@ -191,34 +182,22 @@ GET /url?mask="al"
 ]
 ~~~
 
-Если вы используете библиотеку [PHP Connector](https://github.com/DHTMLX/connector-php), серверная часть может выглядеть так:
+Пример обработчика на стороне сервера (Node.js/Express):
 
 ~~~js
-<?php
-    require_once('../../connector-php/codebase/combo_connector.php');
-    require_once("../common/config.php");
-
-    $combo = new ComboConnector($res, $dbtype);
-
-    $combo->event->attach("beforeFilter", "by_id");
-    function by_id($filter) {
-        if (isset($_GET['id']))
-            $filter->add("item_id", $_GET['id'], '=');
-    }    
-
-    $combo->dynamic_loading(3);
-    $combo->render_table("Countries","item_id","item_nm");
-
-?>
+app.get("/api/countries", async (req, res) => {
+  const { id, mask } = req.query;
+  // Query your data source by id or mask
+  const items = await countriesService.find({ id, mask });
+  res.json(items); // [{ value: 1, text: "Albania" }, ...]
+});
 ~~~
 
-
-[Populating a combo box from the server](https://docs.dhtmlx.com/scheduler/samples/02_customization/18_combo_select_from_db.html)
-
+[Заполнение выпадающего списка данными с сервера](https://docs.dhtmlx.com/scheduler/samples/02_customization/18_combo_select_from_db.html)
 
 ## Режим автофильтрации
 
-Режим автофильтрации означает, что опции фильтруются автоматически по мере ввода текста пользователем. Чтобы включить этот режим, установите свойство **filtering** в *true*:
+Режим авто-фильтрации — режим, когда опции автоматически фильтруются по мере ввода пользователя. Чтобы включить режим, установите свойство **filtering** в значение true:
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -227,8 +206,7 @@ scheduler.config.lightbox.sections = [
 ];
 ~~~
 :::note
-Обратите внимание, что автофильтрация может использоваться независимо от того, загружаются ли данные на клиенте или с сервера.
+Примечание: можно использовать режим автофильтрации независимо от источника данных (клиентский или серверный).
 :::
 
-
-Для получения дополнительной информации смотрите документацию dhtmlxCombo по <a href="https://docs.dhtmlx.com/combo__filtering.html">фильтрации</a>.
+Подробнее по теме в документации dhtmlxCombo <a href="https://docs.dhtmlx.com/combo__filtering.html">dhtmlxCombo. Filtering</a>.

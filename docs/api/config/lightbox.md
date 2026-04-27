@@ -21,7 +21,7 @@ scheduler.config.lightbox.sections=[
     { name:"time",           height:72, type:"time",     map_to:"auto"}    
 ];
 ...            
-scheduler.init('scheduler_here',new Date(2013,2,1),"week");
+scheduler.init('scheduler_here',new Date(2027,2,1),"week");
 ~~~
 
 ### Related samples

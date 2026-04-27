@@ -19,15 +19,15 @@ console.log(scheduler.serialize());
 
 
 //(5) [{…}, {…}, {…}, {…}, {…}]
-//> 0: {id: 1, start_date: '2022-05-17 09:00', end_date: '2022-05-17 12:00', 
+//> 0: {id: 1, start_date: '2027-05-17 09:00', end_date: '2027-05-17 12:00', 
 //    text: 'Event'}
-//> 1: {id: 2, start_date: '2022-05-18 10:00', end_date: '2022-05-18 16:00', 
+//> 1: {id: 2, start_date: '2027-05-18 10:00', end_date: '2027-05-18 16:00', 
 //    text: 'Event'}
-//> 2: {id: 3, start_date: '2022-05-20 10:00', end_date: '2022-05-20 14:00', 
+//> 2: {id: 3, start_date: '2027-05-20 10:00', end_date: '2027-05-20 14:00', 
 //    text: 'Event'}
-//> 3: {id: 4, start_date: '2022-05-21 16:00', end_date: '2022-05-21 17:00', 
+//> 3: {id: 4, start_date: '2027-05-21 16:00', end_date: '2027-05-21 17:00', 
 //    text: 'Event'}
-//> 4: {id: 5, start_date: '2022-05-22 09:00', end_date: '2022-05-22 17:00', 
+//> 4: {id: 5, start_date: '2027-05-22 09:00', end_date: '2027-05-22 17:00', 
 //    text: 'Event'}
 ~~~
 
@@ -43,4 +43,4 @@ console.log(scheduler.serialize());
 - [format_date](api/template/format_date.md)
 
 ### Change log
-- added in v6.0
+- 版本 6.0 中添加

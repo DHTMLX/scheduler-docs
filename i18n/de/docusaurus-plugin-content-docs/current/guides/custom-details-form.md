@@ -23,17 +23,17 @@ Es gibt zwei Hilfsmethoden, die dies erleichtern können:
 Angenommen, Sie haben irgendwo auf der Seite einen HTML-Container mit der ID **#custom_form**. Um ein individuelles Lightbox zu implementieren, könnten Sie Folgendes tun:
 
 ~~~js
-var custom_form = document.getElementById("custom_form");
+const custom_form = document.getElementById("custom_form");
 
 scheduler.showLightbox = function(id){
-    var ev = scheduler.getEvent(id);
+    const ev = scheduler.getEvent(id);
     scheduler.startLightbox(id, custom_form );
     ...'hier müssen Sie Werte im Formular setzen'...
     //document.getElementById("some_input").value = ev.text;
 }
 // Sollte mit dem 'Speichern'-Button verknüpft sein
 function save_form() {
-    var ev = scheduler.getEvent(scheduler.getState().lightbox_id);
+    const ev = scheduler.getEvent(scheduler.getState().lightbox_id);
     ...'hier müssen Sie Werte aus dem Formular übernehmen'...
     //ev.text = document.getElementById("some_input").value;
     scheduler.endLightbox(true, custom_form);

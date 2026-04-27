@@ -17,7 +17,7 @@ description: "sets the zoom that will be used to show the user's location, if th
 ~~~jsx
 scheduler.config.map_zoom_after_resolve = 10;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** 15

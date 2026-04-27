@@ -74,11 +74,11 @@ scheduler.locale.labels.agenda_tab = "My Agenda";
 要定义议程视图中显示的日期范围，请使用 [agenda_end](api/config/agenda_end.md) 和 [agenda_start](api/config/agenda_start.md) 属性:
 
 ~~~js
-//显示从 2019 年 6 月 1 日开始的日期
-scheduler.config.agenda_start = new Date(2019, 5, 1); 
+//显示从 2026 年 6 月 1 日开始的日期
+scheduler.config.agenda_start = new Date(2026, 5, 1); 
 
-//显示截止到 2020 年 6 月 1 日的日期
-scheduler.config.agenda_end = new Date(2020, 5, 1);   
+//显示截止到 2027 年 6 月 1 日的日期
+scheduler.config.agenda_end = new Date(2027, 5, 1);   
 ~~~
 
 ## 启用上一页/下一页/今天按钮

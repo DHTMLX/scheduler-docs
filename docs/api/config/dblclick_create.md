@@ -17,7 +17,7 @@ description: "enables the possibility to create events by double click"
 ~~~jsx
 scheduler.config.dblclick_create = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** true

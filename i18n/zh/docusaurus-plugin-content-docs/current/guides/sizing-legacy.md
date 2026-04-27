@@ -1,43 +1,43 @@
+--- 
+title: "刻度与事件框尺寸（v6.0）" 
+sidebar_label: "刻度与事件框尺寸（v6.0）" 
 ---
-title: "调整刻度和事件框的尺寸（v6.0）"
-sidebar_label: "调整刻度和事件框的尺寸（v6.0）"
----
 
-# 调整刻度和事件框的尺寸（v6.0）
+# 刻度和事件框尺寸（v6.0）
 
-*本文适用于 dhtmlxScheduler 6.0 及更早版本。如需 7.0 及以上版本的详细信息，请参阅[此处](guides/sizing.md)。*
+*本文适用于 dhtmlxScheduler 6.0 或更早版本。如果你使用的是 dhtmlxScheduler 7.0+，请参阅此处的详细信息 [here](guides/sizing.md)。*
 
-本文主要介绍通过以下四种常见场景来调整刻度单位和事件框的尺寸:
+在本文中，我们将通过解决 4 个问题的示例来探讨刻度和事件框的尺寸调整：
 
-**问题1:** [在调度器中，短于1小时的事件显示和1小时事件一样大小。目标是让短事件能够正确适配刻度。](guides/sizing-legacy.md#how-to-make-short-events-fit-the-scale)
+**Problem 1:** [事件持续时间少于 1 小时在日程中看起来与 1 小时的事件相同。我希望较短的事件能适应刻度。](guides/sizing-legacy.md#how-to-make-short-events-fit-the-scale)
+  
+**Problem 2:** [持续时间少于 1 小时且在同一小时内不同时间点发生的事件会重叠。我希望这类短事件不重叠。](guides/sizing-legacy.md#preventing-short-events-from-overlapping)
+  
+**Problem 3:** [我改变了刻度单元的高度，并希望相应地改变带状背景。](guides/sizing-legacy.md#how-to-change-the-background-according-to-the-set-scale)
+  
+**Problem 4:** [默认的刻度间距是 1 小时。我想改变它，例如设为 30 分钟。](guides/sizing-legacy.md#how-to-change-the-scale-spacing)
 
-**问题2:** [同一小时内发生在不同时间的短事件会重叠。目标是避免此类重叠。](guides/sizing-legacy.md#preventing-short-events-from-overlapping)
+## 如何让短事件适应刻度
 
-**问题3:** [更改刻度单位高度后，条纹背景需要相应调整。](guides/sizing-legacy.md#how-to-change-the-background-according-to-the-set-scale)
+首先，让我们了解事件框的默认行为：
 
-**问题4:** [默认刻度间隔为1小时，但有时需要更改为30分钟等其他时间间隔。](guides/sizing-legacy.md#how-to-change-the-scale-spacing)
+- 默认刻度单元高度为 44px（或小时高度）
+- 事件框的最小高度为 44px
+- 持续时间少于 1 小时的事件高度为 44px。因此，15 分钟和 1 小时的事件在日程中看起来相同
+- 持续时间超过 1 小时的事件高度按侧边刻度来确定（假设 1 小时等于 44px——一个 90 分钟的事件高度将为 63px）
 
-## 如何让短事件适配刻度 {#how-to-make-short-events-fit-the-scale}
+假设你希望 30 分钟的事件也能适应刻度，那么你有两种解决方案：
 
-首先来看事件框的默认行为:
-
-+ 每个刻度单位（小时）的默认高度为44px。
-+ 事件框的最小高度为44px。
-+ 小于1小时的事件显示高度为44px，因此15分钟的事件看起来与1小时事件一样。
-+ 超过1小时的事件高度按比例缩放（例如，90分钟的事件高度为63px，假设1小时为44px）。
-
-如果需要让30分钟的事件能够正确适配刻度，可以通过以下两种方式实现:
-
-- 增加刻度单位的高度。
-- 自定义事件框的显示方式。
+- 增大刻度单元的高度
+- 自定义事件框的显示
 
 ![30-minute_custom_event.png](/img/30-minute_custom_event.png)
 
-### 方案1:更改刻度单位高度
+### 方案 1. 修改刻度单元的高度
 
-可以通过配置项 `scheduler.config.hour_size_px` 调整刻度单位的高度。
-
-例如，将单位高度加倍，可以这样设置:
+要更改刻度单元的高度，应该使用 [hour_size_px](api/config/hour_size_px.md) 配置选项。
+  
+例如，要把单位高度增加一倍，可以按如下调用：
 
 ~~~js
 scheduler.config.hour_size_px = 88;
@@ -45,31 +45,29 @@ scheduler.config.hour_size_px = 88;
 scheduler.init(...);
 ~~~
 
-这样设置后，刻度单位高度变为88px，30分钟的事件高度就是44px，能够与刻度相匹配。
-
+现在刻度单元的高度为 88 px，30 分钟的事件占用 44px，就会正好匹配 30 分钟的高度。
 
 [Changing the Y-Axis step](https://docs.dhtmlx.com/scheduler/samples/02_customization/09_timestep.html)
 
 
-### 方案2:自定义事件框
+### 方案 2. 自定义事件框
 
-如需自定义事件框的显示方式，可以使用 `scheduler.renderEvent` 方法，允许你为事件提供自定义模板。
+要自定义事件框的显示，应该使用 [renderEvent](api/method/renderevent.md) 方法，它允许你为事件设置自己的模板。
 
 ~~~js
 scheduler.renderEvent = function(container, ev) {
-    // your customization code here
+    //your customizing code
 }
 ~~~
 
-更多细节请参阅 [커스텀 이벤트 박스](guides/custom-events-display.md) 章节。
-
+请在相关章节 - [自定义事件框](guides/custom-events-display.md) 中查看详细信息。
 
 [Custom event box](https://docs.dhtmlx.com/scheduler/samples/02_customization/27_custom_event_box.html)
 
 
-## 避免短事件重叠 {#preventing-short-events-from-overlapping}
+## 防止短事件相互重叠
 
-为了让短事件分开展示且不重叠，可以启用 `scheduler.config.separate_short_events` 选项:
+为了让短事件单独显示，避免它们重叠，你应该将 [separate_short_events](api/config/separate_short_events.md) 选项设为 true：
 
 ~~~js
 scheduler.config.separate_short_events = true;
@@ -77,9 +75,9 @@ scheduler.config.separate_short_events = true;
 
 ![overlapping.png](/img/overlapping.png)
 
-## 如何根据设置的刻度调整背景 {#how-to-change-the-background-according-to-the-set-scale}
+## 如何根据设定的刻度改变背景
 
-调度器的背景由图片控制。要更新背景，可以覆盖 CSS 类 **.dhx_scale_holder**，例如:
+日程表背景是通过一张图片来设置的。要更改背景图片，应重新定义相关的 CSS 类，即 **.dhx_scale_holder**：
 
 ~~~html
 <style>
@@ -89,36 +87,30 @@ scheduler.config.separate_short_events = true;
 </style>
 ~~~
 
-然后初始化调度器:
-
 ~~~js
 scheduler.init(...);
 ~~~
 
 ![changing_background.png](/img/changing_background.png)
 
-## 如何更改刻度间隔 {#how-to-change-the-scale-spacing}
+## 如何改变刻度间距
 
-如需调整默认的刻度间隔，可以重写 `scheduler.templates.hour_scale` 模板。例如，将间隔改为30分钟，可以这样修改模板:
+要改变默认的刻度间距，需要重写 [hour_scale](api/template/hour_scale.md) 模板。要使刻度间距等于 30 分钟，可以按如下方式重写模板：
 
 ~~~js
-var format = scheduler.date.date_to_str("%H:%i");
-var step = 30;
+const format = scheduler.date.date_to_str("%H:%i");
+const step = 30;
         
 scheduler.templates.hour_scale = function(date){
-    var html="";
-    for (var i="0;" i<60/step; i++){
-        html+="<div>"+format(date)+"</div>";
+    let html="";
+    for (let i = 0; i < 60/step; i++){
+        html += "<div style='height:22px;line-height:22px;'>" + format(date) + "</div>";
         date = scheduler.date.add(date,step,"minute");
     }
     return html;
 }
-
 ~~~
 
 ![scale_spacing.png](/img/scale_spacing.png)
 
-**相关示例:**
-
-
-[Custom Y-Axis](https://docs.dhtmlx.com/scheduler/samples/02_customization/21_custom_hour_scale.html)
+**相关示例：** [自定义 Y 轴](https://docs.dhtmlx.com/scheduler/samples/02_customization/21_custom_hour_scale.html)

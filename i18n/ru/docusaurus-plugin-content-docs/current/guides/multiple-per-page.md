@@ -9,11 +9,11 @@ sidebar_label: "Создание нескольких планировщиков
 Эта функция доступна только в версии Scheduler PRO (Commercial с 6 октября 2021, Enterprise и Ultimate лицензии).
 :::
 
-Изначально при работе с библиотекой вы могли заметить, что dhtmlxScheduler - это статический объект, то есть _только один экземпляр_ dhtmlxScheduler может существовать на странице.
+Как вы, вероятно, заметили в самом начале работы с библиотекой, dhtmlxScheduler — это статический объект, то есть _только один экземпляр_ dhtmlxScheduler может существовать на странице.
 
-Однако в версии PRO это меняется: теперь _несколько экземпляров_ dhtmlxScheduler могут сосуществовать на одной странице. По-прежнему доступен стандартный экземпляр планировщика через глобальный объект **scheduler**, но вы также можете создавать дополнительные объекты планировщика.
+Теперь, для версии PRO, следует переформулировать это утверждение и сказать: _более чем один экземпляр_ dhtmlxScheduler может существовать на странице. У вас по-прежнему есть один экземпляр Scheduler по умолчанию, который доступен через глобальный объект **scheduler**, но вы также можете создавать новые экземпляры Scheduler.
 
-## Конфигурация экземпляра Scheduler {#schedulerinstanceconfiguration}
+## Конфигурация экземпляра Scheduler
 
 Чтобы создать новый экземпляр dhtmlxScheduler, используйте метод **Scheduler.getSchedulerInstance()**:
 
@@ -22,7 +22,7 @@ sidebar_label: "Создание нескольких планировщиков
 const scheduler = Scheduler.getSchedulerInstance();
 ~~~
 
-Этот метод может принимать объект конфигурации в качестве аргумента:
+Метод может принимать объект конфигурации в качестве параметра:
 
 ~~~js
 const scheduler = Scheduler.getSchedulerInstance({
@@ -36,37 +36,36 @@ const scheduler = Scheduler.getSchedulerInstance({
     },
     data: {
         events: [
-            { id:1, start_date: "2022-04-18 09:00", end_date: "2022-04-18 12:00", 
+            { id:1, start_date: "2027-04-18 09:00", end_date: "2027-04-18 12:00", 
                 text:"English lesson", subject: 'english' },
-            { id:2, start_date: "2022-04-20 10:00", end_date: "2022-04-21 16:00", 
+            { id:2, start_date: "2027-04-20 10:00", end_date: "2027-04-21 16:00", 
                 text:"Math exam", subject: 'math' },
-            { id:3, start_date: "2022-04-21 10:00", end_date: "2022-04-21 14:00", 
+            { id:3, start_date: "2027-04-21 10:00", end_date: "2027-04-21 14:00", 
                 text:"Science lesson", subject: 'science' },
-            { id:4, start_date: "2022-04-23 16:00", end_date: "2022-04-23 17:00", 
+            { id:4, start_date: "2027-04-23 16:00", end_date: "2027-04-23 17:00", 
                 text:"English lesson", subject: 'english' },
-            { id:5, start_date: "2022-04-22 09:00", end_date: "2022-04-22 17:00", 
+            { id:5, start_date: "2027-04-22 09:00", end_date: "2027-04-22 17:00", 
                 text:"Usual event" }
         ]
     }
 });
 ~~~
 
-Объект конфигурации может включать следующие свойства:
+Объект config может содержать следующие свойства:
 
-- **container** - (*string|HTMLElement*) HTML-контейнер (или его id), в котором будет отображаться Scheduler. Если не указано, Scheduler будет инициализирован без контейнера.
-- **config** - (*object*) настройки конфигурации Scheduler
-- **xy** - (*object*) размеры элементов планировщика, см. [](api/other/xy.md)
-- **templates** - (*object*) конфигурация шаблонов
-- **events** - (*object*) обработчики событий. 
+- **container** - (*string|HTMLElement*) HTML-контейнер (или его id), в котором будет отображаться Scheduler. Если не указан, Scheduler будет инициализирован без контейнера.
+- **config** - (*object*) объект с настройками конфигурации Scheduler
+- **xy** - (*object*) объект с [размерами элементов Scheduler](api/other/xy.md)
+- **templates** - (*object*) объект с шаблонами
+- **events** - (*object*) объект с обработчиками событий.
 
-
-При указании обработчиков событий для нового экземпляра Scheduler используйте следующий формат:
+Необходимо использовать следующий формат при указании обработчиков событий для нового экземпляра Scheduler:
 
 ~~~js
 const scheduler = Scheduler.getSchedulerInstance({
     events: {
         onEventCreated: function(id, e){
-            var task = scheduler.getEvent(id);
+            const task = scheduler.getEvent(id);
             task.owner = null;
             return true;
         },
@@ -78,55 +77,54 @@ const scheduler = Scheduler.getSchedulerInstance({
 });
 ~~~
 
-- **data** - (*object|string*) данные для загрузки или URL для получения данных
-- **plugins** - (*object*) расширения для активации
-- **locale** - (*string|object*) двухбуквенный код языка или объект локализации для активации
+- **data** - (*object|string*) объект с данными для загрузки или URL, по которому нужно загрузить данные
+- **plugins** - (*object*) расширения, которые нужно активировать
+- **locale** - (*string|object*) двухбуквенный код языка или объект локали, который нужно активировать
 
-**Обратите внимание**, что вызов **Scheduler.getSchedulerInstance()** без параметров возвращает объект планировщика с настройками по умолчанию. Вам все равно необходимо сконфигурировать, инициализировать и загрузить данные в новый экземпляр как обычно.
+**Примечание**, что вызов метода **Scheduler.getSchedulerInstance()** без параметров вернет объект Scheduler с настройками конфигурации по умолчанию. Поэтому вам нужно настроить ваш новый экземпляр, инициализировать его и заполнить данными обычным образом.
 
-Вот простой пример с двумя планировщиками, расположенными друг под другом:
-
+Рассмотрим простой пример: 2 Scheduler, один под другим:
 
 ~~~js
 window.addEventListener("DOMContentLoaded", function(){
-    var scheduler1  = Scheduler.getSchedulerInstance();
-    scheduler1.init('scheduler_here',new Date(2019,5,30),"week");
-    scheduler1.load("/data/events");
+    const scheduler1  = Scheduler.getSchedulerInstance();
+    scheduler1.init('scheduler_here',new Date(2027,5,30),"week");
+    scheduler1.load("/data/events")
     
-    var scheduler2 = Scheduler.getSchedulerInstance();
-    scheduler2.init('scheduler_here_2',new Date(2019,5,30),"month");
-    scheduler2.load("/data/events");    
-});
+    const scheduler2 = Scheduler.getSchedulerInstance();
+    scheduler2.init('scheduler_here_2',new Date(2027,5,30),"month");
+    scheduler2.load("/data/events")    
+)};
 
 <body>
-    <div id="scheduler_here"></div>
-    <div id="scheduler_here_2"></div>    
+    <div id="scheduler_here" style="width:100%; height: 50%;"></div>
+    <div id="scheduler_here_2" style="width:100%; height: 50%;"></div>    
 </body>
 ~~~
 
-## Деструктор экземпляров Scheduler и DataProcessor {#destructorofscheduleranddataprocessorinstances}
+## Деструктор экземпляров Scheduler и DataProcessor
 
-Начиная с версии 6.0, dhtmlxScheduler предоставляет [destructor](api/method/destructor.md) для удаления ненужных экземпляров Scheduler.
+Начиная с версии 6.0, объект dhtmlxScheduler имеет [деструктор](api/method/destructor.md), который можно использовать для уничтожения неиспользуемых экземпляров Scheduler.
 
-Вы можете использовать деструктор экземпляра планировщика следующим образом:
+Деструктор экземпляра Scheduler можно использовать так:
 
 ~~~js
-var myScheduler = Scheduler.getSchedulerInstance();
+const myScheduler = Scheduler.getSchedulerInstance();
  
-// уничтожить экземпляр планировщика
+//уничтожение экземпляра scheduler
 myScheduler.destructor();
 ~~~
 
-Деструктор выполняет следующие действия:
+Деструктор реализует следующие задачи:
 
-- очищает данные, загруженные в экземпляр планировщика
-- уничтожает dataProcessor, если он был подключён
-- отсоединяет планировщик от DOM
-- удаляет все DOM-события, добавленные через метод [scheduler.event()](api/method/event.md)
+- очистка данных, загруженных в экземпляр scheduler
+- уничтожение dataProcessor (если он привязан к scheduler)
+- отсоединение scheduler от DOM
+- отсоединение всех обработчиков DOM, привязанных через метод [scheduler.event()](api/method/event.md)
 
 ### Использование деструктора с Angular
 
-Вот как можно использовать деструктор для очистки экземпляра планировщика при работе с Angular:
+Ниже приведён пример использования деструктора для освобождения экземпляра scheduler при работе с фреймворком Angular:
 
 ~~~js
 @Component({selector: 'app-scheduler', template: `...`})
@@ -134,7 +132,7 @@ class MySchedulerComponent implements OnDestroy {
   ngOnInit() {
      this.$gantt = Scheduler.getSchedulerInstance();
 
-     // настройка и инициализация
+     // сконфигурировать и инициализировать
   }
   
   ngOnDestroy() {
@@ -146,14 +144,14 @@ class MySchedulerComponent implements OnDestroy {
 
 ### Отсоединение dataProcessor
 
-Вызов деструктора dataProcessor очищает экземпляр и отсоединяет его от планировщика. Например:
+Вызов деструктора dataProcessor очистит экземпляр dataProcessor и отсоединит его от Scheduler. Например:
 
 ~~~js
-var scheduler = Scheduler.getSchedulerInstance();
-var dp = new scheduler.DataProcessor("url");
+const scheduler = Scheduler.getSchedulerInstance();
+const dp = new scheduler.DataProcessor("url");
 dp.init(scheduler);
 
-// уничтожает dataProcessor и отсоединяет его от планировщика
+// уничтожает data processor и отсоединяет его от Scheduler
 dp.destructor();
 ~~~
 
@@ -161,7 +159,3 @@ dp.destructor();
 Если вы используете пакет, который не поддерживает несколько экземпляров планировщика (например, GPL или Commercial издания), вызов деструктора планировщика сделает планировщик недоступным до перезагрузки страницы.
 :::
 
-## Связанные статьи
-
-
-- [Интеграция с dhtmlxLayout](integrations/other/dhxlayout-integration.md)

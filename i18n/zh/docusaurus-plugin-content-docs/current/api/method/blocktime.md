@@ -41,11 +41,11 @@ scheduler.blockTime(3, [0,8*60], { unit: [1,4] });
 
 
 ~~~js
-//阻止2009年5月3日整天
-scheduler.blockTime(new Date(2009,5,3), "fullday");
+//阻止2027年5月3日整天
+scheduler.blockTime(new Date(2027,5,3), "fullday");
 
-//阻止2009年6月3日从午夜到上午10点的事件
-scheduler.blockTime(new Date(2009,6,3), [0,10*60]);
+//阻止2027年6月3日从午夜到上午10点的事件
+scheduler.blockTime(new Date(2027,6,3), [0,10*60]);
 
 //阻止每个星期六从午夜到早上8点，以及晚上6点到午夜的事件
 scheduler.blockTime(6, [0,8*60,18*60,24*60]);
@@ -87,8 +87,8 @@ scheduler.blockTime({
   <tr>
   <td colspan="2">
 ~~~js
-//阻止从2012年5月3日开始创建事件，直到'end_date'
-start_date:new Date(2012,4,3)
+//阻止从2027年5月3日开始创建事件，直到'end_date'
+start_date:new Date(2027,4,3)
 ~~~
   </td>
   </tr>
@@ -99,8 +99,8 @@ start_date:new Date(2012,4,3)
   <tr>
   <td colspan="2" >
 ~~~js
-//阻止从'start_date'直到2012年9月3日创建事件
-end_date:new Date(2012,8,3)
+//阻止从'start_date'直到2027年9月3日创建事件
+end_date:new Date(2027,8,3)
 ~~~
   </td>
   </tr>
@@ -113,7 +113,7 @@ end_date:new Date(2012,8,3)
 ~~~js
 days:[0, 2, 6] //阻止星期天、星期二和星期六
 days:"fullweek" //阻止整周
-days:new Date(2012,6,1) //阻止2012年7月1日
+days:new Date(2027,6,1) //阻止2027年7月1日
 ~~~
   </td>
   </tr>

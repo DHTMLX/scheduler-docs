@@ -22,7 +22,7 @@ description: "设置视图头部显示的日期"
 ### Example
 
 ~~~jsx
-var date_to_str=scheduler.date.date_to_str(scheduler.locale.labels.year_tab +" %Y");
+const date_to_str=scheduler.date.date_to_str(scheduler.locale.labels.year_tab +" %Y");
 
 scheduler.templates.year_date = function(date){
     return date_to_str(date);

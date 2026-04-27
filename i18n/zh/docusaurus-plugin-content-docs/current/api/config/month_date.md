@@ -17,7 +17,7 @@ description: "定义月视图头部的日期格式"
 ~~~jsx
 scheduler.config.month_date = "%F, %Y";
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** "%F %Y"

@@ -1,16 +1,16 @@
 ---
-sidebar_label: "multisection_shift_all"
-title: "multisection_shift_all config"
-description: "управляет тем, перемещаются ли при перетаскивании событий, назначенных нескольким секциям в Timeline или Units view, все экземпляры одновременно ('true') или только выбранный ('false')"
+sidebar_label: multisection_shift_all
+title: "multisection_shift_all конфигурация"
+description: "Указывает, следует ли при перетаскивании событий, назначенных нескольким секциям Timeline или Units view, все экземпляры должны перетаскиваться одновременно ('true') или только выбранный ('false')"
 ---
 
 # multisection_shift_all
 :::info
- Эта функция доступна только в PRO-версии. 
+ Эта функциональность доступна только в версии PRO.
 :::
 ### Description
 
-@short: Управляет тем, перемещаются ли при перетаскивании событий, назначенных нескольким секциям в Timeline или Units view, все экземпляры одновременно ('true') или только выбранный ('false')
+@short: Определяет, должны ли при перетаскивании событий, назначенных нескольким секциям в Timeline или Units view, перетаскиваться все экземпляры сразу ('true') или только выбранный ('false')
 
 @signature: multisection_shift_all: boolean
 
@@ -22,22 +22,22 @@ scheduler.config.multisection_shift_all = false;
 scheduler.init('scheduler_here', new Date(2012, 5, 30), "timeline");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
-**Applicable views:** [Timeline view](views/timeline.md), [Units view](views/units.md)
+**Доступные представления:** [Timeline view](views/timeline.md), [Units view](views/units.md)
 
 ### Related samples
-- [Multisection events in Timeline and Units view](https://docs.dhtmlx.com/scheduler/samples/12_multisection_events/01_multisection_events.html)
+- [События в нескольких секциях в Timeline и Units view](https://docs.dhtmlx.com/scheduler/samples/12_multisection_events/01_multisection_events.html)
 
 ### Details
 
 :::note
- Этот параметр применяется только при вертикальном перетаскивании событий (между секциями) 
+ Свойство влияет только на перетаскивание событий вертикально (между секциями)
 :::
 
 ### Related API
 - [multisection](api/config/multisection.md)
 
 ### Related Guides
-- [Units View](views/units.md)
-- [Вид 'Timeline'](views/timeline.md)
+- [Units View](views/units.md#displaying-units-for-multiple-days)
+- [Timeline View](views/timeline.md#assignment-of-events-to-several-sections)

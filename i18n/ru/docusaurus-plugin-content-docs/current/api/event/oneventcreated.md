@@ -1,26 +1,26 @@
----
-sidebar_label: "onEventCreated"
-title: "onEventCreated event"
-description: "срабатывает, когда пользователь начинает создание нового события (либо двойным кликом, либо перетаскиванием)"
+--- 
+sidebar_label: onEventCreated
+title: "onEventCreated событие"
+description: "срабатывает, когда пользователь начинает создание нового события (двойной клик или перетаскивание)"
 ---
 
 # onEventCreated
 
 ### Description
 
-@short: Срабатывает, когда пользователь начинает создание нового события (либо двойным кликом, либо перетаскиванием)
+@short: Срабатывает, когда пользователь начинает создание нового события (двойной клик или перетаскивание)
 
 @signature: onEventCreated: (id: string, e: Event) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string* - уникальный идентификатор события
+- `id` - (required) *string* - идентификатор события
 - `e` - (required) *Event* - нативный объект события
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onEventCreated", function(id,e){
-    //здесь можно добавить пользовательскую логику
+    // любая ваша логика здесь
 });
 ~~~

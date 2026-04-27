@@ -22,10 +22,10 @@ description: "지정된 뷰와 날짜를 이벤트를 발생시키지 않고 표
 ~~~jsx
 // 현재 뷰와 날짜를 변경 없이 새로 고침합니다.
 scheduler.updateView();
-// 현재 뷰에 2012년 7월 4일을 표시합니다.
-scheduler.updateView(new Date(2012,7,4));
-// Week 뷰에 2012년 5월 3일을 표시합니다.
-scheduler.updateView(new Date(2012,5,3), "week");
+// 현재 뷰에 2027년 7월 4일을 표시합니다.
+scheduler.updateView(new Date(2027,7,4));
+// Week 뷰에 2027년 5월 3일을 표시합니다.
+scheduler.updateView(new Date(2027,5,3), "week");
 ~~~
 
 ### Related samples

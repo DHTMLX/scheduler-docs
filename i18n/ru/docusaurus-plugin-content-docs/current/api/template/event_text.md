@@ -30,7 +30,7 @@ scheduler.templates.event_text=function(start, end, event){
 }
 ~~~
 
-**Applicable views:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
+**Доступные представления:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
 
 ### Related samples
 - [Styling events with templates](https://docs.dhtmlx.com/scheduler/samples/02_customization/06_templates.html)

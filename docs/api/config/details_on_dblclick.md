@@ -17,7 +17,7 @@ description: "'says' to open the lightbox after double clicking on an event"
 ~~~jsx
 scheduler.config.details_on_dblclick = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** true

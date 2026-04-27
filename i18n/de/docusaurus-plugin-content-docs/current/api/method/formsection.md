@@ -22,16 +22,16 @@ description: "bietet Zugriff auf die Objekte der Lightbox-Sections"
 ### Example
 
 ~~~jsx
-var time = scheduler.formSection('time');
-var descr = scheduler.formSection('description');
+const time = scheduler.formSection('time');
+const descr = scheduler.formSection('description');
 
 //liest den Wert aus
-var value = time.getValue();
-var value1 = descr.getValue();
+const value = time.getValue();
+const value1 = descr.getValue();
 
 //weist den Wert zu
 descr.setValue('abc'); //für Sections mit einem einzelnen Control
-time.setValue(null,{start_date:new Date(2009,03,10),end_date:new Date(2012,03,10)}); 
+time.setValue(null,{start_date:new Date(2025,03,10),end_date:new Date(2027,03,10)}); 
 //für Sections mit mehreren Controls: der erste Parameter ist 'null', der zweite ist ein Datenobjekt
 ~~~
 

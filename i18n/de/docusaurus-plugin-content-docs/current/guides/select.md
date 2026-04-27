@@ -5,10 +5,10 @@ sidebar_label: "Select"
 
 # Select 
 
-![select_editor](/img/select_editor.png)
+![Editor-Auswahl](/img/select_editor.png)
 
 ~~~js
-var alert_opts = [
+const alert_opts = [
     { key: 1, label: 'None' },
     { key: 2, label: 'On start date' },
     { key: 3, label: '1 day before' }
@@ -28,28 +28,27 @@ scheduler.config.lightbox.sections = [
 
 ## Initialisierung
 
-Um das Select-Steuerelement in die Lightbox einzubinden, gehen Sie wie folgt vor:
+Um das Select-Steuerelement dem Lightbox hinzuzufügen, befolgen Sie diese Schritte:
 
-1. Binden Sie den Abschnitt in die Lightbox-Konfiguration ein:
+1. <b>Fügen Sie den Abschnitt zur Lightbox-Konfiguration hinzu:</b>
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     { name:"description", ... },
     { name:"alert", height:40,map_to:"type",type:"select", options:alert_opts},
     { name:"time", ...}
 ];
 ~~~
-2. Definieren Sie das Label für den Abschnitt:
+2. <b>Setzen Sie die Bezeichnung für den Abschnitt:</b>
 ~~~js
 scheduler.locale.labels.section_select = "Alert";
 ~~~
 
-  
 
 
 [Basic select editor in the lightbox](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/08_options.html)
 
 
-## Eigenschaften {#properties}
+## Eigenschaften
 
 Hier sind einige wichtige Eigenschaften, die üblicherweise für das 'select'-Steuerelement gesetzt werden (die vollständige Liste finden Sie [lightbox](api/config/lightbox.md)):
 
@@ -65,30 +64,30 @@ Hier sind einige wichtige Eigenschaften, die üblicherweise für das 'select'-St
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>map_to</b></td>
-  <td>(<i>string</i>) Der Name der Daten-Eigenschaft, auf die der Abschnitt abgebildet wird</td>
+  <td>(<i>string</i>) Der Name einer Daten-Eigenschaft, die dem Abschnitt zugeordnet wird</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>type</b></td>
-  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) Der Typ des Steuerelements, das im Abschnitt verwendet wird</td>
+  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) Die Art des Abschnitts-Steuerelements</td>
   </tr>
   <tr>
-  <td class="webixdoc_links0"><b>options</b></td>
-  <td>(<i>Array von Objekten</i>) Definiert die Auswahlmöglichkeiten für Steuerelemente wie 'select', 'multiselect', 'radio' und 'combo'. Jedes Objekt repräsentiert eine Option und enthält: <ul> <li><b>key</b> - (<i>string</i>) Die Kennung der Option, die mit der Daten-Eigenschaft des Events abgeglichen wird</li> <li><b>label</b> - (<i>string</i>) Die angezeigte Bezeichnung der Option</li> </ul></td> 
+  <td class="webixdoc_links0" style="vertical-align: top;"><b>options</b></td>
+  <td>(<i>array of objects</i>) Definiert die Optionen des Steuerelements (für 'select', 'multiselect', 'radio', 'combo'-Steuerungen). Jedes Objekt im Array definiert eine einzelne Option und nimmt folgende Eigenschaften an: <ul> <li><b>key</b> - (<i>string</i>) Die Option-ID. Dieses Attribut wird mit der Daten-Eigenschaft des Ereignisses verglichen, um Optionen Ereignissen zuzuordnen</li> <li><b>label</b> - (<i>string</i>) Die Bezeichnung der Option</li> </ul></td> 
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>onchange</b></td>
-  <td>(<i>function</i>) Die Event-Handler-Funktion, die bei Änderungen am Steuerelement ausgelöst wird [Linking select controls in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/26_linked_selects_in_lightbox.html)</td>
+  <td>(<i>function</i>) Gibt die Funktion des 'onchange'-Ereignisses für den Abschnitts-Steuerung an [Linking select controls in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/26_linked_selects_in_lightbox.html)</td>
   </tr>
   </tbody>
 </table>
 
 
-## Befüllen des Steuerelements mit Daten {#populating-the-control-with-data}
+## Das Steuerelement mit Daten befüllen
 
-Typischerweise werden Werte für das Select-Steuerelement über den [options](api/config/lightbox.md)-Parameter gesetzt:
+Allgemein sollten Sie zum Festlegen der Werte für das Select-Steuerelement den [options]-Parameter verwenden:
 
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     {      name:"alert", type:"select", 
         ...
         options:[
@@ -100,14 +99,14 @@ scheduler.config.lightbox.sections =
 ];
 ~~~
 
-Jedes Element im [options](api/config/lightbox.md)-Array muss diese beiden erforderlichen Eigenschaften enthalten:
+Items im [options]-Parameter müssen zwei Pflicht-Eigenschaften besitzen:
 
-- **key** - Die Kennung der Option
-- **label** - Die angezeigte Bezeichnung der Option
+- **key** - die Option-ID
+- **label** - die Option-Bezeichnung
 
 ## Optionen dynamisch ändern
 
-Um Optionen vom Server zu laden, weisen Sie die [options](api/config/lightbox.md)-Eigenschaft dem von der [serverList](api/method/serverlist.md)-Methode zurückgegebenen Wert zu:
+Um das Steuerelement vom Server zu befüllen, setzen Sie die [options]-Option auf den von der [serverList]-Methode zurückgegebenen Wert:
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -116,30 +115,29 @@ scheduler.config.lightbox.sections = [
     {name:"time", ...}
 ];
 
-scheduler.load("./data/types");
+scheduler.load("/api/types");
 ~~~
 
 :::note
-Details zur **serverList**-Methode finden Sie im [zugehörigen Artikel](api/method/serverlist.md).
+Die Details zur **serverList**-Methode finden Sie im entsprechenden Artikel.
 :::
 
-Die Datenantwort für die [load](api/method/load.md)-Methode sollte eine Collection enthalten, die dem Namen der Serverliste entspricht, und als JSON
-[wie hier](guides/data-formats.md#json-with-collections) formatiert ist:
+Die Datenantwort für die [load]-Methode sollte eine Sammlung enthalten, deren Name der Serverliste im JSON [folgendem Format](guides/data-formats.md#json-with-collections) angegeben ist:
 
 ~~~js
 { 
    "data":[
       {
           "id":"1",
-          "start_date":"2019-03-02 15:00:00",
-          "end_date":"2019-03-04 16:00:00",
+          "start_date":"2027-03-02 15:00:00",
+          "end_date":"2027-03-04 16:00:00",
           "text":"Interview",
           "type":"1"
       },
       {
           "id":"2",
-          "start_date":"2019-03-02 17:00:00",
-          "end_date":"2019-03-04 18:00:00",
+          "start_date":"2027-03-02 17:00:00",
+          "end_date":"2027-03-04 18:00:00",
           "text":"Performance review",
           "type":"2"
       }
@@ -155,12 +153,9 @@ Die Datenantwort für die [load](api/method/load.md)-Methode sollte eine Collect
 ~~~
 
 
-[Populating a select editor from the server](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/09_connector_options.html)
+Die [parse](api/method/parse.md) Methode kann auch verwendet werden, wenn Sie Optionen nach der Initialisierung des Schedulers laden möchten.
 
-
-Die [parse](api/method/parse.md)-Methode kann ebenfalls verwendet werden, um Optionen nach der Initialisierung des Schedulers zu laden.
-
-Um die Optionen eines Steuerelements mit neuen Werten zu aktualisieren, kann die [updateCollection](api/method/updatecollection.md)-Methode verwendet werden:
+Wenn Sie die angegebenen Optionen des Steuerelements mit neuen Werten aktualisieren müssen, können Sie die [updateCollection](api/method/updatecollection.md) Methode verwenden:
 
 ~~~js
 scheduler.updateCollection("type", [      
@@ -170,4 +165,4 @@ scheduler.updateCollection("type", [
 ]);
 ~~~
 
-Weitere Informationen finden Sie im Artikel [scheduler.serverList](api/method/serverlist.md).
+Details finden Sie im Artikel scheduler.serverList (api/method/serverlist.md).

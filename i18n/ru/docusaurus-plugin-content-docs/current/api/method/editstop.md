@@ -1,27 +1,27 @@
 ---
-sidebar_label: "editStop"
-title: "editStop method"
-description: "завершает работу встроенного редактора событий, когда он открыт"
+sidebar_label: editStop
+title: "Метод editStop"
+description: "Закрывает встроенный редактор события, если он в данный момент открыт"
 ---
 
 # editStop
 
 ### Description
 
-@short: Завершает работу встроенного редактора событий, когда он открыт
+@short: Закрывает встроенный редактор события, если он в данный момент открыт
 
 @signature: editStop: (id: string) =\> void
 
 ### Parameters
 
-- `id` - (required) *string* - идентификатор события
+- `id` - (обязательный) *string* - идентификатор события
 
 ### Example
 
 ~~~jsx
-var eventId = scheduler.addEvent({
-    start_date: "16-05-2013 09:00",
-    end_date:   "16-05-2013 12:00",
+const eventId = scheduler.addEvent({
+    start_date: "16-05-2027 09:00",
+    end_date:   "16-05-2027 12:00",
     text:   "Meeting"
 });
 ...

@@ -17,7 +17,7 @@ description: "Month 뷰에서 셀의 최소 높이를 설정합니다."
 ~~~jsx
 scheduler.config.month_day_min_height = 150;
 ...
-scheduler.init('scheduler_here', new Date(2013,5,30), "month");
+scheduler.init('scheduler_here', new Date(2027,5,30), "month");
 ~~~
 
 **Default value:** 90

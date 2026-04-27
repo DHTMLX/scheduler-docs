@@ -1,26 +1,26 @@
 ---
-sidebar_label: "onLoadStart"
-title: "onLoadStart event"
-description: "срабатывает непосредственно перед началом процесса загрузки данных из источника данных"
+sidebar_label: onLoadStart
+title: "onLoadStart событие"
+description: "Срабатывает непосредственно перед началом загрузки данных из источника данных"
 ---
 
 # onLoadStart
 
 ### Description
 
-@short: Срабатывает непосредственно перед началом процесса загрузки данных из источника данных
+@short: Срабатывает непосредственно перед началом загрузки данных из источника данных
 
-@signature: onLoadStart: () =\> void
+@signature: onLoadStart: () => void
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onLoadStart", function(){  
-    scheduler.config.readonly = true;  
-});  
+scheduler.attachEvent("onLoadStart", function(){
+    scheduler.config.readonly = true;
+});
 
-scheduler.attachEvent("onLoadEnd", function(){  
-    scheduler.config.readonly = false;  
+scheduler.attachEvent("onLoadEnd", function(){
+    scheduler.config.readonly = false;
 });
 ~~~
 
@@ -31,5 +31,5 @@ scheduler.attachEvent("onLoadEnd", function(){
 - [onParse](api/event/onparse.md)
 
 ### Related Guides
-- [Загрузка данных](guides/loading-data.md)
-- [Интеграция с серверной стороной](guides/server-integration.md)
+- [Loading Data](guides/loading-data.md)
+- [Server-Side Integration](guides/server-integration.md)

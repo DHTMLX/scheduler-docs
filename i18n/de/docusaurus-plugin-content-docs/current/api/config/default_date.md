@@ -17,7 +17,7 @@ description: "Definiert das Datumsformat, das von den Templates 'day_date', 'wee
 ~~~jsx
 scheduler.config.default_date = "%j %M %Y";
 ...
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.init('scheduler_here', new Date(2027,05,11), "week");
 ~~~
 
 **Default value:** "%j %M %Y"

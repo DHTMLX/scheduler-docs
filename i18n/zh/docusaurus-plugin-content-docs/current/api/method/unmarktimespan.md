@@ -19,7 +19,7 @@ description: "清除由 markTimespan() 方法应用的标记或阻止"
 ### Example
 
 ~~~jsx
-var spanDIV = scheduler.markTimespan({  
+const spanDIV = scheduler.markTimespan({  
     days:  [0,6],  
     zones: "fullday"
 });

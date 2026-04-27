@@ -1,14 +1,14 @@
 ---
-sidebar_label: "setLightboxSize"
-title: "setLightboxSize method"
-description: "обновляет размер lightbox"
+sidebar_label: setLightboxSize
+title: "setLightboxSize метод"
+description: "заставляет лайтбокс изменить размер"
 ---
 
 # setLightboxSize
 
 ### Description
 
-@short: Обновляет размер lightbox
+@short: Заставляет лайтбокс изменить размер
 
 @signature: setLightboxSize: () =\> void
 
@@ -23,4 +23,4 @@ scheduler.setLightboxSize();
 
 ### Details
 
-Этот метод полезен для корректировки размера lightbox после того, как некоторые секции были скрыты или показаны.
+Метод можно использовать для обновления размера лайтбокса после скрытия/показа некоторого раздела.

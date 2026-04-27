@@ -24,8 +24,8 @@ The template is deprecated
 ### Example
 
 ~~~jsx
-var cfg = scheduler.config;
-var str_to_date = scheduler.date.str_to_date(cfg.xml_date, cfg.server_utc);
+const cfg = scheduler.config;
+const str_to_date = scheduler.date.str_to_date(cfg.xml_date, cfg.server_utc);
 
 scheduler.templates.xml_date = function(date){
     return str_to_date(date);
@@ -39,8 +39,8 @@ scheduler.templates.xml_date = function(date){
 :::
 
 ~~~js
-var cfg = scheduler.config;
-var strToDate = scheduler.date.str_to_date(cfg.date_format, cfg.server_utc);
+const cfg = scheduler.config;
+const strToDate = scheduler.date.str_to_date(cfg.date_format, cfg.server_utc);
  
 scheduler.templates.parse_date = function(date){
     return strToDate (date);

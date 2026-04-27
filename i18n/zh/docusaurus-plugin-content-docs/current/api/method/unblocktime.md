@@ -23,10 +23,10 @@ description: "移除之前通过 blockTime() 方法设置的时间阻断"
 ### Example
 
 ~~~jsx
-var spanId = scheduler.blockTime(new Date(2013,2,5), "fullday");
+const spanId = scheduler.blockTime(new Date(2027,2,5), "fullday");
 ...
-// 解除2013年2月5日0点到8点以及18点到24点的阻断
-scheduler.unblockTime(new Date(2013,2,5), [0,10*60]);
+// 解除2027年2月5日0点到8点以及18点到24点的阻断
+scheduler.unblockTime(new Date(202713,2,5), [0,10*60]);
 ~~~
 
 ### Related API

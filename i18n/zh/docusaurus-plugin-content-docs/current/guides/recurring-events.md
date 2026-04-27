@@ -1,19 +1,19 @@
 ---
-title: "循环事件"
-sidebar_label: "循环事件"
+title: "重复事件"
+sidebar_label: "重复事件"
 ---
 
-# 循环事件
+# 重复事件
 
-循环事件是日历应用程序中的一个实用功能，允许用户设置按指定间隔重复的事件。从 7.1 版本开始，Scheduler 采用了 [RFC-5545](https://datatracker.ietf.org/doc/html/rfc5545) 标准格式来支持循环事件。
+重复事件是事件日历应用中的常见功能，允许用户创建按指定间隔重复的事件。从 v7.1 版本开始，Scheduler 使用基于 RFC-5545 的格式来表示重复事件。
 
-本指南将介绍如何在 Scheduler 中使用循环事件，以及如何将其保存到数据库中。
+本文将解释如何在 Scheduler 中使用重复事件以及如何将它们存储到数据库中。
 
 :::note
-您可以在[这里](guides/recurring-events-legacy.md)查看旧版循环事件格式的说明。
+可以在此处找到重复事件传统格式的描述 [here](guides/recurring-events-legacy.md)
 :::
 
-默认情况下，Scheduler 并未启用循环事件。要添加此功能，您需要在页面上激活一个特殊扩展 -- **recurring** 插件:
+默认情况下，Scheduler 不支持重复事件。若要提供此功能，需要在页面上启用一个特殊扩展 - **recurring**：
 
 ~~~js
 scheduler.plugins({
@@ -21,351 +21,488 @@ scheduler.plugins({
 });
 ~~~
 
-启用循环事件后，lightbox 界面将会多出一个额外的部分，如下图所示:
+一旦启用对重复事件的支持，弹出框将开始显示如下所示：
 
 ![recurring_lightbox](/img/recurring_lightbox.png)
 
-## 配置选项 {#configurationoptions}
 
-该库为循环事件提供了以下配置选项:
+## 配置选项
 
-- [repeat_date](api/config/repeat_date.md) - 控制 'recurring' lightbox 中"结束日期"字段所使用的日期格式。
+库提供了以下选项来配置重复事件：
+
+- [repeat_date](api/config/repeat_date.md) - 设置在 'recurring' 弹出框中 'End by' 字段的日期格式
+
 
 ~~~js
 scheduler.config.repeat_date = "%m/%d/%Y";
 ...
-scheduler.init('scheduler_here', new Date(2019, 7, 5), "month");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "month");
 ~~~
 
 
-[Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
+[重复事件](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
 
 
-## 'Recurring' lightbox {#recurringlightbox}
+## ‘Recurring’ 弹出框
 
-启用 recurring 扩展后，lightbox 会增加一个名为"Repeat event"的部分。'recurring' lightbox 的默认配置如下:
+默认情况下，一旦启用重复扩展，弹出框将再多出一个部分 - "Repeat event"。
+默认的 'recurring' 弹出框定义如下：
 
 ~~~js
-[     
-    {name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
-    {name:"recurring", height:115, type:"recurring", map_to:"rec_type", 
-        button:"recurring"},
-    {name:"time", height:72, type:"time", map_to:"auto"}
+scheduler.config.lightbox.sections = [
+    { name: "description", map_to: "text", type: "textarea", focus: true },
+    { name: "recurring", type: "recurring", map_to: "rrule" },
+    { name: "time", height: 72, type: "time", map_to: "auto" }
 ];
 ~~~
 
-您可以自由添加其他部分，但请确保"recurring"和"time"这两个部分必须保留。同时，"time"部分应始终放在"recurring"部分之后。
+
+[重复事件](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
 
 
-[Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
+## 格式描述
 
+重复事件在数据库中存储为单条记录，包含普通事件的所有字段外加若干附加属性：
 
-## 格式说明 {#formatdescription}
+1. **start_date** - (_datetime_) 定义系列的开始日期
+2. **end_date** - (_datetime_) 定义系列的结束日期
+3. **rrule** - (_string_) 定义重复规则
+4. **duration** - (_number_) 该重复实例的持续时间
+5. **recurring_event_id** - (_string|number_) 父系列的 ID，仅在修改或删除的发生中填充
+6. **original_start** - (_datetime_) 编辑实例的原始日期，仅在修改或删除的发生中填充
+7. **deleted** - (_boolean_) 指定系列的已删除实例，仅在已删除的发生中填充
 
-循环事件在数据库中以单条记录的形式保存，该记录包含所有标准事件字段以及一些额外属性:
+**rrule** 遵循 RFC-5545 中规定的 iCalendar 格式，详细描述了控制重复模式的频率、间隔及其他参数。
 
-1. **start_date** - (_datetime_) 表示系列的起始日期
-2. **end_date** - (_datetime_) 表示系列的结束日期
-3. **rrule** - (_string_) 定义循环规则
-4. **duration** - (_number_) 每次循环实例的持续时间
-5. **recurring_event_id** - (_string|number_) 父系列的 ID，仅在修改或删除实例时设置
-6. **original_start** - (_datetime_) 被编辑实例的原始日期，仅在修改或删除实例时设置
-7. **deleted** - (_boolean_) 标记为已删除的实例，仅在删除实例时设置
+### 与 iCalendar 格式的差异
 
-**rrule** 属性遵循 RFC-5545 中定义的 iCalendar 格式，用于指定频率、间隔及其他循环细节。
+我们的格式在两个关键点上与 iCalendar 不同：
 
-### 与 iCalendar 格式的区别
+#### 分离存储 STDATE 和 DTEND：
 
-我们的格式与 iCalendar 格式有两点主要不同:
+在 iCalendar 格式中，重复系列的开始日期和结束日期通常作为 **RRULE** 字符串的一部分，作为 **STDATE** 和 **DTEND** 属性
+存在。
+在我们的格式中，**stdate** 与 **dtend** 作为独立字段存储。这种分离便于按日期对重复事件进行更容易的操作与查询，而无需解析 **RRULE** 字符串。
 
-#### STDATE 和 DTEND 的单独存储
+以下是一个示例，表示从 2027-06-01 开始每周一重复，直到 2027-12-01 的重复事件系列：
 
-iCalendar 通常将循环系列的起止日期作为 **STDATE** 和 **DTEND** 属性包含在 **RRULE** 字符串中，而我们的格式则将 **start_date** 和 **end_date** 作为单独字段存储。这样可以更方便地按日期处理和查询循环事件，而无需解析 **RRULE** 字符串。
-
-以下是一个每周一重复、从 2024 年 6 月 1 日至 2024 年 12 月 1 日的循环事件系列示例:
-
-~~~
+~~~js
 {
-  "id": 1,
-  "text": "Weekly Team Meeting",
-  "start_date": "2024-06-03 09:00:00",
-  "duration": 3600,
-  "end_date": "2024-12-02 10:00:00",
-  "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
-  "recurring_event_id": null,
-  "original_start": null
-}
-~~~
-
-#### 异常情况的处理
-
-异常情况（即被修改或删除的实例）会作为单独的事件记录存储，并与其父系列关联。这些异常记录包含三个额外属性:**recurring_event_id**、**original_start** 和 **deleted**。它们用于标识哪些实例已被更改或移除，以及它们与主系列的关系。
-
-:::note
-与标准 iCalendar 格式不同，异常（被修改或删除的实例）**不会**存储在 **RRULE** 的 **EXDATE** 属性中。
-:::
-
-以下是一个包含一个被修改和一个被删除实例的循环系列示例:
-~~~
-[
-  {
     "id": 1,
     "text": "Weekly Team Meeting",
-    "start_date": "2024-06-03 09:00:00",
+    "start_date": "2027-06-03 09:00:00",
     "duration": 3600,
-    "end_date": "2024-12-02 10:00:00",
+    "end_date": "2027-12-02 10:00:00",
     "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
     "recurring_event_id": null,
     "original_start": null
-  },
-  {
-    "id": 2,
-    "text": "Special Team Meeting",
-    "start_date": "2024-06-10 09:00:00",
-    "end_date": "2024-06-10 11:00:00",
-    "rrule": null,
-    "recurring_event_id": 1,
-    "original_start": "2024-06-10 09:00:00"
-  },
-  {
-    "id": 3,
-    "text": "Deleted Team Meeting",
-    "start_date": "2024-06-17 09:00:00",
-    "end_date": "2024-06-17 10:00:00",
-    "rrule": null,
-    "recurring_event_id": 1,
-    "original_start": "2024-06-17 09:00:00",
-    "deleted": true
-  }
+}
+~~~
+
+#### 处理异常
+
+异常，也称为修改或删除的系列发生，是以独立的事件记录存储的，并与其父系列相连。
+异常有三个附加属性：**recurring_event_id**、**original_start** 和 **deleted**。
+这些属性使我们能够轻松识别修改或删除的实例及其与父系列的关系。
+
+:::note
+注意，与传统的 iCalendar 格式不同，异常（修改或删除的实例）并未储存在该系列的 **RRULE** 的 **EXDATE** 属性中。
+:::
+
+以下是不带一个修改的发生和一个删除的发生的重复系列示例：
+
+~~~js
+[
+    {
+        "id": 1,
+        "text": "Weekly Team Meeting",
+        "start_date": "2027-06-03 09:00:00",
+        "duration": 3600,
+        "end_date": "2027-12-02 10:00:00",
+        "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
+        "recurring_event_id": null,
+        "original_start": null
+    },
+    {
+        "id": 2,
+        "text": "Special Team Meeting",
+        "start_date": "2027-06-10 09:00:00",
+        "end_date": "2027-06-10 11:00:00",
+        "rrule": null,
+        "recurring_event_id": 1,
+        "original_start": "2027-06-10 09:00:00"
+    },
+    {
+        "id": 3,
+        "text": "Deleted Team Meeting",
+        "start_date": "2027-06-17 09:00:00",
+        "end_date": "2027-06-17 10:00:00",
+        "rrule": null,
+        "recurring_event_id": 1,
+        "original_start": "2027-06-17 09:00:00",
+        "deleted": true
+    }
 ]
 ~~~
 
-原定于 `2024-06-10 09:00:00` 的事件已被 `Special Team Meeting` 记录所替代，而 `2024-06-17 09:00:00` 的事件则被省略。
+对于 `2027-06-10 09:00:00` 的重复事件，将被 `Special Team Meeting` 记录所替代；而原计划在 `2027-06-17 09:00:00` 的事件将被跳过。
 
-请注意，已修改或删除实例的 **rrule** 属性会被忽略。
+请注意，修改或删除发生的 **rrule** 将被忽略。
 
-同时，被删除实例的 **text**、**start_date** 和 **end_date** 字段不会影响 Scheduler 的行为。
+被删除实例的 **text**、**start_date**、和 **end_date** 也会被忽略，这些字段的值不会影响 Scheduler 的行为。
 
+## 编辑/删除系列中的某个发生
 
-## 编辑/删除系列中的某一实例 {#editingdeletingacertainoccurrenceintheseries}
-
-您可以删除或编辑循环系列中的某一具体实例。
+可以删除或编辑系列中的特定发生。
 
 ### 重要提示
 
-- 对循环事件的每一次更改都会在数据库中生成一条新记录。
-- 单个实例通过 **recurring_event_id** 属性与主系列关联。
-- 当某一实例被编辑时，**original_start** 字段保存的是该实例最初计划的日期，而不是新日期。例如，如果原定于 2024 年 7 月 27 日 15:00 的实例被移动到 2024 年 7 月 30 日 15:00，**original_start** 仍为 2024 年 7 月 27 日 15:00。
+- 对重复事件的每次更新，数据库中都会创建一个单独的记录。
+- 具体的发生通过 **recurring_event_id** 属性指向父事件。
+- 一旦你在系列中编辑了某个发生，该更新的 **original_start** 字段将存储如果未被编辑，该发生应发生的日期，而不是实际事件长度。因此，如果该发生在 2027-07-27 15:00 发生，后被移动到 2027-07-30 15:00，则时间戳将反映最初的日期。
 
-### 服务端逻辑 {#server-side-integration}
+### 服务器端逻辑
 
-除了额外字段外，服务端控制器还应实现以下逻辑:
+除了额外字段之外，服务器端控制器还需要添加特定逻辑：
 
-- 当添加已删除的实例时，服务端响应必须包含 "deleted" 状态。
-    - 已删除实例通过非空的 **deleted** 属性识别。
-- 当系列被修改时，所有与该系列关联的已修改和已删除实例都应被移除。
-    - 系列通过非空 **rrule** 且空 **recurring_event_id** 识别。
-    - 已修改实例为所有 **recurring_event_id** 与系列 **id** 匹配的记录。
-- 如果删除了 **recurring_event_id** 非空的事件，应通过设置 **deleted="true**" 进行标记，而不是直接移除。
+- 如果一个已删除的实例被插入，服务器响应必须带有 “deleted” 状态。
+  - 通过 **deleted** 属性的非空值来标识已删除的实例。
+- 如果一个系列被修改，系列的所有修改和删除的发生都应被删除。
+  - 系列可以通过 **rrule** 属性的非空值以及 **recurring_event_id** 为空值来标识。
+  - 该系列的修改发生都包含在 **recurring_event_id** 与系列的 **id** 相匹配的记录中。
+- 如果具有非空 **recurring_event_id** 的事件被删除，则需要将其更新为 deleted="true" 而不是删除。
 
 :::note
-完整代码示例请参见[这里](integrations/howtostart-guides.md)
+你可以在这里找到完整的代码示例 [integrations/howtostart-guides.md](integrations/howtostart-guides.md)
 :::
 
 
-## 自定义 lightbox 的 recurring 区块控件 {#customcontrolforthelightboxsrecurringblock}
+## 自定义灯箱中重复块的控件
 
-从 4.2 版本开始，dhtmlxScheduler 允许您为 lightbox 的 'recurring' 部分自定义 HTML 表单。
+从版本 4.2 开始，Scheduler 允许你为灯箱的 'recurring' 块指定自定义 HTML。
 
-#### 可以自定义哪些内容？
+#### 你可以进行哪些自定义？
 
-1. 更改表单的结构。
-2. 移除不需要的元素（如"每年"重复选项及其输入框）。
-3. 为输入项设置默认值（例如默认选中"无结束日期"并隐藏循环结束设置区块）。
+1. 修改标记（HTML）
+2. 删除不必要的元素（例如，“ yearly” 重复类型）
+3. 为输入设置默认值（例如希望所有系列都以“无结束日期”创建）
 
-### 使用示例
+### 自定义重复块默认模板
 
-以下示例移除了"每月"和"每年"重复选项，并默认选中"无结束日期"选项（隐藏循环结束区块）。
+灯箱的重复块控件的默认模板如下（其中 `loc` 对象是 Scheduler 的 locale 对象，即区域相关的标签）：
 
-1. 在页面上定义自定义表单结构（可从 'schedulersourceslocalerecurring' 目录复制默认模板开始）:
 ~~~html
-<div class="dhx_form_repeat" id="my_recurring_form"> /*!*/
-  <form>
-    <div>
-      <select name="repeat">
-        <option value="day">Daily</option>
-        <option value="week">Weekly</option>
-      </select>
+<div class="dhx_form_rrule">
+    <div class="dhx_form_repeat_pattern">
+        <select>
+            <option value="NEVER">${loc.repeat_never}</option>
+            <option value="DAILY">${loc.repeat_daily}</option>
+            <option value="WEEKLY">${loc.repeat_weekly}</option>
+            <option value="MONTHLY">${loc.repeat_monthly}</option>
+            <option value="YEARLY">${loc.repeat_yearly}</option>
+            <option value="WORKDAYS">${loc.repeat_workdays}</option>
+            <option value="CUSTOM">${loc.repeat_custom}</option>
+        </select>
     </div>
-    <div>
-      <div id="dhx_repeat_day">
-        <input type="hidden" name="day_type" value="d"/>
-        <input type="hidden" name="day_count" value="1" />
-      </div>
-      <div id="dhx_repeat_week">
-        Repeat every week next days:
+    <div class="dhx_form_repeat_custom dhx_hidden">
+        <div class="dhx_form_repeat_custom_interval">
+            <input name="repeat_interval_value" type="number" min="1">
+            <select name="repeat_interval_unit">
+              <option value="DAILY">${loc.repeat_freq_day}</option>
+              <option value="WEEKLY">${loc.repeat_freq_week}</option>
+              <option value="MONTHLY">${loc.repeat_freq_month}</option>
+              <option value="YEARLY">${loc.repeat_freq_year}</option>
+            </select>
+        </div>
 
+    <div class="dhx_form_repeat_custom_additional">
+        <div class="dhx_form_repeat_custom_week dhx_hidden">
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="MO" />${loc.day_for_recurring[1]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="TU" />${loc.day_for_recurring[2]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="WE" />${loc.day_for_recurring[3]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="TH" />${loc.day_for_recurring[4]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="FR" />${loc.day_for_recurring[5]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="SA" />${loc.day_for_recurring[6]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="SU" />${loc.day_for_recurring[0]}</label>
+        </div>
 
-       <label><input type="checkbox" name="week_day" value="1" />Monday</label>
-       <label><input type="checkbox" name="week_day" value="2" />Tuesday</label>
-       <label><input type="checkbox" name="week_day" value="3" />Wednesday</label>
-       <label><input type="checkbox" name="week_day" value="4" />Thursday</label>
-       <label><input type="checkbox" name="week_day" value="5" />Friday</label>
-       <label><input type="checkbox" name="week_day" value="6" />Saturday</label>
-       <label><input type="checkbox" name="week_day" value="0" />Sunday</label>
-       <input type="hidden" name="week_count" value="1" />
-      </div>
+        <div class="dhx_form_repeat_custom_month dhx_hidden">
+            <select name="dhx_custom_month_option">
+                <option value="month_date"></option>
+                <option value="month_nth_weekday"></option>
+            </select>
+        </div>
+
+        <div class="dhx_form_repeat_custom_year dhx_hidden">
+            <select name="dhx_custom_year_option">
+                <option value="month_date"></option>
+                <option value="month_nth_weekday"></option>
+            </select>
+        </div>
     </div>
 
-    <input type="hidden" value="no" name="end">
-  </form>
+    <div class="dhx_form_repeat_ends">
+        <div>${loc.repeat_ends}</div>
+            <div class="dhx_form_repeat_ends_options">
+                <select name="dhx_custom_repeat_ends">
+                    <option value="NEVER">${loc.repeat_never}</option>
+                    <option value="AFTER">${loc.repeat_radio_end2}</option>
+                    <option value="ON">${loc.repeat_on_date}</option>
+                </select>
+                <div class="dhx_form_repeat_ends_extra">
+                    <div class="dhx_form_repeat_ends_after dhx_hidden">
+                        <label><input name="dhx_form_repeat_ends_after" type="number" 
+                          min="1">${loc.repeat_text_occurrences_count}</label>
+                    </div>
+                    <div class="dhx_form_repeat_ends_on dhx_hidden">
+                      <input type="date" name="dhx_form_repeat_ends_ondate">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 ~~~
-2. 将 'recurring' 部分的 'form' 参数设置为自定义表单的 ID:
+
+#### 主要的重复选择控件
+
+基本上，灯箱的重复块包含主要的重复选择控件，具有以下 5 种默认重复类型及其选项：“每天”、“每周”、“每月”、“每年”、“工作日”。此外，还包括用于创建所需类型的 “Custom” 选项，以及用于禁用重复的 “Never” 选项：
+
+~~~html
+<div class="dhx_form_repeat_pattern">
+    <select>
+        <option value="NEVER">Never</option>
+        <option value="DAILY">Every day</option>
+        <option value="WEEKLY">Every week</option>
+        <option value="MONTHLY">Every month</option>
+        <option value="YEARLY">Every year</option>
+        <option value="WORKDAYS">Every weekday</option>
+        <option value="CUSTOM">Custom</option>
+    </select>
+</div>
+~~~
+
+对于 “Custom” 重复类型，有特殊的重复单位： "Day"、"Week"、"Month"、"Year" 以及重复间隔输入。
+"Week"、"Month" 和 "Year" 单位有其自己的部分，并提供了特定的重复选项（默认情况下，这些部分在选择所需类型之前均为隐藏）：
+
+~~~html
+<div class="dhx_form_repeat_custom ">
+    <div class="dhx_form_repeat_custom_interval">
+        <input name="repeat_interval_value" type="number" min="1">
+        <select name="repeat_interval_unit">
+            <option value="DAILY">${loc.repeat_freq_day}</option>
+            <option value="WEEKLY">${loc.repeat_freq_week}</option>
+            <option value="MONTHLY">${loc.repeat_freq_month}</option>
+            <option value="YEARLY">${loc.repeat_freq_year}</option>
+        </select>
+    </div>
+
+    <div class="dhx_form_repeat_custom_additional">
+        <div class="dhx_form_repeat_custom_week dhx_hidden">
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="MO" />${loc.day_for_recurring[1]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="TU" />${loc.day_for_recurring[2]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="WE" />${loc.day_for_recurring[3]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="TH" />${loc.day_for_recurring[4]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="FR" />${loc.day_for_recurring[5]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="SA" />${loc.day_for_recurring[6]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="SU" />${loc.day_for_recurring[0]}</label>
+        </div>
+
+        <div class="dhx_form_repeat_custom_month dhx_hidden">
+            <select name="dhx_custom_month_option">
+                <option value="month_date"></option>
+                <option value="month_nth_weekday"></option>
+            </select>
+        </div>
+
+        <div class="dhx_form_repeat_custom_year dhx_hidden">
+            <select name="dhx_custom_year_option">
+                <option value="month_date"></option>
+                <option value="month_nth_weekday"></option>
+            </select>
+        </div>
+    </div>
+</div>
+~~~
+
+#### 指定重复结束的区块
+
+重复结束由以下值的选择控件定义：“NEVER”、“ON”、“AFTER”。如果选择了“AFTER”，将出现用于指定重复事件数量的附加输入；如果选择了“ON”，将出现一个日期输入：
+
+~~~html
+<div class="dhx_form_repeat_ends">
+    <div>${loc.repeat_ends}</div>
+        <div class="dhx_form_repeat_ends_options">
+            <select name="dhx_custom_repeat_ends">
+                <option value="NEVER">${loc.repeat_never}</option>
+                <option value="AFTER">${loc.repeat_radio_end2}</option>
+                <option value="ON">${loc.repeat_on_date}</option>
+            </select>
+            <div class="dhx_form_repeat_ends_extra">
+                <div class="dhx_form_repeat_ends_after dhx_hidden">
+                  <label><input name="dhx_form_repeat_ends_after" type="number" 
+                    min="1">${loc.repeat_text_occurrences_count}</label>
+                </div>
+            <div class="dhx_form_repeat_ends_on dhx_hidden">
+                <input type="date" name="dhx_form_repeat_ends_ondate">
+            </div>
+        </div>
+    </div>
+</div>
+~~~
+
+### 自定义块的示例
+让我们来创建一个自定义重复块的示例。设想你想移除 “monthly” 和 “yearly” 重复类型，并使所有事件都具有“无结束日期”的选项（即移除用于指定重复结束的块）。
+
+1. 定义自定义表单的标记并将其放在页面上的某个位置（你可以先从复制默认模板开始）：
+
+~~~html
+<!-- 注意需要为你的自定义重复表单指定 id  -->
+<div class="dhx_form_rrule" id="my_recurring_form" style="display:none;">
+    <div class="dhx_form_repeat_pattern">
+        <select>
+            <option value="NEVER">Never</option>
+            <option value="DAILY">Every day</option>
+            <option value="WEEKLY">Every week</option>
+            <option value="WORKDAYS">Every weekday</option>
+            <option value="CUSTOM">Custom</option>
+        </select>
+    </div>
+    <div class="dhx_form_repeat_custom">
+        <div class="dhx_form_repeat_custom_interval">
+            <input name="repeat_interval_value" type="number" min="1">
+            <select name="repeat_interval_unit">
+                <option value="DAILY">Day</option>
+                <option value="WEEKLY">Week</option>
+            </select>
+        </div>
+
+        <div class="dhx_form_repeat_custom_additional">
+            <div class="dhx_form_repeat_custom_week dhx_hidden">
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="MO" />Monday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="TU" />Tuesday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="WE" />Wednesday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="TH" />Thursday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="FR" />Friday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="SA" />Saturday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="SU" />Sunday</label>
+            </div>
+        </div>
+    </div>
+</div>
+~~~
+
+2. 将灯箱的 "recurring" 区段的 **form** 参数设为自定义表单的 id：
+
 ~~~js
 scheduler.config.lightbox.sections = [
-    {name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
-    {name:"recurring", type:"recurring", map_to:"rec_type", button:"recurring", 
-      form:"my_recurring_form"},/*!*/
-    {name:"time", height:72, type:"time", map_to:"auto"}
+    { name: "description", type: "textarea", map_to: "text", focus: true },
+    { name: "recurring", type: "recurring", map_to: "rrule", 
+        form: "my_recurring_form" }, /*!*/
+    { name: "time", type: "time", map_to: "auto", height: 72 },
 ];
 ~~~
 
-<div>![custom_recurring_form](/img/custom_recurring_form.png)</div>
+带有自定义重复块的灯箱的结果如下图所示：
 
-### 主要部分
+<div style="text-align:center;">![custom_recurring_form](/img/custom_recurring_form.png)</div>
 
-不同语言下，lightbox 中循环块的默认 HTML 结构位于 <b>'schedulersourceslocalerecurring'</b> 目录。
+下面的片段演示了如何实现上述带自定义重复块的灯箱：
 
-
-例如，英文语言包使用的是 <b>'schedulersourceslocalerecurringrepeat_template_en.htm'</b> 文件。
-
-lightbox 中的循环块通常包含 3 组控件:
-
-1) 选择循环类型的控件。这些输入项的 name 都为 'repeat'，可选值为:'daily'、'weekly'、'monthly'、'yearly'。 
-表单中至少应包含一个带有 value 的 'repeat' 输入项。你可以使用单选按钮、下拉选择框，或者通过隐藏输入项设置默认类型。
-
-以下是在表单中选择循环类型的几种有效示例:
-
-- 单选按钮:
-
-~~~html
-<label><input type="radio" name="repeat" value="day" />每日</label>
-
-
-<label><input type="radio" name="repeat" value="week"/>每周</label>
-
-
-<label><input type="radio" name="repeat" value="month" />每月</label>
-
-
-<label><input type="radio" name="repeat" value="year" />每年</label>
-~~~
-
-- 下拉选择框（不包含"每月"和"每年"选项）:
-
-~~~html
-<select name="repeat">
-  <option value="day">每日</option>
-  <option value="week">每周</option>
-</select>
-~~~
-
-- 隐藏输入项（此配置将仅创建"每日"系列）:
-
-~~~html
-<input type="hidden" name="repeat" value="day" />
-~~~
-
-2) 根据所选循环类型设置循环详情的区域。例如，"每日"循环类型的块如下所示:
-
-~~~html
-<div class="dhx_repeat_center">
-   <div id="dhx_repeat_day">
-     <label>
-       <input class="dhx_repeat_radio" type="radio" 
-               name="day_type" value="d"/>每
-     </label>
-       <input class="dhx_repeat_text" type="text" 
-               name="day_count" value="1" />天
-
-
-     <label>
-       <input class="dhx_repeat_radio" type="radio" 
-               name="day_type" checked value="w"/>每个工作日
-     </label>
-  </div>
-...
-</div>         
-~~~
-
-请注意，与特定循环类型相关的标记可以包裹在一个 <b>id</b> 格式为 <b>"dhx_repeat_&lt;repeat type&gt;"</b> 的 div 中，例如 "dhx_repeat_day"。 
-只有在选中对应循环类型时，这个块才会显示。
-
-3) 指定循环结束时间的控件。控制此项的输入 name 为 'end'。 
-
-
-可选值包括 <b>'no'</b>、<b>'date_of_end'</b> 和 <b>'occurences_count'</b>。
-
-与 'repeat' 控件类似，表单中必须至少包含一个此类型的输入项。
-
-~~~html
-<div class="dhx_repeat_right">
-  <label>
-    <input type="radio" name="end" value="no" checked/>无结束日期
-  </label>
-
-
-  <label>
-    <input type="radio" name="end" value="date_of_end" />在此之后</label>
-    <input type="text" name="date_of_end" />
+相关示例 [Lightbox with a custom recurring block](https://snippet.dhtmlx.com/0ha0edlk)
   
+### 更改重复块的注意事项
 
+在开始对灯箱的重复块应用自定义配置之前，请注意以下几点：
 
-  <label>
-    <input type="radio" name="end" value="occurences_count" />在此之后</label>
-    <input type="text" name="occurences_count" value="1" />次
-</div>
-~~~
-
-对于 <b>'date_of_end'</b> 模式，日期应填写在名为 'date_of_end' 的输入框中。类似地，<b>'occurences_count'</b> 模式下，发生次数应填写在名为 'occurences_count' 的输入框中。 
-
-
-你可以移除任意循环类型，或通过隐藏输入项提前设定:
-
-~~~html
-<input type="hidden" name="end" value="date_of_end" />
-<input type="hidden" name="date_of_end" value="01.01.2024" />
-~~~
-  
-### 修改循环块的注意事项
-
-在自定义 lightbox 的循环块之前，请注意以下几点:
-
-1. 所有输入项的 'name' 属性是固定的；不同 name 的输入项将会被忽略。 
-2. 所有输入项的 'value' 属性也是固定的，除非该输入项用于用户直接输入。 
-3. 当你提供新的表单时，dhtmlxScheduler 不会直接使用它，而是会将你的 HTML 结构复制到 lightbox 的模板中。 
-这意味着，附加在你表单 DOM 元素上的任何事件处理器或自定义属性都不会在 lightbox 中生效。 
-如需添加事件处理器，你需要将其作为内联 HTML 属性包含，或在表单显示到 lightbox 后再进行绑定。
+1. 输入框的 **name** 属性是硬编码的；具有不同名称的输入将被忽略。
+2. 除了那些需要直接输入的输入框外，其它输入框的 **value** 属性是固定的。
+3. 当你指定一个新的表单时，Scheduler 不会直接使用它，而是简单地在灯箱模板中复制你的 HTML 结构。
+这意味着你在代码中附加到表单 DOMElements 的所有事件处理程序或自定义属性都不会应用到灯箱中的表单上。
+如果你想附加事件处理程序，需要在 HTML 中以内联属性的方式添加，或在灯箱显示时将处理程序附加到表单上。
 
 :::note
-请注意，dhtmlxScheduler 并不会直接使用你的原始 HTML 表单，而是会在 lightbox 模板中创建它的副本。
+请注意，Scheduler 不会直接使用你原始的 HTML 表单，而只是把它复制到灯箱模板中。
 :::
 
-例如:
 
-- 这行代码会被复制到 lightbox:
+例如：
+
+- 以下行将被复制到灯箱中：
 
 ~~~html
 <input onclick="handler()"> 
 ~~~
 
-- 但这样不会被复制:
+- 下面这行不会被复制到灯箱中：
 
 ~~~js
 addEventListener(node, "click", function(){...})
 ~~~
 
-## 循环事件的旧格式 {#legacyformatofrecurringevents}
+## 自定义确认模态框 {#customconfirmationmodal}
 
-在 7.1 版本之前，Scheduler 使用的是自定义的循环事件格式。关于此格式的详细信息可参见 [这里](guides/recurring-events-legacy.md)。
+当用户编辑或拖动重复事件时，调度程序会显示一个内置模态框，询问是修改仅此一次、修改此及其后续事件，还是整个系列。你可以通过覆盖 `scheduler.ext.recurring.confirm` 来替换它。
+
+~~~js
+scheduler.ext.recurring.confirm = function(context) {
+  // context 包含：
+  // - origin: "lightbox" | "dnd"
+  // - occurrence: 发生事件对象
+  // - series: 父系列事件对象
+  // - labels: { title, ok, cancel, occurrence, following, series }
+  // - options: ["occurrence", "following", "series"]
+  //
+  // 返回下列值之一: "occurrence", "following", "series", 或 null 以取消。
+  // 也可以返回 Promise 以支持异步 UI。
+
+  return new Promise(function(resolve) {
+    myCustomDialog.show({
+      title: context.labels.title,
+      options: context.options,
+      onSelect: function(choice) { resolve(choice); },
+      onCancel: function() { resolve(null); }
+    });
+  });
+};
+~~~
+
+上下文对象具有以下属性：
+
+| 属性 | 类型 | 说明 |
+|---|---|---|
+| `origin` | `"lightbox" \| "dnd"` | 操作是从灯箱触发还是拖放触发 |
+| `occurrence` | `object` | 正在编辑的具体发生对象 |
+| `series` | `object` | 父重复事件 |
+| `labels` | `object` | 本地化字符串：`title`, `ok`, `cancel`, `occurrence`, `following`, `series` |
+| `options` | `string[]` | 可用选项，例如 `["occurrence", "following", "series"]` |
+
+该函数必须返回 `"occurrence"`、`"following"`、`"series"`，或 `null` 以取消。它可以直接返回值或作为 Promise 返回。
+
+对于 React 的实现，请参见 [React Scheduler 文档](integrations/react/overview.md#customizingtherecurrenceconfirmationmodal)。
+
+
+## 传统格式的重复事件
+
+直到 v7.1，Scheduler 使用自定义格式来表示重复事件，您可以在此处找到该格式的详细信息 [guides/recurring-events-legacy.md](guides/recurring-events-legacy.md).

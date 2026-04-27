@@ -19,7 +19,7 @@ description: "이전에 생성된 미니 캘린더를 제거합니다."
 ### Example
 
 ~~~jsx
-var calendar = scheduler.renderCalendar(...);
+const calendar = scheduler.renderCalendar(...);
 ...
 scheduler.destroyCalendar(calendar);
 ~~~

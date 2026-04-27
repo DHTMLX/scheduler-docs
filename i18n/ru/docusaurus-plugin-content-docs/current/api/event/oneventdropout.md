@@ -1,14 +1,14 @@
 ---
-sidebar_label: "onEventDropOut"
-title: "onEventDropOut event"
-description: "срабатывает, когда перетаскиваемое событие отпущено за пределами области scheduler"
+sidebar_label: onEventDropOut
+title: "onEventDropOut событие"
+description: "срабатывает, когда перетаскиваемое событие сбрасывается на область за пределами расписателя"
 ---
 
 # onEventDropOut
 
 ### Description
 
-@short: Срабатывает, когда перетаскиваемое событие отпущено за пределами области scheduler
+@short: Срабатывает, когда перетаскиваемое событие сбрасывается на область за пределами расписателя
 
 @signature: onEventDragOut: (id: string, ev: object, to: object, e: Event) =\> boolean;
 
@@ -16,17 +16,17 @@ description: "срабатывает, когда перетаскиваемое 
 
 - `id` - (required) *string* - идентификатор события
 - `ev` - (required) *object* - объект события
-- `to` - (required) *object* - целевой scheduler (null, если событие отпущено на пустом месте)
-- `e` - (required) *Event* - родной объект события
+- `to` - (required) *object* - целевой scheduler (null, если сброшено в пустую область)
+- `e` - (required) *Event* - нативный объект события
 
 ### Returns
-- ` result` - (boolean) - указывает, будет ли выполнено действие по умолчанию для события (<b>true</b>) или оно будет отменено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию у события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onEventDropOut", function (id, ev, to, e){
-    // здесь можно добавить кастомную логику
+    // любая ваша логика здесь
     return true;
 });
 ~~~
@@ -34,8 +34,8 @@ scheduler.attachEvent("onEventDropOut", function (id, ev, to, e){
 ### Details
 
 :::note
- Это событие срабатывает только во время операций drag-and-drop между разными schedulers. 
+ Событие срабатывает только в случае перетаскивания между расписателями. 
 :::
 
 ### Related Guides
-- [Операции Drag-and-Drop](guides/drag-between.md)
+- [Операции drag-and-drop](guides/drag-between.md)

@@ -1,14 +1,14 @@
 ---
-sidebar_label: "edit_on_create"
-title: "edit_on_create config"
-description: "Включает открытие лайтбокса при создании новых событий"
+sidebar_label: edit_on_create
+title: "edit_on_create Конфигурация"
+description: "для открытия lightbox во время создания новых событий"
 ---
 
 # edit_on_create
 
 ### Description
 
-@short: Включает открытие лайтбокса при создании новых событий
+@short: для открытия lightbox во время создания новых событий
 
 @signature: edit_on_create: boolean
 
@@ -17,7 +17,7 @@ description: "Включает открытие лайтбокса при соз
 ~~~jsx
 scheduler.config.edit_on_create = false;
 ...
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true

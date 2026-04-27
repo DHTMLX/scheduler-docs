@@ -23,9 +23,9 @@ description: "显示所选的视图和日期"
 // 刷新当前视图和日期，不做任何更改
 scheduler.setCurrentView();
 // 显示当前视图中的2012年7月4日
-scheduler.setCurrentView(new Date(2012,7,4));
+scheduler.setCurrentView(new Date(2027,7,4));
 // 在周视图中显示2012年5月3日
-scheduler.setCurrentView(new Date(2012,5,3), "week");
+scheduler.setCurrentView(new Date(2027,5,3), "week");
 ~~~
 
 ### Related samples

@@ -1,34 +1,34 @@
 ---
-sidebar_label: "onBeforeExternalDragIn"
+sidebar_label: onBeforeExternalDragIn
 title: "onBeforeExternalDragIn event"
-description: "срабатывает непосредственно перед тем, как элемент начнёт перетаскиваться в scheduler из внешнего компонента DHTMLX (требуется включённое расширение dnd)"
+description: "срабатывает до того, как некоторый элемент начнет перетаскиваться в расписание из внешнего компонента DHTMLX (только при включенном расширении dnd)"
 ---
 
 # onBeforeExternalDragIn
 
 ### Description
 
-@short: Срабатывает непосредственно перед тем, как элемент начнёт перетаскиваться в scheduler из внешнего компонента DHTMLX (требуется включённое расширение dnd)
+@short: Срабатывает до того, как некоторый элемент начнет перетаскиваться в расписание из внешнего компонента DHTMLX (только при включенном расширении dnd)
 
 @signature: onBeforeExternalDragIn: (source: HTMLElement, dhtmlx: object, tArea: HTMLElement, tNode: HTMLElement, e: Event) =\> boolean
 
 ### Parameters
 
-- `source` - (required) *HTMLElement* - HTML-элемент, который собираются перетащить в scheduler
+- `source` - (required) *HTMLElement* - HTML-элемент, который будет перетаскиваться в расписание
 - `dhtmlx` - (required) *object* - глобальный объект DHTMLX
-- `tArea` - (required) *HTMLElement* - HTML-элемент, представляющий область данных scheduler
-- `tNode` - (required) *HTMLElement* - целевой HTML-элемент внутри scheduler (например, колонка в Day view или секция в Timeline view)
-- `e` - (required) *Event* - родной объект события
+- `tArea` - (required) *HTMLElement* - HTML-объект области данных расписания
+- `tNode` - (required) *HTMLElement* - целевой HTML-объект расписания (столбец в дневном представлении, раздел в Timeline- представлении и т. п.)
+- `e` - (required) *Event* - объект нативного события
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию (<b>true</b>) или оно отменяется (<b>false</b>)
+- `result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onBeforeExternalDragIn",function(source,dhtmlx,tArea,tNode,e)
 {
-    //здесь можно добавить кастомную логику
+    // любая ваша логика здесь
     return true;
 });
 ~~~
@@ -36,10 +36,10 @@ scheduler.attachEvent("onBeforeExternalDragIn",function(source,dhtmlx,tArea,tNod
 ### Details
 
 :::note
- Для работы этого события требуется включённый плагин [outerdrag](guides/extensions-list.md#outerdrag). 
-:::
+ Для этого события требуется активировать плагин [outerdrag](guides/extensions-list.md#outerdrag).
+ :::
 
-Событие можно заблокировать. Возврат *false* предотвратит перетаскивание внешнего элемента в scheduler.
+The event is blockable. Return *false* and the external element won't be dragged to the scheduler.
 
 ### Related API
 - [onExternalDragIn](api/event/onexternaldragin.md)

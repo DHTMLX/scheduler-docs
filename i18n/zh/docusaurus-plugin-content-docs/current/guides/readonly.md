@@ -5,73 +5,71 @@ sidebar_label: "只读模式"
 
 # 只读模式
 
-本节将介绍四种不同场景下的只读模式:
+在本部分，我们将从以下四种情景来考虑只读模式：
 
-1. [整个调度器的只读模式](guides/readonly.md#readonlymodefortheentirescheduler)；
-2. [整个弹窗（lightbox）的只读模式](guides/readonly.md#readonlymodefortheentirelightbox)；
-3. [弹窗某个 section 的只读模式](guides/readonly.md#readonlymodeforalighboxssection)；
-4. [特定事件的只读模式](guides/readonly.md#readonlymodeforspecificevents)。
+1. [对整个调度器的只读模式](guides/readonly.md#read-only-mode-for-the-entire-scheduler);
+2. [对整个 lightbox 的只读模式](guides/readonly.md#read-only-mode-for-the-entire-lightbox);
+3. [对 lightbox 的某个部分的只读模式](guides/readonly.md#read-only-mode-for-a-lightboxs-section);
+4. [对特定事件的只读模式](guides/readonly.md#read-only-mode-for-specific-events).
 
-## 整个调度器的只读模式 {#readonlymodefortheentirescheduler}
+## 对整个调度器的只读模式
 
-要将整个调度器设置为只读，只需将 [readonly](api/config/readonly.md) 选项赋值为 *true*。
+要将整个调度器设为只读，请将 [readonly](api/config/readonly.md) 选项设置为 *true*。
 
 ~~~js
 scheduler.config.readonly = true;
 ...
-scheduler.init('scheduler_here',new Date(2019, 5,11),"month");
+scheduler.init('scheduler_here',new Date(2027, 5,11),"month");
 ~~~
-请注意，当整个调度器为只读时，用户将无法打开弹窗（lightbox）。
 
-## 整个弹窗的只读模式 {#readonlymodefortheentirelightbox}
+注，当整个调度器不可编辑时，用户不能打开 lightbox。
 
-如果你希望用户可以打开弹窗，但阻止他们在其中进行任何编辑，可以将 [readonly_form](api/config/readonly_form.md) 选项设置为 *true*:
+## 对整个 lightbox 的只读模式
+
+要让用户有打开 lightbox 的可能性，但禁止在其中进行任何编辑，请将 [readonly_form](api/config/readonly_form.md) 选项设置为 *true*：
 
 ~~~js
 scheduler.config.readonly_form = true;
 ...
-scheduler.init('scheduler_here',new Date(2019, 5,11),"month");
+scheduler.init('scheduler_here',new Date(2027, 5,11),"month");
 ~~~
 
 :::note
-[readonly](api/config/readonly.md) 选项属于 [readonly](guides/extensions-list.md#readonly) 扩展，因此请确保在页面上启用该扩展。
+该 [readonly](api/config/readonly.md) 选项由 [readonly](guides/extensions-list.md#readonly) 扩展提供，若要使用它，请在页面上启用该扩展。
 :::
 
+[只读 lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/12_readonly_form.html)
 
-[Read-only lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/12_readonly_form.html)
+## 对 lightbox 的某个部分的只读模式
 
-
-## 弹窗某个 section 的只读模式 {#readonlymodeforalighboxssection}
-
-如果只想让弹窗中的某一个 section 变为只读，可以在该 section 对应的 DOM 元素上使用 'disabled' 属性:
+为了让某个 lightbox 的部分只读，请使用相关 section 对象的 DOM 元素的 'disabled' 属性：
 
 ~~~js
-scheduler.config.lightbox.sections="["
+scheduler.config.lightbox.sections = [
     {name:"description", height:200, map_to:"text", type:"textarea" , focus:true},
     {name:"time", height:72, type:"time", map_to:"auto"}
 ];
 
 scheduler.attachEvent("onLightbox", function(){
-   var section = scheduler.formSection("description");
+   const section = scheduler.formSection("description");
    section.control.disabled = true;
 });
 ~~~
 
 :::note
-请注意，这里是通过类型引用 section，因此所有该类型的 section 都会同时变为只读。
+通过其类型来引用该部分，具有此类型的所有部分将同时变为只读
 :::
 
-## 特定事件的只读模式 {#readonlymodeforspecificevents}
+## 对特定事件的只读模式
 
-如果你想让某些事件变为只读，只需为其添加 'readonly' 属性并设置为 true:
+要将特定事件设为只读，请为它们添加属性 'readonly'，并将其设为 true：
 
 ~~~js
 scheduler.getEvent(id).readonly = true;
 ~~~
 
 :::note
-该功能属于 [readonly](guides/extensions-list.md#readonly) 扩展，请确保在页面上启用该扩展。
+该功能在 [readonly](guides/extensions-list.md#readonly) 扩展中提供，要使用它，请在页面上启用该扩展。
 :::
 
-
-[Read-only events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/14_readonly_event.html)
+[只读事件](https://docs.dhtmlx.com/scheduler/samples/03_extensions/14_readonly_event.html)

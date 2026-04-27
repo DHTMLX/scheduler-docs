@@ -31,7 +31,7 @@ scheduler.attachEvent("onExternalDragIn", function (id, source, e){
 ~~~
 
 ### Related samples
-- 10_integration/02_dhtmlxTree_outer_drag.html
+- [Integration with dhtmlxTree](https://docs.dhtmlx.com/scheduler/samples/10_integration/02_dhtmlxtree_outer_drag.html)
 
 ### Details
 

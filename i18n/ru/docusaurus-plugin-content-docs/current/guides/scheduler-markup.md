@@ -5,10 +5,10 @@ sidebar_label: "Разметка Scheduler"
 
 # Разметка Scheduler
 
-Вот как выглядит стандартная разметка для планировщика:
+Стандартная разметка планировщика выглядит так:
 
 ~~~html
-<div id="scheduler_here" class="dhx_cal_container">
+<div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
     <div class="dhx_cal_navline">
         <div class="dhx_cal_prev_button">&nbsp;</div>
         <div class="dhx_cal_next_button">&nbsp;</div>
@@ -23,45 +23,46 @@ sidebar_label: "Разметка Scheduler"
 </div>
 ~~~
 
-![markup](/img/markup.png)
+![разметка](/img/markup.png)
 
-## Расположение вкладок {#tabs-positioning}
+## Позиционирование вкладок
 
-Начиная с версии 7.0, элемент **.dhx_cal_navline** использует flex-верстку, а порядок вкладок определяется с помощью CSS-свойства **order**.
+Начиная с версии v7.0, элемент **.dhx_cal_navline** является flex-контейнером, и вкладки размещаются согласно стилю **order**.
 
-### Версии 6.0 и ниже
+### Версии 6.0 и более старые
 
-#### Стандартная ('terrace') тема
+#### По умолчанию ('террасная') тема
 
-В стандартной ('terrace') теме CSS-свойства типа игнорируются при позиционировании вкладок. Вместо этого вкладки размещаются согласно внутренним правилам планировщика: стандартные представления отображаются как сегментированная группа кнопок слева, а дополнительные представления - как отдельные кнопки справа.
+Изначально тема по умолчанию ('террасная') игнорирует CSS-свойства, используемые для задания положения вкладки (например, `style="right:204px;"`) и размещает вкладку согласно своей логике: стандартные представления отображаются как сегментированная кнопка слева, а дополнительные представления размещаются как отдельные кнопки справа.
 
-Чтобы вручную управлять расположением вкладок (например, прямо в разметке), установите параметр [fix_tab_position](api/config/fix_tab_position.md) в *false*, чтобы отключить стандартное поведение позиционирования, а затем задайте координаты вкладок с помощью CSS:
+Чтобы задать положение вручную (например, в разметке), установите параметр [fix_tab_position](api/config/fix_tab_position.md) в *false*, чтобы отключить поведение по умолчанию, и задавайте координаты с помощью CSS-свойств:
 
 ~~~js
 scheduler.config.fix_tab_position = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
-Для создания эффекта сегментированных кнопок можно использовать следующие CSS-классы:
+Обратите внимание, что можно использовать следующие CSS-классы для создания сегментированной кнопки:
 
-- **dhx_cal_tab_last** - скругляет правую границу
-- **dhx_cal_tab_first** - скругляет левую границу
-- **dhx_cal_tab_standalone** - скругляет обе границы
+- **dhx_cal_tab_last** - делает правую границу скругленной
+- **dhx_cal_tab_first** - делает левую границу скругленной
+- **dhx_cal_tab_standalone** - делает обе границы скругленными
 
-Например, чтобы вручную создать сегментированную группу 'day'-'week'-'month' в стандартной теме, используйте такую разметку:
+
+Например, чтобы вручную установить сегментированную кнопку 'day'-'week'-'month' в теме по умолчанию, можно указать разметку как показано:
 ~~~html
-<div class="dhx_cal_tab dhx_cal_tab_first" data-tab="day"></div>
-<div class="dhx_cal_tab" data-tab="week"></div>
-<div class="dhx_cal_tab dhx_cal_tab_last" data-tab="month"></div>
+<div class="dhx_cal_tab dhx_cal_tab_first" data-tab="day" style="left:14px;"></div>
+<div class="dhx_cal_tab" data-tab="week"  style="left: 75px;"></div>
+<div class="dhx_cal_tab dhx_cal_tab_last" data-tab="month" style="left:136px"></div>
 ~~~
 
 
-## Добавление и удаление вкладок представлений {#addingdeletingviewstabs}
+## Добавление/удаление вкладок представлений
 
 ### Добавление вкладки
 
-Чтобы добавить новую вкладку в заголовок, просто добавьте div с классом **"dhx_cal_tab"** внутрь элемента **"dhx_cal_navline"**:
+Чтобы добавить новую вкладку в заголовок, добавьте div с классом **"dhx_cal_tab"** в качестве дочернего узла элемента **"dhx_cal_navline"**:
 
 ~~~html
 <div class="dhx_cal_navline">
@@ -73,63 +74,65 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 </div>
 ~~~
 
-Атрибут **data-tab** указывает представление, которое откроется при клике по вкладке, используя формат **(viewName)**.
+Определяемое вкладкой представление, которое откроется по клику, задается атрибутом **data-tab** и указывается как **(viewName)**.
 
 :::note
-Обратите внимание, что к вкладке можно добавить несколько CSS-классов, однако класс **"dhx_cal_tab"** всегда должен быть первым.
+Обратите внимание, у вкладки может быть несколько применяемых CSS-классов, но класс **"dhx_cal_tab"** должен идти первым.
 :::
 
 ### Удаление вкладки
 
-Чтобы удалить вкладку из заголовка, просто удалите соответствующий div из разметки:
+Чтобы удалить вкладку из заголовка, удалите соответствующий div из разметки:
 
-~~~js title="Удаление вкладки 'month' из заголовка"
+Удаление вкладки 'month' из заголовка:
+
 ~~~html
 <div class="dhx_cal_navline">
-  ...
-  <div class="dhx_cal_tab" data-tab="day"></div>
-  <div class="dhx_cal_tab" data-tab="week"></div>
+    ...
+    <div class="dhx_cal_tab" data-tab="day"></div>
+    <div class="dhx_cal_tab" data-tab="week"></div>
 </div>
 ~~~
 
 :::note
-Удаление вкладки из разметки не отключает само представление; к нему по-прежнему можно получить доступ программно с помощью методов [setCurrentView](api/method/setcurrentview.md) и [updateView](api/method/updateview.md).
+Даже если вкладка удалена, связанное представление по-прежнему доступно программно с помощью методов [setCurrentView](api/method/setcurrentview.md) и [updateView](api/method/updateview.md).
 :::
 
 
-## Скрытие навигационных кнопок {#hidingthenavigationbuttons}
+## Скрытие кнопок навигации
 
-Чтобы скрыть навигационные кнопки в заголовке планировщика, примените *'display:none'* к соответствующим div следующим образом:
+Чтобы скрыть кнопки навигации в заголовке планировщика, установите стиль *'display:none'* для соответствующих div, как показано:
 
-~~~js title="Скрытие навигационных кнопок в заголовке"
+Скрытие кнопок навигации в заголовке:
+~~~html
 <style>
-  .dhx_cal_prev_button, .dhx_cal_next_button{
-  display:none;
-  }
+    .dhx_cal_prev_button, .dhx_cal_next_button{
+        display:none;
+    }
 </style>
 
-<div id="scheduler_here" class="dhx_cal_container">
-  <div class="dhx_cal_navline">
-  <div class="dhx_cal_prev_button">&nbsp;</div>
-  <div class="dhx_cal_next_button">&nbsp;</div>
-  <div class="dhx_cal_today_button"></div>
-  ...
-  </div>
-  <div class="dhx_cal_header"></div>
-  <div class="dhx_cal_data"></div> 
+<div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+    <div class="dhx_cal_navline">
+        <div class="dhx_cal_prev_button">&nbsp;</div>
+        <div class="dhx_cal_next_button">&nbsp;</div>
+        <div class="dhx_cal_today_button"></div>
+        ...
+       </div>
+    <div class="dhx_cal_header"></div>
+    <div class="dhx_cal_data"></div>       
 </div>
 ~~~
 
 
-## Скрытие заголовка планировщика {#hidingtheheaderofscheduler}
+## Скрытие заголовка планировщика
 
-Чтобы скрыть весь заголовок планировщика, задайте *'display:none'* для navline:
+Чтобы скрыть весь заголовок планировщика, установите *'display:none'*: 
 
 ~~~html
 <style>
-  .dhx_cal_navline{
-  display:none;
-  }
+    .dhx_cal_navline{
+        display:none;
+    }
 </style>
 
 ~~~

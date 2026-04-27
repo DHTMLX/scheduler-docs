@@ -15,12 +15,12 @@ description: "限制拖动事件，使其只能在发起拖动的调度器内移
 ### Example
 
 ~~~jsx
-scheduler.init('scheduler_here',new Date(2009,05,30),"week");
+scheduler.init('scheduler_here',new Date(2027,05,30),"week");
 scheduler.load("./data/units.xml");
 
 scheduler2.config.drag_in = false; // 禁止事件拖入此调度器
 scheduler2 = Scheduler.getSchedulerInstance();
-scheduler2.init('scheduler_here_2',new Date(2009,05,30),"week");
+scheduler2.init('scheduler_here_2',new Date(2027,05,30),"week");
 ~~~
 
 **Default value:** true

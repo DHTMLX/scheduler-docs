@@ -17,7 +17,7 @@ description: "Steuert, ob das Event-Formular von der linken/rechten Seite des Bi
 ~~~jsx
 scheduler.config.quick_info_detached = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,5,30),"day");
+scheduler.init('scheduler_here',new Date(2027,5,30),"day");
 ~~~
 
 **Default value:** true (<i>das Event-Formular wird in der Nähe des ausgewählten Events angezeigt</i>)

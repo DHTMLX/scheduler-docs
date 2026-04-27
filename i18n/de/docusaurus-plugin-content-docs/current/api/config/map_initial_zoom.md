@@ -17,7 +17,7 @@ description: "legt den Start-Zoom-Level für die Karte in der Map-Ansicht fest"
 ~~~jsx
 scheduler.config.map_initial_zoom = 7;
 ...
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.init('scheduler_here', new Date(2027,05,11), "week");
 ~~~
 
 **Default value:** 1

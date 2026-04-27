@@ -11,7 +11,7 @@ In many use cases you may need to limit the count of events per time slot. For e
 
 To control the number of events in a time slot, use the [**collision**](guides/extensions-list.md#collision) extension.
 
-[Activating the 'collision' extension](Activating the 'collision' extension)
+Activating the 'collision' extension:
 ~~~js
 scheduler.plugins({
     collision: true
@@ -26,7 +26,7 @@ From this moment on, the scheduler won't allow users to place 2 events in the sa
 
 By default, the allowable number of events in a time slot is 1. To regulate this number, use the [collision_limit](api/config/collision_limit.md) property:
 
-[Denying creating more than 2 events per time slot](Denying creating more than 2 events per time slot)
+Denying creating more than 2 events per time slot:
 ~~~js
 scheduler.config.collision_limit = 2;      //allows creating 2 events per time slot
 ~~~
@@ -42,7 +42,7 @@ the [onEventCollision](api/event/oneventcollision.md) event which checks the val
 But remember, the [onEventCollision](api/event/oneventcollision.md) event isn't triggered while loading data. So, to control a 
 number of items in a time slot while data is being loaded to the scheduler, you need to extend the previous code a bit:
 
-[Denying creating/loading more than 2 events per time slot](Denying creating/loading more than 2 events per time slot)
+Denying creating/loading more than 2 events per time slot:
 ~~~js
 scheduler.config.collision_limit = 2; //allows creating 2 events per time slot
 scheduler.attachEvent("onEventLoading", function(ev){ /*!*/
@@ -57,9 +57,9 @@ The [checkCollision](api/method/checkcollision.md) method checks whether an even
 
 To get the number of events resided in a time slot, use the [getEvents](api/method/getevents.md) method: 
 
-[Getting the number of events in a time slot](Getting the number of events in a time slot)
+Getting the number of events in a time slot:
 ~~~js
-var count = scheduler.getEvents(ev.start_date, ev.end_date).length;
+const count = scheduler.getEvents(ev.start_date, ev.end_date).length;
 ~~~
 
 Note, the [getEvents](api/method/getevents.md) method iterates over all events and compares their dates, so it may take a bit of time if you are using thousands of events. 
@@ -99,7 +99,7 @@ scheduler.attachEvent("onLoadEnd", function(){
 
 To enable the dynamic loading, you need to call the [setLoadMode](api/method/setloadmode.md) method and load your script after that:
 
-[Enabling the dynamic loading](Enabling the dynamic loading)
+Enabling the dynamic loading:
 ~~~js
 scheduler.setLoadMode("month");
 scheduler.load("/some");

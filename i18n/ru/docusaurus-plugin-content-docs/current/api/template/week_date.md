@@ -29,7 +29,7 @@ scheduler.templates.week_date = function(start, end){
 };
 ~~~
 
-**Applicable views:** [Week view](views/week.md), [Week Agenda view](views/weekagenda.md)
+**Доступные представления:** [Week view](views/week.md), [Week Agenda view](views/weekagenda.md)
 
 ### Related Guides
 - [Шаблоны недельного вида](views/week-view-templates.md)

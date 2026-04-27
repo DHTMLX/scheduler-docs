@@ -74,11 +74,11 @@ In der Regel wird die erste Beschriftung beim Hinzufügen des Ansichtstabs zum S
 Um den Datumsbereich, der in der Agenda-Ansicht angezeigt wird, zu definieren, verwenden Sie die Eigenschaften [agenda_end](api/config/agenda_end.md) und [agenda_start](api/config/agenda_start.md):
 
 ~~~js
-//um Termine ab dem 1. Juni 2019 anzuzeigen
-scheduler.config.agenda_start = new Date(2019, 5, 1); 
+//um Termine ab dem 1. Juni 2026 anzuzeigen
+scheduler.config.agenda_start = new Date(2026, 5, 1); 
 
-//um Termine bis zum 1. Juni 2020 anzuzeigen
-scheduler.config.agenda_end = new Date(2020, 5, 1);   
+//um Termine bis zum 1. Juni 2027 anzuzeigen
+scheduler.config.agenda_end = new Date(2027, 5, 1);   
 ~~~
 
 ## Aktivieren der Schaltflächen Weiter/Zuvor/Heute 

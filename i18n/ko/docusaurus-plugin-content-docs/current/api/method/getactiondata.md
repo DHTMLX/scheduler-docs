@@ -24,7 +24,7 @@ description: "현재 커서 아래에 있는 날짜와 섹션을 반환합니다
 ~~~jsx
 scheduler.attachEvent("onMouseMove", function(id, e){
    var action_data = scheduler.getActionData(e);
-   // -> {date:Tue Jun 30 2009 09:10:00, section:2}
+   // -> {date:Tue Jun 30 2027 09:10:00, section:2}
    ...
 })
 ~~~

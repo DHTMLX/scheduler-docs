@@ -1,20 +1,20 @@
 ---
-sidebar_label: "onMouseDown"
-title: "onMouseDown event"
-description: "срабатывает, когда пользователь кликает по элементу планировщика, у которого нет предопределенного обработчика 'onclick'"
+sidebar_label: onMouseDown
+title: "onMouseDown событие"
+description: "Срабатывает, когда пользователь кликает по элементу планировщика, у которого нет предопределённого обработчика 'onlick'"
 ---
 
 # onMouseDown
 
 ### Description
 
-@short: Срабатывает, когда пользователь кликает по элементу планировщика, у которого нет предопределенного обработчика 'onclick'
+@short: Срабатывает, когда пользователь кликает по элементу планировщика, у которого нет предопределённого обработчика 'onlick'
 
 @signature: onMouseDown: (className: string) =\> void
 
 ### Parameters
 
-- `className` - (required) *string* - CSS-класс кликнутого элемента
+- `className` - (required) *string* - название CSS-класса, определённого для кликнутого элемента
 
 ### Example
 
@@ -26,7 +26,7 @@ scheduler.attachEvent("onMouseDown", function(className){
 
 ### Details
 
-Элементы планировщика с предопределёнными обработчиками 'onclick' перечислены в таблице ниже.
+Scheduler's elements that have the predefined 'onclick' handlers are listed in the table below.
 
 <br>
 
@@ -48,43 +48,43 @@ scheduler.attachEvent("onMouseDown", function(className){
   <tbody>
   <tr>
   <td>dhx_cal_event_line</td>
-  <td>Много-дневные события, отображаемые в представлениях Day, Week, Month, Units, а также любые события в представлении Timeline</td>
+  <td>Многодневные события в представлениях Day, Week, Month, Units и любое событие в Timeline view</td>
   </tr>
   <tr>
   <td>dhx_cal_event_clear</td>
-  <td>Однодневные события в представлении Month</td>
+  <td>Однодневные события в Month view</td>
   </tr>
   <tr>
   <td>dhx_event_move</td>
-  <td>Заголовок блока события, используемый для перетаскивания событий в представлениях Day, Week, Units</td>
+  <td>Заголовок блока события, используемый для перетаскивания события в Day, Week, Units views</td>
   </tr>
   <tr>
   <td>dhx_wa_ev_body</td>
-  <td>Событие, отображаемое в представлении WeekAgenda</td>
+  <td>Событие в WeekAgenda view</td>
   </tr>
   <tr>
   <td>dhx_event_resize</td>
-  <td>Нижняя часть блока события, используемая для изменения размера событий в представлениях Day, Week, Units</td>
+  <td>Нижняя часть блока события, используемая для изменения размера события в Day, Week, Units views </td>
   </tr>
   <tr>
   <td>dhx_scale_holder</td>
-  <td>Колонка в представлениях Day, Week, Units</td>
+  <td>Столбец в Day, Week, Units views</td>
   </tr>
   <tr>
   <td>dhx_scale_holder_now</td>
-  <td>Выделенная колонка, обозначающая текущую дату в представлениях Day, Week, Units</td>
+  <td>Выделенный столбец с текущей датой в Day, Week, Units views</td>
   </tr>
   <tr>
   <td>dhx_month_body</td>
-  <td>Ячейка без заголовка в представлении Month</td>
+  <td>Ячейка без заголовка в Month view</td>
   </tr>
   <tr>
   <td>dhx_matrix_cell</td>
-  <td>Ячейка в представлении Timeline</td>
+  <td>Ячейка в Timeline view</td>
   </tr>
   <tr>
   <td>dhx_marked_timespan</td>
-  <td>Отмеченные (выделенные) ячейки</td>
+  <td>Помеченные (выделенные) ячейки</td>
   </tr>
   <tr>
   <td>dhx_time_block</td>

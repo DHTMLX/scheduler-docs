@@ -1,14 +1,14 @@
----
-sidebar_label: "collapse"
+--- 
+sidebar_label: collapse
 title: "collapse method"
-description: "возвращает scheduler из расширенного состояния обратно к обычному размеру"
+description: "сворачивает развернутый планировщик обратно до обычного размера"
 ---
 
 # collapse
 
 ### Description
 
-@short: Возвращает scheduler из расширенного состояния обратно к обычному размеру
+@short: Сворачивает развернутый планировщик обратно до обычного размера
 
 @signature: collapse: () =\> void
 
@@ -21,7 +21,7 @@ scheduler.collapse();
 ### Details
 
 :::note
- Для работы метода необходимо, чтобы была активна [expand](guides/extensions-list.md#expand) расширение. 
+ Метод требует, чтобы расширение [expand](guides/extensions-list.md#expand) было включено. 
 :::
 
 ![collapse_method](/img/collapse_method.png)

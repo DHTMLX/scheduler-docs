@@ -19,11 +19,11 @@ description: "scheduler ajax Modul"
 {status: "ok", data: "value", data2: "value2"}
 
 
-var xhr = scheduler.ajax;
+const xhr = scheduler.ajax;
 
 // HTTP GET
 xhr.get("server.php").then(function(response) {
-    var res = JSON.parse(response.responseText); 
+    const res = JSON.parse(response.responseText); 
     if (res && res.status == "ok") {
         // Antwort ist ok
     }
@@ -36,7 +36,7 @@ xhr.post({
            paramName: "paramValue"
     }
 }).then(function(response){
-    var res = JSON.parse(response.responseText); 
+    const res = JSON.parse(response.responseText); 
     if (res && res.status == "ok") {
         // Antwort ist ok
     }
@@ -107,7 +107,7 @@ scheduler.ajax.post({
            paramName: "paramValue"
     },
     callback: function(result){
-           var response = result.xmlDoc;
+           const response = result.xmlDoc;
        
            alert(response.responseText);
     }
@@ -221,7 +221,7 @@ dhtmlxScheduler unterstützt promises (einschließlich IE8+). Intern wird die [B
 Um ein Promise zu erstellen, verwenden Sie:
 
 ~~~js
-var promise = new scheduler.Promise(function(resolve, reject) {...});
+const promise = new scheduler.Promise(function(resolve, reject) {...});
 ~~~
 
 Die Promise-Implementierung ist innerhalb von Scheduler scoped, also nicht global.

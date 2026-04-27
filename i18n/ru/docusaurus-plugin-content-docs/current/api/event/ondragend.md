@@ -1,27 +1,27 @@
 ---
-sidebar_label: "onDragEnd"
-title: "onDragEnd event"
-description: "срабатывает, когда действие перетаскивания или изменения размера завершено"
+sidebar_label: onDragEnd
+title: "Событие onDragEnd"
+description: "Срабатывает, когда операция перетаскивания/изменения размера завершена"
 ---
 
 # onDragEnd
 
 ### Description
 
-@short: Срабатывает, когда действие перетаскивания или изменения размера завершено
+@short: Срабатывает, когда операция перетаскивания/изменения размера завершена
 
 @signature: onDragEnd: (id: string, mode: string, e: Event) =\> void;
 
 ### Parameters
 
 - `id` - (required) *string* - идентификатор события
-- `mode` - (required) *string* - тип действия перетаскивания: "move", "resize" или "create"
+- `mode` - (required) *string* - режим перетаскивания: "move","resize" или "create"
 - `e` - (required) *Event* - нативный объект события
 
 ### Example
 
 ~~~jsx
-var dragged_event;
+let dragged_event;
 scheduler.attachEvent("onBeforeDrag", function (id, mode, e){
     // это помогает определить событие, которое перетаскивается
     dragged_event = scheduler.getEvent(id); 
@@ -29,7 +29,7 @@ scheduler.attachEvent("onBeforeDrag", function (id, mode, e){
 });
 
 scheduler.attachEvent("onDragEnd", function(id, mode, e){
-    var event_obj = dragged_event;
+    let event_obj = dragged_event;
     // здесь разместите вашу кастомную логику
 });
 ~~~

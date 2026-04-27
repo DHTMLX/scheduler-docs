@@ -23,10 +23,10 @@ Die Funktion ist veraltet
 ### Example
 
 ~~~jsx
-var spanId = scheduler.blockTime(new Date(2013,2,5), "fullday");  
+const spanId = scheduler.blockTime(new Date(2027,2,5), "fullday");  
 ...  
-// entfernt die Sperre von 0 bis 8 und von 18 bis 24 Uhr am 5. Februar 2013  
-scheduler.unblockTime(new Date(2013,2,5), [0,10*60]);
+// entfernt die Sperre von 0 bis 8 und von 18 bis 24 Uhr am 5. Februar 2027  
+scheduler.unblockTime(new Date(2027,2,5), [0,10*60]);
 ~~~
 
 ### Related API

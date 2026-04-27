@@ -29,7 +29,7 @@ scheduler.templates.day_scale_date = function(date){
 };
 ~~~
 
-**Applicable views:** [Day view](views/day.md)
+**Доступные представления:** [Day view](views/day.md)
 
 ### Related Guides
 - [Шаблоны для дневного вида](views/day-view-templates.md)

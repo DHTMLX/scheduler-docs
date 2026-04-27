@@ -18,7 +18,7 @@ description: "当开始日期被调整时，自动更新事件的结束日期"
 scheduler.config.event_duration = 60; 
 scheduler.config.auto_end_date = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** false

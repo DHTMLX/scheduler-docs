@@ -18,7 +18,7 @@ description: "定义日期、刻度、控件的配置选项"
 //设置Y轴项目的格式
 scheduler.config.hour_date = "%H:%i:%s";
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "month");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "month");
 ~~~
 
 ### Details

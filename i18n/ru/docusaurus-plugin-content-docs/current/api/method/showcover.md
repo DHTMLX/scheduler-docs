@@ -1,20 +1,19 @@
 ---
-sidebar_label: "showCover"
-title: "showCover method"
-description: "отображает модальное оверлейное окно (lightbox), которое блокирует взаимодействие с остальной частью экрана"
+sidebar_label: showCover
+title: "Метод showCover"
+description: "показывает lightbox модальный оверлей, который блокирует взаимодействие с остальной частью экрана"
 ---
 
 # showCover
 
 ### Description
 
-@short: Отображает модальное оверлейное окно (lightbox), которое блокирует взаимодействие с остальной частью экрана
+@short: Показывает lightbox модальный оверлей, который блокирует взаимодействие с остальной частью экрана
 
-@signature: showCover: (box?: HTMLElement) =\> void
+@signature: showCover: (box?: HTMLElement) => void
 
 ### Parameters
-
-- `box` - (optional) *HTMLElement* - элемент, который нужно отобразить
+- `box` - (optional) *HTMLElement* - элемент, который нужно показать
 
 ### Example
 
@@ -26,7 +25,7 @@ scheduler.showCover();
 
 ### Details
 
-Если в качестве параметра передать элемент, этот метод отобразит указанный HTML-элемент, установив для него свойство display со значением "block" и центрирует его на экране.
+Если указан входной параметр, метод отобразит указанный HTML-элемент (установив свойство display в «block»), разместив его по центру экрана.
 
 ### Related API
 - [hideCover](api/method/hidecover.md)

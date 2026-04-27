@@ -17,7 +17,7 @@ description: "activates the read-only mode for the lightbox"
 ~~~jsx
 scheduler.config.readonly_form = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"month");
+scheduler.init('scheduler_here',new Date(2027,05,11),"month");
 ~~~
 
 **Default value:** false

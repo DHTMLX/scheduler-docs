@@ -19,7 +19,7 @@ description: "DataProcessor Konstruktor"
 ### Example
 
 ~~~jsx
-var dp = new scheduler.DataProcessor("php/update.php");
+const dp = new scheduler.DataProcessor("php/update.php");
 ~~~
 
 ### Details

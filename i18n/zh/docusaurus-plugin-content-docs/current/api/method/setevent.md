@@ -21,8 +21,8 @@ description: "向调度器的数据池中添加一个新的事件"
 
 ~~~jsx
 scheduler.setEvent(1, {
-    start_date: new Date(2013, 05, 16, 09, 00),
-    end_date:   new Date(2013, 05, 16, 12, 00),
+    start_date: new Date(2027, 05, 16, 09, 00),
+    end_date:   new Date(2027, 05, 16, 12, 00),
     text:   "Meeting",
     holder: "John", 
     room:   "5"     

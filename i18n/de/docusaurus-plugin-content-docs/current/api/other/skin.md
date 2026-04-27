@@ -15,7 +15,7 @@ description: "liefert die aktuelle Skin des Schedulers"
 ### Example
 
 ~~~jsx
-var currentSkin = scheduler.skin;// -> 'glossy' oder 'classic'
+const currentSkin = scheduler.skin; // -> 'glossy' oder 'classic'
 ~~~
 
 ### Details

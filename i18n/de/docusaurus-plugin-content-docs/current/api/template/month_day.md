@@ -23,7 +23,7 @@ description: "definiert, wie der Tag in einer Zelle angezeigt wird"
 
 ~~~jsx
 scheduler.templates.month_day = function(date){
-    var dateToStr_func = scheduler.date.date_to_str(scheduler.config.month_day);
+    const dateToStr_func = scheduler.date.date_to_str(scheduler.config.month_day);
     return  dateToStr_func(date);
 };
 ~~~

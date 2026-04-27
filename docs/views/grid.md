@@ -51,8 +51,8 @@ scheduler.createGridView({
         {id:"date", label:'Date', sort:'date', width:'*'},
         {id:"text", label:'Text', sort:'str',  width:200, align:'left'}
     ],
-    from:new Date(2019, 3, 10),//left border of the allowable date range
-    to:new Date(2019, 5, 23)    //right border of the allowable date range
+    from:new Date(2027, 3, 10),//left border of the allowable date range
+    to:new Date(2027, 5, 23)    //right border of the allowable date range
 });
 ~~~
 
@@ -64,15 +64,15 @@ scheduler.createGridView({
 
 The extension allows limiting active dates, so that the users won't be able to get the dates beyond the range. 
 
-If, for example, you want to to limit active dates and set the allowable range from **1st January, 2024** to **1st January, 2025** , define the following configuration:
+If, for example, you want to to limit active dates and set the allowable range from **1st January, 2026** to **1st January, 2027** , define the following configuration:
 
 
 ~~~js
 scheduler.createGridView({
      name:"grid",
     ..
-    from:new Date(2024, 0, 1),
-    to:new Date(2025, 0, 1)
+    from:new Date(2026, 0, 1),
+    to:new Date(2027, 0, 1)
 });
 
 ~~~

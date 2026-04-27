@@ -17,7 +17,7 @@ description: "현재 시간을 나타내는 마커를 켜거나 끕니다."
 ~~~jsx
 scheduler.config.mark_now = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** true

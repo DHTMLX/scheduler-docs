@@ -17,7 +17,7 @@ description: "표준 (wide) 라이트박스를 짧은 버전 대신 표시할지
 ~~~jsx
 scheduler.config.wide_form = true;
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 **Default value:** true

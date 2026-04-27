@@ -29,7 +29,7 @@ scheduler.templates.event_bar_text = function(start,end,event){
 };
 ~~~
 
-**Applicable views:** [Month view](views/month.md), [Timeline view](views/timeline.md)
+**Доступные представления:** [Month view](views/month.md), [Timeline view](views/timeline.md)
 
 ### Related Guides
 - [Шаблоны для Месячного Вида](views/month-view-templates.md)

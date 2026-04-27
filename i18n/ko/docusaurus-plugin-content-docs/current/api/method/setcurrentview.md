@@ -22,10 +22,10 @@ description: "선택한 뷰와 날짜를 표시합니다."
 ~~~jsx
 // 변경 없이 현재 뷰와 날짜를 새로 고침합니다.
 scheduler.setCurrentView();
-// 현재 뷰에서 2012년 7월 4일을 표시합니다.
-scheduler.setCurrentView(new Date(2012,7,4));
-// Week 뷰에서 2012년 5월 3일을 표시합니다.
-scheduler.setCurrentView(new Date(2012,5,3), "week");
+// 현재 뷰에서 2027년 7월 4일을 표시합니다.
+scheduler.setCurrentView(new Date(2027,7,4));
+// Week 뷰에서 2027년 5월 3일을 표시합니다.
+scheduler.setCurrentView(new Date(2027,5,3), "week");
 ~~~
 
 ### Related samples

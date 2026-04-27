@@ -1,7 +1,7 @@
 ---
-sidebar_label: "header"
+sidebar_label: header
 title: "header config"
-description: "настраивает layout для header планировщика (панели навигации)"
+description: "обеспечивает конфигурацию, напоминающую макет, для header (панели навигации) планировщика"
 ---
 
 # header
@@ -27,15 +27,15 @@ scheduler.config.header = [
 scheduler.init("scheduler_here");
 ~~~
 
-**Default value:** null
+**Значение по умолчанию:** null
 
 ### Details
 
-При инициализации планировщика с этой настройкой, любой существующий HTML внутри контейнера планировщика будет заменён сгенерированной разметкой.
+Когда scheduler инициализируется с использованием этой конфигурации, любое HTML-размещение в контейнере scheduler до инициализации будет удалено, а вместо него будет вставлена сгенерированная разметка.
 
-Эта конфигурация может быть простым массивом элементов или вложенной структурой для определения более сложного layout.
+Значение этой конфигурации может быть либо простым массивом элементов, либо вложенной структурой, описывающей сложный макет.
 
-Учтите, что высота header/панели навигации по-прежнему контролируется опцией [scheduler.xy.nav_height](api/other/xy.md#day).
+Примечание: высота header/navigation bar по-прежнему управляется опцией [scheduler.xy.nav_height](api/other/xy.md#illustration-images).
 
 
 ~~~js
@@ -65,28 +65,27 @@ scheduler.init("scheduler_here");
 
 
 ~~~html
-<div id="scheduler_here"></div>
+<div id="scheduler_here" style="height:100vh;width:100vw"></div>
 ~~~
 
 
 Поддерживаемые значения включают:
 
- - **\{rows: Array, css:string\}** - контейнер для header с несколькими строками
- - **\{cols: Array, css:string\}** - одна строка внутри многострочного header
- - **"prev","next","today"** - кнопки для навигации по дате
- - **"date"** - label, показывающий текущую дату
- - **"day", "week", "month" и т.д.** - вкладки для переключения видов
- - **"spacer"** - прозрачный элемент, заполняющий доступное пространство, полезен для смещения элементов вправо
- - **\{html: string, click: function, css: string\}** - объект для добавления кастомных кнопок или иконок в header
- - **"minicalendar"** - переключатель для [Mini Calendar](guides/minicalendar.md).
+ - **\{rows: Array, css:string\}** - контейнер для многострочного заголовка
+ - **\{cols: Array, css:string\}** - одна строка многострочного заголовка
+ - **"prev","next","today"** - кнопки навигации по дате
+ - **"date"** - метка даты
+ - **"day", "week", "month", etc.** - вкладки отображения
+ - **"spacer"** - прозрачный элемент, который занимает всё доступное пространство и может использоваться для подтягивания другого элемента к правой стороне заголовка
+ - **\{html: string, click: function, css: string\}** - объект для вставки пользовательских кнопок или иконок в header
+ - **"minicalendar"** - переключатель на мини-календарь [Mini Calendar](guides/minicalendar.md) toggle.
 
 ~~~js
 scheduler.config.header = [
     "day",
     "week",
     "month",
-    {html:"click me!", click:function(){alert("done!") 
-:::,
+    {html:"click me!", click:function(){alert("done!") }},
     "date",
     "prev",
     "today",
@@ -97,9 +96,9 @@ scheduler.init("scheduler_here");
 
 #### Настройки Mini Calendar:
 
-Опция "minicalendar" добавляет кнопку, которая переключает мини-календарь с таким click handler:
+Значение "minicalendar" будет отображать кнопку мини-календаря со следующим обработчиком клика:
 
-~~~
+~~~js
 function showCalendar () {
     if (scheduler.isCalendarVisible()) {
         scheduler.destroyCalendar();
@@ -117,9 +116,9 @@ function showCalendar () {
 };
 ~~~
 
-Чтобы настроить поведение мини-календаря с другими параметрами, предоставьте свой click handler для кнопки minicalendar следующим образом:
+Если вы хотите вызвать [renderCalendar](api/method/rendercalendar.md) с другими параметрами, вам нужно предоставить собственный обработчик onclick для кнопки minicalendar:
 
-~~~
+~~~js
 scheduler.config.header = [
     "day",
     "week",
@@ -139,7 +138,7 @@ scheduler.config.header = [
             });
         }
      
-:::,
+}},
     "date",
     "prev",
     "today",
@@ -148,6 +147,6 @@ scheduler.config.header = [
 ~~~
 
 ### Related Guides
-- [Мобильная адаптивность Scheduler](guides/touch-support.md)
-- [dhtmlxScheduler на чистом JS/HTML](guides/initialization.md)
+- [Мобильный адаптивный Scheduler](guides/touch-support.md)
+- [dhtmlxScheduler на Plain JS/HTML](guides/initialization.md)
 - [Мини-календарь (Date Picker)](guides/minicalendar.md)

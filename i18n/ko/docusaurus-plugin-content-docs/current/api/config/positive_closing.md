@@ -17,7 +17,7 @@ description: "사용자가 이벤트 박스 내에서 이벤트 텍스트를 직
 ~~~jsx
 scheduler.config.positive_closing = true;
 ...
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.init('scheduler_here', new Date(2027,05,11), "week");
 ~~~
 
 **Default value:** false

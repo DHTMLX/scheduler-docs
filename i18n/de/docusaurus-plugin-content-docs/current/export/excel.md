@@ -27,7 +27,7 @@ Um Scheduler-Daten in eine Excel-Datei zu exportieren, gehen Sie wie folgt vor:
 <input value="Export to Excel" type="button" onclick="scheduler.exportToExcel()">/*!*/
 
 <script>
-    scheduler.init("scheduler_here",new Date(2019,5,30),"month");
+    scheduler.init("scheduler_here",new Date(2027,5,30),"month");
     scheduler.load("data/events");
 </script>
 ~~~
@@ -72,7 +72,7 @@ scheduler.exportToExcel({
     ],
     server:"https://myapp.com/myexport/scheduler",
     start: new Date(1999, 01, 01),
-    end:  new Date(2022, 01, 01)
+    end:  new Date(2027, 01, 01)
 });
 ~~~
 
@@ -106,7 +106,7 @@ Um Scheduler-Daten als iCal-String zu exportieren, gehen Sie wie folgt vor:
 <input value="Export to iCal" type="button" onclick="scheduler.exportToICal()">/*!*/
 
 <script>
-    scheduler.init("scheduler_here",new Date(2019,5,30),"month");
+    scheduler.init("scheduler_here",new Date(2027,5,30),"month");
     scheduler.load("data/events");
 </script>
 ~~~
@@ -126,7 +126,7 @@ Die **exportToICal()**-Methode akzeptiert ein optionales Objekt mit folgender Ei
 </table>
 
 
-~~~js title="Calling the export method with optional properties"
+~~~js title="Calling the export method with server property"
 scheduler.exportToICal({
     server:"https://myapp.com/myexport/scheduler"
 });

@@ -19,7 +19,7 @@ To make the entire scheduler read-only, set the [readonly](api/config/readonly.m
 ~~~js
 scheduler.config.readonly = true;
 ...
-scheduler.init('scheduler_here',new Date(2019, 5,11),"month");
+scheduler.init('scheduler_here',new Date(2027, 5,11),"month");
 ~~~
 Note, when the entire scheduler is non-editable, users can't open the lightbox.
 
@@ -32,7 +32,7 @@ To leave for users the possibility to open the lightbox, but to forbid any editi
 ~~~js
 scheduler.config.readonly_form = true;
 ...
-scheduler.init('scheduler_here',new Date(2019, 5,11),"month");
+scheduler.init('scheduler_here',new Date(2027, 5,11),"month");
 ~~~
 
 :::note
@@ -48,13 +48,13 @@ The [readonly](api/config/readonly.md) option is provided in the [readonly](guid
 To make a specific lightbox's section read-only, use the 'disabled' property of a DOM element of the related section object:
 
 ~~~js
-scheduler.config.lightbox.sections="["
+scheduler.config.lightbox.sections = [
     {name:"description", height:200, map_to:"text", type:"textarea" , focus:true},
     {name:"time", height:72, type:"time", map_to:"auto"}
 ];
 
 scheduler.attachEvent("onLightbox", function(){
-   var section = scheduler.formSection("description");
+   const section = scheduler.formSection("description");
    section.control.disabled = true;
 });
 ~~~

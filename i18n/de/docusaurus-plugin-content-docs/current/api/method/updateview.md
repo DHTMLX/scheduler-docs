@@ -22,10 +22,10 @@ description: "Zeigt die angegebene Ansicht und das Datum an, ohne irgendwelche E
 ~~~jsx
 // aktualisiert die aktuelle Ansicht und das Datum, ohne Änderungen vorzunehmen
 scheduler.updateView();
-// zeigt den 4. Juli 2012 in der aktuellen Ansicht an
-scheduler.updateView(new Date(2012,7,4));
-// zeigt den 3. Mai 2012 in der Wochen-Ansicht an
-scheduler.updateView(new Date(2012,5,3), "week");
+// zeigt den 4. Juli 2027 in der aktuellen Ansicht an
+scheduler.updateView(new Date(2027,7,4));
+// zeigt den 3. Mai 2027 in der Wochen-Ansicht an
+scheduler.updateView(new Date(2027,5,3), "week");
 ~~~
 
 ### Related samples

@@ -17,7 +17,7 @@ description: "允许将事件设置为全天持续"
 ~~~jsx
 scheduler.config.full_day = true;
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 **Default value:** false
@@ -30,4 +30,4 @@ scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
 启用此选项（*true*）时，lightbox 中用于选择时间段的字段将被禁用，事件持续时间自动设置为覆盖全天--从所选日期的**00:00**开始，到次日的**00:00**结束。
 
 ### Change log
-- added in version 2.3
+- 2.3 版本新增

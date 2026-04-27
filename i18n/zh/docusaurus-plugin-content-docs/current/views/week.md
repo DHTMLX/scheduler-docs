@@ -16,7 +16,7 @@ sidebar_label: "周视图"
 
 ~~~js
 //标准初始化。周视图会自动添加
-scheduler.init('scheduler_here',new Date(2019,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ...
 scheduler.load("/data/events");
 ~~~

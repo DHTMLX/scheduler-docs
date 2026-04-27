@@ -17,7 +17,7 @@ description: "sets the height of an hour unit in pixels"
 ~~~jsx
 scheduler.config.hour_size_px = 40;
 ...
-scheduler.init('scheduler_here', new Date(2010, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 **Default value:** 42

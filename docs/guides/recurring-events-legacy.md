@@ -37,7 +37,7 @@ The library provides the following options to configure recurring events:
 scheduler.config.repeat_date = "%m/%d/%Y";
 scheduler.config.include_end_by = true;
 ...
-scheduler.init('scheduler_here', new Date(2019, 7, 5), "month");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "month");
 ~~~
 
 
@@ -78,8 +78,8 @@ So, your backend should return recurring fields along with regular event fields,
 ~~~js
 {
   "id": 1,
-  "start_date": "2019-01-03 10:00:00",
-  "end_date": "2019-01-13 00:00:00",
+  "start_date": "2027-01-03 10:00:00",
+  "end_date": "2027-01-13 00:00:00",
   "text": "some_text",
   "rec_type": "day_1___",
   "event_length": 7200,
@@ -95,14 +95,14 @@ However, fields **start_date** and **end_date** slightly change their meaning:
 - **start_date** - the start date of the first event in a series in the format 'yyyy-mm-dd hh:mm:ss' (settings_format.md).
 - **end_date** - the end date of the last event in a series in the format 'yyyy-mm-dd 00:00:00' (settings_format.md).
 
-For example, a recurring event that starts on January 3, 2019 at 10:00, repeats every day and ends on January 13, 2019 at 12:00, 
+For example, a recurring event that starts on January 3, 2027 at 10:00, repeats every day and ends on January 13, 2027 at 12:00, 
 will be presented in the database as follows:
 
 
 ~~~js
 id:1,
-start_date:"2019-01-03 10:00:00",
-end_date:"2019-01-13 00:00:00",
+start_date:"2027-01-03 10:00:00",
+end_date:"2027-01-13 00:00:00",
 text:"some_text",
 details:"",
 rec_type:"day_1___",
@@ -155,24 +155,24 @@ There is a possibility to delete or edit a particular occurrence in a series.
 - Particular occurrences refer to the parent event through the **event_pid** property.
 - Once you have edited an occurrence in the series, the **event_length** field for this update 
 will store the time stamp of the date, when the occurrence should have happened if it wasn't edited, instead of the real event length. 
-So if the occurrence has happened on July 27, 2019 at 15:00 and was moved to July 30, 2019 15:00, the time stamp would reflect the first date. 
+So if the occurrence has happened on July 27, 2027 at 15:00 and was moved to July 30, 2027 15:00, the time stamp would reflect the first date. 
 The time stamp is measured in seconds from UNIX epoch.
 - Note that if your DB contains records of edited occurrences in the series and you decide to 'Edit series' via the lightbox, all the stored records will be deleted after saving. 
 The only record that will remain is the main recurring event, while its occurrences will lose their differences (will become identical).
 
 ### Let's consider an example
 
-You are a fan of the Olympic Games and want to watch the upcoming London Olympic Games 2012 (*27 July - 12 August*) as much as possible. 
+You are a fan of the Olympic Games and want to watch the upcoming London Olympic Games 2027 (*27 July - 12 August*) as much as possible. 
 So you decide to create a recurring event that *starts at 17.00* (the end of your work day) and *ends at 23.00* (the time for you to be asleep).
 But as the Opening Ceremony *starts only at 19.00* you want to edit the first event in the series (at this particular day) and set the time period 
-*from 19.00 to 23.00*. Also, you remember that on *August 1, 2012* you have deadline and most probably you will be at home too late to watch anything. 
-So you need to delete *August 1, 2012* from the series as well. 
+*from 19.00 to 23.00*. Also, you remember that on *August 1, 2027* you have deadline and most probably you will be at home too late to watch anything. 
+So you need to delete *August 1, 2027* from the series as well. 
 
 #### Shortly, your actions are the following:
 
-1. To create a recurring event **_(17.00-23.00)_** from **July 27,2012** till **August 12,2012**.
-2. To edit a particular occurrence on **July 27,2012** - to change the time period **_from 17.00-23.00 to 19.00-23.00_**.
-3. To delete a particular occurrence on **August 1,2012** from the series.
+1. To create a recurring event **_(17.00-23.00)_** from **July 27,2027** till **August 12,2027**.
+2. To edit a particular occurrence on **July 27,2027** - to change the time period **_from 17.00-23.00 to 19.00-23.00_**.
+3. To delete a particular occurrence on **August 1,2027** from the series.
 
 Consequently, we should have 3 records referring to our recurring event in the DB.
 
@@ -182,11 +182,11 @@ Creating the recurring event:
 
 ![create_a_recurring_event.png](/img/create_a_recurring_event.png)
 
-Editing **July 27,2012**:
+Editing **July 27,2027**:
 
 ![edit_a_recurring_event.png](/img/edit_a_recurring_event.png)
 
-Deleting **August 1,2012**: 
+Deleting **August 1,2027**: 
 
 ![delete_an_occurrence.png](/img/delete_an_occurrence.png)
 
@@ -212,10 +212,10 @@ To add for users the possibility to move the entire sequence while dragging recu
 
 ~~~js
 scheduler.attachEvent("onBeforeEventChanged",function(dev){
-    var parts = scheduler.getState().drag_id.toString().split("#");
+    let parts = scheduler.getState().drag_id.toString().split("#");
      if (parts.length > 1) {
 
-          var series = this.getEvent(parts[0]);
+          let series = this.getEvent(parts[0]);
 
           series.start_date.setHours(dev.start_date.getHours());
           series.start_date.setMinutes(dev.start_date.getMinutes());
@@ -396,7 +396,7 @@ You can remove any type or predefine it in a hidden input:
 
 ~~~html
 <input type="hidden" name="end" value="date_of_end" />
-<input type="hidden" name="date_of_end" value="01.01.2016" />
+<input type="hidden" name="date_of_end" value="01.01.2027" />
 ~~~
   
 ### Notes for changing the recurring block
@@ -427,6 +427,3 @@ For example:
 ~~~js
 addEventListener(node, "click", function(){...})
 ~~~
-
-
-@linkclass:hidden

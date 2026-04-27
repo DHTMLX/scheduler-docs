@@ -17,7 +17,7 @@ description: "defines the time period in milliseconds that is used to differ the
 ~~~jsx
 scheduler.config.touch_drag = 750;
 ...
-scheduler.init('scheduler_here',new Date(2013,3,10),"week");
+scheduler.init('scheduler_here',new Date(2027,3,10),"week");
 ~~~
 
 **Default value:** 500

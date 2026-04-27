@@ -17,7 +17,7 @@ description: "Ermöglicht das Ändern der Größe von mehrtägigen Events in der
 ~~~jsx
 scheduler.config.resize_month_events = true;
 
-scheduler.init('scheduler_here', new Date(2010,0,10), "month");
+scheduler.init('scheduler_here', new Date(2027,0,10), "month");
 ~~~
 
 **Default value:** false

@@ -140,7 +140,7 @@ To display a basic Scheduler on the page, take the following steps:
         "today",
         "next"
     ];
-    scheduler.init('scheduler_here',new Date(2020,0,1),"week"); /*!*/
+    scheduler.init('scheduler_here',new Date(2027,0,1),"week"); /*!*/
 </script>
 </html>
 ~~~
@@ -341,18 +341,18 @@ To include dhtmlxScheduler files into a RequireJS-based app, you need to follow 
 
 ~~~js
 requirejs(["codebase/dhtmlxscheduler"], function(dhx){
-    var scheduler = dhx.scheduler;
-    var Scheduler = dhx.Scheduler;// for Enterprise builds
+    const scheduler = dhx.scheduler;
+    const Scheduler = dhx.Scheduler;// for Enterprise builds
  
     scheduler.init('scheduler_here',new Date(),"week");
     scheduler.parse([
         {
-            id: 1, text: "Event 1", start_date: "2022-07-15 09:00", 
-            end_date: "2022-07-15 10:00"
+            id: 1, text: "Event 1", start_date: "2027-07-15 09:00", 
+            end_date: "2027-07-15 10:00"
         },
         {
-            id: 2, text: "Event 2", start_date: "2022-07-15 10:00", 
-            end_date: "2022-07-15 11:00"
+            id: 2, text: "Event 2", start_date: "2027-07-15 10:00", 
+            end_date: "2027-07-15 11:00"
         }
     ]);
 });
@@ -379,17 +379,17 @@ requirejs.config({
  
 requirejs(["dhtmlxscheduler"], 
 function (dhx) {
-    var scheduler = dhx.scheduler;
+    const scheduler = dhx.scheduler;
  
     scheduler.init('scheduler_here',new Date(),"week");
     scheduler.parse([
         {
-            id: 1, text: "Event 1", start_date: "2022-07-15 09:00", 
-            end_date: "2022-07-15 10:00"
+            id: 1, text: "Event 1", start_date: "2027-07-15 09:00", 
+            end_date: "2027-07-15 10:00"
         },
         {
-            id: 2, text: "Event 2", start_date: "2022-07-15 10:00", 
-            end_date: "2022-07-15 11:00"
+            id: 2, text: "Event 2", start_date: "2027-07-15 10:00", 
+            end_date: "2027-07-15 11:00"
         }
     ]);
 });

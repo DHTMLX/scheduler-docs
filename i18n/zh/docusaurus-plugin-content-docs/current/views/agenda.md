@@ -93,8 +93,8 @@ scheduler.date.add_agenda = function(date, inc){
 您还可以通过设置 [agenda_end](api/config/agenda_end.md) 和 [agenda_start](api/config/agenda_start.md) 属性来固定显示的日期范围:
 
 ~~~js
-scheduler.config.agenda_start = new Date(2023, 5, 1); 
-scheduler.config.agenda_end = new Date(2023, 6, 1);   
+scheduler.config.agenda_start = new Date(2027, 5, 1); 
+scheduler.config.agenda_end = new Date(2027, 6, 1);   
 ~~~
 
 ## 相关指南

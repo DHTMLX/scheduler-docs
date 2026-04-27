@@ -1,25 +1,25 @@
 ---
-title: "RTL (Rechts-nach-links) Modus"
-sidebar_label: "RTL (Rechts-nach-links) Modus"
+title: "RTL (Right-to-left) Modus"
+sidebar_label: "RTL (Right-to-left) Modus"
 ---
 
-# RTL (Rechts-nach-links) Modus
+# RTL (Right-to-left) Modus
 
-Der Scheduler unterstützt den RTL-Modus (Rechts-nach-links), den Sie mithilfe der [rtl Konfigurationsoption](api/config/rtl.md) aktivieren können.
+Sie können den RTL-Modus für den Scheduler über die [rtl-Konfigurationsoption](api/config/rtl.md) aktivieren.
 
 ~~~js
 scheduler.config.rtl = true;
 ~~~
 
-Sobald der RTL-Modus aktiviert ist, werden die Kalenderelemente standardmäßig von rechts nach links angezeigt, mit Ausnahme der Header-Elemente des Schedulers.
+Nach der Implementierung des RTL-Modus werden alle Elemente des Kalenders automatisch von rechts nach links dargestellt, mit Ausnahme der Elemente der Scheduler-Kopfzeile.
 
 ![rtl](/img/rtl.png)
 
 
-[Basic initialization](https://docs.dhtmlx.com/scheduler/samples/14_rtl/01_basic_init.html)
+[Grundlegende Initialisierung](https://docs.dhtmlx.com/scheduler/samples/14_rtl/01_basic_init.html)
 
 
-Um die Reihenfolge der Header-Elemente des Schedulers anzupassen, müssen Sie deren CSS-Klassen wie folgt anpassen:
+Um die Anordnung der Elemente in der Scheduler-Kopfzeile zu ändern, müssen Sie die CSS-Klassen der Elemente neu definieren, wie gezeigt:
 
 ~~~js
 <style type="text/css" >
@@ -45,43 +45,43 @@ Um die Reihenfolge der Header-Elemente des Schedulers anzupassen, müssen Sie de
 
 ![reorder_header_rtl](/img/reorder_header_rtl.png)
 
-## Beispiele für den RTL-Modus
+## RTL-Modus-Beispiele
 
 <b>Monatsansicht im RTL-Modus</b>
 
-So sieht die Monatsansicht im RTL-Modus aus. Die Ereignistitel und -details sind jetzt am rechten Rand jedes Ereignisfeldes ausgerichtet.
+Schauen wir uns an, wie die Monatsansicht im RTL-Modus aussieht. Die Titel und Details des Termins befinden sich nun auf der rechten Seite des Termin-Blocks.
 
 ![month_view_rtl](/img/month_view_rtl.png)
 
-<b>Ereignisfenster im RTL-Modus</b>
+<b>Terminfenster im RTL-Modus</b>
 
-Das folgende Bild zeigt, wie sich das Detailfenster eines Ereignisses optisch anpasst, wenn der RTL-Modus aktiviert ist.
+Es gibt ein gutes Beispiel dafür, wie sich das Erscheinungsbild des Fensters mit Termin-Details nach der Anwendung des RTL-Modus im untenstehenden Bild ändert.
 
 ![window_with_details](/img/window_with_details.png)
 
-<b>Zeitleiste im RTL-Modus</b>
+<b>Timeline im RTL-Modus</b>
 
-Im RTL-Modus werden Zeitleisten automatisch von rechts nach links innerhalb des Schedulers angeordnet.
+Der RTL-Modus ordnet Timelines im Scheduler automatisch von rechts nach links an.
 
 ![timeline_rtl](/img/timeline_rtl.png)
 
 ## Anpassung von Elementen im RTL-Modus
 
-Zusätzliche CSS-Klassen stehen zur Verfügung, um bestimmte Elemente im RTL-Modus individuell zu gestalten.
+Sie können zusätzliche CSS-Klassen verwenden, um einzelnen Elementen im RTL-Modus individuelle Stile zuzuweisen.
 
-Folgende Klassen können Sie verwenden:
+Dies ist die Liste der CSS-Klassen, die Sie festlegen können:
 
-- <b>dhx_cal_container_rtl</b> - richtet sich an den gesamten Scheduler-Container
-- <b>dhx_tooltip_rtl</b> - richtet sich an das Tooltip-Element
-- <b>dhx_quick_info_rtl</b> - richtet sich an das 'Quick Info' Popup
-- <b>dhx_cal_light_rtl</b> - richtet sich an die Lightbox
+- <b>dhx_cal_container_rtl</b> - wendet Stile auf den gesamten Container an
+- <b>dhx_tooltip_rtl</b> - wendet Stile auf das Tooltip an
+- <b>dhx_quick_info_rtl</b> - wendet Stile auf das 'Quick Info'-Popup an
+- <b>dhx_cal_light_rtl</b> - wendet Stile auf das Lightbox-Element an
 
-Beispiel:
+Zum Beispiel:
 
-~~~js
+~~~css
 .dhx_cal_container_rtl .dhx_cal_event{
     margin-right: -5px;
 }
 ~~~
 
-Damit werden alle Scheduler-Ereignisse innerhalb des Containers um 5px nach rechts verschoben.
+Alle Ereignisse des Scheduler-Containers werden um 5px nach rechts verschoben.

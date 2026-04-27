@@ -17,7 +17,7 @@ description: "sets the format of the date in the sub-header of the Month view"
 ~~~jsx
 scheduler.config.week_date="%l, %W";
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** "%l"

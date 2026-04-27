@@ -1,94 +1,95 @@
 ---
-title: "dhtmlxScheduler 与 React 集成指南"
-sidebar_label: "dhtmlxScheduler 与 React 集成指南"
+title: "dhtmlxScheduler 与 React"
+sidebar_label: "dhtmlxScheduler 与 React"
 ---
 
-# dhtmlxScheduler 与 React 集成指南
+# dhtmlxScheduler 与 React
 
-本指南假定您已基本了解 [React](https://react.dev/) 的相关概念和模式。如果您是 React 新手，建议先阅读 [React 官方文档](https://legacy.reactjs.org/docs/getting-started.html) 入门教程。
+使用本档文档前，你应熟悉 [React](https://react.dev/) 的基本概念和模式。
+如果你还不熟悉，请参考 [React 文档](https://react.dev/learn) 的入门教程。
 
-DHTMLX Scheduler 可以很好地与 React 集成。您可以在 GitHub 上找到相关示例:[DHTMLX Scheduler with React Demo](https://github.com/DHTMLX/react-scheduler-demo)。
+DHTMLX Scheduler 与 React 兼容。你可以在 GitHub 上查看对应的示例： [DHTMLX Scheduler 与 React 演示](https://github.com/DHTMLX/react-scheduler-demo)。
 
-## 创建项目
+## 创建一个项目
 
-在创建项目之前，请确保已安装 [Node.js](https://nodejs.org/en/)。
+在开始创建新项目之前，请安装 Node.js（[Node.js 官方网站](https://nodejs.org/en/)）。
 
-要搭建一个简单的 React 项目，请运行以下命令:
+你可以使用以下命令创建一个基本的 React 项目：
 
 ~~~
 npx create-vite my-react-scheduler-app --template react
 ~~~
 
-### 安装依赖
+### 依赖项安装
 
-接下来，进入您的应用目录。本例中使用 **my-react-scheduler-app**:
+接下来你应该进入应用目录。我们把项目命名为 **my-react-scheduler-app**，并执行：
 
 ~~~
 cd my-react-scheduler-app
 ~~~
 
-然后使用您喜欢的包管理器安装依赖并启动开发服务器:
+之后你应安装依赖并启动开发服务器。为此，请使用包管理器：
 
-- 如果使用 yarn，运行:
+- 如果你使用 yarn，请执行以下命令：
 
 ~~~
 yarn install
 yarn dev
 ~~~
 
-- 如果使用 npm，运行:
+- 如果你使用 npm，请执行以下命令：
 
 ~~~
 npm install
 npm run dev
 ~~~
 
-您的 React 项目现在应该可以通过 **http://localhost:5173** 访问。
+现在你的 React 项目应该在 **http://localhost:5173** 运行。
 
-![Scheduler React app running](/img/scheduler_react_app_run.png)
+![Scheduler React 应用正在运行](/img/scheduler_react_app_run.png)
 
 ## 创建 Scheduler
 
-要添加 DHTMLX Scheduler，首先通过命令行按 **Ctrl+C** 停止应用。然后继续安装 Scheduler 包。
+现在我们应该获取 DHTMLX Scheduler 的代码。首先，在命令行中按下 **Ctrl+C** 停止应用。然后我们就可以继续安装 Scheduler 包。
 
-## 步骤 1. 安装包
+## 步骤 1. 包安装
 
-库的 PRO 版本可通过我们的私有仓库使用 **npm/yarn** 获取。请参考
-[此说明](guides/installation.md#npmevaluationandproversions) 获取访问权限。
+库的 PRO 版本可通过我们的私有仓库用于 npm/yarn 安装，请按照 [本说明](guides/installation.md#npm---evaluation-and-pro-versions) 以获取访问权限。
 
-获得 Scheduler 的 Evaluation 版本后，使用以下命令之一安装:
+获得 Scheduler 的评估版本后，可以使用以下命令安装：
 
-- 使用 npm:
+- 对于 npm：
 
 ~~~
 npm install @dhx/trial-scheduler
 ~~~
 
-- 使用 yarn:
+- 对于 yarn：
 
 ~~~
 yarn add @dhx/trial-scheduler
 ~~~
 
-另外，由于库的 zip 包结构与 **npm** 模块兼容，您也可以
-[从本地文件夹安装](guides/installation.md#install-from-local-folder)。
+或者，由于库的 zip 包被构建为一个 **npm** 模块，你可以 [从本地文件夹安装](guides/installation.md#installing-the-package-from-a-local-folder)。
 
-## 步骤 2. 创建组件
+## 步骤 2. 组件创建
 
-接下来，创建一个 React 组件用于在应用中集成 Scheduler。新建文件夹 ***src/components/Scheduler***，并在其中创建以下文件:***Scheduler.jsx***、***Scheduler.css*** 和 ***index.js***。
+现在我们应该创建一个 React 组件，将 Scheduler 添加到应用中。让我们创建 ***src/components/Scheduler*** 文件夹。  
+在这里我们将创建 ***Scheduler.jsx***、***Scheduler.css*** 和 ***index.js*** 文件。
 
-首先创建 ***Scheduler.css***，为 *scheduler-container* 添加样式:
+我们需要创建 ***Scheduler.css*** 文件并为 *scheduler-container* 添加样式：
 
-~~~js title="src/components/Scheduler/Scheduler.css"
+
+~~~css title="src/components/Scheduler/Scheduler.css"
 .scheduler-container {
     height: 100vh;
     width: 100vw;
 }
 ~~~
 
-为确保 Scheduler 容器填满整个页面，请删除 ***src*** 文件夹下 ***App.css*** 的默认样式，并添加如下内容:
+为了让 Scheduler 容器占据 body 的整个空间，你需要移除位于 ***src*** 文件夹中的 ***App.css*** 的默认样式，并添加以下样式：
 
-~~~
+~~~css
 #root {
   margin: 0;
   padding: 0;
@@ -97,7 +98,8 @@ yarn add @dhx/trial-scheduler
 }
 ~~~
 
-然后添加 ***index.js*** 文件，内容如下:
+并添加 ***index.js*** 文件，内容如下：
+
 
 ~~~js title="src/components/Scheduler/index.js"
 import Scheduler from './Scheduler';
@@ -107,27 +109,30 @@ export default Scheduler;
 
 ### 导入源文件
 
-打开 ***Scheduler.jsx*** 并导入 Scheduler 源文件。根据您安装包的方式，导入代码如下:
+打开新创建的 ***Scheduler.jsx*** 文件并导入 Scheduler 的源文件。注意：
 
-- 如果从本地文件夹安装:
+- 如果你是从本地文件夹安装 Scheduler 包，你的导入路径将如下所示：
+
 
 ~~~js title="Scheduler.jsx"
 import { Scheduler } from 'dhtmlx-scheduler';
 import 'dhtmlx-scheduler/codebase/dhtmlxscheduler.css';
 ~~~
 
-- 如果使用 trial 版本:
+- 如果你选择安装 trial 版本，导入路径应如：
+
 
 ~~~js title="Scheduler.jsx"
 import { Scheduler } from '@dhx/trial-scheduler';
 import '@dhx/trial-scheduler/codebase/dhtmlxscheduler.css';
 ~~~
 
-本教程使用 **trial** 版本。
+在本教程中我们将使用 Scheduler 的 **trial** 版本。
 
 ### 设置容器并添加 Scheduler
 
-要在页面上渲染 Scheduler，需要设置一个容器。创建 ***Scheduler.jsx***，内容如下:
+要在页面上显示 Scheduler，我们需要设置容器以渲染组件。创建 ***Scheduler.jsx*** 文件，使用以下代码：
+
 
 ~~~js title="src/components/Scheduler/Scheduler.jsx"
 import { useEffect, useRef } from "react";
@@ -164,7 +169,7 @@ export default function SchedulerView( ) {
 
 ## 步骤 3. 将 Scheduler 添加到应用中
 
-现在将 Scheduler 组件添加到您的应用中。打开 ***src/App.jsx***，将默认内容替换为:
+现在是将组件添加到应用中的时候。打开 ***src/App.jsx***，并使用 *Scheduler* 组件替代默认内容，插入以下代码：
 
 ~~~js title="src/App.jsx"
 import Scheduler from "./components/Scheduler";
@@ -180,13 +185,14 @@ function App() {
 export default App;
 ~~~
 
-重新启动应用后，页面上会出现一个空白的 Scheduler:
+之后，当你启动应用时，页面上应该会看到一个空的 Scheduler：
 
 ![Scheduler React init](/img/scheduler_init.png)
 
-## 步骤 4. 提供数据
+## 第 4 步. 提供数据
 
-要在 Scheduler 中显示事件，需要提供一组数据。在 ***src/*** 目录下创建 ***data.js*** 并添加一些事件:
+要向 Scheduler 添加数据，我们需要提供一个数据集。让我们在 ***src/*** 目录中创建 ***data.js*** 文件并添加一些数据：
+
 
 ~~~js title="src/data.js"
 export function getData() {
@@ -208,7 +214,8 @@ export function getData() {
 }
 ~~~
 
-然后，在 ***App.jsx*** 中将此数据作为 props 传递给 Scheduler 组件:
+并且应在 ***App.jsx*** 中将 props（我们的数据）传递给 Scheduler 组件：
+
 
 ~~~js title="App.jsx"
 import { getData } from "./data.js";
@@ -225,7 +232,8 @@ function App() {
 export default App;
 ~~~
 
-在 Scheduler 组件中，通过 **scheduler.parse()** 方法使用该 props:
+并在 Scheduler 组件中对 **scheduler.parse()** 方法使用 props：
+
 
 ~~~js title="Scheduler.jsx"
 import { useEffect, useRef } from "react";
@@ -261,15 +269,16 @@ export default function SchedulerView({events}) {
 }
 ~~~
 
-现在刷新页面，Scheduler 会加载显示事件:
+现在如果你重新打开应用页面，你应该会看到带有事件的 Scheduler：
 
 ![Scheduler React events](/img/scheduler_events.png)
 
-## 步骤 5. 保存数据
+## 第 5 步. 保存数据
 
-要处理 Scheduler 中的变更，可以使用 [dataProcessor](https://docs.dhtmlx.com/dataprocessor__index.html) 处理器。这样可以与您的后端服务器通信。该处理器可以是函数或路由对象。dhtmlxScheduler 支持 handler 返回 Promise，因此可以正确处理操作完成。
+要捕获在 Scheduler 中所做的更改，你可以使用 [dataProcessor] 处理程序，它允许与你的服务器端后端进行“通信”。处理程序可以被声明为函数或路由对象。dhtmlxScheduler 接受来自处理程序的 Promise 响应，因此你的 Scheduler 将正确处理操作的完成。 
 
-通过 **createDataProcessor()** 创建 **DataProcessor** 并捕获变更，如下:
+你可以通过 API 方法 **createDataProcessor()** 创建一个 **DataProcessor**，并像下面这样捕获更改：
+
 
 ~~~
 scheduler.createDataProcessor(function(entity, action, data, id) {​
@@ -277,12 +286,12 @@ scheduler.createDataProcessor(function(entity, action, data, id) {​
 });
 ~~~
 
-如果您的后端在创建新事件后会更改事件 id（常见情况），请确保 Promise 返回一个包含 **(id: databaseId)** 或 **(tid: databaseId)** 的对象。这样 Scheduler 会将记录更新为新的数据库 id。更多细节请参见 [server side integration](guides/server-integration.md)。
+如果在创建新记录后你的服务会修改事件 id（通常会这样做），请确保你的 Promise 返回一个包含 **(id: databaseId)** 或 **(tid: databaseId)** 的对象作为结果，以便 Scheduler 能将新的数据库 id 应用到记录中。获取服务器端的更多信息 [关于服务器端](guides/server-integration.md)。
 
-至此，React Scheduler 的基本集成已完成。您可以在 GitHub 上查看完整演示:[DHTMLX react-scheduler-demo](https://github.com/DHTMLX/react-scheduler-demo)。
+好吧，React Scheduler 已就绪，欢迎你 [在 GitHub 上查看完整演示](https://github.com/DHTMLX/react-scheduler-demo)。
 
-## XSS、CSRF 和 SQL 注入攻击
+## XSS、CSRF 与 SQL 注入攻击
 
-请注意，Scheduler 本身不提供针对 SQL 注入、XSS 或 CSRF 等安全威胁的防护。保护您的应用免受这些风险是后端开发者的责任。
+请注意，Scheduler 不提供防止应用程序免受各种威胁的任何手段，例如 SQL 注入或 XSS 与 CSRF 攻击。确保应用程序安全的责任在于实现后台的开发人员。
 
-请参考 [应用安全](guides/app-security.md) 文章，了解常见漏洞及如何提升应用安全性。
+请查看 [应用程序安全] 文章，以了解组件最易受攻击的点以及可采取的提高应用程序安全性的措施。

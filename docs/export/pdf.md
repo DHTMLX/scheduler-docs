@@ -104,7 +104,7 @@ The [exportToPDF()](api/method/exporttopdf.md) method takes as a parameter an ob
 </table>
 
 
-[Calling the export method with optional properties](Calling the export method with optional properties)
+Calling the export method with optional properties:
 ~~~js
 scheduler.exportToPDF({
     name:"myscheduler.pdf",

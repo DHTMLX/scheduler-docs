@@ -1,7 +1,7 @@
 ---
-sidebar_label: "onAfterLightbox"
+sidebar_label: onAfterLightbox
 title: "onAfterLightbox event"
-description: "срабатывает сразу после того, как пользователь закрывает lightbox (форму редактирования)"
+description: "срабатывает после того, как пользователь закрыл lightbox (форму редактирования)"
 ---
 
 # onAfterLightbox
@@ -16,6 +16,6 @@ description: "срабатывает сразу после того, как по
 
 ~~~jsx
 scheduler.attachEvent("onAfterLightbox", function (){
-    //любая ваша кастомная логика здесь
+    // любая ваша логика здесь
 });
 ~~~

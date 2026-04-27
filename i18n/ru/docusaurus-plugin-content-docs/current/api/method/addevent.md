@@ -1,5 +1,5 @@
 ---
-sidebar_label: "addEvent"
+sidebar_label: addEvent
 title: "addEvent method"
 description: "добавляет новое событие"
 ---
@@ -23,8 +23,8 @@ description: "добавляет новое событие"
 
 ~~~jsx
 scheduler.addEvent({
-    start_date: "16-06-2013 09:00",
-    end_date:    "16-06-2013 12:00",
+    start_date: "16-06-2027 09:00",
+    end_date:    "16-06-2027 12:00",
     text:    "Meeting",
     holder:    "John", // userdata
     room:    "5"     // userdata
@@ -32,24 +32,24 @@ scheduler.addEvent({
 ~~~
 
 ### Related samples
-- [Validating lightbox fields](https://docs.dhtmlx.com/scheduler/samples/02_customization/08_validation.html)
-- [Custom event box](https://docs.dhtmlx.com/scheduler/samples/02_customization/27_custom_event_box.html)
+- [Валидация полей lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/08_validation.html)
+- [Пользовательский блок события](https://docs.dhtmlx.com/scheduler/samples/02_customization/27_custom_event_box.html)
 
 ### Details
 
 :::note
 
 Метод вызывает событие [onEventAdded](api/event/oneventadded.md) или [onEventChanged](api/event/oneventchanged.md)
- 
+
 :::
 
-Объект события может включать следующие свойства:
+Объект события может иметь следующие свойства:
 
-- **start_date** - (*Date,string*) дата начала события. Если указана строкой, она должна соответствовать формату "%d-%m-%Y %H:%i" (для настройки формата по умолчанию смотрите опцию [api_date](api/config/api_date.md)). Для [повторяющихся событий](guides/recurring-events.md) **start_date** должен быть типа Date.    
-- **end_date** - (*Date,string*) дата окончания события. Если указана строкой, должна использовать формат "%d-%m-%Y %H:%i" (для изменения формата по умолчанию смотрите опцию [api_date](api/config/api_date.md)). Для [повторяющихся событий](guides/recurring-events.md) **end_date** должен быть типа Date.
-- **text** - (*string*) описание события.
-- **id** - (*string*) идентификатор события. Если не указан, будет сгенерирован автоматически.
-- **userdata** - (*hash*) набор пользовательских свойств в формате 'ключ-значение'.
+- **start_date** - (*Date,string*) дата начала события. Если свойство задано как строка, следует использовать формат "%d-%m-%Y %H:%i" (чтобы изменить формат по умолчанию, используйте опцию [api_date](api/config/api_date.md)). Для [recurring events](guides/recurring-events.md) значение свойства **start_date** должно иметь тип Date.
+- **end_date** - (*Date,string*) дата завершения события. Если свойство задано как строка, следует использовать формат "%d-%m-%Y %H:%i" (чтобы изменить формат по умолчанию, используйте опцию [api_date](api/config/api_date.md)). Для [recurring events](guides/recurring-events.md) значение свойства **end_date** должно иметь тип Date.
+- **text** - (*string*) текст события.
+- **id** - (*string*) идентификатор события. Если не указан, идентификатор события будет сгенерирован автоматически.
+- **userdata** - (*hash*) набор пользовательских свойств, представленный в виде пар 'ключ-значение'.
 
 ### Related API
 - [api_date](api/config/api_date.md)

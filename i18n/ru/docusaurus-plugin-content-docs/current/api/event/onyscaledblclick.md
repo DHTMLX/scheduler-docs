@@ -1,27 +1,27 @@
 ---
-sidebar_label: "onYScaleDblClick"
+sidebar_label: onYScaleDblClick
 title: "onYScaleDblClick event"
-description: "вызывается, когда пользователь двойным щелчком кликает по ячейке на оси Y (применимо только в представлении Timeline)"
+description: "срабатывает при двойном клике по ячейке на оси Y (только в представлении таймлайн)"
 ---
 
 # onYScaleDblClick
 
 ### Description
 
-@short: Вызывается, когда пользователь двойным щелчком кликает по ячейке на оси Y (применимо только в представлении Timeline)
+@short: Срабатывает при двойном клике по ячейке на оси Y (только в представлении таймлайн)
 
 @signature: onYScaleDblClick: (index: number, section: object, e: Event) =\> void
 
 ### Parameters
 
-- `index` - (required) *number* - нулевой индекс строки, по которой был выполнен клик
-- `section` - (required) *object* - объект данных, связанный с кликнутой ячейкой
-- `e` - (required) *Event* - нативный объект события
+- `index` - (required) *number* - индекс строки нажатой ячейки (нумерация с нуля)
+- `section` - (required) *object* - объект данных нажатой ячейки
+- `e` - (required) *Event* - объект нативного события
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onYScaleDblClick", function (index, section, e){
-    // здесь можно добавить пользовательскую логику
+    // любая ваша логика здесь
 });
 ~~~

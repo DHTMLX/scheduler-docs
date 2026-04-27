@@ -1,30 +1,30 @@
 ---
-sidebar_label: "markCalendar"
-title: "markCalendar method"
-description: "добавляет CSS класс к конкретной дате"
+sidebar_label: markCalendar
+title: "метод markCalendar"
+description: "применяет CSS-класс к указанной дате"
 ---
 
 # markCalendar
 
 ### Description
 
-@short: Добавляет CSS класс к конкретной дате
+@short: Применяет CSS-класс к указанной дате
 
 @signature: markCalendar: (calendar: any, date: Date, css: string) =\> void
 
 ### Parameters
 
-- `calendar` - (required) *object* - экземпляр календаря
-- `date` - (required) *Date* - дата для выделения
-- `css` - (required) *string* - имя CSS класса для применения
+- `calendar` - (required) *object* - объект календаря
+- `date` - (required) *Date* - дату, которую нужно отметить
+- `css` - (required) *string* - имя CSS-класса
 
-### Example
+### Пример
 
 ~~~jsx
 <style>
 my_style{
     color:red !important;//используйте ключевое слово 'important', чтобы гарантировать применение стиля к дате
-}                        // 
+}
 </style>
 <script>
     // Существует два способа получить объект календаря:
@@ -43,17 +43,17 @@ my_style{
 ### Details
 
 :::note
- Метод требует включения плагина [minical](guides/extensions-list.md#minicalendardatepicker). 
+Метод требует включения плагина [minical](guides/extensions-list.md#mini-calendar-date-picker).
 :::
 
 :::note
 
-Учтите, что этот метод работает только с мини-календарём, а не с самим scheduler.
- 
+Примечание: метод применяется только к мини-календарю, а не к scheduler!
+
 :::
 
 ### Related API
 - [unmarkCalendar](api/method/unmarkcalendar.md)
 
 ### Related Guides
-- [Мини-календарь (Date Picker)](guides/minicalendar.md)
+- [Mini Calendar (Date Picker)](guides/minicalendar.md)

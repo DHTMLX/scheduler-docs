@@ -66,13 +66,13 @@ To change the default scale spacing you need to rewrite the [hour_scale](api/tem
 To make the scale spacing equal to 30 minutes you can rewrite the template as follows:
 
 ~~~js
-var format = scheduler.date.date_to_str("%H:%i");
-var step = 30;
+const format = scheduler.date.date_to_str("%H:%i");
+const step = 30;
         
 scheduler.templates.hour_scale = function(date){
-    var html="";
-    for (var i="0;" i<60/step; i++){
-        html+="<div style='height:22px;line-height:22px;'>"+format(date)+"</div>";
+    let html="";
+    for (let i = 0; i < 60/step; i++){
+        html += "<div style='height:22px;line-height:22px;'>"+format(date)+"</div>";
         date = scheduler.date.add(date,step,"minute");
     }
     return html;
@@ -82,7 +82,4 @@ scheduler.templates.hour_scale = function(date){
 
 ![scale_spacing.png](/img/scale_spacing.png)
 
-**Related samples:**
-
-
-[Custom Y-Axis](https://docs.dhtmlx.com/scheduler/samples/02_customization/21_custom_hour_scale.html)
+**Related samples:** [Custom Y-Axis](https://docs.dhtmlx.com/scheduler/samples/02_customization/21_custom_hour_scale.html)

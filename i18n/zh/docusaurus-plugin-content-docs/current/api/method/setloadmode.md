@@ -20,7 +20,7 @@ description: "设置分段加载数据的模式，实现动态加载"
 
 ~~~jsx
 scheduler.config.load_date = "%Y.%m.%d";  
-scheduler.init('scheduler_here',new Date(2009,10,1),"month");
+scheduler.init('scheduler_here',new Date(2027,10,1),"month");
 
 scheduler.setLoadMode("month")  
 scheduler.load("data/events.php");

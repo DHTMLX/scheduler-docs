@@ -1,28 +1,28 @@
 ---
-sidebar_label: "confirm"
+sidebar_label: confirm
 title: "confirm method"
-description: "открывает confirm message box"
+description: "вызывает окно подтверждения"
 ---
 
 # confirm
 
 ### Description
 
-@short: Открывает confirm message box
+@short: Вызывает окно подтверждения
 
 @signature: confirm: (config: any) =\> HTMLElement
 
 ### Parameters
 
-- `config` - (required) *object* - настройки для confirm box
+- `config` - (обязательный) *объект* - конфигурация окна подтверждения
 
 ### Returns
-- ` div` - (HTMLElement) - div элемент, содержащий confirm box
+- `div` - (HTMLElement) - div-контейнер окна подтверждения
 
 ### Example
 
 ~~~jsx
-var box = scheduler.confirm({
+const box = scheduler.confirm({
     text: "Continue?",
     ok:"Yes", 
     cancel:"No",
@@ -38,7 +38,7 @@ var box = scheduler.confirm({
 
 ### Details
 
-Для получения дополнительной информации о доступных параметрах конфигурации confirm message box, ознакомьтесь со статьей [Всплывающие сообщения и модальные окна](guides/popups-and-modals.md).
+Подробнее об поддерживаемых параметрах конфигурации окна подтверждения см. статью [Всплывающие сообщения и модальные окна](guides/popups-and-modals.md).
 
 ### Related API
 - [alert](api/method/alert.md)

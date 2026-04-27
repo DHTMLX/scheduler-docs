@@ -1,15 +1,15 @@
 ---
-title: "'Select' 및 'Edit' 바 커스터마이징"
-sidebar_label: "'Select' 및 'Edit' 바 커스터마이징"
+title: "'Select' 및 'Edit' 바 사용자 정의"
+sidebar_label: "'Select' 및 'Edit' 바 사용자 정의"
 ---
 
-# "Select" 및 "Edit" 바 커스터마이징
+# 'Select' 및 'Edit' 바 사용자 정의
 
-dhtmlxScheduler에서는 Edit 바와 Select 바 모두에 대해 사용자 지정 버튼 모음을 설정할 수 있습니다.
+dhtmlxScheduler는 편집 및 선택 바에 대해 사용자 정의 버튼 세트를 정의할 수 있는 기능을 제공합니다.
 
-## Select 바
+## 선택 바
 
-기본적으로 Select 바에는 3개의 버튼('Details', 'Edit', 'Delete')이 포함되어 있으며, 이는 [icons_select](api/config/icons_select.md) 설정 옵션으로 정의됩니다.
+기본적으로 선택 바에는 [icons_select](api/config/icons_select.md) 구성 옵션으로 지정된 3개의 버튼('상세 정보', '편집', '삭제')이 포함되어 있습니다.
 
 ~~~js
 scheduler.config.icons_select = [
@@ -21,15 +21,15 @@ scheduler.config.icons_select = [
 
 ### 사용 예시
 
-아래 이미지와 같이 Select 바의 예시가 있습니다:
+아래 그림에 표시된 선택 바를 살펴보겠습니다:
   
 ![select_bar.png](/img/select_bar.png)
 
-**Location**이라는 새 버튼이 기존 버튼과 함께 추가되었습니다.
+여기에 기존 버튼들에 새 버튼인 - **위치**를 추가했습니다.
 
-이를 구현하는 단계는 다음과 같습니다:
+다음은 절차입니다:
 
-- [icons_select](api/config/icons_select.md)를 다음과 같이 업데이트합니다:
+-  [icons_select](api/config/icons_select.md)을 아래와 같이 재정의합니다:
   
 ~~~js
 scheduler.config.icons_select = [
@@ -39,18 +39,18 @@ scheduler.config.icons_select = [
    "icon_delete"
 ];
 ~~~
- 
+
 :::note
-Note, 모든 버튼 이름은 "icon_"으로 시작해야 합니다
+참고: 모든 버튼은 반드시 "icon_"로 시작해야 합니다.
 ::: 
 
-- 새 버튼의 라벨을 정의합니다:
+-  새 버튼의 레이블을 설정합니다:
   
 ~~~js
-scheduler.locale.labels.icon_location = "Location";
+scheduler.locale.labels.icon_location = "위치";
 ~~~
 
-- 버튼에 대한 CSS 클래스를 지정합니다:
+-  버튼의 CSS 클래스를 설정합니다:
   
 ~~~js
 .dhx_menu_icon.icon_location{
@@ -58,19 +58,19 @@ scheduler.locale.labels.icon_location = "Location";
 } 
 ~~~
 
-- 버튼의 클릭 핸들러를 제공합니다:
+-  버튼 클릭 처리를 위한 핸들러를 지정합니다:
   
 ~~~js
 scheduler._click.buttons.location = function(id){
    some_function(id);
 };
 ~~~
- 
-여기서 **scheduler._click.buttons**는 바의 버튼들에 대한 onClick 핸들러를 담고 있습니다. 'location' 키는 [icons_select](api/config/icons_select.md)에서 'icon_' 접두사를 뺀 버튼 이름과 일치합니다.
 
-## Edit 바
+여기서 **scheduler._click.buttons**는 바의 버튼들에 대한 onClick 핸들러의 모음을 포함합니다. 'location'은 'icon_' 뒤의 부분으로 [icons_edit](api/config/icons_edit.md)에서 설정된 버튼 이름입니다.
 
-일반적으로 Edit 바에는 2개의 버튼('Save', 'Cancel')이 있으며, 이는 [icons_edit](api/config/icons_edit.md) 옵션을 통해 설정됩니다.
+## 편집 바
+
+일반적으로 편집 바에는 [icons_edit](api/config/icons_edit.md) 구성 옵션으로 지정된 2개의 버튼('저장', '취소')이 포함되어 있습니다.
 
 ~~~js
 scheduler.config.icons_edit = [
@@ -81,14 +81,14 @@ scheduler.config.icons_edit = [
 
 ### 사용 예시
 
-아래 이미지와 같이 Edit 바를 예로 들 수 있습니다:
+아래 그림에 표시된 편집 바를 살펴보겠습니다:
   
 ![customizing_edit_bar.png](/img/customizing_edit_bar.png)
 
-**Save** 및 **Cancel** 버튼 외에 새로운 **Info** 버튼이 추가되었습니다.
-구현 과정은 다음과 같습니다:
+저장 버튼과 취소 버튼에 새 버튼 - **정보**를 추가했습니다.
+다음은 절차입니다:
 
-- [icons_edit](api/config/icons_edit.md)를 다음과 같이 업데이트합니다:
+-  [icons_edit](api/config/icons_edit.md)을 아래와 같이 재정의합니다:
   
 ~~~js
 scheduler.config.icons_edit = [
@@ -98,13 +98,13 @@ scheduler.config.icons_edit = [
 ];
 ~~~
 
-- 새 버튼의 라벨을 지정합니다:
+-  새 버튼의 레이블을 설정합니다:
   
 ~~~js
-scheduler.locale.labels.icon_custom = "Info";
+scheduler.locale.labels.icon_custom = "정보";
 ~~~
 
-- 버튼에 대한 CSS 클래스를 정의합니다:
+-  버튼의 CSS 클래스를 설정합니다:
   
 ~~~js
 .dhx_menu_icon.icon_custom{
@@ -112,7 +112,7 @@ scheduler.locale.labels.icon_custom = "Info";
 } 
 ~~~
 
-- 버튼의 클릭 핸들러를 지정합니다:
+-  버튼 클릭 처리를 위한 핸들러를 지정합니다:
   
 ~~~js
 scheduler._click.buttons.custom = function(id){
@@ -120,19 +120,17 @@ scheduler._click.buttons.custom = function(id){
 };
 ~~~
 
-다시 한 번, **scheduler._click.buttons**는 버튼의 클릭 핸들러를 포함하며, 'custom'은 [icons_edit](api/config/icons_edit.md)에서 'icon_' 접두사를 뺀 버튼 이름과 일치합니다.
-
- 
+여기서 **scheduler._click.buttons**는 바의 버튼들에 대한 onClick 핸들러의 모음을 포함합니다. 'custom'은 'icon_' 뒤의 부분으로 [icons_edit](api/config/icons_edit.md)에서 설정된 버튼 이름입니다.
 
 ## 바 요소의 동적 변경
 
-특정 조건에 따라 Edit 바와 Select 바의 버튼을 동적으로 수정할 수 있습니다.
+편집 및 선택 바의 버튼은 특정 조건에 따라 동적으로 변경될 수 있습니다. 
 
-예를 들어, 이벤트에 **important**라는 불리언 속성이 있어 해당 이벤트가 중요하며 삭제되어서는 안 된다는 것을 나타내는 경우, 이에 따라 Select 바에서 'delete' 버튼을 표시하거나 숨길 수 있습니다. 다음과 같이 구현할 수 있습니다:
+예를 들어 이벤트에 사용자가 삭제할 수 없도록 하는 중요도 여부를 나타내는 사용자 정의 불리언 속성 **important**가 있다고 가정합니다. 이 속성의 값에 따라 선택 바에서 '삭제' 버튼을 숨기거나 표시하고자 할 수 있습니다. 이러한 동작을 구현하는 방법은 다음과 같습니다:
 
 ~~~js
 scheduler.attachEvent("onClick", function(id){
-    var event = scheduler.getEvent(id);
+    const event = scheduler.getEvent(id);
     if (event.important)
         scheduler.config.icons_select = ["icon_details"];
     else

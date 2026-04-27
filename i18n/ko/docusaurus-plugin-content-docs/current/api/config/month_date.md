@@ -17,7 +17,7 @@ description: "월 보기 헤더의 형식을 정의합니다"
 ~~~jsx
 scheduler.config.month_date = "%F, %Y";
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** "%F %Y"

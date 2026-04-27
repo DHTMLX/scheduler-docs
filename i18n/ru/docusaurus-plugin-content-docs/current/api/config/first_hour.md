@@ -1,29 +1,29 @@
 ---
-sidebar_label: "first_hour"
-title: "first_hour config"
-description: "определяет начальный час для часовой шкалы (ось Y)"
+sidebar_label: first_hour
+title: "конфигурация first_hour"
+description: "устанавливает минимальное значение для шкалы часов (оси Y)"
 ---
 
 # first_hour
 
 ### Description
 
-@short: Определяет начальный час для часовой шкалы (ось Y)
+@short: Устанавливает минимальное значение для шкалы часов (оси Y)
 
 @signature: first_hour: number
 
 ### Example
 
 ~~~jsx
-scheduler.config.first_hour = 9;  
-scheduler.config.last_hour = 18;  
-...  
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.config.first_hour = 9;
+scheduler.config.last_hour = 18;
+...
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
-**Default value:** 0 (ноль)
+**Значение по умолчанию:** 0 (ноль)
 
-**Applicable views:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
+**Подходящие представления:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
 
 ### Related samples
 - [Loading data from a database](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/05_loading_database.html)

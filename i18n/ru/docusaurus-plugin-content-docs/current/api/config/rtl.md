@@ -1,14 +1,14 @@
 ---
-sidebar_label: "rtl"
-title: "rtl config"
-description: "включает режим RTL (right-to-left) для scheduler"
+sidebar_label: rtl
+title: "Конфигурация RTL"
+description: "включает режим RTL (справа налево) для планировщика"
 ---
 
 # rtl
 
 ### Description
 
-@short: Включает режим RTL (right-to-left) для scheduler
+@short: Включает режим RTL (справа налево) для планировщика
 
 @signature: rtl: boolean
 
@@ -17,17 +17,17 @@ description: "включает режим RTL (right-to-left) для scheduler"
 ~~~jsx
 scheduler.config.rtl = true;
 ...
-scheduler.init('scheduler_here',new Date(2018,0,1),"week");
+scheduler.init('scheduler_here',new Date(2027,0,1),"week");
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
 ### Related samples
-- [Basic initialization](https://docs.dhtmlx.com/scheduler/samples/14_rtl/01_basic_init.html)
+- [Базовая инициализация](https://docs.dhtmlx.com/scheduler/samples/14_rtl/01_basic_init.html)
 
 ### Details
 
 ![rtl](/img/rtl.png)
 
 ### Related Guides
-- [RTL (Справа налево) режим](guides/rtl-mode.md)
+- [RTL (Right-to-left) режим](guides/rtl-mode.md)

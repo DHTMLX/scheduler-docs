@@ -22,10 +22,10 @@ description: "显示指定的视图和日期，但不触发任何事件"
 ~~~jsx
 // 刷新当前视图和日期，但不做任何更改
 scheduler.updateView();
-// 在当前视图中显示2012年7月4日
-scheduler.updateView(new Date(2012,7,4));
-// 在“week”视图中显示2012年5月3日
-scheduler.updateView(new Date(2012,5,3), "week");
+// 在当前视图中显示2027年7月4日
+scheduler.updateView(new Date(2027,7,4));
+// 在“week”视图中显示2027年5月3日
+scheduler.updateView(new Date(2027,5,3), "week");
 ~~~
 
 ### Related samples

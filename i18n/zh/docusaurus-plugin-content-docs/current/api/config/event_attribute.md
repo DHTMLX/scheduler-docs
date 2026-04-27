@@ -21,4 +21,4 @@ scheduler.config.event_attribute = "data-event-id"
 **Default value:** "data-event-id"
 
 ### Change log
-- added in v6.0
+- 6.0 版本新增

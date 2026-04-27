@@ -1,15 +1,15 @@
 ---
-title: "自定义'选择'和'编辑'工具栏"
-sidebar_label: "自定义'选择'和'编辑'工具栏"
+title: "自定义 'Select' 与 'Edit' 栏"
+sidebar_label: "自定义 'Select' 与 'Edit' 栏"
 ---
 
-# 自定义"选择"和"编辑"工具栏
+# 自定义 "Select" 与 "Edit" 栏
 
-dhtmlxScheduler 允许你为编辑和选择工具栏设置自定义按钮集合。
+dhtmlxScheduler 提供了为编辑栏和选择栏定义自定义按钮集合的可能性。
 
-## 选择工具栏
+## 选择栏
 
-默认情况下，选择工具栏包含 3 个按钮（'Details'、'Edit'、'Delete'），它们通过 [icons_select](api/config/icons_select.md) 配置选项定义。
+默认情况下，选择栏包含 3 个按钮（'Details'、'Edit'、'Delete'），由 [icons_select](api/config/icons_select.md) 配置选项指定。
 
 ~~~js
 scheduler.config.icons_select = [
@@ -19,18 +19,19 @@ scheduler.config.icons_select = [
 ];
 ~~~
 
-### 使用示例
 
-如下图所示，这里是一个选择工具栏的示例:
+### 用法示例
 
+让我们来看看下图所示的选择栏：
+  
 ![select_bar.png](/img/select_bar.png)
 
-在现有按钮旁边新增了一个名为 **Location** 的按钮。
+在现有按钮的基础上，我们新增了一个按钮 - **Location**。
 
-实现步骤如下:
+以下是我们的步骤：
 
-- 按如下方式更新 [icons_select](api/config/icons_select.md):
-
+-  重新定义 [icons_select](api/config/icons_select.md)，如下所示：
+  
 ~~~js
 scheduler.config.icons_select = [
    "icon_location",
@@ -38,41 +39,41 @@ scheduler.config.icons_select = [
    "icon_edit",
    "icon_delete"
 ];
-
 ~~~
-
+ 
 :::note
-注意，每个按钮的名称必须以 "icon_" 开头
+注：任何按钮必须以 "icon_" 开头
 ::: 
 
 
-- 为新按钮定义标签:
-
+-  为新按钮设置标签：
+  
 ~~~js
 scheduler.locale.labels.icon_location = "Location";
 ~~~
 
-- 为按钮分配 CSS 类:
-
+-  为按钮设置 CSS 类：
+  
 ~~~js
 .dhx_menu_icon.icon_location{
   background-image: url('location_icon.png');  
 } 
 ~~~
 
-- 为按钮提供点击事件处理函数:
-
+-  指定处理按钮点击的处理函数：
+  
 ~~~js
 scheduler._click.buttons.location = function(id){
    some_function(id);
 };
 ~~~
+ 
+其中 **scheduler._click.buttons** 包含栏按钮的 onClick 处理函数集合。'location' 是在 [icons_edit](api/config/icons_edit.md) 中，位于 'icon_' 部分后的按钮名称。
+ 
 
-这里，**scheduler._click.buttons** 保存了工具栏按钮的 onClick 事件处理函数。'location' 键对应于 [icons_select](api/config/icons_select.md) 中按钮名称（去掉 'icon_' 前缀）。
+## 编辑栏
 
-## 编辑工具栏
-
-通常，编辑工具栏有 2 个按钮（'Save' 和 'Cancel'），通过 [icons_edit](api/config/icons_edit.md) 选项进行配置。
+通常，编辑栏包含 2 个按钮（'Save' 和 'Cancel'），由 [icons_edit](api/config/icons_edit.md) 配置选项指定。
 
 ~~~js
 scheduler.config.icons_edit = [
@@ -81,17 +82,18 @@ scheduler.config.icons_edit = [
 ];
 ~~~
 
-### 使用示例
 
-参考下图所示的编辑工具栏:
+### 用法示例
 
+让我们来看看下图所示的编辑栏：
+  
 ![customizing_edit_bar.png](/img/customizing_edit_bar.png)
 
-除了 **Save** 和 **Cancel** 按钮外，还新增了一个 **Info** 按钮。
-具体步骤如下:
+在 **Save** 和 **Cancel** 按钮的基础上，我们新增了一个按钮 - **Info**。
+以下是我们的步骤：
 
-- 按如下方式更新 [icons_edit](api/config/icons_edit.md):
-
+-  重新定义 [icons_edit](api/config/icons_edit.md)，如下所示：
+  
 ~~~js
 scheduler.config.icons_edit = [
    "icon_custom",
@@ -100,39 +102,41 @@ scheduler.config.icons_edit = [
 ];
 ~~~
 
-- 设置新按钮的标签:
-
+-  为新按钮设置标签：
+  
 ~~~js
 scheduler.locale.labels.icon_custom = "Info";
 ~~~
 
-- 定义按钮的 CSS 类:
-
+-  为按钮设置 CSS 类：
+  
 ~~~js
 .dhx_menu_icon.icon_custom{
   background-image: url('info_icon.png');  
 } 
 ~~~
 
-- 指定按钮的点击事件处理函数:
-
+-  指定处理按钮点击的处理函数：
+  
 ~~~js
 scheduler._click.buttons.custom = function(id){
    some_function;
 };
 ~~~
 
-同样，**scheduler._click.buttons** 包含了按钮的点击事件处理函数，'custom' 与 [icons_edit](api/config/icons_edit.md) 中按钮名称（去掉 'icon_' 前缀）一致。
+其中 **scheduler._click.buttons** 包含栏按钮的 onClick 处理函数集合。'custom' 是在 [icons_edit](api/config/icons_edit.md) 中，位于 'icon_' 部分后的按钮名称。
+ 
 
-## 动态修改工具栏元素
+## 动态改变栏元素
 
-你可以根据特定条件动态修改编辑和选择工具栏上的按钮。
+编辑栏和选择栏的按钮可以根据某些条件动态地改变。 
 
-例如，如果你的事件有一个布尔属性 **important**，用来表示该事件很重要且不应被删除，则可以根据该属性动态显示或隐藏选择工具栏中的 'delete' 按钮。示例代码如下:
+例如，您的事件有一个自定义布尔属性 **important**，表示该事件是否重要且用户无法删除。
+根据该属性的值，您可能希望在选择栏中隐藏/显示 'delete' 按钮。要实现这样的行为，请使用以下技巧：
 
 ~~~js
 scheduler.attachEvent("onClick", function(id){
-    var event = scheduler.getEvent(id);
+    const event = scheduler.getEvent(id);
     if (event.important)
         scheduler.config.icons_select = ["icon_details"];
     else

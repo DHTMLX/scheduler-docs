@@ -83,8 +83,8 @@ scheduler.updateView();
   <tr>
   <td colspan="2">
 ~~~js
-//阻止从2012年5月3日开始创建事件，直到'end_date' 
-start_date:new Date(2012,4,3)
+//阻止从2027年5月3日开始创建事件，直到'end_date' 
+start_date:new Date(2027,4,3)
 ~~~
   </td>
   </tr>
@@ -95,8 +95,8 @@ start_date:new Date(2012,4,3)
   <tr>
   <td colspan="2" >
 ~~~js
-//阻止从'start_date'直到2012年9月3日创建事件
-end_date:new Date(2012,8,3)
+//阻止从'start_date'直到2027年9月3日创建事件
+end_date:new Date(2027,8,3)
 ~~~
   </td>
   </tr>
@@ -109,7 +109,7 @@ end_date:new Date(2012,8,3)
 ~~~js
 days:[0, 2, 6] //限制星期日、星期二和星期六
 days:"fullweek" //限制整周
-days:new Date(2012,6,1) //阻止2012年7月1日
+days:new Date(2027,6,1) //阻止2027年7月1日
 ~~~
   </td>
   </tr>
@@ -227,7 +227,7 @@ sections: { unit: 5, timeline: [2,3]}
   </td>
   <td>
 ~~~js
-var config ={
+const config ={
     days:  1, 
     zones: [9*60, 15*60], 
     css: "cssClassName", 
@@ -252,7 +252,7 @@ var config ={
   </td>
   <td>
 ~~~js
-var config ={
+const config ={
     start_date: new Date(2013,7,13),
     end_date:   new Date(2013,7,14),
     css: "cssClassName",

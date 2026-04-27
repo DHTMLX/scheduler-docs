@@ -5,15 +5,16 @@ sidebar_label: "dhtmlxScheduler с React"
 
 # dhtmlxScheduler с React
 
-Это руководство предполагает, что вы знакомы с основами [React](https://react.dev/) и его концепциями. Если вы только начинаете работать с React, рекомендуем ознакомиться с [официальной документацией](https://legacy.reactjs.org/docs/getting-started.html).
+Вам следует быть знакомым с базовыми концепциями и шаблонами [React](https://react.dev/), чтобы пользоваться этой документацией.  
+Если нет, ознакомьтесь с [React документацией](https://react.dev/learn) для введения в работу.
 
-DHTMLX Scheduler отлично работает с React. Пример интеграции можно найти на GitHub: [DHTMLX Scheduler with React Demo](https://github.com/DHTMLX/react-scheduler-demo).
+DHTMLX Scheduler совместим с React. Вы можете увидеть соответствующий пример на GitHub: [DHTMLX Scheduler with React Demo](https://github.com/DHTMLX/react-scheduler-demo).
 
 ## Создание проекта
 
 Перед началом убедитесь, что у вас установлен [Node.js](https://nodejs.org/en/).
 
-Для создания простого проекта на React выполните команду:
+Вы можете создать базовый проект React с помощью следующей команды:
 
 ~~~
 npx create-vite my-react-scheduler-app --template react
@@ -21,74 +22,75 @@ npx create-vite my-react-scheduler-app --template react
 
 ### Установка зависимостей
 
-Перейдите в директорию вашего приложения. В данном примере используется **my-react-scheduler-app**:
+Далее перейдите в директорию приложения. Назовём наш проект **my-react-scheduler-app** и запустим:
 
 ~~~
 cd my-react-scheduler-app
 ~~~
 
-Далее установите зависимости и запустите сервер разработки с помощью вашего пакетного менеджера:
+После этого нужно установить зависимости и запустить dev-сервер. Для этого используйте менеджер пакетов:
 
-- Для yarn выполните:
+- если вы используете yarn, выполните следующие команды:
 
 ~~~
 yarn install
 yarn dev
 ~~~
 
-- Для npm выполните:
+- если же вы пользуетесь npm, выполните следующие команды:
 
 ~~~
 npm install
 npm run dev
 ~~~
 
-Ваш React-проект будет доступен по адресу **http://localhost:5173**.
+Теперь ваше приложение на React должно работать на **http://localhost:5173**.
 
 ![Scheduler React app running](/img/scheduler_react_app_run.png)
 
 ## Создание Scheduler
 
-Чтобы добавить DHTMLX Scheduler, сначала остановите приложение, нажав **Ctrl+C** в командной строке. После этого установите пакет Scheduler.
+Теперь нужно получить код DHTMLX Scheduler. Сначала остановим приложение, нажав **Ctrl+C** в командной строке. Затем можно приступить к установке пакета Scheduler.
 
-## Шаг 1. Установка пакета
+### Шаг 1. Установка пакета
 
-PRO-версии библиотеки доступны через **npm/yarn** из нашего приватного репозитория. Пожалуйста, следуйте 
-[этой инструкции](guides/installation.md#npmevaluationandproversions) для получения доступа.
+ПРО-версии библиотеки доступны для установки через **npm/yarn** из нашего приватного репозитория, пожалуйста, следуйте  
+[данной инструкции](guides/installation.md#npm---evaluation-and-pro-versions) чтобы получить доступ к нему.
 
-Когда у вас будет Evaluation-версия Scheduler, установите её одной из команд:
+После того как вы получите Evaluation-версию Scheduler, вы можете установить её следующими командами:
 
-- Через npm:
+- для npm:
 
 ~~~
 npm install @dhx/trial-scheduler
 ~~~
 
-- Через yarn:
+- для yarn:
 
 ~~~
 yarn add @dhx/trial-scheduler
 ~~~
 
-Также, так как zip-пакет библиотеки структурирован как **npm**-модуль, вы можете 
-[установить его из локальной папки](guides/installation.md).
+Либо, поскольку zip-пакет библиотеки структурирован как модуль **npm**, вы можете [установить его из локальной папки](guides/installation.md#installing-the-package-from-a-local-folder).
 
 ## Шаг 2. Создание компонента
 
-Создайте React-компонент для добавления Scheduler в приложение. Создайте папку ***src/components/Scheduler*** и в ней файлы: ***Scheduler.jsx***, ***Scheduler.css*** и ***index.js***.
+Теперь нужно создать React-компонент, чтобы добавить Scheduler в приложение. Давайте создадим папку ***src/components/Scheduler***.  
+Здесь мы создадим файлы ***Scheduler.jsx***, ***Scheduler.css*** и ***index.js***.
 
-Начните с создания ***Scheduler.css*** со стилями для *scheduler-container*:
+Необходимо создать файл ***Scheduler.css*** и добавить стили для *scheduler-container*:
 
-~~~js title="src/components/Scheduler/Scheduler.css"
+
+~~~css title="src/components/Scheduler/Scheduler.css"
 .scheduler-container {
     height: 100vh;
     width: 100vw;
 }
 ~~~
 
-Чтобы контейнер Scheduler занимал всю область body, удалите стандартные стили из ***App.css*** в папке ***src*** и добавьте:
+Чтобы Scheduler занимал всё пространство body, нужно убрать стандартные стили из файла ***App.css***, который расположен в папке ***src***, и добавить следующие:
 
-~~~
+~~~css
 #root {
   margin: 0;
   padding: 0;
@@ -97,7 +99,7 @@ yarn add @dhx/trial-scheduler
 }
 ~~~
 
-Добавьте файл ***index.js*** со следующим содержимым:
+И добавить файл ***index.js*** со следующим содержимым:
 
 ~~~js title="src/components/Scheduler/index.js"
 import Scheduler from './Scheduler';
@@ -105,29 +107,29 @@ import './Scheduler.css';
 export default Scheduler;
 ~~~
 
-### Импорт исходных файлов
+### Импорт исходников
 
-Откройте ***Scheduler.jsx*** и импортируйте исходные файлы Scheduler. В зависимости от способа установки пакета, импорты будут такими:
+Откройте только что созданный файл ***Scheduler.jsx*** и импортируйте исходники Scheduler. Обратите внимание, что:
 
-- Если установлен из локальной папки:
+- если вы установили пакет Scheduler из локальной папки, ваши пути импорта будут выглядеть так:
 
 ~~~js title="Scheduler.jsx"
 import { Scheduler } from 'dhtmlx-scheduler';
 import 'dhtmlx-scheduler/codebase/dhtmlxscheduler.css';
 ~~~
 
-- При использовании trial-версии:
+- если вы выбрали установить пробную версию, пути импорта должны быть как в примере:
 
 ~~~js title="Scheduler.jsx"
 import { Scheduler } from '@dhx/trial-scheduler';
 import '@dhx/trial-scheduler/codebase/dhtmlxscheduler.css';
 ~~~
 
-В данном руководстве используется **trial**-версия.
+В этом руководстве мы будем использовать пробную версию Scheduler.
 
-### Настройка контейнера и добавление Scheduler
+### Установка контейнера и добавление Scheduler
 
-Чтобы отобразить Scheduler на странице, создайте контейнер. Создайте ***Scheduler.jsx*** со следующим кодом:
+Чтобы отобразить Scheduler на странице, нужно задать контейнер, в который будет отрисовываться компонент. Создайте файл ***Scheduler.jsx*** со следующим кодом:
 
 ~~~js title="src/components/Scheduler/Scheduler.jsx"
 import { useEffect, useRef } from "react";
@@ -164,7 +166,7 @@ export default function SchedulerView( ) {
 
 ## Шаг 3. Добавление Scheduler в приложение
 
-Теперь добавьте компонент Scheduler в приложение. Откройте ***src/App.jsx*** и замените содержимое на:
+Теперь пора добавить компонент в наше приложение. Откройте ***src/App.jsx*** и используйте компонент *Scheduler* вместо стандартного содержимого, вставив код ниже:
 
 ~~~js title="src/App.jsx"
 import Scheduler from "./components/Scheduler";
@@ -180,13 +182,14 @@ function App() {
 export default App;
 ~~~
 
-После запуска приложения на странице появится пустой Scheduler:
+После этого, при запуске приложения, вы увидите пустой Scheduler на странице:
 
 ![Scheduler React init](/img/scheduler_init.png)
 
-## Шаг 4. Передача данных
+## Шаг 4. Предоставление данных
 
-Чтобы отобразить события в Scheduler, передайте набор данных. Создайте файл ***data.js*** в директории ***src*** и добавьте события:
+Чтобы добавить данные в Scheduler, необходимо предоставить набор данных. Давайте создадим файл ***data.js*** в директории ***src/*** и добавим в него данные:
+
 
 ~~~js title="src/data.js"
 export function getData() {
@@ -208,7 +211,7 @@ export function getData() {
 }
 ~~~
 
-Передайте эти данные как props для компонента Scheduler в ***App.jsx***:
+И следует [передать props (наши данные)](https://react.dev/learn/passing-props-to-a-component) в компонент Scheduler в ***App.jsx***:
 
 ~~~js title="App.jsx"
 import { getData } from "./data.js";
@@ -225,7 +228,7 @@ function App() {
 export default App;
 ~~~
 
-Используйте props в методе **scheduler.parse()** внутри компонента Scheduler:
+И используйте props в методе **scheduler.parse()** внутри Scheduler-компонтента:
 
 ~~~js title="Scheduler.jsx"
 import { useEffect, useRef } from "react";
@@ -261,15 +264,16 @@ export default function SchedulerView({events}) {
 }
 ~~~
 
-После перезагрузки страницы приложения вы увидите Scheduler с загруженными событиями:
+Теперь, если вы снова откроете страницу приложения, вы увидите Scheduler с событиями:
 
 ![Scheduler React events](/img/scheduler_events.png)
 
 ## Шаг 5. Сохранение данных
 
-Чтобы обрабатывать изменения, внесённые в Scheduler, используйте обработчик [dataProcessor](https://docs.dhtmlx.com/dataprocessor__index.html). Это позволит связаться с сервером. Обработчик может быть функцией или объектом router. dhtmlxScheduler поддерживает ответы Promise от обработчика, корректно обрабатывая завершение действия.
+Чтобы зафиксировать изменения, внесённые в Scheduler, можно использовать обработчик [dataProcessor](https://docs.dhtmlx.com/dataprocessor__index.html), который позволяет «общаться» с серверной частью. Обработчик можно объявлять либо как функцию, либо как router-объект.  
+dhtmlxScheduler принимает ответ Promise от обработчика, поэтому ваш Scheduler корректно обработает завершение действия. 
 
-Создайте **DataProcessor** с помощью **createDataProcessor()** и отслеживайте изменения следующим образом:
+Вы можете создать **DataProcessor** через API-метод **createDataProcessor()** и зафиксировать изменения вот так:
 
 ~~~
 scheduler.createDataProcessor(function(entity, action, data, id) {​
@@ -277,12 +281,12 @@ scheduler.createDataProcessor(function(entity, action, data, id) {​
 });
 ~~~
 
-Если ваш backend изменяет id события после создания новой записи (что встречается часто), убедитесь, что Promise возвращает объект с **(id: databaseId)** или **(tid: databaseId)**. Это позволит Scheduler обновить запись с новым id из базы данных. Подробнее см. в разделе [server side integration](guides/server-integration.md).
+Если ваш сервис изменяет id события после создания новой записи (что обычно так и происходит), убедитесь, что ваш Promise возвращает объект вида **(id: databaseId)** или **(tid: databaseId)** в качестве результата, чтобы Scheduler мог применить новый идентификатор базы данных к запиcи. Узнать [более подробную информацию о серверной стороне](guides/server-integration.md).
 
-На этом настройка React Scheduler завершена. Ознакомьтесь с полной демонстрацией на GitHub: [DHTMLX react-scheduler-demo](https://github.com/DHTMLX/react-scheduler-demo).
+Итак, React Scheduler готов, добро пожаловать посмотреть полную демонстрацию на GitHub: [DHTMLX Scheduler with React Demo](https://github.com/DHTMLX/react-scheduler-demo).
 
 ## XSS, CSRF и SQL-инъекции
 
-Обратите внимание, что сам Scheduler не защищает от угроз, таких как SQL-инъекции, XSS или CSRF-атаки. Ответственность за защиту приложения от этих рисков лежит на разработчиках backend.
+Обратите внимание, что Scheduler не предоставляет средств для предотвращения угроз в приложении, таких как инъекции SQL или атаки XSS и CSRF. Важно, чтобы ответственность за безопасность приложения лежала на разработчиках, реализующих backend.
 
-Обратитесь к статье [Application Security](guides/app-security.md), чтобы узнать о распространённых уязвимостях и способах повышения безопасности вашего приложения.
+Ознакомьтесь со статьёй [Application Security](guides/app-security.md), чтобы узнать наиболее уязвимые точки компонента и меры по улучшению безопасности вашего приложения.

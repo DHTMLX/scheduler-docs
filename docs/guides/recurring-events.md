@@ -36,7 +36,7 @@ The library provides the following option to configure recurring events:
 ~~~js
 scheduler.config.repeat_date = "%m/%d/%Y";
 ...
-scheduler.init('scheduler_here', new Date(2019, 7, 5), "month");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "month");
 ~~~
 
 
@@ -83,15 +83,15 @@ Our format differs from the iCalendar format in the two key moments:
 In the iCalendar format, the start and end dates of a recurring series are typically included as a part of the **RRULE** string as **STDATE** and **DTEND** properties.
 In our format, **stdate** and **dtend** are stored as separate fields. This separation allows for easier manipulation and querying of recurring events by date without the need to parse the **RRULE** string.
 
-Here is an example of the recurring event series which is set to repeat every Monday starting from June 1, 2024 up until December 1, 2024:
+Here is an example of the recurring event series which is set to repeat every Monday starting from June 1, 2027 up until December 1, 2027:
 
 ~~~js
 {
     "id": 1,
     "text": "Weekly Team Meeting",
-    "start_date": "2024-06-03 09:00:00",
+    "start_date": "2027-06-03 09:00:00",
     "duration": 3600,
-    "end_date": "2024-12-02 10:00:00",
+    "end_date": "2027-12-02 10:00:00",
     "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
     "recurring_event_id": null,
     "original_start": null
@@ -115,9 +115,9 @@ Here is the example of the recurring series with one modified and one deleted oc
     {
         "id": 1,
         "text": "Weekly Team Meeting",
-        "start_date": "2024-06-03 09:00:00",
+        "start_date": "2027-06-03 09:00:00",
         "duration": 3600,
-        "end_date": "2024-12-02 10:00:00",
+        "end_date": "2027-12-02 10:00:00",
         "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
         "recurring_event_id": null,
         "original_start": null
@@ -125,26 +125,26 @@ Here is the example of the recurring series with one modified and one deleted oc
     {
         "id": 2,
         "text": "Special Team Meeting",
-        "start_date": "2024-06-10 09:00:00",
-        "end_date": "2024-06-10 11:00:00",
+        "start_date": "2027-06-10 09:00:00",
+        "end_date": "2027-06-10 11:00:00",
         "rrule": null,
         "recurring_event_id": 1,
-        "original_start": "2024-06-10 09:00:00"
+        "original_start": "2027-06-10 09:00:00"
     },
     {
         "id": 3,
         "text": "Deleted Team Meeting",
-        "start_date": "2024-06-17 09:00:00",
-        "end_date": "2024-06-17 10:00:00",
+        "start_date": "2027-06-17 09:00:00",
+        "end_date": "2027-06-17 10:00:00",
         "rrule": null,
         "recurring_event_id": 1,
-        "original_start": "2024-06-17 09:00:00",
+        "original_start": "2027-06-17 09:00:00",
         "deleted": true
     }
 ]
 ~~~
 
-The repeated event scheduled for `2024-06-10 09:00:00` will be replaced with `Special Team Meeting` record, and the event scheduled for `2024-06-17 09:00:00` will be skipped.
+The repeated event scheduled for `2027-06-10 09:00:00` will be replaced with `Special Team Meeting` record, and the event scheduled for `2027-06-17 09:00:00` will be skipped.
 
 Note, that **rrule** of the modified or deleted occurrences is ignored. 
 
@@ -160,7 +160,7 @@ There is a possibility to delete or edit a particular occurrence in a series.
 - Particular occurrences refer to the parent event through the **recurring_event_id** property.
 - Once you have edited an occurrence in the series, the **original_start** field for this update 
 will store the Date, when the occurrence should have happened if it wasn't edited, instead of the real event length. 
-So if the occurrence has happened on July 27, 2024 at 15:00 and was moved to July 30, 2024 15:00, the time stamp would reflect the first date.
+So if the occurrence has happened on July 27, 2027 at 15:00 and was moved to July 30, 2027 15:00, the time stamp would reflect the first date.
 
 
 ### Server-side logic 

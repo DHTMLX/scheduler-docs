@@ -28,7 +28,7 @@ scheduler.createTimelineView({
     render:"bar"
 });
 
-var configObj = scheduler.matrix;
+const configObj = scheduler.matrix;
 ~~~
 
 ### Related samples
@@ -57,7 +57,7 @@ But if you need to change the configuration greatly, it will be better to specif
 
 For example, you want to dynamically change the x_step,x_sise,x_start parameters of the timeline shown in the sample above:
 
-~~~
+~~~js
 //you can use this variant 
 configObj.x_step = 50;
 configObj.x_size = 28;

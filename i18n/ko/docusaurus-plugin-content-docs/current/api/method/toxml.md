@@ -18,7 +18,7 @@ description: "스케줄러의 데이터를 XML 포맷으로 변환합니다"
 ### Example
 
 ~~~jsx
-var str = scheduler.toXML();
+const str = scheduler.toXML();
 ~~~
 
 ### Related samples

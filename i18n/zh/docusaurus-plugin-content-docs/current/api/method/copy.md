@@ -22,8 +22,8 @@ description: "创建给定对象的深拷贝"
 ### Example
 
 ~~~jsx
-var backupEvent = scheduler.copy(scheduler.getEvent(id));
+const backupEvent = scheduler.copy(scheduler.getEvent(id));
 ~~~
 
 ### Change log
-- added in version 6.0
+- 版本 6.0 中添加

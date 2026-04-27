@@ -22,7 +22,7 @@ description: "키보드 단축키를 제거합니다"
 ~~~jsx
 // 단축키 추가
 scheduler.addShortcut("shift+w", function(e){ 
-    var eventId = scheduler.locate(e); 
+    const eventId = scheduler.locate(e); 
     if(eventId) 
         scheduler.showQuickInfo(eventId);
 },"event");

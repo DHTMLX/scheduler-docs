@@ -23,8 +23,8 @@ description: "fügt ein neues Event hinzu"
 
 ~~~jsx
 scheduler.addEvent({
-    start_date: "16-06-2013 09:00",
-    end_date:    "16-06-2013 12:00",
+    start_date: "16-06-2027 09:00",
+    end_date:    "16-06-2027 12:00",
     text:    "Meeting",
     holder:    "John", // userdata
     room:    "5"     // userdata

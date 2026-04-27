@@ -1,24 +1,24 @@
 ---
-sidebar_label: "bind"
-title: "bind method"
-description: "создаёт новую функцию, которая при вызове имеет ключевое слово <i>this</i>, установленное в указанное значение"
+sidebar_label: bind
+title: "Метод bind"
+description: "создает новую функцию, которая при вызове имеет своё ключевое слово <i>this</i>, установленное в переданное значение"
 ---
 
 # bind
 
 ### Description
 
-@short: Создаёт новую функцию, которая при вызове имеет ключевое слово <i>this</i>, установленное в указанное значение
+@short: Создает новую функцию, которая при вызове имеет своё ключевое слово <i>this</i>, установленное в переданное значение
 
 @signature: bind: (method: SchedulerCallback, thisArg: any) =\> SchedulerCallback
 
 ### Parameters
 
-- `method` - (required) *function* - функция, которую нужно привязать
-- `thisArg` - (required) *object* - значение, которое будет использоваться как контекст <i>this</i> при вызове привязанной функции
+- `method` - (required) *function* - целевая функция
+- `thisArg` - (required) *object* - значение, которое будет передано в качестве параметра <i>this</i> целевой функции при вызове привязанной функции
 
 ### Returns
-- ` bound_function` - (function) - новая функция, которая при вызове использует указанный контекст <i>this</i> для исходной функции
+- ` bound_function` - (function) - новая функция, которая при вызове имеет значение <i>this</i>, передаваемое целевой функции
 
 ### Example
 
@@ -28,7 +28,7 @@ scheduler.bind(method, thisArg);
 
 ### Details
 
-Этот метод служит совместимой с IE8 альтернативой функции [Function.prototype.bind()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
+Метод используется как IE8 совместимая замена функции Function.prototype.bind().
 
 ### Change log
 - добавлено в версии 6.0

@@ -17,7 +17,7 @@ description: "Legt den Zoom-Level fest, mit dem der Standort des Benutzers angez
 ~~~jsx
 scheduler.config.map_zoom_after_resolve = 10;  
 ...  
-scheduler.init('scheduler_here', new Date(2013, 05, 11), "week");
+scheduler.init('scheduler_here', new Date(2027, 05, 11), "week");
 ~~~
 
 **Default value:** 15

@@ -22,7 +22,7 @@ description: "specifies the date in the sub-header of the view"
 ### Example
 
 ~~~jsx
-var format = scheduler.date.date_to_str(scheduler.config.day_date);
+const format = scheduler.date.date_to_str(scheduler.config.day_date);
 scheduler.templates.week_scale_date = function(date){
     return format(date);
 };

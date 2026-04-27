@@ -1,14 +1,14 @@
 ---
-sidebar_label: "onOptionsLoadFinal"
-title: "onOptionsLoadFinal event"
-description: "срабатывает один раз после завершения загрузки коллекции опций (секций) (применимо только к Timeline view)"
+sidebar_label: onOptionsLoadFinal
+title: "onOptionsLoadFinal событие"
+description: "срабатывает после завершения загрузки коллекции options(sections) (только для вида Timeline)"
 ---
 
 # onOptionsLoadFinal
 
 ### Description
 
-@short: Срабатывает один раз после завершения загрузки коллекции опций (секций) (применимо только к Timeline view)
+@short: Fires after loading of an options(sections) collection is complete (the Timeline view only)
 
 @signature: onOptionsLoadFinal: () =\> void
 
@@ -16,10 +16,10 @@ description: "срабатывает один раз после завершен
 
 ~~~jsx
 scheduler.attachEvent("onOptionsLoadFinal", function (){
-    //здесь можно разместить кастомную логику
+    //any custom logic here
 });
 ~~~
 
 ### Details
 
-Это событие возникает исключительно при загрузке коллекции через dhtxmlConnector или при использовании метода [updateCollection](api/method/updatecollection.md).
+Событие срабатывает только тогда, когда коллекция загружается с помощью dhtxmlConnector или через метод [updateCollection](api/method/updatecollection.md).

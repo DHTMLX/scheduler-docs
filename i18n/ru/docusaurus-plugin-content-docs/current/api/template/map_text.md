@@ -29,7 +29,7 @@ scheduler.templates.map_text = function(start,end,ev){
 };
 ~~~
 
-**Applicable views:** [Map view](views/map.md)
+**Доступные представления:** [Map view](views/map.md)
 
 ### Details
 

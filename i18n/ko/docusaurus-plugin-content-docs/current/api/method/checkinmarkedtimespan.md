@@ -24,15 +24,15 @@ description: "특정 타입의 타임스팬 내에 이벤트가 포함되는지 
 
 ~~~jsx
 scheduler.addMarkedTimespan({
-    start_date: new Date(2013,4,1), 
-    end_date: new Date(2013,7,1), 
+    start_date: new Date(2027,4,1), 
+    end_date: new Date(2027,7,1), 
     css: "red_section",
     type:"discount"
 });
 
-var eventId = scheduler.addEvent({
-    start_date: "16-05-2013 09:00",
-    end_date:   "16-05-2013 12:00",
+const eventId = scheduler.addEvent({
+    start_date: "16-05-2027 09:00",
+    end_date:   "16-05-2027 12:00",
     text:   "Meeting",
     holder: "John", 
     room:   "5"     

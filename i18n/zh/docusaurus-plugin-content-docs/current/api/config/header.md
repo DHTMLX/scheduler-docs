@@ -98,7 +98,7 @@ scheduler.init("scheduler_here");
 
 "minicalendar" 选项添加了一个按钮，用于切换迷你日历，其点击处理函数如下:
 
-~~~
+~~~js
 function showCalendar () {
     if (scheduler.isCalendarVisible()) {
         scheduler.destroyCalendar();
@@ -118,7 +118,7 @@ function showCalendar () {
 
 若要使用不同参数自定义迷你日历行为，可以为 minicalendar 按钮提供自定义的点击处理函数，如下所示:
 
-~~~
+~~~js
 scheduler.config.header = [
     "day",
     "week",

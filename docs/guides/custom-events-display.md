@@ -36,7 +36,7 @@ scheduler.renderEvent = function(container, ev) {
   - **_dhx_event_resize_** - dragging an element with this style will change the event's duration.
 
 ~~~js
-var html = "<div class='dhx_event_move my_event_move' "
+const html = "<div class='dhx_event_move my_event_move' "
 ~~~
 
 ## Example
@@ -52,10 +52,10 @@ scheduler.templates.event_class = function(start, end, event) {
 };
 
 scheduler.renderEvent = function(container, ev) {
-    var container_width = container.style.width; // e.g. "105px"
+    const container_width = container.style.width; // e.g. "105px"
 
     // move section
-    var html = "<div class='dhx_event_move my_event_move' style='width: " + 
+    let html = "<div class='dhx_event_move my_event_move' style='width: " + 
     container_width + "'></div>";
 
     // a container for the event's content

@@ -1,62 +1,65 @@
 ---
-title: "dhtmlxScheduler와 SalesForce LWC 통합하기"
-sidebar_label: "dhtmlxScheduler와 SalesForce LWC 통합하기"
+title: "dhtmlxScheduler with SalesForce LWC"
+sidebar_label: "Salesforce"
 ---
 
-# dhtmlxScheduler와 SalesForce LWC 통합하기
+# dhtmlxScheduler와 SalesForce LWC
 
-이 튜토리얼에서는 dhtmlxScheduler를 [SalesForce Lightning Web Component](https://developer.salesforce.com/docs/platform/lwc/guide)에 통합하는 방법을 안내합니다.
+이 튜토리얼은 dhtmlxScheduler를 [SalesForce Lightning Web Component](https://developer.salesforce.com/docs/platform/lwc/guide)에 추가하는 방법을 설명합니다. 
 
-다른 기술을 사용 중이라면, 아래에 나열된 다른 통합 옵션도 참고하시기 바랍니다:
+다음의 온라인 데모에서 DHTMLX 컴포넌트를 Salesforce LWC와 통합하는 방법을 확인해 보세요(로그인: *user*, 비밀번호: *demo*). 데모의 소스 코드는 [GitHub에서 제공됩니다](https://github.com/DHTMLX/salesforce-lwc-demo).
 
-- ["dhtmlxScheduler와 ASP.NET Core"](integrations/dotnet/howtostart-dotnet-core.md)
-- ["dhtmlxScheduler와 ASP.NET MVC"](integrations/dotnet/howtostart-dotnet.md)
-- ["dhtmlxScheduler와 PHP"](integrations/php/howtostart-plain-php.md)
-- ["dhtmlxScheduler와 PHP:Slim"](integrations/php/howtostart-php-slim4.md)
-- ["dhtmlxScheduler와 PHP:Laravel 연동하기"](integrations/php/howtostart-php-laravel.md)
-- ["dhtmlxScheduler와 Ruby on Rails 연동하기"](integrations/other/howtostart-ruby.md)
-- ["dhtmlxScheduler와 dhtmlxConnector 연동하기"](integrations/other/howtostart-connector.md)
+다른 기술을 사용하는 경우 아래에서 사용할 수 있는 통합 변형 목록을 확인하십시오:
 
-이 가이드에서는 [SalesForce CLI](https://developer.salesforce.com/tools/salesforcecli)를 사용하여 Lightning Web Component를 생성하고, 이를 조직에 배포하는 과정을 다룹니다. 설치 관련 자세한 내용은 [이 문서](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)를 참고하세요. 또한, Visual Studio Code에서 개발 환경을 더욱 편리하게 사용하려면 [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode)을 설치할 수 있습니다.
+- [dhtmlxScheduler with ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
+- [dhtmlxScheduler with ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
+- [dhtmlxScheduler with PHP](integrations/php/howtostart-plain-php.md)
+- [dhtmlxScheduler with PHP:Slim](integrations/php/howtostart-php-slim4.md)
+- [dhtmlxScheduler with PHP:Laravel](integrations/php/howtostart-php-laravel.md)
+- [dhtmlxScheduler with Ruby on Rails](integrations/other/howtostart-ruby.md)
+- [dhtmlxScheduler with dhtmlxConnector](integrations/other/howtostart-connector.md)
+
+우리는 [SalesForce CLI](https://developer.salesforce.com/tools/salesforcecli)를 사용하여 Lightning Web Component를 만들고 조직에 업로드합니다. 설치 방법은 [이 문서](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)를 참조하십시오. 개발 조직과 함께 작업하기 위해 Visual Studio Code에 [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode)을 설치할 수도 있습니다.
 
 :::note
-전체 소스 코드는 [GitHub](https://github.com/DHTMLX/salesforce-scheduler-demo)에서 확인하실 수 있습니다.
+이 튜토리얼에서 생성된 데모의 전체 소스 코드는 [GitHub에서 확인 가능합니다](https://github.com/DHTMLX/salesforce-scheduler-demo).
 :::
 
-아래 영상 가이드에서는 Salesforce LWC와 함께 Scheduler를 구축하는 방법을 시연합니다.
+
+비디오 가이드를 통해 Salesforce LWC로 Scheduler를 만드는 방법을 확인해 보세요.
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/IceDT8O1Pys" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## 사전 준비 사항
+## 필수 조건
 
-[SalesForce CLI](https://developer.salesforce.com/tools/salesforcecli)가 설치되어 있는지 확인하세요. 설치가 되어 있지 않다면, [이 문서](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)를 참고하여 설치를 진행하세요.
+아직 설치하지 않았다면 [SalesForce CLI]를 설치하십시오. 설치 방법은 [이 문서](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)를 참조하십시오.
 
-## 1단계. 프로젝트 생성
+## 1단계. 프로젝트 만들기
 
-아직 개발자 계정이 없다면, [여기](https://developer.salesforce.com/)에서 무료 개발자 계정에 가입하세요. 자세한 안내는 [이 글](https://webkul.com/blog/create-free-developer-account-in-salesforce/)을 참고하실 수 있습니다.
+계정이 없으면 무료 개발자 계정에 가입하십시오. 설치 방법은 [이 글](https://webkul.com/blog/create-free-developer-account-in-salesforce/)을 참고하십시오.
 
-좌측 검색창에서 *Dev Hub*를 검색하여 선택하세요:
+왼쪽의 검색창에서 Dev Hub를 찾아 선택합니다:
 
-![](/img/sf_devhub.png)
+![sf_devhub](/img/sf_devhub.png)
 
-이후 나타나는 설정 창에서 *Dev Hub*를 활성화합니다:
+새 설정 창에서 Dev Hub를 활성화합니다:
 
-![](/img/sf_enabledh.png)
+![sf_enabledh](/img/sf_enabledh.png)
 
-Salesforce DX 프로젝트를 위한 기본 폴더를 생성합니다:
+Salesforce DX 프로젝트의 기본 디렉터리를 만들어 봅시다:
 
 ~~~js
 $ mkdir ~/salesforce
 ~~~
 
-CLI를 사용하여 Salesforce DX 프로젝트를 생성합니다:
+CLI를 통해 Salesforce DX 프로젝트를 만듭니다:
 
 ~~~js
 $ cd ~/salesforce
 $ sfdx project generate -n scheduler-salesforce-app
     target dir = C:UsersUsersalesforce
         create scheduler-salesforce-appconfigproject-scratch-def.json
-        create scheduler-salesforce-appguides/README.md
+        create guides/scheduler-salesforce-appREADME.md
         create scheduler-salesforce-appsfdx-project.json
         create scheduler-salesforce-app.huskypre-commit
         create scheduler-salesforce-app.vscodeextensions.json
@@ -75,15 +78,15 @@ $ sfdx project generate -n scheduler-salesforce-app
         create scheduler-salesforce-apppackage.json
 ~~~
 
-새로 생성된 프로젝트 폴더로 이동합니다:
+생성된 프로젝트로 이동합니다:
 
 ~~~js
 $ cd scheduler-salesforce-app
 ~~~
 
-## 2단계. 인증
+## 2단계. 권한 부여
 
-다음 명령어를 실행하여 Web Server Flow를 통해 조직에 인증합니다:
+Web Server Flow를 사용하여 Org에 인증합니다:
 
 ~~~js
 $ sfdx org login web -d
@@ -91,15 +94,16 @@ $ sfdx org login web -d
 Successfully authorized ...@...com with org ID ...
 ~~~
 
-이제 프로젝트 설정 파일(*sfdx-project.json*)에서 "sfdcLoginUrl" 파라미터를 자신의 "My Domain URL"로 설정합니다. 해당 URL은 조직의 "My Domain" 설정 페이지에서 확인할 수 있습니다. 예시:
+프로젝트 구성 파일(*sfdx-project.json*)을 업데이트합니다. "sfdcLoginUrl" 파라미터를 자신의 "My Domain URL"로 설정합니다. 조직의 "My Domain URL"은 "My Domain" 설정 페이지에서 확인할 수 있습니다. 예를 들면:
 
-![](/img/sf_mydomain.png)
+![sf_mydomain](/img/sf_mydomain.png)
+
 
 ~~~js title="scheduler-salesforce-app/sfdx-project.json"
 "sfdcLoginUrl" : "https://xbs2-dev-ed.my.salesforce.com"
 ~~~
 
-다음 명령어로 Scratch Org를 생성합니다:
+Scratch Org를 만듭니다:
 
 ~~~js
 $ sfdx org create scratch -f config/project-scratch-def.json -d
@@ -123,85 +127,83 @@ Your scratch org is ready.
 
 ## 3단계. Salesforce에 Scheduler 추가
 
-라이브러리를 사용하려면, Salesforce에 Static Resource로 업로드해야 합니다. 아래 명령어로 Scratch Org를 엽니다:
+라이브러리를 사용하려면 Salesforce에 Static Resource로 업로드해야 합니다. 따라서 Scratch Org를 엽니다:
 
 ~~~js
 $ sfdx org open
 ~~~
 
-"Static Resources" 탭으로 이동한 후, "New" 버튼을 클릭하세요:
+이제, "Static Resources" 탭을 열고 "New" 버튼을 누릅니다
 
-![](/img/sf_staticresources.png)
+![sf_staticresources](/img/sf_staticresources.png)
 
-리소스 이름(예: *dhtmlxscheduler*)을 명확하게 지정하고, 라이브러리 파일(*dhtmlxscheduler.js* 및 *dhtmlxscheduler.css*)이 포함된 ZIP 압축 파일을 업로드합니다. Cache Control은 "Public"으로 설정하여 성능을 향상시킵니다. "Save"를 클릭하세요.
+의미 있는 이름을 지정합니다(여기서는 *dhtmlxscheduler*를 사용), 라이브러리 자체가 들어 있는 ZIP 아카이브를 선택합니다(아카이브에는 *dhtmlxscheduler.js*와 *dhtmlxscheduler.css* 파일이 포함되어 있어야 함), 그리고 성능 향상을 위해 "Public" Cache Control을 선택합니다. "Save" 버튼을 눌니다.
 
 ![sf_load_zip](/img/sf_load_zip.png)
 
-이제 dhtmlxScheduler가 Salesforce 내에서 사용 가능합니다.
+이제 Salesforce 안에 dhtmlxScheduler가 있습니다.
 
 ![sf_scheduler_in_sf](/img/sf_scheduler_in_sf.png)
 
-## 4단계. 데이터 모델 생성
+## 4단계. 데이터 모델 만들기
 
-dhtmlxScheduler의 핵심 엔터티는 이벤트입니다. 이들을 효과적으로 관리하기 위해, 모든 속성을 Salesforce 내에서 plain JSON 형태로 저장하는 것이 실용적입니다. 이를 위해 새로운 Event 오브젝트를 생성하세요. Object Manager를 열고, "Create" → "Custom Object"를 선택합니다:
+핵심 dhtmlxScheduler 엔티티는 Events입니다. dhtmlxScheduler 엔티티의 모든 속성을 Salesforce 내부의 일반 JSON으로 저장하는 것이 좋은 방법입니다. Event 객체를 만들어 봅시다. Object Manager를 열고 "Create"를 선택한 다음 "Custom Object"를 선택합니다:
 
-![](/img/sf_new_object.png)
+![sf_new_object](/img/sf_new_object.png)
 
+### **Event 객체**
 
-### **이벤트 객체**
-
-이벤트 객체의 이름을 *SchedulerEvent* 또는 *SchedulerEvents*로 지정하세요.
+이벤트 객체의 이름을 정합니다. 예를 들어 *SchedulerEvent/SchedulerEvents*로 합시다.
 
 ![sf_schedulerevent](/img/sf_schedulerevent.png)
 
 :::note
-레코드 이름이 객체 이름과 일치하는지 확인하세요. 예를 들어:
+레코드 이름은 객체 이름과 일치해야 합니다. 예:
 
-객체 이름: SchedulerEvent => 레코드 이름: SchedulerEvent Name
+Object Name: SchedulerEvent => Record Name: SchedulerEvent Name
 :::
 
-"저장" 버튼을 클릭하세요.
+"Save" 버튼을 누릅니다.
 
-객체가 생성되면 "필드 및 관계" 탭으로 이동하여 "새로 만들기" 버튼을 클릭합니다.
-
+객체가 생성된 후에는 "Fields & Relationships" 탭을 열고 "New" 버튼을 누릅니다.
 
 ![sf_new_field](/img/sf_new_field.png)
 
-- **시작 날짜**
+- **Start Date**
 
-데이터 유형으로 "날짜/시간"을 선택한 후 "다음"을 클릭하세요.
+Data Type으로 "Date/Time"을 선택하고 "Next" 버튼을 누릅니다. 
 
 ![sf_field_type](/img/sf_field_type.png)
 
-이 필드의 이름을 "Start Date"로 지정합니다. 이 필드는 JSON으로 직렬화된 Task 속성을 저장합니다.
+이름을 "Start Date"로 지정합니다. 이 필드는 JSON으로 직렬화된 Task 속성을 저장합니다.
 
 ![sf_start_date](/img/sf_start_date.png)
 
-"다음"을 클릭하고 "저장 및 새로 만들기" 버튼이 나타날 때까지 모든 기본 설정을 그대로 두세요.
+다음 버튼을 눌러 기본 설정은 그대로 두고 계속 진행합니다(마지막에 "Save & New" 버튼이 활성화될 때까지).
 
-- **종료 날짜**
+- **End Date**
 
-"End Date" 필드를 추가하고, 데이터 유형으로 "날짜/시간"을 선택하세요.
+"End Date" 필드를 생성합니다. Data Type으로 "Date/Time"을 선택합니다.
 
 ![sf_end_date](/img/sf_end_date.png)
 
-"다음"을 클릭하고 "저장 및 새로 만들기" 버튼이 나타날 때까지 기본 설정을 그대로 두세요.
+다음 버튼을 눌러 기본 설정은 그대로 두고 계속 진행합니다(마지막에 "Save & New" 버튼이 활성화될 때까지).
 
-- **텍스트**
+- **Text**
 
-"Text" 필드를 만들고 데이터 유형으로 "Text"를 선택하세요.
+"Text" 필드를 만듭니다. Data Type으로 "Text"를 선택합니다.
 
 ![sf_text](/img/sf_text.png)
 
-"다음"을 클릭하고 "저장" 버튼이 활성화될 때까지 모든 기본 설정을 그대로 두세요.
+다음 버튼을 누릅니다(기본 설정으로 두고 계속 진행).
 
-마지막에는 필드가 다음과 같이 보여야 합니다:
+마지막으로 화면은 아래와 같아야 합니다:
 
 ![sf_schedulerevent_fields](/img/sf_schedulerevent_fields.png)
 
-## 5단계. Lightning Web Component 생성
+## 5단계. Lightning Web Component 만들기
 
-Lightning Web Component를 생성하려면 다음 명령어를 사용하세요:
+Lightning Web Component를 만들려면 다음 명령을 실행합니다:
 
 ~~~js
 $ sfdx lightning generate component --type lwc -n scheduler -d force-app/main/default/lwc
@@ -213,7 +215,10 @@ target dir = C:UsersUsersourcesalesforcescheduler-salesforce-appforce-appmaindef
    create force-appmaindefaultlwcschedulerscheduler.js-meta.xml
 ~~~
 
-Lightning App Builder에 노출되도록 *scheduler.js-meta.xml*에서 컴포넌트 정의를 수정하세요:
+컴포넌트 정의를 *scheduler.js-meta.xml*에서 Lightning App Builder에 노출되도록 변경합니다:
+
+
+
 
 ~~~js title="force-app/main/default/lwc/scheduler/scheduler.js-meta.xml"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -235,7 +240,7 @@ Lightning App Builder에 노출되도록 *scheduler.js-meta.xml*에서 컴포넌
 
 ~~~js title="force-app/main/default/lwc/scheduler/scheduler.html"
 <template>
-    <div class="thescheduler" lwc:dom="manual"></div>
+    <div class="thescheduler" lwc:dom="manual" style='width: 100%;'></div>
 </template>
 ~~~
 
@@ -364,9 +369,9 @@ export default class SchedulerView extends LightningElement {
 }
 ~~~
 
-## 6단계. Apex 클래스 생성
+## 6단계. Apex 클래스 만들기
 
-다음 단계는 Lightning Component와 데이터 모델 간의 상호작용을 가능하게 하는 클래스를 만드는 것입니다.
+다음 단계는 Lightning 컴포넌트와 데이터 모델 간의 상호 작용을 가능하게 하는 클래스를 만드는 것입니다.
 
 ~~~js
 $ sfdx apex generate class -n SchedulerData -d force-app/main/default/classes
@@ -376,7 +381,8 @@ target dir = C:UsersUsersalesforcescheduler-salesforce-appforce-appmaindefaultcl
    create force-appmaindefaultclassesSchedulerData.cls-meta.xml
 ~~~
 
-생성 후, *SchedulerData.cls*를 열고 다음 코드를 추가하세요:
+생성 후 *SchedulerData.cls*를 열고 다음 코드를 추가합니다:
+
 
 ~~~js title="force-app/main/default/classes/SchedulerData.cls"
 public with sharing class SchedulerData {
@@ -396,67 +402,66 @@ public with sharing class SchedulerData {
 }
 ~~~
 
-Scratch Org에서 소스를 프로젝트로 가져옵니다:
+Scratch Org에서 로컬 프로젝트로 소스를 끌어옵니다:
 
 ~~~js
 $ sfdx project retrieve start
 ~~~
 
-그런 다음 소스를 다시 Scratch Org로 푸시합니다:
+그리고 소스를 Scratch Org에 푸시합니다:
 
 ~~~js
 $ sfdx project deploy start
 ~~~
 
-## 7단계. Lightning 페이지 생성
+## 7단계. Lightning 페이지 만들기
 
-"Lightning App Builder"를 열고 새 Lightning Page를 만드세요.
+"Lightning App Builder"를 열고 새 Lightning Page를 만듭니다.
 
-![](/img/sf_lightning_app_builder.png)
+![sf_lightning_app_builder](/img/sf_lightning_app_builder.png)
 
-"App Page"를 선택한 후 페이지 이름을 입력하고 레이아웃을 선택하세요.
+"App Page"를 선택한 후 페이지 이름과 레이아웃을 지정합니다.
 
-![](/img/sf_app_page.png)
+![sf_app_page](/img/sf_app_page.png)
 
 ![sf_new_lightning_page](/img/sf_new_lightning_page.png)
 
-![](/img/sf_page_layout.png)
+![sf_page_layout](/img/sf_page_layout.png)
 
-Scheduler 커스텀 컴포넌트가 새 페이지에서 사용 가능해야 합니다. 원하는 영역에 추가하고 저장하세요.
+새 페이지에서 Scheduler 커스텀 컴포넌트를 볼 수 있어야 합니다. 이를 임의의 영역에 추가하고 저장합니다.
 
 ![sf_scheduler](/img/sf_scheduler.png)
 
-페이지를 활성화하세요.
+페이지를 활성화합니다.
 
-![](/img/sf_page_saved.png)
+![sf_page_saved](/img/sf_page_saved.png)
 
-변경 사항을 저장하세요.
+변경사항을 저장합니다.
 
 ![sf_activation](/img/sf_activation.png)
 
-![](/img/sf_add_page_to_nm.png)
+![sf_add_page_to_nm](/img/sf_add_page_to_nm.png)
 
 ![sf_scheduler_in_app](/img/sf_scheduler_in_app.png)
 
-애플리케이션 페이지를 엽니다. 앱 실행기에서 Scheduler를 입력하면 접근할 수 있습니다.
+애플리케이션 페이지를 엽니다. 앱 런처에서 Scheduler를 클릭하거나 검색하면 열 수 있습니다.
 
 ![sf_home_scheduler](/img/sf_home_scheduler.png)
 
-모든 설정이 올바르게 완료되었다면, Lightning Page에서 간단한 Scheduler 데모가 표시됩니다.
+모든 것이 잘 작동했다면 Lightning Page에서 간단한 Scheduler 데모를 볼 수 있습니다.
 
 ![sf_final](/img/sf_final.png)
 
 ## 애플리케이션 보안
 
-Scheduler 자체에는 SQL 인젝션, XSS 또는 CSRF 공격과 같은 위협에 대한 보호 기능이 포함되어 있지 않습니다. 애플리케이션의 보안은 개발자의 책임입니다. 자세한 내용은 [관련 문서](guides/app-security.md)를 참고하세요. Salesforce는 데이터와 애플리케이션을 보호하는 보안 기능을 제공하며, 조직의 요구에 맞는 추가 보안 조치도 구현할 수 있습니다. 자세한 내용은 [Salesforce Security Guide](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/salesforce_security_guide.htm)를 참고하세요. 또한, [이 리소스](https://developer.salesforce.com/docs/atlas.en-us.secure_coding_guide.meta/secure_coding_guide/secure_coding_lightning_security.htm)에서 필수적인 보안 실무를 확인할 수 있습니다.
+Scheduler는 SQL 인젝션이나 XSS, CSRF 공격과 같은 다양한 위협으로부터 애플리케이션을 보호하는 방법을 제공하지 않습니다. 애플리케이션의 보안을 안전하게 유지하는 책임은 애플리케이션을 구현하는 개발자에게 있습니다. 해당 문서의 세부 정보를 읽어보십시오(Salesforce는 데이터를 보호하기 위해 보안 기능으로 구축되어 있습니다). 조직의 구조와 필요에 맞게 자체 보안 체계를 구현할 수도 있습니다. 자세한 내용은 [Salesforce Security Guide](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/salesforce_security_guide.htm)를 참조하십시오. [여기](https://developer.salesforce.com/docs/atlas.en-us.secure_coding_guide.meta/secure_coding_guide/secure_coding_lightning_security.htm)에서 보안에 대해 알아야 할 내용을 확인할 수 있습니다.
 
 ## 문제 해결
 
-통합 단계를 완료한 후 Scheduler가 이벤트를 표시하지 않는 경우, [Troubleshooting Backend Integration Issues](guides/troubleshooting.md) 문서를 참고하세요. 일반적인 문제를 식별하고 해결하는 방법을 안내합니다.
+위의 단계들을 따라 Scheduler를 Salesforce와 연동하는 과정을 완료했지만 페이지에서 이벤트가 렌더링되지 않는 경우, [문제 해결 백엔드 통합 이슈](guides/troubleshooting.md) 문서를 확인해 보십시오. 문제의 근본 원인을 식별하는 방법이 설명되어 있습니다.
 
 ## 다음 단계
 
-이 시점에서 Scheduler는 완전히 동작합니다. 전체 코드는 [GitHub](https://github.com/DHTMLX/salesforce-scheduler-demo)에서 복제하거나 다운로드하여 프로젝트에 사용할 수 있습니다.
+이제 완전히 작동하는 Scheduler를 갖게 되었습니다. 전체 코드는 [GitHub](https://github.com/DHTMLX/salesforce-scheduler-demo)에서 확인하거나 클론 또는 다운로드하여 프로젝트에 사용할 수 있습니다.
 
-또한 [Scheduler의 기능을 다루는 가이드](/guides/)나 [다른 백엔드 프레임워크와의 통합 튜토리얼](integrations/howtostart-guides.md)도 참고할 수 있습니다.
-
+Scheduler의 다양한 기능에 대한 안내를 [guides](/guides/)에서 확인하거나 Scheduler를 다른 백엔드 프레임워크와 통합하는 방법에 대한 튜토리얼을 [통합 가이드](integrations/howtostart-guides.md)에서 확인할 수 있습니다.

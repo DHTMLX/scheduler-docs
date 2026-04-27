@@ -17,7 +17,7 @@ description: "sorgt dafür, dass der Scheduler-Container seine Größe automatis
 ~~~jsx
 scheduler.config.container_autoresize = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
 **Default value:** true

@@ -21,7 +21,7 @@ description: "dhtmlxScheduler 인스턴스를 생성하는 생성자입니다."
 ### Example
 
 ~~~jsx
-scheduler.init("scheduler_here", new Date(2010,0,6), "month");
+scheduler.init("scheduler_here", new Date(2027,0,6), "month");
 ~~~
 
 ### Related samples

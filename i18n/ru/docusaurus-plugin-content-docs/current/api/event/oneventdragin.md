@@ -1,14 +1,14 @@
 ---
-sidebar_label: "onEventDragIn"
+sidebar_label: onEventDragIn
 title: "onEventDragIn event"
-description: "срабатывает, когда перетаскиваемое событие входит в scheduler"
+description: "срабатывает, когда перетащенное событие перемещается во планировщик"
 ---
 
 # onEventDragIn
 
 ### Description
 
-@short: Срабатывает, когда перетаскиваемое событие входит в scheduler
+@short: Срабатывает, когда перетащенное событие перемещается во планировщик
 
 @signature: onEventDragIn: (id: string, e: Event) =\> void;
 
@@ -21,15 +21,15 @@ description: "срабатывает, когда перетаскиваемое 
 
 ~~~jsx
 scheduler.attachEvent("onEventDragIn", function (id, e){
-    //любая ваша логика здесь
+    // здесь можно поместить произвольную логику
 });
 ~~~
 
 ### Details
 
 :::note
- Это событие возникает только во время drag-and-drop действий между разными schedulers. 
+ Событие срабатывает только в случае перетаскивания между планировщиками.
 :::
 
 ### Related Guides
-- [Операции Drag-and-Drop](guides/drag-between.md)
+- [Перетаскивание и отпускание](guides/drag-between.md)
