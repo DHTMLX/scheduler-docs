@@ -78,10 +78,15 @@ const readFile = (workingDir, filePath) => {
 		finalPath += !fs.existsSync(finalPath + '.md') ? '.mdx' : '.md';
 	}
 
-	const normalizedPath = path.normalize(finalPath);
-
-
 	if (!fs.existsSync(finalPath)) {
+		const parentDir = path.dirname(workingDir);
+		if (parentDir !== workingDir) {
+			const parentResult = readFile(parentDir, filePath);
+			if (parentResult) {
+				return parentResult;
+			}
+		}
+
 		const clippedFilePath = filePath.split('/');
 		clippedFilePath.shift();
 		if (!clippedFilePath.length) {
@@ -90,7 +95,7 @@ const readFile = (workingDir, filePath) => {
 		return readFile(workingDir, clippedFilePath.join('/'));
 	}
 
-
+	const normalizedPath = path.normalize(finalPath);
 	if (fileContentCache.has(normalizedPath)) {
 		return fileContentCache.get(normalizedPath);
 	}
