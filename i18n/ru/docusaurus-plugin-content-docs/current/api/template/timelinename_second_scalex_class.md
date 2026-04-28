@@ -29,7 +29,7 @@ scheduler.templates.timeline_second_scalex_class = function(date){
 };
 ~~~
 
-**Applicable views:** [Timeline view](views/timeline.md)
+**Доступные представления:** [Timeline view](views/timeline.md)
 
 ### Details
 

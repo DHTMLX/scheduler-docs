@@ -1,27 +1,27 @@
 ---
-sidebar_label: "onXScaleClick"
-title: "onXScaleClick event"
-description: "срабатывает при одиночном клике пользователя по ячейке на оси x (применимо только в режиме Timeline)"
+sidebar_label: onXScaleClick
+title: "onXScaleClick событие"
+description: "срабатывает, когда пользователь делает одиночный клик по ячейке на оси X (только в режиме таймлайн)"
 ---
 
 # onXScaleClick
 
 ### Description
 
-@short: Срабатывает при одиночном клике пользователя по ячейке на оси x (применимо только в режиме Timeline)
+@short: Срабатывает, когда пользователь делает одиночный клик по ячейке на оси X (только в режиме таймлайн)
 
-@signature: onXScaleClick: (index: number, value: object, e: Event) =\> void
+@signature: onXScaleClick: (index: number, value, e) =\> void
 
 ### Parameters
 
-- `index` - (required) *number* - нулевой индекс кликнутого столбца
-- `value` - (required) *object* - объект Date, представляющий начальную временную метку кликнутой ячейки
+- `index` - (required) *number* - индекс столбца нажатой ячейки (нумерация с нуля)
+- `value` - (required) *object* - объект Date, задающий метку времени начала нажатой ячейки
 - `e` - (required) *Event* - нативный объект события
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onXScaleClick", function (index, value,e){
-    //любая пользовательская логика здесь
+    // любая ваша логика здесь
 });
 ~~~

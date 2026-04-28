@@ -17,7 +17,7 @@ description: "enables rendering of multi-day events"
 ~~~jsx
 scheduler.config.multi_day = false;
     
-scheduler.init('scheduler_here',new Date(2020,7,11),"week");
+scheduler.init('scheduler_here',new Date(2027,7,11),"week");
 ~~~
 
 **Default value:** true

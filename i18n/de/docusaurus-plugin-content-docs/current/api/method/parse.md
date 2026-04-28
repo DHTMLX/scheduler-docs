@@ -1,7 +1,7 @@
 ---
-sidebar_label: "parse"
-title: "parse method"
-description: "lädt Daten aus einer clientseitigen Ressource"
+sidebar_label: parse
+title: "Parse-Methode"
+description: "Lädt Daten aus einer clientseitigen Ressource"
 ---
 
 # parse
@@ -14,31 +14,29 @@ description: "lädt Daten aus einer clientseitigen Ressource"
 
 ### Parameters
 
-- `data` - (required) *object* - eine Zeichenkette oder ein Objekt, das die Daten enthält
+- `data` - (erforderlich) *object* - ein String oder Objekt, das Daten darstellt
 
 ### Example
 
 ~~~jsx
 scheduler.parse([
-     { start_date:"2020-05-13 6:00", end_date:"2020-05-13 8:00", text:"Event 1"},
-     { start_date:"2020-06-09 6:00", end_date:"2020-06-09 8:00", text:"Event 2"}
+    { start_date: "2027-05-13 6:00", end_date: "2027-05-13 8:00", text: "Event 1" },
+    { start_date: "2027-06-09 6:00", end_date: "2027-06-09 8:00", text: "Event 2" }
 ]);
 ~~~
 
 ### Related samples
-- [Coloring events](https://docs.dhtmlx.com/scheduler/samples/02_customization/01_events_coloring.html)
-- [Displaying events as a cascade](https://docs.dhtmlx.com/scheduler/samples/02_customization/24_cascade_event_display.html)
-
-### Details
+- [Ereignisse einfärben](https://docs.dhtmlx.com/scheduler/samples/02_customization/01_events_coloring.html)
+- [Ereignisse als Kaskade anzeigen](https://docs.dhtmlx.com/scheduler/samples/02_customization/24_cascade_event_display.html)
 
 ## Migration
 
-Ab Version 5.2 erkennt der Scheduler das Datenformat automatisch. 
+Ab Version 5.2 und später erkennt der Scheduler automatisch das Datenformat.
 
-In früheren Versionen (vor 5.2) akzeptierte die Methode zwei Parameter:
+Vor Version 5.2 hatte die Methode zwei Parameter:
 
-- **data** - (*object*)    eine Zeichenkette oder ein Objekt mit den Daten;
-- **type** - (*string*)    optionale Angabe des Datentyps (<i>'json', 'xml', 'ical'</i>). Standard war <i>'xml'</i>
+- `data` - (*object*) ein String oder Objekt, das Daten darstellt
+- `type` - (*string*) optional, (*'json', 'xml', 'ical'*) der Datentyp. Der Standardwert ist *'xml'*
 
 ### Related API
 - [onBeforeParse](api/event/onbeforeparse.md)
@@ -49,4 +47,4 @@ In früheren Versionen (vor 5.2) akzeptierte die Methode zwei Parameter:
 - [Beispiele für Datenformate](guides/data-formats.md)
 
 ### Change log
-- Der zweite Parameter **type** wurde in Version 5.2 entfernt.
+- Der zweite `type`-Parameter der Methode wurde in v5.2 entfernt.

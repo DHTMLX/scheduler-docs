@@ -15,7 +15,7 @@ description: "处理 JSON 序列化和解析"
 ### Example
 
 ~~~jsx
-var obj = scheduler.json; // -> { parse(data){... }}
+const obj = scheduler.json; // -> { parse(data){... }}
 ~~~
 
 ### Details

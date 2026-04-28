@@ -92,7 +92,7 @@ The [exportToPNG()](api/method/exporttopng.md) method takes as a parameter an ob
 </table>
 
 
-[Calling the export method with optional properties](Calling the export method with optional properties)
+Calling the export method with optional properties:
 ~~~js
 scheduler.exportToPNG({
     format:"A4",

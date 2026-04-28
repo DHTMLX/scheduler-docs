@@ -34,7 +34,7 @@ Initialize `RemoteEvents` and set up `DataProcessor` in the same section of code
 
 ~~~js
 const AUTH_TOKEN = "token";
-scheduler.init('scheduler_here', new Date(2025, 3, 20), "week");
+scheduler.init('scheduler_here', new Date(2027, 3, 20), "week");
 scheduler.load("/events");
 
 const dp = scheduler.createDataProcessor({

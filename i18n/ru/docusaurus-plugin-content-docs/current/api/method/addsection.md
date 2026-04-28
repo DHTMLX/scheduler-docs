@@ -1,26 +1,28 @@
 ---
-sidebar_label: "addSection"
-title: "addSection method"
-description: "добавляет новый section в текущий активный view"
+sidebar_label: addSection
+title: "метод addSection"
+description: "добавляет секцию в текущее активное представление"
 ---
 
 # addSection
+
 :::info
- Эта функция доступна только в PRO-версии. 
-:::
+ Эта функциональность доступна только в PRO-версии.
+ :::
+
 ### Description
 
-@short: Добавляет новый section в текущий активный view
+@short: Добавляет секцию в текущее активное представление
 
 @signature: addSection: (section: any, parent_id: string) =\> boolean
 
 ### Parameters
 
-- `section` - (required) *object* - объект section, который нужно добавить
-- `parent_id` - (required) *string* - id родительского section; используйте 'null' чтобы добавить section на корневом уровне
+- `section` - (required) *object* - объект секции, которую нужно добавить
+- `parent_id` - (required) *string* - id родительской секции. Укажите 'null', если добавляете секцию в корень
 
 ### Returns
-- ` isSuccess` - (boolean) - возвращает 'true', если section успешно добавлен, иначе 'false' (например, если указан неверный parent_id)
+- `isSuccess` - (boolean) - возвращает 'true', если секция была успешно добавлена, и 'false' в других случаях (например, указан неверный parent_id).
 
 ### Example
 
@@ -47,17 +49,17 @@ scheduler.addSection( {key:1, label:"James Smith"}, "p1");
 scheduler.addSection( {key:2, label:"Alex White"}, "sales");
 ~~~
 
-**Applicable views:** [Timeline view](views/timeline.md)
+**Доступные представления:** [Timeline view](views/timeline.md)
 
 ### Details
 
 :::note
- Метод требует включения плагина [treetimeline](guides/extensions-list.md#treetimeline). 
-:::
+ Методу требуется активированный плагин [treetimeline](guides/extensions-list.md#treetimeline).
+ :::
 
 :::note
 
-Если текущий view не является Timeline в режиме 'Tree', метод не окажет никакого эффекта.
+Если открытое представление не является Timeline в режиме 'Tree', метод будет проигнорирован.
  
 :::
 

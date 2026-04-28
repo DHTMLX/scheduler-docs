@@ -17,7 +17,7 @@ description: "moves views' tabs from the left to the right side"
 ~~~jsx
 scheduler.config.fix_tab_position = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** true

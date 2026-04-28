@@ -1,26 +1,26 @@
 ---
-sidebar_label: "event"
+sidebar_label: event
 title: "event method"
-description: "устанавливает обработчик event на HTML элемент"
+description: "прикрепляет обработчик события к элементу HTML"
 ---
 
 # event
 
 ### Description
 
-@short: Устанавливает обработчик event на HTML элемент
+@short: Прикрепляет обработчик события к элементу HTML
 
 @signature: event: (node: HTMLElement|string, event: string, handler: SchedulerCallback, master?: any) =\> string
 
 ### Parameters
 
-- `node` - (required) *HTMLElement | string* - HTML элемент или его id
-- `event` - (required) *string* - название HTML event (без префикса 'on')
-- `handler` - (required) *function* - функция, которая обрабатывает event
-- `master` - (optional) *object* - объект, на который ссылается <i>this</i> внутри handler
+- `node` - (required) *HTMLElement|string* - узел HTML или его идентификатор
+- `event` - (required) *string* - имя HTML-события (без префикса 'on')
+- `handler` - (required) *function* - обработчик события
+- `master` - (optional) *object* - объект, к которому относится ключевое слово <i>this</i>
 
 ### Returns
-- ` id` - (string) - id обработчика event (можно использовать с методом <b>eventRemove()</b>)
+- `id` - (string) - идентификатор обработчика события (можно использовать в методе <b>eventRemove()</b>)
 
 ### Example
 

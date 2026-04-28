@@ -24,10 +24,10 @@ description: "Units, Timeline 뷰 또는 Lightbox에 로드할 수 있는 이름
 
 ~~~jsx
 // 'my_list'라는 이름의 옵션 리스트를 가져옵니다.
-var list = scheduler.serverList("my_list"); 
+const list = scheduler.serverList("my_list"); 
 ...
 // 지정된 옵션으로 리스트를 생성하고 반환합니다.
-var list = scheduler.serverList("options", [
+const list = scheduler.serverList("options", [
     {key: 1, label: "John"},
     {key: 2, label: "Adam"},
     {key: 3, label: "Diane"}

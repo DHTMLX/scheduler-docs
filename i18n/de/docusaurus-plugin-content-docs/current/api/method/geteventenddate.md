@@ -24,13 +24,13 @@ Die Funktion ist veraltet
 ### Example
 
 ~~~jsx
-var eventId = scheduler.addEvent({
-    start_date: "16-05-2013 09:00",
-    end_date:   "16-05-2013 12:00",
+const eventId = scheduler.addEvent({
+    start_date: "16-05-2027 09:00",
+    end_date:   "16-05-2027 12:00",
     text:   "Meeting"
 });
 ...
-scheduler.getEvent(eventId).end_date; // -> Thu May 16 2013 12:00:00
+scheduler.getEvent(eventId).end_date; // -> Thu May 16 2027 12:00:00
 ~~~
 
 ### Related API

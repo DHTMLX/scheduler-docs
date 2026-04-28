@@ -1,14 +1,14 @@
 ---
-sidebar_label: "openAllSections"
+sidebar_label: openAllSections
 title: "openAllSections method"
-description: "открывает все секции в текущем активном представлении (работает только если представление - Timeline в режиме 'Tree'; в противном случае метод игнорируется)"
+description: "Открывает все разделы в текущем активном представлении (если открытое представление не Timeline в режиме 'Tree' - метод будет проигнорирован)"
 ---
 
 # openAllSections
 
 ### Description
 
-@short: Открывает все секции в текущем активном представлении (работает только если представление - Timeline в режиме 'Tree'; в противном случае метод игнорируется)
+@short: Открывает все разделы в текущем активном представлении (если открытое представление не Timeline в режиме 'Tree' - метод будет проигнорирован)
 
 @signature: openAllSections: () =\> void
 
@@ -23,12 +23,11 @@ scheduler.openAllSections();
 ### Details
 
 :::note
- Этот метод требует включения плагина [treetimeline](guides/extensions-list.md#treetimeline). 
-:::
+ Метод требует активированного плагина [treetimeline](guides/extensions-list.md#treetimeline).
+ :::
 
 :::note
-
-Данный метод применяется исключительно в режиме Tree
+Метод используется только для режима 'Tree'
  
 :::
 

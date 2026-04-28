@@ -15,10 +15,10 @@ description: "定义显示事件的截止日期"
 ### Example
 
 ~~~jsx
-scheduler.config.agenda_start = new Date(2012, 7, 1);
-scheduler.config.agenda_end = new Date(2014, 7, 1);
+scheduler.config.agenda_start = new Date(2025, 7, 1);
+scheduler.config.agenda_end = new Date(2027, 7, 1);
 ...
-scheduler.init('scheduler_here', new Date(2013, 0, 10), "agenda");
+scheduler.init('scheduler_here', new Date(2026, 0, 10), "agenda");
 ~~~
 
 **Default value:** 默认为 'agenda_start' 之后一年（值）

@@ -21,9 +21,9 @@ description: "converts scheduler's data to the ICal format"
 ### Example
 
 ~~~jsx
-var str = scheduler.toICal();
+const str = scheduler.toICal();
 //or
-var str = scheduler.toICal("My calendar");
+const str = scheduler.toICal("My calendar");
 ~~~
 
 ### Related samples

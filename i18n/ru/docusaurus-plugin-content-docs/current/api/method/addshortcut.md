@@ -1,21 +1,22 @@
 ---
-sidebar_label: "addShortcut"
-title: "addShortcut method"
-description: "создаёт новую клавиатурную комбинацию (shortcut)"
+sidebar_label: addShortcut
+title: "метод addShortcut"
+description: "добавляет новую комбинацию клавиш"
 ---
 
 # addShortcut
 
 ### Description
 
-@short: Создаёт новую клавиатурную комбинацию (shortcut)
+@short: Добавляет новую комбинацию клавиш
 
 @signature: addShortcut: (shortcut: string, handler: SchedulerCallback, scope?: string) =\> void
+
 ### Parameters
 
-- `shortcut	` - (required) *string* - клавиша или комбинация клавиш, определяющая shortcut (синтаксис shortcut)
-- `handler` - (required) *function* - функция, которая будет вызвана при срабатывании shortcut
-- `scope` - (optional) *string* - (опционально) указывает контекстный элемент, к которому прикреплен handler (список scope)
+- `shortcut` - (required) *string* - имя клавиши или имя комбинации клавиш для ярлыка (синтаксис ярлыка)
+- `handler` - (required) *function* - обработчик вызова ярлыка
+- `scope` - (optional) *string* - имя контекстного элемента, к которому привязывается функция-обработчик (список областей)
 
 ### Example
 
@@ -32,9 +33,9 @@ scheduler.addShortcut("shift+w", function(e){
 
 ### Details
 
-добавлено в версии 4.4
+Добавлено в версии 4.4
 
-Если третий параметр опущен, handler по умолчанию прикрепляется к scope scheduler.
+Если третий параметр не задан, обработчик будет привязан к области планировщика.
 
 ### Related API
 - [getShortcutHandler](api/method/getshortcuthandler.md)
@@ -44,4 +45,4 @@ scheduler.addShortcut("shift+w", function(e){
 - [key_nav_step](api/config/key_nav_step.md)
 
 ### Related Guides
-- [Навигация с помощью клавиатуры](guides/keyboard-navigation.md)
+- [Навигация по клавиатуре](guides/keyboard-navigation.md)

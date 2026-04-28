@@ -21,7 +21,7 @@ description: "Wird ausgelöst, wenn die Drag- oder Resize-Aktion abgeschlossen i
 ### Example
 
 ~~~jsx
-var dragged_event;
+let dragged_event;
 scheduler.attachEvent("onBeforeDrag", function (id, mode, e){
     // Dies hilft, das gerade gezogene Event zu erfassen
     dragged_event = scheduler.getEvent(id); 
@@ -29,7 +29,7 @@ scheduler.attachEvent("onBeforeDrag", function (id, mode, e){
 });
 
 scheduler.attachEvent("onDragEnd", function(id, mode, e){
-    var event_obj = dragged_event;
+    let event_obj = dragged_event;
     // Hier können Sie Ihre eigene Logik einfügen
 });
 ~~~

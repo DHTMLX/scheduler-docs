@@ -15,7 +15,7 @@ description: "라이트박스 크기를 업데이트합니다."
 ### Example
 
 ~~~jsx
-var control = scheduler.formSection("description");
+const control = scheduler.formSection("description");
 control.header.style.display = "none";
 
 scheduler.setLightboxSize();

@@ -17,7 +17,7 @@ description: "steuert, ob der Scheduler sich nach jeder Aktion vollständig neu 
 ~~~jsx
 scheduler.config.update_render = true;
 ...     
-scheduler.init('scheduler_here',new Date(2013,7,11),"week");
+scheduler.init('scheduler_here',new Date(2027,7,11),"week");
 ~~~
 
 **Default value:** false

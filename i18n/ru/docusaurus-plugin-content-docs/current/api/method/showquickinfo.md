@@ -1,27 +1,27 @@
 ---
-sidebar_label: "showQuickInfo"
-title: "showQuickInfo method"
-description: "открывает всплывающую форму события для заданного события"
+sidebar_label: showQuickInfo
+title: "showQuickInfo метод"
+description: "отображает всплывающую форму события для указанного события"
 ---
 
 # showQuickInfo
 
 ### Description
 
-@short: Открывает всплывающую форму события для заданного события
+@short: Отображает всплывающую форму события для указанного события
 
 @signature: showQuickInfo: (id: string) =\> void
 
 ### Parameters
 
-- `id` - (required) *string* - идентификатор события
+- `id` - (обязательный) *string* - идентификатор события
 
 ### Example
 
 ~~~jsx
-var eventId = scheduler.addEvent({
-    start_date: "08-06-2013 09:00",
-    end_date:   "08-06-2013 11:00",
+const eventId = scheduler.addEvent({
+    start_date: "08-06-2027 09:00",
+    end_date:   "08-06-2027 11:00",
     text:   "Meeting"
 });
 
@@ -33,7 +33,7 @@ window.setTimeout(function(){
 ### Details
 
 :::note
- Этот метод требует включения плагина [quick_info](guides/extensions-list.md#quickinfo). 
+ Метод требует активации плагина [quick_info](guides/extensions-list.md#quick-info).
 :::
 
 ### Related API
@@ -43,5 +43,5 @@ window.setTimeout(function(){
 - [onQuickInfo](api/event/onquickinfo.md)
 
 ### Related Guides
-- [Мобильная адаптивность Scheduler](guides/touch-support.md)
-- [Полный список расширений](guides/extensions-list.md#quickinfo)
+- [Мобильный адаптивный планировщик](guides/touch-support.md)
+- [Полный список расширений](guides/extensions-list.md#quick-info)

@@ -1,21 +1,20 @@
 ---
-sidebar_label: "onLoadEnd"
-title: "onLoadEnd event"
-description: "срабатывает один раз после завершения загрузки данных из источника данных"
+sidebar_label: onLoadEnd
+title: "Событие onLoadEnd"
+description: "срабатывает после того, как загрузка данных из источника данных завершена"
 ---
 
 # onLoadEnd
 
 ### Description
 
-@short: Срабатывает один раз после завершения загрузки данных из источника данных
+@short: Срабатывает после загрузки данных из источника данных.
 
 @signature: onLoadEnd: () =\> void
 
 ### Example
 
 ~~~jsx
-```javascript
 scheduler.attachEvent("onLoadStart", function(){
     scheduler.config.readonly = true;
 });
@@ -23,7 +22,6 @@ scheduler.attachEvent("onLoadStart", function(){
 scheduler.attachEvent("onLoadEnd", function(){
     scheduler.config.readonly = false;
 });
-```
 ~~~
 
 ### Related API
@@ -34,4 +32,4 @@ scheduler.attachEvent("onLoadEnd", function(){
 
 ### Related Guides
 - [Загрузка данных](guides/loading-data.md)
-- [Интеграция с серверной стороной](guides/server-integration.md)
+- [Интеграция на стороне сервера](guides/server-integration.md)

@@ -19,7 +19,7 @@ scheduler.plugins({
     editors: true /*!*/
 });
 
-var priorities = [
+const priorities = [
     { key: 1, label: 'High' },
     { key: 2, label: 'Medium' },
     { key: 3, label: 'Low' }
@@ -106,7 +106,7 @@ The following properties are mostly important and commonly set for the 'radio' c
 Generally, to set values for the radio buttons you should use the [options](api/config/lightbox.md) parameter:
 
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     {      name:"alert", type:"select", 
         ...
         options:[
@@ -147,15 +147,15 @@ The data response for the [load](api/method/load.md) method should contain a col
    "data":[
       {
           "id":"1",
-          "start_date":"2019-03-02 15:00:00",
-          "end_date":"2019-03-04 16:00:00",
+          "start_date":"2027-03-02 15:00:00",
+          "end_date":"2027-03-04 16:00:00",
           "text":"Interview",
           "priority":1
       },
       {
           "id":"2",
-          "start_date":"2019-03-02 17:00:00",
-          "end_date":"2019-03-04 18:00:00",
+          "start_date":"2027-03-02 17:00:00",
+          "end_date":"2027-03-04 18:00:00",
           "text":"Performance review",
           "type":2
       }
@@ -203,8 +203,8 @@ But you can assign a click handler for the Lightbox Radio controls like this:
 ~~~js
 
 scheduler.attachEvent("onLightbox", function(){
-    var node = scheduler.formSection("type").node;
-    var radios = node.getElementsByTagName("input");
+    const node = scheduler.formSection("type").node;
+    const radios = node.getElementsByTagName("input");
     ...
 });
 ~~~
@@ -215,7 +215,7 @@ scheduler.attachEvent("onLightbox", function(){
 
 scheduler.attachEvent("onLightbox", function(){
     ...
-    for(var i = 0; i < radios.length; i++){
+    for(let i = 0; i < radios.length; i++){
       radios[i].onclick = onRadioClick; 
     }
 });
@@ -225,7 +225,7 @@ scheduler.attachEvent("onLightbox", function(){
 
 ~~~js
 function onRadioClick(event){
-    var e = event || window.event,
+    let e = event || window.event,
         node = this;
   
     dhtmlx.message(node.value);

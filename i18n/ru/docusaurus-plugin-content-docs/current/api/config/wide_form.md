@@ -1,14 +1,14 @@
 ---
-sidebar_label: "wide_form"
-title: "wide_form config"
-description: "управляет отображением стандартного (широкого) lightbox вместо короткой версии"
+sidebar_label: wide_form
+title: "wide_form конфигурация"
+description: "включает/отключает отображение стандартного (широкого) лайтбокса вместо короткого"
 ---
 
 # wide_form
 
 ### Description
 
-@short: Управляет отображением стандартного (широкого) lightbox вместо короткой версии
+@short: Включает/выключает отображение стандартного (широкого) лайтбокса вместо короткого
 
 @signature: wide_form: boolean
 
@@ -17,10 +17,10 @@ description: "управляет отображением стандартног
 ~~~jsx
 scheduler.config.wide_form = true;
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Related samples
 - [Terrace skin](https://docs.dhtmlx.com/scheduler/samples/07_skins/01_default.html)
@@ -29,16 +29,16 @@ scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
 
 :::note
 
-Стандартный (широкий) lightbox включён по умолчанию в стандартной skin и не может быть заменён на короткую версию
- 
+Стандартный (широкий) лайтбокс по умолчанию включен в стандартной теме и его нельзя переключить на короткий.
+
 :::
 
 <br>
 
-- Стандартный lightbox
+- Стандартный лайтбокс
 
 ![wide_form_false](/img/wide_form_false.png)
 
-- Широкий lightbox
+- Широкий лайтбокс
 
 ![wide_form_true](/img/wide_form_true.png)

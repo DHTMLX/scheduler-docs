@@ -17,7 +17,7 @@ description: "스케줄러 컨테이너가 전체 내용을 스크롤 없이 모
 ~~~jsx
 scheduler.config.container_autoresize = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
 **Default value:** true

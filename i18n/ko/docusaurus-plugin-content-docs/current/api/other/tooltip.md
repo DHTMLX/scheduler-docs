@@ -15,7 +15,7 @@ description: "이벤트에 대한 tooltip을 표시합니다."
 ### Example
 
 ~~~jsx
-var tooltip = scheduler.tooltip;
+const tooltip = scheduler.tooltip;
 tooltip.hide();
 tooltip.show(event, text);
 ~~~

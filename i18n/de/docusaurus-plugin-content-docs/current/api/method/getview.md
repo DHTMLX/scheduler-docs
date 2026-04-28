@@ -22,7 +22,7 @@ description: "gibt ein View-Objekt basierend auf seinem Namen zurück. Wird kein
 ### Example
 
 ~~~jsx
-var timeline = scheduler.getView(); 
+const timeline = scheduler.getView(); 
 timeline.x_size = 8;
 scheduler.setCurrentView();
 ~~~

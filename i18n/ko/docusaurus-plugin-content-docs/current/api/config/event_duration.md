@@ -18,7 +18,7 @@ description: "이벤트의 초기 지속 시간을 분 단위로 설정합니다
 scheduler.config.event_duration = 60; 
 scheduler.config.auto_end_date = true;
 ...
-scheduler.init('scheduler_here', new Date(2013, 05, 11), "week");
+scheduler.init('scheduler_here', new Date(2027, 05, 11), "week");
 ~~~
 
 **Default value:** 5

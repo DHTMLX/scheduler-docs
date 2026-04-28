@@ -17,7 +17,7 @@ description: "enables/disables displaying of the standard (wide) lightbox instea
 ~~~jsx
 scheduler.config.wide_form = true;
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 **Default value:** true

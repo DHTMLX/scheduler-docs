@@ -19,7 +19,7 @@ description: "翻转给定的时区范围"
 ### Example
 
 ~~~jsx
-var zones = scheduler.invertZones([500, 1000]); // => [0, 500, 1000, 1440]
+const zones = scheduler.invertZones([500, 1000]); // => [0, 500, 1000, 1440]
 ~~~
 
 ### Details

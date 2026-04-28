@@ -15,5 +15,5 @@ description: "提供当前 dhtmlxScheduler 的版本信息"
 ### Example
 
 ~~~jsx
-var version = scheduler.version; // "4.0"
+const version = scheduler.version; // "4.0"
 ~~~

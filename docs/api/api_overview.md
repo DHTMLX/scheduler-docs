@@ -390,9 +390,9 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/template/event_text.md)                         | @getshort(api/template/event_text.md)                        |
 | [](api/template/format_date.md)                        | @getshort(api/template/format_date.md)                       |
 | [](api/template/gridname_date.md)                      | @getshort(api/template/gridname_date.md)                     |
-| [](api/template/gridname_full_date.md)            | @getshort(api/template/gridname_full_date.md)                |
-| [](api/template/gridname_single_date.md)        | @getshort(api/template/gridname_single_date.md)              |
-| [](api/template/gridname_field.md)                    | @getshort(api/template/gridname_field.md)                    |
+| [](api/template/gridname_full_date.md)                 | @getshort(api/template/gridname_full_date.md)                |
+| [](api/template/gridname_single_date.md)               | @getshort(api/template/gridname_single_date.md)              |
+| [](api/template/gridname_field.md)                     | @getshort(api/template/gridname_field.md)                    |
 | [](api/template/hour_scale.md)                         | @getshort(api/template/hour_scale.md)                        |
 | [](api/template/load_format.md)                        | @getshort(api/template/load_format.md)                       |
 | [](api/template/map_date.md)                           | @getshort(api/template/map_date.md)                          |
@@ -424,39 +424,39 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/template/year_scale_date.md)                    | @getshort(api/template/year_scale_date.md)                   |
 | [](api/template/year_tooltip.md)                       | @getshort(api/template/year_tooltip.md)                      |
 | [](api/template/lightbox_header.md)                    | @getshort(api/template/lightbox_header.md)                   |
-| [](api/template/timelinename_cell_value.md)                  | @getshort(api/template/timelinename_cell_value.md)           |
-| [](api/template/timelinename_cell_class.md)                  | @getshort(api/template/timelinename_cell_class.md)           |
-| [](api/template/timelinename_scalex_class.md)              | @getshort(api/template/timelinename_scalex_class.md)         |
-| [](api/template/timelinename_second_scalex_class.md)| @getshort(api/template/timelinename_second_scalex_class.md)  |
-| [](api/template/timelinename_scaley_class.md)              | @getshort(api/template/timelinename_scaley_class.md)         |
-| [](api/template/timelinename_scale_label.md)                | @getshort(api/template/timelinename_scale_label.md)          |
-| [](api/template/timelinename_tooltip.md)                        | @getshort(api/template/timelinename_tooltip.md)              |
-| [](api/template/timelinename_date.md)                              | @getshort(api/template/timelinename_date.md)                 |
-| [](api/template/timelinename_scale_date.md)                  | @getshort(api/template/timelinename_scale_date.md)           |
-| [](api/template/timelinename_second_scale_date.md)    | @getshort(api/template/timelinename_second_scale_date.md)    |
-| [](api/template/timelinename_row_class.md)                    | @getshort(api/template/timelinename_row_class.md)            |
-| [](api/template/unitsname_date.md)                                    | @getshort(api/template/unitsname_date.md)                    |
-| [](api/template/unitsname_scale_text.md)                        | @getshort(api/template/unitsname_scale_text.md)              |
-| [](api/template/xml_date.md)                                                            | @getshort(api/template/xml_date.md)                          |
-| [](api/template/xml_format.md)                                                          | @getshort(api/template/xml_format.md)                        |
+| [](api/template/timelinename_cell_value.md)            | @getshort(api/template/timelinename_cell_value.md)           |
+| [](api/template/timelinename_cell_class.md)            | @getshort(api/template/timelinename_cell_class.md)           |
+| [](api/template/timelinename_scalex_class.md)          | @getshort(api/template/timelinename_scalex_class.md)         |
+| [](api/template/timelinename_second_scalex_class.md)   | @getshort(api/template/timelinename_second_scalex_class.md)  |
+| [](api/template/timelinename_scaley_class.md)          | @getshort(api/template/timelinename_scaley_class.md)         |
+| [](api/template/timelinename_scale_label.md)           | @getshort(api/template/timelinename_scale_label.md)          |
+| [](api/template/timelinename_tooltip.md)               | @getshort(api/template/timelinename_tooltip.md)              |
+| [](api/template/timelinename_date.md)                  | @getshort(api/template/timelinename_date.md)                 |
+| [](api/template/timelinename_scale_date.md)            | @getshort(api/template/timelinename_scale_date.md)           |
+| [](api/template/timelinename_second_scale_date.md)     | @getshort(api/template/timelinename_second_scale_date.md)    |
+| [](api/template/timelinename_row_class.md)             | @getshort(api/template/timelinename_row_class.md)            |
+| [](api/template/unitsname_date.md)                     | @getshort(api/template/unitsname_date.md)                    |
+| [](api/template/unitsname_scale_text.md)               | @getshort(api/template/unitsname_scale_text.md)              |
+| [](api/template/xml_date.md)                           | @getshort(api/template/xml_date.md)                          |
+| [](api/template/xml_format.md)                         | @getshort(api/template/xml_format.md)                        |
 
 
 ## Scheduler others
 
 | Name                                       | Description                                 |
 |--------------------------------------------|---------------------------------------------|
-| [](api/other/ajax.md) | @getshort(api/other/ajax.md) |
-| [](api/other/config.md) | @getshort(api/other/config.md) |
-| [](api/other/date.md) | @getshort(api/other/date.md) |
-| [](api/other/env.md) | @getshort(api/other/env.md) |
-| [](api/other/i18n.md) | @getshort(api/other/i18n.md) |
-| [](api/other/ical.md) | @getshort(api/other/ical.md) |
-| [](api/other/json.md) | @getshort(api/other/json.md) |
-| [](api/other/keys.md) | @getshort(api/other/keys.md) |
-| [](api/other/locale.md) | @getshort(api/other/locale.md) |
-| [](api/other/matrix.md) | @getshort(api/other/matrix.md) |
-| [](api/other/skin.md) | @getshort(api/other/skin.md) |
-| [](api/other/templates.md) | @getshort(api/other/templates.md) |
-| [](api/other/tooltip.md) | @getshort(api/other/tooltip.md) |
-| [](api/other/version.md) | @getshort(api/other/version.md) |
-| [](api/other/xy.md) | @getshort(api/other/xy.md) |
+| [](api/other/ajax.md)                      | @getshort(api/other/ajax.md)      |
+| [](api/other/config.md)                    | @getshort(api/other/config.md)    |
+| [](api/other/date.md)                      | @getshort(api/other/date.md)      |
+| [](api/other/env.md)                       | @getshort(api/other/env.md)       |
+| [](api/other/i18n.md)                      | @getshort(api/other/i18n.md)      |
+| [](api/other/ical.md)                      | @getshort(api/other/ical.md)      |
+| [](api/other/json.md)                      | @getshort(api/other/json.md)      |
+| [](api/other/keys.md)                      | @getshort(api/other/keys.md)      |
+| [](api/other/locale.md)                    | @getshort(api/other/locale.md)    |
+| [](api/other/matrix.md)                    | @getshort(api/other/matrix.md)    |
+| [](api/other/skin.md)                      | @getshort(api/other/skin.md)      |
+| [](api/other/templates.md)                 | @getshort(api/other/templates.md) |
+| [](api/other/tooltip.md)                   | @getshort(api/other/tooltip.md)   |
+| [](api/other/version.md)                   | @getshort(api/other/version.md)   |
+| [](api/other/xy.md)                        | @getshort(api/other/xy.md)        |

@@ -23,9 +23,9 @@ description: "exports several scheduler's views to a PDF document (can be used f
 ### Example
 
 ~~~jsx
-//exports pages of the 'week' view from the 1st January, 2012 
-//till the 1st February, 2012
-scheduler.toPDFRange(new Date(2012,0,1), new Date(2012, 1,1),'week', 
+//exports pages of the 'week' view from the 1st January, 2027 
+//till the 1st February, 2027
+scheduler.toPDFRange(new Date(2027,0,1), new Date(2027, 1,1),'week', 
   'generate.php', 'fullcolor');
 ~~~
 

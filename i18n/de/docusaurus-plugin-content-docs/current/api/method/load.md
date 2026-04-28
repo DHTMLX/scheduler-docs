@@ -1,52 +1,52 @@
 ---
-sidebar_label: "load"
+sidebar_label: load
 title: "load method"
-description: "lädt Daten aus einer externen Quelle in den Scheduler"
+description: "loads data to the scheduler from an external data source"
 ---
 
 # load
 
 ### Description
 
-@short: Lädt Daten aus einer externen Quelle in den Scheduler
+@short: Lädt Daten in den Scheduler aus einer externen Datenquelle
 
 @signature: load: (url: string, callback?: SchedulerCallback) =\> void
 
 ### Parameters
 
-- `url` - (required) *string* - die serverseitige URL (dies kann eine statische Datei oder ein serverseitiges Skript sein, das Daten in einem der unterstützten Formate ausgibt)
-- `callback` - (optional) *function* - eine Funktion, die aufgerufen wird, sobald das Laden abgeschlossen ist
+- `url` - (required) *string* - die server-seitige URL (kann eine statische Datei oder ein serverseitiges Skript sein, das Daten in einem der unterstützten Formate ausgibt)
+- `callback` - (optional) *function* - die Callback-Funktion
 
 ### Example
 
 ~~~jsx
-scheduler.load("data"); // das Datenformat wird automatisch erkannt
+scheduler.load("data"); // das Format der geladenen Daten wird automatisch erkannt
 // oder
-scheduler.load("data", function(){
+scheduler.load("data", () => {
     alert("Daten wurden erfolgreich geladen");
 });
 ~~~
 
 ### Related samples
-- [Basic initialization](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/01_basic_init.html)
-- [Loading data from a database](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/05_loading_database.html)
+- [Grundlegende Initialisierung](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/01_basic_init.html)
+- [Daten aus einer Datenbank laden](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/05_loading_database.html)
 
 ### Details
 
-Beachten Sie, dass bei dynamischem Laden der Daten die als zweites Argument übergebene Callback-Funktion nur beim initialen Laden der Daten ausgelöst wird.
-Nachfolgende Datenladevorgänge erfolgen später, aber der Callback wird nicht erneut aufgerufen.
+Achte darauf, dass im Fall des dynamischen Ladens die als zweiter Parameter übergebene Callback-Funktion nur während des anfänglichen Ladens der Daten aufgerufen wird.
+Während die nächsten Datenabschnitte später geladen werden, wird die Callback-Funktion nicht mehr aufgerufen.
 
-Wenn Sie möchten, dass ein Callback bei jedem Laden von Daten in den Scheduler ausgeführt wird, sollten Sie das Event [onLoadEnd](api/event/onloadend.md) verwenden.
+Falls Sie die Callback-Funktion bei jedem Ladevorgang von Daten in Scheduler aufrufen müssen, können Sie das [`onLoadEnd`](api/event/onloadend.md) Ereignis verwenden.
 
 ## Migration
 
-Ab Version 5.2 erkennt der Scheduler das Datenformat automatisch.
+In Version 5.2 und später erkennt Scheduler automatisch das Datenformat.
 
-In Versionen vor 5.2 akzeptierte die Methode drei Parameter:
+Vor Version 5.2 enthielt die Methode jedoch drei Parameter:
 
-- **url** - (*string*)  die serverseitige URL (kann eine statische Datei oder ein serverseitiges Skript sein, das XML-Daten ausgibt)
-- **type** - (*string*) <i>('json', 'xml', 'ical')</i> zur Angabe des Datentyps. Standard ist <i>'xml'</i>
-- **callback** - (*function*) eine Funktion, die nach dem Laden aufgerufen wird
+- `url` - (*string*) die server-seitige URL (kann eine statische Datei oder ein serverseitiges Skript sein, das Daten als XML ausgibt)
+- `type` - (*string*) (*'json', 'xml', 'ical'*) der Datentyp. Der Standardwert ist *'xml'*
+- `callback` - (*function*) die Callback-Funktion
 
 ### Related API
 - [onLoadEnd](api/event/onloadend.md)
@@ -59,4 +59,4 @@ In Versionen vor 5.2 akzeptierte die Methode drei Parameter:
 - [Daten laden](guides/loading-data.md)
 
 ### Change log
-- Der zweite **type** Parameter wurde ab Version 5.2 entfernt.
+- Der zweite `type` Parameter der Methode wurde in v5.2 entfernt.

@@ -17,7 +17,7 @@ description: "Ermöglicht das Verschieben von Events per Drag-and-Drop"
 ~~~jsx
 scheduler.config.drag_move = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,5,30),"week");
+scheduler.init('scheduler_here',new Date(2027,5,30),"week");
 ~~~
 
 **Default value:** true

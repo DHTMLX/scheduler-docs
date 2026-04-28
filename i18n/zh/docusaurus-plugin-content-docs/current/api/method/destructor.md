@@ -15,7 +15,7 @@ description: "移除一个 scheduler 实例"
 ### Example
 
 ~~~jsx
-var myScheduler = Scheduler.getSchedulerInstance();
+const myScheduler = Scheduler.getSchedulerInstance();
  
 // 移除一个 scheduler 实例
 myScheduler.destructor();

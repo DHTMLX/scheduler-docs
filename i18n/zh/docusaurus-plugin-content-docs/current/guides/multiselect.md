@@ -5,12 +5,12 @@ sidebar_label: "Multiselect（多选控件）"
 
 # Multiselect（多选控件）
 
-该控件提供一组复选框。
+一组复选框。
 
 ![multiselect_editor](/img/multiselect_editor.png)
 
 :::note
-请确保在 lightbox 中使用该控件前已启用 **multiselect** 扩展。
+激活 **multiselect** 扩展后即可在灯箱中使用该控件
 :::
 
 ~~~js
@@ -20,7 +20,7 @@ scheduler.plugins({
 
 scheduler.locale.labels.section_userselect = "Participants";
  
-scheduler.config.lightbox.sections="["    
+scheduler.config.lightbox.sections = [    
     { name:"description", height:50, map_to:"text", type:"textarea", focus:true },
     { name:"userselect", height:22, map_to:"user_id", type:"multiselect", 
     options: scheduler.serverList("users"), vertical:"false" },
@@ -28,85 +28,84 @@ scheduler.config.lightbox.sections="["
 ];
 ~~~
 
-
-[Multiselect control in the lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/21_multiselect_options.html)
+[灯箱中的多选控件](https://docs.dhtmlx.com/scheduler/samples/03_extensions/21_multiselect_options.html)
 
 
 ## 初始化
 
-要在 lightbox 中包含 Multiselect 控件，请按照以下步骤操作:
+要将 Multiselect 控件添加到灯箱，请按以下步骤操作：
 
-1. 在页面上启用 'multiselect' 扩展:
+1. <b>在页面上激活 'multiselect' 扩展：</b>
 ~~~js
 scheduler.plugins({
     multiselect: true
 });
 ~~~
-2. 将 multiselect 区块添加到 lightbox 配置中:
+2. <b>在灯箱配置中添加该 section：</b>
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     { name:"description", ... },
     { name:"userselect", height:22, map_to:"user_id", type:"multiselect", 
     options: scheduler.serverList("user_id"), vertical:false },
     { name:"time", ...}
 ];
 ~~~
-3. 为该区块定义标签:
+3. <b>为该 section 设置标签：</b>
 ~~~js
 scheduler.locale.labels.section_userselect = "Participants";
 ~~~
   
 
-[Multiselect control in the lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/21_multiselect_options.html)
+[灯箱中的多选控件](https://docs.dhtmlx.com/scheduler/samples/03_extensions/21_multiselect_options.html)
 
 
-## 属性 {#properties}
+## 属性
 
-以下是 'multiselect' 控件常用的一些关键属性（完整属性列表请参见 [这里](api/config/lightbox.md)）:
+以下属性对 'multiselect' 控件来说最为重要且常被设置（完整列表请参见 [这里](api/config/lightbox.md)）：
 
 <table class="webixdoc_links">
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>name</b></td>
-  <td>(<i>string</i>) 区块的名称</td>
+  <td>(<i>string</i>)  section 的名称</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>height</b></td>
-  <td>(<i>number</i>) 区块的高度</td>
+  <td>(<i>number</i>)  该 section 的高度</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>map_to</b></td>
-  <td>(<i>string</i>) 映射到该区块的数据属性名</td>
+  <td>(<i>string</i>) 将映射到该 section 的数据属性的名称</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>type</b></td>
-  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) 区块使用的控件类型</td>
+  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) 该 section 控件的类型</td>
   </tr>
   <tr>
-  <td class="webixdoc_links0"><b>options</b></td>
-  <td>(<i>array of objects</i>) 定义控件的选项（<b>适用于 'select'、'multiselect'、'radio'、'combo' 控件</b>）。 每个对象表示一个选项，包含以下属性: <ul> <li><b>key</b> - (<i>string</i>) 选项的 ID。用于与事件的数据属性匹配，将选项分配给事件</li> <li><b>label</b> - (<i>string</i>) 选项显示的文本</li> </ul></td>
+  <td class="webixdoc_links0" style="vertical-align: top;"><b>options</b></td>
+  <td>(<i>array of objects</i>) 定义控件的选项（<b>仅对 'select', 'multiselect', 'radio', 'combo' 控件生效</b>）。数组中的每个对象指定一个选项，并包含以下属性：<ul> <li><b>key</b> - (<i>string</i>) 该选项的 id。此属性会与事件的数据属性进行比较，以将选项分配给事件</li> <li><b>label</b> - (<i>string</i>) 该选项的标签</li> </ul></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>script_url</b></td>
-  <td>(<i>string</i>) 用于动态加载 multiselect 选项的服务端脚本 URL。可选，仅在动态模式下使用。</td>
+  <td>(<i>string</i>) 提供加载多选项的服务器端脚本的路径。仅在动态模式下使用。可选</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>vertical</b></td>
-  <td>(<i>boolean</i>) 决定 multiselect 按钮是垂直(<i>true</i>)还是水平排列（<b>适用于 'multiselect' 和 'radio' 控件</b>）</td>
+  <td>(<i>boolean</i>) 指定多选按钮应纵向放置（<i>true</i>）还是横向放置（<b>对于 'multiselect' 和 'radio' 控件</b>）</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>delimiter</b></td>
-  <td>(<i>string</i>) 定义分隔 multiselect 值的分隔符。如果未指定，则使用全局 [section_delimiter](api/config/section_delimiter.md) 设置。</td>
+  <td>(<i>string</i>) 指定用于分隔多选值的分隔符。如果未设置此属性，将应用 [section_delimiter](api/config/section_delimiter.md) 配置</td>
   </tr>
   </tbody>
 </table>
 
-## 为控件填充数据
+## 使用数据填充控件
 
-通常，通过 [options](api/config/lightbox.md) 参数为 multiselect 按钮设置可选值:
+通常，要为多选按钮设置值，您应使用 [options](api/config/lightbox.md) 参数：
 
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     {   name:"userselect", type:"multiselect", 
         ...
         options:[
@@ -119,14 +118,14 @@ scheduler.config.lightbox.sections =
 ];
 ~~~
 
-[options](api/config/lightbox.md) 数组中的每个项都必须包含以下两个必需属性:
+在 [options](api/config/lightbox.md) 参数中的项必须具备两个必填属性：
 
-- **key** - 选项的唯一 ID
-- **label** - 选项显示的文本标签
+- **key** - 该选项的 id
+- **label** - 该选项的标签
 
 ## 从服务器填充复选框
 
-要从服务器获取复选框的值，请使用 [serverList](api/method/serverlist.md) 方法:
+要从服务器获取复选框的值，您需要使用 [serverList](api/method/serverlist.md) 方法：
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -139,7 +138,7 @@ scheduler.config.lightbox.sections = [
 scheduler.load("api/data");
 ~~~
 
-这里，**api/data** 是一个 [服务端脚本](guides/server-integration.md)，返回事件以及 multiselect 按钮的选项，其格式如 [데이터 포맷 예시](guides/data-formats.md#json-with-collections) 所示:
+其中 **api/data** 是一个 [服务器端脚本](guides/server-integration.md)，用于检索加载到调度程序的事件，以及一组多选按钮值，如下所示 [Examples of Data Formats](guides/data-formats.md#json-with-collections)：
 
 ~~~js
 //response
@@ -171,11 +170,11 @@ scheduler.load("api/data");
 ~~~
 
 :::note
-可以使用 [updateCollection](api/method/updatecollection.md) 方法动态更新选项列表。
+注意，您可以使用 [updateCollection](api/method/updatecollection.md) 方法来更新检索选项列表
 :::
 
 ~~~js
-var oldOptions = scheduler.serverList("users").slice();
+const oldOptions = scheduler.serverList("users").slice();
 scheduler.updateCollection("users", [
          {"value":"4","label":"John"},    
          {"value":"5","label":"Paul"},   
@@ -187,13 +186,14 @@ scheduler.updateCollection("users", [
 
 ## 动态加载
 
-在静态模式下，所有事件参数选项都作为独立字段存储在数据库中，这样可以实现更灵活的逻辑，但需要额外的查询来加载全部选项。
-  
-在动态模式下，只有在需要时才加载选项。这减少了查询次数，但限制了自定义逻辑的实现能力。
+在静态模式下，所有事件参数选项都作为数据库中的单独字段存储，之后可以使用该字段来构建自己的逻辑。
+它提供了更多的可能性，但需要为加载所有选项进行更多查询。
 
-在服务端，你应有类似如下的代码。
+在动态模式下，不会存储额外的内容。选项按需加载。这减少了查询数量，但禁止构建任何逻辑。
 
-要启用动态模式，请在 **options** 属性旁添加 **script_url** 属性:
+在服务器端，代码应与以下类似
+
+要启用动态模式，除了 **options** 外，还应使用 **script_url** 属性：
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -204,7 +204,7 @@ scheduler.config.lightbox.sections = [
 ];
 ~~~
 
-`api/options` 端点应返回如下 JSON 数据:
+其中 `api/options` 返回以下 JSON：
 
 ~~~js
 [                          

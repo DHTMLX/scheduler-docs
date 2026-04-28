@@ -1,14 +1,14 @@
 ---
-sidebar_label: "highlight_displayed_event"
-title: "highlight_displayed_event config"
-description: "определяет, будут ли события, полученные с помощью метода showEvent, подсвечиваться при отображении"
+sidebar_label: highlight_displayed_event
+title: "highlight_displayed_event конфигурация"
+description: "определяет, следует ли выделять события, полученные методом showEvent, во время отображения"
 ---
 
 # highlight_displayed_event
 
 ### Description
 
-@short: Определяет, будут ли события, полученные с помощью метода showEvent, подсвечиваться при отображении
+@short: Определяет, следует ли выделять события, полученные методом showEvent, во время отображения
 
 @signature: highlight_displayed_event: boolean
 
@@ -17,14 +17,14 @@ description: "определяет, будут ли события, получе
 ~~~jsx
 scheduler.config.highlight_displayed_event=false;
 ...
-scheduler.init('scheduler_here',new Date(2010,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Details
 
-Этот параметр доступен с версии 3.5 и применяется исключительно к методу [showEvent](api/method/showevent.md).
+Параметр доступен с версии 3.5 и используется только в контексте метода [showEvent](api/method/showevent.md).
 
 ### Related API
 - [showEvent](api/method/showevent.md)

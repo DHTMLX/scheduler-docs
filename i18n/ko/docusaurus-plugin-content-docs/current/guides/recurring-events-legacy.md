@@ -1,13 +1,15 @@
 ---
-title: "Recurring Events (v7.1 이하)"
-sidebar_label: "Recurring Events (v7.1 이하)"
+title: "반복 이벤트( v7.1까지 )" 
+sidebar_label: "반복 이벤트( v7.1까지 )" 
 ---
 
-# Recurring Events (v7.1 이하)
+# 반복 이벤트( v7.1까지 )
 
-*이 문서는 DHTMLX Scheduler에서 반복 이벤트의 레거시 포맷을 다룹니다. DHTMLX Scheduler v7.1+의 최신 버전에 대한 자세한 내용은 [여기](guides/recurring-events.md)를 참고하세요.*
+*The article refers to the legacy format of recurring events for DHTMLX Scheduler. If you use DHTMLX Scheduler v7.1+ see the details on the current version [here](guides/recurring-events.md).*
 
-기본적으로 scheduler는 반복 이벤트를 처리하지 않습니다. 이 기능을 추가하려면, 페이지에서 **recurring_legacy**라는 확장 기능을 활성화해야 합니다.
+이 문서는 DHTMLX Scheduler의 반복 이벤트 레거시 형식에 관한 내용입니다. DHTMLX Scheduler v7.1+를 사용하는 경우 현재 버전에 대한 세부 정보는 [여기](guides/recurring-events.md)를 참조하세요.
+
+기본적으로 스케줄러는 반복 이벤트를 지원하지 않습니다. 이러한 지원을 활성화하려면 페이지에서 특수 확장을 활성화해야 합니다 - **recurring_legacy**.
 
 ~~~js
 scheduler.plugins({
@@ -15,26 +17,26 @@ scheduler.plugins({
 });
 ~~~
 
-반복 이벤트 지원이 활성화되면, 라이트박스에 아래와 같이 추가 섹션이 나타납니다:
+반복 이벤트 지원이 활성화되면, 라이트박스가 아래와 같이 보이기 시작합니다:
 
-![recurring_lightbox](/img/recurring_lightbox.png)
+![recurring_lightbox_legacy](/img/recurring_lightbox_legacy.png)
 
-## 설정 옵션
 
-라이브러리는 반복 이벤트를 설정할 수 있는 여러 옵션을 제공합니다:
+## 구성 옵션
 
-- [repeat_date](api/config/repeat_date.md) - '반복' 라이트박스의 'End by' 필드에 사용할 날짜 포맷을 지정합니다
-- [include_end_by](api/config/include_end_by.md) - 'End by' 필드의 날짜를 포함할지(포함/제외) 여부를 지정합니다
-- [recurring_overflow_instances](api/config/recurring_overflow_instances.md) - 반복이 다음 달로 넘어가는 경우 처리 방식을 지정합니다
-- [repeat_precise](api/config/repeat_precise.md) - 'weekly' 반복 이벤트에서 과거 날짜를 포함하지 않도록 설정합니다
-- [occurrence_timestamp_in_utc](api/config/occurrence_timestamp_in_utc.md) - 타임존에 관계없이 반복 이벤트를 처리할 수 있도록 활성화합니다
+라이브러리는 반복 이벤트를 구성하기 위한 다음 옵션들을 제공합니다:
 
+- [repeat_date](api/config/repeat_date.md) - 'recurring' 라이트박스의 'End by' 필드의 날짜 형식을 설정합니다
+- [include_end_by](api/config/include_end_by.md) - 'End by' 필드에 지정된 날짜가 배타적이거나 포괄적으로 처리될지 정의합니다
+- [recurring_overflow_instances](api/config/recurring_overflow_instances.md) - 다음 달로 넘어가는 반복의 동작을 정의합니다
+- [repeat_precise](api/config/repeat_precise.md) - 'weekly' 반복인 이벤트에 과거 날짜를 포함하지 않도록 방지합니다
+- [occurrence_timestamp_in_utc](api/config/occurrence_timestamp_in_utc.md) - 시간대와 무관하게 반복 이벤트를 다룰 수 있도록 허용합니다
 
 ~~~js
 scheduler.config.repeat_date = "%m/%d/%Y";
 scheduler.config.include_end_by = true;
 ...
-scheduler.init('scheduler_here', new Date(2019, 7, 5), "month");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "month");
 ~~~
 
 
@@ -43,7 +45,7 @@ scheduler.init('scheduler_here', new Date(2019, 7, 5), "month");
 
 ## 'Recurring' 라이트박스
 
-반복 확장 기능을 활성화하면, 라이트박스에 "Repeat event"라는 추가 섹션이 생깁니다. 기본 'recurring' 라이트박스 구성은 다음과 같습니다:
+기본적으로 반복 확장이 활성화되면, 라이트박스에 한 섹션이 더 생깁니다 - "Repeat event". 그리고 'recurring' 라이트박스의 기본 정의는 아래와 같이 시작합니다:
 
 ~~~js
 [     
@@ -54,169 +56,151 @@ scheduler.init('scheduler_here', new Date(2019, 7, 5), "month");
 ];
 ~~~
 
-필요하다면 추가 섹션을 넣을 수 있지만, "recurring"과 "time" 섹션은 반드시 포함되어야 하며, "time" 섹션은 항상 "recurring" 섹션 **뒤에** 위치해야 합니다.
+추가로 섹션을 더 추가할 수 있지만, 반드시 "recurring"과 "time" 섹션 두 가지를 유지해야 합니다. 또한, "time" 섹션은 반드시 "recurring" 섹션 뒤에 위치해야 합니다.
 
 
 [Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
 
 
-## 서버 연동
+## 서버 측 통합(Server-side Integration)
 
-반복 이벤트는 데이터베이스에 하나의 레코드로 저장되며, 기존 이벤트 필드 외에 아래 3개의 추가 필드를 포함합니다:
+반복 이벤트는 일반 이벤트의 모든 필드에 추가로 3개의 필드를 포함하는 단일 레코드로 데이터베이스에 저장됩니다:
 
-1. **rec_type** - (_varchar_) 반복 패턴을 정의하며, 이 필드는 자동으로 채워집니다
-2. **event_length** - (_long int_) 이벤트의 지속 시간을 초 단위로 표시합니다
-3. **event_pid** - (_int_) 이벤트 시리즈의 부모 ID를 나타냅니다
+1. **rec_type** - (_varchar_) 반복 로직을 정의합니다. 이 필드는 자동으로 채워집니다
+2. **event_length** - (_long int_) 이벤트의 실제 길이(초 단위)
+3. **event_pid** - (_int_) 시퀀스의 부모 ID
 
-일반적인 커넥터 쿼리는 다음과 같습니다:
+따라서 백엔드는 일반 이벤트 필드와 함께 반복 필드를 반환해야 합니다. 예:
 
-~~~php
-$scheduler->render_table("events_rec","event_id",
-"start_date,end_date,text,rec_type,event_pid,event_length");
+~~~js
+{
+  "id": 1,
+  "start_date": "2027-01-03 10:00:00",
+  "end_date": "2027-01-13 00:00:00",
+  "text": "some_text",
+  "rec_type": "day_1___",
+  "event_length": 7200,
+  "event_pid": 0
+}
 ~~~
 
-이 필드 외에도, 데이터베이스에서 필요한 다른 데이터를 함께 가져올 수 있습니다.
+일반적으로 필수 필드 외에 데이터베이스에서 추가 데이터를 추가로 추출할 수 있습니다.
 
-**start_date**와 **end_date**의 의미는 여기서 약간 다릅니다:
+다만, **start_date** 및 **end_date** 필드의 의미는 약간 달라집니다:
 
-- **start_date** - 시리즈 내 첫 이벤트의 시작 날짜('yyyy-mm-dd hh:mm:ss' 형식, ["날짜 형식 지정"](guides/settings-format.md) 참고)
-- **end_date** - 시리즈 내 마지막 이벤트의 종료 날짜('yyyy-mm-dd 00:00:00' 형식, ["날짜 형식 지정"](guides/settings-format.md) 참고)
+- **start_date** - 시리즈의 첫 이벤트 시작 날짜를 'yyyy-mm-dd hh:mm:ss' 형식으로 나타냅니다( settings_format.md).
+- **end_date** - 시리즈의 마지막 이벤트 종료 날짜를 'yyyy-mm-dd 00:00:00' 형식으로 나타냅니다( settings_format.md).
 
-예를 들어, 2019년 1월 3일 10:00부터 매일 반복되며 2019년 1월 13일 12:00에 종료되는 반복 이벤트는 다음과 같이 저장됩니다:
+예를 들어 2027년 1월 3일 10:00에 시작하고 매일 반복되며 2027년 1월 13일 12:00에 종료되는 반복 이벤트는 데이터베이스에 아래와 같이 표시됩니다:
 
 ~~~js
 id:1,
-start_date:"2019-01-03 10:00:00",
-end_date:"2019-01-13 00:00:00",
+start_date:"2027-01-03 10:00:00",
+end_date:"2027-01-13 00:00:00",
 text:"some_text",
 details:"",
 rec_type:"day_1___",
 event_length:"7200",
-event_pid:"0" // 부모 이벤트는 0, 하위 이벤트는 부모 ID
+event_pid:"0" //0은 상위 이벤트를 위한 값이거나 하위 이벤트의 상위 이벤트 ID
 ~~~
 
-클라이언트 측에서 **rec_type** 필드는 다음과 같은 형식의 문자열을 포함합니다:
+클라이언트 측은 **rec_type** 필드로부터 아래 형식의 문자열 데이터를 얻습니다:
 
 ~~~html
 [type]_[count]_[day]_[count2]_[days]#[extra]
 ~~~
 
-각 항목의 의미:
+다음과 같은 구성으로 해석됩니다:
 
-- *type* - 반복 유형: 'day','week','month','year'
-- *count* - 지정된 유형 단위로 반복되는 간격
-- *day*, *count2* - 매월 특정 요일(예: 첫 번째 월요일, 세 번째 금요일 등) 지정
-- *days* - 반복되는 요일의 콤마 구분 목록
-- *extra* - 반복 상세 표시를 조정할 수 있는 추가 정보
+- *type* - 반복의 유형: 'day','week','month','year'.
+- *count* - 유형 단위에서의 이벤트 간 간격.
+- *day* 및 *count2* - 달의 특정 일을 정의합니다( 예: 첫 번째 월요일, 다섯째 금요일 등 ).
+- *days* - 영향을 받는 요일의 쉼표로 구분된 목록.
+- *extra* - 반복 세부 정보의 표시를 바꾸는 데 사용할 수 있는 추가 정보.
 
-**rec_type** 예시:
+**rec_type** 데이터의 예:
 
-- *"day_3___"* - 3일마다 반복
-- *"month_2___"* - 2개월마다 반복
-- *"month_1_1_2_"* - 매월 두 번째 월요일
-- *"week_2___1,5"* - 2주마다 월요일과 금요일
+- *"day_3___"* - 매 3일마다
+- *"month _2___"* - 매 2개월마다
+- *"month_1_1_2_"* - 매달의 두 번째 월요일
+- *"week_2___1,5"* - 매주 두 번째 주의 월요일과 금요일
 
-*참고: 이중 또는 삼중 언더스코어는 해당 파라미터가 생략됨을 의미합니다.*
+*더블 언더라인이나 트리플 언더라인은 문자열의 관련 매개변수가 생략되었음을 나타냅니다.*
 
-## 백엔드에서 시리즈 파싱
 
-반복 이벤트는 데이터베이스에 단일 레코드로 저장되며, Scheduler가 클라이언트 측에서 이를 분할합니다. 서버 측에서 개별 반복 날짜가 필요하다면, ASP.NET/ASP.NET Core 및 PHP용 반복 이벤트 파싱 도우미 라이브러리를 사용할 수 있습니다.
+## 백엔드에서 시퀀스 파싱(Parsing series on the backend)
 
-이 라이브러리는 GitHub에서 제공됩니다:
+반복 이벤트는 데이터베이스에 단일 레코드로 저장되며, Scheduler가 클라이언트 측에서 이를 분할할 수 있습니다. 서버 측에서 개별 이벤트의 날짜를 얻어야 하는 경우 ASP.NET/ASP.NET Core/PHP용 반복 이벤트 파싱 도우미 라이브러리를 사용하십시오.
 
-- [ASP.NET/ASP.NET Core](https://github.com/DHTMLX/scheduler-recurring-events-dotnet)
-- [PHP 5.4+](https://github.com/DHTMLX/scheduler-helper-php)
+다음의 준비된 라이브러리를 GitHub에서 찾을 수 있습니다:
 
-## 시리즈 내 특정 반복 항목 수정/삭제
+- [for ASP.NET/ASP.NET Core](https://github.com/DHTMLX/scheduler-recurring-events-dotnet)
+- [for PHP 5.4+](https://github.com/DHTMLX/scheduler-helper-php)
 
-반복 시리즈 내에서 특정 반복 항목만 수정 또는 삭제할 수 있습니다.
 
-### 중요 사항
+## 시퀀스의 특정 발생(Edit/Delete a certain occurrence in the series)
 
-- 반복 이벤트를 수정할 때마다 데이터베이스에 별도의 레코드가 생성됩니다.
-- 개별 반복 항목은 **event_pid** 속성을 통해 부모 이벤트와 연결됩니다.
-- 반복 항목을 수정하면, **event_length** 필드는 실제 이벤트 길이가 아니라 원래 예정되었던 날짜의 타임스탬프(UNIX epoch 기준 초)를 저장합니다. 예를 들어, 2019년 7월 27일 15:00에 예정된 반복 항목을 2019년 7월 30일 15:00로 이동하면, 타임스탬프는 2019년 7월 27일 15:00을 반영합니다.
-- 데이터베이스에 수정된 반복 항목이 있는 상태에서 라이트박스에서 '시리즈 수정(Edit series)'를 선택하면, 저장 후 모든 수정된 반복 항목은 삭제되고, 메인 반복 이벤트만 남으며 개별 반복 항목의 변경 내용은 사라집니다.
+시리즈의 특정 발생을 삭제하거나 편집하는 기능이 있습니다.
 
-### 예시 시나리오
+### 중요한 팁
 
-올림픽을 좋아하는 사용자가 런던 2012 올림픽(*7월 27일~8월 12일*)을 최대한 시청하고 싶다고 가정합니다. 퇴근 시간인 17:00부터 취침 전인 23:00까지 반복 이벤트를 생성합니다. 단, 개막식이 19:00에 시작하므로 첫 번째 반복 항목만 19:00~23:00으로 변경하고, 8월 1일은 마감일이라 시청하지 못할 것 같아 해당 날짜의 반복 항목은 삭제합니다.
+- 반복 이벤트를 업데이트할 때마다 데이터베이스에 별도 레코드가 생성됩니다.
+- 특정 발생은 **event_pid** 속성을 통해 상위 이벤트를 가리킵니다.
+- 시리즈를 편집한 경우, 이 업데이트에 대해 해당 발생이 원래 있었어야 할 시점을 나타내는 타임스탬프가 저장되며, 실제 이벤트 길이가 아닌 값이 저장됩니다. 예를 들어 발생이 2027년 7월 27일 15:00에 발생했고 2027년 7월 30일 15:00으로 이동했다면, 타임스탬프는 처음 날짜를 반영합니다. 타임스탬프는 UNIX epoch으로부터의 초 단위로 측정됩니다.
+- 시리즈의 편집 발생이 DB에 저장된 경우 라이트박스를 통해 "Edit series"를 저장하면 저장된 모든 레코드가 삭제됩니다. 남는 레코드는 주된 반복 이벤트뿐이며, 그 발생들의 차이는 사라져 동일해집니다.
 
-#### 작업 요약:
+### 예시를 살펴보자
 
-1. **2012년 7월 27일**부터 **2012년 8월 12일**까지 **17:00~23:00** 반복 이벤트 생성
-2. **2012년 7월 27일**의 반복 항목만 **19:00~23:00**으로 수정
-3. **2012년 8월 1일**의 반복 항목을 시리즈에서 삭제
+당신은 올림픽 경기의 팬이고 2027년 런던 올림픽(27일 7월 - 12일 8월)을 최대한 많이 보고 싶다고 가정합니다. 그래서 *17:00에 시작*(퇴근 시간)하고 *23:00에 끝나는* 반복 이벤트를 만들고 싶습니다. 하지만 개막식은 *오직 19:00에 시작*하므로 해당 날짜의 첫 이벤트의 시간을 19:00-23:00로 변경하고 싶습니다. 또한 2027년 8월 1일에 마감일이 있어 집에 너무 늦게 도착할 가능성이 있습니다. 따라서 시리즈에서 2027년 8월 1일을 삭제해야 합니다.
 
-이 경우 데이터베이스에는 반복 이벤트와 관련된 3개의 레코드가 생성됩니다.
+#### 간단히 말해, 당신의 작업은 다음과 같습니다:
 
-#### 데이터베이스에서의 단계별 처리:
+1. 2027년 7월 27일부터 2027년 8월 12일 사이에 **(17.00-23.00)** 의 반복 이벤트를 생성합니다.
+2. 7월 27일에 특정 발생을 편집하여 시간대를 **_17.00-23.00에서 19.00-23.00으로_** 변경합니다.
+3. 2027년 8월 1일의 특정 발생을 시리즈에서 삭제합니다.
 
-반복 이벤트 생성:
+결과적으로 데이터베이스에는 반복 이벤트에 대한 3개의 레코드가 남아 있어야 합니다.
+
+#### 액션별로 DB에서 일어나는 변화:
+
+생성:
 
 ![create_a_recurring_event.png](/img/create_a_recurring_event.png)
 
-**2012년 7월 27일** 수정:
+편집 **July 27,2027**:
 
 ![edit_a_recurring_event.png](/img/edit_a_recurring_event.png)
 
-**2012년 8월 1일** 삭제:
+삭제 **August 1,2027**: 
 
 ![delete_an_occurrence.png](/img/delete_an_occurrence.png)
 
-### 서버 측 로직
 
-추가 필드 외에도, 서버 컨트롤러는 다음과 같은 추가 로직을 처리해야 합니다:
+### 서버 측 로직(Server-side logic)
 
-- **rec_type == none**인 이벤트가 삽입되면, 응답에서 "deleted" 상태를 반환해야 합니다.
-- **rec_type != none**인 이벤트가 수정 또는 삭제될 경우, 해당 **event_pid**와 일치하는 모든 레코드를 삭제해야 합니다.
-- **event_pid**가 0이 아닌 이벤트가 삭제될 경우, 실제 삭제 대신 **rec_type == none**으로 업데이트해야 합니다.
+추가 필드 외에도 특정 로직을 서버 측 컨트롤러에 추가해야 합니다:
+
+- 만약 rec_type==none인 이벤트가 삽입되면 응답은 "deleted" 상태여야 합니다.
+- 만약 rec_type!=none인 이벤트가 업데이트되거나 삭제되면, 관련된 모든 event_pid를 가진 레코드를 삭제해야 합니다.
+- 만약 event_pid 값을 가진 이벤트가 삭제되면, 삭제 대신 rec_type==none으로 업데이트되어야 합니다.
 
 :::note
-전체 코드 예시는 [여기](integrations/howtostart-guides.md)에서 확인할 수 있습니다.
+전체 코드 예제는 [여기](integrations/howtostart-guides.md)에서 확인할 수 있습니다
 :::
 
-[PHP Connector](https://github.com/DHTMLX/connector-php)를 사용하는 경우, 서버 측 코드는 다음과 같이 작성할 수 있습니다:
+이 로직을 백엔드 컨트롤러 또는 서비스에 구현하여 반복 시퀀스와 예외를 일관되게 유지하십시오.
 
-~~~php
-function delete_related($action){
-    global $scheduler;
-    
-    $status = $action->get_status();
-    $type = $action->get_value("rec_type");
-    $pid = $action->get_value("event_pid");
-    // 시리즈가 변경/삭제되면 연결된 모든 이벤트 삭제
-    if (($status == "deleted" || $status == "updated") && $type != ""){
-        $scheduler->sql->query("DELETE FROM events_rec WHERE 
-        event_pid='" . $scheduler->sql->escape($action->get_id()) . "'");
-    }
-    if ($status == "deleted" && $pid != 0){
-        $scheduler->sql->query("UPDATE events_rec SET rec_type='none' WHERE 
-        event_id='" . $scheduler->sql->escape($action->get_id()) . "'");
-        $action->success();
-    }
-}
-function insert_related($action){
-    $status = $action->get_status();
-    $type = $action->get_value("rec_type");
-    if ($status == "inserted" && $type == "none")
-        $action->set_status("deleted");
-}
 
-$scheduler->event->attach("beforeProcessing","delete_related");
-$scheduler->event->attach("afterProcessing","insert_related");
-~~~
+## Dragging all sequence(시퀀스 전체 이동)
 
-## 전체 시퀀스 드래그 이동
-
-사용자가 반복 이벤트 전체 시퀀스를 드래그해서 이동할 수 있도록 하려면, scheduler 초기화 전에 아래 코드를 추가하세요:
+사용자에게 반복 이벤트를 끌어서 전체 시퀀스를 이동할 수 있는 기능을 추가하려면, 스케줄러 초기화 전에 다음 코드를 추가합니다:
 
 ~~~js
-scheduler.attachEvent("onBeforeEventChanged", function(dev){
-    var parts = scheduler.getState().drag_id.toString().split("#");
+scheduler.attachEvent("onBeforeEventChanged",function(dev){
+    let parts = scheduler.getState().drag_id.toString().split("#");
      if (parts.length > 1) {
 
-          var series = this.getEvent(parts[0]);
+          let series = this.getEvent(parts[0]);
 
           series.start_date.setHours(dev.start_date.getHours());
           series.start_date.setMinutes(dev.start_date.getMinutes());
@@ -232,21 +216,22 @@ scheduler.attachEvent("onBeforeEventChanged", function(dev){
 });
 ~~~
 
-## 라이트박스 반복 블록의 커스텀 컨트롤
 
-버전 4.2부터 dhtmlxScheduler에서는 라이트박스의 'recurring' 블록에 사용되는 HTML 폼을 커스터마이즈할 수 있습니다.
+## 라이트박스의 반복 블록에 대한 맞춤 컨트롤(Custom control for the lightbox's recurring block)
 
-#### 커스터마이즈 가능한 내용
+버전 4.2부터, dhtxmlScheduler는 라이트박스의 'recurring' 블록에 대해 사용자 정의 HTML 양식을 지정할 수 있도록 합니다.
 
-1. 폼 마크업 수정
-2. 불필요한 요소 제거(예: 'yearly' 반복 유형 및 관련 입력값)
-3. 입력값의 기본값 설정(예: '종료 날짜 없음' 옵션을 자동으로 체크하고 반복 종료 블록을 숨겨, 모든 시리즈가 종료 날짜 없이 생성되도록 함)
+#### 어떤 커스터마이징을 할 수 있나요?
 
-### 사용 예시
+1. 폼 마크업을 변경하기
+2. 필요 없는 요소 제거(예: 'yearly' 반복 타입 및 관련 입력들)
+3. 입력에 기본값 설정(예: 모든 시리즈를 "종료일 없음"으로 생성하고 싶다면, 'no end date' 옵션을 체크하고 반복 종료를 지정하는 전체 블록을 숨깁니다)
 
-예시로 시작해보겠습니다. 예를 들어, 'monthly'와 'yearly' 반복 옵션을 제거하고 모든 이벤트에서 'no end date' 선택지를 사용할 수 있도록 하고 싶다고 가정해봅시다(즉, 반복 종료 설정 섹션을 없앰).
+### 사용 예
 
-1. 먼저, 커스텀 폼의 마크업을 정의하고 페이지 내 원하는 위치에 배치하세요(처음에는 'schedulersourceslocalerecurring'에 있는 기본 템플릿을 복사해서 시작할 수 있습니다):
+다음 예시로 시작해 봅시다. 월간과 연간 반복 타입을 제거하고 모든 이벤트에 대해 'no end date' 옵션을 사용하도록 하고 싶다고 가정합니다(즉, 반복 종료를 지정하는 블록을 제거).
+
+1. 맞춤 폼의 마크업을 정의하고 페이지의 어딘가에 배치합니다(기본 템플릿은 <b>'schedulersourceslocalerecurring'</b>을 복사해 시작할 수 있습니다):
 ~~~html
 <div class="dhx_form_repeat" id="my_recurring_form"> /*!*/
   <form>
@@ -257,14 +242,12 @@ scheduler.attachEvent("onBeforeEventChanged", function(dev){
       </select>
     </div>
     <div>
-      <div id="dhx_repeat_day">
+      <div style="display:none;" id="dhx_repeat_day">
         <input type="hidden" name="day_type" value="d"/>
         <input type="hidden" name="day_count" value="1" />
       </div>
-      <div id="dhx_repeat_week">
+      <div style="display:none;" id="dhx_repeat_week">
         Repeat every week next days:
-
-
        <label><input type="checkbox" name="week_day" value="1" />Monday</label>
        <label><input type="checkbox" name="week_day" value="2" />Tuesday</label>
        <label><input type="checkbox" name="week_day" value="3" />Wednesday</label>
@@ -280,7 +263,7 @@ scheduler.attachEvent("onBeforeEventChanged", function(dev){
   </form>
 </div>
 ~~~
-2. 다음으로, 'recurring' 섹션의 'form' 파라미터에 커스텀 폼의 ID를 지정하세요:
+2. 'recurring' 섹션의 'form' 파라미터를 커스텀 양식의 id로 설정합니다:
 ~~~js
 scheduler.config.lightbox.sections = [
     {name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
@@ -290,21 +273,20 @@ scheduler.config.lightbox.sections = [
 ];
 ~~~
 
-<div>![custom_recurring_form](/img/custom_recurring_form.png)</div>
 
-### 주요 구성 요소
+<div style="text-align:center;">![custom_recurring_form_legacy](/img/custom_recurring_form_legacy.png)</div>
 
-라이트박스의 반복 블록에 대한 기본 HTML 레이아웃은 <b>'schedulersourceslocalerecurring'</b> 폴더에서 다양한 언어별로 확인할 수 있습니다.
+### 주요 부분
 
+다양한 언어에 대한 기본 HTML 구조는 <b>'schedulersourceslocalerecurring'</b> 디렉토리에서 확인할 수 있습니다.
 
-예를 들어, 영어 로케일의 경우 <b>'schedulersourceslocalerecurringrepeat_template_en.htm'</b> 파일을 참고하세요.
+예를 들어, 영어 로케일의 경우 <b>'schedulersourceslocalerecurringrepeat_template_en.htm'</b> 파일을 확인하면 됩니다.
 
-일반적으로 라이트박스의 반복 블록은 아래 3가지 주요 컨트롤 그룹으로 구성됩니다.
+대부분의 경우 라이트박스의 반복 블록은 3개의 제어 그룹으로 구성됩니다:
 
-1) 반복 유형을 선택하는 컨트롤. 이 입력값들은 반드시 'repeat'라는 name 속성을 가지고, 값은 'daily', 'weekly', 'monthly', 'yearly' 중 하나여야 합니다.
-폼에는 반드시 최소 하나 이상의 'repeat' 입력값이 있어야 합니다. 라디오 버튼, select, 또는 기본값을 지정하는 hidden input을 사용할 수 있습니다.
+1) 반복 유형을 선택하는 컨트롤들. 이 입력들의 이름은 'repeat'이고 값은 아래 중 하나입니다: 'daily', 'weekly', 'monthly', 'yearly'. 폼은 최소 하나의 'repeat' 입력을 가지고 있어야 합니다. 라디오 버튼, 셀렉트 또는 숨겨진 입력으로 기본 유형을 설정할 수 있습니다.
 
-폼에서 반복 유형을 선택하는 유효한 예시는 다음과 같습니다:
+다음은 반복 유형을 선택하는 일반적인 방법들입니다. 
 
 - 라디오 버튼
 
@@ -321,7 +303,7 @@ scheduler.config.lightbox.sections = [
 <label><input type="radio" name="repeat" value="year" />Yearly</label>
 ~~~
 
-- 'Monthly'와 'Yearly' 옵션을 제외한 select input:
+- Select 입력, 'Monthly'와 'Yearly' 옵션 없이:
 
 ~~~html
 <select name="repeat">
@@ -330,17 +312,17 @@ scheduler.config.lightbox.sections = [
 </select>
 ~~~
 
-- hidden input(이 경우 lightbox는 오직 'Daily' 시리즈만 생성):
+- Hidden 입력(라이트박스는 자동으로 'Daily' 시리즈만 생성합니다):
 
 ~~~html
 <input type="hidden" name="repeat" value="day" />
 ~~~
 
-2) 반복 유형에 따라 반복 설정을 구성하는 섹션입니다. 예를 들어, 'Daily' 반복 유형의 경우 마크업은 아래와 같습니다:
+2) 반복 유형에 따라 반복 구성을 위한 블록. 예를 들어 'Daily' 반복 유형의 경우 다음과 같은 구조를 가집니다:
 
 ~~~html
 <div class="dhx_repeat_center">
-   <div id="dhx_repeat_day">
+   <div style="display:none;" id="dhx_repeat_day">
      <label>
        <input class="dhx_repeat_radio" type="radio" 
                name="day_type" value="d"/>Every
@@ -357,16 +339,15 @@ scheduler.config.lightbox.sections = [
 ...
 </div>
          
-~~~
+~~~ 
 
-특정 반복 유형과 관련된 마크업은 <b>id</b>가 <b>"dhx_repeat_&lt;반복유형&gt;"</b> 형식인 div 안에 감쌀 수 있습니다. 예를 들어 "dhx_repeat_day"와 같이 작성하면, 해당 반복 유형이 선택되었을 때만 표시됩니다.
+특정 반복 유형에 관련된 마크업은 해당 반복 유형의 형식에 맞춰 <b>id</b> 형식으로 래핑될 수 있습니다. 예: "dhx_repeat_day". 이 경우 적절한 반복 유형이 선택될 때만 표시됩니다.
 
-3) 반복 종료를 설정하는 컨트롤입니다. 이는 name이 'end'인 입력값으로 정의합니다. 
+3) 반복 종료를 지정하는 제어들. 반복 종료는 'end' 이름의 입력으로 정의됩니다.
 
+가능한 값은 <b>'no'</b>, <b>'date_of_end'</b>, <b>'occurences_count'</b>입니다.
 
-가능한 값은 <b>'no'</b>, <b>'date_of_end'</b>, <b>'occurences_count'</b> 입니다.
-
-'repeat' 컨트롤과 마찬가지로, 폼에는 이 타입의 입력값이 최소 하나 이상 있어야 합니다.
+참고로, 위의 'repeat' 컨트롤과 마찬가지로 이 형식의 입력도 최소 하나는 있어야 합니다.
 
 ~~~html
 <div class="dhx_repeat_right">
@@ -385,41 +366,41 @@ scheduler.config.lightbox.sections = [
     <input type="radio" name="end" value="occurences_count" />After</label>
     <input type="text" name="occurences_count" value="1" />Occurrences
 </div>
-~~~
+~~~ 
 
-<b>'date_of_end'</b> 옵션을 위해서는 'date_of_end'라는 name의 input에 날짜를 입력해야 하며, <b>'occurences_count'</b> 옵션은 'occurences_count'라는 name의 input에서 발생 횟수를 가져옵니다.
+'date_of_end' 모드의 날짜는 'date_of_end'라는 이름의 입력에 정의되어야 하며, 같은 방식으로 'occurences_count' 모드 역시 'occurences_count'라는 입력에서 발생 수를 가져옵니다.
 
-
-옵션을 제거하거나 기본값으로 설정하려면 hidden input을 사용할 수 있습니다:
+원하는 경우 유형을 제거하거나 숨겨진 입력으로 미리 정의할 수 있습니다:
 
 ~~~html
 <input type="hidden" name="end" value="date_of_end" />
-<input type="hidden" name="date_of_end" value="01.01.2016" />
+<input type="hidden" name="date_of_end" value="01.01.2027" />
 ~~~
   
-### 반복 블록 커스터마이징 시 참고 사항
+### 반복 블록 변경에 대한 주의사항
 
-라이트박스의 반복 블록을 커스터마이징하기 전 아래 사항을 반드시 참고하세요:
+맞춤 구성을 적용하기 전에 다음과 같은 내용을 주의하시길 바랍니다:
 
-1. 모든 input의 'name' 속성은 고정되어 있습니다 - 다른 이름의 input은 무시됩니다.
-2. 모든 input의 'value' 속성도 고정되어 있으며, 사용자가 직접 입력하는 값만 예외입니다.
-3. 새로운 폼을 제공하면 dhtmlxScheduler는 해당 폼을 직접 사용하는 것이 아니라, HTML 구조만 라이트박스 템플릿에 복사합니다.
-즉, 원본 폼의 DOM 요소에 연결된 이벤트 핸들러나 커스텀 속성은 라이트박스에 복사되지 않습니다.
-만약 이벤트 핸들러를 추가하고 싶다면, 인라인 HTML 속성으로 추가하거나 라이트박스가 표시될 때 폼에 직접 연결해야 합니다.
+1. 입력의 'name' 속성은 하드코딩되어 있습니다 - 다른 이름의 입력은 무시됩니다.
+2. 모든 입력의 'value' 속성은 직접 입력을 암시하는 입력을 제외하고 고정되어 있습니다.
+3. 새 양식을 지정하면 dhtmlxScheduler가 이를 직접 사용하지 않고 라이트박스의 템플릿에 HTML 구조를 복제합니다.
+   즉, 코드에서 양식에 연결된 모든 이벤트 핸들러나 사용자 정의 속성은 라이트박스의 양식에 적용되지 않습니다.
+   이벤트 핸들러를 연결하려면 인라인 HTML 속성으로 지정하거나, 라이트박스에 표시될 때 양식에 핸들러를 연결해야 합니다.
 
 :::note
-dhtmlxScheduler는 원본 HTML 폼을 직접 사용하지 않고, 해당 폼의 복사본을 라이트박스 템플릿 내에 생성한다는 점을 유념하세요.
+주의, dhtmlxScheduler는 원래의 HTML 양식과 함께 작동하지 않고 라이트박스의 템플릿에 복사본만 만듭니다.
 :::
+
 
 예를 들어:
 
-- 아래 코드는 라이트박스에 복사됩니다:
+- 아래 줄은 라이트박스로 복사됩니다:
 
 ~~~html
 <input onclick="handler()"> 
 ~~~
 
-- 하지만 아래 코드는 복사되지 않습니다:
+- 아래 줄은 라이트박스로 복사되지 않습니다:
 
 ~~~js
 addEventListener(node, "click", function(){...})

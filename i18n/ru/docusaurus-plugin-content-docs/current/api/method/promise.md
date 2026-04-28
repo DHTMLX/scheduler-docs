@@ -1,23 +1,23 @@
----
-sidebar_label: "Promise"
-title: "Promise method"
-description: "Конструктор для создания объекта Promise"
+--- 
+sidebar_label: Promise
+title: "Метод Promise"
+description: "Конструктор объекта Promise"
 ---
 
 # Promise
 
 ### Description
 
-@short: Конструктор для создания объекта Promise
+@short: Конструктор объекта Promise
 
 @signature: Promise: (executor: SchedulerCallback) =\> any
 
 ### Parameters
 
-- `executor` - (required) *function* - функция обратного вызова, которая инициализирует promise
+- `executor` - (required) *function* - колбэк, используемый для инициализации Promise
 
 ### Returns
-- ` promise` - (object) - созданный объект promise
+- `promise` - (object) - объект Promise
 
 ### Example
 
@@ -33,8 +33,8 @@ new scheduler.Promise(function(resolve, reject) {
 
 ### Details
 
-Это конструктор для объекта Promise.
+Конструктор объекта Promise.
 
 ### Change log
-- Введено в версии v6.0.
-- С переходом с Bluebird на нативный Promise в версии v7.0.
+- Добавлено в версии v6.0.
+- Перешёл с Bluebird на нативный Promise в версии v7.0.

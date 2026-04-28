@@ -15,5 +15,5 @@ description: "liefert die aktuelle Version von dhtmlxScheduler"
 ### Example
 
 ~~~jsx
-var version = scheduler.version; // "4.0"
+const version = scheduler.version; // "4.0"
 ~~~

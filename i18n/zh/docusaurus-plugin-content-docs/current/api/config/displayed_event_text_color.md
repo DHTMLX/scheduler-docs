@@ -17,7 +17,7 @@ description: "定义由 showEvent() 方法显示的事件的默认字体颜色"
 ~~~jsx
 scheduler.config.displayed_event_text_color="#195D8A";
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
 **Default value:** #7e2727

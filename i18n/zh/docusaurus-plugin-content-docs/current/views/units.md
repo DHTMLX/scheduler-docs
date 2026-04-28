@@ -74,11 +74,11 @@ scheduler.createUnitsView({
 
 scheduler.init('scheduler_here');
 scheduler.parse([
-    {id:1, text:"Task1", start_date:"2019-09-17 12:00", end_date:"2019-09-18 21:00", 
+    {id:1, text:"Task1", start_date:"2027-09-17 12:00", end_date:"2027-09-18 21:00", 
     unit_id:"1"},
-     {id:2, text:"Task2", start_date:"2019-09-17 09:00", end_date:"2019-09-17 21:00", 
+     {id:2, text:"Task2", start_date:"2027-09-17 09:00", end_date:"2027-09-17 21:00", 
     unit_id:"3"},
-     {id:3, text:"Task3", start_date:"2019-09-17 15:00", end_date:"2019-09-18 15:00", 
+     {id:3, text:"Task3", start_date:"2027-09-17 15:00", end_date:"2027-09-18 15:00", 
     unit_id:"2"}
 ]);                                 
 ~~~
@@ -175,7 +175,7 @@ scheduler.createUnitsView({
     property: "section_id", /*!*/
     ...
 });
-scheduler.init('scheduler_here', new Date(2019, 5, 30), "unit");
+scheduler.init('scheduler_here', new Date(2027, 5, 30), "unit");
 
 scheduler.parse([
     { id:1, text:"Task A", section_id:'1',         ...},/*!*/
@@ -236,15 +236,15 @@ scheduler.createUnitsView({
    "data":[
       {
           "id":"1",
-          "start_date":"2019-03-02 15:00:00",
-          "end_date":"2019-03-04 16:00:00",
+          "start_date":"2027-03-02 15:00:00",
+          "end_date":"2027-03-04 16:00:00",
           "text":"Team meeting",
           "type_id":"1"
       },
       {
           "id":"2",
-          "start_date":"2019-03-02 17:00:00",
-          "end_date":"2019-03-04 18:00:00",
+          "start_date":"2027-03-02 17:00:00",
+          "end_date":"2027-03-04 18:00:00",
           "text":"Strategy meeting",
           "type_id":"2"
       }

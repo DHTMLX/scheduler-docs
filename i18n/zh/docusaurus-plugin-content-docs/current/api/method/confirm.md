@@ -22,7 +22,7 @@ description: "打开一个 confirm 消息框"
 ### Example
 
 ~~~jsx
-var box = scheduler.confirm({
+const box = scheduler.confirm({
     text: "Continue?",
     ok:"Yes", 
     cancel:"No",

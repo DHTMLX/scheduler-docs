@@ -16,7 +16,7 @@ Die Wochenansicht ist standardmäßig im [Grund-Markup des Schedulers]([Schedule
 
 ~~~js
 // Standard-Initialisierung. Die Wochenansicht wird automatisch hinzugefügt
-scheduler.init('scheduler_here',new Date(2019,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ...
 scheduler.load("/data/events");
 ~~~

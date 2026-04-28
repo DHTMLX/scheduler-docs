@@ -17,7 +17,7 @@ description: "Ermöglicht das Öffnen der Lightbox beim Erstellen neuer Events"
 ~~~jsx
 scheduler.config.edit_on_create = false;
 ...
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.init('scheduler_here', new Date(2027,05,11), "week");
 ~~~
 
 **Default value:** true

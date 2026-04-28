@@ -16,11 +16,11 @@ description: "Verhindert, dass Events von diesem Scheduler zu anderen gezogen we
 
 ~~~jsx
 scheduler.config.drag_out = false; // deaktiviert das Ziehen von Events von diesem Scheduler zu anderen
-scheduler.init('scheduler_here', new Date(2009,05,30), "week");
+scheduler.init('scheduler_here', new Date(2027,05,30), "week");
 scheduler.load("./data/units.xml");
 
 scheduler2 = Scheduler.getSchedulerInstance();
-scheduler2.init('scheduler_here_2', new Date(2009,05,30), "week");
+scheduler2.init('scheduler_here_2', new Date(2027,05,30), "week");
 ~~~
 
 **Default value:** true

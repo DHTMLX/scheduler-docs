@@ -1,33 +1,33 @@
 ---
-sidebar_label: "onQuickInfo"
-title: "onQuickInfo event"
-description: "Срабатывает при появлении всплывающей формы редактирования"
+sidebar_label: onQuickInfo
+title: "onQuickInfo событие"
+description: "срабатывает, когда появляется всплывающая форма редактирования"
 ---
 
 # onQuickInfo
 
 ### Description
 
-@short: Срабатывает при появлении всплывающей формы редактирования
+@short: Вызывает событие, когда появляется всплывающая форма редактирования
 
 @signature: onQuickInfo: (eventId: string) =\> void
 
 ### Parameters
 
-- `eventId` - (required) *string* - id события
+- `eventId` - (required) *string* - идентификатор события
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onQuickInfo",function(eventId){
-    // ваш код здесь
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Details
 
 :::note
- Для работы события требуется включенный плагин [quick_info](guides/extensions-list.md#quickinfo). 
+ Событие требует активации плагина [quick_info](guides/extensions-list.md#quick-info).
 :::
 
 ### Related API
@@ -37,8 +37,8 @@ scheduler.attachEvent("onQuickInfo",function(eventId){
 - [onAfterQuickInfo](api/event/onafterquickinfo.md)
 
 ### Related Guides
-- [Полный список расширений](guides/extensions-list.md#quickinfo)
-- [Мобильная адаптивность Scheduler](guides/touch-support.md)
+- [Полный список расширений](guides/extensions-list.md)
+- [Мобильный адаптивный планировщик](guides/touch-support.md)
 
 ### Change log
 - добавлено в версии 4.4

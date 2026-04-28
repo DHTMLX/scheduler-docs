@@ -146,7 +146,7 @@ scheduler.createTimelineView({
     ...
 });
 
-var timeline = scheduler.matrix.timeline;
+const timeline = scheduler.matrix.timeline;
 ~~~
 
 Nach der Erstellung können Sie die unten aufgeführten Methoden verwenden.
@@ -156,7 +156,7 @@ Nach der Erstellung können Sie die unten aufgeführten Methoden verwenden.
 Um ein Timeline-Ansichtsobjekt abzurufen, verwenden Sie die Methode [getView](api/method/getview.md). Sie akzeptiert den Namen der Ansicht als Parameter. Wenn kein Parameter übergeben wird, wird die aktuelle Ansicht zurückgegeben.
 
 ~~~js
-var timeline = scheduler.getView(); 
+const timeline = scheduler.getView(); 
 timeline.x_size = 8;
 scheduler.setCurrentView();
 ~~~
@@ -250,7 +250,7 @@ timeline.scrollTo({left:300, top:500});
 - Um die X-Koordinate für ein bestimmtes Datum auf der Skala zu erhalten, verwenden Sie **posFromDate()** mit einem Date-Parameter:
 
 ~~~js
-var left = timeline.posFromDate(new Date());
+const left = timeline.posFromDate(new Date());
 ~~~
 
 :::note
@@ -260,7 +260,7 @@ Diese Methode gibt 0 oder die maximale X-Koordinate zurück, wenn das Datum auß
 - Um die Y-Koordinate einer bestimmten Zeile zu erhalten, verwenden Sie **getSectionTop()** mit der Sektionsnummer:
 
 ~~~js
-var top = timeline.getSectionTop(section.key);
+const top = timeline.getSectionTop(section.key);
 ~~~
 
 :::note
@@ -293,7 +293,7 @@ const top = timeline.getEventTop(scheduler.getEvent(event.id));
 Um die aktuelle Scrollbar-Position zu ermitteln, rufen Sie **timeline.getScrollPosition()** auf. Diese Methode gibt ein Objekt mit den Scroll-Koordinaten zurück:
 
 ~~~js
-var timeline = scheduler.getView();
+const timeline = scheduler.getView();
 timeline.getScrollPosition(); // { left: 0, top: 0 } 
 ~~~
 
@@ -305,7 +305,7 @@ Das zurückgegebene Objekt enthält:
 Sie können auch auf Scroll-Änderungen mit dem **onScroll**-Event reagieren, das die neuen left- und top-Positionen erhält:
 
 ~~~js
-var timeline = scheduler.getView();
+const timeline = scheduler.getView();
 timeline.attachEvent("onScroll", function(left, top){});
 ~~~
 
@@ -331,9 +331,9 @@ wo:
 Diese Methode gibt ein Array von Ereignisobjekten zurück.
 
 ~~~js
-var timeline = scheduler.getView();
+const timeline = scheduler.getView();
  
-var events = timeline.selectEvents({
+const events = timeline.selectEvents({
     section: section.key,
     date: date,
     selectNested: true
@@ -596,9 +596,9 @@ Um solche Intervalle vollständig auszuschließen, müssen Sie die Einstellung *
 
 ~~~js
 scheduler._click.dhx_cal_next_button = function(dummy,step){
-  var mode = scheduler.getState().mode;
-  var minDate = scheduler.getState().min_date;
-  var formFunc = scheduler.date.date_to_str("%D");
+  const mode = scheduler.getState().mode;
+  const minDate = scheduler.getState().min_date;
+  const formFunc = scheduler.date.date_to_str("%D");
 
   // Wochenenden überspringen
   if(mode=='timeline'){    
@@ -984,15 +984,15 @@ Nach der Aktivierung wird das angegebene Template aufgerufen. Im folgenden Beisp
 
 scheduler.templates.timeline_cell_value = function (evs, date, section){
     if(section.children){
-        var timeline = scheduler.getView();
+        const timeline = scheduler.getView();
  
-        var events = timeline.selectEvents({
+        const events = timeline.selectEvents({
             section: section.key,
             date: date,
             selectNested: true
         });
  
-        var className = "";
+        let className = "";
         if(!events.length){
             className = "load-marker-no";
         }else if(events.length < 3){

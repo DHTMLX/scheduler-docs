@@ -15,10 +15,10 @@ description: "이벤트가 표시되는 날짜의 마지막을 정의합니다."
 ### Example
 
 ~~~jsx
-scheduler.config.map_start = new Date(2012, 7, 1);
-scheduler.config.map_end = new Date(2014, 7, 1);
+scheduler.config.map_start = new Date(2025, 7, 1);
+scheduler.config.map_end = new Date(2027, 7, 1);
 ...
-scheduler.init('scheduler_here', new Date(2013, 0, 10), "map");
+scheduler.init('scheduler_here', new Date(2026, 0, 10), "map");
 ~~~
 
 **Default value:** 'map_start' (값) + 1년

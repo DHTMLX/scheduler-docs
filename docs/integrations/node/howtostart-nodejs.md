@@ -191,7 +191,7 @@ Then create an *index.html* file in the **public** directory:
         </div>
         <script>
             scheduler.config.load_date="%Y-%m-%d %H:%i";
-            scheduler.init("scheduler_here", new Date(2022, 0, 20), "week");
+            scheduler.init("scheduler_here", new Date(2027, 0, 20), "week");
             scheduler.setLoadMode("day");
  
             // load data from backend
@@ -456,7 +456,7 @@ Firstly, enable dynamic loading on the client using the [setLoadMode](api/method
 
 ~~~js title="public/index.html" 
 scheduler.config.load_date="%Y-%m-%d %H:%i";
-scheduler.init("scheduler_here", new Date(2022, 0, 20), "week");
+scheduler.init("scheduler_here", new Date(2027, 0, 20), "week");
 scheduler.setLoadMode("day"); /*!*/
  
 // load data from backend

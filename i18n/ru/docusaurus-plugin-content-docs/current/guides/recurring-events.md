@@ -1,19 +1,19 @@
 ---
-title: "Повторяющиеся события"
-sidebar_label: "Повторяющиеся события"
+title: "Recurring Events"
+sidebar_label: "Recurring Events"
 ---
 
 # Повторяющиеся события
 
-Повторяющиеся события - это удобная функция в календарных приложениях, позволяющая пользователям создавать события, которые повторяются с выбранной периодичностью. Начиная с версии 7.1, Scheduler поддерживает стандартный формат повторяющихся событий согласно [RFC-5545](https://datatracker.ietf.org/doc/html/rfc5545).
+Повторяющиеся события — распространённая функция в календарях событий, позволяющая пользователям создавать события, которые повторяются через заданные интервалы. Начиная с версии v7.1 Scheduler использует формат на основе RFC-5545 для повторяющихся событий.
 
-В этом руководстве описано, как работать с повторяющимися событиями в Scheduler и как сохранять их в базе данных.
+Эта статья объясняет, как использовать повторяющиеся события в Scheduler и как хранить их в базе данных.
 
 :::note
-Вы можете ознакомиться с описанием старого формата повторяющихся событий [здесь](guides/recurring-events-legacy.md)
+Вы можете найти описание устаревшего формата повторяющихся событий [здесь](guides/recurring-events-legacy.md)
 :::
 
-По умолчанию повторяющиеся события в Scheduler не включены. Чтобы добавить эту возможность, необходимо активировать специальное расширение на странице - плагин **recurring**:
+По умолчанию Scheduler не поддерживает повторяющиеся события. Чтобы добавить такую поддержку, необходимо включить расширение `recurring` на странице:
 
 ~~~js
 scheduler.plugins({
@@ -21,354 +21,482 @@ scheduler.plugins({
 });
 ~~~
 
-После включения повторяющихся событий в интерфейсе lightbox появится дополнительный раздел, как показано ниже:
+После активации поддержки повторяющихся событий окно lightbox начинает выглядеть как на изображении ниже:
 
 ![recurring_lightbox](/img/recurring_lightbox.png)
 
-## Параметры конфигурации {#configurationoptions}
 
-Библиотека предоставляет следующую настройку для работы с повторяющимися событиями:
+## Варианты конфигурации
 
-- [repeat_date](api/config/repeat_date.md) - определяет формат даты, используемый в поле 'End by' (Дата окончания) внутри блока 'recurring' в lightbox.
+Библиотека предоставляет следующую опцию для настройки повторяющихся событий:
+
+- [`repeat_date`](api/config/repeat_date.md) - устанавливает формат даты поля 'End by' в окне 'recurring' lightbox
 
 ~~~js
 scheduler.config.repeat_date = "%m/%d/%Y";
 ...
-scheduler.init('scheduler_here', new Date(2019, 7, 5), "month");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "month");
 ~~~
 
+**Связанный пример** [Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
 
-[Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
+## 'Recurring' lightbox
 
-
-## Lightbox с блоком 'Recurring' {#recurringlightbox}
------------------------------------------- 
-
-После активации расширения recurring в lightbox появляется дополнительный раздел "Repeat event". Стандартная конфигурация блока 'recurring' в lightbox выглядит так:
+По умолчанию, после включения расширения recurring, lightbox приобретает ещё один раздел — "Repeat event" (повторение события).  
+И дефолтное определение lightbox для повторяющихся событий выглядит следующим образом:
 
 ~~~js
-[     
-    {name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
-    {name:"recurring", height:115, type:"recurring", map_to:"rec_type", 
-        button:"recurring"},
-    {name:"time", height:72, type:"time", map_to:"auto"}
+scheduler.config.lightbox.sections = [
+    { name: "description", map_to: "text", type: "textarea", focus: true },
+    { name: "recurring", type: "recurring", map_to: "rrule" },
+    { name: "time", height: 72, type: "time", map_to: "auto" }
 ];
 ~~~
 
-Вы можете добавлять другие разделы, но обязательно оставьте разделы "recurring" и "time". Кроме того, раздел "time" всегда должен идти **после** "recurring".
+**Связанный пример** [Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
 
 
-[Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
+## Описание формата
 
+Повторяющееся событие хранится в базе данных как одна запись, которая содержит все поля обычного события и несколько дополнительных свойств:
 
-## Описание формата {#formatdescription}
+1. **start_date** - (_datetime_) определяет начальную дату серии
+2. **end_date** - (_datetime_) определяет конечную дату серии
+3. **rrule** - (_string_) задаёт правило повторения
+4. **duration** - (_number_) длительность повторяющегося экземпляра
+5. **recurring_event_id** - (_string|number_) идентификатор родительской серии, заполняется только для изменённых или удалённых экземпляров серии
+6. **original_start** - (_datetime_) исходная дата редактируемого экземпляра, заполняется только для изменённых или удалённых экземпляров серии
+7. **deleted** - (_boolean_) указывает на удалённый экземпляр серии, заполняется только для удалённых экземпляров серии
 
-Повторяющееся событие сохраняется в базе данных как одна запись, которая содержит все стандартные поля события плюс дополнительные свойства:
+**rrule** следует формату iCalendar, как указано в RFC-5545, и определяет частоту, интервал и другие параметры, контролирующие схему повторения.
 
-1. **start_date** - (_datetime_) дата начала серии
-2. **end_date** - (_datetime_) дата окончания серии
-3. **rrule** - (_string_) определяет правило повторения
-4. **duration** - (_number_) длительность каждого экземпляра события
-5. **recurring_event_id** - (_string|number_) ID родительской серии; указывается только для изменённых или удалённых экземпляров
-6. **original_start** - (_datetime_) исходная дата изменённого экземпляра; указывается только для изменённых или удалённых экземпляров
-7. **deleted** - (_boolean_) пометка о том, что экземпляр удалён; указывается только для удалённых экземпляров
+### Отличия от iCalendar
 
-Свойство **rrule** соответствует формату iCalendar, описанному в RFC-5545, и определяет частоту, интервал и другие параметры повторения.
+Наш формат отличается от iCalendar двумя ключевыми моментами:
 
-### Отличия от формата iCalendar
+#### Раздельное хранение STDATE и DTEND:
 
-Есть два основных отличия нашего формата от формата iCalendar:
+В формате iCalendar дата начала и окончания повторяющейся серии обычно включаются как часть строки **RRULE** в свойствах **STDATE** и **DTEND**.  
+В нашем формате **stdate** и **dtend** хранятся как отдельные поля. Такое разделение упрощает манипуляцию и запросы повторяющихся событий по дате без необходимости разбирать строку **RRULE**.
 
-#### Раздельное хранение STDATE и DTEND
+Вот пример серии повторяющихся событий, установленной на повторение каждую понедельник с 1 июня 2027 года по 1 декабря 2027 года:
 
-В iCalendar обычно даты начала и окончания серии повторяющихся событий включаются в строку **RRULE** как свойства **STDATE** и **DTEND**. В нашем формате **start_date** и **end_date** хранятся как отдельные поля. Это упрощает работу с повторяющимися событиями и позволяет легко выполнять выборки по дате без необходимости парсить строку **RRULE**.
-
-Пример повторяющейся серии событий, повторяющейся каждый понедельник с 1 июня 2024 по 1 декабря 2024:
-
-~~~
+~~~js
 {
-  "id": 1,
-  "text": "Weekly Team Meeting",
-  "start_date": "2024-06-03 09:00:00",
-  "duration": 3600,
-  "end_date": "2024-12-02 10:00:00",
-  "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
-  "recurring_event_id": null,
-  "original_start": null
+    "id": 1,
+    "text": "Weekly Team Meeting",
+    "start_date": "2027-06-03 09:00:00",
+    "duration": 3600,
+    "end_date": "2027-12-02 10:00:00",
+    "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
+    "recurring_event_id": null,
+    "original_start": null
 }
 ~~~
 
 #### Обработка исключений
 
-Исключения - то есть изменённые или удалённые экземпляры - хранятся как отдельные записи, связанные с родительской серией. Такие записи содержат три дополнительных свойства: **recurring_event_id**, **original_start** и **deleted**. Они позволяют определить, какие экземпляры были изменены или удалены, и как они связаны с основной серией.
+Исключения, также называемые изменёнными или удалёнными экземплярами серии, сохраняются как отдельные записи событий и связаны с их родительской серией.  
+Исключения имеют три дополнительных свойства: **recurring_event_id**, **original_start** и **deleted**. Эти свойства позволяют легко идентифицировать изменённые или удалённые экземпляры и их связь с родительской серией.
 
 :::note
-В отличие от стандартного формата iCalendar, исключения (изменённые или удалённые экземпляры) **не** хранятся в свойстве **EXDATE** строки **RRULE**.
-:::
+Обратите внимание, что, в отличие от традиционного формата iCalendar, исключения (изменённые или удалённые экземпляры) НЕ сохраняются в свойстве **EXDATE** в **RRULE** серии.
+:::  
 
-Пример серии повторяющихся событий с одним изменённым и одним удалённым экземпляром:
-~~~
+Вот пример повторяющейся серии с одним изменённым и одним удалённым экземпляром:
+
+~~~js
 [
-  {
-    "id": 1,
-    "text": "Weekly Team Meeting",
-    "start_date": "2024-06-03 09:00:00",
-    "duration": 3600,
-    "end_date": "2024-12-02 10:00:00",
-    "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
-    "recurring_event_id": null,
-    "original_start": null
-  },
-  {
-    "id": 2,
-    "text": "Special Team Meeting",
-    "start_date": "2024-06-10 09:00:00",
-    "end_date": "2024-06-10 11:00:00",
-    "rrule": null,
-    "recurring_event_id": 1,
-    "original_start": "2024-06-10 09:00:00"
-  },
-  {
-    "id": 3,
-    "text": "Deleted Team Meeting",
-    "start_date": "2024-06-17 09:00:00",
-    "end_date": "2024-06-17 10:00:00",
-    "rrule": null,
-    "recurring_event_id": 1,
-    "original_start": "2024-06-17 09:00:00",
-    "deleted": true
-  }
+    {
+        "id": 1,
+        "text": "Weekly Team Meeting",
+        "start_date": "2027-06-03 09:00:00",
+        "duration": 3600,
+        "end_date": "2027-12-02 10:00:00",
+        "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
+        "recurring_event_id": null,
+        "original_start": null
+    },
+    {
+        "id": 2,
+        "text": "Special Team Meeting",
+        "start_date": "2027-06-10 09:00:00",
+        "end_date": "2027-06-10 11:00:00",
+        "rrule": null,
+        "recurring_event_id": 1,
+        "original_start": "2027-06-10 09:00:00"
+    },
+    {
+        "id": 3,
+        "text": "Deleted Team Meeting",
+        "start_date": "2027-06-17 09:00:00",
+        "end_date": "2027-06-17 10:00:00",
+        "rrule": null,
+        "recurring_event_id": 1,
+        "original_start": "2027-06-17 09:00:00",
+        "deleted": true
+    }
 ]
 ~~~
 
-Событие, запланированное на `2024-06-10 09:00:00`, заменено записью `Special Team Meeting`, а событие на `2024-06-17 09:00:00` пропущено.
+Повторяющееся событие, запланированное на `2027-06-10 09:00:00`, будет заменено записью `Special Team Meeting`, а событие на `2027-06-17 09:00:00` — пропущено.
 
-Обратите внимание, что свойство **rrule** для изменённых или удалённых экземпляров игнорируется.
+Обратите внимание, что **rrule** изменённых или удалённых экземпляров игнорируется.
 
-Также поля **text**, **start_date** и **end_date** для удалённых экземпляров не влияют на поведение Scheduler.
+**text**, **start_date**, и **end_date** удалённых экземпляров также игнорируются, и значения этих полей не будут влиять на поведение Scheduler.
 
+## Редактирование/удаление конкретного экземпляра в серии
 
-## Редактирование/удаление отдельного экземпляра в серии {#editingdeletingacertainoccurrenceintheseries}
+Существует возможность удалить или отредактировать конкретный экземпляр в серии.
 
-Вы можете удалить или отредактировать отдельные экземпляры в серии повторяющихся событий.
+### Важные советы
 
-### Важные рекомендации
+- Для каждого обновления повторяющегося события создаётся отдельная запись в БД.
+- Конкретные экземпляры ссылаются на родительское событие через свойство **recurring_event_id**.
+- После редактирования экземпляра в серии, поле **original_start** для этого обновления будет хранить дату, когда экземпляр должен был произойти, если бы он не был отредактирован, вместо реальной длительности события. Поэтому, если экземпляр состоялся 27 июля 2027 года в 15:00 и был перенесён на 30 июля 2027 года в 15:00, временная метка будет отражать первоначальную дату.
 
-- Каждое изменение повторяющегося события приводит к созданию новой записи в базе данных.
-- Отдельные экземпляры связаны с основной серией через свойство **recurring_event_id**.
-- При редактировании экземпляра поле **original_start** хранит дату, на которую изначально был запланирован экземпляр, а не новую дату. Например, если экземпляр, запланированный на 27 июля 2024 в 15:00, перенесён на 30 июля 2024 в 15:00, **original_start** всё равно будет 27 июля 2024 в 15:00.
+### Логика на стороне сервера
 
+Помимо дополнительных полей, на стороне сервера требуется добавить специальную логику:
 
-### Логика на сервере
-
-Помимо дополнительных полей, серверный контроллер должен реализовать следующую логику:
-
-- При добавлении удалённого экземпляра ответ сервера должен содержать статус "deleted".
-    - Удалённый экземпляр определяется по непустому свойству **deleted**.
-- При изменении серии все связанные с ней изменённые и удалённые экземпляры должны быть удалены.
-    - Серия определяется по непустому **rrule** и пустому **recurring_event_id**.
-    - Изменённые экземпляры - это все записи, у которых **recurring_event_id** совпадает с **id** серии.
-- Если событие с непустым **recurring_event_id** удаляется, оно должно быть обновлено путем установки **deleted="true**" вместо физического удаления.
+- Если удалённый экземпляр был вставлен — ответ сервера должен иметь статус "deleted".
+  - Удалённый экземпляр можно определить по непустому значению свойства **deleted**.
+- Если серия была изменена, все изменённые и удалённые экземпляры серии должны быть удалены.
+  - Серия идентифицируется по непустому значению свойства **rrule** и пустому значению свойства **recurring_event_id**.
+  - Изменённые экземпляры серии — это все записи, в которых **recurring_event_id** совпадает с **id** серии.
+- Если событие с непустым значением **recurring_event_id** было удалено, его нужно обновить до deleted="true" вместо удаления.
 
 :::note
-Полные примеры кода доступны [здесь](integrations/howtostart-guides.md)
+Вы можете найти полные примеры кода [здесь](integrations/howtostart-guides.md)
 :::
 
 
-## Кастомизация блока recurring в lightbox {#customcontrolforthelightboxsrecurringblock}
+## Пользовательское управление блоком recurring lightbox
 
-Начиная с версии 4.2, dhtmlxScheduler позволяет определять собственную HTML-форму для секции 'recurring' в lightbox.
+Начиная с версии 4.2, Scheduler позволяет задать собственный HTML для блока 'recurring' в lightbox.
 
-#### Какие настройки доступны?
+#### Какие настройки можно сделать?
 
-1. Изменение разметки формы.
-2. Удаление ненужных элементов (например, опции ежегодного повторения и связанных полей).
-3. Установка значений по умолчанию для полей ввода (например, всегда выбирать вариант "без даты окончания" и скрывать блок для указания конца повторения).
+1. Изменение разметки
+2. Удаление ненужных элементов (например, типа повторения "ежегодно")
+3. Установка значений по умолчанию для полей ввода (например, нужно, чтобы все серии создавались без конца)
 
-### Пример использования
+### По умолчанию шаблон контроля блока повторения
 
-Пример, в котором опции ежемесячного и ежегодного повторения удалены, а вариант "без даты окончания" выбран по умолчанию (блок конца повторения скрыт):
+Дефолтный шаблон контроля для блока повторения в lightbox выглядит следующим образом, где объект `loc` — это объект локализации (региональные подписи) Scheduler:
 
-1. Определите разметку вашей формы где-либо на странице (можно начать с копирования шаблона по умолчанию из 'schedulersourceslocalerecurring'):
 ~~~html
-<div class="dhx_form_repeat" id="my_recurring_form"> /*!*/
-  <form>
-    <div>
-      <select name="repeat">
-        <option value="day">Daily</option>
-        <option value="week">Weekly</option>
-      </select>
+<div class="dhx_form_rrule">
+    <div class="dhx_form_repeat_pattern">
+        <select>
+            <option value="NEVER">${loc.repeat_never}</option>
+            <option value="DAILY">${loc.repeat_daily}</option>
+            <option value="WEEKLY">${loc.repeat_weekly}</option>
+            <option value="MONTHLY">${loc.repeat_monthly}</option>
+            <option value="YEARLY">${loc.repeat_yearly}</option>
+            <option value="WORKDAYS">${loc.repeat_workdays}</option>
+            <option value="CUSTOM">${loc.repeat_custom}</option>
+        </select>
     </div>
-    <div>
-      <div id="dhx_repeat_day">
-        <input type="hidden" name="day_type" value="d"/>
-        <input type="hidden" name="day_count" value="1" />
-      </div>
-      <div id="dhx_repeat_week">
-        Repeat every week next days:
-
-
-       <label><input type="checkbox" name="week_day" value="1" />Monday</label>
-       <label><input type="checkbox" name="week_day" value="2" />Tuesday</label>
-       <label><input type="checkbox" name="week_day" value="3" />Wednesday</label>
-       <label><input type="checkbox" name="week_day" value="4" />Thursday</label>
-       <label><input type="checkbox" name="week_day" value="5" />Friday</label>
-       <label><input type="checkbox" name="week_day" value="6" />Saturday</label>
-       <label><input type="checkbox" name="week_day" value="0" />Sunday</label>
-       <input type="hidden" name="week_count" value="1" />
-      </div>
+    <div class="dhx_form_repeat_custom dhx_hidden">
+        <div class="dhx_form_repeat_custom_interval">
+            <input name="repeat_interval_value" type="number" min="1">
+            <select name="repeat_interval_unit">
+                <option value="DAILY">${loc.repeat_freq_day}</option>
+                <option value="WEEKLY">${loc.repeat_freq_week}</option>
+                <option value="MONTHLY">${loc.repeat_freq_month}</option>
+                <option value="YEARLY">${loc.repeat_freq_year}</option>
+            </select>
+        </div>
+        <div class="dhx_form_repeat_custom_additional">
+            <div class="dhx_form_repeat_custom_week dhx_hidden">
+                <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                    value="MO" />${loc.day_for_recurring[1]}</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                    value="TU" />${loc.day_for_recurring[2]}</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                    value="WE" />${loc.day_for_recurring[3]}</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                    value="TH" />${loc.day_for_recurring[4]}</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                    value="FR" />${loc.day_for_recurring[5]}</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                    value="SA" />${loc.day_for_recurring[6]}</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                    value="SU" />${loc.day_for_recurring[0]}</label>
+            </div>
+            <div class="dhx_form_repeat_custom_month dhx_hidden">
+                <select name="dhx_custom_month_option">
+                    <option value="month_date"></option>
+                    <option value="month_nth_weekday"></option>
+                </select>
+            </div>
+            <div class="dhx_form_repeat_custom_year dhx_hidden">
+                <select name="dhx_custom_year_option">
+                    <option value="month_date"></option>
+                    <option value="month_nth_weekday"></option>
+                </select>
+            </div>
+        </div>
     </div>
-
-    <input type="hidden" value="no" name="end">
-  </form>
+    <div class="dhx_form_repeat_ends">
+        <div>${loc.repeat_ends}</div>
+        <div class="dhx_form_repeat_ends_options">
+            <select name="dhx_custom_repeat_ends">
+                <option value="NEVER">${loc.repeat_never}</option>
+                <option value="AFTER">${loc.repeat_radio_end2}</option>
+                <option value="ON">${loc.repeat_on_date}</option>
+            </select>
+            <div class="dhx_form_repeat_ends_extra">
+                <div class="dhx_form_repeat_ends_after dhx_hidden">
+                    <label><input name="dhx_form_repeat_ends_after" type="number"
+                        min="1">${loc.repeat_text_occurrences_count}</label>
+                </div>
+                <div class="dhx_form_repeat_ends_on dhx_hidden">
+                    <input type="date" name="dhx_form_repeat_ends_ondate">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 ~~~
-2. Укажите параметр 'form' для секции 'recurring' с ID вашей формы: 
-~~~js
+
+#### Основной контрол повторения
+
+По существу, блок повторения lightbox содержит основной контрол повторения, который имеет 5
+типов повторения с следующими опциями: "Каждый день", "Каждую неделю", "Каждый месяц",
+"Каждый год", "Каждый рабочий день". Кроме того, он включает опцию "Пользовательский" для создания требуемого
+типа и опцию "Никогда" для отключения повторения:
+
+~~~html
+<div class="dhx_form_repeat_pattern">
+    <select>
+        <option value="NEVER">Never</option>
+        <option value="DAILY">Every day</option>
+        <option value="WEEKLY">Every week</option>
+        <option value="MONTHLY">Every month</option>
+        <option value="YEARLY">Every year</option>
+        <option value="WORKDAYS">Every weekday</option>
+        <option value="CUSTOM">Custom</option>
+    </select>
+</div>
+~~~
+
+Для типа повторения "Custom" существуют специальные единицы повторения: "Day", "Week", "Month", "Year" и поле ввода интервала повтора. Единицы "Week", "Month" и "Year" имеют собственные разделы с конкретными вариантами повторения (по умолчанию эти разделы скрыты до выбора нужного типа):
+
+~~~html
+<div class="dhx_form_repeat_custom">
+    <div class="dhx_form_repeat_custom_interval">
+        <input name="repeat_interval_value" type="number" min="1">
+        <select name="repeat_interval_unit">
+            <option value="DAILY">${loc.repeat_freq_day}</option>
+            <option value="WEEKLY">${loc.repeat_freq_week}</option>
+            <option value="MONTHLY">${loc.repeat_freq_month}</option>
+            <option value="YEARLY">${loc.repeat_freq_year}</option>
+        </select>
+    </div>
+
+    <div class="dhx_form_repeat_custom_additional">
+        <div class="dhx_form_repeat_custom_week dhx_hidden">
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="MO" />${loc.day_for_recurring[1]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="TU" />${loc.day_for_recurring[2]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="WE" />${loc.day_for_recurring[3]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="TH" />${loc.day_for_recurring[4]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="FR" />${loc.day_for_recurring[5]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="SA" />${loc.day_for_recurring[6]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="SU" />${loc.day_for_recurring[0]}</label>
+        </div>
+
+        <div class="dhx_form_repeat_custom_month dhx_hidden">
+            <select name="dhx_custom_month_option">
+                <option value="month_date"></option>
+                <option value="month_nth_weekday"></option>
+            </select>
+        </div>
+
+        <div class="dhx_form_repeat_custom_year dhx_hidden">
+            <select name="dhx_custom_year_option">
+                <option value="month_date"></option>
+                <option value="month_nth_weekday"></option>
+            </select>
+        </div>
+    </div>
+</div>
+~~~
+
+#### Блок, задающий конец повторения
+
+Конец повторения определяется контролом выбора со значениями: "NEVER", "ON", "AFTER". Если выбрано "AFTER", появится дополнительное поле ввода количества повторяющихся событий. Если выбрано "ON", появится дополнительный ввод даты:
+
+~~~html
+<div class="dhx_form_repeat_ends">
+    <div>${loc.repeat_ends}</div>
+        <div class="dhx_form_repeat_ends_options">
+            <select name="dhx_custom_repeat_ends">
+                <option value="NEVER">${loc.repeat_never}</option>
+                <option value="AFTER">${loc.repeat_radio_end2}</option>
+                <option value="ON">${loc.repeat_on_date}</option>
+            </select>
+            <div class="dhx_form_repeat_ends_extra">
+                <div class="dhx_form_repeat_ends_after dhx_hidden">
+                    <label><input name="dhx_form_repeat_ends_after" type="number"
+                        min="1">${loc.repeat_text_occurrences_count}</label>
+                </div>
+                <div class="dhx_form_repeat_ends_on dhx_hidden">
+                    <input type="date" name="dhx_form_repeat_ends_ondate">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+~~~
+
+### Пример пользовательского блока recurring
+
+Давайте создадим пример пользовательского блока recurring. Представим, что вы хотите убрать типы повторения "monthly" и "yearly" и сделать опцию "no end date" для всех событий (то есть удалить блок для указания конца повторения).
+
+1. Определите разметку пользовательской формы и разместите её где-нибудь на странице
+(можно начать с копирования дефолтного шаблона):
+
+~~~html
+<!-- note that you need to specify the id of your custom recurring form  -->
+<div class="dhx_form_rrule" id="my_recurring_form" style="display:none;">
+    <div class="dhx_form_repeat_pattern">
+        <select>
+            <option value="NEVER">Never</option>
+            <option value="DAILY">Every day</option>
+            <option value="WEEKLY">Every week</option>
+            <option value="WORKDAYS">Every weekday</option>
+            <option value="CUSTOM">Custom</option>
+        </select>
+    </div>
+    <div class="dhx_form_repeat_custom">
+        <div class="dhx_form_repeat_custom_interval">
+            <input name="repeat_interval_value" type="number" min="1">
+            <select name="repeat_interval_unit">
+                <option value="DAILY">Day</option>
+                <option value="WEEKLY">Week</option>
+            </select>
+        </div>
+
+        <div class="dhx_form_repeat_custom_additional">
+            <div class="dhx_form_repeat_custom_week dhx_hidden">
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="MO" />Monday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="TU" />Tuesday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="WE" />Wednesday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="TH" />Thursday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="FR" />Friday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="SA" />Saturday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="SU" />Sunday</label>
+            </div>
+        </div>
+    </div>
+</div>
+~~~
+
+2. Установите параметр **form** секции "recurring" равным id вашей пользовательской формы:
+
+~~~js {3}
 scheduler.config.lightbox.sections = [
-    {name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
-    {name:"recurring", type:"recurring", map_to:"rec_type", button:"recurring", 
-      form:"my_recurring_form"},/*!*/
-    {name:"time", height:72, type:"time", map_to:"auto"}
+    { name: "description", type: "textarea", map_to: "text", focus: true },
+    { name: "recurring", type: "recurring", map_to: "rrule", form: "my_recurring_form" },
+    { name: "time", type: "time", map_to: "auto", height: 72 }
 ];
 ~~~
 
-<div>![custom_recurring_form](/img/custom_recurring_form.png)</div>
+Получившийся lightbox с пользовательским блоком recurring показан на изображении ниже:
 
+<div style="text-align:center;">![custom_recurring_form](/img/custom_recurring_form.png)</div>
 
-### Основные части
+Следующий фрагмент демонстрирует, как можно реализовать lightbox с упомянутым выше пользовательским блоком recurring:
 
-Стандартная HTML-структура блока повторяющихся событий (recurring block) для lightbox на разных языках находится в директории <b>'schedulersourceslocalerecurring'</b>.
+**Связанный пример** [Lightbox with a custom recurring block](https://snippet.dhtmlx.com/0ha0edlk)
 
+### Примечания к изменению блока recurring
 
-Например, для английской локализации используется файл <b>'schedulersourceslocalerecurringrepeat_template_en.htm'</b>.
+Пожалуйста, перед началом применения пользовательской конфигурации к блоку recurring в lightbox обратите внимание на следующее:
 
-Блок повторяющихся событий в lightbox обычно включает 3 группы элементов управления:
-
-1) Элементы управления для выбора типа повторения. Эти input-элементы имеют имя 'repeat' и одно из следующих значений: 'daily', 'weekly', 'monthly', 'yearly'. 
-В форме должен присутствовать хотя бы один input с именем 'repeat' и каким-либо значением. Вы можете использовать radio-кнопки, выпадающие списки (select) или задать тип по умолчанию с помощью скрытого input.
-
-Примеры корректного выбора типа повторения в форме:
-
-- Radio-кнопки:
-
-~~~html
-<label><input type="radio" name="repeat" value="day" />Daily</label>
-
-
-<label><input type="radio" name="repeat" value="week"/>Weekly</label>
-
-
-<label><input type="radio" name="repeat" value="month" />Monthly</label>
-
-
-<label><input type="radio" name="repeat" value="year" />Yearly</label>
-~~~
-
-- Select-список, без опций 'Monthly' и 'Yearly':
-
-~~~html
-<select name="repeat">
-  <option value="day">Daily</option>
-  <option value="week">Weekly</option>
-</select>
-~~~
-
-- Скрытый input (создает только серию событий "Daily"):
-
-~~~html
-<input type="hidden" name="repeat" value="day" />
-~~~
-
-2) Секция для настройки параметров повторения в зависимости от выбранного типа. Например, блок для типа "Daily" выглядит так:
-
-~~~html
-<div class="dhx_repeat_center">
-   <div id="dhx_repeat_day">
-     <label>
-       <input class="dhx_repeat_radio" type="radio" 
-               name="day_type" value="d"/>Every
-     </label>
-       <input class="dhx_repeat_text" type="text" 
-               name="day_count" value="1" />day
-
-
-     <label>
-       <input class="dhx_repeat_radio" type="radio" 
-               name="day_type" checked value="w"/>Every workday
-     </label>
-  </div>
-...
-</div>         
-~~~
-
-Обратите внимание, что разметка, относящаяся к определенному типу повторения, может быть обернута в div с <b>id</b> формата <b>"dhx_repeat_&lt;repeat type&gt;"</b>, например, "dhx_repeat_day". 
-Этот блок будет отображаться только при выборе соответствующего типа повторения.
-
-3) Элементы управления для указания, когда завершать повторение. Input для этого имеет имя 'end'. 
-
-
-Возможные значения: <b>'no'</b>, <b>'date_of_end'</b> и <b>'occurences_count'</b>.
-
-Как и для элементов 'repeat', в форме должен быть хотя бы один input с этим именем.
-
-~~~html
-<div class="dhx_repeat_right">
-  <label>
-    <input type="radio" name="end" value="no" checked/>No end date
-  </label>
-
-
-  <label>
-    <input type="radio" name="end" value="date_of_end" />After</label>
-    <input type="text" name="date_of_end" />
-  
-
-
-  <label>
-    <input type="radio" name="end" value="occurences_count" />After</label>
-    <input type="text" name="occurences_count" value="1" />Occurrences
-</div>
-~~~
-
-Для режима <b>'date_of_end'</b> дата указывается в input с именем 'date_of_end'. Аналогично, для режима <b>'occurences_count'</b> количество повторений указывается в input с именем 'occurences_count'. 
-
-
-Вы можете удалить любой тип повторения или задать его заранее с помощью скрытого input:
-
-~~~html
-<input type="hidden" name="end" value="date_of_end" />
-<input type="hidden" name="date_of_end" value="01.01.2024" />
-~~~
-  
-### Примечания по изменению блока повторения
-
-Перед кастомизацией блока повторения в lightbox, обратите внимание на следующие моменты:
-
-1. Атрибут 'name' фиксирован для всех input-элементов; input с другими именами будут проигнорированы. 
-2. Атрибут 'value' фиксирован для всех input, кроме тех, которые предназначены для непосредственного ввода пользователем. 
-3. Если вы предоставляете новую форму, dhtmlxScheduler не использует её напрямую, а копирует вашу HTML-структуру внутрь шаблона lightbox. 
-Это значит, что любые обработчики событий или пользовательские свойства, привязанные к DOM-элементам вашей формы, не будут работать в lightbox. 
-Чтобы добавить обработчики событий, их нужно указывать как inline-атрибуты HTML или навешивать при отображении формы в lightbox.
+1. Атрибут **name** задаётся жестко для всех inputs: inputs с разными именами будут проигнорированы.
+2. Атрибут **value** фиксирован для всех inputs, кроме тех, которые предполагают прямой ввод.
+3. При указании новой формы Scheduler не использует её напрямую и просто воспроизводит вашу HTML-структуру в шаблоне lightbox. Это означает, что все обработчики событий или пользовательские свойства, привязанные к элементам DOM вашей формы в коде, не будут применены к форме в lightbox.
+   Если вы хотите привязать обработчик события, нужно либо указывать его как inline HTML-атрибут, либо привязать обработчик к форме, когда она отображается в lightbox, с помощью `addEventListener()`.
 
 :::note
-Имейте в виду, что dhtmlxScheduler не работает с вашей исходной HTML-формой, а создает её копию внутри шаблона lightbox.
+Будьте осторожны: Scheduler не работает с вашей исходной HTML-формой и просто создаёт её копию в шаблоне lightbox.
 :::
 
 Например:
 
-- Эта строка будет скопирована в lightbox:
+- следующая строка будет скопирована в lightbox:
 
 ~~~html
-<input onclick="handler()"> 
+<input onclick="handler()">
 ~~~
 
-- А эта - нет:
+- строка ниже не будет скопирована в lightbox:
 
 ~~~js
-addEventListener(node, "click", function(){...})
+node.addEventListener("click", () => {
+    ...
+});
 ~~~
 
-## Устаревший формат повторяющихся событий {#legacyformatofrecurringevents}
+## Пользовательское подтверждающее модальное окно {#customconfirmationmodal}
 
-До версии 7.1 Scheduler использовал собственный формат для повторяющихся событий. Подробнее об этом формате можно узнать [здесь](guides/recurring-events-legacy.md).
+Когда пользователь редактирует или перетаскивает повторяющееся событие, Scheduler отображает встроенное модальное окно, которое спрашивает, следует ли изменить только данное occurrence, это и последующие события, или всю серию. Вы можете заменить его своим пользовательским интерфейсом, переопределив `scheduler.ext.recurring.confirm`.
+
+~~~js
+scheduler.ext.recurring.confirm = (context) => {
+    // context содержит:
+    // - origin: "lightbox" | "dnd"
+    // - occurrence: объект события экземпляра
+    // - series: объект родительской повторяющейся серии
+    // - labels: { title, ok, cancel, occurrence, following, series }
+    // - options: ["occurrence", "following", "series"]
+    //
+    // Возвращает одну из: "occurrence", "following", "series", или null для отмены.
+    // Может вернуть Promise для асинхронного UI.
+
+    return new Promise((resolve) => {
+        myCustomDialog.show({
+            title: context.labels.title,
+            options: context.options,
+            onSelect: (choice) => { resolve(choice); },
+            onCancel: () => { resolve(null); }
+        });
+    });
+};
+~~~
+
+Объект context имеет следующие свойства:
+
+| Свойство | Тип | Описание |
+|---|---|---|
+| `origin` | `"lightbox" \| "dnd"` | Было ли действие инициировано из lightbox или перетаскивания (drag-and-drop) |
+| `occurrence` | `object` | Конкретный экземпляр события, который редактируется |
+| `series` | `object` | Родительское повторяющееся событие |
+| `labels` | `object` | Локализованные строки: `title`, `ok`, `cancel`, `occurrence`, `following`, `series` |
+| `options` | `string[]` | Доступные варианты, например `["occurrence", "following", "series"]` |
+
+Функция должна вернуть `occurrence`, `following`, `series`, или `null` для отмены. Можно вернуть значение напрямую или как Promise.
+
+Для реализации на React смотрите документацию [React Scheduler](integrations/react/overview.md#customizing-the-recurrence-confirmation-modal).
+
+
+## Устаревший формат повторяющихся событий
+
+До v7.1 Scheduler использовал собственный формат повторяющихся событий, подробности формата можно найти [здесь](guides/recurring-events-legacy.md).

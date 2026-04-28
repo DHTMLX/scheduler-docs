@@ -1,14 +1,14 @@
 ---
-sidebar_label: "hideLightbox"
-title: "hideLightbox method"
-description: "закрывает лайтбокс без сохранения изменений"
+sidebar_label: hideLightbox
+title: "hideLightbox метод"
+description: "Скрывает lightbox без сохранения"
 ---
 
 # hideLightbox
 
 ### Description
 
-@short: Закрывает лайтбокс без сохранения изменений
+@short: Скрывает lightbox без сохранения
 
 @signature: hideLightbox: () =\> void
 

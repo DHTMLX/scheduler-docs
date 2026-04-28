@@ -5,331 +5,346 @@ sidebar_label: "Daten laden"
 
 # Daten laden
 
-dhtmlxScheduler unterstützt das Laden von Daten in drei Formaten:
+dhtmlxScheduler kann Daten in mehreren Formaten laden. Die meisten Anwendungen verwenden **JSON**. **iCalendar (.ics)** und **XML** werden ebenfalls zur Kompatibilität oder für Import-Szenarien unterstützt.
 
-1. JSON;
-2. XML;
-3. ICal.
+### Verwandte Anleitungen
 
-[Beispiele für Datenformate](guides/data-formats.md)
+- [Überblick über Datenformate](guides/data-formats.md)
 
-## Laden von Daten aus einem Inline-Datensatz {#loadingdatafromaninlinedataset}
 
-Um Daten direkt aus einem Inline-Datensatz zu laden, wird die Methode [parse](api/method/parse.md) verwendet:
+## Daten aus einem Inline-Datensatz laden
+
+Um Daten aus einem Inline-Datensatz zu laden, verwenden Sie die [`parse()`](api/method/parse.md) Methode:
 
 ~~~js
-scheduler.init('scheduler_here',new Date(2009,10,1),"month");
+scheduler.init("scheduler_here", new Date(2027, 4, 1), "month");
 ...
 scheduler.parse([
-    {text:"Meeting",    start_date:"2019-04-11 14:00", end_date:"2019-04-11 17:00"},
-    {text:"Conference", start_date:"2019-04-15 12:00", end_date:"2019-04-18 19:00"},
-    {text:"Interview",  start_date:"2019-04-24 09:00", end_date:"2019-04-24 10:00"}
-],"json");
-
+    { id: "1", text: "Meeting", start_date: "2027-05-11 14:00", end_date: "2027-05-11 17:00" },
+    { id: "2", text: "Conference", start_date: "2027-05-15 12:00", end_date: "2027-05-18 19:00" },
+    { id: "3", text: "Interview", start_date: "2027-05-24 09:00", end_date: "2027-05-24 10:00" }
+]);
 ~~~
 
+### Verwandte Beispiele
 
-[Displaying events as a cascade](https://docs.dhtmlx.com/scheduler/samples/02_customization/24_cascade_event_display.html)
+- [Ereignisse als Kaskade anzeigen](https://docs.dhtmlx.com/scheduler/samples/02_customization/24_cascade_event_display.html)
 
+### Verwandte API
 
-## Laden von Daten aus einer Datei {#loadingdatafromadatafile}
+- [`parse()`](api/method/parse.md)
 
-Um Daten aus einer externen Datei zu laden, wird die Methode [load](api/method/load.md) verwendet:
+### Verwandte Anleitungen
+
+- [Datenformate](guides/data-formats.md)
+
+## Daten aus einer Datei laden
+
+Um Daten aus einer Datei zu laden, verwenden Sie die [`load()`](api/method/load.md) Methode:
 
 ~~~js
-scheduler.init('scheduler_here',new Date(2018,10,1),"month");
+scheduler.init("scheduler_here", new Date(2027, 4, 1), "month");
 ...
-scheduler.load("data.json"); //Laden von Daten aus einer Datei
+scheduler.load("data.json"); // loading data from a file
 ~~~
 
 
-[Basic initialization](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/01_basic_init.html)
+### Verwandte Beispiele
 
+- [Grundlegende Initialisierung](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/01_basic_init.html)
 
-## Laden von Daten aus einer Datenbank {#loadingdatafromadatabase}
-------------------------------------- 
+### Verwandte API
 
-Es gibt zwei Ansätze, um Daten aus einer Datenbank zu laden. Beide erfordern die Umsetzung auf Client- und Serverseite.
+- [`load()`](api/method/load.md)
 
-1) Der erste Ansatz nutzt eine REST-API zur Kommunikation mit dem Server.
+### Verwandte Anleitungen
 
-- Die Implementierung auf Serverseite hängt vom gewählten Framework ab.
-Zum Beispiel wird bei Node.js eine Serverroute für die URL hinzugefügt, an die Scheduler seine AJAX-Anfrage sendet.
+- [Datenformate](guides/data-formats.md)
 
-Diese Route erzeugt eine JSON-Antwort.
+## Daten aus dem Backend laden
+
+Laden Sie Daten von Ihrem Backend, indem Sie einen REST-Endpunkt bereitstellen, der Scheduler-Ereignisse im JSON-Format zurückgibt.
+
+- Die serverseitige Implementierung hängt von Ihrem Stack ab. Beispielsweise können Sie in Node.js eine Route hinzufügen, die Ereignisdaten zurückgibt:
 
 ~~~js
-app.get('/data', function(req, res){
-    db.event.find().toArray(function(err, data){
-        //set id property for all records
-        for (var i = 0; i < data.length; i++)
-            data[i].id = data[i]._id;
-        
-        //output response
-        res.send(data);
-    });
+app.get("/data", async (request, response) => {
+    const events = await db.event.find().toArray();
+    response.json(events);
 });
 ~~~
 
-- Auf der Client-Seite wird die Methode [load](api/method/load.md) mit der URL verwendet, von der Scheduler die Daten anfordert:
-
-~~~js title="Loading from a database. Client-side code"
-scheduler.init('scheduler_here', new Date(), "month");
-scheduler.load("apiUrl");
-~~~
-
-:::note
-Ausführlichere Informationen zur Server-Integration mit der REST-API finden Sie im Artikel [Serverseitige Integration](guides/server-integration.md).
-:::
-
-2) Der zweite Ansatz beinhaltet das Laden von Daten aus Datenbanktabellen mit dem [PHP Connector](https://docs.dhtmlx.com/connector__php__index.html).
-
-- Auf der Serverseite wird ein Skript implementiert, das Daten im XML- oder JSON-Format zurückgibt:
-  
-~~~js title="Static loading from db. Server-side code"
-include ('dhtmlxConnector/codebase/scheduler_connector.php');
- 
-$res="mysql_connect(""localhost","root","");
-mysql_select_db("sampleDB");
- 
-$calendar = new SchedulerConnector($res);
-$calendar->render_table("events","id","event_start,event_end,text","type");
-~~~
-
-- Auf der Client-Seite wird die Methode [load](api/method/load.md) mit dem Pfad zum Server-Skript verwendet:
-  
-~~~js title="Static loading from db. Client-side code"
-scheduler.init('scheduler_here', new Date(), "month");
-scheduler.load("events.php");
-~~~
-
-:::note
-Weitere Details finden Sie im [dhtmlxScheduler mit dhtmlxConnector](integrations/other/howtostart-connector.md) Leitfaden.
-:::
-
-## Laden von Daten aus mehreren Quellen {#loadingdatafrommultiplesources}
-
-Um Daten aus mehreren Quellen zu laden, steht die **multisource**-Erweiterung zur Verfügung:
+- Auf der Client-Seite rufen Sie [`load()`](api/method/load.md) mit der Daten-URL auf:
 
 ~~~js
-scheduler.plugins({
-   multisource: true
+scheduler.init("scheduler_here", new Date(2027, 4, 1), "month");
+scheduler.load("/data");
+~~~
+
+:::note
+Für das Speichern von Änderungen zurück an den Server verwenden Sie [`createDataProcessor()`](api/method/createdataprocessor.md). Siehe [Serverseitige Integration](guides/server-integration.md).
+:::
+
+### Verwandte API
+
+- [`createDataProcessor()`](api/method/createdataprocessor.md)
+
+### Verwandte Anleitungen
+
+- [Serverseitige Integration](guides/server-integration.md)
+
+## Daten aus mehreren Quellen laden
+
+Um Daten aus mehreren Quellen zu laden, rufen Sie die benötigten Endpunkte ab und kombinieren Sie die Ergebnisse, bevor Sie [`parse()`](api/method/parse.md) aufrufen:
+
+~~~js
+Promise.all([
+    fetch("/api/events").then((response) => response.json()),
+    fetch("/api/holidays").then((response) => response.json())
+]).then(([events, holidays]) => {
+    scheduler.parse([...events, ...holidays]);
 });
 ~~~
 
-:::note
-Mehrere Quellen können sowohl für statisches als auch für dynamisches Laden verwendet werden.
-:::
+### Verwandte API
 
-Nach Einbindung der entsprechenden Datei kann die Methode [load](api/method/load.md) ein Array von Quellen akzeptieren:
+- [`parse()`](api/method/parse.md)
 
-~~~js
-scheduler.load(["first/source/some","second/source/other"]);
-~~~
+### Verwandte Anleitungen
 
-## Dateneigenschaften {#dataproperties}
+- [Datenformate](guides/data-formats.md)
 
-### Pflichtfelder
+## Daten-Eigenschaften
 
-Datenelemente benötigen mindestens diese drei Eigenschaften, um korrekt geparst zu werden:
+### Obligatorische Eigenschaften
 
-- **start_date** -  (*string*) das Startdatum des Ereignisses;
-- **end_date** - (*string*) das Enddatum des Ereignisses;
-- **text** - (*string*) die Ereignisbeschreibung.
+Damit korrekt geparst werden kann, muss jedes Ereignis die folgenden Eigenschaften enthalten:
 
-Beim Laden aus einer Datenbank ist eine zusätzliche Pflichtangabe erforderlich:
+- **id** - (*string|number*) eine eindeutige Ereignis-ID
+- **start_date** - (*date|string*) das Startdatum des Ereignisses
+- **end_date** - (*date|string*) das Enddatum des Ereignisses
+- **text** - (*string*) der Titel/ die Beschreibung des Ereignisses
 
-- **id** -  (*string, number*) die Ereignis-ID.
+Das Standard-Datumsformat für JSON- und XML-Daten ist **'%Y-%m-%d %H:%i'** (siehe die [Datumsformat-Spezifikation](guides/settings-format.md))
 
-Standardmäßig verwenden JSON- und XML-Daten das Datumsformat **'%Y-%m-%d %H:%i'** (siehe [Spezifikation des Datumsformats](guides/settings-format.md)).
-
- Um es zu ändern, verwenden Sie die Option [date_format](api/config/date_format.md).
+Um es zu ändern, verwenden Sie die Konfigurationsoption [`date_format`](api/config/date_format.md).
 
 ~~~js
-scheduler.config.date_format="%Y-%m-%d %H:%i";
+scheduler.config.date_format = "%Y-%m-%d %H:%i";
 ...
-scheduler.init('scheduler_here', new Date(2019, 3, 18), "week");
+scheduler.init("scheduler_here", new Date(2027, 4, 18), "week");
 ~~~
 
 ### Benutzerdefinierte Eigenschaften
 
-Neben den erforderlichen Feldern können Datenelementen benutzerdefinierte Eigenschaften hinzugefügt werden. Diese zusätzlichen Eigenschaften werden als Strings geparst und können nach Bedarf auf der Client-Seite verwendet werden.
+Sie sind nicht auf die oben aufgeführten Pflicht-Eigenschaften beschränkt und können beliebige benutzerdefinierte Eigenschaften zu Dateneinträgen hinzufügen.
+Zusätzliche Daten-Eigenschaften werden als Strings geparst und auf der Client-Seite geladen, wo Sie sie nach Bedarf verwenden können.
 
-Beispiele für Daten mit benutzerdefinierten Eigenschaften finden Sie [hier](guides/data-formats.md#datawithcustomproperties).
+Siehe Beispiele von Daten mit benutzerdefinierten Eigenschaften [hier](guides/data-formats.md)
 
-## Datenbankstruktur {#databasestructure}
+### Verwandte API
 
-Bei der Einrichtung einer Datenbank für Scheduler-Ereignisse wird folgende Struktur erwartet:
+- [`date_format`](api/config/date_format.md)
 
-- **events-Tabelle** - enthält Scheduler-Ereignisse
-    - **id** - (*string/int/guid*) - Ereignis-ID. Primärschlüssel mit Auto-Inkrement.
-    - **start_date** - (*DateTime*) - Startdatum des Ereignisses, nicht null.
-    - **end_date** - (*DateTime*) - Enddatum des Ereignisses, nicht null.
-    - **text** - (*string*) - Ereignisbeschreibung.
+### Verwandte Anleitungen
 
-Für wiederkehrende Ereignisse werden zusätzliche Spalten benötigt:
+- [Ereignis-Objekt](guides/event-object-operations.md)
 
-- **events-Tabelle** - enthält Scheduler-Ereignisse
-    - **id** - (*string/int/guid*) - Ereignis-ID. Primärschlüssel mit Auto-Inkrement.
-    - **start_date** - (*DateTime*) - Startdatum des Ereignisses, nicht null.
-    - **end_date** - (*DateTime*) - Enddatum des Ereignisses, nicht null.
-    - **text** - (*string*) - Ereignisbeschreibung.
-    - **event_pid** - (*string/int/guid*) - Referenz auf die ID der übergeordneten Ereignisserie. Kann leer oder null sein (leerer String, Null).
-    - **event_length** - (*string/bigint*) - Ereignisdauer oder Zeitstempel einer geänderten Instanz. Kann leer oder null sein (leerer String, Null). Maximale Länge (bei String-Werten) ist 10.
-    - **rec_type** - (*string*) - Wiederholungsregel. Kann leer sein oder Standardwert leerer String. Maximale Länge ist 50.
+## Datenbankstruktur
 
-Weitere Spalten können nach Bedarf hinzugefügt werden; sie sind über die Client-API zugänglich.
+Wenn Sie eine Datenbank einrichten, ergibt sich die erwartete Struktur für Scheduler-Ereignisse wie folgt:
 
-## Dynamisches Laden {#dynamic-loading}
+- **events table** - spezifiziert Scheduler-Ereignisse
+- **id** - (*string/int/guid*) die Ereignis-ID. Primärschlüssel, automatisch inkrementiert.
+- **start_date** - (*DateTime*) das Startdatum des Ereignisses, nicht nullable.
+- **end_date** - (*DateTime*) das Enddatum des Ereignisses, nicht nullable.
+- **text** - (*string*) die Beschreibung einer Aufgabe.
 
-Standardmäßig lädt dhtmlxScheduler alle Daten auf einmal, was bei großen Datenmengen ineffizient sein kann. Mit dynamischem Laden können Daten in Teilen geladen werden, die auf den aktuell sichtbaren Bereich beschränkt sind.
+Wenn Sie wiederkehrende Ereignisse haben, fügen Sie folgende Felder hinzu:
+
+- **rrule** - (*string*) Wiederholungsregel im RFC-5545-Format
+- **duration** - (*number*) Dauer jeder Vorkommnis in Sekunden
+- **recurring_event_id** - (*string/int/guid*) übergeordnete Serien-ID für geänderte/gelöschte Vorkommnisse
+- **original_start** - (*DateTime*) ursprüngliches Startdatum des bearbeiteten/gelöschten Vorkommens
+- **deleted** - (*boolean*) markiert gelöschte Vorkommnisse
+
+Sie können beliebige zusätzliche Spalten definieren, sie können auf den Client geladen und der client-seitigen API zur Verfügung gestellt werden.
+
+### Verwandte Guides
+
+- [Wiederkehrende Ereignisse](guides/recurring-events.md)
+
+## Dynamisches Laden
+
+Standardmäßig lädt dhtmlxScheduler alle Daten auf einmal. Das kann problematisch werden, wenn Sie große Ereignis-Sammlungen verwenden.
+In solchen Situationen können Sie den dynamischen Ladevorgang verwenden und Daten schrittweise laden, die erforderlich sind, um den aktuell sichtbaren Bereich des Schedulers auszufüllen.
 
 ### Technik
 
-Aktivieren Sie das dynamische Laden durch Aufruf der Methode [setLoadMode](api/method/setloadmode.md):
-~~~js title="Enabling the dynamic loading"
+Um das dynamische Laden zu aktivieren, rufen Sie die [`setLoadMode()`](api/method/setloadmode.md) Methode auf:
+
+~~~js
 scheduler.setLoadMode("month");
-scheduler.load("some.php");
+scheduler.load("/api/events");
 ~~~
 
-Die Methode akzeptiert einen Lade-Modus, der die zu ladende Datenmenge festlegt: *day, week, month* oder *year.*
+Als Parameter nimmt die Methode den Lademodus, der die Größe der zu ladenden Daten definiert: *day, week, month oder year.*
 
-Beispielsweise lädt der Modus 'week' nur Daten für die aktuelle Woche und lädt bei Bedarf weitere Daten nach.
+Zum Beispiel, wenn Sie den Modus 'week' festlegen, wird der Scheduler Daten nur für die aktuelle Woche anfordern und die verbleibenden bei Bedarf nachladen.
 
+#### Wie Lade-Modi funktionieren
 
-#### Funktionsweise der Lademodi
+Die vordefinierten Lade-Modi legen das Intervall fest, in dem Daten innerhalb des gesetzten Zeitraums geladen werden. Zum Beispiel öffnen Sie die Wochenansicht des Timers für folgende Daten: von 2027-02-02 bis 2027-02-09.
+Je nach gewähltem Modus verläuft das dynamische Laden folgendermaßen:
 
-Lademodi bestimmen das Intervall der geladenen Daten für den ausgewählten Zeitraum. Zum Beispiel beim Öffnen der Wochenansicht für Daten vom 29.01.2018 bis 05.02.2018:
-
-- Für den "day"-Modus
+- für den "day"-Modus
 
 ~~~js
 scheduler.setLoadMode("day");
 ~~~
 
-Scheduler fordert Daten tageweise an, z.B. vom 29.01.2018 bis 05.02.2018.
+Der Scheduler wird Daten pro Tag anfordern, z. B. von 2027-02-02 bis 2027-02-09.
 
-- Für den "month"-Modus
+- für den "month"-Modus
 
 ~~~js
 scheduler.setLoadMode("month");
 ~~~
 
-Scheduler fordert Daten für volle Monate an, z.B. vom 01.01.2018 bis 01.03.2018.
+Der Scheduler wird Daten nach ganzen Monaten anfordern, z. B. von 2027-02-01 bis 2027-03-01.
 
-- Für den "year"-Modus
+- für den "year"-Modus
 
 ~~~js
 scheduler.setLoadMode("year");
 ~~~
 
-Scheduler fordert Daten für volle Jahre an, z.B. vom 01.01.2018 bis 01.01.2019.
+Der Scheduler wird Daten nach ganzen Jahren anfordern, z. B. von 2027-01-01 bis 2028-01-01.
 
-Das angeforderte Intervall ist immer mindestens so groß wie das angezeigte.
+In jedem Fall wird das angeforderte Intervall nicht kleiner als das gerenderte Intervall sein.
 
-Das Ladeintervall beeinflusst:
+Das Lade-Intervall definiert:
 
-- wie oft dynamische Ladevorgänge ausgeführt werden
+- die Häufigkeit der dynamischen Ladeaufrufe
 
-Größere Intervalle verringern die Häufigkeit der Ladevorgänge, da bereits geladene Daten zwischengespeichert werden.
+Je größer das Lade-Intervall, desto geringer die Frequenz der Aufrufe für das dynamische Laden. Der Scheduler speichert den bereits geladenen Datenanteil im Speicher und wiederholt keinen Aufruf dafür.
 
-- wie lange jede Anfrage dauert
+- die Dauer der Bearbeitung einer einzelnen Anfrage
 
-Größere Intervalle bedeuten mehr Daten pro Anfrage, was die Verarbeitungszeit erhöht.
+Je größer das Lade-Intervall, desto länger wird eine Anfrage bearbeitet, da mehr Daten auf einmal geladen werden.
 
 #### Anfrage
 
-Anfragen haben folgendes Format:
+Generierte Anfragen sehen wie folgt aus:
 
 ~~~js
-some.php?from=DATEHERE&to=DATEHERE
+/api/events?from=DATEHERE&to=DATEHERE
 ~~~
 
-*wobei DATEHERE ein gültiges Datum im durch die Option [load_date](api/config/load_date.md) festgelegten Format ist.* 
+-Wobei DATEHERE ein gültiger Datumswert im von der [`load_date`](api/config/load_date.md) Option definierten Format ist.*
 
+### Verwandte API
 
-Bei Verwendung von <a href="https://docs.dhtmlx.com/connector__php__index.html">dhtmlxConnector</a> auf der Serverseite ist keine zusätzliche Verarbeitung zur Auswertung dieser Anfragen erforderlich.
+- [`setLoadMode()`](api/method/setloadmode.md)
+- [`load_date`](api/config/load_date.md)
 
 ### Lade-Spinner
 
-Beim Arbeiten mit großen Datenmengen ist es hilfreich, einen Lade-Spinner anzuzeigen, um den Fortschritt zu visualisieren.
+Wenn Sie mit großen Datenmengen arbeiten, ist es sinnvoll, den Lade-Spinner anzuzeigen. Er zeigt dem Benutzer, dass die Anwendung tatsächlich etwas tut.
 
-Der Lade-Spinner kann aktiviert werden, indem die Eigenschaft [show_loading](api/config/show_loading.md) auf *true* gesetzt wird:
+Um den Lade-Spinner für den Scheduler zu aktivieren, setzen Sie die Eigenschaft [`show_loading`](api/config/show_loading.md) auf *true*.
 
 ~~~js
 scheduler.config.show_loading = true;
 ...
-scheduler.init('scheduler_here',new Date(2018,0,10),"month");
+scheduler.init("scheduler_here", new Date(2027, 4, 10), "month");
 ~~~
 
 :::note
-Um das Spinner-Bild anzupassen, ersetzen Sie 'imgs/loading.gif' durch Ihr eigenes Bild.
+Um das Spinner-Bild zu ändern - ersetzen Sie 'imgs/loading.gif' durch Ihr eigenes Bild.
 :::
 
-## Laden von Daten mit Timeline- und Units-Abschnitten vom Server {#loadingdatawithtimelineandunitssectionsfromtheserver}
+## Daten laden mit Timeline- und Units-Abschnitten vom Server {#collections}
 
-Beim Laden von Daten in die [Timeline](views/timeline.md#data-loading)- und [Units](views/units.md#loading-data-to-the-view)-Ansichten muss ein Array von Abschnitten bereitgestellt werden.
+Beim Laden von Daten in die Ansichten [Timeline](views/timeline.md) und [Units](views/units.md) müssen Sie ein Array von Abschnitten festlegen, die in die Ansichten geladen werden.
 
-Um Timeline- und Units-Abschnitte vom Backend zu laden, ist eine detailliertere Einrichtung erforderlich:
+Um Daten zu laden, die Timeline- und Units-Abschnitte vom Backend enthalten, müssen Sie eine erweiterte Konfiguration implementieren:
 
-- Während der Initialisierung der Timeline-Ansicht wird anstelle eines Abschnitt-Arrays die Methode [serverList](api/method/serverlist.md) mit dem Namen der Collection verwendet:
+- während der Initialisierung der Timeline-Ansicht sollten Sie anstelle eines sections-Arrays die [`serverList()`](api/method/serverlist.md) Methode verwenden und den Namen einer Sammlung als Argument übergeben:
 
 ~~~js
 scheduler.createTimelineView({
-   ....
-   y_unit: scheduler.serverList("sections"),
-   ...
+    ....
+    y_unit: scheduler.serverList("sections"),
+    ...
 });
 ~~~
 
-- Laden Sie Daten in den Scheduler mit der Methode [load](api/method/load.md):
+- um Daten in den Scheduler zu laden, verwenden Sie die [`load()`](api/method/load.md) Methode:
 
 ~~~js
 scheduler.load("data.json");
 ~~~
 
-- Auf der Serverseite sollte die Antwort wie folgt strukturiert sein:
+Wenn Sie Daten manuell abrufen (zum Beispiel, um Kopfzeilen hinzuzufügen), können Sie denselben Payload an [`parse()`](api/method/parse.md) übergeben:
 
-~~~js title=""data.json""
-{ 
-   "data":[
-      {
-          "id":"1",
-          "start_date":"2018-03-02 00:00:00",
-          "end_date":"2018-03-04 00:00:00",
-          "text":"dblclick me!",
-          "type":"1"
-      },
-      {
-          "id":"2",
-          "start_date":"2018-03-09 00:00:00",
-          "end_date":"2018-03-11 00:00:00",
-          "text":"and me!",
-          "type":"2"
-      },
-      {
-          "id":"3",
-          "start_date":"2018-03-16 00:00:00",
-          "end_date":"2018-03-18 00:00:00",
-          "text":"and me too!",
-          "type":"3"
-      },
-      { 
-          "id":"4",
-          "start_date":"2018-03-02 08:00:00",
-          "end_date":"2018-03-02 14:10:00",
-          "text":"Type 2 event",
-          "type":"2"
-      }
-   ], 
-   "collections": {
-      "sections":[
-         {"value":"1","label":"Simple"},
-         {"value":"2","label":"Complex"},
-         {"value":"3","label":"Unknown"}
-      ]
-   }
+~~~js
+fetch("/api/timeline")
+    .then((response) => response.json())
+    .then((payload) => scheduler.parse(payload, "json"));
+~~~
+
+- während der Implementierung der Scheduler-Datenantwort im Backend verwenden Sie folgendes Format:
+
+~~~js title="data.json"
+{
+    "data":[
+        {
+            "id":"1",
+            "start_date":"2027-03-02 00:00:00",
+            "end_date":"2027-03-04 00:00:00",
+            "text":"dblclick me!",
+            "type":"1"
+        },
+        {
+            "id":"2",
+            "start_date":"2027-03-09 00:00:00",
+            "end_date":"2027-03-11 00:00:00",
+            "text":"and me!",
+            "type":"2"
+        },
+        {
+            "id":"3",
+            "start_date":"2027-03-16 00:00:00",
+            "end_date":"2027-03-18 00:00:00",
+            "text":"and me too!",
+            "type":"3"
+        },
+        {
+            "id":"4",
+            "start_date":"2027-03-02 08:00:00",
+            "end_date":"2027-03-02 14:10:00",
+            "text":"Type 2 event",
+            "type":"2"
+        }
+    ],
+    "collections": {
+        "sections":[
+            {"value":"1","label":"Simple"},
+            {"value":"2","label":"Complex"},
+            {"value":"3","label":"Unknown"}
+        ]
+    }
 }
 ~~~
 
-In diesem Beispiel enthält das "data"-Array die Kalendereinträge, während das "collections"-Objekt die Collections enthält, auf die über die Methode [serverList](api/method/serverlist.md) verwiesen wird.
+In dem obigen Beispiel enthält das "data"-Array Kalenderereignisse, und der Hash "collections" enthält Sammlungen, die über die [`serverList()`](api/method/serverlist.md) Methode referenziert werden können.
+
+### Verwandte API
+
+- [`serverList()`](api/method/serverlist.md)
+
+### Verwandte Guides
+
+- Timeline-Ansicht
+- Units-Ansicht

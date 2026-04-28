@@ -22,7 +22,7 @@ description: "creates a new dataProcessor instance and attaches it to scheduler"
 ### Example
 
 ~~~jsx
-var dp = scheduler.createDataProcessor({
+const dp = scheduler.createDataProcessor({
     url: "/api",
     mode: "REST"
 });
@@ -35,7 +35,7 @@ The method can take one of the following types of parameters:
 1\. `{url:string, mode:string}` object specifying one of the predefined modes of sending data
 
 ~~~js
-var dp = scheduler.createDataProcessor({
+const dp = scheduler.createDataProcessor({
    url: "/api",
    mode: "REST"
 });
@@ -49,7 +49,7 @@ where:
 2\. Or a custom router object:
 
 ~~~js
-var dp = scheduler.createDataProcessor(router);
+const dp = scheduler.createDataProcessor(router);
 ~~~
 
 where the router is either a function:
@@ -59,7 +59,7 @@ where the router is either a function:
 // action - "create"|"update"|"delete"
 // data - an object with event data
 // id - the id of a processed object (event)
-var dp = scheduler.createDataProcessor(function(entity, action, data, id) { 
+const dp = scheduler.createDataProcessor(function(entity, action, data, id) { 
     switch(action) {
         case "create":
                return scheduler.ajax.post(
@@ -85,7 +85,7 @@ var dp = scheduler.createDataProcessor(function(entity, action, data, id) {
 or an object of the following structure:
 
 ~~~js
-var dp = scheduler.createDataProcessor({ 
+const dp = scheduler.createDataProcessor({ 
    event: {
       create: function(data) {},
       update: function(data, id) {},

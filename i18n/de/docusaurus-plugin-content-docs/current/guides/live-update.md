@@ -1,51 +1,55 @@
 ---
-title: "Live Updates Modus (Legacy)"
-sidebar_label: "Live Updates Modus (Legacy)"
+title: "Live Updates-Modus (Legacy)"
+sidebar_label: "Live Updates-Modus (Legacy)"
 ---
 
-# Live Updates Modus (Legacy)
+# Live Updates-Modus (Legacy)
 
 :::warning
-Dieser Artikel behandelt die Legacy-Version des Live Updates Modus für DHTMLX Scheduler. Informationen zur neuesten Version finden Sie [hier](guides/multiuser-live-updates.md).
+Die beschriebene Funktionalität ist veraltet und wird nicht mehr gepflegt.
 :::
 
-Der Live Updates Modus hält Daten in Echtzeit zwischen den Benutzern synchron.
+:::note
+Dieser Artikel bezieht sich auf die Legacy-Implementierung des Live Updates-Modus für den DHTMLX Scheduler. Details zur aktuellen Version finden Sie [hier](guides/multiuser-live-updates.md).
+:::
 
-Sobald ein Benutzer eine Änderung vornimmt, erscheint sie sofort auch bei allen anderen.
+Live Update ist ein Modus, der synchrone Datenaktualisierungen in Echtzeit bereitstellt.
 
-Dieser Modus verwendet die `Faye` Socket-Bibliothek, um schnelle und flexible Aktualisierungen zu ermöglichen, ohne dass die Seite neu geladen werden muss (nur die relevante Komponente wird aktualisiert).
+Wenn ein Benutzer eine Änderung vornimmt, wird sie allen anderen sofort sichtbar.
 
-Hier finden Sie eine einfache Anleitung, um mit dieser Funktion zu beginnen.
+Der Modus verwendet die `Faye`-Socket-Bibliothek, um den Prozess so schnell und flexibel wie möglich zu gestalten, und erfordert keine Seitenaktualisierung (er aktualisiert nur die Komponente, auf die er angewendet wird).
+
+In diesem Artikel geben wir Ihnen eine Schritt-für-Schritt-Anleitung, um schnell in das Thema einzusteigen.
 
 ## Grundprinzip
 
-Live Updates funktionieren, indem Änderungen von einem verbundenen Client an alle anderen übertragen werden. Dies geschieht über eine WebSocket-Verbindung, die eine bidirektionale Kommunikation zwischen Clients und Backend ermöglicht.
+Live-Updates werden erreicht, indem Änderungen, die von einem verbundenen Client vorgenommen wurden, an alle anderen verbundenen Clients übertragen werden. Dies geschieht durch die Nutzung einer WebSocket-Verbindung für den zweiseitigen Nachrichtenaustausch zwischen verbundenen Clients und dem Backend.
 
-In dieser Version erweitert das Live Updates Modul das `DataProcessor` Modul, um die `Faye` Client-Bibliothek zu verwenden, zusammen mit einer Backend-App, die die Nachrichtenverteilung zwischen den Clients übernimmt.
+In dieser Version des Live Updates-Moduls wird es umgesetzt, indem das `DataProcessor`-Modul erweitert wird, um den `Faye`-Client zu verwenden, zusammen mit einer zusätzlichen Backend-Anwendung, die Nachrichten zwischen Clients weiterleitet.
 
-Das Setup besteht aus drei Komponenten:
+Die Lösung besteht aus drei Teilen:
 
-1. Das **Frontend** mit Scheduler und dem `DataProcessor` Modul.
-2. Das **Backend**, das CRUD-Operationen auf der Datenbank ausführt.
-3. Der **Live-Updates-Hub**, der die Client-Verbindungen verwaltet.
+1. Das **Frontend** mit Scheduler und dem `DataProcessor`-Modul.
+2. Das **Backend**, das CRUD-Operationen auf dem persistenten Speicher implementiert.
+3. Der **Live-Updates-Hub**, der für das Verbinden der Clients verantwortlich ist.
 
-Wenn ein Benutzer Daten aktualisiert:
+Wenn ein Benutzer Änderungen an den Daten vornimmt:
 
 - Das **Frontend** sendet das Update an das **Backend**.
 - Gleichzeitig sendet das **Frontend** dasselbe Update an den **Live-Updates-Hub**.
-- Der **Live-Updates-Hub** verteilt das Update an alle verbundenen Clients.
-- Beim Empfang des Updates vom **Live-Updates-Hub** übernimmt das **Frontend** die Änderung in die Scheduler-Daten, ohne dass Backend-CRUD-Operationen ausgelöst werden.
+- Der **Live-Updates-Hub** verbreitet das Update an alle verbundenen Clients.
+- Wenn das **Frontend** das Update vom **Live-Updates-Hub** erhält, wendet es dieses auf die Scheduler-Daten an, ohne Änderungen am CRUD-Backend auszulösen.
 
-## Vorbereitungen
+## Bevor Sie beginnen
 
-Um diesem Tutorial zu folgen, benötigen Sie eine funktionierende dhtmlxScheduler-App mit serverseitiger Logik, die Daten aus einer Datenbank lädt und Änderungen zurückspeichert. (Weitere Details [hier](integrations/howtostart-guides.md).)
+Um dieses Tutorial zu starten, muss Ihre dhtmlxScheduler-Anwendung vollständig funktionsfähig sein und mit serverseitiger Logik integriert sein – eine, die Daten aus einer Datenbank lädt und Änderungen wieder speichert. (Details finden Sie [hier](integrations/howtostart-guides.md).)
 
-Ein einfaches Beispiel könnte so aussehen:
+Ein einfaches Beispiel einer solchen Anwendung könnte folgendermaßen aussehen:
 
 ~~~js
 <script>
     function init() {
-        scheduler.init('scheduler_here', new Date(2025,5,24), "week");
+        scheduler.init('scheduler_here', new Date(2027,5,24), "week");
         scheduler.load("api/scheduler");
 
         const dp = scheduler.createDataProcessor({
@@ -56,33 +60,33 @@ Ein einfaches Beispiel könnte so aussehen:
 </script>
 ~~~
 
-## Live Updates konfigurieren
+## Konfiguration von Live Updates
 
 :::note
-Diese Live Updates Implementierung ist veraltet und nicht Teil des Hauptpakets.
+Diese Implementierung von Live Updates ist veraltet und ist nicht im Hauptpaket enthalten.
 :::
 
 ### Schritt 1. Einrichtung
 
-1. Laden Sie das **Live Updates Plugin** für Scheduler herunter: [download link](https://files.dhtmlx.com/30d/20deb2ff205dc16bc94a7e9fcef4c5fe/live_updates.zip)
-2. Laden Sie die **Live Updates Backend-App** herunter: [download link](https://files.dhtmlx.com/30d/57084e02b121f14bb14b6734d465ad41/websocket-backend.zip)
-3. Starten Sie das **Live Updates Backend**, indem Sie den Anweisungen in der Readme-Datei folgen.
+1. Laden Sie das **Live Updates-Plugin** für den Scheduler herunter: [Download-Link](https://files.dhtmlx.com/30d/20deb2ff205dc16bc94a7e9fcef4c5fe/live_updates.zip)
+2. Laden Sie die **Live Updates Backend**-Anwendung herunter: [Download-Link](https://files.dhtmlx.com/30d/57084e02b121f14bb14b6734d465ad41/websocket-backend.zip)
+3. Starten Sie das **Live Updates Backend** gemäß den Anweisungen in der beiliegenden Readme-Datei.
 
-### Schritt 2. Front-End konfigurieren
+### Schritt 2. Konfiguration des Frontends
 
-Um den Live Update Modus zu aktivieren, fügen Sie der Frontend-App zwei zusätzliche Dateien hinzu:
+Um mit dem Live-Update-Modus zu arbeiten, fügen Sie zwei zusätzliche Dateien in die Frontend-App ein:
 
-- **live_updates.js** - die Plugin-Datei aus dem vorherigen Schritt
-- **client.js** - eine Datei, die dynamisch von der WebSocket Backend-App generiert wird
+- **live_updates.js** - die in Schritt 1 heruntergeladene Datei
+- **client.js** - eine Datei, die von der WebSocket-Backend-Anwendung dynamisch erzeugt wird
 
 ~~~js
 <script src="./lib/dhtmlxscheduler/live_updates.js"></script>
 <script src="http://localhost:8008/client.js"></script>
 ~~~
 
-Dieses Beispiel verbindet sich direkt mit der WebSocket-App. In der Regel ist es besser, diese URL über Ihre Hauptanwendung zu leiten, um die Adresse und den Port der Nebenanwendung zu verbergen. Dies kann durch das Einrichten eines Reverse Proxy erreicht werden.
+Im obigen Code-Beispiel verbinden wir uns direkt mit der WebSocket-Anwendung. In der Regel möchten Sie diese URL jedoch durch Ihre Hauptanwendung routen, um die Adresse und den Port der sekundären Anwendung nicht offenzulegen. Dies kann durch den Einsatz eines Reverse-Proxy erfolgen.
 
-**Anfragen durch die Hauptanwendung weiterleiten (Node.js):**
+**Anfragen durch die Hauptanwendung (Node.js) weiterleiten:** 
 
 ~~~js
 const httpProxy = require('http-proxy');
@@ -95,16 +99,16 @@ module.exports = function(app){
 }
 ~~~
 
-**Front-End:**
+**Frontend:**
 
 ~~~js
 <script src="./lib/dhtmlxscheduler/live_updates.js"></script>
 <script src="/liveUpdates/client.js"></script>
 ~~~
 
-### Schritt 3. Live Updates aktivieren
+### Schritt 3. Aktivierung von Live Updates
 
-Aktivieren Sie den Modus, indem Sie die Methode **live_updates()** auf der `DataProcessor` Instanz aufrufen. Stellen Sie sicher, dass der `DataProcessor` zuerst initialisiert wurde. Die Methode erwartet die WebSocket-Einstiegspunkt-URL als Parameter.
+Der Modus wird aktiviert, indem die Methode **live_updates()** auf der `DataProcessor`-Instanz aufgerufen wird. Damit dies funktioniert, muss der `DataProcessor` zuvor initialisiert sein. Als Parameter nimmt die Methode die URL des WebSocket-Einstiegspunkts.
 
 ~~~js
 const dp = scheduler.createDataProcessor({
@@ -115,4 +119,4 @@ const dp = scheduler.createDataProcessor({
 dp.live_updates("/liveUpdates");
 ~~~
 
-Eine vollständige Demo-Anwendung können Sie [hier](https://files.dhtmlx.com/30d/0aea2facd959a8300bf7caec3f5a7f42/dhtmlxscheduler-live-updates.zip) herunterladen.
+Sie können eine vollständige Demo-Anwendung [hier](https://files.dhtmlx.com/30d/0aea2facd959a8300bf7caec3f5a7f42/dhtmlxscheduler-live-updates.zip) herunterladen.

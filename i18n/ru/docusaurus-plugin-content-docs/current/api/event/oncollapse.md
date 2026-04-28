@@ -1,29 +1,29 @@
 ---
-sidebar_label: "onCollapse"
-title: "onCollapse event"
-description: "срабатывает, когда пользователь нажимает на иконку разворачивания, чтобы переключить scheduler из режима 'полного экрана' обратно к исходному размеру."
+sidebar_label: onCollapse
+title: "onCollapse событие"
+description: "срабатывает, когда пользователь нажимает на значок разворачивания, чтобы изменить размер планировщика с 'полного экрана' на исходный."
 ---
 
 # onCollapse
 
 ### Description
 
-@short: Срабатывает, когда пользователь нажимает на иконку разворачивания, чтобы переключить scheduler из режима "полного экрана" обратно к исходному размеру.
+@short: Срабатывает, когда пользователь нажимает на значок разворачивания, чтобы изменить размер планировщика с 'полного экрана' на исходный.
 
-@signature: onCollapse: () =\> void
+@signature: onCollapse: () => void
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onCollapse",function(){
-    //любая ваша логика здесь
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Details
 
 :::note
- Событие требует включенного расширения [expand](guides/extensions-list.md#expand). 
+ Это событие требует включённого расширения [expand](guides/extensions-list.md#expand).
 :::
 
 ### Related API

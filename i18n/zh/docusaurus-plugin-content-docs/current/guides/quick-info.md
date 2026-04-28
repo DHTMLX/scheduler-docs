@@ -1,15 +1,15 @@
 ---
-title: "大按钮让导航更便捷"
-sidebar_label: "大按钮让导航更便捷"
+title: "更易导航的大按钮"
+sidebar_label: "更易导航的大按钮"
 ---
 
-# 大按钮让导航更便捷
+# 更易导航的大按钮
 
-从 3.7 版本开始，dhtmlxScheduler 引入了 ["Quick Info" 扩展](guides/extensions-list.md#quickinfo)。该功能允许用更大、更易用的按钮替换常规的侧边栏按钮和简化的编辑表单。
+从版本 3.7 开始，dhtmlxScheduler 提供了新的 ["Quick Info" extension](guides/extensions-list.md#quick-info)。该扩展能够用新的（更大、使用更方便的）按钮替代标准的侧边栏按钮和简化的编辑表单。
 
-## 启用大按钮调度器
+## 启用大按钮调度程序
 
-要启用大按钮调度器，只需在页面上开启 ["Quick Info"](guides/extensions-list.md#quickinfo) 扩展:
+要启用大按钮调度程序，请在页面上启用 ["Quick Info"](guides/extensions-list.md#quick-info) 扩展：
 
 ~~~js
 
@@ -17,37 +17,34 @@ sidebar_label: "大按钮让导航更便捷"
     scheduler.plugins({
         quick_info: true
     });
-    scheduler.init('scheduler_here',new Date(2009,5,30),"day");
+    scheduler.init('scheduler_here',new Date(2027,5,30),"day");
     ...
 <script>
 ~~~
 
-[Touch-oriented scheduler](https://docs.dhtmlx.com/scheduler/samples/03_extensions/29_quick_info.html)
+[面向触控的调度器](https://docs.dhtmlx.com/scheduler/samples/03_extensions/29_quick_info.html)
 
 
-启用后，调度器会自动将标准按钮替换为更大的版本:
+启用扩展后，调度程序会自动用大尺寸按钮替代标准按钮：
 
 ![quick_info_extension.png](/img/quick_info_extension.png)
 
-## 配置和自定义大按钮调度器
+## 配置与自定义大按钮调度程序
 
-有多种 API 可用于配置或自定义大按钮调度器:
+要配置或自定义大按钮调度程序，可以使用以下 API：
 
-- **3 个模板** 
+- **3 个模板**
 
-- [quick_info_content](api/template/quick_info_content.md) - 控制弹出编辑表单中显示的内容
-- [quick_info_date](api/template/quick_info_date.md) - 控制弹出编辑表单中显示的日期
-- [quick_info_title](api/template/quick_info_title.md) - 控制弹出编辑表单的标题
-
-
-- **1 个配置项**
+- [quick_info_content](api/template/quick_info_content.md) - 指定弹出式编辑表单的内容
+- [quick_info_date](api/template/quick_info_date.md) - 指定弹出式编辑表单的日期
+- [quick_info_title](api/template/quick_info_title.md) - 指定弹出式编辑表单的标题
 
 
-- [quick_info_detached](api/config/quick_info_detached.md) - 设置事件表单是在屏幕左右侧显示还是在选中事件旁边显示
+- **1 个配置选项**
 
+- [quick_info_detached](api/config/quick_info_detached.md) - 定义事件表单是从屏幕左侧/右侧弹出，还是在所选事件附近显示
 
-- **2 个方法** 
+- **2 种方法**
 
-
-- [hideQuickInfo](api/method/hidequickinfo.md) - 如果弹出事件表单已打开，则隐藏它
-- [showQuickInfo](api/method/showquickinfo.md) - 为指定事件打开弹出事件表单
+- [hideQuickInfo](api/method/hidequickinfo.md) - 隐藏弹出事件表单（若当前处于活动状态）
+- [showQuickInfo](api/method/showquickinfo.md) - 为指定事件显示弹出式事件表单

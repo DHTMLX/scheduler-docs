@@ -17,7 +17,7 @@ description: "Schaltet die Touch-Unterstützung im Scheduler ein oder aus"
 ~~~jsx
 scheduler.config.touch = "force";
 ...
-scheduler.init('scheduler_here',new Date(2013,3,10),"week");
+scheduler.init('scheduler_here',new Date(2027,3,10),"week");
 ~~~
 
 **Default value:** true

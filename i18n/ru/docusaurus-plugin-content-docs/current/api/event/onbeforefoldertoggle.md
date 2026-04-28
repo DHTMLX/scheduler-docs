@@ -1,33 +1,35 @@
 ---
-sidebar_label: "onBeforeFolderToggle"
-title: "onBeforeFolderToggle event"
-description: "срабатывает непосредственно перед открытием или закрытием ветки дерева (применимо только в режиме Timeline, 'tree')"
+sidebar_label: onBeforeFolderToggle
+title: "Событие onBeforeFolderToggle"
+description: "срабатывает перед открытием или закрытием узла дерева (вид Timeline, режим 'tree' только)"
 ---
 
 # onBeforeFolderToggle
+
 :::info
- Эта функция доступна только в PRO-версии. 
-:::
+ Это функциональность доступна только в версии PRO.
+ :::
+
 ### Description
 
-@short: Срабатывает непосредственно перед открытием или закрытием ветки дерева (применимо только в режиме Timeline, "tree")
+@short: Срабатывает до открытия или закрытия ветки дерева (вид Timeline, режим 'tree' только)
 
 @signature: onBeforeFolderToggle: (section: object | boolean, isOpen: boolean, allSections: boolean) =\> boolean
 
 ### Parameters
 
-- `section` - (required) *object | boolean* -      объект конфигурации ветки, которая собирается открыться или закрыться. <br> Будет <i>true</i>, если все ветки закрываются или открываются одновременно с помощью методов closeAllSections()/openAllSections().
+- `section` - (required) *object | boolean* - конфигурационный объект ветки, которую следует открыть/закрыть. <br> Принимает значение <i>true</i>, если все ветви будут закрыты/открыты одновременно вызовами методов closeAllSections() / openAllSections().
 - `isOpen` - (required) *boolean* - указывает, будет ли ветка открыта (<i>true</i>) или закрыта (<i>false</i>)
-- `allSections` - (required) *boolean* - будет <i>true</i>, если все ветки дерева открываются или закрываются одновременно через closeAllSections()/openAllSections(), или <i>false</i>, если затрагивается только одна ветка.
+- `allSections` - (required) *boolean* - принимает значение <i>true</i>, если все ветви дерева будут закрыты/открыты одновременно вызовами методов closeAllSections() / openAllSections(), <i>false</i> - если будет открыта/закрыта только одна ветка.
 
 ### Returns
-- ` result` - (boolean) - определяет, должно ли стандартное действие события выполняться (<b>true</b>) или быть остановлено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onBeforeFolderToggle", function(section,isOpen,allSections){
-    //любая пользовательская логика здесь
+    // любая ваша логика здесь
     return true;
 });
 ~~~

@@ -72,7 +72,7 @@ scheduler.exportToExcel({
     ],
     server:"https://myapp.com/myexport/scheduler",
     start: new Date(1999, 01, 01),
-    end:  new Date(2022, 01, 01)
+    end:  new Date(2027, 01, 01)
 });
 ~~~
 
@@ -106,7 +106,7 @@ scheduler.templates.xml_format = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
 <input value="Export to iCal" type="button" onclick="scheduler.exportToICal()">/*!*/
 
 <script>
-    scheduler.init("scheduler_here",new Date(2019,5,30),"month");
+    scheduler.init("scheduler_here",new Date(2027,5,30),"month");
     scheduler.load("data/events");
 </script>
 ~~~
@@ -126,7 +126,7 @@ scheduler.templates.xml_format = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
 </table>
 
 
-~~~js title="Вызов метода экспорта с дополнительными параметрами"
+~~~js title="Вызов метода экспорта с server параметром"
 scheduler.exportToICal({
     server:"https://myapp.com/myexport/scheduler"
 });

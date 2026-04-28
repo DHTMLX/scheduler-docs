@@ -16,7 +16,7 @@ description: "드래그 앤 드롭을 사용하여 이벤트 크기를 조절할
 
 ~~~jsx
 scheduler.config.drag_resize = false;
-scheduler.init('scheduler_here', new Date(2020,5,30), "week");
+scheduler.init('scheduler_here', new Date(2027,5,30), "week");
 ~~~
 
 **Default value:** true

@@ -28,7 +28,7 @@ scheduler.templates.year_month = function(date){
 };
 ~~~
 
-**Applicable views:** [Year view](views/year.md)
+**Доступные представления:** [Year view](views/year.md)
 
 ### Details
 

@@ -19,7 +19,7 @@ The property works only in the legacy extension for recurring events.
 ~~~jsx
 scheduler.config.include_end_by = true;
 ...
-scheduler.init('scheduler_here', new Date(2019, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 **Default value:** false

@@ -1,70 +1,70 @@
 ---
-title: "自定义 Lightbox 控件"
-sidebar_label: "自定义 Lightbox 控件"
+title: "自定义灯箱控件"
+sidebar_label: "自定义灯箱控件"
 ---
 
-# 自定义 Lightbox 控件
+# 自定义灯箱控件
 
-要设置一个自定义控件（编辑器），你需要像下面这样定义一个新对象:
+要创建一个自定义控件（编辑器），请按如下方式定义一个新对象：
 
 ~~~js
 scheduler.form_blocks["my_editor"]={
-    render:function(config){ // config - 区块配置对象
-        var height="(config.height||50)+""px";
+    render:function(config){ // config- section configuration object
+        const height="(config.height||50)+""px";
         return "<div class='dhx_cal_ltext' style='height:"+height+";'>" + 
             "<textarea></textarea></div>";
     },
     set_value:function(node,value,ev,config){
-        // node - 与上面定义的 HTML 相关的 HTML 元素
-        // value - 由 map_to 属性指定的值
-        // ev - 事件对象
-        // config - 区块配置对象
+        // node - HTML object related to HTML defined above
+        // value - value defined by map_to property
+        // ev - event object
+        // config - section configuration object
         node.querySelector("textarea").value = value || "";
     },
     get_value:function(node,ev,config){
-        // node - 与上面定义的 HTML 相关的 HTML 元素
+        // node - HTML object related to HTML defined above
         // event object
-        // config - 区块配置对象
+        // config - section configuration object
         return node.querySelector("textarea").value;
     },
     focus:function(node){
-        // node - 与上面定义的 HTML 相关的 HTML 元素
+        // node - HTML object related to HTML defined above
         node.querySelector("textarea").focus();
     }
 };
 ~~~
 
-用法示例:
+Usage:
 
 ~~~js
 scheduler.locale.labels.section_details = "Details";
-scheduler.config.lightbox.sections="["    
+scheduler.config.lightbox.sections = [ 
     { name:"details", height:35, map_to:"text", type:"my_editor", focus:true},
     { name:"time", height:72, type:"time", map_to:"auto"}    
 ];
 ~~~
 
-需要注意的是，在 "render" 函数返回的 HTML 中**避免**使用自闭合标签，否则可能会导致浏览器解析问题:
+请确保不要在由 "render" 函数返回的 HTML 代码中使用短闭合标签语法，因为这可能在浏览器中引发解析问题：
 
 ~~~js
-// 错误示例:
+// bad:
 render:function(){
     return "<div id='box'/>";
 }
 
-// 正确示例:
+// good:
 render:function(){
     return "<div id='box'></div>";
 }
 ~~~
 
 
-[Custom editor in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/05_custom_editor.html)
+[灯箱中的自定义编辑器](https://docs.dhtmlx.com/scheduler/samples/02_customization/05_custom_editor.html)
 
 
 ## 示例
 
-以下是如何构建这样一个自定义编辑器的例子:
+让我们考虑如何创建以下自定义编辑器：
 
 ![custom_editor](/img/custom_editor.png)
   
@@ -72,7 +72,7 @@ render:function(){
 ~~~js
 scheduler.form_blocks["my_editor"]={
     render:function(sns){
-        return "<div class='dhx_cal_ltext'>" +
+        return "<div class='dhx_cal_ltext' style='height:60px;'>" +
             "Text&nbsp;<input name='text' type='text'>
 
 " +
@@ -87,18 +87,18 @@ scheduler.form_blocks["my_editor"]={
         return node.querySelector("[name='text']").value;
     },
     focus:function(node){
-        var input = node.querySelector("[name='text']"); 
+        const input = node.querySelector("[name='text']"); 
         input.select(); 
         input.focus(); 
     }
 };
 
 scheduler.locale.labels.section_description = "Details";
-scheduler.config.lightbox.sections="["    
+scheduler.config.lightbox.sections = [    
     { name:"description", map_to:"text", type:"my_editor" , focus:true},
     { name:"time", height:72, type:"time", map_to:"auto"}    
 ];
 ~~~
 
 
-[Custom editor in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/05_custom_editor.html)
+[灯箱中的自定义编辑器](https://docs.dhtmlx.com/scheduler/samples/02_customization/05_custom_editor.html)

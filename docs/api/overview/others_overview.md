@@ -12,7 +12,7 @@ description: You can explore Others overview in the documentation of the DHTMLX 
 | [](api/other/config.md)           | @getshort(api/other/config.md)           |
 | [](api/other/date.md)             | @getshort(api/other/date.md)             |
 | [](api/other/env.md)              | @getshort(api/other/env.md)              |
-| [](api/other/i18n.md)         | @getshort(api/other/i18n.md)             |
+| [](api/other/i18n.md)             | @getshort(api/other/i18n.md)             |
 | [](api/other/ical.md)             | @getshort(api/other/ical.md)             |
 | [](api/other/json.md)             | @getshort(api/other/json.md)             |
 | [](api/other/keys.md)             | @getshort(api/other/keys.md)             |

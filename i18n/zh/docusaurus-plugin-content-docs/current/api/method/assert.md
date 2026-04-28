@@ -34,4 +34,4 @@ scheduler.attachEvent("onLoadEnd", function(){
 错误也可以通过 [onError](api/event/onerror.md) 事件以编程方式进行监控。
 
 ### Change log
-- added in v6.0
+- 版本 6.0 中添加

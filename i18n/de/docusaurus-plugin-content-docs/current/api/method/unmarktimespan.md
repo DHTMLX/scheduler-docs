@@ -19,7 +19,7 @@ description: "entfernt die Markierung oder Blockierung, die durch die Methode ma
 ### Example
 
 ~~~jsx
-var spanDIV = scheduler.markTimespan({  
+const spanDIV = scheduler.markTimespan({  
     days:  [0,6],  
     zones: "fullday"
 });

@@ -57,4 +57,4 @@ scheduler.config.csp = false;
 请注意，如果应用阻止了这种高性能代码，dhtmlxScheduler 将无法正常工作。
 
 ### Change log
-- added in v6.0
+- 6.0 版本新增

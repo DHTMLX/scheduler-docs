@@ -1,43 +1,42 @@
 ---
-sidebar_label: "event_text"
-title: "event_text template"
-description: "определяет текст, отображаемый для события"
+sidebar_label: event_text
+title: "event_text шаблон"
+description: "устанавливает текст события"
 ---
 
 # event_text
 
 ### Description
 
-@short: Определяет текст, отображаемый для события
+@short: Указывает текст события
 
 @signature: event_text: (start: Date, end: Date, event: any) =\> string
 
 ### Parameters
 
-- `start` - (required) *Date* - дата начала события   
-- `end` - (required) *Date* - дата окончания события
-- `event` - (required) *object* - объект с данными события
+- `start` - (required) *Date* - дата начала запланированного события
+- `end` - (required) *Date* - дата завершения запланированного события
+- `event` - (required) *object* - объект события
 
 ### Returns
-- ` text` - (string) - html-контент, используемый для отображения события в scheduler
+- `text` - (string) - HTML-текст для отображения в Scheduler
 
 ### Example
 
 ~~~jsx
-scheduler.templates.event_text=function(start, end, event){
-    return "<a href='http://some.com/details.php?for="+event.id+"'>"
-    +event.text+"</a>";
-}
+scheduler.templates.event_text = (start, end, event) => {
+    return `<a href='http://some.com/details.php?for=${event.id}'>${event.text}</a>`;
+};
 ~~~
 
-**Applicable views:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
+**Доступные представления:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
 
 ### Related samples
-- [Styling events with templates](https://docs.dhtmlx.com/scheduler/samples/02_customization/06_templates.html)
+- [Стилизация событий с помощью шаблонов](https://docs.dhtmlx.com/scheduler/samples/02_customization/06_templates.html)
 
 ### Details
 
-Имейте в виду, что для Month и Timeline Views следует использовать шаблон [event_bar_text](api/template/event_bar_text.md) для задания текста события.
+Обратите внимание, что для представлений Month и Timeline необходимо использовать шаблон [`event_bar_text`](api/template/event_bar_text.md) для указания текста события.
 
 ### Related Guides
 - [Шаблоны для дневного вида](views/day-view-templates.md)

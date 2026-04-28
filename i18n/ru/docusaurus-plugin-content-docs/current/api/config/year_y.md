@@ -1,14 +1,14 @@
 ---
-sidebar_label: "year_y"
-title: "year_y config"
-description: "задаёт количество колонок, отображаемых в Year view"
+sidebar_label: year_y
+title: "year_y конфигурация"
+description: "задает количество столбцов в Year view"
 ---
 
 # year_y
 
 ### Description
 
-@short: Задаёт количество колонок, отображаемых в Year view
+@short: Задает число столбцов в Year view
 
 @signature: year_y: number
 
@@ -18,21 +18,21 @@ description: "задаёт количество колонок, отобража
 scheduler.config.year_x = 5;
 scheduler.config.year_y = 5;
 ...
-scheduler.init('scheduler_here', new Date(2013, 0, 10), "year");
+scheduler.init('scheduler_here',new Date(2027,0,10),"year");
 ~~~
 
-**Default value:** 3
+**Значение по умолчанию:** 3
 
-**Applicable views:** [Year view](views/year.md)
+**Применимые виды:** [Year view](views/year.md)
 
 ### Details
 
 :::note
- Для работы этого свойства требуется включённый плагин [year_view](guides/extensions-list.md#year). 
+ Свойство требует активации плагина [year_view](guides/extensions-list.md#year) для работы. 
 :::
 
 :::note
- В Material skin это свойство не влияет на отображение. Количество колонок в Year view управляется через CSS. 
+ Свойство игнорируется в Material skin. В Material skin количество столбцов в Year view контролируется CSS. 
 :::
 
 ### Related API

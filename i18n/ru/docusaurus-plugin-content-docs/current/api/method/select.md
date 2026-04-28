@@ -1,27 +1,27 @@
 ---
-sidebar_label: "select"
-title: "select method"
-description: "выбирает указанный вами event"
+sidebar_label: выбор
+title: "метод select"
+description: "выбирает указанное событие"
 ---
 
 # select
 
 ### Description
 
-@short: Выбирает указанный вами event
+@short: Выбирает указанное событие
 
 @signature: select: (id: string) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string* - id события
+- `id` - (required) *string* - идентификатор события
 
 ### Example
 
 ~~~jsx
-var eventId = scheduler.addEvent({
-    start_date: "16-06-2013 09:00",
-    end_date:   "16-06-2013 12:00",
+const eventId = scheduler.addEvent({
+    start_date: "16-06-2027 09:00",
+    end_date:   "16-06-2027 12:00",
     text:   "Meeting"
 });
 

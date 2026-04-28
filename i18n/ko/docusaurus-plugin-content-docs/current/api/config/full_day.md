@@ -17,7 +17,7 @@ description: "이벤트를 하루 종일 지속되도록 설정할 수 있습니
 ~~~jsx
 scheduler.config.full_day = true;
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 **Default value:** false

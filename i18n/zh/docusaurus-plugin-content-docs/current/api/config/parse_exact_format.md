@@ -15,34 +15,32 @@ description: "控制调度器在解析日期时是否严格匹配日期格式"
 ### Example
 
 ~~~jsx
-```javascript
 scheduler.config.parse_exact_format = true;
-var parseDate = scheduler.date.str_to_date("%Y-%m-%d %H:%i");
+const parseDate = scheduler.date.str_to_date("%Y-%m-%d %H:%i");
 // 日期字符串必须完全匹配指定的格式
 
-parseDate("2019-01-15 12:00");
-// -> Tue Jan 15 2019 12:00:00
+parseDate("2027-01-15 12:00");
+// -> Fri Jan 15 2027 12:00:00
 
-parseDate("15-01-2019 12:00");
-// -> Sun Jul 11 1920 12:00:00 
+parseDate("11-01-2027 12:00");
+// -> Mon Jan 11 2027 12:00:00 
 
-parseDate("2019-01-15T12:00");
+parseDate("2027-01-15T12:00");
 // -> Invalid Date
 
 
 scheduler.config.parse_exact_format = false;
-var parseDate = scheduler.date.str_to_date("%Y-%m-%d %H:%i");
+const parseDate = scheduler.date.str_to_date("%Y-%m-%d %H:%i");
 // 调度器尝试识别传入日期字符串的格式
 
-parseDate("2019-01-15 12:00");
-// -> Tue Jan 15 2019 12:00:00
+parseDate("2027-01-15 12:00");
+// -> Fri Jan 15 2027 12:00:00
 
-parseDate("15-01-2019 12:00");
-// -> Tue Jan 15 2019 12:00:00  
+parseDate("11-01-2027 12:00");
+// -> Mon Jan 11 2027 12:00:00  
 
-parseDate("2019-01-15T12:00");
-// -> Tue Jan 15 2019 12:00:00  
-```
+parseDate("2027-01-15T12:00");
+// -> Fri Jan 15 2027 12:00:00  
 ~~~
 
 **Default value:** false

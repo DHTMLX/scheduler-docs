@@ -5,13 +5,13 @@ sidebar_label: "Template"
 
 # Template 
 
-Ein Container, der HTML-Inhalt aufnimmt.
+Ein Container mit etwas HTML-Inhalt darin.
 
 ![template_editor](/img/template_editor.png)
 
 
 ~~~js
-scheduler.locale.labels.section_template = 'Details';// setzt den Namen des Abschnitts
+scheduler.locale.labels.section_template = 'Details';// sets the name of the section
 
 scheduler.config.lightbox.sections = [
     { name:"text", height:50, map_to:"text", type:"textarea", focus:true},
@@ -19,18 +19,17 @@ scheduler.config.lightbox.sections = [
     { name:"time", height:72, type:"time", map_to:"auto"}
 ];
 scheduler.attachEvent("onEventCreated", function(id, e) {
-    var ev = scheduler.getEvent(id);
+    const ev = scheduler.getEvent(id);
     ev.my_template = "<b>Holder:</b>"+ ev.holder+"
 
 <b>Room:</b>"+ ev.room;
 });
 ~~~
 
-
 ## Initialisierung
 
-Um das Template-Control im Lightbox-Dialog zu verwenden, sind folgende Schritte notwendig:
-1. Den Abschnitt in der Lightbox-Konfiguration hinzufügen:
+Um die Template-Steuerung zur Lightbox hinzuzufügen, folgen Sie diesen Schritten:
+1. <b>Fügen Sie den Abschnitt zur Lightbox-Konfiguration hinzu:</b>
 ~~~js
 scheduler.config.lightbox.sections = [
     { name:"text", ... },
@@ -38,14 +37,14 @@ scheduler.config.lightbox.sections = [
     { name:"time", ...}
 ];
 ~~~
-2. Das Label für den Abschnitt festlegen:
+2. <b>Setzen Sie die Bezeichnung für den Abschnitt:</b>
 ~~~js
 scheduler.locale.labels.section_template = 'Details';
 ~~~
-3. Den Inhalt für das Control bereitstellen, zum Beispiel über das Event [onBeforeLightbox](api/event/onbeforelightbox.md):
+3. <b>Stellen Sie den Inhalt der Steuerung mit Hilfe eines Ereignisses ein, z. B. des [onBeforeLightbox](api/event/onbeforelightbox.md) Ereignisses:</b>
 ~~~js
 scheduler.attachEvent("onBeforeLightbox", function(id) {
-    var ev = scheduler.getEvent(id);
+    const ev = scheduler.getEvent(id);
     ev.my_template = "<b>Holder:</b>"+ ev.holder+"
 
 <b>Room:</b>"+ ev.room;
@@ -53,8 +52,7 @@ scheduler.attachEvent("onBeforeLightbox", function(id) {
 });
 ~~~
 
-  
-
+ 
 
 ## Eigenschaften
 
@@ -64,19 +62,19 @@ Hier sind einige wichtige Eigenschaften, die häufig für das 'template'-Control
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>name</b></td>
-  <td>(<i>string</i>) der Name des Abschnitts</td>
+  <td>(<i>string</i>) Name des Abschnitts</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>height</b></td>
-  <td>(<i>number</i>) die Höhe des Abschnitts</td>
+  <td>(<i>number</i>) Höhe des Abschnitts</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>map_to</b></td>
-  <td>(<i>string</i>) der Name der Daten-Eigenschaft, die diesem Abschnitt zugeordnet ist</td>
+  <td>(<i>string</i>) der Name einer Dateneigenschaft, die dem Abschnitt zugeordnet wird</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>type</b></td>
-  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) der Typ des Controls, das im Abschnitt verwendet wird</td>
+  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) der Typ der Steuerung des Abschnitts</td>
   </tr>
   </tbody>
 </table>

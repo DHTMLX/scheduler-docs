@@ -17,7 +17,7 @@ description: "allows working with recurring events independently of time zones"
 ~~~jsx
 scheduler.config.occurrence_timestamp_in_utc = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** false

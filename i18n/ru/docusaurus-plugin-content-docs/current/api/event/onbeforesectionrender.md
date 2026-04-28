@@ -1,37 +1,39 @@
 ---
-sidebar_label: "onBeforeSectionRender"
-title: "onBeforeSectionRender event"
-description: "срабатывает непосредственно перед установкой отдельного раздела Timeline, но до его рендеринга (применимо только к виду Timeline)"
+sidebar_label: onBeforeSectionRender
+title: "onBeforeSectionRender событие"
+description: "срабатывает до того, как отдельный раздел Timeline будет настроен, но ещё не отрисован (только представление Timeline)"
 ---
 
 # onBeforeSectionRender
+
 :::info
- Эта функция доступна только в PRO-версии. 
+ Эта функциональность доступна только в PRO-версии. 
 :::
+
 ### Description
 
-@short: Срабатывает непосредственно перед установкой отдельного раздела Timeline, но до его рендеринга (применимо только к виду Timeline)
+@short: Срабатывает до того, как отдельный раздел Timeline будет настроен, но ещё не отрисован (только представление Timeline)
 
 @signature: onBeforeSectionRender: (mode: string, section: object, timeline: object) =\> object
 
 ### Parameters
 
-- `mode` - (required) *string* - режим timeline: 'cell', 'bar' или 'tree'
-- `section` - (required) *object* - объект раздела, содержащий свойства 'key' и 'label', как определено в массиве 'y_unit' конфигурации Timeline (например, \{key:1, label:"James Smith"\})
-- `timeline` - (required) *object* - объект конфигурации Timeline
+- `mode` - (required) *string* - режим таймлайна: 'cell', 'bar' или 'tree'
+- `section` - (required) *object* - объект раздела с указанными в массиве 'y_unit' свойствами 'key' и 'label' конфигурационного объекта Timeline (например \{key:1, label:"James Smith"\})
+- `timeline` - (required) *object* - конфигурационный объект Timeline
 
 ### Returns
-- ` result` - (object) - объект раздела
+- `result` - (object) - объект раздела
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onBeforeSectionRender", function(mode, section, timeline){
-    // здесь можно добавить пользовательскую логику
+    // любая ваша логика здесь
     return section;
 });
 ~~~
 
 ### Details
 
-Это событие позволяет вам кастомизировать разделы timeline перед их рендерингом.
+Событие можно использовать для настройки разделов таймлайна.

@@ -17,7 +17,7 @@ description: "切换是否启用限制检查"
 ~~~jsx
 scheduler.config.check_limits = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,7,6),"week");
+scheduler.init('scheduler_here',new Date(2027,7,6),"week");
 ~~~
 
 **Default value:** true

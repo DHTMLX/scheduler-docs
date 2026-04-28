@@ -1,14 +1,14 @@
 ---
-sidebar_label: "drag_resize"
+sidebar_label: drag_resize
 title: "drag_resize config"
-description: "позволяет изменять размер событий с помощью drag-and-drop"
+description: "Позволяет изменять размер событий перетаскиванием"
 ---
 
 # drag_resize
 
 ### Description
 
-@short: Позволяет изменять размер событий с помощью drag-and-drop
+@short: Позволяет изменять размер событий перетаскиванием
 
 @signature: drag_resize: boolean
 
@@ -19,9 +19,9 @@ scheduler.config.drag_resize = false;
 scheduler.init('scheduler_here', new Date(2020,5,30), "week");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
-**Applicable views:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
+**Доступные представления:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
 
 ### Related API
 - [drag_lightbox](api/config/drag_lightbox.md)

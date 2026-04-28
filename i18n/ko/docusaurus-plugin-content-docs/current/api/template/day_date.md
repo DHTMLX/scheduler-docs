@@ -23,7 +23,7 @@ description: "Day 및 Units 뷰의 헤더에 표시되는 날짜를 정의합니
 
 ~~~jsx
 scheduler.templates.day_date = function(date){
-    var formatFunc = scheduler.date.date_to_str(scheduler.config.default_date);
+    const formatFunc = scheduler.date.date_to_str(scheduler.config.default_date);
     return formatFunc(date);
 };
 ~~~

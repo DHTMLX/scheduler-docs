@@ -17,7 +17,7 @@ description: "开启或关闭调度器中的touch支持"
 ~~~jsx
 scheduler.config.touch = "force";
 ...
-scheduler.init('scheduler_here',new Date(2013,3,10),"week");
+scheduler.init('scheduler_here',new Date(2027,3,10),"week");
 ~~~
 
 **Default value:** true

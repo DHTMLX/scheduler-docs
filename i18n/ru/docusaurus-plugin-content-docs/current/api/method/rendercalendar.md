@@ -1,20 +1,20 @@
----
-sidebar_label: "renderCalendar"
+--- 
+sidebar_label: renderCalendar
 title: "renderCalendar method"
-description: "генерирует компактный календарь"
+description: "создает мини-календарь"
 ---
 
 # renderCalendar
 
 ### Description
 
-@short: Генерирует компактный календарь
+@short: Создает мини-календарь
 
 @signature: renderCalendar: (config: any) =\> HTMLElement
 
 ### Parameters
 
-- `config` - (required) *object* - настройки конфигурации для календаря
+- `config` - (required) *object* - объект конфигурации календаря
 
 ### Returns
 - ` div` - (HTMLElement) - HTML-элемент календаря
@@ -32,13 +32,13 @@ const calendar = scheduler.renderCalendar({
 ~~~
 
 ### Related samples
-- [Mini calendar in the scheduler header](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
-- [Mini calendar without the scheduler](https://docs.dhtmlx.com/scheduler/samples/05_calendar/02_without_scheduler.html)
+- [Мини-календарь в заголовке планировщика](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
+- [Мини-календарь без планировщика](https://docs.dhtmlx.com/scheduler/samples/05_calendar/02_without_scheduler.html)
 
 ### Details
 
 :::note
- Этот метод требует включения плагина [minical](guides/extensions-list.md#minicalendardatepicker). 
+ Метод требует активации плагина [minical](guides/extensions-list.md#mini-calendar-date-picker).
 ::: 
 
 Объект конфигурации может содержать следующие свойства:
@@ -47,23 +47,23 @@ const calendar = scheduler.renderCalendar({
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>container</b></td>
-  <td>(<i>string, object</i>) HTML-контейнер (или его ID), в котором будет размещён календарь. Необязательный параметр.</td>
+  <td>(<i>string, object</i>) HTML-контейнер (или его id), в который будет инициализирован календарь. Опционально</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>position</b></td>
-  <td>(<i>object</i>) задаёт позицию календаря. Может быть указана в виде координат или ID HTML-элемента.</td>
+  <td>(<i>object</i>) положение календаря. Может быть задано как набор координат или идентификатор HTML-объекта</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>date</b></td>
-  <td>(<i>string</i>) устанавливает начальную дату, отображаемую в календаре</td>
+  <td>(<i>string</i>) начальная дата календаря</td>
   </tr>
   <tr>
-  <td class="webixdoc_links0"><b>navigation</b></td>
-  <td>(<i>boolean</i>) включает или отключает кнопки навигации по месяцам</td>
+  <td class="webixdoc_links0" style="vertical-align: top;"><b>navigation</b></td>
+  <td>(<i>boolean</i>) включает/выключает кнопки навигации по месяцам</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>handler</b></td>
-  <td>(<i>function</i>) callback-функция, вызываемая при клике по дате. Получает выбранную дату и экземпляр календаря в качестве аргументов</td>
+  <td>(<i>function</i>) функция-обработчик, которая будет обрабатывать клики по календарю. Принимает выбранную дату и объект календаря в качестве параметров</td>
   </tr>
   </tbody>
 </table>
@@ -87,4 +87,4 @@ const calendar = scheduler.renderCalendar({
 ~~~
 
 ### Related Guides
-- [Мини-календарь (Date Picker)](guides/minicalendar.md)
+- [Мини-календарь (Выбор даты)](guides/minicalendar.md)

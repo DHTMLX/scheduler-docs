@@ -19,7 +19,7 @@ description: "Ermöglicht das Rendern derselben Events über mehrere Sektionen h
 ~~~jsx
 scheduler.config.multisection = true; 
 
-scheduler.init('scheduler_here', new Date(2012, 5, 30), "timeline");
+scheduler.init('scheduler_here', new Date(2027, 5, 30), "timeline");
 ~~~
 
 **Default value:** false

@@ -21,7 +21,7 @@ description: "fires when the drag/resize operation is finished"
 ### Example
 
 ~~~jsx
-var dragged_event;
+let dragged_event;
 scheduler.attachEvent("onBeforeDrag", function (id, mode, e){
     // use it to get the object of the dragged event
     dragged_event = scheduler.getEvent(id); 
@@ -29,7 +29,7 @@ scheduler.attachEvent("onBeforeDrag", function (id, mode, e){
 });
 
 scheduler.attachEvent("onDragEnd", function(id, mode, e){
-    var event_obj = dragged_event;
+    let event_obj = dragged_event;
     // your custom logic
 });
 ~~~

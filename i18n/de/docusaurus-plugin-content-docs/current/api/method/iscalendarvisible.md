@@ -19,7 +19,7 @@ description: "ermittelt, ob der Kalender derzeit im Scheduler angezeigt wird"
 
 ~~~jsx
 //Überprüfung, ob der Mini-Kalender sichtbar ist
-var check = scheduler.isCalendarVisible(); // -> <div class="dhx_minical_popup">…</div>
+const check = scheduler.isCalendarVisible(); // -> <div class="dhx_minical_popup">…</div>
 ~~~
 
 ### Related samples

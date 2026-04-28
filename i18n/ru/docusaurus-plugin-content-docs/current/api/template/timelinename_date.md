@@ -32,7 +32,7 @@ scheduler.templates.timeline_date = function(date1, date2){
 };
 ~~~
 
-**Applicable views:** [Timeline view](views/timeline.md)
+**Доступные представления:** [Timeline view](views/timeline.md)
 
 ### Details
 

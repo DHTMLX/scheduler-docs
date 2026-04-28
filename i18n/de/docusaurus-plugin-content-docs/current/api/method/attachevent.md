@@ -1,74 +1,75 @@
----
-sidebar_label: "attachEvent"
-title: "attachEvent method"
-description: "verbindet einen Handler mit einem internen Event des dhtmlxScheduler"
+--- 
+sidebar_label: attachEvent
+title: "attachEvent-Methode"
+description: "bindet den Handler an ein internes Ereignis des dhtmlxScheduler"
 ---
 
 # attachEvent
 
 ### Description
 
-@short: Verbindet einen Handler mit einem internen Event des dhtmlxScheduler
+@short: Bindet den Handler an ein internes Ereignis des dhtmlxScheduler
 
 @signature: attachEvent: (name: SchedulerEventName, handler: SchedulerCallback, settings?: any) =\> string
 
 ### Parameters
 
-- `name` - (required) *SchedulerEventName* - der Name des Events, case-insensitive  
-- `handler` - (required) *function* - die Funktion, die das Event behandelt  
-- `settings` - (optional) *object* - optionale [Einstellungen](#properties-of-settings-object) für den Event-Handler
+- `name` - (required) *SchedulerEventName* - der Name des Ereignisses, Groß-/Kleinschreibung wird ignoriert
+- `handler` - (required) *Funktion* - die Handler-Funktion
+- `settings` - (optional) *object* - optional, ein [Objekt mit Einstellungen](#properties-of-settings-object) für den Event-Handler
 
 ### Returns
-- `event` - (string) - id die Kennung des verbundenen Event-Handlers
+- `event` - (string) - die ID des angehängten Event-Handlers
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onEventSave",function(id,ev){  
-    if (!ev.text) {  
-        alert("Text darf nicht leer sein");  
-        return false;  
-    }  
-    return true;  
-})
+scheduler.attachEvent("onEventSave", (id, ev) => {
+    if (!ev.text) {
+        alert("Text must not be empty");
+        return false;
+    }
+    return true;
+});
 ~~~
 
 ### Related samples
-- [Validating lightbox fields](https://docs.dhtmlx.com/scheduler/samples/02_customization/08_validation.html)
-- [Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
+- [Validierung von Lightbox-Feldern](https://docs.dhtmlx.com/scheduler/samples/02_customization/08_validation.html)
+- [Wiederkehrende Ereignisse](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
 
 ### Details
 
-Mehrere Handler können an dasselbe Event angehängt werden und werden alle ausgeführt.<br> Wenn ein Handler *false* zurückgibt, wird die zugehörige Aktion verhindert.<br> 
-Die Handler werden in der Reihenfolge aufgerufen, in der sie angehängt wurden.
+Sie können mehrere Handler für dasselbe Ereignis anhängen, und alle werden ausgeführt.
+Wenn einige der Handler `false` zurückgeben, wird die entsprechende Operation blockiert.
+Ereignis-Handler werden in derselben Reihenfolge verarbeitet, in der sie angehängt wurden.
 
-Alle Event-Listener, die über [event](api/method/event.md) hinzugefügt wurden, werden automatisch entfernt, wenn der [destructor](api/method/destructor.md) aufgerufen wird.
+Alle Event-Listener, die mit [`event()`](api/method/event.md) angehängt wurden, werden automatisch entfernt, wenn [`destructor()`](api/method/destructor.md) aufgerufen wird.
 
-Properties of settings object 
------------------------  
-Das settings-Objekt kann zwei Eigenschaften enthalten:
+## Eigenschaften des Settings-Objekts
 
-1\. **id** - (*string*) eine eindeutige Kennung für den Event-Handler 
+Das Settings-Objekt kann zwei Eigenschaften enthalten:
 
-Dies ermöglicht das einfache Entfernen eines bestimmten Handlers von einem Event:
+1\. `id` - (*string*) die ID des Event-Handlers
 
-~~~js
-scheduler.attachEvent("onClick", function(){  
-    console.log("event click");  
-}, {id: "my-click"}); /*!*/
-... //später:  
-gantt.detachEvent("my-click");  
+Beispiel: Du kannst einen Handler einfach vom angegebenen Event trennen:
+
+~~~js {3}
+scheduler.attachEvent("onClick", () => {
+    console.log("event click");
+}, { id: "my-click" });
+// nach einer Weile:
+scheduler.detachEvent("my-click");
 ~~~
 
-2\. **once** - (*boolean*) gibt an, ob das Event nur einmal ausgeführt werden soll 
+2\. `once` - (*boolean*) definiert, ob das Event nur einmal ausgeführt wird
 
-Setze dies auf *true*, um nur das erste Auftreten des Events zu behandeln, so:
+Setze die Eigenschaft auf *true*, wenn du beim ersten Auslösen des Events den ersten Trigger erfassen möchtest, wie in:
 
-~~~js
-scheduler.attachEvent("onClick", function(){  
-    console.log("capture next event click");  
-    return true;  
-}, {once: true}); /*!*/
+~~~js {4}
+scheduler.attachEvent("onClick", () => {
+    console.log("capture next event click");
+    return true;
+}, { once: true });
 ~~~
 
 ### Related API

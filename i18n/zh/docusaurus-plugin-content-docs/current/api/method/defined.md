@@ -29,4 +29,4 @@ if(scheduler.defined(event.custom_property)){
 ~~~
 
 ### Change log
-- added in version 6.0
+- 版本 6.0 中添加

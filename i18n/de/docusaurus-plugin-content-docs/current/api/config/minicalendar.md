@@ -17,7 +17,7 @@ description: "definiert das Mini-Calendar-Objekt"
 ~~~jsx
 scheduler.config.minicalendar.mark_events = false; 
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 **Default value:** \{ mark_events: true \}

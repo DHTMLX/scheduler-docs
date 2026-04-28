@@ -17,7 +17,7 @@ description: "Ermöglicht die Verwendung des erweiterten Formulars beim Erstelle
 ~~~jsx
 scheduler.config.details_on_create=true;
 ...
-scheduler.init('scheduler_here', new Date(2013,0,10), "week");
+scheduler.init('scheduler_here', new Date(2027,0,10), "week");
 ~~~
 
 **Default value:** true

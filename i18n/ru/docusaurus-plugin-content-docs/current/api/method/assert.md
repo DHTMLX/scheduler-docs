@@ -1,21 +1,21 @@
 ---
-sidebar_label: "assert"
-title: "assert method"
-description: "если заданное выражение ложно, в красном всплывающем окне в правом верхнем углу экрана появится сообщение об ошибке"
+sidebar_label: assert
+title: "assert метод"
+description: "если указанное выражение ложно, errorMessage отображается в красном всплывающем окне в правом верхнем углу экрана"
 ---
 
 # assert
 
 ### Description
 
-@short: Если заданное выражение ложно, в красном всплывающем окне в правом верхнем углу экрана появится сообщение об ошибке
+@short: Если указанное выражение ложно, errorMessage отображается в красном всплывающем окне в правом верхнем углу экрана
 
 @signature: assert: (expression: boolean, errorMessage: string) =\> void
 
 ### Parameters
 
-- `expression` - (required) *boolean* - true для подтверждения выражения, false - если assert не прошёл
-- `errorMessage` - (required) *string* - сообщение об ошибке, которое будет показано в красном popup
+- `expression` - (required) *boolean* - true для проверки выражения, false - если утверждение не выполняется
+- `errorMessage` - (required) *string* - сообщение об ошибке, которое будет отображаться в красном всплывающем окне
 
 ### Example
 
@@ -34,4 +34,4 @@ scheduler.attachEvent("onLoadEnd", function(){
 Ошибки также можно отслеживать программно через событие [onError](api/event/onerror.md).
 
 ### Change log
-- добавлено в версии v6.0
+- добавлено в v6.0

@@ -1,41 +1,41 @@
 ---
-sidebar_label: "onClick"
+sidebar_label: onClick
 title: "onClick event"
-description: "Wird ausgelöst, wenn der Benutzer die linke Maustaste auf ein Event klickt"
+description: "Löst aus, wenn der Benutzer die linke Maustaste auf einem Event klickt"
 ---
 
 # onClick
 
 ### Description
 
-@short: Wird ausgelöst, wenn der Benutzer die linke Maustaste auf ein Event klickt
+@short: Wird ausgelöst, wenn der Benutzer die linke Maustaste auf einem Event klickt
 
 @signature: onClick: (id: string, e: Event) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string* - die ID des Events
-- `e` - (required) *Event* - ein natives Event-Objekt
+- `id` - (erforderlich) *string* - die Event-ID
+- `e` - (erforderlich) *Event* - ein natives Event-Objekt
 
 ### Returns
-- ` result` - (boolean) - bestimmt, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder blockiert wird (<b>false</b>)
+- `result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (`true`) oder abgebrochen wird (`false`)
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onClick", function (id, e){
-       //beliebige eigene Logik hier
-       return true;
-  });
+scheduler.attachEvent("onClick", (id, event) => {
+    // any custom logic here
+    return true;
+});
 ~~~
 
 ### Related samples
-- [Hiding the select bar of the event box](https://docs.dhtmlx.com/scheduler/samples/02_customization/10_without_toolbar.html)
-- [Read-only lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/12_readonly_form.html)
+- [Ausblenden der Auswahlleiste der Event-Box](https://docs.dhtmlx.com/scheduler/samples/02_customization/10_without_toolbar.html)
+- [Schreibgeschützte Lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/12_readonly_form.html)
 
 ### Details
 
-Dieses Event kann blockiert werden. Wenn der Handler etwas anderes als true zurückgibt, wird das Standardverhalten (normalerweise das Anzeigen der Auswahlleiste) verhindert.
+Das Event ist blockierbar. Wenn der Handler einen Wert ungleich `true` zurückgibt, wird die Standardreaktion blockiert. Standardmäßig erscheint die Auswahlleiste.
 
 ### Related Guides
-- [Manipulationen mit dem Lightbox](guides/lightbox-editors-manipulations.md#opening-the-lightbox-on-a-single-click)
+- [Manipulationen mit Lightbox](guides/lightbox-editors-manipulations.md#opening-the-lightbox-on-a-single-click)

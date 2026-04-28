@@ -23,7 +23,7 @@ description: "returns a collection of events which occur during the specified pe
 ### Example
 
 ~~~jsx
-const evs = scheduler.getEvents(new Date(2024,1,10),new Date(2024,2,10)); 
+const evs = scheduler.getEvents(new Date(2027,1,10),new Date(2027,2,10)); 
 evs.forEach((e) => console.log(e.text));
 // or
 const evs = scheduler.getEvents();// will return all events

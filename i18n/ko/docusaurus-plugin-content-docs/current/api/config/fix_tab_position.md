@@ -17,7 +17,7 @@ description: "뷰의 탭을 왼쪽에서 오른쪽으로 이동합니다."
 ~~~jsx
 scheduler.config.fix_tab_position = false;
 ...
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.init('scheduler_here', new Date(2027,05,11), "week");
 ~~~
 
 **Default value:** true

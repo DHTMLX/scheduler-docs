@@ -1,14 +1,14 @@
 ---
-sidebar_label: "mark_now"
-title: "mark_now config"
-description: "включает или отключает маркер текущего времени"
+sidebar_label: mark_now
+title: "Настройки mark_now"
+description: "включает/выключает отображение маркера текущего времени"
 ---
 
 # mark_now
 
 ### Description
 
-@short: Включает или отключает маркер текущего времени
+@short: Включает/выключает маркер отображения текущего времени
 
 @signature: mark_now: boolean
 
@@ -17,24 +17,24 @@ description: "включает или отключает маркер текущ
 ~~~jsx
 scheduler.config.mark_now = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
-**Applicable views:** [Day view](views/day.md), [Week view](views/week.md), [Timeline view](views/timeline.md)
+**Доступные представления:** [Day view](views/day.md), [Week view](views/week.md), [Timeline view](views/timeline.md)
 
 ### Related samples
-- [Current time marking](https://docs.dhtmlx.com/scheduler/samples/02_customization/23_current_time.html)
+- [Отмечание текущего времени](https://docs.dhtmlx.com/scheduler/samples/02_customization/23_current_time.html)
 
 ### Details
 
 :::note
- Эта функция зависит от включенного плагина [limit](guides/extensions-list.md#limit). 
+ Свойство требует активации плагина [limit](guides/extensions-list.md#limit). 
 :::
 
 :::note
- Для Timeline view убедитесь, что расширение [limit](guides/extensions-list.md#limit) загружается перед расширением [Timeline](guides/extensions-list.md#timeline) на странице. 
+  Замечание: для Timeline view расширение [limit] должно быть включено на странице перед расширением [Timeline]. 
 :::
 
 ![weekView_properties](/img/weekView_properties.png)
@@ -43,4 +43,4 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 - [now_date](api/config/now_date.md)
 
 ### Related Guides
-- [Блокировка и выделение дат](guides/limits.md)
+- [Блокировка и пометка дат](guides/limits.md)

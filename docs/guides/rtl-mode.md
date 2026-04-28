@@ -78,7 +78,7 @@ This is the list of the CSS classes that you can set:
 
 For instance:
 
-~~~js
+~~~css
 .dhx_cal_container_rtl .dhx_cal_event{
     margin-right: -5px;
 }

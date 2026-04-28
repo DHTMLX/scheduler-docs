@@ -124,7 +124,7 @@ import "@dhx/trial-scheduler/codebase/dhtmlxscheduler.css";
 export default {
   mounted() {
     let scheduler = Scheduler.getSchedulerInstance();
-    let date = scheduler.init(this.$refs.cont, new Date(2023, 9, 6), "week");
+    let date = scheduler.init(this.$refs.cont, new Date(2027, 9, 6), "week");
     this.scheduler = scheduler;
   },
   unmounted() {
@@ -185,14 +185,14 @@ To add data into the Scheduler, we need to provide a data set. Let's create the 
 export function getData() {
     const data = [
         {
-            start_date: "2024-06-10 6:00",
-            end_date: "2024-06-10 8:00",
+            start_date: "2027-06-10 6:00",
+            end_date: "2027-06-10 8:00",
             text: "Event 1",
             id: 1,
         },
         {
-            start_date: "2024-06-13 10:00",
-            end_date: "2024-06-13 18:00",
+            start_date: "2027-06-13 10:00",
+            end_date: "2027-06-13 18:00",
             text: "Event 2",
             id: 2,
         },
@@ -236,7 +236,7 @@ export default {
   props: ["events"],
   mounted() {
     let scheduler = Scheduler.getSchedulerInstance();
-    let date = scheduler.init(this.$refs.cont, new Date(2023, 5, 10), "week");
+    let date = scheduler.init(this.$refs.cont, new Date(2027, 5, 10), "week");
     scheduler.parse(this.events);
 
     this.scheduler = scheduler;

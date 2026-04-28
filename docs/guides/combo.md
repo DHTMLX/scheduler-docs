@@ -10,7 +10,7 @@ A combo box presented by the <a href="https://docs.dhtmlx.com/combo__index.html"
 ![combo_editor](/img/combo_editor.png)
 
 ~~~js
-var holders = [
+const holders = [
     { key: 1, label: 'James' },
     { key: 2, label: 'Alex' },
     { key: 3, label: 'Antony' },

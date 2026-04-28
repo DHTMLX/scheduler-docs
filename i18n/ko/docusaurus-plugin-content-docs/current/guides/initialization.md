@@ -7,9 +7,9 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 
 # dhtmlxScheduler를 순수 JS/HTML에서 사용하기
 
-dhtmlxScheduler로 애플리케이션을 개발할 때, 가장 먼저 해야 할 일은 스케줄러를 페이지에 세팅하고 표시하는 것입니다.
+ dhtmlxScheduler를 사용하는 애플리케이션을 개발할 때, 가장 먼저 필요한 것은 Scheduler를 초기화하거나 간단히 말하면 페이지에 Scheduler를 표시하는 것입니다.
 
-이 가이드는 순수 JS와 HTML을 사용하여 dhtmlxScheduler를 초기화하는 방법을 다룹니다. 프론트엔드 프레임워크와의 통합에 대해서는 아래 가이드들을 참고하세요:
+ 이 가이드는 Plain JS 및 HTML에서 dhtmlxScheduler를 초기화하는 방법에 대해 설명합니다. 프런트엔드 프레임워크와의 통합 가이드를 아래에서 확인할 수도 있습니다.
 
 <div className="framework-grid">
 
@@ -17,7 +17,7 @@ dhtmlxScheduler로 애플리케이션을 개발할 때, 가장 먼저 해야 할
     <FrameworkIcon name="react" className="framework-icon" />
     <div className="framework-title">React</div>
     <div className="framework-desc">
-      Use the ready-made <code>ReactScheduler</code> component with props and events.
+      props와 이벤트가 있는 이미 만들어진 <code>ReactScheduler</code> 컴포넌트를 사용합니다.
     </div>
   </a>
 
@@ -25,7 +25,7 @@ dhtmlxScheduler로 애플리케이션을 개발할 때, 가장 먼저 해야 할
     <FrameworkIcon name="angular" className="framework-icon" />
     <div className="framework-title">Angular</div>
     <div className="framework-desc">
-      Integrate Scheduler into Angular projects using a thin wrapper.
+      얇은 래퍼를 사용하여 Angular 프로젝트에 Scheduler를 통합합니다.
     </div>
   </a>
 
@@ -33,7 +33,7 @@ dhtmlxScheduler로 애플리케이션을 개발할 때, 가장 먼저 해야 할
     <FrameworkIcon name="vue" className="framework-icon" />
     <div className="framework-title">Vue</div>
     <div className="framework-desc">
-      Use Scheduler inside Vue apps with a small wrapper and reactive configuration.
+      작은 래퍼와 반응형 구성을 가진 Vue 앱 내에서 Scheduler를 사용합니다.
     </div>
   </a>
 
@@ -41,7 +41,7 @@ dhtmlxScheduler로 애플리케이션을 개발할 때, 가장 먼저 해야 할
     <FrameworkIcon name="svelte" className="framework-icon" />
     <div className="framework-title">Svelte</div>
     <div className="framework-desc">
-      Embed Scheduler in Svelte with a simple component that binds config and events.
+      구성 및 이벤트를 바인드하는 간단한 컴포넌트로 Svelte에 Scheduler를 삽입합니다.
     </div>
   </a>
 
@@ -49,25 +49,25 @@ dhtmlxScheduler로 애플리케이션을 개발할 때, 가장 먼저 해야 할
     <FrameworkIcon name="salesforce" className="framework-icon" />
     <div className="framework-title">Salesforce</div>
     <div className="framework-desc">
-      Use Scheduler in Salesforce Lightning Web Components and connect it to org data.
+      Salesforce Lightning Web Components에서 Scheduler를 사용하고 org 데이터에 연결합니다.
     </div>
   </a>
 
 </div>
 
 
-스케줄러를 페이지에 초기화하는 방법은 두 가지가 있습니다:
+페이지에서 Scheduler를 초기화하는 방법은 두 가지가 있습니다:
 
-- [스케줄러의 마크업을 이용하는 방법](#initializing-scheduler-via-markup)
-- [header 설정 속성을 사용하는 방법](#initializingschedulerviaheaderconfig)
+- [마크업을 통한 Scheduler 초기화](#initializing-scheduler-via-markup)
+- [헤더 구성 속성을 통한 초기화](#initializing-scheduler-via-header-config)
 
-## 스케줄러를 마크업으로 초기화하기 {#initializing-scheduler-via-markup}
+## 마크업을 통한 Scheduler 초기화
 
-마크업을 통해 기본 스케줄러를 페이지에 설정하려면 아래 3단계를 따르세요:
+마크업을 통해 기본 Scheduler를 페이지에 표시하려면 3단계를 따르세요:
 
-1. 페이지에 [dhtmlxScheduler 코드 파일](#requiredcodefiles)을 포함합니다.
-2. 페이지에 DIV 컨테이너와 필요한 자식 DIV 요소들을 추가합니다.
-3. 생성한 컨테이너에서 [init](api/method/init.md) 메서드를 사용해 dhtmlxScheduler를 초기화합니다. 이 메서드는 스케줄러가 렌더링될 HTML 컨테이너(또는 그 id)를 인자로 받습니다.
+1. 페이지에 [dhtmlxScheduler 코드 파일들](#required-code-files)을 포함합니다.
+2. 페이지에 DIV 컨테이너를 만들고 해당 요소의 자식 DIV 컨테이너들을 정의합니다.
+3. 새로 생성한 컨테이너에서 [init](api/method/init.md) 메서드를 사용해 dhtmlxScheduler를 초기화합니다. 메서드의 매개변수로 Scheduler가 표시될 HTML 컨테이너(또는 그 ID)를 전달합니다.
 
 ~~~html
 <!DOCTYPE html>
@@ -92,7 +92,7 @@ dhtmlxScheduler로 애플리케이션을 개발할 때, 가장 먼저 해야 할
         <div class="dhx_cal_header"></div>
         <div class="dhx_cal_data"></div>       
    </div>
-   <script type="text/javascript">
+   <script>
      scheduler.init("scheduler_here"); /*!*/
    </script>
 </body>
@@ -105,16 +105,16 @@ dhtmlxScheduler로 애플리케이션을 개발할 때, 가장 먼저 해야 할
 [Basic initialization](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/01_basic_init.html)
 
 
-## header config로 스케줄러 초기화하기 {#initializingschedulerviaheaderconfig}
+## 헤더 구성 속성을 통한 Scheduler 초기화
 
-이 방법은 스케줄러를 [반응형](guides/initialization.md#makingschedulerresponsive)으로 만들고 싶을 때 권장됩니다.
+이 방법으로 초기화해야만 [반응형](guides/initialization.md#making-scheduler-responsive)으로 작동합니다.
 
-기본 스케줄러를 페이지에 설정하려면 다음 단계를 따르세요:
+페이지에 기본 Scheduler를 표시하려면 다음 단계를 따르세요:
 
-1. 페이지에 [dhtmlxScheduler 코드 파일](#requiredcodefiles)을 포함합니다.
-2. 페이지에 DIV 컨테이너를 추가합니다.
-3. [header](api/config/header.md) 설정 객체에서 스케줄러의 구조를 정의합니다.
-4. [init](api/method/init.md) 메서드를 사용해 컨테이너에서 dhtmlxScheduler를 초기화합니다. 이때 컨테이너(또는 그 id)를 인자로 전달합니다.
+1. 페이지에 [dhtmlxScheduler 코드 파일들](#required-code-files)을 포함합니다.
+2. 페이지에 DIV 컨테이너를 생성합니다.
+3. [헤더 구성 객체](api/config/header.md)에서 Scheduler의 구조를 명시합니다.
+4. 새로 생성한 컨테이너에서 [init](api/method/init.md) 메서드를 사용해 초기화합니다. 매개변수로 Scheduler가 표시될 HTML 컨테이너(또는 아이디)를 전달합니다.
 
 ~~~html
 <!DOCTYPE html>
@@ -140,7 +140,7 @@ dhtmlxScheduler로 애플리케이션을 개발할 때, 가장 먼저 해야 할
         "today",
         "next"
     ];
-    scheduler.init('scheduler_here',new Date(2020,0,1),"week"); /*!*/
+    scheduler.init('scheduler_here',new Date(2027,0,1),"week"); /*!*/
 </script>
 </html>
 ~~~
@@ -149,34 +149,33 @@ dhtmlxScheduler로 애플리케이션을 개발할 때, 가장 먼저 해야 할
 [Responsive scheduler](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/13_touch_ui.html)
 
  
-## 필수 코드 파일 {#requiredcodefiles}
+## Required code files
 
-포함해야 할 파일은 다음과 같습니다:
+필수 코드 파일은 다음과 같습니다:
 
 - *dhtmlxscheduler.js*
-- *dhtmlxscheduler.css* (사용 가능한 스킨은 ["스킨(Skins)"](guides/skins.md)에서 확인할 수 있습니다)
+- *dhtmlxscheduler.css* (다양한 스킨도 확인해 볼 수 있습니다. [스킨 가이드](guides/skins.md) 참조)
 
 ~~~html
 <script src="../scheduler/dhtmlxscheduler.js"></script>
 <link rel="stylesheet" href="../scheduler/dhtmlxscheduler.css" type="text/css">
 ~~~
 
-아래는 dhtmlxScheduler 패키지 구조의 간단한 예시로, 파일 위치를 쉽게 찾을 수 있습니다:
+dhtmlxScheduler 패키지의 파일들을 어디에서 찾을 수 있는지 빠르게 살펴보겠습니다.
 
-- <b>sources</b> - 라이브러리의 소스 코드 파일들이 들어 있습니다. 이 파일들은 난독화되어 있지 않아 디버깅 용도로 주로 사용됩니다.
+- <b>sources</b> - 라이브러리의 원본 코드 파일들. 파일들이 미니파이되지 않았고 읽기 쉽습니다. 패키지는 주로 컴포넌트 디버깅 용도로 사용됩니다.
 :::note
-**Trial** 버전의 Scheduler 라이브러리에는 **sources** 폴더가 포함되어 있지 않습니다.
+참고로 **Trial** 버전의 Scheduler 라이브러리에는 **sources** 폴더가 포함되어 있지 않습니다.
 :::
-- <b>samples</b> - 코드 샘플이 포함되어 있습니다.
-- <b>codebase</b> - 라이브러리의 패키징된 코드 파일들이 있습니다. 이 파일들은 용량이 작고, 프로덕션 환경에서 사용하기에 적합합니다. <b>프로젝트에서는 이 폴더의 파일을 사용해야 합니다.</b>
+- <b>samples</b> - 코드 예제들.
+- <b>codebase</b> - 라이브러리의 압축된 코드 파일들. 파일 크기가 훨씬 작고 프로덕션에서의 사용에 적합합니다. <b>앱에서는 이 폴더의 파일을 사용해야 합니다.</b>
 
 
-## 스케줄러 크기 설정 {#schedulersizing}
+## Scheduler 크기 지정
 
-스케줄러는 컨테이너 요소(*scheduler_here* div, 위 예시 참고)의 전체 크기를 채우지만, 컨테이너 자체를 확장하지는 않습니다. 
-즉, 컨테이너에 높이가 지정되어 있지 않거나 0인 경우, 스케줄러도 높이가 0이 되어 화면에 표시되지 않습니다.
+Scheduler는 위의 예제에서처럼 컨테이너 요소의 전체 크기를 차지합니다(예: 위의 예에서 *scheduler_here* DIV). 컨테이너의 높이를 지정하지 않거나 0으로 설정하면 Scheduler의 높이도 0이 되어 표시되지 않습니다.
 
-예시에서는 스케줄러가 전체 화면을 차지하도록, 문서의 body와 스케줄러 컨테이너에 100% 너비와 높이를 설정합니다:
+샘플에서 일반적으로 문서 본문과 Scheduler 컨테이너 요소에 100% 너비와 높이를 부여하여 Scheduler를 전체 화면으로 만듭니다:
 
 ~~~html
 <style>
@@ -189,10 +188,10 @@ dhtmlxScheduler로 애플리케이션을 개발할 때, 가장 먼저 해야 할
 </style>
 </head>
 <body>
- <div id="scheduler_here" class="dhx_cal_container">
+ <div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:100%;">
 ~~~
 
-*scheduler_here* 요소가 기본 크기 설정이 된 div 내부에 위치할 경우, 문제가 발생할 수 있습니다:
+만약 기본 크기가 지정되지 않은 div에 *scheduler_here* 요소를 넣으면 문제가 발생할 수 있습니다:
 
 ~~~html
 <style>
@@ -206,37 +205,34 @@ dhtmlxScheduler로 애플리케이션을 개발할 때, 가장 먼저 해야 할
 </head>
 <body>
  <div class="outer_container"> /*!*/
-   <div id="scheduler_here" class="dhx_cal_container">
+   <div id="scheduler_here" class="dhx_cal_container" style="width:100%;height:100%;">
 ~~~
 
-이 경우, "scheduler_here"는 부모의 100%로 설정되어 있지만, 부모에 크기가 지정되어 있지 않으므로 스케줄러가 제대로 표시되지 않습니다.
+이 경우 Scheduler가 올바르게 표시되지 않는 이유는 "scheduler_here"의 크기가 부모의 100%로 설정되었고 부모의 크기가 지정되지 않았기 때문입니다.
 
-*.dhx_cal_container* 요소에 상대적 크기(%)를 사용하는 경우, 반드시 부모 요소에도 높이가 지정되어 있어야 합니다. 그렇지 않으면 계산된 높이가 0이 되어 스케줄러가 나타나지 않습니다.
+상대 크기(%, percents)를 *.dhx_cal_container* 요소에 사용할 경우 부모 요소에도 높이가 설정되어 있어야 합니다. 그렇지 않으면 최종 높이가 0이 되어 Scheduler가 표시되지 않을 수 있습니다.
 
-또는, 메인 스케줄러 div의 크기를 다른 단위로 설정할 수도 있습니다. 아래 예시들은 외부 요소의 스타일에 상관없이 예상한 크기를 갖게 됩니다:
+또는 메인 Scheduler DIV의 크기에 대해 다른 단위를 사용할 수 있습니다. 다음 요소들은 외부 요소의 스타일과 상관없이 예상 크기를 갖습니다:
 
 ~~~html
-<div id="scheduler_here" class="dhx_cal_container">
+<div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:100vh;">
 ~~~
 
 또는:
 
 ~~~html
-<div id="scheduler_here" class="dhx_cal_container">
+<div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:800px;">
 ~~~
 
-### 스케줄러 자동 리사이즈 {#scheduler-autoresizing}
+### Scheduler 자동 크기 조정
 
-**container_autoresize** 확장 기능은 스케줄러의 기본 리사이즈 동작을 변경합니다.  
-기본적으로 dhtmlxScheduler는 컨테이너에 맞게 크기를 조절하고, 고정된 컨테이너 크기 내에서 모든 데이터를 볼 수 있도록 내부 스크롤바를 표시합니다.
+dhtmlxScheduler의 기본 재사이징 동작을 바꾸는 확장인 **container_autoresize**가 Scheduler에 적용되면 가로/세로가 컨테이너에 맞춰 자동으로 조정됩니다. 이 경우 내부 스크롤바 없이 모든 이벤트와 데이터를 표시할 수 있도록 Scheduler의 높이와 너비가 확장될 수 있습니다.
 
-**container_autoresize** 확장 기능을 활성화하면, 스케줄러는 모든 내용을 표시할 수 있도록 동적으로 크기를 조절합니다. 즉, 모든 이벤트와 데이터를 내부 스크롤 없이 보여주기 위해 높이와/또는 너비가 확장됩니다.
+이 동작은 Scheduler의 콘텐츠가 모두 보이도록 보장하므로, 페이지 스크롤 없이 Scheduler 내용을 완전히 확인해야 하는 사용 사례에 적합합니다.
 
-이 기능을 사용하면 스케줄러 내부에서 스크롤 없이 모든 내용을 한 번에 볼 수 있어, 전체 내용의 가시성이 필요한 경우 유용합니다.
+#### 사용법
 
-#### 사용 방법
-
-**container_autoresize** 확장 기능을 활성화하려면, 아래와 같이 스케줄러 설정에 포함시키면 됩니다:
+**container_autoresize** 확장을 활성화하려면 Scheduler 설정에 아래와 같이 확장을 포함합니다:
 
 ~~~js
 scheduler.plugins({
@@ -245,18 +241,18 @@ scheduler.plugins({
 ~~~
 
 
-[Autoresizing the scheduler container](https://docs.dhtmlx.com/scheduler/samples/03_extensions/28_container_autoresize.html)
+[컨테이너 자동 크기 조정 예제](https://docs.dhtmlx.com/scheduler/samples/03_extensions/28_container_autoresize.html)
 
 
-이 간단한 설정만으로 **container_autoresize** 기능이 활성화되어, 스케줄러가 콘텐츠에 따라 자동으로 크기를 조정하게 됩니다.
+이 간단한 설정 변경으로 컨텐츠에 맞게 Scheduler의 크기가 조정되도록 하는 **container_autoresize** 동작이 활성화됩니다.
 
-#### container_autoresize와 헤더 처리 방법
+#### 컨테이너 자동 크기 조정과 헤더 고정 처리
 
-**container_autoresize** 확장 기능이 활성화되면, Scheduler는 모든 콘텐츠에 맞게 자동으로 크기가 조정됩니다. 이로 인해 Scheduler가 화면 크기를 초과하여 페이지나 외부 컨테이너에 스크롤바가 나타날 수 있습니다.
+**container_autoresize** 확장 기능이 활성화되면 Scheduler는 모든 콘텐츠에 맞춰 크기를 조정합니다. 이로 인해 Scheduler가 화면을 벗어나고 외부 컨테이너나 페이지 스크롤이 생길 수 있습니다.
 
-이 모드에서는 페이지를 스크롤할 때 내비게이션 및 시간 헤더도 함께 이동하므로, 아래로 스크롤할 때 헤더가 고정되어 보이지 않습니다. 일반적으로 이러한 동작이 문제가 되지 않지만, 헤더를 항상 고정해두고 싶은 경우도 있을 수 있습니다. 이 경우에는 추가적인 스타일링과 스크립트를 통해 헤더를 고정할 수 있습니다.
+이 모드에서 페이지를 스크롤하면 네비게이션 및 시간 헤더도 함께 스크롤되어 스크롤을 내려도 더 이상 보이지 않게 됩니다. 일반적으로 이는 의도된 동작이지만, 헤더를 고정시키려는 시나리오도 있습니다. 이 경우 약간의 추가 코드와 스타일이 필요합니다.
 
-헤더를 고정하려면 CSS의 sticky 포지셔닝과 추가 스타일을 사용할 수 있습니다. 예시는 다음과 같습니다:
+헤더를 고정하려면 sticky 위치를 약간의 추가 스타일과 함께 사용할 수 있습니다. 예시:
 
 ~~~js
 <style>
@@ -276,16 +272,14 @@ scheduler.plugins({
       top:0;
   }
   .dhx_cal_header{
-      /* top coordinate is assigned from JS */
+      /* 상단 좌표는 JS에서 할당됩니다 */
       margin-left: -1px;
       box-shadow: 0 1px 0px 0px var(--dhx-scheduler-base-colors-border);
   }
 </style>
 ~~~
 
-또한, sticky time scale의 올바른 top 위치를 지정하여 내비게이션 패널 바로 아래에 오도록 하기 위해 JavaScript 코드가 필요합니다.
-
-내비게이션 패널의 높이는 스타일과 내용에 따라 달라질 수 있으므로, 동적으로 높이를 계산하여 헤더의 top 위치에 적용해야 합니다. 예시는 다음과 같습니다:
+또한 헤더의 올바른 상단 위치를 보장하기 위해 필요한 JavaScript가 있습니다. 네비게이션 패널은 다른 스타일과 콘텐츠에 따라 높이가 달라질 수 있으므로, 이 높이를 동적으로 계산해 헤더의 top 좌표로 적용해야 합니다:
 
 ~~~js
 scheduler.attachEvent("onViewChange", function(){
@@ -297,33 +291,36 @@ scheduler.attachEvent("onViewChange", function(){
 });
 ~~~
 
-아래 스니펫에서 전체 데모를 확인할 수 있습니다:
+전체 데모는 아래 스니펫에서 확인할 수 있습니다:
 
-**Related sample** [Container autoresize and sticky header](https://snippet.dhtmlx.com/syo8wm9s)
+관련 샘플  [Container autoresize and sticky header](https://snippet.dhtmlx.com/syo8wm9s)
 
-## Scheduler 반응형 처리 {#makingschedulerresponsive}
+## Scheduler를 반응형으로 만들기
 
-Scheduler를 [header configuration property](#initializingschedulerviaheaderconfig)를 통해 초기화하면, 클라이언트의 화면 크기에 맞는 헤더 레이아웃을 선택할 수 있습니다. 또한, 작은 화면에서도 요소와 폰트가 잘 적응하도록 특정 스타일이 적용됩니다.
+헤더 구성 속성으로 Scheduler를 초기화하면 클라이언트의 화면 크기에 맞는 헤더 구조를 선택할 수 있습니다.
+또한 작은 화면에서 요소와 글꼴 크기를 반응형으로 만드는 특정 스타일이 적용됩니다.
 
-자세한 내용은 별도의 문서인 ["Mobile Responsive Scheduler"](guides/touch-support.md)에서 확인하실 수 있습니다.
+자세한 내용은 별도의 기사에서 확인할 수 있습니다: [Mobile Responsive Scheduler](guides/touch-support.md).
 
-## ES6/7 및 TypeScript 앱에 파일 가져오기 {#import-files-into-es67-and-typescript-apps}
+## ES6/7 및 TypeScript 앱에 파일 가져오기
 
-다음 명령어로 파일을 가져올 수 있습니다:
+다음 명령을 사용해 파일을 가져옵니다:
 
 ~~~js
 import { scheduler } from 'dhtmlx-scheduler';
 ~~~
 
-Commercial, Enterprise 또는 Ultimate 버전에서는 다음과 같이 가져옵니다:
+
+상용, 엔터프라이즈 또는 Ultimate 버전의 경우 명령은 다음과 같습니다:
 
 ~~~js
 import { scheduler, Scheduler } from 'dhtmlx-scheduler';
 ~~~
 
-## Vite에서 Scheduler 사용하기 {#usingschedulerwithvite}
 
-프로젝트에서 Vite를 사용하는 경우, 앱에 Scheduler가 제대로 포함되도록 **vite.config.js** 파일에 다음 설정을 추가하세요:
+## Vite로 Scheduler 사용하기
+
+프로젝트에서 Vite를 사용하는 경우, 애플리케이션에 Scheduler가 올바르게 포함되도록 **vite.config.js** 파일에 다음 설정이 필요합니다:
 
 ~~~js title="vite.config.js"
 optimizeDeps: {
@@ -333,37 +330,39 @@ optimizeDeps: {
 }
 ~~~
 
-## RequireJS 기반 앱에 파일 포함하기 {#includefilesintoarequirejsbasedapp}
+
+RequireJS 기반 애플리케이션에 파일 포함하기
 ------------------------------------------- 
 
-RequireJS 기반 앱에 dhtmlxScheduler 파일을 추가하려면, 아래 예시를 참고하세요:
+RequireJS 기반 애플리케이션에 dhtmlxScheduler 파일을 포함하려면 아래 예제의 로직을 따라야 합니다:
 
 ~~~js
 requirejs(["codebase/dhtmlxscheduler"], function(dhx){
-    var scheduler = dhx.scheduler;
-    var Scheduler = dhx.Scheduler;// for Enterprise builds
- 
+    const scheduler = dhx.scheduler;
+    const Scheduler = dhx.Scheduler;// Enterprise 빌드를 위한 것
+
     scheduler.init('scheduler_here',new Date(),"week");
     scheduler.parse([
         {
-            id: 1, text: "Event 1", start_date: "2022-07-15 09:00", 
-            end_date: "2022-07-15 10:00"
+            id: 1, text: "Event 1", start_date: "2027-07-15 09:00", 
+            end_date: "2027-07-15 10:00"
         },
         {
-            id: 2, text: "Event 2", start_date: "2022-07-15 10:00", 
-            end_date: "2022-07-15 11:00"
+            id: 2, text: "Event 2", start_date: "2027-07-15 10:00", 
+            end_date: "2027-07-15 11:00"
         }
     ]);
 });
 ~~~
 
-dhtmlxScheduler 라이브러리는 `scheduler`와 `Scheduler`(Commercial, Enterprise, Ultimate 버전에서 제공)를 포함하는 객체를 반환합니다. 이는 [여기](guides/multiple-per-page.md)에서 설명된 *scheduler* 및 *Scheduler* 객체와 동일합니다.
+
+dhtmlxScheduler 라이브러리는 `scheduler`와 `Scheduler`(상용, 엔터프라이즈 또는 Ultimate 버전에서)라는 필드를 가진 객체를 반환합니다 - 이 객체들에 대해서는 [여기](guides/multiple-per-page.md)를 참조하십시오.
 
 :::note
-Scheduler를 RequireJS에서 커스텀 확장과 함께 사용할 때, RequireJS의 `shim` 구성을 반드시 지정하고 확장 파일의 의존성을 Scheduler로 선언해야 합니다.
+RequireJS에서 Scheduler를 커스텀 확장과 함께 사용할 때는 RequireJS용 `shim` 구성을 명시하고 Scheduler에서 확장으로의 의존성을 직접 설정해야 합니다.
 :::
 
-아래 예시는 커스텀 확장 파일 *custom_tooltip_plugin.js*를 올바르게 설정하는 방법입니다:
+다음 예제는 커스텀 확장 파일 *custom_tooltip_plugin.js*를 올바르게 설정하는 방법을 보여줍니다:
 
 ~~~js
 requirejs.config({
@@ -378,24 +377,25 @@ requirejs.config({
  
 requirejs(["dhtmlxscheduler"], 
 function (dhx) {
-    var scheduler = dhx.scheduler;
+    const scheduler = dhx.scheduler;
  
     scheduler.init('scheduler_here',new Date(),"week");
     scheduler.parse([
         {
-            id: 1, text: "Event 1", start_date: "2022-07-15 09:00", 
-            end_date: "2022-07-15 10:00"
+            id: 1, text: "Event 1", start_date: "2027-07-15 09:00", 
+            end_date: "2027-07-15 10:00"
         },
         {
-            id: 2, text: "Event 2", start_date: "2022-07-15 10:00", 
-            end_date: "2022-07-15 11:00"
+            id: 2, text: "Event 2", start_date: "2027-07-15 10:00", 
+            end_date: "2027-07-15 11:00"
         }
     ]);
 });
 ~~~
 
-패키지 내의 파일에 대한 모듈 이름은 반드시 *패키지의 'codebase' 폴더 내 상대 경로*와 *파일명*을 조합하여 지정해야 합니다. 예를 들어:
 
-**코어 라이브러리:**
+패키지 내 어떤 파일의 모듈 이름이 항상 *codebase 폴더 내부의 상대 경로*에 *파일명*을 붙여 지정되는지 확인하십시오. 예시:
+
+핵심 라이브러리:
 
 - "dhtmlxscheduler": "./vendor/dhtmlxscheduler/dhtmlxscheduler"

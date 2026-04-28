@@ -1,6 +1,6 @@
 ---
-sidebar_label: "onAfterBatchUpdate"
-title: "onAfterBatchUpdate event"
+sidebar_label: onAfterBatchUpdate
+title: "событие onAfterBatchUpdate"
 description: "срабатывает сразу после завершения выполнения метода [batchUpdate](api/method/batchupdate.md)"
 ---
 
@@ -8,7 +8,7 @@ description: "срабатывает сразу после завершения 
 
 ### Description
 
-@short: Срабатывает сразу после завершения выполнения метода [batchUpdate](api/method/batchupdate.md)
+@short: Срабатывает после вызова метода [batchUpdate](api/method/batchupdate.md)
 
 @signature: onAfterBatchUpdate: () =\> void
 

@@ -10,27 +10,27 @@ sidebar_label: "Мини-календарь (Date Picker)"
 ![mini_calendar](/img/mini_calendar.png)
 
 
-[Mini calendar without the scheduler](https://docs.dhtmlx.com/scheduler/samples/05_calendar/02_without_scheduler.html)
+[Мини-календарь без планировщика](https://docs.dhtmlx.com/scheduler/samples/05_calendar/02_without_scheduler.html)
 
 
 :::note
-Чтобы использовать мини-календарь в вашем приложении, убедитесь, что на странице добавлено расширение **minical**.
+Чтобы использовать мини-календарь в приложении, подключите на страницу расширение **minical**.
 :::
 
 
-## В заголовке {#intheheader}
+## В заголовке
 
-Чтобы добавить мини-календарь (date picker) в заголовок планировщика (как на изображении ниже), выполните следующие шаги:
+Чтобы разместить мини-календарь (выбор даты) в заголовке планировщика (как показано на изображении ниже), выполните следующие шаги:
 
 ![calendar_in_header](/img/calendar_in_header.png)
 
-1. Подключите файл расширения на вашей странице:
+1. Подключите файл расширения на страницу:
 ~~~js
 scheduler.plugins({
     minical: true
 });
 ~~~
-2. Определите контейнер для мини-календаря и добавьте его в разметку планировщика:
+2. Укажите контейнер для мини-календаря и добавьте его в разметку планировщика:
 ~~~js
 <div class="dhx_cal_navline">
     ...
@@ -39,7 +39,7 @@ scheduler.plugins({
     onclick="show_minical()">&nbsp;</div>
 </div>
 ~~~
-3. Реализуйте логику инициализации (с помощью метода [renderCalendar](api/method/rendercalendar.md)) и уничтожения (с помощью метода [destroyCalendar](api/method/destroycalendar.md)) мини-календаря:
+3. Обеспечьте логику инициализации (метод [renderCalendar](api/method/rendercalendar.md)) и уничтожения (метод [destroyCalendar](api/method/destroycalendar.md)) мини-календаря:
 ~~~js
 function show_minical(){
     if (scheduler.isCalendarVisible()){
@@ -59,46 +59,47 @@ function show_minical(){
 ~~~
 
 
-[Mini calendar in the scheduler header](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
+[Мини-календарь в заголовке планировщика](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
 
 
-## В заголовке (Сторонний Date Picker) {#intheheaderthirdpartydatepicker}
+## В заголовке (Сторонний Date Picker) 
 
-В этом разделе показано, как встроить сторонний мини-календарь (date picker) в заголовок планировщика.
+В этом разделе покажем, как добавить мини-календарь (выбор даты от сторонних библиотек) в заголовок планировщика.
 
 ![custom_minicalendar](/img/custom_minicalendar.png)
 
 **Related sample** [3rd party Mini Calendar in the header](https://snippet.dhtmlx.com/5/0dca14de9)
 
-В примере используются [jQuery](https://jquery.com) и [Bootstrap Datepicker](https://bootstrap-datepicker.readthedocs.io/en/latest/) для добавления мини-календаря. Если вы используете другие библиотеки, код потребуется адаптировать, однако общий подход останется похожим:
+В нашем примере мы добавим мини-календарь на основе [jQuery](https://jquery.com) и [Bootstrap Datepicker](https://bootstrap-datepicker.readthedocs.io/en/latest/). Если вы используете другие библиотеки, вам потребуется изменить код, но общий подход останется тем же:
 
-1. *Показать date picker при клике по заголовку календаря*
+1. *Показать выбор даты при клике по заголовку календаря*
 
-Для начала определите DIV-контейнер для мини-календаря (или другого элемента) внутри заголовка планировщика. Используя [инициализацию через разметку](guides/initialization.md#initializingschedulerviamarkup), это выглядит так:
+Во-первых, нужно определить DIV‑контейнер для мини-календаря (или любого другого элемента управления) в заголовке планировщика.
+Если вы используете [маркап-инициализацию](guides/initialization.md#initializing-scheduler-via-markup), вы можете сделать это так, как показано в примере:
 
 ~~~js
-<div id="scheduler_here" class="dhx_cal_container">
+<div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:100%;">
   <div class="dhx_cal_navline">
     <div class="dhx_cal_prev_button">&nbsp;</div>
     <div class="dhx_cal_next_button">&nbsp;</div>
     <div class="dhx_cal_today_button"></div>
     <div class="dhx_cal_date"></div>
     <!--- HERE -->
-    <div class="input-group date">
+    <div class="input-group date" style="display: none;">
       <input type="text" class="form-control">
       <div class="dhx_minical_icon input-group-addon" id="dhx_minical_icon">&nbsp;</div>
     </div>
     <!--- end HERE -->
 ~~~
 
-Если вы используете [header config](guides/initialization.md#initializingschedulerviaheaderconfig), добавьте [кастомный элемент](api/config/header.md) следующим образом:
+Если вы используете [header config](guides/initialization.md#initializing-scheduler-via-header-config), вам нужно добавить [настраиваемый элемент](api/config/header.md) туда:
 
 ~~~js
 scheduler.config.header = [
   "day",
   "week",
   "month",
-  {html:'<div class="input-group date">'+
+  {html:'<div class="input-group date" style="display: none;">'+
     '<input type="text" class="form-control">'+
     '<div class="dhx_minical_icon input-group-addon" id="dhx_minical_icon">&nbsp;</div>'+
        '</div>'},
@@ -110,7 +111,7 @@ scheduler.config.header = [
 scheduler.init("scheduler_here");
 ~~~
 
-Далее, чтобы показывать date picker при клике на дату в панели навигации планировщика, настройте обработчик клика после готовности планировщика:
+Чтобы отображать выбор даты при клике по дате в панели навигации планировщика, инициализируем обработчик клика сразу после готовности планировщика:
 
 ~~~js
 scheduler.attachEvent("onSchedulerReady", function(){
@@ -128,7 +129,7 @@ scheduler.attachEvent("onSchedulerReady", function(){
        $node.datepicker().on("show", function () {
         $node.datepicker("update", scheduler.getState().date);
 
-           // центрировать popup под датой
+           // центрируем выпадающий список выборa даты под подписью даты
         centerDatepicker($(".dhx_cal_date"));
     });
     ...
@@ -136,7 +137,7 @@ scheduler.attachEvent("onSchedulerReady", function(){
 });
 ~~~
 
-Функция `centerDatepicker` помогает правильно позиционировать выпадающий date picker:
+`centerDatepicker` — вспомогательная функция, которую мы реализуем для отображения выпадающего выбора даты в нужном месте:
 
 ~~~js
     ...
@@ -145,10 +146,10 @@ scheduler.attachEvent("onSchedulerReady", function(){
         if (!$('.datepicker-dropdown').is(':visible')) {
             return;
            }
-        // центрировать popup под датой
-        var offset = $(".dhx_cal_date").offset();
-        var width = $(".dhx_cal_date").width();
-        var popupWidth = $(".datepicker-dropdown").width();
+        // центрируем выпадающее окно под меткой даты
+        let offset = $(".dhx_cal_date").offset();
+        let width = $(".dhx_cal_date").width();
+        let popupWidth = $(".datepicker-dropdown").width();
         $(".datepicker-dropdown").css({
             top: offset.bottom + "px",
             left: (width - popupWidth) / 2 + "px"
@@ -156,9 +157,9 @@ scheduler.attachEvent("onSchedulerReady", function(){
     }
 ~~~
 
-2. *Обновлять текущую дату планировщика при выборе даты*
+2. *Переключать планировщик на выбранную дату, когда пользователь кликает по дате в date picker*
 
-После показа date picker обновите дату планировщика при выборе дня:
+После того как мы отображаем datepicker по запросу, необходимо менять дату планировщика при выборе дня в календаре:
 
 ~~~js
     $node.datepicker().on("changeDate", function () {
@@ -166,9 +167,9 @@ scheduler.attachEvent("onSchedulerReady", function(){
     });
 ~~~
 
-3. *Подсветить текущие даты в date picker*
+3. *Подсветить текущие даты в datepicker*
 
-Чтобы выделить даты, которые сейчас отображаются в планировщике, используйте простой CSS-класс:
+Чтобы подсветить даты date picker'а, которые в данный момент отображаются в планировщике, используем простой CSS‑класс:
 
 ~~~js
 .datepicker table .scheduler-date{
@@ -176,16 +177,16 @@ scheduler.attachEvent("onSchedulerReady", function(){
 }
 ~~~
 
-Всем ячейкам date picker, которые видны в планировщике, присваивается этот класс:
+Все клетки date picker, которые сейчас видны в планировщике, будут получать этот класс:
 
 ~~~js
     function fillDatepicker(scheduler) {
-          // сбросить выделение событий и активных дат
+          // сброс подсветки событий и активных дат
           ...
           $(".datepicker-dropdown").find("[data-date]").removeClass("scheduler-date");
 
-          // выделить дату планировщика
-          var visibleDates = getVisibleDates(scheduler);
+          // подсветка даты планировщика
+          const visibleDates = getVisibleDates(scheduler);
           visibleDates.forEach(function (date) {
             $(".datepicker-dropdown").find(
                 "[data-date='" + date + "']"
@@ -195,17 +196,17 @@ scheduler.attachEvent("onSchedulerReady", function(){
     }
 ~~~
 
-Чтобы получить текущие видимые даты, используйте `scheduler.getState`:
+Чтобы получить даты, которые в данный момент видны, можно использовать `scheduler.getState`:
 
 ~~~js
     function getVisibleDates(scheduler) {
-        var minVisible = scheduler.getState().min_date;
-        var maxVisible = scheduler.getState().max_date;
+        const minVisible = scheduler.getState().min_date;
+        const maxVisible = scheduler.getState().max_date;
 
-        var current = minVisible;
-        var result = [];
+        let current = minVisible;
+        let result = [];
         while (current.valueOf() < maxVisible.valueOf()) {
-            var currentUTC = Date.UTC(
+            let currentUTC = Date.UTC(
                 current.getFullYear(),current.getMonth(),current.getDate()
             );
             result.push(currentUTC.valueOf());
@@ -216,9 +217,10 @@ scheduler.attachEvent("onSchedulerReady", function(){
     }
 ~~~
 
-4. *Пометить дни с событиями в date picker*
+4. *Подсветить дни с событиями в date picker*
 
-Чтобы выделить даты, в которые есть события в планировщике, добавьте еще один CSS-класс:
+Далее, мы хотим, чтобы date picker подсвечивал даты, на которые приходятся события планировщика.
+Для этого используем тот же подход, добавив CSS‑класс:
 
 ~~~js
 .datepicker table .has-event::after {
@@ -231,26 +233,24 @@ scheduler.attachEvent("onSchedulerReady", function(){
 }
 ~~~
 
-Это выделяет даты мини-календаря, в которых есть события.
-
-Чтобы показать тултип с количеством событий при наведении на дату, получите события для месяца, который отображается в date picker:
+Как видно из приведенного выше примера, мы подсвечиваем даты мини-календаря, которые содержат события. Чтобы показать тултип с количеством событий для даты, на которую usuário наводит курсор, нужно получить события месяцев, которые в данный момент отображаются в date picker:
 
 ~~~js
     function getVisibleEvents(calendarDate, scheduler) {
-          var min = scheduler.date.month_start(new Date(calendarDate));
-          var max = scheduler.date.add(calendarDate, 1, "month");
+          const min = scheduler.date.month_start(new Date(calendarDate));
+          const max = scheduler.date.add(calendarDate, 1, "month");
           min = scheduler.date.week_start(min);
           if(scheduler.date.week_start(new Date(max)) < max){
              max = scheduler.date.week_start(new Date(max));
              max = scheduler.date.add(max, 1, "week");
           }
-          var events = scheduler.getEvents(min, max);
-          var days = {};
+          const events = scheduler.getEvents(min, max);
+          let days = {};
 
           events.forEach(function (event) {
-             var eventDate = event.start_date;
+             let eventDate = event.start_date;
              while(eventDate < event.end_date){
-                   var day = Date.UTC(
+                   let day = Date.UTC(
                      eventDate.getFullYear(),
                      eventDate.getMonth(),
                     eventDate.getDate()
@@ -265,29 +265,28 @@ scheduler.attachEvent("onSchedulerReady", function(){
              }
           });
 
-          var result = [];
-          for (var i in days) {
+          let result = [];
+          for (let i in days) {
              result.push({ timestamp: i, count: days[i] });
           }
           return result;
        }
 ~~~
 
-Этот метод получает данные о событиях из планировщика, поэтому выделяются только те события, которые уже загружены. Если ваше приложение использует динамическую загрузку, могут быть показаны не все события, так как загружается только часть. 
+В примере выше мы получаем информацию о событиях из планировщика. Это означает, что мы сможем подсветить только те события, которые уже загружены в планировщик. Такой подход не всегда хорош при динамической загрузке, поскольку в плане загружаются лишь небольшая часть всех событий.
 
+Альтернативный подход состоит в запросе данных о событиях с сервера.
 
-В качестве альтернативы можно получать данные о событиях с сервера.
-
-Когда у вас есть временные метки событий и их количество, обновите date picker следующим образом:
+Когда у нас есть данные о временных метках клеток, содержащих события, и количестве событий в каждой клетке, мы можем заполнить date picker этой информацией, как в примере:
 
 ~~~js
     function fillDatepicker(scheduler) {
-        // сбросить выделение событий и активных дат
+        // сброс подсветки событий и активных дат
         $(".datepicker-dropdown").find("[data-date]").removeClass("has-event");
         $(".datepicker-dropdown").find("[data-date]").removeAttr("title");
         ...
 
-        // выделить события
+        // подсветка событий
         const eventCells = getVisibleEvents($node.datepicker("getDate"), scheduler);
         eventCells.forEach(function (cellEvents) {
             $(".datepicker-dropdown").find(
@@ -300,9 +299,9 @@ scheduler.attachEvent("onSchedulerReady", function(){
     }
 ~~~
 
-5. *Синхронизировать отображаемую дату с активной датой планировщика*
+5. *Синхронизация отображаемой метки даты с активной датой в планировщике*
 
-В завершение, повторно центрируйте date picker при изменении размера окна и обновляйте выделение при изменении даты в picker:
+Наконец, нужно заново центрировать date picker при изменении размера окна и применить подсветку, когда пользователь меняет текущую дату в date picker:
 
 ~~~js
     $(window).on('resize', function () {
@@ -326,14 +325,14 @@ scheduler.attachEvent("onSchedulerReady", function(){
         refreshDatepicker(scheduler);
     });
     function refreshDatepicker(scheduler) {
-        // вызывается через timeout, чтобы код сработал после обновления popup datepicker
+        // вызов через timeout, чтобы код сработал после обновления выпадающего окна datepicker
         setTimeout(function () {
             fillDatepicker(scheduler);
         });
     }
 ~~~
 
-Если вы используете отдельный элемент для отображения активной даты планировщика, слушайте событие [onViewChange](api/event/onviewchange.md) и обновляйте метку там:
+Если вы используете отдельный элемент для отображения активной даты планировщика, вам нужно будет поймать событие [onViewChange](api/event/onviewchange.md) планировщика и обновлять метку даты именно оттуда:
 
 ~~~js
 scheduler.attachEvent("onViewChange", function (newMode , newDate){
@@ -346,16 +345,17 @@ scheduler.attachEvent("onViewChange", function (newMode , newDate){
 });
 ~~~
 
-Обратите внимание, что этот обработчик не используется в примере, так как встроенный заголовок даты обновляется автоматически. Используйте его только если вы [скрываете стандартный заголовок даты](guides/scheduler-markup.md) или хотите показывать активную дату в нескольких местах.
+Обратите внимание, что мы не используем этот обработчик в нашем примере кода, поскольку опираемся на встроенный заголовок даты планировщика, который обновляется автоматически. Такой код следует использовать только если вы [скрываете заголовок даты по умолчанию](guides/scheduler-markup.md#hiding-the-header-of-scheduler), или если вам нужно отображать активную дату в нескольких местах.
 
 
-## В lightbox {#inthelightbox}
+## В окне (lightbox)
 
-Мини-календарь (date picker) можно также использовать внутри lightbox для выбора "начала" и "конца" события.
+Мини-календарь (выбор даты) можно использовать во всплывающем окне для выбора дат начала и конца.
 
 ![in_the_lightbox](/img/in_the_lightbox.png)
 
-Чтобы добавить мини-календарь в lightbox, выполните следующие шаги:
+Чтобы разместить мини-календарь во всплывающем окне, выполните следующие шаги:
+
 
 1. Включите расширение на странице:
 ~~~js
@@ -363,14 +363,14 @@ scheduler.plugins({
     minical: true
 });
 ~~~
-2. Измените type секции time на calendar_time вместо time:
+2. Установите <i>тип</i> раздела <b>time</b> как <b>calendar_time</b> (вместо <b>time</b>):
 ~~~js
-// стандартное определение lightbox
-scheduler.config.lightbox.sections="["
+// дефолтное определение lightbox
+scheduler.config.lightbox.sections= [
   {name:"description", height:200, map_to:"text", type:"textarea", focus:true},
   {name:"time", height:72, type:"time", map_to:"auto"}
 ];
-// изменить type:"time" -> type:"calendar_time"
+//изменить type:"time" -> type:"calendar_time"
 scheduler.config.lightbox.sections = [
   {name:"description", height:200, map_to:"text", type:"textarea", focus:true},
   {name:"time", height:72, type:"calendar_time", map_to:"auto" }
@@ -378,16 +378,16 @@ scheduler.config.lightbox.sections = [
 ~~~
 
 
-[Mini calendar in the lightbox](https://docs.dhtmlx.com/scheduler/samples/05_calendar/03_in_form.html)
+[Мини-календарь во всплывающем окне (lightbox)](https://docs.dhtmlx.com/scheduler/samples/05_calendar/03_in_form.html)
 
 
-## Вне планировщика {#outsidethescheduler}
+## Вне планировщика
 
-Мини-календарь (date picker) можно разместить в любом месте страницы.
+Мини-календарь может располагаться в любом месте на странице.
 
 ![outside_the_scheduler](/img/outside_the_scheduler.png)
 
-Чтобы добавить мини-календарь в HTML-контейнер вне планировщика, выполните следующие шаги:
+Чтобы разместить мини-календарь в каком‑либо HTML‑контейнере вне планировщика, выполните следующие шаги:
 
 1. Включите расширение на странице:
 ~~~js
@@ -395,17 +395,17 @@ scheduler.plugins({
     minical: true
 });
 ~~~
-2. Определите контейнер для мини-календаря на странице:
+2. Укажите контейнер для мини‑календаря на странице:
 ~~~js
 <div id="scheduler_here" class="dhx_cal_container" ...>
 ...
 </div>
 
-<div>
-        <div id="cal_here"></div>
+<div style='float: left; padding:10px;' >
+        <div id="cal_here" style='width:250px;'></div>
 </div>
 ~~~
-3. Вызовите метод [renderCalendar](api/method/rendercalendar.md) для отображения мини-календаря:
+3. Вызовите метод [renderCalendar](api/method/rendercalendar.md) для отрисовки мини-календаря на странице:
 ~~~js
 const calendar = scheduler.renderCalendar({
     container:"cal_here", 
@@ -417,13 +417,13 @@ const calendar = scheduler.renderCalendar({
 ~~~
 
 
-[Mini calendar outside the scheduler](https://docs.dhtmlx.com/scheduler/samples/05_calendar/05_plain_structure.html)
+[Мини-календарь вне планировщика](https://docs.dhtmlx.com/scheduler/samples/05_calendar/05_plain_structure.html)
 
 
-## Шаблоны и стили {#templatesandstyles}
+## Шаблоны и стили
 
 ### Шаблоны
-Вы можете легко изменить отображение дат в мини-календаре (выбор дате) с помощью различных шаблонов, описанных в статье [Шаблоны мини-календаря](guides/mini-calendar-templates.md).
+Чтобы настроить формат отображаемых дат в мини-календаре (выборе даты), можно воспользоваться набором шаблонов, перечисленных в статье [Шаблоны мини‑календаря](guides/mini-calendar-templates.md). 
 
 ~~~js
 scheduler.templates.calendar_month = scheduler.date.date_to_str("%M, %Y");
@@ -434,30 +434,31 @@ const calendar = scheduler.renderCalendar({..});
 
 ![mini_calendar_custom_template](/img/mini_calendar_custom_template.png)
 
-### CSS-классы
-Чтобы изменить внешний вид дней в мини-календаре (выбор дате), вы можете переопределить следующие CSS-классы:
+
+### CSS‑классы
+Чтобы настроить внешний вид дней в мини-календаре (выборе даты), можно переопределить следующие CSS‑классы:
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">
   <thead>
-  <th>CSS class</th>
+  <th>CSS класс</th>
   <th>Применяется к</th>
   </thead>
   <tbody>
   <tr>
-  <td>.dhx_cal_container.dhx_mini_calendar .dhx_month_head</td>
-  <td>ячейка дня</td>
+  <td style="width:490px;text-align:left;font-weight: bold;">.dhx_cal_container.dhx_mini_calendar .dhx_month_head</td>
+  <td>ячейке дня</td>
   </tr>
   <tr>
-  <td>.dhx_cal_container.dhx_mini_calendar .dhx_month_head.dhx_year_event</td>
-  <td>ячейка дня с назначенным событием(ями)</td>
+  <td style="text-align:left;font-weight: bold;">.dhx_cal_container.dhx_mini_calendar .dhx_month_head.dhx_year_event</td>
+  <td>ячейке дня с назначенным событием(ями)</td>
   </tr>
   <tr>
-  <td>.dhx_cal_container.dhx_mini_calendar .dhx_now .dhx_month_head</td>
-  <td>ячейка дня с текущей датой</td>
+  <td style="text-align:left;font-weight: bold;">.dhx_cal_container.dhx_mini_calendar .dhx_now .dhx_month_head</td>
+  <td>ячейке дня с текущей датой</td>
   </tr>
   <tr>
-  <td>.dhx_cal_container.dhx_mini_calendar .dhx_calendar_click</td>
-  <td>ячейка дня с текущей активной датой</td>
+  <td style="text-align:left;font-weight: bold;">.dhx_cal_container.dhx_mini_calendar .dhx_calendar_click</td>
+  <td>ячейке дня с выбранной активной датой</td>
   </tr>
   </tbody>
 </table>
@@ -475,8 +476,9 @@ const calendar = scheduler.renderCalendar({..});
 
 ![mini_calendar_custom_css](/img/mini_calendar_custom_css.png)
 
-### Выделение дней с помощью метода markCalendar()
-Чтобы назначить определённый CSS-класс дню, вы можете использовать метод [markCalendar](api/method/markcalendar.md):
+
+### Пометка дней с помощью метода markCalendar()
+Чтобы присвоить дню пользовательский CSS‑класс, можно использовать метод [markCalendar](api/method/markcalendar.md):
 
 ~~~js
 <style>
@@ -493,13 +495,14 @@ const calendar = scheduler.renderCalendar({..});
 
 ![mini_calendar_custom_marking](/img/mini_calendar_custom_marking.png)
 
-## API {#api}
+
+## API
 
 <table class="webixdoc_links">
   <tbody>
   <tr>
   <td class="webixdoc_links0">[destroyCalendar](api/method/destroycalendar.md)</td>
-  <td>удаляет ранее созданный мини-календарь</td>
+  <td>удаляет ранее созданный мини‑календарь</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[isCalendarVisible](api/method/iscalendarvisible.md)</td>
@@ -507,30 +510,31 @@ const calendar = scheduler.renderCalendar({..});
   </tr>
   <tr>
   <td class="webixdoc_links0">[linkCalendar](api/method/linkcalendar.md)</td>
-  <td>обеспечивает обновление активной даты в мини-календаре при изменении активной даты в планировщике</td>
+  <td>'говорит' о смене активной даты в мини‑календаре каждый раз, когда изменяется активная дата в планировщике</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[markCalendar](api/method/markcalendar.md)</td>
-  <td>применяет CSS-класс к определённой дате</td>
+  <td>применяет CSS‑класс к указанной дате</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[renderCalendar](api/method/rendercalendar.md)</td>
-  <td>создаёт мини-календарь</td>
+  <td>создает мини‑календарь</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[unmarkCalendar](api/method/unmarkcalendar.md)</td>
-  <td>удаляет CSS-класс с определённой даты</td>
+  <td>удаляет CSS‑класс с указанной даты</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[updateCalendar](api/method/updatecalendar.md)</td>
-  <td>отображает указанную дату в мини-календаре</td>
+  <td>отображает указанную дату в мини‑календаре</td>
   </tr>
   </tbody>
 </table>
 
-## Обработка событий {#eventhandling}
 
-Мини-календарь поддерживает колбэки для типичных пользовательских действий, таких как смена видимого месяца, наведение курсора на дату и клик по дате. Эти обработчики можно задать в свойстве `events` объекта конфигурации:
+## Обработчики событий
+
+Мини‑календарь предоставляет обратные вызовы для распространённых действий пользователя, таких как изменение отображаемого месяца, наведение на дату и нажатие по датам. Эти обратные вызовы можно задать в свойстве `events` объекта конфигурации:
 
 ~~~js
 const dateToStr = (date) => date ? scheduler.templates.format_date(date) : null;

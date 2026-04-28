@@ -23,7 +23,7 @@ description: "设置视图头部显示的日期"
 
 ~~~jsx
 scheduler.templates.month_date = function(date){
-    var dateToStr_func = scheduler.date.date_to_str(scheduler.config.month_date);
+    const dateToStr_func = scheduler.date.date_to_str(scheduler.config.month_date);
     return  dateToStr_func(date);
 };
 ~~~

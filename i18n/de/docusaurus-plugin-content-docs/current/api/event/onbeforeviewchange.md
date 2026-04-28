@@ -1,40 +1,40 @@
----
-sidebar_label: "onBeforeViewChange"
-title: "onBeforeViewChange event"
-description: "Wird ausgelöst, kurz bevor der Benutzer von der aktuellen Ansicht zu einer anderen wechselt"
+--- 
+sidebar_label: onBeforeViewChange
+title: "onBeforeViewChange-Ereignis"
+description: "Wird ausgelöst, bevor der Benutzer die aktuelle Ansicht auf eine andere ändert"
 ---
 
 # onBeforeViewChange
 
 ### Description
 
-@short: Wird ausgelöst, kurz bevor der Benutzer von der aktuellen Ansicht zu einer anderen wechselt
+@short: Wird ausgelöst, bevor der Benutzer die aktuelle Ansicht auf eine andere ändert
 
-@signature: onBeforeViewChange: (old_mode: string, old_date: object, mode: string, date: object) =\> boolean
+@signature: onBeforeViewChange: (old_mode: string, old_date: Date, mode: string, date: Date) =\> boolean
 
 ### Parameters
 
 - `old_mode` - (required) *string* - die aktuell aktive Ansicht
-- `old_date` - (required) *object* - das aktuell im Fokus stehende Datum
-- `mode` - (required) *string* - die Ansicht, die aktiviert werden soll
-- `date` - (required) *object* - das neu ausgewählte Datum
+- `old_date` - (required) *Date* - das aktuell aktive Datum
+- `mode` - (required) *string* - die neue Ansicht
+- `date` - (required) *Date* - das neue Datum
 
 ### Returns
-- ` result` - (boolean) - gibt an, ob die Standardaktion des Events ausgeführt werden soll (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+- `result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (`true`) oder abgebrochen wird (`false`)
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onBeforeViewChange", function(old_mode,old_date,mode,date){
-    //Hier kann benutzerdefinierte Logik eingefügt werden
+scheduler.attachEvent("onBeforeViewChange", (old_mode, old_date, mode, date) => {
+    // any custom logic here
     return true;
 });
 ~~~
 
 ### Related samples
-- [Configuring the Map view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/23_map_view_timeframes.html)
+- [Konfigurieren der Map-Ansicht](https://docs.dhtmlx.com/scheduler/samples/03_extensions/23_map_view_timeframes.html)
 
 ### Details
 
-- Dieses Event kann durch Rückgabe von *false* blockiert werden, wodurch der Scheduler in der aktuellen Ansicht bleibt.
-- Es wird auch ausgelöst, wenn der Scheduler zum ersten Mal auf der Seite geladen wird; in diesem Fall sind **old_mode** und **old_date** undefiniert.
+- Das Event ist blockierbar. Gibt man `false` zurück, lässt der Scheduler die aktuelle Ansicht offen.
+- Das Event wird auch ausgelöst, wenn der Scheduler beim ersten Rendern der Seite initial gerendert wird. In diesem Fall sind die Parameter `old_mode` und `old_date` undefiniert.

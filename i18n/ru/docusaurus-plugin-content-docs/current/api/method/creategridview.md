@@ -1,22 +1,23 @@
----
-sidebar_label: "createGridView"
-title: "createGridView method"
-description: "настраивает Grid view внутри планировщика"
+--- 
+sidebar_label: createGridView 
+title: "createGridView метод" 
+description: "создает Grid view в планировщике" 
 ---
 
 # createGridView
 :::info
- Эта функция доступна только в PRO-версии. 
+ Эта функциональность доступна только в версии PRO. 
 :::
+
 ### Description
 
 @short: Настраивает Grid view внутри планировщика
 
-@signature: createGridView: (config: any) =\> void
+@signature: createGridView: (config: any) => void
 
 ### Parameters
 
-- `config` - (required) *object* - объект конфигурации для Grid view
+- `config` - (required) *object* - объект конфигурации Grid view
 
 ### Example
 
@@ -28,12 +29,12 @@ scheduler.createGridView({
         {id:"date",     label:'Author',     width:100},
         {id:"text",     label:'Votes',         width:200,    align:'left',    sort:'int'}
     ],
-    from:new  Date(2000, 00, 01),
-    to:new Date(2013, 00, 01)
+    from:new  Date(2025, 00, 01),
+    to:new Date(2027, 00, 01)
 });
 ~~~
 
-**Applicable views:** [Grid view](views/grid.md)
+**Доступные представления:** [Grid view](views/grid.md)
 
 ### Related samples
 - [Grid view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/27_grid_view.html)
@@ -44,47 +45,47 @@ scheduler.createGridView({
  Для использования этого метода необходимо активировать плагин [grid_view](guides/extensions-list.md#gridview). 
 :::
 
-Объект конфигурации Grid view поддерживает следующие свойства:
+Объект конфигурации Grid view может иметь следующие свойства:
 <table class="webixdoc_links">
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>name</b></td>
-  <td>(<i>string</i>) идентификатор представления</td>
+  <td>(<i>string</i>) идентификатор вида</td>
   </tr>
   <tr>
-  <td class="webixdoc_links0"><b>fields</b></td>
-  <td>(<i>массив объектов</i>) определяет колонки грида.<br> Каждый объект в этом массиве представляет колонку и может содержать следующие свойства:<ul><li><b>id</b> - (<i>string</i>) id колонки, который должен совпадать с именем соответствующего свойства данных</li><li><b>label</b> - (<i>string</i>) текст заголовка колонки</li><li><b>width</b> - (<i>string</i>) ширина колонки. Использование '*' заставляет колонку расширяться, чтобы заполнить оставшееся пространство. Если несколько колонок используют '*', они делят оставшуюся ширину поровну.</li><li><b>align</b> - (<i>right, center или left</i>) горизонтальное выравнивание текста</li> <li><b>valign</b> - (<i>top, middle или bottom</i>) вертикальное выравнивание текста</li><li><b>template</b> - (<i>function</i>) пользовательская функция шаблона для данных ячейки</li><li><b>sort</b> - (<i>'int','date','str' или пользовательская функция</i>) включает сортировку по колонке (активируется кликом по заголовку) с предопределёнными типами или пользовательской функцией сортировки</li><li><b>css</b> - (<i>string</i>) CSS класс, применяемый к колонке</li></ul></td>
+  <td class="webixdoc_links0" style="vertical-align: top;"><b>fields</b></td>
+  <td>(<i>массив объектов</i>) конфигурирует столбцы сетки grid. Каждый объект в массиве задаёт один столбец и может иметь следующие свойства: <ul><li><b>id</b> - (<i>string</i>) идентификатор столбца. Должен соответствовать имени связанного свойства данных, из которого вы будете загружать данные</li><li><b>label</b> - (<i>string</i>) заголовок столбца</li><li><b>width</b> - (<i>string</i>) ширина столбца. Можно использовать '*' (звездочка) в качестве значения ширины, чтобы принудительно заполнить оставшуюся ширину для конкретного столбца. Если использовать '*' для нескольких столбцов, они будут делить оставшуюся ширину поровну.</li><li><b>align</b> - (<i>right, center или left</i>) горизонтальное выравнивание текста</li><li><b>valign</b> - (<i>top, middle или bottom</i>) вертикальное выравнивание текста</li><li><b>template</b> - (<i>function</i>) шаблон данных</li><li><b>sort</b> - (<i>'int','date','str' или пользовательская функция</i>) включает сортировку по столбцу (инициируется одним кликом по заголовку) и присваивает один из предопределённых типов сортировки или имя функции сортировки</li><li><b>css</b> - (<i>string</i>) имя CSS класса, который будет применён к столбцу</li></ul></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>select</b></td>
-  <td>(<i>boolean</i>) включает или отключает выделение в гриде (по умолчанию включено)</td>
+  <td>(<i>boolean</i>) включает/выключает выделение в сетке (по умолчанию выделение включено)</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>rowHeight</b></td>
-  <td>(<i>number</i>) задаёт высоту каждой строки в гриде</td>
+  <td>(<i>number</i>) высота строк в сетке</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>paging</b></td>
-  <td>(<i>boolean</i>) переключает отображение кнопок навигации ![navigation_buttons](/img/navigation_buttons.png) внутри грида [(подробнее)](views/grid.md)</td>
+  <td>(<i>boolean</i>) включает/выключает навигацию кнопками ![navigation_buttons](/img/navigation_buttons.png) в сетке [(details)](views/grid.md)</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>unit</b></td>
-  <td>(<i>minute, hour, day, week, month, year</i>) задаёт единицу времени для прокрутки. По умолчанию 'month'</td>
+  <td>(<i>minute, hour, day, week, month, year</i>) единица прокрутки времени. По умолчанию - 'month'</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>step</b></td>
-  <td>(<i>number</i>) количество единиц прокрутки за один шаг. По умолчанию 1.</td>
+  <td>(<i>number</i>) количество единиц прокручивания за один шаг. По умолчанию 1.</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>from</b></td>
-  <td>(<i>Date</i>) задаёт начальную дату диапазона планировщика</td>
+  <td>(<i>Date</i>) устанавливает левую границу допустимого диапазона дат. Используется для ограничения диапазона дат в планировщике</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>to</b></td>
-  <td>(<i>Date</i>) задаёт конечную дату диапазона планировщика</td>
+  <td>(<i>Date</i>) устанавливает правую границу допустимого диапазона дат. Используется для ограничения диапазона дат в планировщике</td>
   </tr>
   </tbody>
 </table>
 
 ### Related Guides
-- [Грид View](views/grid.md)
+- [Grid View](views/grid.md)

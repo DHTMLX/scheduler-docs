@@ -18,7 +18,7 @@ description: "converts scheduler's data into the JSON format"
 ### Example
 
 ~~~jsx
-var str = scheduler.toJSON();
+const str = scheduler.toJSON();
 ~~~
 
 ### Related samples

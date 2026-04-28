@@ -19,7 +19,7 @@ description: "Google Maps의 타입을 정의합니다"
 ~~~jsx
 scheduler.config.map_type = google.maps.MapTypeId.HYBRID;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"map");
+scheduler.init('scheduler_here',new Date(2027,05,11),"map");
 ~~~
 
 **Default value:** ROADMAP

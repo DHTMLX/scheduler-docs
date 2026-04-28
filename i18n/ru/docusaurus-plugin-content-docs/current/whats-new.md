@@ -5,8 +5,105 @@ sidebar_label: "Что нового"
 
 # Что нового
 
-Если вы обновляете Scheduler с более ранней версии, ознакомьтесь с [Migration From Older Versions](migration.md) для получения дополнительной информации.
+Если вы обновляете Scheduler с более старой версии, ознакомьтесь с [Миграция с более ранних версий](migration.md) для получения дополнительной информации.
 
+7.2.13
+-------------
+<span class='release_date'>31 марта 2026 г. Выпуск с исправлениями</span>
+
+### Исправления
+
+- Исправлено некорректное предупреждение пробной версии в [React Scheduler](integrations/react/overview.md)
+- Исправлена регрессия с удалёнными обновлениями в [React Scheduler](integrations/react/overview.md), когда редактирование события не применяло изменения к существующему событию
+
+
+7.2.12
+-------------
+<span class='release_date'>23 марта 2026 г. Выпуск с исправлениями</span>
+
+### Исправления
+
+- Исправлено падение на перезагрузке страницы в [React Scheduler](integrations/react/overview.md) при использовании нестандартных тем с включённым плагином [cookie](guides/extensions-list.md#cookie)
+- Исправлена регрессия, при которой URL `save` в свойстве `data` применялся некорректно в [React Scheduler](integrations/react/overview.md)
+- Исправлена проблема, когда редактирование не первого повторения [recurring event](guides/recurring-events.md) в режиме "This and following events" не применяло все изменения полей [Lightbox](guides/configuring-the-lightbox.md)
+- Исправлена проблема, когда динамическое изменение кнопок [Quick Info](guides/quick-info.md) в зависимости от условий события не обновляло попап должным образом
+- Исправлена проблема, когда изменение текста одного повторяющегося события в последующем повторении в режиме "This and following events" приводило к перезаписи
+- Исправлены стили переполнения попапа [Quick Info](guides/quick-info.md) для корректной обработки длинных описаний событий
+- Исправлена ошибка скрипта в [React Scheduler](integrations/react/overview.md), которая возникала при добавлении событий в существующий набор данных через функцию `useState`
+
+### Обновления
+
+- Добавлена возможность заменить [recurring event confirmation modal](guides/recurring-events.md#customconfirmationmodal) на настраиваемый диалог.
+- Добавлена возможность заменить [recurring event confirmation modal](integrations/react/overview.md#customizingtherecurrenceconfirmationmodal) в [React Scheduler](integrations/react/overview.md) через свойство modals.onRecurrenceConfirm
+
+7.2.11
+-------------
+<span class='release_date'>12 января 2026 г. Выпуск с исправлениями</span>
+
+### Исправления
+
+- Исправлена проблема, когда новые события дублировались в [React Scheduler](integrations/react/overview.md), если обработчик `save` не возвращал новый идентификатор
+- Исправлена проблема, когда в [Timeline view](views/timeline.md) не применялись шаблоны в [React Scheduler](integrations/react/overview.md)
+- Исправлено некорректное связывание событий с секциями в [Timeline view](views/timeline.md) при использовании фильтрации в [React Scheduler](integrations/react/overview.md)
+- Исправлена ошибка скрипта в [Agenda view](views/agenda.md) когда секция `date` не включена в [header configuration](guides/initialization.md#initializing-scheduler-via-header-config)
+- Исправлено некорректное отображение элементов заголовка во видах [Year](views/year.md) и [Agenda](views/agenda.md) при использовании скина [Material skin](guides/skins.md#material-skin)
+- Исправлена проблема разметки в [React Scheduler](integrations/react/overview.md) при переключении с начального вида на основе плагинов на стандартные виды
+- Исправлена проблема, когда призрачный блок события появлялся у всем-дневного [recurring event](guides/recurring-events.md) с длительностью ровно 24 часа
+- Исправлена проблема, когда [Lightbox](guides/configuring-the-lightbox.md) не открывался при создании нескольких событий перетаскиваанием на один и тот же день в [Month view](views/month.md) с активированным плагином `year_view`
+
+7.2.10
+-------------
+<span class='release_date'>10 декабря 2025 г. Выпуск с исправлениями</span>
+
+### Исправления
+
+- Исправлена проблема, когда события смещались влево при перетаскивании из последнего столбца в [multiday Units view](views/units.md#displaying-units-for-multiple-days)
+- Исправлена проблема, когда некоторые ячейки дат отсутствовали в конкретных месяцах в [Month view](views/month.md)
+- Исправлена проблема перетаскивания/создания на мобильных устройствах при использовании плагина [container_autoresize](guides/extensions-list.md#container-autoresize)
+- Исправлена проблема, которая препятствовала созданию события при двойном клике после горизонтального прокручивания в [Units view](views/units.md)
+
+7.2.9
+---------------
+<span class='release_date'>19 сентября 2025 г. Выпуск с исправлениями</span>
+
+### Исправления
+
+- Исправлены утечки памяти, возникавшие в [Timeline view](views/timeline.md)
+- Исправлена проблема совместимости между плагином [container_autoresize](guides/extensions-list.md#container-autoresize) и видом [Week Agenda](views/weekagenda.md)
+- Исправлена проблема, когда [onScaleDblClick](api/event/onscaledblclick.md) не срабатывал как ожидалось
+- Исправлено неконсистентное поведение [onEventSave](api/event/oneventsave.md) и [DataProcessor](api/method/createdataprocessor.md) при работе с [recurring events](guides/recurring-events.md)
+- Исправлена проблема [React Scheduler](integrations/react/overview.md), когда несколько экземпляров компонента вызывали дублирование шаблонов
+- Исправлено некорректное изменение изменений свойства `events` в [React Scheduler](integrations/react/overview.md)
+
+## 7.2.8
+
+<span class='release_date'>30 июля 2025 г. Выпуск с исправлениями</span>
+
+### Новое
+
+- Образцы для [React Scheduler](integrations/react/overview.md) добавлены в пакеты Commercial, Enterprise, Ultimate и Evaluation
+
+### Исправления
+
+- Исправлена проблема, когда перетаскивание [recurring event](guides/recurring-events.md) после удаления последующих повторений вело себя неправильно
+- Обеспечено отключение элемента управления “Repeat Event” в [Lightbox](guides/lightbox-editors.md) для изменённых экземпляров серии
+- Исправлено некорректное отображение устаревших меток для [recurring events](guides/recurring-events.md)
+- Исправлен конфликт между настройкой [max_month_events](api/config/max_month_events.md) и [multi-day events](views/month.md), который приводил к исчезновению или перекрытию событий в [Month view](views/month.md)
+- Обеспечено включение атрибута **Secure** у cookies, устанавливаемых Scheduler через HTTPS
+- Исправлена проблема, когда настройка [event_duration](api/config/event_duration.md) искажала разобранные данные событий
+- Исправлена проблема, когда настройка [time_step](api/config/time_step.md) искажала разобранные данные событий
+
+
+## 7.2.6
+
+<span class='release_date'>26 июня 2025 г. Выпуск с исправлениями</span>
+
+### Исправления
+
+- Исправлена проблема с секундной точностью во времени событий
+- Исправлено неверное поведение перетаскивания в [Timeline view](views/timeline.md) во время коротких месяцев
+- Исправлено неверное округление событий в [Timeline view](views/timeline.md)
+- Предотвращено добавление свойства `!nativeeditor_status` в аргументы [custom router](guides/server-integration.md#custom-routing) DataProcessor
 
 ## 7.2.5
 

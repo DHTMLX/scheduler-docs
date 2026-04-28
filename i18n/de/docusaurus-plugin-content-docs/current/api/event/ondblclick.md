@@ -1,34 +1,34 @@
 ---
-sidebar_label: "onDblClick"
-title: "onDblClick event"
-description: "wird ausgelöst, wenn der Benutzer auf ein Event doppelklickt"
+sidebar_label: onDblClick
+title: "onDblClick Event"
+description: "Wird ausgelöst, wenn der Benutzer ein Event doppelt anklickt"
 ---
 
 # onDblClick
 
 ### Description
 
-@short: Wird ausgelöst, wenn der Benutzer auf ein Event doppelklickt
+@short: Wird ausgelöst, wenn der Benutzer ein Event doppelt anklickt
 
 @signature: onDblClick: (id: string, e: Event) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string* - die ID des Events
-- `e` - (required) *Event* - ein natives Event-Objekt
+- `id` - (erforderlich) *string* - die Event-ID
+- `e` - (erforderlich) *Event* - ein natives Event-Objekt
 
 ### Returns
-- ` result` - (boolean) - gibt an, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder verhindert wird (<b>false</b>)
+- `result` - (boolean) - definiert, ob die Standardaktion des Events ausgelöst wird (`true`) oder abgebrochen wird (`false`)
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onDblClick", function (id, e){
-    //beliebige benutzerdefinierte Logik hier
+scheduler.attachEvent("onDblClick", (id, e) => {
+    // any custom logic here
     return true;
-})
+});
 ~~~
 
 ### Details
 
-Dieses Event kann blockiert werden. Die Rückgabe von *false* verhindert das Ausführen des Standardverhaltens.
+Das Event ist blockierbar. Geben Sie `false` zurück, um das Standardverhalten zu verhindern.

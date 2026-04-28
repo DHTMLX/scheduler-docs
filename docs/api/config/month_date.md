@@ -17,7 +17,7 @@ description: "sets the format for the header of the Month view"
 ~~~jsx
 scheduler.config.month_date = "%F, %Y";
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** "%F %Y"

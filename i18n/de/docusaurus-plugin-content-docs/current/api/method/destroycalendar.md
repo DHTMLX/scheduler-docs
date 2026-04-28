@@ -19,7 +19,7 @@ description: "entfernt einen zuvor erstellten Mini-Kalender"
 ### Example
 
 ~~~jsx
-var calendar = scheduler.renderCalendar(...);
+const calendar = scheduler.renderCalendar(...);
 ...
 scheduler.destroyCalendar(calendar);
 ~~~

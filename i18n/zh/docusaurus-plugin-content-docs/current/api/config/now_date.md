@@ -15,9 +15,9 @@ description: "设置 Limit 扩展中当前时间标记的日期（通过 - mark_
 ### Example
 
 ~~~jsx
-scheduler.config.now_date = new Date(2010, 7, 5);
+scheduler.config.now_date = new Date(2027, 7, 5);
 ...
-scheduler.init('scheduler_here', new Date(2010, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 ### Details

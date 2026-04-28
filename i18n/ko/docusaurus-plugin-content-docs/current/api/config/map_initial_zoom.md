@@ -17,7 +17,7 @@ description: "Map 뷰에서 지도의 시작 줌 레벨을 설정합니다."
 ~~~jsx
 scheduler.config.map_initial_zoom = 7;
 ...
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.init('scheduler_here', new Date(2027,05,11), "week");
 ~~~
 
 **Default value:** 1

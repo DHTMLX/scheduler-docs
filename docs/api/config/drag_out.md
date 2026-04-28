@@ -16,11 +16,11 @@ description: "restrict dragging events from the calling scheduler to any other s
 
 ~~~jsx
 scheduler.config.drag_out = false;//restrict dragging events from this scheduler 
-scheduler.init('scheduler_here',new Date(2009,05,30),"week");
+scheduler.init('scheduler_here',new Date(2027,05,30),"week");
 scheduler.load("./data/units.xml");
  
 scheduler2 = Scheduler.getSchedulerInstance();
-scheduler2.init('scheduler_here_2',new Date(2009,05,30),"week");
+scheduler2.init('scheduler_here_2',new Date(2027,05,30),"week");
 ~~~
 
 **Default value:** true

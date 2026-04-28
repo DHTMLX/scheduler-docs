@@ -17,7 +17,7 @@ description: "enables setting of the event's duration to the full day"
 ~~~jsx
 scheduler.config.full_day = true;
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 **Default value:** false

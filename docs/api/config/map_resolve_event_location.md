@@ -17,7 +17,7 @@ description: "activates attempts to resolve the event's location, if the databas
 ~~~jsx
 scheduler.config.map_resolve_event_location = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** true

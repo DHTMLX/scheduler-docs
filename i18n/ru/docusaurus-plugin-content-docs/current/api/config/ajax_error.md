@@ -1,14 +1,14 @@
 ---
-sidebar_label: "ajax_error"
-title: "ajax_error config"
-description: "определяет, как отображается стандартное уведомление об ошибке при сбое загрузки XML данных"
+sidebar_label: ajax_error
+title: "конфигурация ajax_error"
+description: "определяет, как отображать уведомление об ошибке по умолчанию в случае неудачной загрузки XML-данных"
 ---
 
 # ajax_error
 
 ### Description
 
-@short: Определяет, как отображается стандартное уведомление об ошибке при сбое загрузки XML данных
+@short: Определяет, как отображать уведомление об ошибке по умолчанию в случае неудачной загрузки XML-данных
 
 @signature: ajax_error: string | boolean
 
@@ -25,10 +25,10 @@ scheduler.config.ajax_error = "console";
 scheduler.init("scheduler_here");
 ~~~
 
-**Default value:** "alert"
+**Значение по умолчанию:** "alert"
 
 ### Details
 
-По умолчанию уведомление об ошибке (когда <code>scheduler.config.ajax_error = "alert"</code>) выглядит следующим образом:
+Уведомление об ошибке по умолчанию (то есть когда <code>scheduler.config.ajax_error = "alert"</code>) выглядит так: 
 
 ![ajax_error_property](/img/ajax_error_property.png)

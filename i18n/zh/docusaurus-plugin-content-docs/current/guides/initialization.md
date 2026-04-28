@@ -1,15 +1,15 @@
-﻿---
-title: "dhtmlxScheduler 在原生 JS/HTML 中的使用"
-sidebar_label: "dhtmlxScheduler 在原生 JS/HTML 中的使用"
+---
+title: "Plain JS/HTML 中的 dhtmlxScheduler"
+sidebar_label: "快速入门"
 ---
 
 import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 
-# dhtmlxScheduler 在原生 JS/HTML 中的使用
+# Plain JS/HTML 中的 dhtmlxScheduler
 
-在使用 dhtmlxScheduler 构建应用时，第一步是将 Scheduler 设置并显示在页面上。
+当你使用 dhtmlxScheduler 开发应用时，第一步就是初始化，简单来说，就是在页面上显示 Scheduler。
 
-本指南介绍如何使用原生 JS 和 HTML 初始化 dhtmlxScheduler。若需与前端框架集成，请参考以下指南:
+本指南介绍在纯 JavaScript 和 HTML 中初始化 dhtmlxScheduler。你也可以查看关于与前端框架集成的指南：
 
 <div className="framework-grid">
 
@@ -17,7 +17,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
     <FrameworkIcon name="react" className="framework-icon" />
     <div className="framework-title">React</div>
     <div className="framework-desc">
-      Use the ready-made <code>ReactScheduler</code> component with props and events.
+      使用带有 props 和事件的现成 <code>ReactScheduler</code> 组件。
     </div>
   </a>
 
@@ -25,7 +25,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
     <FrameworkIcon name="angular" className="framework-icon" />
     <div className="framework-title">Angular</div>
     <div className="framework-desc">
-      Integrate Scheduler into Angular projects using a thin wrapper.
+      通过一个薄包装器将 Scheduler 集成到 Angular 项目中。
     </div>
   </a>
 
@@ -33,7 +33,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
     <FrameworkIcon name="vue" className="framework-icon" />
     <div className="framework-title">Vue</div>
     <div className="framework-desc">
-      Use Scheduler inside Vue apps with a small wrapper and reactive configuration.
+      在 Vue 应用中使用 Scheduler，配合一个小包装和响应式配置。
     </div>
   </a>
 
@@ -41,7 +41,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
     <FrameworkIcon name="svelte" className="framework-icon" />
     <div className="framework-title">Svelte</div>
     <div className="framework-desc">
-      Embed Scheduler in Svelte with a simple component that binds config and events.
+      使用一个简单的组件将 Scheduler 嵌入到 Svelte，并绑定配置和事件。
     </div>
   </a>
 
@@ -49,24 +49,25 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
     <FrameworkIcon name="salesforce" className="framework-icon" />
     <div className="framework-title">Salesforce</div>
     <div className="framework-desc">
-      Use Scheduler in Salesforce Lightning Web Components and connect it to org data.
+      在 Salesforce Lightning Web Components 中使用 Scheduler，并将其连接到组织数据。
     </div>
   </a>
 
 </div>
 
-在页面上初始化 Scheduler 有两种方式:
 
-- [通过 Scheduler 的标记（markup）方式初始化](#initializing-scheduler-via-markup)
-- [通过 header 配置属性初始化](#initializing-scheduler-via-header-config)
+在页面上初始化 Scheduler 有两种方式：
 
-## 通过标记方式初始化 Scheduler {#initializing-scheduler-via-markup}
+- [通过 scheduler 的标记](#initializing-scheduler-via-markup)
+- [通过 header 配置属性](#initializing-scheduler-via-header-config)
 
-要通过标记（markup）方式在页面上设置一个基础的 Scheduler，请按照以下 3 个步骤操作:
+## 通过标记初始化 Scheduler
 
-1. 在页面中引入 [dhtmlxScheduler 代码文件](#required-code-files)。
-2. 在页面中添加一个 DIV 容器，并为其元素添加必要的子 DIV。
-3. 使用 [init](api/method/init.md) 方法在创建的容器中初始化 dhtmlxScheduler。该方法接收一个 HTML 容器（或其 id），Scheduler 将在此容器中渲染。
+通过标记在页面上显示一个基本的 Scheduler，请按照 3 个步骤：
+
+1. 在页面中包含 [dhtmlxScheduler 代码文件](#required-code-files)。
+2. 在页面创建一个 DIV 容器，并为其元素定义相关的 DIV 容器。
+3. 使用 [init](api/method/init.md) 方法在新创建的容器中初始化 dhtmlxScheduler。该方法的参数是 Scheduler 将要显示的 HTML 容器（或其 id）。
 
 ~~~html
 <!DOCTYPE html>
@@ -91,7 +92,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
         <div class="dhx_cal_header"></div>
         <div class="dhx_cal_data"></div>       
    </div>
-   <script type="text/javascript">
+   <script>
      scheduler.init("scheduler_here"); /*!*/
    </script>
 </body>
@@ -104,16 +105,16 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 [Basic initialization](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/01_basic_init.html)
 
 
-## 通过 header 配置初始化 Scheduler {#initializing-scheduler-via-header-config}
+## 通过 header 配置初始化 Scheduler
 
-如果你希望让 scheduler [自适应响应式](guides/initialization.md#making-scheduler-responsive)，推荐使用此方法。
+你需要通过这种方式初始化 scheduler 以实现 [响应式](guides/initialization.md#making-scheduler-responsive)。
 
-要在页面上设置一个基础的 Scheduler，请按照以下步骤操作:
+要在页面上显示一个基本的 Scheduler，请执行以下步骤：
 
-1. 在页面中引入 [dhtmlxScheduler 代码文件](#required-code-files)。
-2. 在页面中添加一个 DIV 容器。
-3. 在 [header](api/config/header.md) 配置对象中定义 scheduler 的结构。
-4. 使用 [init](api/method/init.md) 方法在容器中初始化 dhtmlxScheduler，将容器（或其 id）作为参数传递。
+1. 在页面中包含 [dhtmlxScheduler 代码文件](#required-code-files)。
+2. 创建一个 DIV 容器。
+3. 在 [header](api/config/header.md) 配置对象中指定调度器的结构。 
+4. 使用 [init](api/method/init.md) 方法在新创建的容器中初始化 dhtmlxScheduler。该方法的参数是 Scheduler 将要显示的 HTML 容器（或其 id）。
 
 ~~~html
 <!DOCTYPE html>
@@ -139,7 +140,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
         "today",
         "next"
     ];
-    scheduler.init('scheduler_here',new Date(2020,0,1),"week"); /*!*/
+    scheduler.init('scheduler_here',new Date(2027,0,1),"week"); /*!*/
 </script>
 </html>
 ~~~
@@ -148,34 +149,33 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 [Responsive scheduler](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/13_touch_ui.html)
 
  
-## 所需代码文件 {#required-code-files}
+## 需要的代码文件
 
-需要引入的文件有:
+所需的代码文件是：
 
 - *dhtmlxscheduler.js*
-- *dhtmlxscheduler.css* （你也可以在 [스킨(Skins)](guides/skins.md) 中查看可用的皮肤）
+- *dhtmlxscheduler.css* (你也可以 [探索可用的皮肤](guides/skins.md))
 
 ~~~html
 <script src="../scheduler/dhtmlxscheduler.js"></script>
 <link rel="stylesheet" href="../scheduler/dhtmlxscheduler.css" type="text/css">
 ~~~
 
-以下是 dhtmlxScheduler 包结构的简要说明，帮助你找到这些文件:
+让我们快速了解 dhtmlxScheduler 包的结构，看看文件在哪里：
 
-- <b>sources</b> - 包含库的源代码文件。未压缩，便于阅读，主要用于调试。
+- <b>sources</b> - 库的源代码文件。文件未经过压缩，易于阅读。该包主要用于组件调试。
 :::note
-请注意，Scheduler 库的 **试用版** 不包含 **sources** 文件夹。
+请注意，**Trial** 版本的 Scheduler 库不包含 **sources** 文件夹。
 :::
-- <b>samples</b> - 包含代码示例。
-- <b>codebase</b> - 包含库的压缩代码文件。体积更小，适合生产环境使用。<b>在你的项目中应使用该文件夹下的文件。</b>
+- <b>samples</b> - 代码示例。
+- <b>codebase</b> - 库的打包代码文件。这些文件体积更小，适用于生产环境。 <b>在你的应用中你需要使用这个文件夹中的文件。</b>
 
 
-## Scheduler 尺寸设置
+## Scheduler 尺寸
 
-Scheduler 会填满其容器元素的整个尺寸（上述示例中的 *scheduler_here* div），但不会自动扩大容器本身。 
-这意味着如果你没有为容器设置高度，或者高度为 0，scheduler 也会有 0 高度，从而不可见。
+Scheduler 会占据其容器元素的全部尺寸（上面的示例中的 *scheduler_here* div），而不会自动扩展。也就是说，如果你不指定容器高度，或将其设为 0，Scheduler 也将具有零高度，无法显示。
 
-在我们的示例中，通常通过为 document body 和 scheduler 容器都设置 100% 的宽高，使 scheduler 占满整个屏幕:
+在我们的示例中，我们通常通过将文档主体和 Scheduler 容器元素都设置为 100% 宽高来实现全屏 Scheduler：
 
 ~~~html
 <style>
@@ -188,10 +188,10 @@ Scheduler 会填满其容器元素的整个尺寸（上述示例中的 *schedule
 </style>
 </head>
 <body>
- <div id="scheduler_here" class="dhx_cal_container">
+ <div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:100%;">
 ~~~
 
-如果 *scheduler_here* 元素被放置在一个默认尺寸设置的 div 内，可能会出现问题:
+如果把 *scheduler_here* 元素放在具有默认尺寸的 div 中，这很容易出错，导致 Scheduler 显示不正确：
 
 ~~~html
 <style>
@@ -205,36 +205,36 @@ Scheduler 会填满其容器元素的整个尺寸（上述示例中的 *schedule
 </head>
 <body>
  <div class="outer_container"> /*!*/
-   <div id="scheduler_here" class="dhx_cal_container">
+   <div id="scheduler_here" class="dhx_cal_container" style="width:100%;height:100%;">
 ~~~
 
-在这种情况下，scheduler 无法正确显示，因为 "scheduler_here" 设置为其父元素的 100%，但父元素没有定义高度。
+在这种情况下，Scheduler 不会正确显示，因为 "scheduler_here" 的大小设为其父元素的 100%，而其父元素的大小未设定。
 
-如果你为 *.dhx_cal_container* 元素使用相对尺寸（百分比），请确保其父元素也设置了高度。否则计算出的高度可能为 0，scheduler 将无法显示。
+如果你对 *.dhx_cal_container* 使用相对单位（%）的大小，请确保它的父元素也有一定的高度设置。否则，结果高度可能为零，Scheduler 将不会显示。
 
-另外，你也可以为主 scheduler div 使用不同的单位。以下示例无论外部元素样式如何，都能获得预期尺寸:
+或者，你可以为主 Scheduler div 使用不同的单位。以下元素将无论外部元素的样式如何，均具有预期的大小：
 
 ~~~html
-<div id="scheduler_here" class="dhx_cal_container">
+<div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:100vh;">
 ~~~
 
-或:
+或：
 
 ~~~html
-<div id="scheduler_here" class="dhx_cal_container">
+<div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:800px;">
 ~~~
 
-### Scheduler 自动调整大小 {#container-autoresizing}
+### Scheduler 自适应
 
-**container_autoresize** 扩展改变了 scheduler 默认的尺寸调整行为。通常情况下，dhtmlxScheduler 会根据其容器尺寸调整自身，并在固定容器大小内通过内部滚动条访问所有数据。
+dhtmlxScheduler 的 **container_autoresize** 扩展会改变调度器的默认大小调整行为。默认情况下，dhtmlxScheduler 会自动调整以适应其容器的大小，并使用内部滚动条在固定大小的容器内显示所有数据。
 
-启用 **container_autoresize** 扩展后，Scheduler 会根据内容动态调整自身尺寸。这意味着它会在高度和/或宽度上扩展，以显示所有事件和数据，无需内部滚动条。
+开启 **container_autoresize** 扩展后， Scheduler 会动态调整自身大小以适应其内容，这意味着 Scheduler 的高度和/或宽度会增大以显示所有事件和数据，而无需内部滚动条。
 
-这样可以确保所有内容都可见，无需在 scheduler 内部滚动，适用于需要完整展示 scheduler 内容的场景。
+这种行为确保在调度器内部的内容在可见范围内全部显示，适用于需要完整可见性而无需手动滚动的用例。
 
 #### 使用方法
 
-要启用 **container_autoresize** 扩展，在 scheduler 设置中如下添加:
+要启用 **container_autoresize** 扩展，请在你的 Scheduler 设置中按如下方式包含该扩展：
 
 ~~~js
 scheduler.plugins({
@@ -243,18 +243,18 @@ scheduler.plugins({
 ~~~
 
 
-[Autoresizing the scheduler container](https://docs.dhtmlx.com/scheduler/samples/03_extensions/28_container_autoresize.html)
+[容器自适应调度器](https://docs.dhtmlx.com/scheduler/samples/03_extensions/28_container_autoresize.html)
 
 
-这个简单的设置即可启用 **container_autoresize** 功能，使 Scheduler 根据内容自动调整自身尺寸。
+这一简单的配置更改将启用 **container_autoresize** 行为，使 Scheduler 能基于其包含的内容调整大小。
 
-#### 使用 container_autoresize 处理表头
+#### 使用 container_autoresize 时处理带有头部的情况
 
-当启用 **container_autoresize** 扩展时，Scheduler 会自动调整大小以适应其所有内容。这有时会导致 Scheduler 超出屏幕范围，从而在页面或外部容器上出现滚动条。
+当启用 **container_autoresize** 扩展时，Scheduler 会调整大小以适应所有内容。这可能导致 Scheduler 超出屏幕大小，从而出现外部容器或页面滚动条。
 
-在这种模式下，滚动页面时，导航栏和时间表头也会一起移动，因此在向下滚动时它们不会保持可见。虽然这种行为通常没有问题，但在某些情况下，保持表头固定更加理想。可以通过额外的样式和脚本实现这一点。
+在此模式下，滚动页面也会滚动导航和时间头部，滚动页面时它们将不再可见。虽然这通常是预期行为，但在某些场景下你可能希望头部保持固定。这可以通过额外的代码和样式来实现。
 
-要将表头固定，可以结合使用 CSS 的 sticky 定位和一些额外样式，例如:
+要让头部保持固定，可以使用粘性定位并添加一些样式，例如：
 
 ~~~js
 <style>
@@ -274,16 +274,16 @@ scheduler.plugins({
       top:0;
   }
   .dhx_cal_header{
-      /* top 坐标由 JS 分配 */
+      /* top 坐标由 JS 指定 */
       margin-left: -1px;
       box-shadow: 0 1px 0px 0px var(--dhx-scheduler-base-colors-border);
   }
 </style>
 ~~~
 
-此外，还需要一些 JavaScript 来为 sticky 时间刻度设置正确的 top 值，使其正好位于导航面板下方。
+此外，你需要一些 JavaScript 代码来确保粘性时间刻度的正确顶部位置，使其正好位于导航面板下方。
 
-由于导航面板的高度可能因样式和内容不同而变化，因此应动态计算其高度，并将其作为 header 的 top 值应用，如下所示:
+由于导航面板是可扩展的，并且可以根据其他样式和内容调整其高度，因此你需要动态计算其高度并将其应用为头部的顶部坐标，具体如下：
 
 ~~~js
 scheduler.attachEvent("onViewChange", function(){
@@ -295,33 +295,33 @@ scheduler.attachEvent("onViewChange", function(){
 });
 ~~~
 
-你可以在下面的代码片段中查看完整演示:
+在下面的片段中查看完整演示：
 
-**Related sample** [Container autoresize and sticky header](https://snippet.dhtmlx.com/syo8wm9s)
+**相关示例** [Container autoresize and sticky header](https://snippet.dhtmlx.com/syo8wm9s)
 
-## 使 Scheduler 响应式 {#making-scheduler-responsive}
+## 让 Scheduler 响应式
 
-当通过 [header 配置属性](#initializing-scheduler-via-header-config) 初始化 Scheduler 时，可以选择适合客户端屏幕尺寸的表头布局。同时还会应用某些样式，使元素和字体能够很好地适配较小的屏幕。
+当你通过 [header 配置属性](#initializing-scheduler-via-header-config) 初始化 Scheduler 时，你将能够选择适合客户端屏幕尺寸的头部结构。它 também 会应用某些样式，使小屏设备上的元素与字体尺寸具有响应性。
 
-更多信息请参阅专门的文章:[Mobile Responsive Scheduler](guides/touch-support.md)。
+你可以在单独的文章中找到更多细节：[Mobile Responsive Scheduler](guides/touch-support.md).
 
-## 在 ES6/7 和 TypeScript 应用中导入文件 {#import-files-into-es67-and-typescript-apps}
+## 将文件导入 ES6/7 与 TypeScript 应用
 
-使用以下命令导入文件:
+使用以下命令导入文件：
 
 ~~~js
 import { scheduler } from 'dhtmlx-scheduler';
 ~~~
 
-对于 Commercial、Enterprise 或 Ultimate 版本，导入方式如下:
+对于 Commercial、Enterprise 或 Ultimate 版本，命令如下所示：
 
 ~~~js
 import { scheduler, Scheduler } from 'dhtmlx-scheduler';
 ~~~
 
-## 在 Vite 中使用 Scheduler
+## 与 Vite 一起使用
 
-如果你的项目使用 Vite，请在 **vite.config.js** 文件中添加以下设置，确保 Scheduler 能正确集成到应用中:
+如果你在项目中使用 Vite，以下设置是为了确保 Scheduler 正确被包含在应用中所必需的，在 **vite.config.js** 文件中添加：
 
 ~~~js title="vite.config.js"
 optimizeDeps: {
@@ -331,37 +331,38 @@ optimizeDeps: {
 }
 ~~~
 
-在 RequireJS 应用中引入文件
+
+将文件包含在基于 RequireJS 的应用中
 ------------------------------------------- 
 
-要在 RequireJS 应用中添加 dhtmlxScheduler 文件，请参考以下示例:
+要在 RequireJS 基础的应用中包含 dhtmlxScheduler 文件，请遵循下面示例中的逻辑：
 
 ~~~js
 requirejs(["codebase/dhtmlxscheduler"], function(dhx){
-    var scheduler = dhx.scheduler;
-    var Scheduler = dhx.Scheduler;// 适用于 Enterprise 版本
+    const scheduler = dhx.scheduler;
+    const Scheduler = dhx.Scheduler;// for Enterprise builds
  
     scheduler.init('scheduler_here',new Date(),"week");
     scheduler.parse([
         {
-            id: 1, text: "Event 1", start_date: "2022-07-15 09:00", 
-            end_date: "2022-07-15 10:00"
+            id: 1, text: "Event 1", start_date: "2027-07-15 09:00", 
+            end_date: "2027-07-15 10:00"
         },
         {
-            id: 2, text: "Event 2", start_date: "2022-07-15 10:00", 
-            end_date: "2022-07-15 11:00"
+            id: 2, text: "Event 2", start_date: "2027-07-15 10:00", 
+            end_date: "2027-07-15 11:00"
         }
     ]);
 });
 ~~~
 
-dhtmlxScheduler 库返回一个对象，包含 `scheduler` 和 `Scheduler`（适用于 Commercial、Enterprise 或 Ultimate 版本）--它们分别对应于 [此处](guides/multiple-per-page.md) 描述的 *scheduler* 和 *Scheduler* 对象。
+dhtmlxScheduler 库将返回一个包含字段 `scheduler` 和 `Scheduler` 的对象（在 Commercial、Enterprise 或 Ultimate 版本中）——描述的 *scheduler* 与 *Scheduler* 对象请参见 [此处](guides/multiple-per-page.md)。
 
 :::note
-在 RequireJS 中使用 Scheduler 及自定义扩展时，请确保为 RequireJS 指定 `shim` 配置，并正确声明扩展对 Scheduler 的依赖。
+在 RequireJS 中使用 Scheduler 与自定义扩展时，你应为 RequireJS 指定 `shim` 配置，并直接在其中设置扩展对 Scheduler 的依赖。
 :::
 
-下面的示例展示了如何正确设置自定义扩展文件 *custom_tooltip_plugin.js*:
+下面的示例演示了如何正确设置自定义扩展文件 *custom_tooltip_plugin.js*：
 
 ~~~js
 requirejs.config({
@@ -376,25 +377,24 @@ requirejs.config({
  
 requirejs(["dhtmlxscheduler"], 
 function (dhx) {
-    var scheduler = dhx.scheduler;
+    const scheduler = dhx.scheduler;
  
     scheduler.init('scheduler_here',new Date(),"week");
     scheduler.parse([
         {
-            id: 1, text: "Event 1", start_date: "2022-07-15 09:00", 
-            end_date: "2022-07-15 10:00"
+            id: 1, text: "Event 1", start_date: "2027-07-15 09:00", 
+            end_date: "2027-07-15 10:00"
         },
         {
-            id: 2, text: "Event 2", start_date: "2022-07-15 10:00", 
-            end_date: "2022-07-15 11:00"
+            id: 2, text: "Event 2", start_date: "2027-07-15 10:00", 
+            end_date: "2027-07-15 11:00"
         }
     ]);
 });
 ~~~
 
-确保包内任何文件的模块名指定为 *包的 codebase 文件夹内的相对路径* 加上 *文件名*，例如:
+请检查包内任意文件的模块名是否按照“代码库的 codebase 文件夹内的相对路径”加“文件名”的形式指定，例如：
 
-**核心库:**
+**core library:**
 
 - "dhtmlxscheduler": "./vendor/dhtmlxscheduler/dhtmlxscheduler"
-

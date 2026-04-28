@@ -17,7 +17,7 @@ description: "允许在通过拖动或双击创建新事件时使用扩展表单
 ~~~jsx
 scheduler.config.details_on_create=true;
 ...
-scheduler.init('scheduler_here', new Date(2013,0,10), "week");
+scheduler.init('scheduler_here', new Date(2027,0,10), "week");
 ~~~
 
 **Default value:** true

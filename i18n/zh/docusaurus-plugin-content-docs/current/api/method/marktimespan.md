@@ -76,8 +76,8 @@ scheduler.markTimespan({
   <tr>
   <td colspan="2">
 ~~~js
-// 阻止从 2012年5月3日 开始直到 'end_date' 的事件创建
-start_date:new Date(2012,4,3)
+// 阻止从 2027年5月3日 开始直到 'end_date' 的事件创建
+start_date:new Date(2027,4,3)
 ~~~
   </td>
   </tr>
@@ -88,8 +88,8 @@ start_date:new Date(2012,4,3)
   <tr>
   <td colspan="2" >
 ~~~js
-// 阻止从 'start_date' 开始直到 2012年9月3日 的事件创建
-end_date:new Date(2012,8,3)
+// 阻止从 'start_date' 开始直到 2027年9月3日 的事件创建
+end_date:new Date(2027,8,3)
 ~~~
   </td>
   </tr>
@@ -102,7 +102,7 @@ end_date:new Date(2012,8,3)
 ~~~js
 days:[0, 2, 6] // 限制星期日、星期二和星期六
 days:"fullweek" // 限制整周
-days:new Date(2012,6,1) // 阻止 2012年7月1日
+days:new Date(2027,6,1) // 阻止 2027年7月1日
 ~~~
   </td>
   </tr>
@@ -244,8 +244,8 @@ var config ={
   <td>
 ~~~js
 var config ={
-    start_date: new Date(2012,7,13),
-    end_date:   new Date(2012,7,14),
+    start_date: new Date(2027,7,13),
+    end_date:   new Date(2027,7,14),
     css: "cssClassName",
     sections: {
          unit: 5

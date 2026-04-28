@@ -20,7 +20,7 @@ description: "'says' to change the active date in the mini calendar each time, t
 ### Example
 
 ~~~jsx
-var calendar = scheduler.renderCalendar({
+const calendar = scheduler.renderCalendar({
     container:"cal_here", 
     navigation:true,
     handler:function(date){

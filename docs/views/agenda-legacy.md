@@ -75,11 +75,11 @@ The first label is commonly specified while adding the view tab to the scheduler
 To set the range of displayable dates, use the [agenda_end](api/config/agenda_end.md) and [agenda_start](api/config/agenda_start.md) properties:
 
 ~~~js
-//to display dates from 1st June 2019
-scheduler.config.agenda_start = new Date(2019, 5, 1); 
+//to display dates from 1st June 2026
+scheduler.config.agenda_start = new Date(2026, 5, 1); 
 
-//to display dates until 1st June,2020
-scheduler.config.agenda_end = new Date(2020,5,1);   
+//to display dates until 1st June,2027
+scheduler.config.agenda_end = new Date(2027,5,1);   
 ~~~
 
 ## Enabling Next/Previous/Today buttons 

@@ -76,8 +76,8 @@ Das Konfigurationsobjekt unterstützt die folgenden Eigenschaften:
   <tr>
   <td colspan="2">
 ~~~js
-//verhindert das Erstellen von Events ab dem 3. Mai 2012 bis 'end_date' 
-start_date:new Date(2012,4,3)
+//verhindert das Erstellen von Events ab dem 3. Mai 2027 bis 'end_date' 
+start_date:new Date(2027,4,3)
 ~~~
   </td>
   </tr>
@@ -88,8 +88,8 @@ start_date:new Date(2012,4,3)
   <tr>
   <td colspan="2" >
 ~~~js
-//verhindert das Erstellen von Events vom 'start_date' bis zum 3. September 2012
-end_date:new Date(2012,8,3)
+//verhindert das Erstellen von Events vom 'start_date' bis zum 3. September 2027
+end_date:new Date(2027,8,3)
 ~~~
   </td>
   </tr>
@@ -102,7 +102,7 @@ end_date:new Date(2012,8,3)
 ~~~js
 days:[0, 2, 6] // begrenzt Sonntag, Dienstag und Samstag
 days:"fullweek" // begrenzt die ganze Woche
-days:new Date(2012,6,1) // blockiert den 1. Juli 2012
+days:new Date(2027,6,1) // blockiert den 1. Juli 2027
 ~~~
   </td>
   </tr>
@@ -208,7 +208,7 @@ Es gibt zwei gültige Eigenschaftensets, die verwendet werden können:
   <td><ul><li>`days`</li><li>`zones`</li><li>`invert_zones`</li><li>`css`</li><li>`html`</li><li>`type`</li><li>`sections`</li></ul></td>
   <td>
 ~~~js
-var config ={
+const config ={
     days:  1, 
     zones: [9*60, 15*60], 
     css: "cssClassName", 
@@ -226,9 +226,9 @@ var config ={
 <td>
 
 ~~~js
-var config ={
-    start_date: new Date(2012,7,13),
-    end_date:   new Date(2012,7,14),
+const config ={
+    start_date: new Date(2027,7,13),
+    end_date:   new Date(2027,7,14),
     css: "cssClassName",
     sections: {
          unit: 5

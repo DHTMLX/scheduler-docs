@@ -1,25 +1,25 @@
 ---
-sidebar_label: "onExternalDragIn"
-title: "onExternalDragIn event"
-description: "срабатывает, когда данные перетаскиваются в scheduler из внешнего компонента DHTMLX (требуется включение расширения dnd)"
+sidebar_label: onExternalDragIn
+title: "onExternalDragIn событие"
+description: "выполняется, когда данные перетаскиваются в планировщик из внешнего компонента DHTMLX (только с включенным расширением dnd)"
 ---
 
 # onExternalDragIn
 
 ### Description
 
-@short: Срабатывает, когда данные перетаскиваются в scheduler из внешнего компонента DHTMLX (требуется включение расширения dnd)
+@short: Вызывает событие, когда данные перетаскиваются в планировщик из внешнего компонента DHTMLX (только с включенным расширением dnd)
 
 @signature: onExternalDragIn: (id: string, source: object, e: Event) =\> boolean;
 
 ### Parameters
 
-- `id` - (required) *string* - ID перетаскиваемого элемента данных
-- `source` - (required) *object* - исходный HTML-элемент, который был перетащен в scheduler
-- `e` - (required) *Event* - родительский объект события
+- `id` - (required) *string* - идентификатор элемента данных
+- `source` - (required) *object* - исходный HTML-элемент, который был перетащён в планировщик
+- `e` - (required) *Event* - объект нативного события
 
 ### Returns
-- ` result` - (boolean) - указывает, будет ли выполнено действие по умолчанию для события (<b>true</b>) или оно будет отменено (<b>false</b>)
+- `result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
@@ -31,16 +31,16 @@ scheduler.attachEvent("onExternalDragIn", function (id, source, e){
 ~~~
 
 ### Related samples
-- 10_integration/02_dhtmlxTree_outer_drag.html
+- [Integration with dhtmlxTree](https://docs.dhtmlx.com/scheduler/samples/10_integration/02_dhtmlxtree_outer_drag.html)
 
 ### Details
 
 :::note
- Это событие требует включения плагина [outerdrag](guides/extensions-list.md#outerdrag). 
+ The event requires the [outerdrag](guides/extensions-list.md#outerdrag) plugin to be activated. 
 :::
 
-- Это событие позволяет настраивать вновь создаваемые события, которые возникают в результате действия drag-in.
-- Событие можно заблокировать, вернув *false*, что предотвратит создание нового события во время перетаскивания.
+- Это событие можно использовать для настройки создаваемых заново событий (которые возникают в результате операций drag-in).
+- Это событие можно заблокировать. Возвращение *false* приведёт к тому, что перетаскивание не создаст новое событие.
 
 ### Related API
 - [onBeforeExternalDragIn](api/event/onbeforeexternaldragin.md)

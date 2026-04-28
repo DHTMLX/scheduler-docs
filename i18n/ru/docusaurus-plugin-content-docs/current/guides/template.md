@@ -5,7 +5,7 @@ sidebar_label: "Template"
 
 # Template 
 
-Контейнер, который содержит некоторый HTML-контент внутри.
+Контейнер с некоторым HTML‑контентом внутри.
 
 ![template_editor](/img/template_editor.png)
 
@@ -19,18 +19,17 @@ scheduler.config.lightbox.sections = [
     { name:"time", height:72, type:"time", map_to:"auto"}
 ];
 scheduler.attachEvent("onEventCreated", function(id, e) {
-    var ev = scheduler.getEvent(id);
+    const ev = scheduler.getEvent(id);
     ev.my_template = "<b>Holder:</b>"+ ev.holder+"
 
 <b>Room:</b>"+ ev.room;
 });
 ~~~
 
-
 ## Инициализация
 
-Чтобы включить элемент Template в lightbox, выполните следующие шаги:
-1. Добавьте секцию в конфигурацию lightbox:
+Чтобы добавить управление Template в lightbox, выполните следующие шаги:
+1. <b>Добавьте секцию в конфигурацию lightbox:</b>
 ~~~js
 scheduler.config.lightbox.sections = [
     { name:"text", ... },
@@ -38,14 +37,14 @@ scheduler.config.lightbox.sections = [
     { name:"time", ...}
 ];
 ~~~
-2. Задайте метку для секции:
+2. <b>Установите метку для секции:</b>
 ~~~js
 scheduler.locale.labels.section_template = 'Details';
 ~~~
-3. Передайте содержимое для элемента управления через событие, например, событие @[onBeforeLightbox](api/event/onbeforelightbox.md):
+3. <b>Установите содержимое управления с помощью какого-либо события, например события [onBeforeLightbox](api/event/onbeforelightbox.md):</b>
 ~~~js
 scheduler.attachEvent("onBeforeLightbox", function(id) {
-    var ev = scheduler.getEvent(id);
+    const ev = scheduler.getEvent(id);
     ev.my_template = "<b>Holder:</b>"+ ev.holder+"
 
 <b>Room:</b>"+ ev.room;
@@ -53,30 +52,28 @@ scheduler.attachEvent("onBeforeLightbox", function(id) {
 });
 ~~~
 
-  
-
 
 ## Свойства
 
-Ниже приведены основные свойства, которые часто используются для элемента 'template' (полный список доступен [здесь](api/config/lightbox.md)):
+Следующие свойства в основном важны и обычно устанавливаются для управления 'template' (см. полный список здесь [здесь](api/config/lightbox.md)):
 
 <table class="webixdoc_links">
   <tbody>
   <tr>
-  <td class="webixdoc_links0"><b>name</b></td>
+  <td class="webixdoc_links0"><b>имя</b></td>
   <td>(<i>string</i>) имя секции</td>
   </tr>
   <tr>
-  <td class="webixdoc_links0"><b>height</b></td>
+  <td class="webixdoc_links0"><b>высота</b></td>
   <td>(<i>number</i>) высота секции</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>map_to</b></td>
-  <td>(<i>string</i>) имя свойства данных, связанного с этой секцией</td>
+  <td>(<i>string</i>) имя свойства данных, которое будет сопоставлено с секцией</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>type</b></td>
-  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) тип элемента управления, используемого в секции</td>
+  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) тип элемента управления секции</td>
   </tr>
   </tbody>
 </table>

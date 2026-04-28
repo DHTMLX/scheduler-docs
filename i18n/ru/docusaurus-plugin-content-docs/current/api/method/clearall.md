@@ -1,5 +1,5 @@
 ---
-sidebar_label: "clearAll"
+sidebar_label: clearAll
 title: "clearAll method"
 description: "удаляет все события из планировщика"
 ---

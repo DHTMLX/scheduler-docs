@@ -95,8 +95,8 @@ After that the displayed range will be limited to one week.
 You can also set a fixed displayed range by specifying the [agenda_end](api/config/agenda_end.md) and [agenda_start](api/config/agenda_start.md) properties:
 
 ~~~js
-scheduler.config.agenda_start = new Date(2023, 5, 1); 
-scheduler.config.agenda_end = new Date(2023,6,1);   
+scheduler.config.agenda_start = new Date(2027, 5, 1); 
+scheduler.config.agenda_end = new Date(2027,6,1);   
 ~~~
 
 ## Related guides

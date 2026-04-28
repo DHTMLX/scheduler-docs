@@ -1,14 +1,14 @@
----
-sidebar_label: "drag_lightbox"
-title: "drag_lightbox config"
-description: "позволяет перетаскивать lightbox за его заголовок"
+--- 
+sidebar_label: drag_lightbox
+title: "Конфигурация drag_lightbox"
+description: "позволяет перетаскивать lightbox за заголовок"
 ---
 
 # drag_lightbox
 
 ### Description
 
-@short: Позволяет перетаскивать lightbox за его заголовок
+@short: Позволяет перетаскивать lightbox за заголовок
 
 @signature: drag_lightbox: boolean
 
@@ -17,10 +17,10 @@ description: "позволяет перетаскивать lightbox за его
 ~~~jsx
 scheduler.config.drag_lightbox = false;
 ...
-scheduler.init('scheduler_here', new Date(2013,5,30), "week");
+scheduler.init('scheduler_here',new Date(2027,5,30),"week");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Related API
 - [drag_create](api/config/drag_create.md)

@@ -11,12 +11,12 @@ To get the event object, use the [getEvent](api/method/getevent.md) method:
 
 ~~~js
 scheduler.parse([
-   {id:1, start_date:"2019-05-13 6:00", end_date:"2019-05-13 8:00", text:"Event 1"},
-   {id:2, start_date:"2019-06-09 6:00", end_date:"2019-06-09 8:00", text:"Event 2"}
+   {id:1, start_date:"2027-05-13 6:00", end_date:"2027-05-13 8:00", text:"Event 1"},
+   {id:2, start_date:"2027-06-09 6:00", end_date:"2027-06-09 8:00", text:"Event 2"}
 ]);
 ... 
-var eventObj = scheduler.getEvent(1);
-//->{id:1, start_date:"2019-05-13 6:00", end_date:"2019-05-13 8:00", text:"Event 1"}
+const eventObj = scheduler.getEvent(1);
+//->{id:1, start_date:"2027-05-13 6:00", end_date:"2027-05-13 8:00", text:"Event 1"}
 ~~~
 
 ## Getting events from the specified time period
@@ -24,7 +24,7 @@ var eventObj = scheduler.getEvent(1);
 To get a collection of events that occur during the specified period, use [getEvents](api/method/getevents.md) method:
 
 ~~~js
-var evs = scheduler.getEvents(new Date(2019,1,10),new Date(2019,2,10)); 
+const evs = scheduler.getEvents(new Date(2027,1,10),new Date(2027,2,10)); 
 //where evs is an array of events' objects
 ~~~
 
@@ -33,14 +33,14 @@ var evs = scheduler.getEvents(new Date(2019,1,10),new Date(2019,2,10));
 To get all events loaded to the scheduler, call the [getEvents](api/method/getevents.md) method without parameters as in:
 
 ~~~js
-var evs = scheduler.getEvents();
+const evs = scheduler.getEvents();
 // returns all events as an array of objects
 ~~~
 
 ## Getting the next event starting from the current date
 
 ~~~js
-var evs = scheduler.getEvents(new Date(), new Date(9999,1,1));    
+const evs = scheduler.getEvents(new Date(), new Date(9999,1,1));    
 //evs - list of all oncoming events
 evs.sort(function(a,b){ return (a.start_date > b.start_date ? 1 : -1); });
 //evs[0] - nearest upcoming event
@@ -53,25 +53,25 @@ To get the event's id by the value of one of the event's properties, use the fol
 Example: getting the event's id by the event's text.
 ~~~js
 scheduler.parse([
-   {id:1, start_date:"2019-05-13 6:00", end_date:"2019-05-13 8:00", text:"Event 1"},
-   {id:2, start_date:"2019-06-09 6:00", end_date:"2019-06-09 8:00", text:"Event 2"}
+   {id:1, start_date:"2027-05-13 6:00", end_date:"2027-05-13 8:00", text:"Event 1"},
+   {id:2, start_date:"2027-06-09 6:00", end_date:"2027-06-09 8:00", text:"Event 2"}
 ]);
 ...
 
-var evs = scheduler.getEvents(); //gets all events of the scheduler
-for(var i = 0; i < evs.length; i++){  //goes through all events to find the one needed
+const evs = scheduler.getEvents(); //gets all events of the scheduler
+for(let i = 0; i < evs.length; i++){  //goes through all events to find the one needed
     if (evs[i].text == "Event 2") 
-        var eventId = evs[i].id;// -> 2
+        const eventId = evs[i].id;// -> 2
 };
 ~~~
 
  If you know an approximate time when the needed event occurs, you'd better to limit the returned collection of events, in order to increase the app's speed:
 
 ~~~js
-var evs = scheduler.getEvents(new Date(2019,05,01),new Date(2019,05,10)); 
-for(var i = 0; i < evs.length; i++){  
+const evs = scheduler.getEvents(new Date(2027,05,01),new Date(2027,05,10)); 
+for(let i = 0; i < evs.length; i++){  
     if (evs[i].text == "Event 2") 
-        var eventId = evs[i].id;// -> 2
+        const eventId = evs[i].id;// -> 2
 };
 ~~~
 
@@ -111,9 +111,9 @@ scheduler.config.lightbox.sections = [
 ];
 
 scheduler.templates.event_text = scheduler.templates.event_bar_text = function(start, end, event){
-    var options = scheduler.serverList("options");
+    const options = scheduler.serverList("options");
 
-    for(var i = 0; i < options.length; i++){
+    for(let i = 0; i < options.length; i++){
         if(options[i].key == event.type){
             return options[i].label;
         }

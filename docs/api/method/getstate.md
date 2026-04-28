@@ -18,7 +18,7 @@ description: "gets the current state of the scheduler"
 ### Example
 
 ~~~jsx
-var mode = scheduler.getState().mode;
+const mode = scheduler.getState().mode;
 if(mode == "day"){
     // custom logic here
 }

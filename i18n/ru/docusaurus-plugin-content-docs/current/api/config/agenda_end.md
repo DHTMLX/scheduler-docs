@@ -1,14 +1,14 @@
 ---
-sidebar_label: "agenda_end"
-title: "agenda_end config"
-description: "определяет дату, до которой отображаются события"
+sidebar_label: agenda_end
+title: "agenda_end конфигурация"
+description: "устанавливает дату до которой будут отображаться события"
 ---
 
 # agenda_end
 
 ### Description
 
-@short: Определяет дату, до которой отображаются события
+@short: Устанавливает дату, до которой будут отображаться события
 
 @signature: agenda_end: Date
 
@@ -21,9 +21,9 @@ scheduler.config.agenda_end = new Date(2014, 7, 1);
 scheduler.init('scheduler_here', new Date(2013, 0, 10), "agenda");
 ~~~
 
-**Default value:** через один год после 'agenda_start' (значение)
+**Значение по умолчанию:** 'agenda_start' (значение) + 1 год
 
-**Applicable views:** [Agenda view](views/agenda.md)
+**Доступные представления:** [Agenda view](views/agenda.md)
 
 ### Related samples
 - [Agenda view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/03_agenda_view.html)
@@ -31,7 +31,7 @@ scheduler.init('scheduler_here', new Date(2013, 0, 10), "agenda");
 ### Details
 
 :::note
- Эта настройка работает только если включен плагин [agenda_view](guides/extensions-list.md#agenda-view). 
+ Свойство требует активации плагина [agenda_view](guides/extensions-list.md#agenda-view).
 :::
 
 ### Related API

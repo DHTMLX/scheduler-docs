@@ -1,25 +1,25 @@
 ---
-sidebar_label: "getSection"
+sidebar_label: getSection
 title: "getSection method"
-description: "получает объект для конкретного section внутри текущего активного view"
+description: "возвращает объект указанного раздела в текущем активном представлении"
 ---
 
 # getSection
 :::info
- Эта функция доступна только в PRO-версии. 
+ Эта функциональность доступна только в версии PRO. 
 :::
 ### Description
 
-@short: Получает объект для конкретного section внутри текущего активного view
+@short: Возвращает объект указанного раздела в текущем активном представлении
 
 @signature: getSection: (section_id: string) =\> any
 
 ### Parameters
 
-- `section_id` - (required) *string* - идентификатор section
+- `section_id` - (required) *string* - идентификатор раздела
 
 ### Returns
-- ` section` - (object) - объект section
+- ` section` - (object) - объект секции
 
 ### Example
 
@@ -39,17 +39,17 @@ scheduler.createTimelineView({
 scheduler.getSection("sales");//->{key:"sales",label:"Sales and Marketing"}
 ~~~
 
-**Applicable views:** [Timeline view](views/timeline.md)
+**Применимые представления:** [Timeline view](views/timeline.md)
 
 ### Details
 
 :::note
- Метод работает только если включён плагин [treetimeline](guides/extensions-list.md#treetimeline). 
+ Этот метод требует активированного плагина [treetimeline](guides/extensions-list.md#treetimeline). 
 :::
 
 :::note
 
-Если текущий view не является Timeline в режиме 'Tree', этот метод не будет иметь эффекта.
+Если открытое представление не является Timeline в режиме 'Tree', метод будет проигнорирован.
  
 :::
 

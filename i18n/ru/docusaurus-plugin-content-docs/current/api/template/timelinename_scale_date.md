@@ -25,13 +25,13 @@ description: "определяет элементы, отображаемые н
 
 ~~~jsx
 scheduler.templates.timeline_scale_date = function(date){
-   var timeline = scheduler.matrix.timeline;
-   var func = scheduler.date.date_to_str(timeline.x_date||scheduler.config.hour_date);
+   const timeline = scheduler.matrix.timeline;
+   const func = scheduler.date.date_to_str(timeline.x_date||scheduler.config.hour_date);
    return func(date);
 }
 ~~~
 
-**Applicable views:** [Timeline view](views/timeline.md)
+**Доступные представления:** [Timeline view](views/timeline.md)
 
 ### Details
 

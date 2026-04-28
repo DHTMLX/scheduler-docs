@@ -1,14 +1,14 @@
 ---
-sidebar_label: "touch"
-title: "touch config"
-description: "включает или отключает поддержку touch в планировщике"
+sidebar_label: касание
+title: "конфигурация касания"
+description: "включает/выключает поддержку касания в планировщике"
 ---
 
 # touch
 
 ### Description
 
-@short: Включает или отключает поддержку touch в планировщике
+@short: Включает/выключает поддержку касания в планировщике
 
 @signature: touch: boolean | string
 
@@ -17,13 +17,13 @@ description: "включает или отключает поддержку touc
 ~~~jsx
 scheduler.config.touch = "force";
 ...
-scheduler.init('scheduler_here',new Date(2013,3,10),"week");
+scheduler.init('scheduler_here',new Date(2027,3,10),"week");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Related samples
-- [Responsive scheduler](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/13_touch_ui.html)
+- [Адаптивный планировщик](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/13_touch_ui.html)
 
 ### Details
 
@@ -31,11 +31,11 @@ scheduler.init('scheduler_here',new Date(2013,3,10),"week");
 
 <br>
 
-Это означает, что параметр может принимать три разных значения:
+Итак, существует три возможных значения параметра:
 
-- *true* - планировщик пытается определить устройство с поддержкой touch, проверяя строку user-agent браузера, и активирует поддержку touch, если такое устройство обнаружено.
-- *'force'* - поддержка touch включена всегда, независимо от используемого устройства.
-- *false* - отключает поддержку touch.
+- *true* - планировщик пытается определить сенсорное устройство по анализу строки user-agent браузера и, если сенсорное устройство обнаружено, включает поддержку касания.
+- *'force'* - включает постоянную поддержку касания, независимо от типа используемого устройства.
+- *false* - отключает поддержку касания.
 
 ### Related API
 - [touch_drag](api/config/touch_drag.md)
@@ -43,4 +43,4 @@ scheduler.init('scheduler_here',new Date(2013,3,10),"week");
 - [touch_tooltip](api/config/touch_tooltip.md)
 
 ### Related Guides
-- [Мобильная адаптивность Scheduler](guides/touch-support.md)
+- [Мобильный адаптивный планировщик](guides/touch-support.md)

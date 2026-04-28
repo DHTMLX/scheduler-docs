@@ -84,9 +84,9 @@ To create a new keyboard shortcut, you need to use the [addShortcut](api/method/
 
 ~~~js
 scheduler.addShortcut("shift+w", function(e){ 
-    var target = e.target;
+    const target = e.target;
     if(target.closest("[event_id]"))
-        var eventId = target.getAttribute("event_id");
+        const eventId = target.getAttribute("event_id");
 
     if(eventId) 
         scheduler.showQuickInfo(eventId);
@@ -112,7 +112,7 @@ You can get the handler of the keyboard shorcut with the help of the method [get
 - **scope** - (*string*) the name of the context element to which the shortcut is attached
 
 ~~~js
-var shortcut_handler = scheduler.getShortcutHandler("shift+w","event");
+const shortcut_handler = scheduler.getShortcutHandler("shift+w","event");
 ~~~
 
 The method returns a function, which presents the handler of the shortcut call. 

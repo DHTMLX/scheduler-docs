@@ -18,5 +18,5 @@ description: "erstellt eine eindeutige ID, die garantiert innerhalb der aktuelle
 ### Example
 
 ~~~jsx
-var new_id = scheduler.uid();
+const new_id = scheduler.uid();
 ~~~

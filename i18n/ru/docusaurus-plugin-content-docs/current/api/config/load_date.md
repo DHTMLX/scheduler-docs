@@ -1,14 +1,14 @@
 ---
-sidebar_label: "load_date"
-title: "load_date config"
-description: "определяет формат параметров запроса 'from' и 'to' на сервер при использовании динамической загрузки"
+sidebar_label: load_date
+title: "load_date конфигурация"
+description: "задает формат параметров запроса к серверу 'from', 'to' в случае динамической загрузки"
 ---
 
 # load_date
 
 ### Description
 
-@short: Определяет формат параметров запроса 'from' и 'to' на сервер при использовании динамической загрузки
+@short: Задает формат параметров запроса к серверу 'from', 'to' в случае динамической загрузки
 
 @signature: load_date: string
 
@@ -22,11 +22,11 @@ scheduler.setLoadMode("month");
 scheduler.load("data/events.php");
 ~~~
 
-**Default value:** "%Y-%m-%d"
+**Значение по умолчанию:** "%Y-%m-%d"
 
 ### Related API
 - [setLoadMode](api/method/setloadmode.md)
 - [load_format](api/template/load_format.md)
 
 ### Related Guides
-- [Загрузка данных](guides/loading-data.md#dynamic-loading)
+- [Loading Data](guides/loading-data.md#dynamic-loading)

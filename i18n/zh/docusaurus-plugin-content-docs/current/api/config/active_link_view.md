@@ -17,7 +17,7 @@ description: "允许月视图中的日期数字显示为可点击的链接，点
 ~~~jsx
 scheduler.config.active_link_view = "week"; // 指定从月视图跳转到的视图
 ...
-scheduler.init('scheduler_here',new Date(2012,7,6),"month");
+scheduler.init('scheduler_here',new Date(2027,7,6),"month");
 ~~~
 
 **Default value:** day

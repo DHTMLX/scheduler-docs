@@ -19,7 +19,7 @@ description: "addMarkedTimespan() 메서드를 사용해 생성된 마킹 또는
 ### Example
 
 ~~~jsx
-var spanID = scheduler.addMarkedTimespan({  
+const spanID = scheduler.addMarkedTimespan({  
     days:  [0,1], 
     zones: "fullday"              
 });
@@ -49,7 +49,7 @@ scheduler.deleteMarkedTimespan(spanID);
   
   
 ~~~js
-var spanID = scheduler.addMarkedTimespan({  
+const spanID = scheduler.addMarkedTimespan({  
     days:  [3,4,5], 
     zones: [100,400]          
 });

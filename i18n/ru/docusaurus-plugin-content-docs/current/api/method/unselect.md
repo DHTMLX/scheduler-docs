@@ -1,7 +1,7 @@
 ---
-sidebar_label: "unselect"
-title: "unselect method"
-description: "удаляет выделение с указанного события"
+sidebar_label: снятие выделения
+title: "метод unselect"
+description: "снимает выделение с указанного события"
 ---
 
 # unselect
@@ -13,15 +13,14 @@ description: "удаляет выделение с указанного собы
 @signature: unselect: (id?: string) =\> void
 
 ### Parameters
-
-- `id` - (optional) *string* - идентификатор события (если id не указан, будет снято выделение с текущего выбранного события)
+- `id` - (optional) *string* - идентификатор события (если не указан, текущее выбранное событие будет снято)
 
 ### Example
 
 ~~~jsx
-var eventId = scheduler.addEvent({
-    start_date: "16-06-2013 09:00",
-    end_date:   "16-06-2013 12:00",
+const eventId = scheduler.addEvent({
+    start_date: "16-06-2027 09:00",
+    end_date:   "16-06-2027 12:00",
     text:   "Meeting"
 });
 

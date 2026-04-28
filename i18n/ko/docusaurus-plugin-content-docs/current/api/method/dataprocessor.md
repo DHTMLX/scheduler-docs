@@ -1,6 +1,6 @@
 ---
-sidebar_label: "DataProcessor"
-title: "DataProcessor method"
+sidebar_label: DataProcessor
+title: "DataProcessor 메서드"
 description: "DataProcessor 생성자"
 ---
 
@@ -19,12 +19,12 @@ description: "DataProcessor 생성자"
 ### Example
 
 ~~~jsx
-var dp = new scheduler.DataProcessor("php/update.php");
+const dataProcessor = new scheduler.DataProcessor("php/update.php");
 ~~~
 
 ### Details
 
-DataProcessor 및 해당 API에 대한 자세한 내용은 [여기](https://docs.dhtmlx.com/dataprocessor__index.html)에서 확인할 수 있습니다.
+DataProcessor에 대한 자세한 내용은 [Server-Side Integration](guides/server-integration.md) 문서의 기사에서 확인할 수 있습니다.
 
 ### Change log
-- 버전 6.0에 추가됨
+- 버전 6.0에 추가되었습니다.

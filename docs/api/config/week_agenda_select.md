@@ -18,7 +18,7 @@ description: "highlights the selected event in the Week Agenda view"
 
 ~~~jsx
 scheduler.config.week_agenda_select= false; /*!*/
-scheduler.init('scheduler_here',new Date(2013,0,10),"agenda_week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"agenda_week");
 ~~~
 
 **Default value:** true

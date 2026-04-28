@@ -22,7 +22,7 @@ description: "알림 메시지 박스를 표시합니다"
 ### Example
 
 ~~~jsx
-var box = scheduler.alert({
+const box = scheduler.alert({
     title:"Alert",
     type:"alert-error",
     text:"You can't do this"

@@ -22,9 +22,9 @@ description: "checks whether the specified event one-day or multi-day"
 ### Example
 
 ~~~jsx
-var eventId = scheduler.addEvent({
-    start_date: "16-06-2013 09:00",
-    end_date:    "16-06-2013 12:00",
+const eventId = scheduler.addEvent({
+    start_date: "16-06-2027 09:00",
+    end_date:    "16-06-2027 12:00",
     text:    "Meeting"
 });
 scheduler.isOneDayEvent(scheduler.getEvent(eventId));//->true
