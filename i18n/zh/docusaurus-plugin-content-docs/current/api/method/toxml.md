@@ -18,7 +18,7 @@ description: "将调度器的数据转换为XML格式"
 ### Example
 
 ~~~jsx
-var str = scheduler.toXML();
+const str = scheduler.toXML();
 ~~~
 
 ### Related samples

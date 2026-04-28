@@ -1,25 +1,25 @@
 ---
-sidebar_label: "onBeforeEventPasted"
+sidebar_label: onBeforeEventPasted
 title: "onBeforeEventPasted event"
-description: "срабатывает непосредственно перед тем, как пользователь нажимает сочетание клавиш 'CTRL+V'"
+description: "срабатывает перед тем, как пользователь нажимает сочетание клавиш 'CTRL+V'." 
 ---
 
 # onBeforeEventPasted
 
 ### Description
 
-@short: Срабатывает непосредственно перед тем, как пользователь нажимает сочетание клавиш 'CTRL+V'
+@short: Срабатывает перед тем, как пользователь нажимает сочетание клавиш 'CTRL+V'
 
-@signature: onBeforeEventPasted: (isCopy: boolean, pasted_ev: object, original_ev: object) =\> boolean
+@signature: onBeforeEventPasted: (isCopy: boolean, pasted_ev: object, original_ev: object) => boolean
 
 ### Parameters
 
 - `isCopy` - (required) *boolean* - указывает, было ли событие скопировано или вырезано перед вставкой. Значение <em>true</em> означает, что событие было скопировано
-- `pasted_ev` - (required) *object* - новый объект события, созданный после вставки
-- `original_ev` - (required) *object* - оригинальный объект события, который был скопирован или вырезан
+- `pasted_ev` - (required) *object* - объект нового элемента данных (событие, создаваемое после вставки)
+- `original_ev` - (required) *object* - объект исходного элемента данных (событие, которое было скопировано/вырезано)
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено стандартное поведение события (<b>true</b>) или оно будет заблокировано (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
@@ -32,7 +32,7 @@ scheduler.attachEvent("onBeforeEventPasted", function(isCopy,pasted_ev,original_
 
 ### Details
 
-Убедитесь, что расширение 'keyboard navigation' включено.
+Расширение навигации клавиатурой должно быть включено.
 
 ### Related API
 - [onEventPasted](api/event/oneventpasted.md)

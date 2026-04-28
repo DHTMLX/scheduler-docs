@@ -1,186 +1,186 @@
----
+--- 
 title: "Export nach PDF"
 sidebar_label: "Export nach PDF"
 ---
 
 # Export nach PDF
 
-*Dieser Artikel behandelt den Export mit dhtmlxScheduler Version 4.1 und neuer. Für Versionen 4.0 oder älter lesen Sie bitte [diese Anleitung](export/pdf-legacy.md).*
+*Der Artikel bezieht sich auf den Export von dhtmlxScheduler 4.1+. Wenn Sie dhtmlxScheduler 4.0 oder frühere Versionen verwenden, finden Sie Details [hier](export/pdf-legacy.md).*
 
-Seit Version 4.1 bietet dhtmlxScheduler eine neue Möglichkeit, den Scheduler als PDF-Datei zu exportieren, indem ein [Online-Exportdienst](export/pdf.md#default-export-to-pdf) verwendet wird.
+Ab Version 4.1 bietet dhtmlxScheduler einen neuen Ansatz für den Export des Schedulers in das PDF-Format: einen [Online-Export-Service](export/pdf.md#default-export-to-pdf).
 
-:::note
-Der Dienst ist kostenlos nutzbar, aber unter der GPL-Lizenz generierte PDFs enthalten ein Wasserzeichen der Bibliothek. Beim Kauf einer Lizenz wird das Wasserzeichen während des aktiven Supportzeitraums entfernt (12 Monate für alle PRO-Lizenzen).
+:::info
+Der Dienst ist kostenlos, aber die Ausgabe-PDF-Datei enthält das Wasserzeichen der Bibliothek unter der GPL-Lizenz. Falls Sie eine Lizenz erwerben, ist das Export-Ergebnis während der gültigen Support-Periode (12 Monate für alle PRO-Lizenzen) ohne Wasserzeichen verfügbar.
 :::
 
-## Verwendung von Exportdiensten {#using-export-services}
+## Verwendung von Export-Services
 
-Es stehen mehrere Exportdienste zur Verfügung, die lokal auf Ihrem Rechner installiert werden können, um den Scheduler nach PDF zu exportieren.
+Es gibt mehrere Export-Services. Sie können sie auf Ihrem Computer installieren und Scheduler lokal nach PDF exportieren.
 
-Beachten Sie, dass Exportdienste unabhängig vom Scheduler-Paket sind. Weitere Informationen zu den Nutzungsbedingungen finden Sie im [zugehörigen Artikel](https://dhtmlx.com/docs/products/dhtmlxScheduler/export.shtml).
+Hinweis: Export-Services sind nicht im Scheduler-Paket enthalten. Lesen Sie den entsprechenden Artikel, um die Nutzungsbedingungen jedes einzelnen zu erfahren.
 
-## Grenzen der Anfragegröße {#limitsonrequestsize}
+## Grenzen bei der Anforderungsgröße
 
-Der API-Endpunkt <b>*https://export.dhtmlx.com/scheduler*</b> verarbeitet Exportanfragen (*exportToPDF*, *exportToPNG*, usw.). Die maximal zulässige Anfragegröße beträgt **10 MB**.
- 
-## Standard-Export nach PDF {#default-export-to-pdf}
+Es gibt einen gemeinsamen API-Endpunkt `https://export.dhtmlx.com/scheduler`, der Export-Methoden wie `exportToPDF()` und `exportToPNG()` bereitstellt. Die maximale Anforderungsgröße beträgt 10 MB.
 
-Um den Scheduler als PDF zu exportieren, gehen Sie wie folgt vor:
+## Standard-Export nach PDF
 
-- Aktivieren Sie das <b>export_api</b>-Plugin mit der Methode [plugins](api/method/plugins.md):
+Um einen Scheduler als PDF-Dokument zu exportieren, führen Sie die folgenden Schritte aus:
+
+- Um den Online-Export-Service zu verwenden, aktivieren Sie das `export_api`-Plugin über die [`plugins()`](api/method/plugins.md) Methode:
 
 ~~~js
 scheduler.plugins({
-      export_api: true
+    export_api: true
 });
 ~~~
 
 :::note
-Für Scheduler-Versionen vor 7.0 binden Sie das Skript **https://export.dhtmlx.com/scheduler/api.js** auf Ihrer Seite ein, um den Online-Exportdienst zu aktivieren, zum Beispiel:
+Wenn Sie eine Scheduler-Version verwenden, die älter als 7.0 ist, müssen Sie die Datei `https://export.dhtmlx.com/scheduler/api.js` in Ihre Seite einbinden, um den Online-Export-Service zu aktivieren, z. B.:
 
-~~~js
+~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
 <script src="https://export.dhtmlx.com/scheduler/api.js"></script>
 ~~~
 :::
 
-- Verwenden Sie die <a href="#parametersoftheexportmethod">exportToPDF</a>-Methode, um den Export auszuführen:
+- Rufen Sie die [`exportToPDF()`](#parameters-of-the-export-method) Methode auf, um Scheduler zu exportieren:
 
-~~~html
-<input value="Export to PDF" type="button" onclick='scheduler.exportToPDF()'>/*!*/
+~~~html {1}
+<input value="Export to PDF" type="button" onclick='scheduler.exportToPDF()'>
 ~~~
 
 
-[Export to PDF/PNG](https://docs.dhtmlx.com/scheduler/samples/04_export/06_online_export.html)
+### Zu den Beispielen
+- [Export nach PDF/PNG](https://docs.dhtmlx.com/scheduler/samples/04_export/06_online_export.html)
 
+## Parameter der Export-Methode
 
-## Parameter der Exportmethode {#parametersoftheexportmethod}
-
-Die [exportToPDF()](api/method/exporttopdf.md)-Methode akzeptiert ein optionales Objekt als Parameter mit verschiedenen Eigenschaften:
+Die [`exportToPDF()`](api/method/exporttopdf.md) Methode nimmt ein Objekt mit mehreren Eigenschaften als Parameter entgegen. Alle Eigenschaften sind optional:
 
 
 <table class="webixdoc_links">
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>name</b></td>
-  <td>(<i>string</i>) Dateiname für das exportierte PDF</td>
+  <td>(<i>string</i>) der Name der Ausgabedatei</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>format</b></td>
-  <td>(<i>'A0', 'A1', 'A2', 'A3', 'A4', 'A5'</i>) Papierformat für die PDF-Ausgabe</td>
+  <td>(<i>'A0', 'A1', 'A2', 'A3', 'A4', 'A5'</i>) das Format der Ausgabedatei im PDF-Format</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>orientation</b></td>
-  <td>(<i>'portrait', 'landscape'</i>) Ausrichtung der PDF-Seiten</td>
+  <td>(<i>'portrait', 'landscape'</i>) legt die Orientierung des Ausgabedokuments fest</td>
   </tr> 
   <tr>
   <td class="webixdoc_links0"><b>zoom</b></td>
-  <td>(<i>number</i>) Zoomstufe für die PDF-Ausgabe</td>
+  <td>(<i>number</i>) legt den Zoomkoeffizienten des Ausgabedokuments fest</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>header</b></td>
-  <td>(<i>string</i>) HTML-Inhalt, der als Kopfzeile im PDF enthalten sein soll</td>
+  <td>(<i>string</i>) gibt den Header an, der dem Ausgabedokument hinzugefügt wird. Hinweis: Hier können Sie beliebiges HTML verwenden</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>footer</b></td>
-  <td>(<i>string</i>) HTML-Inhalt, der als Fußzeile im PDF enthalten sein soll</td>
+  <td>(<i>string</i>) gibt den Footer an, der dem Ausgabedokument hinzugefügt wird. Hinweis: Hier können Sie beliebiges HTML verwenden</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) API-Endpunkt-URL für Exportanfragen. Nützlich bei Verwendung eines lokalen Exportdienstes. Standardmäßig <strong>https://export.dhtmlx.com/scheduler</strong></td>
+  <td>(<i>string</i>) legt den API-Endpunkt für die Anfrage fest. Kann zusammen mit der lokalen Installation des Export-Services verwendet werden. Der Standardwert ist <strong>https://export.dhtmlx.com/scheduler</strong></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>additional_settings</b></td>
-  <td>(<i>object</i>) Zusätzliche Exportoptionen, darunter: <ul> <li><b>format</b> - (<i>string</i>) Ausgabeformat: <i>'A3', 'A4', 'A5', 'Legal', 'Letter', 'Tabloid'</i></li> <li><b>landscape</b> - (<i>boolean</i>) Seitenausrichtung, nur relevant wenn "format" angegeben ist</li> <li><b>width</b> - (<i>string|number|"content"</i>) Breite der Ausgabeseite, relevant für Mehrseitenexporte</li> <li><b>height</b> - (<i>string|number|"content"</i>) Höhe der Ausgabeseite, relevant für Mehrseitenexporte</li> </ul></td>
+  <td>(<i>object</i>) ein Objekt mit zusätzlichen Einstellungen. Das Objekt kann folgende Attribute enthalten: <ul> <li><b>format</b> - (<i>string</i>) das Format der Ausgabedatei: <i>'A3', 'A4', 'A5', 'Legal', 'Letter', 'Tabloid'</i></li> <li><b>landscape</b> - (<i>boolean</i>) Hoch- oder Querformat der Ausgabedatei. Das Attribut funktioniert nur, wenn das "format" Attribut angegeben ist.</li> <li><b>width</b> - (<i>string|number|"content"</i>) die Breite der Ausgabeseite. Das Attribut wird verwendet, wenn mehrere Seiten exportiert werden. </li> <li><b>height</b> - (<i>string|number|"content"</i>) die Höhe der Ausgabedatei. Das Attribut wird verwendet, wenn mehrere Seiten exportiert werden.</li> </ul></td>
   </tr>
   </tbody>
 </table>
 
-
-~~~js title="Beispielaufruf von exportToPDF mit Optionen"
-scheduler.exportToPDF({
-    name:"myscheduler.pdf",
-    format:"A4",
-    orientation:"portrait",
-    zoom:1,
-    header:"<h1>My company</h1>",
-    footer:"<h4>Bottom line</h4>",
-    server:"https://myapp.com/myexport/scheduler"
-});
-~~~
-
-
-## Name der Ausgabedatei {#nameoftheoutputfile}
-
-Um einen eigenen Dateinamen für das exportierte PDF festzulegen, setzen Sie die **name**-Eigenschaft in den [exportToPDF](export/pdf.md#parametersoftheexportmethod)-Optionen:
-
+### Aufruf der Export-Methode mit optionalen Eigenschaften
 ~~~js
 scheduler.exportToPDF({
-    name:"my_beautiful_scheduler.pdf"/*!*/
+    name: "myscheduler.pdf",
+    format: "A4",
+    orientation: "portrait",
+    zoom: 1,
+    header: "<h1>My company</h1>",
+    footer: "<h4>Bottom line</h4>",
+    server: "https://myapp.com/myexport/scheduler"
 });
 ~~~
 
 
-## Kopf-/Fußzeile der Ausgabedatei {#headerfooter-of-the-output-file}
+## Name der Ausgabedatei
 
-Kopf- und Fußzeilen können dem exportierten PDF hinzugefügt werden, indem die Eigenschaften **header** und **footer** in den [exportToPDF](export/pdf.md#parametersoftheexportmethod)-Optionen verwendet werden:
+Um einen benutzerdefinierten Namen für die Ausgabedatei festzulegen, verwenden Sie die `name`-Eigenschaft im Parameter der [`exportToPDF()`](export/pdf.md#parameters-of-the-export-method) Methode:
+
+~~~js {2}
+scheduler.exportToPDF({
+    name: "my_beautiful_scheduler.pdf"
+});
+~~~
+
+
+## Header/Footer der Ausgabedatei
+
+Um der Ausgabedatei PDF einen Header/Footer hinzuzufügen, verwenden Sie die Eigenschaften `header`/`footer` im Parameter der [`exportToPDF()`](export/pdf.md#parameters-of-the-export-method) Methode:
 
 :::note
-In diesen Eigenschaften kann beliebiges HTML verwendet werden. Wenn Sie Bilder einfügen, achten Sie darauf, für das "src"-Attribut absolute URLs zu verwenden.
+Beachten Sie, dass Sie beim Festlegen der Parameter beliebiges HTML verwenden können. Wenn Sie Bilder angeben, denken Sie daran, globale Pfade als Werte des src-Attributs festzulegen.
 :::
 
-~~~js
+~~~js {3-4}
 scheduler.exportToPDF({
-    name:"myscheduler.pdf",
-    header:"<h1>My company</h1>",/*!*/
-    footer:"<h4>Bottom line</h4>"/*!*/
+    name: "myscheduler.pdf",
+    header: "<h1>My company</h1>",
+    footer: "<h4>Bottom line</h4>"
 });
 ~~~
 
 
-## Eigener Stil für die Ausgabedatei {#customstylefortheoutputfile}
+## Benutzerdefinierter Stil für die Ausgabedatei
 
-Eigene Styles können angewendet werden, indem Sie ein Stylesheet mit Ihren CSS-Klassen einbinden:
+Um dem Scheduler einen benutzerdefinierten Stil zu verleihen, liefern Sie das Stylesheet mit Ihren benutzerdefinierten CSS-Klassen:
 
-- Durch Verlinkung auf ein externes Stylesheet:
+- über einen Link:
 
-~~~js
+~~~js {3}
 scheduler.exportToPDF({
-    name:"calendar.pdf",
-    header:'<link rel="stylesheet" href="http://mysite.com/custom.css">' /*!*/
+    name: "calendar.pdf",
+    header: '<link rel="stylesheet" href="http://mysite.com/custom.css">'
 });
 ~~~
 
-- Oder durch Einbetten von Styles innerhalb eines `<style>`-Tags:
+- oder über das 'style'-Tag:
 
-~~~js
+~~~js {3}
 scheduler.exportToPDF({
-    name:"calendar.pdf",
-    header:'<style>... custom css classes here ...</style>' /*!*/
+    name: "calendar.pdf",
+    header: '<style>... benutzerdefinierte CSS-Klassen hier ...</style>'
 });
 ~~~
 
-Beachten Sie, dass dieser Ansatz mit global zugänglichen HTTP-URLs funktioniert. Für lokale oder Intranet-Umgebungen können Sie alle Styles direkt einbetten, zum Beispiel:
+Beachten Sie, dass die oben genannte Lösung für den globalen HTTP-Verweis funktioniert. Wenn Sie CSS-Klassen in einer Intranet-/ lokalen Umgebung verwenden, können Sie alle Stile wie folgt einbetten:
 
 ~~~js
 scheduler.exportToPDF({
-    header:"<style>.tier1{background: red; color:white;}</style>"
+    header: "<style>.tier1{background: red; color:white;}</style>"
 });
 ~~~
 
-## Export von HTML-Elementen {#exportinghtmlelements}
+## Export von HTML-Elementen
 
-Beim Export des Schedulers nach PDF gibt es einige Einschränkungen bei HTML-Elementen aus Sicherheitsgründen.
+Beim Export des Schedulers ins PDF-Format ist der Export von HTML-Elementen aufgrund möglicher Sicherheitsbedenken eingeschränkt.
 
-Bestimmte Elemente wie `<canvas>`, `<svg>`, `<script>` und Bilder mit Base64-codierten *src*-Attributen werden nicht vollständig unterstützt. Es gibt jedoch sichere Alternativen für den Export von Bildern im SVG- und Base64-Format:
+Es gibt HTML-Elemente, die beim Export nicht vollständig erlaubt sind, wie z. B. `<canvas>`, `<svg>`, `<script>` und Bilder mit dem *src*-Attribut, das ein Base64-Bild enthält. Es gibt jedoch sichere Möglichkeiten, Bilder im SVG- oder Base64-Format zu exportieren:
 
-- Verwenden Sie ein `<img>`-Tag mit einem *src*-Attribut, das auf eine SVG-Bild-URL verweist (funktioniert mit PNG- und JPG-Exporten, aber nicht mit Base64), zum Beispiel:
+- Sie können ein `<img>`-Element mit dem *src*-Attribut verwenden, das eine URL des Bildes im SVG-Format enthält (geeignet für PNG- und JPG-Formate, funktioniert nicht für das Base64-Format), z. B.:
 
 ~~~html
 <img src="https://www.svgrepo.com/download/530597/hat.svg">
 ~~~
 
-- Verwenden Sie CSS-Styles wie *background* oder *background-image* mit einer `url()`, die auf eine Bild-URL oder einen Base64-String verweist (funktioniert mit PNG, JPG und SVG):
+- Sie können Style-Elemente verwenden, wie *background* oder *background-image* und das `url`-Attribut mit dem Link zum Bild oder einem Bild im Base64-Format als Wert angeben (geeignet für PNG/JPG/SVG-Formate)
 
 ~~~css
 .red {
@@ -191,4 +191,5 @@ Bestimmte Elemente wie `<canvas>`, `<svg>`, `<script>` und Bilder mit Base64-cod
 }
 ~~~
 
-Wenn Sie ein eigenes Exportmodul haben und nicht unterstützte HTML-Elemente exportieren müssen, können Sie den Support kontaktieren, um Hinweise zur Anpassung Ihres Moduls zu erhalten, um die Einschränkungen zu umgehen. Beachten Sie, dass dies Ihren Server XSS-Sicherheitsrisiken aussetzen kann.
+
+Wenn Sie ein Export-Modul haben und HTML-Elemente exportieren müssen, die von unserem Online-Export-Server nicht unterstützt werden, können Sie eine Support-Anfrage einreichen, um Anweisungen zu erhalten, welche Änderungen Sie an Ihrem Modul vornehmen müssen, um die Einschränkungen zu entfernen. Beachten Sie jedoch, dass Ihr Server gegenüber XSS-Angriffen anfällig wird.

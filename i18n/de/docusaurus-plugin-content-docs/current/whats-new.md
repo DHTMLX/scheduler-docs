@@ -5,7 +5,109 @@ sidebar_label: "Was ist neu"
 
 # Was ist neu
 
-Wenn Sie den Scheduler von einer früheren Version aktualisieren, werfen Sie einen Blick auf [Migration von älteren Versionen](migration.md) für weitere Details.
+Wenn Sie Scheduler von einer älteren Version aktualisieren, lesen Sie [Migration von älteren Versionen](migration.md) für Details.
+
+7.2.13
+-------------
+<span class='release_date'>31. März 2026. Bugfix-Veröffentlichung</span>
+
+### Fehlerbehebungen
+
+- Behebt die falsche Warnung zur Testversion im [React Scheduler](integrations/react/overview.md)
+- Behebt die Regression bei Remote-Updates im [React Scheduler](integrations/react/overview.md), bei der das Bearbeiten eines Ereignisses keine Änderungen am bestehenden Ereignis anwendete
+
+
+7.2.12
+-------------
+<span class='release_date'>23. März 2026. Bugfix-Veröffentlichung</span>
+
+### Fehlerbehebungen
+
+- Behebt den Absturz beim Neuladen der Seite im [React Scheduler](integrations/react/overview.md), wenn nicht-standardmäßige Themes mit dem [cookie](guides/extensions-list.md#cookie) Plugin aktiviert sind
+- Behebt die Regression, bei der die `save` URL im `data`-Prop nicht korrekt angewendet wurde im [React Scheduler](integrations/react/overview.md)
+- Behebt das Problem, dass das Bearbeiten eines nicht ersten Vorkommens eines [wiederkehrenden Ereignisses](guides/recurring-events.md) im Modus "Diese und folgende Ereignisse" nicht alle [Lightbox](guides/configuring-the-lightbox.md) Feldänderungen anwendete
+- Behebt das Problem, dass dynamische Änderungen der [Quick Info](guides/quick-info.md) Buttons basierend auf Ereignisbedingungen das Popup nicht korrekt aktualisierte
+- Behebt das Problem, dass das Ändern des Textes eines einzelnen [wiederkehrenden Ereignisses](guides/recurring-events.md) Vorkommens nach dem Bearbeiten eines nachfolgenden Vorkommens im Modus "Diese und folgende Ereignisse" überschrieben wurde
+- Behebt die Overflow-Stile des [Quick Info](guides/quick-info.md) Popups, um lange Ereignisbeschreibungen korrekt zu behandeln
+- Behebt den Skriptfehler im [React Scheduler](integrations/react/overview.md), der auftrat, wenn man Ereignisse zu einem bestehenden Datensatz über die `useState`-Funktion hinzufügte
+
+### Aktualisierungen
+
+- Die Möglichkeit hinzufügen, das [Bestätigungsemodal für wiederkehrende Ereignisse](guides/recurring-events.md#customconfirmationmodal) durch einen benutzerdefinierten Dialog zu ersetzen
+- Die Möglichkeit hinzufügen, das [Bestätigungsemodal für wiederkehrende Ereignisse](integrations/react/overview.md#customizingtherecurrenceconfirmationmodal) im [React Scheduler](integrations/react/overview.md) über die Modals.onRecurrenceConfirm-Prop zu ersetzen
+
+
+7.2.11
+-------------
+<span class='release_date'>12. Januar 2026. Bugfix-Veröffentlichung</span>
+
+### Fehlerbehebungen
+
+- Behebt das Problem, dass neue Ereignisse im [React Scheduler](integrations/react/overview.md) dupliziert wurden, falls der `save`-Handler keine neue ID zurückgab
+- Behebt das Problem, dass [Timeline-Ansicht](views/timeline.md) Templates im [React Scheduler](integrations/react/overview.md) nicht angewendet wurden
+- Behebt die inkorrekte Bindung von Ereignissen zu Abschnitten in der [Timeline-Ansicht](views/timeline.md), wenn Filterung in [React Scheduler](integrations/react/overview.md) verwendet wurde
+- Behebt den Skriptfehler in der [Agenda-Ansicht](views/agenda.md), wenn der `date`-Bereich nicht in der [Header-Konfiguration](guides/initialization.md#initializing-scheduler-via-header-config) enthalten ist
+- Behebt die falsche Anzeige von Header-Elementen in den Ansichten [Jahresansicht](views/year.md) und [Agenda-Ansicht](views/agenda.md) bei Verwendung der [Material-Skin](guides/skins.md#material-skin)
+- Behebt das kaputte Layout im [React Scheduler](integrations/react/overview.md), wenn von einer plugin-basierten Anfangsansicht zu Standardansichten gewechselt wird
+- Behebt das Problem, dass ein Phantom-Ereignisblock erschien, wenn ein ganztägiges [wiederkehrendes Ereignis](guides/recurring-events.md) eine Dauer von genau 24 Stunden hatte
+- Behebt das Problem, dass die [Lightbox](guides/configuring-the-lightbox.md) nicht geöffnet wurde, wenn mehrere Ereignisse durch Draggen am selben Tag in der [Monatsansicht](views/month.md) mit aktiviertem `year_view`-Plugin erstellt wurden
+
+
+7.2.10
+-------------
+<span class='release_date'>10. Dezember 2025. Bugfix-Veröffentlichung</span>
+
+### Fehlerbehebungen
+
+- Behebt das Problem, dass Ereignisse beim Ziehen aus der letzten Spalte in der [Mehrtägige Units-Ansicht](views/units.md#displaying-units-for-multiple-days) nach links sprangen
+- Behebt das Problem, dass in bestimmten Monaten einige Datum-Felder in der [Monatsansicht](views/month.md) fehlten
+- Behebt das Drag-Create-Problem auf mobilen Geräten bei der Verwendung des Plugins [container_autoresize](guides/extensions-list.md#container-autoresize)
+- Behebt das Problem, das die Erstellung von Ereignissen durch Doppelklick nach horizontalem Scrollen in der [Units-Ansicht](views/units.md) verhinderte
+
+
+7.2.9
+---------------
+<span class='release_date'>19. September 2025. Bugfix-Veröffentlichung</span>
+
+### Fehlerbehebungen
+
+- Beheben von Speicherlecks, die in der [Timeline-Ansicht](views/timeline.md) auftraten
+- Beheben eines Kompatibilitätsproblems zwischen dem [container_autoresize](guides/extensions-list.md#container-autoresize) Plugin und der [Woche Agenda](views/weekagenda.md)-Ansicht
+- Beheben, dass der [onScaleDblClick](api/event/onscaledblclick.md) nicht wie erwartet ausgelöst wurde
+- Beheben inkonsistenten Verhaltens von [onEventSave](api/event/oneventsave.md) und [DataProcessor](api/method/createdataprocessor.md) beim Arbeiten mit [wiederkehrenden Ereignissen](guides/recurring-events.md)
+- Beheben des [React Scheduler](integrations/react/overview.md) Problems, bei dem mehrere Instanzen der Komponente duplizierte Vorlagen verursachten
+- Beheben der fehlerhaften Behandlung von Änderungen der `events`-Prop im [React Scheduler](integrations/react/overview.md)
+
+## 7.2.8
+
+<span class='release_date'>30. Juli 2025. Bugfix-Veröffentlichung</span>
+
+### Neu
+
+- Beispiele für [React Scheduler](integrations/react/overview.md) wurden in die Commercial-, Enterprise-, Ultimate- und Evaluation-Pakete aufgenommen
+
+### Fehlerbehebungen
+
+- Beheben des Problems, dass das Ziehen eines [wiederkehrenden Ereignisses](guides/recurring-events.md) nach dem Löschen seiner nachfolgenden Vorkommnisse falsch funktionierte
+- Sicherstellen, dass die Steuerung "Repeat Event" des [Lightbox](guides/lightbox-editors.md) für modifizierte [Serieninstanzen](guides/recurring-events.md#editingdeleting-a-certain-occurrence-in-the-series) deaktiviert ist
+- Beheben der falschen Anzeige veralteter Labels für [wiederkehrende Ereignisse](guides/recurring-events.md)
+- Beheben des Konflikts zwischen der Einstellung [max_month_events](api/config/max_month_events.md) und [mehrtägigen Ereignissen](views/month.md), der dazu führte, dass Ereignisse verschwanden oder sich überlappeten in der [Monatsansicht](views/month.md)
+- Sicherstellen, dass Cookies, die von Scheduler über HTTPS gesetzt werden, nun das Attribut **Secure** enthalten
+- Beheben des Problems, dass die Einstellung [event_duration](api/config/event_duration.md) geparste Ereignisdaten beschädigte
+- Beheben des Problems, dass die Einstellung [time_step](api/config/time_step.md) geparste Ereignisdaten beschädigte
+
+
+## 7.2.6
+
+<span class='release_date'>26. Juni 2025. Bugfix-Veröffentlichung</span>
+
+### Fehlerbehebungen
+
+- Beheben des Problems mit der Sekunden-Genauigkeit bei der Terminierung von Ereignissen
+- Beheben des inkorrekten Drag-Verhaltens in der [Timeline-Ansicht](views/timeline.md) während kurzer Monate
+- Beheben der inkorrekten Rundung von Ereignissen in der [Timeline-Ansicht](views/timeline.md)
+- Verhindern, dass [DataProcessor](guides/server-integration.md) dem [custom router](guides/server-integration.md#custom-routing) Argumente die Eigenschaft `!nativeeditor_status` hinzufügt
+
 
 ## 7.2.5
 

@@ -1,40 +1,41 @@
----
-title: "过滤事件"
-sidebar_label: "过滤事件"
+--- 
+title: "筛选事件"
+sidebar_label: "筛选事件"
 ---
 
-# 过滤事件
+# 筛选事件
 
-对于每个视图，可以定义一个过滤函数，用于决定哪些事件会显示在调度器中，哪些事件会被隐藏。
+对于任何指定的视图，您可以设置一个过滤函数，该函数将定义在 Scheduler 中应显示哪些事件以及哪些不应显示。
 
 ~~~js
-scheduler.filter_week = function(id, event){
-    if(event.name == 'New event')
+scheduler.filter_week = (id, event) => {
+    if (event.name === 'New event') {
         return false; // 该事件将被过滤（不会渲染）
-        //或者
-        return true; // 该事件将被渲染
-}
+    }
+
+    return true; // 该事件将被渲染
+};
 ~~~
 
-这里，"week"指的是视图的名称（在 *'scheduler.filter_week'* 中使用）。
+在此，`"week"` 是 `scheduler.filter_week` 中视图的名称。
 
-**filter_(viewName)** 函数接受两个参数:
+`filter_(viewName)` 方法接收两个参数：
 
-- **id** - 事件的标识符
-- **event** - 事件对象本身
+- `id` - 事件的 id
+- `event` - 事件对象
 
-也可以为不同的视图分配不同的过滤函数:
+请记住，您可以为不同的视图设置不同的过滤函数：
 
 ~~~js
-scheduler.filter_day = scheduler.filter_week = function(id, event){
-    //some_code
-}
+scheduler.filter_day = scheduler.filter_week = (id, event) => {
+    // some code
+};
 ...
-scheduler.filter_timeline = function(id, event){
-    //some_other code
-}
+scheduler.filter_timeline = (id, event) => {
+    // some other code
+};
 
 ~~~
 
-
-[Filtering events](https://docs.dhtmlx.com/scheduler/samples/09_api/09_filtering_events.html)
+### 相关示例
+- [筛选事件](https://docs.dhtmlx.com/scheduler/samples/09_api/09_filtering_events.html)

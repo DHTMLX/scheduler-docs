@@ -24,10 +24,10 @@ description: "definiert eine benannte Sammlung, die in Units, Timeline-Ansichten
 
 ~~~jsx
 // ruft eine Liste von Optionen mit dem Namen 'my_list' ab  
-var list = scheduler.serverList("my_list");  
+const list = scheduler.serverList("my_list");  
 ...  
 // erstellt und gibt eine Liste mit den angegebenen Optionen zurück  
-var list = scheduler.serverList("options", [  
+const list = scheduler.serverList("options", [  
     {key: 1, label: "John"},  
     {key: 2, label: "Adam"},  
     {key: 3, label: "Diane"}  

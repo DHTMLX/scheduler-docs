@@ -25,7 +25,7 @@ description: "视图中日单元格显示的日期"
 
 ~~~jsx
 scheduler.templates.week_agenda_scale_date = function(date) {
-        var scale_date_format = scheduler.date.date_to_str("%l, %F %d");
+        const scale_date_format = scheduler.date.date_to_str("%l, %F %d");
         return scale_date_format(date);
 };
 ~~~

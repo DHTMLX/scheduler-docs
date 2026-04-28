@@ -17,7 +17,7 @@ description: "값이 양수일 때 top 오프셋을 설정하여 tooltip의 수�
 ~~~jsx
 scheduler.config.tooltip_offset_y = 40;
 
-scheduler.init('scheduler_here',new Date(2023,10,20),"week");
+scheduler.init('scheduler_here',new Date(2027,10,20),"week");
 ~~~
 
 **Default value:** 20

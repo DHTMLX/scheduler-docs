@@ -1,16 +1,16 @@
 ---
-sidebar_label: "map_type"
+sidebar_label: map_type
 title: "map_type config"
-description: "определяет тип Google Maps"
+description: "sets the type of Google Maps"
 ---
 
 # map_type
-:::warning
-Эта функицональность устарела
-::: 
+:::warning 
+Свойство устарело
+:::
 ### Description
 
-@short: Определяет тип Google Maps
+@short: Устанавливает тип Google Maps
 
 @signature: map_type: any
 
@@ -19,17 +19,17 @@ description: "определяет тип Google Maps"
 ~~~jsx
 scheduler.config.map_type = google.maps.MapTypeId.HYBRID;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"map");
+scheduler.init('scheduler_here',new Date(2027,05,11),"map");
 ~~~
 
-**Default value:** ROADMAP
+**Значение по умолчанию:** ROADMAP
 
-**Applicable views:** [Map view](views/map.md)
+**Поддерживаемые представления:** [Вид карты](views/map.md)
 
 ### Details
 
 :::note
- Для использования этого свойства необходимо включить плагин [map_view](guides/extensions-list.md#mapview). 
+ Своьство требует активированного плагина [map_view](guides/extensions-list.md#map-view) для активации. 
 :::
 
 ### Change log

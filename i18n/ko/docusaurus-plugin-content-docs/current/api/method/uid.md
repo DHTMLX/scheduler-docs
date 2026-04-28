@@ -18,5 +18,5 @@ description: "현재 스케줄러 인스턴스 내에서 고유함이 보장되�
 ### Example
 
 ~~~jsx
-var new_id = scheduler.uid();
+const new_id = scheduler.uid();
 ~~~

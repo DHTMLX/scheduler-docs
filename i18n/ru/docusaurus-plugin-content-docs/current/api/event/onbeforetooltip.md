@@ -1,33 +1,33 @@
 ---
-sidebar_label: "onBeforeTooltip"
-title: "onBeforeTooltip event"
-description: "срабатывает непосредственно перед появлением tooltip для элемента данных (только когда активировано расширение 'tooltip')"
+sidebar_label: onBeforeTooltip
+title: "onBeforeTooltip событие"
+description: "срабатывает до отображения tooltip для элемента данных (только при включенном расширении 'tooltip')"
 ---
 
 # onBeforeTooltip
 
 ### Description
 
-@short: Срабатывает непосредственно перед появлением tooltip для элемента данных (только когда активировано расширение 'tooltip')
+@short: Срабатывает до отображения tooltip для элемента данных (только при включенном расширении 'tooltip')
 
-@signature: onBeforeTooltip: (id: string) =\> boolean
+@signature: onBeforeTooltip: (id: string) => boolean
 
 ### Parameters
 
-- `id` - (required) *string* - ID элемента данных, для которого собирается показать tooltip
+- `id` - (required) *string* - идентификатор элемента данных, для которого будет отображаться tooltip
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию (<b>true</b>) или отменено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onBeforeTooltip", function (id){
-    //любая кастомная логика здесь
+    // любая ваша логика здесь
     return true;
 });
 ~~~
 
 ### Details
 
-Это событие можно заблокировать. Возврат *false* предотвратит отображение tooltip.
+Событие можно заблокировать. Верните *false* — и tooltip не будет отображаться.

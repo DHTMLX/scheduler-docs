@@ -1,14 +1,14 @@
 ---
-sidebar_label: "wai_aria_attributes"
-title: "wai_aria_attributes config"
-description: "включает поддержку WAI-ARIA, чтобы компонент мог распознаваться скринридерами"
+sidebar_label: wai_aria_attributes
+title: "конфигурация wai_aria_attributes"
+description: "включает поддержку WAI-ARIA, чтобы компонент распознавался программами экранного чтения"
 ---
 
 # wai_aria_attributes
 
 ### Description
 
-@short: Включает поддержку WAI-ARIA, чтобы компонент мог распознаваться скринридерами
+@short: Включает поддержку WAI-ARIA, чтобы компонент распознавался программами экранного чтения
 
 @signature: wai_aria_attributes: boolean
 
@@ -20,11 +20,11 @@ scheduler.config.wai_aria_attributes = true;
 scheduler.init("scheduler_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Details
 
-введено в версии 4.4
+added in version 4.4
 
 ### Related Guides
 - [Доступность](guides/accessibility.md#wai-aria-attributes)

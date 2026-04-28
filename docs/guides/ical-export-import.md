@@ -88,8 +88,8 @@ It's an example of events' array that is referred to in import/export data from/
 $events = array(
     array(
         "id" => 1,
-        "start_date" => "2010-04-05 08:00:00",
-        "end_date" => "2012-04-09 09:00:00",
+        "start_date" => "2027-04-05 08:00:00",
+        "end_date" => "2027-04-09 09:00:00",
         "text" => "text1",
         "rec_type" => "week_2___3,5",
         "event_pid" => null,
@@ -98,8 +98,8 @@ $events = array(
 
     array(
         "id" => 2,
-        "start_date" => "2010-04-06 12:00:00",
-        "end_date" => "2010-04-06 18:00:00",
+        "start_date" => "2027-04-06 12:00:00",
+        "end_date" => "2027-04-06 18:00:00",
         "text" => "text2",
         "rec_type" => "",
         "event_pid" => null,
@@ -108,8 +108,8 @@ $events = array(
 
     array(
         "id" => 3,
-        "start_date" => "2010-04-07 12:00:00",
-        "end_date" => "2010-04-07 18:00:00",
+        "start_date" => "2027-04-07 12:00:00",
+        "end_date" => "2027-04-07 18:00:00",
         "text" => "text3",
         "rec_type" => "",
         "event_pid" => null,
@@ -118,8 +118,8 @@ $events = array(
 
     array(
         "id" => 4,
-        "start_date" => "2010-04-08 12:00:00",
-        "end_date" => "2010-04-08 18:00:00",
+        "start_date" => "2027-04-08 12:00:00",
+        "end_date" => "2027-04-08 18:00:00",
         "text" => "text4",
         "rec_type" => "",
         "event_pid" => null,

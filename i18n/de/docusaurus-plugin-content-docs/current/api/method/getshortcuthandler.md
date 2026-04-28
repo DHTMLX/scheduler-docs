@@ -23,7 +23,7 @@ description: "ruft einen Handler für eine Tastaturnavigations-Shortcut ab"
 ### Example
 
 ~~~jsx
-var shortcut_handler = scheduler.getShortcutHandler("ctrl+a", "event");
+const shortcut_handler = scheduler.getShortcutHandler("ctrl+a", "event");
 ~~~
 
 ### Related samples

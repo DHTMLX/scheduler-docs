@@ -28,7 +28,7 @@ scheduler.templates.week_date_class = function(start, today){
 };
 ~~~
 
-**Applicable views:** [Week view](views/week.md), [Units view](views/units.md)
+**Доступные представления:** [Week view](views/week.md), [Units view](views/units.md)
 
 ### Related Guides
 - [Шаблоны недельного вида](views/week-view-templates.md)

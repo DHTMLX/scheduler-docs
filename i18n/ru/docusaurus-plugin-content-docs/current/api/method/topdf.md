@@ -1,21 +1,21 @@
 ---
-sidebar_label: "toPDF"
-title: "toPDF method"
-description: "экспортирует текущий вид в PDF-документ, что удобно для печати."
+sidebar_label: toPDF
+title: "Метод toPDF"
+description: "экспорт текущего представления в PDF-документ (можно использовать для печати)"
 ---
 
 # toPDF
 
 ### Description
 
-@short: Экспортирует текущий вид в PDF-документ, что удобно для печати.
+@short: Экспорт текущего представления в PDF-документ (можно использовать для печати)
 
 @signature: toPDF: (url: string, mode?: string) =\> void
 
 ### Parameters
 
-- `url` - (required) *string* - путь к серверному конвертеру PDF
-- `mode` - (optional) *string* - цветовая схема, используемая в итоговом PDF-документе
+- `url` - (required) *string* - путь к конвертеру PDF на стороне сервера
+- `mode` - (required) *string* - цветовая карта итогового PDF-документа
 
 ### Example
 
@@ -26,23 +26,23 @@ scheduler.toPDF("./service/generate.php","color");
 ### Details
 
 :::note
- Этот метод требует включенного плагина [pdf](guides/extensions-list.md#pdf). 
+ Метод требует включённого плагина [pdf](guides/extensions-list.md#pdf). 
 ::: 
 
 :::note
- Этот метод относится к экспорту в dhtmlxScheduler версии 4.0 или ниже (см. [Экспорт в PDF (версия 4.0)](export/pdf-legacy.md)). 
-:::
+ Метод относится к [exporting of dhtmlxScheduler 4.0 or earlier versions](export/pdf-legacy.md). 
+ :::
 
-Второй параметр (**mode**) принимает только одно значение из следующих вариантов:
+Второй параметр (**mode**) метода может принимать только одно значение из заданного набора:
 
-- **'color'** - печать в полном цвете (по умолчанию)
-- **'gray'** - печать в оттенках серого
-- **'bw'** - печать строго в черно-белом режиме, без вариантов цвета
-- **'custom'** - позволяет использовать кастомную цветовую схему, что требует PHP-программирования ([подробности](export/pdf.md))
-- **'fullcolor'** - использует фактические цвета фона и текста при экспорте
+- **'color'** - полноцветная печать (по умолчанию)
+- **'gray'** - печать в оттенках черного и белого
+- **'bw'** - печатает только в черно-белом, цветовые варианты недоступны
+- **'custom'** - можно использовать для включения пользовательской цветовой карты. Требуется PHP-кодирование ([детали](export/pdf.md#using-export-services))
+- **'fullcolor'** - фактические цвета фона и текста, которые используются во время экспорта
 
 ### Related API
-- [](api/method/topdfrange.md)
+- [toPDFRange](api/method/topdfrange.md)
 
 ### Related Guides
 - [Экспорт в PDF (версия 4.0)](export/pdf-legacy.md)

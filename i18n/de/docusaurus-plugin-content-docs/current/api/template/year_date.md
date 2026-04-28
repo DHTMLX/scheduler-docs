@@ -22,7 +22,7 @@ description: "setzt das Datum, das im Header der Ansicht angezeigt wird"
 ### Example
 
 ~~~jsx
-var date_to_str=scheduler.date.date_to_str(scheduler.locale.labels.year_tab +" %Y");
+const date_to_str = scheduler.date.date_to_str(scheduler.locale.labels.year_tab +" %Y");
 
 scheduler.templates.year_date = function(date){
     return date_to_str(date);

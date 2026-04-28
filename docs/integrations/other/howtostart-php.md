@@ -92,7 +92,7 @@ Create a *scheduler.phtml* file in the `templates` templates folder:
         </div>
         <script>
             scheduler.config.xml_date="%Y-%m-%d %H:%i";
-            scheduler.init('scheduler_here', new Date(2019,0,20), "week");
+            scheduler.init('scheduler_here', new Date(2027,0,20), "week");
             scheduler.load("/events");
 
             var dp = scheduler.createDataProcessor("/events");
@@ -226,7 +226,7 @@ To enable dynamic loading in UI, you can set the *setLoadMode* option to any of 
 
 ~~~js
 scheduler.config.xml_date="%Y-%m-%d %H:%i";
-scheduler.init("scheduler_here", new Date(2019, 0, 20), "week");
+scheduler.init("scheduler_here", new Date(2027, 0, 20), "week");
 scheduler.setLoadMode("day");
 scheduler.load("/events");
 ~~~
@@ -362,7 +362,7 @@ Finally, we will configure the client side to utilize the API we've just impleme
 
 ~~~js title="templates/basic.phtml"
 scheduler.config.xml_date="%Y-%m-%d %H:%i";
-scheduler.init("scheduler_here", new Date(2019, 0, 20), "week");
+scheduler.init("scheduler_here", new Date(2027, 0, 20), "week");
 scheduler.setLoadMode("day");
 
 // load data from the backend
@@ -393,7 +393,7 @@ In order to enable recurrence (e.g. "repeat event daily") you'll need to add an 
         scheduler.plugins({
             recurring: true /*!*/
         });
-        scheduler.init('scheduler_here', new Date(2019,0,20), "week");
+        scheduler.init('scheduler_here', new Date(2027,0,20), "week");
         ...
        </script> 
 </body>

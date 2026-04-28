@@ -5,13 +5,13 @@ sidebar_label: "Skins-Anpassung"
 
 # Skins-Anpassung
 
-Ab Version 7.0 werden die Skins des Schedulers mithilfe von CSS-Variablen erstellt, was eine einfache Anpassung und Gestaltung ermöglicht.
+Ab Version 7.0 verwenden Scheduler-Skins CSS-Variablen, die Sie zur Anpassung und Stilgestaltung verwenden können.
+
+### Verwandte Beispiele
+- [Customize and switch between themes](https://docs.dhtmlx.com/scheduler/samples/07_skins/07_themes.html)
 
 
-[Customize and switch between themes](https://docs.dhtmlx.com/scheduler/samples/07_skins/07_themes.html)
-
-
-Wichtige CSS-Variablen:
+Key CSS Variables:
 
 ~~~css
 :root {
@@ -79,154 +79,153 @@ Wichtige CSS-Variablen:
 
 ~~~
 
-Alle diese Variablen befinden sich in der Datei **codebase/sources/less/src/themes/variables.less** innerhalb des Pakets.
+Alle Variablen finden Sie in der Datei **codebase/sources/less/src/themes/variables.less** des Pakets.
 
 ## Wie man Skins anpasst
 
-Die einfachste Möglichkeit, das Erscheinungsbild des Schedulers zu ändern, besteht darin, die CSS-Variablen in Ihrem eigenen Stylesheet zu überschreiben. Zum Beispiel:
+Die einfachste Methode, das Erscheinungsbild des Scheduler anzupassen, besteht darin, die relevanten CSS-Variablen in Ihrem Stylesheet zu überschreiben. Hier ist ein Beispiel:
 
 ~~~html
 <style>
 :root {
-  --dhx-scheduler-base-colors-primary: #01579B;
-  --dhx-scheduler-event-background: #33B579;
-  --dhx-scheduler-event-color: #FFFFFF;
-  --dhx-scheduler-base-colors-border: #B0B8CD;
-  --dhx-scheduler-border-radius:2px;
+    --dhx-scheduler-base-colors-primary: #01579B;
+    --dhx-scheduler-event-background: #33B579;
+    --dhx-scheduler-event-color: #FFFFFF;
+    --dhx-scheduler-base-colors-border: #B0B8CD;
+    --dhx-scheduler-border-radius: 2px;
 }
 </style>
 ~~~
 
+### Verwandte Beispiele
+- [Customize and switch between themes](https://docs.dhtmlx.com/scheduler/samples/07_skins/07_themes.html)
 
-[Customize and switch between themes](https://docs.dhtmlx.com/scheduler/samples/07_skins/07_themes.html)
 
-
-Wenn Sie Variablen auf diese Weise setzen, ersetzen Sie die Standardstile durch Ihre eigenen, und diese Änderungen werden im gesamten Scheduler angewendet.
+Durch das Definieren von Variablen auf diese Weise können Sie die Standardstile neu definieren und sicherstellen, dass Ihre benutzerdefinierten Stile auf den Scheduler angewendet werden.
 
 :::note
-Für eine konsistente Vererbung der Werte im gesamten Theme ist es am besten, Variablen auf dem :root-Element zu definieren.
+Für eine korrekte Vererbung von Werten über das gesamte Theme hinweg definieren Sie Variablen im `:root`-Element.
 :::
 
-Wenn Sie diese Styles auf der **:root**-Ebene definieren, wird sichergestellt, dass sie im gesamten Component korrekt vererbt werden. So werden Änderungen richtig weitergegeben, wenn eine Variable von einer anderen abhängt.
+Es ist wichtig, diese Stile im `:root`-Element zu definieren, um eine ordnungsgemäße Vererbung und Anwendung im gesamten Baustein sicherzustellen. Dieser Ansatz gewährleistet, dass, wenn eine von anderen Variablen verwendete Variable neu definiert wird, sie die verwandten Stile im gesamten Baustein entsprechend beeinflusst.
 
-Zum Beispiel erbt die Variable `--dhx-scheduler-scale-color` ihren Wert von `--dhx-scheduler-container-color`.
+Zum Beispiel erbt die Variable `--dhx-scheduler-scale-color` von der Primär-Textfarb-Variablen `--dhx-scheduler-container-color`.
 
-- Wenn Sie `--dhx-scheduler-container-color` auf der **:root**-Ebene neu definieren, wird auch `--dhx-scheduler-scale-color` entsprechend aktualisiert.
+- Wenn Sie `--dhx-scheduler-container-color` auf `:root`-Ebene neu definieren, stellen Sie sicher, dass `--dhx-scheduler-scale-color` diese Änderung widerspiegelt.
 
 ~~~html
 <style>
 :root {
     /* --dhx-scheduler-scale-color und andere
-  Variablen, die von `--dhx-scheduler-container-color` erben,
-  werden beeinflusst
-  */
-  --dhx-scheduler-container-color: #222;
-
+        Variablen, die von `--dhx-scheduler-container-color` erben,
+        werden beeinflusst
+    */
+    --dhx-scheduler-container-color: #222;
 }
 </style>
 ~~~
 
-- Wenn Sie jedoch `--dhx-scheduler-container-color` tiefer im DOM, z.B. innerhalb von **.dhx_cal_container**, neu definieren, wird `--dhx-scheduler-scale-color` nicht geändert.
+- Wenn Sie `--dhx-scheduler-container-color` auf einer niedrigeren Ebene im DOM-Baum neu definieren, z.B. innerhalb von **.dhx_cal_container**, wirkt sich dies nicht auf die Variable `--dhx-scheduler-scale-color` aus.
 
 ~~~html
 <style>
 .dhx_cal_container {
-    /* Nur Elemente, die direkt
-  --dhx-scheduler-container-color verwenden, werden beeinflusst
-  */
-  --dhx-scheduler-container-color: #222;
+    /* nur Elemente, die direkt
+       `--dhx-scheduler-container-color` verwenden, sind betroffen
+    */
+    --dhx-scheduler-container-color: #222;
 }
 </style>
 ~~~
 
 
-## Verwendung der Quellcodes
+## Wie man Quellcodes verwendet
 
-dhtmlxScheduler stellt Styles in folgenden Formaten bereit:
+dhtmlxScheduler wird mit Stil-Dateien in folgenden Formen geliefert:
 
-- **codebase/dhtmlxscheduler.css** - eine komprimierte CSS-Datei, bereit für den Produktionseinsatz;
-- **codebase/sources/dhtmlxscheduler.css** - lesbare, vorgefertigte CSS-Dateien;
-- **codebase/sources/less/** - LESS-Quelldateien für Scheduler-Skins.
+- **codebase/dhtmlxscheduler.css** - eine vorgefertigte komprimierte CSS-Datei für Skins, einsatzbereit für die Produktion;
+- **codebase/sources/dhtmlxscheduler.css** - vorgefertigte lesbare CSS-Dateien;
+- **codebase/sources/less/** - Quell-Less-Dateien der Scheduler-Skins.
 
-Die LESS-Quelldateien sind nützlich, wenn Sie bestehende Skins umfassend anpassen oder einen neuen Skin erstellen möchten.
+Letztere können für eine tiefe Anpassung vorhandener Skins oder zur Erstellung eines neuen Skins verwendet werden.
 
-## Erste Schritte
+## Wie man startet
 
-Sie können **codebase/sources/less** als NPM-Paket einrichten. Dieser Quellordner enthält zwei Arten von Dateien:
+Sie können `codebase/sources/less` als NPM-Paket initialisieren. Die Quellen enthalten zwei Arten von Dateien:
 
 - Stylesheets;
-- Dateien, die Mikrovariablen für detaillierte Anpassungen oder zum Erstellen neuer Skins deklarieren.
+- Dateien mit Mikrovariablen-Deklarationen, die Sie zur Feinabstimmung der Scheduler-Ansicht oder zur Erstellung eines neuen Skins verwenden können.
 
-## Skins erstellen
+## Wie man Skins baut
 
-Führen Sie im Verzeichnis **codebase/sources/less/** folgenden Befehl aus:
+In `codebase/sources/less/` führen Sie Folgendes aus:
 
-~~~
+~~~sh
 > npm install
 ~~~
 
-Nach Abschluss der Installation können Sie die CSS-Dateien mit diesen Befehlen neu erstellen:
+Nachdem die Installation abgeschlossen ist, können Sie CSS-Dateien mit den folgenden Befehlen neu erstellen:
 
-~~~
+~~~sh
 > npm run build
 ~~~
 
-Oder um Änderungen zu überwachen und automatisch neu zu bauen:
+Oder
 
-~~~
+~~~sh
 > npm run watch
 ~~~
 
-Diese Skripte kompilieren CSS aus den Quellen und legen das Ergebnis im *codebase*-Ordner des Scheduler-Pakets ab, wobei die bestehenden CSS-Dateien ersetzt werden.
+Das Skript baut CSS-Dateien aus den Quellen neu und legt sie in den *codebase*-Ordner des Scheduler-Pakets ab und ersetzt die bestehenden Dateien.
 
 ## Struktur
 
-Die Ordnerstruktur von **less** für Version 7.0 (kann sich in zukünftigen Versionen ändern) sieht wie folgt aus:
+Die Struktur des `less`-Ordners für Version 7.0 (kann sich in zukünftigen Versionen ändern) ist unten angegeben:
 
 ### Bilder
 
-- **./src/imgs** - SVG-Icons, die von allen Skins verwendet werden
-- **./src/iconfont** - Icons, die in der Web-Schriftart enthalten sind
+- **./src/imgs** - SVG-Symbole, die von allen Skins verwendet werden
+- **./src/iconfont** - Icons vorkonfiguriert in der Webschrift
 
 ### Skin-Definitionen
 
-Die Standardvariablen sind im `terrace`-Skin definiert, während andere Skins diese Variablen überschreiben und eigene Styles hinzufügen.
+Die Standardmenge an Variablen ist im `terrace`-Skin definiert; andere Skins definieren die entsprechenden Variablen neu und fügen Stile hinzu.
 
 - **./src/themes**
-  - *./src/themes/variables.less* - gemeinsame Variablen für alle Skins, einschließlich `terrace`
-  - *./src/themes/contrast_black* - Variablen für den Kontrast-Schwarz-Skin
-  - *./src/themes/contrast_white* - Variablen für den Kontrast-Weiß-Skin
-  - *./src/themes/material* - Variablen für den Material-Skin
-  - *./src/themes/dark* - Variablen für den Dark-Skin
-  - *./src/themes/flat* - Variablen für den Flat-Skin
+  - *./src/themes/variables.less* - gemeinsame Variablen, die von allen Skins verwendet werden; Terrace-Skin
+  - *./src/themes/contrast_black* - Kontrast-Schwarz-Skin-Variablen
+  - *./src/themes/contrast_white* - Kontrast-Weiß-Skin-Variablen
+  - *./src/themes/material* - Material-Skin-Variablen
+  - *./src/themes/dark* - Dunkel-Skin-Variablen
+  - *./src/themes/flat* - Flach-Skin-Variablen
 
-### Einstiegspunkte für das Bauen von Skins
+### Einstiegspunkte zum Erstellen von Skins
 
 - theme.less
 - package.json
 
 
-## Eigenen Skin erstellen
+## Erstellen eines benutzerdefinierten Skins
 
-Um einen neuen Skin zu erstellen, kopieren und benennen Sie zunächst einen bestehenden Skin aus **sources/less/src/themes** um. Gehen Sie wie folgt vor:
+Um einen neuen Skin zu erstellen, können Sie eine der vorhandenen Skins aus dem Ordner `sources/less/src/themes` kopieren und umbennenen. Folgen Sie den untenstehenden Schritten:
 
-1) Kopieren und benennen Sie eine der vorhandenen Skin-Dateien um. Zum Beispiel:
+1. Eine der vorhandenen Dateien aus dem Ordner `sources/less/src/themes` kopieren und umbennen, zum Beispiel:
 
-~~~
+~~~text
 -> kopieren:
 codebase/sources/less/src/themes/material.less
 
--> umbenennen in:
+-> umbennenen zu:
 codebase/sources/less/src/themes/custom.less
 ~~~
 
-2) Importieren Sie Ihre neue Datei in **sources/less/src/themes/index.less** wie folgt:
+2. Importieren Sie die neue Datei in `sources/less/src/themes/index.less`, so:
 
-~~~
+~~~less
 @import "./custom";
 ~~~
 
-Definieren Sie dann Ihre eigenen Variablen wie folgt:
+Und fügen Sie den Inhalt wie folgt hinzu:
 
 ~~~css
 :root[data-scheduler-theme='custom'] {
@@ -238,25 +237,26 @@ Definieren Sie dann Ihre eigenen Variablen wie folgt:
 }
 ~~~
 
-Denken Sie daran, Skin-Variablen unter dem `:root`-Selektor mit dem Attribut `data-scheduler-theme` zu definieren.
+Hinweis: Die Skin-Variablen sollten unter dem `:root`-Element definiert werden, wobei der Selektor `data-scheduler-there` verwendet wird.
 
-Jedes neue Theme sollte die Variable **--dhx-scheduler-theme** enthalten, die auf den Namen des Themes gesetzt ist.
+Eine neue Theme muss die Variable `--dhx-scheduler-theme` mit dem Theme-Namen enthalten.
 
-3) Erstellen Sie die Skins neu mit:
+3. Skins neu erstellen, indem Sie Folgendes ausführen:
 
-~~~
+~~~sh
 npm run build
 ~~~
 
 
 :::note
-Beachten Sie, dass der Scheduler je nach verwendetem Skin einige vordefinierte Einstellungen anwenden kann. Wenn Sie einen neuen Skin durch Kopieren eines bestehenden erstellen, müssen Sie ggf. die entsprechenden Scheduler-Einstellungen manuell anpassen.
+Beachten Sie, dass der Scheduler basierend auf dem angewendeten Skin einige vordefinierte Einstellungen für den Kalender anwenden kann.
+Wenn Sie einen neuen Skin kopieren, müssen Sie möglicherweise die entsprechenden Einstellungen dem Scheduler manuell anwenden.
 :::
 
 
 ## JS-Styling-Einstellungen
 
-Einige Styling-Optionen im Scheduler werden nicht ausschließlich über CSS gesteuert, sondern über JavaScript-Konfigurationen gesetzt. Dazu gehören:
+Beachten Sie, dass nicht alle Aspekte der Scheduler-Styling-Steuerung über CSS laufen; einige Parameter werden aus der JavaScript-Konfiguration definiert. Diese sind:
 
 - [hour_size_px](api/config/hour_size_px.md)
-- und alle Einstellungen des [scheduler.xy](api/other/xy.md) Objekts
+- und alle Einstellungen des Objekts [scheduler.xy](api/other/xy.md)

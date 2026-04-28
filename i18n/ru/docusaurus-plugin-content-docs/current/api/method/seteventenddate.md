@@ -1,34 +1,34 @@
 ---
-sidebar_label: "setEventEndDate"
-title: "setEventEndDate method"
-description: "обновляет дату окончания события"
+sidebar_label: setEventEndDate
+title: "Метод setEventEndDate"
+description: "устанавливает дату окончания события"
 ---
 
 # setEventEndDate
-:::warning
-Эта функицональность устарела
-::: 
+:::warning 
+Метод устарел.
+:::
 ### Description
 
-@short: Обновляет дату окончания события
+@short: Устанавливает дату окончания события
 
 @signature: setEventEndDate: (id: string, date: Date) =\> void
 
 ### Parameters
 
-- `id` - (required) *string* - уникальный идентификатор события  
-- `date` - (required) *Date* - обновленная дата окончания события
+- `id` - (required) *string* - идентификатор события
+- `date` - (required) *Date* - новая дата окончания события
 
 ### Example
 
 ~~~jsx
-var eventId = scheduler.addEvent({
-    start_date: new Date(2013,1,10),
-    end_date:   new Date(2013,1,13),
-    text:   "Conference"
+const eventId = scheduler.addEvent({
+    start_date: new Date(2027,1,10),
+    end_date:   new Date(2027,1,13),
+    text:   "Конференция"
 });
 ...
-scheduler.getEvent(eventId).end_date = new Date(2013,1,15);    
+scheduler.getEvent(eventId).end_date = new Date(2027,1,15);    
 scheduler.updateEvent(eventId);
 ~~~
 

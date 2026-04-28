@@ -1,47 +1,50 @@
 ---
-title: "Полностью настраиваемый лайтбокс"
-sidebar_label: "Полностью настраиваемый лайтбокс"
+title: "Полностью настраиваемый Lightbox"
+sidebar_label: "Полностью настраиваемый Lightbox"
 ---
 
-# Полностью настраиваемый лайтбокс
+# Полностью настраиваемый Lightbox
 
-Чтобы создать полностью настраиваемый лайтбокс для планировщика, необходимо переопределить метод @scheduler_showlightbox:
+Чтобы задать полностью настраиваемый Lightbox для планировщика, переопределите метод [`showLightbox()`](api/method/showlightbox.md):
 
 ~~~js
-scheduler.showLightbox = function(id){
+scheduler.showLightbox = (id) => {
     // id - id события
     ... код для отображения любой пользовательской формы ...
-}
+};
 ~~~
 
-Существует два вспомогательных метода, которые могут упростить эту задачу:
+Существует 2 вспомогательных метода, которые можно использовать для упрощения реализации:
 
-- [startLightbox](api/method/startlightbox.md) - отображает пользовательский лайтбокс внутри указанного HTML-контейнера, центрируя его на экране.
-- [endLightbox](api/method/endlightbox.md) - закрывает лайтбокс
+- [`startLightbox()`](api/method/startlightbox.md) - отображает настраиваемый lightbox в указанном HTML-контейнере, по центру экрана
+- [`endLightbox()`](api/method/endlightbox.md) - закрывает lightbox
 
-Предположим, что у вас есть HTML-контейнер с идентификатором **#custom_form** где-то на странице. Чтобы реализовать пользовательский лайтбокс, вы можете сделать следующее:
+Предположим, что на странице где-то имеется HTML-контейнер `#custom_form`. Тогда можно реализовать настраиваемый Lightbox следующим образом:
 
 ~~~js
-var custom_form = document.getElementById("custom_form");
+const customForm = document.getElementById("custom_form");
 
-scheduler.showLightbox = function(id){
-    var ev = scheduler.getEvent(id);
-    scheduler.startLightbox(id, custom_form );
+scheduler.showLightbox = (id) => {
+    const event = scheduler.getEvent(id);
+    scheduler.startLightbox(id, customForm);
     ...'здесь необходимо установить значения в форме'...
-    //document.getElementById("some_input").value = ev.text;
-}
+    // document.getElementById("some_input").value = event.text;
+};
+
 // должна быть связана с кнопкой 'save'
-function save_form() {
-    var ev = scheduler.getEvent(scheduler.getState().lightbox_id);
+const saveForm = () => {
+    const event = scheduler.getEvent(scheduler.getState().lightbox_id);
     ...'здесь необходимо получить значения из формы'...
-    //ev.text = document.getElementById("some_input").value;
-    scheduler.endLightbox(true, custom_form);
-}
+    // event.text = document.getElementById("some_input").value;
+    scheduler.endLightbox(true, customForm);
+};
+
 // должна быть связана с кнопкой 'cancel'
-function close_form(argument) {
-    scheduler.endLightbox(false, custom_form);
-}
+const closeForm = () => {
+    scheduler.endLightbox(false, customForm);
+};
 ~~~
 
+### Related samples
 
-[Fully custom lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/16_custom_form.html)
+- [Полностью настраиваемый Lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/16_custom_form.html)

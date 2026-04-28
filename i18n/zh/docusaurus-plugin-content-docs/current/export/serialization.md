@@ -20,7 +20,7 @@ scheduler.plugins({
 要将调度器数据转换为 XML 字符串，请使用 [toXML](api/method/toxml.md) 方法:
 
 ~~~js
-var xml = scheduler.toXML(); //xml string
+const xml = scheduler.toXML(); //xml string
 ~~~
 
 
@@ -32,7 +32,7 @@ var xml = scheduler.toXML(); //xml string
 要将调度器数据转换为 JSON 字符串，请使用 [toJSON](api/method/tojson.md) 方法:
 
 ~~~js
-var json_string = scheduler.toJSON(); //json string
+const json_string = scheduler.toJSON(); //json string
 ~~~
 
 :::note
@@ -48,7 +48,7 @@ var json_string = scheduler.toJSON(); //json string
 要将调度器数据转换为 iCal 字符串，请使用 [toICal](api/method/toical.md) 方法:
 
 ~~~js
-var ical_string = scheduler.toICal(); //ical string
+const ical_string = scheduler.toICal(); //ical string
 ~~~
 
 此外，还提供了一个[用于 iCal 导入导出操作的外部脚本](guides/ical-export-import.md)
@@ -107,7 +107,7 @@ scheduler.data_attributes = function(){
 
 ~~~js
 scheduler.data_attributes = function(){
-    var empty = function(a){ return a||""; }
+    const empty = function(a){ return a||""; }
     return [["id"],
         ["text"],
         ["start_date",scheduler.templates.xml_format],
@@ -146,7 +146,7 @@ scheduler.plugins({
 
 ~~~js
 function save(){
-    var form = document.getElementById("xml_form");
+    const form = document.getElementById("xml_form");
     form.elements.data.value = scheduler.toXML();
     form.submit();
 }

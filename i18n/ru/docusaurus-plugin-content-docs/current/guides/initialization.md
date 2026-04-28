@@ -1,15 +1,15 @@
 ---
 title: "dhtmlxScheduler на чистом JS/HTML"
-sidebar_label: "dhtmlxScheduler на чистом JS/HTML"
+sidebar_label: "Быстрый старт"
 ---
 
 import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 
 # dhtmlxScheduler на чистом JS/HTML
 
-При создании приложения с dhtmlxScheduler первым шагом является настройка и отображение планировщика на странице.
+Когда вы разрабатываете приложение с dhtmlxScheduler, первым делом нужно инициализировать его, или, проще говоря, отобразить Scheduler на странице.
 
-В этом руководстве описано, как инициализировать dhtmlxScheduler с использованием только JS и HTML. Для интеграции с фронтенд-фреймворками вы можете обратиться к следующим руководствам:
+Этот гид рассказывает об инициализации dhtmlxScheduler в простом JS и HTML. Вы также можете ознакомиться с руководствами по интеграции с фронтенд-фреймворками:
 
 <div className="framework-grid">
 
@@ -17,7 +17,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
     <FrameworkIcon name="react" className="framework-icon" />
     <div className="framework-title">React</div>
     <div className="framework-desc">
-      Use the ready-made <code>ReactScheduler</code> component with props and events.
+      Используйте готовый компонент <code>ReactScheduler</code> с пропсами и событиями.
     </div>
   </a>
 
@@ -25,7 +25,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
     <FrameworkIcon name="angular" className="framework-icon" />
     <div className="framework-title">Angular</div>
     <div className="framework-desc">
-      Integrate Scheduler into Angular projects using a thin wrapper.
+      Интегрируйте Scheduler в проекты на Angular с помощью тонкого обертчика.
     </div>
   </a>
 
@@ -33,7 +33,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
     <FrameworkIcon name="vue" className="framework-icon" />
     <div className="framework-title">Vue</div>
     <div className="framework-desc">
-      Use Scheduler inside Vue apps with a small wrapper and reactive configuration.
+      Используйте Scheduler во Vue-приложениях с небольшой обёрткой и реактивной конфигурацией.
     </div>
   </a>
 
@@ -41,7 +41,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
     <FrameworkIcon name="svelte" className="framework-icon" />
     <div className="framework-title">Svelte</div>
     <div className="framework-desc">
-      Embed Scheduler in Svelte with a simple component that binds config and events.
+      Встраивайте Scheduler в Svelte с помощью простого компонента, который привязывает конфигурацию и события.
     </div>
   </a>
 
@@ -49,25 +49,25 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
     <FrameworkIcon name="salesforce" className="framework-icon" />
     <div className="framework-title">Salesforce</div>
     <div className="framework-desc">
-      Use Scheduler in Salesforce Lightning Web Components and connect it to org data.
+      Используйте Scheduler в Salesforce Lightning Web Components и подключайте его к данным организации.
     </div>
   </a>
 
 </div>
 
 
-Существует два подхода к инициализации планировщика на странице:
+Существует два способа инициализации scheduler на странице:
 
-- [использование разметки планировщика](#initializingschedulerviamarkup)
-- [использование свойства конфигурации header](#initializingschedulerviaheaderconfig)
+- [через разметку Scheduler](#initializing-scheduler-via-markup)
+- [через свойство конфигурации заголовка](#initializing-scheduler-via-header-config)
 
-## Инициализация планировщика через разметку {#initializingschedulerviamarkup}
+## Инициализация Scheduler через разметку
 
-Чтобы разместить базовый планировщик на странице с помощью разметки, выполните 3 шага:
+Чтобы отобразить базовый Scheduler на странице через разметку, выполните 3 шага:
 
-1. Подключите [файлы dhtmlxScheduler](#requiredcodefiles) на вашей странице.
-2. Добавьте контейнер DIV на страницу вместе с необходимыми дочерними DIV для его элементов.
-3. Инициализируйте dhtmlxScheduler в созданном контейнере с помощью метода [init](api/method/init.md). Этот метод принимает HTML-контейнер (или его id), в котором будет отображаться планировщик.
+1. Подключите файлы кода dhtmlxScheduler на страницу.
+2. Создайте DIV‑контейнер на странице и определите соответствующие DIV‑контейнеры для его элементов.
+3. Инициализируйте dhtmlxScheduler в созданном контейнере с помощью метода [init](api/method/init.md). В качестве параметра метод принимает HTML‑контейнер (или его ID), в который будет отображаться Scheduler.
 
 ~~~html
 <!DOCTYPE html>
@@ -101,20 +101,18 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 
 ![Scheduler initialization](/img/init_scheduler_front.png)
 
+[Базовая инициализация](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/01_basic_init.html)
 
-[Basic initialization](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/01_basic_init.html)
+## Инициализация Scheduler через конфигурацию заголовка
 
+Вы должны инициализировать Scheduler таким способом, чтобы сделать его [адаптивным](guides/initialization.md#making-scheduler-responsive).
 
-## Инициализация планировщика через header config {#initializingschedulerviaheaderconfig}
+Чтобы отобразить базовый Scheduler на странице, выполните следующие шаги:
 
-Этот способ рекомендуется использовать, если вы хотите сделать планировщик [адаптивным](guides/initialization.md#makingschedulerresponsive).
-
-Чтобы разместить базовый планировщик на странице, выполните следующие шаги:
-
-1. Подключите [файлы dhtmlxScheduler](#requiredcodefiles) на вашей странице.
-2. Добавьте контейнер DIV на страницу.
-3. Определите структуру планировщика в объекте конфигурации [header](api/config/header.md).
-4. Инициализируйте dhtmlxScheduler в контейнере с помощью метода [init](api/method/init.md), передав контейнер (или его id) в качестве параметра.
+1. Подключите файлы кода dhtmlxScheduler на страницу.
+2. Создайте DIV‑контейнер на странице.
+3. Укажите структуру Scheduler в конфигурационном объекте [header](api/config/header.md). 
+4. Инициализируйте dhtmlxScheduler в созданном ранее контейнере с помощью метода [init](api/method/init.md). В качестве параметра метод принимает HTML‑контейнер (или его ID), в который будет отображаться Scheduler.
 
 ~~~html
 <!DOCTYPE html>
@@ -140,42 +138,41 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
         "today",
         "next"
     ];
-    scheduler.init('scheduler_here',new Date(2020,0,1),"week"); /*!*/
+    scheduler.init('scheduler_here',new Date(2027,0,1),"week"); /*!*/
 </script>
 </html>
 ~~~
 
 
-[Responsive scheduler](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/13_touch_ui.html)
+[Адаптивный Scheduler](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/13_touch_ui.html)
 
- 
-## Необходимые файлы {#requiredcodefiles}
+## Необходимые файлы кода
 
-Вам необходимо подключить следующие файлы:
+Необходимые файлы кода:
 
-- *dhtmlxscheduler.js*
-- *dhtmlxscheduler.css* (также вы можете ознакомиться с доступными скинами в [Скины](guides/skins.md))
+- dhtmlxscheduler.js
+- dhtmlxscheduler.css (также можно [изучить доступные скины](guides/skins.md))
 
 ~~~html
 <script src="../scheduler/dhtmlxscheduler.js"></script>
 <link rel="stylesheet" href="../scheduler/dhtmlxscheduler.css" type="text/css">
 ~~~
 
-Ниже приведена краткая структура пакета dhtmlxScheduler, чтобы вы могли быстро найти эти файлы:
+Давайте быстро исследуем структуру пакета dhtmlxScheduler, чтобы узнать, где искать файлы.
 
-- <b>sources</b> - содержит исходные файлы библиотеки. Они не минифицированы и удобны для чтения, в основном используются для отладки.
+- <b>sources</b> - исходные файлы библиотеки. Файлы не минифицированы и читаются легко. Пакет в основном предназначен для отладки компонентов.
 :::note
-Обратите внимание, что в **Trial** версии библиотеки планировщика папка **sources** отсутствует.
+Обратите внимание, что в версии **Trial** библиотеки Scheduler папка **sources** отсутствует.
 :::
-- <b>samples</b> - содержит примеры кода.
-- <b>codebase</b> - содержит сжатые файлы библиотеки. Они имеют меньший размер и предназначены для использования в продуктивных проектах. <b>В ваших проектах рекомендуется использовать файлы из этой папки.</b>
+- <b>samples</b> - примеры кода.
+- <b>codebase</b> - упакованные файлы кода библиотеки. Эти файлы имеют значительно меньший размер и предназначены для использования в продакшне. <b>В ваших приложениях вам нужно использовать файлы из этой папки.</b>
 
 ## Размеры планировщика {#schedulersizing}
 
-Планировщик занимает весь размер своего контейнера (*scheduler_here* div в приведённых выше примерах), не увеличивая размер самого контейнера. 
-Это означает, что если вы не зададите высоту контейнера или она будет равна нулю, планировщик также будет иметь нулевую высоту и не будет виден.
+Scheduler занимает весь размер своего контейнера (*scheduler_here* див в приведённом выше примере) без его расширения.
+Это означает, что если вы не укажете высоту контейнера или установите её в 0, scheduler также будет иметь нулевую высоту и не будет отображаться.
 
-В наших примерах планировщик обычно занимает весь экран, устанавливая 100% ширины и высоты как для body документа, так и для контейнера планировщика:
+В наших примерах мы обычно делаем Scheduler полноэкранным, устанавливая ширину и высоту 100% для и тела документа, и для контейнера Scheduler:
 
 ~~~html
 <style>
@@ -191,7 +188,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
  <div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:100%;">
 ~~~
 
-Проблемы могут возникнуть, если элемент *scheduler_here* размещён внутри div с настройками размера по умолчанию:
+Это легко может пойти не так, если поместить элемент *scheduler_here* внутрь div с размерами по умолчанию:
 
 ~~~html
 <style>
@@ -205,14 +202,14 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 </head>
 <body>
  <div class="outer_container"> /*!*/
-   <div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:100%;">
+   <div id="scheduler_here" class="dhx_cal_container" style="width:100%;height:100%;">
 ~~~
 
-В этом случае планировщик не отобразится корректно, потому что "scheduler_here" установлен на 100% от родительского элемента, но у родителя не задан размер.
+Scheduler не будет корректно отображаться в этом случае, потому что "scheduler_here" установлен на 100% от размера родителя, а размер родителя не задан.
 
-Если вы используете относительные размеры (проценты) для элемента *.dhx_cal_container*, убедитесь, что у его родителя также задана высота. В противном случае вычисленная высота может быть равна нулю, и планировщик не отобразится.
+Если вы используете относительные размеры (%, проценты) для элемента *.dhx_cal_container*, убедитесь, что у его родителя также задана высота. Иначе итоговая высота может оказаться нулевой, и Scheduler не будет отображаться.
 
-В качестве альтернативы, вы можете использовать другие единицы измерения для размеров основного div планировщика. Следующие примеры будут иметь ожидаемый размер независимо от стилей внешних элементов:
+Или можно использовать разные единицы измерения для основных размеров div планировщика. Следующие элементы будут иметь ожидаемые размеры независимо от стилей внешних элементов:
 
 ~~~html
 <div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:100vh;">
@@ -226,15 +223,15 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 
 ### Автоматическое изменение размера планировщика {#containerautoresizing}
 
-Расширение **container_autoresize** изменяет стандартное поведение изменения размера планировщика. Обычно dhtmlxScheduler подстраивается под размер своего контейнера и отображает внутренние полосы прокрутки для доступа ко всем данным внутри фиксированного размера контейнера.
+Расширение **container_autoresize** для dhtmlxScheduler изменяет поведение изменения размера по умолчанию у планировщика. По умолчанию dhtmlxScheduler автоматически подгоняет размер под контейнер и использует внутренние полосы прокрутки, чтобы все данные были доступны внутри фиксированного размера контейнера.
 
-С включённым расширением **container_autoresize** планировщик динамически подстраивает свой размер под всё содержимое. Это значит, что он расширяется по высоте и/или ширине, чтобы отобразить все события и данные без внутренних полос прокрутки.
+Когда включено расширение **container_autoresize**, Scheduler динамически изменяет размер, чтобы вместить всё содержимое. Это означает, что Scheduler будет расширяться по высоте и/или ширине, чтобы отобразить все события и данные без необходимости внутренних полос прокрутки.
 
-Это гарантирует видимость всех данных без необходимости прокручивать содержимое внутри планировщика, что полезно, когда требуется полный обзор содержимого без ручной прокрутки.
+Это поведение обеспечивает видимость всего содержимого без прокрутки внутри планировщика, что делает его идеальным для случаев, когда требуется полная видимость содержимого планировщика без ручной прокрутки.
 
 #### Использование
 
-Чтобы активировать расширение **container_autoresize**, включите его в настройках планировщика следующим образом:
+Чтобы включить расширение **container_autoresize**, добавьте его в настройку планировщика следующим образом:
 
 ~~~js
 scheduler.plugins({
@@ -245,16 +242,15 @@ scheduler.plugins({
 
 [Autoresizing the scheduler container](https://docs.dhtmlx.com/scheduler/samples/03_extensions/28_container_autoresize.html)
 
+Это простое изменение конфигурации активирует поведение **container_autoresize**, позволяющее Scheduler подстраивать размер под содержимое, которое он содержит.
 
-Эта простая настройка активирует функцию **container_autoresize**, позволяя планировщику изменять размер в зависимости от содержимого.
+#### Управление заголовками при использовании container_autoresize
 
-#### Работа с заголовками при использовании container_autoresize
+Когда включено расширение **container_autoresize**, Scheduler подгоняет размер под всё содержимое. Это может привести к тому, что Scheduler выйдет за пределы экрана, что приведёт к появлению внешнего контейнера или полосы прокрутки на странице.
 
-Когда включено расширение **container_autoresize**, Scheduler автоматически изменяет размер, чтобы вместить всё своё содержимое. Иногда это приводит к тому, что Scheduler выходит за пределы экрана, из-за чего на странице или во внешнем контейнере появляются полосы прокрутки.
+В этом режиме прокрутка страницы будет также прокручивать навигационные и временные заголовки, делая их невидимыми при прокрутке страницы вниз. Хотя это обычно ожидаемое поведение, бывают ситуации, когда заголовки стоит зафиксировать. Это можно достичь с помощью дополнительного кода и стилей.
 
-В этом режиме прокрутка страницы также смещает панель навигации и временные заголовки, поэтому они не остаются видимыми при прокрутке вниз. Обычно такое поведение подходит, но бывают случаи, когда требуется закрепить заголовки. Для этого понадобится добавить некоторые стили и скрипты.
-
-Чтобы закрепить заголовки, используйте CSS-свойство sticky вместе с дополнительными стилями, например:
+Чтобы зафиксировать заголовки, можно использовать позицию sticky вместе с дополнительными стилями, например:
 
 ~~~js
 <style>
@@ -274,16 +270,16 @@ scheduler.plugins({
       top:0;
   }
   .dhx_cal_header{
-      /* top coordinate is assigned from JS */
+      /* верхняя координата задаётся в JS */
       margin-left: -1px;
       box-shadow: 0 1px 0px 0px var(--dhx-scheduler-base-colors-border);
   }
 </style>
 ~~~
 
-Кроме того, потребуется JavaScript, чтобы корректно задать верхнюю позицию для фиксированной временной шкалы, разместив её сразу под панелью навигации.
+Кроме того, вам понадобится некоторый JavaScript, чтобы обеспечить правильную верхнюю позицию зафиксированной шкалы времени, размещённой чуть ниже панели навигации.
 
-Поскольку высота панели навигации может меняться в зависимости от стилей и содержимого, её высоту нужно вычислять динамически и применять как top для заголовка, например так:
+Поскольку панель навигации гибкая и может изменять свою высоту в зависимости от других стилей и содержимого, нужно динамически вычислять её высоту и применять её в качестве верхней координаты для заголовка, как показано ниже:
 
 ~~~js
 scheduler.attachEvent("onViewChange", function(){
@@ -295,15 +291,16 @@ scheduler.attachEvent("onViewChange", function(){
 });
 ~~~
 
-Полный пример можно посмотреть в сниппете ниже:
+Проверьте полный демонстрационный пример в сниппете ниже:
 
-**Related sample** [Container autoresize and sticky header](https://snippet.dhtmlx.com/syo8wm9s)
+**Связанный пример** [Container autoresize and sticky header]
 
 ## Адаптивность Scheduler {#makingschedulerresponsive}
 
-Когда Scheduler инициализируется с помощью [свойства header конфигурации](#initializingschedulerviaheaderconfig), можно выбрать макет заголовка, подходящий для размера экрана клиента. Также применяются определённые стили, которые позволяют элементам и шрифтам хорошо адаптироваться к небольшим экранам.
+Когда вы инициализируете Scheduler через [свойство конфигурации header](#initializing-scheduler-via-header-config), вы сможете выбрать структуру заголовка, которая соответствует размеру экрана клиента.
+Это также применит определённые стили, делающие элементы и размеры шрифтов адаптивными на маленьких экранах.
 
-Больше информации доступно в отдельной статье: [Мобильная адаптивность Scheduler](guides/touch-support.md).
+Вы можете найти больше деталей в отдельной статье: [Мобильный адаптивный Scheduler](guides/touch-support.md).
 
 ## Импорт файлов в приложения на ES6/7 и TypeScript {#importfilesintoes67andtypescriptapps}
 
@@ -313,7 +310,7 @@ scheduler.attachEvent("onViewChange", function(){
 import { scheduler } from 'dhtmlx-scheduler';
 ~~~
 
-Для Commercial, Enterprise или Ultimate версий импорт выглядит так:
+Для коммерческой, корпоративной или Ultimate версии команда выглядит так:
 
 ~~~js
 import { scheduler, Scheduler } from 'dhtmlx-scheduler';
@@ -321,7 +318,7 @@ import { scheduler, Scheduler } from 'dhtmlx-scheduler';
 
 ## Использование Scheduler с Vite {#usingschedulerwithvite}
 
-Если ваш проект использует Vite, добавьте следующую настройку в файл **vite.config.js**, чтобы Scheduler корректно подключался к вашему приложению:
+Если вы используете Vite в проекте, для файла **vite.config.js** требуется следующая настройка, чтобы Scheduler корректно включался в приложение:
 
 ~~~js title="vite.config.js"
 optimizeDeps: {
@@ -332,36 +329,35 @@ optimizeDeps: {
 ~~~
 
 ## Добавление файлов в приложение на RequireJS {#includefilesintoarequirejsbasedapp}
-------------------------------------------- 
 
-Чтобы добавить файлы dhtmlxScheduler в приложение на RequireJS, используйте следующий пример:
+Чтобы подключить файлы dhtmlxScheduler в приложение на RequireJS, следуйте логике, показанной в примере ниже:
 
 ~~~js
 requirejs(["codebase/dhtmlxscheduler"], function(dhx){
-    var scheduler = dhx.scheduler;
-    var Scheduler = dhx.Scheduler;// для сборок Enterprise
+    const scheduler = dhx.scheduler;
+    const Scheduler = dhx.Scheduler;// for Enterprise builds
  
     scheduler.init('scheduler_here',new Date(),"week");
     scheduler.parse([
         {
-            id: 1, text: "Event 1", start_date: "2022-07-15 09:00", 
-            end_date: "2022-07-15 10:00"
+            id: 1, text: "Event 1", start_date: "2027-07-15 09:00", 
+            end_date: "2027-07-15 10:00"
         },
         {
-            id: 2, text: "Event 2", start_date: "2022-07-15 10:00", 
-            end_date: "2022-07-15 11:00"
+            id: 2, text: "Event 2", start_date: "2027-07-15 10:00", 
+            end_date: "2027-07-15 11:00"
         }
     ]);
 });
 ~~~
 
-Библиотека dhtmlxScheduler возвращает объект, содержащий `scheduler` и `Scheduler` (в Commercial, Enterprise или Ultimate версиях) - это соответствуют объектам *scheduler* и *Scheduler*, описанным [здесь](guides/multiple-per-page.md).
+Библиотека dhtmlxScheduler вернёт объект со свойствами `scheduler` и `Scheduler` (в коммерческих, Enterprise или Ultimate версиях) - объекты *scheduler* и *Scheduler*, описанные [здесь](guides/multiple-per-page.md).
 
 :::note
-При использовании Scheduler с пользовательскими расширениями в RequireJS обязательно указывайте конфигурацию `shim` для RequireJS и объявляйте зависимости расширений от Scheduler.
+При использовании Scheduler с пользовательскими расширениями в RequireJS следует указать конфигурацию `shim` для RequireJS и напрямую задать зависимость расширений от Scheduler в ней.
 :::
 
-Ниже приведён пример правильного подключения пользовательского расширения *custom_tooltip_plugin.js*:
+Ниже приведён пример, демонстрирующий, как файл пользовательского расширения *custom_tooltip_plugin.js* можно корректно подключить:
 
 ~~~js
 requirejs.config({
@@ -376,24 +372,24 @@ requirejs.config({
  
 requirejs(["dhtmlxscheduler"], 
 function (dhx) {
-    var scheduler = dhx.scheduler;
+    const scheduler = dhx.scheduler;
  
     scheduler.init('scheduler_here',new Date(),"week");
     scheduler.parse([
         {
-            id: 1, text: "Event 1", start_date: "2022-07-15 09:00", 
-            end_date: "2022-07-15 10:00"
+            id: 1, text: "Event 1", start_date: "2027-07-15 09:00", 
+            end_date: "2027-07-15 10:00"
         },
         {
-            id: 2, text: "Event 2", start_date: "2022-07-15 10:00", 
-            end_date: "2022-07-15 11:00"
+            id: 2, text: "Event 2", start_date: "2027-07-15 10:00", 
+            end_date: "2027-07-15 11:00"
         }
     ]);
 });
 ~~~
 
-Убедитесь, что имя модуля для любого файла внутри пакета указывается как *относительный путь внутри папки 'codebase' пакета* плюс *имя файла*, например:
+Проверьте, что имя модуля для любого файла внутри пакета указано как *относительный путь внутри папки 'codebase' пакета* плюс *имя файла*, например:
 
-**основная библиотека:**
+**ядро библиотеки:**
 
 - "dhtmlxscheduler": "./vendor/dhtmlxscheduler/dhtmlxscheduler"

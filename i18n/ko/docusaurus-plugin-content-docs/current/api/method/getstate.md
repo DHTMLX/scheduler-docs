@@ -18,7 +18,7 @@ description: "스케줄러의 현재 상태를 가져옵니다."
 ### Example
 
 ~~~jsx
-var mode = scheduler.getState().mode;
+const mode = scheduler.getState().mode;
 if(mode == "day"){
     // 여기에 커스텀 로직 작성
 }

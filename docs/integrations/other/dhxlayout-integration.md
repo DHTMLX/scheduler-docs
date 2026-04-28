@@ -20,8 +20,7 @@ There are two versions of Layout you can choose from, depending on the version o
 ## dhtmlxSuite v5+
 
 In this version dhtmlxLayout can be used as a separate product or as a part of the dhtmlxSuite library. To use dhtmlxLayout v5.X in your application, you should 
-[purchase the license](https://dhtmlx.com/docs/products/dhtmlxSuite5/).
-
+[purchase the license](https://dhtmlx.com/docs/products/dhtmlxSuite/).
 
 **To attach a dhtmlxScheduler instance to a layout cell**, use the [attachScheduler()](https://docs.dhtmlx.com/api__dhtmlxcell_attachscheduler.html) method.
   
@@ -33,11 +32,11 @@ function init() {
 
     sched1 = Scheduler.getSchedulerInstance();
     sched1.config.multi_day = true;
-    dhxLayout.cells("a").attachScheduler(new Date(2019,05,30),"week",null,sched1);
+    dhxLayout.cells("a").attachScheduler(new Date(2027,05,30),"week",null,sched1);
     sched1.load("/data/units")
         
     sched2 = Scheduler.getSchedulerInstance();
-    dhxLayout.cells("b").attachScheduler(new Date(2019,05,30),"month",null,sched2);
+    dhxLayout.cells("b").attachScheduler(new Date(2027,05,30),"month",null,sched2);
     sched2.load("/data/units")
 }
 ~~~
@@ -72,7 +71,7 @@ scheduler.config.multi_day = true;
 scheduler.attachEvent("onSchedulerReady", function () {
     requestAnimationFrame(function(){
         // here you can set the initial view and date and load the data
-        scheduler.setCurrentView(new Date(2017,5,3), "week");
+        scheduler.setCurrentView(new Date(2027,5,3), "week");
         scheduler.load("../common/events.json");
     });
     

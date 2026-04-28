@@ -20,7 +20,7 @@ scheduler.plugins({
 Чтобы преобразовать данные планировщика в XML-строку, используйте метод [toXML](api/method/toxml.md):
 
 ~~~js
-var xml = scheduler.toXML(); //xml string
+const xml = scheduler.toXML(); // xml string
 ~~~
 
 
@@ -32,7 +32,7 @@ var xml = scheduler.toXML(); //xml string
 Чтобы преобразовать данные планировщика в JSON-строку, используйте метод [toJSON](api/method/tojson.md):
 
 ~~~js
-var json_string = scheduler.toJSON(); //json string
+const json_string = scheduler.toJSON(); // json string
 ~~~
 
 :::note
@@ -48,7 +48,7 @@ var json_string = scheduler.toJSON(); //json string
 Чтобы преобразовать данные планировщика в iCal-строку, используйте метод [toICal](api/method/toical.md):
 
 ~~~js
-var ical_string = scheduler.toICal(); //ical string
+const ical_string = scheduler.toICal(); // ical string
 ~~~
 
 Также существует [внешний скрипт для операций импорта-экспорта iCal](guides/ical-export-import.md)
@@ -107,7 +107,7 @@ scheduler.data_attributes = function(){
 
 ~~~js
 scheduler.data_attributes = function(){
-    var empty = function(a){ return a||""; }
+    const empty = function(a){ return a || ""; }
     return [["id"],
         ["text"],
         ["start_date",scheduler.templates.xml_format],
@@ -146,7 +146,7 @@ scheduler.plugins({
 
 ~~~js
 function save(){
-    var form = document.getElementById("xml_form");
+    const form = document.getElementById("xml_form");
     form.elements.data.value = scheduler.toXML();
     form.submit();
 }

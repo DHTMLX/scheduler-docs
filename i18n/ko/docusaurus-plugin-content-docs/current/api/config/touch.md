@@ -17,7 +17,7 @@ description: "스케줄러에서 터치 지원을 켜거나 끕니다."
 ~~~jsx
 scheduler.config.touch = "force";
 ...
-scheduler.init('scheduler_here',new Date(2013,3,10),"week");
+scheduler.init('scheduler_here',new Date(2027,3,10),"week");
 ~~~
 
 **Default value:** true

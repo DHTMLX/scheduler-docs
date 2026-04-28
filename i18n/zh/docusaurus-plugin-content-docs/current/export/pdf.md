@@ -5,58 +5,57 @@ sidebar_label: "导出为 PDF"
 
 # 导出为 PDF
 
-*本文档适用于 dhtmlxScheduler 4.1 及以上版本的导出功能。如需 4.0 或更早版本，请参阅[此指南](export/pdf-legacy.md)。*
+*本文涉及 dhtmlxScheduler 4.1 及以上版本的导出。如使用 dhtmlxScheduler 4.0 或更早版本，请参阅 [此处](export/pdf-legacy.md) 的详细信息。*
 
-自 4.1 版本起，dhtmlxScheduler 提供了一种新的方式，通过[在线导出服务](export/pdf.md#defaultexporttopdf)将调度器导出为 PDF 文件。
+自版本 4.1 起，dhtmlxScheduler 提供了一种将调度器导出为 PDF 格式的新方法：一种 [在线导出服务](export/pdf.md#default-export-to-pdf)。
 
-:::note
-该服务可免费使用，但在 GPL 许可下生成的 PDF 会带有库的水印。购买许可证后，在有效的支持期内（所有 PRO 许可证为 12 个月），水印将被移除。
+:::info
+该服务是免费的，但输出的 PDF 文件将包含在 GPL 许可下的库水印。若您购买许可证，导出结果在有效支持期内（所有 PRO 许可证为 12 个月）将不带水印。
 :::
 
-## 使用导出服务 {#usingexportservices}
+## 使用导出服务
 
-有多种导出服务可用，可以在本地安装用于将 Scheduler 导出为 PDF。
+有多种导出服务可用。您可以将它们安装在本地计算机上，并本地将 Scheduler 导出为 PDF。
 
-请注意，导出服务与 Scheduler 包是分开的。如需了解使用条款，请参阅[相关文档](https://dhtmlx.com/docs/products/dhtmlxScheduler/export.shtml)。
+请注意，导出服务并不包含在 Scheduler 软件包中，请阅读 [相应文章](https://dhtmlx.com/docs/products/dhtmlxScheduler/export.shtml) 以了解每种服务的使用条款。
 
-## 请求大小限制 {#limitsonrequestsize}
+## 请求大小限制
 
-API 端点 <b>*https://export.dhtmlx.com/scheduler*</b> 处理导出请求（如 *exportToPDF*、*exportToPNG* 等）。最大允许请求大小为 **10 MB**。
+有一个通用 API 端点 `https://export.dhtmlx.com/scheduler`，提供诸如 `exportToPDF()` 与 `exportToPNG()` 等导出方法。最大请求大小为 10 MB。
 
-## 默认导出为 PDF {#defaultexporttopdf}
+## 默认导出为 PDF
 
-要将调度器导出为 PDF，请按照以下步骤操作:
+要将调度器导出为 PDF 文档，请完成以下步骤：
 
-- 通过 [plugins](api/method/plugins.md) 方法启用 <b>export_api</b> 插件:
+- 若要使用在线导出服务，请通过 [`plugins()`](api/method/plugins.md) 方法启用 `export_api` 插件：
 
 ~~~js
 scheduler.plugins({
-      export_api: true
+    export_api: true
 });
 ~~~
 
 :::note
-对于 7.0 之前的 Scheduler 版本，需要在页面中引入 **https://export.dhtmlx.com/scheduler/api.js** 脚本以启用在线导出服务，例如:
+如果您使用的 Scheduler 版本早于 7.0，请在页面中包含 `https://export.dhtmlx.com/scheduler/api.js` 文件以启用在线导出服务，例如：
 
-~~~js
+~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
 <script src="https://export.dhtmlx.com/scheduler/api.js"></script>
 ~~~
 :::
 
-- 使用 <a href="#parametersoftheexportmethod">exportToPDF</a> 方法进行导出:
+- 调用 [`exportToPDF()`](#parameters-of-the-export-method) 方法以导出 Scheduler：
 
-~~~html
-<input value="Export to PDF" type="button" onclick='scheduler.exportToPDF()'>/*!*/
+~~~html {1}
+<input value="Export to PDF" type="button" onclick='scheduler.exportToPDF()'>
 ~~~
 
+### 相关示例
+- [Export to PDF/PNG](https://docs.dhtmlx.com/scheduler/samples/04_export/06_online_export.html)
 
-[Export to PDF/PNG](https://docs.dhtmlx.com/scheduler/samples/04_export/06_online_export.html)
+## export 方法的参数
 
-
-## 导出方法的参数 {#parametersoftheexportmethod}
-
-[exportToPDF()](api/method/exporttopdf.md) 方法可接受一个可选的对象参数，包含多种属性:
+[`exportToPDF()`](api/method/exporttopdf.md) 方法接收一个包含若干属性的对象作为参数。所有属性都是可选的：
 
 <table class="webixdoc_links">
   <tbody>
@@ -95,88 +94,88 @@ scheduler.plugins({
   </tbody>
 </table>
 
-
-~~~js title="调用 exportToPDF 并带参数的示例"
-scheduler.exportToPDF({
-    name:"myscheduler.pdf",
-    format:"A4",
-    orientation:"portrait",
-    zoom:1,
-    header:"<h1>My company</h1>",
-    footer:"<h4>Bottom line</h4>",
-    server:"https://myapp.com/myexport/scheduler"
-});
-~~~
-
-## 输出文件名 {#nameoftheoutputfile}
-
-如需自定义导出 PDF 的文件名，请在 [exportToPDF](export/pdf.md#parametersoftheexportmethod) 参数中的 **name** 属性设置:
-
+### 使用可选属性调用 export 方法
 ~~~js
 scheduler.exportToPDF({
-    name:"my_beautiful_scheduler.pdf"/*!*/
+    name: "myscheduler.pdf",
+    format: "A4",
+    orientation: "portrait",
+    zoom: 1,
+    header: "<h1>My company</h1>",
+    footer: "<h4>Bottom line</h4>",
+    server: "https://myapp.com/myexport/scheduler"
 });
 ~~~
 
-## 输出文件的页眉/页脚 {#headerfooteroftheoutputfile}
+## 输出文件的名称
 
-可以通过 [exportToPDF](export/pdf.md#parametersoftheexportmethod) 参数中的 **header** 和 **footer** 属性为导出的 PDF 添加页眉和页脚:
+要为输出文件设置自定义名称，请在 [`exportToPDF()`](export/pdf.md#parameters-of-the-export-method) 方法的参数中使用 `name` 属性：
+
+~~~js {2}
+scheduler.exportToPDF({
+    name: "my_beautiful_scheduler.pdf"
+});
+~~~
+
+## 输出文件的页眉/页脚
+
+要为输出的 PDF 文件添加页眉/页脚，请在 [`exportToPDF()`](export/pdf.md#parameters-of-the-export-method) 方法的参数中使用 `header`/`footer` 属性：
 
 :::note
-这些属性中可以使用任意 HTML。插入图片时，请确保 "src" 属性为绝对 URL。
+请注意，在指定参数时您可以使用任意 HTML。在指定图片时，请记得将全局路径设置为 `src` 属性的值。
 :::
 
-~~~js
+~~~js {3-4}
 scheduler.exportToPDF({
-    name:"myscheduler.pdf",
-    header:"<h1>My company</h1>",/*!*/
-    footer:"<h4>Bottom line</h4>"/*!*/
+    name: "myscheduler.pdf",
+    header: "<h1>My company</h1>",
+    footer: "<h4>Bottom line</h4>"
 });
 ~~~
 
-## 输出文件的自定义样式 {#customstylefortheoutputfile}
+## 为输出文件应用自定义样式
 
-可通过引入包含自定义 CSS 类的样式表来应用自定义样式:
+要为调度器应用自定义样式，请提供包含自定义 CSS 类的样式表：
 
-- 通过链接外部样式表:
+- 通过链接：
 
-~~~js
+~~~js {3}
 scheduler.exportToPDF({
-    name:"calendar.pdf",
-    header:'<link rel="stylesheet" href="http://mysite.com/custom.css">' /*!*/
+    name: "calendar.pdf",
+    header: '<link rel="stylesheet" href="http://mysite.com/custom.css">'
 });
 ~~~
 
-- 或者通过在 `<style>` 标签内嵌入样式:
+- 或通过 'style' 标签：
 
-~~~js
+~~~js {3}
 scheduler.exportToPDF({
-    name:"calendar.pdf",
-    header:'<style>... custom css classes here ...</style>' /*!*/
+    name: "calendar.pdf",
+    header: '<style>... custom css classes here ...</style>'
 });
 ~~~
 
-请注意，此方式仅适用于全网可访问的 HTTP URL。对于本地或内网环境，可直接在 header 中嵌入所有样式，例如:
+注意，上述解决方案适用于全局 HTTP 引用。如果您的 CSS 类是在内网/本地环境中指定的，则可以按如下方式将所有样式嵌入：
 
 ~~~js
 scheduler.exportToPDF({
-    header:"<style>.tier1{background: red; color:white;}</style>"
+    header: "<style>.tier1{background: red; color:white;}</style>"
 });
 ~~~
 
-## 导出 HTML 元素 {#exportinghtmlelements}
+## 导出 HTML 元素
 
-将 Scheduler 导出为 PDF 时，出于安全考虑，对 HTML 元素存在一些限制。
+在将 Scheduler 导出为 PDF 时，请注意由于潜在的安全性原因，对 HTML 元素的导出有所限制。
 
-某些元素如 `<canvas>`、`<svg>`、`<script>` 以及 Base64 编码的 *src* 属性图片并不完全支持。但对于导出 SVG 和 Base64 格式图片有安全的替代方式:
+并非所有 HTML 元素都完全允许导出，例如 `<canvas>`、`<svg>`、`<script>` 以及其 `src` 属性包含 Base64 图像的图片。然而，在 SVG 与 Base64 格式中仍有可安全导出的图片方式：
 
-- 使用 `<img>` 标签，*src* 属性指向 SVG 图片 URL（适用于 PNG 和 JPG 导出，不适用于 Base64），例如:
+- 您可以使用一个 `<img>` 元素，其 `src` 属性包含 SVG 格式的图片 URL（适用于 PNG 和 JPG，Base64 格式不适用），例如：
 
 ~~~html
 <img src="https://www.svgrepo.com/download/530597/hat.svg">
 ~~~
 
-- 使用 CSS 样式，如 *background* 或 *background-image*，通过 `url()` 指向图片 URL 或 Base64 字符串（适用于 PNG、JPG 和 SVG）:
+- 您可以使用样式元素，例如 `background` 或 `background-image`，并将 `url` 属性设为图片链接或 Base64 格式的图片作为其值（适用于 PNG/JPG/SVG 格式）
 
 ~~~css
 .red {
@@ -187,4 +186,4 @@ scheduler.exportToPDF({
 }
 ~~~
 
-如果您有自定义的导出模块，并且需要导出不受支持的 HTML 元素，可以联系技术支持获取如何修改模块以绕过限制的建议。但请注意，这样做可能会使服务器面临 XSS 安全风险。
+如果您有导出模块并且需要导出在线导出服务器不支持的 HTML 元素，您可以提交支持请求以获取关于对模块进行哪些修改以移除限制的说明。然而，请注意，这样做会使您的服务器容易受到 XSS 攻击。

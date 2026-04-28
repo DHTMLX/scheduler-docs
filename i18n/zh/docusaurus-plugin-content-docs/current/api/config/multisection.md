@@ -19,7 +19,7 @@ description: "允许在 Timeline 或 Units 视图中跨多个 section 渲染相�
 ~~~jsx
 scheduler.config.multisection = true; 
 
-scheduler.init('scheduler_here', new Date(2012, 5, 30), "timeline");
+scheduler.init('scheduler_here', new Date(2027, 5, 30), "timeline");
 ~~~
 
 **Default value:** false

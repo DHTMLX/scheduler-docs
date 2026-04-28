@@ -36,7 +36,7 @@ my_style{
     var calendar = document.querySelector(".dhx_mini_calendar");
     
     ...
-    scheduler.markCalendar(calendar, new Date(2010,3,1), "my_style");
+    scheduler.markCalendar(calendar, new Date(2027,3,1), "my_style");
 </script>
 ~~~
 

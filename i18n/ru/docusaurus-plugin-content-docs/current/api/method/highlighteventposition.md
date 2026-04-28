@@ -1,20 +1,20 @@
 ---
-sidebar_label: "highlightEventPosition"
+sidebar_label: highlightEventPosition
 title: "highlightEventPosition method"
-description: "отмечает длительность события на timeline"
+description: "Подсвечивает продолжительность события на шкале времени"
 ---
 
 # highlightEventPosition
 
 ### Description
 
-@short: Отмечает длительность события на timeline
+@short: Подсвечивает продолжительность события на шкале времени
 
 @signature: highlightEventPosition: (event: any) =\> void
 
 ### Parameters
 
-- `event` - (required) *object* - объект события
+- `event` - (required) *object* - сам объект события
 
 ### Example
 

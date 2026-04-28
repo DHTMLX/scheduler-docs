@@ -5,15 +5,15 @@ sidebar_label: "반복 이벤트"
 
 # 반복 이벤트
 
-반복 이벤트는 이벤트 캘린더 애플리케이션에서 유용하게 사용되는 기능으로, 사용자가 원하는 간격으로 반복되는 이벤트를 설정할 수 있게 해줍니다. 7.1 버전부터 Scheduler는 반복 이벤트에 대해 [RFC-5545](https://datatracker.ietf.org/doc/html/rfc5545) 표준 형식을 채택하고 있습니다.
+반복 이벤트는 이벤트 캘린더 애플리케이션에서 흔히 사용되는 기능으로, 사용자가 지정된 간격으로 반복되는 이벤트를 생성할 수 있게 해줍니다. v7.1부터 Scheduler는 반복 이벤트에 대해 RFC-5545 기반 형식을 사용합니다.
 
-이 가이드는 Scheduler에서 반복 이벤트를 다루는 방법과 데이터베이스에 저장하는 방법을 설명합니다.
+이 문서는 Scheduler에서 반복 이벤트를 사용하는 방법과 이를 데이터베이스에 저장하는 방법을 설명합니다.
 
 :::note
-이전 반복 이벤트 형식에 대한 설명은 [여기](guides/recurring-events-legacy.md)에서 확인할 수 있습니다.
+레거시 형식의 반복 이벤트에 대한 설명은 [여기](guides/recurring-events-legacy.md)에서 확인할 수 있습니다.
 :::
 
-기본적으로 Scheduler에는 반복 이벤트 기능이 활성화되어 있지 않습니다. 이 기능을 사용하려면 페이지에서 **recurring** 플러그인을 활성화해야 합니다.
+기본적으로 Scheduler는 반복 이벤트를 직접적으로 지원하지 않습니다. 이러한 기능을 제공하려면 페이지에서 `recurring` 확장을 활성화해야 합니다:
 
 ~~~js
 scheduler.plugins({
@@ -21,352 +21,474 @@ scheduler.plugins({
 });
 ~~~
 
-반복 이벤트를 활성화하면, 라이트박스 인터페이스에 아래와 같이 추가 섹션이 표시됩니다:
+반복 이벤트에 대한 지원이 활성화되면 라이트박스는 아래와 같이 보이기 시작합니다:
 
 ![recurring_lightbox](/img/recurring_lightbox.png)
 
-## 설정 옵션 {#configurationoptions}
 
-라이브러리는 반복 이벤트를 커스터마이즈할 수 있는 다음 옵션을 제공합니다:
+## 구성 옵션
 
-- [repeat_date](api/config/repeat_date.md) - 'recurring' 라이트박스의 'End by' 필드에 사용되는 날짜 형식을 제어합니다.
+라이브러리는 반복 이벤트를 구성하기 위한 다음 옵션을 제공합니다:
+
+- [`repeat_date`](api/config/repeat_date.md) - 'recurring' 라이트박스의 'End by' 필드의 날짜 형식을 설정합니다
 
 ~~~js
 scheduler.config.repeat_date = "%m/%d/%Y";
 ...
-scheduler.init('scheduler_here', new Date(2019, 7, 5), "month");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "month");
 ~~~
 
+**관련 샘플** [Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
 
-[Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
+## 'Recurring' 라이트박스
 
-
-## 'Recurring' 라이트박스 {#recurringlightbox}
-
-반복 확장 기능을 활성화하면, 라이트박스에 "Repeat event"라는 추가 섹션이 생깁니다. 'recurring' 라이트박스의 기본 구성은 다음과 같습니다:
+기본적으로 반복 확장이 활성화되면 라이트박스에 하나의 추가 섹션인 "Repeat event"가 생깁니다. 그리고 기본적인 'recurring' 라이트박스의 정의는 아래와 같이 시작합니다:
 
 ~~~js
-[     
-    {name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
-    {name:"recurring", height:115, type:"recurring", map_to:"rec_type", 
-        button:"recurring"},
-    {name:"time", height:72, type:"time", map_to:"auto"}
+scheduler.config.lightbox.sections = [
+    { name: "description", map_to: "text", type: "textarea", focus: true },
+    { name: "recurring", type: "recurring", map_to: "rrule" },
+    { name: "time", height: 72, type: "time", map_to: "auto" }
 ];
 ~~~
 
-다른 섹션을 추가할 수 있지만, "recurring"과 "time" 섹션은 반드시 남겨두어야 하며, "time" 섹션은 항상 "recurring" 섹션 **뒤에** 위치해야 합니다.
+**관련 샘플** [Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
 
 
-[Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
+## 형식 설명
 
+반복 이벤트는 일반 이벤트의 모든 필드에 더하여 여러 추가 속성을 포함하는 단일 레코드로 데이터베이스에 저장됩니다:
 
-## 포맷 설명 {#formatdescription}
+1. **start_date** - (_datetime_) 시리즈의 시작 날짜를 정의합니다
+2. **end_date** - (_datetime_) 시리즈의 종료 날짜를 정의합니다
+3. **rrule** - (_string_) 반복 규칙을 정의합니다
+4. **duration** - (_number_) 반복 인스턴스의 지속 시간
+5. **recurring_event_id** - (_string|number_) 상위 시리즈의 ID이며, 수정되었거나 삭제된 시리즈의 발생에 대해서만 채워집니다
+6. **original_start** - (_datetime_) 편집된 인스턴스의 원래 날짜이며, 수정되었거나 삭제된 발생에 대해서만 채워집니다
+7. **deleted** - (_boolean_) 시리즈의 삭제된 인스턴스를 지정하며, 삭제된 발생에 대해서만 채워집니다
 
-반복 이벤트는 데이터베이스에 단일 레코드로 저장되며, 표준 이벤트 필드 외에도 몇 가지 추가 속성이 포함됩니다:
-
-1. **start_date** - (_datetime_) 시리즈의 시작 날짜
-2. **end_date** - (_datetime_) 시리즈의 종료 날짜
-3. **rrule** - (_string_) 반복 규칙을 정의
-4. **duration** - (_number_) 각 반복 인스턴스의 지속 시간
-5. **recurring_event_id** - (_string|number_) 상위 시리즈의 ID; 수정 또는 삭제된 발생에만 설정됨
-6. **original_start** - (_datetime_) 수정된 발생의 원래 날짜; 수정 또는 삭제된 인스턴스에만 설정됨
-7. **deleted** - (_boolean_) 삭제된 발생을 표시; 삭제된 인스턴스에만 설정됨
-
-**rrule** 속성은 RFC-5545에서 정의된 iCalendar 형식을 따르며, 빈도, 간격 및 기타 반복 세부 정보를 지정합니다.
+**rrule** 은 RFC-5545에 명시된 iCalendar 형식을 따르며, 반복 패턴을 제어하는 주기, 간격 및 기타 매개변수를 자세히 설명합니다.
 
 ### iCalendar 형식과의 차이점
 
-우리의 포맷이 iCalendar 포맷과 다른 점은 두 가지가 있습니다:
+저희 형식은 iCalendar 형식과 두 가지 핵심 시점에서 다릅니다:
 
-#### STDATE와 DTEND의 별도 저장
+#### STDATE와 DTEND의 분리 저장:
 
-iCalendar에서는 반복 시리즈의 시작 및 종료 날짜를 **RRULE** 문자열 내 **STDATE**와 **DTEND** 속성으로 포함하는 것이 일반적이지만, 우리 포맷에서는 **start_date**와 **end_date**를 별도의 필드로 저장합니다. 이를 통해 **RRULE** 문자열을 파싱하지 않고도 날짜별로 반복 이벤트를 더 쉽게 다루고 조회할 수 있습니다.
+iCalendar 형식에서 반복 시리즈의 시작일과 종료일은 일반적으로 **RRULE** 문자열의 일부로 **STDATE**와 **DTEND** 속성으로 포함됩니다.
+저희 형식에서는 **stdate**와 **dtend**를 별도의 필드로 저장합니다. 이 분리는 RRULE 문자열을 구문 분석하지 않고도 날짜별로 반복 이벤트를 더 쉽게 조작하고 쿼리할 수 있게 해줍니다.
 
-예를 들어 2024년 6월 1일부터 2024년 12월 1일까지 매주 월요일 반복되는 이벤트 시리즈는 다음과 같이 저장됩니다:
+다음은 2027년 6월 1일 시작하여 2027년 12월 1일까지만 반복하도록 설정된 반복 이벤트 시리즈의 예시입니다:
 
-~~~
+~~~js
 {
-  "id": 1,
-  "text": "Weekly Team Meeting",
-  "start_date": "2024-06-03 09:00:00",
-  "duration": 3600,
-  "end_date": "2024-12-02 10:00:00",
-  "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
-  "recurring_event_id": null,
-  "original_start": null
+    "id": 1,
+    "text": "주간 팀 미팅",
+    "start_date": "2027-06-03 09:00:00",
+    "duration": 3600,
+    "end_date": "2027-12-02 10:00:00",
+    "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
+    "recurring_event_id": null,
+    "original_start": null
 }
 ~~~
 
 #### 예외 처리
 
-예외(즉, 수정되거나 삭제된 발생)는 상위 시리즈와 연결된 별도의 이벤트 레코드로 저장됩니다. 이러한 예외 레코드는 **recurring_event_id**, **original_start**, **deleted**의 세 가지 추가 속성을 포함합니다. 이를 통해 어떤 인스턴스가 변경 또는 삭제되었는지, 그리고 해당 인스턴스가 메인 시리즈와 어떻게 연결되는지 알 수 있습니다.
+예외(시리즈의 수정되었거나 삭제된 발생)는 상위 시리즈와 연결된 별도 이벤트 레코드로 저장됩니다. 예외에는 세 가지 추가 속성이 있습니다: **recurring_event_id**, **original_start**, 그리고 **deleted**. 이러한 속성은 수정되었거나 삭제된 인스턴스의 식별과 상위 시리즈와의 관계를 쉽게 만들어 줍니다.
 
 :::note
-표준 iCalendar 포맷과 달리, 예외(수정 또는 삭제된 인스턴스)는 **RRULE**의 **EXDATE** 속성에 저장되지 **않습니다**.
+전통적인 iCalendar 형식과 달리 예외(수정되었거나 삭제된 인스턴스)는 시리즈의 RRULE의 EXDATE 속성에 저장되지 않는다는 점에 주의하십시오.
 :::
 
-예를 들어, 하나의 수정된 발생과 하나의 삭제된 발생이 있는 반복 시리즈는 다음과 같이 저장됩니다:
-~~~
+다음은 하나의 수정된 발생과 하나의 삭제된 발생이 있는 반복 시리즈의 예시입니다:
+
+~~~js
 [
-  {
-    "id": 1,
-    "text": "Weekly Team Meeting",
-    "start_date": "2024-06-03 09:00:00",
-    "duration": 3600,
-    "end_date": "2024-12-02 10:00:00",
-    "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
-    "recurring_event_id": null,
-    "original_start": null
-  },
-  {
-    "id": 2,
-    "text": "Special Team Meeting",
-    "start_date": "2024-06-10 09:00:00",
-    "end_date": "2024-06-10 11:00:00",
-    "rrule": null,
-    "recurring_event_id": 1,
-    "original_start": "2024-06-10 09:00:00"
-  },
-  {
-    "id": 3,
-    "text": "Deleted Team Meeting",
-    "start_date": "2024-06-17 09:00:00",
-    "end_date": "2024-06-17 10:00:00",
-    "rrule": null,
-    "recurring_event_id": 1,
-    "original_start": "2024-06-17 09:00:00",
-    "deleted": true
-  }
+    {
+        "id": 1,
+        "text": "주간 팀 미팅",
+        "start_date": "2027-06-03 09:00:00",
+        "duration": 3600,
+        "end_date": "2027-12-02 10:00:00",
+        "rrule": "FREQ=WEEKLY;INTERVAL=1;BYDAY=MO",
+        "recurring_event_id": null,
+        "original_start": null
+    },
+    {
+        "id": 2,
+        "text": "특별 팀 미팅",
+        "start_date": "2027-06-10 09:00:00",
+        "end_date": "2027-06-10 11:00:00",
+        "rrule": null,
+        "recurring_event_id": 1,
+        "original_start": "2027-06-10 09:00:00"
+    },
+    {
+        "id": 3,
+        "text": "삭제된 팀 미팅",
+        "start_date": "2027-06-17 09:00:00",
+        "end_date": "2027-06-17 10:00:00",
+        "rrule": null,
+        "recurring_event_id": 1,
+        "original_start": "2027-06-17 09:00:00",
+        "deleted": true
+    }
 ]
 ~~~
 
-`2024-06-10 09:00:00`에 예정된 이벤트는 `Special Team Meeting` 레코드로 대체되고, `2024-06-17 09:00:00` 이벤트는 생략됩니다.
+2027-06-10 09:00:00에 예정된 반복 이벤트는 `Special Team Meeting` 레코드로 대체되며, 2027-06-17 09:00:00에 예정된 이벤트는 건너뛰어집니다.
 
-수정되거나 삭제된 인스턴스의 **rrule**은 무시된다는 점에 유의하세요.
+수정되거나 삭제된 발생의 **rrule**은 무시됩니다.
 
-또한, 삭제된 발생의 **text**, **start_date**, **end_date** 필드는 Scheduler 동작에 영향을 주지 않습니다.
+삭제된 인스턴스의 **text**, **start_date**, 및 **end_date** 역시 무시되며, 이들 필드의 값은 Scheduler의 동작에 영향을 주지 않습니다.
 
+## 시리즈의 특정 발생을 편집/삭제하기
 
-## 시리즈 내 특정 발생 편집/삭제 {#editingdeleting-a-certain-occurrence-in-the-series}
+시리즈의 특정 발생을 삭제하거나 편집하는 것이 가능합니다.
 
-반복 시리즈 내에서 특정 발생을 삭제하거나 편집할 수 있습니다.
+### 주요 팁
 
-### 중요 팁
+- 반복 이벤트의 각 업데이트마다 DB에 별도 레코드가 생성됩니다.
+- 특정 발생은 **recurring_event_id** 속성으로 상위 이벤트를 참조합니다.
+- 시리즈의 특정 발생을 편집한 경우, 이 업데이트에 대해 **original_start** 필드가 수정되었을 때 원래 발생해야 했던 시점을 저장합니다. 예를 들어 2027년 7월 27일 15:00에 발생한 발생이 7월 30일 15:00으로 이동했다면, 타임스탬프는 첫 날짜를 반영합니다.
 
-- 반복 이벤트의 각 변경 사항은 데이터베이스에 새로운 레코드를 생성합니다.
-- 개별 발생은 **recurring_event_id** 속성을 통해 메인 시리즈와 연결됩니다.
-- 발생이 편집될 때, **original_start** 필드는 해당 발생이 원래 예정되었던 날짜를 저장합니다(새 날짜가 아님). 예를 들어, 2024년 7월 27일 15:00에 예정된 발생이 2024년 7월 30일 15:00로 이동되면, **original_start**는 여전히 2024년 7월 27일 15:00으로 남아 있습니다.
+### 서버 측 로직
 
+추가 필드 외에도 서버 측 컨트롤러에 특정 로직이 필요합니다:
 
-### 서버 사이드 로직 {#server-side-logic}
-
-추가 필드 외에, 서버 사이드 컨트롤러는 다음과 같은 로직을 구현해야 합니다:
-
-- 삭제된 인스턴스가 추가될 때, 서버 응답에 "deleted" 상태가 포함되어야 합니다.
-    - 삭제된 인스턴스는 **deleted** 속성이 비어 있지 않을 때 인식됩니다.
-- 시리즈가 수정되면, 해당 시리즈에 연결된 모든 수정 및 삭제된 발생을 삭제해야 합니다.
-    - 시리즈는 **rrule**이 비어 있지 않고 **recurring_event_id**가 비어 있는 경우로 식별됩니다.
-    - 수정된 발생은 **recurring_event_id**가 시리즈의 **id**와 일치하는 모든 레코드입니다.
-- **recurring_event_id**가 비어 있지 않은 이벤트가 삭제될 경우, 해당 레코드를 제거하는 대신 **deleted="true**로" 업데이트해야 합니다.
+- 삭제된 인스턴스가 삽입되었으면 서버 응답은 "deleted" 상태를 가져야 합니다.
+  - 삭제된 인스턴스는 **deleted** 속성의 비어 있지 않은 값으로 식별할 수 있습니다.
+- 시리즈가 수정되었다면 시리즈의 모든 수정된 및 삭제된 발생은 삭제되어야 합니다.
+  - 시리즈는 비어 있지 않은 값의 **rrule** 속성과 비어 있는 값의 **recurring_event_id** 속성으로 식별됩니다.
+  - 시리즈의 수정된 발생은 **recurring_event_id**가 시리즈의 **id**와 일치하는 모든 레코드입니다.
+- 비어 있지 않은 **recurring_event_id**를 가진 이벤트가 삭제되었다면, 삭제 처리 대신 `deleted="true"`로 업데이트해야 합니다.
 
 :::note
-완전한 코드 예제는 [여기](integrations/howtostart-guides.md)에서 확인할 수 있습니다.
+전체 코드 예제는 [여기](integrations/howtostart-guides.md)에서 확인할 수 있습니다.
 :::
 
+## 라이트박스의 반복 블록에 대한 사용자 정의 컨트롤
 
-## 라이트박스 반복 블록의 커스텀 컨트롤 {#custom-control-for-the-lightboxs-recurring-block}
+버전 4.2부터 Scheduler는 라이트박스의 반복 블록에 대한 사용자 정의 HTML을 지정할 수 있습니다.
 
-4.2 버전부터 dhtmlxScheduler는 라이트박스의 'recurring' 섹션에 대해 커스텀 HTML 폼을 정의할 수 있습니다.
+#### 어떤 커스터마이즈를 할 수 있나요?
 
-#### 어떤 커스터마이징이 가능한가요?
+1. 마크업 변경
+2. 불필요한 요소 제거(예: "매년" 반복 타입)
+3. 입력 값에 기본값 설정(예: 모든 시리즈를 "종료일 없음"으로 생성하도록)
 
-1. 폼의 마크업을 변경할 수 있습니다.
-2. 불필요한 요소(예: 'yearly' 반복 옵션 및 해당 입력란)를 제거할 수 있습니다.
-3. 입력값의 기본값을 설정할 수 있습니다(예: 항상 '종료일 없음' 옵션을 선택하고 반복 종료 지정 블록을 숨기기).
+### 라이트박스의 반복 블록 컨트롤의 기본 템플릿
 
-### 사용 예시
+라이트박스의 반복 블록 컨트롤의 기본 템플릿은 아래 코드와 같이 보이며, `loc` 객체는 Scheduler의 로케일 객체(지역별 레이블)입니다:
 
-아래는 'monthly'와 'yearly' 반복 옵션을 제거하고, 'no end date' 옵션을 기본값으로 설정(반복 종료 블록 숨김)하는 예시입니다.
-
-1. 페이지 어딘가에 커스텀 폼의 마크업을 정의합니다(기본 템플릿은 'schedulersourceslocalerecurring'에서 복사하여 시작할 수 있습니다):
 ~~~html
-<div class="dhx_form_repeat" id="my_recurring_form"> /*!*/
-  <form>
-    <div>
-      <select name="repeat">
-        <option value="day">Daily</option>
-        <option value="week">Weekly</option>
-      </select>
+<div class="dhx_form_rrule">
+    <div class="dhx_form_repeat_pattern">
+        <select>
+            <option value="NEVER">${loc.repeat_never}</option>
+            <option value="DAILY">${loc.repeat_daily}</option>
+            <option value="WEEKLY">${loc.repeat_weekly}</option>
+            <option value="MONTHLY">${loc.repeat_monthly}</option>
+            <option value="YEARLY">${loc.repeat_yearly}</option>
+            <option value="WORKDAYS">${loc.repeat_workdays}</option>
+            <option value="CUSTOM">${loc.repeat_custom}</option>
+        </select>
     </div>
-    <div>
-      <div id="dhx_repeat_day">
-        <input type="hidden" name="day_type" value="d"/>
-        <input type="hidden" name="day_count" value="1" />
-      </div>
-      <div id="dhx_repeat_week">
-        Repeat every week next days:
-
-
-       <label><input type="checkbox" name="week_day" value="1" />Monday</label>
-       <label><input type="checkbox" name="week_day" value="2" />Tuesday</label>
-       <label><input type="checkbox" name="week_day" value="3" />Wednesday</label>
-       <label><input type="checkbox" name="week_day" value="4" />Thursday</label>
-       <label><input type="checkbox" name="week_day" value="5" />Friday</label>
-       <label><input type="checkbox" name="week_day" value="6" />Saturday</label>
-       <label><input type="checkbox" name="week_day" value="0" />Sunday</label>
-       <input type="hidden" name="week_count" value="1" />
-      </div>
+    <div class="dhx_form_repeat_custom dhx_hidden">
+        <div class="dhx_form_repeat_custom_interval">
+            <input name="repeat_interval_value" type="number" min="1">
+            <select name="repeat_interval_unit">
+                <option value="DAILY">${loc.repeat_freq_day}</option>
+                <option value="WEEKLY">${loc.repeat_freq_week}</option>
+                <option value="MONTHLY">${loc.repeat_freq_month}</option>
+                <option value="YEARLY">${loc.repeat_freq_year}</option>
+            </select>
+        </div>
+        <div class="dhx_form_repeat_custom_additional">
+            <div class="dhx_form_repeat_custom_week dhx_hidden">
+                <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                    value="MO" />${loc.day_for_recurring[1]}</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                    value="TU" />${loc.day_for_recurring[2]}</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                    value="WE" />${loc.day_for_recurring[3]}</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                    value="TH" />${loc.day_for_recurring[4]}</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                    value="FR" />${loc.day_for_recurring[5]}</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                    value="SA" />${loc.day_for_recurring[6]}</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                    value="SU" />${loc.day_for_recurring[0]}</label>
+            </div>
+            <div class="dhx_form_repeat_custom_month dhx_hidden">
+                <select name="dhx_custom_month_option">
+                    <option value="month_date"></option>
+                    <option value="month_nth_weekday"></option>
+                </select>
+            </div>
+            <div class="dhx_form_repeat_custom_year dhx_hidden">
+                <select name="dhx_custom_year_option">
+                    <option value="month_date"></option>
+                    <option value="month_nth_weekday"></option>
+                </select>
+            </div>
+        </div>
     </div>
-
-    <input type="hidden" value="no" name="end">
-  </form>
+    <div class="dhx_form_repeat_ends">
+        <div>${loc.repeat_ends}</div>
+        <div class="dhx_form_repeat_ends_options">
+            <select name="dhx_custom_repeat_ends">
+                <option value="NEVER">${loc.repeat_never}</option>
+                <option value="AFTER">${loc.repeat_radio_end2}</option>
+                <option value="ON">${loc.repeat_on_date}</option>
+            </select>
+            <div class="dhx_form_repeat_ends_extra">
+                <div class="dhx_form_repeat_ends_after dhx_hidden">
+                    <label><input name="dhx_form_repeat_ends_after" type="number"
+                        min="1">${loc.repeat_text_occurrences_count}</label>
+                </div>
+                <div class="dhx_form_repeat_ends_on dhx_hidden">
+                    <input type="date" name="dhx_form_repeat_ends_ondate">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 ~~~
-2. 'recurring' 섹션의 'form' 파라미터를 커스텀 폼의 ID로 설정합니다: 
-~~~js
+
+#### 주요 반복 선택 컨트롤
+
+기본적으로 라이트박스의 반복 블록은 다섯 가지 기본 반복 유형을 갖고 있으며, 아래 옵션을 제공합니다: "매일", "매주", "매월", "매년", "평일마다". 또한 필요에 따라 반복을 생성하기 위한 "사용자 정의" 옵션과 반복을 비활성화하는 "Never" 옵션이 포함됩니다:
+
+~~~html
+<div class="dhx_form_repeat_pattern">
+    <select>
+        <option value="NEVER">Never</option>
+        <option value="DAILY">Every day</option>
+        <option value="WEEKLY">Every week</option>
+        <option value="MONTHLY">Every month</option>
+        <option value="YEARLY">Every year</option>
+        <option value="WORKDAYS">Every weekday</option>
+        <option value="CUSTOM">Custom</option>
+    </select>
+</div>
+~~~
+
+"Custom" 반복 유형에는 특수 반복 유형 단위가 있으며: "일", "주", "월", "년" 그리고 반복 간격 입력이 있습니다. 기본적으로 이 단위 섹션은 필요한 유형을 선택하기 전까지 숨겨져 있습니다:
+
+~~~html
+<div class="dhx_form_repeat_custom">
+    <div class="dhx_form_repeat_custom_interval">
+        <input name="repeat_interval_value" type="number" min="1">
+        <select name="repeat_interval_unit">
+            <option value="DAILY">${loc.repeat_freq_day}</option>
+            <option value="WEEKLY">${loc.repeat_freq_week}</option>
+            <option value="MONTHLY">${loc.repeat_freq_month}</option>
+            <option value="YEARLY">${loc.repeat_freq_year}</option>
+        </select>
+    </div>
+
+    <div class="dhx_form_repeat_custom_additional">
+        <div class="dhx_form_repeat_custom_week dhx_hidden">
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="MO" />${loc.day_for_recurring[1]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="TU" />${loc.day_for_recurring[2]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="WE" />${loc.day_for_recurring[3]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="TH" />${loc.day_for_recurring[4]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="FR" />${loc.day_for_recurring[5]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="SA" />${loc.day_for_recurring[6]}</label>
+            <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day"
+                value="SU" />${loc.day_for_recurring[0]}</label>
+        </div>
+
+        <div class="dhx_form_repeat_custom_month dhx_hidden">
+            <select name="dhx_custom_month_option">
+                <option value="month_date"></option>
+                <option value="month_nth_weekday"></option>
+            </select>
+        </div>
+
+        <div class="dhx_form_repeat_custom_year dhx_hidden">
+            <select name="dhx_custom_year_option">
+                <option value="month_date"></option>
+                <option value="month_nth_weekday"></option>
+            </select>
+        </div>
+    </div>
+</div>
+~~~
+
+#### 반복 종료를 지정하는 블록
+
+반복 종료는 아래 값들로 이루어진 선택 컨트롤로 정의됩니다: "NEVER", "ON", "AFTER". "AFTER" 옵션을 선택하면 반복 횟수에 대한 추가 입력이 나타나고, "ON" 옵션을 선택하면 종료 날짜 입력이 추가로 나타납니다:
+
+~~~html
+<div class="dhx_form_repeat_ends">
+    <div>${loc.repeat_ends}</div>
+        <div class="dhx_form_repeat_ends_options">
+            <select name="dhx_custom_repeat_ends">
+                <option value="NEVER">${loc.repeat_never}</option>
+                <option value="AFTER">${loc.repeat_radio_end2}</option>
+                <option value="ON">${loc.repeat_on_date}</option>
+            </select>
+            <div class="dhx_form_repeat_ends_extra">
+                <div class="dhx_form_repeat_ends_after dhx_hidden">
+                    <label><input name="dhx_form_repeat_ends_after" type="number"
+                        min="1">${loc.repeat_text_occurrences_count}</label>
+                </div>
+                <div class="dhx_form_repeat_ends_on dhx_hidden">
+                    <input type="date" name="dhx_form_repeat_ends_ondate">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+~~~
+
+### 사용자 정의 반복 블록의 예
+
+사용자 정의 반복 블록의 예시를 만들어 보겠습니다. 예를 들어 모든 이벤트에 대해 "종료일 없음" 옵션을 사용하고, "월간" 및 "년간" 반복 유형을 제거하고 싶다고 가정합시다.
+
+1. 사용자 정의 폼의 마크업을 정의하고 페이지 어디에나 배치합니다(기본 템플릿을 복사해 시작합니다):
+
+~~~html
+<!-- 사용자 정의 반복 폼의 ID를 지정해야 한다는 점에 주의 -->
+<div class="dhx_form_rrule" id="my_recurring_form" style="display:none;">
+    <div class="dhx_form_repeat_pattern">
+        <select>
+            <option value="NEVER">Never</option>
+            <option value="DAILY">Every day</option>
+            <option value="WEEKLY">Every week</option>
+            <option value="WORKDAYS">Every weekday</option>
+            <option value="CUSTOM">Custom</option>
+        </select>
+    </div>
+    <div class="dhx_form_repeat_custom">
+        <div class="dhx_form_repeat_custom_interval">
+            <input name="repeat_interval_value" type="number" min="1">
+            <select name="repeat_interval_unit">
+                <option value="DAILY">Day</option>
+                <option value="WEEKLY">Week</option>
+            </select>
+        </div>
+
+        <div class="dhx_form_repeat_custom_additional">
+            <div class="dhx_form_repeat_custom_week dhx_hidden">
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="MO" />Monday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="TU" />Tuesday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="WE" />Wednesday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="TH" />Thursday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="FR" />Friday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="SA" />Saturday</label>
+                <label><input class="dhx_repeat_checkbox" type="checkbox" 
+                    name="week_day" value="SU" />Sunday</label>
+            </div>
+        </div>
+    </div>
+</div>
+~~~
+
+2. 라이트박스의 반복 섹션의 **form** 파라미터를 커스텀 폼의 ID로 설정합니다:
+
+~~~js {3}
 scheduler.config.lightbox.sections = [
-    {name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
-    {name:"recurring", type:"recurring", map_to:"rec_type", button:"recurring", 
-      form:"my_recurring_form"},/*!*/
-    {name:"time", height:72, type:"time", map_to:"auto"}
+    { name: "description", type: "textarea", map_to: "text", focus: true },
+    { name: "recurring", type: "recurring", map_to: "rrule", form: "my_recurring_form" },
+    { name: "time", type: "time", map_to: "auto", height: 72 }
 ];
 ~~~
 
-<div>![custom_recurring_form](/img/custom_recurring_form.png)</div>
+위에서 커스텀 반복 블록을 가진 라이트박스가 표시되는 모습은 아래 그림과 같습니다:
 
-### 주요 구성 요소
+<div style="text-align:center;">![custom_recurring_form](/img/custom_recurring_form.png)</div>
 
-라이트박스의 반복 블록에 대한 기본 HTML 구조는 다양한 언어에 맞게 <b>'schedulersourceslocalerecurring'</b> 디렉터리에 위치해 있습니다.
+아래의 스니펫은 위에서 설명한 커스텀 반복 블록이 있는 라이트박스를 구현하는 방법을 보여줍니다:
 
+**관련 샘플** [Lightbox with a custom recurring block](https://snippet.dhtmlx.com/0ha0edlk)
 
-예를 들어, 영어 로케일은 <b>'schedulersourceslocalerecurringrepeat_template_en.htm'</b> 파일을 사용합니다.
+### 반복 블록 변경에 대한 참고사항
 
-라이트박스의 반복 블록은 일반적으로 3가지 그룹의 컨트롤로 구성되어 있습니다:
+라이트박스의 반복 블록에 사용자 정의 구성을 적용하기 전에 다음 사항에 주의하십시오:
 
-1) 반복 유형을 선택하는 컨트롤. 이 입력들은 모두 'repeat'라는 이름을 공유하며 값은 'daily', 'weekly', 'monthly', 'yearly' 중 하나입니다. 
-폼에는 반드시 값이 지정된 'repeat' 입력이 최소 하나 이상 포함되어 있어야 합니다. 라디오 버튼, 셀렉트 드롭다운, 또는 숨겨진 입력을 사용해 기본 유형을 지정할 수 있습니다.
-
-다음은 폼에서 반복 유형을 선택하는 유효한 예시입니다:
-
-- 라디오 버튼:
-
-~~~html
-<label><input type="radio" name="repeat" value="day" />Daily</label>
-
-
-<label><input type="radio" name="repeat" value="week"/>Weekly</label>
-
-
-<label><input type="radio" name="repeat" value="month" />Monthly</label>
-
-
-<label><input type="radio" name="repeat" value="year" />Yearly</label>
-~~~
-
-- 'Monthly'와 'Yearly' 옵션을 제외한 셀렉트 입력:
-
-~~~html
-<select name="repeat">
-  <option value="day">Daily</option>
-  <option value="week">Weekly</option>
-</select>
-~~~
-
-- 숨겨진 입력(이 경우 'Daily' 시리즈만 생성됨):
-
-~~~html
-<input type="hidden" name="repeat" value="day" />
-~~~
-
-2) 선택된 반복 유형에 따라 반복 상세 설정을 위한 섹션. 예를 들어, 'Daily' 반복 유형 블록은 다음과 같습니다:
-
-~~~html
-<div class="dhx_repeat_center">
-   <div id="dhx_repeat_day">
-     <label>
-       <input class="dhx_repeat_radio" type="radio" 
-               name="day_type" value="d"/>Every
-     </label>
-       <input class="dhx_repeat_text" type="text" 
-               name="day_count" value="1" />day
-
-
-     <label>
-       <input class="dhx_repeat_radio" type="radio" 
-               name="day_type" checked value="w"/>Every workday
-     </label>
-  </div>
-...
-</div>         
-~~~
-
-특정 반복 유형과 관련된 마크업은 <b>id</b>를 <b>"dhx_repeat_&lt;repeat type&gt;"</b> 형식(예: "dhx_repeat_day")으로 지정한 div로 감쌀 수 있습니다. 
-이 블록은 해당 반복 유형이 선택될 때만 표시됩니다.
-
-3) 반복 종료 시점을 지정하는 컨트롤. 이 입력의 이름은 'end'입니다. 
-
-
-가능한 값은 <b>'no'</b>, <b>'date_of_end'</b>, <b>'occurences_count'</b>가 있습니다.
-
-'repeat' 컨트롤과 마찬가지로, 폼에는 이 타입의 입력이 최소 하나 이상 포함되어야 합니다.
-
-~~~html
-<div class="dhx_repeat_right">
-  <label>
-    <input type="radio" name="end" value="no" checked/>No end date
-  </label>
-
-
-  <label>
-    <input type="radio" name="end" value="date_of_end" />After</label>
-    <input type="text" name="date_of_end" />
-  
-
-
-  <label>
-    <input type="radio" name="end" value="occurences_count" />After</label>
-    <input type="text" name="occurences_count" value="1" />Occurrences
-</div>
-~~~
-
-<b>'date_of_end'</b> 모드에서는 'date_of_end'라는 이름의 입력에 날짜를 입력해야 합니다. 마찬가지로, <b>'occurences_count'</b> 모드에서는 'occurences_count'라는 이름의 입력에서 반복 횟수를 가져옵니다. 
-
-
-원하지 않는 반복 유형을 제거하거나 숨겨진 입력을 사용해 미리 지정할 수 있습니다:
-
-~~~html
-<input type="hidden" name="end" value="date_of_end" />
-<input type="hidden" name="date_of_end" value="01.01.2024" />
-~~~
-  
-### 반복 블록 변경 시 주의사항
-
-라이트박스의 반복 블록을 커스터마이즈하기 전에 다음 사항을 반드시 확인하세요:
-
-1. 모든 입력의 'name' 속성은 고정되어 있습니다. 이름이 다른 입력은 무시됩니다. 
-2. 직접 사용자 입력을 받는 입력을 제외한 모든 입력의 'value' 속성은 고정되어 있습니다. 
-3. 새로운 폼을 제공할 경우, dhtmlxScheduler는 이를 직접 사용하지 않고 라이트박스 템플릿 내부에 HTML 구조를 복제합니다. 
-즉, 폼의 DOM 요소에 연결된 이벤트 핸들러나 커스텀 속성은 라이트박스에서 적용되지 않습니다. 
-이벤트 핸들러를 추가하려면 인라인 HTML 속성으로 포함하거나, 폼이 라이트박스에 표시될 때 직접 연결해야 합니다.
+1. **name** 속성은 모든 입력에 대해 하드코딩되어 있습니다: 서로 다른 이름의 입력은 무시됩니다.
+2. **value** 속성은 직접 입력을 암시하지 않는 입력을 제외하고 모두 고정됩니다.
+3. 새 폼을 지정하면 Scheduler는 이를 직접 사용하지 않고 라이트박스 템플릿에 HTML 구조를 복제합니다. 이는 코드에서 DOM 요소에 부착된 모든 이벤트 핸들러나 사용자 정의 속성이 라이트박스의 폼에 적용되지 않음을 의미합니다. 이벤트 핸들러를 부착하려면 인라인 HTML 속성으로 지정하거나, 라이트박스에 표시될 때 `addEventListener()`로 폼에 핸들러를 연결해야 합니다.
 
 :::note
-dhtmlxScheduler는 원본 HTML 폼이 아닌, 해당 폼의 복사본을 라이트박스 템플릿 내부에 생성하여 사용한다는 점을 유념하세요.
+주의, Scheduler는 원래의 HTML 폼과 함께 동작하지 않으며 라이트박스의 템플릿 안에 복사본만 생성합니다.
 :::
 
-예시:
+예를 들어:
 
-- 이 코드는 라이트박스에 복사되어 동작합니다:
+- 라이트박스로 복사되는 줄:
 
 ~~~html
-<input onclick="handler()"> 
+<input onclick="handler()">
 ~~~
 
-- 하지만 아래와 같은 방식은 복사되지 않습니다:
+- 라이트박스로 복사되지 않는 줄:
 
 ~~~js
-addEventListener(node, "click", function(){...})
+node.addEventListener("click", () => {
+    ...
+});
 ~~~
 
-## 이전 버전 반복 이벤트 포맷 {#legacyformatofrecurringevents}
+## 사용자 정의 확인 모달 {#customconfirmationmodal}
 
-버전 7.1까지 Scheduler는 반복 이벤트에 대해 커스텀 포맷을 사용했습니다. 이 포맷에 대한 자세한 내용은 [여기](guides/recurring-events-legacy.md)에서 확인할 수 있습니다.
+사용자가 반복 이벤트를 편집하거나 끌어다 놓기를 하는 경우, Scheduler는 이 발생만 수정할지, 이 후속의 발생까지 함께 수정할지, 아니면 전체 시리즈를 수정할지 묻는 기본 모달을 표시합니다. 이를 overridden `scheduler.ext.recurring.confirm`를 통해 직접 UI로 대체할 수 있습니다.
+
+~~~js
+scheduler.ext.recurring.confirm = (context) => {
+    // context에는 다음이 포함됩니다:
+    // - origin: "lightbox" | "dnd"
+    // - occurrence: 수정 중인 발생 이벤트 객체
+    // - series: 상위 시리즈 이벤트 객체
+    // - labels: { title, ok, cancel, occurrence, following, series }
+    // - options: ["occurrence", "following", "series"]
+    //
+    // 취소를 위해서는 "occurrence", "following", "series" 중 하나를 반환하거나 null을 반환합니다.
+    // 비동기 UI의 경우 Promise를 반환할 수도 있습니다.
+
+    return new Promise((resolve) => {
+        myCustomDialog.show({
+            title: context.labels.title,
+            options: context.options,
+            onSelect: (choice) => { resolve(choice); },
+            onCancel: () => { resolve(null); }
+        });
+    });
+};
+~~~
+
+context 객체는 다음 속성을 가집니다:
+
+| 속성 | 유형 | 설명 |
+|---|---|---|
+| `origin` | `"lightbox" \| "dnd"` | 동작이 라이트박스에서 시작되었는지, 아니면 드래그 앤 드롭으로 시작되었는지 여부 |
+| `occurrence` | `object` | 수정 중인 특정 발생 |
+| `series` | `object` | 상위 반복 이벤트 |
+| `labels` | `object` | 지역화된 문자열: `title`, `ok`, `cancel`, `occurrence`, `following`, `series` |
+| `options` | `string[]` | 사용 가능한 선택지. 예: `["occurrence", "following", "series"]` |
+
+함수는 `"occurrence"`, `"following"`, `"series"`, 또는 취소를 뜻하는 `null`을 반환해야 합니다. 값을 직접 반환하거나 Promise로 반환할 수 있습니다.
+
+React 구현에 대해서는 [React Scheduler 문서](integrations/react/overview.md#customizing-the-recurrence-confirmation-modal)를 참조하십시오.
+
+
+## 레거시 형식의 반복 이벤트
+
+v7.1 이전의 Scheduler는 반복 이벤트에 대해 사용자 정의 형식을 사용했습니다. 형식의 세부 정보는 [여기](guides/recurring-events-legacy.md)에서 확인할 수 있습니다.

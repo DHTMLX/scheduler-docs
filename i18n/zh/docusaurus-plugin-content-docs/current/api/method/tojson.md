@@ -18,7 +18,7 @@ description: "将调度器的数据转换为 JSON 格式的字符串"
 ### Example
 
 ~~~jsx
-var str = scheduler.toJSON();
+const str = scheduler.toJSON();
 ~~~
 
 ### Related samples

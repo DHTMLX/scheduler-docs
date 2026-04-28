@@ -1,7 +1,7 @@
 ---
-sidebar_label: "DataProcessor"
-title: "DataProcessor method"
-description: "Конструктор DataProcessor"
+sidebar_label: DataProcessor
+title: "DataProcessor метод"
+description: "DataProcessor конструктор"
 ---
 
 # DataProcessor
@@ -14,17 +14,17 @@ description: "Конструктор DataProcessor"
 
 ### Parameters
 
-- `url` - (required) *string* - URL источника данных
+- `url` - (обязательный) *string* - URL потока данных
 
 ### Example
 
 ~~~jsx
-var dp = new scheduler.DataProcessor("php/update.php");
+const dataProcessor = new scheduler.DataProcessor("php/update.php");
 ~~~
 
 ### Details
 
-Более подробную информацию о DataProcessor и его API можно найти [здесь](https://docs.dhtmlx.com/dataprocessor__index.html).
+Подробнее о DataProcessor можно найти в статье [Интеграция на стороне сервера](guides/server-integration.md).
 
 ### Change log
-- добавлено в версии 6.0
+- Добавлено в версии 6.0

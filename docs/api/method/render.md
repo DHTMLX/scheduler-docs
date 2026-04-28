@@ -26,7 +26,7 @@ scheduler.render();
 
 
 // switch to another date
-scheduler.render(new Date(2020,7,4));
+scheduler.render(new Date(2027,7,4));
 
 // switch to another view
 scheduler.render(null, "week");

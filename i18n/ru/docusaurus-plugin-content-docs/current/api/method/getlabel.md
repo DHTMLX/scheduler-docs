@@ -1,24 +1,24 @@
 ---
-sidebar_label: "getLabel"
+sidebar_label: getLabel
 title: "getLabel method"
-description: "получает label (метку) элемента управления select в lightbox"
+description: "возвращает метку элемента управления select в лайтбоксе"
 ---
 
 # getLabel
 
 ### Description
 
-@short: Получает label (метку) элемента управления select в lightbox
+@short: Получает метку элемента select в лайтбоксе
 
 @signature: getLabel: (property: string, key: string|number) =\> string
 
 ### Parameters
 
-- `property` - (required) *string* - имя свойства данных, связанного с элементом управления
-- `key` - (required) *string | number* - id опции. Это значение сопоставляется со свойством данных события <br> для идентификации опции select, связанной с событием
+- `property` - (required) *string* - имя свойства данных, к которому привязан контрол
+- `key` - (required) *string | number* - идентификатор опции. Этот параметр сопоставляется со свойством данных события <br> для привязки опции селекта к событию
 
 ### Returns
-- ` label` - (string) - метка, соответствующая опции элемента управления select в lightbox
+- ` label` - (string) - метка элемента управления select в лайтбоксе
 
 ### Example
 
@@ -30,7 +30,7 @@ scheduler.config.lightbox.sections=[
         // другие опции
 ];
 
-var holder2 = scheduler.getLabel("unit_id", 2);// ->"John Williams"
+const holder2 = scheduler.getLabel("unit_id", 2);// ->"John Williams"
 ~~~
 
 ### Related samples
@@ -40,24 +40,24 @@ var holder2 = scheduler.getLabel("unit_id", 2);// ->"John Williams"
 
 :::note
 
-Этот метод работает исключительно с элементами управления select в lightbox для получения метки определённой опции.
+Метод применяется только к элементам select в лайтбоксе, чтобы получить метку конкретной опции.
  
 :::
 
 <br>
 
-Например, этот метод можно использовать для кастомизации отображения текста события:
+Например, вы можете использовать метод, чтобы изменить шаблон отображения текста события:
 
 ~~~js
 scheduler.templates.event_text = function(start, end, event){
     return event.text + " ("+scheduler.getLabel("unit_id",event.unit_id) +")";
 };
 
-scheduler.init('scheduler_here',new Date(2013,5,30),"unit");
+scheduler.init('scheduler_here',new Date(2027,5,30),"unit");
 scheduler.parse([
- {start_date:"06/30/2013 09:00",end_date:"06/30/2013 12:00",text:"TaskA",unit_id:1},
- {start_date:"06/30/2013 12:00",end_date:"06/30/2013 20:00",text:"TaskB",unit_id:2},
- {start_date:"06/30/2013 08:00",end_date:"06/30/2013 12:00",text:"TaskC",unit_id:2}
+ {start_date:"06/30/2027 09:00",end_date:"06/30/2027 12:00",text:"TaskA",unit_id:1},
+ {start_date:"06/30/2027 12:00",end_date:"06/30/2027 20:00",text:"TaskB",unit_id:2},
+ {start_date:"06/30/2027 08:00",end_date:"06/30/2027 12:00",text:"TaskC",unit_id:2}
 ],"json");
 
 ~~~

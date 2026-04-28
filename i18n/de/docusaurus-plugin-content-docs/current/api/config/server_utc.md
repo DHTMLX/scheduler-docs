@@ -17,7 +17,7 @@ description: "Ermöglicht die Umwandlung von serverseitigen Datumsangaben zwisch
 ~~~jsx
 scheduler.config.server_utc = true;
 
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** false

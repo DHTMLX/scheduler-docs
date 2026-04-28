@@ -24,10 +24,10 @@ description: "定义一个命名集合，可加载到 Units、Timeline 视图或
 
 ~~~jsx
 // 通过名称 'my_list' 获取一个选项列表  
-var list = scheduler.serverList("my_list");  
+const list = scheduler.serverList("my_list");  
 ...  
 // 创建并返回一个包含指定选项的列表  
-var list = scheduler.serverList("options", [  
+const list = scheduler.serverList("options", [  
     {key: 1, label: "John"},  
     {key: 2, label: "Adam"},  
     {key: 3, label: "Diane"}  

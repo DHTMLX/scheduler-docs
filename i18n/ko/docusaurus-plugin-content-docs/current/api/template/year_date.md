@@ -22,7 +22,7 @@ description: "뷰의 헤더에 표시되는 날짜를 설정합니다"
 ### Example
 
 ~~~jsx
-var date_to_str=scheduler.date.date_to_str(scheduler.locale.labels.year_tab +" %Y");
+const date_to_str = scheduler.date.date_to_str(scheduler.locale.labels.year_tab +" %Y");
 
 scheduler.templates.year_date = function(date){
     return date_to_str(date);

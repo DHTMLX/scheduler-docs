@@ -1,47 +1,47 @@
 ---
-sidebar_label: "event_class"
-title: "event_class template"
-description: "определяет CSS класс, который будет добавлен к контейнеру события"
+sidebar_label: event_class
+title: "Шаблон event_class"
+description: "указывается CSS-класс, который будет применяться к контейнеру события"
 ---
 
 # event_class
 
 ### Description
 
-@short: Определяет CSS класс, который будет добавлен к контейнеру события
+@short: Указывает CSS-класс, который будет применяться к контейнеру события
 
-@signature: event_class: (start: Date, end: Date, ev: any) =\> string
+@signature: event_class: (start: Date, end: Date, ev: any) => string
 
 ### Parameters
 
-- `start` - (required) *Date* - дата начала события   
-- `end` - (required) *Date* - дата окончания события
+- `start` - (required) *Date* - дата начала запланированного события
+- `end` - (required) *Date* - дата окончания запланированного события
 - `ev` - (required) *object* - объект события
 
 ### Returns
-- ` css_class` - (string) - CSS класс для соответствующего элемента
+- `css_class` - (string) - CSS-класс связанного элемента
 
 ### Example
 
 ~~~jsx
-scheduler.templates.event_class = function(start,end,ev){
+scheduler.templates.event_class = (start, end, ev) => {
     return "";
 };
 ~~~
 
-**Applicable views:** [Day view](views/day.md), [Month view](views/month.md), [Week view](views/week.md), [Year view](views/year.md), [Units view](views/units.md), [Timeline view](views/timeline.md)
+**Доступные представления:** [Просмотр дня](views/day.md), [Просмотр месяца](views/month.md), [Просмотр недели](views/week.md), [Просмотр года](views/year.md), [Просмотр по единицам](views/units.md), [Вид таймлайна](views/timeline.md)
 
 ### Related samples
-- [Coloring events](https://docs.dhtmlx.com/scheduler/samples/02_customization/01_events_coloring.html)
-- [Styling events with templates](https://docs.dhtmlx.com/scheduler/samples/02_customization/06_templates.html)
+- [Окрашивание событий](https://docs.dhtmlx.com/scheduler/samples/02_customization/01_events_coloring.html)
+- [Стилизация событий с помощью шаблонов](https://docs.dhtmlx.com/scheduler/samples/02_customization/06_templates.html)
 
 ### Details
 
-Для Timeline view этот шаблон используется только в режимах 'Bar' и 'Tree'.
+В представлении Timeline шаблон применяется только к режимам 'Bar' и 'Tree'.
 
-Для подробных инструкций по настройке цветов событий смотрите связанный материал [Пользовательский цвет события](guides/custom-events-color.md).
+См. полную информацию об настройке цветов событий в соответствующей статье [Настройка цвета пользовательских событий](guides/custom-events-color.md).
 
 ### Related Guides
-- [Пользовательский цвет события](guides/custom-events-color.md)
-- [Шаблоны для дневного вида](views/day-view-templates.md)
-- [Шаблоны для Месячного Вида](views/month-view-templates.md)
+- [Настройка цвета пользовательских событий](guides/custom-events-color.md)
+- [Шаблоны вида дня](views/day-view-templates.md)
+- [Шаблоны вида месяца](views/month-view-templates.md)

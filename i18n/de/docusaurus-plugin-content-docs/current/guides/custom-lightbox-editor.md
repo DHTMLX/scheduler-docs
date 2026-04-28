@@ -1,34 +1,34 @@
----
-title: "Benutzerdefiniertes Lightbox-Control"
-sidebar_label: "Benutzerdefiniertes Lightbox-Control"
+--- 
+title: "Benutzerdefinierte Lightbox-Steuerung" 
+sidebar_label: "Benutzerdefinierte Lightbox-Steuerung" 
 ---
 
-# Benutzerdefiniertes Lightbox-Control
+# Benutzerdefinierte Lightbox-Steuerung
 
-Um ein benutzerdefiniertes Control (Editor) einzurichten, definieren Sie ein neues Objekt wie folgt:
+Um eine benutzerdefinierte Steuerung (Editor) zu erstellen, definieren Sie ein neues Objekt wie folgt:
 
 ~~~js
 scheduler.form_blocks["my_editor"]={
-    render:function(config){ // config - Abschnittskonfigurationsobjekt
-        var height="(config.height||50)+""px";
+    render:function(config){ // config- Abschnitt-Konfigurationsobjekt
+        const height="(config.height||50)+""px";
         return "<div class='dhx_cal_ltext' style='height:"+height+";'>" + 
             "<textarea></textarea></div>";
     },
     set_value:function(node,value,ev,config){
-        // node - HTML-Element, das mit dem oben definierten HTML verknüpft ist
-        // value - Wert, der durch die map_to-Eigenschaft angegeben wird
+        // node - HTML-Objekt im Zusammenhang mit dem oben definierten HTML
+        // value - Wert, der durch die map_to-Eigenschaft definiert ist
         // ev - Ereignisobjekt
-        // config - Abschnittskonfigurationsobjekt
+        // config - Abschnitts-Konfigurationsobjekt
         node.querySelector("textarea").value = value || "";
     },
     get_value:function(node,ev,config){
-        // node - HTML-Element, das mit dem oben definierten HTML verknüpft ist
-        // ev - Ereignisobjekt
-        // config - Abschnittskonfigurationsobjekt
+        // node - HTML-Objekt im Zusammenhang mit dem oben definierten HTML
+        // Ereignis-Objekt
+        // config - Abschnitts-Konfigurationsobjekt
         return node.querySelector("textarea").value;
     },
     focus:function(node){
-        // node - HTML-Element, das mit dem oben definierten HTML verknüpft ist
+        // node - HTML-Objekt im Zusammenhang mit dem oben definierten HTML
         node.querySelector("textarea").focus();
     }
 };
@@ -38,13 +38,14 @@ Verwendung:
 
 ~~~js
 scheduler.locale.labels.section_details = "Details";
-scheduler.config.lightbox.sections="["    
+scheduler.config.lightbox.sections = [    
     { name:"details", height:35, map_to:"text", type:"my_editor", focus:true},
     { name:"time", height:72, type:"time", map_to:"auto"}    
 ];
 ~~~
 
-Es ist wichtig, **keine** selbstschließenden Tags im HTML zu verwenden, das von der "render"-Funktion zurückgegeben wird, da dies zu Problemen beim Parsen durch den Browser führen kann:
+
+Stellen Sie sicher, dass Sie die kurze Schlusssyntax für Tags im HTML-Code, der von der "render"-Funktion zurückgegeben wird, nicht verwenden, da dies Parsing-Probleme im Browser verursachen kann:
 
 ~~~js
 // schlecht:
@@ -64,15 +65,15 @@ render:function(){
 
 ## Beispiel
 
-Hier ist ein Beispiel, wie ein solcher benutzerdefinierter Editor erstellt werden kann:
+Betrachten wir, wie der folgende benutzerdefinierte Editor erstellt wird:
 
-![custom_editor](/img/custom_editor.png)
+![Benutzerdefinierter Editor](/img/custom_editor.png)
   
 
 ~~~js
 scheduler.form_blocks["my_editor"]={
     render:function(sns){
-        return "<div class='dhx_cal_ltext'>" +
+        return "<div class='dhx_cal_ltext' style='height:60px;'>" +
             "Text&nbsp;<input name='text' type='text'>
 
 " +
@@ -87,7 +88,7 @@ scheduler.form_blocks["my_editor"]={
         return node.querySelector("[name='text']").value;
     },
     focus:function(node){
-        var input = node.querySelector("[name='text']"); 
+        const input = node.querySelector("[name='text']"); 
         input.select(); 
         input.focus(); 
     }

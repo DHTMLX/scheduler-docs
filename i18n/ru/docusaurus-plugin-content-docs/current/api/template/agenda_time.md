@@ -35,7 +35,7 @@ scheduler.templates.agenda_time = function(start, end, event){
 };
 ~~~
 
-**Applicable views:** [Agenda view](views/agenda.md)
+**Доступные представления:** [Agenda view](views/agenda.md)
 
 ### Details
 

@@ -22,7 +22,7 @@ description: "打开一个指定类型的 message box"
 ### Example
 
 ~~~jsx
-var box = scheduler.message({ 
+const box = scheduler.message({ 
     type:"confirm-warning", 
     text:"Are you sure you want to do it?"
 });

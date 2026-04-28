@@ -23,7 +23,7 @@ description: "定义事件开始和结束日期中的时间部分。主要由其
 
 ~~~jsx
 scheduler.templates.event_date = function(date){
-    var formatFunc = scheduler.date.date_to_str(scheduler.config.hour_date);
+    const formatFunc = scheduler.date.date_to_str(scheduler.config.hour_date);
     return formatFunc(date);
 }
 ~~~

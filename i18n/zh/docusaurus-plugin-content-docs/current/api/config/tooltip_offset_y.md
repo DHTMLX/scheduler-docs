@@ -17,7 +17,7 @@ description: "通过设置正值的顶部偏移量来调整 tooltip 的垂直位
 ~~~jsx
 scheduler.config.tooltip_offset_y = 40;
 
-scheduler.init('scheduler_here',new Date(2023,10,20),"week");
+scheduler.init('scheduler_here',new Date(2027,10,20),"week");
 ~~~
 
 **Default value:** 20

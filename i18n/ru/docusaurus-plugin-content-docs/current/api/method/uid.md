@@ -1,22 +1,22 @@
 ---
-sidebar_label: "uid"
-title: "uid method"
-description: "создаёт уникальный ID, который гарантированно уникален в пределах текущего экземпляра scheduler (не глобальный GUID)"
+sidebar_label: uid
+title: "uid метод"
+description: "генерирует уникальный идентификатор (уникальный внутри текущего планировщика, не GUID)"
 ---
 
 # uid
 
 ### Description
 
-@short: Создаёт уникальный ID, который гарантированно уникален в пределах текущего экземпляра scheduler (не глобальный GUID)
+@short: Генерирует уникальный идентификатор (уникальный внутри текущего планировщика, не GUID)
 
 @signature: uid: () =\> number
 
 ### Returns
-- ` uid` - (number) - сгенерированный уникальный ID
+- ` uid` - (число) - сгенерированный идентификатор
 
 ### Example
 
 ~~~jsx
-var new_id = scheduler.uid();
+const new_id = scheduler.uid();
 ~~~

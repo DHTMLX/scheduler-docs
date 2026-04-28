@@ -1,19 +1,19 @@
 ---
-sidebar_label: "getLightbox"
-title: "getLightbox method"
-description: "получает HTML-элемент лайтбокса"
+sidebar_label: getLightbox
+title: "Метод getLightbox"
+description: "получает HTML-элемент объекта lightbox"
 ---
 
 # getLightbox
 
 ### Description
 
-@short: Получает HTML-элемент лайтбокса
+@short: Получает HTML-элемент объекта lightbox
 
 @signature: getLightbox: () =\> HTMLElement
 
 ### Returns
-- `box` - (HTMLElement) - HTML-элемент, представляющий лайтбокс
+- `box` - (HTMLElement) - HTML-элемент lightbox
 
 ### Example
 
@@ -22,4 +22,4 @@ scheduler.getLightbox(); //-><div class=​"dhx_cal_light">​...</div>
 ~~~
 
 ### Related samples
-- [Mini calendar with the recurring events](https://docs.dhtmlx.com/scheduler/samples/05_calendar/06_recurring_form.html)
+- [Мини-календарь с повторяющимися событиями](https://docs.dhtmlx.com/scheduler/samples/05_calendar/06_recurring_form.html)

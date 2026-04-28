@@ -1,157 +1,167 @@
 ---
-title: "Two-way sync with Google Calendar (Node.js)"
-sidebar_label: "Two-way sync (Node.js)"
-description: "Implement a Node.js + Express integration that syncs DHTMLX Scheduler events with Google Calendar using OAuth 2.0 and Google Calendar API v3."
+title: "Двусторонняя синхронизация с Google Calendar (Node.js)"
+sidebar_label: "Cинхронизация с Google Calendar"
+description: "Реализуйте интеграцию Node.js + Express, которая синхронизирует события DHTMLX Scheduler с Google Calendar с использованием OAuth 2.0 и Google Calendar API v3."
 ---
 
-# DHTMLX Scheduler: Two-way sync with Google Calendar (Node.js)
+# DHTMLX Scheduler: Двусторонняя синхронизация с Google Calendar (Node.js)
 
-In this guide, you will implement **two-way sync** between **DHTMLX Scheduler** and **Google Calendar** in a small Node.js app:
+В этом руководстве вы реализуете **двустороннюю синхронизацию** между **DHTMLX Scheduler** и **Google Calendar** в небольшом приложении на Node.js:
 
-- Load calendars and events from Google Calendar into Scheduler
-- Push Scheduler create/update/delete operations back to Google Calendar
+- Загрузка календарей и событий из Google Calendar в Scheduler
+- Отправка операций создания/обновления/удаления Scheduler обратно в Google Calendar
 
 :::note
-This approach implements **two-way sync via API calls** (Scheduler → backend → Google Calendar). It does **not** implement real-time Google → Scheduler push updates (webhooks). If you change events directly in Google Calendar, reload the app (or reload a date range) to see the updated data in Scheduler.
+Этот подход реализует **двустороннюю синхронизацию через вызовы API** (Scheduler → backend → Google Calendar). Он не реализует обновления в реальном времени Google → Scheduler (webhooks). Если вы напрямую изменяете события в Google Calendar, обновите приложение (или обновите диапазон дат), чтобы увидеть обновлённые данные в Scheduler.
 :::
 
-You will build:
+Вы создадите:
 
-- a Node.js + Express backend with Google OAuth 2.0 ([Passport](https://www.npmjs.com/package/passport)) and a small REST API for Scheduler
-- an event mapping layer (Google ↔ Scheduler), including basic recurring events/exceptions handling
-- a Scheduler client wired to the backend via `scheduler.createDataProcessor()`
+- бэкенд на Node.js + Express с Google OAuth 2.0 ([Passport](https://www.npmjs.com/package/passport)) и небольшим REST API для Scheduler
+- слой сопоставления событий (Google ↔ Scheduler), включая базовую обработку повторяющихся событий/исключений
+- клиента Scheduler, подключённого к бэкенду через `scheduler.createDataProcessor()`
 
-## Prerequisites
+:::note
+Полный исходный код доступен на [GitHub](https://github.com/DHTMLX/scheduler-google-calendar-demo).
+:::
+
+## Требования
 
 - Node.js 18+
-- A Google account with access to Google Cloud Console
-- Basic familiarity with TypeScript and Express
-- Access to DHTMLX Scheduler packages (the example uses `@dhx/trial-scheduler`)
+- Учётная запись Google с доступом к Google Cloud Console
+- Базовые знания TypeScript и Express
+- Доступ к пакетам DHTMLX Scheduler (в примере используется `@dhx/trial-scheduler`)
 
-## Demo repository
+## Демонстрационный репозиторий
 
-A complete working project that matches this guide is available on GitHub:
-- https://github.com/dhtmlx/scheduler-google-auth-demo *(placeholder - replace with your actual repo)*
+Полный рабочий проект, соответствующий данному руководству, доступен на GitHub:
+- https://github.com/dhtmlx/scheduler-google-auth-demo
 
-The guide explains the key steps and shows the integration code that matters. The repository is the "full runnable reference".
+Руководство объясняет ключевые шаги и демонстрирует важный код интеграции. Репозиторий является «полной рабочей ссылкой».
 
-## Project setup
+## Настройка проекта
 
-In this section you will prepare Google OAuth credentials, configure the project, and run the app locally.
+В этом разделе вы подготовите учетные данные Google OAuth, сконфигурируете проект и запустите приложение локально.
 
-### 1) Get the project code
+### 1) Получение кода проекта
 
-Do one of the following:
+Выполните одно из следующих действий:
 
-- Clone the repository:
+- Клонировать репозиторий:
 
 ~~~bash title="Terminal"
 git clone https://github.com/dhtmlx/scheduler-google-auth-demo.git
 cd scheduler-google-auth-demo
 ~~~
 
-If your project installs `@dhx/*` packages from the private registry, configure npm:
+Если ваш проект устанавливает пакеты `@dhx/*` из частного реестра, настройте npm:
 
 ~~~bash title="Terminal"
 npm config set @dhx:registry https://npm.dhtmlx.com
 ~~~
 
-### 2) Configure Google Cloud (OAuth 2.0)
+### 2) Настройка Google Cloud (OAuth 2.0)
 
-In this step you will create OAuth credentials that the backend uses to access Google Calendar on behalf of a user.
+На этом шаге вы создадите учётные данные OAuth, которые бэкенд будет использовать для доступа к Google Calendar от имени пользователя.
 
-> The guide uses OAuth in **Testing** mode (recommended for development). In this mode, only users listed as **Test users** can authorize the app.
+> Руководство использует OAuth в режиме тестирования (рекомендуется для разработки). В этом режиме авторизовать приложение могут только пользователи, перечисленные как тестовые.
 
-#### 2.1 Create or select a Google Cloud project
+#### 2.1 Создать или выбрать проект Google Cloud
 
-1. Open [Google Cloud Console](https://console.cloud.google.com/).
-2. Select an existing project or create a new one.
+1. Открыть [Google Cloud Console](https://console.cloud.google.com/).
+2. Выбрать существующий проект или создать новый.
 
-#### 2.2 Enable Google Calendar API
+#### 2.2 Включить Google Calendar API
 
-1. Go to **APIs & Services → Library**.
-2. Search for **Google Calendar API**.
-3. Click **Enable**.
+1. Перейти в **APIs & Services → Library**.
+2. Найти **Google Calendar API**.
+3. Нажать **Enable**.
 
-#### 2.3 Configure the OAuth consent screen
+#### 2.3 Настроить экран согласия OAuth
 
-1. Go to **APIs & Services → OAuth consent screen**.
-2. Choose **External** (typical for consumer Google accounts), then click **Create**.
-3. Fill in the required fields:
+1. Перейти в **APIs & Services → OAuth consent screen**.
+2. Выбрать **External** (типично для потребительских учётных записей Google), затем нажать **Create**.
+3. Заполнить обязательные поля:
    - **App name**
    - **User support email**
    - **Developer contact email**
-4. Set **Publishing status** to **Testing**.
-5. Add **Test users**:
-   - Add the Google accounts you will use to sign in while developing/testing.
+4. Установить **Publishing status** в **Testing**.
+5. Добавить **Test users**:
+   - Добавить учётные записи Google, которыми вы будете входить при разработке/тестировании.
 
 :::note
-If you skip test users in **Testing** mode, Google will block authorization for accounts that are not explicitly added.
+Если пропустить тестовых пользователей в режиме **Testing**, Google заблокирует авторизацию для учётных записей, не включённых явно в список.
 :::
 
-#### 2.4 Create OAuth client credentials
+#### 2.4 Создать OAuth-клиентские креденциалы
 
-1. Go to **APIs & Services → Credentials**.
-2. Click **Create credentials → OAuth client ID**.
-3. Application type: **Web application**.
-4. Add this **Authorized redirect URI**:
+1. Перейти в **APIs & Services → Credentials**.
+2. Нажать **Create credentials → OAuth client ID**.
+3. Тип приложения: **Web application**.
+4. Добавить этот **Authorized JavaScript origin**:
+
+~~~text title="JavaScript origin"
+http://localhost:3000
+~~~
+
+5. Добавить этот **Authorized redirect URI**:
 
 ~~~text title="Redirect URI"
 http://localhost:3000/auth/google/callback
 ~~~
 
-5. Save and copy:
+6. Сохранить и скопировать:
    - **Client ID**
    - **Client Secret**
 
-#### 2.5 Scope used by this integration
+#### 2.5 Область доступа, используемая этой интеграцией
 
-The backend requests Google Calendar access via:
+Бэкенд запрашивает доступ к Google Calendar через:
 
 - `https://www.googleapis.com/auth/calendar`
 
-This scope is sufficient for listing calendars and performing event CRUD operations.
+Эта область доступа достаточна для перечисления календарей и выполнения операций CRUD над событиями.
 
-### 3) Configure environment variables
+### 3) Настройка переменных окружения
 
-In this step you will provide OAuth credentials and session settings to the backend.
+На этом этапе вы предоставите креденциалы OAuth и настройки сессий бэкенду.
 
-Copy `.env.example` to `.env`, then fill in the values:
+Скопируйте `.env.example` в `.env`, затем заполните значения:
 
 ~~~ini title=".env"
-GOOGLE_CLIENT_ID=...
-GOOGLE_CLIENT_SECRET=...
+GOOGLE_CLIENT_ID=<Client ID из предыдущих шагов>
+GOOGLE_CLIENT_SECRET=<Client Secret из предыдущих шагов>
 GOOGLE_REDIRECT_URI=http://localhost:3000/auth/google/callback
 SESSION_SECRET=some-long-random-string
 PORT=3000
 ~~~
 
-### 4) Install dependencies and run
+### 4) Установка зависимостей и запуск
 
 ~~~bash title="Terminal"
 npm install
 npm run start
 ~~~
 
-Open:
+Откройте:
 
 ~~~text title="App URL"
 http://localhost:3000
 ~~~
 
-At this point you should be able to click **Add Google Calendars**, sign in, and see Scheduler populated with events.
+На этом этапе вы сможете нажать **Add Google Calendars**, войти в систему и увидеть Scheduler, заполненный событиями.
 
 ---
 
-## Implementation
+## Реализация
 
-The rest of the guide explains how the integration is put together. If you are adapting this to an existing app, treat each section below as an implementation milestone.
+Оставшаяся часть руководства объясняет, как именно собирается интеграция. Если вы адаптируете это к уже существующему приложению, считайте каждый раздел ниже как этап реализации.
 
-## Step 1 - Split responsibilities (backend vs client)
+## Шаг 1 - Разделение обязанностей (backend vs client)
 
-In this step you will separate responsibilities so Scheduler stays a UI component and the backend owns OAuth + Google API calls.
+На этом шаге вы разделите ответственности, чтобы Scheduler оставался UI‑компонентом, а бэкенд владел OAuth + вызовами Google API.
 
-A typical structure:
+Типичная структура:
 
 ~~~text title="Project structure"
 scheduler-google-auth-demo/
@@ -175,18 +185,18 @@ scheduler-google-auth-demo/
   .env.example
 ~~~
 
-- **server/**: OAuth, token storage (in session), Google Calendar API calls, and REST endpoints for Scheduler
-- **client/**: Scheduler init + loading, and [DataProcessor](guides/server-integration.md) that forwards CRUD actions to the server
+- **server/**: OAuth, хранение токенов в сессии, вызовы Google Calendar API и REST‑концевые точки для Scheduler
+- **client/**: инициализация Scheduler + загрузка, и [DataProcessor](guides/server-integration.md) для перенаправления CRUD‑действий на сервер
 
-## Step 2 - Implement Google OAuth (Express session + Passport)
+## Шаг 2 - Реализация Google OAuth (Express session + Passport)
 
-In this step you will make the backend able to authenticate a user and store Google access/refresh tokens.
+На этом шаге вы сделаете бэкенд способным аутентифицировать пользователя и хранить токены доступа/обновления Google.
 
-### 2.1 Bootstrap the server (sessions + passport)
+### 2.1 Подключение сервера (сессии + passport)
 
-Update `server/index.ts` to enable sessions and passport, then mount your routes.
+Обновите `server/index.ts`, чтобы включить сессии и passport, затем примонтируйте маршруты.
 
-Below is the core wiring (only the relevant parts are shown):
+Ниже приведено ядро подключения (показываются только релевантные части):
 
 ~~~ts title="server/index.ts"
 app.use(
@@ -206,7 +216,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/events", eventsRoute);
+app.use("/events", (req, res, next) => {
+  req.isAuthenticated() ? next() : res.status(401).json({ error: "Not authenticated" });
+}, eventsRoute);
 app.use("/auth", authRoute);
 
 app.get("/", (req, res) => {
@@ -214,13 +226,23 @@ app.get("/", (req, res) => {
 });
 ~~~
 
-### 2.2 Configure the Google strategy
+Inline‑middleware на `/events` гарантирует, что неавторизованные запросы получают ответ `401`, вместо того чтобы падать сервер при попытке привести `req` к `AuthenticatedRequest`.
 
-Update `server/config/passport.ts` to register `passport-google-oauth20`.
+### 2.2 Настройка стратегии Google
 
-The key idea: keep `accessToken` and `refreshToken` on the user object stored in the session:
+Обновите `server/config/passport.ts`, чтобы зарегистрировать `passport-google-oauth20`.
+
+Ключевая идея: хранить `accessToken` и `refreshToken` в объекте пользователя, сохраняемом в сессии:
 
 ~~~ts title="server/config/passport.ts"
+passport.serializeUser((user: Express.User, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((obj: Express.User, done) => {
+  done(null, obj);
+});
+
 passport.use(
   new GoogleStrategy(
     {
@@ -241,12 +263,12 @@ passport.use(
 ~~~
 
 :::note
-Production apps usually persist tokens per user in a database and implement refresh token rotation/revocation. This example keeps tokens in-session to keep the flow easy to follow.
+Обычно продакшн‑приложения сохраняют токены по пользователю в базе данных и реализуют обновление/ревокацию refresh‑токенов. В этом примере токены хранятся в сессии, чтобы упростить процесс.
 :::
 
-### 2.3 Add OAuth routes
+### 2.3 Добавить маршруты OAuth
 
-Update `server/routes/auth.route.ts` to expose the OAuth entry point, callback, and logout:
+Обновите `server/routes/auth.route.ts`, чтобы открыть точку входа OAuth, коллбек и выход из системы:
 
 ~~~ts title="server/routes/auth.route.ts"
 router.get(
@@ -269,26 +291,110 @@ router.get("/google/logout", (req, res, next) => {
 });
 ~~~
 
-At this point you should be able to hit `/auth/google`, complete the Google consent screen, and return to `/` with an authenticated session.
+На этом этапе вы должны суметь открыть `/auth/google`, пройти консент‑экран Google и вернуться к `/` с авторизованной сессией.
 
-## Step 3 - Expose a REST API for Scheduler CRUD
+### Создать сервис Google Calendar
 
-In this step you will implement the API contract Scheduler uses:
+Создайте `server/services/googleService.ts` для обёртывания CRUD‑методов Google Calendar API v3. Он создаёт OAuth2‑клиента по токенам сессии и предоставляет помощники для перечисления календарей, перечисления событий и создания/обновления/удаления событий:
 
-- `GET /events` - load calendars + events
-- `POST /events` - create
-- `PUT /events/:eventId` - update
-- `DELETE /events/:eventId` - delete
+~~~ts title="server/services/googleService.ts"
+import { google, calendar_v3 } from "googleapis";
+import type { GoogleOAuthTokens } from "../types/auth.types.ts";
+import config from "../config/index.ts";
 
-### 3.1 Load calendars + events (GET /events)
+const calendarClient = google.calendar("v3");
 
-Update `server/routes/events.route.ts` to return:
+function oauthClient(tokens: GoogleOAuthTokens) {
+  const client = new google.auth.OAuth2(
+    config.GOOGLE_CLIENT_ID,
+    config.GOOGLE_CLIENT_SECRET,
+    config.GOOGLE_REDIRECT_URI
+  );
+  client.setCredentials({
+    access_token: tokens.accessToken,
+    refresh_token: tokens.refreshToken,
+  });
+  return client;
+}
+
+/* ------ CRUD helpers ------- */
+
+export async function listCalendars(tokens: GoogleOAuthTokens): Promise<calendar_v3.Schema$CalendarListEntry[]> {
+  const { data } = await calendarClient.calendarList.list({ auth: oauthClient(tokens) });
+  return data.items ?? [];
+}
+
+export async function listEvents(
+  tokens: GoogleOAuthTokens,
+  opts: calendar_v3.Params$Resource$Events$List
+): Promise<calendar_v3.Schema$Event[]> {
+  const { data } = await calendarClient.events.list({
+    auth: oauthClient(tokens),
+    ...opts,
+  });
+  return data.items ?? [];
+}
+
+export async function createEvent(
+  tokens: GoogleOAuthTokens,
+  calendarId: string | undefined,
+  gEvent: calendar_v3.Schema$Event
+): Promise<calendar_v3.Schema$Event> {
+  const { data } = await calendarClient.events.insert({
+    auth: oauthClient(tokens),
+    calendarId: calendarId || "primary",
+    requestBody: gEvent,
+    conferenceDataVersion: 1,
+  });
+  return data;
+}
+
+export async function updateEvent(
+  tokens: GoogleOAuthTokens,
+  calendarId: string | undefined,
+  eventId: string,
+  gPatch: calendar_v3.Schema$Event
+): Promise<calendar_v3.Schema$Event> {
+  const { data } = await calendarClient.events.patch({
+    auth: oauthClient(tokens),
+    calendarId: calendarId || "primary",
+    eventId,
+    requestBody: gPatch,
+  });
+  return data;
+}
+
+export async function deleteEvent(
+  tokens: GoogleOAuthTokens,
+  calendarId: string | undefined,
+  eventId: string
+): Promise<void> {
+  await calendarClient.events.delete({
+    auth: oauthClient(tokens),
+    calendarId: calendarId || "primary",
+    eventId,
+  });
+}
+~~~
+
+## Шаг 3 - Экспорт REST API для CRUD Scheduler
+
+На этом шаге вы реализуете контракт API, который использует Scheduler:
+
+- `GET /events` — загрузить календари + события
+- `POST /events` — создать
+- `PUT /events/:eventId` — обновить
+- `DELETE /events/:eventId` — удалить
+
+### 3.1 Загрузка календарей + событий (GET /events)
+
+Обновите `server/routes/events.route.ts`, чтобы возвращать:
 
 
-- `data` containing Scheduler-style events
-- `collections.calendars` containing list of calendars that will be [available on the client]](guides/loading-data.md)
+- `data` с событиями в формате Scheduler
+- `collections.calendars` с списком календарей, который будет [доступен на клиенте](guides/loading-data.md#collections)
 
-Below is a working example handler:
+Ниже приведён рабочий обработчик:
 
 ~~~ts title="server/routes/events.route.ts"
 router.get("/", async (req, res, next) => {
@@ -314,7 +420,7 @@ router.get("/", async (req, res, next) => {
 
     const googleEvents = await Promise.all(
       mappedCals.map(async (calendar) => {
-        const params: Record<string, unknown> = { calendarId: calendar.id, timeMin: minDate };
+        const params: calendar_v3.Params$Resource$Events$List = { calendarId: calendar.id, timeMin: minDate };
         if (maxDate) params.timeMax = maxDate;
 
         const calendarEventsResponse = await googleService.listEvents(authedReq.user.tokens, params);
@@ -336,13 +442,13 @@ router.get("/", async (req, res, next) => {
 });
 ~~~
 
-Related docs: [Loading data](guides/loading-data.md).
+Связанные документы: [Loading data](guides/loading-data.md#collections).
 
-### 3.2 Forward CRUD operations to Google Calendar
+### 3.2 Перенаправление CRUD‑операций в Google Calendar
 
-Update the same route module to handle create/update/delete.
+Обновите тот же модуль маршрутов, чтобы обрабатывать создание/обновление/удаление.
 
-Create:
+Создание:
 
 ~~~ts title="server/routes/events.route.ts"
 router.post("/", async (req, res, next) => {
@@ -363,7 +469,7 @@ router.post("/", async (req, res, next) => {
 });
 ~~~
 
-Update:
+Обновление:
 
 ~~~ts title="server/routes/events.route.ts"
 router.put("/:eventId", async (req, res, next) => {
@@ -385,15 +491,15 @@ router.put("/:eventId", async (req, res, next) => {
 });
 ~~~
 
-Delete:
+Удаление:
 
 ~~~ts title="server/routes/events.route.ts"
 router.delete("/:eventId", async (req, res, next) => {
   const authedReq = req as AuthenticatedRequest;
   const calendarId = (req.body as DhxEvent)?.calendarId as string | undefined;
 
-  // If this is an exception occurrence (id contains "_"), there is nothing to delete on Google side.
-  // Google Calendar removes occurrences when deleting the main recurring event.
+  // Если это исключение повторного события (id содержит "_"), удалить на стороне Google ничего не нужно.
+  // Google Calendar удаляетOccurrence при удалении основного повторяющегося события.
   const dhxId = req.body?.id as string | undefined;
   if (typeof dhxId === "string" && dhxId.indexOf("_") > -1) {
     res.json({ action: "deleted" });
@@ -409,37 +515,41 @@ router.delete("/:eventId", async (req, res, next) => {
 });
 ~~~
 
-At this point Scheduler can load `/events`, and basic CRUD can be wired on the client.
+На данный момент Scheduler может загружать `/events`, а базовые операции CRUD можно реализовать на клиенте.
 
-## Step 4 - Map Google events to Scheduler events (and back)
+## Шаг 4 - Соответствие Google‑событий событиям Scheduler (и обратно)
 
-In this step you will implement a mapper that converts between:
+На этом шаге вы реализуете маппер, который преобразует между:
 
-- Google event fields (`start.dateTime` / `start.date`, `recurrence`, etc.)
-- Scheduler event fields (`start_date`, `end_date`, `rrule`, etc.)
+- полями Google‑события (`start.dateTime` / `start.date`, `recurrence`, и т. д.)
+- полями события Scheduler (`start_date`, `end_date`, `rrule`, и т. д.)
 
-### Key differences you must handle
+### Основные различия, которые нужно учесть
 
-1) **All-day vs timed events**
-- Google: all-day uses `start.date` / `end.date`
-- Google: timed uses `start.dateTime` / `end.dateTime` and may include `timeZone`
-- Scheduler: uses `start_date` / `end_date` (Date objects)
+1) **Целодневные vs события с указанием времени**
+- Google: целодневные используют `start.date` / `end.date`
+- Google: события с временем используют `start.dateTime` / `end.dateTime` и могут содержать `timeZone`
+- Scheduler: использует `start_date` / `end_date` (объекты Date)
 
-2) **Recurrence rules**
-- Google stores recurrence as array strings with `RRULE:` prefix
-- Scheduler uses `rrule` without the prefix
+2) **Правила повторения**
+- Google хранит повторение в виде массива строк с префиксом `RRULE:`
+- Scheduler использует `rrule` без префикса
 
-3) **Recurring series end date**
-- Scheduler expects an `end_date` for recurring series.
-- Google may use `UNTIL=` in RRULE, or no UNTIL (infinite series).
+3) **Конец серии повторений**
+- Scheduler ожидает `end_date` для повторяющихся серий.
+- Google может использовать `UNTIL=` в RRULE, или вовсе не указывать UNTIL (бесконечная серия).
 
-Related docs: [Recurring events](guides/recurring-events.md).
+Связанные документы: [Recurring events](guides/recurring-events.md).
 
 ### Google → Scheduler
 
-Update `server/mappers/eventMapper.ts` to map the Google event shape into Scheduler's event shape (excerpt below; keep helper functions like `calculateEndDate()` in the same module):
+Обновите `server/mappers/eventMapper.ts`, чтобы преобразовать форму события Google в форму события Scheduler (см. фрагмент ниже; сохраняйте вспомогательные функции, такие как `calculateEndDate()`, в том же модуле):
 
 ~~~ts title="server/mappers/eventMapper.ts"
+import moment from "moment-timezone";
+import type { DhxEvent, MappedCalendar } from "../types/types.ts";
+import type { calendar_v3 } from "googleapis";
+
 export function toDhxEvent(gEvent: calendar_v3.Schema$Event, calendar: MappedCalendar): DhxEvent {
   const ev: DhxEvent = {
     id: gEvent.id as string,
@@ -480,7 +590,7 @@ export function toDhxEvent(gEvent: calendar_v3.Schema$Event, calendar: MappedCal
     ev.end_date = calculateEndDate(gEvent);
   }
 
-  // Exceptions: original start time
+  // Исключения: исходное время начала
   if (gEvent.originalStartTime?.dateTime) {
     ev.original_start = new Date(gEvent.originalStartTime.dateTime);
   }
@@ -489,9 +599,27 @@ export function toDhxEvent(gEvent: calendar_v3.Schema$Event, calendar: MappedCal
 }
 ~~~
 
+### helper calculateEndDate()
+
+Извлекает дату UNTIL из правила повторения Google или возвращает дату далеко в будущем для бесконечных серий. Scheduler ожидает end_date у повторяющихся событий, поэтому этот хелпер возвращает её:
+
+~~~ts title="server/mappers/eventMapper.ts"
+// convert UNTIL=20260129T205959Z -> '2026-01-29T20:59:59Z' если существует
+// если UNTIL нет -> повторение бесконечно -> вернуть '9999-02-01T00:00:00Z'
+function calculateEndDate(gEvent: calendar_v3.Schema$Event): Date {
+  const until = String(gEvent.recurrence?.[0] ?? "").match(/RRULE:.*?UNTIL=([^;]+)/)?.[1];
+
+  return until
+    ? new Date(
+        until.replace(/^([0-9]{4})([0-9]{2})([0-9]{2})T([0-9]{2})([0-9]{2})([0-9]{2})Z$/, "$1-$2-$3T$4:$5:$6Z")
+      )
+    : new Date(9999, 1, 1);
+}
+~~~
+
 ### Scheduler → Google
 
-Update the mapper to convert Scheduler event fields back into Google's schema:
+Обновите сопоставитель, чтобы преобразовать поля Scheduler обратно в схему Google:
 
 ~~~ts title="server/mappers/eventMapper.ts"
 export function toGoogleEventPayload(dhx: DhxEvent): calendar_v3.Schema$Event {
@@ -499,6 +627,8 @@ export function toGoogleEventPayload(dhx: DhxEvent): calendar_v3.Schema$Event {
     summary: dhx.text,
     description: dhx.details ?? "",
   };
+
+  const tz = dhx.timeZone || "UTC";
 
   if (dhx.start_date && dhx.end_date) {
     const isAllDay =
@@ -514,16 +644,14 @@ export function toGoogleEventPayload(dhx: DhxEvent): calendar_v3.Schema$Event {
         gEvent.end = { date: moment(dhx.start_date).add(1, "day").format("YYYY-MM-DD") };
       } else {
         gEvent.start = {
-          dateTime: moment
-            .tz(new Date(dhx.start_date).toISOString(), "YYYY-MM-DD HH:mm", dhx.timeZone)
-            .format("YYYY-MM-DDTHH:mm:ssZZ"),
-          timeZone: dhx.timeZone,
+          dateTime: moment(new Date(dhx.start_date).toISOString()).tz(tz).format("YYYY-MM-DDTHH:mm:ssZZ"),
+          timeZone: tz,
         };
 
         const endDate = new Date(new Date(dhx.start_date).getTime() + dhx.duration * 1000).toISOString();
         gEvent.end = {
-          dateTime: moment.tz(endDate, "YYYY-MM-DD HH:mm", dhx.timeZone).format("YYYY-MM-DDTHH:mm:ssZZ"),
-          timeZone: dhx.timeZone,
+          dateTime: moment(endDate).tz(tz).format("YYYY-MM-DDTHH:mm:ssZZ"),
+          timeZone: tz,
         };
       }
     } else {
@@ -533,30 +661,24 @@ export function toGoogleEventPayload(dhx: DhxEvent): calendar_v3.Schema$Event {
         gEvent.end = { date: moment(dhx.start_date).add(1, "day").format("YYYY-MM-DD") };
       } else {
         gEvent.start = {
-          dateTime: moment
-            .tz(new Date(dhx.start_date).toISOString(), "YYYY-MM-DD HH:mm", dhx.timeZone)
-            .format("YYYY-MM-DDTHH:mm:ssZZ"),
-          timeZone: dhx.timeZone,
+          dateTime: moment(new Date(dhx.start_date).toISOString()).tz(tz).format("YYYY-MM-DDTHH:mm:ssZZ"),
+          timeZone: tz,
         };
         gEvent.end = {
-          dateTime: moment
-            .tz(new Date(dhx.end_date).toISOString(), "YYYY-MM-DD HH:mm", dhx.timeZone)
-            .format("YYYY-MM-DDTHH:mm:ssZZ"),
-          timeZone: dhx.timeZone,
+          dateTime: moment(new Date(dhx.end_date).toISOString()).tz(tz).format("YYYY-MM-DDTHH:mm:ssZZ"),
+          timeZone: tz,
         };
       }
     }
 
-    // Recurring exceptions support
+    // Поддержка исключений повторяющихся событий
     if (dhx.recurring_event_id) {
       gEvent.recurringEventId = dhx.recurring_event_id.toString();
     }
     if (dhx.original_start) {
       gEvent.originalStartTime = {
-        dateTime: moment
-          .tz(new Date(dhx.original_start).toISOString(), "YYYY-MM-DD HH:mm", dhx.timeZone)
-          .format("YYYY-MM-DDTHH:mm:ssZZ"),
-        timeZone: dhx.timeZone,
+        dateTime: moment(new Date(dhx.original_start).toISOString()).tz(tz).format("YYYY-MM-DDTHH:mm:ssZZ"),
+        timeZone: tz,
       };
     }
     if (dhx.deleted) {
@@ -568,13 +690,13 @@ export function toGoogleEventPayload(dhx: DhxEvent): calendar_v3.Schema$Event {
 }
 ~~~
 
-## Step 5 - Wire Scheduler to the backend (load + CRUD)
+## Шаг 5 - Подключение Scheduler к бэкенду (загрузка + CRUD)
 
-In this step you will initialize Scheduler, load data from `GET /events`, and send CRUD operations to the backend via DataProcessor.
+На этом шаге вы инициализируете Scheduler, загрузите данные через `GET /events` и отправляете операции CRUD на бэкенд через DataProcessor.
 
-### 5.1 Render a different UI for "authorized vs not authorized"
+### 5.1 Отображение другого UI для "авторизован/не авторизован"
 
-Update `client/index.ejs` to expose an authorization flag to the client:
+Обновите `client/index.ejs`, чтобы передать клиенту флаг авторизации:
 
 ~~~html title="client/index.ejs"
 <script>
@@ -582,11 +704,11 @@ Update `client/index.ejs` to expose an authorization flag to the client:
 </script>
 ~~~
 
-### 5.2 Initialize Scheduler and load events
+### 5.2 Инициализация Scheduler и загрузка событий
 
-Update `client/main.ts` to initialize Scheduler and load data once the user is authorized.
+Обновите `client/main.ts`, чтобы инициализировать Scheduler и загрузить данные после авторизации пользователя.
 
-Only the relevant part is shown:
+Только релевантная часть:
 
 ~~~ts title="client/main.ts"
 scheduler.plugins({ recurring: true });
@@ -602,19 +724,19 @@ if (GOOGLE_AUTHORIZED) {
 }
 ~~~
 
-### 5.3 Enable two-way sync with DataProcessor
+### 5.3 Включение двусторонней синхронизации через DataProcessor
 
-Update `client/main.ts` to forward Scheduler CRUD actions to the server.
+Обновите `client/main.ts`, чтобы пересылать CRUD‑действия Scheduler на сервер.
 
 ~~~ts title="client/main.ts"
 scheduler.createDataProcessor(async (entity, action, data, id) => {
   const calendars = scheduler.serverList("calendars") as MappedCalendar[];
 
-  // Demo simplification: send everything into the first available calendar.
-  // In a real app, let users choose a target calendar.
+  // Упрощение демо: отправляем всё в первый доступный календарь.
+  // В реальном приложении позвольте пользователю выбрать целевой календарь.
   data.calendarId = calendars[0]?.id;
 
-  // Provide client timezone so the server can generate correct dateTime values.
+  // Предоставьте клиентский часовой пояс, чтобы сервер мог корректно генерировать значения dateTime.
   data.timeZone = momentTz.tz.guess();
 
   return fetchEvent(action, data, id);
@@ -639,41 +761,41 @@ async function fetchEvent(action, data, id) {
 }
 ~~~
 
-Related docs: [DataProcessor](guides/server-integration.md#createdp).
+Связанные документы: [DataProcessor](guides/server-integration.md#technique).
 
-At this point:
+На данный момент:
 
-- events from Google Calendar should appear in Scheduler after authorization
-- creating/updating/deleting in Scheduler should update Google Calendar
+- события из Google Calendar должны появиться в Scheduler после авторизации
+- создание/обновление/удаление в Scheduler должно обновлять Google Calendar
 
 ---
 
-## Troubleshooting
+## Устранение неполадок
 
 ### "Error 400: redirect_uri_mismatch"
-- **Cause:** The redirect URI in Google Cloud credentials does not match your app callback URL.
-- **Fix:** Ensure the Authorized redirect URI is exactly:
+- Причина: перенаправляющий URI в учетных данных Google Cloud не совпадает с данным URL‑адресом вашего приложения.
+- Исправление: убедитесь, что Authorized redirect URI EXACTLY такой же:
   - `http://localhost:3000/auth/google/callback`
 
 ### "Access blocked: app has not completed the Google verification process"
-- **Cause:** Consent screen is not in Testing mode or you are not listed as a test user.
-- **Fix:** Set Publishing status to **Testing** and add your account in **Test users**.
+- Причина: экран согласия не в режиме Testing или вы не добавлены в список тестовых пользователей.
+- Исправление: установите Publishing status в **Testing** и добавьте вашу учётную запись в **Test users**.
 
 ### "No refresh token returned"
-- **Cause:** Google may return a refresh token only the first time the user consents for a given client ID.
-- **Fix:** Ensure your auth request includes `accessType: "offline"` and `prompt: "consent"`. If you already authorized before, revoke access in Google Account permissions and authorize again.
+- Причина: Google может вернуть refresh token только при первом согласии пользователя для данного client ID.
+- Исправление: убедитесь, что ваш запрос аутентификации включает `accessType: "offline"` и `prompt: "consent"`. Если вы уже авторизованы ранее, отзовите доступ в настройках разрешений Google Account и повторно авторизуйтесь.
 
-## Summary
+## Резюме
 
-You implemented two-way sync between Scheduler and Google Calendar:
+Вы реализовали двустороннюю синхронизацию между Scheduler и Google Calendar:
 
-- The backend authenticates users via Google OAuth 2.0 and stores tokens in the session
-- Scheduler loads calendars and events through `GET /events`
-- Scheduler CRUD operations are forwarded to Google Calendar via `POST/PUT/DELETE /events`
-- A mapper converts timed/all-day and recurring events between Google Calendar and Scheduler
+- Бэкенд аутентифицирует пользователей через Google OAuth 2.0 и хранит токены в сессии
+- Scheduler загружает календари и события через `GET /events`
+- CRUD‑операции Scheduler пересылаются в Google Calendar через `POST/PUT/DELETE /events`
+- Сопоставитель конвертируетTimed/целодневные и повторяющиеся события между Google Calendar и Scheduler
 
-## Demo repository link
+## Ссылка на демонстрационный репозиторий
 
-Full working source (replace with your real repo):
+Полный рабочий исходник:
 
-- https://github.com/dhtmlx/scheduler-google-auth-demo
+- https://github.com/DHTMLX/scheduler-google-calendar-demo

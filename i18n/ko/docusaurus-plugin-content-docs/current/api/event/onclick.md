@@ -1,14 +1,14 @@
 ---
-sidebar_label: "onClick"
-title: "onClick event"
-description: "사용자가 이벤트에서 마우스 왼쪽 버튼을 클릭할 때 발생합니다."
+sidebar_label: onClick
+title: "onClick 이벤트"
+description: "사용자가 이벤트의 왼쪽 마우스 버튼을 클릭할 때 발생합니다"
 ---
 
 # onClick
 
 ### Description
 
-@short: 사용자가 이벤트에서 마우스 왼쪽 버튼을 클릭할 때 발생합니다.
+@short: 사용자가 이벤트를 왼쪽 마우스 버튼으로 클릭할 때 발생합니다
 
 @signature: onClick: (id: string, e: Event) =\> boolean;
 
@@ -18,24 +18,24 @@ description: "사용자가 이벤트에서 마우스 왼쪽 버튼을 클릭할 
 - `e` - (required) *Event* - 네이티브 이벤트 객체
 
 ### Returns
-- ` result` - (boolean) - 기본 이벤트 동작이 진행될지(<b>true</b>) 차단될지(<b>false</b>) 결정합니다.
+- `result` - (boolean) - 이벤트의 기본 동작이 트리거될지(`true`) 또는 취소될지(`false`)를 정의합니다
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onClick", function (id, e){
-       //여기에 사용자 정의 로직 작성
-       return true;
-  });
+scheduler.attachEvent("onClick", (id, event) => {
+    // 여기에 사용자 정의 로직 작성
+    return true;
+});
 ~~~
 
 ### Related samples
-- [Hiding the select bar of the event box](https://docs.dhtmlx.com/scheduler/samples/02_customization/10_without_toolbar.html)
-- [Read-only lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/12_readonly_form.html)
+- [이벤트 박스의 선택 바 숨기기](https://docs.dhtmlx.com/scheduler/samples/02_customization/10_without_toolbar.html)
+- [읽기 전용 Lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/12_readonly_form.html)
 
 ### Details
 
-이 이벤트는 차단할 수 있습니다. 핸들러에서 true 이외의 값을 반환하면 기본 동작(보통 선택 바 표시)이 중단됩니다.
+이벤트는 차단 가능합니다. 핸들러에서 `true`가 아닌 값을 반환하면 기본 반응이 차단됩니다. 기본적으로 선택 바가 표시됩니다.
 
 ### Related Guides
-- ["Lightbox 조작하기"](guides/lightbox-editors-manipulations.md#opening-the-lightbox-on-a-single-click)
+- [Lightbox 조작](guides/lightbox-editors-manipulations.md#opening-the-lightbox-on-a-single-click)

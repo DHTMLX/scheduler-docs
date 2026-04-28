@@ -19,7 +19,7 @@ scheduler.config.lightbox.sections = [
     { name:"time", height:72, type:"time", map_to:"auto"}
 ];
 scheduler.attachEvent("onEventCreated", function(id, e) {
-    var ev = scheduler.getEvent(id);
+    const ev = scheduler.getEvent(id);
     ev.my_template = "<b>Holder:</b>"+ ev.holder+"
 
 <b>Room:</b>"+ ev.room;
@@ -44,7 +44,7 @@ scheduler.locale.labels.section_template = 'Details';
 3. <b>Set the content of the control with the help of some event, e.g. the [onBeforeLightbox](api/event/onbeforelightbox.md) event:</b>
 ~~~js
 scheduler.attachEvent("onBeforeLightbox", function(id) {
-    var ev = scheduler.getEvent(id);
+    const ev = scheduler.getEvent(id);
     ev.my_template = "<b>Holder:</b>"+ ev.holder+"
 
 <b>Room:</b>"+ ev.room;

@@ -17,7 +17,7 @@ description: "定义用于从数据集中解析数据以及向服务器发送日
 ~~~jsx
 scheduler.config.date_format = "%Y-%m-%d %H:%i";
 ...
-scheduler.init('scheduler_here',new Date(2019,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 scheduler.load("/data/events");
 ~~~
 

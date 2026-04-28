@@ -17,7 +17,7 @@ description: "控制调度器是否在每次操作后完全重绘自身"
 ~~~jsx
 scheduler.config.update_render = true;
 ...     
-scheduler.init('scheduler_here',new Date(2013,7,11),"week");
+scheduler.init('scheduler_here',new Date(2027,7,11),"week");
 ~~~
 
 **Default value:** false

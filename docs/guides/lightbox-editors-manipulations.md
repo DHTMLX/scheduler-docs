@@ -11,7 +11,7 @@ To get/set the value of the section's control, use the [formSection](api/method/
 
 ~~~js
 //to get the value
-var value = scheduler.formSection('description').getValue();
+const value = scheduler.formSection('description').getValue();
 
 //to set the value
 scheduler.formSection('description').setValue('abc');
@@ -60,8 +60,8 @@ To map a property of an event object to a lightbox section, do the following:
    "data":[
       {
           "id":"1",
-          "start_date":"2019-03-02 00:00:00",
-          "end_date":"2019-03-04 00:00:00",
+          "start_date":"2027-03-02 00:00:00",
+          "end_date":"2027-03-04 00:00:00",
           "text":"Graduation ceremony",
           "type":"1",
           "location":"London"
@@ -76,7 +76,7 @@ Note, that all properties your data source returns will be added to event object
 - In order to map a lightbox control to a specific property, assign the name of the event property to the **map_to** property of a section:
 
 ~~~js
-scheduler.config.lightbox.sections="["
+scheduler.config.lightbox.sections=[
     {name:"description", height:70, map_to:"text", type:"textarea" , focus:true},
     {name:"locationInput", height:35, map_to:"location", type:"textarea" },
     {name:"typeSelect", map_to:"type", type:"select", options:scheduler.serverList("types")},
@@ -140,7 +140,7 @@ You have the possibility to change the order of date-time controls in the 'Time 
 use the **time_format** property:
 
 ~~~js
-scheduler.config.lightbox.sections="["
+scheduler.config.lightbox.sections= [
   {name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
   {name:"time", ..., time_format:["%H:%i","%m","%d","%Y"]}
 ];
@@ -173,11 +173,11 @@ To make a section hidden for specific events, redefine its **set_value** method 
 
 
 ~~~js
-scheduler.form_blocks.textarea.set_value="function(node,value,ev){"
-    node.firstChild.value="value||""";
-    var style = ev.some_property?"":"none";
-    node.style.display="style;" // editor area
-    node.previousSibling.style.display="style;" //section header
+scheduler.form_blocks.textarea.set_value = function(node,value,ev){
+    node.firstChild.value= value || "";
+    let style = ev.some_property ? "" : "none";
+    node.style.display = "style;" // editor area
+    node.previousSibling.style.display = "style;" //section header
     scheduler.setLightboxSize(); //correct size of lightbox
 }
 ~~~
@@ -244,8 +244,8 @@ scheduler.locale.labels.button_help = "Help label";
 
 - Specify the handler of button clicks:
 
-~~~
-scheduler.form_blocks.textarea.button_click="function(index,button,shead,sbody){"
+~~~js
+scheduler.form_blocks.textarea.button_click = function(index,button,shead,sbody){
     // any custom code
 }
 ~~~
@@ -260,7 +260,7 @@ where:
 
 You can define the image used for the button through the following CSS class:
 
-~~~js
+~~~css
 .dhx_custom_button_help{
     background-image:url(imgs/but_help.gif);
 }
@@ -271,23 +271,23 @@ You can define the image used for the button through the following CSS class:
 You can make select controls in the lightbox dependent on each other. To do this use [the onchange property](guides/select.md#properties) of the select control, as in:
 
 ~~~js
-var update_select_options = function(select, options) { // helper function
+const update_select_options = function(select, options) { // helper function
     select.options.length = 0;
-    for (var i="0;" i<options.length; i++) {
-        var option = options[i];
+    for (let i = 0; i < options.length; i++) {
+        let option = options[i];
         select[i] = new Option(option.label, option.key);
     }
 };
 
-var parent_onchange = function(event) {
-    var new_child_options = child_select_options[this.value];
+const parent_onchange = function(event) {
+    const new_child_options = child_select_options[this.value];
     update_select_options(scheduler.formSection('child').control, new_child_options);
 };
 scheduler.attachEvent("onBeforeLightbox", function(id){
-    var ev = scheduler.getEvent(id);
+    const ev = scheduler.getEvent(id);
     if (!ev.child_id) {
-        var parent_id = ev.parent_id||parent_select_options[0].key;
-        var new_child_options = child_select_options[parent_id];
+        const parent_id = ev.parent_id||parent_select_options[0].key;
+        const new_child_options = child_select_options[parent_id];
         update_select_options(
             scheduler.formSection('child').control, new_child_options
         );
@@ -295,7 +295,7 @@ scheduler.attachEvent("onBeforeLightbox", function(id){
     return true;
 });
 
-scheduler.config.lightbox.sections="["
+scheduler.config.lightbox.sections= [
     ...
     {name:"parent", height:23, type:"select", options: parent_select_options, 
      map_to:"parent_id", onchange:parent_onchange },
@@ -321,12 +321,12 @@ You can change the lightbox sections dynamically via [the resetLightbox()](api/m
 1. Create two arrays with the lightbox configuration that will contain two different sets of controls.
 
 ~~~js
-var full_lightbox = [
+const full_lightbox = [
     { name: "description", height: 200, map_to: "text", type: "textarea", focus: true},
     { name: "hidden", height: 23, map_to: "hidden", type: "textarea"},
     { name: "time", height: 72, type: "time", map_to: "auto"}
 ];
-var restricted_lightbox = [
+const restricted_lightbox = [
     { name: "description", height: 200, map_to: "text", type: "textarea", focus: true},
     { name: "time", height: 72, type: "time", map_to: "auto"}
 ];
@@ -342,7 +342,7 @@ var restricted_lightbox = [
 ~~~js
 scheduler.attachEvent("onBeforeLightbox", function(event_id) {
     scheduler.resetLightbox();
-    var ev = scheduler.getEvent(event_id);
+    const ev = scheduler.getEvent(event_id);
     scheduler.config.lightbox.sections = (ev.restricted) ?
         restricted_lightbox : full_lightbox;
     return true;
@@ -352,11 +352,11 @@ scheduler.attachEvent("onBeforeLightbox", function(event_id) {
 3. Use the 'restricted' event propery to apply "restricted_lightbox" config. Otherwise, the full lightbox will be displayed.
 
 ~~~js
-scheduler.init('scheduler_here', new Date(2017, 5, 30), "week");
+scheduler.init('scheduler_here', new Date(2027, 5, 30), "week");
 scheduler.parse([
-    { start_date: "2017-06-27 04:00", end_date: "2017-06-27 7:00", 
+    { start_date: "2027-06-27 04:00", end_date: "2027-06-27 7:00", 
         text: "Restricted event", hidden: "You won't see me", restricted: true },
-    { start_date: "2017-06-29 05:00", end_date: "2017-06-29 11:00", 
+    { start_date: "2027-06-29 05:00", end_date: "2027-06-29 11:00", 
         text: "Full access", hidden: "Hidden text" }
 ]);
 ~~~

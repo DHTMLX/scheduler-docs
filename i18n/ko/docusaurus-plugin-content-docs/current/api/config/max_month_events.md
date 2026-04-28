@@ -17,7 +17,7 @@ description: "한 셀에 표시되는 최대 이벤트 수를 제어합니다"
 ~~~jsx
 scheduler.config.max_month_events = 5;
 ..
-scheduler.init('scheduler_here', new Date(2013,5,30),"month");
+scheduler.init('scheduler_here', new Date(2027,5,30),"month");
 ~~~
 
 **Applicable views:** [Month view](views/month.md)

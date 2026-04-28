@@ -18,7 +18,7 @@ description: "스케줄러의 데이터를 JSON 형식의 문자열로 변환합
 ### Example
 
 ~~~jsx
-var str = scheduler.toJSON();
+const str = scheduler.toJSON();
 ~~~
 
 ### Related samples

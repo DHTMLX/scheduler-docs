@@ -1,16 +1,16 @@
 ---
-sidebar_label: "setEventStartDate"
-title: "setEventStartDate method"
-description: "обновляет дату начала события"
+sidebar_label: setEventStartDate
+title: "метод setEventStartDate"
+description: "устанавливает дату начала события"
 ---
 
 # setEventStartDate
-:::warning
-Эта функицональность устарела
-::: 
+:::warning 
+Метод устарел.
+:::
 ### Description
 
-@short: Обновляет дату начала события
+@short: Устанавливает дату начала события
 
 @signature: setEventStartDate: (id: string, date: Date) =\> void
 
@@ -22,13 +22,13 @@ description: "обновляет дату начала события"
 ### Example
 
 ~~~jsx
-var eventId = scheduler.addEvent({
-    start_date: new Date(2013,1,10),
-    end_date:   new Date(2013,1,13),
+const eventId = scheduler.addEvent({
+    start_date: new Date(2027,1,10),
+    end_date:   new Date(2027,1,13),
     text:   "Conference"
 });
 ...
-scheduler.getEvent(eventId).start_date = new Date(2013,1,09);
+scheduler.getEvent(eventId).start_date = new Date(2027,1,09);
 scheduler.updateEvent(eventId);
 ~~~
 

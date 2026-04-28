@@ -15,9 +15,9 @@ description: "sets the date for the current-time marker in the Limit extension (
 ### Example
 
 ~~~jsx
-scheduler.config.now_date = new Date(2010, 7, 5);
+scheduler.config.now_date = new Date(2027, 7, 5);
 ...
-scheduler.init('scheduler_here', new Date(2010, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 ### Details

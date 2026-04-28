@@ -1,41 +1,41 @@
 ---
-sidebar_label: "updateView"
-title: "updateView method"
-description: "Zeigt die angegebene Ansicht und das Datum an, ohne irgendwelche Events auszulösen"
+sidebar_label: updateView
+title: "updateView Methode"
+description: "zeigt die angegebene Ansicht und das Datum an (löst keine Events aus)"
 ---
 
 # updateView
 
 ### Description
 
-@short: Zeigt die angegebene Ansicht und das Datum an, ohne irgendwelche Events auszulösen
+@short: Zeigt die angegebene Ansicht und das Datum an (löst keine Events aus)
 
 @signature: updateView: (date?: Date, view?: string) =\> void
 
 ### Parameters
 
-- `date` - (optional) *Date* - (optional) das zu setzende Datum
-- `view` - (optional) *string* - (optional) der Name der Ansicht
+- `date` - (optional) *Date* - das Datum, das gesetzt wird
+- `view` - (optional) *string* - der Ansichtsname
 
 ### Example
 
 ~~~jsx
-// aktualisiert die aktuelle Ansicht und das Datum, ohne Änderungen vorzunehmen
+// displays the current view and date. Doesn't change anything, just refreshes
 scheduler.updateView();
-// zeigt den 4. Juli 2012 in der aktuellen Ansicht an
-scheduler.updateView(new Date(2012,7,4));
-// zeigt den 3. Mai 2012 in der Wochen-Ansicht an
-scheduler.updateView(new Date(2012,5,3), "week");
+// displays 2027-08-04 in the currently active view
+scheduler.updateView(new Date(2027, 7, 4));
+// displays 2027-06-03 in the Week view
+scheduler.updateView(new Date(2027, 5, 3), "week");
 ~~~
 
 ### Related samples
-- [Filtering events](https://docs.dhtmlx.com/scheduler/samples/09_api/09_filtering_events.html)
+- [Ereignisse filtern](https://docs.dhtmlx.com/scheduler/samples/09_api/09_filtering_events.html)
 
 ### Details
 
-- Wird diese Funktion ohne Parameter aufgerufen, wird einfach die aktuelle Ansicht aktualisiert. 
-- Die Standard-View-Namen sind 'day', 'week' und 'month'. Um eine andere Ansicht zu verwenden, geben Sie den **Name**-Parameter an.
-- Diese Methode ähnelt [setCurrentView](api/method/setcurrentview.md). Der wesentliche Unterschied besteht darin, dass im Gegensatz zu **updateView** bei [setCurrentView](api/method/setcurrentview.md) die Events [onBeforeViewChange](api/event/onbeforeviewchange.md) und [onViewChange](api/event/onviewchange.md) ausgelöst werden.
+- Beim Aufruf ohne Parameter aktualisiert die Funktion lediglich die aktuelle Ansicht.
+- Die Namen der Standardansichten sind 'day', 'week', 'month'. Um eine andere Ansicht anzugeben, verwenden Sie ihren `name`-Parameter.
+- Die Methode ist ähnlich wie [`setCurrentView()`](api/method/setcurrentview.md). Der einzige Unterschied besteht darin, dass im Gegensatz zu `updateView()`, [`setCurrentView()`](api/method/setcurrentview.md) die Events [`onBeforeViewChange`](api/event/onbeforeviewchange.md) und [`onViewChange`](api/event/onviewchange.md) erzeugt.
 
 ### Related API
 - [setCurrentView](api/method/setcurrentview.md)

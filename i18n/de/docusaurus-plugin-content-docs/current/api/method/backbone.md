@@ -20,7 +20,7 @@ description: "Hält den Scheduler synchron mit allen Updates im Backbone-Modell 
 
 ~~~jsx
 $(".myscheduler").dhx_scheduler({
-    date: new Date(2009,5,25),
+    date: new Date(2027,5,25),
     mode: "month"
 });
 

@@ -14,7 +14,7 @@ description: "удаляет модальное оверлейное окно li
 
 ### Parameters
 
-- `box` - (optional) *HTMLElement* - элемент, который необходимо скрыть
+- `box` - (optional) *HTMLElement* - элемент, который нужно скрыть
 
 ### Example
 
@@ -24,7 +24,7 @@ scheduler.hideCover(scheduler.getLightbox());
 
 ### Details
 
-При передаче входного параметра этот метод скрывает указанный HTML-элемент, устанавливая для его свойства display значение "none".
+Если вы укажете входной параметр, метод скроет указанный HTML-объект (установив свойство display в значение "none").
 
 ### Related API
 - [showCover](api/method/showcover.md)

@@ -36,4 +36,4 @@ scheduler.config.overwrite_marked_timespans = false;
 - [Blocking and Marking Dates](guides/limits.md#blockingpriority)
 
 ### Change log
-- added in v6.0
+- 6.0 版本新增

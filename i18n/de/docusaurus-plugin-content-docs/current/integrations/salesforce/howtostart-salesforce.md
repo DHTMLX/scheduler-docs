@@ -1,62 +1,66 @@
 ---
 title: "dhtmlxScheduler mit SalesForce LWC"
-sidebar_label: "dhtmlxScheduler mit SalesForce LWC"
+sidebar_label: "Salesforce"
 ---
 
 # dhtmlxScheduler mit SalesForce LWC
 
-Dieses Tutorial zeigt, wie Sie dhtmlxScheduler in eine [SalesForce Lightning Web Component](https://developer.salesforce.com/docs/platform/lwc/guide) integrieren.
+Dieses Tutorial beschreibt, wie man dhtmlxScheduler in eine [SalesForce Lightning Web Component](https://developer.salesforce.com/docs/platform/lwc/guide) integriert. 
 
-Wenn Sie mit einer anderen Technologie arbeiten, finden Sie unten weitere Integrationsmöglichkeiten:
+Prüfen Sie die [Online-Demo](https://dhtmlx-dev-ed.develop.lightning.force.com/) zur Integration von DHTMLX-Komponenten mit Salesforce LWC (Login: *user*, Passwort: *demo*).
+Der Quellcode der Demo ist [auf GitHub verfügbar](https://github.com/DHTMLX/salesforce-lwc-demo).
 
-- [dhtmlxScheduler mit ASP.NET Core](/integrations/dotnet/howtostart-dotnet-core.md)
-- [dhtmlxScheduler mit ASP.NET MVC](/integrations/dotnet/howtostart-dotnet.md)
-- [dhtmlxScheduler mit PHP](/integrations/php/howtostart-plain-php.md)
-- [dhtmlxScheduler mit PHP:Slim](/integrations/php/howtostart-php-slim4.md)
-- [dhtmlxScheduler mit PHP:Laravel](/integrations/php/howtostart-php-laravel.md)
-- [dhtmlxScheduler mit Ruby on Rails](/integrations/other/howtostart-ruby.md)
-- [dhtmlxScheduler mit dhtmlxConnector](/integrations/other/howtostart-connector.md)
+Wenn Sie eine andere Technologie verwenden, schauen Sie sich unten die Liste der verfügbaren Integrationsvarianten an:
 
-Wir verwenden die [SalesForce CLI](https://developer.salesforce.com/tools/salesforcecli), um die Lightning Web Component zu erstellen und in Ihre Organisation zu deployen. Details zur Installation finden Sie in [diesem Artikel](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm). Zusätzlich können Sie das [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName="salesforce.salesforcedx-vscode)" für Visual Studio Code installieren, um die Arbeit mit Entwicklungsumgebungen zu erleichtern.
+- [dhtmlxScheduler mit ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
+- [dhtmlxScheduler mit ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
+- [dhtmlxScheduler mit PHP](integrations/php/howtostart-plain-php.md)
+- [dhtmlxScheduler mit PHP:Slim](integrations/php/howtostart-php-slim4.md)
+- [dhtmlxScheduler mit PHP:Laravel](integrations/php/howtostart-php-laravel.md)
+- [dhtmlxScheduler mit Ruby on Rails](integrations/other/howtostart-ruby.md)
+- [dhtmlxScheduler mit dhtmlxConnector](integrations/other/howtostart-connector.md)
+
+Wir verwenden [SalesForce CLI](https://developer.salesforce.com/tools/salesforcecli), um eine Lightning Web Component zu erstellen und sie in einer Organisation hochzuladen. Siehe [dieser Artikel](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm) für Installationshinweise. Sie können außerdem [Salesforce Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode) für Visual Studio Code installieren, um mit Development-Org-Umgebungen zu arbeiten.
 
 :::note
-Der vollständige Quellcode ist [auf GitHub](https://github.com/DHTMLX/salesforce-scheduler-demo) verfügbar.
+Der vollständige Quellcode der in diesem Tutorial erstellten Demo ist [auf GitHub verfügbar](https://github.com/DHTMLX/salesforce-scheduler-demo).
 :::
 
-Hier finden Sie ein Video-Tutorial, das zeigt, wie Scheduler mit Salesforce LWC erstellt wird.
+
+Sie können sich auch die Videoanleitung ansehen, die zeigt, wie man Scheduler mit Salesforce LWC erstellt.
 
 <iframe width="704" height="400" src="https://www.youtube.com/embed/IceDT8O1Pys" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Voraussetzungen
 
-Stellen Sie sicher, dass die [SalesForce CLI](https://developer.salesforce.com/tools/salesforcecli) installiert ist. Falls nicht, finden Sie in [diesem Artikel](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm) Anweisungen zur Einrichtung.
+Installieren Sie [SalesForce CLI](https://developer.salesforce.com/tools/salesforcecli), falls Sie ihn noch nicht besitzen. Siehe [dieser Artikel](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm) für Installationshinweise.
 
-## Schritt 1. Projekt erstellen
+## Schritt 1. Ein Projekt erstellen
 
-Falls Sie noch keinen Account haben, können Sie sich [hier](https://developer.salesforce.com/) für ein kostenloses Entwicklerkonto registrieren. Dieser [Artikel](https://webkul.com/blog/create-free-developer-account-in-salesforce/) bietet hilfreiche Hinweise.
+Melden Sie sich für ein kostenloses Entwicklerkonto an, falls Sie noch keines haben. Siehe [dieser Artikel](https://webkul.com/blog/create-free-developer-account-in-salesforce/) für Installationshinweise.
 
-Verwenden Sie die Suchleiste auf der linken Seite, um *Dev Hub* zu finden und auszuwählen:
+In der linken Leiste suchen Sie nach und wählen Sie **Dev Hub**:
 
-![](/img/sf_devhub.png)
+![sf_devhub](/img/sf_devhub.png)
 
-Aktivieren Sie anschließend im sich öffnenden Einstellungsfenster *Dev Hub*:
+Im neuen Einstellungsfenster wählen Sie **Enable Dev Hub**:
 
-![](/img/sf_enabledh.png)
+![sf_enabledh](/img/sf_enabledh.png)
 
-Erstellen Sie nun einen Basisordner für Ihr Salesforce DX-Projekt:
+Lassen Sie uns ein Basisverzeichnis für das Salesforce DX-Projekt erstellen:
 
 ~~~js
 $ mkdir ~/salesforce
 ~~~
 
-Erzeugen Sie ein Salesforce DX-Projekt mit der CLI:
+Erstellen Sie ein Salesforce DX-Projekt über die CLI:
 
 ~~~js
 $ cd ~/salesforce
 $ sfdx project generate -n scheduler-salesforce-app
     target dir = C:UsersUsersalesforce
         create scheduler-salesforce-appconfigproject-scratch-def.json
-        create scheduler-salesforce-appguides/README.md
+        create guides/scheduler-salesforce-appREADME.md
         create scheduler-salesforce-appsfdx-project.json
         create scheduler-salesforce-app.huskypre-commit
         create scheduler-salesforce-app.vscodeextensions.json
@@ -75,7 +79,7 @@ $ sfdx project generate -n scheduler-salesforce-app
         create scheduler-salesforce-apppackage.json
 ~~~
 
-Wechseln Sie in den neuen Projektordner:
+Gehen Sie in das erstellte Projekt:
 
 ~~~js
 $ cd scheduler-salesforce-app
@@ -83,7 +87,7 @@ $ cd scheduler-salesforce-app
 
 ## Schritt 2. Autorisierung
 
-Autorisieren Sie Ihre Organisation über den Web Server Flow mit folgendem Befehl:
+[Org autorisieren](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm) mit dem Web Server Flow:
 
 ~~~js
 $ sfdx org login web -d
@@ -91,15 +95,16 @@ $ sfdx org login web -d
 Successfully authorized ...@...com with org ID ...
 ~~~
 
-Aktualisieren Sie anschließend Ihre Projektkonfigurationsdatei (*sfdx-project.json*), indem Sie den Parameter "sfdcLoginUrl" auf Ihre "My Domain URL" setzen. Diese URL finden Sie auf der "My Domain"-Einrichtungsseite Ihrer Organisation. Zum Beispiel:
+Aktualisieren Sie Ihre Projektkonfiguration (*sfdx-project.json*). Setzen Sie den Parameter "sfdcLoginUrl" auf Ihre "My Domain URL". Die "My Domain URL" Ihres Orgs finden Sie auf der Einstellungsseite "My Domain". Zum Beispiel:
 
-![](/img/sf_mydomain.png)
+![sf_mydomain](/img/sf_mydomain.png)
+
 
 ~~~js title="scheduler-salesforce-app/sfdx-project.json"
 "sfdcLoginUrl" : "https://xbs2-dev-ed.my.salesforce.com"
 ~~~
 
-Erstellen Sie eine Scratch Org mit folgendem Befehl:
+Erstellen Sie eine Scratch Org:
 
 ~~~js
 $ sfdx org create scratch -f config/project-scratch-def.json -d
@@ -121,90 +126,86 @@ Done
 Your scratch org is ready. 
 ~~~
 
+
 ## Schritt 3. Scheduler zu Salesforce hinzufügen
 
-Um die Bibliothek zu verwenden, laden Sie sie als Static Resource in Salesforce hoch. Öffnen Sie Ihre Scratch Org mit folgendem Befehl:
+Um die Bibliothek zu verwenden, müssen wir sie in Salesforce als Static Resource hochladen. Öffnen Sie dazu Ihre Scratch-Org:
 
 ~~~js
 $ sfdx org open
 ~~~
 
-Navigieren Sie dann zum Tab "Static Resources" und klicken Sie auf "New":
+Öffnen Sie nun die Registerkarte **Static Resources** und klicken Sie auf die Schaltfläche **New**
 
-![](/img/sf_staticresources.png)
+![sf_staticresources](/img/sf_staticresources.png)
 
-Geben Sie der Resource einen eindeutigen Namen (hier *dhtmlxscheduler*), laden Sie das ZIP-Archiv mit den Bibliotheksdateien (*dhtmlxscheduler.js* und *dhtmlxscheduler.css*) hoch und setzen Sie Cache Control auf "Public", um die Performance zu verbessern. Klicken Sie auf "Save".
+Geben Sie ihm einen aussagekräftigen Namen (wir verwenden *dhtmlxscheduler*), wählen Sie das ZIP-Archiv mit der Bibliothek selbst (das Archiv muss die Dateien *dhtmlxscheduler.js* und *dhtmlxscheduler.css* enthalten) und wählen Sie die Cache-Kontrolle **Public**, um die Leistung zu verbessern. Drücken Sie die Schaltfläche **Save**.
 
+![sf_load_zip](/img/sf_load_zip.png)
 
-![/img/sf_load_zip.png](/img/sf_load_zip.png)
-
-Ab jetzt steht dhtmlxScheduler innerhalb von Salesforce zur Verfügung.
+Jetzt haben wir dhtmlxScheduler in Salesforce installiert.
 
 ![sf_scheduler_in_sf](/img/sf_scheduler_in_sf.png)
 
 ## Schritt 4. Datenmodell erstellen
 
-Events sind die Kernelemente in dhtmlxScheduler. Eine praktische Möglichkeit zur Verwaltung besteht darin, alle Eigenschaften als einfaches JSON in Salesforce zu speichern. Erstellen Sie dazu ein neues Event-Objekt. Öffnen Sie den Object Manager, wählen Sie dann "Create" und anschließend "Custom Object":
+Die Kerneinheiten von dhtmlxScheduler sind Ereignisse. Ein sinnvoller Ansatz ist es, alle Eigenschaften der dhtmlxScheduler‑Objekte als reines JSON in Salesforce zu speichern. Erstellen wir also ein Ereignis-Objekt. Öffnen Sie den Objekt-Manager und wählen Sie „Create“, dann „Custom Object“:
 
 ![sf_new_object](/img/sf_new_object.png)
 
-### **Ereignisobjekt**
+### **Ereignis-Objekt**
 
-Nennen Sie das Ereignisobjekt *SchedulerEvent* oder *SchedulerEvents*.
-
+Geben Sie dem Ereignis-Objekt den Namen, lassen Sie ihn *SchedulerEvent/SchedulerEvents* heißen.
 
 ![sf_schedulerevent](/img/sf_schedulerevent.png)
 
 :::note
-Stellen Sie sicher, dass der Datensatzname mit dem Objektnamen übereinstimmt, zum Beispiel:
+Der Datensatzname muss dem Objektnamen entsprechen, zum Beispiel:
 
-Objektname: SchedulerEvent => Datensatzname: SchedulerEvent Name
+Objektname: SchedulerEvent ⇒ Datensatzname: SchedulerEvent Name
 :::
 
-Klicken Sie auf die Schaltfläche „Speichern".
+Drücken Sie die Schaltfläche **Save**.
 
-Nachdem das Objekt erstellt wurde, wechseln Sie zum Tab "Felder & Beziehungen" und klicken Sie auf die Schaltfläche "Neu".
-
+Nachdem das Objekt erstellt ist, öffnen Sie die Registerkarte **Fields & Relationships**. Drücken Sie die Schaltfläche **New**.
 
 ![sf_new_field](/img/sf_new_field.png)
 
-- **Startdatum**
+- **Start Date**
 
-Wählen Sie "Datum/Uhrzeit" als Datentyp aus und klicken Sie auf "Weiter".
-
+Wählen Sie **Date/Time** als Datentyp und drücken Sie die Schaltfläche **Next**. 
 
 ![sf_field_type](/img/sf_field_type.png)
 
-Nennen Sie dieses Feld "Start Date". Dieses Feld enthält die JSON-serialisierten Task-Eigenschaften.
-
+Benennen Sie es mit **Start Date**. Es speichert die JSON-serialisierten Task-Eigenschaften.
 
 ![sf_start_date](/img/sf_start_date.png)
 
-Klicken Sie auf "Weiter" und übernehmen Sie alle Standardeinstellungen, bis die Schaltfläche "Speichern & Neu" erscheint.
+Drücken Sie die Schaltfläche **Next** (unter Akzeptieren aller Standard-Einstellungen), bis die Schaltfläche **Save & New** verfügbar ist.
 
-- **Enddatum**
+- **End Date**
 
-Fügen Sie das Feld "End Date" hinzu und wählen Sie "Datum/Uhrzeit" als Datentyp aus.
+Erstellen Sie das Feld **End Date**. Wählen Sie **Date/Time** als Datentyp.
 
 ![sf_end_date](/img/sf_end_date.png)
 
-Klicken Sie auf "Weiter" und übernehmen Sie die Standardeinstellungen, bis die Schaltfläche "Speichern & Neu" verfügbar ist.
+Drücken Sie die Schaltfläche **Next** (unter Akzeptieren aller Standard-Einstellungen), bis die Schaltfläche **Save & New** verfügbar ist.
 
 - **Text**
 
-Erstellen Sie ein "Text"-Feld und wählen Sie "Text" als Datentyp aus.
+Erstellen Sie ein Feld **Text**. Wählen Sie **Text** als Datentyp.
 
 ![sf_text](/img/sf_text.png)
 
-Klicken Sie auf "Weiter" und übernehmen Sie alle Standardeinstellungen, bis die Schaltfläche "Speichern" verfügbar ist.
+Drücken Sie die Schaltfläche **Next** (unter Akzeptieren aller Standard-Einstellungen), bis die Schaltfläche **Save** verfügbar ist.
 
-Am Ende sollten die Felder wie folgt aussehen:
+Am Ende sollte es so aussehen:
 
 ![sf_schedulerevent_fields](/img/sf_schedulerevent_fields.png)
 
 ## Schritt 5. Erstellen einer Lightning Web Component
 
-Um eine Lightning Web Component zu erstellen, verwenden Sie folgenden Befehl:
+Um eine Lightning Web Component zu erstellen, führen Sie folgenden Befehl aus:
 
 ~~~js
 $ sfdx lightning generate component --type lwc -n scheduler -d force-app/main/default/lwc
@@ -216,7 +217,8 @@ target dir = C:UsersUsersourcesalesforcescheduler-salesforce-appforce-appmaindef
    create force-appmaindefaultlwcschedulerscheduler.js-meta.xml
 ~~~
 
-Passen Sie die Komponentendefinition in *scheduler.js-meta.xml* an, um sie im Lightning App Builder verfügbar zu machen:
+Ändern Sie die Komponenten-Definition in *scheduler.js-meta.xml*, damit sie im Lightning App Builder freigegeben wird:
+
 
 ~~~js title="force-app/main/default/lwc/scheduler/scheduler.js-meta.xml"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -234,15 +236,17 @@ Passen Sie die Komponentendefinition in *scheduler.js-meta.xml* an, um sie im Li
 </LightningComponentBundle>
 ~~~
 
-Öffnen Sie *scheduler.html* und fügen Sie folgenden Code ein:
+Öffnen Sie *scheduler.html* und fügen Sie den folgenden Code ein:
+
 
 ~~~js title="force-app/main/default/lwc/scheduler/scheduler.html"
 <template>
-    <div class="thescheduler" lwc:dom="manual"></div>
+    <div class="thescheduler" lwc:dom="manual" style='width: 100%;'></div>
 </template>
 ~~~
 
-Öffnen Sie anschließend *scheduler.js* und fügen Sie folgenden Code hinzu:
+Öffnen Sie *scheduler.js* und fügen Sie den folgenden Code ein:
+
 
 ~~~js title="force-app/main/default/lwc/scheduler/scheduler.js"
 /* eslint-disable guard-for-in */
@@ -367,9 +371,9 @@ export default class SchedulerView extends LightningElement {
 }
 ~~~
 
-## Schritt 6. Erstellen einer Apex-Klasse
+## Schritt 6. Apex-Klasse erstellen
 
-Im nächsten Schritt wird eine Klasse erstellt, die die Interaktion zwischen der Lightning-Komponente und dem Datenmodell ermöglicht.
+Der nächste Schritt besteht darin, eine Klasse zu erstellen, die die Interaktionen zwischen der Lightning-Komponente und unserem Datenmodell ermöglicht.
 
 ~~~js
 $ sfdx apex generate class -n SchedulerData -d force-app/main/default/classes
@@ -379,7 +383,8 @@ target dir = C:UsersUsersalesforcescheduler-salesforce-appforce-appmaindefaultcl
    create force-appmaindefaultclassesSchedulerData.cls-meta.xml
 ~~~
 
-Nachdem die Klasse erstellt wurde, öffnen Sie *SchedulerData.cls* und fügen Sie diesen Code ein:
+Nach der Erstellung öffnen Sie *SchedulerData.cls* und fügen Sie den folgenden Code ein:
+
 
 ~~~js title="force-app/main/default/classes/SchedulerData.cls"
 public with sharing class SchedulerData {
@@ -399,25 +404,25 @@ public with sharing class SchedulerData {
 }
 ~~~
 
-Ziehen Sie die Quelle aus dem Scratch Org in Ihr Projekt:
+Quellen Sie den Quellcode aus der Scratch Org in Ihr Projekt:
 
 ~~~js
 $ sfdx project retrieve start
 ~~~
 
-Schieben Sie dann die Quellen zurück in das Scratch Org:
+und pushes Sie dann die Quellen in die Scratch Org:
 
 ~~~js
 $ sfdx project deploy start
 ~~~
 
-## Schritt 7. Erstellen einer Lightning Page
+## Schritt 7. Lightning Page erstellen
 
-Öffnen Sie den "Lightning App Builder" und erstellen Sie eine neue Lightning Page.
+Öffnen Sie den "Lightning App Builder", erstellen Sie eine neue Lightning Page.
 
 ![sf_lightning_app_builder](/img/sf_lightning_app_builder.png)
 
-Wählen Sie "App Page", geben Sie den Seitennamen ein und wählen Sie das Layout aus.
+Wählen Sie "App Page" dann Seitenname und Layout.
 
 ![sf_app_page](/img/sf_app_page.png)
 
@@ -425,7 +430,7 @@ Wählen Sie "App Page", geben Sie den Seitennamen ein und wählen Sie das Layout
 
 ![sf_page_layout](/img/sf_page_layout.png)
 
-Die benutzerdefinierte Scheduler-Komponente sollte für die neue Seite verfügbar sein. Fügen Sie sie einem beliebigen Bereich hinzu und speichern Sie.
+Sie sollten eine Scheduler‑Benutzerkomponente für die neue Seite sehen. Fügen Sie sie zu einem Bereich hinzu und speichern Sie.
 
 ![sf_scheduler](/img/sf_scheduler.png)
 
@@ -435,31 +440,30 @@ Aktivieren Sie die Seite.
 
 Speichern Sie die Änderungen.
 
-
 ![sf_activation](/img/sf_activation.png)
 
 ![sf_add_page_to_nm](/img/sf_add_page_to_nm.png)
 
 ![sf_scheduler_in_app](/img/sf_scheduler_in_app.png)
 
-Öffnen Sie die Anwendungsseite. Sie sollte im App Launcher durch Eingabe von Scheduler zugänglich sein.
+Öffnen Sie die Anwendungsseite. Sie sollte im App Launcher sichtbar sein, wenn Sie darauf klicken und Scheduler eingeben.
 
 ![sf_home_scheduler](/img/sf_home_scheduler.png)
 
-Wenn alles korrekt eingerichtet wurde, wird eine einfache Scheduler-Demo auf der Lightning Page angezeigt.
+Wenn alles gut gelaufen ist, sollten Sie eine einfache Scheduler-Demo sehen, die in der Lightning Page läuft.
 
 ![sf_final](/img/sf_final.png)
 
 ## Anwendungssicherheit
 
-Der Scheduler selbst enthält keinen Schutz gegen Bedrohungen wie SQL-Injection, XSS oder CSRF-Angriffe. Die Sicherstellung der Anwendungssicherheit liegt in der Verantwortung der Entwickler. Weitere Details finden Sie [im zugehörigen Artikel](/guides/app-security.md). Salesforce ist mit Sicherheitsfunktionen ausgestattet, um Ihre Daten und Anwendungen zu schützen, und Sie können eigene Sicherheitsmaßnahmen implementieren, die auf die Anforderungen Ihrer Organisation zugeschnitten sind. Weitere Informationen finden Sie im [Salesforce Security Guide](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/salesforce_security_guide.htm). Zusätzlich behandelt [diese Ressource](https://developer.salesforce.com/docs/atlas.en-us.secure_coding_guide.meta/secure_coding_guide/secure_coding_lightning_security.htm) wichtige Sicherheitspraktiken.
+Scheduler bietet keine Mittel, um eine Anwendung vor verschiedenen Bedrohungen zu schützen, wie z. B. SQL-Injektionen oder XSS- und CSRF-Angriffe. Es ist wichtig, dass die Verantwortung für die Sicherheit einer Anwendung bei den Entwicklern liegt, die die Anwendung implementieren. Lesen Sie die Details [im entsprechenden Artikel](guides/app-security.md). Salesforce ist so konzipiert, dass es Ihre Daten und Anwendungen schützt. Sie können auch Ihre eigene Sicherheitsstrategie implementieren, um der Struktur und den Bedürfnissen Ihrer Organisation gerecht zu werden. Für weitere Informationen siehe bitte den [Salesforce Security Guide](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/salesforce_security_guide.htm). [Hier](https://developer.salesforce.com/docs/atlas.en-us.secure_coding_guide.meta/secure_coding_guide/secure_coding_lightning_security.htm) erfahren Sie, was Sie sicher machen müssen.
 
 ## Fehlerbehebung
 
-Wenn der Scheduler nach Abschluss der Integrationsschritte keine Ereignisse anzeigt, lesen Sie den Artikel [Troubleshooting Backend Integration Issues](/guides/troubleshooting.md). Dieser bietet Hilfestellungen zur Identifikation und Lösung häufiger Probleme.
+Falls Sie die oben genannten Schritte zur Integration von Scheduler mit Salesforce abgeschlossen haben, Scheduler aber Ereignisse auf einer Seite nicht rendert, werfen Sie einen Blick auf den Artikel [Troubleshooting Backend Integration Issues](guides/troubleshooting.md). Dort wird beschrieben, wie man die Ursachen der Probleme identifiziert.
 
-## Wie geht es weiter?
+## Was kommt als Nächstes
 
-An diesem Punkt ist der Scheduler vollständig funktionsfähig. Der vollständige Code steht auf [GitHub](https://github.com/DHTMLX/salesforce-scheduler-demo) zum Klonen oder Herunterladen für Ihre eigenen Projekte zur Verfügung.
+Sie haben nun einen vollständig funktionsfähigen Scheduler. Den vollständigen Code können Sie sich auf [GitHub](https://github.com/DHTMLX/salesforce-scheduler-demo) ansehen, klonen oder herunterladen und in Ihren Projekten verwenden.
 
-Sie können auch [Anleitungen zu den Funktionen des Schedulers](/guides/) oder Tutorials zur [Integration des Schedulers mit anderen Backend-Frameworks](/integrations/howtostart-guides.md) erkunden.
+Sie können die [Guides zu den zahlreichen Funktionen von Scheduler](/guides/) oder Tutorials zur [Integration von Scheduler mit anderen Backend-Frameworks](integrations/howtostart-guides.md) prüfen.

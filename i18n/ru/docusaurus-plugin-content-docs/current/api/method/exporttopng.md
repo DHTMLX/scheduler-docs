@@ -1,20 +1,20 @@
 ---
-sidebar_label: "exportToPNG"
-title: "exportToPNG method"
-description: "позволяет экспортировать Scheduler в виде PNG-изображения"
+sidebar_label: exportToPNG
+title: "метод exportToPNG"
+description: "экспортирует Scheduler в PNG-формат"
 ---
 
 # exportToPNG
 
 ### Description
 
-@short: Позволяет экспортировать Scheduler в виде PNG-изображения
+@short: Экспортирует Scheduler в PNG-формат
 
 @signature: exportToPNG: (_export_?: any) =\> void
 
 ### Parameters
 
-- `export` - (optional) *object* - объект, содержащий параметры экспорта (подробности ниже)
+- `export` - (optional) *объект* - объект с настройками экспорта (см. детали)
 
 ### Example
 
@@ -47,37 +47,37 @@ scheduler.exportToPNG({
  
 :::
 
-Метод **exportToPNG()** принимает объект с различными необязательными свойствами:
+The **exportToPNG()** method takes as a parameter an object with a number of properties (all the properties are optional):
 
 <table class="webixdoc_links">
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>name</b></td>
-  <td>(<i>string</i>) имя файла для экспортируемого PNG</td>
+  <td>(<i>string</i>) имя выходного файла</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>format</b></td>
-  <td>(<i>'A0', 'A1', 'A2', 'A3', 'A4', 'A5'</i>) размер страницы для PNG-выхода</td>
+  <td>(<i>'A0', 'A1', 'A2', 'A3', 'A4', 'A5'</i>) формат выходного PNG-изображения</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>orientation</b></td>
-  <td>(<i>'portrait', 'landscape'</i>) ориентация макета PNG-изображения</td>
+  <td>(<i>'portrait', 'landscape'</i>) задаёт ориентацию выходного PNG-изображения</td>
   </tr> 
   <tr>
   <td class="webixdoc_links0"><b>zoom</b></td>
-  <td>(<i>number</i>) уровень масштабирования для экспортируемого PNG</td>
+  <td>(<i>number</i>) задаёт коэффициент масштабирования выходного PNG-изображения</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>header</b></td>
-  <td>(<i>string</i>) HTML-содержимое, которое будет добавлено в верхнюю часть PNG-изображения</td>
+  <td>(<i>string</i>) задаёт заголовок, который будет добавлен к выходному PNG-изображению. Обратите внимание: здесь можно использовать любой HTML</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>footer</b></td>
-  <td>(<i>string</i>) HTML-содержимое, которое будет добавлено в нижнюю часть PNG-изображения</td>
+  <td>(<i>string</i>) задаёт подвал, который будет добавлен к выходному PNG-изображению. Обратите внимание: здесь можно использовать любой HTML</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) API endpoint, используемый для запроса экспорта. Может указывать на локально установленный сервис экспорта. По умолчанию <strong>https://export.dhtmlx.com/scheduler</strong></td>
+  <td>(<i>string</i>) задаёт API endpoint для запроса. Может использоваться с локальной установкой сервиса экспорта. Значение по умолчанию: <strong>https://export.dhtmlx.com/scheduler</strong></td>
   </tr>
   </tbody>
 </table>

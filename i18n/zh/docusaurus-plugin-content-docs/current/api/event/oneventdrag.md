@@ -1,39 +1,39 @@
 ---
-sidebar_label: "onEventDrag"
-title: "onEventDrag event"
-description: "当事件在调度器中被拖动或调整大小时触发"
+sidebar_label: onEventDrag
+title: "onEventDrag 事件"
+description: "在调度器中拖拽/调整事件时触发"
 ---
 
 # onEventDrag
 
 ### Description
 
-@short: 当事件在调度器中被拖动或调整大小时触发
+@short: 当用户在调度器中拖拽/调整事件时触发
 
-@signature: onEventDrag: (id: string, mode: string, ev: Event) =\> void;
+@signature: onEventDrag: (id: string, mode: string, e: Event) =\> void;
 
 ### Parameters
 
 - `id` - (required) *string* - 事件的 id
-- `mode` - (required) *string* - 拖动模式:"move"（移动）、"resize"（调整大小）或 "new-size"（创建新事件时）
-- `e` - (required) *Event* - 原生事件对象
+- `mode` - (required) *string* - 拖拽模式: "move","resize" 或 "new-size"（创建新事件）
+- `e` - (required) *Event* - 本机原生事件对象
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onEventDrag", function (id, mode, e){
-    // 可以在这里添加自定义逻辑
+scheduler.attachEvent("onEventDrag", (id, mode, e) => {
+    // 在此处编写任意自定义逻辑
 });
 ~~~
 
 ### Related samples
-- [Read-only lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/12_readonly_form.html)
-- [Read-only events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/14_readonly_event.html)
+- [只读 Lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/12_readonly_form.html)
+- [只读事件](https://docs.dhtmlx.com/scheduler/samples/03_extensions/14_readonly_event.html)
 
 ### Details
 
-模式说明:
+模式描述：
 
-- **move** - 事件正在调度器中被拖动。
-- **resize** - 事件正在通过拖放操作调整大小。
-- **new-size** - 通过拖放操作创建一个新事件。
+- `move` - 用户在 Scheduler 上拖动事件
+- `resize` - 用户通过拖拽调整事件大小
+- `new-size` - 用户通过拖拽创建一个新事件

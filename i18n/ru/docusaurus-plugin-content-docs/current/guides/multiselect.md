@@ -10,7 +10,7 @@ sidebar_label: "Multiselect"
 ![multiselect_editor](/img/multiselect_editor.png)
 
 :::note
-Убедитесь, что вы включили расширение **multiselect**, чтобы использовать этот контрол в lightbox.
+Активируйте расширение **multiselect**, чтобы использовать элемент управления в лайтбоксе
 :::
 
 ~~~js
@@ -18,9 +18,9 @@ scheduler.plugins({
     multiselect: true /*!*/
 });
 
-scheduler.locale.labels.section_userselect = "Участники";
+scheduler.locale.labels.section_userselect = "Participants";
  
-scheduler.config.lightbox.sections="["    
+scheduler.config.lightbox.sections= [    
     { name:"description", height:50, map_to:"text", type:"textarea", focus:true },
     { name:"userselect", height:22, map_to:"user_id", type:"multiselect", 
     options: scheduler.serverList("users"), vertical:"false" },
@@ -29,40 +29,40 @@ scheduler.config.lightbox.sections="["
 ~~~
 
 
-[Multiselect control in the lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/21_multiselect_options.html)
+[Контроль Multiselect в лайтбоксе](https://docs.dhtmlx.com/scheduler/samples/03_extensions/21_multiselect_options.html)
 
 
 ## Инициализация
 
-Чтобы добавить контрол Multiselect в lightbox, выполните следующие шаги:
+Чтобы добавить контроль Multiselect в лайтбокс, выполните следующие шаги:
 
-1. Включите расширение 'multiselect' на вашей странице:
+1. <b>Активируйте на странице расширение 'multiselect':</b>
 ~~~js
 scheduler.plugins({
     multiselect: true
 });
 ~~~
-2. Добавьте секцию multiselect в конфигурацию lightbox:
+2. <b>Добавьте секцию в конфигурацию лайтбокса:</b>
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     { name:"description", ... },
     { name:"userselect", height:22, map_to:"user_id", type:"multiselect", 
     options: scheduler.serverList("user_id"), vertical:false },
     { name:"time", ...}
 ];
 ~~~
-3. Задайте метку для секции:
+3. <b>Установите метку для секции:</b>
 ~~~js
-scheduler.locale.labels.section_userselect = "Участники";
+scheduler.locale.labels.section_userselect = "Participants";
 ~~~
   
 
-[Multiselect control in the lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/21_multiselect_options.html)
+[Контроль Multiselect в лайтбоксе](https://docs.dhtmlx.com/scheduler/samples/03_extensions/21_multiselect_options.html)
 
 
-## Свойства {#properties}
+## Свойства
 
-Ниже приведены основные свойства, которые часто используются с контролом 'multiselect' (полный список смотрите [здесь](api/config/lightbox.md)):
+Следующие свойства в основном важны и обычно задаются для элемента управления 'multiselect' (полный список см. [здесь](api/config/lightbox.md)):
 
 <table class="webixdoc_links">
   <tbody>
@@ -76,37 +76,37 @@ scheduler.locale.labels.section_userselect = "Участники";
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>map_to</b></td>
-  <td>(<i>string</i>) имя свойства данных, связанного с этой секцией</td>
+  <td>(<i>string</i>) имя свойства данных, которое будет сопоставлено секции</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>type</b></td>
-  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) тип контрола для секции</td>
+  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) тип элемента управления секции</td>
   </tr>
   <tr>
-  <td class="webixdoc_links0"><b>options</b></td>
-  <td>(<i>array of objects</i>) определяет варианты выбора для контрола (<b>применимо для 'select', 'multiselect', 'radio', 'combo' контролов</b>). Каждый объект представляет отдельный вариант с такими свойствами: <ul> <li><b>key</b> - (<i>string</i>) ID опции. Используется для сопоставления с данными события</li> <li><b>label</b> - (<i>string</i>) отображаемое название опции</li> </ul></td>
+  <td class="webixdoc_links0" style="vertical-align: top;"><b>options</b></td>
+  <td>(<i>array of objects</i>) определяет варианты выбора управления (<b>для контролов 'select', 'multiselect', 'radio', 'combo'</b>). Каждый объект в массиве задаёт один вариант и имеет следующие свойства: <ul> <li><b>key</b> - (<i>string</i>) идентификатор варианта. Это свойство сравнивается с данным событием для сопоставления вариантов</li> <li><b>label</b> - (<i>string</i>) подпись варианта</li> </ul></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>script_url</b></td>
-  <td>(<i>string</i>) URL серверного скрипта, который динамически загружает варианты multiselect. Необязательный параметр, используется только в динамическом режиме.</td>
+  <td>(<i>string</i>) путь к серверному скрипту, который будет предоставлять загрузку вариантов multiselect. Используется только в динамическом режиме. Необязательно</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>vertical</b></td>
-  <td>(<i>boolean</i>) определяет, будут ли кнопки multiselect располагаться вертикально (<i>true</i>) или горизонтально (<b>для контролов 'multiselect' и 'radio'</b>)</td>
+  <td>(<i>boolean</i>) задаёт, размещать ли кнопки multiselect вертикально (<i>true</i>) или горизонтально (<b>для контролов 'multiselect' и 'radio'</b>)</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>delimiter</b></td>
-  <td>(<i>string</i>) определяет разделитель, используемый для разделения значений multiselect. Если не указан, применяется глобальная настройка [section_delimiter](api/config/section_delimiter.md).</td>
+  <td>(<i>string</i>) задаёт разделитель, который будет использоваться для разделения значений мультиселекта. Если это свойство не задано, будет применяться конфигурация [section_delimiter](api/config/section_delimiter.md)</td>
   </tr>
   </tbody>
 </table>
 
-## Заполнение контрола данными
+## Заполнение контролла данными
 
-Обычно значения для кнопок multiselect задаются через параметр [options](api/config/lightbox.md):
+Обычно значения для кнопок мультиселекта задают через параметр [options](api/config/lightbox.md):
 
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     {   name:"userselect", type:"multiselect", 
         ...
         options:[
@@ -119,14 +119,14 @@ scheduler.config.lightbox.sections =
 ];
 ~~~
 
-Каждый элемент в массиве [options](api/config/lightbox.md) должен содержать два обязательных свойства:
+Элементы в параметре [options](api/config/lightbox.md) должны иметь 2 обязательных свойства:
 
-- **key** - уникальный идентификатор опции
-- **label** - текстовая метка, отображаемая для опции
+- **key** - идентификатор варианта
+- **label** - подпись варианта
 
-## Заполнение чекбоксов с сервера
+## Заполнение флажков с сервера
 
-Чтобы получить значения чекбоксов с сервера, используйте метод [serverList](api/method/serverlist.md):
+Чтобы получить значения флажков с сервера, используйте метод [serverList](api/method/serverlist.md):
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -139,10 +139,10 @@ scheduler.config.lightbox.sections = [
 scheduler.load("api/data");
 ~~~
 
-Здесь **api/data** - это [серверный скрипт](guides/server-integration.md), который возвращает как события, так и варианты для кнопок multiselect, в формате, описанном в [Примеры форматов данных](guides/data-formats.md#json-with-collections):
+где **api/data** — это [серверный скрипт](guides/server-integration.md), который возвращает события, загруженные в планировщик, и коллекцию значений для кнопок multiselect, как показано здесь в примере [Examples of Data Formats](guides/data-formats.md#json-with-collections):
 
 ~~~js
-//response
+//ответ
 { 
    "data":[
       {
@@ -162,20 +162,20 @@ scheduler.load("api/data");
    ], 
    "collections": {                         
       "users":[                          
-         {"value":"1","label":"Lisa"},    
-         {"value":"2","label":"Bob"},   
-         {"value":"3","label":"Mike"}    
+         {"value":"1","label":"Лиза"},    
+         {"value":"2","label":"Боб"},   
+         {"value":"3","label":"Майк"}    
       ]                                     
    }                                        
 }
 ~~~
 
 :::note
-Можно динамически обновлять список вариантов с помощью метода [updateCollection](api/method/updatecollection.md).
+Примечание: можно использовать метод [updateCollection](api/method/updatecollection.md) для обновления списка доступных вариантов
 :::
 
 ~~~js
-var oldOptions = scheduler.serverList("users").slice();
+const oldOptions = scheduler.serverList("users").slice();
 scheduler.updateCollection("users", [
          {"value":"4","label":"John"},    
          {"value":"5","label":"Paul"},   
@@ -187,13 +187,14 @@ scheduler.updateCollection("users", [
 
 ## Динамическая загрузка
 
-В статическом режиме все варианты параметров события хранятся как отдельные поля в базе данных, что обеспечивает большую гибкость, но требует дополнительных запросов для загрузки всех опций.
+В статическом режиме все параметры событий хранятся как отдельное поле в базе данных, и вы можете позже использовать это поле для построения собственной логики. Это даёт дополнительные возможности, но требует большего количества запросов для загрузки всех опций.
   
-В динамическом режиме опции загружаются только по мере необходимости. Это уменьшает количество запросов, но ограничивает возможность реализации пользовательской логики.
+  
+В динамическом режиме ничего дополнительного не хранится. Опции загружаются по мере необходимости. Это уменьшает количество запросов, но отключает построение какой-либо логики. 
 
-На серверной стороне у вас должен быть код, аналогичный следующему.
+На стороне сервера код должен быть аналогичным следующему
 
-Чтобы включить динамический режим, добавьте свойство **script_url** вместе с **options**:
+Чтобы включить динамический режим, следует использовать свойство **script_url** вместе с **options**:
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -204,12 +205,12 @@ scheduler.config.lightbox.sections = [
 ];
 ~~~
 
-Эндпоинт `api/options` должен возвращать JSON-данные следующего вида:
+где `api/options` возвращает следующий JSON:
 
 ~~~js
 [                          
-    {"value":"1","label":"Lisa"},    
-    {"value":"2","label":"Bob"},   
-    {"value":"3","label":"Mike"}    
+    {"value":"1","label":"Лиза"},    
+    {"value":"2","label":"Боб"},   
+    {"value":"3","label":"Майк"}    
 ]
 ~~~

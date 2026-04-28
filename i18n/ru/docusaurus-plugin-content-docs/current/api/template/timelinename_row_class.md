@@ -30,7 +30,7 @@ scheduler.templates.timeline_row_class = function(section, timeline){
 };
 ~~~
 
-**Applicable views:** [Timeline view](views/timeline.md)
+**Доступные представления:** [Timeline view](views/timeline.md)
 
 ### Details
 

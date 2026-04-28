@@ -1,14 +1,14 @@
 ---
-sidebar_label: "month_day_min_height"
-title: "month_day_min_height config"
-description: "задаёт минимальную высоту ячеек в Month view"
+sidebar_label: month_day_min_height
+title: "month_day_min_height конфигурация"
+description: "устанавливает минимальную высоту ячеек в месячном виде"
 ---
 
 # month_day_min_height
 
 ### Description
 
-@short: Задаёт минимальную высоту ячеек в Month view
+@short: Устанавливает минимальную высоту ячеек в месячном виде
 
 @signature: month_day_min_height: number
 
@@ -17,17 +17,17 @@ description: "задаёт минимальную высоту ячеек в Mon
 ~~~jsx
 scheduler.config.month_day_min_height = 150;
 ...
-scheduler.init('scheduler_here', new Date(2013,5,30), "month");
+scheduler.init('scheduler_here',new Date(2027,5,30),"month");
 ~~~
 
-**Default value:** 90
+**Значение по умолчанию:** 90
 
-**Applicable views:** [Month view](views/month.md)
+**Доступные представления:** [месячный вид](views/month.md)
 
 ### Details
 
 :::note
- Это свойство работает только если включён плагин [container_autoresize](guides/extensions-list.md#containerautoresize). 
+ Свойство требует включённого плагина [container_autoresize](guides/extensions-list.md#container-autoresize) для корректной работы.
 :::
 
 ### Related API

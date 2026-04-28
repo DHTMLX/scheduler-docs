@@ -20,7 +20,7 @@ scheduler.plugins({
 
 scheduler.locale.labels.section_userselect = "Participants";
  
-scheduler.config.lightbox.sections="["    
+scheduler.config.lightbox.sections = [    
     { name:"description", height:50, map_to:"text", type:"textarea", focus:true },
     { name:"userselect", height:22, map_to:"user_id", type:"multiselect", 
     options: scheduler.serverList("users"), vertical:"false" },
@@ -44,7 +44,7 @@ scheduler.plugins({
 ~~~
 2. <b>Add the section to the lightbox configuration:</b>
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     { name:"description", ... },
     { name:"userselect", height:22, map_to:"user_id", type:"multiselect", 
     options: scheduler.serverList("user_id"), vertical:false },
@@ -106,7 +106,7 @@ The following properties are mostly important and commonly set for the 'multisel
 Generally, to set values for the multiselect buttons you should use the [options](api/config/lightbox.md) parameter:
 
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     {   name:"userselect", type:"multiselect", 
         ...
         options:[
@@ -176,7 +176,7 @@ Note, you can use the [updateCollection](api/method/updatecollection.md) method 
 :::
 
 ~~~js
-var oldOptions = scheduler.serverList("users").slice();
+const oldOptions = scheduler.serverList("users").slice();
 scheduler.updateCollection("users", [
          {"value":"4","label":"John"},    
          {"value":"5","label":"Paul"},   

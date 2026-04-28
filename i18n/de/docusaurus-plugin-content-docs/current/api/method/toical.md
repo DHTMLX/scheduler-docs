@@ -22,9 +22,9 @@ description: "wandelt Scheduler-Daten in das ICal-Format um"
 ### Example
 
 ~~~jsx
-var str = scheduler.toICal();
+const str = scheduler.toICal();
 //oder
-var str = scheduler.toICal("Mein Kalender");
+const str = scheduler.toICal("Mein Kalender");
 ~~~
 
 ### Related samples

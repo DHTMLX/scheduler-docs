@@ -19,7 +19,7 @@ description: "removes an event handler from an HTML element"
 ### Example
 
 ~~~jsx
-var eventId = scheduler.event("divId", "click", function(e){
+const eventId = scheduler.event("divId", "click", function(e){
     do_something();
 });
 

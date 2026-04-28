@@ -15,7 +15,7 @@ description: "returns the current skin of the scheduler"
 ### Example
 
 ~~~jsx
-var currentSkin = scheduler.skin;// -> 'glossy' or 'classic'
+const currentSkin = scheduler.skin;// -> 'glossy' or 'classic'
 ~~~
 
 ### Details

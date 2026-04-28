@@ -21,8 +21,8 @@ description: "스케줄러의 데이터 풀에 새 이벤트를 추가합니다.
 
 ~~~jsx
 scheduler.setEvent(1, {
-    start_date: new Date(2013, 05, 16, 09, 00),
-    end_date:   new Date(2013, 05, 16, 12, 00),
+    start_date: new Date(2027, 05, 16, 09, 00),
+    end_date:   new Date(2027, 05, 16, 12, 00),
     text:   "Meeting",
     holder: "John", 
     room:   "5"     

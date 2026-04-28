@@ -149,7 +149,7 @@ scheduler.createTimelineView({
     ...
 });
 
-var timeline = scheduler.matrix.timeline;
+const timeline = scheduler.matrix.timeline;
 ~~~
 
 생성 후 아래의 메서드들을 사용할 수 있습니다.
@@ -159,7 +159,7 @@ var timeline = scheduler.matrix.timeline;
 타임라인 뷰 객체를 가져오려면 [getView](api/method/getview.md) 메서드를 사용하세요. 뷰의 이름을 파라미터로 받습니다. 파라미터가 없으면 현재 뷰를 반환합니다.
 
 ~~~js
-var timeline = scheduler.getView(); 
+const timeline = scheduler.getView(); 
 timeline.x_size = 8;
 scheduler.setCurrentView();
 ~~~
@@ -253,7 +253,7 @@ timeline.scrollTo({left:300, top:500});
 - 스케일에서 특정 날짜의 X좌표를 얻으려면 **posFromDate()**를 Date 파라미터와 함께 사용하세요:
 
 ~~~js
-var left = timeline.posFromDate(new Date());
+const left = timeline.posFromDate(new Date());
 ~~~
 
 :::note
@@ -263,7 +263,7 @@ var left = timeline.posFromDate(new Date());
 - 특정 행의 Y좌표를 얻으려면 **getSectionTop()**을 섹션 번호와 함께 사용하세요:
 
 ~~~js
-var top = timeline.getSectionTop(section.key);
+const top = timeline.getSectionTop(section.key);
 ~~~
 
 :::note
@@ -296,7 +296,7 @@ const top = timeline.getEventTop(scheduler.getEvent(event.id));
 현재 스크롤바 위치를 확인하려면 **timeline.getScrollPosition()**을 호출하세요. 스크롤 좌표가 담긴 객체를 반환합니다:
 
 ~~~js
-var timeline = scheduler.getView();
+const timeline = scheduler.getView();
 timeline.getScrollPosition(); // { left: 0, top: 0 } 
 ~~~
 
@@ -308,7 +308,7 @@ timeline.getScrollPosition(); // { left: 0, top: 0 }
 **onScroll** 이벤트를 사용해 스크롤 변경을 감지할 수도 있습니다. 이 이벤트는 새로운 left, top 위치를 전달받습니다:
 
 ~~~js
-var timeline = scheduler.getView();
+const timeline = scheduler.getView();
 timeline.attachEvent("onScroll", function(left, top){});
 ~~~
 
@@ -334,9 +334,9 @@ timeline.attachEvent("onScroll", function(left, top){});
 이 메서드는 이벤트 객체 배열을 반환합니다.
 
 ~~~js
-var timeline = scheduler.getView();
+const timeline = scheduler.getView();
  
-var events = timeline.selectEvents({
+const events = timeline.selectEvents({
     section: section.key,
     date: date,
     selectNested: true
@@ -390,11 +390,11 @@ scheduler.createTimelineView({
 
 scheduler.init('scheduler_here');
 scheduler.parse([
-    {text:"Conference",    start_date:"17/09/2012 12:00", end_date:"18/09/2012 21:00", 
+    {text:"Conference",    start_date:"17/09/2027 12:00", end_date:"18/09/2027 21:00", 
     room_id:"1"},
-     {text:"Meeting",     start_date:"17/09/2012 09:00", end_date:"17/09/2012 21:00", 
+     {text:"Meeting",     start_date:"17/09/2027 09:00", end_date:"17/09/2027 21:00", 
     room_id:"2"},
-     {text:"Conference", start_date:"17/09/2012 15:00", end_date:"18/09/2012 15:00", 
+     {text:"Conference", start_date:"17/09/2027 15:00", end_date:"18/09/2027 15:00", 
     room_id:"3"}
 ]);                                 
 ~~~
@@ -443,7 +443,7 @@ scheduler.createTimelineView({
     y_property: "section_id", /*!*/
     ...
 });
-scheduler.init('scheduler_here', new Date(2012, 5, 30), "timeline");
+scheduler.init('scheduler_here', new Date(2027, 5, 30), "timeline");
 
 scheduler.parse([
     { id:1, text:"Task A", section_id:'1',         ...},/*!*/
@@ -596,9 +596,9 @@ scheduler.ignore_timeline = function(date){   // "timeline"은 뷰 이름
 
 ~~~js
 scheduler._click.dhx_cal_next_button = function(dummy,step){
-  var mode = scheduler.getState().mode;
-  var minDate = scheduler.getState().min_date;
-  var formFunc = scheduler.date.date_to_str("%D");
+  const mode = scheduler.getState().mode;
+  const minDate = scheduler.getState().min_date;
+  const formFunc = scheduler.date.date_to_str("%D");
 
   // 주말 건너뛰기
   if(mode=='timeline'){    
@@ -874,7 +874,7 @@ scheduler.createTimelineView({
     render: "bar",
     scrollable: true, /*!*/ 
     column_width: 70, /*!*/
-    scroll_position:new Date(2018, 0, 15) /*!*/  
+    scroll_position:new Date(2027, 0, 15) /*!*/  
 });
 ~~~
 
@@ -984,15 +984,15 @@ scheduler.createTimelineView({
 
 scheduler.templates.timeline_cell_value = function (evs, date, section){
     if(section.children){
-        var timeline = scheduler.getView();
+        const timeline = scheduler.getView();
  
-        var events = timeline.selectEvents({
+        const events = timeline.selectEvents({
             section: section.key,
             date: date,
             selectNested: true
         });
  
-        var className = "";
+        const className = "";
         if(!events.length){
             className = "load-marker-no";
         }else if(events.length < 3){

@@ -23,7 +23,7 @@ description: "definiert, wie Start- und Enddaten im tooltip angezeigt werden"
 
 ~~~jsx
 scheduler.templates.tooltip_date_format=function (date){
-    var formatFunc = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
+    const formatFunc = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
     return formatFunc(date);
 }
 ~~~

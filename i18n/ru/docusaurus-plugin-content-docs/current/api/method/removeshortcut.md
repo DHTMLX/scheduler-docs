@@ -1,44 +1,44 @@
 ---
-sidebar_label: "removeShortcut"
-title: "removeShortcut method"
-description: "удаляет клавиатурный shortcut"
+sidebar_label: removeShortcut
+title: "метод removeShortcut"
+description: "удаляет сочетание клавиш"
 ---
 
 # removeShortcut
 
 ### Description
 
-@short: Удаляет клавиатурный shortcut
+@short: Удаляет сочетание клавиш
 
 @signature: removeShortcut: (shortcut: string, scope?: any) =\> void
 
 ### Parameters
 
-- `shortcut` - (required) *string* - название клавиши или комбинации клавиш для shortcut ([синтаксис shortcut](guides/keyboard-navigation.md#shortcutsyntax))
-- `scope` - (optional) *object* - (необязательно) элемент, к которому привязан shortcut ([список scope](guides/keyboard-navigation.md#scopes))
+- `shortcut` - (обязательное) *string* - имя клавиши или имя комбинации клавиш, образующих сочетание клавиш ([shortcut syntax](guides/keyboard-navigation.md#shortcut-syntax))
+- `scope` - (необязательно) *object* - элемент, к которому привязано сочетание клавиш ([список контекстов](guides/keyboard-navigation.md#scopes))
 
 ### Example
 
 ~~~jsx
-// добавление shortcut
+// добавление сочетания клавиш
 scheduler.addShortcut("shift+w", function(e){ 
-    var eventId = scheduler.locate(e); 
+    const eventId = scheduler.locate(e); 
     if(eventId) 
         scheduler.showQuickInfo(eventId);
 },"event");
 
-// удаление shortcut
+// удаление сочетания клавиш
 scheduler.removeShortcut("shift+w","event");
 ~~~
 
 ### Related samples
-- [Keyboard Navigation and WAI-ARIA - Flat Skin](https://docs.dhtmlx.com/scheduler/samples/13_accessibility/01_regular_skin_all_views.html)
+- [Навигация по клавиатуре и WAI-ARIA - Flat Skin](https://docs.dhtmlx.com/scheduler/samples/13_accessibility/01_regular_skin_all_views.html)
 
 ### Details
 
 Добавлено в версии 4.4
 
-Если параметр `scope` опущен, shortcut будет удалён из дефолтного scope "scheduler".
+Если параметр `scope` не указан, будет использоваться область `scheduler` по умолчанию.
 
 ### Related API
 - [addShortcut](api/method/addshortcut.md)
@@ -48,4 +48,4 @@ scheduler.removeShortcut("shift+w","event");
 - [key_nav_step](api/config/key_nav_step.md)
 
 ### Related Guides
-- [Навигация с помощью клавиатуры](guides/keyboard-navigation.md)
+- [Навигация по клавиатуре](guides/keyboard-navigation.md)

@@ -5,20 +5,20 @@ sidebar_label: "Lokalisierung"
 
 # Lokalisierung
 
-Die Bibliothek unterstützt die Lokalisierung für den Scheduler, indem sie eine Vielzahl vordefinierter Sprachpakete sowie Optionen zur Erstellung eigener Sprachpakete anbietet. Standardmäßig wird DHTMLX Scheduler mit dem [englischen Sprachpaket](api/other/locale.md) ausgeliefert.
+Die Bibliothek unterstützt die Lokalisierung des Schedulers, indem sie eine Reihe vordefinierter Lokalisierungen bereitstellt und eine Möglichkeit bietet, eigene Lokalisierungen zu erstellen. Standardmäßig verwendet DHTMLX Scheduler die englische Locale.
 
 ## Aktivierung
 
-Um die Sprache des Schedulers festzulegen, müssen Sie lediglich das gewünschte Sprachpaket über die Methode **setLocale** am Objekt [scheduler.i18n](api/other/i18n.md) aktivieren.
+Um die gewünschte Sprache für den Scheduler festzulegen, aktivieren Sie die benötigte Locale über die `setLocale()`-Methode des [scheduler.i18n](api/other/i18n.md) Objekts.
 
 ~~~js
-scheduler.i18n.setLocale("fr");    
+scheduler.i18n.setLocale("fr");
 ~~~
 
-Sie können eines der im dhtmlxscheduler.js enthaltenen [vordefinierten Sprachpakete](#included-locales) verwenden oder ein eigenes Sprachpaket erstellen.
+Sie können eine der [vordefinierten Locale](#included-locales) verwenden und aktualisieren, die mit der Datei dhtmlxscheduler.js gebündelt sind, oder eine benutzerdefinierte Locale definieren.
 
 :::note
-Das Sprachpaket kann zur Laufzeit gewechselt werden, die Änderung wird jedoch erst wirksam, nachdem der Scheduler vollständig durch einen Aufruf von **scheduler.render()** oder **scheduler.init()** neu gezeichnet wurde.
+Die Locale kann dynamisch gewechselt werden, aber die Änderungen werden erst nach einer vollständigen Neuzeichnung des Schedulers mit entweder dem Aufruf von `scheduler.render()` oder `scheduler.init()` angewendet.
 :::
 
 ~~~js
@@ -26,20 +26,19 @@ scheduler.i18n.setLocale("fr");
 scheduler.init("scheduler_here");
 ~~~
 
+### Verwandte Beispiele
+- [Localization](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/07_locale_usage.html)
 
-[Localization](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/07_locale_usage.html)
-
-
-## Enthaltene Sprachpakete {#included-locales}
+## Included locales
 
 :::note
-Sowohl die Common- als auch die Recurring-Sprachdateien sind Teil der **dhtmlxscheduler.js** Datei.
+Sowohl gemeinsame Locale-Dateien als auch wiederkehrende Locale-Dateien befinden sich in der Datei `dhtmlxscheduler.js`.
 :::
 
-dhtmlxScheduler bietet Lokalisierung für folgende Sprachen:
+dhtmlxScheduler enthält Lokalisierungen für die folgenden Sprachen:
 
 <table >
-<tr><td markdown='1'>Sprache</td><td markdown='1'>Sprachcode</td></tr>
+<tr><td markdown='1' >Sprache</td><td markdown='1'>Sprachcode</td></tr>
 <tr><td markdown='1'>Arabisch</td><td markdown='1'>ar</td></tr>
 <tr><td markdown='1'>Weißrussisch</td><td markdown='1'>be</td></tr>
 <tr><td markdown='1'>Katalanisch</td><td markdown='1'>ca</td></tr>
@@ -47,7 +46,7 @@ dhtmlxScheduler bietet Lokalisierung für folgende Sprachen:
 <tr><td markdown='1'>Tschechisch</td><td markdown='1'>cs</td></tr>
 <tr><td markdown='1'>Dänisch</td><td markdown='1'>da</td></tr>
 <tr><td markdown='1'>Niederländisch</td><td markdown='1'>nl</td></tr>
-<tr><td markdown='1'>Englisch</td><td markdown='1'>en (Standard)</td></tr>
+<tr><td markdown='1'>Englisch</td><td markdown='1'>en (default)</td></tr>
 <tr><td markdown='1'>Finnisch</td><td markdown='1'>fi</td></tr>
 <tr><td markdown='1'>Französisch</td><td markdown='1'>fr</td></tr>
 <tr><td markdown='1'>Deutsch</td><td markdown='1'>de</td></tr>
@@ -71,65 +70,65 @@ dhtmlxScheduler bietet Lokalisierung für folgende Sprachen:
 <tr><td markdown='1'>Ukrainisch</td><td markdown='1'>ua</td></tr>
 </table>
 
-## Eigenes Sprachpaket erstellen
+## Eigene Locale erstellen
 
 :::note
-Das Objekt [scheduler.i18n](api/other/i18n.md) ist seit v6.0 verfügbar. In früheren Versionen wurde das Objekt [scheduler.locale](api/other/locale.md) verwendet. Weitere Informationen finden Sie im [Migrationsartikel](migration.md#53---60).
+Das [scheduler.i18n](api/other/i18n.md) Objekt wurde in v6.0 hinzugefügt. In früheren Versionen wurde das [scheduler.locale](api/other/locale.md) Objekt verwendet. Für weitere Informationen siehe den [Migration-Artikel](migration.md#53---60).
 :::
 
-Der einfachste Weg, ein eigenes Sprachpaket zu erstellen, besteht darin, das Standard-Englisch-Sprachpaket aus dem folgenden Beispiel zu kopieren und die Zeichenketten in Ihre bevorzugte Sprache zu übersetzen.
+Der einfachste Weg, eine eigene Locale zu erstellen, besteht darin, eine Kopie der Standard-englischen Locale aus dem untenstehenden Beispiel zu nehmen und alle Strings in die gewünschte Sprache zu übersetzen.
 
-Es gibt zwei Möglichkeiten, ein eigenes Sprachpaket im Scheduler zu verwenden:
+Die benutzerdefinierte Locale kann dem Scheduler auf zwei Arten angewendet werden:
 
-- Überschreiben Sie das aktuelle Sprachpaket, indem Sie ein Sprachobjekt an die Methode **setLocale** übergeben:
+- Entweder die aktuelle Locale überschreiben, indem man ein Locale-Objekt als Parameter an die `setLocale()`-Methode übergibt:
 
 ~~~js
-scheduler.i18n.setLocale(localeObject);    
+scheduler.i18n.setLocale(localeObject);
 ~~~
 
-Wenn Sie nur einen Teil des Sprachobjekts angeben, werden Ihre Bezeichnungen mit dem bestehenden Sprachpaket zusammengeführt:
+Hinweis: Falls Sie dem Aufruf ein partielles Locale-Objekt übergeben, fügt der Scheduler Ihre Labels in die aktuelle Locale ein:
 
 ~~~js
 scheduler.i18n.setLocale({
     labels: {
-        day_tab: "Day",
+        day_tab: "Tag",
     }
-});    
+});
 ~~~
 
-- Oder, wenn Sie zwischen mehreren Sprachpaketen wechseln möchten, können Sie ein Sprachpaket mit einem eigenen Sprachcode hinzufügen und dann darauf umschalten:
+- Oder, wenn Sie zwischen mehreren Locales wechseln müssen, definieren Sie die Locale mit einem benutzerdefinierten Sprachcode und wechseln Sie später zum Scheduler darauf um:
 
 ~~~js
-scheduler.i18n.addLocale("lang", localeObject);    
+scheduler.i18n.addLocale("lang", localeObject);
 scheduler.i18n.setLocale("lang");
 ~~~
 
 :::note
-Beachten Sie, dass das Umschalten auf ein eigenes Sprachpaket die Oberfläche der Anwendung verändert. Überprüfen und passen Sie ggf. alle sprachabhängigen Elemente an, damit der Scheduler korrekt in der neuen Sprache angezeigt wird.
+Hinweis: Das Aktivieren einer benutzerdefinierten Locale in der Anwendung bewirkt Änderungen in der Benutzeroberfläche der App. Überprüfen und ggf. alle sprachabhängigen Elemente neu definieren, um sicherzustellen, dass der Scheduler in der neuen Sprache gut aussieht.
 :::
 
 **Hinweis**
 
-- Sie können Ihre eigene Sprachdatei an **support@dhtmlx.com** senden; möglicherweise wird sie in einer zukünftigen Version aufgenommen;
-- Das aktive Sprachpaket ist über das Objekt **scheduler.locale** zugänglich;
-- **monthFull** enthält die vollständigen Monatsnamen, beginnend mit Januar;
-- **monthShort** enthält die abgekürzten Monatsnamen, beginnend mit Januar;
-- **dayFull** enthält die vollständigen Tagesnamen, beginnend mit Sonntag;
-- **dayShort** enthält die abgekürzten Tagesnamen, beginnend mit Sonntag.
+- Sie können Ihre benutzerdefinierte Locale-Datei an **support@dhtmlx.com** senden, damit wir sie in die nächste Veröffentlichung aufnehmen.
+- Die aktuell aktive Locale ist auch im `scheduler.locale`-Objekt verfügbar.
+- `monthFull` - die vollständigen Monatsnamen, beginnend mit Januar
+- `monthShort` - die kurzen Monatsnamen, beginnend mit Januar
+- `dayFull` - die vollständigen Wochentagsnamen, beginnend mit Sonntag
+- `dayShort` - die kurzen Wochentagsnamen, beginnend mit Sonntag
 
-
-~~~js title="English locale definition"
+### Englische Locale-Definition
+~~~js
 scheduler.i18n.setLocale({
-    date:{
-        month_full: ["January", "February", "March", "April", "May", "June", 
+    date: {
+        month_full: ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"],
-        month_short: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+        month_short: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        day_full: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", 
+        day_full: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
             "Friday", "Saturday"],
         day_short: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     },
-    labels:{
+    labels: {
         dhx_cal_today_button: "Today",
         day_tab: "Day",
         week_tab: "Week",
@@ -146,30 +145,30 @@ scheduler.i18n.setLocale({
         section_time: "Time period",
         full_day: "Full day",
 
-        /*recurring events*/
-        confirm_recurring:"Edit recurring event",
-        section_recurring:"Repeat event",
-        button_recurring:"Disabled",
-        button_recurring_open:"Enabled",
+        /* recurring events */
+        confirm_recurring: "Edit recurring event",
+        section_recurring: "Repeat event",
+        button_recurring: "Disabled",
+        button_recurring_open: "Enabled",
         button_edit_series: "All events",
         button_edit_occurrence: "This event",
         button_edit_occurrence_and_following: "This and following events",
 
-        /*agenda view extension*/
+        /* agenda view extension */
         agenda_tab: "Agenda",
         date: "Date",
         description: "Description",
 
-        /*year view extension*/
+        /* year view extension */
         year_tab: "Year",
 
         /* week agenda extension */
         week_agenda_tab: "Agenda",
 
-        /*grid view extension*/
+        /* grid view extension */
         grid_tab: "Grid",
 
-        /* touch tooltip*/
+        /* touch tooltip */
         drag_to_create: "Drag to create",
         drag_to_move: "Drag to move",
 
@@ -225,20 +224,19 @@ scheduler.i18n.setLocale({
         repeat_freq_year: "Year",
         repeat_on_date: "On date",
         repeat_ends: "Ends",
-        month_for_recurring: ["January", "February", "March", "April", "May", "June", 
+        month_for_recurring: ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"],
-        day_for_recurring: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", 
+        day_for_recurring: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
             "Friday", "Saturday"]
     }
 });
 ~~~
 
-
-[Localization](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/07_locale_usage.html)
-
+### Verwandte Beispiele
+- [Localization](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/07_locale_usage.html)
 
 ## Zusätzliche Hinweise
 
-- Wenn das Label **confirm_closing** oder **confirm_deleting** nicht gesetzt ist, erscheint der zugehörige Bestätigungsdialog nicht (die Aktion wird automatisch bestätigt);
-- Bezeichnungen wie **section_(name)** entsprechen dem Lightbox-Abschnitt mit diesem Namen.
-- Das Label **new_event** definiert den Standardtext für neue Ereignisse.
+- Wenn das Label `confirm_closing` oder `confirm_deleting` nicht definiert ist, wird der zugehörige Bestätigungsdialog überhaupt nicht angezeigt (Auto-Bestätigung)
+- Das Label `section_(name)` bezieht sich auf den Lightbox-Abschnitt des entsprechenden Namens
+- Das Label `new_event` definiert den Standardtext eines neuen Ereignisses

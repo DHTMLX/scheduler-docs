@@ -1,20 +1,20 @@
 ---
-sidebar_label: "openSection"
+sidebar_label: openSection
 title: "openSection method"
-description: "открывает определённый section внутри текущего активного view (работает только если активный view - Timeline в режиме 'Tree'; в противном случае метод игнорируется)"
+description: "открывает указанный раздел в текущем активном представлении (если открытое представление не Timeline в режиме 'Tree' — метод будет проигнорирован)"
 ---
 
 # openSection
 
 ### Description
 
-@short: Открывает определённый section внутри текущего активного view (работает только если активный view - Timeline в режиме 'Tree'; в противном случае метод игнорируется)
+@short: Открывает указанный раздел в текущем активном представлении (если открытое представление не Timeline в режиме 'Tree' — метод будет проигнорирован)
 
 @signature: openSection: (section_id: string) =\> void
 
 ### Parameters
 
-- `section_id` - (required) *string* - id секции, которую необходимо открыть
+- `section_id` - (required) *string* - идентификатор раздела
 
 ### Example
 
@@ -40,12 +40,12 @@ scheduler.createTimelineView({
 scheduler.openSection("managers");
 ~~~
 
-**Applicable views:** [Timeline view](views/timeline.md)
+**Подходящие представления:** [Timeline view](views/timeline.md)
 
 ### Details
 
 :::note
- Метод требует включения плагина [treetimeline](guides/extensions-list.md#treetimeline). 
+ Метод требует активации плагина [treetimeline](guides/extensions-list.md#treetimeline). 
 :::
 
 ### Related API

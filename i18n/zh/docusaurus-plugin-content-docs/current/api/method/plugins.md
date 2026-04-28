@@ -29,4 +29,4 @@ scheduler.plugins({
 - [전체 확장 기능 목록](guides/extensions-list.md)
 
 ### Change log
-- added in v6.0
+- 版本 6.0 中添加

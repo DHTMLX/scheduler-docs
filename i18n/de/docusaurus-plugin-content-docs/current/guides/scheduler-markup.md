@@ -5,10 +5,10 @@ sidebar_label: "Scheduler-Markup"
 
 # Scheduler-Markup
 
-So sieht das Standard-Markup des Schedulers aus:
+Die Markup des Standard-Schedulers sieht so aus:
 
 ~~~html
-<div id="scheduler_here" class="dhx_cal_container">
+<div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
     <div class="dhx_cal_navline">
         <div class="dhx_cal_prev_button">&nbsp;</div>
         <div class="dhx_cal_next_button">&nbsp;</div>
@@ -25,43 +25,44 @@ So sieht das Standard-Markup des Schedulers aus:
 
 ![markup](/img/markup.png)
 
-## Positionierung der Tabs {#tabs-positioning}
+## Tabs-Positionierung
 
-Ab Version 7.0 verwendet das Element **.dhx_cal_navline** ein Flex-Layout, und die Tabs werden anhand der CSS-Eigenschaft **order** angeordnet.
+Ab Version 7.0 ist das Element **.dhx_cal_navline** ein Flex-Container und Tabs befinden sich entsprechend der **order**-Eigenschaft.
 
 ### Versionen 6.0 und älter
 
-#### Standard-Skin ('terrace')
+#### Standard‑Skin ('terrace')
 
-Im Standard-Skin ('terrace') werden CSS-Eigenschaften wie beim Positionieren der Tabs ignoriert. Stattdessen werden die Tabs nach den internen Regeln des Schedulers platziert: Die Standardansichten erscheinen als segmentierte Button-Gruppe links, während zusätzliche Ansichten als separate Buttons rechts angezeigt werden.
+Anfangs ignoriert der Standard-Skin ('terrace') die CSS-Eigenschaften, die verwendet werden, um die Position der Tabs festzulegen (z. B. `style="right:204px;"`) und bestimmt das Tab-Verhalten nach eigener Logik: Die Standardansichten werden links als segmentierte Schaltfläche angezeigt, während zusätzliche Ansichten rechts als einzelne Schaltflächen platziert werden.
 
-Um die Tab-Positionierung manuell zu steuern (z. B. direkt im Markup), setzen Sie den Parameter [fix_tab_position](api/config/fix_tab_position.md) auf *false*, um das Standardverhalten zu deaktivieren, und geben Sie dann die Tab-Koordinaten per CSS an:
+Um die Position manuell festzulegen (z. B. im Markup), setzen Sie den Parameter [fix_tab_position](api/config/fix_tab_position.md) auf *false*, um das Standardverhalten zu deaktivieren, und legen Sie die Koordinaten mit CSS-Eigenschaften fest:
 
 ~~~js
 scheduler.config.fix_tab_position = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
-Sie können diese CSS-Klassen verwenden, um einen segmentierten Button-Effekt zu erzeugen:
+Beachten Sie, dass Sie die folgenden CSS-Klassen verwenden können, um eine segmentierte Schaltfläche zu erstellen:
 
 - **dhx_cal_tab_last** - rundet den rechten Rand ab
 - **dhx_cal_tab_first** - rundet den linken Rand ab
 - **dhx_cal_tab_standalone** - rundet beide Ränder ab
 
-Um beispielsweise einen segmentierten 'day'-'week'-'month'-Button im Standard-Skin manuell zu setzen, verwenden Sie folgendes Markup:
+
+Zum Beispiel, um die im Standard-Skin manuell festgelegte 'day'-'week'-'month'-Segmentierung zu setzen, können Sie das Markup wie folgt angeben:
 ~~~html
-<div class="dhx_cal_tab dhx_cal_tab_first" data-tab="day"></div>
-<div class="dhx_cal_tab" data-tab="week"></div>
-<div class="dhx_cal_tab dhx_cal_tab_last" data-tab="month"></div>
+<div class="dhx_cal_tab dhx_cal_tab_first" data-tab="day" style="left:14px;"></div>
+<div class="dhx_cal_tab" data-tab="week"  style="left: 75px;"></div>
+<div class="dhx_cal_tab dhx_cal_tab_last" data-tab="month" style="left:136px"></div>
 ~~~
 
 
-## Hinzufügen/Löschen von Ansichts-Tabs {#addingdeletingviewstabs}
+## Hinzufügen/Löschen von Tabs der Ansichten
 
-### Hinzufügen eines Tabs
+### Einen Tab hinzufügen
 
-Um einen neuen Tab zur Kopfzeile hinzuzufügen, fügen Sie einfach ein div mit der Klasse **"dhx_cal_tab"** innerhalb des Elements **"dhx_cal_navline"** ein:
+Um einen neuen Tab in der Kopfzeile hinzuzufügen, fügen Sie ein Div-Element mit der Klasse **"dhx_cal_tab"** als Kindknoten des Elements **"dhx_cal_navline"** hinzu:
 
 ~~~html
 <div class="dhx_cal_navline">
@@ -73,63 +74,62 @@ Um einen neuen Tab zur Kopfzeile hinzuzufügen, fügen Sie einfach ein div mit d
 </div>
 ~~~
 
-Das **data-tab**-Attribut gibt die Ansicht an, die beim Klick auf den Tab geöffnet wird, im Format **(viewName)**.
-
 :::note
-Beachten Sie, dass mehrere CSS-Klassen auf einen Tab angewendet werden können, aber die Klasse **"dhx_cal_tab"** sollte immer zuerst stehen.
+Hinweis, dem Tab können mehrere CSS-Klassen zugewiesen werden, aber die **"dhx_cal_tab"**-Klasse muss zuerst stehen.
 :::
 
-### Löschen eines Tabs
+### Einen Tab löschen
 
-Um einen Tab aus der Kopfzeile zu entfernen, löschen Sie einfach das entsprechende div im Markup:
+Um einen Tab aus der Kopfzeile zu entfernen, entfernen Sie das zugehörige Div aus dem Markup:
 
-~~~js title="Entfernen des 'month'-Tabs aus der Kopfzeile"
+Entfernen des Tabs 'month' aus der Kopfzeile:
+
 ~~~html
 <div class="dhx_cal_navline">
-  ...
-  <div class="dhx_cal_tab" data-tab="day"></div>
-  <div class="dhx_cal_tab" data-tab="week"></div>
+    ...
+    <div class="dhx_cal_tab" data-tab="day"></div>
+    <div class="dhx_cal_tab" data-tab="week"></div>
 </div>
 ~~~
 
 :::note
-Das Entfernen des Tabs aus dem Markup deaktiviert die Ansicht selbst nicht; sie kann weiterhin programmatisch über die Methoden [setCurrentView](api/method/setcurrentview.md) und [updateView](api/method/updateview.md) aufgerufen werden.
+Auch wenn der Tab entfernt wird, ist die zugehörige Ansicht weiterhin programmatisch über die Methoden [setCurrentView](api/method/setcurrentview.md) und [updateView](api/method/updateview.md) zugänglich.
 :::
 
+## Ausblenden der Navigations-Schaltflächen
 
-## Navigationselemente ausblenden {#hidingthenavigationbuttons}
+Um die Navigations-Schaltflächen in der Kopfzeile des Schedulers auszublenden, setzen Sie den Stil *'display:none'* für die entsprechenden Div-Elemente wie folgt:
 
-Um die Navigationselemente in der Kopfzeile des Schedulers auszublenden, setzen Sie *'display:none'* für die jeweiligen divs wie folgt:
-
-~~~js title="Navigationselemente in der Kopfzeile ausblenden"
+Ausblenden der Navigations-Schaltflächen in der Kopfzeile:
+~~~html
 <style>
-  .dhx_cal_prev_button, .dhx_cal_next_button{
-  display:none;
-  }
+    .dhx_cal_prev_button, .dhx_cal_next_button{
+        display:none;
+    }
 </style>
 
-<div id="scheduler_here" class="dhx_cal_container">
-  <div class="dhx_cal_navline">
-  <div class="dhx_cal_prev_button">&nbsp;</div>
-  <div class="dhx_cal_next_button">&nbsp;</div>
-  <div class="dhx_cal_today_button"></div>
-  ...
-  </div>
-  <div class="dhx_cal_header"></div>
-  <div class="dhx_cal_data"></div> 
+<div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+    <div class="dhx_cal_navline">
+        <div class="dhx_cal_prev_button">&nbsp;</div>
+        <div class="dhx_cal_next_button">&nbsp;</div>
+        <div class="dhx_cal_today_button"></div>
+        ...
+       </div>
+    <div class="dhx_cal_header"></div>
+    <div class="dhx_cal_data"></div>       
 </div>
 ~~~
 
 
-## Kopfzeile des Schedulers ausblenden {#hidingtheheaderofscheduler}
+## Verbergen des Scheduler-Headers
 
-Um die gesamte Kopfzeile des Schedulers auszublenden, setzen Sie *'display:none'* auf die navline:
+Um den gesamten Scheduler-Header zu verbergen, setzen Sie *'display:none'*: 
 
 ~~~html
 <style>
-  .dhx_cal_navline{
-  display:none;
-  }
+    .dhx_cal_navline{
+        display:none;
+    }
 </style>
 
 ~~~

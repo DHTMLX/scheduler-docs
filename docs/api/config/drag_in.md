@@ -15,13 +15,13 @@ description: "restrict dragging events to the calling scheduler from any other s
 ### Example
 
 ~~~jsx
-scheduler.init('scheduler_here',new Date(2009,05,30),"week");
+scheduler.init('scheduler_here',new Date(2027,05,30),"week");
 scheduler.load("./data/units.xml");
  
  
 scheduler2.config.drag_in = false;//restrict dragging events to this scheduler 
 scheduler2 = Scheduler.getSchedulerInstance();
-scheduler2.init('scheduler_here_2',new Date(2009,05,30),"week");
+scheduler2.init('scheduler_here_2',new Date(2027,05,30),"week");
 ~~~
 
 **Default value:** true

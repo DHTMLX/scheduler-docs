@@ -19,7 +19,7 @@ description: "removes marking/blocking set by the addMarkedTimespan() method"
 ### Example
 
 ~~~jsx
-var spanID = scheduler.addMarkedTimespan({  
+const spanID = scheduler.addMarkedTimespan({  
     days:  [0,1], 
     zones: "fullday"              
 });

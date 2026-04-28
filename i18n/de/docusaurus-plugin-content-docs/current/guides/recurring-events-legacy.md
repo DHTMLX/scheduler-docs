@@ -1,13 +1,14 @@
----
-title: "Wiederkehrende Ereignisse (bis v7.1)"
-sidebar_label: "Wiederkehrende Ereignisse (bis v7.1)"
----
+--- 
+title: "Wiederkehrende Ereignisse (bis v7.1)" 
+sidebar_label: "Wiederkehrende Ereignisse (bis v7.1)" 
+--- 
 
 # Wiederkehrende Ereignisse (bis v7.1)
 
-*Dieser Artikel behandelt das Legacy-Format für wiederkehrende Ereignisse im DHTMLX Scheduler. Informationen zur aktuellen Version ab DHTMLX Scheduler v7.1+ finden Sie [hier](guides/recurring-events.md).*
+*Der Artikel bezieht sich auf das Legacy-Format wiederkehrender Ereignisse für den DHTMLX Scheduler. Wenn Sie DHTMLX Scheduler v7.1+ verwenden, sehen Sie die Details zur aktuellen Version [hier](guides/recurring-events.md).*
 
-Standardmäßig unterstützt der Scheduler keine wiederkehrenden Ereignisse. Um diese Funktionalität hinzuzufügen, müssen Sie eine spezielle Erweiterung namens **recurring_legacy** auf Ihrer Seite aktivieren.
+Standardmäßig unterstützt der Scheduler keine wiederkehrenden Ereignisse. Um solche Unterstützung zu aktivieren, müssen Sie eine spezielle Erweiterung auf der Seite aktivieren - **recurring_legacy**. 
+
 
 ~~~js
 scheduler.plugins({
@@ -15,34 +16,38 @@ scheduler.plugins({
 });
 ~~~
 
-Sobald die Unterstützung für wiederkehrende Ereignisse aktiviert ist, enthält die Lightbox einen zusätzlichen Abschnitt wie unten dargestellt:
 
-![recurring_lightbox](/img/recurring_lightbox.png)
+Sobald die Unterstützung für wiederkehrende Ereignisse aktiviert ist, sieht das Lightbox wie unten aus: 
+
+
+![recurring_lightbox_legacy](/img/recurring_lightbox_legacy.png)
+
 
 ## Konfigurationsoptionen
 
-Die Bibliothek bietet verschiedene Optionen zur Konfiguration wiederkehrender Ereignisse:
+Die Bibliothek bietet folgende Optionen zur Konfiguration wiederkehrender Ereignisse:
 
-- [repeat_date](api/config/repeat_date.md) - steuert das Datumsformat für das Feld 'Ende am' in der 'wiederkehrenden' Lightbox
-- [include_end_by](api/config/include_end_by.md) - legt fest, ob das Datum im Feld 'Ende am' inklusive oder exklusiv ist
-- [recurring_overflow_instances](api/config/recurring_overflow_instances.md) - regelt, wie Wiederholungen, die in den nächsten Monat überlaufen, behandelt werden
-- [repeat_precise](api/config/repeat_precise.md) - verhindert die Einbeziehung vergangener Termine bei wöchentlicher Wiederholung
+- [repeat_date](api/config/repeat_date.md) - legt das Datumsformat des Feldes 'End by' im 'recurring' Lightbox-Fenster fest
+- [include_end_by](api/config/include_end_by.md) - definiert, ob das im Feld 'End by' angegebene Datum exklusiv oder inklusiv sein soll
+- [recurring_overflow_instances](api/config/recurring_overflow_instances.md) - definiert das Verhalten der Wiederholungen, die in den nächsten Monat übergehen
+- [repeat_precise](api/config/repeat_precise.md) - verhindert das Einbeziehen vergangener Tage bei Ereignissen mit der 'weekly'-Wiederholung
 - [occurrence_timestamp_in_utc](api/config/occurrence_timestamp_in_utc.md) - ermöglicht das Arbeiten mit wiederkehrenden Ereignissen unabhängig von Zeitzonen
 
 ~~~js
 scheduler.config.repeat_date = "%m/%d/%Y";
 scheduler.config.include_end_by = true;
 ...
-scheduler.init('scheduler_here', new Date(2019, 7, 5), "month");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "month");
 ~~~
 
 
-[Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
+[Wiederkehrende Ereignisse](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
 
 
-## 'Wiederkehrend'-Lightbox
+## 'Recurring' Lightbox
 
-Nach Aktivierung der recurring-Erweiterung erhält die Lightbox einen zusätzlichen Abschnitt namens "Repeat event". Die Standardkonfiguration der 'wiederkehrenden' Lightbox sieht wie folgt aus:
+Standardmäßig hat die Lightbox, sobald die wiederkehrende Erweiterung aktiviert ist, einen weiteren Abschnitt - "Repeat event". 
+Und die Standarddefinition der 'recurring' Lightbox beginnt wie folgt:
 
 ~~~js
 [     
@@ -53,48 +58,58 @@ Nach Aktivierung der recurring-Erweiterung erhält die Lightbox einen zusätzlic
 ];
 ~~~
 
-Sie können bei Bedarf weitere Abschnitte hinzufügen, aber die Abschnitte "recurring" und "time" müssen erhalten bleiben. Außerdem sollte der Abschnitt "time" immer **nach** dem Abschnitt "recurring" stehen.
+Sie können beliebige zusätzliche Abschnitte hinzufügen, aber müssen sowohl den "recurring"- als auch den "time"-Abschnitt beibehalten. 
+Außerdem muss der "time"-Abschnitt **nach** dem "recurring"-Abschnitt platziert werden. 
 
 
-[Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
+[Wiederkehrende Ereignisse](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
 
 
 ## Server-seitige Integration 
 
-Ein wiederkehrendes Ereignis wird in der Datenbank als einzelner Datensatz gespeichert, der alle üblichen Ereignisfelder sowie drei zusätzliche enthält:
+Ein wiederkehrendes Ereignis wird in der Datenbank als ein einzelner Datensatz gespeichert, der alle Felder eines regulären Ereignisses plus 3 zusätzliche enthält: 
 
-1. **rec_type** - (_varchar_) definiert das Wiederholungsmuster; dieses Feld wird automatisch ausgefüllt
-2. **event_length** - (_long int_) die Dauer des Ereignisses in Sekunden
-3. **event_pid** - (_int_) die Eltern-ID für eine Serie von Ereignissen
+1. **rec_type** - (_varchar_) definiert die Logik der Wiederholung. Dieses Feld wird automatisch ausgefüllt
+2. **event_length** - (_long int_) die tatsächliche Zeitlänge eines Ereignisses in Sekunden
+3. **event_pid** - (_int_) die Eltern-ID einer Serie von Ereignissen
 
-Eine typische Connector-Abfrage könnte folgendermaßen aussehen:
+Daraus sollte Ihr Backend wiederkehrende Felder zusammen mit regulären Ereignisfeldern zurückgeben, zum Beispiel:
 
-~~~php
-$scheduler->render_table("events_rec","event_id",
-"start_date,end_date,text,rec_type,event_pid,event_length");
+~~~js
+{
+  "id": 1,
+  "start_date": "2027-01-03 10:00:00",
+  "end_date": "2027-01-13 00:00:00",
+  "text": "some_text",
+  "rec_type": "day_1___",
+  "event_length": 7200,
+  "event_pid": 0
+}
 ~~~
 
-Neben diesen Pflichtfeldern können Sie beliebige weitere Daten aus Ihrer Datenbank abrufen.
+Im üblichen Fall können Sie neben den Pflichtfeldern weitere Daten aus der DB extrahieren.
 
-Beachten Sie, dass die Bedeutungen von **start_date** und **end_date** hier leicht abweichen:
+Allerdings ändern sich die Bedeutungen der Felder **start_date** und **end_date** leicht:
 
-- **start_date** - das Startdatum des ersten Ereignisses der Serie im Format 'yyyy-mm-dd hh:mm:ss' (siehe [Datumsformat-Spezifikation](guides/settings-format.md)).
-- **end_date** - das Enddatum des letzten Ereignisses der Serie im Format 'yyyy-mm-dd 00:00:00' (siehe [Datumsformat-Spezifikation](guides/settings-format.md)).
 
-Beispielsweise würde ein wiederkehrendes Ereignis, das am 3. Januar 2019 um 10:00 Uhr beginnt, sich täglich wiederholt und am 13. Januar 2019 um 12:00 Uhr endet, wie folgt gespeichert werden:
+- **start_date** - der Starttermin des ersten Ereignisses in einer Serie im Format 'yyyy-mm-dd hh:mm:ss' (settings_format.md).
+- **end_date** - das Enddatum des letzten Ereignisses in einer Serie im Format 'yyyy-mm-dd 00:00:00' (settings_format.md).
+
+Beispiel: Ein wiederkehrendes Ereignis, das am 3. Januar 2027 um 10:00 beginnt, jeden Tag wiederholt und am 13. Januar 2027 um 12:00 endet, wird in der Datenbank wie folgt dargestellt:
+
 
 ~~~js
 id:1,
-start_date:"2019-01-03 10:00:00",
-end_date:"2019-01-13 00:00:00",
+start_date:"2027-01-03 10:00:00",
+end_date:"2027-01-13 00:00:00",
 text:"some_text",
 details:"",
 rec_type:"day_1___",
 event_length:"7200",
-event_pid:"0" // 0 für Hauptereignisse oder die Eltern-ID für Unterereignisse
+event_pid:"0" //0 für die Elternevents oder die ID der Eltern-Events für Unter-Ereignisse
 ~~~
 
-Auf der Client-Seite enthält das Feld **rec_type** einen String im folgenden Format:
+Der Client-Seite erhält Daten aus dem **rec_type**-Feld als String im folgenden Format:
 
 ~~~html
 [type]_[count]_[day]_[count2]_[days]#[extra]
@@ -102,120 +117,101 @@ Auf der Client-Seite enthält das Feld **rec_type** einen String im folgenden Fo
 
 wobei:
 
-- *type* - Typ der Wiederholung: 'day','week','month','year'.
-- *count* - Intervall zwischen den Ereignissen in den angegebenen Typ-Einheiten.
-- *day* und *count2* - spezifizieren einen bestimmten Tag im Monat (z.B. erster Montag, dritter Freitag).
-- *days* - kommaseparierte Liste der betroffenen Wochentage.
-- *extra* - zusätzliche Informationen, die beeinflussen können, wie die Details der Wiederholung angezeigt werden.
+- *type* - der Typ der Wiederholung: 'day','week','month','year'.
+- *count* - das Intervall zwischen den Ereignissen in den jeweiligen 'type'-Einheiten.
+- *day* und *count2* - definieren einen Tag eines Monats (erster Montag, dritter Freitag, usw.).
+- *days* - eine durch Kommas getrennte Liste betroffener Wochentage.
+- *extra* - zusätzliche Informationen, die verwendet werden können, um die Darstellung der Wiederholungsdetails zu ändern.
 
-Einige Beispiele für **rec_type**-Werte:
+Beispiele der **rec_type**-Daten:
+
 
 - *"day_3___"* - alle drei Tage
-- *"month_2___"* - alle zwei Monate
-- *"month_1_1_2_"* - zweiter Montag jedes Monats
-- *"week_2___1,5"* - montags und freitags jede zweite Woche
+- *"month _2___"* - alle zwei Monate
+- *"month_1_1_2_"* - zweiter Montag eines jeden Monats
+- *"week_2___1,5"* - Montag und Freitag der zweiten Woche 
+  
+*Der Doppel- oder Dreifach-Unterstrich zeigt an, dass die zugehörigen Parameter des Strings ausgelassen wurden*.
 
-*Hinweis: Doppelte oder dreifache Unterstriche bedeuten, dass diese Parameter ausgelassen werden.*
+## Parsing der Serien im Backend
 
-## Serien im Backend parsen
+Ein wiederkehrendes Ereignis wird in der Datenbank als ein einzelner Datensatz gespeichert, der vom Scheduler auf dem Client-Seite zerlegt werden kann.
+Wenn Sie Datumsangaben einzelner Ereignisse auf der Serverseite erhalten möchten, verwenden Sie eine Hilfsbibliothek zur Parser-Verarbeitung von wiederkehrenden Ereignissen des dhtmlxScheduler auf ASP.NET/ASP.NET Core/PHP. 
 
-Wiederkehrende Ereignisse werden als einzelne Datensätze in der Datenbank gespeichert, die vom Scheduler clientseitig aufgeteilt werden können. Wenn Sie einzelne Vorkommensdaten auf der Serverseite benötigen, stehen Hilfsbibliotheken für das Parsen wiederkehrender Ereignisse in ASP.NET/ASP.NET Core und PHP zur Verfügung.
+Sie finden die fertigen Bibliotheken auf unserem GitHub:
 
-Diese Bibliotheken finden Sie auf GitHub:
+- [für ASP.NET/ASP.NET Core](https://github.com/DHTMLX/scheduler-recurring-events-dotnet)
+- [für PHP 5.4+](https://github.com/DHTMLX/scheduler-helper-php)
 
-- [ASP.NET/ASP.NET Core](https://github.com/DHTMLX/scheduler-recurring-events-dotnet)
-- [PHP 5.4+](https://github.com/DHTMLX/scheduler-helper-php)
+## Bearbeiten/Löschen eines bestimmten Vorkommnisses in der Serie
 
-## Bearbeiten/Löschen eines bestimmten Vorkommens in der Serie 
+Es besteht die Möglichkeit, ein bestimmtes Vorkommnis in einer Serie zu löschen oder zu bearbeiten. 
 
-Es ist möglich, einzelne Vorkommen innerhalb einer wiederkehrenden Serie zu bearbeiten oder zu löschen.
+### Wichtige Tipps
 
-### Wichtige Hinweise
+- Für jedes Update des wiederkehrenden Ereignisses wird ein separater Datensatz in der DB erstellt.
+- Bestimmte Vorkommnisse verweisen auf das Elternevent über die Eigenschaft **event_pid**.
+- Sobald Sie ein Vorkommnis in der Serie bearbeitet haben, speichert das Feld **event_length** für dieses Update den Zeitstempel des Datums, wann das Vorkommnis auftreten sollte, wenn es nicht bearbeitet wurde, anstelle der tatsächlichen Ereignislänge.  
+  Wenn das Vorkommnis also am 27. Juli 2027 um 15:00 stattgefunden hat und auf den 30. Juli 2027 um 15:00 verschoben wurde, würde der Zeitstempel das ursprüngliche Datum widerspiegeln.  
+ Der Zeitstempel wird in Sekunden seit der UNIX-Epoche gemessen.
+- Beachten Sie, dass, falls Ihre DB Datensätze bearbeiteter Vorkommnisse in der Serie enthält und Sie entscheiden, die Serie über das Lightbox auf 'Edit series' zu bearbeiten, alle gespeicherten Datensätze nach dem Speichern gelöscht werden. 
+ Der einzige Datensatz, der verbleibt, ist das Haupt-Wiederholungs-Ereignis, während seine Vorkommnisse ihre Unterschiede verlieren (sie werden identisch).
 
-- Jede Aktualisierung eines wiederkehrenden Ereignisses erzeugt einen separaten Datensatz in der Datenbank.
-- Einzelne Vorkommen verweisen über die Eigenschaft **event_pid** auf das Hauptereignis zurück.
-- Beim Bearbeiten eines Vorkommens speichert das Feld **event_length** den Zeitstempel, zu dem das Vorkommen ursprünglich stattgefunden hätte, falls es nicht geändert worden wäre, und nicht die tatsächliche Ereignisdauer. Zum Beispiel: Wenn ein Vorkommen, das ursprünglich für den 27. Juli 2019 um 15:00 Uhr geplant war, auf den 30. Juli 2019 um 15:00 Uhr verschoben wird, spiegelt der Zeitstempel den 27. Juli 2019 um 15:00 Uhr wider. Dieser Zeitstempel ist in Sekunden seit dem UNIX-Epoch.
-- Wenn Ihre Datenbank bearbeitete Vorkommen enthält und Sie über die Lightbox auf 'Serie bearbeiten' klicken, werden nach dem Speichern alle gespeicherten bearbeiteten Vorkommen gelöscht. Nur der Haupteintrag für das wiederkehrende Ereignis bleibt erhalten und die einzelnen Vorkommen verlieren ihre individuellen Änderungen.
+### Nehmen wir ein Beispiel
 
-### Beispiel-Szenario
+Sie sind Fan der Olympischen Spiele und möchten die kommenden Londoner Olympischen Spiele 2027 (27. Juli - 12. August) so oft wie möglich sehen. 
+Sie entscheiden sich also, ein wiederkehrendes Ereignis zu erstellen, das *um 17:00 beginnt* (das Ende Ihres Arbeitstages) und *bis 23:00 geht* (die Zeit, zu der Sie schlafen gehen). 
+Da die Eröffnungszeremonie *erst um 19:00 beginnt*, möchten Sie das erste Vorkommnis der Serie an diesem Tag bearbeiten und den Zeitraum *von 19:00 bis 23:00* festlegen. 
+Sie erinnern sich außerdem, dass am *1. August 2027* eine Frist ist und Sie vermutlich zu spät zu Hause sein werden, um etwas zu sehen. 
+Sie müssen also auch *den 1. August 2027* aus der Serie löschen. 
 
-Stellen Sie sich vor, Sie sind ein Fan der Olympischen Spiele und möchten die Olympischen Spiele in London 2012 (*27. Juli - 12. August*) so oft wie möglich verfolgen. Sie erstellen ein wiederkehrendes Ereignis, das um 17:00 Uhr beginnt (Ende Ihres Arbeitstags) und um 23:00 Uhr endet (Ihre Schlafenszeit). Da die Eröffnungsfeier jedoch um 19:00 Uhr beginnt, möchten Sie das erste Vorkommen auf 19:00-23:00 Uhr ändern. Außerdem wissen Sie, dass Sie am 1. August 2012 eine Deadline haben und wahrscheinlich nichts anschauen werden, weshalb Sie das Vorkommen dieses Tages aus der Serie löschen möchten.
+#### Kurz gesagt, Ihre Aktionen sind:
 
-#### Zusammenfassung der Aktionen:
+1. Ein wiederkehrendes Ereignis **_(17.00-23.00)_** vom **27.07.2027** bis **12.08.2027** erstellen.
+2. Ein bestimmtes Vorkommnis am **27.07.2027** bearbeiten - den Zeitraum **von 17.00-23.00 auf 19.00-23.00** ändern.
+3. Ein bestimmtes Vorkommnis am **01.08.2027** aus der Serie löschen.
 
-1. Erstellen Sie ein wiederkehrendes Ereignis **(17:00-23:00)** vom **27. Juli 2012** bis **12. August 2012**.
-2. Bearbeiten Sie das Vorkommen am **27. Juli 2012**, um die Zeit auf **19:00-23:00** zu ändern.
-3. Löschen Sie das Vorkommen am **1. August 2012** aus der Serie.
+In der Folge sollten wir 3 Datensätze haben, die auf unser wiederkehrendes Ereignis in der DB verweisen.
 
-Dies führt zu 3 Datensätzen, die mit dem wiederkehrenden Ereignis in der Datenbank verbunden sind.
+#### Was passiert in der DB, wenn wir Schritt für Schritt vorgehen:
 
-#### Was passiert in der Datenbank Schritt für Schritt:
-
-Erstellung des wiederkehrenden Ereignisses:
+Erstellen des wiederkehrenden Ereignisses:
 
 ![create_a_recurring_event.png](/img/create_a_recurring_event.png)
 
-Bearbeiten von **27. Juli 2012**:
+Bearbeiten vom 27.07.2027:
 
 ![edit_a_recurring_event.png](/img/edit_a_recurring_event.png)
 
-Löschen von **1. August 2012**: 
+Löschen des 01.08.2027: 
 
 ![delete_an_occurrence.png](/img/delete_an_occurrence.png)
 
+
 ### Server-seitige Logik 
 
-Zusätzlich zu den extra Feldern muss der Server-Controller einige spezielle Logik abdecken:
+Neben zusätzlichen Feldern muss eine spezifische Logik in den Server-seitigen Controller eingefügt werden:
 
-- Wenn ein Ereignis mit **rec_type == none** eingefügt wird, sollte die Antwort einen "deleted"-Status angeben.
-- Wenn ein Ereignis mit **rec_type != none** aktualisiert oder gelöscht wird, müssen alle Datensätze mit dem entsprechenden **event_pid** gelöscht werden.
-- Wird ein Ereignis mit einer ungleich null **event_pid** gelöscht, sollte es stattdessen auf **rec_type == none** aktualisiert werden, anstatt gelöscht zu werden.
+- Wenn ein Ereignis mit **rec_type==none** eingefügt wurde - die Antwort muss den Status "deleted" haben.
+- Wenn ein Ereignis mit **rec_type!=none** aktualisiert oder gelöscht wurde - müssen alle Datensätze mit dem entsprechenden **event_pid** gelöscht werden.
+- Wenn ein Ereignis mit dem Wert von **event_pid** gelöscht wurde - muss es mit **rec_type==none** statt löschen aktualisiert werden.
 
 :::note
-Vollständige Codebeispiele finden Sie [hier](integrations/howtostart-guides.md)
+Sie finden vollständige Codebeispiele [hier](integrations/howtostart-guides.md)
 :::
 
-Wenn Sie den [PHP Connector](https://github.com/DHTMLX/connector-php) verwenden, könnte der serverseitige Code wie folgt aussehen:
+Implementieren Sie diese Logik in Ihrem Backend-Controller oder -Service, um wiederkehrende Serien und Ausnahmen konsistent zu halten.
 
-~~~php
-function delete_related($action){
-    global $scheduler;
-    
-    $status = $action->get_status();
-    $type = $action->get_value("rec_type");
-    $pid = $action->get_value("event_pid");
-    // Wenn die Serie geändert oder gelöscht wurde, entferne alle verknüpften Ereignisse
-    if (($status == "deleted" || $status == "updated") && $type != ""){
-        $scheduler->sql->query("DELETE FROM events_rec WHERE 
-        event_pid='" . $scheduler->sql->escape($action->get_id()) . "'");
-    }
-    if ($status == "deleted" && $pid != 0){
-        $scheduler->sql->query("UPDATE events_rec SET rec_type='none' WHERE 
-        event_id='" . $scheduler->sql->escape($action->get_id()) . "'");
-        $action->success();
-    }
-}
-function insert_related($action){
-    $status = $action->get_status();
-    $type = $action->get_value("rec_type");
-    if ($status == "inserted" && $type == "none")
-        $action->set_status("deleted");
-}
+## Dragging all sequence
 
-$scheduler->event->attach("beforeProcessing","delete_related");
-$scheduler->event->attach("afterProcessing","insert_related");
-~~~
-
-## Die gesamte Serie verschieben 
-
-Um Nutzern das Verschieben der gesamten Serie wiederkehrender Ereignisse per Drag & Drop zu ermöglichen, fügen Sie vor der Initialisierung des Schedulers folgenden Code hinzu:
+Um den Benutzern die Möglichkeit zu geben, die gesamte Sequenz beim Ziehen wiederkehrender Ereignisse zu verschieben, fügen Sie vor der Scheduler-Initialisierung den folgenden Code hinzu:
 
 ~~~js
-scheduler.attachEvent("onBeforeEventChanged", function(dev){
-    var parts = scheduler.getState().drag_id.toString().split("#");
+scheduler.attachEvent("onBeforeEventChanged",function(dev){
+    let parts = scheduler.getState().drag_id.toString().split("#");
      if (parts.length > 1) {
 
-          var series = this.getEvent(parts[0]);
+          let series = this.getEvent(parts[0]);
 
           series.start_date.setHours(dev.start_date.getHours());
           series.start_date.setMinutes(dev.start_date.getMinutes());
@@ -231,39 +227,37 @@ scheduler.attachEvent("onBeforeEventChanged", function(dev){
 });
 ~~~
 
-## Benutzerdefinierte Steuerung für den wiederkehrenden Block der Lightbox
+## Custom control for the lightbox's recurring block
 
-Ab Version 4.2 erlaubt dhtmlxScheduler die Anpassung des HTML-Formulars, das im 'recurring'-Block der Lightbox verwendet wird.
+Ab Version 4.2 erlaubt dhtxmlScheduler Ihnen, ein benutzerdefiniertes HTML-Formular für den 'recurring'-Block der Lightbox anzugeben.
 
-#### Was kann angepasst werden?
+#### Welche Anpassungen können Sie vornehmen?
 
 1. Das Markup des Formulars ändern
-2. Nicht benötigte Elemente entfernen (zum Beispiel den Wiederholungstyp 'jährlich' und die zugehörigen Eingabefelder)
-3. Standardwerte für Eingabefelder setzen (zum Beispiel die Option 'kein Enddatum' automatisch aktivieren und den Block für das Wiederholungsende ausblenden, sodass alle Serien ohne Enddatum erstellt werden)
+2. Unnötige Elemente löschen (z. B. den 'yearly' Wiederholungs-Typ und alle zugehörigen Eingaben)
+3. Standardwerte für Eingaben festlegen (z. B. Sie möchten, dass alle Serien mit 'no end date' erstellt werden. Dann setzen Sie die Option 'no end date' standardmäßig aktiviert und verstecken den ganzen Block, der das Rekurrenz-Ende festlegt.)
 
 ### Anwendungsbeispiel
 
-Beginnen wir mit einem Beispiel. Angenommen, Sie möchten die Optionen „monatlich" und „jährlich" für Wiederholungen entfernen und die Auswahl „kein Enddatum" für alle Ereignisse verfügbar lassen (das bedeutet, dass der Abschnitt zur Festlegung des Endes der Wiederholung entfernt wird).
+Lassen Sie uns mit einem Beispiel beginnen. Stellen Sie sich vor, Sie möchten die 'monatlich' und 'jährlich' Wiederholungsarten entfernen und die Option 'no end date' für alle Ereignisse haben (d. h. den Block zum Festlegen des Rekurrenz-Endes entfernen).
 
-1. Definieren Sie zunächst das Markup für ein benutzerdefiniertes Formular und platzieren Sie es irgendwo auf Ihrer Seite (Sie können mit einer Kopie der Standardvorlage aus 'schedulersourceslocalerecurring' beginnen):
+1. Definieren Sie das Markup eines benutzerdefinierten Formulars und platzieren Sie es irgendwo auf der Seite (Sie können damit beginnen, das Standard-Template zu kopieren, das sich im <b>'schedulersourceslocalerecurring'</b>-Verzeichnis befindet):
 ~~~html
 <div class="dhx_form_repeat" id="my_recurring_form"> /*!*/
   <form>
     <div>
       <select name="repeat">
-        <option value="day">Täglich</option>
-        <option value="week">Wöchentlich</option>
+        <option value="day">Daily</option>
+        <option value="week">Weekly</option>
       </select>
     </div>
     <div>
-      <div id="dhx_repeat_day">
+      <div style="display:none;" id="dhx_repeat_day">
         <input type="hidden" name="day_type" value="d"/>
         <input type="hidden" name="day_count" value="1" />
       </div>
-      <div id="dhx_repeat_week">
-        Wiederhole jede Woche an folgenden Tagen:
-
-
+      <div style="display:none;" id="dhx_repeat_week">
+        Wiederhole jede Woche folgende Tage:
        <label><input type="checkbox" name="week_day" value="1" />Montag</label>
        <label><input type="checkbox" name="week_day" value="2" />Dienstag</label>
        <label><input type="checkbox" name="week_day" value="3" />Mittwoch</label>
@@ -279,7 +273,7 @@ Beginnen wir mit einem Beispiel. Angenommen, Sie möchten die Optionen „monatl
   </form>
 </div>
 ~~~
-2. Weisen Sie anschließend den 'form'-Parameter des 'recurring'-Abschnitts der ID Ihres benutzerdefinierten Formulars zu:
+2. Setzen Sie den 'form'-Parameter des 'recurring'-Bereichs auf die ID Ihres benutzerdefinierten Formulars: 
 ~~~js
 scheduler.config.lightbox.sections = [
     {name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
@@ -289,68 +283,67 @@ scheduler.config.lightbox.sections = [
 ];
 ~~~
 
-<div>![custom_recurring_form](/img/custom_recurring_form.png)</div>
+<div style="text-align:center;">![custom_recurring_form_legacy](/img/custom_recurring_form_legacy.png)</div>
 
-### Hauptbestandteile
+### Hauptteile
 
-Das Standard-HTML-Layout des Wiederholungsblocks der Lightbox in verschiedenen Sprachen finden Sie im Ordner <b>'schedulersourceslocalerecurring'</b>.
+Sie finden die Standard-HTML-Struktur des Lightbox-Recurrings-Blocks für verschiedene Sprachen im Verzeichnis <b>'schedulersourceslocalerecurring'</b>.
 
+Beispielsweise, für die englische Lokalisierung, sehen Sie die Datei <b>'schedulersourceslocalerecurringrepeat_template_en.htm'</b>.
 
-Für die englische Sprache sehen Sie sich zum Beispiel die Datei <b>'schedulersourceslocalerecurringrepeat_template_en.htm'</b> an.
+Grundsätzlich enthält der Recurring-Block des Lightbox drei Kontrollgruppen:
 
-Im Allgemeinen besteht der Wiederholungsblock in der Lightbox aus 3 Hauptgruppen von Steuerelementen:
+1) Kontrollen zur Auswahl des Wiederholungstyps. Diese Eingaben haben den Namen 'repeat' und einen der folgenden Werte: 'daily', 'weekly', 'monthly', 'yearly'.
+Das Formular muss mindestens eine 'repeat'-Eingabe mit dem Wert enthalten. Sie können Radiobuttons, Auswahlfelder verwenden oder den Standardtyp im versteckten Input festlegen.
 
-1) Steuerelemente zur Auswahl des Wiederholungstyps. Diese Eingaben sollten den Namen 'repeat' und einen der folgenden Werte haben: 'daily', 'weekly', 'monthly', 'yearly'.
-Ihr Formular muss mindestens ein 'repeat'-Eingabefeld mit einem Wert enthalten. Sie können Radiobuttons, Selects oder sogar ein verstecktes Eingabefeld verwenden, um den Standardtyp festzulegen.
-
-Hier sind einige gültige Beispiele, wie Sie den Wiederholungstyp im Formular auswählen können:
+Betrachten Sie die folgenden Beispiele; jeder davon ist eine gültige Methode zur Auswahl des Wiederholungstyps im Formular. 
 
 - Radiobuttons
 
 ~~~html
-<label><input type="radio" name="repeat" value="day" />Täglich</label>
+<label><input type="radio" name="repeat" value="day" />Daily</label>
 
 
-<label><input type="radio" name="repeat" value="week"/>Wöchentlich</label>
+<label><input type="radio" name="repeat" value="week"/>Weekly</label>
 
 
-<label><input type="radio" name="repeat" value="month" />Monatlich</label>
+<label><input type="radio" name="repeat" value="month" />Monthly</label>
 
 
-<label><input type="radio" name="repeat" value="year" />Jährlich</label>
+<label><input type="radio" name="repeat" value="year" />Yearly</label>
 ~~~
 
-- Select-Eingabe, ohne die Optionen 'Monatlich' und 'Jährlich':
+- Select-Eingabe, ohne 'Monthly' und 'Yearly'-Optionen:
 
 ~~~html
 <select name="repeat">
-  <option value="day">Täglich</option>
-  <option value="week">Wöchentlich</option>
+  <option value="day">Daily</option>
+  <option value="week">Weekly</option>
 </select>
 ~~~
 
-- Verstecktes Eingabefeld (dadurch werden im Lightbox nur tägliche Serien erstellt):
+- Versteckte Eingabe (das Lightbox erstellt nur 'Daily'-Serie):
 
 ~~~html
 <input type="hidden" name="repeat" value="day" />
 ~~~
 
-2) Ein Abschnitt zur Konfiguration der Wiederholung basierend auf dem Wiederholungstyp. Zum Beispiel sieht das Markup für den Typ 'Täglich' so aus:
+2) Ein Block zur Konfiguration der Rekurrenz je nach Typ. Beispielsweise für den Wiederholungstyp 'Daily' hat der Block folgende Struktur:
 
 ~~~html
 <div class="dhx_repeat_center">
-   <div id="dhx_repeat_day">
+   <div style="display:none;" id="dhx_repeat_day">
      <label>
        <input class="dhx_repeat_radio" type="radio" 
-               name="day_type" value="d"/>Jeden
+               name="day_type" value="d"/>Every
      </label>
        <input class="dhx_repeat_text" type="text" 
-               name="day_count" value="1" />Tag
+               name="day_count" value="1" />day
 
 
      <label>
        <input class="dhx_repeat_radio" type="radio" 
-               name="day_type" checked value="w"/>Jeden Werktag
+               name="day_type" checked value="w"/>Every workday
      </label>
   </div>
 ...
@@ -358,68 +351,67 @@ Hier sind einige gültige Beispiele, wie Sie den Wiederholungstyp im Formular au
          
 ~~~
 
-Beachten Sie, dass Markup, das sich auf einen bestimmten Wiederholungstyp bezieht, in ein div mit einer <b>id</b> im Format <b>"dhx_repeat_&lt;repeat type&gt;"</b> eingeschlossen werden kann, z. B. "dhx_repeat_day".
-Dadurch wird es nur angezeigt, wenn der entsprechende Wiederholungstyp ausgewählt ist.
+Beachten Sie, dass das Markup, das sich auf eine bestimmte Wiederholungstyp bezieht, in einem div mit der <b>id</b> im folgenden Format eingeschlossen werden kann `dhx_repeat_<repeat type>`, z. B. "dhx_repeat_day".
+In diesem Fall wird es nur angezeigt, wenn der entsprechende Wiederholungstyp ausgewählt ist.
 
-3) Steuerelemente zum Festlegen des Endes der Wiederholung. Dies wird durch Eingaben mit dem Namen 'end' definiert. 
+3) Kontrollen zum Festlegen des Endes der Rekurrenz. Das Ende der Rekurrenz wird durch ein Eingabefeld mit dem Namen 'end' definiert.
 
+Mögliche Werte sind <b>'no'</b>, <b>'date_of_end'</b>, <b>'occurences_count'</b>.
 
-Mögliche Werte sind <b>'no'</b>, <b>'date_of_end'</b> und <b>'occurences_count'</b>.
-
-Wie bei den 'repeat'-Steuerelementen sollte Ihr Formular mindestens eine Eingabe dieses Typs enthalten.
+Analog zu den 'repeat'-Kontrollen muss das Formular mindestens eine Eingabe dieses Typs enthalten.
 
 ~~~html
 <div class="dhx_repeat_right">
   <label>
-    <input type="radio" name="end" value="no" checked/>Kein Enddatum
+    <input type="radio" name="end" value="no" checked/>No end date
   </label>
 
 
   <label>
-    <input type="radio" name="end" value="date_of_end" />Nach</label>
+    <input type="radio" name="end" value="date_of_end" />After</label>
     <input type="text" name="date_of_end" />
   
 
 
   <label>
-    <input type="radio" name="end" value="occurences_count" />Nach</label>
-    <input type="text" name="occurences_count" value="1" />Vorkommen
+    <input type="radio" name="end" value="occurences_count" />After</label>
+    <input type="text" name="occurences_count" value="1" />Occurrences
 </div>
 ~~~
 
-Das Datum für die Option <b>'date_of_end'</b> sollte in ein Eingabefeld mit dem Namen 'date_of_end' eingetragen werden. Ebenso nimmt die Option <b>'occurences_count'</b> die Anzahl der Wiederholungen aus einem Eingabefeld mit dem Namen 'occurences_count'.
+The date for the <b>'date_of_end'</b> mode must be defined in an input named 'date_of_end'. The same works for the <b>'occurences_count'</b> mode, 
+that takes the number of occurrences from an input named 'occurences_count'.
 
-
-Sie können jede Option entfernen oder sie standardmäßig per verstecktem Eingabefeld festlegen:
+You can remove any type or predefine it in a hidden input:
 
 ~~~html
 <input type="hidden" name="end" value="date_of_end" />
-<input type="hidden" name="date_of_end" value="01.01.2016" />
-~~~
+<input type="hidden" name="date_of_end" value="01.01.2027" />
+~~~ 
   
-### Hinweise zur Anpassung des Wiederholungsblocks
+### Hinweise zur Änderung des Recurring-Blocks
 
-Bevor Sie den Wiederholungsblock der Lightbox anpassen, beachten Sie bitte folgende Punkte:
+Bitte, bevor Sie mit der Anwendung einer benutzerdefinierten Konfiguration für den Lightbox-Rekurrenzblock beginnen, beachten Sie Folgendes: 
 
-1. Das Attribut 'name' ist für alle Eingaben festgelegt - Eingaben mit anderen Namen werden ignoriert.
-2. Das Attribut 'value' ist für alle Eingaben festgelegt, außer bei denen, die eine direkte Benutzereingabe erfordern.
-3. Wenn Sie ein neues Formular bereitstellen, verwendet dhtmlxScheduler dieses nicht direkt - stattdessen kopiert es Ihre HTML-Struktur in das Template der Lightbox.
-Das bedeutet, dass alle Event-Handler oder benutzerdefinierten Eigenschaften, die an die DOM-Elemente Ihres Originalformulars angehängt wurden, nicht in die Lightbox übernommen werden.
-Wenn Sie Event-Handler hinzufügen möchten, sollten Sie diese entweder als Inline-HTML-Attribute einfügen oder beim Anzeigen der Lightbox an das Formular anhängen.
+1. Das 'name'-Attribut ist für alle Eingaben fest codiert - Eingaben mit anderen Namen werden ignoriert.
+2. Das 'value'-Attribut ist festgelegt für alle Eingaben, außer bei solchen, die direkte Eingaben implizieren.
+3. Wenn Sie ein neues Formular angeben - dhtmlxScheduler verwendet es nicht direkt und repliziert lediglich Ihre HTML-Struktur in das Lightbox-Template.
+Es bedeutet, dass alle Event-Handler oder benutzerdefinierten Eigenschaften, die an DOMElements Ihres Formulars vom Code angehängt wurden, nicht auf das Formular im Lightbox angewendet werden.
+Wenn Sie Ereignishandler anhängen möchten, müssen Sie ihn entweder als Inline-HTML-Attribut angeben oder einen Handler hinzufügen, wenn es im Lightbox angezeigt wird.
 
 :::note
-Beachten Sie, dass dhtmlxScheduler nicht direkt mit Ihrem Original-HTML-Formular arbeitet, sondern eine Kopie davon im Template der Lightbox erstellt.
+Beachten Sie, dhtmlxScheduler arbeitet nicht mit Ihrem ursprünglichen HTML-Formular und erstellt einfach eine Kopie in dem Lightbox-Template.
 :::
 
-Zum Beispiel:
+Beispiel:
 
-- Diese Zeile wird in die Lightbox kopiert:
+- Die folgende Zeile wird in die Lightbox kopiert:
 
 ~~~html
 <input onclick="handler()"> 
 ~~~
 
-- Aber diese nicht:
+- Die folgende Zeile wird nicht in die Lightbox kopiert:
 
 ~~~js
 addEventListener(node, "click", function(){...})

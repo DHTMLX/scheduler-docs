@@ -33,7 +33,7 @@ scheduler.templates.grid_full_date = function(start,end,event){
 };
 ~~~
 
-**Applicable views:** [Grid view](views/grid.md)
+**Доступные представления:** [Grid view](views/grid.md)
 
 ### Details
 

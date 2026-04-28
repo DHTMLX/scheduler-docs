@@ -24,7 +24,7 @@ description: "entfernt eine CSS-Klasse vom angegebenen Datum"
 // es gibt zwei Möglichkeiten, das Calendar-Objekt zu erhalten:
 
 // durch Erstellen eines Mini-Calendars
-var calendar = scheduler.renderCalendar({
+const calendar = scheduler.renderCalendar({
     container:"cal_here", 
     navigation:true,
     handler:function(date){
@@ -33,11 +33,11 @@ var calendar = scheduler.renderCalendar({
 });
 
 // oder durch Auswahl des Containers mit dem Mini-Calendar
-var calendar = document.querySelector(".dhx_mini_calendar");
+const calendar = document.querySelector(".dhx_mini_calendar");
 
-scheduler.markCalendar(calendar, new Date(2010,3,1), "my_style");
+scheduler.markCalendar(calendar, new Date(2027,3,1), "my_style");
 ...
-scheduler.unmarkCalendar(calendar, new Date(2010,3,1), "my_style");
+scheduler.unmarkCalendar(calendar, new Date(2027,3,1), "my_style");
 ~~~
 
 ### Details

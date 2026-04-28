@@ -17,7 +17,7 @@ description: "在同一视图中切换日期时，停止保持当前的滚动位
 ~~~jsx
 scheduler.config.preserve_scroll = false;
 ...
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.init('scheduler_here', new Date(2027,05,11), "week");
 ~~~
 
 **Default value:** true

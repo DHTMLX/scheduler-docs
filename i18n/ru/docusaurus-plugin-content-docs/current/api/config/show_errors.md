@@ -1,7 +1,7 @@
 ---
-sidebar_label: "show_errors"
-title: "show_errors config"
-description: "включает всплывающие окна с предупреждениями об ошибках при возникновении проблем"
+sidebar_label: show_errors
+title: "конфигурация show_errors"
+description: "включает отображение уведомлений об ошибках в случае непредвиденного поведения"
 ---
 
 # show_errors
@@ -18,10 +18,10 @@ description: "включает всплывающие окна с предупр
 scheduler.config.show_errors = false;
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Related Guides
-- [FAQ](faq.md#anerroralertappearsintherighttopcorner)
+- [ЧЗВ](faq.md#an-error-alert-appears-in-the-right-top-corner)
 
 ### Change log
-- added in v6.0
+- добавлено в версии v6.0

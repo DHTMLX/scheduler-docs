@@ -19,7 +19,7 @@ description: "HTML 요소에서 이벤트 핸들러를 제거합니다."
 ### Example
 
 ~~~jsx
-var eventId = scheduler.event("divId", "click", function(e){
+const eventId = scheduler.event("divId", "click", function(e){
     do_something();
 });
 

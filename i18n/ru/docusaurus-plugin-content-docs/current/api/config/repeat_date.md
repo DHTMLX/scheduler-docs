@@ -1,14 +1,14 @@
 ---
-sidebar_label: "repeat_date"
-title: "repeat_date config"
-description: "задаёт формат даты, используемый в поле 'End by' внутри лайтбокса 'recurring'"
+sidebar_label: repeat_date
+title: "Конфигурация repeat_date"
+description: "устанавливает формат даты поля 'End by' во всплывающем окне 'recurring'"
 ---
 
 # repeat_date
 
 ### Description
 
-@short: Задаёт формат даты, используемый в поле 'End by' внутри лайтбокса 'recurring'
+@short: Устанавливает формат даты поля 'End by' во всплывающем окне 'recurring'
 
 @signature: repeat_date: string
 
@@ -17,21 +17,21 @@ description: "задаёт формат даты, используемый в п
 ~~~jsx
 scheduler.config.repeat_date = "%m/%d/%Y";
 ...
-scheduler.init('scheduler_here',new Date(2019,05,11),"month");
+scheduler.init('scheduler_here',new Date(2027,05,11),"month");
 ~~~
 
-**Default value:** "%m.%d.%Y"
+**Значение по умолчанию:** "%m.%d.%Y"
 
 ### Details
 
 :::note
- Это свойство требует активации расширения [recurring](guides/extensions-list.md#recurring). 
+Свойство требует включённого расширения [recurring](guides/extensions-list.md#recurring).
 :::
 
-По умолчанию дата, введённая в поле 'End by', считается исключающей.
+По умолчанию дата в поле 'End by' является исключительной.
 
 ### Related API
 - [include_end_by](api/config/include_end_by.md)
 
 ### Related Guides
-- [Повторяющиеся события](guides/recurring-events.md)
+- [Recurring Events](guides/recurring-events.md)

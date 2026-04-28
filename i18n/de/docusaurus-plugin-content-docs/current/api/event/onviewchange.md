@@ -1,30 +1,30 @@
 ---
-sidebar_label: "onViewChange"
-title: "onViewChange event"
-description: "Wird ausgelöst, nachdem die aktuelle Ansicht zu einer anderen gewechselt wurde"
+sidebar_label: onViewChange
+title: "onViewChange-Ereignis"
+description: "wird ausgelöst, nachdem die aktuelle Ansicht auf eine andere gewechselt wurde"
 ---
 
 # onViewChange
 
 ### Description
 
-@short: Wird ausgelöst, nachdem die aktuelle Ansicht zu einer anderen gewechselt wurde
+@short: Wird ausgelöst, nachdem die aktuelle Ansicht auf eine andere gewechselt wurde
 
-@signature: onViewChange: (new_mode: string, new_date: object) =\> void
+@signature: onViewChange: (new_mode: string, new_date: Date) =\> void
 
 ### Parameters
 
-- `new_mode` - (required) *string* - die aktualisierte Ansicht
-- `new_date` - (required) *object* - das aktualisierte Datum
+- `new_mode` - (erforderlich) *string* - eine neue Ansicht
+- `new_date` - (erforderlich) *Date* - ein neues Datum
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onViewChange", function (new_mode , new_date){
-    // beliebige benutzerdefinierte Logik hier
+scheduler.attachEvent("onViewChange", (new_mode, new_date) => {
+    // any custom logic here
 });
 ~~~
 
 ### Details
 
-Dieses Event wird immer dann ausgelöst, wenn die aktuelle Ansicht aktualisiert wird.
+Dieses Ereignis wird jedes Mal aufgerufen, wenn die aktuelle Ansicht geändert wird.

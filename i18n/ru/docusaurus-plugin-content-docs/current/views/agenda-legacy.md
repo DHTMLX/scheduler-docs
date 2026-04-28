@@ -74,11 +74,11 @@ scheduler.locale.labels.agenda_tab = "Моя Agenda";
 Чтобы определить диапазон дат, отображаемых в виде Agenda, используйте свойства [agenda_end](api/config/agenda_end.md) и [agenda_start](api/config/agenda_start.md):
 
 ~~~js
-//для отображения дат, начиная с 1 июня 2019 года
-scheduler.config.agenda_start = new Date(2019, 5, 1); 
+//для отображения дат, начиная с 1 июня 2026 года
+scheduler.config.agenda_start = new Date(2026, 5, 1); 
 
-//для отображения дат до 1 июня 2020 года
-scheduler.config.agenda_end = new Date(2020, 5, 1);   
+//для отображения дат до 1 июня 2027 года
+scheduler.config.agenda_end = new Date(2027, 5, 1);   
 ~~~
 
 ## Включение кнопок Следующий/Предыдущий/Сегодня 

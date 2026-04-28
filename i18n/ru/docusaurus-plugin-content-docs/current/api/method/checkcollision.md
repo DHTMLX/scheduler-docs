@@ -1,7 +1,7 @@
 ---
-sidebar_label: "checkCollision"
-title: "checkCollision method"
-description: "проверяет, пересекается ли заданное событие с каким-либо существующим событием(ями) в тот же временной промежуток"
+sidebar_label: checkCollision
+title: "checkCollision метод"
+description: "проверяет, происходит ли указанное событие во время, которое уже занято другим(и) событием(ями)"
 ---
 
 # checkCollision
@@ -17,18 +17,18 @@ description: "проверяет, пересекается ли заданное
 - `event` - (required) *object* - объект события
 
 ### Returns
-- ` result` - (boolean) - возвращает <i>false</i>, если временной слот события уже занят, иначе возвращает <i>true</i>.
+- `result` - (boolean) - возвращает <i>false</i>, если время события уже занято, иначе - <i>true</i>.
 
 ### Example
 
 ~~~jsx
-var event = {
+const event = {
    text : "New Event",
-   start_date : new Date(2013, 02, 20, 10, 00),
-   end_date : new Date(2013, 02, 20, 14, 00)
+   start_date : new Date(2027, 02, 20, 10, 00),
+   end_date : new Date(2027, 02, 20, 14, 00)
 };
 
-var isOccupied = scheduler.checkCollision(event); // возвращает 'true' или 'false'
+const isOccupied = scheduler.checkCollision(event); // returns 'true' or 'false'
 ~~~
 
 ### Details
@@ -37,10 +37,10 @@ var isOccupied = scheduler.checkCollision(event); // возвращает 'true'
  Этот метод требует включения плагина [collision](guides/extensions-list.md#collision). 
 :::
 
-Имейте в виду, что этот метод вызывает событие [](api/event/oneventcollision.md).
+Note, the method invokes the [onEventCollision](api/event/oneventcollision.md) event.
 
 ### Related API
 - [](api/event/oneventcollision.md)
 
 ### Related Guides
-- [Предотвращение двойных событий в одном временном слоте](guides/collisions.md)
+- [Предотвращение двойных событий в временном интервале](guides/collisions.md)

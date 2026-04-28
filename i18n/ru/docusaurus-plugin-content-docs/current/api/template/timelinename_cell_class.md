@@ -31,7 +31,7 @@ scheduler.templates.timeline_cell_class = function(evs, date, section){
 };
 ~~~
 
-**Applicable views:** [Timeline view](views/timeline.md)
+**Доступные представления:** [Timeline view](views/timeline.md)
 
 ### Details
 

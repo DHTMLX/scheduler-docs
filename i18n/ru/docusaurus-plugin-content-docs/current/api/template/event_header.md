@@ -30,7 +30,7 @@ scheduler.templates.event_header = function(start,end,ev){
 };
 ~~~
 
-**Applicable views:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
+**Доступные представления:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
 
 ### Related Guides
 - [Шаблоны для дневного вида](views/day-view-templates.md)

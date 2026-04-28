@@ -21,7 +21,7 @@ description: "当拖拽或调整大小操作完成时触发"
 ### Example
 
 ~~~jsx
-var dragged_event;
+let dragged_event;
 scheduler.attachEvent("onBeforeDrag", function (id, mode, e){
     // 这有助于捕获正在被拖拽的事件
     dragged_event = scheduler.getEvent(id); 
@@ -29,7 +29,7 @@ scheduler.attachEvent("onBeforeDrag", function (id, mode, e){
 });
 
 scheduler.attachEvent("onDragEnd", function(id, mode, e){
-    var event_obj = dragged_event;
+    let event_obj = dragged_event;
     // 在这里放置您的自定义逻辑
 });
 ~~~

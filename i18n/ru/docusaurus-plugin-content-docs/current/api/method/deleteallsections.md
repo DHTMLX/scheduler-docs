@@ -1,16 +1,16 @@
 ---
-sidebar_label: "deleteAllSections"
-title: "deleteAllSections method"
-description: "удаляет все секции из активного вида"
+sidebar_label: deleteAllSections
+title: "deleteAllSections метод"
+description: "удаляет все секции из текущего активного представления"
 ---
 
 # deleteAllSections
 :::info
- Эта функция доступна только в PRO-версии. 
+ Эта функциональность доступна только в версии PRO. 
 :::
 ### Description
 
-@short: Удаляет все секции из активного вида
+@short: Удаляет все секции из текущего активного представления
 
 @signature: deleteAllSections: () =\> void
 
@@ -32,17 +32,17 @@ scheduler.createTimelineView({
 scheduler.deleteAllSections();
 ~~~
 
-**Applicable views:** [Timeline view](views/timeline.md)
+**Доступные представления:** [Timeline view](views/timeline.md)
 
 ### Details
 
 :::note
- Метод требует активации плагина [treetimeline](guides/extensions-list.md#treetimeline). 
-:::
+ Методы требуется активировать плагин [treetimeline](guides/extensions-list.md#treetimeline).
+ :::
 
 :::note
 
-Если текущий вид не является Timeline с рендерингом 'Tree', этот метод не будет иметь эффекта.
+Если открытое представление не является Timeline в режиме 'Tree', метод будет проигнорирован.
  
 :::
 

@@ -5,10 +5,10 @@ sidebar_label: "Select"
 
 # Select 
 
-![select_editor](/img/select_editor.png)
+![선택 편집기](/img/select_editor.png)
 
 ~~~js
-var alert_opts = [
+const alert_opts = [
     { key: 1, label: 'None' },
     { key: 2, label: 'On start date' },
     { key: 3, label: '1 day before' }
@@ -21,24 +21,24 @@ scheduler.config.lightbox.sections = [
     { name:"select", height:40, map_to:"type", type:"select", options:alert_opts},
     { name:"time", height:72, type:"time", map_to:"auto"}
 ];
-~~~            
+~~~             
 
-[Basic select editor in the lightbox](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/08_options.html)
+[라이트박스에서의 기본 선택 편집기](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/08_options.html)
 
 
 ## 초기화
 
-Select 컨트롤을 라이트박스에 포함하려면 다음 단계를 따릅니다:
+Select 컨트롤을 라이트박스에 추가하려면 아래 절차를 따르세요:
 
-1. 섹션을 lightbox 설정에 포함시키기:
+1. <b>라이트박스 구성에 섹션을 추가:</b>
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     { name:"description", ... },
     { name:"alert", height:40,map_to:"type",type:"select", options:alert_opts},
     { name:"time", ...}
 ];
-~~~
-2. 섹션의 라벨 정의하기:
+~~~ 
+2. <b>섹션의 레이블 설정:</b>
 ~~~js
 scheduler.locale.labels.section_select = "Alert";
 ~~~
@@ -46,49 +46,50 @@ scheduler.locale.labels.section_select = "Alert";
   
 
 
-[Basic select editor in the lightbox](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/08_options.html)
+
+[라이트박스에서의 기본 선택 편집기](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/08_options.html)
 
 
-## 속성 {#properties}
+## 속성
 
-'select' 컨트롤에서 자주 설정되는 주요 속성은 다음과 같습니다 (전체 목록은 [여기](api/config/lightbox.md)에서 확인할 수 있습니다):
+다음 속성들은 주로 'select' 컨트롤에 대해 중요하고 일반적으로 설정됩니다(전체 목록은 [여기](api/config/lightbox.md)를 참조):
 
 <table class="webixdoc_links">
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>name</b></td>
-  <td>(<i>string</i>) 섹션의 이름</td>
+  <td>(<i>문자열</i>) 섹션의 이름</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>height</b></td>
-  <td>(<i>number</i>) 섹션의 높이</td>
+  <td>(<i>숫자</i>) 섹션의 높이</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>map_to</b></td>
-  <td>(<i>string</i>) 섹션이 매핑되는 데이터 속성 이름</td>
+  <td>(<i>문자열</i>) 섹션에 매핑될 데이터 속성의 이름</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>type</b></td>
-  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) 섹션에 사용되는 컨트롤의 타입</td>
+  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) 섹션 컨트롤의 유형</td>
   </tr>
   <tr>
-  <td class="webixdoc_links0"><b>options</b></td>
-  <td>(<i>array of objects</i>) 'select', 'multiselect', 'radio', 'combo'와 같은 컨트롤의 선택 옵션을 정의합니다. 각 객체는 하나의 옵션을 나타내며 다음을 포함합니다: <ul> <li><b>key</b> - (<i>string</i>) 옵션의 식별자, 이벤트의 데이터 속성과 매칭됨</li> <li><b>label</b> - (<i>string</i>) 옵션의 표시 라벨</li> </ul></td> 
+  <td class="webixdoc_links0" style="vertical-align: top;"><b>options</b></td>
+  <td>(<i>객체 배열</i>) 컨트롤의 선택 옵션을 정의합니다 (<b>select, multiselect, radio, combo 컨트롤에 해당</b>). 배열의 각 객체는 하나의 옵션을 지정하며 다음 속성을 갖습니다: <ul> <li><b>key</b> - (<i>문자열</i>) 옵션의 ID. 이 속성은 이벤트의 데이터 속성과 비교하여 이벤트에 옵션을 할당합니다</li> <li><b>label</b> - (<i>문자열</i>) 옵션의 레이블</li> </ul></td> 
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>onchange</b></td>
-  <td>(<i>function</i>) 컨트롤의 값이 변경될 때 호출되는 이벤트 핸들러 함수 [Linking select controls in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/26_linked_selects_in_lightbox.html)</td>
+  <td>(<i>함수</i>) 섹션 컨트롤의 'onchange' 이벤트 핸들러 함수를 지정합니다 [Linking select controls in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/26_linked_selects_in_lightbox.html)</td>
   </tr>
   </tbody>
 </table>
 
 
-## 컨트롤에 데이터 채우기 {#populating-the-control-with-data}
+## 데이터로 컨트롤 채우기
 
-일반적으로 Select 컨트롤의 값은 [options](api/config/lightbox.md) 파라미터를 사용하여 설정합니다:
+일반적으로 Select 컨트롤의 값을 설정하려면 [options](api/config/lightbox.md) 매개변수를 사용해야 합니다:
 
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     {      name:"alert", type:"select", 
         ...
         options:[
@@ -100,14 +101,15 @@ scheduler.config.lightbox.sections =
 ];
 ~~~
 
-[options](api/config/lightbox.md) 배열의 각 항목에는 다음 두 가지 필수 속성이 포함되어야 합니다:
 
-- **key** - 옵션의 식별자
-- **label** - 옵션의 표시 라벨
+[options](api/config/lightbox.md) 매개변수의 항목은 2개의 필수 속성을 가져야 합니다:
 
-## 옵션을 동적으로 변경하기
+- **key** - 옵션의 아이디
+- **label** - 옵션의 레이블
 
-서버에서 옵션을 로드하려면 [options](api/config/lightbox.md) 속성에 [serverList](api/method/serverlist.md) 메서드가 반환한 값을 할당합니다:
+## 동적으로 옵션 변경
+
+서버에서 컨트롤의 옵션을 채우려면 [options](api/config/lightbox.md) 옵션을 [serverList](api/method/serverlist.md) 메서드가 반환하는 값으로 설정하세요:
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -116,30 +118,29 @@ scheduler.config.lightbox.sections = [
     {name:"time", ...}
 ];
 
-scheduler.load("./data/types");
-~~~
+scheduler.load("/api/types");
+~~~ 
 
 :::note
-**serverList** 메서드에 대한 자세한 내용은 [관련 문서](api/method/serverlist.md)를 참고하세요.
+The details on the **serverList** method are given in the [related article](api/method/serverlist.md).
 :::
 
-[load](api/method/load.md) 메서드의 데이터 응답에는 서버 리스트 이름과 일치하는 컬렉션이 JSON으로 포함되어야 합니다.
-[이 예시](guides/data-formats.md#json-with-collections)와 같이 작성할 수 있습니다:
+load 메서드의 데이터 응답은 JSON 형식으로 서버 목록 이름이 지정된 컬렉션을 포함해야 합니다 [다음 형식의 예시를 참조](guides/data-formats.md#json-with-collections):
 
 ~~~js
 { 
    "data":[
       {
           "id":"1",
-          "start_date":"2019-03-02 15:00:00",
-          "end_date":"2019-03-04 16:00:00",
+          "start_date":"2027-03-02 15:00:00",
+          "end_date":"2027-03-04 16:00:00",
           "text":"Interview",
           "type":"1"
       },
       {
           "id":"2",
-          "start_date":"2019-03-02 17:00:00",
-          "end_date":"2019-03-04 18:00:00",
+          "start_date":"2027-03-02 17:00:00",
+          "end_date":"2027-03-04 18:00:00",
           "text":"Performance review",
           "type":"2"
       }
@@ -155,12 +156,9 @@ scheduler.load("./data/types");
 ~~~
 
 
-[Populating a select editor from the server](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/09_connector_options.html)
+The [parse](api/method/parse.md) 메서드는 초기화 이후 옵션을 불러와야 하는 경우에도 사용할 수 있습니다.
 
-
-[parse](api/method/parse.md) 메서드도 스케줄러가 초기화된 후 옵션을 로드하는 데 사용할 수 있습니다.
-
-컨트롤의 옵션을 새로운 값으로 업데이트하려면 [updateCollection](api/method/updatecollection.md) 메서드를 사용할 수 있습니다:
+지정된 옵션을 새 값으로 업데이트해야 하는 경우에는 [updateCollection](api/method/updatecollection.md) 메서드를 사용할 수 있습니다:
 
 ~~~js
 scheduler.updateCollection("type", [      
@@ -170,4 +168,4 @@ scheduler.updateCollection("type", [
 ]);
 ~~~
 
-자세한 내용은 [scheduler.serverList](api/method/serverlist.md) 문서를 참고하세요.
+자세한 내용은 [scheduler.serverList](api/method/serverlist.md) 문서를 참고하십시오.

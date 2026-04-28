@@ -1,36 +1,36 @@
 ---
-sidebar_label: "attachEvent"
-title: "attachEvent method"
-description: "dhtmlxScheduler의 내부 이벤트에 핸들러를 연결합니다."
+sidebar_label: attachEvent
+title: "attachEvent 메서드"
+description: "dhtmlxScheduler의 내부 이벤트에 핸들러를 연결합니다"
 ---
 
 # attachEvent
 
 ### Description
 
-@short: DhtmlxScheduler의 내부 이벤트에 핸들러를 연결합니다.
+@short: dhtmlxScheduler의 내부 이벤트에 핸들러를 연결합니다
 
 @signature: attachEvent: (name: SchedulerEventName, handler: SchedulerCallback, settings?: any) =\> string
 
 ### Parameters
 
-- `name` - (required) *SchedulerEventName* - 이벤트 이름으로, 대소문자를 구분하지 않습니다.
-- `handler` - (required) *function* - 이벤트를 처리할 함수
-- `settings` - (optional) *object* - 선택 사항으로, 이벤트 핸들러에 대한 [설정 객체](#propertiesofsettingsobject)
+- `name` - (required) *SchedulerEventName* - 이벤트의 이름이며 대소문자 구분 없이
+- `handler` - (required) *function* - 핸들러 함수
+- `settings` - (optional) *object* - 이벤트 핸들러를 위한 [설정 객체](#properties-of-settings-object)
 
 ### Returns
-- `event` - (string) - id 연결된 이벤트 핸들러의 식별자
+- `event` - (string) - 연결된 이벤트 핸들러의 ID
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onEventSave",function(id,ev){
+scheduler.attachEvent("onEventSave", (id, ev) => {
     if (!ev.text) {
         alert("텍스트는 비어 있을 수 없습니다");
         return false;
     }
     return true;
-})
+});
 ~~~
 
 ### Related samples
@@ -39,36 +39,37 @@ scheduler.attachEvent("onEventSave",function(id,ev){
 
 ### Details
 
-동일한 이벤트에 여러 핸들러를 연결할 수 있으며, 모두 실행됩니다.<br> 만약 어떤 핸들러가 *false*를 반환하면, 관련 동작이 중단됩니다.<br>
-핸들러들은 연결된 순서대로 호출됩니다.
+동일한 이벤트에 여러 핸들러를 연결할 수 있으며, 이들 모두가 실행됩니다.
+일부 핸들러가 `false`를 반환하면 관련 작업이 차단됩니다.
+이벤트 핸들러는 연결된 순서대로 처리됩니다.
 
-[event](api/method/event.md)를 통해 추가된 모든 이벤트 리스너는 [destructor](api/method/destructor.md)가 호출될 때 자동으로 제거됩니다.
+All event listeners attached using [`event()`](api/method/event.md) will be detached automatically when the [`destructor()`](api/method/destructor.md) is called.
 
-## 설정 객체의 속성 {#propertiesofsettingsobject}
+## 설정 객체의 속성
 
-설정 객체는 두 가지 속성을 포함할 수 있습니다:
+설정 객체에는 두 개의 속성이 포함될 수 있습니다:
 
-1\. **id** - (*string*) 이벤트 핸들러의 고유 식별자 
+1\. `id` - (*string*) 이벤트 핸들러의 ID
 
-이 식별자를 사용하면 특정 핸들러를 이벤트에서 쉽게 제거할 수 있습니다:
+예를 들어, 지정된 이벤트에서 핸들러를 쉽게 분리(detach)할 수 있습니다:
 
-~~~js
-scheduler.attachEvent("onClick", function(){
+~~~js {3}
+scheduler.attachEvent("onClick", () => {
     console.log("event click");
-}, {id: "my-click"}); /*!*/
-... //나중에:
-gantt.detachEvent("my-click");
+}, { id: "my-click" });
+// 나중에:
+scheduler.detachEvent("my-click");
 ~~~
 
-2\. **once** - (*boolean*) 이벤트가 한 번만 실행되어야 하는지 여부
+2\. `once` - (*boolean*) 이벤트가 한 번만 실행될지 정의합니다.
 
-이 값을 *true*로 설정하면, 이벤트가 처음 발생할 때만 처리됩니다. 예를 들어:
+해당 속성을 *true*로 설정하면 이벤트의 첫 트리거를 포착할 수 있습니다. 예:
 
-~~~js
-scheduler.attachEvent("onClick", function(){
+~~~js {4}
+scheduler.attachEvent("onClick", () => {
     console.log("다음 이벤트 클릭을 캡처합니다");
     return true;
-}, {once: true}); /*!*/
+}, { once: true });
 ~~~
 
 ### Related API

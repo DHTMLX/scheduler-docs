@@ -1,26 +1,26 @@
 ---
-sidebar_label: "onTimelineCreated"
+sidebar_label: onTimelineCreated
 title: "onTimelineCreated event"
-description: "срабатывает один раз после настройки вида Timeline, но до его отображения на странице (применимо только к виду Timeline)"
+description: "срабатывает после инициализации Timeline view, но ещё не отрисован на странице (только Timeline view)"
 ---
 
 # onTimelineCreated
 
 ### Description
 
-@short: Срабатывает один раз после настройки вида Timeline, но до его отображения на странице (применимо только к виду Timeline)
+@short: Срабатывает после инициализации Timeline view, но ещё не отрисован на странице (только Timeline view)
 
-@signature: onTemplatesReady: (config: object) =\> void
+@signature: onTemplatesReady: (config: object) => void
 
 ### Parameters
 
-- `config` - (required) *object* - объект конфигурации для вида Timeline
+- `config` - (required) *object* - объект конфигурации Timeline view
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onTimelineCreated", function (config){
-    //любая ваша логика здесь
+    // любая ваша логика здесь
 });
 ~~~
 

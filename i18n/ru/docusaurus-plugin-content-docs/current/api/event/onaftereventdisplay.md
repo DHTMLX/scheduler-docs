@@ -1,14 +1,14 @@
 ---
-sidebar_label: "onAfterEventDisplay"
-title: "onAfterEventDisplay event"
-description: "срабатывает, когда scheduler меняет вид, дни, время и т.д., чтобы отобразить событие, указанное методом 'showEvent', и происходит ПОСЛЕ отображения события."
+sidebar_label: onAfterEventDisplay
+title: "onAfterEventDisplay событие"
+description: "срабатывает, когда планировщик переключает виды, дни, время и т. д., чтобы показать событие, указанное методом 'showEvent', и срабатывает после отображения события"
 ---
 
 # onAfterEventDisplay
 
 ### Description
 
-@short: Срабатывает, когда scheduler меняет вид, дни, время и т.д., чтобы отобразить событие, указанное методом 'showEvent', и происходит ПОСЛЕ отображения события.
+@short: Срабатывает, когда планировщик переключает виды, дни, время и т. д. для отображения события, указанного методом 'showEvent', и срабатывает после отображения события
 
 @signature: onAfterEventDisplay: (event: object, string: view) =\> void
 
@@ -21,7 +21,7 @@ description: "срабатывает, когда scheduler меняет вид, 
 
 ~~~jsx
 scheduler.attachEvent("onAfterEventDisplay", function(event,view){
-    //любая ваша логика здесь
+    // любая ваша логика здесь
 });
 ~~~
 

@@ -15,10 +15,10 @@ description: "legt die Startgrenze für den erlaubten Datumsbereich fest"
 ### Example
 
 ~~~jsx
-scheduler.config.limit_start = new Date(2018,5,15);
-scheduler.config.limit_end = new Date(2018,6,15);
+scheduler.config.limit_start = new Date(2027,5,15);
+scheduler.config.limit_end = new Date(2027,6,15);
 ...
-scheduler.init('scheduler_here', new Date(2018,5,30), "week");
+scheduler.init('scheduler_here', new Date(2027,5,30), "week");
 ~~~
 
 **Default value:** null
@@ -35,8 +35,8 @@ scheduler.init('scheduler_here', new Date(2018,5,30), "week");
 Die Einstellungen **limit_start** und **limit_end** beschränken den Datumsbereich, in dem neue Events erstellt werden können. Zusätzlich ist es möglich, das Anzeigen von Events außerhalb dieses erlaubten Bereichs zu verhindern, indem die Eigenschaft `limit_view` aktiviert wird:
 
 ~~~js
-scheduler.config.limit_start = new Date(2018,5,15);
-scheduler.config.limit_end = new Date(2018,6,15);
+scheduler.config.limit_start = new Date(2027,5,15);
+scheduler.config.limit_end = new Date(2027,6,15);
 scheduler.config.limit_view  = true;
 ~~~
 

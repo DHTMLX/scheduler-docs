@@ -1,26 +1,26 @@
 ---
-sidebar_label: "backbone"
-title: "backbone method"
-description: "поддерживает синхронизацию планировщика с обновлениями в Backbone модели и наоборот"
+sidebar_label: backbone
+title: "Метод Backbone"
+description: "позволяет планировщику отражать все изменения данных в модели Backbone и наоборот"
 ---
 
 # backbone
 
 ### Description
 
-@short: Поддерживает синхронизацию планировщика с обновлениями в Backbone модели и наоборот
+@short: Позволяет планировщику отражать все изменения данных в модели Backbone и наоборот
 
 @signature: backbone: (events: any) =\> void
 
 ### Parameters
 
-- `events` - (required) *Backbone* - collection        коллекция данных Backbone
+- `events` - (обязательный) *Backbone* - коллекция данных Backbone
 
 ### Example
 
 ~~~jsx
 $(".myscheduler").dhx_scheduler({
-    date:new Date(2009,5,25),
+    date:new Date(2027,5,25),
     mode:"month"
 });
 
@@ -28,7 +28,7 @@ scheduler.backbone(events);
 ~~~
 
 ### Related samples
-- [Backbone integration](https://docs.dhtmlx.com/scheduler/samples/10_integration/07_backbone.html)
+- [Интеграция Backbone](https://docs.dhtmlx.com/scheduler/samples/10_integration/07_backbone.html)
 
 ### Related Guides
-- [Интеграция с Backbone](integrations/legacy/backbone-integration.md)
+- [Интеграция Backbone](integrations/legacy/backbone-integration.md)

@@ -21,7 +21,7 @@ description: "드래그 또는 리사이즈 작업이 완료되었을 때 트리
 ### Example
 
 ~~~jsx
-var dragged_event;
+let dragged_event;
 scheduler.attachEvent("onBeforeDrag", function (id, mode, e){
     // 드래그 중인 이벤트를 캡처하는 데 사용됩니다
     dragged_event = scheduler.getEvent(id); 
@@ -29,7 +29,7 @@ scheduler.attachEvent("onBeforeDrag", function (id, mode, e){
 });
 
 scheduler.attachEvent("onDragEnd", function(id, mode, e){
-    var event_obj = dragged_event;
+    let event_obj = dragged_event;
     // 여기에 사용자 정의 로직을 작성하세요
 });
 ~~~

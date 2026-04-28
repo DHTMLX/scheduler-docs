@@ -17,7 +17,7 @@ description: "ermöglicht das Ziehen der Lightbox über ihren Header"
 ~~~jsx
 scheduler.config.drag_lightbox = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,5,30),"week");
+scheduler.init('scheduler_here',new Date(2027,5,30),"week");
 ~~~
 
 **Default value:** true

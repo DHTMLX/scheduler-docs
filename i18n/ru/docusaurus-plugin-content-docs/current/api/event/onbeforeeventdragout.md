@@ -1,31 +1,31 @@
 ---
-sidebar_label: "onBeforeEventDragOut"
-title: "onBeforeEventDragOut event"
-description: "срабатывает непосредственно перед тем, как событие будет перетащено за пределы scheduler-а"
+sidebar_label: onBeforeEventDragOut
+title: "onBeforeEventDragOut событие"
+description: "срабатывает до того, как перетащенное событие будет перемещено за пределы планировщика"
 ---
 
 # onBeforeEventDragOut
 
 ### Description
 
-@short: Срабатывает непосредственно перед тем, как событие будет перетащено за пределы scheduler-а
+@short: Срабатывает до того, как перетащенное событие будет перемещено за пределы планировщика
 
 @signature: onBeforeEventDragOut: (id: string, ev: object, e: Event) =\> boolean
 
 ### Parameters
 
-- `id` - (required) *string* - id события
-- `ev` - (required) *object* - объект с данными события
+- `id` - (required) *string* - идентификатор события
+- `ev` - (required) *object* - объект данных события
 - `e` - (required) *Event* - нативный объект события
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено стандартное действие события (<b>true</b>) или остановлено (<b>false</b>)
+- `result` - (boolean) - определяет, будет ли выполнение действия по умолчанию события выполнено (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onBeforeEventDragOut", function (id, ev, e){
-    //любая пользовательская логика здесь
+    // любая ваша логика здесь
     return true;
 });
 ~~~
@@ -33,8 +33,8 @@ scheduler.attachEvent("onBeforeEventDragOut", function (id, ev, e){
 ### Details
 
 :::note
- Это событие происходит только при drag and drop между разными scheduler-ами. 
-:::
+ Событие срабатывает только в случае drag-n-drop между планировщиками. 
+ :::
 
 ### Related Guides
-- [Операции Drag-and-Drop](guides/drag-between.md)
+- [Операции drag-and-drop](guides/drag-between.md)

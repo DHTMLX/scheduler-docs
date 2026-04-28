@@ -18,7 +18,7 @@ description: "definiert die Startstunde für die Stunden-Skala (Y-Achse)"
 scheduler.config.first_hour = 9;
 scheduler.config.last_hour = 18;
 ...
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.init('scheduler_here', new Date(2027,05,11), "week");
 ~~~
 
 **Default value:** 0 (null)

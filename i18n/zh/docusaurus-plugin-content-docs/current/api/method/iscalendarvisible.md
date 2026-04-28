@@ -19,7 +19,7 @@ description: "用于识别调度器中日历当前是否显示"
 
 ~~~jsx
 // 检查迷你日历是否可见
-var check = scheduler.isCalendarVisible(); // -> <div class="dhx_minical_popup">…</div>
+const check = scheduler.isCalendarVisible(); // -> <div class="dhx_minical_popup">…</div>
 ~~~
 
 ### Related samples

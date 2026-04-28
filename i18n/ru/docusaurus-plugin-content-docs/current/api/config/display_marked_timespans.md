@@ -1,14 +1,14 @@
 ---
-sidebar_label: "display_marked_timespans"
-title: "display_marked_timespans config"
-description: "управляет подсветкой отмеченных (заблокированных) временных интервалов в scheduler"
+sidebar_label: display_marked_timespans
+title: "конфигурация display_marked_timespans"
+description: "определяет, следует ли выделять помеченные (заблокированные) диапазоны времени в планировщике"
 ---
 
 # display_marked_timespans
 
 ### Description
 
-@short: Управляет подсветкой отмеченных (заблокированных) временных интервалов в scheduler
+@short: Определяет, следует ли выделять помеченные (заблокированные) диапазоны времени в планировщике
 
 @signature: display_marked_timespans: boolean
 
@@ -17,20 +17,20 @@ description: "управляет подсветкой отмеченных (за
 ~~~jsx
 scheduler.config.display_marked_timespans = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Details
 
-Это свойство доступно начиная с версии 3.5.
+Свойство доступно начиная с версии 3.5.
 
 :::note
- Для работы свойства требуется активированный плагин [limit](guides/extensions-list.md#limit). 
+Свойство требует активации плагина [limit](guides/extensions-list.md#limit).
 :::
 
-Если значение установить в *false*, временные интервалы останутся заблокированными, но будут отображаться как обычные ячейки scheduler без какой-либо специальной подсветки.
+Если установить опцию в значение *false*, временные диапазоны останутся заблокированными, но будут отображаться как обычные ячейки планировщика.
 
 ### Related Guides
 - [Блокировка и выделение дат](guides/limits.md)

@@ -19,11 +19,11 @@ description: "модуль ajax для scheduler"
 {status: "ok", data: "value", data2: "value2"}
 
 
-var xhr = scheduler.ajax;
+const xhr = scheduler.ajax;
 
 // HTTP GET
 xhr.get("server.php").then(function(response) {
-    var res = JSON.parse(response.responseText); 
+    const res = JSON.parse(response.responseText); 
     if (res && res.status == "ok") {
         // ответ в порядке
     }
@@ -36,7 +36,7 @@ xhr.post({
            paramName: "paramValue"
     }
 }).then(function(response){
-    var res = JSON.parse(response.responseText); 
+    const res = JSON.parse(response.responseText); 
     if (res && res.status == "ok") {
         // ответ в порядке
     }
@@ -107,7 +107,7 @@ scheduler.ajax.post({
            paramName: "paramValue"
     },
     callback: function(result){
-           var response = result.xmlDoc;
+           const response = result.xmlDoc;
        
            alert(response.responseText);
     }
@@ -221,7 +221,7 @@ dhtmlxScheduler поддерживает promises (включая IE8+). Вну�
 Для создания промиса используйте:
 
 ~~~js
-var promise = new scheduler.Promise(function(resolve, reject) {...});
+const promise = new scheduler.Promise(function(resolve, reject) {...});
 ~~~
 
 Реализация промисов находится внутри Scheduler, поэтому не глобальна.
@@ -254,4 +254,4 @@ scheduler.Promise.all([
 ~~~
 
 ### Change log
-- added in version 6.0
+- добавлено в версии v6.0

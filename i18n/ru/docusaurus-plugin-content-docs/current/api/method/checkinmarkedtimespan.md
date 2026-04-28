@@ -1,50 +1,50 @@
 ---
-sidebar_label: "checkInMarkedTimespan"
-title: "checkInMarkedTimespan method"
-description: "определяет, попадает ли событие в интервал времени заданного типа"
+sidebar_label: checkInMarkedTimespan
+title: "checkInMarkedTimespan метод"
+description: "проверяет, принадлежит ли событие временному интервалу определенного типа"
 ---
 
 # checkInMarkedTimespan
 
 ### Description
 
-@short: Определяет, попадает ли событие в интервал времени заданного типа
+@short: Проверяет, принадлежит ли событие временному интервалу определенного типа
 
 @signature: checkInMarkedTimespan: (event: any, timespan: string) =\> boolean
 
 ### Parameters
 
 - `event` - (required) *object* - объект события    
-- `timespan` - (required) *string* - тип интервала времени
+- `timespan` - (required) *string* - тип временнóго интервала
 
 ### Returns
-- `isIn` - (boolean) - <i>true</i>, если событие происходит внутри указанного типа интервала времени
+- `isIn` - (boolean) - <i>true</i>, если событие находится в временном интервале указанного типа
 
 ### Example
 
 ~~~jsx
 scheduler.addMarkedTimespan({
-    start_date: new Date(2013,4,1), 
-    end_date: new Date(2013,7,1), 
+    start_date: new Date(2027,4,1), 
+    end_date: new Date(2027,7,1), 
     css: "red_section",
     type:"discount"
 });
 
-var eventId = scheduler.addEvent({
-    start_date: "16-05-2013 09:00",
-    end_date:   "16-05-2013 12:00",
+const eventId = scheduler.addEvent({
+    start_date: "16-05-2027 09:00",
+    end_date:   "16-05-2027 12:00",
     text:   "Meeting",
     holder: "John", 
     room:   "5"     
 })
 ...
 scheduler.checkInMarkedTimespan(scheduler.getEvent(eventId), "discount"); //->true
-~~~
+~~~ 
 
-**Applicable views:** [Timeline view](views/timeline.md)
+**Доступные представления:** [Timeline view](views/timeline.md)
 
 ### Details
 
 :::note
- Метод требует активации плагина [limit](guides/extensions-list.md#limit). 
+ Метод требует активированного плагина [limit](guides/extensions-list.md#limit).
 :::

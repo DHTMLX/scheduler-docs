@@ -19,7 +19,7 @@ description: "entfernt einen Event-Handler von einem HTML-Element"
 ### Example
 
 ~~~jsx
-var eventId = scheduler.event("divId", "click", function(e){
+const eventId = scheduler.event("divId", "click", function(e){
     do_something();
 });
 

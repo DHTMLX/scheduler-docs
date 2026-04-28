@@ -17,7 +17,7 @@ description: "스케줄러에서 표시된(차단된) 시간 구간이 하이라
 ~~~jsx
 scheduler.config.display_marked_timespans = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** true

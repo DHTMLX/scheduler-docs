@@ -1,14 +1,14 @@
 ---
-sidebar_label: "expand"
-title: "expand method"
-description: "открывает scheduler на весь экран для лучшей видимости"
+sidebar_label: expand
+title: "метод expand"
+description: "разворачивает планировщик во весь экран"
 ---
 
 # expand
 
 ### Description
 
-@short: Открывает scheduler на весь экран для лучшей видимости
+@short: Разворачивает планировщик во весь экран
 
 @signature: expand: () =\> void
 
@@ -21,8 +21,8 @@ scheduler.expand();
 ### Details
 
 :::note
- Метод требует включения плагина [expand](guides/extensions-list.md#expand). 
-::: 
+ Метод требует включённого плагина [expand](guides/extensions-list.md#expand).
+:::
 
 ![collapse_method](/img/collapse_method.png)
 

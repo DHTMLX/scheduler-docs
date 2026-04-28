@@ -1,27 +1,25 @@
 ---
-title: "RTL (오른쪽-왼쪽) 모드"
-sidebar_label: "RTL (오른쪽-왼쪽) 모드"
+title: "RTL(오른쪽에서 왼쪽으로) 모드"
+sidebar_label: "RTL(오른쪽에서 왼쪽으로) 모드"
 ---
 
-# RTL (오른쪽-왼쪽) 모드
+# RTL 모드(오른쪽에서 왼쪽으로)
 
-스케줄러는 RTL(오른쪽-왼쪽) 모드를 지원하며, [rtl configuration option](api/config/rtl.md)을 사용하여 활성화할 수 있습니다.
+스케줄러에서 RTL 모드를 활성화하려면 [rtl 구성 옵션](api/config/rtl.md)을 사용하세요.
 
 ~~~js
 scheduler.config.rtl = true;
 ~~~
 
-RTL 모드를 활성화하면, 스케줄러의 헤더 요소를 제외한 모든 캘린더 요소들이 기본적으로 오른쪽에서 왼쪽으로 표시됩니다.
+RTL 모드를 구현하면 달력의 모든 요소가 자동으로 오른쪽에서 왼쪽으로 표시되지만, 스케줄러 헤더의 요소는 제외됩니다.
 
 ![rtl](/img/rtl.png)
 
+[기본 초기화](https://docs.dhtmlx.com/scheduler/samples/14_rtl/01_basic_init.html)
 
-[Basic initialization](https://docs.dhtmlx.com/scheduler/samples/14_rtl/01_basic_init.html)
+스케줄러 헤더의 요소 순서를 재정렬하려면 아래처럼 요소의 CSS 클래스를 재정의해야 합니다:
 
-
-스케줄러 헤더 요소의 순서를 조정하려면, 아래와 같이 해당 CSS 클래스를 커스터마이즈해야 합니다:
-
-~~~js
+~~~css
 <style type="text/css" >
     html, body{
         margin:0px;
@@ -47,41 +45,41 @@ RTL 모드를 활성화하면, 스케줄러의 헤더 요소를 제외한 모든
 
 ## RTL 모드 예시
 
-<b>월간 보기(RTL 모드)</b>
+<b>RTL 모드의 월 뷰</b>
 
-아래는 RTL 모드에서 월간 보기가 표시되는 방식입니다. 이벤트 제목과 세부 정보가 각 이벤트 박스의 오른쪽에 정렬됩니다.
+RTL 모드에서 월 뷰가 어떻게 보이는지 확인해 봅시다. 이벤트의 제목과 세부 정보는 이제 이벤트 상자의 오른쪽에 위치합니다.
 
 ![month_view_rtl](/img/month_view_rtl.png)
 
-<b>이벤트 상세 창(RTL 모드)</b>
+<b>RTL 모드에서의 이벤트 창</b>
 
-아래 이미지는 RTL 모드가 적용된 경우 이벤트 상세 창이 시각적으로 어떻게 변경되는지 보여줍니다.
+아래 그림은 RTL 모드를 적용한 후 이벤트 상세 정보가 담긴 창의 모양이 어떻게 바뀌는지에 대한 좋은 예시입니다.
 
 ![window_with_details](/img/window_with_details.png)
 
-<b>타임라인(RTL 모드)</b>
+<b>RTL 모드의 타임라인</b>
 
-RTL 모드에서는 타임라인이 스케줄러 내에서 자동으로 오른쪽에서 왼쪽으로 정렬됩니다.
+RTL 모드는 스케줄러의 타임라인을 자동으로 오른쪽에서 왼쪽으로 배치합니다.
 
 ![timeline_rtl](/img/timeline_rtl.png)
 
-## RTL 모드에서 요소 커스터마이징
+## RTL 모드에서 요소 맞춤 설정
 
-RTL 모드에서 특정 요소를 개별적으로 스타일링할 수 있도록 추가 CSS 클래스가 제공됩니다.
+RTL 모드에서 각 요소에 고유한 스타일을 적용하려면 추가 CSS 클래스를 사용할 수 있습니다.
 
-사용 가능한 클래스는 다음과 같습니다:
+다음은 설정 가능한 CSS 클래스 목록입니다:
 
-- <b>dhx_cal_container_rtl</b> - 전체 스케줄러 컨테이너에 적용
-- <b>dhx_tooltip_rtl</b> - 툴팁 요소에 적용
-- <b>dhx_quick_info_rtl</b> - 'quick info' 팝업에 적용
-- <b>dhx_cal_light_rtl</b> - 라이트박스에 적용
+- <b>dhx_cal_container_rtl</b> - 컨테이너 전체에 스타일을 적용합니다
+- <b>dhx_tooltip_rtl</b> - 툴팁에 스타일을 적용합니다
+- <b>dhx_quick_info_rtl</b> - '빠른 정보(quick info)' 팝업에 스타일을 적용합니다
+- <b>dhx_cal_light_rtl</b> - 라이트박스에 스타일을 적용합니다
 
-예시:
+예를 들면:
 
-~~~js
+~~~css
 .dhx_cal_container_rtl .dhx_cal_event{
     margin-right: -5px;
 }
 ~~~
 
-이 코드는 컨테이너 내의 모든 스케줄러 이벤트를 오른쪽으로 5px 이동시킵니다.
+스케줄러 컨테이너의 모든 이벤트는 오른쪽으로 5px 만큼 이동합니다.

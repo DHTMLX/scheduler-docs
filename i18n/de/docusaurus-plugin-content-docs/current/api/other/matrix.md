@@ -28,7 +28,7 @@ scheduler.createTimelineView({
     render:"bar"
 });
 
-var configObj = scheduler.matrix;
+const configObj = scheduler.matrix;
 ~~~
 
 ### Related samples

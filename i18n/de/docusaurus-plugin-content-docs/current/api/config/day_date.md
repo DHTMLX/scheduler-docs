@@ -17,7 +17,7 @@ description: "Gibt das Datumsformat an, das auf der X-Achse in den Ansichten Wee
 ~~~jsx
 scheduler.config.day_date = "%F %j";
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 **Default value:** "%D, %F %j"
@@ -32,13 +32,13 @@ Diese Konfiguration wird nur wirksam, wenn sie vor der ersten Initialisierung de
 
 ~~~js
 scheduler.config.day_date = "%F %j";
-scheduler.init('scheduler_here', new Date(2020, 7, 5), "day");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "day");
 ~~~
 
 Um das Datumsformat nach der Initialisierung zu ändern, muss das [day_date](api/template/day_date.md) Template überschrieben werden:
 
 ~~~js
-var formatDayDate = scheduler.date.date_to_str("%F %j");
+const formatDayDate = scheduler.date.date_to_str("%F %j");
 scheduler.templates.day_date = function(date) {
     return formatDayDate(date);
 };

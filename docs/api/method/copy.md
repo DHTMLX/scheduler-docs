@@ -22,7 +22,7 @@ description: "creates a deep copy of the provided object"
 ### Example
 
 ~~~jsx
-var backupEvent = scheduler.copy(scheduler.getEvent(id));
+const backupEvent = scheduler.copy(scheduler.getEvent(id));
 ~~~
 
 ### Change log

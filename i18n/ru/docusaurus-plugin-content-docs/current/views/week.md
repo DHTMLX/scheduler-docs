@@ -16,7 +16,7 @@ sidebar_label: "Week View"
 
 ~~~js
 // стандартная инициализация. Вид "Неделя" добавляется автоматически
-scheduler.init('scheduler_here', new Date(2019,0,10), "week");
+scheduler.init('scheduler_here', new Date(2027,0,10), "week");
 ...
 scheduler.load("/data/events");
 ~~~

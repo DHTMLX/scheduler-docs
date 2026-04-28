@@ -1,40 +1,40 @@
 ---
-title: "Пользовательский контрол Lightbox"
-sidebar_label: "Пользовательский контрол Lightbox"
+title: "Пользовательский элемент управления лайтбокс"
+sidebar_label: "Пользовательский элемент управления лайтбокс"
 ---
 
-# Пользовательский контрол Lightbox
+# Пользовательский элемент управления лайтбокс
 
 Чтобы создать пользовательский контрол (редактор), определите новый объект следующим образом:
 
 ~~~js
 scheduler.form_blocks["my_editor"]={
-    render:function(config){ // config - объект конфигурации секции
-        var height="(config.height||50)+""px";
+    render:function(config){ // config- section configuration object
+        const height="(config.height||50)+""px";
         return "<div class='dhx_cal_ltext' style='height:"+height+";'>" + 
             "<textarea></textarea></div>";
     },
     set_value:function(node,value,ev,config){
-        // node - HTML-элемент, связанный с определённой выше разметкой
-        // value - значение, указанное в свойстве map_to
-        // ev - объект события
-        // config - объект конфигурации секции
+        // node - HTML object related to HTML defined above
+        // value - value defined by map_to property
+        // ev - event object
+        // config - section configuration object
         node.querySelector("textarea").value = value || "";
     },
     get_value:function(node,ev,config){
-        // node - HTML-элемент, связанный с определённой выше разметкой
+        // node - HTML object related to HTML defined above
         // event object
-        // config - объект конфигурации секции
+        // config - section configuration object
         return node.querySelector("textarea").value;
     },
     focus:function(node){
-        // node - HTML-элемент, связанный с определённой выше разметкой
+        // node - HTML object related to HTML defined above
         node.querySelector("textarea").focus();
     }
 };
 ~~~
 
-Использование:
+Usage:
 
 ~~~js
 scheduler.locale.labels.section_details = "Details";
@@ -44,27 +44,27 @@ scheduler.config.lightbox.sections="["
 ];
 ~~~
 
-Важно **избегать** использования самозакрывающихся тегов внутри HTML, возвращаемого функцией "render", так как это может вызвать проблемы с парсингом в браузере:
+Убедитесь, что вы не используете укороченный синтаксис закрывающих тегов внутри HTML-кода, возвращаемого функцией render, поскольку это может вызвать проблемы с разбором в браузере:
 
 ~~~js
-// плохо:
+// bad:
 render:function(){
     return "<div id='box'/>";
 }
 
-// хорошо:
+// good:
 render:function(){
     return "<div id='box'></div>";
 }
 ~~~
 
 
-[Custom editor in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/05_custom_editor.html)
+[Пользовательский редактор в лайтбоксе](https://docs.dhtmlx.com/scheduler/samples/02_customization/05_custom_editor.html)
 
 
 ## Пример
 
-Вот пример того, как создать подобный пользовательский редактор:
+Рассмотрим, как создать следующий пользовательский редактор:
 
 ![custom_editor](/img/custom_editor.png)
   
@@ -72,7 +72,7 @@ render:function(){
 ~~~js
 scheduler.form_blocks["my_editor"]={
     render:function(sns){
-        return "<div class='dhx_cal_ltext'>" +
+        return "<div class='dhx_cal_ltext' style='height:60px;'>" +
             "Text&nbsp;<input name='text' type='text'>
 
 " +
@@ -87,7 +87,7 @@ scheduler.form_blocks["my_editor"]={
         return node.querySelector("[name='text']").value;
     },
     focus:function(node){
-        var input = node.querySelector("[name='text']"); 
+        const input = node.querySelector("[name='text']"); 
         input.select(); 
         input.focus(); 
     }
@@ -101,4 +101,4 @@ scheduler.config.lightbox.sections="["
 ~~~
 
 
-[Custom editor in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/05_custom_editor.html)
+[Пользовательский редактор в лайтбоксе](https://docs.dhtmlx.com/scheduler/samples/02_customization/05_custom_editor.html)

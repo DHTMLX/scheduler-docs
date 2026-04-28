@@ -17,7 +17,7 @@ description: "控制调度器中标记（阻止）的时间段是否高亮显示
 ~~~jsx
 scheduler.config.display_marked_timespans = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** true

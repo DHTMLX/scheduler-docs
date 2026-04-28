@@ -17,7 +17,7 @@ description: "Gibt das Datumsformat an, das im Feld 'End by' innerhalb des 'recu
 ~~~jsx
 scheduler.config.repeat_date = "%m/%d/%Y";
 ...
-scheduler.init('scheduler_here',new Date(2019,05,11),"month");
+scheduler.init('scheduler_here',new Date(2027,05,11),"month");
 ~~~
 
 **Default value:** "%m.%d.%Y"

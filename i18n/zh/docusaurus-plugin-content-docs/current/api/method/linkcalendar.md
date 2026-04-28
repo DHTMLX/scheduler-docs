@@ -20,7 +20,7 @@ description: "每当调度器（scheduler）中的活动日期发生变化时，
 ### Example
 
 ~~~jsx
-var calendar = scheduler.renderCalendar({
+const calendar = scheduler.renderCalendar({
     container:"cal_here", 
     navigation:true,
     handler:function(date){

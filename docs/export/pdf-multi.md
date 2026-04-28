@@ -28,13 +28,13 @@ scheduler.toPDFRange(from, to, view, path, scheme);
 4. '_custom_' - can be used to enable a custom colormap ( requires php coding, see details in chapter ['Export to PDF. Configuring service'](export/pdf.md#using-export-services)
 5. '_fullcolor_' - actual background and text colors that are used while exporting
 
-For example, to export pages of the 'week' view from 1st January, 2012 till 1st February, 2012, you may call the method as in:
+For example, to export pages of the 'week' view from 1st January, 2027 till 1st February, 2027, you may call the method as in:
 
 
 ~~~js
 scheduler.toPDFRange(
-    new Date(2012,0,1), 
-    new Date(2012, 1,1),
+    new Date(2027,0,1), 
+    new Date(2027, 1,1),
     'week', 
     'generate.php', 
     'fullcolor'

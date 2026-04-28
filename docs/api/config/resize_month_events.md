@@ -17,7 +17,7 @@ description: "enables the possibility to resize multi-day events in the Month vi
 ~~~jsx
 scheduler.config.resize_month_events = true;
 
-scheduler.init('scheduler_here',new Date(2010,0,10),"month");
+scheduler.init('scheduler_here',new Date(2027,0,10),"month");
 ~~~
 
 **Default value:** false

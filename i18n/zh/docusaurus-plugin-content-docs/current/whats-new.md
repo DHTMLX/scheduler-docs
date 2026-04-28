@@ -5,7 +5,112 @@ sidebar_label: "更新日志"
 
 # 更新日志
 
-如果您正在从早期版本升级 Scheduler，请参阅 [Migration From Older Versions](migration.md) 获取更多详细信息。
+如果您正在从旧版本更新 Scheduler，请查看 [从旧版本迁移](migration.md) 以了解详细信息。
+
+
+7.2.13
+-------------
+<span class='release_date'>2026年3月31日。错误修复版本</span>
+
+### 修复
+
+- 修复 [React Scheduler](integrations/react/overview.md) 中的不正确的试用警告
+- 修复在 [React Scheduler](integrations/react/overview.md) 中与远程更新相关的回归问题：编辑事件时未将更改应用到现有事件
+
+
+7.2.12
+-------------
+<span class='release_date'>2026年3月23日。错误修复版本</span>
+
+### 修复
+
+- 修复在使用非默认主题且启用 [cookie] 插件时，在重新加载页面时 [React Scheduler] 崩溃的问题
+- 修复在 [React Scheduler](integrations/react/overview.md) 中，`data` 属性中的 `save` URL 未正确应用的回归问题
+- 修复在“此及以下事件”模式中编辑一个非首个出现的 [重复事件] 时未应用所有 [Lightbox] 字段更改的问题
+- 修复基于事件条件动态更改 [Quick Info] 按钮时未正确更新弹出框的问题
+- 修复在“此事件及以下事件”模式中修改单个 [重复事件] 发生的文本在编辑后被后续发生覆盖的问题
+- 修复 [Quick Info] 弹出框的溢出样式，以正确处理较长的事件描述
+- 修复在 [React Scheduler](integrations/react/overview.md) 添加事件到现有数据集时，通过 `useState` 函数触发的脚本错误
+
+
+### 更新
+
+- 新增：可以用自定义对话框替换 [recurring event confirmation modal](guides/recurring-events.md#customconfirmationmodal)。
+- 新增：可以在 [React Scheduler](integrations/react/overview.md) 中通过 modals.onRecurrenceConfirm 属性替换 [recurring event confirmation modal](integrations/react/overview.md#customizingtherecurrenceconfirmationmodal)。
+
+
+7.2.11
+-------------
+<span class='release_date'>2026年1月12日。错误修复版本</span>
+
+### 修复
+
+- 修复在 [React Scheduler](integrations/react/overview.md) 中，如果 `save` 处理程序未返回新的 ID，新事件会被重复创建的问题
+- 修复在 [Timeline view](views/timeline.md) 模板未在 [React Scheduler](integrations/react/overview.md) 中应用的问题
+- 修复在 [Timeline view](views/timeline.md) 使用过滤时，事件绑定到分区的不正确问题，在 [React Scheduler](integrations/react/overview.md) 中
+- 修复在 [Agenda view](views/agenda.md) 中，当 [header configuration](guides/initialization.md#initializing-scheduler-via-header-config) 未包含 `date` 部分时的脚本错误
+- 修复在使用 [Material skin](guides/skins.md#material-skin) 时，[Year] 和 [Agenda] 视图的头部元素显示不正确的问题
+- 修复从基于插件的初始视图切换到标准视图时，在 [React Scheduler](integrations/react/overview.md) 中的布局问题
+- 修复当一个全天 [重复事件] 的持续时间恰好为 24 小时时，出现虚假事件块的问题
+- 修复在同一天通过拖拽创建多个事件时，在 [Month view] 中启用 `year_view` 插件后 [Lightbox] 无法打开的问题
+
+
+7.2.10
+-------------
+<span class='release_date'>2025年12月10日。错误修复版本</span>
+
+### 修复
+
+- 修复在从最后一列拖动时，事件向左跳动的问题，这在 [multiday Units view] 中发生
+- 修复在特定月份中 [Month view] 某些日期单元格缺失的问题
+- 修复在移动设备上使用 [container_autoresize] 插件时的拖拽创建问题
+- 修复水平滚动后在 [Units view] 中通过双击创建事件时的失败问题
+
+
+7.2.9
+---------------
+<span class='release_date'>2025年9月19日。错误修复版本</span>
+
+### 修复
+
+- 修复在 [Timeline view] 中出现的内存泄漏
+- 修复 [container_autoresize] 插件与 [Week Agenda] 视图之间的兼容性问题
+- 修复 [onScaleDblClick] 未按预期触发的问题
+- 修复在处理 [重复事件] 时 [onEventSave] 与 [DataProcessor] 的行为不一致的问题
+- 修复 [React Scheduler] 中因组件的多个实例导致模板重复的问题
+- 修复在 [React Scheduler](integrations/react/overview.md) 中对 `events` prop 的变化处理不正确的问题
+
+
+## 7.2.8
+
+<span class='release_date'>2025年7月30日。错误修复版本</span>
+
+### 新增
+
+- 为 [React Scheduler](integrations/react/overview.md) 添加了示例，覆盖 Commercial、Enterprise、Ultimate 以及 Evaluation 包
+
+### 修复
+
+- 修复在删除其后续出现项后拖动一个 [重复事件] 时行为不正确的问题
+- 确保对修改过的 [series instances]，Lightbox 的 “Repeat Event” 控件被禁用
+- 修复对 [recurring events] 的遗留标签显示不正确的问题
+- 修复 [max_month_events] 设置与 [multi-day events] 之间的冲突，这导致在 [Month view] 中事件消失或重叠
+- 确保通过 HTTPS 设置的 Scheduler cookies 现在包含 **Secure** 属性
+- 修复 [event_duration] 设置导致解析的事件数据损坏的问题
+- 修复 [time_step] 设置导致解析的事件数据损坏的问题
+
+
+## 7.2.6
+
+<span class='release_date'>2025年6月26日。错误修复版本</span>
+
+### 修复
+
+- 修复事件时间的秒级精度问题
+- 修复在短月份期间 [Timeline view] 的拖拽行为不正确的问题
+- 修复 [Timeline view] 中事件的舍入不正确的问题
+- 防止 [DataProcessor] 向 [custom router] 参数添加 !nativeeditor_status 属性
+
 
 ## 7.2.5
 

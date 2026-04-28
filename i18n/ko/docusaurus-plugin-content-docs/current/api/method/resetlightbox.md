@@ -15,17 +15,17 @@ description: "현재 라이트박스의 HTML 객체 요소를 제거합니다."
 ### Example
 
 ~~~jsx
-var full_lightbox = [
+const full_lightbox = [
     { name: "description", map_to: "text", type: "textarea", focus: true},
     { name: "time",        map_to: "auto", type: "time"}
 ];
-var restricted_lightbox = [
+const restricted_lightbox = [
     { name: "description", map_to: "text", type: "textarea", focus: true},
 ];
 ...
 scheduler.attachEvent("onBeforeLightbox", function(event_id) {
     scheduler.resetLightbox();
-    var ev = scheduler.getEvent(event_id);  
+    const ev = scheduler.getEvent(event_id);  
     if (ev.restricted ==true){
         scheduler.config.lightbox.sections = restricted_lightbox;
     } else {

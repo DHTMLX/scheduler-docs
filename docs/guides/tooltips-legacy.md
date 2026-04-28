@@ -60,7 +60,7 @@ scheduler.config.delta_y = -20;
 - [tooltip_date_format](api/template/tooltip_date_format.md) - specifies the format of start and end dates displayed in the tooltip
 
 ~~~js
-var format = scheduler.date.date_to_str("%Y-%m-%d %H:%i"); 
+const format = scheduler.date.date_to_str("%Y-%m-%d %H:%i"); 
 scheduler.templates.tooltip_text = function(start,end,event) {
     return "<b>Event:</b> "+event.text+"
 

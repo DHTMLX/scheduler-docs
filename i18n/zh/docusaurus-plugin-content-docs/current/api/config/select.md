@@ -17,7 +17,7 @@ description: "切换事件框内select栏的可见性"
 ~~~jsx
 scheduler.config.select = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
 **Default value:** true

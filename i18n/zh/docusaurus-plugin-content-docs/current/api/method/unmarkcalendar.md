@@ -24,7 +24,7 @@ description: "从指定日期移除一个 CSS 类"
 // 获取日历对象有两种方式：
 
 // 通过创建一个迷你日历
-var calendar = scheduler.renderCalendar({
+const calendar = scheduler.renderCalendar({
     container:"cal_here", 
     navigation:true,
     handler:function(date){
@@ -35,9 +35,9 @@ var calendar = scheduler.renderCalendar({
 // 或者通过选择包含迷你日历的容器
 var calendar = document.querySelector(".dhx_mini_calendar");
 
-scheduler.markCalendar(calendar, new Date(2010,3,1), "my_style");
+scheduler.markCalendar(calendar, new Date(2027,3,1), "my_style");
 ...
-scheduler.unmarkCalendar(calendar, new Date(2010,3,1), "my_style");
+scheduler.unmarkCalendar(calendar, new Date(2027,3,1), "my_style");
 ~~~
 
 ### Details

@@ -1,67 +1,68 @@
 ---
-title: "Benutzerdefiniertes Ereignisfeld"
-sidebar_label: "Benutzerdefiniertes Ereignisfeld"
+title: "Benutzerdefinierte Ereignis-Box"
+sidebar_label: "Benutzerdefinierte Ereignis-Box"
 ---
 
-# Benutzerdefiniertes Ereignisfeld 
+# Benutzerdefinierte Ereignis-Box
 
-dhtmlxScheduler ermöglicht es Ihnen, die Darstellung von Ereignissen individuell anzupassen.
+dhtmlxScheduler bietet die Möglichkeit, eine benutzerdefinierte Anzeige für Ereignisse zu definieren.
 
 :::note
-Diese Funktion ist nur mit [Tagesansicht](views/day.md), [Week-Ansicht](views/week.md) und [Units-Ansicht](views/units.md) verfügbar.
+Gilt nur für die Day View, Week View und Units View
 :::
 
 ## Technik
 
-Sie können Ereignisse mit der Methode [renderEvent](api/method/renderevent.md) anpassen:
+Die Anpassung von Ereignissen erfolgt mit Hilfe der Methode **renderEvent**:
 
 ~~~js
 scheduler.renderEvent = function(container, ev) {
-    // Ihr Anpassungscode
+    // your customizing code
 }
 ~~~
 
-- **_container_** - das Containerelement für das Ereignis
-- **_ev_** - das Ereignisobjekt selbst
+- **_container_** - der Container des Ereignisses
+- **_ev_** - das Ereignisobjekt
 
 
-[Custom event box](https://docs.dhtmlx.com/scheduler/samples/02_customization/27_custom_event_box.html)
+[Benutzerdefinierte Ereignis-Box](https://docs.dhtmlx.com/scheduler/samples/02_customization/27_custom_event_box.html)
 
 
 ## Wichtige Hinweise
 
-- Wenn Sie _true_ zurückgeben, wird Ihr benutzerdefiniertes Rendering angewendet. Wenn Sie _false_ zurückgeben, wird das Standard-Rendering verwendet.
-- Einige CSS-Klassen haben spezielle Funktionen und sollten als erste in der className des Elements stehen:
-  - **_dhx_event_move_** - macht das Element verschiebbar (normalerweise der Ereignis-Header).
-  - **_dhx_event_resize_** - ermöglicht es, die Dauer des Ereignisses durch Ziehen des Elements zu ändern.
+- Die Rückgabe von **_true_** wendet die benutzerdefinierte Logik an, die Rückgabe von **_false_** wendet die Standardlogik an.
+- Einige CSS-Klassen haben eine spezielle Funktion (sie müssen zuerst im className des Elements stehen):
+  - **_dhx_event_move_** - Ein Element mit diesem Stil kann gezogen werden (in der Regel ist es der Ereignis-Header).
+  - **_dhx_event_resize_** - Das Ziehen eines Elements mit diesem Stil ändert die Dauer des Ereignisses.
 
 ~~~js
-var html = "<div class='dhx_event_move my_event_move' "
+const html = "<div class='dhx_event_move my_event_move' "
 ~~~
 
 ## Beispiel
 
-Hier sehen Sie ein Beispiel für eine benutzerdefinierte Darstellung eines Ereignisses:
+Hier ist ein Beispiel für ein benutzerdefiniertes Aussehen:
 
 ![custom_event_box](/img/custom_event_box.png)
 
-~~~js title="Definieren eines benutzerdefinierten Aussehens für das Ereignisfeld"
+[Festlegen eines benutzerdefinierten Aussehens für die Ereignis-Box](Specifying a custom look for the event's box)
+~~~js
 scheduler.templates.event_class = function(start, end, event) {
     return "my_event";
 };
 
 scheduler.renderEvent = function(container, ev) {
-    var container_width = container.style.width; // z.B. "105px"
+    const container_width = container.style.width; // z.B. "105px"
 
     // Verschiebebereich
-    var html = "<div class='dhx_event_move my_event_move' style='width: " + 
+    let html = "<div class='dhx_event_move my_event_move' style='width: " + 
     container_width + "'></div>";
 
     // Container für den Inhalt des Ereignisses
-    html += "<div class='my_event_body'>";
+    html+= "<div class='my_event_body'>";
     html += "<span class='event_date'>";
-    // Zwei Optionen: nur das Startdatum für kurze Ereignisse oder Start+Ende für längere anzeigen
-    if ((ev.end_date - ev.start_date)/60000 > 40) { // wenn das Ereignis länger als 40 Minuten dauert
+    //zwei Optionen hier: Nur das Startdatum für kurze Ereignisse oder Start-+Enddatum für längere
+    if ((ev.end_date - ev.start_date)/60000>40){ // wenn das Ereignis länger als 40 Minuten dauert
         html += scheduler.templates.event_header(ev.start_date, ev.end_date, ev);
         html += "</span>
 
@@ -69,24 +70,24 @@ scheduler.renderEvent = function(container, ev) {
     } else {
         html += scheduler.templates.event_date(ev.start_date) + "</span>";
     }
-    // Anzeige des Ereignistexts
-    html += "<span>" + scheduler.templates.event_text(ev.start_date, ev.end_date, ev) +
-    "</span></div>";
+    // Anzeige des Texts des Ereignisses
+    html += "<span>" + scheduler.templates.event_text(ev.start_date,ev.end_date,ev)+
+    "</span>" + "</div>";
 
-    // Bereich für die Größenanpassung
+    // der Bereich zur Größenänderung
     html += "<div class='dhx_event_resize my_event_resize' style='width: " +
     container_width + "'></div>";
 
     container.innerHTML = html;
-    return true; // wichtig: true für benutzerdefiniertes Rendering, false für Standard
+    return true; //erforderlich, true - um ein benutzerdefiniertes Formular anzuzeigen, false - das Standardformular
 };
 ~~~
 
-Das zugehörige CSS sieht so aus:
+und das dazugehörige CSS lautet Folgendes:
 
 ~~~html
 <style type="text/css" >
-    /* Hintergrund und Rahmen für den gesamten Container */
+    /* der Hintergrundfarbe für den ganzen Container und dessen Rand*/
     .my_event {
         background: #add8e6;
         color: black;
@@ -99,23 +100,23 @@ Das zugehörige CSS sieht so aus:
         height: 22px;
     }
 
-    /* Stile für den Ereignisinhalt */
+    /* Stile für den Inhalt des Ereignisses */
     .dhx_cal_event.my_event .my_event_body {
         padding-top: 3px;
         padding-left: 5px;
     }
-    /* Styling für das Ereignisdatum */
+    /* Informationen zum Datum des Ereignisses */
     .my_event .event_date {
         font-weight: bold;
         padding-right: 5px;
     }
-    /* Bereich für die Größenanpassung */
+    /* Bereich zur Größenänderung des Ereignisses */
     .my_event_resize {
         height: 3px;
         position: absolute;
         bottom: -1px;
     }
-    /* Bereich zum Verschieben */
+    /* Bereich zum Verschieben des Ereignisses */
     .my_event_move {
         position: absolute;
         top: 0;
@@ -125,7 +126,7 @@ Das zugehörige CSS sieht so aus:
 </style>
 ~~~
 
-Alternativ können Sie anstelle von festen Farben auch CSS-Variablen verwenden, zum Beispiel so:
+Sie können auch CSS-Variablen anstelle fester Farbwerte verwenden, wie folgt:
 
 ~~~html
 <style>
@@ -141,4 +142,4 @@ Alternativ können Sie anstelle von festen Farben auch CSS-Variablen verwenden, 
 ~~~
 
 
-[Custom event box](https://docs.dhtmlx.com/scheduler/samples/02_customization/27_custom_event_box.html)
+[Benutzerdefinierte Ereignis-Box](https://docs.dhtmlx.com/scheduler/samples/02_customization/27_custom_event_box.html)

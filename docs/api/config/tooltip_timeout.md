@@ -20,7 +20,7 @@ scheduler.plugins({
 });
 
 scheduler.config.tooltip_timeout = 1000;
-scheduler.init("scheduler_here", new Date(2026, 10, 20), "week");
+scheduler.init("scheduler_here", new Date(2027, 10, 20), "week");
 ~~~
 
 **Default value:** 30
