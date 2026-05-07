@@ -64,6 +64,11 @@ Below you will find a brief overview of the guides which tell you about basic Sc
   <td><span>[dhtmlxScheduler with ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)</span> An elaborated tutorial that explores the specificity of implementing Scheduler with ASP.NET MVC and ASP.NET WebAPI 2.</td>
   <td>[![dotnet_mvc_tutorial](/img/dotnet_mvc_tutorial.png)](/integrations/dotnet/howtostart-dotnet/)</td>
   </tr>
+
+  <tr>
+  <td><span>[dhtmlxScheduler with Blazor](integrations/dotnet/howtostart-blazor.md)</span> A step-by-step tutorial that shows how to host Scheduler in a Blazor Web App via JavaScript interop.</td>
+  <td>[![dotnet_core_tutorial](/img/dotnet_core_tutorial.png)](/integrations/dotnet/howtostart-blazor/)</td>
+  </tr>
   <tr>
   <td><span>[dhtmlxScheduler with PHP](integrations/php/howtostart-plain-php.md)</span> A step-by-step tutorial that discusses how to implement a Scheduler with plain PHP without any frameworks.</td>
   <td>[![php_tutorial](/img/php_tutorial.png)](/integrations/php/howtostart-plain-php/)</td>

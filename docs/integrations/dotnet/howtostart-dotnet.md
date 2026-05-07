@@ -10,6 +10,7 @@ sidebar_label: "ASP.NET MVC"
 You can also explore other server-side integration possibilities of Scheduler by choosing one of the following tutorials:
 
 - [dhtmlxScheduler with ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
+- [dhtmlxScheduler with Blazor](integrations/dotnet/howtostart-blazor.md)
 - [dhtmlxScheduler with Node.js](integrations/node/howtostart-nodejs.md)
 - [dhtmlxScheduler with PHP](integrations/php/howtostart-plain-php.md)
 - [dhtmlxScheduler with PHP:Slim](integrations/php/howtostart-php-slim4.md)
