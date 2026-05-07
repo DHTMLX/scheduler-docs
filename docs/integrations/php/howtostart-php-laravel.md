@@ -3,7 +3,7 @@ title: "dhtmlxScheduler with PHP:Laravel"
 sidebar_label: "PHP: Laravel"
 ---
 
-# dhtmlxScheduler with PHP:Laravel
+# dhtmlxScheduler with PHP:Laravel (v11+)
 
 This tutorial describes how to add dhtmlxScheduler into a [Laravel](https://laravel.com/) app.
 
@@ -54,11 +54,11 @@ Firstly, we'll add a new page with dhtmlxScheduler to our app. Go to the *resour
 ~~~html title="resources/views/scheduler.blade.php"
 <!DOCTYPE html>
 <head>
-   <meta http-equiv="Content-type" content="text/html; charset="utf-8"">
+   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
    <script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js"></script>
    <link href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css"
-           rel="stylesheet">
+         rel="stylesheet">
 
    <style type="text/css">
        html, body{
@@ -85,7 +85,7 @@ Firstly, we'll add a new page with dhtmlxScheduler to our app. Go to the *resour
    <div class="dhx_cal_data"></div>
 </div>
 <script type="text/javascript">
-   scheduler.init("scheduler_here");
+    scheduler.init("scheduler_here", new Date(2026, 0, 6), "week");
 </script>
 </body>
 ~~~
@@ -103,6 +103,8 @@ Go to *routes/web.php* and change the default route:
 
 ~~~php title="routes/web.php"
 <?php
+
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('scheduler');
@@ -124,18 +126,18 @@ Be sure to update database configuration in .env, for example:
 
 
 ~~~php title=".env"
-DB_CONNECTION="mysql"
-DB_HOST="127.0.0.1"
-DB_PORT="3306"
-DB_DATABASE="scheduler-test"
-DB_USERNAME="root"
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=scheduler-test
+DB_USERNAME=root
 DB_PASSWORD=
 ~~~
 
 The next step is to create [model classes](https://laravel.com/docs/11.x/eloquent#defining-models) and [migrations](https://laravel.com/docs/11.x/migrations#generating-migrations).
 You can generate classes and migration files using the Artisan command:
 
-~~~js
+~~~php
 php artisan make:model Event --migration
 ~~~
 
@@ -148,9 +150,9 @@ The code for the Events table looks like this:
 ~~~php title="database/migrations/_create_events_table.php"
 <?php
 
-use IlluminateSupportFacadesSchema;
-use IlluminateDatabaseSchemaBlueprint;
-use IlluminateDatabaseMigrationsMigration;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateEventsTable extends Migration
 {
@@ -188,33 +190,6 @@ And run the migration:
 php artisan migrate
 ~~~
 
-:::note
-At this step, if you use an older version of MySQL database, you may get an error which looks like this: "Syntax error or access violation: 1071 Specified key was too long; max key length is 1000 bytes".
-:::
-
-If it happens, go to `app/Providers/AppServiceProvider.php` and add required settings to **AppServiceProvider**:
-
-~~~php title="app/Providers/AppServiceProvider.php"
-<?php
-
-namespace AppProviders;
-
-use IlluminateSupportServiceProvider;
-use IlluminateSupportFacadesSchema; /*!*/
-
-class AppServiceProvider extends ServiceProvider
-{
-   public function boot()
-   {
-       Schema::defaultStringLength(191); /*!*/
-   }
-   ...
-}
-~~~
-
-[Here are more details on this particular error](https://laravel-news.com/laravel-5-4-key-too-long-error).
-
-
 While we are at the migration, we can generate some test data for our app. Generate a [seeder](https://laravel.com/docs/11.x/seeding) class using the artisan command:
 
 ~~~php
@@ -226,24 +201,28 @@ Add some data to **EventsTableSeeder**:
 
 ~~~php title="database/seeds/EventsTableSeeder.php"
 <?php
-use IlluminateDatabaseSeeder;
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 class EventsTableSeeder extends Seeder
 {
    public function run()
    {
        DB::table('events')->insert([
-           ['id'=>1, 'text'=>'Event #1', 'start_date'=>'2018-12-05 08:00:00',
-                'end_date'=>'2018-12-05 12:00:00'],
-           ['id'=>2, 'text'=>'Event #2', 'start_date'=>'2018-12-06 15:00:00',
-                'end_date'=>'2018-12-06 16:30:00'],
-           ['id'=>3, 'text'=>'Event #3', 'start_date'=>'2018-12-04 00:00:00',
-                'end_date'=>'2018-12-20 00:00:00'],
-           ['id'=>4, 'text'=>'Event #4', 'start_date'=>'2018-12-01 08:00:00',
-                'end_date'=>'2018-12-01 12:00:00'],
-           ['id'=>5, 'text'=>'Event #5', 'start_date'=>'2018-12-20 08:00:00',
-                'end_date'=>'2018-12-20 12:00:00'],
-           ['id'=>6, 'text'=>'Event #6', 'start_date'=>'2018-12-25 08:00:00',
-                'end_date'=>'2018-12-25 12:00:00']
+           ['id'=>1, 'text'=>'Event #1', 'start_date'=>'2026-01-05 08:00:00',
+                'end_date'=>'2026-01-05 12:00:00'],
+           ['id'=>2, 'text'=>'Event #2', 'start_date'=>'2026-01-06 15:00:00',
+                'end_date'=>'2026-01-06 16:30:00'],
+           ['id'=>3, 'text'=>'Event #3', 'start_date'=>'2026-01-04 00:00:00',
+                'end_date'=>'2026-01-20 00:00:00'],
+           ['id'=>4, 'text'=>'Event #4', 'start_date'=>'2026-01-07 08:00:00',
+                'end_date'=>'2026-01-07 12:00:00'],
+           ['id'=>5, 'text'=>'Event #5', 'start_date'=>'2026-01-07 08:00:00',
+                'end_date'=>'2026-01-07 12:00:00'],
+           ['id'=>6, 'text'=>'Event #6', 'start_date'=>'2026-01-09 12:00:00',
+                'end_date'=>'2026-01-09 18:00:00']
        ]);
    }
 }
@@ -255,7 +234,9 @@ And call table seeders from **DatabaseSeeder.php**:
 ~~~php title="database/seeds/DatabaseSeeder.php"
 <?php
 
-use IlluminateDatabaseSeeder;
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -291,12 +272,15 @@ Then open a new controller at **app/Http/Controllers/EventController.php** and a
 
 ~~~php title="app/Http/Controllers/EventController.php"
 <?php
-namespace AppHttpControllers;
-use AppEvent; /*!*/
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Event;
 
 class EventController extends Controller
 {
-    public function index(){ /*!*/
+    public function index(){
         $events = new Event();
 
         return response()->json([
@@ -312,19 +296,61 @@ And register a route, so the client could call this action. Note that we'll add 
 ~~~php title="routes/api.php"
 <?php
 
-use IlluminateHttpRequest;
+use App\Http\Controllers\EventController;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/data', 'EventController@index');
+Route::middleware('api')->group(function () {
+    Route::get('/events', [EventController::class, 'index']);
+});
+~~~
+
+### Adding Route Provider
+
+To avoid CSRF token mismatch we will create the following route provider:
+
+~~~php title="app/Providers/RouteServiceProvider.php"
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        $this->routes(function () {
+            Route::middleware('api')
+                ->prefix('api') // This adds /api prefix
+                ->group(base_path('routes/api.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes/web.php'));
+        });
+    }
+}
+~~~
+
+and add it to the providers storage in the bootstrap folder:
+
+~~~php title="bootstrap/providers.php"
+<?php
+
+return [
+    App\Providers\AppServiceProvider::class,
+    App\Providers\RouteServiceProvider::class, // our new route provider
+];
 ~~~
 
 And finally, call this action from the view:
 
 
-~~~php title="resources/views/scheduler.blade.php"
+~~~js title="resources/views/scheduler.blade.php"
 scheduler.config.date_format = "%Y-%m-%d %H:%i:%s";
-scheduler.init("scheduler_here", new Date(2018, 11, 3), "week");
+scheduler.init("scheduler_here", new Date(2026, 0, 6), "week");
 
-scheduler.load("/api/data");
+scheduler.load("/api/events", "json");
 ~~~
 
 [scheduler.load](api/method/load.md) sends an AJAX request to the specified URL and will expect a JSON response as we've defined before.
@@ -347,13 +373,13 @@ Each time a user switches to a new data range, scheduler will request a new port
 In order to enable this mode on the client go to `resources/views/scheduler.blade.php` and add the following line:
 
 
-~~~php title="resources/views/scheduler.blade.php"
+~~~js title="resources/views/scheduler.blade.php"
 scheduler.config.date_format = "%Y-%m-%d %H:%i:%s";
 
 scheduler.setLoadMode("day"); /*!*/
 
-scheduler.init("scheduler_here", new Date(2018, 5, 6), "week");
-scheduler.load("/api/events");
+scheduler.init("scheduler_here", new Date(2026, 0, 6), "week");
+scheduler.load("/api/events", "json");
 ~~~
 
 And update the app controller accordingly as in:
@@ -391,78 +417,82 @@ Now we need to define a controller that handles actions on the model, create rou
 
 Let's start with controllers. We'll create one RESTful [resource controller](https://laravel.com/docs/12.x/controllers#resource-controllers) for each model. It will contain methods for adding/deleting and updating the model.
 
-#### Controller for events
-
-~~~php
+~~~php title="app/Http/Controllers/EventController.php"
 <?php
 
-namespace AppHttpControllers;
+namespace App\Http\Controllers;
 
-use IlluminateHttpRequest;
-use AppEvent;
+use Illuminate\Http\Request;
+use App\Models\Event;
 
 class EventController extends Controller
 {
-   public function index(Request $request){
-       $events = new Event();
+    public function index(Request $request){
+        $events = new Event();
 
-       $from = $request->from;
-       $to = $request->to;
+        $from = $request->from;
+        $to = $request->to;
 
-       return response()->json([
-           "data" => $events->
-               where("start_date", "<", $to)->
-               where("end_date", ">=", $from)->get()
-       ]);
-   }
+        return response()->json([
+            "data" => $events->
+                where("start_date", "<", $to)->
+                where("end_date", ">=", $from)->get()
+        ]);
+    }
 
-   public function store(Request $request){
+    public function store(Request $request){
 
-       $event = new Event();
+        $event = new Event();
 
-       $event->text = strip_tags($request->text);
-       $event->start_date = $request->start_date;
-       $event->end_date = $request->end_date;
-       $event->save();
+        $event->text = strip_tags($request->text);
+        $event->start_date = $request->start_date;
+        $event->end_date = $request->end_date;
+        $event->save();
 
-       return response()->json([
-           "action"=> "inserted",
-           "tid" => $event->id
-       ]);
-   }
+        return response()->json([
+            "action"=> "inserted",
+            "tid" => $event->id
+        ]);
+    }
 
-   public function update($id, Request $request){
-       $event = Event::find($id);
+    public function update($id, Request $request){
+        $event = Event::find($id);
 
-       $event->text = strip_tags($request->text);
-       $event->start_date = $request->start_date;
-       $event->end_date = $request->end_date;
-       $event->save();
+        $event->text = strip_tags($request->text);
+        $event->start_date = $request->start_date;
+        $event->end_date = $request->end_date;
+        $event->save();
 
-       return response()->json([
-           "action"=> "updated"
-       ]);
-   }
+        return response()->json([
+            "action"=> "updated"
+        ]);
+    }
 
-   public function destroy($id){
-       $event = Event::find($id);
-       $event->delete();
+    public function destroy($id){
+        $event = Event::find($id);
+        $event->delete();
 
-       return response()->json([
-           "action"=> "deleted"
-       ]);
-   }
+        return response()->json([
+            "action"=> "deleted"
+        ]);
+    }
 }
 ~~~
 
-And a [route](https://laravel.com/docs/12.x/controllers#resource-controllers) for it:
+And the [routes](https://laravel.com/docs/12.x/controllers#resource-controllers) for it:
 
 ~~~php title="routes/api.php"
 <?php
 
-use IlluminateHttpRequest;
+use App\Http\Controllers\EventController;
+use Illuminate\Support\Facades\Route;
 
-Route::resource('events', 'EventController');
+Route::middleware('api')->group(function () {
+    Route::get('/events', [EventController::class, 'index']);
+    Route::post('/events', [EventController::class, 'store']);
+    Route::put('/events/{id}', [EventController::class, 'update']);
+    Route::delete('/events/{id}', [EventController::class, 'destroy']);
+});
 ~~~
 
 A couple of notes regarding this code:
@@ -479,21 +509,20 @@ Finally, we will [configure the client side](guides/server-integration.md#techni
 
 ~~~js title="resources/views/scheduler.blade.php"
 scheduler.config.date_format = "%Y-%m-%d %H:%i:%s";
-scheduler.setLoadMode("day"); /*!*/
-
-scheduler.init("scheduler_here", new Date(2018, 11, 3), "week");
-
-scheduler.load("/api/events"); /*!*/
-var dp = scheduler.createDataProcessor("/api/events"); /*!*/
-dp.init(scheduler);
-dp.setTransactionMode("REST");
+scheduler.setLoadMode("day");
+scheduler.init("scheduler_here", new Date(2026, 0, 6), "week");
+scheduler.load("/api/events", "json");
+const dp = scheduler.createDataProcessor({
+    url: "/api/events",
+    mode: "REST"
+});
 ~~~
 
 Now you have a fully interactive Scheduler with the ability to view, add, update and delete events.
 
 ![CRUD operations](/img/howtostart_laravel_crud.png)
 
-Please check more of [our guides](/guides/) for other features of dhtmlxGantt.
+Please check more of [our guides](/guides/) for other features of dhtmlxScheduler.
 
 ## Recurring events
 
@@ -502,7 +531,7 @@ In order to enable recurrence (e.g. "repeat event daily") you'll need to add an 
 Firstly, go to **scheduler.blade.php** and enable a recurring extension:
 
 
-~~~html  title="resourcesviewsscheduler.blade.php"
+~~~html title="resources/views/scheduler.blade.php"
 <!DOCTYPE html>
 ...
 <body>
@@ -511,10 +540,8 @@ Firstly, go to **scheduler.blade.php** and enable a recurring extension:
         scheduler.plugins({
             recurring: true /*!*/
         });
-        
-        scheduler.config.date_format = "%Y-%m-%d %H:%i:%s";
-        scheduler.init("scheduler_here", new Date(2018, 11, 3), "week");
-    </script> 
+        ...
+    </script>
 </body>
 ~~~
 
@@ -522,122 +549,38 @@ Now, update the model.
 
 Here is a complete schema, if you're starting from scratch:
 
-~~~php
+~~~php title="database/migrations/yourMigration.php"
+...
 Schema::create('events', function (Blueprint $table) {
     $table->increments('id');
     $table->string('text');
     $table->dateTime('start_date');
     $table->dateTime('end_date');
 
-    $table->string('rec_type')->nullable();
-    $table->bigInteger('event_length')->nullable();
-    $table->string('event_pid')->nullable();
+    $table->integer('duration')->nullable();
+    $table->string('rrule')->nullable();
+    $table->string('recurring_event_id')->nullable();
+    $table->string('original_start')->nullable();
+    $table->boolean('deleted')->nullable();
 
     $table->timestamps();
 });
+...
 ~~~
 
-Or, you can create the following migration:
+And you can update a migration with the following command:
 
 ~~~php
-php artisan make:migration add_recurrings_to_events_table --table="events"
+php artisan migrate:refresh
 ~~~
-
-
-~~~php
-<?php
-
-use IlluminateSupportFacadesSchema;
-use IlluminateDatabaseSchemaBlueprint;
-use IlluminateDatabaseMigrationsMigration;
-
-class AddRecurringsToEventsTable extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::table('events', function (Blueprint $table) {
-            $table->string('rec_type')->nullable();
-            $table->bigInteger('event_length')->nullable()->default(null);
-            $table->string('event_pid')->nullable();
-        });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('events', function (Blueprint $table) {
-            $table->dropColumn('rec_type');
-            $table->dropColumn('event_length');
-            $table->dropColumn('event_pid');
-        });
-    }
-}
-~~~
-
-And run the migration:
-
-~~~php
-php artisan migrate
-~~~
-
-Now, it's time to update the controller
 
 Data loading does not require any changes, but we'll need to update the write actions since editing recurring series
 [require some non-intuitive steps](guides/recurring-events.md#editingdeleting-a-certain-occurrence-in-the-series).
 
-Firstly, make sure to write new properties of the Event model in the "store" and "update" actions:
-
-~~~php
-public function store(Request $request){
-
-    $event = new Event();
-
-    $event->text = strip_tags($request->text);
-    $event->start_date = $request->start_date;
-    $event->end_date = $request->end_date;
-    $event->rec_type = $request->rec_type;
-    $event->event_length = $request->event_length;
-    $event->event_pid = $request->event_pid;
-    $event->save();
-
-    return response()->json([
-        "action"=> "inserted",
-        "tid" => $event->id
-    ]);
-}
-
-public function update($id, Request $request){
-    $event = Event::find($id);
-
-    $event->text = strip_tags($request->text);
-    $event->start_date = $request->start_date;
-    $event->end_date = $request->end_date;
-    $event->rec_type = $request->rec_type;
-    $event->event_length = $request->event_length;
-    $event->event_pid = $request->event_pid;
-    $event->save();
-
-    return response()->json([
-        "action"=> "updated"
-    ]);
-}
-~~~
-
-After that, there are three additional cases which need handling.
-
 The recurring series itself is stored as a single record, and the deleted instances of series are stored as individual records linked to series marked as 'deleted'. Due to the current implementation,
-when a server sees such item added, it should reply with the "deleted" status. Such records can be detected by the **$event->rec_type == "none"** value:
+when a server sees such an item added, it should reply with the "deleted" status. Such records can be detected by the `$event->deleted` true value:
 
-~~~php
+~~~php title="app/Http/Controllers/EventController.php"
 public function store(Request $request){
 
     $event = new Event();
@@ -645,13 +588,17 @@ public function store(Request $request){
     $event->text = strip_tags($request->text);
     $event->start_date = $request->start_date;
     $event->end_date = $request->end_date;
-    $event->rec_type = $request->rec_type;
-    $event->event_length = $request->event_length;
-    $event->event_pid = $request->event_pid;
+
+    $event->duration = $request->duration;
+    $event->rrule = $request->rrule;
+    $event->recurring_event_id = $request->recurring_event_id;
+    $event->original_start = $request->original_start;
+    $event->deleted = $request->deleted;
+
     $event->save();
 
     $status = "inserted";
-    if($event->rec_type == "none"){
+    if($event->deleted){
         $status = "deleted";
     }
 
@@ -663,79 +610,62 @@ public function store(Request $request){
 ~~~
 
 Modified occurrences of the series are stored as individual instances as well. They are linked to the recurring series and a timestamp of the default occurrences that has been modified,
-so scheduler doesn't render an occurrence created by the recurring rule. When user deletes the recurring instance, instead of deleting the modified instance, we must
-mark this item as removed by setting *rec_type* to "none":
+so the scheduler doesn't render an occurrence created by the recurring rule. Additionally, you need to handle a different special case there: when a recurring series is modified, you need to delete all modified occurrences of that series:
 
-~~~js
+~~~php
+public function update($id, Request $request){
+    $event = Event::find($id);
+
+    $event->text = strip_tags($request->text);
+    $event->start_date = $request->start_date;
+    $event->end_date = $request->end_date;
+
+    $event->duration = $request->duration;
+    $event->rrule = $request->rrule;
+    $event->recurring_event_id = $request->recurring_event_id;
+    $event->original_start = $request->original_start;
+    $event->deleted = $request->deleted;
+
+    $event->save();
+
+    // If rrule is set and recurring_event_id is null, delete modified occurrences
+    if ($event->rrule && $event->recurring_event_id === null) {
+        Event::where('recurring_event_id', $id)->delete();
+    }
+
+    return response()->json([
+        "action" => "updated"
+    ]);
+}
+~~~
+
+And finally, the `DELETE` action. Here we have to check two special cases:
+
+- if the event you are going to delete is a modified instance of the recurring series. Instead of deleting, update the record to mark `deleted`
+- if a user deletes a whole recurring series, you also need to delete all the modified instances of that series.
+
+~~~php
 public function destroy($id){
     $event = Event::find($id);
 
     // delete the modified instance of the recurring series
-    if($event->event_pid){
-        $event->rec_type = "none";
-        $event->save();
-    }else{
-        // delete a regular instance
+    if ($event->recurring_event_id) {
+        // Deleting a modified occurrence from a recurring series
+        // Instead of deleting, update the record to mark deleted (soft delete)
+        Event::where('id', $id)->update(['deleted' => 1]);
+    } else {
+        if ($event->rrule) {
+            // If deleting a recurring series, delete all modified occurrences
+            Event::where('recurring_event_id', $id)->delete();
+        }
         $event->delete();
     }
 
-    $this->deleteRelated($event);
     return response()->json([
         "action"=> "deleted"
     ]);
 }
 ~~~
-
-And finally, when user modifies or deletes a recurring series, we should delete all modified occurrences of that series. It is required, because modified occurrences are linked to the original ones via timestamps.
-
-~~~php
-private function deleteRelated($event){
-  if($event->event_pid && $event->event_pid !== "none"){
-      Event::where("event_pid", $event->id)->delete();
-  }
-}
-
-public function update($id, Request $request){
-        $event = Event::find($id);
-
-        $event->text = strip_tags($request->text);
-        $event->start_date = $request->start_date;
-        $event->end_date = $request->end_date;
-        $event->rec_type = $request->rec_type;
-        $event->event_length = $request->event_length;
-        $event->event_pid = $request->event_pid;
-        $event->save();
-        $this->deleteRelated($event); /*!*/
-        return response()->json([
-        "action"=> "updated"
-    ]);
-}
-
-public function destroy($id){
-    $event = Event::find($id);
-
-       // delete the modified instance of the recurring series
-    if($event->event_pid){
-        $event->rec_type = "none";
-        $event->save();
-    }else{
-         // delete a regular instance
-        $event->delete();
-    }
-    $this->deleteRelated($event);/*!*/
-    return response()->json([
-          "action"=> "deleted"
-    ]);
-}
-~~~
-
-### Parsing recurring series
-
-A recurring event is stored in the database as a single record that can be splitted up by Scheduler on the client side.
-If you need to get dates of separate events on the server side, use a helper library for parsing recurring events of dhtmlxScheduler on PHP. 
-
-
-You will find [the ready library on GitHub](https://github.com/DHTMLX/scheduler-helper-php).
 
 ## Application security
 
