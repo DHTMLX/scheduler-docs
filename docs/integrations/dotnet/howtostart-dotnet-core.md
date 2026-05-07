@@ -10,6 +10,7 @@ This tutorial gives you step-by-step instructions on how to create Scheduler wit
 You can also read tutorials on other server-side technologies:
 
 - [dhtmlxScheduler with ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
+- [dhtmlxScheduler with Blazor](integrations/dotnet/howtostart-blazor.md)
 - [dhtmlxScheduler with Node.js](integrations/node/howtostart-nodejs.md)
 - [dhtmlxScheduler with PHP](integrations/php/howtostart-plain-php.md)
 - [dhtmlxScheduler with PHP:Slim](integrations/php/howtostart-php-slim4.md)
