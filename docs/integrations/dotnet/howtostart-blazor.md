@@ -7,19 +7,6 @@ sidebar_label: "Blazor"
 
 This tutorial gives you step-by-step instructions on how to host Scheduler inside a Blazor Web App. Blazor renders the host page, [JavaScript interop](https://learn.microsoft.com/en-us/aspnet/core/blazor/javascript-interoperability/) initializes the Scheduler widget, and an ASP.NET Core Web API controller serves CRUD requests.
 
-You can also read tutorials on other server-side technologies:
-
-- [dhtmlxScheduler with ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
-- [dhtmlxScheduler with ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
-- [dhtmlxScheduler with Node.js](integrations/node/howtostart-nodejs.md)
-- [dhtmlxScheduler with FastAPI](integrations/python/howtostart-fastapi.md)
-- [dhtmlxScheduler with PHP](integrations/php/howtostart-plain-php.md)
-- [dhtmlxScheduler with PHP:Slim](integrations/php/howtostart-php-slim4.md)
-- [dhtmlxScheduler with PHP:Laravel](integrations/php/howtostart-php-laravel.md)
-- [dhtmlxScheduler with SalesForce LWC](integrations/salesforce/howtostart-salesforce.md)
-- [dhtmlxScheduler with Ruby on Rails](integrations/other/howtostart-ruby.md)
-- [dhtmlxScheduler with dhtmlxConnector](integrations/other/howtostart-connector.md)
-
 The application is built with the .NET 10 SDK and Visual Studio Code with the [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit). Visual Studio 2022 works as well. To keep the example focused on Scheduler integration, the demo stores events in an in-memory list rather than a database; for a persistent storage example see the [ASP.NET Core integration guide](integrations/dotnet/howtostart-dotnet-core.md#step-3-creating-models-and-database).
 
 :::note
@@ -117,14 +104,7 @@ Next steps will show you how to create a backend API and connect Scheduler to it
 
 ## Step 3. Creating models
 
-Let's begin with a data model. You'll need a class for scheduler events. dhtmlxScheduler uses [non-conventional names for model properties](guides/data-formats.md#json) from the .NET world perspective.
-
-To deal with this, the [Data Transfer Object (DTO)](https://learn.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) pattern will be used. Two kinds of models will be defined:
-
-- a domain model class that will be used inside the app
-- a DTO class that will be used to communicate with the Web API.
-
-Then mapping between the two models is implemented as explicit conversion operators.
+Let's begin with a data model. You'll need a class for scheduler events. dhtmlxScheduler uses [non-conventional names for model properties](guides/data-formats.md#json) from the .NET world perspective. This uses the same DTO pattern explained in the [ASP.NET Core tutorial](integrations/dotnet/howtostart-dotnet-core.md#define-dtos-and-mapping); the Blazor-adapted version is below.
 
 Create a **Models** folder in the project root. First, the domain model:
 
@@ -321,223 +301,17 @@ The default `date_format` config string can't express the ISO `T` delimiter, so 
 
 Everything is ready. You can run the application and see the fully-fledged Scheduler.
 
-## Dynamic loading
+## See also
 
-Each time scheduler calls our `GET` action, it loads the whole events list. It may be ok for a start, but after the app is used for several months the amount of data transferred will grow dramatically. So it may be worthwhile to implement dynamic loading, which allows scheduler to load only a required events range.
+The Web API controller in this tutorial is a basic CRUD skeleton on top of in-memory storage. The topics below apply equally to a Blazor host but are not duplicated here - follow the ASP.NET Core integration guide:
 
-On the client side it is enabled by the [scheduler.setLoadMode](api/method/setloadmode.md) method:
+- [Dynamic loading](integrations/dotnet/howtostart-dotnet-core.md#dynamic-loading) - only fetch events in the visible date range
+- [Recurring events](integrations/dotnet/howtostart-dotnet-core.md#recurring-events) - model, DTO, and POST/PUT/DELETE handling
+- [Error handling middleware](integrations/dotnet/howtostart-dotnet-core.md#error-handling)
+- [Application security / XSS protection](integrations/dotnet/howtostart-dotnet-core.md#application-security)
+- [Troubleshooting backend integration](guides/troubleshooting.md)
 
-~~~js title="wwwroot/lib/scheduler/scheduler.js"
-scheduler.setLoadMode("day");
-// load data from backend
-scheduler.load("/api/scheduler");
-~~~
-
-After that scheduler will start adding `from` and `to` date parameters to GET requests, so the backend can return only events between these dates.
-
-All we need to do is to read those parameters in our `GET` action and filter events appropriately:
-
-~~~csharp title="Controllers/SchedulerController.cs"
-[HttpGet]
-public IActionResult Get([FromQuery] DateTime? from, [FromQuery] DateTime? to)
-{
-    IEnumerable<SchedulerEvent> filteredEvents = _events;
-
-    if (from.HasValue && to.HasValue)
-    {
-        filteredEvents = _events.Where(e =>
-            e.StartDate < to.Value &&
-            e.EndDate > from.Value);
-    }
-
-    var result = filteredEvents.Select(e => (WebAPIEvent)e).ToList();
-    return Ok(result);
-}
-~~~
-
-## Recurring events
-
-In order to enable recurrence (e.g. "repeat event daily") you'll need to enable an appropriate extension on the scheduler page:
-
-~~~js title="wwwroot/lib/scheduler/scheduler.js"
-scheduler.plugins({
-    recurring: true
-});
-~~~
-
-### Updating the model
-
-We also need to update our model in order for it to store recurrence info:
-
-~~~csharp title="Models/SchedulerEvent.cs"
-namespace BlazorApp.Models;
-
-public class SchedulerEvent
-{
-    public int Id { get; set; }
-    public string? Text { get; set; }
-    public DateTime StartDate { get; set; }
-    public DateTime EndDate { get; set; }
-    public int? Duration { get; set; } /*!*/
-    public string? Rrule { get; set; } /*!*/
-    public string? RecurringEventId { get; set; } /*!*/
-    public string? OriginalStart { get; set; } /*!*/
-    public bool? Deleted { get; set; } /*!*/
-}
-~~~
-
-And the data transfer object:
-
-~~~csharp title="Models/WebAPIEvent.cs"
-namespace BlazorApp.Models;
-
-public class WebAPIEvent
-{
-    public int id { get; set; }
-    public string? text { get; set; }
-    public string? start_date { get; set; }
-    public string? end_date { get; set; }
-    public int? duration { get; set; } /*!*/
-    public string? rrule { get; set; } /*!*/
-    public string? recurring_event_id { get; set; } /*!*/
-    public string? original_start { get; set; } /*!*/
-    public bool? deleted { get; set; } /*!*/
-
-    public static explicit operator WebAPIEvent(SchedulerEvent ev)
-    {
-        return new WebAPIEvent
-        {
-            id = ev.Id,
-            text = ev.Text,
-            start_date = ev.StartDate.ToString("yyyy-MM-ddTHH:mm:ss"),
-            end_date = ev.EndDate.ToString("yyyy-MM-ddTHH:mm:ss"),
-            duration = ev.Duration, /*!*/
-            rrule = ev.Rrule, /*!*/
-            recurring_event_id = ev.RecurringEventId, /*!*/
-            original_start = ev.OriginalStart, /*!*/
-            deleted = ev.Deleted /*!*/
-        };
-    }
-
-    public static explicit operator SchedulerEvent(WebAPIEvent ev)
-    {
-        return new SchedulerEvent
-        {
-            Id = ev.id,
-            Text = ev.text,
-            StartDate = ev.start_date != null ? DateTime.Parse(ev.start_date) : DateTime.UtcNow,
-            EndDate = ev.end_date != null ? DateTime.Parse(ev.end_date) : DateTime.UtcNow,
-            Duration = ev.duration, /*!*/
-            Rrule = ev.rrule, /*!*/
-            RecurringEventId = ev.recurring_event_id, /*!*/
-            OriginalStart = ev.original_start, /*!*/
-            Deleted = ev.deleted ?? false /*!*/
-        };
-    }
-}
-~~~
-
-### Updating the API controller
-
-Lastly, we need to modify our PUT/POST/DELETE actions in order to [handle special rules of recurring events](guides/recurring-events.md#editingdeleting-a-certain-occurrence-in-the-series).
-
-Firstly, the `POST` action. We need to process a special case for recurring events - deletion of a specific occurrence of the recurring series requires creating a new record and the client will call the `insert` action for it:
-
-~~~csharp title="Controllers/SchedulerController.cs"
-[HttpPost]
-public IActionResult Post([FromBody] WebAPIEvent dto)
-{
-    if (!ModelState.IsValid) return BadRequest();
-    var evt = (SchedulerEvent)dto;
-    var action = "inserted";
-    if (dto.deleted == true) /*!*/
-    {
-        // Delete a single occurrence from a recurring series
-        action = "deleted"; /*!*/
-    }
-    evt.Id = _nextId++;
-    _events.Add(evt);
-    return Ok(new { tid = evt.Id, action });
-}
-~~~
-
-In the `PUT` action we need to make sure to update all properties of the model. Additionally, we need to handle a different special case there: when a recurring series is modified, we need to delete all modified occurrences of that series:
-
-~~~csharp title="Controllers/SchedulerController.cs"
-[HttpPut("{id:int}")]
-public IActionResult Put(int id, [FromBody] WebAPIEvent dto)
-{
-    if (!ModelState.IsValid) return BadRequest();
-    var index = _events.FindIndex(e => e.Id == id);
-    if (index == -1) return NotFound();
-
-    var evt = _events[index];
-    evt.Text = dto.text;
-    evt.StartDate = (dto.start_date != null) ? DateTime.Parse(dto.start_date) : evt.StartDate;
-    evt.EndDate = (dto.end_date != null) ? DateTime.Parse(dto.end_date) : evt.EndDate;
-    evt.Duration = dto.duration; /*!*/
-    evt.Rrule = dto.rrule; /*!*/
-    evt.RecurringEventId = dto.recurring_event_id; /*!*/
-    evt.OriginalStart = dto.original_start; /*!*/
-    evt.Deleted = dto.deleted ?? false; /*!*/
-
-    // If editing the series (rrule present, no recurring_event_id),
-    // delete all modified occurrences of that series.
-    if (!string.IsNullOrEmpty(evt.Rrule) && string.IsNullOrEmpty(evt.RecurringEventId)) /*!*/
-    {
-        var children = _events
-            .Where(e => !string.IsNullOrEmpty(e.RecurringEventId)
-                && e.RecurringEventId == evt.Id.ToString())
-            .ToList();
-        foreach (var child in children)
-        {
-            _events.Remove(child);
-        }
-    }
-
-    return Ok(new { action = "updated" });
-}
-~~~
-
-And finally, the `DELETE` action. Two special cases:
-
-- if the event you are going to delete is a modified instance of the recurring series, instead of deleting, update the record to mark `deleted`.
-- if a user deletes a whole recurring series, you also need to delete all the modified instances of that series.
-
-~~~csharp title="Controllers/SchedulerController.cs"
-[HttpDelete("{id:int}")]
-public IActionResult Delete(int id)
-{
-    var evtIndex = _events.FindIndex(e => e.Id == id);
-    if (evtIndex == -1) return NotFound();
-
-    var evt = _events[evtIndex];
-
-    if (!string.IsNullOrEmpty(evt.RecurringEventId)) /*!*/
-    {
-        // Deleting modified occurrence: soft-delete (set deleted = true)
-        evt.Deleted = true; /*!*/
-    }
-    else
-    {
-        // Deleting series or standalone event: remove children + itself
-        if (!string.IsNullOrEmpty(evt.Rrule)) /*!*/
-        {
-            var children = _events
-                .Where(e => !string.IsNullOrEmpty(e.RecurringEventId)
-                    && e.RecurringEventId == evt.Id.ToString())
-                .ToList();
-            foreach (var child in children)
-            {
-                _events.Remove(child);
-            }
-        }
-        _events.RemoveAt(evtIndex);
-    }
-
-    return Ok(new { action = "deleted" });
-}
-~~~
+For a persistent backend (Entity Framework Core + SQL Server), the [ASP.NET Core tutorial](integrations/dotnet/howtostart-dotnet-core.md) covers the full setup.
 
 ## What's next
 
