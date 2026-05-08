@@ -134,6 +134,7 @@ module.exports = {
                     },
                     items: [
                         "integrations/node/howtostart-nodejs",
+                        "integrations/python/howtostart-fastapi",
                         "integrations/dotnet/howtostart-dotnet-core",
                         "integrations/dotnet/howtostart-blazor",
                         "integrations/php/howtostart-php-laravel",
