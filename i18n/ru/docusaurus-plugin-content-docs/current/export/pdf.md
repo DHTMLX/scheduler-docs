@@ -91,7 +91,7 @@ scheduler.plugins({
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) устанавливает API-эндпойнт для запроса. Может использоваться с локальной установкой сервиса экспорта. Значение по умолчанию: <strong>https://export.dhtmlx.com/scheduler</strong></td>
+  <td>(<i>string</i>) устанавливает API-эндпойнт для запроса. Может использоваться с локальной установкой сервиса экспорта. Значение по умолчанию: `https://export.dhtmlx.com/scheduler`</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>additional_settings</b></td>

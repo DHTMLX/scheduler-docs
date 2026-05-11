@@ -77,7 +77,7 @@ scheduler.exportToPNG({
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) 내보내기 요청에 사용되는 API 엔드포인트. 로컬에 설치된 export 서비스로도 지정 가능하며 기본값은 <strong>https://export.dhtmlx.com/scheduler</strong> 입니다.</td>
+  <td>(<i>string</i>) 내보내기 요청에 사용되는 API 엔드포인트. 로컬에 설치된 export 서비스로도 지정 가능하며 기본값은 `https://export.dhtmlx.com/scheduler` 입니다.</td>
   </tr>
   </tbody>
 </table>

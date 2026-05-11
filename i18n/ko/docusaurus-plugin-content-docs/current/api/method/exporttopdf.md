@@ -79,7 +79,7 @@ scheduler.exportToPDF({
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) 내보내기 요청을 처리하는 API 엔드포인트의 URL입니다. 로컬 내보내기 서비스로도 지정할 수 있으며 기본값은 <strong>https://export.dhtmlx.com/scheduler</strong>입니다.</td>
+  <td>(<i>string</i>) 내보내기 요청을 처리하는 API 엔드포인트의 URL입니다. 로컬 내보내기 서비스로도 지정할 수 있으며 기본값은 `https://export.dhtmlx.com/scheduler` 입니다.</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>additional_settings</b></td>

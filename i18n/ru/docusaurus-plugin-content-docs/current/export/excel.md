@@ -9,14 +9,14 @@ sidebar_label: "Экспорт в Excel и iCal"
 
 ## Ограничения на размер запроса
 
-Существует общий API-эндпоинт **https://export.dhtmlx.com/scheduler**, используемый для различных методов экспорта (*exportToPDF*, *exportToPNG* и др.). **Максимальный размер запроса - 10 МБ**.
+Существует общий API-эндпоинт `https://export.dhtmlx.com/scheduler`, используемый для различных методов экспорта (*exportToPDF*, *exportToPNG* и др.). **Максимальный размер запроса - 10 МБ**.
 
 
 ## Экспорт в Excel
 
 Чтобы экспортировать данные планировщика в файл Excel, выполните следующие шаги:
 
-1. Добавьте скрипт "https://export.dhtmlx.com/scheduler/api.js" на вашу страницу для активации онлайн-сервиса экспорта:
+1. Добавьте скрипт `https://export.dhtmlx.com/scheduler/api.js` на вашу страницу для активации онлайн-сервиса экспорта:
 ~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
 <script src="https://export.dhtmlx.com/scheduler/api.js"></script>  /*!*/
@@ -49,7 +49,7 @@ sidebar_label: "Экспорт в Excel и iCal"
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) указывает API-эндпоинт для запроса экспорта. Может указывать на локально установленный сервис экспорта. По умолчанию <strong>https://export.dhtmlx.com/scheduler</strong></td>
+  <td>(<i>string</i>) указывает API-эндпоинт для запроса экспорта. Может указывать на локально установленный сервис экспорта. По умолчанию `https://export.dhtmlx.com/scheduler`</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>start</b></td>
@@ -92,7 +92,7 @@ scheduler.templates.xml_format = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
 
 Чтобы экспортировать данные планировщика в строку iCal, выполните следующие шаги:
 
-- Подключите скрипт <b>"https://export.dhtmlx.com/scheduler/api.js"</b> для активации онлайн-сервиса экспорта:
+- Подключите скрипт `https://export.dhtmlx.com/scheduler/api.js` для активации онлайн-сервиса экспорта:
 
 ~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
@@ -120,7 +120,7 @@ scheduler.templates.xml_format = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) указывает API-эндпоинт для запроса экспорта. Может быть настроен на локально размещённый сервис экспорта. По умолчанию <strong>https://export.dhtmlx.com/scheduler</strong></td>
+  <td>(<i>string</i>) указывает API-эндпоинт для запроса экспорта. Может быть настроен на локально размещённый сервис экспорта. По умолчанию `https://export.dhtmlx.com/scheduler`</td>
   </tr>
   </tbody>
 </table>
