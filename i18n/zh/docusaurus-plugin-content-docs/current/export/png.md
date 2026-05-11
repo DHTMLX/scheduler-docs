@@ -19,7 +19,7 @@ sidebar_label: "导出为 PNG"
 
 ## 请求大小限制 {#limitsonrequestsize}
 
-所有导出方法（如 *exportToPDF*、*exportToPNG* 等）都使用统一的 API 端点 **https://export.dhtmlx.com/scheduler**。允许的最大请求大小为 **10 MB**。
+所有导出方法（如 *exportToPDF*、*exportToPNG* 等）都使用统一的 API 端点 `https://export.dhtmlx.com/scheduler`。允许的最大请求大小为 **10 MB**。
 
 
 ## 默认导出为 PNG {#defaultexporttopng}
@@ -35,7 +35,7 @@ scheduler.plugins({
 ~~~
 
 :::note
-对于 7.0 之前的 Scheduler 版本，还需要在页面中引入 **https://export.dhtmlx.com/scheduler/api.js** 脚本以激活在线导出服务，例如:
+对于 7.0 之前的 Scheduler 版本，还需要在页面中引入 `https://export.dhtmlx.com/scheduler/api.js` 脚本以激活在线导出服务，例如:
 
 ~~~js
 <script src="codebase/dhtmlxscheduler.js"></script>
@@ -85,7 +85,7 @@ scheduler.plugins({
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) 指定导出请求的 API 端点。如果您运行了本地导出服务，可用此参数。默认值为 <strong>https://export.dhtmlx.com/scheduler</strong></td>
+  <td>(<i>string</i>) 指定导出请求的 API 端点。如果您运行了本地导出服务，可用此参数。默认值为 `https://export.dhtmlx.com/scheduler`</td>
   </tr>
   </tbody>
 </table>
