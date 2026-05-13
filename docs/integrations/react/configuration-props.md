@@ -15,13 +15,21 @@ This page describes the props accepted by **React Scheduler** and how they map t
 | `events` | `Event[]` | Scheduler events to render. |
 | `view` | `"day" \| "week" \| "month" \| "year" \| ...` | Active Scheduler view. |
 | `date` | `Date` | Active date used to render the selected view. |
+| `markers` | `Marker[]` | Time markers (for example, non-working time blocks). |
+| `plugins` | `SchedulerPlugins` | Enables Scheduler plugins such as `recurring`, `collision`, `timeline`, `units`, `tooltip`, `quick_info`, etc. Pass as `{ recurring: true, collision: true }`. |
+| `data` | `{ load?: string \| (() => Promise<any>); save?: string \| SaveHandler; batchSave?: BatchSaveHandler }` | Data loading and change handling callbacks/URLs. |
+| `locale` | `string \| Locale` | Active locale (for example, `"en"`, `"es"`). Defaults to `"en"`. |
+| `theme` | `string` | Active skin: `"terrace"` (default), `"dark"`, `"material"`, `"flat"`, `"contrast_black"`, `"contrast_white"`. |
 | `templates` | `SchedulerTemplates` | Maps to Scheduler templates (for example, event style/text rendering). |
 | `config` | `SchedulerConfig` | Maps to Scheduler configuration options. |
 | `xy` | `Record<string, number>` | UI sizing settings (for example, hiding built-in nav with `nav_height: 0`). |
-| `data` | `{ load?: string \| (() => Promise<any>); save?: string \| SaveHandler; batchSave?: BatchSaveHandler }` | Data loading and change handling callbacks/URLs. |
-| `customLightbox` | `ReactElement \| null` | Replaces built-in Lightbox with your React component. |
-| `modals` | `SchedulerModals` | Overrides built-in confirmation dialogs (for example, event delete confirmation). |
 | `filter` | `(event: Event) => boolean` | Filters events displayed in Scheduler. |
+| `modals` | `SchedulerModals` | Overrides built-in confirmation dialogs (for example, event delete and recurrence confirmation). |
+| `eventBoxRenderer` | `EventBoxRenderer \| null` | Custom renderer for the event box element. |
+| `views` | `any[]` | Registers configurations for the available views. Use `TimelineViewConfig`, `UnitsViewConfig`, or `GridViewConfig` shapes. |
+| `customViews` | `any[]` | Registers user-defined view definitions. |
+| `customLightbox` | `ReactElement \| null` | Replaces built-in Lightbox with your React component. |
+| `templateWrapper` | `(element: ReactElement) => ReactElement` | Wraps template React elements with app-level providers (for example, a ThemeProvider) to avoid flicker during server-side render. |
 | `on<EventName>` props | `(...args) => any` | Event handlers mapped to Scheduler events (`onViewChange`, `onBeforeLightbox`, etc.). |
 
 ## Basic example

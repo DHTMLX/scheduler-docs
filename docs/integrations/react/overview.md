@@ -18,6 +18,8 @@ DHTMLX React Scheduler is the official React wrapper for DHTMLX Scheduler. It pr
 **Key features:**
 
 - pass `events`, `view`, and `date` as props
+- enable extensions through the `plugins` prop (`recurring`, `collision`, `timeline`, `units`, `tooltip`, ...)
+- switch skin through the `theme` prop (`"terrace"`, `"dark"`, `"material"`, `"flat"`, `"contrast_black"`, `"contrast_white"`)
 - customize behavior with `config` and `templates`
 - handle user changes through `data.save` or `data.batchSave`
 - use `ref` to access Scheduler API methods directly
@@ -42,6 +44,7 @@ import ReactScheduler, {
   type Event,
   type ReactSchedulerRef,
   type SchedulerConfig,
+  type SchedulerPlugins,
   type SchedulerTemplates,
 } from "@dhtmlx/trial-react-scheduler";
 import "@dhtmlx/trial-react-scheduler/dist/react-scheduler.css";
@@ -75,6 +78,14 @@ export default function BasicSchedulerDemo() {
     []
   );
 
+  const plugins: SchedulerPlugins = useMemo(
+    () => ({
+      tooltip: true,
+      quick_info: true,
+    }),
+    []
+  );
+
   return (
     <div style={{ height: "100vh" }}>
       <ReactScheduler
@@ -84,8 +95,53 @@ export default function BasicSchedulerDemo() {
         date={new Date("2025-12-08T00:00:00Z")}
         templates={templates}
         config={config}
+        plugins={plugins}
+        theme="terrace"
       />
     </div>
+  );
+}
+```
+
+### Enabling plugins
+
+Extensions such as recurring events, collision checking, the timeline and units views, tooltips, and quick info are activated through the `plugins` prop:
+
+```tsx
+import ReactScheduler, { type SchedulerPlugins } from "@dhtmlx/trial-react-scheduler";
+
+const plugins: SchedulerPlugins = {
+  recurring: true,
+  collision: true,
+  tooltip: true,
+};
+
+<ReactScheduler events={events} plugins={plugins} />;
+```
+
+Common keys include features (`recurring`, `collision`, `limit`, `readonly`, `tooltip`, `quick_info`, `multiselect`, `drag_between`, `all_timed`, `active_links`, `container_autoresize`, `key_nav`, `editors`) and views (`agenda_view`, `daytimeline`, `grid_view`, `map_view`, `minical`, `timeline`, `treetimeline`, `units`, `week_agenda`, `year_view`).
+
+:::note
+In the React wrapper, plugins are configured through the `plugins` **prop**. Do not call `scheduler.plugins({...})` on the instance — that is the legacy JS API.
+:::
+
+### Switching the skin
+
+Pass the active skin through the `theme` prop. Available values: `"terrace"` (default), `"dark"`, `"material"`, `"flat"`, `"contrast_black"`, `"contrast_white"`.
+
+```tsx
+import { useState } from "react";
+
+export default function ThemedScheduler({ events }: { events: any[] }) {
+  const [theme, setTheme] = useState<string>("terrace");
+
+  return (
+    <>
+      <button onClick={() => setTheme((t) => (t === "dark" ? "terrace" : "dark"))}>
+        Toggle theme
+      </button>
+      <ReactScheduler events={events} theme={theme} />
+    </>
   );
 }
 ```
