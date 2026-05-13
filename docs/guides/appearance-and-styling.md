@@ -8,4 +8,5 @@ sidebar_label: "Appearance and Styling"
 - [Skins](guides/skins.md)
 - [Formatting Labels, Dates, Styles](guides/templates.md)
 - [Skins Customization](guides/custom-skins.md)
+- [Theme CSS Variables](guides/theme-css-variables.md).
 - [Popup Messages and Modal Boxes](guides/popups-and-modals.md)

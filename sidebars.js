@@ -1170,6 +1170,7 @@ module.exports = {
 						"guides/skins",
 						"guides/templates",
 						"guides/custom-skins",
+						"guides/theme-css-variables",
 						"guides/popups-and-modals",
 						"guides/mini-calendar-templates",
 						"guides/common-templates",
