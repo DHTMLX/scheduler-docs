@@ -122,7 +122,7 @@ const plugins: SchedulerPlugins = {
 Common keys include features (`recurring`, `collision`, `limit`, `readonly`, `tooltip`, `quick_info`, `multiselect`, `drag_between`, `all_timed`, `active_links`, `container_autoresize`, `key_nav`, `editors`) and views (`agenda_view`, `daytimeline`, `grid_view`, `map_view`, `minical`, `timeline`, `treetimeline`, `units`, `week_agenda`, `year_view`).
 
 :::note
-In the React wrapper, plugins are configured through the `plugins` **prop**. Do not call `scheduler.plugins({...})` on the instance — that is the legacy JS API.
+In the React wrapper, configure plugins through the `plugins` **prop**. The core `scheduler.plugins({...})` instance method is still available through the ref and is fully supported, but the prop form is tidier and requires less code.
 :::
 
 ### Switching the skin
