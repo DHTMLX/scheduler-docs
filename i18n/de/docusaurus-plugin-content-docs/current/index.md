@@ -37,7 +37,7 @@ Sie können DHTMLX Scheduler als Vanilla-JavaScript-Widget verwenden oder in ein
     </div>
   </a>
 
-  <a className="framework-card" href="integrations/angular/howtostart-angular/">
+  <a className="framework-card" href="integrations/angular/js-scheduler-angular/">
     <FrameworkIcon name="angular" className="framework-icon" />
     <div className="framework-title">Angular</div>
     <div className="framework-desc">
@@ -45,7 +45,7 @@ Sie können DHTMLX Scheduler als Vanilla-JavaScript-Widget verwenden oder in ein
     </div>
   </a>
 
-  <a className="framework-card" href="integrations/vue/howtostart-vue/">
+  <a className="framework-card" href="integrations/vue/js-scheduler-vue/">
     <FrameworkIcon name="vue" className="framework-icon" />
     <div className="framework-title">Vue</div>
     <div className="framework-desc">
@@ -137,7 +137,7 @@ Scheduler kann auf verschiedene Weise mit Ihrer Datenebene verbunden werden:
 Scheduler kann verwendet werden:
 
 - Als eigenständiges JS-Widget auf jeder Seite - [Initialisierung mit reinem HTML/JS](guides/initialization.md). 
-- Eingebettet in Framework-Komponenten über die [Erste Schritte](integrations/howtostart-guides.md)-Anleitungen für [React](integrations/react/)/[Angular](integrations/angular/howtostart-angular.md)/[Vue](integrations/vue/howtostart-vue.md)/[Svelte](integrations/svelte/howtostart-svelte.md).
+- Eingebettet in Framework-Komponenten über die [Erste Schritte](integrations/howtostart-guides.md)-Anleitungen für [React](integrations/react/)/[Angular](integrations/angular/js-scheduler-angular.md)/[Vue](integrations/vue/js-scheduler-vue.md)/[Svelte](integrations/svelte/howtostart-svelte.md).
 
 
 ## Hinweise zur Installation

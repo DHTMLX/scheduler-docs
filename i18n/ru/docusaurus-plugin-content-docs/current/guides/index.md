@@ -26,9 +26,9 @@ sidebar_label: "Руководства"
 Рассказывает, как построить и настроить стандартный Scheduler на фронтенде.
 
 - ### [Scheduler на чистом JS/HTML](guides/initialization.md)
-- ### [Scheduler с Angular](integrations/angular/howtostart-angular.md)
+- ### [Scheduler с Angular](integrations/angular/js-scheduler-angular.md)
 - ### [Scheduler с React](integrations/react/js-scheduler-react.md)
-- ### [Scheduler с Vue.js](integrations/vue/howtostart-vue.md)
+- ### [Scheduler с Vue.js](integrations/vue/js-scheduler-vue.md)
 - ### [Scheduler с Svelte](integrations/svelte/howtostart-svelte.md)
 
 ## Начало работы на стороне сервера

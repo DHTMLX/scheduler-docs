@@ -16,16 +16,16 @@ sidebar_label: "dhtmlxScheduler 시작하기"
   <td>[![scheduler_plainjs](/img/scheduler_plainjs.png)](/guides/initialization/)</td>
   </tr> 
   <tr>
-  <td><span>["dhtmlxScheduler와 Angular 연동"](integrations/angular/howtostart-angular.md)</span> Angular로 Scheduler를 구축하는 방법을 자세히 설명하는 가이드입니다.</td> 
-  <td>[![scheduler_angular](/img/scheduler_angular.png)](/integrations/angular/howtostart-angular/)</td>
+  <td><span>["dhtmlxScheduler와 Angular 연동"](integrations/angular/js-scheduler-angular.md)</span> Angular로 Scheduler를 구축하는 방법을 자세히 설명하는 가이드입니다.</td> 
+  <td>[![scheduler_angular](/img/scheduler_angular.png)](/integrations/angular/js-scheduler-angular/)</td>
   </tr> 
   <tr>
   <td><span>["dhtmlxScheduler와 React"](integrations/react/js-scheduler-react.md)</span> React를 사용하여 Scheduler를 만드는 과정을 다루는 자세한 튜토리얼입니다.</td> 
   <td>[![scheduler_react](/img/scheduler_react.png)](/integrations/react/js-scheduler-react/)</td>
   </tr>
   <tr>
-  <td><span>["dhtmlxScheduler와 Vue.js"](integrations/vue/howtostart-vue.md)</span> Vue.js와 함께 Scheduler를 설정하는 방법을 안내하는 심층 가이드입니다.</td> 
-  <td>[![scheduler_vue](/img/scheduler_vue.png)](/integrations/vue/howtostart-vue/)</td>
+  <td><span>["dhtmlxScheduler와 Vue.js"](integrations/vue/js-scheduler-vue.md)</span> Vue.js와 함께 Scheduler를 설정하는 방법을 안내하는 심층 가이드입니다.</td> 
+  <td>[![scheduler_vue](/img/scheduler_vue.png)](/integrations/vue/js-scheduler-vue/)</td>
   </tr>
   <tr>
   <td><span>["dhtmlxScheduler와 Svelte 연동"](integrations/svelte/howtostart-svelte.md)</span> Svelte를 이용해 Scheduler를 만드는 단계별 가이드입니다.</td> 
