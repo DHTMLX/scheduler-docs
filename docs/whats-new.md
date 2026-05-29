@@ -16,7 +16,7 @@ If you are updating Scheduler from an older version, check [Migration From Older
 
 - Fix the incorrect `@dhx/scheduler` dependency listed in the published [React Scheduler](integrations/react/overview.md) package
 - Fix the issue where not all changes were applied when editing the first occurrence of a [recurring event](guides/recurring-events.md) in "All events" mode
-- Update the [url](guides/extensions-list.md#url) plugin to avoid a false-positive prototype pollution (CWE-1321) static analysis finding
+- Update the [url](guides/extensions-list.md#url) plugin to avoid a false-positive finding from static analysis
 
 
 7.2.13
