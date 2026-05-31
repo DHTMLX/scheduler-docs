@@ -114,7 +114,8 @@ module.exports = {
                         id: "integrations/ai-tools/index"
                     },
                     items: [
-                        "integrations/ai-tools/mcp-server"
+                        "integrations/ai-tools/mcp-server",
+                        "integrations/ai-tools/lovable-starter-walkthrough"
                     ]
                 },
                 "integrations/vue/howtostart-vue",
