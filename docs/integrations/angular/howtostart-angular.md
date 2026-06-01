@@ -73,33 +73,20 @@ Alternatively, since the zip-package of the library is structured as an **npm** 
 
 ## Step 2. Component creation
 
-Now we should create a component to add a Scheduler into the application. Let's create the ***scheduler*** folder in the ***src/app/*** directory, 
-add new files into it and call them ***scheduler.component.ts***, ***scheduler.component.css*** and ***scheduler.component.html***.
+Now we should create a component to add a Scheduler into the application. Let's create the ***components*** folder in the ***src/app/*** directory with ***scheduler*** folder and add new files into it and call them ***scheduler.component.ts***, ***scheduler.component.css*** and ***scheduler.component.html***.
 
 The newly created ***scheduler.component.html*** file inside the ***scheduler*** folder will contain the template for the scheduler. Let's add the following 
 lines of code into it:
 
 
-~~~html title="scheduler/scheduler.component.html"
-<div #scheduler_here class="dhx_cal_container" style="width: 100%; height:100vh">
-   <div class="dhx_cal_navline">
-       <div class="dhx_cal_prev_button"></div>
-       <div class="dhx_cal_next_button"></div>
-       <div class="dhx_cal_today_button"></div>
-       <div class="dhx_cal_date"></div>
-       <div class="dhx_cal_tab" data-tab="day"></div>
-       <div class="dhx_cal_tab" data-tab="week"></div>
-       <div class="dhx_cal_tab" data-tab="month"></div>
-   </div>
-   <div class="dhx_cal_header"></div>
-   <div class="dhx_cal_data"></div>
-</div>
+~~~html title="components/scheduler/scheduler.component.html"
+<div #scheduler_here class="dhx_cal_container" style="width: 100%; height:100vh"></div>
 ~~~
 
 We'll declare scheduler styles in a separate file named ***scheduler.component.css***. The default styles can look like this:
 
 
-~~~css title="scheduler/scheduler.component.css"
+~~~css title="components/scheduler/scheduler.component.css"
 @import "@dhx/trial-scheduler/codebase/dhtmlxscheduler.css";
 :host {
    display: block;
@@ -156,21 +143,22 @@ In this tutorial we will use the **trial** version of Scheduler.
 To display Scheduler on the page, we need to set the container to render the component inside. Use the code below:
 
 
-~~~js title="scheduler.component.ts"
+~~~js title="components/scheduler/scheduler.component.ts"
 import { Scheduler, SchedulerStatic } from "@dhx/trial-scheduler";
 import { Component, ElementRef, OnInit, OnDestroy, 
     ViewChild, ViewEncapsulation } from "@angular/core";
 
 @Component({
   encapsulation: ViewEncapsulation.None,
-  selector: "scheduler",
-  styleUrls: ["./scheduler.component.css"],
-  templateUrl: 'scheduler.component.html'
+  selector: 'app-scheduler',
+  standalone: true,
+  styleUrl: './scheduler.component.css',
+  templateUrl: './scheduler.component.html',
 })
 
 export class SchedulerComponent implements OnInit, OnDestroy {
   @ViewChild("scheduler_here", { static: true }) schedulerContainer!: ElementRef;
-  private _scheduler?: SchedulerStatic;
+  private scheduler?: SchedulerStatic;
 
   ngOnInit() {
     let scheduler = Scheduler.getSchedulerInstance();
@@ -179,11 +167,11 @@ export class SchedulerComponent implements OnInit, OnDestroy {
       new Date(2027, 9, 7),
       "week", 
     );
-    this._scheduler = scheduler;
+    this.scheduler = scheduler;
   }
 
   ngOnDestroy() {
-    if (this._scheduler) this._scheduler.destructor();
+    this.scheduler?.destructor();
   }
 }
 ~~~
@@ -193,50 +181,29 @@ contains the [**scheduler.destructor()**](api/method/destructor.md) call to clea
 
 ## Step 3. Adding Scheduler into the app
 
-Now it's time to add the component into our app. Open ***src/app/app.component.ts*** and use the Scheduler Component instead of the default content by inserting
+Now it's time to add the component into our app. Open ***src/app/app.ts*** and use the Scheduler Component instead of the default content by inserting
 the code below:
 
 
-~~~js  title="src/app/app.component.ts"
+~~~js  title="src/app/app.ts"
 import { Component } from '@angular/core';
+import { SchedulerComponent } from './components/scheduler/scheduler.component';
 
 @Component({
   selector: 'app-root',
-  template: `<scheduler></scheduler>`,
+  standalone: true,
+  imports: [SchedulerComponent],
+  templateUrl: './app.html',
+  styleUrls: ['./app.css']
 })
-export class AppComponent {
-  name = '';
-}
+
+export class App {}
 ~~~
 
-Then create the ***app.module.ts*** file in the ***src/app/*** directory and insert *SchedulerComponent* as provided below:
+Then remove the initial code from the ***app.html*** file in the ***src/app/*** directory and insert a selector as provided below:
 
-
-~~~js title="src/app/app.module.ts"
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
- 
-import { AppComponent } from "./app.component";
-import { SchedulerComponent } from "./scheduler/scheduler.component";
- 
-@NgModule({
-  declarations: [AppComponent, SchedulerComponent],
-  imports: [BrowserModule],
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
-~~~
-
-The last step is to open the ***src/main.ts*** file and replace the existing code with the following one:
-
-~~~js title="src/main.ts"
-import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
-import { AppModule } from "./app/app.module";
-
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));
+~~~js title="src/app/app.html"
+<app-scheduler></app-scheduler>
 ~~~
 
 After that, when we start the app, we should see an empty Scheduler on a page. 
@@ -250,17 +217,17 @@ To add data loading to the Angular Scheduler, you need to add an event service. 
 For creating the event model, run the following command:
 
 ~~~
-ng generate class models/event --skip-tests
+ng generate class models/schedulerEvent --skip-tests
 ~~~
 
-In the newly created ***event.ts*** file inside the ***models*** folder, we will add the following lines of code:
+In the newly created ***scheduler-event.ts*** file inside the ***models*** folder, we will add the following lines of code:
 
-~~~js  title="models/event.ts"
-export class Event {
-    id!:  number;
-    start_date!: string;
-    end_date!: string;
-    text!: string;
+~~~js  title="models/scheduler-event.ts"
+export interface SchedulerEvent {
+  id: number;
+  start_date: string;
+  end_date: string;
+  text: string;
 }
 ~~~
 
@@ -278,18 +245,22 @@ In the newly created ***event.service.ts*** file inside the ***services*** folde
 
 ~~~js  title="services/event.service.ts"
 import { Injectable } from '@angular/core';
-import { Event } from "../models/event";
+import { SchedulerEvent } from "../models/scheduler-event";
 
 @Injectable()
 export class EventService {
-    get(): Promise<Event[]>{
-        return Promise.resolve([
-            { id: 1, start_date: "2027-05-16 09:00", end_date: "2027-05-16 13:00", 
-                text: "Event 1" },
-            { id: 2, start_date: "2027-05-18 10:00", end_date: "2027-05-18 14:00", 
-                text: "Event 2" },
-        ]);
-    }
+  get(): Promise<SchedulerEvent[]> {
+    return Promise.resolve([
+      {
+        id: 1, start_date: "2027-10-06 09:00", end_date: "2027-10-06 13:00",
+        text: "Event 1"
+      },
+      {
+        id: 2, start_date: "2027-10-08 10:00", end_date: "2027-10-08 14:00",
+        text: "Event 2"
+      },
+    ]);
+  }
 }
 ~~~
 
@@ -301,7 +272,7 @@ First, import the necessary module for the service in ***scheduler.component.ts*
 
 
 ~~~js title="scheduler.component.ts"
-import {EventService} from "../services/event.service";
+import {EventService} from "../../services/event.service";
 ~~~
 
 You should also specify **EventService** as a provider in the **@Component** decorator:
@@ -310,10 +281,11 @@ You should also specify **EventService** as a provider in the **@Component** dec
 ~~~js title="scheduler.component.ts"
 @Component({
   encapsulation: ViewEncapsulation.None,
-  selector: "scheduler",
+  selector: 'app-scheduler',
+  standalone: true,
   providers: [EventService],
-  styleUrls: ["./scheduler.component.css"],
-  templateUrl: 'scheduler.component.html'
+  styleUrl: './scheduler.component.css',
+  templateUrl: './scheduler.component.html',
 })
 ~~~
 
@@ -321,7 +293,7 @@ Now, every time a new *SchedulerComponent* is initialized, a fresh instance of t
 For this purpose, add the following constructor to the **SchedulerComponent** class:
 
 
-~~~ title="scheduler.component.ts"
+~~~js title="scheduler.component.ts"
 constructor(private eventService: EventService){}
 ~~~
 
@@ -345,37 +317,39 @@ The complete code of the ***scheduler.components.ts*** file will look like this:
 
 ~~~ts title="scheduler.component.ts"
 import { Scheduler, SchedulerStatic } from "@dhx/trial-scheduler";
-import { Component, ElementRef, OnInit, OnDestroy, 
-    ViewChild, ViewEncapsulation } from "@angular/core";
-import {EventService} from "../services/event.service";
+import {
+  Component, ElementRef, OnInit, OnDestroy,
+  ViewChild, ViewEncapsulation
+} from "@angular/core";
+import { EventService } from "../../services/event.service";
 
 @Component({
   encapsulation: ViewEncapsulation.None,
-  selector: "scheduler",
+  selector: 'app-scheduler',
+  standalone: true,
   providers: [EventService],
-  styleUrls: ['scheduler.component.css'],
-  templateUrl: 'scheduler.component.html'
+  styleUrl: './scheduler.component.css',
+  templateUrl: './scheduler.component.html',
 })
 
 export class SchedulerComponent implements OnInit, OnDestroy {
   @ViewChild("scheduler_here", { static: true }) schedulerContainer!: ElementRef;
-  private _scheduler?: SchedulerStatic;
+  private scheduler?: SchedulerStatic;
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
     let scheduler = Scheduler.getSchedulerInstance();
-    scheduler.config.date_format = "%Y-%m-%d %H:%i";
     scheduler.init(
       this.schedulerContainer.nativeElement,
       new Date(2027, 9, 7),
-      "week", 
+      "week",
     );
-    this.eventService.get().then((data) => {scheduler.parse(data);});
-    this._scheduler = scheduler;
+    this.eventService.get().then((data) => { scheduler.parse(data); });
+    this.scheduler = scheduler;
   }
 
   ngOnDestroy() {
-    if (this._scheduler) this._scheduler.destructor();
+    this.scheduler?.destructor();
   }
 }
 ~~~
