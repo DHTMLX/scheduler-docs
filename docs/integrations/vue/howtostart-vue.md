@@ -117,34 +117,58 @@ To display Scheduler on the page, we need to set the container to render the com
 
 
 ~~~html  title="Scheduler.vue"
-<script>
+<script setup>
+import { onMounted, onUnmounted, ref } from "vue";
 import { Scheduler } from "@dhx/trial-scheduler";
-import "@dhx/trial-scheduler/codebase/dhtmlxscheduler.css";
 
-export default {
-  mounted() {
-    let scheduler = Scheduler.getSchedulerInstance();
-    let date = scheduler.init(this.$refs.cont, new Date(2027, 9, 6), "week");
-    this.scheduler = scheduler;
-  },
-  unmounted() {
-    this.scheduler.destructor();
-    this.$refs.cont.innerHTML = "";
-  },
-};
+const schedulerContainer = ref(null);
+const schedulerInstance = ref(null);
+
+onMounted(() => {
+  const scheduler = Scheduler.getSchedulerInstance();
+  schedulerInstance.value = scheduler;
+
+  scheduler.config.header = [
+    "day",
+    "week",
+    "month",
+    "date",
+    "prev",
+    "today",
+    "next",
+  ];
+
+  scheduler.init(schedulerContainer.value, new Date(2027, 5, 10), "week");
+});
+
+onUnmounted(() => {
+  schedulerInstance.value?.destructor();
+  schedulerInstance.value = null;
+
+  if (schedulerContainer.value) {
+    schedulerContainer.value.innerHTML = "";
+  }
+});
 </script>
 
 <template>
-  <div ref="cont" style="width: 100%; height: 100vh"></div>
+  <div ref="schedulerContainer"></div>
 </template>
+
+<style>
+  @import "@dhx/trial-scheduler/codebase/dhtmlxscheduler.css";
+  .dhx_cal_container {
+    height: 100vh;
+    width: 100%;
+  }
+</style>
 ~~~
 
 To make the Scheduler container occupy the entire space of the body, you need to remove the default 
-styles from the ***main.css*** file located in the ***src/assets*** folder and add the following one:
+styles add the following one:
 
-
-~~~css  title="src/assets/main.css"
-#app {
+~~~css
+body, #app {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -157,19 +181,23 @@ styles from the ***main.css*** file located in the ***src/assets*** folder and a
 Now it's time to add the component into our app. Open ***src/App.vue*** and use the Scheduler component 
 instead of the default content by inserting the code below:
 
-
 ~~~html  title="src/App.vue"
-<script>
-import Scheduler from "./components/Scheduler.vue";
-
-export default {
-  components: { Scheduler },
-};
+<script setup>
+import Scheduler from "./Scheduler.vue"
 </script>
 
 <template>
   <Scheduler/>
 </template>
+
+<style>
+body, #app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+</style>
 ~~~
 
 After that, when we start the app, we should see an empty Scheduler on a page:
@@ -181,7 +209,7 @@ After that, when we start the app, we should see an empty Scheduler on a page:
 To add data into the Scheduler, we need to provide a data set. Let's create the ***data.js*** file in the ***src/*** directory and add some data into it:
 
 
-~~~js title="src/data.js"
+~~~js title="src/data.ts"
 export function getData() {
     const data = [
         {
@@ -205,22 +233,13 @@ We should [pass props (our data)](https://vuejs.org/guide/components/props.html)
 
 
 ~~~html title="App.vue"
-<script>
-import Scheduler from "./components/Scheduler.vue";
-import { getData } from "./data";
-
-export default {
-  components: { Scheduler },
-  data() {
-    return {
-      events: getData(),
-    };
-  },
-};
+<script setup>
+import Scheduler from "./Scheduler.vue"
+import { getData } from "./data.ts";
 </script>
 
 <template>
-  <Scheduler :events="events" />
+  <Scheduler :events="getData()"/>
 </template>
 ~~~
 
@@ -228,28 +247,50 @@ And then use props in the **scheduler.parse()** method in the Scheduler componen
 
 
 ~~~html title="Scheduler.vue"
-<script>
+<script setup>
+import { onMounted, onUnmounted, ref } from "vue";
 import { Scheduler } from "@dhx/trial-scheduler";
-import "@dhx/trial-scheduler/codebase/dhtmlxscheduler.css";
 
-export default {
-  props: ["events"],
-  mounted() {
-    let scheduler = Scheduler.getSchedulerInstance();
-    let date = scheduler.init(this.$refs.cont, new Date(2027, 5, 10), "week");
-    scheduler.parse(this.events);
+const schedulerContainer = ref(null);
+const schedulerInstance = ref(null);
 
-    this.scheduler = scheduler;
+const props = defineProps({
+  events: {
+    type: Array,
+    default: () => [],
   },
-  unmounted() {
-    this.scheduler.destructor();
-    this.$refs.cont.innerHTML = "";
-  },
-};
+});
+
+onMounted(() => {
+  const scheduler = Scheduler.getSchedulerInstance();
+  schedulerInstance.value = scheduler;
+
+  scheduler.config.header = [
+    "day",
+    "week",
+    "month",
+    "date",
+    "prev",
+    "today",
+    "next",
+  ];
+
+  scheduler.init(schedulerContainer.value, new Date(2027, 5, 10), "week");
+  scheduler.parse(props.events);
+});
+
+onUnmounted(() => {
+  schedulerInstance.value?.destructor();
+  schedulerInstance.value = null;
+
+  if (schedulerContainer.value) {
+    schedulerContainer.value.innerHTML = "";
+  }
+});
 </script>
 
 <template>
-  <div ref="cont" style="width: 100%; height: 100vh"></div>
+  <div ref="schedulerContainer"></div>
 </template>
 ~~~
 
