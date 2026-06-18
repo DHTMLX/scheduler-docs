@@ -275,7 +275,7 @@ const config = {
 				},
 				{
 					"label": "Forum",
-					"href": "https://forum.dhtmlx.com/c/scheduler/15",
+					"href": "https://forum.dhtmlx.com/c/scheduler-all/40",
 					"position": "right"
 				},
 				{
