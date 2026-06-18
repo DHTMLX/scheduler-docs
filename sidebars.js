@@ -992,6 +992,7 @@ module.exports = {
 			},
 			items: [
 				"guides/editions-comparison",
+				"guides/using-packages-after-subscription-expires",
 				{
 					type: "category",
 					label: "Configuring Scheduler",
