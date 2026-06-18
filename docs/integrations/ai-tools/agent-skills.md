@@ -8,11 +8,15 @@ description: "Install agent skills for AI assistants working with DHTMLX Schedul
 
 AI coding assistants such as Claude Code or Codex can generate DHTMLX Scheduler code, but they often make mistakes with specialized APIs: wrong prop names, missing CSS imports, incorrect callback signatures, or mixing incompatible data patterns. Agent skills address this by teaching the assistant the correct patterns and known pitfalls before it writes code.
 
-Unlike the [MCP server](integrations/ai-tools/mcp-server.md), which provides real-time API reference, skills focus on integration patterns, decision points, and failure prevention.
-
 **GitHub:** [DHTMLX/skills](https://github.com/DHTMLX/skills)
 
 ## Available Skills
+
+### DHTMLX JS Scheduler
+
+Covers integration of the core JavaScript Scheduler into plain JavaScript and TypeScript applications. The skill recognises all delivery channels - the free `dhtmlx-scheduler` package (the Standard edition under GPL), the `@dhx/trial-scheduler` evaluation package, the commercial `@dhx/scheduler` package, and `<script>` / CDN loading - and adapts setup, data, and theming guidance to each, flagging PRO-only features before scaffolding on a Standard install.
+
+Review the rules in the [GitHub repository](https://github.com/DHTMLX/skills/tree/main/dhtmlx-js-scheduler).
 
 ### DHTMLX React Scheduler
 
@@ -23,12 +27,13 @@ The skill files are readable Markdown - you can review exactly what rules your a
 ## Installing
 
 ```bash
+npx skills add DHTMLX/skills --skill dhtmlx-js-scheduler
 npx skills add DHTMLX/skills --skill dhtmlx-react-scheduler
 ```
 
 ### Manual Installation
 
-Clone or download the [DHTMLX/skills](https://github.com/DHTMLX/skills) repository and copy the `dhtmlx-react-scheduler` folder into your project's skills directory (e.g., `.claude/skills/` for Claude Code, `.cursor/skills/` for Cursor).
+Clone or download the [DHTMLX/skills](https://github.com/DHTMLX/skills) repository and copy the relevant skill folder (`dhtmlx-js-scheduler` or `dhtmlx-react-scheduler`) into your project's skills directory (e.g., `.claude/skills/` for Claude Code, `.cursor/skills/` for Cursor).
 
 ## Using Skills with MCP
 
