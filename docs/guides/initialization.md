@@ -21,19 +21,19 @@ This guide tells about initialization of dhtmlxScheduler in plain JS and HTML. Y
     </div>
   </a>
 
-  <a className="framework-card" href="../../integrations/angular/js-scheduler-angular/">
+  <a className="framework-card" href="../../integrations/angular/quick-start/">
     <FrameworkIcon name="angular" className="framework-icon" />
     <div className="framework-title">Angular</div>
     <div className="framework-desc">
-      Integrate Scheduler into Angular projects using a thin wrapper.
+      Integrate Scheduler into Angular projects using the ready-made wrapper.
     </div>
   </a>
 
-  <a className="framework-card" href="../../integrations/vue/js-scheduler-vue/">
+  <a className="framework-card" href="../../integrations/vue/quick-start/">
     <FrameworkIcon name="vue" className="framework-icon" />
     <div className="framework-title">Vue</div>
     <div className="framework-desc">
-      Use Scheduler inside Vue apps with a small wrapper and reactive configuration.
+      Use Scheduler inside Vue apps with <code>VueGantt</code> component and reactive configuration.
     </div>
   </a>
 
