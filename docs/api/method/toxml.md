@@ -18,7 +18,7 @@ description: "converts scheduler's data into the XML format"
 ### Example
 
 ~~~jsx
-var str = scheduler.toXML();
+const str = scheduler.toXML();
 ~~~
 
 ### Related samples

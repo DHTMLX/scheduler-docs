@@ -17,7 +17,7 @@ description: "이벤트 박스의 사이드 선택 메뉴에 표시되는 아이
 ~~~jsx
 scheduler.config.icons_select = ['icon_details', 'icon_delete'];
 ...
-scheduler.init('scheduler_here', new Date(2013, 0, 10), "week");
+scheduler.init('scheduler_here', new Date(2027, 0, 10), "week");
 ~~~
 
 **Default value:** ['icon_details', 'icon_edit', 'icon_delete']

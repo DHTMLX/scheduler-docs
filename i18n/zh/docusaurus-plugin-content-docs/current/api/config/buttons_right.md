@@ -15,7 +15,6 @@ description: "包含一组位于 lightbox 右下角的按钮集合"
 ### Example
 
 ~~~jsx
-```html
 <style>
 .custom_btn_info{
     background-image:url('../../codebase/imgs/controls.gif');
@@ -25,7 +24,7 @@ description: "包含一组位于 lightbox 右下角的按钮集合"
 <script>
     scheduler.config.buttons_right = ["custom_btn_info"];
     scheduler.locale.labels["custom_btn_info"] = "Info";
-    scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+    scheduler.init('scheduler_here',new Date(2027,05,11),"week");
     ...
     scheduler.attachEvent("onLightboxButton", function(button_id, node, e){
         if(button_id == "custom_btn_info"){
@@ -33,7 +32,6 @@ description: "包含一组位于 lightbox 右下角的按钮集合"
         }
     });
 </script>
-```
 ~~~
 
 **Default value:** ["dhx_delete_btn"]

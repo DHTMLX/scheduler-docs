@@ -22,11 +22,11 @@ description: "wandelt einen Datumsstring in ein Date-Objekt um"
 ### Example
 
 ~~~jsx
-var cfg = scheduler.config;
-var strToDate = scheduler.date.str_to_date(cfg.date_format, cfg.server_utc);
+const cfg = scheduler.config;
+const strToDate = scheduler.date.str_to_date(cfg.date_format, cfg.server_utc);
 
 scheduler.templates.parse_date = function(date){
-    return strToDate (date);
+    return strToDate(date);
 };
 ~~~
 

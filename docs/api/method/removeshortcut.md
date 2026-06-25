@@ -22,7 +22,7 @@ description: "removes a keyboard shortcut"
 ~~~jsx
 // adding a shortcut
 scheduler.addShortcut("shift+w", function(e){ 
-    var eventId = scheduler.locate(e); 
+    const eventId = scheduler.locate(e); 
     if(eventId) 
         scheduler.showQuickInfo(eventId);
 },"event");

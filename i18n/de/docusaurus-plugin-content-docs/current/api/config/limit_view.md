@@ -15,7 +15,7 @@ description: "beschränkt den Datumsbereich, innerhalb dessen Benutzer Ereigniss
 ### Example
 
 ~~~jsx
-scheduler.init('scheduler_here',new Date(2022,5,17),"week");
+scheduler.init('scheduler_here',new Date(2027,5,17),"week");
 ...
 scheduler.config.limit_view  = true;
 ~~~
@@ -24,13 +24,13 @@ scheduler.config.limit_view  = true;
 
 ### Details
 
-Beispielsweise bedeutet das Setzen einer Begrenzung auf das Jahr 2023, dass Benutzer nicht zu 2022 navigieren können - nur Daten innerhalb von 2023 sind zugänglich.
+Beispielsweise bedeutet das Setzen einer Begrenzung auf das Jahr 2028, dass Benutzer nicht zu 2027 navigieren können - nur Daten innerhalb von 2028 sind zugänglich.
 
 Wenn die Einstellungen **limit_start/limit_end** ebenfalls definiert sind, um den Zeitraum für das Erstellen neuer Ereignisse einzuschränken, verhindert **limit_view** das Anzeigen von Ereignissen außerhalb dieses erlaubten Datumsbereichs.
 
 ~~~js
-scheduler.config.limit_start = new Date(2022,5,15);
-scheduler.config.limit_end = new Date(2022,6,15);
+scheduler.config.limit_start = new Date(2027,5,15);
+scheduler.config.limit_end = new Date(2027,6,15);
 scheduler.config.limit_view  = true;
 ~~~
 

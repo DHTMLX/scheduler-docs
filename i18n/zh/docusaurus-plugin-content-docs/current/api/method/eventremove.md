@@ -19,7 +19,7 @@ description: "从HTML元素中移除事件处理程序"
 ### Example
 
 ~~~jsx
-var eventId = scheduler.event("divId", "click", function(e){
+const eventId = scheduler.event("divId", "click", function(e){
     do_something();
 });
 

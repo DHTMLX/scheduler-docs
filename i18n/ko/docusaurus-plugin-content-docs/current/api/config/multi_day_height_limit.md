@@ -17,7 +17,7 @@ description: "멀티 데이 이벤트가 표시되는 섹션의 높이를 제어
 ~~~jsx
 scheduler.config.multi_day_height_limit = 30;
 ...
-scheduler.init('scheduler_here',new Date(2013,7,11),"week");
+scheduler.init('scheduler_here',new Date(2027,7,11),"week");
 ~~~
 
 **Default value:** 200

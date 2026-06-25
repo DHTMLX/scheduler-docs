@@ -17,7 +17,7 @@ description: "设置地图视图中地图的初始缩放级别"
 ~~~jsx
 scheduler.config.map_initial_zoom = 7;
 ...
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.init('scheduler_here', new Date(2027,05,11), "week");
 ~~~
 
 **Default value:** 1

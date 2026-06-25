@@ -10,7 +10,7 @@ To create a custom control (editor), define a new object in the next way:
 ~~~js
 scheduler.form_blocks["my_editor"]={
     render:function(config){ // config- section configuration object
-        var height="(config.height||50)+""px";
+        const height="(config.height||50)+""px";
         return "<div class='dhx_cal_ltext' style='height:"+height+";'>" + 
             "<textarea></textarea></div>";
     },
@@ -38,7 +38,7 @@ Usage:
 
 ~~~js
 scheduler.locale.labels.section_details = "Details";
-scheduler.config.lightbox.sections="["    
+scheduler.config.lightbox.sections = [ 
     { name:"details", height:35, map_to:"text", type:"my_editor", focus:true},
     { name:"time", height:72, type:"time", map_to:"auto"}    
 ];
@@ -88,14 +88,14 @@ scheduler.form_blocks["my_editor"]={
         return node.querySelector("[name='text']").value;
     },
     focus:function(node){
-        var input = node.querySelector("[name='text']"); 
+        const input = node.querySelector("[name='text']"); 
         input.select(); 
         input.focus(); 
     }
 };
 
 scheduler.locale.labels.section_description = "Details";
-scheduler.config.lightbox.sections="["    
+scheduler.config.lightbox.sections = [    
     { name:"description", map_to:"text", type:"my_editor" , focus:true},
     { name:"time", height:72, type:"time", map_to:"auto"}    
 ];

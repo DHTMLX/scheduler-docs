@@ -17,7 +17,7 @@ description: "sets the top (if positive) offset of the tooltip's position"
 ~~~jsx
 scheduler.config.tooltip_offset_y = 40;
 
-scheduler.init('scheduler_here',new Date(2023,10,20),"week");
+scheduler.init('scheduler_here',new Date(2027,10,20),"week");
 ~~~
 
 **Default value:** 20

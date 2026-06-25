@@ -51,8 +51,8 @@ scheduler.createGridView({
         {id:"date", label:'Date', sort:'date', width:'*'},
         {id:"text", label:'Text', sort:'str',  width:200, align:'left'}
     ],
-    from:new Date(2019, 3, 10),//허용된 날짜 범위의 왼쪽 경계
-    to:new Date(2019, 5, 23)    //허용된 날짜 범위의 오른쪽 경계
+    from:new Date(2027, 3, 10),//허용된 날짜 범위의 왼쪽 경계
+    to:new Date(2027, 5, 23)    //허용된 날짜 범위의 오른쪽 경계
 });
 ~~~
 
@@ -71,8 +71,8 @@ scheduler.createGridView({
 scheduler.createGridView({
      name:"grid",
     ..
-    from:new Date(2024, 0, 1),
-    to:new Date(2025, 0, 1)
+    from:new Date(2025, 0, 1),
+    to:new Date(2027, 0, 1)
 });
 
 ~~~

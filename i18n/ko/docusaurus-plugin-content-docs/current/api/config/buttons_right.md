@@ -24,7 +24,7 @@ description: "라이트박스의 오른쪽 하단에 위치한 버튼 세트를 
 <script>
     scheduler.config.buttons_right = ["custom_btn_info"];
     scheduler.locale.labels["custom_btn_info"] = "Info";
-    scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+    scheduler.init('scheduler_here',new Date(2027,05,11),"week");
     ...
     scheduler.attachEvent("onLightboxButton", function(button_id, node, e){
         if(button_id == "custom_btn_info"){

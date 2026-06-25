@@ -1,40 +1,40 @@
 ---
-sidebar_label: "onBeforeViewChange"
-title: "onBeforeViewChange event"
-description: "срабатывает непосредственно перед переключением пользователя с текущего вида на другой"
+sidebar_label: onBeforeViewChange
+title: "Событие onBeforeViewChange"
+description: "срабатывает перед тем, как пользователь изменит текущий просмотр на другой"
 ---
 
 # onBeforeViewChange
 
 ### Description
 
-@short: Срабатывает непосредственно перед переключением пользователя с текущего вида на другой
+@short: Срабатывает перед тем, как пользователь изменит текущий просмотр на другой
 
-@signature: onBeforeViewChange: (old_mode: string, old_date: object, mode: string, date: object) =\> boolean
+@signature: onBeforeViewChange: (old_mode: string, old_date: Date, mode: string, date: Date) =\> boolean
 
 ### Parameters
 
 - `old_mode` - (required) *string* - текущий активный вид
-- `old_date` - (required) *object* - дата, находящаяся в фокусе в данный момент
-- `mode` - (required) *string* - вид, который собирается активироваться
-- `date` - (required) *object* - новая выбранная дата
+- `old_date` - (required) *Date* - текущая активная дата
+- `mode` - (required) *string* - новый вид
+- `date` - (required) *Date* - новая дата
 
 ### Returns
-- ` result` - (boolean) - определяет, следует ли выполнять стандартное действие события (<b>true</b>) или остановить его (<b>false</b>)
+- `result` - (boolean) - определяет, будет ли выполнено действие по умолчанию у события (true) или отменено (false)
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onBeforeViewChange", function(old_mode,old_date,mode,date){
-    //здесь можно разместить кастомную логику
+scheduler.attachEvent("onBeforeViewChange", (old_mode, old_date, mode, date) => {
+    // здесь можно добавить кастомную логику
     return true;
 });
 ~~~
 
 ### Related samples
-- [Configuring the Map view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/23_map_view_timeframes.html)
+- [Настройка вида Map](https://docs.dhtmlx.com/scheduler/samples/03_extensions/23_map_view_timeframes.html)
 
 ### Details
 
-- Это событие можно заблокировать, вернув *false*, что не позволит переключиться с текущего вида.
-- Оно также срабатывает при первой загрузке scheduler на странице; в этом случае **old_mode** и **old_date** будут неопределены.
+- Событие можно блокировать. Верните `false`, и Scheduler оставит текущий вид открытым.
+- Событие также срабатывает при первоначальном рендеринге Scheduler на странице. В этом случае параметры `old_mode` и `old_date` равны undefined.

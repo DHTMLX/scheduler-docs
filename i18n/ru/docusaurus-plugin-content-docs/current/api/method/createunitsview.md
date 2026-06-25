@@ -1,5 +1,5 @@
 ---
-sidebar_label: "createUnitsView"
+sidebar_label: createUnitsView
 title: "createUnitsView method"
 description: "настраивает Units view внутри scheduler"
 ---
@@ -16,7 +16,7 @@ description: "настраивает Units view внутри scheduler"
 
 ### Parameters
 
-- `config` - (required) *object* - объект конфигурации для Units view
+- `config` - (required) *object* - объект конфигурации Units view
 
 ### Example
 
@@ -31,16 +31,16 @@ scheduler.createUnitsView({
     ]
 });
 
-scheduler.init('scheduler_here',new Date(2009,5,30),"unit");
+scheduler.init('scheduler_here',new Date(2027,5,30),"unit");
 
 scheduler.parse([
- {start_date:"06/30/2009 09:00",end_date:"06/30/2009 12:00",text:"Task1",unit_id:1},
- {start_date:"06/30/2009 12:00",end_date:"06/30/2009 20:00",text:"Task2",unit_id:3},
- {start_date:"06/30/2009 08:00",end_date:"06/30/2009 12:00",text:"Task3",unit_id:2}
+ {start_date:"06/30/2027 09:00",end_date:"06/30/2027 12:00",text:"Task1",unit_id:1},
+ {start_date:"06/30/2027 12:00",end_date:"06/30/2027 20:00",text:"Task2",unit_id:3},
+ {start_date:"06/30/2027 08:00",end_date:"06/30/2027 12:00",text:"Task3",unit_id:2}
 ],"json");
 ~~~
 
-**Applicable views:** [Units view](views/units.md)
+**Доступные представления:** [Units view](views/units.md)
 
 ### Related samples
 - [Units view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/02_units_view.html)
@@ -49,7 +49,7 @@ scheduler.parse([
 ### Details
 
 :::note
- Для использования этого метода должен быть включен плагин [units](guides/extensions-list.md#units). 
+ Метод требует активации плагина [units](guides/extensions-list.md#units). 
 :::
 
 Объект конфигурации для Units view поддерживает следующие свойства:
@@ -57,31 +57,31 @@ scheduler.parse([
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>name</b></td>
-  <td>(<i>string</i>) идентификатор для view. Если Units view с таким именем уже существует, он будет заменён</td>
+  <td>(<i>string</i>) идентификатор представления. Если вы укажете имя уже существующего Units view - оно будет перезаписано</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>property</b></td>
-  <td>(<i>string</i>) указывает свойство данных, используемое для связывания событий с конкретными units</td>
+  <td>(<i>string</i>) имя свойства данных, которое будет использоваться для назначения событий конкретным единицам</td>
   </tr>
   <tr>
-  <td class="webixdoc_links0"><b>list</b></td>
-  <td>(<i>массив объектов</i>) определяет units, отображаемые во view.<br> Каждый объект в массиве представляет отдельный unit и включает:<ul><li><b>key</b> - (<i>string</i>) уникальный id unit. Это значение сопоставляется со свойством данных события для связи событий с units</li><li><b>label</b> - (<i>string</i>) отображаемая метка unit</li></ul></td>
+  <td class="webixdoc_links0" style="vertical-align: top;"><b>list</b></td>
+  <td>(<i>array of objects</i>) задаёт единицы представления.<br> Каждый объект в массиве задаёт одну единицу и имеет следующие свойства:<ul> <li><b>key</b> - (<i>string</i>) идентификатор единицы. Этот атрибут сравнивается со свойством данных события, чтобы присвоить событие этой единице</li><li><b>label</b> - (<i>string</i>) подпись единицы</li></ul></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>days</b></td>
-  <td>(<i>number</i>) количество элементов (дней), отображаемых по оси Y</td>
+  <td>(<i>number</i>) число элементов (дней) на оси Y</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>skip_incorrect</b></td>
-  <td>(<i>boolean</i>) если установлено в <i>true</i>, события, не соответствующие ни одному unit, не будут отображаться. Если <i>false</i>, такие события назначаются первому unit. По умолчанию <i>false</i>. Необязательно</td>
+  <td>(<i>boolean</i>) если <i>true</i>, события, принадлежащие не к одной из единиц, не будут отображаться. Если <i>false</i> — такие события будут назначены первой единице. По умолчанию — <i>false</i>. Опционально</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>size</b></td>
-  <td>(<i>number</i>) количество units, отображаемых одновременно. Если фактическое количество превышает это значение, появляется scrollbar. Необязательно</td>
+  <td>(<i>number</i>) количество единиц, которые должны отображаться в представлении (если фактическое количество превысит это значение, будет отображаться полосa прокрутки). Опционально</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>step</b></td>
-  <td>(<i>number</i>) количество units, прокручиваемых за один шаг. Необязательно</td>
+  <td>(<i>number</i>) количество единиц, которое будет прокручиваться за один раз. Опционально</td>
   </tr>
   </tbody>
 </table>

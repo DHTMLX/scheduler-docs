@@ -17,7 +17,7 @@ description: "사용자가 지도에 위치를 표시하기 위해 위치 공유
 ~~~jsx
 scheduler.config.map_resolve_user_location = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** true

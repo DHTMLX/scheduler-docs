@@ -16,7 +16,7 @@ description: "Steuert, ob der Scheduler das Datumsformat beim Parsen strikt einh
 
 ~~~jsx
 scheduler.config.parse_exact_format = true;
-var parseDate = scheduler.date.str_to_date("%Y-%m-%d %H:%i");
+const parseDate = scheduler.date.str_to_date("%Y-%m-%d %H:%i");
 // Der Datumsstring muss exakt dem angegebenen Format entsprechen
 
 parseDate("2019-01-15 12:00");
@@ -30,7 +30,7 @@ parseDate("2019-01-15T12:00");
 
 
 scheduler.config.parse_exact_format = false;
-var parseDate = scheduler.date.str_to_date("%Y-%m-%d %H:%i");
+const parseDate = scheduler.date.str_to_date("%Y-%m-%d %H:%i");
 // Der Scheduler versucht, das Format des übergebenen Datumsstrings zu erkennen
 
 parseDate("2019-01-15 12:00");

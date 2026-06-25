@@ -1,29 +1,27 @@
 ---
-title: "Манипуляции с Lightbox"
-sidebar_label: "Манипуляции с Lightbox"
+title: "Манипуляции с Lightbox" 
+sidebar_label: "Манипуляции с Lightbox" 
 ---
 
 # Манипуляции с Lightbox
 
-## Получение/установка значения элемента управления {#gettingsettingthecontrolvalue}
+## Получение/установка значения элемента управления секцией
 
-Чтобы получить или изменить значение контрола секции, используйте объект [formSection](api/method/formsection.md) следующим образом:
+Чтобы получить/установить значение элемента управления секции, используйте объект [formSection](api/method/formsection.md) как в примере:
 
 ~~~js
-// получить значение
-var value = scheduler.formSection('description').getValue();
+//чтобы получить значение
+const value = scheduler.formSection('description').getValue();
 
-// установить значение
+//чтобы установить значение
 scheduler.formSection('description').setValue('abc');
 ~~~
 
+[Установка/получение значений элементов управления Lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/22_opertions_with_lightbox.html)
 
-[Setting/getting values of lightbox's controls](https://docs.dhtmlx.com/scheduler/samples/02_customization/22_opertions_with_lightbox.html)
+## Открытие Lightbox одним кликом
 
-
-## Открытие lightbox по одному клику {#openingthelightboxonasingleclick}
-
-Вы можете настроить открытие lightbox по одному клику. Для этого используйте событие [onClick](api/event/onclick.md) вместе с методом [showLightbox](api/method/showlightbox.md):
+Можно открыть существующий Lightbox одним кликом. Для этого используйте событие [onClick](api/event/onclick.md) и метод [showLightbox](api/method/showlightbox.md):
 
 ~~~js
 scheduler.attachEvent("onClick", function (id, e){
@@ -32,36 +30,36 @@ scheduler.attachEvent("onClick", function (id, e){
 });
 ~~~
 
-**Related sample** [Opening the lightbox on one click](https://snippet.dhtmlx.com/5/50e639d2a)
+**Связанный пример** [Opening the lightbox on one click](https://snippet.dhtmlx.com/5/50e639d2a)
 
-С такой настройкой при клике левой кнопкой мыши по блоку события откроется lightbox.
+Lightbox откроется, когда пользователь нажмет левую кнопку мыши по области события.
 
-## Проверка, открыт ли lightbox {#checkingwhetherthelightboxisopened}
+## Проверка того, открыт ли Lightbox
 
-Чтобы узнать, открыт ли сейчас lightbox, проверьте свойство **lightbox_id** из объекта состояния, возвращаемого методом [getState](api/method/getstate.md). 
-Если lightbox открыт, будет возвращён id события в lightbox; если нет - 'null' или 'undefined':
+Чтобы проверить, открыт ли Lightbox в данный момент, используйте свойство **lightbox_id** объекта состояния, возвращаемого методом [getState](api/method/getstate.md). 
+Если Lightbox открыт, метод вернет id открытого события, в противном случае вернется null или undefined:
 
 ~~~js
 if (scheduler.getState().lightbox_id){
-    // обработка случая, когда lightbox открыт
+    //код для открытого Lightbox
 } else {
-    // обработка случая, когда lightbox закрыт
+    //код для закрытого Lightbox
 }
 ~~~
 
-## Связывание свойств объекта события с секциями lightbox {#mapping-properties-of-an-event-object-to-the-lightbox-sections}
+## Связывание свойств объекта события с секциями Lightbox
 
-Чтобы связать свойство объекта события с секцией lightbox, выполните следующие шаги:
+Чтобы связать свойство объекта события с секцией Lightbox, сделайте следующее:
 
-- Убедитесь, что ваш источник данных предоставляет события в [поддерживаемом формате](guides/data-formats.md)
+- Убедитесь, что ваш источник данных возвращает события в [поддерживаемом формате](guides/data-formats.md)
 
 ~~~js
 { 
    "data":[
       {
           "id":"1",
-          "start_date":"2019-03-02 00:00:00",
-          "end_date":"2019-03-04 00:00:00",
+          "start_date":"2027-03-02 00:00:00",
+          "end_date":"2027-03-04 00:00:00",
           "text":"Graduation ceremony",
           "type":"1",
           "location":"London"
@@ -71,12 +69,12 @@ if (scheduler.getState().lightbox_id){
 }
 ~~~
 
-Обратите внимание, что все свойства, возвращаемые вашим источником данных, добавляются к объектам событий и доступны через [клиентский API](guides/event-object-operations.md).
+Примечание: все свойства, возвращаемые вашим источником данных, будут добавлены к объектам событий и будут доступны через [client-side API](guides/event-object-operations.md).
 
-- Чтобы связать контрол lightbox с определённым свойством, укажите свойство **map_to** секции с именем свойства события:
+- Чтобы связать элемент управления Lightbox с конкретным свойством, укажите имя свойства события в свойство **map_to** раздела:
 
 ~~~js
-scheduler.config.lightbox.sections="["
+scheduler.config.lightbox.sections=[
     {name:"description", height:70, map_to:"text", type:"textarea" , focus:true},
     {name:"locationInput", height:35, map_to:"location", type:"textarea" },
     {name:"typeSelect", map_to:"type", type:"select", options:scheduler.serverList("types")},
@@ -84,29 +82,27 @@ scheduler.config.lightbox.sections="["
 ];
 ~~~
 
-[time](guides/time.md) и [recurring](guides/recurring-events.md#recurringlightbox) контролы являются исключениями, так как всегда связаны с фиксированными свойствами (**event.start_date/event.end_date** и **event.rec_type/event.event_length/event.event_pid** соответственно).
+Исключения составляют управляющие элементы [time] и [recurring], которые всегда сопоставляются фиксированным свойствам (**event.start_date/event.end_date** и **event.rec_type/event.event_length/event.event_pid** соответственно).
 
-## Автоматическая дата окончания в контроле Time {#automatic-end-date-in-the-time-control}
+## Автоматическая конечная дата в контроле Time
 
-Чтобы задать стандартную длительность события и автоматически обновлять дату окончания для сохранения этой длительности, настройте следующие параметры:
+Чтобы задать начальную продолжительность событий и чтобы конечная дата автоматически изменялась, чтобы сохранить это значение, используйте свойства [event_duration](api/config/event_duration.md) и [auto_end_date](api/config/auto_end_date.md):
 
 ~~~js
-// укажите длительность события в минутах для параметра auto_end_time
+//укажите длительность события в минутах для параметра auto_end_time
 scheduler.config.event_duration = 60; 
 scheduler.config.auto_end_date = true;
 ~~~
 
+[Автоматическая конечная дата](https://docs.dhtmlx.com/scheduler/samples/02_customization/11_auto_end_date.html)
 
-[Automatic end date](https://docs.dhtmlx.com/scheduler/samples/02_customization/11_auto_end_date.html)
+При такой конфигурации каждый раз, когда пользователь изменяет время начала события или дату начала в Lightbox, время/дата окончания события будут изменяться автоматически, чтобы продолжительность события была равна 60 минут (значение опции [event_duration]).
 
+## Установка значения по умолчанию для элемента управления Lightbox
 
-Теперь, когда пользователь изменяет время или дату начала события в lightbox, время и дата окончания будут автоматически подстраиваться так, чтобы длительность события оставалась 60 минут (как указано в опции [event_duration](api/config/event_duration.md)).
+Чтобы задать значение по умолчанию для секции Lightbox, используйте свойство **default_value** объекта секции.
 
-## Установка значения по умолчанию для контрола lightbox {#setting-the-default-value-for-a-lightboxs-control}
-
-Чтобы задать значение по умолчанию для секции lightbox, используйте свойство **default_value** этой секции.
-
-Например, если добавлена пользовательская секция для местоположения события с именем 'Location', по умолчанию она будет пустой при создании нового события. Чтобы по умолчанию отображался определённый адрес (например, Гринвичская обсерватория), настройте lightbox так:
+Например, вы добавили на Lightbox пользовательскую секцию, которая отображает место расположения события, и назвали её «Location». При создании нового события поле будет пустым. Чтобы корректировать такое поведение и, скажем, по умолчанию отображать адрес Greenwich Observatory, задайте Lightbox так:
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -117,167 +113,162 @@ scheduler.config.lightbox.sections = [
 ];
 ~~~
 
-Обратите внимание, что **default_value** задаёт стандартное содержимое только для секции lightbox, а не для нового события. Это означает, что новое событие получит это значение только после открытия lightbox и сохранения события.
+Примечание: свойство **default_value** задает значение по умолчанию для секции Lightbox, а не для нового события, то есть новое событие получит указанное значение только после того, как пользователь откроет Lightbox и сохранит событие.
 
-Чтобы присвоить значение по умолчанию непосредственно при создании новых событий, используйте событие [onEventCreated](api/event/oneventcreated.md):
+Чтобы установить значение по умолчанию непосредственно для новых событий, используйте событие [onEventCreated](api/event/oneventcreated.md):
 
 ~~~js
 scheduler.attachEvent("onEventCreated", function(id,e){
     scheduler.getEvent(id).location = 'Blackheath Avenue London, Greenwich...';
-    scheduler.updateEvent(id); // отрисовка обновлённого события
+    scheduler.updateEvent(id); // отрисовывает обновленное событие
     return true;
 });
 ~~~
 
-## Изменение порядка и удаление селекторов даты и времени {#changingtheorderofdatetimecontrolsandremovingtimeselectors}
+## Изменение порядка элементов управления датой и временем и удаление селекторов времени
 
-Вы можете изменить порядок или убрать элементы управления датой и временем в секции 'Период времени', установив свойство **time_format**:
+Есть возможность изменить порядок элементов управления датой и временем в разделе 'Time period' или удалить некоторые из них. Это делается через свойство **time_format**:
 
 ~~~js
-scheduler.config.lightbox.sections="["
+scheduler.config.lightbox.sections= [
   {name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
   {name:"time", ..., time_format:["%H:%i","%m","%d","%Y"]}
 ];
 ~~~
 
 :::note
-Обратите внимание, что это изменяет только порядок элементов в массиве, но не формат отображения данных.
+Примечание: вы не можете изменить формат представления данных, только порядок элементов в массиве.
 :::
 
-Например, вы можете настроить формат так:
+Например, можно изменить порядок формата следующим образом:
 
 ~~~js
-// по умолчанию
+//по умолчанию
 time_format:["%H:%i", "%m", "%d", "%Y"] 
-// сначала месяц
+//месяц стоит в начале
 time_format:["%m","%d", "%Y", "%H:%i"]
-// без выбора года
+// селектор года удален
 time_format:["%H:%i", "%m", "%d"]
-// некорректное использование
-time_format:["%H:%i", "%M", "%d", "%Y"] // "%m" ошибочно заменено на "%M"
+// неверно
+time_format:["%H:%i", "%M", "%d", "%Y"] //"%m" изменено на "%M"
 ~~~
 
-## Режим только для чтения {#readonlymode}
+## Режим только для чтения
 
-Подробнее о режиме только для чтения читайте в разделе [Режим только для чтения](guides/readonly.md).
+Подробную информацию о режиме только для чтения смотрите в разделе [Read-only Mode](guides/readonly.md).
 
-## Скрытие секции для некоторых событий {#makingasectionhiddenforsomeevents}
+## Сделать раздел скрытым для некоторых событий
 
-Чтобы скрыть секцию для определённых событий, переопределите её метод **set_value** следующим образом:
-
+Чтобы сделать раздел скрытым для конкретных событий, переопределите его метод **set_value**, как в примере:
 
 ~~~js
-scheduler.form_blocks.textarea.set_value="function(node,value,ev){"
-    node.firstChild.value="value||""";
-    var style = ev.some_property?"":"none";
-    node.style.display="style;" // область редактора
-    node.previousSibling.style.display="style;" // заголовок секции
-    scheduler.setLightboxSize(); // скорректировать размер lightbox
+scheduler.form_blocks.textarea.set_value = function(node,value,ev){
+    node.firstChild.value= value || "";
+    let style = ev.some_property ? "" : "none";
+    node.style.display = "style;" // область редактора
+    node.previousSibling.style.display = "style;" // заголовок секции
+    scheduler.setLightboxSize(); // корректный размер lightbox
 }
 ~~~
 
 ### Опция "Событие на весь день"
 
-Чтобы включить опцию "событие на весь день" в lightbox, установите опцию [full_day](api/config/full_day.md) в *true*:
+Чтобы добавить опцию «полный день» в Lightbox, задайте опцию [full_day](api/config/full_day.md) в значение true.
+Для этого просто добавьте следующую строку кода:
 
 ~~~js
 scheduler.config.full_day  = true;
 ~~~
 
-После этого флажок **Full Day** появится слева в секции **Time period**. При его выборе все поля ввода в этой секции станут неактивными, а длительность события будет установлена на весь день - с **0:00 AM** выбранной даты до **0:00 AM** следующего дня.
+После включения опции [full_day](api/config/full_day.md) флажок **Full Day** будет отображаться в левой части раздела **Time period**. После выбора все поля раздела будут заблокированы, и длительность события будет считаться как полный день с 0:00 текущей даты клетки до 0:00 следующего дня.
 
+[Полные события на день](https://docs.dhtmlx.com/scheduler/samples/02_customization/12_full_day_event.html)
 
-[Full day events](https://docs.dhtmlx.com/scheduler/samples/02_customization/12_full_day_event.html)
+## Типы Lightbox
 
+Lightbox может быть представлен в одном из двух типов:
 
-## Типы lightbox {#linkingselectcontrols}
+- Standard (wide);
+- Short.
 
-Lightbox доступен в двух стилях:
+В стандартной теме Lightbox может быть представлен только в типе стандартного (широкого), тогда как в темах 'glossy' или 'classic' можно выбрать между типами.
 
-- Стандартный (широкий);
-- Короткий.
-
-В скине по умолчанию доступен только стандартный (широкий) lightbox, а скины 'glossy' или 'classic' позволяют выбрать между двумя вариантами.
-
-Для выбора нужного типа используйте свойство [wide_form](api/config/wide_form.md):
+Чтобы установить нужный тип, используйте свойство [wide_form](api/config/wide_form.md):
 
 ~~~js
 scheduler.config.wide_form = true;
 ~~~
 
-
-**Стандартный (широкий) lightbox**:
+**Standard (wide) Lightbox**:
 
 ![scheduler_wide_form.png](/img/scheduler_wide_form.png)
 
-**Короткая форма**:
+**Short form**:
 
 ![scheduler_standard_form.png](/img/scheduler_standard_form.png)
 
-
 ### Кнопка в заголовке секции
 
-Вы можете добавить пользовательскую кнопку в заголовок секции следующим образом:
+Можно добавить на заголовок секции пользовательскую кнопку. Чтобы добавить кнопку в заголовок секции, выполните следующие шаги:
 
-- Добавьте свойство 'button' в объект секции:
+- Укажите свойство 'button' в объекте секции:
 
 ~~~js
 {name:"description", height:130, map_to:"text", type:"textarea", button:"help"}
 ~~~
 
-- Определите надпись для кнопки:
+- Укажите подпись к кнопке:
 
 ~~~js
-// 'help' соответствует значению свойства 'button'
+// 'help' — значение свойства 'button'
 scheduler.locale.labels.button_help = "Help label";
 ~~~
 
-- Укажите обработчик нажатия на кнопку:
+- Укажите обработчик кликов по кнопке:
 
-~~~
-scheduler.form_blocks.textarea.button_click="function(index,button,shead,sbody){"
-    // ваш код
+~~~js
+scheduler.form_blocks.textarea.button_click = function(index,button,shead,sbody){
+    // любой пользовательский код
 }
 ~~~
 
-Здесь:
+где:
 
-- **index** - (*number*) индекс секции, начиная с нуля
-- **button** - (*HTMLElement*) элемент кнопки
-- **shead** - (*HTMLElement*) элемент заголовка секции
-- **sbody** - (*HTMLElement*) элемент тела секции
+- **index** - (*число*) индекс секции. Нумерация начинается с нуля
+- **button** - (*HTMLElement*) HTML-элемент кнопки
+- **shead** - (*HTMLElement*) HTML-элемент заголовка секции
+- **sbody** - (*HTMLElement*) HTML-элемент тела секции
 
+Вы можете определить изображение, которое используется для кнопки, через следующий CSS-класс:
 
-Вы можете изменить изображение кнопки с помощью этого CSS-класса:
-
-~~~js
+~~~css
 .dhx_custom_button_help{
     background-image:url(imgs/but_help.gif);
 }
 ~~~
 
-## Связывание select-контролов {#linkingselectcontrols}
+## Связывание управляющих элементов select
 
-Select-контролы в lightbox можно сделать зависимыми друг от друга. Для этого используйте [onchange property](guides/select.md#properties) select-контрола, как показано ниже:
+Можно сделать так, чтобы управляющие элементы select в Lightbox зависели друг от друга. Для этого используйте свойство onchange элемента select, как в примере:
 
 ~~~js
-var update_select_options = function(select, options) { // вспомогательная функция
+const update_select_options = function(select, options) { // вспомогательная функция
     select.options.length = 0;
-    for (var i="0;" i<options.length; i++) {
-        var option = options[i];
+    for (let i = 0; i < options.length; i++) {
+        let option = options[i];
         select[i] = new Option(option.label, option.key);
     }
 };
 
-var parent_onchange = function(event) {
-    var new_child_options = child_select_options[this.value];
+const parent_onchange = function(event) {
+    const new_child_options = child_select_options[this.value];
     update_select_options(scheduler.formSection('child').control, new_child_options);
 };
 scheduler.attachEvent("onBeforeLightbox", function(id){
-    var ev = scheduler.getEvent(id);
+    const ev = scheduler.getEvent(id);
     if (!ev.child_id) {
-        var parent_id = ev.parent_id||parent_select_options[0].key;
-        var new_child_options = child_select_options[parent_id];
+        const parent_id = ev.parent_id||parent_select_options[0].key;
+        const new_child_options = child_select_options[parent_id];
         update_select_options(
             scheduler.formSection('child').control, new_child_options
         );
@@ -285,7 +276,7 @@ scheduler.attachEvent("onBeforeLightbox", function(id){
     return true;
 });
 
-scheduler.config.lightbox.sections="["
+scheduler.config.lightbox.sections= [
     ...
     {name:"parent", height:23, type:"select", options: parent_select_options, 
      map_to:"parent_id", onchange:parent_onchange },
@@ -295,63 +286,60 @@ scheduler.config.lightbox.sections="["
 ];
 ~~~
 
+[Связывание управляющих элементов в Lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/26_linked_selects_in_lightbox.html)
 
-[Linking select controls in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/26_linked_selects_in_lightbox.html)
+![linking_controls.png](/img/linking_controls.png)
 
+Событие <b>onchange</b> вызывается, когда пользователь изменяет выбранный вариант в родительском разделе. Варианты в дочернем разделе будут изменяться соответствующим образом.
 
-![linking_controls](/img/linking_controls.png)
+## Динамическое изменение конфигураций Lightbox
 
-Событие <b>onchange</b> срабатывает при выборе пользователем другого значения в родительской секции и обновляет опции дочерней секции.
+Существует возможность динамически менять секции Lightbox. Это означает, что секции Lightbox могут быть скрыты, заблокированы или отображены в зависимости от заданной конфигурации.
 
-## Динамическое изменение секций lightbox {#dynamic-changing-of-the-lightbox-sections}
+Вы можете динамически изменять секции Lightbox через метод [resetLightbox()](api/method/resetlightbox.md). Например:
 
-Возможно изменять секции lightbox "на лету". Это значит, что вы можете скрывать, блокировать или показывать различные секции lightbox в зависимости от заданной конфигурации.
-
-Для этого используйте метод [resetLightbox()](api/method/resetlightbox.md). Пример:
-
-1. Сначала создайте два массива, определяющие разные наборы контролов для lightbox.
+1. Создайте два массива конфигурации Lightbox, которые будут содержать два разных набора контролов.
 
 ~~~js
-var full_lightbox = [
+const full_lightbox = [
     { name: "description", height: 200, map_to: "text", type: "textarea", focus: true},
     { name: "hidden", height: 23, map_to: "hidden", type: "textarea"},
     { name: "time", height: 72, type: "time", map_to: "auto"}
 ];
-var restricted_lightbox = [
+const restricted_lightbox = [
     { name: "description", height: 200, map_to: "text", type: "textarea", focus: true},
     { name: "time", height: 72, type: "time", map_to: "auto"}
 ];
 ~~~
 
-2. Далее реализуйте следующее:
+2. На следующем шаге выполните следующие действия:
 
-- Перед открытием нового lightbox вызовите метод <b>resetLightbox()</b> для очистки текущих контролов и создания нового lightbox с нужным набором секций.
+- Перед отображением нового Lightbox вызовите метод resetLightbox() для удаления текущего набора контролов формы редактирования и генерации нового объекта Lightbox с другим набором контролов.
 
-- Получите объект события по его id и определите условие, по которому будет выбрана нужная конфигурация lightbox. В примере ниже используется атрибут "restricted".
+- Получите объект события по его id и укажите условие, в зависимости от которого будет применяться та или иная конфигурация Lightbox. В приведенном ниже примере условие задается через атрибут "restricted".
 
 ~~~js
 scheduler.attachEvent("onBeforeLightbox", function(event_id) {
     scheduler.resetLightbox();
-    var ev = scheduler.getEvent(event_id);
+    const ev = scheduler.getEvent(event_id);
     scheduler.config.lightbox.sections = (ev.restricted) ?
         restricted_lightbox : full_lightbox;
     return true;
 });
 ~~~
 
-3. Свойство 'restricted' события определяет, будет ли использоваться конфигурация "restricted_lightbox". Если оно не задано, будет показан полный lightbox.
+3. Используйте свойство события 'restricted' для применения конфигурации "restricted_lightbox". В противном случае будет отображаться полный Lightbox.
 
 ~~~js
-scheduler.init('scheduler_here', new Date(2017, 5, 30), "week");
+scheduler.init('scheduler_here', new Date(2027, 5, 30), "week");
 scheduler.parse([
-    { start_date: "2017-06-27 04:00", end_date: "2017-06-27 7:00", 
+    { start_date: "2027-06-27 04:00", end_date: "2027-06-27 7:00", 
         text: "Restricted event", hidden: "You won't see me", restricted: true },
-    { start_date: "2017-06-29 05:00", end_date: "2017-06-29 11:00", 
+    { start_date: "2027-06-29 05:00", end_date: "2027-06-29 11:00", 
         text: "Full access", hidden: "Hidden text" }
 ]);
 ~~~
 
-![dinamicchanges_lightbox](/img/dinamicchanges_lightbox.png)
+![dinamicchanges_lightbox.png](/img/dinamicchanges_lightbox.png)
 
-
-[Dynamic changing of lightbox configurations](https://docs.dhtmlx.com/scheduler/samples/02_customization/29_changing_lightbox_configurations.html)
+[Динамическое изменение конфигураций Lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/29_changing_lightbox_configurations.html)

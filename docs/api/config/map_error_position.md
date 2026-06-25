@@ -19,7 +19,7 @@ The property is deprecated
 ~~~jsx
 scheduler.config.map_error_position = new google.maps.LatLng(51.477840, -0.001492);
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"map");
+scheduler.init('scheduler_here',new Date(2027,05,11),"map");
 ~~~
 
 **Default value:** google.maps.LatLng(15, 15)

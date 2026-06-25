@@ -19,9 +19,9 @@ description: "在事件框内直接打开内联编辑器以更改事件文本"
 ### Example
 
 ~~~jsx
-var eventId = scheduler.addEvent({
-    start_date: "16-05-2013 09:00",
-    end_date:   "16-05-2013 12:00",
+const eventId = scheduler.addEvent({
+    start_date: "16-05-2027 09:00",
+    end_date:   "16-05-2027 12:00",
     text:   "Meeting"
 });
 ...

@@ -82,7 +82,7 @@ scheduler.locale.labels.section_location = "Location";
 
 ~~~js
 //'map' 是地图视图的默认名称
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
   
 
@@ -113,7 +113,7 @@ scheduler.config.map_settings = {
     }
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
  
 [查看更多详情](views/map.md#maprelatedconfigurationoptions)
@@ -125,7 +125,7 @@ scheduler.init('scheduler_here',new Date(2024,5,11),"map");
 ~~~js
 scheduler.config.map_view_provider = "googleMap";
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
 
 可用值有:*"googleMap", "openStreetMaps", "mapbox"*。
@@ -137,7 +137,7 @@ scheduler.config.map_settings = {
     view_provider: "googleMap"
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
 
 ## 与地图相关的配置选项 {#maprelatedconfigurationoptions}
@@ -168,7 +168,7 @@ scheduler.config.map_settings = {
     view_provider: "googleMap"
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
 
 这些属性包括:

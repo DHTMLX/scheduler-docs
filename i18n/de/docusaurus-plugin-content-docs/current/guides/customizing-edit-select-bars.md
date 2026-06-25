@@ -1,15 +1,15 @@
 ---
-title: "Anpassen der 'Select'- und 'Edit'-Leisten"
-sidebar_label: "Anpassen der 'Select'- und 'Edit'-Leisten"
+title: "Anpassen der 'Select' und 'Edit' Leisten"
+sidebar_label: "Anpassen der 'Select' und 'Edit' Leisten"
 ---
 
-# Anpassen der "Select"- und "Edit"-Leisten
+# Anpassen der "Select" und "Edit" Leisten
 
-dhtmlxScheduler ermöglicht es Ihnen, eine individuelle Sammlung von Buttons sowohl für die Edit- als auch die Select-Leiste zu konfigurieren.
+dhtmlxScheduler bietet die Möglichkeit, eine benutzerdefinierte Menge von Schaltflächen für die Bearbeitungs- und Auswahlleisten zu definieren.
 
-## Die Select-Leiste
+## Die Auswahlleiste
 
-Standardmäßig enthält die Select-Leiste 3 Buttons ('Details', 'Edit', 'Delete'), die über die Option [icons_select](api/config/icons_select.md) definiert werden.
+Standardmäßig enthält die Auswahlleiste drei Schaltflächen ('Details', 'Bearbeiten', 'Löschen'), die durch die [icons_select](api/config/icons_select.md) Konfigurationsoption festgelegt werden.
 
 ~~~js
 scheduler.config.icons_select = [
@@ -19,17 +19,18 @@ scheduler.config.icons_select = [
 ];
 ~~~
 
-### Anwendungsbeispiel
 
-Hier sehen Sie eine Beispiel-Select-Leiste wie im untenstehenden Bild dargestellt:
+### Verwendungsbeispiel
 
+Betrachten wir die unten gezeigte Auswahlleiste:
+  
 ![select_bar.png](/img/select_bar.png)
 
-Ein neuer Button mit dem Namen **Location** wurde zu den bestehenden Buttons hinzugefügt.
+Zu den vorhandenen Schaltflächen haben wir eine neue hinzugefügt - **Location**.
 
-Die Schritte hierfür sind:
+Hier sind unsere Schritte:
 
-- Aktualisieren Sie [icons_select](api/config/icons_select.md) wie folgt:
+-  Definieren Sie [icons_select](api/config/icons_select.md) wie folgt:
   
 ~~~js
 scheduler.config.icons_select = [
@@ -38,20 +39,20 @@ scheduler.config.icons_select = [
    "icon_edit",
    "icon_delete"
 ];
-
 ~~~
- 
-:::note
-Beachten Sie, jeder Button muss mit "icon_" beginnen
-::: 
 
-- Definieren Sie das Label für den neuen Button:
+:::note
+Hinweis: Jeder Button muss mit "icon_" beginnen.
+ ::: 
+
+
+-  Legen Sie die Beschriftung für den neuen Button fest:
   
 ~~~js
 scheduler.locale.labels.icon_location = "Location";
 ~~~
 
-- Weisen Sie die CSS-Klasse für den Button zu:
+-  Legen Sie die CSS-Klasse für den Button fest:
   
 ~~~js
 .dhx_menu_icon.icon_location{
@@ -59,19 +60,21 @@ scheduler.locale.labels.icon_location = "Location";
 } 
 ~~~
 
-- Definieren Sie den Click-Handler für den Button:
+
+-  Definieren Sie den Handler, der Klicks auf den Button verarbeitet:
   
 ~~~js
 scheduler._click.buttons.location = function(id){
    some_function(id);
 };
 ~~~
- 
-Hier enthält **scheduler._click.buttons** die onClick-Handler für die Buttons der Leiste. Der Schlüssel 'location' entspricht dem Button-Namen aus [icons_select](api/config/icons_select.md), jedoch ohne das Präfix 'icon_'.
 
-## Die Edit-Leiste
+wobei scheduler._click.buttons die Sammlung der onClick-Handler für die Buttons der Leiste enthält. 'location' ist der Name des Buttons, der in [icons_edit](api/config/icons_edit.md) nach dem 'icon_'-Teil festgelegt wird.
 
-In der Regel verfügt die Edit-Leiste über 2 Buttons ('Save' und 'Cancel'), die über die Option [icons_edit](api/config/icons_edit.md) konfiguriert werden.
+
+## Die Bearbeitungsleiste
+
+Im Allgemeinen enthält die Bearbeitungsleiste zwei Schaltflächen ('Speichern', 'Abbrechen'), die durch die [icons_edit](api/config/icons_edit.md) Konfigurationsoption festgelegt werden.
 
 ~~~js
 scheduler.config.icons_edit = [
@@ -80,16 +83,17 @@ scheduler.config.icons_edit = [
 ];
 ~~~
 
-### Anwendungsbeispiel
 
-Betrachten Sie die untenstehende Edit-Leiste:
+### Verwendungsbeispiel
 
+Betrachten wir die unten gezeigte Bearbeitungsleiste:
+  
 ![customizing_edit_bar.png](/img/customizing_edit_bar.png)
 
-Zusätzlich zu den Buttons **Save** und **Cancel** wurde ein neuer **Info**-Button hinzugefügt.
-Das Vorgehen ist:
+Zu den Buttons Speichern und Abbrechen haben wir eine neue hinzugefügt – Info.
+Hier sind unsere Schritte:
 
-- Aktualisieren Sie [icons_edit](api/config/icons_edit.md) wie folgt:
+-  Definieren Sie [icons_edit](api/config/icons_edit.md) wie folgt:
   
 ~~~js
 scheduler.config.icons_edit = [
@@ -99,13 +103,13 @@ scheduler.config.icons_edit = [
 ];
 ~~~
 
-- Setzen Sie das Label für den neuen Button:
+-  Legen Sie die Beschriftung für den neuen Button fest:
   
 ~~~js
 scheduler.locale.labels.icon_custom = "Info";
 ~~~
 
-- Definieren Sie die CSS-Klasse für den Button:
+-  Legen Sie die CSS-Klasse für den Button fest:
   
 ~~~js
 .dhx_menu_icon.icon_custom{
@@ -113,7 +117,8 @@ scheduler.locale.labels.icon_custom = "Info";
 } 
 ~~~
 
-- Geben Sie den Click-Handler für den Button an:
+
+-  Definieren Sie den Handler, der Klicks auf den Button verarbeitet:
   
 ~~~js
 scheduler._click.buttons.custom = function(id){
@@ -121,18 +126,19 @@ scheduler._click.buttons.custom = function(id){
 };
 ~~~
 
-Auch hier enthält **scheduler._click.buttons** die Click-Handler für die Buttons, und 'custom' entspricht dem Button-Namen aus [icons_edit](api/config/icons_edit.md) nach Entfernen des Präfixes 'icon_'.
+wobei scheduler._click.buttons die Sammlung der onClick-Handler für die Buttons der Leiste enthält. 'custom' ist der Name des Buttons, der in [icons_edit](api/config/icons_edit.md) nach dem 'icon_'-Teil festgelegt wird.
  
 
-## Dynamisches Ändern der Elemente der Leisten
+## Dynamische Änderung der Leisten-Elemente
 
-Es ist möglich, die Buttons der Edit- und Select-Leisten dynamisch anhand bestimmter Bedingungen zu ändern.
+Die Buttons der Bearbeitungs- und Auswahlleisten können je nach Bedingung dynamisch geändert werden. 
 
-Wenn Ihre Events beispielsweise eine boolesche Eigenschaft **important** haben, die angibt, dass das Event kritisch ist und nicht gelöscht werden soll, können Sie den 'delete'-Button in der Select-Leiste entsprechend ein- oder ausblenden. So geht's:
+Zum Beispiel besitzen Ihre Ereignisse eine benutzerdefinierte boolesche Eigenschaft important, die angibt, ob das Ereignis wichtig ist und vom Benutzer nicht gelöscht werden kann.
+Je nach Wert dieser Eigenschaft möchten Sie den 'delete'-Button in der Auswahlleiste ausblenden bzw. anzeigen. Um ein solches Verhalten zu ermöglichen, verwenden Sie folgende Vorgehensweise:
 
 ~~~js
 scheduler.attachEvent("onClick", function(id){
-    var event = scheduler.getEvent(id);
+    const event = scheduler.getEvent(id);
     if (event.important)
         scheduler.config.icons_select = ["icon_details"];
     else

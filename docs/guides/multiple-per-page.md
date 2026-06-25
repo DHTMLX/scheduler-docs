@@ -3,7 +3,7 @@ title: "Creating Multiple Schedulers on a Page"
 sidebar_label: "Creating Multiple Schedulers on a Page"
 ---
 
-# Creating Multiple Schedulers on a Page 
+# Creating Multiple Schedulers on a Page
 
 :::info
 This functionality is available in the Scheduler PRO version (Commercial (since October 6, 2021), Enterprise and Ultimate licenses) only.
@@ -15,7 +15,7 @@ Now, for the PRO version, we should rephrase that statement and say: _more than 
 
 ## Scheduler Instance Configuration
 
-To create a new instance of dhtmlxScheduler, use the **Scheduler.getSchedulerInstance()** method:
+To create a new instance of dhtmlxScheduler, use the `Scheduler.getSchedulerInstance()` method:
 
 ~~~js
 // Beware, 'Scheduler' in the command goes with the capital letter
@@ -27,7 +27,7 @@ The method can take a configuration object as a parameter:
 ~~~js
 const scheduler = Scheduler.getSchedulerInstance({
     plugins: {
-        recurring: true,
+        recurring: true
     },
     container: "scheduler_here",
     config: {
@@ -36,16 +36,11 @@ const scheduler = Scheduler.getSchedulerInstance({
     },
     data: {
         events: [
-            { id:1, start_date: "2022-04-18 09:00", end_date: "2022-04-18 12:00", 
-                text:"English lesson", subject: 'english' },
-            { id:2, start_date: "2022-04-20 10:00", end_date: "2022-04-21 16:00", 
-                text:"Math exam", subject: 'math' },
-            { id:3, start_date: "2022-04-21 10:00", end_date: "2022-04-21 14:00", 
-                text:"Science lesson", subject: 'science' },
-            { id:4, start_date: "2022-04-23 16:00", end_date: "2022-04-23 17:00", 
-                text:"English lesson", subject: 'english' },
-            { id:5, start_date: "2022-04-22 09:00", end_date: "2022-04-22 17:00", 
-                text:"Usual event" }
+            { id: 1, start_date: "2027-04-18 09:00", end_date: "2027-04-18 12:00", text: "English lesson", subject: 'english' },
+            { id: 2, start_date: "2027-04-20 10:00", end_date: "2027-04-21 16:00", text: "Math exam", subject: 'math' },
+            { id: 3, start_date: "2027-04-21 10:00", end_date: "2027-04-21 14:00", text: "Science lesson", subject: 'science' },
+            { id: 4, start_date: "2027-04-23 16:00", end_date: "2027-04-23 17:00", text: "English lesson", subject: 'english' },
+            { id: 5, start_date: "2027-04-22 09:00", end_date: "2027-04-22 17:00", text: "Usual event" }
         ]
     }
 });
@@ -53,24 +48,23 @@ const scheduler = Scheduler.getSchedulerInstance({
 
 The config object can contain the following properties:
 
-- **container** - (*string|HTMLElement*) an HTML container (or its id) that the Scheduler will be displayed in. If not specified, Scheduler will be initialized without a container.
-- **config** - (*object*) an object with configuration settings of the Scheduler
-- **xy** - (*object*) an object with [sizes of the scheduler's elements](api/other/xy.md)
-- **templates** - (*object*) an object with templates 
-- **events** - (*object*) an object with event handlers. 
+- `container` - (*string|HTMLElement*) an HTML container (or its id) that the Scheduler will be displayed in. If not specified, Scheduler will be initialized without a container
+- `config` - (*object*) an object with configuration settings of the Scheduler
+- `xy` - (*object*) an object with [sizes of the scheduler's elements](api/other/xy.md)
+- `templates` - (*object*) an object with templates
+- `events` - (*object*) an object with event handlers
 
-
-You need to use the following format while specifying event handlers for a new instance of Scheduler:
+You need to use the following format while specifying event handlers for a new Scheduler instance:
 
 ~~~js
 const scheduler = Scheduler.getSchedulerInstance({
     events: {
-        onEventCreated: function(id, e){
-            var task = scheduler.getEvent(id);
-            task.owner = null;
+        onEventCreated: (id) => {
+            const createdEvent = scheduler.getEvent(id);
+            createdEvent.owner = null;
             return true;
         },
-        onClick: function(id, e){
+        onClick: (id) => {
             alert(scheduler.getEvent(id).text);
             return true;
         }
@@ -78,50 +72,51 @@ const scheduler = Scheduler.getSchedulerInstance({
 });
 ~~~
 
-- **data** - (*object|string*) an object with data to load or the URL to load data from
-- **plugins** - (*object*) extensions that need to be activated
-- **locale** - (*string|object*) a two-letter language code or an object of the locale that needs to be activated
+- `data` - (*object|string*) an object with data to load or the URL to load data from
+- `plugins` - (*object*) extensions that need to be activated
+- `locale` - (*string|object*) a two-letter language code or an object of the locale that needs to be activated
 
-**Note**, that calling the **Scheduler.getSchedulerInstance()** method without parameters will return the scheduler object with default configuration settings.
+**Note**, calling the `Scheduler.getSchedulerInstance()` method without parameters will return the scheduler object with default configuration settings.
 Therefore, you need to configure your new instance, initialize it and populate with data, as usual.
 
-Let's take a simple example: 2 schedulers, one under another: 
-
+Let's take a simple example: 2 schedulers, one under another:
 
 ~~~js
-window.addEventListener("DOMContentLoaded", function(){
-    var scheduler1  = Scheduler.getSchedulerInstance();
-    scheduler1.init('scheduler_here',new Date(2019,5,30),"week");
-    scheduler1.load("/data/events")
-    
-    var scheduler2 = Scheduler.getSchedulerInstance();
-    scheduler2.init('scheduler_here_2',new Date(2019,5,30),"month");
-    scheduler2.load("/data/events")    
-)};
+window.addEventListener("DOMContentLoaded", () => {
+    const firstScheduler = Scheduler.getSchedulerInstance();
+    firstScheduler.init("scheduler_here", new Date(2027, 5, 30), "week");
+    firstScheduler.load("/data/events");
 
+    const secondScheduler = Scheduler.getSchedulerInstance();
+    secondScheduler.init("scheduler_here_2", new Date(2027, 5, 30), "month");
+    secondScheduler.load("/data/events");
+});
+~~~
+
+~~~html
 <body>
     <div id="scheduler_here" style="width:100%; height: 50%;"></div>
-    <div id="scheduler_here_2" style="width:100%; height: 50%;"></div>    
+    <div id="scheduler_here_2" style="width:100%; height: 50%;"></div>
 </body>
 ~~~
 
 ## Destructor of Scheduler and DataProcessor instances
 
-Starting from version 6.0, the dhtmlxScheduler object has a [destructor](api/method/destructor.md) that can be used to dispose unnecessary instances of the Scheduler.
+Starting from version 6.0, the dhtmlxScheduler object has a [`destructor()`](api/method/destructor.md) method that can be used to dispose unnecessary instances of the Scheduler.
 
-The destructor of the scheduler instance can be used as follows:
+The destructor of the Scheduler instance can be used as follows:
 
 ~~~js
-var myScheduler = Scheduler.getSchedulerInstance();
- 
-//destroying a scheduler instance
-myScheduler.destructor();
+const schedulerInstance = Scheduler.getSchedulerInstance();
+
+// destroying a Scheduler instance
+schedulerInstance.destructor();
 ~~~
 
 The destructor will implement the following tasks:
 
 - clear the data loaded into a scheduler instance
-- destroy the dataProcessor (if it is attached to the scheduler) 
+- destroy the dataProcessor (if it is attached to the scheduler)
 - detach the scheduler from DOM
 - detach all DOM events attached via the [scheduler.event()](api/method/event.md) method
 
@@ -132,30 +127,32 @@ Here is an example of using the destructor to dispose a scheduler instance while
 ~~~js
 @Component({selector: 'app-scheduler', template: `...`})
 class MySchedulerComponent implements OnDestroy {
-  ngOnInit() {
-     this.$gantt = Scheduler.getSchedulerInstance();
+    ngOnInit() {
+        this.$scheduler = Scheduler.getSchedulerInstance();
 
-     // configure and init
-  }
-  
-  ngOnDestroy() {
-     this.$scheduler.destructor();
-     this.$scheduler = null;
-  }
+        // configure and init
+    }
+
+    ngOnDestroy() {
+        this.$scheduler.destructor();
+        this.$scheduler = null;
+    }
 }
 ~~~
 
 ### Detaching the dataProcessor
 
-Calling the destructor of data processor will clear the dataProcessor instance and detach it from the scheduler. For example:
+Calling the destructor of dataProcessor will clear the dataProcessor instance and detach it from the Scheduler. For example:
 
 ~~~js
-var scheduler = Scheduler.getSchedulerInstance();
-var dp = new scheduler.DataProcessor("url");
-dp.init(scheduler);
+const schedulerInstance = Scheduler.getSchedulerInstance();
+const dataProcessor = schedulerInstance.createDataProcessor({
+    url: "url",
+    mode: "REST"
+});
 
-// destroys data processor and detaches it from the scheduler
-dp.destructor();
+// destroys dataProcessor and detaches it from the Scheduler
+dataProcessor.destructor();
 ~~~
 
 :::note

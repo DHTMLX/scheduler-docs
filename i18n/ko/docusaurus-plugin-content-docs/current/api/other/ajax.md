@@ -19,11 +19,11 @@ description: "스케줄러 ajax 모듈"
 {status: "ok", data: "value", data2: "value2"}
 
 
-var xhr = scheduler.ajax;
+const xhr = scheduler.ajax;
 
 // HTTP GET
 xhr.get("server.php").then(function(response) {
-    var res = JSON.parse(response.responseText); 
+    const res = JSON.parse(response.responseText); 
     if (res && res.status == "ok") {
         // 응답이 정상임
     }
@@ -36,7 +36,7 @@ xhr.post({
            paramName: "paramValue"
     }
 }).then(function(response){
-    var res = JSON.parse(response.responseText); 
+    const res = JSON.parse(response.responseText); 
     if (res && res.status == "ok") {
         // 응답이 정상임
     }
@@ -221,7 +221,7 @@ dhtmlxScheduler는 IE8 이상을 포함해 프로미스를 지원합니다. 내�
 프로미스를 생성하려면 다음과 같이 사용하세요:
 
 ~~~js
-var promise = new scheduler.Promise(function(resolve, reject) {...});
+const promise = new scheduler.Promise(function(resolve, reject) {...});
 ~~~
 
 프로미스 구현은 Scheduler 내부에 범위가 제한되어 있으며 전역이 아닙니다.

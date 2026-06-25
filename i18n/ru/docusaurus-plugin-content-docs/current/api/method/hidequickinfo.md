@@ -1,14 +1,14 @@
 ---
-sidebar_label: "hideQuickInfo"
-title: "hideQuickInfo method"
-description: "Скрывает всплывающую форму события, если она в данный момент открыта."
+sidebar_label: hideQuickInfo
+title: "Метод hideQuickInfo"
+description: "скрывает всплывающее окно формы события (если оно в данный момент активно)"
 ---
 
 # hideQuickInfo
 
 ### Description
 
-@short: Скрывает всплывающую форму события, если она в данный момент открыта.
+@short: Скрывает всплывающее окно формы события (если оно в данный момент активно)
 
 @signature: hideQuickInfo: () =\> void
 
@@ -23,7 +23,7 @@ scheduler.hideQuickInfo();
 ### Details
 
 :::note
- Для работы этого метода необходимо включить плагин [quick_info](guides/extensions-list.md#quickinfo). 
+ Метод требует активации плагина [quick_info](guides/extensions-list.md#quick-info).
 :::
 
 ### Related API
@@ -33,5 +33,5 @@ scheduler.hideQuickInfo();
 - [onQuickInfo](api/event/onquickinfo.md)
 
 ### Related Guides
-- [Мобильная адаптивность Scheduler](guides/touch-support.md)
-- [Полный список расширений](guides/extensions-list.md#quickinfo)
+- [Mobile Responsive Scheduler](guides/touch-support.md)
+- [Full List of Extensions](guides/extensions-list.md#quick-info)

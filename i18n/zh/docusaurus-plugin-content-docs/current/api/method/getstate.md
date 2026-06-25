@@ -18,7 +18,7 @@ description: "获取调度器的当前状态"
 ### Example
 
 ~~~jsx
-var mode = scheduler.getState().mode;  
+const mode = scheduler.getState().mode;  
 if(mode == "day"){  
     // 在此处编写自定义逻辑  
 }  

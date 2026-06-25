@@ -1,14 +1,14 @@
 ---
-sidebar_label: "touch_tooltip"
-title: "touch_tooltip config"
-description: "включает отображение тултипов dhtmlxScheduler на устройствах с сенсорным экраном"
+sidebar_label: touch_tooltip
+title: "Конфигурация touch_tooltip"
+description: "позволяет отображать tooltips dhtmxlScheduler на сенсорных устройствах"
 ---
 
 # touch_tooltip
 
 ### Description
 
-@short: Включает отображение тултипов dhtmlxScheduler на устройствах с сенсорным экраном
+@short: Позволяет отображать tooltips dhtmxlScheduler на сенсорных устройствах
 
 @signature: touch_tooltip: boolean
 
@@ -19,7 +19,7 @@ description: "включает отображение тултипов dhtmlxSch
 scheduler.config.touch_tooltip = true;
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
 ### Related API
 - [touch](api/config/touch.md)
@@ -27,4 +27,4 @@ scheduler.config.touch_tooltip = true;
 - [touch_drag](api/config/touch_drag.md)
 
 ### Related Guides
-- [Мобильная адаптивность Scheduler](guides/touch-support.md)
+- [Мобильный адаптивный планировщик](guides/touch-support.md)

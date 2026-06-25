@@ -27,7 +27,7 @@ scheduler.attachEvent("onMouseMove", function (id, e){
 
 ### Related samples
 - [Handling the pointer highlighting](https://docs.dhtmlx.com/scheduler/samples/09_api/06_hightlight_and_single_click_create.html)
-- 10_integration/02_dhtmlxTree_outer_drag.html
+- [Integration with dhtmlxTree](https://docs.dhtmlx.com/scheduler/samples/10_integration/02_dhtmlxtree_outer_drag.html)
 
 ### Details
 

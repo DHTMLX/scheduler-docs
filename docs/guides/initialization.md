@@ -21,19 +21,19 @@ This guide tells about initialization of dhtmlxScheduler in plain JS and HTML. Y
     </div>
   </a>
 
-  <a className="framework-card" href="../../integrations/angular/howtostart-angular/">
+  <a className="framework-card" href="../../integrations/angular/quick-start/">
     <FrameworkIcon name="angular" className="framework-icon" />
     <div className="framework-title">Angular</div>
     <div className="framework-desc">
-      Integrate Scheduler into Angular projects using a thin wrapper.
+      Integrate Scheduler into Angular projects using the ready-made wrapper.
     </div>
   </a>
 
-  <a className="framework-card" href="../../integrations/vue/howtostart-vue/">
+  <a className="framework-card" href="../../integrations/vue/quick-start/">
     <FrameworkIcon name="vue" className="framework-icon" />
     <div className="framework-title">Vue</div>
     <div className="framework-desc">
-      Use Scheduler inside Vue apps with a small wrapper and reactive configuration.
+      Use Scheduler inside Vue apps with <code>VueGantt</code> component and reactive configuration.
     </div>
   </a>
 
@@ -140,7 +140,7 @@ To display a basic Scheduler on the page, take the following steps:
         "today",
         "next"
     ];
-    scheduler.init('scheduler_here',new Date(2020,0,1),"week"); /*!*/
+    scheduler.init('scheduler_here',new Date(2027,0,1),"week"); /*!*/
 </script>
 </html>
 ~~~
@@ -341,18 +341,18 @@ To include dhtmlxScheduler files into a RequireJS-based app, you need to follow 
 
 ~~~js
 requirejs(["codebase/dhtmlxscheduler"], function(dhx){
-    var scheduler = dhx.scheduler;
-    var Scheduler = dhx.Scheduler;// for Enterprise builds
+    const scheduler = dhx.scheduler;
+    const Scheduler = dhx.Scheduler;// for Enterprise builds
  
     scheduler.init('scheduler_here',new Date(),"week");
     scheduler.parse([
         {
-            id: 1, text: "Event 1", start_date: "2022-07-15 09:00", 
-            end_date: "2022-07-15 10:00"
+            id: 1, text: "Event 1", start_date: "2027-07-15 09:00", 
+            end_date: "2027-07-15 10:00"
         },
         {
-            id: 2, text: "Event 2", start_date: "2022-07-15 10:00", 
-            end_date: "2022-07-15 11:00"
+            id: 2, text: "Event 2", start_date: "2027-07-15 10:00", 
+            end_date: "2027-07-15 11:00"
         }
     ]);
 });
@@ -379,17 +379,17 @@ requirejs.config({
  
 requirejs(["dhtmlxscheduler"], 
 function (dhx) {
-    var scheduler = dhx.scheduler;
+    const scheduler = dhx.scheduler;
  
     scheduler.init('scheduler_here',new Date(),"week");
     scheduler.parse([
         {
-            id: 1, text: "Event 1", start_date: "2022-07-15 09:00", 
-            end_date: "2022-07-15 10:00"
+            id: 1, text: "Event 1", start_date: "2027-07-15 09:00", 
+            end_date: "2027-07-15 10:00"
         },
         {
-            id: 2, text: "Event 2", start_date: "2022-07-15 10:00", 
-            end_date: "2022-07-15 11:00"
+            id: 2, text: "Event 2", start_date: "2027-07-15 10:00", 
+            end_date: "2027-07-15 11:00"
         }
     ]);
 });

@@ -1,26 +1,26 @@
 ---
-sidebar_label: "linkCalendar"
-title: "linkCalendar method"
-description: "Этот метод обновляет активную дату в мини-календаре каждый раз, когда активная дата в планировщике изменяется."
+sidebar_label: linkCalendar
+title: "linkCalendar метод"
+description: "для изменения активной даты в мини-календаре каждый раз, когда изменяется активная дата в расписании"
 ---
 
 # linkCalendar
 
 ### Description
 
-@short: Этот метод обновляет активную дату в мини-календаре каждый раз, когда активная дата в планировщике изменяется.
+@short: для изменения активной даты в мини-календаре каждый раз, когда изменяется активная дата в расписании
 
 @signature: linkCalendar: (calendar: any, shift: SchedulerCallback) =\> void
 
 ### Parameters
 
-- `calendar` - (required) *object* - Экземпляр мини-календаря.
-- `shift` - (required) *function* - Функция, которая определяет разницу между активными датами в мини-календаре и планировщике. Принимает дату планировщика в качестве входного параметра и возвращает дату, которая будет отображаться в мини-календаре.
+- `calendar` - (required) *object* - объект мини-календаря
+- `shift` - (required) *function* - функция, задающая разницу между активными датами в мини-календаре <br> и планировщиком. Функция принимает дату планировщика в качестве параметра и <br> возвращает дату, которая должна отображаться в мини-календаре
 
 ### Example
 
 ~~~jsx
-var calendar = scheduler.renderCalendar({
+const calendar = scheduler.renderCalendar({
     container:"cal_here", 
     navigation:true,
     handler:function(date){
@@ -35,12 +35,12 @@ scheduler.linkCalendar(calendar, function(date){
 ~~~
 
 ### Related samples
-- [Mini calendar outside the scheduler](https://docs.dhtmlx.com/scheduler/samples/05_calendar/05_plain_structure.html)
+- [Мини-календарь вне планировщика](https://docs.dhtmlx.com/scheduler/samples/05_calendar/05_plain_structure.html)
 
 ### Details
 
 :::note
- Для работы этого метода требуется включенный плагин [minical](guides/extensions-list.md#minicalendardatepicker). 
+ Метод требует активации плагина [minical](guides/extensions-list.md#mini-calendar-date-picker). 
 :::
 
 ### Related Guides

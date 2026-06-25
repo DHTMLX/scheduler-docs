@@ -5,39 +5,39 @@ sidebar_label: "Größenanpassung von Skalen- und Ereignisboxen (v6.0)"
 
 # Größenanpassung von Skalen- und Ereignisboxen (v6.0)
 
-*Dieser Artikel behandelt dhtmlxScheduler Version 6.0 und früher. Für Versionen 7.0 und höher finden Sie Details [hier](guides/sizing.md).*
+*Der Artikel bezieht sich auf dhtmlxScheduler 6.0 oder früher. Wenn Sie dhtmlxScheduler 7.0+ verwenden, siehe Details [hier](guides/sizing.md).*
 
-Hier liegt der Fokus darauf, die Größe von Skalen-Einheiten und Ereignisboxen anzupassen. Es werden vier typische Szenarien behandelt:
+In diesem Artikel möchten wir das Größenverhalten von Skala und Ereignisboxen anhand der Lösung von 4 Problemen betrachten:
 
-**Problem 1:** [Ereignisse, die kürzer als 1 Stunde sind, erscheinen im Scheduler genauso groß wie 1-stündige Ereignisse. Ziel ist es, dass kurze Ereignisse richtig zur Skala passen.](guides/sizing-legacy.md#howtomakeshorteventsfitthescale)
+**Problem 1:** [Ereignisse, die weniger als 1 Stunde dauern, sehen im Scheduler genauso aus wie die 1-Stunden-Ereignisse. Ich möchte, dass kurze Ereignisse in die Skala passen.](guides/sizing-legacy.md#how-to-make-short-events-fit-the-scale)
   
-**Problem 2:** [Kurze Ereignisse, die zu unterschiedlichen Zeiten innerhalb derselben Stunde stattfinden, überlappen sich. Ziel ist es, eine solche Überlappung zu verhindern.](guides/sizing-legacy.md#preventingshorteventsfromoverlapping)
+**Problem 2:** [Ereignisse, die weniger als 1 Stunde dauern und zu unterschiedlichen Zeiten, aber innerhalb einer Stunde, auftreten, überlappen. Ich möchte, dass solche kurzen Ereignisse sich nicht überlappen.](guides/sizing-legacy.md#preventing-short-events-from-overlapping)
   
-**Problem 3:** [Nach dem Ändern der Skalenhöhe muss der gestreifte Hintergrund entsprechend angepasst werden.](guides/sizing-legacy.md#howtochangethebackgroundaccordingtothesetscale)
+**Problem 3:** [Ich ändere die Höhe der Skalen-Einheit und möchte den gestreiften Hintergrund entsprechend anpassen.](guides/sizing-legacy.md#how-to-change-the-background-according-to-the-set-scale)
   
-**Problem 4:** [Der Standardabstand der Skala beträgt 1 Stunde, soll aber beispielsweise auf 30 Minuten geändert werden.](guides/sizing-legacy.md#howtochangethescalespacing)
+**Problem 4:** [Der Standardabstand der Skala beträgt 1 Stunde. Ich möchte ihn ändern und beispielsweise 30 Minuten festlegen.](guides/sizing-legacy.md#how-to-change-the-scale-spacing)
 
-## Wie man kurze Ereignisse passend zur Skala darstellt {#howtomakeshorteventsfitthescale}
+## Wie kurze Ereignisse in die Skala passen
 
-Sehen wir uns zunächst das Standardverhalten der Ereignisboxen an:
+Zuerst schauen wir uns das Standardverhalten der Ereignisboxen an:
 
-+ Die Standardhöhe für jede Skalen-Einheit (Stunde) beträgt 44px.
-+ Die Mindesthöhe für eine Ereignisbox beträgt 44px.
-+ Ereignisse, die kürzer als 1 Stunde sind, werden mit einer Höhe von 44px angezeigt, sodass ein 15-minütiges Ereignis genauso aussieht wie ein 1-stündiges Ereignis.
-+ Ereignisse, die länger als 1 Stunde sind, haben eine zur Skala proportionale Höhe (z.B. ist ein 90-minütiges Ereignis 63px hoch, wenn 1 Stunde 44px entspricht).
++ Die Standardhöhe der Skalen-Einheit beträgt 44px (oder die Stundenhöhe)
++ Die minimale Höhe der Ereignisbox beträgt 44px
++ Ereignisse, die weniger als 1 Stunde dauern, nehmen 44px Platz ein. Also sehen 15-Minuten- und 1-Stunden-Ereignisse im Scheduler gleich aus
++ Ereignisse, die länger als 1 Stunde dauern, erhalten ihre Höhe entsprechend der Seiten-Skala (angenommen, 1 Stunde entspricht 44px – ein 90-Minuten-Ereignis wird 63px hoch sein)
 
-Wenn das Ziel ist, dass 30-minütige Ereignisse richtig zur Skala passen, gibt es zwei Möglichkeiten:
+Angenommen, Sie möchten, dass 30-Minuten-Ereignisse in die Skala passen. Dann gibt es 2 Lösungen:
 
-- Die Höhe der Skalen-Einheiten erhöhen.
-- Das Erscheinungsbild der Ereignisboxen anpassen.
+- Die Höhe der Skalen-Einheit erhöhen
+- Die Ereignisbox anpassen
 
 ![30-minute_custom_event.png](/img/30-minute_custom_event.png)
 
-### Lösung 1. Ändern der Skalen-Einheitshöhe
+### Lösung 1. Änderung der Höhe der Skalen-Einheit
 
-Die Höhe der Skalen-Einheiten kann mit der Konfigurationsoption `scheduler.config.hour_size_px` angepasst werden.
+Um die Höhe der Skalen-Einheit zu ändern, sollten Sie die Konfigurationsoption [hour_size_px](api/config/hour_size_px.md) verwenden.
   
-Um beispielsweise die Einheitshöhe zu verdoppeln, stellen Sie diese wie folgt ein:
+Beispiel: Um die Höhe der Einheit zweimal zu erhöhen, rufen Sie die Option wie folgt auf:
 
 ~~~js
 scheduler.config.hour_size_px = 88;
@@ -45,31 +45,31 @@ scheduler.config.hour_size_px = 88;
 scheduler.init(...);
 ~~~
 
-Damit beträgt die Skalenhöhe 88px, sodass ein 30-minütiges Ereignis 44px hoch ist und damit zur Skala passt.
+Nun beträgt die Höhe der Skalen-Einheit 88 px und das 30-Minuten-Ereignis, das 44px groß ist, wird die 30-Minuten-Höhe einnehmen, wie gewünscht.
 
 
-[Changing the Y-Axis step](https://docs.dhtmlx.com/scheduler/samples/02_customization/09_timestep.html)
+[Ändern des Y-Achsen-Schritts](https://docs.dhtmlx.com/scheduler/samples/02_customization/09_timestep.html)
 
 
 ### Lösung 2. Anpassen der Ereignisbox
 
-Um das Erscheinungsbild der Ereignisboxen zu verändern, verwenden Sie die Methode `scheduler.renderEvent`. Damit können Sie eine eigene Vorlage für Ereignisse bereitstellen.
+Um die Anzeige der Ereignisboxen anzupassen, verwenden Sie die [renderEvent](api/method/renderevent.md) Methode, die Ihnen erlaubt, Ihre eigene Vorlage für die Ereignisse festzulegen.
 
 ~~~js
 scheduler.renderEvent = function(container, ev) {
-    // Ihr Anpassungscode hier
+    //Ihr Anpassungscode
 }
 ~~~
 
-Weitere Details finden Sie im Kapitel [Benutzerdefiniertes Ereignisfeld](guides/custom-events-display.md).
+Lesen Sie die Details im entsprechenden Kapitel - [Eigene Ereignisbox](guides/custom-events-display.md).
 
 
-[Custom event box](https://docs.dhtmlx.com/scheduler/samples/02_customization/27_custom_event_box.html)
+[Eigene Ereignisbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/27_custom_event_box.html)
 
 
-## Verhindern, dass kurze Ereignisse sich überlappen {#preventingshorteventsfromoverlapping}
+## Verhindern des Überlappens kurzer Ereignisse
 
-Um sicherzustellen, dass kurze Ereignisse getrennt angezeigt werden und sich nicht überlappen, aktivieren Sie die Option `scheduler.config.separate_short_events`:
+Um kurze Ereignisse separat anzuzeigen und die Möglichkeit ihres Überlappens zu vermeiden, setzen Sie die Option [separate_short_events](api/config/separate_short_events.md) auf *true*:
 
 ~~~js
 scheduler.config.separate_short_events = true;
@@ -77,9 +77,9 @@ scheduler.config.separate_short_events = true;
 
 ![overlapping.png](/img/overlapping.png)
 
-## Wie man den Hintergrund entsprechend der Skala anpasst {#howtochangethebackgroundaccordingtothesetscale}
+## Hintergrund entsprechend der festgelegten Skala ändern
 
-Der Hintergrund des Schedulers wird über ein Bild gesteuert. Um ihn zu aktualisieren, überschreiben Sie die CSS-Klasse **.dhx_scale_holder** wie folgt:
+Der Scheduler-Hintergrund wird durch ein einfaches Bild festgelegt. Um das Hintergrundbild zu ändern, definieren Sie die zugehörige CSS-Klasse neu, die **.dhx_scale_holder** lautet:
 
 ~~~html
 <style>
@@ -89,26 +89,24 @@ Der Hintergrund des Schedulers wird über ein Bild gesteuert. Um ihn zu aktualis
 </style>
 ~~~
 
-Initialisieren Sie anschließend den Scheduler:
-
 ~~~js
 scheduler.init(...);
 ~~~
 
 ![changing_background.png](/img/changing_background.png)
 
-## Wie man den Skalenabstand ändert {#howtochangethescalespacing}
+## Wie der Skalenabstand geändert wird
 
-Um den Standard-Skalenabstand zu ändern, überschreiben Sie das Template `scheduler.templates.hour_scale`. Für einen 30-minütigen Abstand kann das Template wie folgt angepasst werden:
+Um den Standard-Skalenabstand zu ändern, muss die [hour_scale](api/template/hour_scale.md) Vorlage neu geschrieben werden. Um den Skalenabstand auf 30 Minuten festzulegen, schreiben Sie die Vorlage wie folgt neu:
 
 ~~~js
-var format = scheduler.date.date_to_str("%H:%i");
-var step = 30;
+const format = scheduler.date.date_to_str("%H:%i");
+const step = 30;
         
 scheduler.templates.hour_scale = function(date){
-    var html="";
-    for (var i="0;" i<60/step; i++){
-        html+="<div>"+format(date)+"</div>";
+    let html="";
+    for (let i = 0; i < 60/step; i++){
+        html += "<div style='height:22px;line-height:22px;'>" + format(date) + "</div>";
         date = scheduler.date.add(date,step,"minute");
     }
     return html;
@@ -118,7 +116,4 @@ scheduler.templates.hour_scale = function(date){
 
 ![scale_spacing.png](/img/scale_spacing.png)
 
-**Zugehörige Beispiele:**
-
-
-[Custom Y-Axis](https://docs.dhtmlx.com/scheduler/samples/02_customization/21_custom_hour_scale.html)
+**Verwandte Beispiele:** [Benutzerdefinierte Y-Achse](https://docs.dhtmlx.com/scheduler/samples/02_customization/21_custom_hour_scale.html)

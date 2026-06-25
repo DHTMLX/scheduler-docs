@@ -1,28 +1,28 @@
 ---
-sidebar_label: "onEventDrag"
-title: "onEventDrag event"
-description: "스케줄러 내에서 이벤트가 드래그되거나 크기 조정될 때 트리거됩니다."
+sidebar_label: onEventDrag
+title: "onEventDrag 이벤트"
+description: "사용자가 스케줄러에서 이벤트를 드래그/크기 조정할 때 발생합니다"
 ---
 
 # onEventDrag
 
 ### Description
 
-@short: 스케줄러 내에서 이벤트가 드래그되거나 크기 조정될 때 트리거됩니다.
+@short: Scheduler에서 사용자가 이벤트를 드래그/크기를 조정할 때 발생합니다
 
-@signature: onEventDrag: (id: string, mode: string, ev: Event) =\> void;
+@signature: onEventDrag: (id: string, mode: string, e: Event) =\> void;
 
 ### Parameters
 
 - `id` - (required) *string* - 이벤트의 ID
-- `mode` - (required) *string* - 드래그 모드: "move", "resize", 또는 "new-size" (새 이벤트 생성 시)
+- `mode` - (required) *string* - 드래그 모드: "move","resize" 또는 "new-size" (새로운 이벤트를 생성)
 - `e` - (required) *Event* - 네이티브 이벤트 객체
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onEventDrag", function (id, mode, e){
-    //여기에 커스텀 로직을 추가할 수 있습니다.
+scheduler.attachEvent("onEventDrag", (id, mode, e) => {
+    // 여기에 사용자 정의 로직 작성
 });
 ~~~
 
@@ -32,8 +32,8 @@ scheduler.attachEvent("onEventDrag", function (id, mode, e){
 
 ### Details
 
-모드 설명:
+Modes description:
 
-- **move** - 이벤트가 스케줄러 내에서 드래그되고 있습니다.
-- **resize** - 드래그 앤 드롭을 사용하여 이벤트 크기가 조정되고 있습니다.
-- **new-size** - 드래그 앤 드롭을 통해 새 이벤트가 생성되고 있습니다.
+- `move` - 사용자가 Scheduler 위에서 이벤트를 드래그합니다
+- `resize` - 사용자가 드래그 앤 드롭으로 이벤트의 크기를 조정합니다
+- `new-size` - 사용자가 드래그 앤 드롭으로 새 이벤트를 생성합니다

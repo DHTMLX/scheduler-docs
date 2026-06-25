@@ -18,7 +18,7 @@ description: "在 Week Agenda 视图中突出显示所选事件"
 
 ~~~jsx
 scheduler.config.week_agenda_select= false; /*!*/
-scheduler.init('scheduler_here',new Date(2013,0,10),"agenda_week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"agenda_week");
 ~~~
 
 **Default value:** true

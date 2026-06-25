@@ -1,14 +1,14 @@
 ---
-sidebar_label: "container_autoresize"
-title: "container_autoresize config"
-description: "позволяет контейнеру scheduler автоматически подстраивать свой размер под весь контент без необходимости прокрутки"
+sidebar_label: container_autoresize
+title: "конфигурация container_autoresize"
+description: "заставляет контейнер планировщика автоматически изменять размер, чтобы отобразить все содержимое без прокрутки"
 ---
 
 # container_autoresize
 
 ### Description
 
-@short: Позволяет контейнеру scheduler автоматически подстраивать свой размер под весь контент без необходимости прокрутки
+@short: Принуждает контейнер планировщика автоматически изменять размер, чтобы показать всё содержимое без прокрутки
 
 @signature: container_autoresize: boolean
 
@@ -17,18 +17,18 @@ description: "позволяет контейнеру scheduler автомати
 ~~~jsx
 scheduler.config.container_autoresize = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Related samples
-- [Autoresizing the scheduler container](https://docs.dhtmlx.com/scheduler/samples/03_extensions/28_container_autoresize.html)
+- [Авторазмер контейнера планировщика](https://docs.dhtmlx.com/scheduler/samples/03_extensions/28_container_autoresize.html)
 
 ### Details
 
 :::note
- Это свойство становится активным после включения плагина [container_autoresize](guides/extensions-list.md#containerautoresize). 
+ Свойство будет включено после включения плагина [container_autoresize](guides/extensions-list.md#container-autoresize). 
 ::: 
 
 ![container_autoresize_property](/img/container_autoresize_property.png)

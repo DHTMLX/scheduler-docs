@@ -17,7 +17,7 @@ description: "Definiert das Zeitformat, das auf der Y-Achse angezeigt wird. Es w
 ~~~jsx
 scheduler.config.hour_date = "%H:%i:%s";
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 **Default value:** "%H:%i"

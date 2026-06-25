@@ -1,7 +1,7 @@
 ---
-sidebar_label: "toXML"
-title: "toXML method"
-description: "преобразует данные планировщика в формат XML"
+sidebar_label: toXML
+title: "Метод toXML"
+description: "преобразует данные планировщика в XML-формат"
 ---
 
 # toXML
@@ -13,12 +13,12 @@ description: "преобразует данные планировщика в ф
 @signature: toXML: () =\> string
 
 ### Returns
-- ` string` - (string) - строка, содержащая данные в формате XML
+- ` string` - (string) - строка данных в формате XML
 
 ### Example
 
 ~~~jsx
-var str = scheduler.toXML();
+const str = scheduler.toXML();
 ~~~
 
 ### Related samples
@@ -27,8 +27,8 @@ var str = scheduler.toXML();
 ### Details
 
 :::note
- Для работы метода требуется включенный плагин [serialize](guides/extensions-list.md#serialize). 
+ Метoд требует включения плагина [serialize](guides/extensions-list.md#serialize) для его включения.
 :::
 
-- При необходимости можно настроить пользовательские атрибуты [как описано здесь](export/serialization.md).
-- Этот метод поддерживает работу с повторяющимися событиями.
+- Пользовательские атрибуты [can be configured](export/serialization.md) можно настроить по мере необходимости.
+- Метод можно использовать с повторяющимися событиями.

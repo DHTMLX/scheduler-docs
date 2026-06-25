@@ -1,14 +1,14 @@
 ---
-sidebar_label: "limit_time_select"
-title: "limit_time_select config"
-description: "Ограничивает селектор времени в лайтбоксе, устанавливая максимальные и минимальные значения в соответствии с опциями 'last_hour' и 'first_hour'."
+sidebar_label: limit_time_select
+title: "limit_time_select конфигурация"
+description: "устанавливает максимальные и минимальные значения тайм-селектора в lightbox на значения опций 'last_hour' и 'first_hour'"
 ---
 
 # limit_time_select
 
 ### Description
 
-@short: Ограничивает селектор времени в лайтбоксе, устанавливая максимальные и минимальные значения в соответствии с опциями 'last_hour' и 'first_hour'.
+@short: Устанавливает максимальные и минимальные значения тайм-селектора в lightbox на значения опций 'last_hour' и 'first_hour'
 
 @signature: limit_time_select: boolean
 
@@ -17,10 +17,10 @@ description: "Ограничивает селектор времени в лай
 ~~~jsx
 scheduler.config.limit_time_select = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
 ### Related API
 - [last_hour](api/config/last_hour.md)

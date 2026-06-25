@@ -5,7 +5,7 @@ sidebar_label: "Formatting Labels, Dates, Styles"
 
 # Formatting Labels, Dates, Styles
 
-Follow the link of a view to see templates supported by it. 
+Follow the link of a view to see the templates supported by it.
 
 ### Default views
 
@@ -33,29 +33,28 @@ Follow the link of a view to see templates supported by it.
 - [API templates](guides/common-templates.md#api-templates)
 
 
-## Specifying Templates 
+## Specifying Templates
 
-You can set templates in 2 ways: either from the code or from the HTML markup. 
+You can set templates in 2 ways: either from code or from HTML markup.
 
 ### Specifying templates with code
 
-By default, templates can be defined as JS functions which take the event object or date arguments and must return an HTML string that will be inserted in the layout:
+By default, templates can be defined as JS functions that take the event object or date arguments and must return an HTML string that will be inserted into the layout:
 
 ~~~js
-scheduler.templates.event_text="function(start," end, event){
-    return "<a href='http://some.com/details.php?for="+event.id+"'>"
-    +event.text+"</a>";
-}
+scheduler.templates.event_text = (start, end, event) => {
+    return `<a href='http://some.com/details.php?for=${event.id}'>${event.text}</a>`;
+};
 ~~~
 
 ### Specifying templates via markup
 
-Alternatively, templates can be defined in the declarative way from HTML. This approach requires adding the [html_templates](guides/extensions-list.md#html-templates) extension to the page.
-Once you've activate the extension on the page, you may specify templates as in:
+Alternatively, templates can be defined declaratively from HTML. This approach requires adding the [html_templates](guides/extensions-list.md#html-templates) extension to the page.
+Once you've activated the extension on the page, you may specify templates as follows:
 
 ~~~html
 <div class="template:event_text">
-    <a href='http://some.com/details.php?for="{event.id}"'>{event.text}<a>
+    <a href='http://some.com/details.php?for="{event.id}"'>{event.text}</a>
 </div>
 ~~~
 

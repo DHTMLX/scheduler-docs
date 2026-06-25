@@ -15,7 +15,7 @@ description: "specifies JSON serialization and parsing"
 ### Example
 
 ~~~jsx
-var obj = scheduler.json; // -> { parse(data){... }}
+const obj = scheduler.json; // -> { parse(data){... }}
 ~~~
 
 ### Details

@@ -19,7 +19,7 @@ description: "移除使用 addMarkedTimespan() 方法创建的标记或阻塞"
 ### Example
 
 ~~~jsx
-var spanID = scheduler.addMarkedTimespan({  
+const spanID = scheduler.addMarkedTimespan({  
     days:  [0,1], 
     zones: "fullday"              
 });
@@ -49,7 +49,7 @@ scheduler.deleteMarkedTimespan(spanID);
   
   
 ~~~js
-var spanID = scheduler.addMarkedTimespan({  
+const spanID = scheduler.addMarkedTimespan({  
     days:  [3,4,5], 
     zones: [100,400]          
 });

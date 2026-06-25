@@ -1,40 +1,38 @@
 ---
-sidebar_label: "minicalendar"
-title: "minicalendar config"
-description: "определяет объект миникалендаря"
+sidebar_label: minicalendar
+title: "конфигурация minicalendar"
+description: "задает объект мини-календаря"
 ---
 
 # minicalendar
 
-### Description
+### Описание
 
-@short: Определяет объект миникалендаря
+@short: Задает объект мини-календаря
 
 @signature: minicalendar: any
 
-### Example
+### Пример
 
 ~~~jsx
 scheduler.config.minicalendar.mark_events = false; 
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
-**Default value:** \{ mark_events: true \}
+**Значение по умолчанию:** \{ mark_events: true \}
 
-### Related samples
+### Связанные образцы
 - [Terrace skin](https://docs.dhtmlx.com/scheduler/samples/07_skins/01_default.html)
 
-### Details
+### Подробности
 
 :::note
- Это свойство требует включения плагина [minical](guides/extensions-list.md#minicalendardatepicker). 
+ Свойство требует активированного плагина [minical](guides/extensions-list.md#mini-calendar-date-picker) для работы. 
 ::: 
 
-Объект minicalendar содержит одно свойство:
+Объект minicalendar имеет 1 свойство:
 
-- **mark_events** - (*array*) определяет, будут ли события выделяться внутри миникалендаря
-
-<br>
+- **mark_events** - (*массив*) задаёт, будут ли события выделяться в мини-календаре
 
 ![minicalendar_property](/img/minicalendar_property.png)

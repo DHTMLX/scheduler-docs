@@ -37,7 +37,7 @@ DHTMLX Scheduler доступен в редакциях Standard и PRO. Standar
     </div>
   </a>
 
-  <a className="framework-card" href="integrations/angular/howtostart-angular/">
+  <a className="framework-card" href="integrations/angular/js-scheduler-angular/">
     <FrameworkIcon name="angular" className="framework-icon" />
     <div className="framework-title">Angular</div>
     <div className="framework-desc">
@@ -45,7 +45,7 @@ DHTMLX Scheduler доступен в редакциях Standard и PRO. Standar
     </div>
   </a>
 
-  <a className="framework-card" href="integrations/vue/howtostart-vue/">
+  <a className="framework-card" href="integrations/vue/js-scheduler-vue/">
     <FrameworkIcon name="vue" className="framework-icon" />
     <div className="framework-title">Vue</div>
     <div className="framework-desc">
@@ -136,7 +136,7 @@ Scheduler можно подключить к вашему слою данных 
 Scheduler можно использовать:
 
 - Как самостоятельный JS-виджет на любой странице - [инициализация на чистом HTML/JS](guides/initialization.md).
-- Во wrapper-компонентах фреймворков через гайды [How to start](integrations/howtostart-guides.md) для [React](integrations/react/)/[Angular](integrations/angular/howtostart-angular.md)/[Vue](integrations/vue/howtostart-vue.md)/[Svelte](integrations/svelte/howtostart-svelte.md).
+- Во wrapper-компонентах фреймворков через гайды [How to start](integrations/howtostart-guides.md) для [React](integrations/react/)/[Angular](integrations/angular/js-scheduler-angular.md)/[Vue](integrations/vue/js-scheduler-vue.md)/[Svelte](integrations/svelte/howtostart-svelte.md).
 
 
 ## Примечания по установке

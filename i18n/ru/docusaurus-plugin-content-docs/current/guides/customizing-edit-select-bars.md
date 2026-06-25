@@ -1,15 +1,15 @@
 ---
-title: "Кастомизация панелей 'Select' и 'Edit'"
-sidebar_label: "Кастомизация панелей 'Select' и 'Edit'"
+title: "Настройка панелей 'Select' и 'Edit'"
+sidebar_label: "Настройка панелей 'Select' и 'Edit'"
 ---
 
-# Кастомизация панелей "Select" и "Edit"
+# Настройка панелей "Select" и "Edit"
 
-dhtmlxScheduler позволяет настраивать собственный набор кнопок как для панели выбора (select bar), так и для панели редактирования (edit bar).
+dhtmlxScheduler предоставляет возможность определить свой набор кнопок для панелей редактирования и выбора. 
 
-## Грид выбора (select bar)
+## Панель выбора
 
-По умолчанию грид выбора содержит 3 кнопки ('Details', 'Edit', 'Delete'), которые задаются через опцию конфигурации [icons_select](api/config/icons_select.md).
+По умолчанию панель выбора содержит 3 кнопки ('Details', 'Edit', 'Delete'), которые задаются конфигурационной опцией [icons_select](api/config/icons_select.md).
 
 ~~~js
 scheduler.config.icons_select = [
@@ -19,17 +19,18 @@ scheduler.config.icons_select = [
 ];
 ~~~
 
+
 ### Пример использования
 
-Вот пример грида выбора, показанный на изображении ниже:
+Рассмотрим панель выбора, изображенную на рисунке ниже:
   
 ![select_bar.png](/img/select_bar.png)
 
-К существующим кнопкам добавлена новая кнопка **Location**.
+К существующим кнопкам мы добавили новую — **Location**.
 
-Шаги для реализации такого результата:
+Наши шаги:
 
-- Обновите [icons_select](api/config/icons_select.md) следующим образом:
+-  Переопределите [icons_select](api/config/icons_select.md) как показано ниже:
   
 ~~~js
 scheduler.config.icons_select = [
@@ -38,28 +39,29 @@ scheduler.config.icons_select = [
    "icon_edit",
    "icon_delete"
 ];
+
 ~~~
  
 :::note
-Обратите внимание, каждая кнопка должна начинаться с "icon_"
-:::
+Примечание: любая кнопка должна начинаться с "icon_"
+::: 
 
 
-- Задайте подпись для новой кнопки:
+-  Установите текст метки для новой кнопки:
   
 ~~~js
 scheduler.locale.labels.icon_location = "Location";
 ~~~
 
-- Присвойте CSS-класс для кнопки:
+-  Установите CSS‑класс для кнопки:
   
-~~~js
+~~~css
 .dhx_menu_icon.icon_location{
   background-image: url('location_icon.png');  
 } 
 ~~~
 
-- Определите обработчик клика для кнопки:
+-  Укажите обработчик кликов по кнопке:
   
 ~~~js
 scheduler._click.buttons.location = function(id){
@@ -67,11 +69,11 @@ scheduler._click.buttons.location = function(id){
 };
 ~~~
  
-Здесь **scheduler._click.buttons** содержит обработчики onClick для кнопок панели. Ключ 'location' соответствует названию кнопки из [icons_select](api/config/icons_select.md) без префикса 'icon_'.
+где **scheduler._click.buttons** содержит коллекцию обработчиков onClick для кнопок панели. 'location' — имя кнопки, заданное в [icons_edit](api/config/icons_edit.md) после части 'icon_'.
 
-## Грид редактирования (edit bar)
+## Панель редактирования
 
-Обычно грид редактирования содержит 2 кнопки ('Save' и 'Cancel'), которые настраиваются с помощью опции [icons_edit](api/config/icons_edit.md).
+Как правило, панель редактирования содержит 2 кнопки ('Save' и 'Cancel'), которые задаются конфигурационной опцией [icons_edit](api/config/icons_edit.md).
 
 ~~~js
 scheduler.config.icons_edit = [
@@ -80,16 +82,17 @@ scheduler.config.icons_edit = [
 ];
 ~~~
 
+
 ### Пример использования
 
-Рассмотрим грид редактирования, показанный на изображении ниже:
+Рассмотрим панель редактирования, изображенную на рисунке ниже:
   
 ![customizing_edit_bar.png](/img/customizing_edit_bar.png)
 
-Помимо кнопок **Save** и **Cancel**, добавлена новая кнопка **Info**.
-Порядок действий:
+К кнопкам **Save** и **Cancel** мы добавили новую кнопку - **Info**.
+Вот наши шаги:
 
-- Обновите [icons_edit](api/config/icons_edit.md) следующим образом:
+-  Переопределите [icons_edit](api/config/icons_edit.md) как в примере:
   
 ~~~js
 scheduler.config.icons_edit = [
@@ -99,21 +102,21 @@ scheduler.config.icons_edit = [
 ];
 ~~~
 
-- Задайте подпись для новой кнопки:
+-  Установите текст метки для новой кнопки:
   
 ~~~js
 scheduler.locale.labels.icon_custom = "Info";
 ~~~
 
-- Определите CSS-класс для кнопки:
+-  Установите CSS‑класс для кнопки:
   
-~~~js
+~~~css
 .dhx_menu_icon.icon_custom{
   background-image: url('info_icon.png');  
 } 
 ~~~
 
-- Назначьте обработчик клика для кнопки:
+-  Укажите обработчик кликов по кнопке:
   
 ~~~js
 scheduler._click.buttons.custom = function(id){
@@ -121,18 +124,19 @@ scheduler._click.buttons.custom = function(id){
 };
 ~~~
 
-Снова, **scheduler._click.buttons** содержит обработчики кликов для кнопок, а 'custom' соответствует названию кнопки из [icons_edit](api/config/icons_edit.md) без префикса 'icon_'.
+где **scheduler._click.buttons** содержит коллекцию обработчиков onClick для кнопок панели. 'custom' — имя кнопки, заданное в [icons_edit](api/config/icons_edit.md) после части 'icon_'.
  
 
-## Динамическое изменение элементов панели
+## Динамическая смена элементов панелей
 
-Можно динамически изменять кнопки на панелях редактирования и выбора в зависимости от определённых условий.
+Кнопки панелей редактирования и выбора могут динамически изменяться в зависимости от условий. 
 
-Например, если у ваших событий есть булево свойство **important**, указывающее, что событие критично и не должно быть удалено, вы можете показывать или скрывать кнопку 'delete' на панели выбора соответствующим образом. Вот как это реализовать:
+Например, у ваших событий есть пользовательское булево свойство **important**, которое указывает на то, что событие важно и не может быть удалено пользователем. 
+В зависимости от значения этого свойства вы можете скрыть/показать кнопку 'delete' в панели выбора. Чтобы реализовать такое поведение, используйте следующую технику:
 
 ~~~js
 scheduler.attachEvent("onClick", function(id){
-    var event = scheduler.getEvent(id);
+    const event = scheduler.getEvent(id);
     if (event.important)
         scheduler.config.icons_select = ["icon_details"];
     else

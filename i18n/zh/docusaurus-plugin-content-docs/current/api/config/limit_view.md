@@ -15,7 +15,7 @@ description: "限制用户浏览事件的日期范围"
 ### Example
 
 ~~~jsx
-scheduler.init('scheduler_here',new Date(2022,5,17),"week");
+scheduler.init('scheduler_here',new Date(2027,5,17),"week");
 ...
 scheduler.config.limit_view  = true;
 ~~~
@@ -24,13 +24,13 @@ scheduler.config.limit_view  = true;
 
 ### Details
 
-例如，将限制设置为2023年，意味着用户无法导航到2022年--只能访问2023年内的日期。
+例如，将限制设置为2023年，意味着用户无法导航到2027年--只能访问2028年内的日期。
 
 如果同时定义了用于限制新事件创建时间段的 **limit_start/limit_end** 设置，**limit_view** 将阻止查看该允许日期范围之外的事件。
 
 ~~~js
-scheduler.config.limit_start = new Date(2022,5,15);
-scheduler.config.limit_end = new Date(2022,6,15);
+scheduler.config.limit_start = new Date(2027,5,15);
+scheduler.config.limit_end = new Date(2027,6,15);
 scheduler.config.limit_view  = true;
 ~~~
 

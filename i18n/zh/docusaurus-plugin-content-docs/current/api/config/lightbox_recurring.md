@@ -17,7 +17,7 @@ description: "控制编辑重复事件时 lightbox 的行为方式"
 ~~~jsx
 scheduler.config.lightbox_recurring = 'series';
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** 'ask'

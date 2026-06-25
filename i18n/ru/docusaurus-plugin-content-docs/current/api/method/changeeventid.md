@@ -1,36 +1,36 @@
 ---
-sidebar_label: "changeEventId"
-title: "changeEventId method"
-description: "обновляет id события"
+sidebar_label: changeEventId
+title: "Метод changeEventId"
+description: "изменяет id события"
 ---
 
 # changeEventId
 
 ### Description
 
-@short: Обновляет id события
+@short: Изменяет id события
 
 @signature: changeEventId: (id: string, new_id: string) =\> void
 
 ### Parameters
 
-- `id` - (required) *string* - текущий id события
-- `new_id` - (required) *string* - новый id события
+- `id` - (required) *string* - текущее id события
+- `new_id` - (required) *string* - новое id события
 
 ### Example
 
 ~~~jsx
-scheduler.changeEventId("ev15", "ev25"); // обновляет id события с "ev15" на "ev25"
+scheduler.changeEventId("ev15", "ev25"); // changes the event's id "ev15" -> "ev25"
 ~~~
 
 ### Details
 
-Каждое событие, отображаемое в scheduler, имеет уникальный id.
+Каждое событие, отображаемое в планировщике, имеет уникальное значение id.
 
-Когда новое событие создаётся через UI, библиотека Scheduler присваивает ему временный id.
+Когда новое событие создаётся через UI, ему присваивается временный id, генерируемый библиотекой Scheduler.
 
-После того, как событие сохраняется в базе данных, оно получает постоянный id, сгенерированный базой данных. 
-Обычно ваш backend возвращает этот id из базы на клиентскую сторону, где scheduler его принимает и использует для любых последующих обновлений события.
+После добавления события в базу данных оно получает постоянный id, генерируемый базой данных. 
+Обычный сценарий таков: ваш обработчик на стороне сервера возвращает id базы данных на клиентскую сторону, где scheduler подхватывает его и использует для дальнейших обновлений события.
 
 Если вы используете [dataProcessor модуль и следуете руководствам по серверной интеграции](guides/server-integration.md#technique), этот процесс происходит автоматически.
 Но если вы отправляете обновления на backend вручную, вам нужно обновлять id события вручную с помощью этого метода.
@@ -43,16 +43,16 @@ jQuery.ajax({
     url:"/myApi/event",
     data:{ data : event },
     complete:function(result){
-        // ответ backend после вставки нового события в базу
+        // ответ бэкэнда после вставки нового события в базу данных
         scheduler.changeEventId(event.id, result.databaseId);
     }
 });
 ~~~
 
-Учтите, что этот метод вызывает событие [onEventIdChange](api/event/oneventidchange.md).
+Примечание: метод вызывает событие [onEventIdChange](api/event/oneventidchange.md).
 
 ### Related API
 - [onEventIdChange](api/event/oneventidchange.md)
 
 ### Related Guides
-- [Интеграция с серверной стороной](guides/server-integration.md#technique)
+- [Серверная интеграция](guides/server-integration.md#technique)

@@ -22,7 +22,7 @@ description: "calls an alert message box"
 ### Example
 
 ~~~jsx
-var box = scheduler.alert({
+const box = scheduler.alert({
     title:"Alert",
     type:"alert-error",
     text:"You can't do this"

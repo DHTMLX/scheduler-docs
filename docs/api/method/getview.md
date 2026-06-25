@@ -22,7 +22,7 @@ description: "returns a view object by its name. If no name is specified, return
 ### Example
 
 ~~~jsx
-var timeline = scheduler.getView(); 
+const timeline = scheduler.getView(); 
 timeline.x_size = 8;
 scheduler.setCurrentView();
 ~~~

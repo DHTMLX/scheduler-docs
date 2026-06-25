@@ -23,7 +23,7 @@ description: "获取一个键盘导航快捷键的处理函数"
 ### Example
 
 ~~~jsx
-var shortcut_handler = scheduler.getShortcutHandler("ctrl+a", "event");
+const shortcut_handler = scheduler.getShortcutHandler("ctrl+a", "event");
 ~~~
 
 ### Related samples

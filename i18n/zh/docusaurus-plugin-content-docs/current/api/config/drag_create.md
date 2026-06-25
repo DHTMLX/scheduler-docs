@@ -17,7 +17,7 @@ description: "允许通过拖拽操作创建新事件"
 ~~~jsx
 scheduler.config.drag_create = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,7,1),"week");
+scheduler.init('scheduler_here',new Date(2027,7,1),"week");
 ~~~
 
 **Default value:** true

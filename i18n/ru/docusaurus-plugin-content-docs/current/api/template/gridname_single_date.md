@@ -27,7 +27,7 @@ scheduler.templates.grid_single_date = function(date){
 };
 ~~~
 
-**Applicable views:** [Grid view](views/grid.md)
+**Доступные представления:** [Grid view](views/grid.md)
 
 ### Details
 

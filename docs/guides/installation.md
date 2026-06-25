@@ -9,10 +9,12 @@ You can use the [npm](https://www.npmjs.com/) package manager to install the dht
 
 It's also possible to include the necessary JS/CSS files from CDN.
 
-:::tip Using React?
-If you're building a React app, use the dedicated wrapper package and its installation guide instead of the core library:
+:::tip Using a frontend framework?
+If you're building with React, Angular, or Vue, use the dedicated wrapper package and its installation guide instead of the core library:
 
 - [React Scheduler installation](integrations/react/installation.md)
+- [Angular Scheduler installation](integrations/angular/installation.md)
+- [Vue Scheduler installation](integrations/vue/installation.md)
 
 The rest of this guide covers the core JavaScript library.
 :::

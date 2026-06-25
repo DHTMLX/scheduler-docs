@@ -17,7 +17,7 @@ description: "enthält eine Reihe von Icons, die im seitlichen Auswahlmenü der 
 ~~~jsx
 scheduler.config.icons_select = ['icon_details', 'icon_delete'];
 ...
-scheduler.init('scheduler_here', new Date(2013, 0, 10), "week");
+scheduler.init('scheduler_here', new Date(2027, 0, 10), "week");
 ~~~
 
 **Default value:** ['icon_details', 'icon_edit', 'icon_delete']

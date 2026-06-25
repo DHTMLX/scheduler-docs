@@ -23,7 +23,7 @@ description: "定义在 Day 和 Units 视图的标题中显示的日期"
 
 ~~~jsx
 scheduler.templates.day_date = function(date){
-    var formatFunc = scheduler.date.date_to_str(scheduler.config.default_date);
+    const formatFunc = scheduler.date.date_to_str(scheduler.config.default_date);
     return formatFunc(date);
 };
 ~~~

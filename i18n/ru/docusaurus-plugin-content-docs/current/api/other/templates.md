@@ -23,4 +23,4 @@ scheduler.templates.day_date = function(date){
 
 ### Details
 
-Подробная информация о свойствах объекта **templates** доступна в отдельном разделе на <br> главной странице API ['Scheduler API: Templates'](api/overview/templates_overview.md).
+Подробная информация о свойствах объекта **templates** доступна в отдельном разделе на главной странице API ['Scheduler API: Templates'](api/overview/templates_overview.md).

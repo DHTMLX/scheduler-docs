@@ -22,7 +22,7 @@ To serialize scheduler data to an XML string, use the [toXML](api/method/toxml.m
 
 
 ~~~js
-var xml = scheduler.toXML(); //xml string
+const xml = scheduler.toXML(); //xml string
 
 ~~~
 
@@ -36,7 +36,7 @@ To serialize scheduler data to a JSON string, use the [toJSON](api/method/tojson
 
 
 ~~~js
-var json_string = scheduler.toJSON(); //json string
+const json_string = scheduler.toJSON(); //json string
 ~~~
 
 
@@ -54,7 +54,7 @@ To serialize scheduler data to an ICal string, use the [toICal](api/method/toica
 
 
 ~~~js
-var ical_string = scheduler.toICal(); //ical string
+const ical_string = scheduler.toICal(); //ical string
 ~~~
 
 
@@ -118,7 +118,7 @@ If you are using the "recurring" extension, you need to define extra attributes,
 
 ~~~js
 scheduler.data_attributes = function(){
-    var empty = function(a){ return a||""; }
+    const empty = function(a){ return a||""; }
     return [["id"],
         ["text"],
         ["start_date",scheduler.templates.xml_format],
@@ -164,7 +164,7 @@ scheduler.plugins({
 
 ~~~js
 function save(){
-    var form = document.getElementById("xml_form");
+    let form = document.getElementById("xml_form");
     form.elements.data.value = scheduler.toXML();
     form.submit();
 }

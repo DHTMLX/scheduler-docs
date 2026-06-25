@@ -15,7 +15,7 @@ sidebar_label: "月视图"
 
 ~~~js
 // 标准初始化；月视图会自动包含
-scheduler.init('scheduler_here', new Date(2019,0,10), "month");
+scheduler.init('scheduler_here', new Date(2027,0,10), "month");
 ...
 scheduler.load("/data/events");
 ~~~
@@ -44,7 +44,7 @@ scheduler.load("/data/events");
 ~~~
 scheduler.config.max_month_events = 3;
 ..
-scheduler.init('scheduler_here', new Date(2019,5,30), "month");
+scheduler.init('scheduler_here', new Date(2027,5,30), "month");
 ~~~
 
 如果事件数量超过设定的上限，将会出现"View more"链接。点击该链接会跳转到日视图，完整显示全部事件。
@@ -89,7 +89,7 @@ scheduler.plugins({
 // 点击日期时打开周视图
 scheduler.config.active_link_view = "week";
 ...
-scheduler.init('scheduler_here', new Date(2012,7,6), "month");
+scheduler.init('scheduler_here', new Date(2027,7,6), "month");
 ~~~
 
 
@@ -106,7 +106,7 @@ scheduler.init('scheduler_here', new Date(2012,7,6), "month");
 // 允许通过拖拽调整多日事件大小
 scheduler.config.resize_month_events = true; /*!*/
 
-scheduler.init('scheduler_here', new Date(2019,0,10), "month");
+scheduler.init('scheduler_here', new Date(2027,0,10), "month");
 ~~~
 
 [Resizable events in Month view](https://docs.dhtmlx.com/scheduler/samples/02_customization/32_resizable_month_events.html)
@@ -118,7 +118,7 @@ scheduler.init('scheduler_here', new Date(2019,0,10), "month");
 // 允许通过拖拽调整单日和多日事件大小
 scheduler.config.resize_month_events = true;/*!*/
 scheduler.config.resize_month_timed = true;  /*!*/
-scheduler.init('scheduler_here', new Date(2019,0,10), "month");
+scheduler.init('scheduler_here', new Date(2027,0,10), "month");
 ~~~
 
 **请注意:**

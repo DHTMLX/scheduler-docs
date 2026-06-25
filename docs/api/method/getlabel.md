@@ -30,7 +30,7 @@ scheduler.config.lightbox.sections=[
         // more options
 ];
 
-var holder2 = scheduler.getLabel("unit_id", 2);// ->"John Williams"
+const holder2 = scheduler.getLabel("unit_id", 2);// ->"John Williams"
 ~~~
 
 ### Related samples
@@ -53,11 +53,11 @@ scheduler.templates.event_text = function(start, end, event){
     return event.text + " ("+scheduler.getLabel("unit_id",event.unit_id) +")";
 };
 
-scheduler.init('scheduler_here',new Date(2013,5,30),"unit");
+scheduler.init('scheduler_here',new Date(2027,5,30),"unit");
 scheduler.parse([
- {start_date:"06/30/2013 09:00",end_date:"06/30/2013 12:00",text:"TaskA",unit_id:1},
- {start_date:"06/30/2013 12:00",end_date:"06/30/2013 20:00",text:"TaskB",unit_id:2},
- {start_date:"06/30/2013 08:00",end_date:"06/30/2013 12:00",text:"TaskC",unit_id:2}
+ {start_date:"06/30/2027 09:00",end_date:"06/30/2027 12:00",text:"TaskA",unit_id:1},
+ {start_date:"06/30/2027 12:00",end_date:"06/30/2027 20:00",text:"TaskB",unit_id:2},
+ {start_date:"06/30/2027 08:00",end_date:"06/30/2027 12:00",text:"TaskC",unit_id:2}
 ],"json");
 
 ~~~

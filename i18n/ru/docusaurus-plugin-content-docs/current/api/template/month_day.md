@@ -23,12 +23,12 @@ description: "определяет, как день отображается в 
 
 ~~~jsx
 scheduler.templates.month_day = function(date){
-    var dateToStr_func = scheduler.date.date_to_str(scheduler.config.month_day);
+    const dateToStr_func = scheduler.date.date_to_str(scheduler.config.month_day);
     return  dateToStr_func(date);
 };
 ~~~
 
-**Applicable views:** [Month view](views/month.md), [Year view](views/year.md)
+**Доступные представления:** [Month view](views/month.md), [Year view](views/year.md)
 
 ### Related Guides
 - [Шаблоны для Месячного Вида](views/month-view-templates.md)

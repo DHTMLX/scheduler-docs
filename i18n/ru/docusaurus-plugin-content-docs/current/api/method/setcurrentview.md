@@ -1,42 +1,42 @@
 ---
-sidebar_label: "setCurrentView"
-title: "setCurrentView method"
-description: "показывает выбранный view и дату"
+sidebar_label: setCurrentView
+title: "setCurrentView метод"
+description: "отображает указанный вид и дату"
 ---
 
 # setCurrentView
 
 ### Description
 
-@short: Показывает выбранный view и дату
+@short: Отображает указанный вид и дату
 
 @signature: setCurrentView: (date?: Date, view?: string) =\> void
 
 ### Parameters
 
-- `date` - (optional) *Date* - дата для отображения
-- `view` - (optional) *string* - имя view для отображения
+- `date` - (optional) *Date* - дата, которая будет отображаться
+- `view` - (optional) *string* - название вида, который нужно отобразить
 
 ### Example
 
 ~~~jsx
-// обновляет текущий view и дату без внесения изменений
+// отображает текущий вид и дату. Ничего не изменяет, просто обновляется
 scheduler.setCurrentView();
-// показывает 4 июля 2012 года в текущем view
-scheduler.setCurrentView(new Date(2012,7,4));
-// показывает 3 мая 2012 года в view "week"
-scheduler.setCurrentView(new Date(2012,5,3), "week");
+// отображает 2027-08-04 в текущем активном виде
+scheduler.setCurrentView(new Date(2027, 7, 4));
+// отображает 2027-06-03 в представлении Week
+scheduler.setCurrentView(new Date(2027, 5, 3), "week");
 ~~~
 
 ### Related samples
-- [Mini calendar in the scheduler header](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
-- [Mini calendar outside the scheduler](https://docs.dhtmlx.com/scheduler/samples/05_calendar/05_plain_structure.html)
+- [Мини-календарь в заголовке планировщика](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
+- [Мини-календарь вне планировщика](https://docs.dhtmlx.com/scheduler/samples/05_calendar/05_plain_structure.html)
 
 ### Details
 
-- Стандартные имена view включают 'day', 'week' и 'month'. Для любого другого view используйте его параметр <b>name</b>.
-- Вызов этого метода запускает события [onBeforeViewChange](api/event/onbeforeviewchange.md) и [onViewChange](api/event/onviewchange.md).
-- Этот метод похож на [updateView](api/method/updateview.md), но ключевое отличие в том, что [updateView](api/method/updateview.md) **не вызывает никаких событий**.
+- Названия видов по умолчанию: 'day', 'week', 'month'. Чтобы указать другой вид, используйте его параметр `name`.
+- Метод вызывает [`onBeforeViewChange`](api/event/onbeforeviewchange.md) и [`onViewChange`](api/event/onviewchange.md).
+- Метод аналогичен [`updateView()`](api/method/updateview.md). Единственное отличие состоит в том, что [`updateView()`](api/method/updateview.md) не генерирует никаких событий.
 
 ### Related API
 - [onBeforeViewChange](api/event/onbeforeviewchange.md)

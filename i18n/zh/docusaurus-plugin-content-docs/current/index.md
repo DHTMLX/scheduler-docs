@@ -37,7 +37,7 @@ DHTMLX Scheduler 提供 Standard 和 PRO 两个版本。Standard 版本可通过
     </div>
   </a>
 
-  <a className="framework-card" href="integrations/angular/howtostart-angular/">
+  <a className="framework-card" href="integrations/angular/js-scheduler-angular/">
     <FrameworkIcon name="angular" className="framework-icon" />
     <div className="framework-title">Angular</div>
     <div className="framework-desc">
@@ -45,7 +45,7 @@ DHTMLX Scheduler 提供 Standard 和 PRO 两个版本。Standard 版本可通过
     </div>
   </a>
 
-  <a className="framework-card" href="integrations/vue/howtostart-vue/">
+  <a className="framework-card" href="integrations/vue/js-scheduler-vue/">
     <FrameworkIcon name="vue" className="framework-icon" />
     <div className="framework-title">Vue</div>
     <div className="framework-desc">
@@ -136,7 +136,7 @@ Scheduler 可通过多种方式连接你的数据层：
 Scheduler 可以这样使用：
 
 - 作为独立 JS 小部件用于任意页面 - [纯 HTML/JS 初始化](guides/initialization.md)。
-- 通过 [How to start](integrations/howtostart-guides.md) 指南，封装到框架组件中：[React](integrations/react/)/[Angular](integrations/angular/howtostart-angular.md)/[Vue](integrations/vue/howtostart-vue.md)/[Svelte](integrations/svelte/howtostart-svelte.md)。
+- 通过 [How to start](integrations/howtostart-guides.md) 指南，封装到框架组件中：[React](integrations/react/)/[Angular](integrations/angular/js-scheduler-angular.md)/[Vue](integrations/vue/js-scheduler-vue.md)/[Svelte](integrations/svelte/howtostart-svelte.md)。
 
 
 ## 安装说明

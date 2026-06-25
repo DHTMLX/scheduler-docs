@@ -5,19 +5,19 @@ sidebar_label: "Vollständige Liste der Erweiterungen"
 
 # Vollständige Liste der Erweiterungen
 
-dhtmlxScheduler bietet eine Vielzahl von Erweiterungen, die die Standardfunktionalität erweitern.
+dhtmlxScheduler enthält eine Reihe von Erweiterungen, die dem Standardverhalten zusätzliche Funktionen hinzufügen.
 
-Um eine Erweiterung zu aktivieren, verwenden Sie die Methode [scheduler.plugins](api/method/plugins.md).
+Um eine Erweiterung zu verwenden, aktivieren Sie sie mit der Methode [`plugins()`](api/method/plugins.md).
 
 :::info
-Ab Version 6.0 wurden die Erweiterungsdateien aus dem **ext**-Ordner entfernt und in die *dhtmlxscheduler.js*-Datei integriert.
+In v6.0 wurden die Code-Dateien der Erweiterungen aus dem **ext**-Ordner der Scheduler-Codebasis entfernt und in die *dhtmlxscheduler.js*-Datei integriert.
 
-Wenn Sie dhtmlxScheduler 5.3 oder älter verwenden, lesen Sie bitte den [Migrationsartikel](migration.md#53---60).
+Wenn Sie dhtmlxScheduler 5.3 oder frühere Versionen verwenden, lesen Sie den [Migrationsartikel](migration.md#53---60).
 :::
 
-## Active Links {#active-links}
+## Active Links
 
-Zeigt die Tagesnummern in der Monats- und Wochenansicht als anklickbare Links an, die den entsprechenden Tag in der gewählten Ansicht öffnen.
+Stellt die Anzahl der Tage in den Monats- und Wochenansichten als anklickbare Links dar, die den entsprechenden Tag in der angegebenen Ansicht öffnen.
 
 ~~~js
 scheduler.plugins({
@@ -27,18 +27,15 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-Artikel: [Monatsansicht](views/month.md#presenting-days-numbers-as-clickable-links)
+Artikel: [Monatsansicht](views/month.md)
 
+API: [active_link_view](api/config/active_link_view.md)
 
-API: [active_link_view](api/config/active_link_view.md) 
+Beispiel: [Monatstage als Links](https://docs.dhtmlx.com/scheduler/samples/03_extensions/06_links_plugin.html)
 
+## Agenda View
 
-[Month days as links](https://docs.dhtmlx.com/scheduler/samples/03_extensions/06_links_plugin.html)
-
-
-## Agenda View {#agenda-view}
-
-Dies ist die Code-Datei für die Agenda-Ansicht.
+Die Agenda-Ansicht Code-Datei.
 
 ~~~js
 scheduler.plugins({
@@ -48,15 +45,13 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-Artikel: [Agenda-Ansicht](views/agenda.md) 
+Artikel: [Agenda View](views/agenda.md)
 
+Beispiel: [Agenda-Ansicht](https://docs.dhtmlx.com/scheduler/samples/03_extensions/03_agenda_view.html)
 
-[Agenda view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/03_agenda_view.html)
+## All Timed
 
-
-## All Timed {#all-timed}
-
-Zeigt mehrtägige Ereignisse im gleichen Stil wie eintägige Ereignisse an.
+Zeigt mehrtägige Ereignisse auf die übliche Weise an (Da\-sein-Tage werden wie üblich angezeigt).
 
 ~~~js
 scheduler.plugins({
@@ -68,13 +63,11 @@ scheduler.plugins({
 
 API: [all_timed](api/config/all_timed.md) 
 
+Beispiel: [Darstellung mehrtägiger Ereignisse auf übliche Weise](https://docs.dhtmlx.com/scheduler/samples/03_extensions/26_multi_day_visible.html)
 
-[Displaying multi-day events in the regular way](https://docs.dhtmlx.com/scheduler/samples/03_extensions/26_multi_day_visible.html)
+## Collision
 
-
-## Collision {#collision}
-
-Steuert die Anzahl der Ereignisse, die im selben Zeitfenster auftreten.
+Verwaltet die Anzahl der Ereignisse in einem Zeitfenster.
 
 ~~~js
 scheduler.plugins({
@@ -82,18 +75,15 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Verwandte Ressourcen
 
-Artikel: [Verhindern von doppelten Ereignissen in einem Zeitfenster](guides/collisions.md) 
+Artikel: [Verhindern doppelter Ereignisse in einem Zeitfenster](guides/collisions.md) 
 
+Beispiel: [Kontrolle der Anzahl der Ereignisse in einem Zeitfenster](https://docs.dhtmlx.com/scheduler/samples/03_extensions/15_collision.html)
 
-[Controlling the number of events in a time slot](https://docs.dhtmlx.com/scheduler/samples/03_extensions/15_collision.html)
+## Container Autoresize
 
-
-## Container Autoresize {#container-autoresize}
-
-Passt die Größe des Scheduler-Containers automatisch an den Inhalt an.
+Ermöglicht eine automatische Größenanpassung des Scheduler-Containers (Größe wird an den Inhalt angepasst).
 
 ~~~js
 scheduler.plugins({
@@ -103,18 +93,15 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-Artikel: [dhtmlxScheduler in Plain JS/HTML](guides/initialization.md#containerautoresizing)
-
+Artikel: [dhtmlxScheduler in Plain JS/HTML](guides/initialization.md#scheduler-autoresizing)
 
 API: [container_autoresize](api/config/container_autoresize.md) 
 
+Beispiel: [Automatische Größenanpassung des Scheduler-Containers](https://docs.dhtmlx.com/scheduler/samples/03_extensions/28_container_autoresize.html)
 
-[Autoresizing the scheduler container](https://docs.dhtmlx.com/scheduler/samples/03_extensions/28_container_autoresize.html)
+## Cookie
 
-
-## Cookie {#cookie}
-
-Speichert den aktuellen Scheduler-Status (Modus und Datum) mithilfe von Cookies.
+Speichert den aktuellen Zustand des Schedulers (Modus und Datum) in Cookies.
 
 ~~~js
 scheduler.plugins({
@@ -124,16 +111,15 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-[Work with cookies](https://docs.dhtmlx.com/scheduler/samples/03_extensions/08_cookies_plugin.html)
+Beispiel: [Arbeiten mit Cookies](https://docs.dhtmlx.com/scheduler/samples/03_extensions/08_cookies_plugin.html)
 
+## Daytimeline
 
-## Daytimeline {#daytimeline}
-
-:::info
+:::note
 Diese Erweiterung ist nur in der PRO-Version verfügbar
 :::
 
-Stellt den "Days"-Modus für die Timeline-Ansicht bereit.
+Eine Code-Datei für den "Days"-Modus der Timeline-Ansicht.
 
 ~~~js
 scheduler.plugins({
@@ -141,22 +127,20 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Verwandte Ressourcen
 
-Artikel: [Timeline-Ansicht](views/timeline.md)
+Artikel: [Timeline View](views/timeline.md)
+
+Beispiel: [Days as Timeline rows](https://docs.dhtmlx.com/scheduler/samples/06_timeline/14_days_as_sections.html)
 
 
-[Days as Timeline rows](https://docs.dhtmlx.com/scheduler/samples/06_timeline/14_days_as_sections.html)
-
-
-## Drag-n-Drop zwischen Schedulern {#drag-n-drop-between-schedulers}
+## Drag-n-Drop between Schedulers
 
 :::info
-Diese Erweiterung ist nur in der Scheduler PRO-Version (Commercial (seit 6. Oktober 2021), Enterprise und Ultimate Lizenzen) verfügbar.
+Diese Erweiterung ist nur in der Scheduler PRO-Version (Kommerzielle Lizenzen seit dem 6. Oktober 2021), Enterprise- und Ultimate-Lizenzen) verfügbar.
 :::
 
-Ermöglicht das Ziehen und Ablegen von Ereignissen zwischen mehreren Schedulern, sodass Ereignisse von einem Scheduler zum anderen verschoben werden können.
+Ermöglicht Drag-and-Drop-Operationen zwischen mehreren Scheduler-Instanzen, wodurch es möglich ist, Ereignisse von einem Scheduler zum anderen zu ziehen und umgekehrt.
 
 ~~~js
 scheduler.plugins({
@@ -166,13 +150,11 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-Artikel: [Drag-and-drop zwischen Schedulern](guides/drag-between.md)
+Artikel: [Drag-and-Drop zwischen Schedulers](guides/drag-between.md)
 
+## Editors
 
-## Editors {#editors}
-
-Enthält Code für die [radio](guides/radio.md), [combo](guides/combo.md), 
-[checkbox](guides/checkbox.md) Steuerelemente, die in der Lightbox verwendet werden.
+Eine Code-Datei für die [radio](guides/radio.md), [combo](guides/combo.md), [checkbox](guides/checkbox.md) Steuerelemente des Lightbox-Dialogs.
 
 ~~~js
 scheduler.plugins({
@@ -180,18 +162,15 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Verwandte Ressourcen
 
-Artikel: [Lightbox-Steuerelemente](guides/lightbox-editors.md) 
+Artikel: [Lightbox Editors](guides/lightbox-editors.md)
 
+Beispiel: [Radio-Button im Lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/14_radio_buttons_section.html)
 
-[Radio button in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/14_radio_buttons_section.html)
+## Expand
 
-
-## Expand {#expand}
-
-Fügt ein "Expandieren"-Symbol in der oberen rechten Ecke des Schedulers hinzu. Ein Klick darauf wechselt zwischen der Originalgröße und dem Vollbildmodus.
+Fügt dem rechten Eckpunkt des Schedulers das "expand"-Symbol hinzu. Ein Klick auf dieses Symbol ändert die Größe des Schedulers von der Originalgröße auf Vollbild und umgekehrt.
 
 ~~~js
 scheduler.plugins({
@@ -199,21 +178,17 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Verwandte Ressourcen
 
-API: [expand](api/method/expand.md), [collapse](api/method/collapse.md) 
-
+API: [`expand()`](api/method/expand.md), [`collapse()`](api/method/collapse.md)
 
 Events: [onBeforeExpand](api/event/onbeforeexpand.md), [onBeforeCollapse](api/event/onbeforecollapse.md), [onExpand](api/event/onexpand.md), [onCollapse](api/event/oncollapse.md)
- 
 
-[Full-screen view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/05_expand_plugin.html)
+Beispiel: [Vollbild-Ansicht](https://docs.dhtmlx.com/scheduler/samples/03_extensions/05_expand_plugin.html)
 
+## Export service
 
-## Export service {#export-service}
-
-Aktiviert den Online-Export-Service.
+Bietet die Möglichkeit, den Online-Exportdienst zu aktivieren.
 
 ~~~js
 scheduler.plugins({
@@ -223,19 +198,17 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-Artikel: [Export nach PDF](export/pdf.md) , [Export nach PNG](export/png.md)
+Artikel: [Export nach PDF](export/pdf.md), [Export nach PNG](export/png.md)
 
+Beispiel: [Export nach PDF/PNG](https://docs.dhtmlx.com/scheduler/samples/04_export/06_online_export.html)
 
-[Export to PDF/PNG](https://docs.dhtmlx.com/scheduler/samples/04_export/06_online_export.html)
-
-
-## Grid View {#grid-view}
+## Grid View
 
 :::info
 Diese Erweiterung ist nur in der PRO-Version verfügbar
 :::
 
-Die Code-Datei für die Grid-Ansicht.
+Die Grid-Ansicht Code-Datei.
 
 ~~~js
 scheduler.plugins({
@@ -243,18 +216,15 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Verwandte Ressourcen
 
-Artikel: [Grid-Ansicht](views/grid.md)
+Artikel: [Grid View](views/grid.md)
 
+Beispiel: [Grid view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/27_grid_view.html)
 
-[Grid view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/27_grid_view.html)
+## HTML Templates
 
-
-## HTML Templates {#html-templates}
-
-Erlaubt das Definieren von Templates mit HTML-Code.
+Ermöglicht das Definieren von Vorlagen als HTML-Code.
 
 ~~~js
 scheduler.plugins({
@@ -264,15 +234,14 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-Artikel: [Templates](guides/templates.md#specifyingtemplatesasanhtmlcode)
+Artikel: [Templates](guides/templates.md#specifying-templates-with-code)
+
+Beispiel: [Specifying templates with HTML](https://docs.dhtmlx.com/scheduler/samples/03_extensions/09_html_templates_plugin.html)
 
 
-[Specifying templates with HTML](https://docs.dhtmlx.com/scheduler/samples/03_extensions/09_html_templates_plugin.html)
+## Keyboard Navigation
 
-
-## Keyboard Navigation {#keyboard-navigation}
-
-Aktiviert die Navigation mit der Tastatur.
+Ermöglicht die Tastaturnavigation.
 
 ~~~js
 scheduler.plugins({
@@ -282,18 +251,15 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-Artikel: [Tastaturnavigation](guides/keyboard-navigation.md)
+Artikel: [Keyboard Navigation](guides/keyboard-navigation.md)
 
+Beispiel: [Keyboard Navigation und WAI-ARIA - Flat Skin](https://docs.dhtmlx.com/scheduler/samples/13_accessibility/01_regular_skin_all_views.html)
 
-[Keyboard Navigation and WAI-ARIA - Flat Skin](https://docs.dhtmlx.com/scheduler/samples/13_accessibility/01_regular_skin_all_views.html)
+Beispiel: [Tastaturnavigation im Scheduler](https://docs.dhtmlx.com/scheduler/samples/03_extensions/07_navigation_plugin.html)
 
+## Legacy
 
-[Keyboard navigation in the scheduler](https://docs.dhtmlx.com/scheduler/samples/03_extensions/07_navigation_plugin.html)
-
-
-## Legacy {#legacy}
-
-Aktiviert die Unterstützung für veraltete APIs.
+Aktiviert veraltete API.
 
 ~~~js
 scheduler.plugins({
@@ -303,12 +269,11 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-Artikel: [Migration von älteren Versionen](migration.md)
+Artikel: [Migration From Older Versions](migration.md)
 
+## Limit
 
-## Limit {#limit}
-
-Bietet Optionen, um bestimmte Daten zu blockieren und hervorzuheben.
+Bietet Funktionalität zum Blockieren und Hervorheben von Daten.
 
 ~~~js
 scheduler.plugins({
@@ -318,15 +283,14 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-Artikel: [Blockieren und Markieren von Daten](guides/limits.md)
+Artikel: [Blocking and Marking Dates](guides/limits.md)
+
+Beispiel: [Begrenzung von Daten beim Erstellen von Ereignissen](https://docs.dhtmlx.com/scheduler/samples/03_extensions/16_limitation.html)
 
 
-[Limiting dates for creating events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/16_limitation.html)
+## Map View
 
-
-## Map View {#map-view}
-
-Die Code-Datei für die Kartenansicht.
+Die Map-Ansicht Code-Datei.
 
 ~~~js
 scheduler.plugins({
@@ -336,15 +300,14 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-Artikel: [Kartenansicht](views/map.md)
+Artikel: [Map View](views/map.md)
+
+Beispiel: [Map view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/19_map_view.html)
 
 
-[Map view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/19_map_view.html)
+## Mini Calendar (Date Picker)
 
-
-## Mini Calendar (Date Picker) {#mini-calendar-date-picker}
-
-Ein Plugin, das einen Mini-Kalender hinzufügt.
+Ein Plugin für den Mini-Kalender.
 
 ~~~js
 scheduler.plugins({
@@ -354,19 +317,18 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-Artikel: [Mini-Kalender (Datumsauswahl)](guides/minicalendar.md), [Zeit und Datum](guides/time.md#minicalendarinthelightbox)
+Artikel: [Mini Calendar (Date Picker)](guides/minicalendar.md), [Time and Date](guides/time.md#mini-calendar-in-the-lightbox)
+
+Beispiel: [Mini-Kalender im Scheduler-Header](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
 
 
-[Mini calendar in the scheduler header](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
-
-
-## Multisection {#multisection}
+## Multisection
 
 :::info
 Diese Erweiterung ist nur in der PRO-Version verfügbar
 :::
 
-Ermöglicht das Zuweisen von Ereignissen zu mehreren Sektionen in der Timeline-Ansicht oder zu mehreren Einheiten in der Units-Ansicht.
+Ermöglicht das Zuweisen von Ereignissen zu mehreren Abschnitten in der Timeline-Ansicht oder zu mehreren Einheiten in der Units-Ansicht.
 
 ~~~js
 scheduler.plugins({
@@ -376,18 +338,16 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-Artikel: [Timeline-Ansicht](views/timeline.md#assignment-of-events-to-several-sections), [Units-Ansicht](views/units.md#assigning-events-to-several-units)
-
+Artikel: [Timeline View](views/timeline.md), [Units View](views/units.md)
 
 API: [multisection](api/config/multisection.md)
 
+Beispiel: [Multisection-Ereignisse in Timeline- und Units-Ansicht](https://docs.dhtmlx.com/scheduler/samples/12_multisection_events/01_multisection_events.html)
 
-[Multisection events in Timeline and Units view](https://docs.dhtmlx.com/scheduler/samples/12_multisection_events/01_multisection_events.html)
 
+## Multiselect
 
-## Multiselect {#multiselect}
-
-Fügt Unterstützung für das [multiselect](guides/multiselect.md) Steuerelement in der Lightbox hinzu.
+Ein Plugin für die [Multiselect](guides/multiselect.md)-Steuerung des Lightbox-Dialogs.
 
 ~~~js
 scheduler.plugins({
@@ -397,15 +357,14 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-Artikel: [Lightbox-Steuerelemente](guides/lightbox-editors.md)
+Artikel: [Lightbox Editors](guides/lightbox-editors.md)
+
+Beispiel: [Multiselect-Steuerung im Lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/21_multiselect_options.html)
 
 
-[Multiselect control in the lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/21_multiselect_options.html)
+## Multisource
 
-
-## Multisource {#multisource}
-
-Ermöglicht das Laden von Daten aus mehreren Quellen.
+Bietet Funktionalität zum Laden von Daten aus mehreren Quellen.
 
 ~~~js
 scheduler.plugins({
@@ -415,15 +374,14 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-Artikel: [Daten laden](guides/loading-data.md#loadingdatafrommultiplesources)
+Artikel: [Laden von Daten](guides/loading-data.md#loading-data-from-multiple-sources)
+
+Beispiel: [Daten aus mehreren Quellen laden](https://docs.dhtmlx.com/scheduler/samples/03_extensions/13_multisource.html)
 
 
-[Loading data from multiple sources](https://docs.dhtmlx.com/scheduler/samples/03_extensions/13_multisource.html)
+## Outerdrag
 
-
-## Outerdrag {#outerdrag}
-
-Erlaubt das Ziehen von Ereignissen aus externen DHTMLX-Komponenten wie dhtmlxTree.
+Ermöglicht Drag-and-Drop von Ereignissen aus externen DHTMLX-Komponenten, z. B. dhtmlxTree.
 
 ~~~js
 scheduler.plugins({
@@ -431,27 +389,25 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Verwandte Ressourcen
 
-Artikel: [Drag-and-Drop-Operationen](guides/drag-between.md)
+Artikel: [Drag-and-Drop Operations](guides/drag-between.md)
+
+Beispiel: [Integration mit dhtmlxTree](https://docs.dhtmlx.com/scheduler/samples/10_integration/02_dhtmlxtree_outer_drag.html)
 
 
-[Integration with dhtmlxTree](https://docs.dhtmlx.com/scheduler/samples/10_integration/02_dhtmlxtree_outer_drag.html)
+## PDF
 
-
-## PDF {#pdf}
-
-Unterstützt den Export in PDF-Dokumente.
+Bietet Export in ein PDF-Dokument.
 
 - [Export nach PDF (Version 4.0)](export/pdf-legacy.md)
 
-- [Export nach PDF (Version 4.1+)]([Export nach PDF](export/pdf.md))
+- [Export nach PDF (Version 4.1+)](export/pdf.md)
 
 
-## Quick Info {#quick-info}
+## Quick Info
 
-Zeigt ein Popup mit den Details eines Ereignisses an.
+Bietet ein Popup mit Event-Details.
 
 ~~~js
 scheduler.plugins({
@@ -459,18 +415,16 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Verwandte Ressourcen
 
 Artikel: [Mobile Responsive Scheduler](guides/touch-support.md)
 
+Beispiel: [Touch-orientierter Scheduler](https://docs.dhtmlx.com/scheduler/samples/03_extensions/29_quick_info.html)
 
-[Touch-oriented scheduler](https://docs.dhtmlx.com/scheduler/samples/03_extensions/29_quick_info.html)
 
+## Readonly
 
-## Readonly {#readonly}
-
-Aktiviert den Nur-Lesen-Modus für die Lightbox und bestimmte Ereignisse.
+Bietet den Nur-Lese-Modus für das Lightbox-Dialogfenster und bestimmte Ereignisse.
 
 ~~~js
 scheduler.plugins({
@@ -478,18 +432,16 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Verwandte Ressourcen
 
-Artikel: [Schreibgeschützter Modus](guides/readonly.md)
+Artikel: [Read-only Mode](guides/readonly.md)
+
+Beispiel: [Nur-Lese Lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/12_readonly_form.html)
 
 
-[Read-only lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/12_readonly_form.html)
+## Recurring
 
-
-## Recurring {#recurring}
-
-Fügt Unterstützung für wiederkehrende Ereignisse hinzu.
+Bietet Unterstützung für wiederkehrende Ereignisse.
 
 ~~~js
 scheduler.plugins({
@@ -497,18 +449,16 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Verwandte Ressourcen
 
-Artikel: [Wiederkehrende Ereignisse](guides/recurring-events.md)
+Artikel: [Recurring Events](guides/recurring-events.md)
+
+Beispiel: [Wiederkehrende Ereignisse](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
 
 
-[Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
- 
+## Recurring Legacy
 
-## Recurring Legacy {#recurring-legacy}
-
-Legacy-Unterstützung für wiederkehrende Ereignisse.
+Legacy-Engine für wiederkehrende Ereignisse.
 
 ~~~js
 scheduler.plugins({
@@ -518,12 +468,12 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-Artikel: [Wiederkehrende Ereignisse (bis v7.1)](guides/recurring-events-legacy.md)
+Artikel: [Recurring Events (bis v7.1)](guides/recurring-events-legacy.md)
 
 
-## Serialize {#serialize}
+## Serialize
 
-Unterstützt das Serialisieren von Daten in ICal-, XML- und JSON-Formate.
+Bietet Unterstützung für das Serialisieren in ICal, XML, JSON-Formate.
 
 ~~~js
 scheduler.plugins({
@@ -531,18 +481,14 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Verwandte Ressourcen
 
-Artikel: [Daten-Serialisierung nach XML, JSON, iCal](export/serialization.md)
+Artikel: [Data Serialization to XML, JSON, iCal](export/serialization.md)
+
+Beispiel: [Scheduler-Ereignisse serialisieren](https://docs.dhtmlx.com/scheduler/samples/04_export/01_serialize_data.html)
 
 
- 
-
-[Serialize scheduler events](https://docs.dhtmlx.com/scheduler/samples/04_export/01_serialize_data.html)
-
-
-## Timeline {#timeline}
+## Timeline
 
 :::info
 Diese Erweiterung ist nur in der PRO-Version verfügbar
@@ -556,16 +502,14 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Verwandte Ressourcen
 
-Artikel: [Timeline-Ansicht](views/timeline.md)
+Artikel: [Timeline View](views/timeline.md)
+
+Beispiel: [Bar-Modus](https://docs.dhtmlx.com/scheduler/samples/06_timeline/02_lines.html)
 
 
-[Bar mode](https://docs.dhtmlx.com/scheduler/samples/06_timeline/02_lines.html)
-
-
-## Tooltip {#tooltip}
+## Tooltip
 
 Aktiviert Tooltips für Ereignisse.
 
@@ -575,22 +519,20 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Verwandte Ressourcen
 
 Artikel: [Tooltips](guides/tooltips.md)
 
+Beispiel: [Tooltips](https://docs.dhtmlx.com/scheduler/samples/03_extensions/20_tooltip.html)
 
-[Tooltips](https://docs.dhtmlx.com/scheduler/samples/03_extensions/20_tooltip.html)
 
-
-## Treetimeline {#treetimeline}
+## Treetimeline
 
 :::info
 Diese Erweiterung ist nur in der PRO-Version verfügbar
 :::
 
-Stellt den "Tree"-Modus für die Timeline-Ansicht bereit.
+Eine Erweiterung für den "Tree"-Modus der Timeline-Ansicht.
 
 ~~~js
 scheduler.plugins({
@@ -598,16 +540,14 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Verwandte Ressourcen
 
-Artikel: [Timeline-Ansicht](views/timeline.md)
+Artikel: [Timeline View](views/timeline.md)
+
+Beispiel: [Tree mode](https://docs.dhtmlx.com/scheduler/samples/06_timeline/03_tree.html)
 
 
-[Tree mode](https://docs.dhtmlx.com/scheduler/samples/06_timeline/03_tree.html)
-
-
-## Units {#units}
+## Units
 
 :::info
 Diese Erweiterung ist nur in der PRO-Version verfügbar
@@ -621,24 +561,23 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Verwandte Ressourcen
 
-Artikel: [Units-Ansicht](views/units.md)
+Artikel: [Units View](views/units.md)
+
+Beispiel: [Units view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/02_units_view.html)
 
 
-[Units view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/02_units_view.html)
-
-
-## URL {#url}
+## URL
 
 Speichert den Zustand des Schedulers (Datum, Ereignis-ID, Ansicht) in der URL.
 
-Beispiele: 
+Zum Beispiel:
 
-~~~
-<code>10_url_date_plugin.html#date=2014-08-01,mode=month</code> oder <code>10_url_date_plugin.html#event="15</code">
-~~~
+```text
+10_url_date_plugin.html#date=2027-08-01,mode=month
+10_url_date_plugin.html#event=15
+```
 
 ~~~js
 scheduler.plugins({
@@ -646,19 +585,18 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Verwandte Ressourcen
 
-[Saving the scheduler state in URL](https://docs.dhtmlx.com/scheduler/samples/03_extensions/10_url_date_plugin.html)
+Beispiel: [Speichern des Scheduler-Zustands in der URL](https://docs.dhtmlx.com/scheduler/samples/03_extensions/10_url_date_plugin.html)
 
 
-## Week Agenda {#week-agenda}
+## Week Agenda
 
 :::info
 Diese Erweiterung ist nur in der PRO-Version verfügbar
 :::
 
-Die Code-Datei für die Week Agenda-Ansicht.
+Die Code-Datei der Week-Agenda-Ansicht.
 
 ~~~js
 scheduler.plugins({
@@ -666,18 +604,16 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Verwandte Ressourcen
 
-Artikel: [Week-Agenda-Ansicht](views/weekagenda.md)
+Artikel: [Week Agenda View](views/weekagenda.md)
+
+Beispiel: [WeekAgenda view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/24_week_agenda.html)
 
 
-[WeekAgenda view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/24_week_agenda.html)
+## Year
 
-
-## Year {#year}
-
-Die Code-Datei für die Jahresansicht.
+Die Year-Ansicht Code-Datei.
 
 ~~~js
 scheduler.plugins({
@@ -687,7 +623,6 @@ scheduler.plugins({
 
 #### Verwandte Ressourcen
 
-Artikel: [Jahresansicht](views/year.md)
+Artikel: [Year View](views/year.md)
 
-
-[Year view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/04_year_view.html)
+Beispiel: [Year view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/04_year_view.html)

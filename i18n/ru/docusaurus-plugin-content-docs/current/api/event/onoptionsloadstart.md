@@ -1,25 +1,25 @@
 ---
-sidebar_label: "onOptionsLoadStart"
-title: "onOptionsLoadStart event"
-description: "срабатывает непосредственно перед началом загрузки набора опций или секций с сервера (применимо только к Timeline view)"
+sidebar_label: onOptionsLoadStart
+title: "onOptionsLoadStart событие"
+description: "срабатывает перед загрузкой коллекции опций или разделов с сервера (вид таймлайн только)"
 ---
 
 # onOptionsLoadStart
 
 ### Description
 
-@short: Срабатывает непосредственно перед началом загрузки набора опций или секций с сервера (применимо только к Timeline view)
+@short: Срабатывает перед тем, как коллекция опций или разделов начнет загружаться с сервера (вид таймлайн только)
 
-@signature: onOptionsLoadStart: () =\> void
+@signature: onOptionsLoadStart: () => void
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onOptionsLoadStart", function (){
-    //любая ваша логика здесь
+    //any custom logic here
 });
 ~~~
 
 ### Details
 
-Это событие происходит исключительно при загрузке коллекции, либо через dhtxmlConnector, либо с использованием метода [updateCollection](api/method/updatecollection.md).
+Событие срабатывает только когда коллекция загружается с помощью dhtxmlConnector или через метод [updateCollection](api/method/updatecollection.md).

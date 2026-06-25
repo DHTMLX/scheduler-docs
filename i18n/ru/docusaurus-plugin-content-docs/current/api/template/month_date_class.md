@@ -27,7 +27,7 @@ scheduler.templates.month_date_class = function(date){
 };
 ~~~
 
-**Applicable views:** [Month view](views/month.md)
+**Доступные представления:** [Month view](views/month.md)
 
 ### Related Guides
 - [Шаблоны для Месячного Вида](views/month-view-templates.md)

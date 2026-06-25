@@ -16,7 +16,7 @@ The Day view is added to the [basic scheduler's markup](guides/scheduler-markup.
 
 ~~~js
 //just usual initialization. The Day view will be added by default
-scheduler.init('scheduler_here',new Date(2019,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ...
 scheduler.load("/data/events");
 ~~~

@@ -26,7 +26,7 @@ description: "the date of a day cell of the view"
 
 ~~~jsx
 scheduler.templates.week_agenda_scale_date = function(date) {
-        var scale_date_format = scheduler.date.date_to_str("%l, %F %d");
+        const scale_date_format = scheduler.date.date_to_str("%l, %F %d");
         return scale_date_format(date);
 };
 ~~~

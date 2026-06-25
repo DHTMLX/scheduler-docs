@@ -445,18 +445,18 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 
 | Name                                       | Description                                 |
 |--------------------------------------------|---------------------------------------------|
-| [](api/other/ajax.md)            | @getshort(api/method/ajax_other.md)      |
-| [](api/other/config.md)          | @getshort(api/method/config_other.md)    |
-| [](api/other/date.md)            | @getshort(api/method/date_other.md)      |
-| [](api/other/env.md)             | @getshort(api/method/env_other.md)       |
-| [i18n](api/other/i18n.md)        | @getshort(api/method/i18n_other.md)      |
-| [](api/other/ical.md)            | @getshort(api/method/ical_other.md)      |
-| [](api/other/json.md)            | @getshort(api/method/json_other.md)      |
-| [](api/other/keys.md)            | @getshort(api/method/keys_other.md)      |
-| [](api/other/locale.md)          | @getshort(api/method/locale_other.md)    |
-| [](api/other/matrix.md)          | @getshort(api/method/matrix_other.md)    |
-| [](api/other/skin.md)            | @getshort(api/method/skin_other.md)      |
-| [](api/other/templates.md)       | @getshort(api/method/templates_other.md) |
-| [](api/other/tooltip.md)         | @getshort(api/method/tooltip_other.md)   |
-| [](api/other/version.md)         | @getshort(api/method/version_other.md)   |
-| [](api/other/xy.md)              | @getshort(api/method/xy_other.md)        |
+| [](api/other/ajax.md)             | @getshort(api/other/ajax.md)             |
+| [](api/other/config.md)           | @getshort(api/other/config.md)           |
+| [](api/other/date.md)             | @getshort(api/other/date.md)             |
+| [](api/other/env.md)              | @getshort(api/other/env.md)              |
+| [](api/other/i18n.md)             | @getshort(api/other/i18n.md)             |
+| [](api/other/ical.md)             | @getshort(api/other/ical.md)             |
+| [](api/other/json.md)             | @getshort(api/other/json.md)             |
+| [](api/other/keys.md)             | @getshort(api/other/keys.md)             |
+| [](api/other/locale.md)           | @getshort(api/other/locale.md)           |
+| [](api/other/matrix.md)           | @getshort(api/other/matrix.md)           |
+| [](api/other/skin.md)             | @getshort(api/other/skin.md)             |
+| [](api/other/templates.md)        | @getshort(api/other/templates.md)        |
+| [](api/other/tooltip.md)          | @getshort(api/other/tooltip.md)          |
+| [](api/other/version.md)          | @getshort(api/other/version.md)          |
+| [](api/other/xy.md)               | @getshort(api/other/xy.md)               |

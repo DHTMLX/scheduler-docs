@@ -1,29 +1,29 @@
 ---
-sidebar_label: "copy"
-title: "copy method"
-description: "создаёт глубокую копию заданного объекта"
+sidebar_label: копирование
+title: "Метод копирования"
+description: "создает глубокую копию переданного объекта"
 ---
 
-# copy
+# Копирование
 
 ### Description
 
-@short: Создаёт глубокую копию заданного объекта
+@short: Создает глубокую копию переданного объекта
 
 @signature: copy: (event: any) =\> any
 
 ### Parameters
 
-- `event` - (required) *object* - объект, который нужно продублировать
+- `event` - (обязательный) *object* - объект, который нужно скопировать
 
 ### Returns
-- ` backupEvent` - (object) - глубокая копия заданного объекта
+- `backupEvent` - (object) - глубокая копия переданного объекта
 
 ### Example
 
 ~~~jsx
-var backupEvent = scheduler.copy(scheduler.getEvent(id));
+const backupEvent = scheduler.copy(scheduler.getEvent(id));
 ~~~
 
 ### Change log
-- added in version 6.0
+- добавлено в версии 6.0

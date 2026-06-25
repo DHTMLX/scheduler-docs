@@ -1,14 +1,14 @@
 ---
-sidebar_label: "key_nav"
+sidebar_label: key_nav
 title: "key_nav config"
-description: "включает клавиатурную навигацию в scheduler"
+description: "обеспечивает навигацию клавиатурой в планировщике"
 ---
 
 # key_nav
 
 ### Description
 
-@short: Включает клавиатурную навигацию в scheduler
+@short: Включает навигацию клавиатурой в планировщике
 
 @signature: key_nav: boolean
 
@@ -18,7 +18,7 @@ description: "включает клавиатурную навигацию в sc
 scheduler.config.key_nav = true;
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Related samples
 - [Keyboard Navigation and WAI-ARIA - Flat Skin](https://docs.dhtmlx.com/scheduler/samples/13_accessibility/01_regular_skin_all_views.html)
@@ -26,7 +26,7 @@ scheduler.config.key_nav = true;
 ### Details
 
 :::note
- Эта функция требует активного расширения [key_nav](guides/extensions-list.md#keyboard-navigation). 
+Свойство требует включения расширения [key_nav](guides/extensions-list.md#keyboard-navigation).
 :::
 
 ### Related API
@@ -37,5 +37,5 @@ scheduler.config.key_nav = true;
 - [removeShortcut](api/method/removeshortcut.md)
 
 ### Related Guides
-- [Полный список расширений](guides/extensions-list.md#keyboard-navigation)
-- [Навигация с помощью клавиатуры](guides/keyboard-navigation.md)
+- [Full List of Extensions](guides/extensions-list.md)
+- [Keyboard Navigation](guides/keyboard-navigation.md)

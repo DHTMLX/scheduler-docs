@@ -1,33 +1,35 @@
 ---
-sidebar_label: "xml_date"
-title: "xml_date config"
-description: "определяет формат даты, используемый для интерпретации данных из набора данных"
+sidebar_label: xml_date
+title: "xml_date конфигурация"
+description: "определяет форматы даты, которые используются для разбора данных из набора данных и для отправки данных на сервер"
 ---
 
 # xml_date
-:::warning
-Эта функицональность устарела
-::: 
+:::warning 
+Свойство устарело
+:::
 ### Description
 
-@short: Определяет формат даты, используемый для интерпретации данных из набора данных
+@short: определяет форматы даты, которые используются для разбора данных из набора данных и для отправки данных на сервер
 
 @signature: xml_date: string
 
 ### Example
 
 ~~~jsx
-
+gantt.config.xml_date="%Y-%m-%d %H:%i";
+...
+gantt.init("gantt_here");
+gantt.load("../data/tasks.json");
 ~~~
 
-**Default value:** %m/%d/%Y %H:%i
+**Значение по умолчанию:** %m/%d/%Y %H:%i
 
-### Related samples
-- [Basic initialization](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/01_basic_init.html)
-- [Setting the Y-Axis format](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/02_hour_scale_format.html)
+### Details
+Свойство xml_date устарело. Используйте вместо этого `date_format`:
 
 ### Related Guides
-- [Спецификация формата даты](guides/settings-format.md)
+- [Date Format Specification](guides/settings-format.md)
 
 ### Change log
-- устарело с версии v5.2
+- устарело с версии v6.2, удалено с версии v7.0

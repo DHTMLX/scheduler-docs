@@ -1,14 +1,14 @@
 ---
-sidebar_label: "onDblClick"
-title: "onDblClick event"
-description: "срабатывает, когда пользователь делает двойной клик по событию"
+sidebar_label: onDblClick
+title: "onDblClick событие"
+description: "срабатывает, когда пользователь дважды кликает по событию"
 ---
 
 # onDblClick
 
 ### Description
 
-@short: Срабатывает, когда пользователь делает двойной клик по событию
+@short: Срабатывает, когда пользователь дважды кликает по событию
 
 @signature: onDblClick: (id: string, e: Event) =\> boolean;
 
@@ -18,17 +18,17 @@ description: "срабатывает, когда пользователь дел
 - `e` - (required) *Event* - объект нативного события
 
 ### Returns
-- ` result` - (boolean) - указывает, будет ли выполнено действие по умолчанию для события (<b>true</b>) или оно будет предотвращено (<b>false</b>)
+- `result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (`true`) или отменено (`false`)
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onDblClick", function (id, e){
+scheduler.attachEvent("onDblClick", (id, e) => {
     //любая пользовательская логика здесь
     return true;
-})
+});
 ~~~
 
 ### Details
 
-Это событие можно блокировать. Возврат *false* остановит выполнение действия по умолчанию.
+Событие можно блокировать. Вернуть `false`, чтобы отменить поведение по умолчанию.

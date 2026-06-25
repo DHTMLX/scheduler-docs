@@ -15,7 +15,7 @@ Die Monatsansicht ist standardmäßig in das [Grund-Layout des Schedulers](guide
 
 ~~~js
 // Standard-Initialisierung; die Monatsansicht ist automatisch enthalten
-scheduler.init('scheduler_here', new Date(2019,0,10), "month");
+scheduler.init('scheduler_here', new Date(2027,0,10), "month");
 ...
 scheduler.load("/data/events");
 ~~~
@@ -41,10 +41,10 @@ Ab Version 4.0 können Sie steuern, wie viele Ereignisse in jeder Zelle angezeig
 
 Um die maximale Anzahl von Ereignissen pro Zelle festzulegen, verwenden Sie die Option [max_month_events](api/config/max_month_events.md):
 
-~~~
+~~~js
 scheduler.config.max_month_events = 3;
 ..
-scheduler.init('scheduler_here', new Date(2019,5,30), "month");
+scheduler.init('scheduler_here', new Date(2027,5,30), "month");
 ~~~
 
 Wenn mehr Ereignisse als das festgelegte Limit vorhanden sind, erscheint ein "Mehr anzeigen"-Link. Beim Anklicken wird der Benutzer zur Tagesansicht weitergeleitet, in der alle Ereignisse vollständig angezeigt werden.
@@ -89,7 +89,7 @@ scheduler.plugins({
 // Beim Anklicken eines Tages wird die Wochenansicht geöffnet
 scheduler.config.active_link_view = "week";
 ...
-scheduler.init('scheduler_here', new Date(2012,7,6), "month");
+scheduler.init('scheduler_here', new Date(2027,7,6), "month");
 ~~~
 
 
@@ -106,7 +106,7 @@ Um das Größenändern von mehrtägigen Ereignissen per Drag-and-Drop zu ermögl
 // Aktiviert das Größenändern von mehrtägigen Ereignissen per Drag-and-Drop
 scheduler.config.resize_month_events = true; /*!*/
 
-scheduler.init('scheduler_here', new Date(2019,0,10), "month");
+scheduler.init('scheduler_here', new Date(2027,0,10), "month");
 ~~~
 
 [Resizable events in Month view](https://docs.dhtmlx.com/scheduler/samples/02_customization/32_resizable_month_events.html)
@@ -118,7 +118,7 @@ Um das Größenändern sowohl für mehrtägige als auch für eintägige Ereignis
 // Aktiviert das Größenändern für ein- und mehrtägige Ereignisse per Drag-and-Drop
 scheduler.config.resize_month_events = true;/*!*/
 scheduler.config.resize_month_timed = true;  /*!*/
-scheduler.init('scheduler_here', new Date(2019,0,10), "month");
+scheduler.init('scheduler_here', new Date(2027,0,10), "month");
 ~~~
 
 **Bitte beachten Sie:**

@@ -118,7 +118,7 @@ To display Scheduler on the page, we need to set the container to render the com
     onMount(() => {
         scheduler = Scheduler.getSchedulerInstance();
         scheduler.skin = "terrace";
-        scheduler.init(container, new Date(2023, 9, 6), "week");
+        scheduler.init(container, new Date(2027, 9, 6), "week");
 
         return () => scheduler.destructor();
     });
@@ -166,14 +166,14 @@ To add data into the Scheduler, we need to provide a data set. Let's create the 
 export function getData() {
     const data = [
         {
-            start_date: "2024-06-10 6:00",
-            end_date: "2024-06-10 8:00",
+            start_date: "2027-06-10 6:00",
+            end_date: "2027-06-10 8:00",
             text: "Event 1",
             id: 1,
         },
         {
-            start_date: "2024-06-13 10:00",
-            end_date: "2024-06-13 18:00",
+            start_date: "2027-06-13 10:00",
+            end_date: "2027-06-13 18:00",
             text: "Event 2",
             id: 2,
         },
@@ -210,7 +210,7 @@ And use props in the **scheduler.parse()** method in the Scheduler component:
     onMount(() => {
         scheduler = Scheduler.getSchedulerInstance();
         scheduler.skin = "terrace"
-        scheduler.init(container, new Date(2024, 5, 10), "week");
+        scheduler.init(container, new Date(2027, 5, 10), "week");
 
         return () => scheduler.destructor();
     });

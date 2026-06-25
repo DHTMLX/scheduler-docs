@@ -23,8 +23,8 @@ description: "导出多个调度器视图到PDF文档（适用于打印）"
 ### Example
 
 ~~~jsx
-//导出从2012年1月1日到2012年2月1日的“week”视图页面
-scheduler.toPDFRange(new Date(2012,0,1), new Date(2012, 1,1),'week', 
+//导出从2027年1月1日到2027年2月1日的“week”视图页面
+scheduler.toPDFRange(new Date(2027,0,1), new Date(2027, 1,1),'week', 
   'generate.php', 'fullcolor');
 ~~~
 

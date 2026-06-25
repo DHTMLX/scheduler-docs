@@ -22,7 +22,7 @@ description: "根据视图名称返回一个视图对象。如果未提供名称
 ### Example
 
 ~~~jsx
-var timeline = scheduler.getView(); 
+const timeline = scheduler.getView(); 
 timeline.x_size = 8;
 scheduler.setCurrentView();
 ~~~

@@ -102,7 +102,7 @@ Open the newly created view and put the following code into it:
     <script>
         document.addEventListener("DOMContentLoaded", function(event) {
             // initializing scheduler
-            scheduler.init("scheduler_here", new Date(2026, 0, 14), "week");
+            scheduler.init("scheduler_here", new Date(2027,0,15));
 
             // load data from backend
             scheduler.load("/api/scheduler");
@@ -256,22 +256,22 @@ namespace DHX.Scheduler.Web.App_Start
                 {
                     Id = 1,
                     Text = "Event 1",
-                    StartDate = new DateTime(2026, 1, 12, 2, 0, 0),
-                    EndDate = new DateTime(2026, 1, 12, 4, 0, 0)
+                    StartDate = new DateTime(2027, 1, 11, 2, 0, 0),
+                    EndDate = new DateTime(2027, 1, 11, 4, 0, 0)
                 },
                 new SchedulerEvent()
                 {
                     Id = 2,
                     Text = "Event 2",
-                    StartDate = new DateTime(2026, 1, 14, 3, 0, 0),
-                    EndDate = new DateTime(2026, 1, 14, 6, 0, 0)
+                    StartDate = new DateTime(2027, 1, 14, 3, 0, 0),
+                    EndDate = new DateTime(2027, 1, 14, 6, 0, 0)
                 },
                 new SchedulerEvent()
                 {
                     Id = 3,
                     Text = "Multiday event",
-                    StartDate = new DateTime(2026, 1, 12, 0, 0, 0),
-                    EndDate = new DateTime(2026, 1, 16, 0, 0, 0)
+                    StartDate = new DateTime(2027, 1, 11, 0, 0, 0),
+                    EndDate = new DateTime(2027, 1, 16, 0, 0, 0)
                 }
             };
 

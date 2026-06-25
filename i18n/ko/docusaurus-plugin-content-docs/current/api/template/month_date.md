@@ -23,7 +23,7 @@ description: "뷰 헤더에 표시될 날짜를 설정합니다."
 
 ~~~jsx
 scheduler.templates.month_date = function(date){
-    var dateToStr_func = scheduler.date.date_to_str(scheduler.config.month_date);
+    const dateToStr_func = scheduler.date.date_to_str(scheduler.config.month_date);
     return  dateToStr_func(date);
 };
 ~~~

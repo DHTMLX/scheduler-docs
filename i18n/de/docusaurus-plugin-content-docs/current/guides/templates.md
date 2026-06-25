@@ -1,62 +1,61 @@
 ---
-title: "Formatieren von Beschriftungen, Daten, Stilen"
-sidebar_label: "Formatieren von Beschriftungen, Daten, Stilen"
+title: "Formatierung von Labels, Datumsangaben und Stilen"
+sidebar_label: "Formatierung von Labels, Datumsangaben und Stilen"
 ---
 
-# Formatieren von Beschriftungen, Daten, Stilen
+# Formatierung von Labels, Datumsangaben und Stilen
 
-Siehe den Link für jede Ansicht, um die unterstützten Templates zu erkunden.
+Folgen Sie dem Link einer Ansicht, um die von ihr unterstützten Vorlagen zu sehen.
 
 ### Standardansichten
 
-- [Day-Ansicht Vorlagen](views/day-view-templates.md)
-- [Month View Templates](views/month-view-templates.md)
-- [Week-View-Vorlagen](views/week-view-templates.md)
-
+- [Tagesansicht-Vorlagen](views/day-view-templates.md)
+- [Monatsansicht-Vorlagen](views/month-view-templates.md)
+- [Wochenansicht-Vorlagen](views/week-view-templates.md)
 
 ### Erweiterte Ansichten
 
 - [Agenda-Ansicht-Vorlagen](views/agenda-view-templates.md)
-- [Grid-View-Vorlagen](views/grid-view-templates.md)
-- [Map-Ansichtsvorlagen](views/map-view-templates.md)
-- [Timeline-Ansichtsvorlagen](views/timeline-view-templates.md)
-- [WeekAgenda-Ansichtsvorlagen](views/weekagenda-view-templates.md)
-- [Units View Templates](views/units-view-templates.md)
+- [Raster-Ansicht-Vorlagen](views/grid-view-templates.md)
+- [Kartenansicht-Vorlagen](views/map-view-templates.md)
+- [Timeline-Ansicht-Vorlagen](views/timeline-view-templates.md)
+- [WeekAgenda-Ansicht-Vorlagen](views/weekagenda-view-templates.md)
+- [Einheiten-Ansicht-Vorlagen](views/units-view-templates.md)
 - [Jahresansicht-Vorlagen](views/year-view-templates.md)
 
 
-### Gemeinsam für alle Ansichten
+### Allgemein für alle Ansichten
 
-- [Mini Calendar Templates](guides/mini-calendar-templates.md)
+- [Mini-Kalender-Vorlagen](guides/mini-calendar-templates.md)
 - [Lightbox](guides/common-templates.md#lightbox)
 - [Tooltips](guides/common-templates.md#tooltips)
-- [Touch support](guides/common-templates.md#touch-support)
-- [API templates](guides/common-templates.md#api-templates)
+- [Touch-Unterstützung](guides/common-templates.md#touch-support)
+- [API-Vorlagen](guides/common-templates.md#api-templates)
 
 
-## Festlegen von Templates
+## Festlegen von Vorlagen
 
-Templates können auf zwei Arten festgelegt werden: entweder per Code oder mit HTML-Markup.
+Sie können Vorlagen auf zwei Arten festlegen: entweder aus dem Code oder aus HTML-Markup.
 
-### Templates per Code festlegen
+### Vorlagen mit Code definieren
 
-Standardmäßig werden Templates als JavaScript-Funktionen definiert, die das Event-Objekt oder Datumsparameter erhalten und einen HTML-String zurückgeben, der in das Layout eingefügt wird:
+Standardmäßig können Vorlagen als JS-Funktionen definiert werden, die das Event-Objekt oder Datumsargumente entgegennehmen und eine HTML-Zeichenkette zurückgeben müssen, die in das Layout eingefügt wird:
 
 ~~~js
-scheduler.templates.event_text="function(start," end, event){
-    return "<a href='http://some.com/details.php?for="+event.id+"'>"
-    +event.text+"</a>";
-}
+scheduler.templates.event_text = (start, end, event) => {
+    return `<a href='http://some.com/details.php?for=${event.id}'>${event.text}</a>`;
+};
 ~~~
 
-### Templates über Markup festlegen {#specifyingtemplatesasanhtmlcode}
+### Vorlagen über HTML-Markup definieren
 
-Eine weitere Möglichkeit ist die deklarative Definition von Templates mit HTML. Diese Methode erfordert das Einbinden der [html_templates](guides/extensions-list.md#html-templates)-Erweiterung auf der Seite. Sobald die Erweiterung aktiviert ist, können Templates wie folgt angegeben werden:
+Alternativ können Vorlagen deklarativ aus HTML definiert werden. Dieser Ansatz erfordert das Hinzufügen der [html_templates](guides/extensions-list.md#html-templates) Erweiterung zur Seite.
+Nachdem Sie die Erweiterung auf der Seite aktiviert haben, können Sie Vorlagen wie folgt festlegen:
 
 ~~~html
 <div class="template:event_text">
-    <a href='http://some.com/details.php?for="{event.id}"'>{event.text}<a>
+    <a href='http://some.com/details.php?for="{event.id}"'>{event.text}</a>
 </div>
 ~~~
 
-Die vollständige Liste der Templates finden Sie in der [API-Dokumentation](api/overview/templates_overview.md).
+Die vollständige Liste der Vorlagen finden Sie [in der API](api/overview/templates_overview.md).

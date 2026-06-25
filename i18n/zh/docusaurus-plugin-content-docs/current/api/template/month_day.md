@@ -23,7 +23,7 @@ description: "定义日期在单元格中的显示方式"
 
 ~~~jsx
 scheduler.templates.month_day = function(date){
-    var dateToStr_func = scheduler.date.date_to_str(scheduler.config.month_day);
+    const dateToStr_func = scheduler.date.date_to_str(scheduler.config.month_day);
     return  dateToStr_func(date);
 };
 ~~~

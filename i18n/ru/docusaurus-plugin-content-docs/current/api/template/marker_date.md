@@ -29,7 +29,7 @@ scheduler.templates.marker_date = function(date){
 };
 ~~~
 
-**Applicable views:** [Map view](views/map.md)
+**Доступные представления:** [Map view](views/map.md)
 
 ### Details
 

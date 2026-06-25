@@ -17,7 +17,7 @@ description: "라이트박스의 시간 선택기를 'last_hour'와 'first_hour'
 ~~~jsx
 scheduler.config.limit_time_select = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
 **Default value:** false

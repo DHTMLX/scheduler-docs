@@ -1,14 +1,14 @@
 ---
-sidebar_label: "icons_edit"
-title: "icons_edit config"
-description: "содержит набор иконок, которые отображаются в боковом меню редактирования внутри блока события"
+sidebar_label: icons_edit
+title: "конфигурация icons_edit"
+description: "хранит коллекцию иконок, видимых в боковом меню редактирования блока события"
 ---
 
 # icons_edit
 
 ### Description
 
-@short: Содержит набор иконок, которые отображаются в боковом меню редактирования внутри блока события
+@short: Хранит коллекцию иконок, видимых в боковом меню редактирования блока события
 
 @signature: icons_edit: any[]
 
@@ -20,9 +20,9 @@ scheduler.config.icons_edit = ['icon_custom', 'icon_save', 'icon_cancel'];
 scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 ~~~
 
-**Default value:** ['icon_save', 'icon_cancel']
+**Значение по умолчанию:** ['icon_save', 'icon_cancel']
 
-**Applicable views:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
+**Доступные представления:** [День](views/day.md), [Неделя](views/week.md), [Единицы](views/units.md)
 
 ### Details
 
@@ -32,4 +32,4 @@ scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 - [icons_select](api/config/icons_select.md)
 
 ### Related Guides
-- [Кастомизация панелей 'Select' и 'Edit'](guides/customizing-edit-select-bars.md)
+- [Настройка панелей 'Select' и 'Edit'](guides/customizing-edit-select-bars.md)

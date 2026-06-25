@@ -12,7 +12,7 @@ A standard scheduler used jQuery can be initialized as follows:
 ~~~js
 $(function(){
     $(".myscheduler").dhx_scheduler({
-        date:new Date(2019,4,25),
+        date:new Date(2027,4,25),
         mode:"month"
     });
         

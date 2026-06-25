@@ -1,36 +1,36 @@
 ---
-sidebar_label: "event_bar_text"
-title: "event_bar_text template"
-description: "Legt den Text fest, der bei mehrtägigen Events angezeigt wird."
+sidebar_label: event_bar_text
+title: "event_bar_text Vorlage"
+description: "legt den Text des Ereignisses fest. Gilt nur für Mehrtages-Ereignisse"
 ---
 
 # event_bar_text
 
 ### Description
 
-@short: Legt den Text fest, der bei mehrtägigen Events angezeigt wird.
+@short: Legt den Text des Ereignisses fest. Gilt nur für Mehrtages-Ereignisse
 
-@signature: event_bar_text: (start: Date, end: Date, event: any) =\> string
+@signature: event_bar_text: (start: Date, end: Date, event: any) => string
 
 ### Parameters
 
-- `start` - (required) *Date* - Das Datum, an dem das Event beginnt  
-- `end` - (required) *Date* - Das Datum, an dem das Event endet
-- `event` - (required) *object* - Das Event-Objekt
+- `start` - (erforderlich) *Date* - das Datum, an dem ein Ereignis beginnen soll
+- `end` - (erforderlich) *Date* - das Datum, an dem das Ereignis voraussichtlich abgeschlossen wird
+- `event` - (erforderlich) *object* - das Objekt des Ereignisses
 
 ### Returns
-- ` text` - (string) - HTML-Inhalt, der im Scheduler angezeigt wird
+- `text` - (string) - HTML-Text zur Darstellung im Scheduler
 
 ### Example
 
 ~~~jsx
-scheduler.templates.event_bar_text = function(start,end,event){
-      return event.text;
+scheduler.templates.event_bar_text = (start, end, event) => {
+    return event.text;
 };
 ~~~
 
-**Applicable views:** [Month view](views/month.md), [Timeline view](views/timeline.md)
+**Verfügbare Ansichten:** [Monatsansicht](views/month.md), [Timeline-Ansicht](views/timeline.md)
 
 ### Related Guides
-- [Month View Templates](views/month-view-templates.md)
-- [Timeline-Ansichtsvorlagen](views/timeline-view-templates.md)
+- [Monatsansicht-Vorlagen](views/month-view-templates.md)
+- [Timeline-Ansicht-Vorlagen](views/timeline-view-templates.md)

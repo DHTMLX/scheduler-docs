@@ -41,7 +41,7 @@ To set the position manually (e.g. in the markup), set the [fix_tab_position](ap
 ~~~js
 scheduler.config.fix_tab_position = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 Notice that you can use the following CSS classes to create a segmented button:
@@ -85,7 +85,7 @@ Note, the tab can have several CSS classes applied, but the **"dhx_cal_tab"** cl
 
 To remove a tab from the header, remove the related div from the markup:
 
-[Removing the 'month' tab from the header](Removing the 'month' tab from the header)
+Removing the 'month' tab from the header:
 
 ~~~html
 <div class="dhx_cal_navline">
@@ -104,7 +104,7 @@ Even if the tab is removed, the related view is still accessible programmaticall
 
 To hide the navigation buttons in the scheduler's header, set the *'display:none'* style for the related divs as in:
 
-[Hiding the navigation buttons in the header](Hiding the navigation buttons in the header)
+Hiding the navigation buttons in the header:
 ~~~html
 <style>
     .dhx_cal_prev_button, .dhx_cal_next_button{

@@ -23,8 +23,8 @@ description: "返回当前光标下的日期和区段（如果有的话）"
 
 ~~~jsx
 scheduler.attachEvent("onMouseMove", function(id, e){
-   var action_data = scheduler.getActionData(e);
-   // -> {date:Tue Jun 30 2009 09:10:00, section:2}
+   const action_data = scheduler.getActionData(e);
+   // -> {date:Tue Jun 30 2027 09:10:00, section:2}
    ...
 })
 ~~~

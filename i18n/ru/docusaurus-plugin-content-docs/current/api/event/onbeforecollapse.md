@@ -1,25 +1,25 @@
 ---
-sidebar_label: "onBeforeCollapse"
+sidebar_label: onBeforeCollapse
 title: "onBeforeCollapse event"
-description: "Срабатывает, когда пользователь нажимает на иконку сворачивания, чтобы переключить размер scheduler с «полного экрана» обратно к исходному размеру."
+description: "Срабатывает, когда пользователь нажимает на значок разворачивания, чтобы изменить размер планировщика с 'полноэкранного' на исходный."
 ---
 
 # onBeforeCollapse
 
 ### Description
 
-@short: Срабатывает, когда пользователь нажимает на иконку сворачивания, чтобы переключить размер scheduler с «полного экрана» обратно к исходному размеру.
+@short: Срабатывает, когда пользователь нажимает на значок разворачивания, чтобы изменить размер планировщика с 'полноэкранного' на исходный.
 
 @signature: onBeforeCollapse: () =\> void
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или оно будет отменено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onBeforeCollapse",function(){
-    //место для вашей кастомной логики
+    // любая ваша логика здесь
     return true;
 });
 ~~~
@@ -27,7 +27,7 @@ scheduler.attachEvent("onBeforeCollapse",function(){
 ### Details
 
 :::note
- Это событие требует активного расширения [expand](guides/extensions-list.md#expand). 
+ Событие требует, чтобы расширение [expand](guides/extensions-list.md#expand) было включено.
 :::
 
 ### Related API

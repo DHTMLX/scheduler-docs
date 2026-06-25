@@ -17,7 +17,7 @@ description: "sets the maximum allowable number of events per time slot"
 ~~~jsx
 scheduler.config.collision_limit = 2;
 ...
-scheduler.init('scheduler_here',new Date(2010,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** 1

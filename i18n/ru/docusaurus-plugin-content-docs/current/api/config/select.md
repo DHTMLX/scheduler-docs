@@ -1,14 +1,14 @@
 ---
-sidebar_label: "select"
-title: "select config"
-description: "переключает видимость select-бара внутри блока события"
+sidebar_label: выбор
+title: "конфигурация select"
+description: "показывает/скрывает панель выбора в окне события"
 ---
 
 # select
 
 ### Description
 
-@short: Переключает видимость select-бара внутри блока события
+@short: Показывает/скрывает панель выбора в окне события
 
 @signature: select: boolean
 
@@ -17,10 +17,10 @@ description: "переключает видимость select-бара внут
 ~~~jsx
 scheduler.config.select = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Details
 

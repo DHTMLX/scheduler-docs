@@ -49,7 +49,7 @@ A basic example of such an application might look like this:
 ~~~js
 <script>
     function init() {
-        scheduler.init('scheduler_here', new Date(2025,5,24), "week");
+        scheduler.init('scheduler_here', new Date(2027,5,24), "week");
         scheduler.load("api/scheduler");
 
         const dp = scheduler.createDataProcessor({

@@ -22,7 +22,7 @@ description: "移除键盘快捷键"
 ~~~jsx
 // 添加快捷键
 scheduler.addShortcut("shift+w", function(e){ 
-    var eventId = scheduler.locate(e); 
+    const eventId = scheduler.locate(e); 
     if(eventId) 
         scheduler.showQuickInfo(eventId);
 },"event");

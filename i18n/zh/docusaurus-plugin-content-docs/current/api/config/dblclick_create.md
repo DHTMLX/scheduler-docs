@@ -17,7 +17,7 @@ description: "允许用户通过双击创建事件"
 ~~~jsx
 scheduler.config.dblclick_create = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** true

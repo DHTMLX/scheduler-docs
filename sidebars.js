@@ -4,110 +4,110 @@ module.exports = {
 			type: "doc",
 			id: "index",
 		},
-        {
-            type: "category",
-            label: "What's New & Migration",
-            collapsible: true,
-            collapsed: true,
-            link: {
-                type: 'generated-index',
-                title: "What's New & Migration",
-            },
-            items: [
-                {
-                    type: "doc",
-                    id: "whats-new"
-                },
-                {
-                    type: "doc",
-                    id: "migration"
-                },
-            ]
-        },
+		{
+			type: "category",
+			label: "What's New & Migration",
+			collapsible: true,
+			collapsed: true,
+			link: {
+				type: 'generated-index',
+				title: "What's New & Migration",
+			},
+			items: [
+				{
+					type: "doc",
+					id: "whats-new"
+				},
+				{
+					type: "doc",
+					id: "migration"
+				},
+			]
+		},
 
-        // how to start
-        {
-            type: "category",
-            label: "Getting Started",
-            collapsible: true,
-            collapsed: false,
-            link: {
-                type: 'doc',
-                id: "guides/initialization",
-            },
-            items: [
-                "guides/installation",
-                "guides/cdn-links-list",
-                "guides/initialization"
-            ]
-        },
+		// how to start
+		{
+			type: "category",
+			label: "Getting Started",
+			collapsible: true,
+			collapsed: false,
+			link: {
+				type: 'doc',
+				id: "guides/initialization",
+			},
+			items: [
+				"guides/installation",
+				"guides/cdn-links-list",
+				"guides/initialization"
+			]
+		},
 
-        // frameworks
-        {
-            type: "category",
-            label: "Integrations",
-            collapsible: true,
-            collapsed: false,
-            link: {
-                type: 'doc',
-                id: "integrations/howtostart-guides",
-            },
-            items: [
-                {
-                    type: "category",
-                    label: "React",
-                    link: {
-                        type: 'doc',
-                        id: 'integrations/react/index'
-                    },
-                    items: [
-                        "integrations/react/overview",
-                        "integrations/react/installation",
-                        "integrations/react/quick-start",
-                        "integrations/react/configuration-props",
+		// frameworks
+		{
+			type: "category",
+			label: "Integrations",
+			collapsible: true,
+			collapsed: false,
+			link: {
+				type: 'doc',
+				id: "integrations/howtostart-guides",
+			},
+			items: [
+				{
+					type: "category",
+					label: "React",
+					link: {
+						type: 'doc',
+						id: 'integrations/react/index'
+					},
+					items: [
+						"integrations/react/overview",
+						"integrations/react/installation",
+						"integrations/react/quick-start",
+						"integrations/react/configuration-props",
 
-                        // Data & State Management
-                        {
-                            type: "category",
-                            label: "Data & State Management",
-                            link: {
-                                type: "doc",
-                                id: "integrations/react/state/index"
-                            },
-                            items: [
-                                "integrations/react/state/state-management-basics",
-                                "integrations/react/state/redux-toolkit",
-                                "integrations/react/state/zustand",
-                                "integrations/react/state/mobx",
-                                "integrations/react/state/xstate",
-                                "integrations/react/state/jotai",
-                                "integrations/react/state/valtio",
-                                "integrations/react/firebase-integration",
+						// Data & State Management
+						{
+							type: "category",
+							label: "Data & State Management",
+							link: {
+								type: "doc",
+								id: "integrations/react/state/index"
+							},
+							items: [
+								"integrations/react/state/state-management-basics",
+								"integrations/react/state/redux-toolkit",
+								"integrations/react/state/zustand",
+								"integrations/react/state/mobx",
+								"integrations/react/state/xstate",
+								"integrations/react/state/jotai",
+								"integrations/react/state/valtio",
+								"integrations/react/firebase-integration",
                                 "integrations/react/starhive-integration",
                             ],
-                        },
-                        // Frameworks
-                        {
-                            type: "category",
-                            label: "Framework Integrations",
-                            link: {
-                                type: "generated-index",
-                                title: "React Scheduler - Framework Integrations",
-                            },
-                            items: [
-                                "integrations/react/nextjs",
-                                "integrations/react/remix",
-                            ],
-                        },
-                        "integrations/react/js-scheduler-react",
+						},
+						// Frameworks
+						{
+							type: "category",
+							label: "Framework Integrations",
+							link: {
+								type: "generated-index",
+								title: "React Scheduler - Framework Integrations",
+							},
+							items: [
+								"integrations/react/nextjs",
+								"integrations/react/remix",
+							],
+						},
+						"integrations/react/js-scheduler-react",
 
-                        {
-                             type: 'doc',
-                             id: "integrations/react/copyright"
-                        },
-                    ]
-                },
-                {
+						{
+							 type: 'doc',
+							 id: "integrations/react/copyright"
+						},
+					]
+				},
+				{
                     type: "category",
                     label: "AI Tools",
                     link: {
@@ -120,10 +120,87 @@ module.exports = {
                         "integrations/ai-tools/lovable-starter-walkthrough"
                     ]
                 },
-                "integrations/vue/howtostart-vue",
-                "integrations/angular/howtostart-angular",
-                "integrations/svelte/howtostart-svelte",
-                "integrations/salesforce/howtostart-salesforce",
+				{
+					type: "category",
+					label: "Vue (BETA)",
+					link: {
+						type: "doc",
+						id: "integrations/vue/index"
+					},
+					items: [
+						"integrations/vue/overview",
+						"integrations/vue/installation",
+						"integrations/vue/quick-start",
+						"integrations/vue/configuration-props",
+						"integrations/vue/customization-patterns",
+						{
+							type: "category",
+							label: "Data & State Management",
+							key: "vue-data-&-state",
+							link: {
+								type: "doc",
+								id: "integrations/vue/state/index"
+							},
+							items: [
+								"integrations/vue/state/state-management-basics",
+								"integrations/vue/state/pinia",
+							],
+						},
+						{
+							type: "category",
+							label: "Using JS Scheduler in Vue",
+							key: "vue-js-scheduler",
+							link: {
+								type: "generated-index",
+								title: "Using dhtmlxScheduler JS in Vue",
+							},
+							items: [
+								"integrations/vue/js-scheduler-vue",
+							],
+						},
+					]
+				},
+				{
+					type: "category",
+					label: "Angular (BETA)",
+					link: {
+						type: "doc",
+						id: "integrations/angular/index"
+					},
+					items: [
+						"integrations/angular/overview",
+						"integrations/angular/installation",
+						"integrations/angular/quick-start",
+						"integrations/angular/configuration-props",
+						{
+							type: "category",
+							label: "Data & State Management",
+							key: "angular-data-&-state",
+							link: {
+								type: "doc",
+								id: "integrations/angular/state/index"
+							},
+							items: [
+								"integrations/angular/state/state-management-basics",
+								"integrations/angular/state/rxjs",
+							],
+						},
+						{
+							type: "category",
+							label: "Using JS Scheduler in Angular",
+							key: "angular-js-scheduler",
+							link: {
+								type: "generated-index",
+								title: "Using dhtmlxScheduler JS in Angular",
+							},
+							items: [
+								"integrations/angular/js-scheduler-angular",
+							],
+						},
+					]
+				},
+				"integrations/svelte/howtostart-svelte",
+				"integrations/salesforce/howtostart-salesforce",
                 "integrations/google-calendar/google-calendar-sync",
                 "integrations/dotnet/howtostart-blazor",
                 "integrations/firebase/howtostart-firebase",

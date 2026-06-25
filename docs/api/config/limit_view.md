@@ -15,7 +15,7 @@ description: "limits the date period during which the user can view the events"
 ### Example
 
 ~~~jsx
-scheduler.init('scheduler_here',new Date(2022,5,17),"week");
+scheduler.init('scheduler_here',new Date(2027,5,17),"week");
 ...
 scheduler.config.limit_view  = true;
 ~~~
@@ -24,13 +24,13 @@ scheduler.config.limit_view  = true;
 
 ### Details
 
-For example, if we set a limit on the year 2023, we can't move to the year 2022 - only 2023.
+For example, if we set a limit on the year 2027, we can't move to the year 2026 - only 2027.
 
 If you also specify the **limit_start/limit_end** configs to limit a range available for creating new events, **limit_view** won't allow you to view events outside the allowable date range.
 
 ~~~js
-scheduler.config.limit_start = new Date(2022,5,15);
-scheduler.config.limit_end = new Date(2022,6,15);
+scheduler.config.limit_start = new Date(2027,5,15);
+scheduler.config.limit_end = new Date(2027,6,15);
 scheduler.config.limit_view  = true;
 ~~~
 

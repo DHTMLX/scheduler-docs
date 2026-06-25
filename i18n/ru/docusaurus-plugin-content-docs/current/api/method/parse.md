@@ -1,27 +1,27 @@
 ---
-sidebar_label: "parse"
-title: "parse method"
-description: "обрабатывает загрузку данных из клиентского ресурса"
+sidebar_label: parse
+title: "Метод parse"
+description: "загружает данные из ресурса на стороне клиента"
 ---
 
 # parse
 
 ### Description
 
-@short: Обрабатывает загрузку данных из клиентского ресурса
+@short: Загружает данные из ресурса на стороне клиента
 
-@signature: parse: (data: any) =\> void
+@signature: parse: (data: any) => void
 
 ### Parameters
 
-- `data` - (required) *object* - строка или объект, содержащий данные
+- `data` - (обязательно) *object* - строка или объект, представляющий данные
 
 ### Example
 
 ~~~jsx
 scheduler.parse([
-     { start_date:"2020-05-13 6:00", end_date:"2020-05-13 8:00", text:"Event 1"},
-     { start_date:"2020-06-09 6:00", end_date:"2020-06-09 8:00", text:"Event 2"}
+    { start_date: "2027-05-13 6:00", end_date: "2027-05-13 8:00", text: "Event 1" },
+    { start_date: "2027-06-09 6:00", end_date: "2027-06-09 8:00", text: "Event 2" }
 ]);
 ~~~
 
@@ -29,16 +29,14 @@ scheduler.parse([
 - [Coloring events](https://docs.dhtmlx.com/scheduler/samples/02_customization/01_events_coloring.html)
 - [Displaying events as a cascade](https://docs.dhtmlx.com/scheduler/samples/02_customization/24_cascade_event_display.html)
 
-### Details
-
 ## Миграция
 
-Начиная с версии 5.2, scheduler автоматически определяет формат данных. 
+В версии v5.2 и позже Scheduler автоматически определяет формат данных.
 
-В более ранних версиях (до 5.2) метод принимал два параметра:
+Но до версии v5.2 метод принимал два параметра:
 
-- **data** - (*object*)    строка или объект, содержащий данные;
-- **type** - (*string*)    необязательный, (<i>'json', 'xml', 'ical'</i>) указывает тип данных. По умолчанию было <i>'xml'</i>
+- `data` - (*object*) строка или объект, представляющий данные
+- `type` - (*string*) необязательный, (*'json', 'xml', 'ical'*) тип данных. Значение по умолчанию *'xml'*
 
 ### Related API
 - [onBeforeParse](api/event/onbeforeparse.md)
@@ -46,7 +44,7 @@ scheduler.parse([
 - [parse_date](api/template/parse_date.md)
 
 ### Related Guides
-- [Примеры форматов данных](guides/data-formats.md)
+- [Examples of Data Formats](guides/data-formats.md)
 
 ### Change log
-- Второй параметр **type** был удалён в версии 5.2.
+- Второй параметр `type` метода был удалён в версии v5.2.

@@ -17,7 +17,7 @@ description: "시간 블록의 높이를 픽셀 단위로 정의합니다"
 ~~~jsx
 scheduler.config.hour_size_px = 40;
 ...
-scheduler.init('scheduler_here', new Date(2010, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 **Default value:** 42

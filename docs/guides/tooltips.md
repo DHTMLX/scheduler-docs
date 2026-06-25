@@ -123,7 +123,7 @@ scheduler.attachEvent("onSchedulerReady", function(){
         html: function (event, node) {
             const sectionId = scheduler.getActionData(event).section;
             const timeline = scheduler.getView("timeline");
-            var section = timeline.y_unit[timeline.order[sectionId]];
+            const section = timeline.y_unit[timeline.order[sectionId]];
             return `Tooltip for <b>${section.label}</b>`;
         }
     });
@@ -145,7 +145,7 @@ scheduler.ext.tooltips.tooltipFor({
     html: function (event, node) {
         const sectionId = scheduler.getActionData(event).section;
         const timeline = scheduler.getView("timeline");
-        var section = timeline.y_unit[timeline.order[sectionId]];
+        const section = timeline.y_unit[timeline.order[sectionId]];
         return `Tooltip for <b>${section.label}</b>`;
     }
 });
@@ -230,8 +230,8 @@ By default tooltips are attached to **document.body**. If necessary, you can lim
 
 ~~~js
 scheduler.attachEvent("onSchedulerReady", function(){
-    var tooltips = scheduler.ext.tooltips;
-     tooltips.tooltip.setViewport(container);
+    const tooltips = scheduler.ext.tooltips;
+    tooltips.tooltip.setViewport(container);
 });
 
 scheduler.init("scheduler_here");

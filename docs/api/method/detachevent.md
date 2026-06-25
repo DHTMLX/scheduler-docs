@@ -19,7 +19,7 @@ description: "detaches a handler from an event (which was attached before by the
 ### Example
 
 ~~~jsx
-var myEvent = scheduler.attachEvent("onClick", function (id){
+const myEvent = scheduler.attachEvent("onClick", function (id){
     ...//event handler code
 });
 ...

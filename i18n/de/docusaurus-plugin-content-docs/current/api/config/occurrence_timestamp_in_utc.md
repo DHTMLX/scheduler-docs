@@ -17,7 +17,7 @@ description: "Ermöglicht die Verwaltung von wiederkehrenden Events, ohne sich u
 ~~~jsx
 scheduler.config.occurrence_timestamp_in_utc = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** false

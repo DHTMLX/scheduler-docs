@@ -17,7 +17,7 @@ description: "设置事件时间值的最小增量（以分钟为单位）"
 ~~~jsx
 scheduler.config.time_step = 15;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** 5

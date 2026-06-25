@@ -17,7 +17,7 @@ description: "sets the maximum number of events displayable in a cell"
 ~~~jsx
 scheduler.config.max_month_events = 5;
 ..
-scheduler.init('scheduler_here', new Date(2013,5,30),"month");
+scheduler.init('scheduler_here', new Date(2027,5,30),"month");
 ~~~
 
 **Applicable views:** [Month view](views/month.md)

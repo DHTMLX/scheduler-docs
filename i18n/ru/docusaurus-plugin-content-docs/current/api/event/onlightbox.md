@@ -1,29 +1,29 @@
 ---
-sidebar_label: "onLightbox"
+sidebar_label: onLightbox
 title: "onLightbox event"
-description: "срабатывает сразу после того, как пользователь открывает lightbox (форму редактирования)"
+description: "срабатывает после того, как пользователь открыл lightbox (форма редактирования)"
 ---
 
 # onLightbox
 
 ### Description
 
-@short: Срабатывает сразу после того, как пользователь открывает lightbox (форму редактирования)
+@short: Срабатывает после того, как пользователь открыл lightbox (форма редактирования)
 
 @signature: onLightbox: () =\> void
 
 ### Parameters
 
-- `id` - (required) *string* - идентификатор события
+- `id` - (обязательно) *string* - идентификатор события
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onLightbox", function (id){
-    //любая ваша кастомная логика
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Details
 
-Это событие удобно использовать для настройки различных аспектов lightbox.
+Использование этого события — хороший способ настроить что-то в lightbox.

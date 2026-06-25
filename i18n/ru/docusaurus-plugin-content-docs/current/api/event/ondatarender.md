@@ -1,14 +1,14 @@
 ---
-sidebar_label: "onDataRender"
-title: "onDataRender event"
-description: "срабатывает после того, как данные полностью отрисованы на странице"
+sidebar_label: onDataRender
+title: "onDataRender событие"
+description: "Срабатывает после отрисовки данных на странице"
 ---
 
 # onDataRender
 
 ### Description
 
-@short: Срабатывает после того, как данные полностью отрисованы на странице
+@short: Срабатывает после отрисовки данных на странице
 
 @signature: onDataRender: () =\> void
 

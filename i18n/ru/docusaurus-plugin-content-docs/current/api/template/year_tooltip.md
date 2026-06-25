@@ -29,7 +29,7 @@ scheduler.templates.year_tooltip = function(start,end,ev){
 };
 ~~~
 
-**Applicable views:** [Year view](views/year.md)
+**Доступные представления:** [Year view](views/year.md)
 
 ### Details
 

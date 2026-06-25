@@ -18,7 +18,7 @@ description: "이 옵션은 스케줄러에서 이벤트를 드래그할 때 시
 //하이라이트 기능을 끕니다
 scheduler.config.drag_highlight = false; /*!*/
 
-scheduler.init('scheduler_here',new Date(2010,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 scheduler.load("./data/events.xml");
 ~~~
 

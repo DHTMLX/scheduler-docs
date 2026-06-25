@@ -23,7 +23,7 @@ description: "gets a key navigation shortcut handler"
 ### Example
 
 ~~~jsx
-var shortcut_handler = scheduler.getShortcutHandler("ctrl+a", "event");
+const shortcut_handler = scheduler.getShortcutHandler("ctrl+a", "event");
 ~~~
 
 ### Related samples

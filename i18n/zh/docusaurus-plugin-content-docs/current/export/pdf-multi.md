@@ -27,12 +27,12 @@ scheduler.toPDFRange(from, to, view, path, scheme);
 4. '_custom_' - 允许自定义配色（需要 PHP 定制，详情请参见章节 ['Export to PDF. Configuring service'](export/pdf.md#usingexportservices)）
 5. '_fullcolor_' - 按照视图中显示的背景和文本颜色精确导出
 
-例如，要导出 2012 年 1 月 1 日至 2012 年 2 月 1 日的 'week' 视图页面，可以这样调用方法:
+例如，要导出 2027 年 1 月 1 日至 2027 年 2 月 1 日的 'week' 视图页面，可以这样调用方法:
 
 ~~~js
 scheduler.toPDFRange(
-    new Date(2012,0,1), 
-    new Date(2012, 1,1),
+    new Date(2027,0,1), 
+    new Date(2027, 1,1),
     'week', 
     'generate.php', 
     'fullcolor'

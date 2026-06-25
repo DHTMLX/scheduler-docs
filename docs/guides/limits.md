@@ -94,8 +94,8 @@ For example:
 
 
 ~~~js
-scheduler.addMarkedTimespan({ // blocks 4th July, 2012 (this is Wednesday).
-    days:  new Date(2019, 7, 4),
+scheduler.addMarkedTimespan({ // blocks 4th July, 2027 (this is Wednesday).
+    days:  new Date(2027, 7, 4),
     zones: "fullday", 
     type:  "dhx_time_block",
     css:   "red_section" // the name of applied CSS class

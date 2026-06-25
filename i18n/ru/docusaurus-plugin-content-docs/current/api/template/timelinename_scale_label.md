@@ -31,7 +31,7 @@ scheduler.templates.timeline_scale_label = function(key, label, section){
 };
 ~~~
 
-**Applicable views:** [Timeline view](views/timeline.md)
+**Доступные представления:** [Timeline view](views/timeline.md)
 
 ### Details
 
@@ -43,7 +43,7 @@ scheduler.templates.timeline_scale_label = function(key, label, section){
 
 Начиная с версии 5.3.12, длинный текст будет усечён. Чтобы предотвратить усечение и сохранить весь текст в одной строке, можно применить следующий CSS:
 
-~~~js
+~~~css
 .dhx_matrix_scell.folder > div,
 .dhx_matrix_scell.folder .dhx_scell_name {
     white-space: nowrap;

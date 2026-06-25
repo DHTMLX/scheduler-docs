@@ -19,18 +19,18 @@ description: "attaches the handler to an inner event of dhtmlxScheduler"
 - `settings` - (optional) *object* - optional, an [object with settings](#properties-of-settings-object) for the event handler
 
 ### Returns
-- `event` - (string) - id the id of the attached event handler
+- `event` - (string) - the id of the attached event handler
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onEventSave",function(id,ev){
+scheduler.attachEvent("onEventSave", (id, ev) => {
     if (!ev.text) {
         alert("Text must not be empty");
         return false;
     }
     return true;
-})
+});
 ~~~
 
 ### Related samples
@@ -39,36 +39,37 @@ scheduler.attachEvent("onEventSave",function(id,ev){
 
 ### Details
 
-You can attach several handlers to the same event and all of them will be executed.<br> If some of handlers will return *false* - the related operation will be blocked.<br>
-Event handlers are processed in the same order that they were attached.
+You can attach several handlers to the same event, and all of them will be executed.
+If some of the handlers return `false`, the related operation will be blocked.
+Event handlers are processed in the same order in which they were attached.
 
-All event listeners attached using [event](api/method/event.md) will be detached automatically when the [destructor](api/method/destructor.md) is called.
+All event listeners attached using [`event()`](api/method/event.md) will be detached automatically when the [`destructor()`](api/method/destructor.md) is called.
 
-## Properties of settings object 
+## Properties of settings object
 
 The settings object can contain two properties:
 
-1\. **id** - (*string*) the id of the event handler 
+1\. `id` - (*string*) the id of the event handler
 
 For example, you can easily detach a handler from the specified event:
 
-~~~js
-scheduler.attachEvent("onClick", function(){
+~~~js {3}
+scheduler.attachEvent("onClick", () => {
     console.log("event click");
-}, {id: "my-click"}); /*!*/
-... //after a while:
+}, { id: "my-click" });
+// after a while:
 scheduler.detachEvent("my-click");
 ~~~
 
-2\. **once** - (*boolean*) defines whether the event will be executed only once
+2\. `once` - (*boolean*) defines whether the event will be executed only once
 
 Set the property to *true* if you want to capture the first triggering of the event, as in:
 
-~~~js
-scheduler.attachEvent("onClick", function(){
+~~~js {4}
+scheduler.attachEvent("onClick", () => {
     console.log("capture next event click");
     return true;
-}, {once: true}); /*!*/
+}, { once: true });
 ~~~
 
 ### Related API

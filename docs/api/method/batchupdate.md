@@ -22,7 +22,7 @@ description: "updates multiple events at once"
 ~~~jsx
 scheduler.batchUpdate(function(){
     const events = scheduler.getEvents();
-    for(var i = 0; i < events.length; i++){
+    for(let i = 0; i < events.length; i++){
         const event = events[i];
         event.start_date = scheduler.date.add(event.start_date, 1, "day");
         event.end_date = scheduler.date.add(event.end_date, 1, "day");

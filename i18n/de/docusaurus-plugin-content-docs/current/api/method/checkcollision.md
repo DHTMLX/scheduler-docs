@@ -24,8 +24,8 @@ description: "prüft, ob das angegebene Event mit einem oder mehreren bestehende
 ~~~jsx
 var event = {
    text : "New Event",
-   start_date : new Date(2013, 02, 20, 10, 00),
-   end_date : new Date(2013, 02, 20, 14, 00)
+   start_date : new Date(2027, 02, 20, 10, 00),
+   end_date : new Date(2027, 02, 20, 14, 00)
 };
 
 var isOccupied = scheduler.checkCollision(event); // gibt 'true' oder 'false' zurück

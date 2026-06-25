@@ -14,17 +14,17 @@ description: "DataProcessor constructor"
 
 ### Parameters
 
-- `url` - (required) *string* - url to the data feed
+- `url` - (required) *string* - the URL to the data feed
 
 ### Example
 
 ~~~jsx
-var dp = new scheduler.DataProcessor("php/update.php");
+const dataProcessor = new scheduler.DataProcessor("php/update.php");
 ~~~
 
 ### Details
 
-You can find more information about DataProcessor, including its API [here](https://docs.dhtmlx.com/dataprocessor__index.html).
+You can find more information about DataProcessor in the [Server-Side Integration](guides/server-integration.md) article.
 
 ### Change log
-- added in version 6.0
+- Added in version 6.0

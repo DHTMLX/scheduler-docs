@@ -1,14 +1,14 @@
 ---
-sidebar_label: "limit_drag_out"
-title: "limit_drag_out config"
-description: "предотвращает перетаскивание событий за пределы видимой области планировщика"
+sidebar_label: limit_drag_out
+title: "limit_drag_out конфигурация"
+description: "Запрещает перетаскивать события за пределы видимой области планировщика"
 ---
 
 # limit_drag_out
 
 ### Description
 
-@short: Предотвращает перетаскивание событий за пределы видимой области планировщика
+@short: Запрещает перетаскивать события за пределы видимой области планировщика
 
 @signature: limit_drag_out: boolean
 
@@ -19,6 +19,6 @@ description: "предотвращает перетаскивание событ
 scheduler.config.limit_drag_out = true;
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
-**Applicable views:** [Timeline view](views/timeline.md)
+**Доступные представления:** [Timeline view](views/timeline.md)

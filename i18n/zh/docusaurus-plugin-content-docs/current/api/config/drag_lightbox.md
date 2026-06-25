@@ -17,7 +17,7 @@ description: "允许通过标题栏拖动lightbox"
 ~~~jsx
 scheduler.config.drag_lightbox = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,5,30),"week");
+scheduler.init('scheduler_here',new Date(2027,5,30),"week");
 ~~~
 
 **Default value:** true

@@ -17,7 +17,7 @@ description: "definiert das Format zur Anzeige des Tages in den Zellen der Monat
 ~~~jsx
 scheduler.config.month_day="%j";
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** "%d"

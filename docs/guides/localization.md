@@ -3,22 +3,22 @@ title: "Localization"
 sidebar_label: "Localization"
 ---
 
-# Localization 
+# Localization
 
-The library supports scheduler's localization by providing a number of predefined locales and means of creating custom ones. By default, DHTMLX Scheduler uses [English locale](api/other/locale.md).
+The library supports scheduler localization by providing a number of predefined locales and a way to create custom ones. By default, DHTMLX Scheduler uses the [English locale](api/other/locale.md).
 
 ## Activation
 
-To set the desired language for the scheduler, you need to activate the necessary locale via the **setLocale** method of the [scheduler.i18n](api/other/i18n.md) object. 
+To set the desired language for the scheduler, activate the necessary locale via the `setLocale()` method of the [scheduler.i18n](api/other/i18n.md) object.
 
 ~~~js
-scheduler.i18n.setLocale("fr");    
+scheduler.i18n.setLocale("fr");
 ~~~
 
 You can use and update any of the [predefined locales](#included-locales) that are bundled with the dhtmlxscheduler.js file or define a custom locale.
 
 :::note
-The locale can be switched dynamically but the changes will be applied only after a complete redrawing of the Scheduler either with the **scheduler.render()** or **scheduler.init()** call.
+The locale can be switched dynamically, but the changes will be applied only after a complete redraw of the Scheduler with either the `scheduler.render()` or `scheduler.init()` call.
 :::
 
 ~~~js
@@ -26,14 +26,13 @@ scheduler.i18n.setLocale("fr");
 scheduler.init("scheduler_here");
 ~~~
 
+### Related samples
+- [Localization](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/07_locale_usage.html)
 
-[Localization](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/07_locale_usage.html)
-
-
-## Included locales 
+## Included locales
 
 :::note
-Both Common locale files and Recurring locale files reside in the **dhtmlxscheduler.js** file.
+Both Common locale files and Recurring locale files reside in the `dhtmlxscheduler.js` file.
 :::
 
 
@@ -72,20 +71,20 @@ dhtmlxScheduler includes localization for the following languages:
 <tr><td markdown='1'>Ukrainian</td><td markdown='1'>ua</td></tr>
 </table>
 
-## Creating custom locale 
+## Creating custom locale
 
 :::note
 The [scheduler.i18n](api/other/i18n.md) object is added in v6.0. In previous versions, the [scheduler.locale](api/other/locale.md) object was used. For more information, see the [Migration article](migration.md#53---60).
 :::
 
-The easiest way to create a custom locale is to make a copy of the default (English) locale from the sample below, and translate all strings from it into the required language. 
+The easiest way to create a custom locale is to make a copy of the default English locale from the sample below and translate all strings into the required language.
 
 The custom locale can be applied to the Scheduler in two ways:
 
-- either override the current locale via passing an object of the locale as a parameter to the **setLocale** method:
+- either override the current locale by passing a locale object as a parameter to the `setLocale()` method:
 
 ~~~js
-scheduler.i18n.setLocale(localeObject);    
+scheduler.i18n.setLocale(localeObject);
 ~~~
 
 Note, if you provide a partial locale object, the scheduler will add your labels into the current locale:
@@ -95,44 +94,43 @@ scheduler.i18n.setLocale({
     labels: {
         day_tab: "Day",
     }
-});    
+});
 ~~~
 
 - or, if you need to switch between several locales, define the locale with a custom language code and switch the scheduler to it later:
 
 ~~~js
-scheduler.i18n.addLocale("lang", localeObject);    
+scheduler.i18n.addLocale("lang", localeObject);
 scheduler.i18n.setLocale("lang");
 ~~~
 
 :::note
-Note, activating a custom locale in the app will cause changes in the app's interface. Check and redefine (if required) all locale-dependent elements 
+Note, activating a custom locale in the app will cause changes in the app's interface. Check and redefine (if required) all locale-dependent elements
 to be sure that the scheduler looks fine in its new language.
 :::
 
-**Note**, 
+**Note**
 
-- You can send your custom locale file to **support@dhtmlx.com** - so we will include it in the next release;
-- The currently active locale is also available in the **scheduler.locale** object;
-- **monthFull** - the full names of months starting from January;
-- **monthShort** - the short names of months starting from January;
-- **dayFull** - the full names of week days starting from Sunday;
-- **dayShort** - the short names of week days starting from Sunday.
+- You can send your custom locale file to **support@dhtmlx.com** so we can include it in the next release.
+- The currently active locale is also available in the `scheduler.locale` object.
+- `monthFull` - the full names of months starting from January
+- `monthShort` - the short names of months starting from January
+- `dayFull` - the full names of week days starting from Sunday
+- `dayShort` - the short names of week days starting from Sunday
 
-
-[English locale definition](English locale definition)
+### English locale definition
 ~~~js
 scheduler.i18n.setLocale({
-    date:{
-        month_full: ["January", "February", "March", "April", "May", "June", 
+    date: {
+        month_full: ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"],
-        month_short: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+        month_short: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        day_full: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", 
+        day_full: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
             "Friday", "Saturday"],
         day_short: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     },
-    labels:{
+    labels: {
         dhx_cal_today_button: "Today",
         day_tab: "Day",
         week_tab: "Week",
@@ -149,30 +147,30 @@ scheduler.i18n.setLocale({
         section_time: "Time period",
         full_day: "Full day",
 
-        /*recurring events*/
-        confirm_recurring:"Edit recurring event",
-        section_recurring:"Repeat event",
-        button_recurring:"Disabled",
-        button_recurring_open:"Enabled",
+        /* recurring events */
+        confirm_recurring: "Edit recurring event",
+        section_recurring: "Repeat event",
+        button_recurring: "Disabled",
+        button_recurring_open: "Enabled",
         button_edit_series: "All events",
         button_edit_occurrence: "This event",
         button_edit_occurrence_and_following: "This and following events",
 
-        /*agenda view extension*/
+        /* agenda view extension */
         agenda_tab: "Agenda",
         date: "Date",
         description: "Description",
 
-        /*year view extension*/
+        /* year view extension */
         year_tab: "Year",
 
         /* week agenda extension */
         week_agenda_tab: "Agenda",
 
-        /*grid view extension*/
+        /* grid view extension */
         grid_tab: "Grid",
 
-        /* touch tooltip*/
+        /* touch tooltip */
         drag_to_create: "Drag to create",
         drag_to_move: "Drag to move",
 
@@ -228,20 +226,19 @@ scheduler.i18n.setLocale({
         repeat_freq_year: "Year",
         repeat_on_date: "On date",
         repeat_ends: "Ends",
-        month_for_recurring: ["January", "February", "March", "April", "May", "June", 
+        month_for_recurring: ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"],
-        day_for_recurring: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", 
+        day_for_recurring: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
             "Friday", "Saturday"]
     }
 });
 ~~~
 
+### Related samples
+- [Localization](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/07_locale_usage.html)
 
-[Localization](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/07_locale_usage.html)
+## Additional notes
 
-
-## Additional notes 
-
-- If the **confirm_closing** or **confirm_deleting** label is not defined, the related confirm dialog will not be shown at all (auto-confirm); 
-- The **section_(name)** label refers to the lightbox section of the related name.
-- The **new_event** label defines the default text of a new event.
+- If the `confirm_closing` or `confirm_deleting` label is not defined, the related confirm dialog will not be shown at all (auto-confirm)
+- The `section_(name)` label refers to the lightbox section of the related name
+- The `new_event` label defines the default text of a new event

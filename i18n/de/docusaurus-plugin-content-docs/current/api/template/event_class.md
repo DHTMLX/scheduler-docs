@@ -1,30 +1,30 @@
 ---
-sidebar_label: "event_class"
-title: "event_class template"
-description: "definiert die CSS-Klasse, die dem Container des Events hinzugefügt wird"
+sidebar_label: event_class
+title: "event_class Vorlage"
+description: "Gibt die CSS-Klasse an, die dem Container des Events zugewiesen wird"
 ---
 
 # event_class
 
 ### Description
 
-@short: Definiert die CSS-Klasse, die dem Container des Events hinzugefügt wird
+@short: Legt die CSS-Klasse fest, die dem Container des Events zugewiesen wird
 
-@signature: event_class: (start: Date, end: Date, ev: any) =\> string
+@signature: event_class: (start: Date, end: Date, ev: any) => string
 
 ### Parameters
 
-- `start` - (required) *Date* - Datum, an dem das Event beginnt   
-- `end` - (required) *Date* - Datum, an dem das Event endet
-- `ev` - (required) *object* - Das Event-Objekt
+- `start` - (erforderlich) *Date* - das Datum, an dem ein Event voraussichtlich beginnt
+- `end` - (erforderlich) *Date* - das Datum, an dem ein Event voraussichtlich abgeschlossen sein wird
+- `ev` - (erforderlich) *object* - das Objekt des Events
 
 ### Returns
-- ` css_class` - (string) - CSS-Klasse für das entsprechende Element
+- `css_class` - (string) - die CSS-Klasse für das zugehörige Element
 
 ### Example
 
 ~~~jsx
-scheduler.templates.event_class = function(start,end,ev){
+scheduler.templates.event_class = (start, end, ev) => {
     return "";
 };
 ~~~
@@ -37,11 +37,11 @@ scheduler.templates.event_class = function(start,end,ev){
 
 ### Details
 
-Für die Timeline-Ansicht wird dieses Template nur in den Modi 'Bar' und 'Tree' verwendet.
+In der Timeline-Ansicht wird die Vorlage nur auf die Modi 'Bar' und 'Tree' angewendet.
 
-Für detaillierte Anleitungen zur Anpassung der Event-Farben siehe den verwandten Artikel [Farbe für benutzerdefinierte Events](guides/custom-events-color.md).
+Check the full information about customizing event colors in the related article [Custom Event's Color](guides/custom-events-color.md).
 
 ### Related Guides
-- [Farbe für benutzerdefinierte Events](guides/custom-events-color.md)
-- [Day-Ansicht Vorlagen](views/day-view-templates.md)
+- [Custom Event's Color](guides/custom-events-color.md)
+- [Day View Templates](views/day-view-templates.md)
 - [Month View Templates](views/month-view-templates.md)

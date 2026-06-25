@@ -17,7 +17,7 @@ description: "스케줄러에서 점선 왼쪽 테두리를 활성화합니다"
 ~~~jsx
 scheduler.config.left_border = true;
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "month");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "month");
 ~~~
 
 **Default value:** false

@@ -1,14 +1,14 @@
 ---
-sidebar_label: "show_quick_info"
-title: "show_quick_info config"
-description: "Включает или отключает расширение 'quick_info' (всплывающее окно, показывающее детали задачи)"
+sidebar_label: show_quick_info
+title: "конфигурация show_quick_info"
+description: "активирует/деактивирует расширение 'quick_info' (форма деталей задачи во всплывающем окне)"
 ---
 
 # show_quick_info
 
 ### Description
 
-@short: Включает или отключает расширение 'quick_info' (всплывающее окно, показывающее детали задачи)
+@short: Активирует/деактивирует расширение 'quick_info' (форма деталей задачи во всплывающем окне)
 
 @signature: show_quick_info: boolean
 
@@ -19,7 +19,7 @@ scheduler.config.show_quick_info = false;
 scheduler.init("scheduler_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Related Guides
-- [Мобильная адаптивность Scheduler](guides/touch-support.md#quickinfoextension)
+- [Мобильный адаптивный планировщик](guides/touch-support.md)

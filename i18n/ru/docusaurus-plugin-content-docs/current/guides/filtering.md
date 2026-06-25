@@ -5,36 +5,36 @@ sidebar_label: "Фильтрация событий"
 
 # Фильтрация событий
 
-Для каждой вьюхи можно определить функцию фильтрации, которая определяет, какие события будут отображаться в планировщике, а какие будут скрыты.
+Для любого указанного представления вы можете задать функцию фильтрации, которая будет определять, какие события должны отображаться в Scheduler и каких — нет.
 
 ~~~js
-scheduler.filter_week = function(id, event){
-    if(event.name == 'New event')
+scheduler.filter_week = (id, event) => {
+    if (event.name === 'New event') {
         return false; // событие будет отфильтровано (не отображено)
-        //или
-        return true; // событие будет отображено
-}
+    }
+
+    return true; // событие будет отображено
+};
 ~~~
 
-Здесь 'week' относится к имени вьюхи (используется в *'scheduler.filter_week'*).
+Here, `"week"` is the name of a view in `scheduler.filter_week`.
 
-Функция **filter_(viewName)** принимает два аргумента:
+Метод `filter_(viewName)` принимает 2 параметра:
 
-- **id** - идентификатор события
-- **event** - сам объект события
+- `id` - идентификатор события
+- `event` - объект события
 
-Также возможно назначить разные функции фильтрации для различных вьюх:
+Помните, что вы можете задать разные функции фильтрации для разных представлений:
 
 ~~~js
-scheduler.filter_day = scheduler.filter_week = function(id, event){
-    //some_code
-}
+scheduler.filter_day = scheduler.filter_week = (id, event) => {
+    // some code
+};
 ...
-scheduler.filter_timeline = function(id, event){
-    //some_other code
-}
-
+scheduler.filter_timeline = (id, event) => {
+    // some other code
+};
 ~~~
 
-
-[Filtering events](https://docs.dhtmlx.com/scheduler/samples/09_api/09_filtering_events.html)
+### Связанные примеры
+- [Фильтрация событий](https://docs.dhtmlx.com/scheduler/samples/09_api/09_filtering_events.html)

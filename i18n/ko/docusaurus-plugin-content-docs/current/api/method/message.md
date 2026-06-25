@@ -22,7 +22,7 @@ description: "선택한 유형의 message 박스를 엽니다"
 ### Example
 
 ~~~jsx
-var box = scheduler.message({ 
+const box = scheduler.message({ 
     type:"confirm-warning", 
     text:"Are you sure you want to do it?"
 });

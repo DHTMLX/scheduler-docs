@@ -29,7 +29,7 @@ scheduler.templates.agenda_text = function(start,end,ev){
 };
 ~~~
 
-**Applicable views:** [Agenda view](views/agenda.md)
+**Доступные представления:** [Agenda view](views/agenda.md)
 
 ### Details
 

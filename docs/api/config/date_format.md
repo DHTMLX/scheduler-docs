@@ -17,7 +17,7 @@ description: "sets the date format that is used to parse data from a data set an
 ~~~jsx
 scheduler.config.date_format = "%Y-%m-%d %H:%i";
 ...
-scheduler.init('scheduler_here',new Date(2019,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 scheduler.load("/data/events");
 ~~~
 

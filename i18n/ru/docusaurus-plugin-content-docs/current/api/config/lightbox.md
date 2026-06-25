@@ -1,5 +1,5 @@
 ---
-sidebar_label: "lightbox"
+sidebar_label: lightbox
 title: "lightbox config"
 description: "определяет объект lightbox"
 ---
@@ -15,31 +15,31 @@ description: "определяет объект lightbox"
 ### Example
 
 ~~~jsx
-scheduler.config.lightbox.sections=[    
-    { name:"description", height:50, type:"textarea", map_to:"text", focus:true},
-    { name:"location",    height:43, type:"textarea", map_to:"event_location"},
-    { name:"time",           height:72, type:"time",     map_to:"auto"}    
+scheduler.config.lightbox.sections = [
+    { name: "description", height: 50, type: "textarea", map_to: "text", focus: true },
+    { name: "location", height: 43, type: "textarea", map_to: "event_location" },
+    { name: "time", height: 72, type: "time", map_to: "auto" }
 ];
-...            
-scheduler.init('scheduler_here',new Date(2013,2,1),"week");
+...
+scheduler.init('scheduler_here', new Date(2027, 2, 1), "week");
 ~~~
 
 ### Related samples
-- [Checkbox in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/13_single_checkbox_section.html)
-- [Radio button in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/14_radio_buttons_section.html)
+- [Чекбокс в lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/13_single_checkbox_section.html)
+- [Радио-кнопка в lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/14_radio_buttons_section.html)
 
 ### Details
 
 Объект lightbox включает одно основное свойство:
 
-- **sections** - (*массив*) определяет секции, отображаемые в lightbox
+- `sections` - (*array*) задаёт секции lightbox
 
 ~~~js
-//определение по умолчанию
-scheduler.config.lightbox.sections=[
-    {name:"description", height:200, map_to:"text", type:"textarea" , focus:true},
-    {name:"time", height:72, type:"time", map_to:"auto"}
-]
+// default definition
+scheduler.config.lightbox.sections = [
+    { name: "description", height: 200, map_to: "text", type: "textarea", focus: true },
+    { name: "time", height: 72, type: "time", map_to: "auto" }
+];
 ~~~
 
 Каждый элемент массива **sections** может иметь следующие свойства:
@@ -72,27 +72,27 @@ scheduler.config.lightbox.sections=[
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>default_value</b></td>
-  <td>(<i>any</i>) значение по умолчанию для элемента управления в секции</td>
+  <td>(<i>any</i>) значение по умолчанию элемента управления секции</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>onchange</b></td>
-  <td>(<i>function</i>) обработчик события 'onChange' для элемента управления (<b>только для 'select'</b>)</td>
+  <td>(<i>function</i>) задаёт функцию-обработчик события 'onChange' для элемента управления секции (<b>только для управления 'select'</b>)</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>options</b></td>
-  <td>(<i>массив объектов</i>) определяет варианты выбора для элементов управления типа <b>'select', 'multiselect', 'radio', 'combo'</b>.<br> Каждый объект в этом массиве представляет вариант и имеет следующие свойства:<ul><li><b>key</b> - (<i>string</i>) id варианта, используется для сопоставления с данными события</li><li><b>label</b> - (<i>string</i>) отображаемая метка варианта</li></ul></td>
+  <td>(<i>array of objects</i>) определяет варианты выбора элемента управления (<b>для контролов 'select', 'multiselect', 'radio', 'combo'</b>).<br> Каждый объект в массиве задаёт одну опцию и имеет следующие свойства:<ul><li><b>key</b> - (<i>string</i>) идентификатор опции. Это свойство сравнивается со свойством данных события, чтобы назначить варианты выбора для событий</li><li><b>label</b> - (<i>string</i>) ярлык опции</li></ul></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>vertical</b></td>
-  <td>(<i>boolean</i>) определяет, располагаются ли радио-кнопки вертикально (<i>true</i>) или горизонтально (<i>false</i>) (<b>только для 'select'</b>)</td>
+  <td>(<i>boolean</i>) задаёт, должны ли радио-кнопки располагаться вертикально(<i>true</i>) или горизонтально (<i>false</i>) (<b>для управления 'select'</b>)</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>checked_value</b></td>
-  <td>(<i>boolean</i>) значение, присваиваемое при отмеченном checkbox. Необязательно, по умолчанию <i>true</i> (<b>только для 'checkbox'</b>)</td>
+  <td>(<i>boolean</i>) значение флажка в состоянии отмеченного. Необязательно. По умолчанию <i>true</i> (<b>для управления 'checkbox'</b>)</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>unchecked_value</b></td>
-  <td>(<i>boolean</i>) значение, присваиваемое при снятом checkbox. Необязательно, по умолчанию <i>false</i> (<b>только для 'checkbox'</b>)</td>
+  <td>(<i>boolean</i>) значение флажка в состоянии снятого. Необязательно. По умолчанию <i>false</i> (<b>для управления 'checkbox'</b>)</td>
   </tr>
   </tbody>
 </table>
@@ -101,8 +101,8 @@ scheduler.config.lightbox.sections=[
 
 Когда свойство 'map_to' установлено в 'auto':
 
-- Сам элемент управления не возвращает значение, а напрямую обновляет свойства события через метод 'set_value()' (см. [Пользовательский контрол Lightbox](guides/custom-lightbox-editor.md)).
-- Обычно используется для сложных элементов управления, которые обрабатывают сразу несколько свойств события.
+- Контрол не будет возвращать значение и будет напрямую изменять значения связанных свойств события в соответствии с методом `set_value()` ([Custom Lightbox Control](guides/custom-lightbox-editor.md)).
+- В общем случае, значение `"auto"` используется для сложных контролов, которые работают с несколькими свойствами события
 
 ### Related Guides
 - [Полностью настраиваемый лайтбокс](guides/custom-details-form.md)

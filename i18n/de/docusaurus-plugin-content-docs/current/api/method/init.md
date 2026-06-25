@@ -1,29 +1,29 @@
 ---
-sidebar_label: "init"
+sidebar_label: init
 title: "init method"
-description: "Dies ist der Konstruktor zur Erstellung einer dhtmlxScheduler-Instanz."
+description: "a constructor of a dhtmlxScheduler object"
 ---
 
 # init
 
 ### Description
 
-@short: Dies ist der Konstruktor zur Erstellung einer dhtmlxScheduler-Instanz.
+@short: Ein Konstruktor eines dhtmlxScheduler-Objekts
 
 @signature: init: (container: string|HTMLElement, date?: Date, view?: string) =\> void
 
 ### Parameters
 
-- `container` - (required) *string | HTMLElement* - Das HTML-Container-Element (oder dessen ID), in dem der dhtmlxScheduler eingerichtet wird.
-- `date` - (optional) *Date* - Das Startdatum für den Scheduler (Standard ist das aktuelle Datum).
-- `view` - (optional) *string* - Der anfängliche View-Modus (Standard ist "week").
+- `container` - (required) *string | HTMLElement* - ein HTML-Container (oder dessen ID), in dem ein dhtmlxScheduler-Objekt initialisiert wird
+- `date` - (optional) *Date* - das anfängliche Datum des Schedulers (standardmäßig das aktuelle Datum)
+- `view` - (optional) *string* - der Name der anfänglichen Ansicht (standardmäßig, "week")
 
 ### Example
 
 ~~~jsx
-scheduler.init("scheduler_here",new Date(2010,0,6),"month");
+scheduler.init("scheduler_here", new Date(2027, 0, 6), "month");
 ~~~
 
 ### Related samples
-- [Basic initialization](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/01_basic_init.html)
-- [Agenda view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/03_agenda_view.html)
+- [Grundlegende Initialisierung](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/01_basic_init.html)
+- [Agenda-Ansicht](https://docs.dhtmlx.com/scheduler/samples/03_extensions/03_agenda_view.html)

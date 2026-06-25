@@ -1,21 +1,21 @@
 ---
 sidebar_label: "tooltip"
 title: "tooltip config"
-description: "отображает tooltip'ы для событий"
+description: "отображает тултипы для событий"
 ---
 
 # tooltip
 
 ### Description
 
-@short: Отображает tooltip'ы для событий
+@short: Отображает тултипы для событий
 
 @signature: tooltip: any
 
 ### Example
 
 ~~~jsx
-var tooltip = scheduler.tooltip;
+const tooltip = scheduler.tooltip;
 tooltip.hide();
 tooltip.show(event, text);
 ~~~

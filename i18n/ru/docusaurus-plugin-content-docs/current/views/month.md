@@ -15,7 +15,7 @@ sidebar_label: "Месячный вид"
 
 ~~~js
 // стандартная инициализация; месячный вид добавляется автоматически
-scheduler.init('scheduler_here', new Date(2019,0,10), "month");
+scheduler.init('scheduler_here', new Date(2027,0,10), "month");
 ...
 scheduler.load("/data/events");
 ~~~
@@ -89,7 +89,7 @@ scheduler.plugins({
 // при клике по дню открывается недельный вид
 scheduler.config.active_link_view = "week";
 ...
-scheduler.init('scheduler_here', new Date(2012,7,6), "month");
+scheduler.init('scheduler_here', new Date(2027,7,6), "month");
 ~~~
 
 
@@ -106,7 +106,7 @@ scheduler.init('scheduler_here', new Date(2012,7,6), "month");
 // разрешить изменение размера многодневных событий с помощью drag-n-drop
 scheduler.config.resize_month_events = true; /*!*/
 
-scheduler.init('scheduler_here', new Date(2019,0,10), "month");
+scheduler.init('scheduler_here', new Date(2027,0,10), "month");
 ~~~
 
 [Resizable events in Month view](https://docs.dhtmlx.com/scheduler/samples/02_customization/32_resizable_month_events.html)
@@ -118,7 +118,7 @@ scheduler.init('scheduler_here', new Date(2019,0,10), "month");
 // разрешить изменение размера однодневных и многодневных событий с помощью drag-n-drop
 scheduler.config.resize_month_events = true;/*!*/
 scheduler.config.resize_month_timed = true;  /*!*/
-scheduler.init('scheduler_here', new Date(2019,0,10), "month");
+scheduler.init('scheduler_here', new Date(2027,0,10), "month");
 ~~~
 
 **Обратите внимание:**

@@ -19,7 +19,7 @@ description: "removes marking/blocking set by the markTimespan() method"
 ### Example
 
 ~~~jsx
-var spanDIV = scheduler.markTimespan({  
+const spanDIV = scheduler.markTimespan({  
     days:  [0,6],  
     zones: "fullday"
 });

@@ -25,7 +25,7 @@ description: "뷰의 일(day) 셀에 표시되는 날짜"
 
 ~~~jsx
 scheduler.templates.week_agenda_scale_date = function(date) {
-        var scale_date_format = scheduler.date.date_to_str("%l, %F %d");
+        const scale_date_format = scheduler.date.date_to_str("%l, %F %d");
         return scale_date_format(date);
 };
 ~~~

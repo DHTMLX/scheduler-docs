@@ -15,7 +15,7 @@ description: "提供当前调度器使用的 skin"
 ### Example
 
 ~~~jsx
-var currentSkin = scheduler.skin;// -> 'glossy' 或 'classic'
+const currentSkin = scheduler.skin;// -> 'glossy' 或 'classic'
 ~~~
 
 ### Details

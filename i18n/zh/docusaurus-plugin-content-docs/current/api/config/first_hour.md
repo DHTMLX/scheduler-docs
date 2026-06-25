@@ -18,7 +18,7 @@ description: "定义小时刻度（Y轴）的起始小时"
 scheduler.config.first_hour = 9;
 scheduler.config.last_hour = 18;
 ...
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.init('scheduler_here', new Date(2027,05,11), "week");
 ~~~
 
 **Default value:** 0 (零)

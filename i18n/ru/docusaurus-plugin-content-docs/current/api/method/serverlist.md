@@ -1,21 +1,21 @@
 ---
-sidebar_label: "serverList"
-title: "serverList method"
-description: "определяет именованную коллекцию, которую можно загрузить в Units, Timeline views или Lightbox"
+sidebar_label: serverList
+title: "Метод serverList"
+description: "определяет именованную коллекцию, которую можно загрузить в Units, Timeline-представления или Lightbox"
 ---
 
 # serverList
 
 ### Description
 
-@short: Определяет именованную коллекцию, которую можно загрузить в Units, Timeline views или Lightbox
+@short: Определяет именованную коллекцию, которую можно загрузить в Units, Timeline-представления или Lightbox
 
 @signature: serverList: (list_name: string, options?: any[]) =\> any[]
 
 ### Parameters
 
 - `list_name` - (required) *string* - имя списка
-- `options` - (optional) *array* - необязательно, массив опций
+- `options` - (optional) *array* - необязательный массив опций
 
 ### Returns
 - ` list` - (array) - список опций
@@ -24,10 +24,10 @@ description: "определяет именованную коллекцию, к
 
 ~~~jsx
 // получает список опций по имени 'my_list'
-var list = scheduler.serverList("my_list"); 
+const list = scheduler.serverList("my_list"); 
 ...
 // создаёт и возвращает список с указанными опциями
-var list = scheduler.serverList("options", [
+const list = scheduler.serverList("options", [
     {key: 1, label: "John"},
     {key: 2, label: "Adam"},
     {key: 3, label: "Diane"}
@@ -41,12 +41,12 @@ var list = scheduler.serverList("options", [
 
 ### Details
 
-- При вызове с одним параметром метод возвращает список, связанный с этим именем, если он существует.
-- При вызове с двумя параметрами создаётся новый список с заданным именем или перезаписывается существующий список с этим именем.
+- Если метод вызывается только с первым параметром, метод вернёт список с указанным именем (если он существует).
+- Если метод вызывается с двумя параметрами, планировщик создаст список с указанным именем или, если список с таким именем уже существует, планировщик перезапишет его
 
-Списки, созданные с помощью этого метода, можно позже обновлять через метод [scheduler.updateCollection](api/method/updatecollection.md).
+Списки, созданные этим методом, затем можно обновлять с помощью метода [updateCollection](api/method/updatecollection.md).
 
-В сценариях, когда необходимо обновлять коллекции, такие как опции select или списки units в Timeline или Units view, удобным решением является определение их как именованных списков опций.
+Вот почему, если возникает необходимость обновлять коллекции, например варианты选-выбора, список секций в Timeline, представление Units, имеет смысл создавать их как именованный список опций.
 
 ~~~js
 scheduler.serverList("sections", [

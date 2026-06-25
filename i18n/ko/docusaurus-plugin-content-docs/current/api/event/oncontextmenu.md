@@ -26,7 +26,7 @@ scheduler.attachEvent("onContextMenu", function (id, e){
 ~~~
 
 ### Related samples
-- 10_integration/01_dhtmlxMenu.html
+- [Integration with dhtmlxMenu](https://docs.dhtmlx.com/scheduler/samples/10_integration/01_dhtmlxmenu.html)
 
 ### Details
 

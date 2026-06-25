@@ -23,7 +23,7 @@ description: "동적 로딩 모드에서 사용되는 요청 형식을 정의합
 
 ~~~jsx
 scheduler.templates.load_format = function(date){
-    var dateToStr_func = scheduler.date.date_to_str(scheduler.config.load_date);
+    const dateToStr_func = scheduler.date.date_to_str(scheduler.config.load_date);
     return  dateToStr_func(date);
     
 }

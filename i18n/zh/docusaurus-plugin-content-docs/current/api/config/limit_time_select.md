@@ -17,7 +17,7 @@ description: "通过设置 'last_hour' 和 'first_hour' 选项的最大值和最
 ~~~jsx
 scheduler.config.limit_time_select = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
 **Default value:** false

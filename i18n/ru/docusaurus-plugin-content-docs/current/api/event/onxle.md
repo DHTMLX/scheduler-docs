@@ -1,16 +1,16 @@
 ---
-sidebar_label: "onXLE"
-title: "onXLE event"
-description: "срабатывает один раз после завершения загрузки данных из источника данных"
+sidebar_label: onXLE
+title: "onXLE событие"
+description: "срабатывает после завершения загрузки данных из источника данных"
 ---
 
 # onXLE
-:::warning
-Эта функицональность устарела
-::: 
+:::warning 
+Это устаревшее событие
+:::
 ### Description
 
-@short: Срабатывает один раз после завершения загрузки данных из источника данных
+@short: Срабатывает после завершения загрузки данных из источника данных
 
 @signature: onXLE: () =\> void
 
@@ -18,7 +18,7 @@ description: "срабатывает один раз после завершен
 
 ~~~jsx
 scheduler.attachEvent("onXLE", function (){
-    // здесь можно разместить вашу пользовательскую логику
+    // любая ваша логика здесь
 });
 ~~~
 
@@ -27,7 +27,7 @@ scheduler.attachEvent("onXLE", function (){
 - [load](api/method/load.md)
 
 ### Related Guides
-- [Загрузка данных](guides/loading-data.md)
+- [Loading Data](guides/loading-data.md)
 
 ### Change log
-- deprecated с версии v5.2
+- устарело с версии v5.2

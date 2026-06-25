@@ -1,30 +1,30 @@
 ---
-sidebar_label: "setEventText"
+sidebar_label: setEventText
 title: "setEventText method"
-description: "обновляет текст конкретного события"
+description: "устанавливает текст события"
 ---
 
 # setEventText
-:::warning
-Эта функицональность устарела
-::: 
+:::warning 
+Метод устарел.
+:::
 ### Description
 
-@short: Обновляет текст конкретного события
+@short: Устанавливает текст события
 
 @signature: setEventText: (id: string, text: string) =\> void
 
 ### Parameters
 
-- `id` - (required) *string* - уникальный идентификатор события
-- `text` - (required) *string* - обновлённое текстовое содержимое события
+- `id` - (required) *string* - идентификатор события
+- `text` - (required) *string* - новый текст события
 
 ### Example
 
 ~~~jsx
-var eventId = scheduler.addEvent({
-    start_date: new Date(2013,1,10),
-    end_date:   new Date(2013,1,13),
+const eventId = scheduler.addEvent({
+    start_date: new Date(2027,1,10),
+    end_date:   new Date(2027,1,13),
     text:   "Conference"
 });
 ...

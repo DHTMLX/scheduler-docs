@@ -33,7 +33,7 @@ scheduler.templates.week_agenda_event_text = function(start,end,event,cellDate,p
 };
 ~~~
 
-**Applicable views:** [Week Agenda view](views/weekagenda.md)
+**Доступные представления:** [Week Agenda view](views/weekagenda.md)
 
 ### Details
 

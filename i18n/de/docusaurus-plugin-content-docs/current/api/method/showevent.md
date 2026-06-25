@@ -39,9 +39,9 @@ scheduler.showEvent(someId);
 Zum Beispiel können Sie nach dem programmatischen Hinzufügen eines neuen Events dieses so im Scheduler anzeigen:
 
 ~~~js
-var eventId = scheduler.addEvent({
-    start_date: "08-06-2013 09:00",
-    end_date:   "08-06-2013 11:00",
+const eventId = scheduler.addEvent({
+    start_date: "08-06-2027 09:00",
+    end_date:   "08-06-2027 11:00",
     text:   "Meeting"
 });
 ...

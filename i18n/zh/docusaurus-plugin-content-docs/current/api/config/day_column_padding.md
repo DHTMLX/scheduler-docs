@@ -38,4 +38,4 @@ scheduler.config.day_column_padding = 8;
 ![Scheduler - padding inside day columns](/img/day_column_padding_set.png)
 
 ### Change log
-- added in v7.0
+- 7.0 版本新增

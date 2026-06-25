@@ -51,8 +51,8 @@ scheduler.createGridView({
         {id:"date", label:'Date', sort:'date', width:'*'},
         {id:"text", label:'Text', sort:'str',  width:200, align:'left'}
     ],
-    from:new Date(2019, 3, 10),//левая граница допустимого диапазона дат
-    to:new Date(2019, 5, 23)    //правая граница допустимого диапазона дат
+    from:new Date(2027, 3, 10),//левая граница допустимого диапазона дат
+    to:new Date(2027, 5, 23)    //правая граница допустимого диапазона дат
 });
 ~~~
 

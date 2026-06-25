@@ -141,10 +141,10 @@ The properties of a data object are:
 - **text** - (*string*) the event's description.
 
 ~~~js
-var events = [
-{id:1, text:"Meeting",   start_date:"2019-11-14 14:00",end_date:"2019-11-14 17:00"},
-{id:2, text:"Conference",start_date:"2019-11-13 12:00",end_date:"2019-11-13 19:00"},
-{id:3, text:"Interview", start_date:"2019-11-14 09:00",end_date:"2019-11-14 10:00"}
+const events = [
+{id:1, text:"Meeting",   start_date:"2027-11-14 14:00",end_date:"2027-11-14 17:00"},
+{id:2, text:"Conference",start_date:"2027-11-13 12:00",end_date:"2027-11-13 19:00"},
+{id:3, text:"Interview", start_date:"2027-11-14 09:00",end_date:"2027-11-14 10:00"}
 ];
 
 scheduler.parse(events);//takes the name and format of the data source
@@ -245,7 +245,7 @@ To 'force' the scheduler save data in the database, use [dataProcessor](guides/s
 It's very easy to use dataProcessor. All you need is to initialize it and attach to the scheduler.
 
 ~~~js
-var dp = scheduler.createDataProcessor("data/connector.php");
+const dp = scheduler.createDataProcessor("data/connector.php");
 dp.init(scheduler);
 ~~~
 

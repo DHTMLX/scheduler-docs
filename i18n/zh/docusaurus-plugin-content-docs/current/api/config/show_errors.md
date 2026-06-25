@@ -24,5 +24,5 @@ scheduler.config.show_errors = false;
 - [FAQ](faq.md#an-error-alert-appears-in-the-right-top-corner)
 
 ### Change log
-- added in v6.0
+- 6.0 版本新增
 

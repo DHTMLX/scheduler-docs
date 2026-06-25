@@ -8,7 +8,7 @@ description: "richtet das Layout für den Scheduler-header (Navigationspanel) ei
 
 ### Description
 
-@short: Richtet das Layout für den Scheduler-header (Navigationspanel) ein
+@short: Erstellung einer layout-ähnlichen Konfiguration für den Scheduler-Header (Navigationsbereich)
 
 @signature: header: any
 
@@ -31,11 +31,11 @@ scheduler.init("scheduler_here");
 
 ### Details
 
-Wenn der Scheduler mit dieser Einstellung initialisiert wird, wird jegliches vorhandenes HTML im Scheduler-Container durch generiertes Markup ersetzt.
+Wenn der Scheduler mit dieser Konfiguration initialisiert wird, wird jedes HTML, das vor der Initialisierung im Scheduler-Container platziert wurde, entfernt und stattdessen generierter HTML-Code eingefügt.
 
-Diese Konfiguration kann entweder ein einfaches Array von Elementen oder eine verschachtelte Struktur sein, um ein komplexeres Layout zu definieren.
+Der Wert dieser Konfiguration kann entweder ein einfaches Array von Elementen sein oder eine verschachtelte Struktur, die ein komplexes Layout beschreibt.
 
-Beachte, dass die Höhe der header/Navigationsleiste weiterhin über die Option [scheduler.xy.nav_height](api/other/xy.md#day) gesteuert wird.
+Beachten Sie, dass die Höhe der Kopfzeile/Navigationsleiste weiterhin von der Option [`scheduler.xy.nav_height`](api/other/xy.md#illustration-images) gesteuert wird.
 
 
 ~~~js
@@ -63,27 +63,29 @@ scheduler.config.header = {
 scheduler.init("scheduler_here");
 ~~~
 
+
 ~~~html
-<div id="scheduler_here"></div>
+<div id="scheduler_here" style="height:100vh;width:100vw"></div>
 ~~~
 
-Unterstützte Werte umfassen:
 
- - **\{rows: Array, css:string\}** - Container für einen header mit mehreren Reihen  
- - **\{cols: Array, css:string\}** - eine einzelne Reihe innerhalb eines mehrreihigen headers  
- - **"prev","next","today"** - Buttons zur Datumsnavigation  
- - **"date"** - Label, das das aktuelle Datum anzeigt  
- - **"day", "week", "month", etc.** - Tabs zum Wechseln der Ansichten  
- - **"spacer"** - ein transparentes Element, das den verfügbaren Platz auffüllt, nützlich um Elemente nach rechts zu schieben  
- - **\{html: string, click: function, css: string\}** - Objekt zum Hinzufügen benutzerdefinierter Buttons oder Icons im header  
- - **"minicalendar"** - Umschalter für den [Mini Calendar](guides/minicalendar.md).
+Die unterstützten Werte sind:
+
+- `{rows: Array, css: string}` - ein Container für einen mehrzeiligen Header
+- `{cols: Array, css: string}` - eine einzelne Zeile eines mehrzeiligen Headers
+- `"prev"`, `"next"`, `"today"` - Datums-Navigationsschaltflächen
+- `"date"` - das Datums-Label
+- `"day"`, `"week"`, `"month"`, usw. - Ansichts-Tabs
+- `"spacer"` - ein transparentes Element, das den gesamten freien Raum einnimmt und verwendet werden kann, um ein anderes Element auf die rechte Seite der Kopfzeile zu schieben
+- `{html: string, click: function, css: string}` - ein Objekt zum Einfügen benutzerdefinierter Buttons oder Icons in die Kopfzeile
+- `"minicalendar"` - ein [Mini Calendar](guides/minicalendar.md) Toggle
 
 ~~~js
 scheduler.config.header = [
     "day",
     "week",
     "month",
-    {html:"click me!", click:function(){alert("done!") }},
+    { html: "click me!", click: () => { alert("done!"); } },
     "date",
     "prev",
     "today",
@@ -94,10 +96,10 @@ scheduler.init("scheduler_here");
 
 #### Mini Calendar Einstellungen:
 
-Die Option "minicalendar" fügt einen Button hinzu, der den Mini Calendar mit folgendem click handler ein- und ausblendet:
+Der `minicalendar`-Wert zeigt einen Minikalender-Button mit dem folgenden Click-Handler an:
 
-~~~
-function showCalendar () {
+~~~js
+function showCalendar() {
     if (scheduler.isCalendarVisible()) {
         scheduler.destroyCalendar();
     } else {
@@ -105,7 +107,7 @@ function showCalendar () {
             position: this,
             date: scheduler.getState().date,
             navigation: true,
-            handler: function (date, calendar) {
+            handler: (date, calendar) => {
                 scheduler.setCurrentView(date);
                 scheduler.destroyCalendar();
             }
@@ -114,14 +116,14 @@ function showCalendar () {
 };
 ~~~
 
-Um das Verhalten des Mini Calendars mit anderen Parametern anzupassen, geben Sie Ihren eigenen click handler für den minicalendar-Button wie folgt an:
+Wenn Sie [`renderCalendar()`](api/method/rendercalendar.md) mit anderen Parametern aufrufen möchten, müssen Sie einen eigenen `onclick`-Handler für den Minikalender-Button bereitstellen:
 
-~~~
+~~~js
 scheduler.config.header = [
     "day",
     "week",
     "month",
-    {view: "minicalendar", click: function () {
+    { view: "minicalendar", click: function() {
         if (scheduler.isCalendarVisible()) {
             scheduler.destroyCalendar();
         } else {
@@ -129,14 +131,14 @@ scheduler.config.header = [
                 position: this,
                 date: scheduler.getState().date,
                 navigation: true,
-                handler: function (date, calendar) {
+                handler: (date, calendar) => {
                     scheduler.setCurrentView(date);
                     scheduler.destroyCalendar();
                 }
             });
         }
-     
-}},
+
+    } },
     "date",
     "prev",
     "today",
@@ -145,6 +147,6 @@ scheduler.config.header = [
 ~~~
 
 ### Related Guides
-- [Mobile Responsive Scheduler](guides/touch-support.md)
-- [dhtmlxScheduler in Plain JS/HTML](guides/initialization.md#initializing-scheduler-via-header-config)
-- [Mini-Kalender (Datumsauswahl)](guides/minicalendar.md)
+- [Mobiler responsiver Scheduler](guides/touch-support.md)
+- [dhtmlxScheduler in Plain JS/HTML](guides/initialization.md)
+- [Mini Calendar (Date-Auswahl)](guides/minicalendar.md)

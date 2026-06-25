@@ -15,10 +15,10 @@ description: "이벤트가 표시되기 시작하는 날짜를 지정합니다."
 ### Example
 
 ~~~jsx
-scheduler.config.agenda_start = new Date(2012, 7, 1);
-scheduler.config.agenda_end = new Date(2014, 7, 1);
+scheduler.config.agenda_start = new Date(2025, 7, 1);
+scheduler.config.agenda_end = new Date(2027, 7, 1);
 ...
-scheduler.init('scheduler_here', new Date(2010, 0, 10), "agenda");
+scheduler.init('scheduler_here', new Date(2026, 0, 10), "agenda");
 ~~~
 
 **Default value:** 현재 사용자의 날짜

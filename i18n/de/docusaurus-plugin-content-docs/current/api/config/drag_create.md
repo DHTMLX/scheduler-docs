@@ -17,7 +17,7 @@ description: "ermöglicht das Erstellen neuer Events durch Drag & Drop"
 ~~~jsx
 scheduler.config.drag_create = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,7,1),"week");
+scheduler.init('scheduler_here',new Date(2027,7,1),"week");
 ~~~
 
 **Default value:** true

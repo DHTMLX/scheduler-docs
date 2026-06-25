@@ -1,20 +1,20 @@
 ---
-sidebar_label: "setSkin"
-title: "setSkin method"
-description: "изменяет текущую активную skin"
+sidebar_label: setSkin
+title: "метод setSkin"
+description: "устанавливает активный скин"
 ---
 
 # setSkin
 
 ### Description
 
-@short: Изменяет текущую активную skin
+@short: Устанавливает активный скин
 
 @signature: setSkin: (skin: string) =\> void
 
 ### Parameters
 
-- `skin` - (required) *string* - название skin для применения. Допустимые варианты: "terrace", "dark", "material", "flat", "contrast-white", "contrast-black"
+- `skin` - (required) *string* - имя скина. Разрешённые значения: "terrace", "dark", "material", "flat", "contrast-white", "contrast-black"
 
 ### Example
 
@@ -23,13 +23,13 @@ scheduler.setSkin("flat");
 ~~~
 
 ### Related samples
-- [Customize and switch between themes](https://docs.dhtmlx.com/scheduler/samples/07_skins/07_themes.html)
+- [Настройка и переключение между темами](https://docs.dhtmlx.com/scheduler/samples/07_skins/07_themes.html)
 
 ### Details
 
-Если этот метод вызывается после инициализации scheduler, он вызовет метод [render](api/method/render.md) для обновления отображения.
+Если метод вызывается после инициализации scheduler, он вызовет метод [render](api/method/render.md).
 
-Если вызвать его до инициализации, он работает так же, как прямое присвоение свойства `scheduler.skin`:
+Если метод вызывается до инициализации, метод будет иметь такой же эффект, как присвоение свойства `scheduler.skin`:
 
 ~~~js
 scheduler.skin = "flat";

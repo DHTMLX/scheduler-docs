@@ -17,7 +17,7 @@ description: "控制提示消息是否显示在屏幕右上角"
 ~~~jsx
 scheduler.config.touch_tip = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
 **Default value:** true

@@ -19,7 +19,7 @@ description: "주어진 타임존을 반전시킵니다."
 ### Example
 
 ~~~jsx
-var zones = scheduler.invertZones([500, 1000]); // => [0, 500, 1000, 1440]
+const zones = scheduler.invertZones([500, 1000]); // => [0, 500, 1000, 1440]
 ~~~
 
 ### Details

@@ -1,14 +1,14 @@
 ---
-sidebar_label: "checkEvent"
-title: "checkEvent method"
-description: "проверяет, назначены ли обработчики для конкретного события"
+sidebar_label: checkEvent
+title: "Метод checkEvent"
+description: "проверяет, задан ли обработчик(-и) для события"
 ---
 
 # checkEvent
 
 ### Description
 
-@short: Проверяет, назначены ли обработчики для конкретного события
+@short: Проверяет, задан ли обработчик(-и) для события
 
 @signature: checkEvent: (name: SchedulerEventName) =\> boolean
 
@@ -17,7 +17,7 @@ description: "проверяет, назначены ли обработчики
 - `name` - (required) *SchedulerEventName* - имя события
 
 ### Returns
-- `isExist` - (boolean) - возвращает <i>true</i>, если хотя бы один обработчик назначен на событие
+- `isExist` - (boolean) - возвращает <i>true</i>, если для события указан какой-либо обработчик
 
 ### Example
 

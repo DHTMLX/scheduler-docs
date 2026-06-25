@@ -1,36 +1,40 @@
----
-title: "Multi-User Live Updates"
-sidebar_label: "Multi-User Live Updates"
+--- 
+title: "Mehrbenutzer-Live-Updates" 
+sidebar_label: "Mehrbenutzer-Live-Updates" 
 ---
 
-# Multi-User Live Updates
+# Mehrbenutzer-Live-Updates
 
-Dieser Artikel erklärt, wie Sie die serverseitige Unterstützung für die Echtzeit-Update-Funktion im DHTMLX Scheduler einrichten.
+Dieser Artikel beschreibt, wie die serverseitige Unterstützung für das Echtzeit-Update-Modul des DHTMLX Scheduler implementiert wird.
 
 :::note
-Dieser Artikel behandelt die Implementierung des Live Updates-Modus für DHTMLX Scheduler v7.2. Informationen zu früheren Versionen finden Sie [hier](guides/live-update.md).
+Der komplette Quellcode ist auf [GitHub](https://github.com/DHTMLX/scheduler-multiuser-backend-demo/) verfügbar.
+:::
+
+:::note
+Dieser Artikel bezieht sich auf die Implementierung des Live-Updates-Modus für DHTMLX Scheduler v7.2. Details zu früheren Versionen finden Sie [hier](guides/live-update.md).
 :::
 
 ## Prinzip
 
-DHTMLX Scheduler enthält den `RemoteEvents`-Helper, um Änderungen zwischen mehreren Benutzern sofort zu synchronisieren.
+DHTMLX Scheduler stellt das `RemoteEvents`-Hilfsprogramm bereit, um Änderungen in Echtzeit zwischen mehreren Benutzern zu synchronisieren.
 
-### Grundlegender Ablauf
+### Kernarbeitsablauf
 
 - Der `RemoteEvents`-Client öffnet eine WebSocket-Verbindung, sobald der Scheduler initialisiert wird.
-- Benutzeraktionen wie das Erstellen, Bearbeiten oder Löschen von Terminen werden über den `DataProcessor` mittels REST-API an den Server gesendet.
-- Nachdem diese Aktionen verarbeitet wurden, sendet der Server Aktualisierungen per WebSocket an alle verbundenen Clients.
-- Der `RemoteEvents`-Client empfängt diese Aktualisierungen und übernimmt sie im Scheduler, sodass alle Nutzer dieselben Daten sehen.
+- Die Änderungen des Benutzers (die Ereignisse die „create“, „edit“ oder „delete“) werden über den `DataProcessor` mittels REST-API an den Server gesendet.
+- Der Server sendet nach der Verarbeitung Updates an alle verbundenen Clients über WebSocket.
+- Der `RemoteEvents`-Client empfängt die Updates und wendet sie auf den Scheduler an, um die Synchronisierung zwischen den Benutzern sicherzustellen.
 
-Dieses Setup unterstützt mehrere DHTMLX-Widgets (wie Kanban, Gantt, Scheduler) innerhalb einer Anwendung, indem ein gemeinsames Format verwendet wird, das die Synchronisierung vereinfacht, ohne dass für jedes Widget ein eigenes Backend erforderlich ist.
+Das Design ermöglicht es, dass dieses Backend-Modul mehrere DHTMLX-Widgets (z. B. Kanban, Gantt, Scheduler) innerhalb derselben Anwendung unterstützt. Das gemeinsame Format vereinfacht die Datensynchronisierung, ohne dass separate Backends für jedes Widget benötigt werden.
 
 ## Front-End-Integration
 
-Richten Sie `RemoteEvents` und `DataProcessor` gemeinsam in dem Teil Ihres Codes ein, in dem die Scheduler-Daten geladen werden.
+Initialisieren Sie `RemoteEvents` und richten Sie `DataProcessor` im gleichen Codeabschnitt ein, in dem Scheduler-Daten geladen werden.
 
 ~~~js
 const AUTH_TOKEN = "token";
-scheduler.init('scheduler_here', new Date(2025, 3, 20), "week");
+scheduler.init('scheduler_here', new Date(2027, 3, 20), "week");
 scheduler.load("/events");
 
 const dp = scheduler.createDataProcessor({
@@ -48,59 +52,59 @@ remoteEvents.on(remoteUpdates);
 
 ### Wichtige Details
 
-- Der Konstruktor von `RemoteEvents` benötigt ein Autorisierungs-Token, das im **"Remote-Token"**-Header zur serverseitigen Überprüfung gesendet wird.
-- Das erste Argument ist der `WebSocket`-Endpunkt (zum Beispiel **/api/v1**).
-- Der `remoteUpdates`-Helper verarbeitet eingehende `WebSocket`-Nachrichten und hält die Scheduler-Daten synchron.
+- Der `RemoteEvents`-Konstruktor erfordert ein Autorisierungstoken, das im Header **"Remote-Token"** zur Server-Validierung gesendet wird.
+- Der erste Parameter gibt den `WebSocket`-Endpunkt an (z. B. **/api/v1**).
+- Der `remoteUpdates`-Hilfsmechanismus verarbeitet eingehende `WebSocket`-Nachrichten und synchronisiert Scheduler-Daten.
 
 ## Backend-Implementierung
 
-Dieser Abschnitt beschreibt, wie Sie ein Backend erstellen, das Live-Updates unterstützt.
+Dieser Abschnitt beschreibt, wie man ein Backend erstellt, das Live-Updates unterstützt.
 
 ### Vereinfachtes Beispiel
 
-- [Siehe das Beispiel auf GitHub](https://github.com/DHTMLX/scheduler-multiuser-backend-demo)
+- [Beispiel auf GitHub ansehen](https://github.com/DHTMLX/scheduler-multiuser-backend-demo)
 
-So probieren Sie es aus:
+Zur Prüfung der Implementierung:
 
-- Laden Sie das Backend-Projekt herunter und führen Sie es mit `npm install` und `npm run start` aus.
-- Öffnen Sie das Frontend-Beispiel in zwei Browser-Tabs.
-- Bearbeiten Sie einen Termin in einem Tab und beobachten Sie, wie die Änderung im anderen Tab erscheint.
+- Extrahieren Sie das Backend-Projekt und führen Sie die Befehle `npm install` und `npm run start` aus.
+- Öffnen Sie das Frontend-Beispiel in zwei separaten Browser-Tabs.
+- Ändern Sie ein Ereignis in einem Tab; die Änderungen sollten im zweiten Tab sichtbar werden.
 
-### Serverseitiger Ablauf
+### Server-seitiger Workflow
 
 #### 1. Handshake-Anfrage
 
-Wenn `RemoteEvents` startet, sendet es eine **GET**-Anfrage an den Server, um die Verbindung einzurichten.
+Beim Instanziieren sendet `RemoteEvents` eine **GET**-Anfrage an den Server, um die Verbindung zu initialisieren.
 
 Beispiel:
-~~~
+~~~ 
 GET /api/v1
 Remote-Token: AUTH_TOKEN
 ~~~
 
 Antwort:
 
-~~~
+~~~ 
 {"api":{},"data":{},"websocket":true}
 ~~~
 
 #### 2. WebSocket-Verbindung
 
-Nach dem Handshake öffnet `RemoteEvents` die WebSocket-Verbindung über den Endpunkt.
+Nach dem Empfang der Antwort wird die WebSocket-Verbindung mit dem angegebenen Endpunkt hergestellt.
 
 Beispiel:
 
-~~~
+~~~ 
 ws://${URL}?token=${token}&ws=1
 ~~~
 
-Der Server überprüft das Token und antwortet mit einer Nachricht wie:
+Der Server überprüft das Token und antwortet mit einer Nachricht:
 
-~~~
+~~~ 
 {"action":"start","body":"connectionId"}
 ~~~
 
-Beispiel-Codeausschnitt:
+Beispiel-Implementierung:
 
 ~~~js
 app.get('/api/v1', (req, res) => {
@@ -122,25 +126,25 @@ wss.on('connection', (ws, req) => {
 });
 ~~~
 
-#### 3. Abonnement
+#### 3. Subscription
 
-Nach dem Verbindungsaufbau abonniert `RemoteEvents` Updates für bestimmte Entitäten - beim Scheduler ist dies `events`:
+Nach dem Herstellen der Verbindung abonniert `RemoteEvents` Updates für bestimmte Entitäten, `events` im Fall des Scheduler:
 
 ~~~json
 {"action":"subscribe","name":"events"}
 ~~~
 
-Um keine Updates mehr zu erhalten:
+Zum Abbestellen:
 
 ~~~json
 {"action":"unsubscribe","name":"events"}
 ~~~
 
 :::note
-Dieses Setup eignet sich gut für Apps, die mehrere DHTMLX-Widgets gleichzeitig verwenden. So kann jedes Widget nur die Updates abonnieren, die es benötigt.
+Dieses Format unterstützt Szenarien, in denen eine Anwendung mehrere DHTMLX-Widgets gleichzeitig verwendet. Jedes Widget abonniert nur die Updates, die für seine Daten relevant sind.
 :::
 
-Beispiel für die serverseitige Verarbeitung:
+Beispiel:
 
 ~~~js
 ws.on('message', function(message) {
@@ -161,13 +165,14 @@ ws.on('message', function(message) {
 });
 ~~~
 
-#### 4. Updates senden
+#### 4. Broadcast-Updates
 
-Der Server verschickt WebSocket-Nachrichten, um die Clients über das Erstellen, Aktualisieren oder Löschen von Terminen zu informieren. Dabei wird folgendes Format verwendet.
+Der Server sendet Updates via WebSocket für Änderungen wie das Erstellen, Aktualisieren oder Löschen von Ereignissen im unten beschriebenen Format.
 
-Wenn diese Nachrichten eintreffen, aktualisiert der Scheduler die Daten automatisch mit dem `remoteUpdates`-Helper.
+Nach dem Empfang dieser Nachrichten synchronisiert Scheduler automatisch seine Daten mithilfe des `remoteUpdates`-Hilfsprogramms.
 
-**Termin erstellt**
+
+**Ereignis erstellt**
 
 ~~~json
 {"action":"event","body":{"name":"events",
@@ -181,7 +186,7 @@ app.post('/events', (req, res) => {
     const newEvent = req.body.event;
     const insertedEvent = crud.events.insert(newEvent);
 
-    // Benachrichtige alle verbundenen Clients über das neue Event
+    // Broadcast changes to connected clients
     const message = { 
         name: 'events', 
         value: {
@@ -206,12 +211,12 @@ function broadcast(action, body) {
 }
 ~~~
 
-**Termin aktualisiert**
+**Ereignis aktualisiert**
 
 ~~~json
 {"action":"event","body":{"name":"events",
    "value":{"type":"update-event","event":EVENT_OBJECT}}}
-~~~
+~~~ 
 
 Beispiel:
 
@@ -222,7 +227,7 @@ app.put('/events/:id', (req, res) => {
 
     crud.events.update(id, updatedEvent);
 
-    // Benachrichtige die Clients über die Aktualisierung
+    // Broadcast changes to connected clients
     const message = {
         name: 'events',
         value: {
@@ -235,7 +240,7 @@ app.put('/events/:id', (req, res) => {
 });
 ~~~
 
-**Termin gelöscht**
+**Ereignis gelöscht**
 
 ~~~json
 {"action":"event","body":{"name":"events",
@@ -250,7 +255,7 @@ app.delete('/events/:id', (req, res) => {
 
     crud.events.delete(id);
 
-    // Informiere die Clients über das Löschen
+    // Broadcast deletion to connected clients
     const message = {
         name: 'events',
         value: {
@@ -266,9 +271,10 @@ app.delete('/events/:id', (req, res) => {
 
 ## Erweiterte Anpassung
 
-### Eigene Handler
+### Benutzerdefinierte Handler
 
-Der `RemoteEvents`-Helper übernimmt das initiale Handshake und die WebSocket-Verbindung, während der `remoteUpdates`-Helper eingehende Nachrichten verarbeitet und den Scheduler entsprechend aktualisiert.
+Im beschriebenen Format ist das `RemoteEvents`-Hilfsprogramm dafür verantwortlich, den anfänglichen Handshake zum Aufbau einer WebSocket-Verbindung mit dem Server durchzuführen und Nachrichten zu empfangen.
+Der zweite Teil dieses Moduls ist der `remoteUpdates`-Hilfsprogramm, der dafür zuständig ist, Nachrichten, die über einen WebSocket empfangen werden, zu parsen und entsprechende Änderungen am Scheduler anzuwenden.
 
 ~~~js
 const { RemoteEvents, remoteUpdates } = scheduler.ext.liveUpdates;
@@ -276,9 +282,9 @@ const remoteEvents = new RemoteEvents("/api/v1", AUTH_TOKEN);
 remoteEvents.on(remoteUpdates);
 ~~~
 
-In der Regel funktionieren diese Helper direkt. Es ist jedoch möglich, das Protokoll zu erweitern, indem Sie eigene Handler oder Helper für spezielle Remote-Update-Szenarien hinzufügen.
+Normalerweise können Sie diese Hilfsprogramme ohne zusätzliche Konfiguration verwenden. Es ist jedoch möglich, das bestehende Protokoll zu erweitern, indem Sie eine benutzerdefinierte Hilfsfunktion hinzufügen oder einen benutzerdefinierten Handler für Remote-Updates implementieren.
 
-Die Methode `RemoteEvents.on` akzeptiert ein Objekt, das Handler für eine oder mehrere Entitäten definieren kann:
+Die Methode `RemoteEvents.on` erwartet das Objektargument, das Handler für eine oder mehrere Entitäten festlegen kann:
 
 ~~~js
 const remoteEvents = new RemoteEvents("/api/v1", AUTH_TOKEN);
@@ -287,20 +293,20 @@ remoteEvents.on({
         const { type, event } = message;
         switch (type) {
             case "add-event":
-                // Event hinzufügen verarbeiten
+                // Handler für das hinzufügen eines Ereignisses
                 break;
             case "update-event":
-                // Event aktualisieren verarbeiten
+                // Handler für das Aktualisieren eines Ereignisses
                 break;
             case "delete-event":
-                // Event löschen verarbeiten
+                // Handler für das Löschen eines Ereignisses
                 break;
         }
     }
 });
 ~~~
 
-Um eigene Aktionen zu verarbeiten, können Sie einen weiteren Handler zu `remoteEvents` hinzufügen:
+Wenn Sie eine benutzerdefinierte Aktion hinzufügen müssen, können Sie dies tun, indem Sie einen zusätzlichen Handler für `remoteEvents` hinzufügen:
 
 ~~~js
 const { RemoteEvents, remoteUpdates } = scheduler.ext.liveUpdates;
@@ -311,51 +317,51 @@ remoteEvents.on({
         const { type, event } = message;
         switch (type) {
             case "custom-action":
-                // Eigene Aktion verarbeiten
+                // benutzerdefinierte Aktion behandeln
                 break;
         }
     }
 });
 ~~~
 
-Dieser Handler wird durch Nachrichten wie diese ausgelöst:
+Der Handler wird durch folgende Nachricht aufgerufen:
 
 ~~~json
 {"action":"event","body":{"name":"events",
    "value":{"type":"custom-action","event":value}}}
 ~~~
 
-Um Updates für eigene Entitäten zu erhalten, fügen Sie einen entsprechenden Handler hinzu:
+Wenn Sie `RemoteEvents` verwenden möchten, um Updates für benutzerdefinierte Entitäten zu empfangen, können Sie dies erreichen, indem Sie einen Handler hinzufügen:
 
 ~~~js
 const { RemoteEvents, remoteUpdates } = scheduler.ext.liveUpdates;
 const remoteEvents = new RemoteEvents("/api/v1", AUTH_TOKEN);
 remoteEvents.on(remoteUpdates);
 
-// Abonniere eigene Entitäten
+// Abonnieren benutzerdefinierter Entitäten
 remoteEvents.on({ 
     calendars: function(message) {
         const { type, value } = message;
         switch (type) {
             case "custom-action":
-                // Eigene Aktion verarbeiten
+                // benutzerdefinierte Aktion behandeln
                 break;
         }
     }
 });
 ~~~
 
-Mit diesem Setup sendet `remoteEvents` eine Abonnement-Nachricht wie:
+Bei dieser Initialisierung wird dem WebSocket folgender Subscription-Text gesendet:
 
 ~~~json
 {"action":"subscribe","name":"calendars"}
 ~~~
 
-Und der Handler reagiert auf Nachrichten wie:
+Und der Handler wird aufgerufen, wann immer eine Nachricht an die angegebene Entität gerichtet empfangen wird:
 
 ~~~json
 {"action":"event","body":{"name":"calendars",
    "value":{"type":"custom-action","value":value}}}
 ~~~
 
-Diese Anleitung beschreibt die Grundlagen für die Einrichtung und Anpassung von Live-Updates im DHTMLX Scheduler. Für ein vollständiges, funktionierendes Beispiel besuchen Sie das GitHub-Repository.
+Dieses Leitfaden bietet die Grundlage für die Implementierung und Anpassung von Live-Updates im DHTMLX Scheduler. Für ein vollständiges Beispiel lesen Sie das [GitHub-Repository](https://github.com/DHTMLX/scheduler-multiuser-backend-demo/).

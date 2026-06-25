@@ -17,7 +17,7 @@ description: "스케줄러에서 RTL(오른쪽에서 왼쪽) 모드를 활성화
 ~~~jsx
 scheduler.config.rtl = true;
 ...
-scheduler.init('scheduler_here',new Date(2018,0,1),"week");
+scheduler.init('scheduler_here',new Date(2027,0,1),"week");
 ~~~
 
 **Default value:** false

@@ -1,13 +1,13 @@
 ---
-sidebar_label: "getEventEndDate"
-title: "getEventEndDate method"
+sidebar_label: getEventEndDate
+title: "getEventEndDate метод"
 description: "получает дату окончания события"
 ---
 
 # getEventEndDate
-:::warning
-Эта функицональность устарела
-::: 
+:::warning 
+Метод устарел.
+:::
 ### Description
 
 @short: Получает дату окончания события
@@ -16,7 +16,7 @@ description: "получает дату окончания события"
 
 ### Parameters
 
-- `id` - (required) *string* - ID события
+- `id` - (required) *string* - идентификатор события
 
 ### Returns
 - ` end_date` - (Date) - дата окончания события
@@ -25,12 +25,12 @@ description: "получает дату окончания события"
 
 ~~~jsx
 var eventId = scheduler.addEvent({
-    start_date: "16-05-2013 09:00",
-    end_date:   "16-05-2013 12:00",
+    start_date: "16-05-2027 09:00",
+    end_date:   "16-05-2027 12:00",
     text:   "Meeting"
 });
 ...
-scheduler.getEvent(eventId).end_date; // -> Thu May 16 2013 12:00:00
+scheduler.getEvent(eventId).end_date; // -> Thu May 16 2027 12:00:00
 ~~~
 
 ### Related API

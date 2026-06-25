@@ -23,7 +23,7 @@ description: "specifies the date in the header of the Day and Units views"
 
 ~~~jsx
 scheduler.templates.day_date = function(date){
-    var formatFunc = scheduler.date.date_to_str(scheduler.config.default_date);
+    const formatFunc = scheduler.date.date_to_str(scheduler.config.default_date);
     return formatFunc(date);
 };
 ~~~

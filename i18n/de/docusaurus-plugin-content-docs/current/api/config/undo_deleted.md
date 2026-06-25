@@ -18,7 +18,7 @@ description: "Aktiviert das Undo-Popup, das nach dem Löschen eines Events ersch
 // schaltet das Undo-Popup aus
 scheduler.config.undo_deleted = false; /*!*/
 
-scheduler.init('scheduler_here',new Date(2010,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 scheduler.load("./data/events.xml");
 ~~~
 

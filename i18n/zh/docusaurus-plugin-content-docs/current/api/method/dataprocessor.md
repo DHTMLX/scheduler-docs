@@ -1,6 +1,6 @@
 ---
-sidebar_label: "DataProcessor"
-title: "DataProcessor method"
+sidebar_label: DataProcessor
+title: "DataProcessor 方法"
 description: "DataProcessor 构造函数"
 ---
 
@@ -14,17 +14,17 @@ description: "DataProcessor 构造函数"
 
 ### Parameters
 
-- `url` - (required) *string* - 数据源的 URL
+- `url` - (必填) *string* - 数据源的 URL
 
 ### Example
 
 ~~~jsx
-var dp = new scheduler.DataProcessor("php/update.php");
+const dataProcessor = new scheduler.DataProcessor("php/update.php");
 ~~~
 
 ### Details
 
-关于 DataProcessor 及其 API 的更多详情，请参见[这里](https://docs.dhtmlx.com/dataprocessor__index.html)。
+您可以在 [Server-Side Integration](guides/server-integration.md) 文章中找到有关 DataProcessor 的更多信息。
 
 ### Change log
-- 版本 6.0 中新增
+- 已在版本 6.0 中新增

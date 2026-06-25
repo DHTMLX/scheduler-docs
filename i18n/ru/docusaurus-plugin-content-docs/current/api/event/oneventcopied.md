@@ -1,14 +1,14 @@
 ---
-sidebar_label: "onEventCopied"
-title: "onEventCopied event"
-description: "срабатывает, когда пользователь нажимает сочетание клавиш 'CTRL+C' (работает только если включено расширение 'keyboard navigation')"
+sidebar_label: onEventCopied
+title: "Событие onEventCopied"
+description: "Срабатывает, когда пользователь нажимает сочетание клавиш 'CTRL+C' (только с включенным расширением 'keyboard navigation')"
 ---
 
 # onEventCopied
 
 ### Description
 
-@short: Срабатывает, когда пользователь нажимает сочетание клавиш 'CTRL+C' (работает только если включено расширение 'keyboard navigation')
+@short: Срабатывает, когда пользователь нажимает сочетание клавиш 'CTRL+C' (только с включенным расширением 'keyboard navigation')
 
 @signature: onEventCopied: (ev: object) =\> void;
 
@@ -26,14 +26,14 @@ scheduler.attachEvent("onEventCopied", function(ev) {
 ~~~
 
 ### Related samples
-- [Keyboard navigation in the scheduler](https://docs.dhtmlx.com/scheduler/samples/03_extensions/07_navigation_plugin.html)
-- [Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
-- [Creating message boxes](https://docs.dhtmlx.com/scheduler/samples/09_api/02_dhtmlx_message.html)
+- [Навигация клавиатурой в планировщике](https://docs.dhtmlx.com/scheduler/samples/03_extensions/07_navigation_plugin.html)
+- [Повторяющиеся события](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
+- [Создание окон сообщений](https://docs.dhtmlx.com/scheduler/samples/09_api/02_dhtmlx_message.html)
 
 ### Details
 
 :::note
- Это событие работает только при активированном расширении [key_nav](guides/extensions-list.md#keyboard-navigation). 
+ Событие требует включенного расширения [key_nav](guides/extensions-list.md#keyboard-navigation) для включения.
 :::
 
 ### Related Guides

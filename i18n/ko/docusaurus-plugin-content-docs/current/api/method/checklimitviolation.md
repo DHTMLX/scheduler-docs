@@ -22,13 +22,13 @@ description: "주어진 이벤트가 차단된 시간 구간과 겹치는지 여
 ### Example
 
 ~~~jsx
-var event = {
+const event = {
    text : "New Event",
-   start_date : new Date(2013, 02, 20, 10, 00),
-   end_date : new Date(2013, 02, 20, 14, 00)
+   start_date : new Date(2027, 02, 20, 10, 00),
+   end_date : new Date(2027, 02, 20, 14, 00)
 };
 
-var isBlocked = scheduler.checkLimitViolation(event); // 'true' 또는 'false' 반환
+const isBlocked = scheduler.checkLimitViolation(event); // 'true' 또는 'false' 반환
 ~~~
 
 ### Details

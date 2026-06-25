@@ -1,40 +1,40 @@
 ---
-sidebar_label: "onLightboxButton"
+sidebar_label: onLightboxButton
 title: "onLightboxButton event"
-description: "срабатывает, когда пользователь нажимает на кастомную кнопку внутри lightbox"
+description: "срабатывает, когда пользователь нажимает на пользовательскую кнопку в lightbox"
 ---
 
 # onLightboxButton
 
 ### Description
 
-@short: Срабатывает, когда пользователь нажимает на кастомную кнопку внутри lightbox
+@short: срабатывает, когда пользователь нажимает на пользовательскую кнопку в lightbox
 
 @signature: onLightboxButton: (id: string, node: HTMLElement, e: Event) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string* - id кнопки
+- `id` - (required) *string* - идентификатор кнопки
 - `node` - (required) *HTMLElement* - HTML-элемент нажатой кнопки
-- `e` - (required) *event* - native объект события 'click'
+- `e` - (required) *Event* - объект нативного события 'click'
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onLightboxButton", function (id, node, e){
-    // здесь разместите любую кастомную логику
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Related samples
-- [Setting/getting values of lightbox's controls](https://docs.dhtmlx.com/scheduler/samples/02_customization/22_opertions_with_lightbox.html)
+- [Настройка/получение значений контролов lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/22_opertions_with_lightbox.html)
 
 ### Details
 
-Это событие срабатывает только для кастомных кнопок, расположенных внизу lightbox. Оно не активируется для дефолтных или секционных кнопок.
+Событие срабатывает только для пользовательских кнопок в нижней части lightbox и не срабатывает для кнопок по умолчанию или разделов.
 
-Чтобы определить, открыт ли в данный момент lightbox или закрыт, можно проверить свойство **lightbox_id** из объекта состояния, возвращаемого методом [getState](api/method/getstate.md). 
-Если lightbox открыт, метод возвращает id активного события; если закрыт - возвращает 'null' или 'undefined':
+Чтобы проверить, открыт ли lightbox в данный момент, используйте свойство **lightbox_id** объекта состояния, возвращаемого методом [getState](api/method/getstate.md). 
+Если lightbox открыт, метод вернет id открытого события, в противном случае вернутся 'null' или 'undefined':
 
 ~~~js
 if (scheduler.getState().lightbox_id){
@@ -45,4 +45,4 @@ if (scheduler.getState().lightbox_id){
 ~~~
 
 ### Related Guides
-- [Манипуляции с Lightbox](guides/lightbox-editors-manipulations.md)
+- [Манипуляции с Lightbox](guides/lightbox-editors-manipulations.md#checking-whether-the-lightbox-is-opened)

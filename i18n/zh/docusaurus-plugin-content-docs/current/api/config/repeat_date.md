@@ -17,7 +17,7 @@ description: "指定'recurring' lightbox 中'End by'字段使用的日期格式"
 ~~~jsx
 scheduler.config.repeat_date = "%m/%d/%Y";
 ...
-scheduler.init('scheduler_here',new Date(2019,05,11),"month");
+scheduler.init('scheduler_here',new Date(2027,05,11),"month");
 ~~~
 
 **Default value:** "%m.%d.%Y"

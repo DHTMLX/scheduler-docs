@@ -151,7 +151,7 @@ scheduler.createTimelineView({
     ...
 });
 
-var timeline = scheduler.matrix.timeline;
+const timeline = scheduler.matrix.timeline;
 ~~~
 
 After that you can make use of the methods enumerated below.
@@ -161,7 +161,7 @@ After that you can make use of the methods enumerated below.
 To get a timeline view object, use the [getView](api/method/getview.md) method. It takes the name of the view as a parameter. However, if no parameter has been passed, the method returns the current view.
 
 ~~~js
-var timeline = scheduler.getView(); 
+const timeline = scheduler.getView(); 
 timeline.x_size = 8;
 scheduler.setCurrentView();
 ~~~
@@ -257,7 +257,7 @@ timeline.scrollTo({left:300, top:500});
 - to get the X-coordinate of a specific date on the scale, use the **posFromDate()** method. Pass the date as a parameter: 
 
 ~~~js
-var left = timeline.posFromDate(new Date());
+const left = timeline.posFromDate(new Date());
 ~~~
 
 :::note
@@ -267,7 +267,7 @@ The method returns 0 or the maximum X-coordinate for dates outside the scale.
 - to get the Y-coordinate of a specific row, use the **getSectionTop()** method. It takes as a parameter the number of the section:
 
 ~~~js
-var top = timeline.getSectionTop(section.key);
+const top = timeline.getSectionTop(section.key);
 ~~~
 
 :::note
@@ -300,7 +300,7 @@ const top = timeline.getEventTop(scheduler.getEvent(event.id));
 To return the current position of the scrollbar in the timeline, use the **timeline.getScrollPosition()** method. It returns an object with the current position of the scrollbar. 
 
 ~~~js
-var timeline = scheduler.getView();
+const timeline = scheduler.getView();
 timeline.getScrollPosition(); // { left: 0, top: 0 } 
 ~~~
 
@@ -315,7 +315,7 @@ You can also use the **onScroll** event handler to catch the new scroll position
 - **top** - (*number*)  the top coordinate of the scroll position
 
 ~~~js
-var timeline = scheduler.getView();
+const timeline = scheduler.getView();
 timeline.attachEvent("onScroll", function(left, top){});
 ~~~
 
@@ -341,9 +341,9 @@ where:
 and returns an array of event objects.
 
 ~~~js
-var timeline = scheduler.getView();
+const timeline = scheduler.getView();
  
-var events = timeline.selectEvents({
+const events = timeline.selectEvents({
     section: section.key,
     date: date,
     selectNested: true
@@ -396,11 +396,11 @@ scheduler.createTimelineView({
 
 scheduler.init('scheduler_here');
 scheduler.parse([
-    {text:"Conference",    start_date:"17/09/2012 12:00", end_date:"18/09/2012 21:00", 
+    {text:"Conference",    start_date:"17/09/2027 12:00", end_date:"18/09/2027 21:00", 
     room_id:"1"},
-     {text:"Meeting",     start_date:"17/09/2012 09:00", end_date:"17/09/2012 21:00", 
+     {text:"Meeting",     start_date:"17/09/2027 09:00", end_date:"17/09/2027 21:00", 
     room_id:"2"},
-     {text:"Conference", start_date:"17/09/2012 15:00", end_date:"18/09/2012 15:00", 
+     {text:"Conference", start_date:"17/09/2027 15:00", end_date:"18/09/2027 15:00", 
     room_id:"3"}
 ]);                                 
 ~~~
@@ -451,7 +451,7 @@ scheduler.createTimelineView({
     y_property: "section_id", /*!*/
     ...
 });
-scheduler.init('scheduler_here', new Date(2012, 5, 30), "timeline");
+scheduler.init('scheduler_here', new Date(2027, 5, 30), "timeline");
 
 scheduler.parse([
     { id:1, text:"Task A", section_id:'1',         ...},/*!*/
@@ -607,9 +607,9 @@ and totally remove them from the timeline, you can use the following code:
 
 ~~~js
 scheduler._click.dhx_cal_next_button = function(dummy,step){
-  var mode = scheduler.getState().mode;
-  var minDate = scheduler.getState().min_date;
-  var formFunc = scheduler.date.date_to_str("%D");
+  const mode = scheduler.getState().mode;
+  const minDate = scheduler.getState().min_date;
+  const formFunc = scheduler.date.date_to_str("%D");
 
   // ignoring weekends
   if(mode=='timeline'){    
@@ -889,7 +889,7 @@ scheduler.createTimelineView({
     render: "bar",
     scrollable: true, /*!*/ 
     column_width: 70, /*!*/
-    scroll_position:new Date(2018, 0, 15) /*!*/  
+    scroll_position:new Date(2027, 0, 15) /*!*/  
 });
 ~~~
 
@@ -1001,15 +1001,15 @@ After that the template you've specified for this timeline will be called. For e
 
 scheduler.templates.timeline_cell_value = function (evs, date, section){
     if(section.children){
-        var timeline = scheduler.getView();
+        const timeline = scheduler.getView();
  
-        var events = timeline.selectEvents({
+        const events = timeline.selectEvents({
             section: section.key,
             date: date,
             selectNested: true
         });
  
-        var className = "";
+        let className = "";
         if(!events.length){
             className = "load-marker-no";
         }else if(events.length < 3){

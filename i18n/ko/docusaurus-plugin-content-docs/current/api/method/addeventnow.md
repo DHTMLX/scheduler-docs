@@ -25,8 +25,8 @@ description: "새 이벤트를 생성하고 확인을 위한 라이트박스를 
 scheduler.addEventNow();
 //또는
 scheduler.addEventNow({
-    start_date: new Date(2013,0,10,8,30),
-    end_date:     new Date(2013,0,10,10,30),
+    start_date: new Date(2027,0,10,8,30),
+    end_date:     new Date(2027,0,10,10,30),
     text:    "Meeting",
     holder:    "John", //userdata
     room:    "5"     //userdata

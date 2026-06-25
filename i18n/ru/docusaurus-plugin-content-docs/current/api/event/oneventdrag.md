@@ -1,28 +1,28 @@
 ---
-sidebar_label: "onEventDrag"
+sidebar_label: onEventDrag
 title: "onEventDrag event"
-description: "срабатывает при перетаскивании или изменении размера события внутри scheduler"
+description: "срабатывает при перетаскивании/изменении размеров событий в планировщике"
 ---
 
 # onEventDrag
 
 ### Description
 
-@short: Срабатывает при перетаскивании или изменении размера события внутри scheduler
+@short: Срабатывает при перетаскивании/изменении размеров событий в планировщике
 
-@signature: onEventDrag: (id: string, mode: string, ev: Event) =\> void;
+@signature: onEventDrag: (id: string, mode: string, e: Event) => void;
 
 ### Parameters
 
-- `id` - (required) *string* - ID события
-- `mode` - (required) *string* - режим перетаскивания: "move", "resize" или "new-size" (при создании новых событий)
+- `id` - (required) *string* - идентификатор события
+- `mode` - (required) *string* - режим перетаскивания: "move","resize" или "new-size" (создание новых событий)
 - `e` - (required) *Event* - нативный объект события
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onEventDrag", function (id, mode, e){
-    // здесь можно добавить пользовательскую логику
+scheduler.attachEvent("onEventDrag", (id, mode, e) => {
+    // любая пользовательская логика здесь
 });
 ~~~
 
@@ -34,6 +34,6 @@ scheduler.attachEvent("onEventDrag", function (id, mode, e){
 
 Описание режимов:
 
-- **move** - событие перетаскивается по scheduler.
-- **resize** - событие изменяется в размере с помощью drag-and-drop.
-- **new-size** - создаётся новое событие с помощью drag-and-drop.
+- `move` - пользователь перетаскивает событие внутри Scheduler
+- `resize` - пользователь изменяет размер события с помощью перетаскивания
+- `new-size` - пользователь создает новое событие путем перетаскивания

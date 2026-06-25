@@ -1,13 +1,13 @@
 ---
-sidebar_label: "getEventStartDate"
-title: "getEventStartDate method"
+sidebar_label: getEventStartDate
+title: "getEventStartDate метод"
 description: "получает дату начала события"
 ---
 
 # getEventStartDate
-:::warning
-Эта функицональность устарела
-::: 
+:::warning 
+Метод устарел. 
+:::
 ### Description
 
 @short: Получает дату начала события
@@ -16,21 +16,21 @@ description: "получает дату начала события"
 
 ### Parameters
 
-- `id` - (required) *string* - уникальный идентификатор события
+- `id` - (required) *string* - идентификатор события
 
 ### Returns
-- ` start_date` - (Date) - дата и время начала события
+- `start_date` - (Date) - дата начала события
 
 ### Example
 
 ~~~jsx
 var eventId = scheduler.addEvent({
-    start_date: "16-05-2013 09:00",
-    end_date:   "16-05-2013 12:00",
+    start_date: "16-05-2027 09:00",
+    end_date:   "16-05-2027 12:00",
     text:   "Meeting"
 });
 ...
-scheduler.getEvent(eventId).start_date; // -> Thu May 16 2013 09:00:00
+scheduler.getEvent(eventId).start_date; // -> Thu May 16 2027 09:00:00
 ~~~
 
 ### Related API

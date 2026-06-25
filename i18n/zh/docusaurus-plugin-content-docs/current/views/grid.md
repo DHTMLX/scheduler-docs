@@ -51,8 +51,8 @@ scheduler.createGridView({
         {id:"date", label:'Date', sort:'date', width:'*'},
         {id:"text", label:'Text', sort:'str',  width:200, align:'left'}
     ],
-    from:new Date(2019, 3, 10),//允许的日期范围左边界
-    to:new Date(2019, 5, 23)    //允许的日期范围右边界
+    from:new Date(2027, 3, 10),//允许的日期范围左边界
+    to:new Date(2027, 5, 23)    //允许的日期范围右边界
 });
 ~~~
 
@@ -64,15 +64,15 @@ scheduler.createGridView({
 
 此扩展允许你限制可用日期，用户无法超出指定的范围。
 
-例如，如果你想将可用日期限制在 **2010年1月1日** 到 **2011年1月1日**，你可以这样设置:
+例如，如果你想将可用日期限制在 **2026年1月1日** 到 **2027年1月1日**，你可以这样设置:
 
 
 ~~~js
 scheduler.createGridView({
      name:"grid",
     ..
-    from:new Date(2019, 0, 1),
-    to:new Date(2020, 0, 1)
+    from:new Date(2026, 0, 1),
+    to:new Date(2027, 0, 1)
 });
 
 ~~~

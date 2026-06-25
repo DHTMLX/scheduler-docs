@@ -1,14 +1,14 @@
 ---
-sidebar_label: "week_date"
-title: "week_date config"
-description: "Определяет формат даты, отображаемый в подзаголовке вида Month."
+sidebar_label: week_date
+title: "week_date конфигурация"
+description: "устанавливает формат даты во подзаголовке представления месяца"
 ---
 
 # week_date
 
 ### Description
 
-@short: Определяет формат даты, отображаемый в подзаголовке вида Month.
+@short: Устанавливает формат даты во подзаголовке представления месяца
 
 @signature: week_date: string
 
@@ -17,12 +17,12 @@ description: "Определяет формат даты, отображаемы
 ~~~jsx
 scheduler.config.week_date="%l, %W";
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
-**Default value:** "%l"
+**Значение по умолчанию:** "%l"
 
-**Applicable views:** [Month view](views/month.md)
+**Поддерживаемые представления:** [Month view](views/month.md)
 
 ### Details
 

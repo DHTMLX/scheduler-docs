@@ -1,14 +1,14 @@
 ---
-sidebar_label: "multi_day"
-title: "multi_day config"
-description: "позволяет отображать события, продолжающиеся несколько дней"
+sidebar_label: multi_day
+title: "Конфигурация multi_day"
+description: "включает отображение много-дневных событий"
 ---
 
 # multi_day
 
 ### Description
 
-@short: Позволяет отображать события, продолжающиеся несколько дней
+@short: Включает отображение много-дневных событий
 
 @signature: multi_day: boolean
 
@@ -17,12 +17,12 @@ description: "позволяет отображать события, продо
 ~~~jsx
 scheduler.config.multi_day = false;
     
-scheduler.init('scheduler_here', new Date(2020,7,11), "week");
+scheduler.init('scheduler_here',new Date(2027,7,11),"week");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
-**Applicable views:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
+**Доступные представления:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
 
 ### Related samples
 - [Basic initialization](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/01_basic_init.html)

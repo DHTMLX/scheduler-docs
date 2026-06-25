@@ -27,7 +27,7 @@ scheduler.attachEvent("CustomEvent", function(param1, param2){
     return true;
 });
 
-var res = scheduler.callEvent("CustomEvent", [param1, param2]);
+const res = scheduler.callEvent("CustomEvent", [param1, param2]);
 ~~~
 
 ### Details

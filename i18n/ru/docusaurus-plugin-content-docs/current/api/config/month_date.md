@@ -1,14 +1,14 @@
 ---
-sidebar_label: "month_date"
-title: "month_date config"
-description: "Определяет формат заголовка вида Month"
+sidebar_label: month_date
+title: "month_date конфигурация"
+description: "задает формат заголовка для представления «Месяц»"
 ---
 
 # month_date
 
 ### Description
 
-@short: Определяет формат заголовка вида Month
+@short: Задает формат заголовка для представления «Месяц»
 
 @signature: month_date: string
 
@@ -17,12 +17,12 @@ description: "Определяет формат заголовка вида Mont
 ~~~jsx
 scheduler.config.month_date = "%F, %Y";
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
-**Default value:** "%F %Y"
+**Значение по умолчанию:** "%F %Y"
 
-**Applicable views:** [Month view](views/month.md)
+**Доступные представления:** [представление «Месяц»](views/month.md)
 
 ### Details
 

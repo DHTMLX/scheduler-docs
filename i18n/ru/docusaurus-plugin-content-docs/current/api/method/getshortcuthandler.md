@@ -1,29 +1,29 @@
 ---
-sidebar_label: "getShortcutHandler"
-title: "getShortcutHandler method"
-description: "получает обработчик для сочетания клавиш навигации"
+sidebar_label: getShortcutHandler
+title: "getShortcutHandler метод"
+description: "получает обработчик ярлыка навигации по клавиатуре"
 ---
 
 # getShortcutHandler
 
 ### Description
 
-@short: Получает обработчик для сочетания клавиш навигации
+@short: Получает обработчик сочетания клавиш для навигации по клавиатуре
 
 @signature: getShortcutHandler: (shortcut: string, scope?: string) =\> SchedulerCallback
 
 ### Parameters
 
-- `shortcut` - (required) *string* - клавиша или комбинация клавиш, определяющая shortcut ([синтаксис shortcut](guides/keyboard-navigation.md#shortcutsyntax))
-- `scope` - (optional) *string* - (необязательно) имя контекстного элемента, к которому будет прикреплен обработчик ([список scope](guides/keyboard-navigation.md#scopes))
+- `shortcut` - (required) *string* - имя клавиши или название сочетания клавиш для ярлыка ([shortcut syntax](guides/keyboard-navigation.md#shortcut-syntax))
+- `scope` - (optional) *string* - имя элемента контекста, к которому будет привязана функция-обработчик ([список контекстов](guides/keyboard-navigation.md#scopes))
 
 ### Returns
-- ` shortcut_handler` - (function) - функция, которая обрабатывает действие shortcut
+- ` shortcut_handler` - (function) - обработчик вызова ярлыка
 
 ### Example
 
 ~~~jsx
-var shortcut_handler = scheduler.getShortcutHandler("ctrl+a", "event");
+const shortcut_handler = scheduler.getShortcutHandler("ctrl+a", "event");
 ~~~
 
 ### Related samples
@@ -31,9 +31,9 @@ var shortcut_handler = scheduler.getShortcutHandler("ctrl+a", "event");
 
 ### Details
 
-Введено в версии 5.0
+Добавлено в версии 5.0
 
-Если параметр `scope` опущен, обработчик прикрепляется к scope по умолчанию - "scheduler".
+Если параметр `scope` не указан, будет использоваться область «scheduler» по умолчанию.
 
 ### Related API
 - [addShortcut](api/method/addshortcut.md)
@@ -43,4 +43,4 @@ var shortcut_handler = scheduler.getShortcutHandler("ctrl+a", "event");
 - [focus](api/method/focus.md)
 
 ### Related Guides
-- [Навигация с помощью клавиатуры](guides/keyboard-navigation.md)
+- [Keyboard Navigation](guides/keyboard-navigation.md)

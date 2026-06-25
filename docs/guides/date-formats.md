@@ -17,8 +17,8 @@ To convert a Date object to a string, use the [date_to_str](api/other/date.md) m
  
 *The method returns a function that converts a Date object to a string of the specified format:*
 ~~~js
-var formatFunc = scheduler.date.date_to_str("%d/%m/%Y");
-var date = formatFunc(new Date(2013, 05, 29)); // -> "29/06/2013"
+const formatFunc = scheduler.date.date_to_str("%d/%m/%Y");
+const date = formatFunc(new Date(2027, 05, 29)); // -> "29/06/2027"
 ~~~
 
 
@@ -35,8 +35,8 @@ To convert a string to a Date object, use the [str_to_date](api/other/date.md) m
 You can generate a date convert function as follows:
 
 ~~~js
-var formatFunc = scheduler.date.str_to_date("%d/%m/%Y");
-var date = formatFunc("29/06/2019"); // -> 29 June, 2019 00:00:00
+const formatFunc = scheduler.date.str_to_date("%d/%m/%Y");
+const date = formatFunc("29/06/2027"); // -> 29 June, 2027 00:00:00
 ~~~
 
 
@@ -45,8 +45,8 @@ var date = formatFunc("29/06/2019"); // -> 29 June, 2019 00:00:00
 To convert local time to UTC, use the [convert_to_utc](api/other/date.md) method:
 
 ~~~js
-//29 June, 2019 14:00 (local time) -> 29 June, 2019 12:00 (utc)
-var time = scheduler.date.convert_to_utc(new Date(2019, 05, 29, 14, 00));
+//29 June, 2027 14:00 (local time) -> 29 June, 2027 12:00 (utc)
+const time = scheduler.date.convert_to_utc(new Date(2027, 05, 29, 14, 00));
 ~~~
 
 ## Adding(subtracting) a time interval to(from) a date
@@ -54,8 +54,8 @@ var time = scheduler.date.convert_to_utc(new Date(2019, 05, 29, 14, 00));
 To add(subtract) a time interval to(from) the specified date, use the [add](api/other/date.md) method:
 
 ~~~js
-//adds 1 year to the specified date: 29 June, 2019 -> 29 June, 2020
-var newDate = scheduler.date.add(new Date(2019, 05, 29), 1, 'year');
+//adds 1 year to the specified date: 29 June, 2027 -> 29 June, 2020
+const newDate = scheduler.date.add(new Date(2027, 05, 29), 1, 'year');
 ~~~
 
 

@@ -23,10 +23,10 @@ The method is deprecated.
 ### Example
 
 ~~~jsx
-var spanId = scheduler.blockTime(new Date(2013,2,5), "fullday");
+const spanId = scheduler.blockTime(new Date(2027,2,5), "fullday");
 ...
-//cancels blocking from 0 till 8 and from 18 till 24 hours for February 5, 2013
-scheduler.unblockTime(new Date(2013,2,5), [0,10*60]);
+//cancels blocking from 0 till 8 and from 18 till 24 hours for February 5, 2027
+scheduler.unblockTime(new Date(2027,2,5), [0,10*60]);
 ~~~
 
 ### Related API

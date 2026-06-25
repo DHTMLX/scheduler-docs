@@ -28,7 +28,7 @@ scheduler.createTimelineView({
     render:"bar"
 });
 
-var configObj = scheduler.matrix;
+const configObj = scheduler.matrix;
 ~~~
 
 ### Related samples
@@ -57,7 +57,7 @@ var configObj = scheduler.matrix;
 
 Например, если нужно обновить значения x_step, x_size и x_start для timeline из приведённого выше примера:
 
-~~~
+~~~js
 //один из вариантов:
 configObj.x_step = 50;
 configObj.x_size = 28;
@@ -79,4 +79,5 @@ scheduler.createTimelineView({
     render:"bar"
 });
 ~~~
+
 *если timeline создаётся с именем, которое уже существует, scheduler не добавит новый timeline, а обновит существующий.*

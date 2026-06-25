@@ -1,37 +1,37 @@
 ---
-sidebar_label: "destroyCalendar"
-title: "destroyCalendar method"
-description: "удаляет ранее созданный мини-календарь"
+sidebar_label: destroyCalendar
+title: "destroyCalendar метод"
+description: "уничтожает ранее созданный мини-календарь"
 ---
 
 # destroyCalendar
 
 ### Description
 
-@short: Удаляет ранее созданный мини-календарь
+@short: Уничтожает ранее созданный мини-календарь
 
 @signature: destroyCalendar: (name?: any) =\> void
 
 ### Parameters
 
-- `name` - (required) *object* - объект мини-календаря, который нужно удалить (если не указан, scheduler попытается удалить самый недавно созданный мини-календарь)
+- `name` - (optional) *object* - объект мини-календаря (если не указано, планировщик попытается <br> удалить последний созданный мини календарь)
 
 ### Example
 
 ~~~jsx
-var calendar = scheduler.renderCalendar(...);
+const calendar = scheduler.renderCalendar(...);
 ...
 scheduler.destroyCalendar(calendar);
 ~~~
 
 ### Related samples
-- [Mini calendar in the scheduler header](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
-- [Mini calendar with the recurring events](https://docs.dhtmlx.com/scheduler/samples/05_calendar/06_recurring_form.html)
+- [Мини-календарь в заголовке планировщика](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
+- [Мини-календарь с повторяющимися событиями](https://docs.dhtmlx.com/scheduler/samples/05_calendar/06_recurring_form.html)
 
 ### Details
 
 :::note
- Для работы метода требуется активированный плагин [minical](guides/extensions-list.md#minicalendardatepicker). 
+ Метод требует, чтобы плагин [minical](guides/extensions-list.md#mini-calendar-date-picker) был активирован.
 :::
 
 ### Related API

@@ -1,28 +1,28 @@
 ---
-sidebar_label: "onEventUnselected"
+sidebar_label: onEventUnselected
 title: "onEventUnselected event"
-description: "срабатывает, когда пользователь отменяет выбор события, выбрав другое"
+description: "срабатывает, когда пользователь снимает выделение с события, выбирая другое событие"
 ---
 
 # onEventUnselected
 
 ### Description
 
-@short: Срабатывает, когда пользователь отменяет выбор события, выбрав другое
+@short: Срабатывает, когда пользователь снимает выделение с события, выбирая другое событие
 
 @signature: onEventUnselected: (id: string) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string* - id события, которое было отменено в выборе
+- `id` - (required) *string* - идентификатор события, которое было снято с выделения
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onEventUnselected", function(id){
-    //любая пользовательская логика здесь
+    // любая ваша логика здесь
 });
 ~~~
 
-### Related API
+### Связанные API
 - [onEventSelected](api/event/oneventselected.md)

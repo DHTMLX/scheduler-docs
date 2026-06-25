@@ -23,7 +23,7 @@ description: "definiert den Zeitanteil der Start- und Enddaten eines Events. Es 
 
 ~~~jsx
 scheduler.templates.event_date = function(date){
-    var formatFunc = scheduler.date.date_to_str(scheduler.config.hour_date);
+    const formatFunc = scheduler.date.date_to_str(scheduler.config.hour_date);
     return formatFunc(date);
 }
 ~~~

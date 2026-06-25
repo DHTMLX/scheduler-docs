@@ -8,14 +8,14 @@ description: "удаляет экземпляр планировщика"
 
 ### Description
 
-@short: Удаляет экземпляр планировщика
+@short: Уничтожает экземпляр планировщика
 
 @signature: destructor: () =\> void
 
 ### Example
 
 ~~~jsx
-var myScheduler = Scheduler.getSchedulerInstance();
+const myScheduler = Scheduler.getSchedulerInstance();
  
 //удаление экземпляра планировщика
 myScheduler.destructor();
@@ -42,7 +42,7 @@ myScheduler.destructor();
 - [onDestroy](api/event/ondestroy.md)
 
 ### Related Guides
-- [Создание нескольких планировщиков на странице](guides/multiple-per-page.md#destructorofscheduleranddataprocessorinstances)
+- [Создание нескольких планировщиков на странице](guides/multiple-per-page.md#destructor-of-scheduler-and-dataprocessor-instances)
 
 ### Change log
 - добавлено в версии 6.0

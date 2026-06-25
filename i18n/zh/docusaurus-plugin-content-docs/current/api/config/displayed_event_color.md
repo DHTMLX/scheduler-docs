@@ -17,7 +17,7 @@ description: "定义由 showEvent() 方法显示的事件的默认背景颜色"
 ~~~jsx
 scheduler.config.displayed_event_color="#DFEDF7";
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
 **Default value:** #ffc5ab

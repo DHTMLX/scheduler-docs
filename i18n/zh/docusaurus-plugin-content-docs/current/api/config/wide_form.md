@@ -17,7 +17,7 @@ description: "控制是否显示标准（wide）lightbox，而非简短版本"
 ~~~jsx
 scheduler.config.wide_form = true;
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 **Default value:** true

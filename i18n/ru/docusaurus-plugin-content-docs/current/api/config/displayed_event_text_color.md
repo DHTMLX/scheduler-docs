@@ -1,14 +1,14 @@
 ---
-sidebar_label: "displayed_event_text_color"
-title: "displayed_event_text_color config"
-description: "определяет цвет шрифта по умолчанию для событий, отображаемых методом showEvent()"
+sidebar_label: displayed_event_text_color
+title: "конфигурация displayed_event_text_color"
+description: "устанавливает цвет шрифта по умолчанию для событий, получаемых методом showEvent()"
 ---
 
 # displayed_event_text_color
 
 ### Description
 
-@short: Определяет цвет шрифта по умолчанию для событий, отображаемых методом showEvent()
+@short: Устанавливает цвет шрифта по умолчанию для событий, получаемых методом showEvent()
 
 @signature: displayed_event_text_color: string
 
@@ -17,14 +17,14 @@ description: "определяет цвет шрифта по умолчанию
 ~~~jsx
 scheduler.config.displayed_event_text_color="#195D8A";
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
-**Default value:** #7e2727
+**Значение по умолчанию:** #7e2727
 
 ### Details
 
-Этот параметр доступен с версии 3.5 и используется специально с методом [showEvent](api/method/showevent.md).
+Параметр доступен начиная с версии 3.5 и используется только в контексте метода [showEvent](api/method/showevent.md).
 
 ### Related API
 - [showEvent](api/method/showevent.md)

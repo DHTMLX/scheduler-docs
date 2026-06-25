@@ -25,8 +25,8 @@ description: "erstellt ein neues Event und öffnet die Lightbox zur Bestätigung
 scheduler.addEventNow();
 //oder
 scheduler.addEventNow({
-    start_date: new Date(2013,0,10,8,30),
-    end_date:     new Date(2013,0,10,10,30),
+    start_date: new Date(2027,0,10,8,30),
+    end_date:     new Date(2027,0,10,10,30),
     text:    "Meeting",
     holder:    "John", //userdata
     room:    "5"     //userdata

@@ -19,7 +19,7 @@ description: "控制在 Timeline 或 Units 视图中拖动分配给多个 sectio
 ~~~jsx
 scheduler.config.multisection_shift_all = false;
 
-scheduler.init('scheduler_here', new Date(2012, 5, 30), "timeline");
+scheduler.init('scheduler_here', new Date(2027, 5, 30), "timeline");
 ~~~
 
 **Default value:** true

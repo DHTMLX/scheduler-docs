@@ -28,7 +28,7 @@ scheduler.templates.grid_field = function(field_name, event){
 };
 ~~~
 
-**Applicable views:** [Grid view](views/grid.md)
+**Доступные представления:** [Grid view](views/grid.md)
 
 ### Details
 

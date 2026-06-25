@@ -19,7 +19,7 @@ description: "Entfernt eine Markierung oder Blockierung, die mit der Methode add
 ### Example
 
 ~~~jsx
-var spanID = scheduler.addMarkedTimespan({  
+const spanID = scheduler.addMarkedTimespan({  
     days:  [0,1], 
     zones: "fullday"              
 });
@@ -48,7 +48,7 @@ Diese Methode unterstützt drei Aufrufarten:
 3. **deleteMarkedTimespan(config)** - entfernt Timespans, die den angegebenen Konfigurationseigenschaften entsprechen. 
   
 ~~~js
-var spanID = scheduler.addMarkedTimespan({  
+const spanID = scheduler.addMarkedTimespan({  
     days:  [3,4,5], 
     zones: [100,400]          
 });

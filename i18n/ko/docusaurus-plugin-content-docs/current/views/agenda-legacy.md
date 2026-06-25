@@ -74,11 +74,11 @@ Agenda 뷰에는 로케일에 3개의 라벨이 포함되어 있습니다:
 Agenda 뷰에 표시되는 날짜의 범위를 지정하려면, [agenda_end](api/config/agenda_end.md) 및 [agenda_start](api/config/agenda_start.md) 속성을 사용하세요:
 
 ~~~js
-//2019년 6월 1일부터의 날짜를 표시하려면
-scheduler.config.agenda_start = new Date(2019, 5, 1); 
+//2026년 6월 1일부터의 날짜를 표시하려면
+scheduler.config.agenda_start = new Date(2026, 5, 1); 
 
-//2020년 6월 1일까지의 날짜를 표시하려면
-scheduler.config.agenda_end = new Date(2020, 5, 1);   
+//2027년 6월 1일까지의 날짜를 표시하려면
+scheduler.config.agenda_end = new Date(2027, 5, 1);   
 ~~~
 
 ## 다음/이전/오늘 버튼 활성화 

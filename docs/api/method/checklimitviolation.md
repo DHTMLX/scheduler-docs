@@ -22,13 +22,13 @@ description: "checks whether the specified event takes place at the blocked time
 ### Example
 
 ~~~jsx
-var event = {
+const event = {
    text : "New Event",
-   start_date : new Date(2013, 02, 20, 10, 00),
-   end_date : new Date(2013, 02, 20, 14, 00)
+   start_date : new Date(2027, 02, 20, 10, 00),
+   end_date : new Date(2027, 02, 20, 14, 00)
 };
 
-var isBlocked = scheduler.checkLimitViolation(event); //returns 'true' or 'false'
+const isBlocked = scheduler.checkLimitViolation(event); //returns 'true' or 'false'
 ~~~
 
 ### Details

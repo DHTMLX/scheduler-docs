@@ -36,7 +36,7 @@ scheduler.templates.unit_scale_text = function(key, label, unit, date) {
 };
 ~~~
 
-**Applicable views:** [Units view](views/units.md)
+**Доступные представления:** [Units view](views/units.md)
 
 ### Details
 

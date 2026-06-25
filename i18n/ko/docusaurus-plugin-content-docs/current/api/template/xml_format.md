@@ -24,8 +24,8 @@ description: "날짜 객체를 특정 템플릿에 따라 문자열로 변환합
 ### Example
 
 ~~~jsx
-var cfg = scheduler.config;
-var    date_to_str = scheduler.date.date_to_str(cfg.xml_date, cfg.server_utc);
+const cfg = scheduler.config;
+const    date_to_str = scheduler.date.date_to_str(cfg.xml_date, cfg.server_utc);
 
 scheduler.templates.xml_format = function(date){
     return date_to_str(date);

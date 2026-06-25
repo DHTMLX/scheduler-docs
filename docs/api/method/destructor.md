@@ -15,7 +15,7 @@ description: "destroys a scheduler instance"
 ### Example
 
 ~~~jsx
-var myScheduler = Scheduler.getSchedulerInstance();
+const myScheduler = Scheduler.getSchedulerInstance();
  
 //destroying a scheduler instance
 myScheduler.destructor();

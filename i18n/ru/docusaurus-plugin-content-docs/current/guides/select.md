@@ -8,7 +8,7 @@ sidebar_label: "Select"
 ![select_editor](/img/select_editor.png)
 
 ~~~js
-var alert_opts = [
+const alert_opts = [
     { key: 1, label: 'None' },
     { key: 2, label: 'On start date' },
     { key: 3, label: '1 day before' }
@@ -21,37 +21,36 @@ scheduler.config.lightbox.sections = [
     { name:"select", height:40, map_to:"type", type:"select", options:alert_opts},
     { name:"time", height:72, type:"time", map_to:"auto"}
 ];
-~~~            
+~~~
 
-[Basic select editor in the lightbox](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/08_options.html)
+[Основной редактор выбора во lightbox](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/08_options.html)
+
 
 
 ## Инициализация
 
-Чтобы добавить элемент Select в lightbox, выполните следующие шаги:
+Чтобы добавить элемент управления Select в lightbox, выполните следующие шаги:
 
-1. Добавьте секцию в конфигурацию lightbox:
+1. <b>Добавьте секцию в конфигурацию lightbox:</b>
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     { name:"description", ... },
     { name:"alert", height:40,map_to:"type",type:"select", options:alert_opts},
     { name:"time", ...}
 ];
 ~~~
-2. Задайте подпись для секции:
+2. <b>Установите ярлык для секции:</b>
 ~~~js
 scheduler.locale.labels.section_select = "Alert";
 ~~~
 
-  
+
+[Основной редактор выбора во lightbox](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/08_options.html)
 
 
-[Basic select editor in the lightbox](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/08_options.html)
+## Свойства
 
-
-## Свойства {#properties}
-
-Ниже приведены основные свойства, которые часто используются для элемента 'select' (полный список смотрите [здесь](api/config/lightbox.md)):
+Следующие свойства в основном важны и обычно задаются для элемента управления 'select' (полный список см. [здесь](api/config/lightbox.md)):
 
 <table class="webixdoc_links">
   <tbody>
@@ -65,19 +64,19 @@ scheduler.locale.labels.section_select = "Alert";
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>map_to</b></td>
-  <td>(<i>string</i>) имя свойства данных, к которому привязана секция</td>
+  <td>(<i>string</i>) имя свойства данных, которое будет сопоставлено секции</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>type</b></td>
-  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) тип элемента управления, используемого в секции</td>
+  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) тип элемента управления секции</td>
   </tr>
   <tr>
-  <td class="webixdoc_links0"><b>options</b></td>
-  <td>(<i>array of objects</i>) определяет варианты выбора для элементов 'select', 'multiselect', 'radio' и 'combo'. Каждый объект представляет вариант и содержит: <ul> <li><b>key</b> - (<i>string</i>) идентификатор варианта, сопоставляется с соответствующим свойством данных события</li> <li><b>label</b> - (<i>string</i>) отображаемая подпись варианта</li> </ul></td> 
+  <td class="webixdoc_links0" style="vertical-align: top;"><b>options</b></td>
+  <td>(<i>array of objects</i>) определяет варианты выбора элемента управления (<b>для контролов 'select', 'multiselect', 'radio', 'combo'</b>). Каждый объект в массиве задаёт один вариант и имеет следующие свойства: <ul> <li><b>key</b> - (<i>string</i>) идентификатор варианта. Это свойство сравнивается со свойством данных события для назначения опций события</li> <li><b>label</b> - (<i>string</i>) ярлык варианта</li> </ul></td> 
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>onchange</b></td>
-  <td>(<i>function</i>) функция-обработчик события, вызывается при изменении значения элемента управления [Linking select controls in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/26_linked_selects_in_lightbox.html)</td>
+  <td>(<i>function</i>) задаёт функцию обработчика события 'onchange' для элемента управления секции [Linking select controls in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/26_linked_selects_in_lightbox.html)</td>
   </tr>
   </tbody>
 </table>
@@ -85,10 +84,10 @@ scheduler.locale.labels.section_select = "Alert";
 
 ## Заполнение элемента управления данными
 
-Обычно значения для элемента Select задаются через параметр [options](api/config/lightbox.md):
+Обычно, чтобы задать значения для элемента управления Select, следует использовать параметр [options](api/config/lightbox.md):
 
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     {      name:"alert", type:"select", 
         ...
         options:[
@@ -100,14 +99,14 @@ scheduler.config.lightbox.sections =
 ];
 ~~~
 
-Каждый элемент массива [options](api/config/lightbox.md) должен содержать два обязательных свойства:
+Элементы в параметре [options](api/config/lightbox.md) должны иметь 2 обязательных свойства:
 
 - **key** - идентификатор варианта
-- **label** - отображаемая подпись варианта
+- **label** - ярлык варианта
 
-## Динамическое изменение вариантов
+## Изменение опций динамически
 
-Чтобы загрузить варианты с сервера, присвойте свойству [options](api/config/lightbox.md) значение, возвращаемое методом [serverList](api/method/serverlist.md):
+Чтобы заполнить элемент управления данными с сервера, задайте параметр [options](api/config/lightbox.md) значением, возвращаемым методом [serverList](api/method/serverlist.md):
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -116,30 +115,29 @@ scheduler.config.lightbox.sections = [
     {name:"time", ...}
 ];
 
-scheduler.load("./data/types");
+scheduler.load("/api/types");
 ~~~
 
 :::note
-Подробнее о методе **serverList** можно узнать в [соответствующей статье](api/method/serverlist.md).
+Подробности о методе **serverList** приведены в [соответствующей статье](api/method/serverlist.md).
 :::
 
-Ответ сервера для метода [load](api/method/load.md) должен содержать коллекцию с именем, соответствующим названию server list, в формате JSON
-[пример](guides/data-formats.md#json-with-collections):
+Данные ответа для метода [load](api/method/load.md) должны содержать коллекцию с именем списка сервера, указанным в JSON [из следующего формата](guides/data-formats.md#json-with-collections):
 
 ~~~js
 { 
    "data":[
       {
           "id":"1",
-          "start_date":"2019-03-02 15:00:00",
-          "end_date":"2019-03-04 16:00:00",
+          "start_date":"2027-03-02 15:00:00",
+          "end_date":"2027-03-04 16:00:00",
           "text":"Interview",
           "type":"1"
       },
       {
           "id":"2",
-          "start_date":"2019-03-02 17:00:00",
-          "end_date":"2019-03-04 18:00:00",
+          "start_date":"2027-03-02 17:00:00",
+          "end_date":"2027-03-04 18:00:00",
           "text":"Performance review",
           "type":"2"
       }
@@ -155,12 +153,9 @@ scheduler.load("./data/types");
 ~~~
 
 
-[Populating a select editor from the server](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/09_connector_options.html)
+Метод [parse](api/method/parse.md) можно также использовать, если нужно загрузить опции после инициализации планировщика.
 
-
-Метод [parse](api/method/parse.md) также может быть использован для загрузки вариантов после инициализации Gantt.
-
-Чтобы обновить варианты элемента управления новыми значениями, используйте метод [updateCollection](api/method/updatecollection.md):
+Если нужно обновить указанные опции элемента управления новыми, можно использовать метод [updateCollection](api/method/updatecollection.md):
 
 ~~~js
 scheduler.updateCollection("type", [      
@@ -170,4 +165,4 @@ scheduler.updateCollection("type", [
 ]);
 ~~~
 
-Более подробную информацию см. в статье [scheduler.serverList](api/method/serverlist.md).
+Подробности смотрите в статье [scheduler.serverList](api/method/serverlist.md).

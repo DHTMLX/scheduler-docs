@@ -17,7 +17,7 @@ description: "控制显示多日事件部分的高度"
 ~~~jsx
 scheduler.config.multi_day_height_limit = 30;
 ...
-scheduler.init('scheduler_here',new Date(2013,7,11),"week");
+scheduler.init('scheduler_here',new Date(2027,7,11),"week");
 ~~~
 
 **Default value:** 200

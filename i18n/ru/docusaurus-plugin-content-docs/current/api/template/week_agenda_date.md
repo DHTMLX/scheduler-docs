@@ -28,7 +28,7 @@ scheduler.templates.week_agenda_date = function(start, end){
 };
 ~~~
 
-**Applicable views:** [Week Agenda view](views/weekagenda.md)
+**Доступные представления:** [Week Agenda view](views/weekagenda.md)
 
 ### Details
 

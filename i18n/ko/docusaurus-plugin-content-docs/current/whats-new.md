@@ -1,11 +1,112 @@
 ---
-title: "What's New"
-sidebar_label: "What's New"
+title: "새로운 기능"
+sidebar_label: "새로운 기능"
 ---
 
-# What's New
+# 새로운 기능
 
-이전 버전의 Scheduler에서 업그레이드하는 경우, 자세한 내용은 ["Migration From Older Versions"](migration.md)를 참고하세요.
+오래된 버전의 Scheduler를 업데이트하는 경우, 자세한 내용은 [이전 버전에서의 마이그레이션](migration.md)을 확인하십시오.
+
+## 7.2.13
+-------------
+<span class='release_date'>2026년 3월 31일. 버그 수정 릴리스</span>
+
+### 수정 사항
+
+- React Scheduler에서 잘못된 체험 경고를 수정
+- React Scheduler에서 이벤트를 편집할 때 기존 이벤트에 변경 사항이 적용되지 않던 원격 업데이트 관련 회귀를 수정
+
+
+## 7.2.12
+-------------
+<span class='release_date'>2026년 3월 23일. 버그 수정 릴리스</span>
+
+### 수정 사항
+
+- [cookie] 플러그인이 활성화된 상태에서 비기본 테마를 사용할 때 [React Scheduler](integrations/react/overview.md)에서 페이지를 다시 로드할 때 발생하는 충돌을 수정
+- [React Scheduler](integrations/react/overview.md)에서 data 프롭의 save URL이 올바르게 적용되지 않던 회귀를 수정
+- 이 및 이후의 이벤트 모드에서 반복 이벤트의 두 번째 이후 항목을 편집할 때 모든 [Lightbox](guides/configuring-the-lightbox.md) 필드 변경이 적용되지 않던 문제를 수정
+- 이벤트 조건에 따라 동적으로 변경되는 [Quick Info](guides/quick-info.md) 버튼이 팝업을 올바르게 업데이트하지 않던 문제를 수정
+- "This and following events" 모드에서 단일 [recurring event](guides/recurring-events.md) 발생의 텍스트가 이후 항목 편집 후에 덮어써지던 문제를 수정
+- 긴 이벤트 설명을 올바르게 처리하기 위한 [Quick Info](guides/quick-info.md) 팝업의 오버플로우 스타일을 수정
+- [useState] 함수를 통해 기존 데이터 세트에 이벤트를 추가할 때 발생하던 스크립트 오류를 수정
+
+### 업데이트
+
+- [recurring event confirmation modal](guides/recurring-events.md#customconfirmationmodal)을 사용자 정의 대화상자로 대체하는 기능을 추가
+- [recurring event confirmation modal](integrations/react/overview.md#customizingtherecurrenceconfirmationmodal)을 React Scheduler에서 modals.onRecurrenceConfirm 속성을 통해 대체하는 기능을 추가
+
+
+## 7.2.11
+-------------
+<span class='release_date'>2026년 1월 12일. 버그 수정 릴리스</span>
+
+### 수정 사항
+
+- [React Scheduler](integrations/react/overview.md)에서 `save` 핸들러가 새 ID를 반환하지 않는 경우 새 이벤트가 중복 생성되던 문제를 수정
+- [Timeline view](views/timeline.md) 템플릿이 [React Scheduler]( integrations/react/overview.md)에서 적용되지 않던 문제를 수정
+- 필터링이 사용될 때 Timeline 뷰에서 이벤트가 섹션에 잘못 바인딩되던 문제를 수정
+- [Agenda view](views/agenda.md)에서 `date` 섹션이 [header 구성](guides/initialization.md#initializing-scheduler-via-header-config)에 포함되지 않았을 때 발생하던 스크립트 오류를 수정
+- [Material skin](guides/skins.md#material-skin)을 사용할 때 Year 뷰와 Agenda 뷰의 헤더 요소가 잘못 표시되던 문제를 수정
+- 플러그인 기반 초기 뷰에서 표준 뷰로 전환할 때 [React Scheduler](integrations/react/overview.md)의 레이아웃이 깨지던 문제를 수정
+- 모든-day 반복 이벤트의 지속 시간이 정확히 24시간인 경우 팬텀 이벤트 블록이 나타나던 문제를 수정
+- 동일한 날에 드래그로 다중 이벤트를 생성할 때 [Month view](views/month.md)에서 연도 보기(year_view 플러그인 활성화)로 전환한 경우 [Lightbox](guides/configuring-the-lightbox.md)가 열리지 않던 문제를 수정
+
+
+## 7.2.10
+-------------
+<span class='release_date'>2025년 12월 10일. 버그 수정 릴리스</span>
+
+### 수정 사항
+
+- 다중 일 단위 보기에서 마지막 열에서 드래그할 때 이벤트가 왼쪽으로 점프하던 문제를 수정
+- 특정 월에서 Month 뷰의 일부 날짜 셀이 누락되던 문제를 수정
+- [container_autoresize](guides/extensions-list.md#container-autoresize) 플러그인 사용 시 모바일 기기에서 드래그-생성 문제가 수정
+- 가로 스크롤 후 수평 스크롤에서 드래그-생성이 불가능해지던 [Units view](views/units.md) 문제를 수정
+
+
+## 7.2.9
+---------------
+<span class='release_date'>2025년 9월 19일. 버그 수정 릴리스</span>
+
+### 수정 사항
+
+- [Timeline view](views/timeline.md)에서 발생하던 메모리 누수를 수정
+- [container_autoresize](guides/extensions-list.md#container-autoresize) 플러그인과 [Week Agenda](views/weekagenda.md) 뷰 간의 호환성 문제 수정
+- [onScaleDblClick](api/event/onscaledblclick.md)가 기대대로 트리거되지 않던 문제 수정
+- [onEventSave](api/event/oneventsave.md) 및 [DataProcessor](api/method/createdataprocessor.md)의 동작이 [recurring events](guides/recurring-events.md)와 함께 사용할 때 불일치하던 문제 수정
+- [React Scheduler](integrations/react/overview.md)에서 컴포넌트의 여러 인스턴스가 중복된 템플릿을 야기하던 문제 수정
+- React Scheduler에서 events prop 변경 처리의 부정확성 수정
+
+
+## 7.2.8
+
+<span class='release_date'>2025년 7월 30일. 버그 수정 릴리스</span>
+
+### 신규
+- [React Scheduler](integrations/react/overview.md)의 샘플이 Commercial, Enterprise, Ultimate, 및 Evaluation 패키지에 추가되었습니다
+
+### 수정 사항
+
+- [recurring event](guides/recurring-events.md)을 삭제한 후 이를 드래그하여 이동할 때 동작이 잘못되던 문제를 수정
+- modified 시리즈 인스턴스에 대해 [lightbox](guides/lightbox-editors.md)의 “Repeat Event” 컨트롤이 비활성화되도록 수정
+- [recurring events](guides/recurring-events.md)의 레거시 라벨 표시가 잘못되던 문제 수정
+- [max_month_events](api/config/max_month_events.md) 설정과 [multi-day events](views/month.md) 간의 충돌로 Month 뷰에서 이벤트가 사라지거나 겹치던 문제 수정
+- HTTPS를 통한 Scheduler의 쿠키에 이제 Secure 속성이 포함되도록 보장
+- [event_duration](api/config/event_duration.md) 설정이 구문 분석된 이벤트 데이터를 손상시키던 문제 수정
+- [time_step](api/config/time_step.md) 설정이 구문 분석된 이벤트 데이터를 손상시키던 문제 수정
+
+
+## 7.2.6
+
+<span class='release_date'>2025년 6월 26일. 버그 수정 릴리스</span>
+
+### 수정 사항
+
+- 이벤트 타이밍에서 초 단위 정밀도 관련 이슈 수정
+- 짧은 달 동안 Timeline 뷰의 드래그 동작이 잘못되던 문제 수정
+- Timeline 뷰에서 이벤트의 반올림이 잘못되던 문제 수정
+- DataProcessor가 custom router 인수에 !nativeeditor_status 속성을 추가하지 못하게 수정
 
 
 ## 7.2.5

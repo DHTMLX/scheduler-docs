@@ -1,7 +1,7 @@
 ---
-sidebar_label: "readonly"
+sidebar_label: readonly
 title: "readonly config"
-description: "включает режим только для чтения в scheduler"
+description: "активирует режим только для чтения в планировщике"
 ---
 
 # readonly
@@ -17,10 +17,10 @@ description: "включает режим только для чтения в sc
 ~~~jsx
 scheduler.config.readonly = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
 ### Related API
 - [readonly_form](api/config/readonly_form.md)

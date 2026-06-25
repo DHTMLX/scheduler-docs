@@ -1,5 +1,5 @@
 ---
-sidebar_label: "onEventSelected"
+sidebar_label: onEventSelected
 title: "onEventSelected event"
 description: "срабатывает, когда пользователь выбирает событие в планировщике"
 ---
@@ -8,19 +8,19 @@ description: "срабатывает, когда пользователь выб
 
 ### Description
 
-@short: Срабатывает, когда пользователь выбирает событие в планировщике
+@short: Срабатывает, когда пользователь выбирает событие в расписании
 
 @signature: onEventSelected: (id: string) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string* - ID выбранного события
+- `id` - (required) *string* - идентификатор события
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onEventSelected", function(id){
-    //любая ваша логика здесь
+    // любая ваша логика здесь
 });
 ~~~
 

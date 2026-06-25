@@ -15,7 +15,7 @@ description: "zeigt Tooltips für Events an"
 ### Example
 
 ~~~jsx
-var tooltip = scheduler.tooltip;
+const tooltip = scheduler.tooltip;
 tooltip.hide();
 tooltip.show(event, text);
 ~~~

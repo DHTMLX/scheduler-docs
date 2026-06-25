@@ -17,7 +17,7 @@ description: "definiert die maximale Anzahl von Events, die in einem einzigen Ze
 ~~~jsx
 scheduler.config.collision_limit = 2;
 ...
-scheduler.init('scheduler_here',new Date(2010,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** 1

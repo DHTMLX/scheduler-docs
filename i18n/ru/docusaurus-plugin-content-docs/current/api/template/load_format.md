@@ -23,7 +23,7 @@ description: "определяет формат запроса, использу
 
 ~~~jsx
 scheduler.templates.load_format = function(date){
-    var dateToStr_func = scheduler.date.date_to_str(scheduler.config.load_date);
+    const dateToStr_func = scheduler.date.date_to_str(scheduler.config.load_date);
     return  dateToStr_func(date);
     
 }

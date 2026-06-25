@@ -17,7 +17,7 @@ description: "Steuert, ob das Caching von GET-Anfragen im Browser aktiviert oder
 ~~~jsx
 scheduler.config.prevent_cache = true;  
 ...  
-scheduler.init('scheduler_here',new Date(2009,10,1),"month");
+scheduler.init('scheduler_here',new Date(2027,10,1),"month");
 ~~~
 
 **Default value:** false

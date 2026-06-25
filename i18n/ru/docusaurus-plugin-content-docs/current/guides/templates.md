@@ -1,62 +1,61 @@
 ---
-title: "Форматирование меток, дат, стилей"
-sidebar_label: "Форматирование меток, дат, стилей"
+title: "Форматирование подписей, дат, стилей"
+sidebar_label: "Форматирование подписей, дат, стилей"
 ---
 
-# Форматирование меток, дат, стилей
+# Форматирование подписей, дат, стилей
 
-Ознакомьтесь с ссылками для каждого вида, чтобы узнать, какие шаблоны он поддерживает.
+Перейдите по ссылке на вид, чтобы увидеть поддерживаемые им шаблоны.
 
-### Стандартные виды
+### Представления по умолчанию
 
-- [Шаблоны для дневного вида](views/day-view-templates.md)
-- [Шаблоны для Месячного Вида](views/month-view-templates.md)
+- [Шаблоны дневного вида](views/day-view-templates.md)
+- [Шаблоны месячного вида](views/month-view-templates.md)
 - [Шаблоны недельного вида](views/week-view-templates.md)
 
+### Расширения представлений
 
-### Расширенные виды
-
-- [Шаблоны представления Agenda](views/agenda-view-templates.md)
-- [Шаблоны представления грида](views/grid-view-templates.md)
-- [Шаблоны Map View](views/map-view-templates.md)
-- [Шаблоны представления Timeline](views/timeline-view-templates.md)
-- [Шаблоны WeekAgenda View](views/weekagenda-view-templates.md)
-- [Шаблоны Units View](views/units-view-templates.md)
-- [Шаблоны годового вида](views/year-view-templates.md)
+- [Шаблоны вида Agenda](views/agenda-view-templates.md)
+- [Шаблоны вида грида](views/grid-view-templates.md)
+- [Шаблоны вида карты](views/map-view-templates.md)
+- [Шаблоны вида Timeline](views/timeline-view-templates.md)
+- [Шаблоны вида WeekAgenda](views/weekagenda-view-templates.md)
+- [Шаблоны вида Units](views/units-view-templates.md)
+- [Шаблоны вида Year](views/year-view-templates.md)
 
 
 ### Общие для всех видов
 
 - [Шаблоны мини-календаря](guides/mini-calendar-templates.md)
-- [Lightbox](guides/common-templates.md#lightbox)
-- [Tooltips](guides/common-templates.md#tooltips)
-- [Touch support](guides/common-templates.md#touch-support)
-- [API templates](guides/common-templates.md#api-templates)
+- [Лайтбокс](guides/common-templates.md#lightbox)
+- [Тултипы](guides/common-templates.md#tooltips)
+- [Поддержка касания](guides/common-templates.md#touch-support)
+- [Шаблоны API](guides/common-templates.md#api-templates)
 
 
-## Указание шаблонов 
+## Указание шаблонов
 
-Шаблоны можно задавать двумя способами: через код или с помощью HTML-разметки.
+Вы можете задавать шаблоны двумя способами: либо из кода, либо с помощью HTML-разметки.
 
-### Задание шаблонов через код
+### Указание шаблонов с помощью кода
 
-По умолчанию шаблоны определяются как функции JavaScript, которые получают объект события или параметры даты и возвращают HTML-строку для вставки в макет:
+По умолчанию шаблоны можно определить как JS-функции, которые принимают объект события или аргументы даты и должны возвращать HTML-строку, которая будет вставлена в разметку:
 
 ~~~js
-scheduler.templates.event_text="function(start," end, event){
-    return "<a href='http://some.com/details.php?for="+event.id+"'>"
-    +event.text+"</a>";
-}
+scheduler.templates.event_text = (start, end, event) => {
+    return `<a href='http://some.com/details.php?for=${event.id}'>${event.text}</a>`;
+};
 ~~~
 
-### Задание шаблонов через разметку
+### Указание шаблонов через разметку
 
-Другой способ - определить шаблоны декларативно с помощью HTML. Для этого необходимо добавить расширение [html_templates](guides/extensions-list.md#html-templates) на страницу. После включения расширения шаблоны можно указывать так:
+В качестве альтернативы шаблоны можно определить декларативно через HTML. Этот подход требует добавления расширения [html_templates](guides/extensions-list.md#html-templates) на страницу.
+После включения расширения на странице вы можете указать шаблоны следующим образом:
 
 ~~~html
 <div class="template:event_text">
-    <a href='http://some.com/details.php?for="{event.id}"'>{event.text}<a>
+    <a href='http://some.com/details.php?for="{event.id}"'>{event.text}</a>
 </div>
 ~~~
 
-Полный список шаблонов доступен в [API документации](api/overview/templates_overview.md).
+Полный список шаблонов можно найти [в API](api/overview/templates_overview.md).

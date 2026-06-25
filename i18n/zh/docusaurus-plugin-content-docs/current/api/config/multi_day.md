@@ -17,7 +17,7 @@ description: "允许显示跨越多天的事件"
 ~~~jsx
 scheduler.config.multi_day = false;
     
-scheduler.init('scheduler_here', new Date(2020,7,11), "week");
+scheduler.init('scheduler_here', new Date(2027,7,11), "week");
 ~~~
 
 **Default value:** true

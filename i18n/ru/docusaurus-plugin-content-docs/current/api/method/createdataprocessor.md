@@ -1,28 +1,28 @@
 ---
-sidebar_label: "createDataProcessor"
+sidebar_label: createDataProcessor
 title: "createDataProcessor method"
-description: "создает новый экземпляр dataProcessor и связывает его с scheduler"
+description: "создает новый экземпляр dataProcessor и прикрепляет его к scheduler"
 ---
 
 # createDataProcessor
 
 ### Description
 
-@short: Создает новый экземпляр dataProcessor и связывает его с scheduler
+@short: Создает новый экземпляр dataProcessor и прикрепляет его к scheduler
 
 @signature: createDataProcessor: (config: any) =\> any
 
 ### Parameters
 
-- `config` - (required) *string | object* - объект конфигурации для dataProcessor
+- `config` - (required) *string | object* - конфигурационный объект dataProcessor
 
 ### Returns
-- ` dataProcessor` - (object) - созданный экземпляр dataProcessor
+- `dataProcessor` - (object) - объект dataProcessor
 
 ### Example
 
 ~~~jsx
-var dp = scheduler.createDataProcessor({
+const dp = scheduler.createDataProcessor({
     url: "/api",
     mode: "REST"
 });
@@ -30,12 +30,12 @@ var dp = scheduler.createDataProcessor({
 
 ### Details
 
-Этот метод принимает один из следующих типов параметров:
+Метод может принимать один из следующих типов параметров:
 
-1\. Объект с `{url:string, mode:string}`, указывающий предопределенный способ отправки данных
+1\. `{url:string, mode:string}` объект, задающий один из предопределённых режимов отправки данных
 
 ~~~js
-var dp = scheduler.createDataProcessor({
+const dp = scheduler.createDataProcessor({
    url: "/api",
    mode: "REST"
 });
@@ -43,23 +43,23 @@ var dp = scheduler.createDataProcessor({
 
 где:
 
-- url - конечная точка сервера
-- mode - метод отправки данных: "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
+- url - URL к серверу
+- mode - режим отправки данных на сервер: "JSON" | "REST-JSON" | "JSON" | "POST" | "GET"
 
-2\. В качестве альтернативы можно передать кастомный router объект:
+2\. Или объект router:
 
 ~~~js
-var dp = scheduler.createDataProcessor(router);
+const dp = scheduler.createDataProcessor(router);
 ~~~
 
-Здесь router может быть функцией:
+где router — либо функция:
 
 ~~~js
 // entity - "event"
 // action - "create"|"update"|"delete"
 // data - объект с деталями события
 // id – id обрабатываемого объекта (события)
-var dp = scheduler.createDataProcessor(function(entity, action, data, id) { 
+const dp = scheduler.createDataProcessor(function(entity, action, data, id) { 
     switch(action) {
         case "create":
                return scheduler.ajax.post(
@@ -82,10 +82,10 @@ var dp = scheduler.createDataProcessor(function(entity, action, data, id) {
 });
 ~~~
 
-или объектом со структурой:
+или объектом следующей структуры:
 
 ~~~js
-var dp = scheduler.createDataProcessor({ 
+const dp = scheduler.createDataProcessor({ 
    event: {
       create: function(data) {},
       update: function(data, id) {},
@@ -94,7 +94,7 @@ var dp = scheduler.createDataProcessor({
 });
 ~~~
 
-Каждая функция в router объекте должна возвращать либо Promise, либо объект с ответом данных. Это позволяет dataProcessor обновлять id в базе данных и подключать событие **onAfterUpdate**.
+Все функции объекта router должны возвращать либо Promise, либо объект ответа данных. Это необходимо для того, чтобы dataProcessor мог применять идентификатор базы данных и подключать обработчик события **onAfterUpdate** к data processor.
 
 ~~~js
 router = function(entity, action, data, id) {
@@ -105,7 +105,7 @@ router = function(entity, action, data, id) {
 }
 ~~~
 
-Такая гибкость позволяет DataProcessor обрабатывать сохранение данных в localStorage или других типах хранилищ, не привязанных к конкретному URL, или когда разные серверы (URL) управляют операциями создания и удаления.
+Таким образом, вы можете использовать DataProcessor для сохранения данных в localStorage или в любом другом хранилище, не связанном с конкретным URL, или в случае, если существуют два разных сервера (URLs), ответственные за создание и удаление объектов.
 
 ### Related Guides
 - [Интеграция с серверной стороной](guides/server-integration.md)

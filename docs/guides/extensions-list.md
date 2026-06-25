@@ -5,12 +5,12 @@ sidebar_label: "Full List of Extensions"
 
 # Full List of Extensions
 
-dhtmlxScheduler includes a number of extensions which add extra functionality to the standard behavior. 
+dhtmlxScheduler includes a number of extensions which add extra functionality to the standard behavior.
 
-To use an extension, you should activate it with the help of the [plugins](api/method/plugins.md) method.
+To use an extension, activate it with the [`plugins()`](api/method/plugins.md) method.
 
 :::info
-In v6.0, the extensions code files were removed from the **ext** folder of the scheduler's codebase and included into the *dhtmlxscheduler.js* file. 
+In v6.0, the extensions code files were removed from the **ext** folder of the scheduler's codebase and included into the *dhtmlxscheduler.js* file.
 
 If you use dhtmlxScheduler 5.3 and earlier versions, check the [migration article](migration.md#53---60).
 :::
@@ -29,12 +29,9 @@ scheduler.plugins({
 
 Article: [Month View](views/month.md)
 
-
 API: [active_link_view](api/config/active_link_view.md)
 
-
-[Month days as links](https://docs.dhtmlx.com/scheduler/samples/03_extensions/06_links_plugin.html)
-
+Sample: [Month days as links](https://docs.dhtmlx.com/scheduler/samples/03_extensions/06_links_plugin.html)
 
 ## Agenda View
 
@@ -50,9 +47,7 @@ scheduler.plugins({
 
 Article: [Agenda View](views/agenda.md)
 
-
-[Agenda view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/03_agenda_view.html)
-
+Sample: [Agenda view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/03_agenda_view.html)
 
 ## All Timed
 
@@ -68,8 +63,7 @@ scheduler.plugins({
 
 API: [all_timed](api/config/all_timed.md) 
 
-
-[Displaying multi-day events in the regular way](https://docs.dhtmlx.com/scheduler/samples/03_extensions/26_multi_day_visible.html)
+Sample: [Displaying multi-day events in the regular way](https://docs.dhtmlx.com/scheduler/samples/03_extensions/26_multi_day_visible.html)
 
 ## Collision
 
@@ -81,13 +75,11 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Related resources
 
 Article: [Preventing Double Events in a Time Slot](guides/collisions.md) 
 
-
-[Controlling the number of events in a time slot](https://docs.dhtmlx.com/scheduler/samples/03_extensions/15_collision.html)
+Sample: [Controlling the number of events in a time slot](https://docs.dhtmlx.com/scheduler/samples/03_extensions/15_collision.html)
 
 ## Container Autoresize
 
@@ -105,13 +97,11 @@ Article: [dhtmlxScheduler in Plain JS/HTML](guides/initialization.md#scheduler-a
 
 API: [container_autoresize](api/config/container_autoresize.md) 
 
-
-[Autoresizing the scheduler container](https://docs.dhtmlx.com/scheduler/samples/03_extensions/28_container_autoresize.html)
-
+Sample: [Autoresizing the scheduler container](https://docs.dhtmlx.com/scheduler/samples/03_extensions/28_container_autoresize.html)
 
 ## Cookie
 
-Saves the scheduler current state (mode and date ) in cookies.
+Saves the scheduler current state (mode and date) in cookies.
 
 ~~~js
 scheduler.plugins({
@@ -121,8 +111,7 @@ scheduler.plugins({
 
 #### Related resources
 
-[Work with cookies](https://docs.dhtmlx.com/scheduler/samples/03_extensions/08_cookies_plugin.html)
-
+Sample: [Work with cookies](https://docs.dhtmlx.com/scheduler/samples/03_extensions/08_cookies_plugin.html)
 
 ## Daytimeline
 
@@ -138,12 +127,11 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Related resources
 
 Article: [Timeline View](views/timeline.md)
 
-[Days as Timeline rows](https://docs.dhtmlx.com/scheduler/samples/06_timeline/14_days_as_sections.html)
+Sample: [Days as Timeline rows](https://docs.dhtmlx.com/scheduler/samples/06_timeline/14_days_as_sections.html)
 
 
 ## Drag-n-Drop between Schedulers
@@ -164,7 +152,6 @@ scheduler.plugins({
 
 Article: [Drag-and-drop between Schedulers](guides/drag-between.md)
 
-
 ## Editors
 
 A code file for the [radio](guides/radio.md), [combo](guides/combo.md), [checkbox](guides/checkbox.md) controls of the lightbox.
@@ -175,18 +162,15 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Related resources
 
-Article: [](guides/lightbox-editors.md)
+Article: [Lightbox Editors](guides/lightbox-editors.md)
 
-
-[Radio button in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/14_radio_buttons_section.html)
-
+Sample: [Radio button in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/14_radio_buttons_section.html)
 
 ## Expand
 
-Adds the "expand" icon to the right corner of the scheduler. A click on this icon changes 
+Adds the "expand" icon to the right corner of the scheduler. A click on this icon changes
 the scheduler's size from original to 'full screen' and vice versa.
 
 ~~~js
@@ -195,17 +179,13 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Related resources
 
-API: [expand](api/method/expand.md), [collapse](api/method/collapse.md) 
-
+API: [`expand()`](api/method/expand.md), [`collapse()`](api/method/collapse.md)
 
 Events: [onBeforeExpand](api/event/onbeforeexpand.md), [onBeforeCollapse](api/event/onbeforecollapse.md), [onExpand](api/event/onexpand.md), [onCollapse](api/event/oncollapse.md)
- 
 
-[Full-screen view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/05_expand_plugin.html)
-
+Sample: [Full-screen view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/05_expand_plugin.html)
 
 ## Export service
 
@@ -219,11 +199,9 @@ scheduler.plugins({
 
 #### Related resources
 
-Article: [Export to PDF](export/pdf.md) , [Export to PNG](export/png.md)
+Article: [Export to PDF](export/pdf.md), [Export to PNG](export/png.md)
 
-
-[Export to PDF/PNG](https://docs.dhtmlx.com/scheduler/samples/04_export/06_online_export.html)
-
+Sample: [Export to PDF/PNG](https://docs.dhtmlx.com/scheduler/samples/04_export/06_online_export.html)
 
 ## Grid View
 
@@ -239,14 +217,11 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Related resources
 
 Article: [Grid View](views/grid.md)
 
-
-[Grid view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/27_grid_view.html)
-
+Sample: [Grid view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/27_grid_view.html)
 
 ## HTML Templates
 
@@ -262,7 +237,7 @@ scheduler.plugins({
 
 Article: [Templates](guides/templates.md#specifying-templates-with-code)
 
-[Specifying templates with HTML](https://docs.dhtmlx.com/scheduler/samples/03_extensions/09_html_templates_plugin.html)
+Sample: [Specifying templates with HTML](https://docs.dhtmlx.com/scheduler/samples/03_extensions/09_html_templates_plugin.html)
 
 
 ## Keyboard Navigation
@@ -279,9 +254,9 @@ scheduler.plugins({
 
 Article: [Keyboard Navigation](guides/keyboard-navigation.md)
 
-[Keyboard Navigation and WAI-ARIA - Flat Skin](https://docs.dhtmlx.com/scheduler/samples/13_accessibility/01_regular_skin_all_views.html)
+Sample: [Keyboard Navigation and WAI-ARIA - Flat Skin](https://docs.dhtmlx.com/scheduler/samples/13_accessibility/01_regular_skin_all_views.html)
 
-[Keyboard navigation in the scheduler](https://docs.dhtmlx.com/scheduler/samples/03_extensions/07_navigation_plugin.html)
+Sample: [Keyboard navigation in the scheduler](https://docs.dhtmlx.com/scheduler/samples/03_extensions/07_navigation_plugin.html)
 
 ## Legacy
 
@@ -311,7 +286,7 @@ scheduler.plugins({
 
 Article: [Blocking and Marking Dates](guides/limits.md)
 
-[Limiting dates for creating events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/16_limitation.html)
+Sample: [Limiting dates for creating events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/16_limitation.html)
 
 
 ## Map View
@@ -328,7 +303,7 @@ scheduler.plugins({
 
 Article: [Map View](views/map.md)
 
-[Map view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/19_map_view.html)
+Sample: [Map view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/19_map_view.html)
 
 
 ## Mini Calendar (Date Picker)
@@ -345,10 +320,10 @@ scheduler.plugins({
 
 Article: [Mini Calendar (Date Picker)](guides/minicalendar.md), [Time and Date](guides/time.md#mini-calendar-in-the-lightbox)
 
-[Mini calendar in the scheduler header](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
+Sample: [Mini calendar in the scheduler header](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
 
 
-## Multisection 
+## Multisection
 
 :::info
 This extension is available in PRO version only
@@ -366,11 +341,9 @@ scheduler.plugins({
 
 Article: [Timeline View](views/timeline.md), [Units View](views/units.md)
 
-
 API: [multisection](api/config/multisection.md)
 
-
-[Multisection events in Timeline and Units view](https://docs.dhtmlx.com/scheduler/samples/12_multisection_events/01_multisection_events.html)
+Sample: [Multisection events in Timeline and Units view](https://docs.dhtmlx.com/scheduler/samples/12_multisection_events/01_multisection_events.html)
 
 
 ## Multiselect
@@ -385,10 +358,9 @@ scheduler.plugins({
 
 #### Related resources
 
-Article: lightbox_editors.md
+Article: [Lightbox Editors](guides/lightbox-editors.md)
 
-
-[Multiselect control in the lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/21_multiselect_options.html)
+Sample: [Multiselect control in the lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/21_multiselect_options.html)
 
 
 ## Multisource
@@ -405,7 +377,7 @@ scheduler.plugins({
 
 Article: [Loading Data](guides/loading-data.md#loading-data-from-multiple-sources)
 
-[Loading data from multiple sources](https://docs.dhtmlx.com/scheduler/samples/03_extensions/13_multisource.html)
+Sample: [Loading data from multiple sources](https://docs.dhtmlx.com/scheduler/samples/03_extensions/13_multisource.html)
 
 ## Outerdrag
 
@@ -417,14 +389,11 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Related resources
 
 Article: [Drag-and-Drop Operations](guides/drag-between.md)
 
-
-[Integration with dhtmlxTree](https://docs.dhtmlx.com/scheduler/samples/10_integration/02_dhtmlxtree_outer_drag.html)
-
+Sample: [Integration with dhtmlxTree](https://docs.dhtmlx.com/scheduler/samples/10_integration/02_dhtmlxtree_outer_drag.html)
 
 ## PDF
 
@@ -437,7 +406,7 @@ Provides export to a PDF document.
 
 ## Quick Info
 
-Provides a popup with an event details.
+Provides a popup with event details.
 
 ~~~js
 scheduler.plugins({
@@ -445,12 +414,11 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Related resources
 
 Article: [Mobile Responsive Scheduler](guides/touch-support.md)
 
-[Touch-oriented scheduler](https://docs.dhtmlx.com/scheduler/samples/03_extensions/29_quick_info.html)
+Sample: [Touch-oriented scheduler](https://docs.dhtmlx.com/scheduler/samples/03_extensions/29_quick_info.html)
 
 
 ## Readonly
@@ -463,12 +431,11 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Related resources
 
 Article: [Read-only Mode](guides/readonly.md)
 
-[Read-only lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/12_readonly_form.html)
+Sample: [Read-only lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/12_readonly_form.html)
 
 
 ## Recurring
@@ -481,13 +448,12 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Related resources
 
 Article: [Recurring Events](guides/recurring-events.md)
 
-[Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
- 
+Sample: [Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
+
 
 ## Recurring Legacy
 
@@ -513,12 +479,11 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Related resources
 
 Article: [Data Serialization to XML, JSON, iCal](export/serialization.md)
 
-[Serialize scheduler events](https://docs.dhtmlx.com/scheduler/samples/04_export/01_serialize_data.html)
+Sample: [Serialize scheduler events](https://docs.dhtmlx.com/scheduler/samples/04_export/01_serialize_data.html)
 
 
 ## Timeline
@@ -535,14 +500,11 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Related resources
 
 Article: [Timeline View](views/timeline.md)
 
-
-[Bar mode](https://docs.dhtmlx.com/scheduler/samples/06_timeline/02_lines.html)
-
+Sample: [Bar mode](https://docs.dhtmlx.com/scheduler/samples/06_timeline/02_lines.html)
 
 ## Tooltip
 
@@ -554,14 +516,11 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Related resources
 
 Article: [Tooltips](guides/tooltips.md)
 
-
-[Tooltips](https://docs.dhtmlx.com/scheduler/samples/03_extensions/20_tooltip.html)
-
+Sample: [Tooltips](https://docs.dhtmlx.com/scheduler/samples/03_extensions/20_tooltip.html)
 
 ## Treetimeline
 
@@ -577,14 +536,11 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Related resources
 
 Article: [Timeline View](views/timeline.md)
 
-
-[Tree mode](https://docs.dhtmlx.com/scheduler/samples/06_timeline/03_tree.html)
-
+Sample: [Tree mode](https://docs.dhtmlx.com/scheduler/samples/06_timeline/03_tree.html)
 
 ## Units
 
@@ -600,33 +556,33 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Related resources
 
 Article: [Units View](views/units.md)
 
-[Units view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/02_units_view.html)
+Sample: [Units view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/02_units_view.html)
 
 
 ## URL
 
-Saves the scheduler's state (date, event's id, view) in URL.
+Saves the scheduler's state (date, event's id, view) in the URL.
 
-For example, 
+For example:
+
+```text
+10_url_date_plugin.html#date=2027-08-01,mode=month
+10_url_date_plugin.html#event=15
 ```
-<code> 10_url_date_plugin.html#date=2014-08-01,mode=month</code> or <code>10_url_date_plugin.html#event="15</code">
-```
+
 ~~~js
 scheduler.plugins({
     url: true
 });
 ~~~
 
-
 #### Related resources
 
-[Saving the scheduler state in URL](https://docs.dhtmlx.com/scheduler/samples/03_extensions/10_url_date_plugin.html)
-
+Sample: [Saving the scheduler state in URL](https://docs.dhtmlx.com/scheduler/samples/03_extensions/10_url_date_plugin.html)
 
 ## Week Agenda
 
@@ -642,12 +598,11 @@ scheduler.plugins({
 });
 ~~~
 
-
 #### Related resources
 
 Article: [Week Agenda View](views/weekagenda.md)
 
-[WeekAgenda view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/24_week_agenda.html)
+Sample: [WeekAgenda view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/24_week_agenda.html)
 
 
 ## Year
@@ -664,5 +619,4 @@ scheduler.plugins({
 
 Article: [Year View](views/year.md)
 
-
-[Year view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/04_year_view.html)
+Sample: [Year view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/04_year_view.html)

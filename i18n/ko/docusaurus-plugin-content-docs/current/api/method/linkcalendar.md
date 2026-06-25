@@ -20,7 +20,7 @@ description: "이 메서드는 스케줄러에서 활성 날짜가 변경될 때
 ### Example
 
 ~~~jsx
-var calendar = scheduler.renderCalendar({
+const calendar = scheduler.renderCalendar({
     container:"cal_here", 
     navigation:true,
     handler:function(date){

@@ -31,7 +31,7 @@ scheduler.templates.timeline_tooltip = function(start,end,event){
 };
 ~~~
 
-**Applicable views:** [Timeline view](views/timeline.md)
+**Доступные представления:** [Timeline view](views/timeline.md)
 
 ### Details
 

@@ -1,14 +1,14 @@
 ---
-sidebar_label: "onScaleDblClick"
-title: "onScaleDblClick event"
-description: "срабатывает при двойном клике пользователя по временной шкале"
+sidebar_label: onScaleDblClick
+title: "onScaleDblClick событие"
+description: "Срабатывает при двойном клике по временной шкале"
 ---
 
 # onScaleDblClick
 
 ### Description
 
-@short: Срабатывает при двойном клике пользователя по временной шкале
+@short: Срабатывает при двойном клике по временной шкале
 
 @signature: onScaleDblClick: () =\> void
 
@@ -16,6 +16,6 @@ description: "срабатывает при двойном клике польз
 
 ~~~jsx
 scheduler.attachEvent("onScaleDblClick", function(){
-    // здесь может быть любая пользовательская логика
+    // любая ваша логика здесь
 });
 ~~~

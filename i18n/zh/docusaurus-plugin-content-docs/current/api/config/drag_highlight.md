@@ -18,7 +18,7 @@ description: "此选项在拖动事件穿过scheduler的时间刻度时，高亮
 //关闭高亮显示
 scheduler.config.drag_highlight = false; /*!*/
 
-scheduler.init('scheduler_here',new Date(2010,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 scheduler.load("./data/events.xml");
 ~~~
 

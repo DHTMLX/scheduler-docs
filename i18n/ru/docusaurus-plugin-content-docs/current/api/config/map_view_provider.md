@@ -1,34 +1,40 @@
 ---
-sidebar_label: "map_view_provider"
-title: "map_view_provider config"
-description: "определяет, какой провайдер карты использовать"
+sidebar_label: map_view_provider
+title: "Конфигурация map_view_provider"
+description: "указывает провайдера карт"
 ---
 
 # map_view_provider
 
 ### Description
 
-@short: Определяет, какой провайдер карты использовать
+@short: Указывает провайдера карт
 
 @signature: map_view_provider: string
+
+### Values 
+
+- "googleMap"|"openStreetMaps"|"mapbox"
 
 ### Example
 
 ~~~jsx
 scheduler.config.map_view_provider = "googleMap";
 ...
-scheduler.init('scheduler_here', new Date(2024, 05, 11), "map");
+scheduler.init('scheduler_here',new Date(2027,05,11),"map");
 ~~~
 
-**Applicable views:** [Map view](views/map.md)
+**Значение по умолчанию:** googleMap
+
+**Доступные представления:** [Карта](views/map.md)
 
 ### Details
 
 :::note
- Это свойство работает только если включён плагин [map_view](guides/extensions-list.md#mapview). 
+ Свойство требует активации плагина [map_view](guides/extensions-list.md#map-view). 
 :::
 
-Также возможно задать провайдера карты внутри объекта конфигурации [map_settings](api/config/map_settings.md).
+Вы также можете указать провайдера карт внутри конфигурационного объекта [map_settings](api/config/map_settings.md).
 
 ### Change log
 - добавлено в v7.1

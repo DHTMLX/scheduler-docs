@@ -17,7 +17,7 @@ description: "Legt die Mindesthöhe für Zellen in der Month-Ansicht fest"
 ~~~jsx
 scheduler.config.month_day_min_height = 150;
 ...
-scheduler.init('scheduler_here', new Date(2013,5,30), "month");
+scheduler.init('scheduler_here', new Date(2027,5,30), "month");
 ~~~
 
 **Default value:** 90

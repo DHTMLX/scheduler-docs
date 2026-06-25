@@ -1,5 +1,5 @@
 ---
-sidebar_label: "header"
+sidebar_label: header
 title: "header config"
 description: "настраивает layout для header планировщика (панели навигации)"
 ---
@@ -8,7 +8,7 @@ description: "настраивает layout для header планировщик
 
 ### Description
 
-@short: Настраивает layout для header планировщика (панели навигации)
+@short: Предоставляет конфигурацию в стиле макета для заголовка планировщика (панель навигации)
 
 @signature: header: any
 
@@ -31,12 +31,11 @@ scheduler.init("scheduler_here");
 
 ### Details
 
-При инициализации планировщика с этой настройкой, любой существующий HTML внутри контейнера планировщика будет заменён сгенерированной разметкой.
+При инициализации Scheduler с использованием этой конфигурации любой HTML, размещённый в контейнере планировщика до инициализации, будет удалён, а вместо него будет вставлена сгенерированная разметка.
 
-Эта конфигурация может быть простым массивом элементов или вложенной структурой для определения более сложного layout.
+Значение этой конфигурации может быть либо простым массивом элементов, либо вложенной структурой, которая описывает сложный макет.
 
-Учтите, что высота header/панели навигации по-прежнему контролируется опцией [scheduler.xy.nav_height](api/other/xy.md#day).
-
+Обратите внимание, что высота заголовка/панели навигации по-прежнему контролируется параметром [`scheduler.xy.nav_height`](api/other/xy.md#illustration-images) опции.
 
 ~~~js
 scheduler.xy.nav_height = 80;
@@ -65,28 +64,27 @@ scheduler.init("scheduler_here");
 
 
 ~~~html
-<div id="scheduler_here"></div>
+<div id="scheduler_here" style="height:100vh;width:100vw"></div>
 ~~~
 
 
-Поддерживаемые значения включают:
+Поддерживаемые значения:
 
- - **\{rows: Array, css:string\}** - контейнер для header с несколькими строками
- - **\{cols: Array, css:string\}** - одна строка внутри многострочного header
- - **"prev","next","today"** - кнопки для навигации по дате
- - **"date"** - label, показывающий текущую дату
- - **"day", "week", "month" и т.д.** - вкладки для переключения видов
- - **"spacer"** - прозрачный элемент, заполняющий доступное пространство, полезен для смещения элементов вправо
- - **\{html: string, click: function, css: string\}** - объект для добавления кастомных кнопок или иконок в header
- - **"minicalendar"** - переключатель для [Mini Calendar](guides/minicalendar.md).
+- `{rows: Array, css: string}` - контейнер для многострочного заголовка
+- `{cols: Array, css: string}` - одна строка в многострочном заголовке
+- `"prev"`, `"next"`, `"today"` - кнопки навигации по дате
+- `"date"` - метка даты
+- `"day"`, `"week"`, `"month"`, и т. д. - вкладки видов
+- `"spacer"` - прозрачный элемент, занимающий всё свободное пространство и может использоваться для выравнивания элементов по правой стороне заголовка
+- `{html: string, click: function, css: string}` - объект для внедрения пользовательских кнопок или значков в заголовок
+- `"minicalendar"` - переключатель [Mini Calendar](guides/minicalendar.md)
 
 ~~~js
 scheduler.config.header = [
     "day",
     "week",
     "month",
-    {html:"click me!", click:function(){alert("done!") 
-:::,
+    { html: "click me!", click: () => { alert("done!"); } },
     "date",
     "prev",
     "today",
@@ -99,8 +97,8 @@ scheduler.init("scheduler_here");
 
 Опция "minicalendar" добавляет кнопку, которая переключает мини-календарь с таким click handler:
 
-~~~
-function showCalendar () {
+~~~js
+function showCalendar() {
     if (scheduler.isCalendarVisible()) {
         scheduler.destroyCalendar();
     } else {
@@ -108,7 +106,7 @@ function showCalendar () {
             position: this,
             date: scheduler.getState().date,
             navigation: true,
-            handler: function (date, calendar) {
+            handler: (date, calendar) => {
                 scheduler.setCurrentView(date);
                 scheduler.destroyCalendar();
             }
@@ -117,14 +115,14 @@ function showCalendar () {
 };
 ~~~
 
-Чтобы настроить поведение мини-календаря с другими параметрами, предоставьте свой click handler для кнопки minicalendar следующим образом:
+Если вы хотите вызвать [`renderCalendar()`](api/method/rendercalendar.md) с другими параметрами, вам нужно предоставить свой обработчик `onclick` для кнопки мини-календаря:
 
-~~~
+~~~js
 scheduler.config.header = [
     "day",
     "week",
     "month",
-    {view: "minicalendar", click: function () {
+    { view: "minicalendar", click: function() {
         if (scheduler.isCalendarVisible()) {
             scheduler.destroyCalendar();
         } else {
@@ -132,14 +130,14 @@ scheduler.config.header = [
                 position: this,
                 date: scheduler.getState().date,
                 navigation: true,
-                handler: function (date, calendar) {
+                handler: (date, calendar) => {
                     scheduler.setCurrentView(date);
                     scheduler.destroyCalendar();
                 }
             });
         }
-     
-:::,
+
+    } },
     "date",
     "prev",
     "today",
@@ -148,6 +146,6 @@ scheduler.config.header = [
 ~~~
 
 ### Related Guides
-- [Мобильная адаптивность Scheduler](guides/touch-support.md)
-- [dhtmlxScheduler на чистом JS/HTML](guides/initialization.md)
-- [Мини-календарь (Date Picker)](guides/minicalendar.md)
+- [Mobile Responsive Scheduler](guides/touch-support.md)
+- [dhtmlxScheduler in Plain JS/HTML](guides/initialization.md)
+- [Mini Calendar (Date Picker)](guides/minicalendar.md)

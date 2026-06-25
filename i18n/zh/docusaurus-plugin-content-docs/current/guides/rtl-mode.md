@@ -5,23 +5,21 @@ sidebar_label: "RTL（从右到左）模式"
 
 # RTL（从右到左）模式
 
-调度器支持 RTL（从右到左）模式，可以通过使用 [rtl 配置选项](api/config/rtl.md) 启用。
+你可以通过 [rtl 配置项](api/config/rtl.md) 启用调度程序的 RTL 模式。
 
 ~~~js
 scheduler.config.rtl = true;
 ~~~
 
-启用 RTL 模式后，日历元素将默认从右向左显示，但调度器头部元素除外。
+实现 RTL 模式后，日历的所有元素将自动从右到左显示，除了调度程序头部的元素。
 
 ![rtl](/img/rtl.png)
 
+[基本初始化](https://docs.dhtmlx.com/scheduler/samples/14_rtl/01_basic_init.html)
 
-[Basic initialization](https://docs.dhtmlx.com/scheduler/samples/14_rtl/01_basic_init.html)
+要重新排序调度程序头部的元素，你需要重新定义元素的 CSS 类，如下所示：
 
-
-如需调整调度器头部元素的排列顺序，需要自定义它们的 CSS 类，如下所示:
-
-~~~js
+~~~css
 <style type="text/css" >
     html, body{
         margin:0px;
@@ -47,41 +45,41 @@ scheduler.config.rtl = true;
 
 ## RTL 模式示例
 
-<b>月视图下的 RTL 模式</b>
+<b>在 RTL 模式下的月视图</b>
 
-下图展示了在 RTL 模式下的月视图。事件标题和详情现在都靠事件框的右侧对齐。
+让我们看看在 RTL 模式下 Month View 的外观。事件的标题和详情现在位于事件框的右侧。
 
 ![month_view_rtl](/img/month_view_rtl.png)
 
-<b>事件窗口在 RTL 模式下</b>
+<b>RTL 模式下的事件详情窗口</b>
 
-下图展示了在应用 RTL 模式后，事件详情窗口的视觉变化。
+下图给出一个很好的示例，展示应用 RTL 模式后，具有事件详情的窗口外观如何变化。
 
 ![window_with_details](/img/window_with_details.png)
 
-<b>时间轴在 RTL 模式下</b>
+<b>在 RTL 模式下的时间线</b>
 
-在 RTL 模式下，时间轴会自动从右向左排列在调度器中。
+RTL 模式会自动将调度程序中的时间线从右向左排列。
 
 ![timeline_rtl](/img/timeline_rtl.png)
 
 ## 在 RTL 模式下自定义元素
 
-为帮助在 RTL 模式下对特定元素进行个性化样式设置，提供了额外的 CSS 类。
+你可以使用额外的 CSS 类，在 RTL 模式下为各个元素应用独特的样式。
 
-可以使用以下类:
+以下是可设置的 CSS 类列表：
 
-- <b>dhx_cal_container_rtl</b> - 作用于整个调度器容器
-- <b>dhx_tooltip_rtl</b> - 作用于提示信息元素
-- <b>dhx_quick_info_rtl</b> - 作用于"快速信息"弹窗
-- <b>dhx_cal_light_rtl</b> - 作用于 lightbox
+- <b>dhx_cal_container_rtl</b> - 将样式应用于整个容器
+- <b>dhx_tooltip_rtl</b> - 将样式应用于工具提示
+- <b>dhx_quick_info_rtl</b> - 将样式应用于“快速信息”弹出
+- <b>dhx_cal_light_rtl</b> - 将样式应用于灯箱
 
-例如:
+例如：
 
-~~~js
+~~~css
 .dhx_cal_container_rtl .dhx_cal_event{
     margin-right: -5px;
 }
 ~~~
 
-这会将所有调度器事件在容器内向右移动 5px。
+调度程序容器中的所有事件将向右移动 5px。

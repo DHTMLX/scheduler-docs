@@ -35,7 +35,7 @@ The complete source code is [available on GitHub](https://github.com/DHTMLX/sche
 ## Demo repository
 
 A complete working project that matches this guide is available on GitHub:
-- https://github.com/dhtmlx/scheduler-google-auth-demo
+- https://github.com/DHTMLX/scheduler-google-auth-demo
 
 The guide explains the key steps and shows the integration code that matters. The repository is the "full runnable reference".
 
@@ -50,7 +50,7 @@ Do one of the following:
 - Clone the repository:
 
 ~~~bash title="Terminal"
-git clone https://github.com/dhtmlx/scheduler-google-auth-demo.git
+git clone https://github.com/DHTMLX/scheduler-google-auth-demo.git
 cd scheduler-google-auth-demo
 ~~~
 

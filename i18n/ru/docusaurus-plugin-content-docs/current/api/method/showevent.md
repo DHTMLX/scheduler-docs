@@ -1,20 +1,20 @@
 ---
-sidebar_label: "showEvent"
+sidebar_label: showEvent
 title: "showEvent method"
-description: "отображает и выделяет указанный ивент в текущем или выбранном виде"
+description: "показывает и выделяет указанное событие в текущем или указанном виде просмотра"
 ---
 
 # showEvent
 
 ### Description
 
-@short: Отображает и выделяет указанный ивент в текущем или выбранном виде
+@short: Показывает и выделяет указанное событие в текущем или указанном виде просмотра
 
 @signature: showEvent: (id: string, view?: string) =\> void
 
 ### Parameters
 
-- `id` - (required) *string* - идентификатор ивента
+- `id` - (required) *string* - идентификатор события
 - `view` - (optional) *string* - имя вида
 
 ### Example
@@ -32,16 +32,16 @@ scheduler.showEvent(someId);
 
 ### Details
 
-- Стандартные имена видов: 'day', 'week' и 'month'. Чтобы использовать другой вид, укажите его параметр **name**.
-- Этот метод вызывает события [onBeforeEventDisplay](api/event/onbeforeeventdisplay.md) и [onAfterEventDisplay](api/event/onaftereventdisplay.md).
+- Названия представлений по умолчанию: 'day', 'week', 'month'. Чтобы указать любое другое представление - используйте его **name** параметр.
+- Метод вызывает события [onBeforeEventDisplay](api/event/onbeforeeventdisplay.md) и [onAfterEventDisplay](api/event/onaftereventdisplay.md).
 
 
 Например, после программного добавления нового ивента, вы можете отобразить его в scheduler следующим образом:
 
 ~~~js
-var eventId = scheduler.addEvent({
-    start_date: "08-06-2013 09:00",
-    end_date:   "08-06-2013 11:00",
+const eventId = scheduler.addEvent({
+    start_date: "08-06-2027 09:00",
+    end_date:   "08-06-2027 11:00",
     text:   "Meeting"
 });
 ...

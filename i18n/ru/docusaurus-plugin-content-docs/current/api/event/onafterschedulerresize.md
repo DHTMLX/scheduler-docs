@@ -1,14 +1,14 @@
 ---
-sidebar_label: "onAfterSchedulerResize"
-title: "onAfterSchedulerResize event"
-description: "срабатывает после того, как размер scheduler был обновлен и область с данными перерисована"
+sidebar_label: onAfterSchedulerResize
+title: "событие onAfterSchedulerResize"
+description: "срабатывает после того, как scheduler изменил размер и область данных была перерисована"
 ---
 
 # onAfterSchedulerResize
 
 ### Description
 
-@short: Срабатывает после того, как размер scheduler был обновлен и область с данными перерисована
+@short: Срабатывает после того, как scheduler изменил размер и область данных была перерисована
 
 @signature: onAfterSchedulerResize: () =\> void
 
@@ -16,6 +16,6 @@ description: "срабатывает после того, как размер sc
 
 ~~~jsx
 scheduler.attachEvent("onAfterSchedulerResize", function(){
-    //любая ваша логика здесь
+    // любая ваша логика здесь
 });
 ~~~

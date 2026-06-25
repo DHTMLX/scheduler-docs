@@ -14,18 +14,18 @@ description: "specifies the event's text. Applied to multi-day events only"
 
 ### Parameters
 
-- `start` - (required) *Date* - the date when an event is scheduled to begin  
+- `start` - (required) *Date* - the date when an event is scheduled to begin
 - `end` - (required) *Date* - the date when an event is scheduled to be completed
 - `event` - (required) *object* - the event's object
 
 ### Returns
-- ` text` - (string) - html text for rendering in the scheduler
+- `text` - (string) - HTML text for rendering in the Scheduler
 
 ### Example
 
 ~~~jsx
-scheduler.templates.event_bar_text = function(start,end,event){
-      return event.text;
+scheduler.templates.event_bar_text = (start, end, event) => {
+    return event.text;
 };
 ~~~
 

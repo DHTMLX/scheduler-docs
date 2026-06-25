@@ -19,7 +19,7 @@ Beachten Sie, dass Exportdienste nicht im Scheduler-Paket enthalten sind. Detail
 
 ## Grenzen der Anfragegröße {#limitsonrequestsize}
 
-Alle Exportmethoden (*exportToPDF*, *exportToPNG*, usw.) verwenden den gemeinsamen API-Endpunkt **https://export.dhtmlx.com/scheduler**. Die maximal zulässige Anfragegröße beträgt **10 MB**.
+Alle Exportmethoden (*exportToPDF*, *exportToPNG*, usw.) verwenden den gemeinsamen API-Endpunkt `https://export.dhtmlx.com/scheduler`. Die maximal zulässige Anfragegröße beträgt **10 MB**.
 
 
 ## Standard-Export nach PNG {#defaultexporttopng}
@@ -35,7 +35,7 @@ scheduler.plugins({
 ~~~
 
 :::note
-Für Scheduler-Versionen älter als 7.0 müssen Sie zusätzlich das Skript **https://export.dhtmlx.com/scheduler/api.js** auf Ihrer Seite einbinden, um den Online-Exportdienst zu aktivieren, zum Beispiel:
+Für Scheduler-Versionen älter als 7.0 müssen Sie zusätzlich das Skript `https://export.dhtmlx.com/scheduler/api.js` auf Ihrer Seite einbinden, um den Online-Exportdienst zu aktivieren, zum Beispiel:
 
 ~~~js
 <script src="codebase/dhtmlxscheduler.js"></script>
@@ -85,7 +85,7 @@ Die Methode [exportToPNG()](api/method/exporttopng.md) akzeptiert ein Objekt mit
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) Gibt den API-Endpunkt für die Exportanfrage an. Nützlich, wenn Sie einen lokalen Exportdienst betreiben. Standard ist <strong>https://export.dhtmlx.com/scheduler</strong></td>
+  <td>(<i>string</i>) Gibt den API-Endpunkt für die Exportanfrage an. Nützlich, wenn Sie einen lokalen Exportdienst betreiben. Standard ist `https://export.dhtmlx.com/scheduler`</td>
   </tr>
   </tbody>
 </table>

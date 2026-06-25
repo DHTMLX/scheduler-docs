@@ -1,14 +1,14 @@
 ---
-sidebar_label: "use_select_menu_space"
-title: "use_select_menu_space config"
-description: "определяет, занимают ли события всю ширину ячейки"
+sidebar_label: use_select_menu_space
+title: "конфигурация use_select_menu_space"
+description: "определяет, что события занимают всю ширину ячейки"
 ---
 
 # use_select_menu_space
 
 ### Description
 
-@short: Определяет, занимают ли события всю ширину ячейки
+@short: Определяет, что события занимают всю ширину ячейки
 
 @signature: use_select_menu_space: boolean
 
@@ -17,16 +17,16 @@ description: "определяет, занимают ли события всю 
 ~~~jsx
 scheduler.config.use_select_menu_space = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
-**Applicable views:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
+**Доступные представления:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
 
 ### Details
 
-По умолчанию события растягиваются на всю ширину ячейки. Установка этого параметра в *false* заставляет событие занимать только часть ширины ячейки, оставляя место для меню слева.
+По умолчанию события занимают всю ширину ячейки. Установите значение *false* опции, чтобы событие занимало лишь часть ширины ячейки и оставляло место для левого меню.
 
 ### Change log
-- Это свойство доступно с версии 3.5.
+- Свойство доступно начиная с версии 3.5.

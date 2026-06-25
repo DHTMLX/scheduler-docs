@@ -15,7 +15,7 @@ description: "更新 lightbox 的大小"
 ### Example
 
 ~~~jsx
-var control = scheduler.formSection("description");
+const control = scheduler.formSection("description");
 control.header.style.display = "none";
 
 scheduler.setLightboxSize();

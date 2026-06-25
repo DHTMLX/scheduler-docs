@@ -29,7 +29,7 @@ scheduler.templates.month_events_link = function(date, count){
 };
 ~~~
 
-**Applicable views:** [Month view](views/month.md)
+**Доступные представления:** [Month view](views/month.md)
 
 ### Related samples
 - ['View more' link in the Month view](https://docs.dhtmlx.com/scheduler/samples/02_customization/31_view_more.html)

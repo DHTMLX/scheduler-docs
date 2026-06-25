@@ -1,31 +1,31 @@
 ---
-sidebar_label: "renderEvent"
-title: "renderEvent method"
-description: "создает HTML-контент для кастомного блока события"
+sidebar_label: renderEvent
+title: "renderEvent метод"
+description: "генерирует HTML-содержимое бокса пользовательского события"
 ---
 
 # renderEvent
 
 ### Description
 
-@short: Создает HTML-контент для кастомного блока события
+@short: Генерирует HTML-содержимое бокса пользовательского события
 
 @signature: renderEvent: (container: HTMLElement, event: any) =\> boolean
 
 ### Parameters
 
-- `container` - (required) *HTMLElement* - элемент-контейнер для события
-- `event` - (required) *object* - объект с данными события
+- `container` - (required) *HTMLElement* - контейнер события
+- `event` - (required) *object* - объект события
 
 ### Returns
-- ` display` - (boolean) - <ul><li><b>true</b> - scheduler использует кастомную форму</li><li><b>false</b> - scheduler возвращается к стандартной форме</li></ul>
+- ` `display` - (boolean) - <ul><li><b>true</b> - планировщик отображает настраиваемую форму</li><li><b>false</b> - планировщик отображает форму по умолчанию</li></ul>
 
 ### Example
 
 ~~~jsx
 scheduler.renderEvent = function(container, ev) {
-    var container_width = container.style.width;
-    var html = "<div class='dhx_event_move my_event_move' style='width:" +
+    const container_width = container.style.width;
+    let html = "<div class='dhx_event_move my_event_move' style='width:" +
     + container_width + "'></div>";
     ...
     container.innerHTML = html;
@@ -34,11 +34,11 @@ scheduler.renderEvent = function(container, ev) {
 ~~~
 
 ### Related samples
-- [Custom event box](https://docs.dhtmlx.com/scheduler/samples/02_customization/27_custom_event_box.html)
+- [Пользовательский бокс события](https://docs.dhtmlx.com/scheduler/samples/02_customization/27_custom_event_box.html)
 
 ### Details
 
-Учтите, что этот метод применим только для видов с вертикальной шкалой, таких как Day или Week views.
+Примечание: метод работает только для представлений с вертикальной шкалой, таких как Day view, Week view и т.д.
 
 ### Related Guides
-- [Пользовательское Окно События](guides/custom-events-display.md)
+- [Гайд по отображению настраиваемого события](guides/custom-events-display.md)

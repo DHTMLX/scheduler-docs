@@ -17,7 +17,7 @@ description: "Ermöglicht das Öffnen der Lightbox durch Doppelklick auf ein Eve
 ~~~jsx
 scheduler.config.details_on_dblclick = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** true

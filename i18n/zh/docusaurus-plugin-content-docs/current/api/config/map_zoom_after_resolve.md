@@ -17,7 +17,7 @@ description: "设置在浏览器请求权限且用户同意时，显示用户位
 ~~~jsx
 scheduler.config.map_zoom_after_resolve = 10;
 ...
-scheduler.init('scheduler_here', new Date(2013, 05, 11), "week");
+scheduler.init('scheduler_here', new Date(2027, 05, 11), "week");
 ~~~
 
 **Default value:** 15

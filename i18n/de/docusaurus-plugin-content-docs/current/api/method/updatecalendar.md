@@ -20,7 +20,7 @@ description: "zeigt das ausgewählte Datum im Mini-Calendar an"
 ### Example
 
 ~~~jsx
-var calendar = scheduler.renderCalendar({
+const calendar = scheduler.renderCalendar({
     container:"cal_here", 
     navigation:true,
     handler:function(date){
@@ -28,7 +28,7 @@ var calendar = scheduler.renderCalendar({
     }
 });
 ...
-scheduler.updateCalendar(calendar, new Date(2013,01,01));
+scheduler.updateCalendar(calendar, new Date(2027,01,01));
 ~~~
 
 ### Details

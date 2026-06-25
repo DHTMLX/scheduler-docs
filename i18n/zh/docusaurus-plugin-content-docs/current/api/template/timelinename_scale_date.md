@@ -25,8 +25,8 @@ description: "定义X轴上显示的项目"
 
 ~~~jsx
 scheduler.templates.timeline_scale_date = function(date){
-   var timeline = scheduler.matrix.timeline;
-   var func = scheduler.date.date_to_str(timeline.x_date||scheduler.config.hour_date);
+   const timeline = scheduler.matrix.timeline;
+   const func = scheduler.date.date_to_str(timeline.x_date||scheduler.config.hour_date);
    return func(date);
 }
 ~~~

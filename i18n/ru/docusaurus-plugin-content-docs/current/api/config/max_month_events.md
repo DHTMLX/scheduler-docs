@@ -1,14 +1,14 @@
 ---
-sidebar_label: "max_month_events"
-title: "max_month_events config"
-description: "контролирует максимальное количество событий, отображаемых в одной ячейке"
+sidebar_label: max_month_events
+title: "Конфигурация max_month_events"
+description: "задает максимальное количество событий, которые можно отобразить в ячейке"
 ---
 
 # max_month_events
 
 ### Description
 
-@short: Контролирует максимальное количество событий, отображаемых в одной ячейке
+@short: Устанавливает максимальное количество событий, которые можно отобразить в ячейке
 
 @signature: max_month_events: number
 
@@ -17,17 +17,17 @@ description: "контролирует максимальное количест
 ~~~jsx
 scheduler.config.max_month_events = 5;
 ..
-scheduler.init('scheduler_here', new Date(2013,5,30),"month");
+scheduler.init('scheduler_here', new Date(2027,5,30),"month");
 ~~~
 
-**Applicable views:** [Month view](views/month.md)
+**Доступные представления:** [Month view](views/month.md)
 
 ### Related samples
-- ['View more' link in the Month view](https://docs.dhtmlx.com/scheduler/samples/02_customization/31_view_more.html)
+- ['Показать ещё' ссылка на Вид месяца](https://docs.dhtmlx.com/scheduler/samples/02_customization/31_view_more.html)
 
 ### Details
 
-Когда количество событий, назначенных ячейке, превышает этот предел, scheduler показывает ссылку «View more». Нажатие на эту ссылку переводит пользователя в Day view, где все события этого дня отображаются полностью.
+Если количество назначенных событий превышает значение опции, планировщик отобразит ссылку 'Показать ещё'. Эта ссылка перенаправит пользователя на Вид дня, отображающий полный список назначенных событий.
 
 ![max_month_events_property](/img/max_month_events_property.png)
 
@@ -36,4 +36,4 @@ scheduler.init('scheduler_here', new Date(2013,5,30),"month");
 - [onViewMoreClick](api/event/onviewmoreclick.md)
 
 ### Related Guides
-- [Месячный вид](views/month.md#limitingthenumberofeventsinacell)
+- [Месячный вид](views/month.md)

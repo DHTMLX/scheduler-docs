@@ -114,7 +114,7 @@ scheduler.config.map_settings = {
     }
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
  
 [자세한 내용 보기](views/map.md#maprelatedconfigurationoptions)
@@ -126,7 +126,7 @@ scheduler.init('scheduler_here',new Date(2024,5,11),"map");
 ~~~js
 scheduler.config.map_view_provider = "googleMap";
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
 
 사용 가능한 값: *"googleMap", "openStreetMaps", "mapbox"*.
@@ -138,7 +138,7 @@ scheduler.config.map_settings = {
     view_provider: "googleMap"
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
 
 ## 지도 관련 구성 옵션 {#maprelatedconfigurationoptions}
@@ -169,7 +169,7 @@ scheduler.config.map_settings = {
     view_provider: "googleMap"
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
 
 이 속성들은 다음을 포함합니다:

@@ -24,8 +24,8 @@ Die Funktion ist veraltet
 ### Example
 
 ~~~jsx
-var cfg = scheduler.config;
-var    date_to_str = scheduler.date.date_to_str(cfg.xml_date, cfg.server_utc);
+const cfg = scheduler.config;
+const date_to_str = scheduler.date.date_to_str(cfg.xml_date, cfg.server_utc);
 
 scheduler.templates.xml_format = function(date){
     return date_to_str(date);
@@ -39,7 +39,7 @@ scheduler.templates.xml_format = function(date){
 :::
 
 ~~~js
-var dateToStr = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
+const dateToStr = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
 scheduler.templates.format_date = function(date){
     return dateToStr (date);
 };

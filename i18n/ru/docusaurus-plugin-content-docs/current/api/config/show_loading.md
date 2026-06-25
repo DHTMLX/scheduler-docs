@@ -1,14 +1,14 @@
 ---
-sidebar_label: "show_loading"
-title: "show_loading config"
-description: "Отображает индикатор прогресса или спиннер во время загрузки данных, что удобно для сценариев динамической загрузки."
+sidebar_label: show_loading
+title: "Конфигурация show_loading"
+description: "позволяет отображать progress/spinner во время загрузки данных (полезно для динамической загрузки)"
 ---
 
 # show_loading
 
 ### Description
 
-@short: Отображает индикатор прогресса или спиннер во время загрузки данных, что удобно для сценариев динамической загрузки.
+@short: Позволяет отображать progress/spinner во время загрузки данных (полезно для динамической загрузки)
 
 @signature: show_loading: boolean
 
@@ -17,10 +17,10 @@ description: "Отображает индикатор прогресса или 
 ~~~jsx
 scheduler.config.show_loading = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
 ### Related Guides
 - [Загрузка данных](guides/loading-data.md#dynamic-loading)

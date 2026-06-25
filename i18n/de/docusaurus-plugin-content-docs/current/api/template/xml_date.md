@@ -24,8 +24,8 @@ Die Funktion ist veraltet
 ### Example
 
 ~~~jsx
-var cfg = scheduler.config;
-var str_to_date = scheduler.date.str_to_date(cfg.xml_date, cfg.server_utc);
+const cfg = scheduler.config;
+const str_to_date = scheduler.date.str_to_date(cfg.xml_date, cfg.server_utc);
 
 scheduler.templates.xml_date = function(date){
     return str_to_date(date);

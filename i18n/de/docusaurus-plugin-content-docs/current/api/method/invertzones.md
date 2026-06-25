@@ -19,7 +19,7 @@ description: "kehrt die angegebenen Zeitzonen um"
 ### Example
 
 ~~~jsx
-var zones = scheduler.invertZones([500, 1000]); // => [0, 500, 1000, 1440]
+const zones = scheduler.invertZones([500, 1000]); // => [0, 500, 1000, 1440]
 ~~~
 
 ### Details

@@ -1,20 +1,20 @@
 ---
-sidebar_label: "updateCollection"
-title: "updateCollection method"
-description: "обновляет указанную коллекцию новыми опциями"
+sidebar_label: updateCollection
+title: "updateCollection метод"
+description: "обновляет указанную коллекцию новыми параметрами"
 ---
 
 # updateCollection
 
 ### Description
 
-@short: Обновляет указанную коллекцию новыми опциями
+@short: Обновляет указанную коллекцию новыми параметрами
 
 @signature: updateCollection: (collection: string, options: any[]) =\> boolean
 
 ### Parameters
 
-- `collection` - (required) *string* - имя коллекции для обновления
+- `collection` - (required) *string* - имя коллекции, которую нужно обновить
 - `options` - (required) *array* - новые значения коллекции
 
 ### Returns
@@ -33,10 +33,10 @@ scheduler.config.lightbox.sections=[
 
 ### Details
 
-- Этот метод вызывает событие [onOptionsLoad](api/event/onoptionsload.md) и обновляет lightbox. 
-- Коллекции могут быть изначально созданы с помощью метода [serverList](api/method/serverlist.md).
+- Метод вызывает событие [onOptionsLoad](api/event/onoptionsload.md) и сбрасывает lightbox.
+- Коллекцию можно создать с помощью метода [serverList](api/method/serverlist.md).
 
-## Примеры
+## Examples
 
 #### Select control
 
@@ -51,8 +51,8 @@ scheduler.config.lightbox.sections = [
 ]; 
 ~~~
 
-С такой настройкой можно обновлять опции в select контроле, изменяя список с именем 'sections'. <br>
-Для обновления списка 'sections' можно выполнить следующее:
+С таким объявлением можно обновлять опции в выпадающем списке через список с именем 'sections'. <br>
+To update the 'sections' list you can use:
 ~~~js
 scheduler.updateCollection("sections", [
     { key: 5, label: "Section E" },

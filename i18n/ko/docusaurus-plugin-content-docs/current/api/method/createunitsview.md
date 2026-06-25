@@ -31,12 +31,12 @@ scheduler.createUnitsView({
     ]
 });
 
-scheduler.init('scheduler_here',new Date(2009,5,30),"unit");
+scheduler.init('scheduler_here',new Date(2027,5,30),"unit");
 
 scheduler.parse([
- {start_date:"06/30/2009 09:00",end_date:"06/30/2009 12:00",text:"Task1",unit_id:1},
- {start_date:"06/30/2009 12:00",end_date:"06/30/2009 20:00",text:"Task2",unit_id:3},
- {start_date:"06/30/2009 08:00",end_date:"06/30/2009 12:00",text:"Task3",unit_id:2}
+ {start_date:"06/30/2027 09:00",end_date:"06/30/2027 12:00",text:"Task1",unit_id:1},
+ {start_date:"06/30/2027 12:00",end_date:"06/30/2027 20:00",text:"Task2",unit_id:3},
+ {start_date:"06/30/2027 08:00",end_date:"06/30/2027 12:00",text:"Task3",unit_id:2}
 ],"json");
 ~~~
 

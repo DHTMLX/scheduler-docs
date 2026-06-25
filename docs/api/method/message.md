@@ -22,7 +22,7 @@ description: "calls a message box of the specified type"
 ### Example
 
 ~~~jsx
-var box = scheduler.message({ 
+const box = scheduler.message({ 
     type:"confirm-warning", 
     text:"Are you sure you want to do it?"
 });

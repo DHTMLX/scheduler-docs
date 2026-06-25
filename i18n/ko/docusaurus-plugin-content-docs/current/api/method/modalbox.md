@@ -22,9 +22,9 @@ description: "modalbox를 엽니다"
 ### Example
 
 ~~~jsx
-var box = scheduler.modalbox({
+const box = scheduler.modalbox({
     title: "Close",
-     type: "alert-warning"
+    type: "alert-warning"
 });
 ~~~
 

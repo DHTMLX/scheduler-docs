@@ -1,30 +1,30 @@
 ---
-sidebar_label: "onCellClick"
-title: "onCellClick event"
-description: "срабатывает при однократном клике пользователя по ячейке (применимо только в Timeline view)"
+sidebar_label: onCellClick
+title: "onCellClick событие"
+description: "срабатывает при одиночном клике по ячейке (только в представлении Timeline)"
 ---
 
 # onCellClick
 
 ### Description
 
-@short: Срабатывает при однократном клике пользователя по ячейке (применимо только в Timeline view)
+@short: Срабатывает при одиночном клике по ячейке (только в представлении Timeline)
 
 @signature: onCellClick: (x_ind: number, y_ind: number, x_val: object, y_val: array, e: Event) =\> void;
 
 ### Parameters
 
-- `x_ind` - (required) *number* - индекс колонки кликнутой ячейки (начинается с нуля)
-- `y_ind` - (required) *number* - индекс строки кликнутой ячейки (начинается с нуля)
-- `x_val` - (required) *object* - объект Date, представляющий время начала кликнутой ячейки
-- `y_val` - (required) *array* - массив с объектами данных, расположенных в кликнутой ячейке
-- `e` - (required) *Event* - родной объект события
+- `x_ind` - (required) *number* - индекс столбца нажатой ячейки (нумерация с нуля)
+- `y_ind` - (required) *number* - индекс строки нажатой ячейки (нумерация с нуля)
+- `x_val` - (required) *object* - Date объект времени начала нажатой ячейки
+- `y_val` - (required) *array* - массив объектов данных, находящихся в нажатой ячейке
+- `e` - (required) *Event* - нативный объект события
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onCellClick", function (x_ind, y_ind, x_val, y_val, e){
-    // здесь можно добавить свою логику
+    // любая ваша логика здесь
 });
 ~~~
 
@@ -32,6 +32,6 @@ scheduler.attachEvent("onCellClick", function (x_ind, y_ind, x_val, y_val, e){
 
 :::note
 
-Это событие срабатывает только в Timeline view
+Событие срабатывает только в представлении Timeline
  
 :::

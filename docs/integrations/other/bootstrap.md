@@ -41,7 +41,7 @@ scheduler.plugins({
 scheduler.config.first_hour = 8;
 scheduler.config.limit_time_select = true;
 
-scheduler.init('scheduler_here',new Date(2017,5,30),"week");
+scheduler.init('scheduler_here',new Date(2027,5,30),"week");
 ~~~
 
 

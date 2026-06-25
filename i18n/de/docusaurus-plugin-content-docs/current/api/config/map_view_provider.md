@@ -17,7 +17,7 @@ description: "definiert, welchen Map-Provider verwendet werden soll"
 ~~~jsx
 scheduler.config.map_view_provider = "googleMap";
 ...
-scheduler.init('scheduler_here', new Date(2024, 05, 11), "map");
+scheduler.init('scheduler_here', new Date(2027, 05, 11), "map");
 ~~~
 
 **Applicable views:** [Map view](views/map.md)

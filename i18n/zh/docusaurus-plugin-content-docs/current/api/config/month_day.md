@@ -17,7 +17,7 @@ description: "定义用于在月视图和年视图的单元格中显示日期的
 ~~~jsx
 scheduler.config.month_day="%j";
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** "%d"

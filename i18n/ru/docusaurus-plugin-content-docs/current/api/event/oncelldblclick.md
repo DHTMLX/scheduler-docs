@@ -1,39 +1,39 @@
 ---
-sidebar_label: "onCellDblClick"
-title: "onCellDblClick event"
-description: "срабатывает при двойном клике пользователя по ячейке (только в Timeline view)"
+sidebar_label: onCellDblClick
+title: "onCellDblClick событие"
+description: "срабатывает, когда пользователь выполняет двойной щелчок по ячейке (только в представлении Timeline)"
 ---
 
 # onCellDblClick
 
 ### Description
 
-@short: Срабатывает при двойном клике пользователя по ячейке (только в Timeline view)
+@short: Срабатывает, когда пользователь выполняет двойной щелчок по ячейке (только в представлении Timeline)
 
-@signature: onCellDblClick: (x_ind: number, y_ind: number, x_val: object, y_val: array, e: Event) =\> void;
+@signature: onCellDblClick: (x_ind: number, y_ind: number, x_val: object, y_val: array, e: Event) => void;
 
 ### Parameters
 
-- `x_ind` - (required) *number* - ноль-индексированный номер столбца, по которому был произведён клик
-- `y_ind` - (required) *number* - ноль-индексированный номер строки, по которой был произведён клик
-- `x_val` - (required) *object* - объект Date, представляющий стартовую временную метку ячейки, по которой кликнули
-- `y_val` - (required) *array* - массив, содержащий объекты данных, расположенных в ячейке, по которой кликнули
-- `e` - (required) *Event* - родной объект события
+- `x_ind` - (required) *number* - индекс столбца нажатой ячейки (нумерация с нуля)
+- `y_ind` - (required) *number* - индекс строки нажатой ячейки (нумерация с нуля)
+- `x_val` - (required) *object* - Date-объект начала временной метки нажатой ячейки
+- `y_val` - (required) *array* - массив объектов данных, находящихся в нажатой ячейке
+- `e` - (required) *Event* - нативный объект события
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onCellDblClick", function (x_ind, y_ind, x_val, y_val, e){
-    // здесь можно разместить кастомную логику
+    // любая ваша логика здесь
 });
 ~~~
 
-**Applicable views:** [Timeline view](views/timeline.md)
+**Применимые представления:** [Timeline view](views/timeline.md)
 
 ### Details
 
 :::note
 
-Это событие срабатывает только в Timeline view
- 
+Событие срабатывает только в представлении Timeline
+
 :::

@@ -17,7 +17,7 @@ description: "Legt die Dauer in Millisekunden fest, die eine lange Touch-Geste v
 ~~~jsx
 scheduler.config.touch_drag = 750;
 ...
-scheduler.init('scheduler_here',new Date(2013,3,10),"week");
+scheduler.init('scheduler_here',new Date(2027,3,10),"week");
 ~~~
 
 **Default value:** 500

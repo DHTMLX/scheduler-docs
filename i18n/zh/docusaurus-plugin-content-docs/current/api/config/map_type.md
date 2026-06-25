@@ -19,7 +19,7 @@ description: "定义 Google Maps 的类型"
 ~~~jsx
 scheduler.config.map_type = google.maps.MapTypeId.HYBRID;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"map");
+scheduler.init('scheduler_here',new Date(2027,05,11),"map");
 ~~~
 
 **Default value:** ROADMAP

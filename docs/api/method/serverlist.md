@@ -24,10 +24,10 @@ description: "defines a named collection that can be loaded into Units, Timeline
 
 ~~~jsx
 //returns a list of options with the name 'my_list'
-var list = scheduler.serverList("my_list"); 
+const list = scheduler.serverList("my_list"); 
 ...
 //creates and returns the specified list
-var list = scheduler.serverList("options", [
+const list = scheduler.serverList("options", [
     {key: 1, label: "John"},
     {key: 2, label: "Adam"},
     {key: 3, label: "Diane"}

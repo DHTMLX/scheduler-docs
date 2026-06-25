@@ -17,7 +17,7 @@ description: "데이터 로딩 중에 진행 표시기나 스피너를 표시합
 ~~~jsx
 scheduler.config.show_loading = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
 **Default value:** false

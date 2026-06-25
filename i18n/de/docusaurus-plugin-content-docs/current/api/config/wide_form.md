@@ -17,7 +17,7 @@ description: "steuert, ob die Standard-(wide) Lightbox anstelle der kurzen Versi
 ~~~jsx
 scheduler.config.wide_form = true;
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 **Default value:** true

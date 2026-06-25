@@ -17,7 +17,7 @@ description: "롱 터치 제스처와 스크롤 제스처를 구분하는 지속
 ~~~jsx
 scheduler.config.touch_drag = 750;
 ...
-scheduler.init('scheduler_here',new Date(2013,3,10),"week");
+scheduler.init('scheduler_here',new Date(2027,3,10),"week");
 ~~~
 
 **Default value:** 500

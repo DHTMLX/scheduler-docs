@@ -93,8 +93,8 @@ scheduler.date.add_agenda = function(date, inc){
 Вы также можете зафиксировать отображаемый диапазон, установив свойства [agenda_end](api/config/agenda_end.md) и [agenda_start](api/config/agenda_start.md):
 
 ~~~js
-scheduler.config.agenda_start = new Date(2023, 5, 1); 
-scheduler.config.agenda_end = new Date(2023, 6, 1);   
+scheduler.config.agenda_start = new Date(2027, 5, 1); 
+scheduler.config.agenda_end = new Date(2027, 6, 1);   
 ~~~
 
 ## Связанные руководства

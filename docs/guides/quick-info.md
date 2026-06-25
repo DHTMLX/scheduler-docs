@@ -18,7 +18,7 @@ To activate the big-buttons scheduler, enable the ["Quick Info"](guides/extensio
     scheduler.plugins({
         quick_info: true
     });
-    scheduler.init('scheduler_here',new Date(2009,5,30),"day");
+    scheduler.init('scheduler_here',new Date(2027,5,30),"day");
     ...
 <script>
 ~~~

@@ -22,7 +22,7 @@ description: "새로운 키보드 단축키를 생성합니다"
 
 ~~~jsx
 scheduler.addShortcut("shift+w", function(e){ 
-    var eventId = scheduler.locate(e); 
+    const eventId = scheduler.locate(e); 
     if(eventId) 
         scheduler.showQuickInfo(eventId);
 },"event");

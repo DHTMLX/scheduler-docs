@@ -1,33 +1,33 @@
 ---
-sidebar_label: "onAfterQuickInfo"
+sidebar_label: onAfterQuickInfo
 title: "onAfterQuickInfo event"
-description: "Срабатывает сразу после закрытия формы всплывающего окна."
+description: "срабатывает после закрытия всплывающей формы события"
 ---
 
 # onAfterQuickInfo
 
 ### Description
 
-@short: Срабатывает сразу после закрытия формы всплывающего окна.
+@short: Срабатывает после закрытия всплывающей формы события
 
 @signature: onAfterQuickInfo: (eventId: string) =\> void
 
 ### Parameters
 
-- `eventId` - (required) *string* - идентификатор события
+- `eventId` - (обязательный) *string* - идентификатор события
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onAfterQuickInfo", function(eventId){  
-    // ваш код здесь  
+scheduler.attachEvent("onAfterQuickInfo", function(eventId){
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Details
 
 :::note
- Для работы события требуется активировать плагин [quick_info](guides/extensions-list.md#quickinfo). 
+ Это событие требует активации плагина [quick_info](guides/extensions-list.md#quick-info). 
 :::
 
 ### Related API
@@ -37,8 +37,8 @@ scheduler.attachEvent("onAfterQuickInfo", function(eventId){
 - [quick_info_detached](api/config/quick_info_detached.md)
 
 ### Related Guides
-- [Полный список расширений](guides/extensions-list.md#quickinfo)
-- [Мобильная адаптивность Scheduler](guides/touch-support.md)
+- [Полный список расширений](guides/extensions-list.md#quick-info)
+- [Мобильный адаптивный планировщик](guides/touch-support.md)
 
 ### Change log
 - добавлено в версии 4.4

@@ -23,7 +23,7 @@ description: "지정된 기간 내에 발생하는 이벤트 컬렉션을 반환
 ### Example
 
 ~~~jsx
-const evs = scheduler.getEvents(new Date(2024,1,10),new Date(2024,2,10)); 
+const evs = scheduler.getEvents(new Date(2027,1,10),new Date(2027,2,10)); 
 evs.forEach((e) => console.log(e.text));
 // 또는
 const evs = scheduler.getEvents();// 모든 이벤트를 반환합니다.

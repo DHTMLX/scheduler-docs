@@ -76,8 +76,8 @@ The configuration object can contain the following properties:
   <tr>
   <td colspan="2" >
 ~~~js
-//denies creating events from 3rd May,2012 till 'end_date' 
-start_date:new Date(2012,4,3)
+//denies creating events from 3rd May,2027 till 'end_date' 
+start_date:new Date(2027,4,3)
 ~~~
   </td>
   </tr>
@@ -88,8 +88,8 @@ start_date:new Date(2012,4,3)
   <tr>
   <td colspan="2" >
 ~~~js
-//denies creating events from 'start_date' till 3rd September,2012
-end_date:new Date(2012,8,3)
+//denies creating events from 'start_date' till 3rd September,2027
+end_date:new Date(2027,8,3)
 ~~~
   </td>
   </tr>
@@ -102,7 +102,7 @@ end_date:new Date(2012,8,3)
 ~~~js
 days:[0, 2, 6] //limits Sunday,Tuesday and Saturday
 days:"fullweek" //limits the entire week
-days:new Date(2012,6,1) //blocks 1st July,2012
+days:new Date(2027,6,1) //blocks 1st July,2027
 ~~~
   </td>
   </tr>
@@ -216,7 +216,7 @@ Therefore, there are 2 acceptable combinations with specific set of properties:
   </ul></td>
 <td>
 ~~~js
-var config ={
+const config ={
     days:  1, 
     zones: [9*60, 15*60], 
     css: "cssClassName", 
@@ -232,9 +232,9 @@ var config ={
   <td><ul><li>`start_date`</li><li>`end_date` </li><li>`css`</li><li>`html`</li><li>`type`</li><li>`sections`</li></ul></td>
 
 ~~~js
-var config ={
-    start_date: new Date(2012,7,13),
-    end_date:   new Date(2012,7,14),
+const config ={
+    start_date: new Date(2027,7,13),
+    end_date:   new Date(2027,7,14),
     css: "cssClassName",
     sections: {
          unit: 5

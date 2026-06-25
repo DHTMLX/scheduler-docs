@@ -1,20 +1,20 @@
 ---
-sidebar_label: "onSaveError"
-title: "onSaveError event"
-description: "срабатывает при возникновении ошибки во время обновления данных"
+sidebar_label: onSaveError
+title: "Событие onSaveError"
+description: "Срабатывает при возникновении ошибки во время обновления данных"
 ---
 
 # onSaveError
 
 ### Description
 
-@short: Срабатывает при возникновении ошибки во время обновления данных
+@short: Срабатывает в случае возникновения ошибки во время обновления данных
 
 @signature: onSaveError: (ids: array, response: XMLHttpRequest) =\> void
 
 ### Parameters
 
-- `ids` - (required) *array* - массив, содержащий ID событий, которые не удалось обновить
+- `ids` - (required) *array* - массив идентификаторов событий, обновление которых не удалось
 - `response` - (required) *XMLHttpRequest* - объект Ajax-запроса
 
 ### Example
@@ -29,6 +29,6 @@ scheduler.attachEvent("onSaveError", function(ids, resp){
 
 :::note
 
-Это событие срабатывает только при использовании библиотеки dataProcessor для клиент-серверного взаимодействия.
- 
+Событие будет вызвано только в том случае, если вы используете библиотеку dataProcessor для обмена данными между клиентом и сервером.
+
 :::

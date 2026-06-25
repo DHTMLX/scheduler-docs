@@ -15,13 +15,13 @@ description: "specifies the lightbox object"
 ### Example
 
 ~~~jsx
-scheduler.config.lightbox.sections=[    
-    { name:"description", height:50, type:"textarea", map_to:"text", focus:true},
-    { name:"location",    height:43, type:"textarea", map_to:"event_location"},
-    { name:"time",           height:72, type:"time",     map_to:"auto"}    
+scheduler.config.lightbox.sections = [
+    { name: "description", height: 50, type: "textarea", map_to: "text", focus: true },
+    { name: "location", height: 43, type: "textarea", map_to: "event_location" },
+    { name: "time", height: 72, type: "time", map_to: "auto" }
 ];
-...            
-scheduler.init('scheduler_here',new Date(2013,2,1),"week");
+...
+scheduler.init('scheduler_here', new Date(2027, 2, 1), "week");
 ~~~
 
 ### Related samples
@@ -32,14 +32,14 @@ scheduler.init('scheduler_here',new Date(2013,2,1),"week");
 
 The lightbox object has 1 property:
 
-- **sections** - (*array*) specifies lightbox's sections 
+- `sections` - (*array*) specifies the lightbox sections
 
 ~~~js
-//default definition 
-scheduler.config.lightbox.sections=[
-    {name:"description", height:200, map_to:"text", type:"textarea" , focus:true},
-    {name:"time", height:72, type:"time", map_to:"auto"}
-]
+// default definition
+scheduler.config.lightbox.sections = [
+    { name: "description", height: 200, map_to: "text", type: "textarea", focus: true },
+    { name: "time", height: 72, type: "time", map_to: "auto" }
+];
 ~~~
 
 Each object in the **sections** array can have the following properties:
@@ -48,7 +48,7 @@ Each object in the **sections** array can have the following properties:
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>name</b></td>
-  <td>(<i>string</i>) the section's name (according to this name, the scheduler will take the section's label from <i>locale.labels</i> collection). For example for the <b>'time'</b> section, the scheduler will take the label stored as <b>scheduler.locale.labels.section_time</b>.</td>
+  <td>(<i>string</i>) the section's name (according to this name, the scheduler will take the section's label from <i>locale.labels</i> collection). For example for the <b>'time'</b> section, the scheduler will take the label stored as <b>`scheduler.locale.labels.section_time`</b>.</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>height</b></td>
@@ -97,12 +97,12 @@ Each object in the **sections** array can have the following properties:
   </tbody>
 </table>
 
-## Meaning of 'map_to:'auto'
+## Meaning of `map_to: "auto"`
 
-The 'map_to' property can take the 'auto' value. The 'auto' value relates to the following:
+The `map_to` property can take the `"auto"` value. The `"auto"` value relates to the following:
 
-- The control won't return any value and will directly change the value of the related event's properties according to the 'set_value()' method ([Custom Lightbox Control](guides/custom-lightbox-editor.md)). 
-- Generally, the 'auto' value is used for complex controls that work with multiple properties of an event
+- The control won't return any value and will directly change the value of the related event's properties according to the `set_value()` method ([Custom Lightbox Control](guides/custom-lightbox-editor.md)).
+- Generally, the `"auto"` value is used for complex controls that work with multiple properties of an event
 
 ### Related Guides
 - [Fully Custom Lightbox](guides/custom-details-form.md)

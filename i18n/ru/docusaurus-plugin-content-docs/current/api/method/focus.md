@@ -1,14 +1,14 @@
 ---
-sidebar_label: "focus"
-title: "focus method"
-description: "активирует focus на scheduler"
+sidebar_label: focus
+title: "Метод focus"
+description: "Устанавливает фокус на scheduler"
 ---
 
 # focus
 
 ### Description
 
-@short: Активирует focus на scheduler
+@short: Устанавливает фокус на scheduler
 
 @signature: focus: () =\> void
 
@@ -19,7 +19,7 @@ scheduler.focus();
 ~~~
 
 ### Related samples
-- [Keyboard Navigation and WAI-ARIA - Flat Skin](https://docs.dhtmlx.com/scheduler/samples/13_accessibility/01_regular_skin_all_views.html)
+- [Клавиатурная навигация и WAI-ARIA - Flat Skin](https://docs.dhtmlx.com/scheduler/samples/13_accessibility/01_regular_skin_all_views.html)
 
 ### Details
 
@@ -35,7 +35,7 @@ scheduler.focus();
 - [key_nav_step](api/config/key_nav_step.md)
 
 ### Related Guides
-- [Навигация с помощью клавиатуры](guides/keyboard-navigation.md)
+- [Навигация клавиатурой](guides/keyboard-navigation.md)
 
 ### Change log
 - добавлено в версии 4.4

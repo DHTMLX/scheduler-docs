@@ -17,7 +17,7 @@ description: "Schaltet den Marker für die aktuelle Zeit ein oder aus"
 ~~~jsx
 scheduler.config.mark_now = false;
 ...
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.init('scheduler_here', new Date(2027,05,11), "week");
 ~~~
 
 **Default value:** true

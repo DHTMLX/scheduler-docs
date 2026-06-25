@@ -15,7 +15,7 @@ description: "entfernt eine Scheduler-Instanz"
 ### Example
 
 ~~~jsx
-var myScheduler = Scheduler.getSchedulerInstance();
+const myScheduler = Scheduler.getSchedulerInstance();
  
 // Entfernen einer Scheduler-Instanz
 myScheduler.destructor();

@@ -22,16 +22,16 @@ description: "라이트박스 섹션 객체에 접근할 수 있습니다."
 ### Example
 
 ~~~jsx
-var time = scheduler.formSection('time');
-var descr = scheduler.formSection('description');
+const time = scheduler.formSection('time');
+const descr = scheduler.formSection('description');
 
 //값을 가져옵니다
-var value = time.getValue();
-var value1 = descr.getValue();
+const value = time.getValue();
+const value1 = descr.getValue();
 
 //값을 할당합니다
 descr.setValue('abc'); //단일 컨트롤이 있는 섹션의 경우
-time.setValue(null,{start_date:new Date(2009,03,10),end_date:new Date(2012,03,10)}); 
+time.setValue(null,{start_date:new Date(2026,03,10),end_date:new Date(2027,03,10)}); 
 //다중 컨트롤이 있는 섹션의 경우: 첫 번째 파라미터는 'null', 두 번째는 데이터 객체입니다
 ~~~
 

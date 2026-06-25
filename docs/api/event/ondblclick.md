@@ -18,17 +18,17 @@ description: "fires when the user double clicks on an event"
 - `e` - (required) *Event* - a native event object
 
 ### Returns
-- ` result` - (boolean) - defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>)
+- `result` - (boolean) - defines whether the default action of the event will be triggered (`true`) or canceled (`false`)
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onDblClick", function (id, e){
-    //any custom logic here
+scheduler.attachEvent("onDblClick", (id, e) => {
+    // any custom logic here
     return true;
-})
+});
 ~~~
 
 ### Details
 
-The event is blockable. Return *false* to cancel the default behaviour.
+The event is blockable. Return `false` to cancel the default behavior.

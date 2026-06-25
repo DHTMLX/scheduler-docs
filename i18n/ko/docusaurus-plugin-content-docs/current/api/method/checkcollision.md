@@ -22,13 +22,13 @@ description: "주어진 이벤트가 동일 시간대에 존재하는 다른 이
 ### Example
 
 ~~~jsx
-var event = {
+const event = {
    text : "New Event",
-   start_date : new Date(2013, 02, 20, 10, 00),
-   end_date : new Date(2013, 02, 20, 14, 00)
+   start_date : new Date(2027, 02, 20, 10, 00),
+   end_date : new Date(2027, 02, 20, 14, 00)
 };
 
-var isOccupied = scheduler.checkCollision(event); // 'true' 또는 'false' 반환
+const isOccupied = scheduler.checkCollision(event); // 'true' 또는 'false' 반환
 ~~~
 
 ### Details

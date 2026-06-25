@@ -23,7 +23,7 @@ description: "定义在tooltip中开始和结束日期的显示格式"
 
 ~~~jsx
 scheduler.templates.tooltip_date_format=function (date){
-    var formatFunc = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
+    const formatFunc = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
     return formatFunc(date);
 }
 ~~~

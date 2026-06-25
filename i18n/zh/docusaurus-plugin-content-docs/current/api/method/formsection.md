@@ -22,16 +22,16 @@ description: "提供对lightbox sections对象的访问"
 ### Example
 
 ~~~jsx
-var time = scheduler.formSection('time');  
-var descr = scheduler.formSection('description');  
+const time = scheduler.formSection('time');  
+const descr = scheduler.formSection('description');  
 
 //获取值  
-var value = time.getValue();  
-var value1 = descr.getValue();  
+const value = time.getValue();  
+const value1 = descr.getValue();  
 
 //赋值  
 descr.setValue('abc'); //针对只有单个控件的section  
-time.setValue(null,{start_date:new Date(2009,03,10),end_date:new Date(2012,03,10)});  
+time.setValue(null,{start_date:new Date(2025,03,10),end_date:new Date(2027,03,10)});  
 //针对含有多个控件的section：第一个参数为null，第二个为数据对象
 ~~~
 

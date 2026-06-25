@@ -25,7 +25,7 @@ description: "определяет, что отображается внутри
 
 ~~~jsx
 scheduler.templates.quick_info_content = function(start, end, ev){ 
-       return ev.details || ev.text;
+    return ev.details || ev.text;
 };
 ~~~
 

@@ -17,7 +17,7 @@ description: "주간(Week) 및 단위(Units) 뷰의 X축에 사용되는 날짜 
 ~~~jsx
 scheduler.config.day_date = "%F %j";
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 **Default value:** "%D, %F %j"
@@ -32,13 +32,13 @@ scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
 
 ~~~js
 scheduler.config.day_date = "%F %j";
-scheduler.init('scheduler_here', new Date(2020, 7, 5), "day");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "day");
 ~~~
 
 초기화 후에 날짜 형식을 변경하려면 [day_date](api/template/day_date.md) 템플릿을 오버라이드해야 합니다:
 
 ~~~js
-var formatDayDate = scheduler.date.date_to_str("%F %j");
+const formatDayDate = scheduler.date.date_to_str("%F %j");
 scheduler.templates.day_date = function(date) {
     return formatDayDate(date);
 };

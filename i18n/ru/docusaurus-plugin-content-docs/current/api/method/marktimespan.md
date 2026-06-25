@@ -76,8 +76,8 @@ scheduler.markTimespan({
   <tr>
   <td colspan="2">
 ~~~js
-// запрещает создание событий начиная с 3 мая 2012 до 'end_date' 
-start_date:new Date(2012,4,3)
+// запрещает создание событий начиная с 3 мая 2027 до 'end_date' 
+start_date:new Date(2027,4,3)
 ~~~
   </td>
   </tr>
@@ -88,8 +88,8 @@ start_date:new Date(2012,4,3)
   <tr>
   <td colspan="2" >
 ~~~js
-// запрещает создание событий с 'start_date' до 3 сентября 2012
-end_date:new Date(2012,8,3)
+// запрещает создание событий с 'start_date' до 3 сентября 2027
+end_date:new Date(2027,8,3)
 ~~~
   </td>
   </tr>
@@ -102,7 +102,7 @@ end_date:new Date(2012,8,3)
 ~~~js
 days:[0, 2, 6] // ограничивает воскресенье, вторник и субботу
 days:"fullweek" // ограничивает всю неделю
-days:new Date(2012,6,1) // блокирует 1 июля 2012
+days:new Date(2027,6,1) // блокирует 1 июля 2027
 ~~~
   </td>
   </tr>
@@ -218,7 +218,7 @@ sections: { unit: 5, timeline: [2,3]}
   </td>
   <td>
 ~~~js
-var config ={
+const config ={
     days:  1, 
     zones: [9*60, 15*60], 
     css: "cssClassName", 
@@ -243,9 +243,9 @@ var config ={
   </td>
   <td>
 ~~~js
-var config ={
-    start_date: new Date(2012,7,13),
-    end_date:   new Date(2012,7,14),
+const config ={
+    start_date: new Date(2027,7,13),
+    end_date:   new Date(2027,7,14),
     css: "cssClassName",
     sections: {
          unit: 5

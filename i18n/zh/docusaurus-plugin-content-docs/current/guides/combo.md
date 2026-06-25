@@ -1,16 +1,16 @@
 ---
-title: "Combo（组合框）"
-sidebar_label: "Combo（组合框）"
+title: "Combo"
+sidebar_label: "Combo"
 ---
 
 # Combo（组合框）
 
-本节介绍由 <a href="https://docs.dhtmlx.com/combo__index.html">DHTMLX Combo 组件</a> 提供的组合框。
+一个通过 <a href="https://docs.dhtmlx.com/combo__index.html">DHTMLX Combo 组件</a> 提供的组合框。
 
 ![combo_editor](/img/combo_editor.png)
 
 ~~~js
-var holders = [
+const holders = [
     { key: 1, label: 'James' },
     { key: 2, label: 'Alex' },
     { key: 3, label: 'Antony' },
@@ -25,7 +25,7 @@ scheduler.config.lightbox.sections = [
     image_path:"../common/dhtmlxCombo/imgs/", height:30, filtering:true},
     { name:"time", height:72, type:"time", map_to:"auto"}
 ];
-~~~ 
+~~~
 
 
 [Combo box in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/15_combo_select.html)
@@ -33,9 +33,9 @@ scheduler.config.lightbox.sections = [
 
 ## 初始化
 
-要在 lightbox 中包含 Combo 控件，请按照以下步骤操作:
+要将 Combo 控件添加到 lightbox，请按照下列步骤操作：
 
-1. 引入 dhtmlxCombo 文件:
+1. <b>包含 <a href="https://docs.dhtmlx.com/combo__index.html">dhtmlxCombo</a> 文件：</b>
 ~~~js
 <script src="../codebase/dhtmlxscheduler.js" ...></script>
 <link rel="stylesheet" href="../codebase/dhtmlxscheduler.css" ...>
@@ -43,13 +43,13 @@ scheduler.config.lightbox.sections = [
 <link rel="stylesheet" href="common/dhtmlxCombo/dhtmlxcombo.css" ..>
 <script src="common/dhtmlxCombo/dhtmlxcombo.js" ...></script>
 ~~~
-2. 在页面上启用 editors 扩展:
+2. <b>在页面上激活 [editors](guides/extensions-list.md#editors) 扩展</b>：
 ~~~js
 scheduler.plugins({
     editors: true
 });
 ~~~
-3. 在 lightbox 配置中添加相应的 section:
+3. <b>将该段添加到 lightbox 配置中：</b>
 ~~~js
 scheduler.config.lightbox.sections = [
     { name:"description", ... },
@@ -58,7 +58,7 @@ scheduler.config.lightbox.sections = [
     { name:"time", ...}
 ];
 ~~~
-4. 为该 section 设置标签:
+4. <b>为该段设置标签：</b>
 ~~~js
 scheduler.locale.labels.section_holders = "Holder";
 ~~~
@@ -71,53 +71,53 @@ scheduler.locale.labels.section_holders = "Holder";
 
 ## 属性
 
-以下是 'combo' 控件常用的重要属性（完整列表请参见 [此处](api/config/lightbox.md)）:
+以下属性对“combo”控件来说最为重要且常用（完整列表请参见 [此处](api/config/lightbox.md)）：
 
 <table class="webixdoc_links">
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>name</b></td>
-  <td>(<i>string</i>) section 的名称</td>
+  <td>(<i>string</i>) 该段的名称</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>height</b></td>
-  <td>(<i>number</i>) section 的高度</td>
+  <td>(<i>number</i>) 该段的高度</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>map_to</b></td>
-  <td>(<i>string</i>) section 映射的数据属性名称</td>
+  <td>(<i>string</i>) 将映射到该段的数据属性名称</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>type</b></td>
-  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) section 控件的类型</td>
+  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) 该段控件的类型</td>
   </tr>
   <tr>
-  <td class="webixdoc_links0"><b>options</b></td>
-  <td>(<i>对象数组</i>) 定义控件的选项（<b>适用于 'select'、'multiselect'、'radio'、'combo' 控件</b>）。 每个数组对象表示一个选项，包括以下属性: <ul> <li><b>key</b> - (<i>string</i>) 选项的 id。该属性与事件的数据属性进行比较，用于将选项分配给事件</li> <li><b>label</b> - (<i>string</i>) 选项的显示文本</li> </ul></td>
+  <td class="webixdoc_links0" style="vertical-align: top;"><b>options</b></td>
+  <td>(<i>array of objects</i>) 定义控件的选项（对 'select', 'multiselect', 'radio', 'combo' 控件有效）。数组中的每个对象定义一个选项，并包含以下属性： <ul> <li><b>key</b> - (<i>string</i>) 选项的标识符。此属性将与事件的数据属性进行比较，用于将选项分配给事件</li> <li><b>label</b> - (<i>string</i>) 选项的标签</li> </ul></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>image_path</b></td>
-  <td>(<i>string</i>) dhtmlxCombo 图片的路径</td>
+  <td>(<i>string</i>) dhtmlxCombo 图像的路径</td>
   </tr>
   <tr>
-  <td class="webixdoc_links0"><b>filtering</b></td>
-  <td>(<i>boolean, string</i>) 启用自动过滤支持（输入时过滤选项）。可选 该参数可取以下值之一: <ul> <li><b>false</b> - 禁用过滤</li> <li><b>true 或 "start"</b> - 启用过滤，从选项开头开始搜索</li> <li><b>"between"</b> - 启用过滤，搜索项中任意位置出现的文本</li> </ul></td>
+  <td class="webixdoc_links0" style="vertical-align: top;"><b>filtering</b></td>
+  <td>(<i>boolean, string</i>) 启用自动筛选功能（输入时将过滤选项）。可选值如下： <ul> <li><b>false</b> - 禁用筛选</li> <li><b>true 或 "start"</b> - 启用筛选，从项的开头进行搜索</li> <li><b>"between"</b> - 启用筛选，搜索输入文本在项中的任意位置</li> </ul></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>script_path</b></td>
-  <td>(<i>string</i>) 提供 combo 选项的服务端脚本路径。可选</td>
+  <td>(<i>string</i>) 指向服务器端脚本的路径，该脚本将从服务器提供加载控件选项。可选</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>cache</b></td>
-  <td>(<i>boolean</i>) 启用或禁用脚本响应的缓存（建议启用）。可选</td>
+  <td>(<i>boolean</i>) 启用/禁用脚本响应的缓存（推荐开启该属性）。可选</td>
   </tr>
   </tbody>
 </table>
 
 
-## 为控件填充数据
+## 使用数据填充控件
 
-要为 Combo 控件提供选项值，请使用 [options](api/config/lightbox.md) 参数:
+一般而言，要为 Combo 控件设置值，应使用 [options](api/config/lightbox.md) 参数：
 
 ~~~js
 scheduler.config.lightbox.sections = 
@@ -134,14 +134,14 @@ scheduler.config.lightbox.sections =
 ];
 ~~~
 
-[options](api/config/lightbox.md) 参数中的每一项都必须包含两个必需属性:
+在 [options](api/config/lightbox.md) 参数中的项必须具备两个必需属性：
 
 - **key** - 选项的 id
-- **label** - 选项的显示文本
+- **label** - 选项的标签
 
 ## 从服务器填充控件数据
 
-要从服务器加载 Combo 选项，请使用 **script_path** 属性指定处理请求的服务端脚本 URL。
+要从服务器填充 Combo 控件，请使用 **script_path** 属性，指定将处理服务器请求的服务器端脚本的路径。
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -150,22 +150,21 @@ scheduler.config.lightbox.sections = [
 ];
 ~~~
 
-**script_path** 属性定义 combo 通过 AJAX 加载选项的 URL。
+**script_path** 属性指定从中加载选项的 URL，即若指定了 script_path，Combo 将通过 AJAX 从该 URL 加载数据。
 
-由于 combo 选择器基于 [dhtmlxCombo](https://docs.dhtmlx.com/combo__index.html)，服务器应返回兼容格式的数据。
-关于向 combo 添加数据的详细信息可参见 [Loading Options](https://docs.dhtmlx.com/combo__adding_options.html) 文章。
+Combo 选择器基于 [dhtmlxCombo](https://docs.dhtmlx.com/combo__index.html)，因此服务器应返回与之兼容的数据。有关向组合框添加数据的方式，请参阅文章 [Loading Options](https://docs.dhtmlx.com/combo__adding_options.html)。
 
-请求会在以下两种情况下发送:
+该 URL 的请求分为两种情况：
 
-1) 当 lightbox 打开且 combo 已有选中值时，控件会发送请求以加载该选项的 label。
+1) 打开 lightbox 时，Combo 有选定值 — 控件向服务器发送请求并加载所选选项的标签。
 
-请求包含一个 **id** 查询参数:
+请求将包含一个 id 查询参数：
 
 ~~~
 GET /url?id="1"
 ~~~
 
-响应应为仅包含指定 id 项目的数组，格式如下:
+响应应返回仅包含指定 id 的项的数组，格式如下：
 
 ~~~
 [
@@ -174,16 +173,15 @@ GET /url?id="1"
 ~~~
 
 
-2) 当用户在 combo 输入框中输入内容时，控件会加载过滤后的选项。
+2) 用户在下拉框输入文本时 — 控件加载筛选后的值。
 
-请求会携带输入内容作为 **mask** 查询参数:
+客户端将发送带有输入文本的 mask 参数的请求：
 
 ~~~
 GET /url?mask="al"
 ~~~
 
-服务器应返回所有匹配 mask 的项:
-
+服务器的响应应返回所有与 mask 值匹配的项：
 ~~~
 [
    { "value": 1, "text": "Albania"},
@@ -191,34 +189,24 @@ GET /url?mask="al"
 ]
 ~~~
 
-如果你使用 [PHP Connector](https://github.com/DHTMLX/connector-php) 库，服务端代码可能如下所示:
+示例后端处理程序（Node.js/Express）：
 
 ~~~js
-<?php
-    require_once('../../connector-php/codebase/combo_connector.php');
-    require_once("../common/config.php");
-
-    $combo = new ComboConnector($res, $dbtype);
-
-    $combo->event->attach("beforeFilter", "by_id");
-    function by_id($filter) {
-        if (isset($_GET['id']))
-            $filter->add("item_id", $_GET['id'], '=');
-    }    
-
-    $combo->dynamic_loading(3);
-    $combo->render_table("Countries","item_id","item_nm");
-
-?>
+app.get("/api/countries", async (req, res) => {
+  const { id, mask } = req.query;
+  // 通过 id 或 mask 查询数据源
+  const items = await countriesService.find({ id, mask });
+  res.json(items); // [{ value: 1, text: "Albania" }, ...]
+});
 ~~~
 
 
-[Populating a combo box from the server](https://docs.dhtmlx.com/scheduler/samples/02_customization/18_combo_select_from_db.html)
+[从服务器填充组合框](https://docs.dhtmlx.com/scheduler/samples/02_customization/18_combo_select_from_db.html)
 
 
-## 自动过滤模式
+## 自动筛选模式
 
-自动过滤模式指的是用户输入时选项会自动过滤。要启用此模式，请将 **filtering** 属性设置为 *true*:
+自动筛选模式是在用户输入时自动过滤选项的模式。要启用该模式，请将 **filtering** 属性设置为 true：
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -227,8 +215,8 @@ scheduler.config.lightbox.sections = [
 ];
 ~~~
 :::note
-请注意，无论数据是从客户端还是服务端加载，自动过滤都可以使用。
+请注意，无论数据来自何处（客户端还是服务器端），均可使用自动筛选模式。
 :::
 
 
-更多详情请参阅 dhtmlxCombo 文档中的 <a href="https://docs.dhtmlx.com/combo__filtering.html">Filtering</a>。
+更多相关信息请参阅 dhtmlxCombo 文档 <a href="https://docs.dhtmlx.com/combo__filtering.html">dhtmlxCombo. Filtering</a> 。

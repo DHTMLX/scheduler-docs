@@ -1,31 +1,31 @@
 ---
-sidebar_label: "getUserData"
-title: "getUserData method"
-description: "получает пользовательские данные, связанные с конкретным событием"
+sidebar_label: getUserData
+title: "getUserData метод"
+description: "Получает данные пользователя, связанные с указанным событием"
 ---
 
 # getUserData
 
 ### Description
 
-@short: Получает пользовательские данные, связанные с конкретным событием
+@short: Получает данные пользователя, связанные с указанным событием
 
 @signature: getUserData: (id: string, name: string) =\> any
 
 ### Parameters
 
-- `id` - (required) *string* - id события
-- `name` - (required) *string* - название пользовательских данных
+- `id` - (required) *string* - идентификатор события
+- `name` - (required) *string* - имя данных пользователя
 
 ### Returns
-- `value` - (any) - значение пользовательских данных
+- `value` - (any) - значение данных пользователя
 
 ### Example
 
 ~~~jsx
-var eventId = scheduler.addEvent({
-    start_date: "16-06-2013 09:00",
-    end_date:   "16-06-2013 12:00",
+const eventId = scheduler.addEvent({
+    start_date: "16-06-2027 09:00",
+    end_date:   "16-06-2027 12:00",
     text:   "Meeting"
 });
 

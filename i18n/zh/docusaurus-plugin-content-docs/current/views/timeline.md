@@ -147,7 +147,7 @@ scheduler.createTimelineView({
     ...
 });
 
-var timeline = scheduler.matrix.timeline;
+const timeline = scheduler.matrix.timeline;
 ~~~
 
 创建后，可以使用以下方法。
@@ -157,7 +157,7 @@ var timeline = scheduler.matrix.timeline;
 要获取 timeline 视图对象，请使用 [getView](api/method/getview.md) 方法。它接受视图名称作为参数。如果未传递参数，则返回当前视图。
 
 ~~~js
-var timeline = scheduler.getView(); 
+const timeline = scheduler.getView(); 
 timeline.x_size = 8;
 scheduler.setCurrentView();
 ~~~
@@ -250,7 +250,7 @@ timeline.scrollTo({left:300, top:500});
 - 要获取时间刻度上某个日期的 X 坐标，使用 **posFromDate()** 并传递 Date 参数:
 
 ~~~js
-var left = timeline.posFromDate(new Date());
+const left = timeline.posFromDate(new Date());
 ~~~
 
 :::note
@@ -260,7 +260,7 @@ var left = timeline.posFromDate(new Date());
 - 要获取某行的 Y 坐标，使用 **getSectionTop()** 并传递分区编号:
 
 ~~~js
-var top = timeline.getSectionTop(section.key);
+const top = timeline.getSectionTop(section.key);
 ~~~
 
 :::note
@@ -290,7 +290,7 @@ const top = timeline.getEventTop(scheduler.getEvent(event.id));
 要获取当前滚动条的位置，调用 **timeline.getScrollPosition()**，返回一个包含滚动坐标的对象:
 
 ~~~js
-var timeline = scheduler.getView();
+const timeline = scheduler.getView();
 timeline.getScrollPosition(); // { left: 0, top: 0 } 
 ~~~
 
@@ -302,7 +302,7 @@ timeline.getScrollPosition(); // { left: 0, top: 0 }
 你也可以使用 **onScroll** 事件监听滚动变化，该事件会接收新的 left 和 top 值:
 
 ~~~js
-var timeline = scheduler.getView();
+const timeline = scheduler.getView();
 timeline.attachEvent("onScroll", function(left, top){});
 ~~~
 
@@ -328,9 +328,9 @@ timeline.attachEvent("onScroll", function(left, top){});
 此方法返回事件对象数组。
 
 ~~~js
-var timeline = scheduler.getView();
+const timeline = scheduler.getView();
  
-var events = timeline.selectEvents({
+const events = timeline.selectEvents({
     section: section.key,
     date: date,
     selectNested: true
@@ -383,11 +383,11 @@ scheduler.createTimelineView({
 
 scheduler.init('scheduler_here');
 scheduler.parse([
-    {text:"Conference",    start_date:"17/09/2012 12:00", end_date:"18/09/2012 21:00", 
+    {text:"Conference",    start_date:"17/09/2027 12:00", end_date:"18/09/2027 21:00", 
     room_id:"1"},
-     {text:"Meeting",     start_date:"17/09/2012 09:00", end_date:"17/09/2012 21:00", 
+     {text:"Meeting",     start_date:"17/09/2027 09:00", end_date:"17/09/2027 21:00", 
     room_id:"2"},
-     {text:"Conference", start_date:"17/09/2012 15:00", end_date:"18/09/2012 15:00", 
+     {text:"Conference", start_date:"17/09/2027 15:00", end_date:"18/09/2027 15:00", 
     room_id:"3"}
 ]);                                 
 ~~~
@@ -436,7 +436,7 @@ scheduler.createTimelineView({
     y_property: "section_id", /*!*/
     ...
 });
-scheduler.init('scheduler_here', new Date(2012, 5, 30), "timeline");
+scheduler.init('scheduler_here', new Date(2027, 5, 30), "timeline");
 
 scheduler.parse([
     { id:1, text:"Task A", section_id:'1',         ...},/*!*/
@@ -589,9 +589,9 @@ scheduler.ignore_timeline = function(date){   // "timeline" 为视图名称
 
 ~~~js
 scheduler._click.dhx_cal_next_button = function(dummy,step){
-  var mode = scheduler.getState().mode;
-  var minDate = scheduler.getState().min_date;
-  var formFunc = scheduler.date.date_to_str("%D");
+  const mode = scheduler.getState().mode;
+  const minDate = scheduler.getState().min_date;
+  const formFunc = scheduler.date.date_to_str("%D");
 
   // 跳过周末
   if(mode=='timeline'){    
@@ -867,7 +867,7 @@ scheduler.createTimelineView({
     render: "bar",
     scrollable: true, /*!*/ 
     column_width: 70, /*!*/
-    scroll_position:new Date(2018, 0, 15) /*!*/  
+    scroll_position:new Date(2027, 0, 15) /*!*/  
 });
 ~~~
 
@@ -977,15 +977,15 @@ scheduler.createTimelineView({
 
 scheduler.templates.timeline_cell_value = function (evs, date, section){
     if(section.children){
-        var timeline = scheduler.getView();
+        const timeline = scheduler.getView();
  
-        var events = timeline.selectEvents({
+        const events = timeline.selectEvents({
             section: section.key,
             date: date,
             selectNested: true
         });
  
-        var className = "";
+        let className = "";
         if(!events.length){
             className = "load-marker-no";
         }else if(events.length < 3){

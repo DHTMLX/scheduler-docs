@@ -17,7 +17,7 @@ description: "defines the date format for the <strong>api_date</strong> template
 ~~~jsx
 scheduler.config.api_date="%Y-%m-%d %H:%i";
 
-scheduler.init("scheduler_here",new Date(2009,10,1),"week");
+scheduler.init("scheduler_here",new Date(2027,10,1),"week");
 ~~~
 
 **Default value:** "%d-%m-%Y %H:%i"

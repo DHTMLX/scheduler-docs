@@ -22,7 +22,7 @@ description: "주어진 객체의 깊은 복사본을 생성합니다."
 ### Example
 
 ~~~jsx
-var backupEvent = scheduler.copy(scheduler.getEvent(id));
+const backupEvent = scheduler.copy(scheduler.getEvent(id));
 ~~~
 
 ### Change log

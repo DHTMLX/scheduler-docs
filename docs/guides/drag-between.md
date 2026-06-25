@@ -24,11 +24,11 @@ scheduler.plugins({
     drag_between: true
 });
 
-scheduler.init('scheduler_here',new Date(2019, 5, 30),"week");
+scheduler.init('scheduler_here',new Date(2027, 5, 30),"week");
 scheduler.load("./data/units.xml");
 
 scheduler2 = Scheduler.getSchedulerInstance();
-scheduler2.init('scheduler_here_2',new Date(2019, 5, 30),"week");
+scheduler2.init('scheduler_here_2',new Date(2027, 5, 30),"week");
 </script>
 ~~~
 
@@ -40,24 +40,24 @@ To deny dragging events from a scheduler, set the [drag_out](api/config/drag_out
 
 ~~~js
 scheduler.config.drag_out = false;//restrict dragging events from this scheduler /*!*/
-scheduler.init('scheduler_here',new Date(2019, 5,30),"week");
+scheduler.init('scheduler_here',new Date(2027, 5,30),"week");
 scheduler.load("./data/units.xml");
 
 scheduler2 = Scheduler.getSchedulerInstance();
-scheduler2.init('scheduler_here_2',new Date(2019, 5, 30),"week");
+scheduler2.init('scheduler_here_2',new Date(2027, 5, 30),"week");
 ~~~
 
 
 To deny dragging events to a scheduler, set the [drag_in](api/config/drag_in.md) property to *false*:
 
 ~~~js
-scheduler.init('scheduler_here',new Date(2019, 5, 30),"week");
+scheduler.init('scheduler_here',new Date(2027, 5, 30),"week");
 scheduler.load("./data/units.xml");
 
 
 scheduler2.config.drag_in = false;//restrict dragging events to this scheduler /*!*/
 scheduler2 = Scheduler.getSchedulerInstance();
-scheduler2.init('scheduler_here_2',new Date(2019, 5, 30),"week");
+scheduler2.init('scheduler_here_2',new Date(2027, 5, 30),"week");
 ~~~
 
 Sample **"samples/20_multiple/06_drag_between_layout.html"** provided in the [Scheduler PRO package](https://dhtmlx.com/docs/products/dhtmlxScheduler/).

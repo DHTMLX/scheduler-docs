@@ -8,7 +8,7 @@ sidebar_label: "Select"
 ![select_editor](/img/select_editor.png)
 
 ~~~js
-var alert_opts = [
+const alert_opts = [
     { key: 1, label: 'None' },
     { key: 2, label: 'On start date' },
     { key: 3, label: '1 day before' }
@@ -32,7 +32,7 @@ To add the Select control to the lightbox, follow these steps:
 
 1. <b>Add the section to the lightbox configuration:</b>
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     { name:"description", ... },
     { name:"alert", height:40,map_to:"type",type:"select", options:alert_opts},
     { name:"time", ...}
@@ -88,7 +88,7 @@ The following properties are mostly important and commonly set for the 'select' 
 Generally, to set values for the Select control you should use the [options](api/config/lightbox.md) parameter:
 
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     {      name:"alert", type:"select", 
         ...
         options:[
@@ -132,15 +132,15 @@ The data response for the [load](api/method/load.md) method should contain a col
    "data":[
       {
           "id":"1",
-          "start_date":"2019-03-02 15:00:00",
-          "end_date":"2019-03-04 16:00:00",
+          "start_date":"2027-03-02 15:00:00",
+          "end_date":"2027-03-04 16:00:00",
           "text":"Interview",
           "type":"1"
       },
       {
           "id":"2",
-          "start_date":"2019-03-02 17:00:00",
-          "end_date":"2019-03-04 18:00:00",
+          "start_date":"2027-03-02 17:00:00",
+          "end_date":"2027-03-04 18:00:00",
           "text":"Performance review",
           "type":"2"
       }

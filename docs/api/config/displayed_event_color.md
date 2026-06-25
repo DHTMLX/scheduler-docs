@@ -17,7 +17,7 @@ description: "sets the default background color for the events retrieved by the 
 ~~~jsx
 scheduler.config.displayed_event_color="#DFEDF7";
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
 **Default value:** #ffc5ab

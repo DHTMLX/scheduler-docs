@@ -1,20 +1,20 @@
 ---
-sidebar_label: "isViewExists"
-title: "isViewExists method"
-description: "проверяет, существует ли view с заданным именем"
+sidebar_label: isViewExists
+title: "Метод isViewExists"
+description: "проверяет, существует ли вид с указанным именем"
 ---
 
 # isViewExists
 
 ### Description
 
-@short: Проверяет, существует ли view с заданным именем
+@short: Проверяет, существует ли вид с указанным именем
 
-@signature: isViewExists: (name: string) =\> boolean
+@signature: isViewExists: (name: string) => boolean
 
 ### Parameters
 
-- `name` - (required) *string* - имя view
+- `name` - (обязательно) *string* - имя вида
 
 ### Returns
 - ` isExist` - (boolean) - <i>true</i>, если view найден; иначе <i>false</i>

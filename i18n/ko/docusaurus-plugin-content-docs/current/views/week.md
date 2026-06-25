@@ -16,7 +16,7 @@ sidebar_label: "주간 보기"
 
 ~~~js
 // 표준 초기화. 주간 보기는 자동으로 추가됩니다
-scheduler.init('scheduler_here',new Date(2019,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ...
 scheduler.load("/data/events");
 ~~~

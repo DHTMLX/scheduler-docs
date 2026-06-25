@@ -17,7 +17,7 @@ description: "템플릿 'day_date', 'week_date', 'day_scale_date'가 뷰 헤더�
 ~~~jsx
 scheduler.config.default_date = "%j %M %Y";
 ...
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.init('scheduler_here', new Date(2027,05,11), "week");
 ~~~
 
 **Default value:** "%j %M %Y"

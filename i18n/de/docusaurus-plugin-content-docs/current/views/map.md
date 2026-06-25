@@ -66,7 +66,7 @@ scheduler.locale.labels.map_tab = "Map";
 5. Fügen Sie einen Abschnitt im Lightbox-Formular hinzu, um den Standort des Ereignisses zu verwalten:
 
 ~~~js
-scheduler.config.lightbox.sections="["
+scheduler.config.lightbox.sections = [
     {name:"description", height:50,map_to:"text", type:"textarea", focus:true},
     {name:"location", height:43, map_to:"event_location", type:"textarea"},
     {name:"time", height:72, type:"time", map_to:"auto"}    
@@ -83,7 +83,7 @@ scheduler.locale.labels.section_location = "Location";
 
 ~~~js
 //'map' ist der Standardname für die Kartenansicht
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
   
 
@@ -114,7 +114,7 @@ scheduler.config.map_settings = {
     }
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
  
 [Weitere Details](views/map.md#map-related-configuration-options)
@@ -126,7 +126,7 @@ scheduler.init('scheduler_here',new Date(2024,5,11),"map");
 ~~~js
 scheduler.config.map_view_provider = "googleMap";
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
 
 Verfügbare Werte sind: *"googleMap", "openStreetMaps", "mapbox"*.
@@ -138,7 +138,7 @@ scheduler.config.map_settings = {
     view_provider: "googleMap"
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
 
 ## Kartenbezogene Konfigurationsoptionen {#map-related-configuration-options}
@@ -169,7 +169,7 @@ scheduler.config.map_settings = {
     view_provider: "googleMap"
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
 
 Diese Eigenschaften umfassen:

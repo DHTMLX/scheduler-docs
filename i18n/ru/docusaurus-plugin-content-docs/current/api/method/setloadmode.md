@@ -1,72 +1,71 @@
 ---
-sidebar_label: "setLoadMode"
+sidebar_label: setLoadMode
 title: "setLoadMode method"
-description: "устанавливает режим загрузки данных по частям, позволяя динамическую подгрузку"
+description: "устанавливает режим, который позволяет загружать данные по частям (включает динамическую загрузку)"
 ---
 
 # setLoadMode
 
 ### Description
 
-@short: Устанавливает режим загрузки данных по частям, позволяя динамическую подгрузку
+@short: Устанавливает режим, который позволяет загружать данные по частям (включает динамическую загрузку)
 
 @signature: setLoadMode: (mode: string) =\> void
 
 ### Parameters
 
-- `mode` - (required) *string* - режим загрузки
+- `mode` - (обязательно) *string* - режим загрузки
 
 ### Example
 
 ~~~jsx
 scheduler.config.load_date = "%Y.%m.%d";
-scheduler.init('scheduler_here',new Date(2009,10,1),"month");
+scheduler.init('scheduler_here',new Date(2027,10,1),"month");
 
 scheduler.setLoadMode("month")
 scheduler.load("data/events.php");
 ~~~
 
 ### Related samples
-- [Loading data from a database](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/05_loading_database.html)
+- [Загрузка данных из базы данных](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/05_loading_database.html)
 
 ### Details
 
 :::note
 
-Этот метод следует вызывать после **scheduler.init()**, но до загрузки каких-либо данных в планировщик.
- 
+Метод следует вызывать после вызова **scheduler.init()**, но до загрузки данных в планировщик.
+
 :::
 
-По умолчанию планировщик загружает все данные сразу. Это может быть неэффективно при работе с большими коллекциями событий. В таких случаях лучше загружать данные частями, только те, которые нужны для отображения текущего вида.
+По умолчанию планировщик загружает все данные сразу. Однако это может создать проблему, когда вы используете большие коллекции событий. В таких ситуациях следует загружать данные порциями, необходимых для заполнения видимой области планировщика.
 
-Параметр **mode** принимает одно из следующих предопределённых значений:
+Параметр **mode** может принимать только одно из заранее определённых значений. Предопределённые значения:
 
 - day;  
 - week;
 - month;
 - year.
 
-
-Например, установка режима в 'month' заставит планировщик запрашивать данные только за текущий месяц, подгружая дополнительные данные по мере необходимости. 
+Например, если установить режим 'month', планировщик будет запрашивать данные только за текущий месяц и подгружать оставшиеся по требованию.  
 [Подробнее о режимах загрузки](guides/loading-data.md#dynamic-loading).
 
 #### Запрос
 
-Сгенерированные запросы выглядят следующим образом:
+Сгенерированные запросы выглядят так:
 
 ~~~php
 Data?from=DATEHERE&to=DATEHERE
 ~~~
 
-*где DATEHERE - это валидная дата, отформатированная согласно настройкам из [load_date](api/config/load_date.md).*
+*где DATEHERE — корректное значение даты в формате, заданном опцией [load_date](api/config/load_date.md).*
 
 <br>
 
-При использовании [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) на серверной стороне, дополнительная серверная обработка для парсинга данных не требуется.
+Если вы используете [dhtmlxConnector](https://docs.dhtmlx.com/connector__php__index.html) на стороне сервера, вам не нужно выполнять никаких дополнительных операций на стороне сервера для разбора данных.
 
-### Related API
+### Связанные API
 - [load_date](api/config/load_date.md)
 - [load_format](api/template/load_format.md)
 
-### Related Guides
+### Связанные руководства
 - [Загрузка данных](guides/loading-data.md#dynamic-loading)

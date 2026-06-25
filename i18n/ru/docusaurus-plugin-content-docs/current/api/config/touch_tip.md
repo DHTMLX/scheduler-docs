@@ -1,14 +1,14 @@
 ---
-sidebar_label: "touch_tip"
-title: "touch_tip config"
-description: "управляет отображением всплывающих подсказок в правом верхнем углу экрана"
+sidebar_label: touch_tip
+title: "touch_tip конфигурация"
+description: "Включает/выключает всплывающие сообщения в правом верхнем углу экрана"
 ---
 
 # touch_tip
 
 ### Description
 
-@short: Управляет отображением всплывающих подсказок в правом верхнем углу экрана
+@short: Включает/выключает всплывающие сообщения в правом верхнем углу экрана
 
 @signature: touch_tip: boolean
 
@@ -17,10 +17,10 @@ description: "управляет отображением всплывающих
 ~~~jsx
 scheduler.config.touch_tip = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Related API
 - [touch](api/config/touch.md)
@@ -28,4 +28,4 @@ scheduler.init('scheduler_here',new Date(2013,0,10),"week");
 - [touch_tooltip](api/config/touch_tooltip.md)
 
 ### Related Guides
-- [Мобильная адаптивность Scheduler](guides/touch-support.md)
+- [Мобильный адаптивный Scheduler](guides/touch-support.md)

@@ -1,39 +1,38 @@
 ---
-sidebar_label: "cascade_event_display"
-title: "cascade_event_display config"
-description: "включает режим отображения 'cascade'"
+sidebar_label: cascade_event_display
+title: "конфигурация cascade_event_display"
+description: "устанавливает режим отображения 'cascade'"
 ---
 
 # cascade_event_display
 
 ### Description
 
-@short: Включает режим отображения 'cascade'
+@short: Устанавливает режим отображения 'cascade'
 
 @signature: cascade_event_display: boolean
 
 ### Example
 
 ~~~jsx
-scheduler.config.cascade_event_display = true;  
-scheduler.config.cascade_event_count = 4;  
-scheduler.config.cascade_event_margin = 30;  
-...  
-scheduler.init('scheduler_here', new Date(2009,5,30), "week");
+scheduler.config.cascade_event_display = true;
+scheduler.config.cascade_event_count = 4;     
+scheduler.config.cascade_event_margin = 30; 
+...
+scheduler.init('scheduler_here',new Date(2027,5,30),"week");
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
-**Applicable views:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
+**Подходящие представления:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
 
 ### Related samples
 - [Displaying events as a cascade](https://docs.dhtmlx.com/scheduler/samples/02_customization/24_cascade_event_display.html)
 
 ### Details
 
-По умолчанию события, которые накладываются по времени, отображаются одно за другим. Включение этой опции меняет отображение на каскадный стиль для таких событий.
+По умолчанию события, запланированные на одно и то же время, отображаются по одному. Если вы хотите представить такие события как каскад, установите параметр в значение *true*. 
 
-<br> 
 ![cascade_event_display_property](/img/cascade_event_display_property.png)
 
 ### Related API

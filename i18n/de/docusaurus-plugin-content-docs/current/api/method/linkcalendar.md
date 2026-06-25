@@ -20,7 +20,7 @@ description: "Diese Methode aktualisiert das aktive Datum im Mini-Kalender, soba
 ### Example
 
 ~~~jsx
-var calendar = scheduler.renderCalendar({
+const calendar = scheduler.renderCalendar({
     container:"cal_here", 
     navigation:true,
     handler:function(date){

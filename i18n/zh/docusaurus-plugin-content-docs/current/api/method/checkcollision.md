@@ -22,13 +22,13 @@ description: "验证给定的事件是否在相同时段与任何已有事件重
 ### Example
 
 ~~~jsx
-var event = {
+const event = {
    text : "New Event",
-   start_date : new Date(2013, 02, 20, 10, 00),
-   end_date : new Date(2013, 02, 20, 14, 00)
+   start_date : new Date(2027, 02, 20, 10, 00),
+   end_date : new Date(2027, 02, 20, 14, 00)
 };
 
-var isOccupied = scheduler.checkCollision(event); // 返回 'true' 或 'false'
+const isOccupied = scheduler.checkCollision(event); // 返回 'true' 或 'false'
 ~~~
 
 ### Details

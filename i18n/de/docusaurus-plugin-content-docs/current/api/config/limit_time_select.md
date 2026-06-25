@@ -17,7 +17,7 @@ description: "Beschränkt den Time Selector im Lightbox, indem die maximalen und
 ~~~jsx
 scheduler.config.limit_time_select = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
 **Default value:** false

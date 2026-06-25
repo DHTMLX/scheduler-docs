@@ -17,7 +17,7 @@ description: "允许在月视图中通过拖放操作调整多日事件的大小
 ~~~jsx
 scheduler.config.resize_month_events = true;
 
-scheduler.init('scheduler_here', new Date(2010,0,10), "month");
+scheduler.init('scheduler_here', new Date(2027,0,10), "month");
 ~~~
 
 **Default value:** false

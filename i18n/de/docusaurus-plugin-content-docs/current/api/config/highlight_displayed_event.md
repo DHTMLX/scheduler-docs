@@ -17,7 +17,7 @@ description: "Bestimmt, ob Events, die durch die Methode showEvent abgerufen wer
 ~~~jsx
 scheduler.config.highlight_displayed_event=false;
 ...
-scheduler.init('scheduler_here',new Date(2010,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
 **Default value:** true

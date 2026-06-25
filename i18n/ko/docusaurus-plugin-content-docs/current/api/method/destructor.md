@@ -15,7 +15,7 @@ description: "스케줄러 인스턴스를 제거합니다"
 ### Example
 
 ~~~jsx
-var myScheduler = Scheduler.getSchedulerInstance();
+const myScheduler = Scheduler.getSchedulerInstance();
  
 // 스케줄러 인스턴스 제거
 myScheduler.destructor();

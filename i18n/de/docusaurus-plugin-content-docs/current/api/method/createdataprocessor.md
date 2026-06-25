@@ -22,7 +22,7 @@ description: "erzeugt eine neue dataProcessor-Instanz und verknüpft sie mit dem
 ### Example
 
 ~~~jsx
-var dp = scheduler.createDataProcessor({
+const dp = scheduler.createDataProcessor({
     url: "/api",
     mode: "REST"
 });
@@ -35,7 +35,7 @@ Diese Methode akzeptiert einen der folgenden Parametertypen:
 1\. Ein Objekt mit `{url:string, mode:string}`, das eine vordefinierte Art angibt, Daten zu senden
 
 ~~~js
-var dp = scheduler.createDataProcessor({
+const dp = scheduler.createDataProcessor({
    url: "/api",
    mode: "REST"
 });
@@ -49,7 +49,7 @@ wobei:
 2\. Alternativ kann ein benutzerdefiniertes Router-Objekt übergeben werden:
 
 ~~~js
-var dp = scheduler.createDataProcessor(router);
+const dp = scheduler.createDataProcessor(router);
 ~~~
 
 Hier kann der Router eine Funktion sein:
@@ -59,7 +59,7 @@ Hier kann der Router eine Funktion sein:
 // action - "create"|"update"|"delete"
 // data - ein Objekt mit Event-Details
 // id – die ID des verarbeiteten Objekts (Event)
-var dp = scheduler.createDataProcessor(function(entity, action, data, id) { 
+const dp = scheduler.createDataProcessor(function(entity, action, data, id) { 
     switch(action) {
         case "create":
                return scheduler.ajax.post(
@@ -85,7 +85,7 @@ var dp = scheduler.createDataProcessor(function(entity, action, data, id) {
 oder ein Objekt, das folgendermaßen aufgebaut ist:
 
 ~~~js
-var dp = scheduler.createDataProcessor({ 
+const dp = scheduler.createDataProcessor({ 
    event: {
       create: function(data) {},
       update: function(data, id) {},

@@ -1,14 +1,14 @@
 ---
-sidebar_label: "event_attribute"
-title: "event_attribute config"
-description: "определяет имя атрибута, используемого для идентификации HTML-элемента события по его id"
+sidebar_label: event_attribute
+title: "event_attribute конфигурация"
+description: "задает имя атрибута, которое будет задавать идентификатор элемента HTML события"
 ---
 
 # event_attribute
 
 ### Description
 
-@short: Определяет имя атрибута, используемого для идентификации HTML-элемента события по его id
+@short: Устанавливает имя атрибута, которое будет задавать идентификатор элемента HTML события
 
 @signature: event_attribute: string
 
@@ -18,7 +18,7 @@ description: "определяет имя атрибута, используем
 scheduler.config.event_attribute = "data-event-id"
 ~~~
 
-**Default value:** "data-event-id"
+**Значение по умолчанию:** "data-event-id"
 
 ### Change log
-- добавлено в версии v6.0
+- добавлено в v6.0

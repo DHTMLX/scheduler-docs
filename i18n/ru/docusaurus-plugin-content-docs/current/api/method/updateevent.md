@@ -1,14 +1,14 @@
 ---
-sidebar_label: "updateEvent"
-title: "updateEvent method"
-description: "изменяет указанное событие"
+sidebar_label: updateEvent
+title: "updateEvent метод"
+description: "обновляет указанное событие"
 ---
 
 # updateEvent
 
 ### Description
 
-@short: Изменяет указанное событие
+@short: Обновляет указанное событие
 
 @signature: updateEvent: (id: string) =\> void
 
@@ -19,9 +19,9 @@ description: "изменяет указанное событие"
 ### Example
 
 ~~~jsx
-var eventId = scheduler.addEvent({
-    start_date: "16-06-2013 09:00",
-    end_date:   "16-06-2013 12:00",
+const eventId = scheduler.addEvent({
+    start_date: "16-06-2027 09:00",
+    end_date:   "16-06-2027 12:00",
     text:   "Meeting"
 });
  
@@ -31,11 +31,11 @@ scheduler.updateEvent(id);   // перерисовывает обновленн�
 ~~~
 
 ### Related samples
-- [Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
-- [Creating message boxes](https://docs.dhtmlx.com/scheduler/samples/09_api/02_dhtmlx_message.html)
+- [Повторяющиеся события](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
+- [Создание message boxes](https://docs.dhtmlx.com/scheduler/samples/09_api/02_dhtmlx_message.html)
 
 ### Related API
 - [getEvent](api/method/getevent.md)
 
 ### Related Guides
-- [Интеграция с серверной стороной](guides/server-integration.md)
+- [Интеграция на стороне сервера](guides/server-integration.md#technique)

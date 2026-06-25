@@ -17,7 +17,7 @@ description: "控制浏览器中是否启用GET请求缓存"
 ~~~jsx
 scheduler.config.prevent_cache = true;
 ...
-scheduler.init('scheduler_here',new Date(2009,10,1),"month");
+scheduler.init('scheduler_here',new Date(2027,10,1),"month");
 ~~~
 
 **Default value:** false

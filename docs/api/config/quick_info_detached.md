@@ -17,7 +17,7 @@ description: "defines whether the event form will appear from the left/right sid
 ~~~jsx
 scheduler.config.quick_info_detached = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,5,30),"day");
+scheduler.init('scheduler_here',new Date(2027,5,30),"day");
 ~~~
 
 **Default value:** true (<i>the event form will appear  near the selected event</i>)

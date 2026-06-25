@@ -17,7 +17,7 @@ description: "sets the date format for the X-Axis of the Week and Units views"
 ~~~jsx
 scheduler.config.day_date = "%F %j";
 ...
-scheduler.init('scheduler_here', new Date(2013, 7, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "week");
 ~~~
 
 **Default value:** "%D, %F %j"
@@ -32,13 +32,13 @@ The config will take effect only if it is applied before the first initializatio
 
 ~~~js
 scheduler.config.day_date = "%F %j";
-scheduler.init('scheduler_here', new Date(2020, 7, 5), "day");
+scheduler.init('scheduler_here', new Date(2027, 7, 5), "day");
 ~~~
 
 If you want to change the date format after the initialization, you need to redefine the [day_date](api/template/day_date.md) template:
 
 ~~~js
-var formatDayDate = scheduler.date.date_to_str("%F %j");
+const formatDayDate = scheduler.date.date_to_str("%F %j");
 scheduler.templates.day_date = function(date) {
     return formatDayDate(date);
 };

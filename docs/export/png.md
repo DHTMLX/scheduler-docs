@@ -22,7 +22,7 @@ read the [corresponding article](https://dhtmlx.com/docs/products/dhtmlxSchedule
 
 ## Limits on request size
 
-There is a common API endpoint **https://export.dhtmlx.com/scheduler** which serves for export methods (*exportToPDF*, *exportToPNG*, etc.). **Max request size is 10 MB**.
+There is a common API endpoint `https://export.dhtmlx.com/scheduler` which serves for export methods (*exportToPDF*, *exportToPNG*, etc.). **Max request size is 10 MB**.
 
 
 ## Default Export to PNG
@@ -38,7 +38,7 @@ scheduler.plugins({
 ~~~
 
 :::note
-If you use the Scheduler version older than 7.0, you need to include the **https://export.dhtmlx.com/scheduler/api.js** file on your page to enable the online export service, e.g.:
+If you use the Scheduler version older than 7.0, you need to include the `https://export.dhtmlx.com/scheduler/api.js` file on your page to enable the online export service, e.g.:
 
 ~~~js
 <script src="codebase/dhtmlxscheduler.js"></script>
@@ -86,13 +86,13 @@ The [exportToPNG()](api/method/exporttopng.md) method takes as a parameter an ob
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/scheduler</strong></td>
+  <td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is `https://export.dhtmlx.com/scheduler`</td>
   </tr>
   </tbody>
 </table>
 
 
-[Calling the export method with optional properties](Calling the export method with optional properties)
+Calling the export method with optional properties:
 ~~~js
 scheduler.exportToPNG({
     format:"A4",

@@ -83,7 +83,7 @@ scheduler.locale.labels.section_location = "Location";
 
 ~~~js
 //'map' is the default name of the Map view
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
   
 
@@ -114,7 +114,7 @@ scheduler.config.map_settings = {
     }
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
  
 [Check the details below](views/map.md#map-related-configuration-options)
@@ -126,7 +126,7 @@ scheduler.init('scheduler_here',new Date(2024,5,11),"map");
 ~~~js
 scheduler.config.map_view_provider = "googleMap";
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
 
 Possible values are the following: *"googleMap", "openStreetMaps", "mapbox"*.
@@ -138,7 +138,7 @@ scheduler.config.map_settings = {
     view_provider: "googleMap"
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
 
 ## Map-related configuration options
@@ -170,7 +170,7 @@ scheduler.config.map_settings = {
     view_provider: "googleMap"
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
 
 The configuration object contains the following properties:

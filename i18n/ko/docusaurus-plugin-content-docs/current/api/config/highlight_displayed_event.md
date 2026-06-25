@@ -17,7 +17,7 @@ description: "showEvent 메서드로 가져온 이벤트가 표시될 때 하이
 ~~~jsx
 scheduler.config.highlight_displayed_event=false;
 ...
-scheduler.init('scheduler_here',new Date(2010,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
 **Default value:** true

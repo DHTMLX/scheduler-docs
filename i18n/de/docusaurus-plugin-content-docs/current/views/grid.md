@@ -51,8 +51,8 @@ scheduler.createGridView({
         {id:"date", label:'Date', sort:'date', width:'*'},
         {id:"text", label:'Text', sort:'str',  width:200, align:'left'}
     ],
-    from:new Date(2019, 3, 10),//linke Grenze des erlaubten Datumsbereichs
-    to:new Date(2019, 5, 23)    //rechte Grenze des erlaubten Datumsbereichs
+    from:new Date(2027, 3, 10),//linke Grenze des erlaubten Datumsbereichs
+    to:new Date(2027, 5, 23)    //rechte Grenze des erlaubten Datumsbereichs
 });
 ~~~
 
@@ -64,15 +64,15 @@ scheduler.createGridView({
 
 Mit dieser Erweiterung können Sie die aktiven Daten einschränken, sodass Benutzer den angegebenen Bereich nicht überschreiten können.
 
-Wenn Sie beispielsweise die aktiven Daten vom **1. Januar 2024** bis zum **1. Januar 2025** begrenzen möchten, konfigurieren Sie es wie folgt:
+Wenn Sie beispielsweise die aktiven Daten vom **1. Januar 2026** bis zum **1. Januar 2027** begrenzen möchten, konfigurieren Sie es wie folgt:
 
 
 ~~~js
 scheduler.createGridView({
      name:"grid",
     ..
-    from:new Date(2024, 0, 1),
-    to:new Date(2025, 0, 1)
+    from:new Date(2026, 0, 1),
+    to:new Date(2027, 0, 1)
 });
 
 ~~~

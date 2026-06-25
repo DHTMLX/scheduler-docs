@@ -17,7 +17,7 @@ description: "'says' to present the numbers of days in the Month view as clickab
 ~~~jsx
 scheduler.config.active_link_view = "week"; //where we'll jump from the Month view
 ...
-scheduler.init('scheduler_here',new Date(2012,7,6),"month");
+scheduler.init('scheduler_here',new Date(2027,7,6),"month");
 ~~~
 
 **Default value:** day

@@ -3,9 +3,9 @@ title: "Beispiele für Datenformate"
 sidebar_label: "Beispiele für Datenformate"
 ---
 
-# Beispiele für Datenformate 
+# Beispiele für Datenformate
 
-Dieser Artikel enthält Beispiele für alle unterstützten Datenformate.
+In diesem Artikel finden Sie Beispiele für alle unterstützten Datenformate.
 
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">
@@ -29,81 +29,81 @@ Dieser Artikel enthält Beispiele für alle unterstützten Datenformate.
   <tbody>
   <tr>
   <td>Meeting</td>
-  <td>11. April 2019 14:00</td>
-  <td>11. April 2019 17:00</td>
+  <td>April 11, 2027 14:00</td>
+  <td>April 11, 2027 17:00</td>
   </tr>
   <tr>
   <td>Conference</td>
-  <td>15. April 2019 12:00</td>
-  <td>18. April 2019 19:00</td>
+  <td>April 15, 2027 12:00</td>
+  <td>April 18, 2027 19:00</td>
   </tr>
   <tr>
   <td>Interview</td>
-  <td>24. April 2019 09:00</td>
-  <td>24. April 2019 10:00</td>
+  <td>April 24, 2027 09:00</td>
+  <td>April 24, 2027 10:00</td>
   </tr>
   </tbody>
 </table>
 
 
-## JSON {#json}
+## JSON
 
 ~~~js
 [
     { 
         "id":"1", 
         "text":"Meeting", 
-        "start_date":"2019-04-11 14:00",
-        "end_date":"2019-04-11 17:00"
+        "start_date":"2027-04-11 14:00",
+        "end_date":"2027-04-11 17:00"
     },
     {
         "id":"2", 
         "text":"Conference", 
-        "start_date":"2019-04-15 12:00",
-        "end_date":"2019-04-18 19:00"
+        "start_date":"2027-04-15 12:00",
+        "end_date":"2027-04-18 19:00"
     },
     {
         "id":"3", 
         "text":"Interview", 
-        "start_date":"2019-04-24 09:00", 
-        "end_date":"2019-04-24 10:00"
+        "start_date":"2027-04-24 09:00", 
+        "end_date":"2027-04-24 10:00"
     }
 ]
 ~~~
 
-## JSON mit Collections {#json-with-collections}
+## JSON mit Sammlungen
 
-Dieses Format ist nützlich, wenn zusätzliche Datensammlungen eingebunden werden müssen. 
-Zum Beispiel ist es hilfreich beim Laden von Timeline- und Units-Abschnitten vom Server, wie in [loading Timeline and Units sections from the server](guides/loading-data.md#loadingdatawithtimelineandunitssectionsfromtheserver) beschrieben:
+Dieses Format ist nützlich, wenn Sie zusätzliche Datensammlungen übermitteln müssen. 
+Zum Beispiel ist es nützlich, wenn Sie die [Timeline- und Units-Sektionen vom Server laden möchten](guides/loading-data.md#collections):
 
 ~~~js
 { 
    "data":[
       {
           "id":"1",
-          "start_date":"2019-03-02 00:00:00",
-          "end_date":"2019-03-04 00:00:00",
+          "start_date":"2027-03-02 00:00:00",
+          "end_date":"2027-03-04 00:00:00",
           "text":"dblclick me!",
           "type":"1"
       },
       {
           "id":"2",
-          "start_date":"2019-03-09 00:00:00",
-          "end_date":"2019-03-11 00:00:00",
+          "start_date":"2027-03-09 00:00:00",
+          "end_date":"2027-03-11 00:00:00",
           "text":"and me!",
           "type":"2"
       },
       {
           "id":"3",
-          "start_date":"2019-03-16 00:00:00",
-          "end_date":"2019-03-18 00:00:00",
+          "start_date":"2027-03-16 00:00:00",
+          "end_date":"2027-03-18 00:00:00",
           "text":"and me too!",
           "type":"3"
       },
       { 
           "id":"4",
-          "start_date":"2019-03-02 08:00:00",
-          "end_date":"2019-03-02 14:10:00",
+          "start_date":"2027-03-02 08:00:00",
+          "end_date":"2027-03-02 14:10:00",
           "text":"Type 2 event",
           "type":"2"
       }
@@ -118,29 +118,30 @@ Zum Beispiel ist es hilfreich beim Laden von Timeline- und Units-Abschnitten vom
 }
 ~~~
 
-## XML {#xml}
+## XML
 
 ~~~xml
 <data>
     <event id="1">
         <text><![CDATA[Meeting]]></text>
-        <start_date>04/11/2013 14:00</start_date>
-        <end_date>04/11/2013 17:00</end_date>
+        <start_date>04/11/2027 14:00</start_date>
+        <end_date>04/11/2027 17:00</end_date>
     </event>
     <event id="2">
         <text><![CDATA[Conference]]></text>
-        <start_date>04/15/2013 12:00</start_date>
-        <end_date>04/18/2013 19:00</end_date>
+        <start_date>04/15/2027 12:00</start_date>
+        <end_date>04/18/2027 19:00</end_date>
     </event>
     <event id="3">
         <text><![CDATA[Interview]]></text>
-        <start_date>04/24/2013 09:00</start_date>
-        <end_date>04/24/2013 10:00</end_date>
+        <start_date>04/24/2027 09:00</start_date>
+        <end_date>04/24/2027 10:00</end_date>
     </event>
 </data>
 ~~~
 
-## iCal {#ical}
+
+## iCal
 
 ~~~html
 BEGIN:VCALENDAR
@@ -148,48 +149,49 @@ VERSION:2.0
 PRODID:-//dhtmlXScheduler//NONSGML v2.2//EN
 DESCRIPTION:
 BEGIN:VEVENT
-DTSTART:20130411T140000
-DTEND:20130411T170000
+DTSTART:20270411T140000
+DTEND:20270411T170000
 SUMMARY:Meeting
 END:VEVENT
 BEGIN:VEVENT
-DTSTART:20130415
-DTEND:20130418
+DTSTART:20270415
+DTEND:20270418
 SUMMARY:Conference
 END:VEVENT
 BEGIN:VEVENT
-DTSTART:20130424T090000
-DTEND:20130424T100000
+DTSTART:20270424T090000
+DTEND:20270424T100000
 SUMMARY:Interview
 END:VEVENT
 END:VCALENDAR 
 ~~~
 
-## Daten mit benutzerdefinierten Eigenschaften {#datawithcustomproperties}
 
-Hier ein Beispiel, bei dem der Basissatz ([oben](guides/data-formats.md)) um zwei benutzerdefinierte Eigenschaften erweitert wurde:
+## Daten mit benutzerdefinierten Eigenschaften
 
-- **room** - die Raumnummer, in der das Ereignis stattfindet.
-- **holder** - der Name der für das Ereignis verantwortlichen Person.
+Betrachten wir ein Beispiel, bei dem das anfängliche Set (oben [siehe](guides/data-formats.md)) zwei benutzerdefinierte Eigenschaften hat: 
+
+- **room** - die Nummer des Raums, in dem die Veranstaltung stattfinden wird.
+- **holder**  - der Name der für die Veranstaltung Verantwortlichen.
 
 
-#### JSON 
+#### JSON
 ~~~js
 [
     {
         "id":"1", 
         "text":"Meeting", 
-        "start_date":"2019-04-11 14:00",
-        "end_date":"2019-04-11 17:00"
+        "start_date":"2027-04-11 14:00",
+        "end_date":"2027-04-11 17:00"
         "room":327,
         "holder":"James"
     }
 ]
 ~~~
 
-Beachten Sie, dass alle Eigenschaften, die Ihre Datenquelle zurückgibt, zu den Ereignisobjekten hinzugefügt werden und über die [client-side API](guides/event-object-operations.md) zugänglich sind.
+Hinweis, dass alle Eigenschaften, die Ihre Datenquelle zurückgibt, zu Ereignisobjekten hinzugefügt werden und der [Client-seitigen API](guides/event-object-operations.md) zur Verfügung stehen wird.
 
-Beispiel:
+Beispielsweise:
 
 ~~~js
 scheduler.templates.event_text = function(start, end, event){
@@ -204,8 +206,8 @@ scheduler.templates.event_text = function(start, end, event){
 <data>
     <event id="1">
         <text><![CDATA[Meeting]]></text>
-        <start_date>04/11/2013 14:00</start_date>
-        <end_date>04/11/2013 17:00</end_date>
+        <start_date>04/11/2027 14:00</start_date>
+        <end_date>04/11/2027 17:00</end_date>
         <room>327</room>
         <holder><![CDATA[James]]></holder>
     </event>
@@ -213,7 +215,8 @@ scheduler.templates.event_text = function(start, end, event){
 ~~~
 
 #### iCal
-Beachten Sie, dass auf der Client-Seite die Eigenschaftsnamen (außer DTSTART, DTEND und SUMMARY) von Groß- zu Kleinschreibung konvertiert werden: ROOM wird zu room, HOLDER wird zu holder.
+
+Hinweis: Auf der Client-Seite werden die Namen der Eigenschaften (mit Ausnahme von DTSTART, DTEND und SUMMARY) von Groß- in Kleinbuchstaben umgewandelt: ROOM -> room, HOLDER -> holder.
 
 ~~~html
 BEGIN:VCALENDAR
@@ -221,8 +224,8 @@ VERSION:2.0
 PRODID:-//dhtmlXScheduler//NONSGML v2.2//EN
 DESCRIPTION:
 BEGIN:VEVENT
-DTSTART:20130411T140000
-DTEND:20130411T170000
+DTSTART:20270411T140000
+DTEND:20270411T170000
 SUMMARY:Meeting
 ROOM:327
 HOLDER:James

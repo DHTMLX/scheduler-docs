@@ -22,7 +22,7 @@ description: "сonverts date object to a date string. Used to send data back to 
 ### Example
 
 ~~~jsx
-var dateToStr = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
+const dateToStr = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
 scheduler.templates.format_date = function(date){
     return dateToStr (date);
 };

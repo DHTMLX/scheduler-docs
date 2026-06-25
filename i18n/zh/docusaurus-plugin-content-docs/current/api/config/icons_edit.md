@@ -17,7 +17,7 @@ description: "包含一组图标，这些图标会显示在事件框内的侧边
 ~~~jsx
 scheduler.config.icons_edit = ['icon_custom', 'icon_save', 'icon_cancel'];
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** ['icon_save', 'icon_cancel']

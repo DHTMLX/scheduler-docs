@@ -1,14 +1,14 @@
 ---
-sidebar_label: "onBeforeExpand"
-title: "onBeforeExpand event"
-description: "срабатывает, когда пользователь нажимает на иконку расширения, чтобы переключить scheduler из исходного размера в режим 'полного экрана'."
+sidebar_label: onBeforeExpand
+title: "Событие onBeforeExpand"
+description: "срабатывает, когда пользователь нажимает на значок разворачивания, чтобы изменить размер расписания с исходного на 'полный экран'."
 ---
 
 # onBeforeExpand
 
 ### Description
 
-@short: Срабатывает, когда пользователь нажимает на иконку расширения, чтобы переключить scheduler из исходного размера в режим "полного экрана".
+@short: Срабатывает, когда пользователь нажимает на значок разворачивания, чтобы изменить размер расписания с исходного на 'полный экран'.
 
 @signature: onBeforeExpand: () =\> boolean
 
@@ -19,7 +19,7 @@ description: "срабатывает, когда пользователь наж
 
 ~~~jsx
 scheduler.attachEvent("onBeforeExpand",function(){
-    // здесь можно добавить кастомную логику
+    // любая ваша логика здесь
     return true;
 });
 ~~~
@@ -27,7 +27,7 @@ scheduler.attachEvent("onBeforeExpand",function(){
 ### Details
 
 :::note
- Для работы события требуется включенный плагин [expand](guides/extensions-list.md#expand). 
+ Событие требует включенного плагина [expand](guides/extensions-list.md#expand). 
 :::
 
 ### Related API

@@ -33,7 +33,7 @@ scheduler.templates.drag_marker_class = function(start, end, event){
 
 Например: 
 
-~~~html
+~~~css
 .myclass{
     background: green;
 }

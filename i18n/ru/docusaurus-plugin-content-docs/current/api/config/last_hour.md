@@ -1,14 +1,14 @@
 ---
-sidebar_label: "last_hour"
-title: "last_hour config"
-description: "Определяет верхний предел для часовой шкалы на оси Y."
+sidebar_label: last_hour
+title: "конфигурация last_hour"
+description: "устанавливает максимальное значение шкалы часов (ось Y)"
 ---
 
 # last_hour
 
 ### Description
 
-@short: Определяет верхний предел для часовой шкалы на оси Y.
+@short: Устанавливает максимальное значение шкалы часов (ось Y)
 
 @signature: last_hour: number
 
@@ -18,16 +18,16 @@ description: "Определяет верхний предел для часов
 scheduler.config.first_hour = 9;
 scheduler.config.last_hour = 18;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
-**Default value:** 24
+**Значение по умолчанию:** 24
 
-**Applicable views:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
+**Доступные представления:** [Дневной вид](views/day.md), [Недельный вид](views/week.md), [Вид по единицам](views/units.md)
 
 ### Related samples
-- [Blocking dates](https://docs.dhtmlx.com/scheduler/samples/03_extensions/25_advanced_limitation.html)
-- [Displaying multi-day events in the regular way](https://docs.dhtmlx.com/scheduler/samples/03_extensions/26_multi_day_visible.html)
+- [Блокирование дат](https://docs.dhtmlx.com/scheduler/samples/03_extensions/25_advanced_limitation.html)
+- [Отображение многодневных событий обычным способом](https://docs.dhtmlx.com/scheduler/samples/03_extensions/26_multi_day_visible.html)
 
 ### Details
 

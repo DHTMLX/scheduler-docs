@@ -23,7 +23,7 @@ description: "specifies the time part of the start and end dates of the event. M
 
 ~~~jsx
 scheduler.templates.event_date = function(date){
-    var formatFunc = scheduler.date.date_to_str(scheduler.config.hour_date);
+    const formatFunc = scheduler.date.date_to_str(scheduler.config.hour_date);
     return formatFunc(date);
 }
 ~~~

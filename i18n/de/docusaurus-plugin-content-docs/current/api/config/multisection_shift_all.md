@@ -19,7 +19,7 @@ description: "Steuert, ob beim Ziehen von Events, die mehreren Sektionen in der 
 ~~~jsx
 scheduler.config.multisection_shift_all = false;
 
-scheduler.init('scheduler_here', new Date(2012, 5, 30), "timeline");
+scheduler.init('scheduler_here', new Date(2027, 5, 30), "timeline");
 ~~~
 
 **Default value:** true

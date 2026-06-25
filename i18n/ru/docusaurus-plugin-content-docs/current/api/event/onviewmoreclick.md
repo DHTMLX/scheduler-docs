@@ -1,29 +1,29 @@
 ---
-sidebar_label: "onViewMoreClick"
-title: "onViewMoreClick event"
-description: "вызывается, когда пользователь кликает по ссылке 'View more' в Month view (применимо только для Month view)"
+sidebar_label: onViewMoreClick
+title: "onViewMoreClick событие"
+description: "срабатывает, когда пользователь нажимает на ссылку 'Показать ещё' в месячном представлении (только в месячном представлении)"
 ---
 
 # onViewMoreClick
 
 ### Description
 
-@short: Вызывается, когда пользователь кликает по ссылке 'View more' в Month view (применимо только для Month view)
+@short: Вы вызывается, когда пользователь нажимает на ссылку 'Показать ещё' в месячном представлении (только в месячном представлении)
 
 @signature: onViewChange: (date: object) =\> boolean
 
 ### Parameters
 
-- `date` - (required) *object* - дата ячейки, в которой пользователь кликнул по ссылке 'View more'
+- `date` - (обязательный) *object* - дата ячейки, в которой пользователь кликает по ссылке 'Показать ещё'
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию (<b>true</b>) или оно будет отменено (<b>false</b>)
+- `result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onViewMoreClick", function(date){
-    //здесь можно разместить любую кастомную логику
+    // любая ваша логика здесь
 });
 ~~~
 
@@ -32,11 +32,11 @@ scheduler.attachEvent("onViewMoreClick", function(date){
 
 ### Details
 
-Это событие можно заблокировать. Возврат *false* предотвращает переключение Month view на Day view после клика по ссылке 'View more'.
+Событие можно блокировать. Верните *false*, и месячное представление не переключится на дневное представление после нажатия на ссылку 'Показать ещё'.
 
 ### Related API
 - [max_month_events](api/config/max_month_events.md)
 - [month_events_link](api/template/month_events_link.md)
 
 ### Related Guides
-- [Месячный вид](views/month.md#limitingthenumberofeventsinacell)
+- [Месячное представление](views/month.md#limiting-the-number-of-events-in-a-cell)

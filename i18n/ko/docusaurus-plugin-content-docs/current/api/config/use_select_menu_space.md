@@ -17,7 +17,7 @@ description: "이 옵션은 이벤트가 셀의 전체 너비를 차지하는지
 ~~~jsx
 scheduler.config.use_select_menu_space = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** true

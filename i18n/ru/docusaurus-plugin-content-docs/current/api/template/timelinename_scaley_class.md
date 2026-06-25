@@ -31,7 +31,7 @@ scheduler.templates.timeline_scaley_class = function(key, label,  section){
 };
 ~~~
 
-**Applicable views:** [Timeline view](views/timeline.md)
+**Доступные представления:** [Timeline view](views/timeline.md)
 
 ### Details
 

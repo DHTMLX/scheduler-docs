@@ -1,28 +1,28 @@
 ---
-sidebar_label: "alert"
-title: "alert method"
-description: "отображает alert message box"
+sidebar_label: alert
+title: "метод alert"
+description: "вызывает диалоговое окно alert"
 ---
 
 # alert
 
 ### Description
 
-@short: Отображает alert message box
+@short: Вызывает диалоговое окно alert
 
 @signature: alert: (config: any) =\> HTMLElement
 
 ### Parameters
 
-- `config` - (required) *object* - настройки конфигурации для alert box
+- `config` - (required) *object* - конфигурация диалогового окна alert
 
 ### Returns
-- ` div` - (HTMLElement) - div элемент, содержащий alert box
+- ` div` - (HTMLElement) - div-контейнер диалогового окна alert
 
 ### Example
 
 ~~~jsx
-var box = scheduler.alert({
+const box = scheduler.alert({
     title:"Alert",
     type:"alert-error",
     text:"You can't do this"
@@ -31,7 +31,7 @@ var box = scheduler.alert({
 
 ### Details
 
-Для получения дополнительной информации о доступных параметрах конфигурации alert message box, обратитесь к статье [Всплывающие сообщения и модальные окна](guides/popups-and-modals.md).
+Для получения сведений о поддерживаемых опциях конфигурации диалогового окна оповещения смотрите статью [Popup Messages and Modal Boxes](guides/popups-and-modals.md).
 
 ### Related API
 - [confirm](api/method/confirm.md)
@@ -39,7 +39,7 @@ var box = scheduler.alert({
 - [modalbox](api/method/modalbox.md)
 
 ### Related Guides
-- [Всплывающие сообщения и модальные окна](guides/popups-and-modals.md)
+- [Popup Messages and Modal Boxes](guides/popups-and-modals.md)
 
 ### Change log
 - добавлено в версии 6.0

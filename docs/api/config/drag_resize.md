@@ -16,7 +16,7 @@ description: "enables the possibility to resize events by drag-and-drop"
 
 ~~~jsx
 scheduler.config.drag_resize = false;
-scheduler.init('scheduler_here', new Date(2020,5,30), "week");
+scheduler.init('scheduler_here', new Date(2027,5,30), "week");
 ~~~
 
 **Default value:** true

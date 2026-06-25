@@ -19,13 +19,13 @@ description: "fires when the user starts the drag/resize operation (version 2.1+
 - `e` - (required) *Event* - a native event object
 
 ### Returns
-- ` result` - (boolean) - defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>)
+- `result` - (boolean) - defines whether the default action of the event will be triggered (`true`) or canceled (`false`)
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onBeforeDrag", function (id, mode, e){
-    //any custom logic here
+scheduler.attachEvent("onBeforeDrag", (id, mode, e) => {
+    // any custom logic here
     return true;
 });
 ~~~
@@ -36,6 +36,6 @@ scheduler.attachEvent("onBeforeDrag", function (id, mode, e){
 
 ### Details
 
-The event fires when the user clicks inside the scheduler on the element that can be dragged. 
+The event fires when the user clicks inside the Scheduler on the element that can be dragged.
 
-For the "create" mode, the id value is not provided ( a new event is not created yet ).
+For the "create" mode, the `id` value is not provided, because a new event is not created yet.

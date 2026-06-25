@@ -1,7 +1,7 @@
 ---
-sidebar_label: "deleteSection"
+sidebar_label: deleteSection
 title: "deleteSection method"
-description: "удаляет секцию из текущего активного вида"
+description: "удаляет раздел из текущего активного вида"
 ---
 
 # deleteSection
@@ -10,16 +10,16 @@ description: "удаляет секцию из текущего активног
 :::
 ### Description
 
-@short: Удаляет секцию из текущего активного вида
+@short: Удаляет раздел из текущего активного вида
 
 @signature: deleteSection: (section_id: string) =\> boolean
 
 ### Parameters
 
-- `section_id` - (required) *string* - идентификатор секции
+- `section_id` - (обязательно) *string* - идентификатор раздела
 
 ### Returns
-- ` isSuccess` - (boolean) - возвращает true, если секция была успешно удалена, false в противном случае (например, если ID секции некорректен).
+- ` isSuccess` - (boolean) - возвращает true, если раздел был удалён успешно и false в других случаях (например, если указан неверный раздел).
 
 ### Example
 
@@ -43,19 +43,19 @@ scheduler.createTimelineView({
 }); 
 ...
 scheduler.deleteSection("sales");
-~~~
+~~~ 
 
-**Applicable views:** [Timeline view](views/timeline.md)
+**Доступные представления:** [Timeline view](views/timeline.md)
 
 ### Details
 
 :::note
- Для работы метода необходимо включить плагин [treetimeline](guides/extensions-list.md#treetimeline). 
+ Метод требует активированного плагина [treetimeline](guides/extensions-list.md#treetimeline). 
 :::
 
 :::note
 
-Если текущий вид не является Timeline в режиме 'Tree', метод не окажет никакого эффекта.
+Если открытое представление не Timeline в режиме 'Tree', метод будет проигнорирован.
  
 :::
 

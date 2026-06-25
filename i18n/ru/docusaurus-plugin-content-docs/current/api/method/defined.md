@@ -1,23 +1,23 @@
 ---
-sidebar_label: "defined"
+sidebar_label: defined
 title: "defined method"
-description: "возвращает false, если аргумент равен undefined; возвращает true в остальных случаях"
+description: "возвращает false, если переданный аргумент является undefined, иначе true"
 ---
 
 # defined
 
 ### Description
 
-@short: Возвращает false, если аргумент равен undefined; возвращает true в остальных случаях
+@short: Возвращает false, если переданный аргумент является undefined, иначе true
 
 @signature: defined: (event: any) =\> boolean
 
 ### Parameters
 
-- `event` - (required) *object* - объект, который необходимо проверить
+- `event` - (required) *object* - объект, который должен быть проверен
 
 ### Returns
-- ` state` - (boolean) - false, если аргумент равен undefined, true в противном случае
+- ` state` - (boolean) - false, если переданный аргумент равен undefined, иначе true
 
 ### Example
 
@@ -29,4 +29,4 @@ if(scheduler.defined(event.custom_property)){
 ~~~
 
 ### Change log
-- added in version 6.0
+- добавлено в версии 6.0

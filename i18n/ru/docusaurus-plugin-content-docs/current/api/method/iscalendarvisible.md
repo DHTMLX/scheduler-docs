@@ -1,36 +1,36 @@
 ---
-sidebar_label: "isCalendarVisible"
+sidebar_label: isCalendarVisible
 title: "isCalendarVisible method"
-description: "определяет, отображается ли в данный момент календарь в scheduler"
+description: "проверяет, открыт ли в данный момент календарь в расписании"
 ---
 
 # isCalendarVisible
 
 ### Description
 
-@short: Определяет, отображается ли в данный момент календарь в scheduler
+@short: Проверяет, открыт ли в данный момент календарь в расписании
 
-@signature: isCalendarVisible: () =\> boolean | HTMLElement
+@signature: isCalendarVisible: () => boolean|HTMLElement
 
 ### Returns
-- ` cal` - (boolean | HTMLElement) - <ul><li><b>HTML-элемент мини-календаря</b> - когда мини-календарь виден </li> <li><b>false</b> - когда мини-календарь не виден </li> </ul>
+- ` cal` - (boolean | HTMLElement) - <ul><li><b>HTML-элемент мини-календаря</b> - если мини-календарь в данный момент открыт</li> <li><b>false</b> - если мини-календарь в данный момент закрыт</li> </ul>
 
 ### Example
 
 ~~~jsx
 //проверка, виден ли мини-календарь
-var check = scheduler.isCalendarVisible(); // -> <div class="dhx_minical_popup">…</div>
+const check = scheduler.isCalendarVisible(); // -> <div class="dhx_minical_popup">…</div>
 ~~~
 
 ### Related samples
-- [Mini calendar in the scheduler header](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
-- [Mini calendar with the recurring events](https://docs.dhtmlx.com/scheduler/samples/05_calendar/06_recurring_form.html)
+- [Мини-календарь в заголовке расписания](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
+- [Мини-календарь с повторяющимися событиями](https://docs.dhtmlx.com/scheduler/samples/05_calendar/06_recurring_form.html)
 
 ### Details
 
 :::note
- Этот метод работает только если включен плагин [minical](guides/extensions-list.md#minicalendardatepicker). 
+Метод требует активации плагина [minical](guides/extensions-list.md#mini-calendar-date-picker).
 :::
 
 ### Related Guides
-- [Мини-календарь (Date Picker)](guides/minicalendar.md)
+- [Mini Calendar (Date Picker)](guides/minicalendar.md)

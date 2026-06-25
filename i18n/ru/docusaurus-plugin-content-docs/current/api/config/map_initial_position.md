@@ -1,35 +1,35 @@
 ---
-sidebar_label: "map_initial_position"
-title: "map_initial_position config"
-description: "задаёт начальное положение карты"
+sidebar_label: map_initial_position
+title: "map_initial_position конфигурация"
+description: "устанавливает начальное положение карты"
 ---
 
 # map_initial_position
-:::warning
-Эта функицональность устарела
-::: 
+:::warning 
+Свойство устарело
+:::
 ### Description
 
-@short: Задаёт начальное положение карты
+@short: Устанавливает начальное положение карты
 
 @signature: map_initial_position: any
 
 ### Example
 
 ~~~jsx
-scheduler.config.map_initial_position = new google.maps.LatLng(51.477840, -0.001492);
+scheduler.config.map_initial_position =new google.maps.LatLng(51.477840, -0.001492);
 ...
-scheduler.init('scheduler_here', new Date(2013,05,11), "map");
+scheduler.init('scheduler_here',new Date(2027,05,11),"map");
 ~~~
 
-**Default value:** google.maps.LatLng(48.724, 8.215)
+**Значение по умолчанию:** google.maps.LatLng(48.724, 8.215)
 
-**Applicable views:** [Map view](views/map.md)
+**Применимые представления:** [Map view](views/map.md)
 
 ### Details
 
 :::note
- Для работы этого свойства необходимо включить плагин [map_view](guides/extensions-list.md#mapview). 
+ Свойство требует активированного плагина [map_view](guides/extensions-list.md#map-view) для активации. 
 :::
 
 ### Related API

@@ -17,7 +17,7 @@ description: "Steuert, ob Hinweisnachrichten in der oberen rechten Ecke des Bild
 ~~~jsx
 scheduler.config.touch_tip = false;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ~~~
 
 **Default value:** true

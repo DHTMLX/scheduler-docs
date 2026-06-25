@@ -5,12 +5,12 @@ sidebar_label: "Multiselect"
 
 # Multiselect 
 
-Dieses Steuerelement stellt eine Gruppe von Checkboxen bereit.
+Eine Gruppe von Kontrollkästchen.
 
 ![multiselect_editor](/img/multiselect_editor.png)
 
 :::note
-Stellen Sie sicher, dass Sie die **multiselect**-Erweiterung aktivieren, um dieses Steuerelement im Lightbox-Editor zu verwenden.
+Aktivieren Sie die **Multiselect**-Erweiterung, um die Steuerung in der Lightbox zu verwenden
 :::
 
 ~~~js
@@ -18,9 +18,9 @@ scheduler.plugins({
     multiselect: true /*!*/
 });
 
-scheduler.locale.labels.section_userselect = "Teilnehmer";
+scheduler.locale.labels.section_userselect = "Participants";
  
-scheduler.config.lightbox.sections="["    
+scheduler.config.lightbox.sections = [    
     { name:"description", height:50, map_to:"text", type:"textarea", focus:true },
     { name:"userselect", height:22, map_to:"user_id", type:"multiselect", 
     options: scheduler.serverList("users"), vertical:"false" },
@@ -29,84 +29,84 @@ scheduler.config.lightbox.sections="["
 ~~~
 
 
-[Multiselect control in the lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/21_multiselect_options.html)
+[Multiselect-Steuerung in der Lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/21_multiselect_options.html)
 
 
 ## Initialisierung
 
-Um das Multiselect-Steuerelement im Lightbox-Editor einzubinden, gehen Sie wie folgt vor:
+Um die Multiselect-Steuerung zur Lightbox hinzuzufügen, befolgen Sie diese Schritte:
 
-1. Aktivieren Sie die 'multiselect'-Erweiterung auf Ihrer Seite:
+1. <b>Aktivieren Sie die 'multiselect'-Erweiterung auf der Seite:</b>
 ~~~js
 scheduler.plugins({
     multiselect: true
 });
 ~~~
-2. Fügen Sie die multiselect-Sektion zur Lightbox-Konfiguration hinzu:
+2. <b>Fügen Sie den Abschnitt zur Lightbox-Konfiguration hinzu:</b>
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     { name:"description", ... },
     { name:"userselect", height:22, map_to:"user_id", type:"multiselect", 
     options: scheduler.serverList("user_id"), vertical:false },
     { name:"time", ...}
 ];
 ~~~
-3. Definieren Sie die Beschriftung für die Sektion:
+3. <b>Setzen Sie die Bezeichnung für den Abschnitt:</b>
 ~~~js
-scheduler.locale.labels.section_userselect = "Teilnehmer";
+scheduler.locale.labels.section_userselect = "Participants";
 ~~~
   
 
-[Multiselect control in the lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/21_multiselect_options.html)
+[Multiselect-Steuerung in der Lightbox](https://docs.dhtmlx.com/scheduler/samples/03_extensions/21_multiselect_options.html)
 
 
-## Eigenschaften {#properties}
+## Eigenschaften
 
-Hier sind einige wichtige Eigenschaften, die häufig mit dem 'multiselect'-Steuerelement verwendet werden (die vollständige Liste finden Sie [hier](api/config/lightbox.md)):
+Die folgenden Eigenschaften sind überwiegend wichtig und werden üblicherweise für das 'multiselect'-Steuerelement festgelegt (siehe vollständige Liste hier [hier](api/config/lightbox.md)):
 
 <table class="webixdoc_links">
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>name</b></td>
-  <td>(<i>string</i>) Der Name der Sektion</td>
+  <td>(<i>string</i>) Name des Abschnitts</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>height</b></td>
-  <td>(<i>number</i>) Die Höhe der Sektion</td>
+  <td>(<i>number</i>) Höhe des Abschnitts</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>map_to</b></td>
-  <td>(<i>string</i>) Der Name der Daten-Eigenschaft, die dieser Sektion zugeordnet ist</td>
+  <td>(<i>string</i>) der Name einer Dateneigenschaft, die dem Abschnitt zugeordnet wird</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>type</b></td>
-  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) Der Steuerelement-Typ für die Sektion</td>
+  <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) der Typ der Abschnittssteuerung</td>
   </tr>
   <tr>
-  <td class="webixdoc_links0"><b>options</b></td>
-  <td>(<i>Array von Objekten</i>) Definiert die Auswahloptionen für das Steuerelement (<b>gilt für 'select', 'multiselect', 'radio', 'combo' Steuerelemente</b>). Jedes Objekt stellt eine einzelne Option mit folgenden Eigenschaften dar: <ul> <li><b>key</b> - (<i>string</i>) Die ID der Option. Diese wird mit der Daten-Eigenschaft des Events abgeglichen, um Optionen zuzuweisen</li> <li><b>label</b> - (<i>string</i>) Die angezeigte Bezeichnung der Option</li> </ul></td>
+  <td class="webixdoc_links0" style="vertical-align: top;"><b>options</b></td>
+  <td>(<i>array von Objekten</i>) definiert die Auswahloptionen der Steuerung (<b>für 'select', 'multiselect', 'radio', 'combo'-Steuerungen</b>). Jedes Objekt im Array gibt eine einzelne Option an und besitzt diese Eigenschaften: <ul> <li><b>key</b> - (<i>string</i>) die Option-ID. Dieses Attribut wird mit der Eigenschaft der Ereignisdaten verglichen, um Optionen Ereignissen zuzuordnen</li> <li><b>label</b> - (<i>string</i>) die Bezeichnung der Option</li> </ul></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>script_url</b></td>
-  <td>(<i>string</i>) Die URL des serverseitigen Skripts, das Multiselect-Optionen dynamisch lädt. Optional und nur im dynamischen Modus verwendet.</td>
+  <td>(<i>string</i>) der Pfad zum serverseitigen Skript, das die Optionen des Multiselect lädt. Wird nur im dynamischen Modus verwendet. Optional</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>vertical</b></td>
-  <td>(<i>boolean</i>) Legt fest, ob die Multiselect-Schaltflächen vertikal (<i>true</i>) oder horizontal angeordnet werden (<b>für 'multiselect' und 'radio' Steuerelemente</b>)</td>
+  <td>(<i>boolean</i>) gibt an, ob Multiselect-Schaltflächen vertikal (true) oder horizontal (false) angeordnet werden sollen (für die 'multiselect'- und 'radio'-Steuerungen)</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>delimiter</b></td>
-  <td>(<i>string</i>) Definiert das Trennzeichen, das zur Trennung der Multiselect-Werte verwendet wird. Wenn nicht angegeben, wird die globale [section_delimiter](api/config/section_delimiter.md)-Einstellung verwendet.</td>
+  <td>(<i>string</i>) legt das Trennzeichen fest, das verwendet wird, um Werte des Multiselect zu trennen. Falls diese Eigenschaft nicht gesetzt ist, wird die Konfiguration [section_delimiter](api/config/section_delimiter.md) angewendet</td>
   </tr>
   </tbody>
 </table>
 
-## Befüllen des Steuerelements mit Daten
+## Das Steuerelement mit Daten befüllen
 
-In der Regel werden die Werte für die Multiselect-Schaltflächen über den [options](api/config/lightbox.md)-Parameter festgelegt:
+Im Allgemeinen sollten Sie, um Werte für die Multiselect-Schaltflächen festzulegen, den Parameter [options] verwenden:
 
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     {   name:"userselect", type:"multiselect", 
         ...
         options:[
@@ -119,14 +119,14 @@ scheduler.config.lightbox.sections =
 ];
 ~~~
 
-Jedes Element im [options](api/config/lightbox.md)-Array muss diese beiden erforderlichen Eigenschaften enthalten:
+Elemente im Parameter [options] müssen zwei Pflicht-Eigenschaften besitzen:
 
-- **key** - Die eindeutige ID der Option
-- **label** - Die für die Option angezeigte Textbezeichnung
+- **key** - die Option-ID
+- **label** - die Option-Bezeichnung
 
-## Checkboxen mit Serverdaten befüllen
+## Checkboxen vom Server befüllen
 
-Um die Werte der Checkboxen vom Server zu laden, verwenden Sie die Methode [serverList](api/method/serverlist.md):
+Um Checkbox-Werte vom Server abzurufen, müssen Sie die Methode [serverList](api/method/serverlist.md) verwenden:
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -139,7 +139,7 @@ scheduler.config.lightbox.sections = [
 scheduler.load("api/data");
 ~~~
 
-Hier ist **api/data** ein [serverseitiges Skript](guides/server-integration.md), das sowohl die Events als auch die Optionen für die Multiselect-Schaltflächen zurückgibt, formatiert wie in [Beispiele für Datenformate](guides/data-formats.md#json-with-collections) gezeigt:
+wobei die **api/data** ein serverseitiges Skript ist (guides/server-integration.md), das Ereignisse lädt, die dem Scheduler hinzugefügt wurden, und eine Sammlung der Werte der Multiselect-Schaltflächen liefert, wie hier in den [Beispielen der Datenformate](guides/data-formats.md#json-with-collections) gezeigt:
 
 ~~~js
 //response
@@ -171,11 +171,11 @@ Hier ist **api/data** ein [serverseitiges Skript](guides/server-integration.md),
 ~~~
 
 :::note
-Es ist möglich, die Liste der Optionen dynamisch mit der Methode [updateCollection](api/method/updatecollection.md) zu aktualisieren.
+Hinweis: Sie können die [updateCollection](api/method/updatecollection.md)-Methode verwenden, um die Liste der abzurufenden Optionen zu aktualisieren
 :::
 
 ~~~js
-var oldOptions = scheduler.serverList("users").slice();
+const oldOptions = scheduler.serverList("users").slice();
 scheduler.updateCollection("users", [
          {"value":"4","label":"John"},    
          {"value":"5","label":"Paul"},   
@@ -185,15 +185,16 @@ scheduler.updateCollection("users", [
 ~~~
 
 
-## Dynamisches Laden
+## Dynamisches Nachladen
 
-Im statischen Modus werden alle Event-Parameteroptionen als separate Felder in der Datenbank gespeichert, was eine flexiblere Logik ermöglicht, aber zusätzliche Abfragen erfordert, um alle Optionen zu laden.
+Im statischen Modus werden alle Optionen der Ereignisparameter als eigenständiges Feld in der Datenbank gespeichert, und Sie können dieses Feld später verwenden, um Ihre eigene Logik zu erstellen. Es eröffnet zusätzliche Möglichkeiten, erfordert jedoch mehr Abfragen, um alle Optionen zu laden. 
   
-Im dynamischen Modus werden die Optionen nur bei Bedarf geladen. Dies reduziert die Anzahl der Abfragen, schränkt jedoch die Möglichkeit ein, benutzerdefinierte Logik zu implementieren.
+  
+Im dynamischen Modus wird nichts Zusätzliches gespeichert. Optionen werden nach Bedarf geladen. Das verringert die Anzahl der Abfragen, schaltet jedoch die Erstellung jeglicher Logik aus. 
 
-Auf der Serverseite sollte Ihr Code ähnlich wie folgt aussehen.
+Auf Serverseite benötigen Sie Code, der dem Folgenden ähnelt:
 
-Um den dynamischen Modus zu aktivieren, fügen Sie die Eigenschaft **script_url** zusammen mit **options** hinzu:
+Um den dynamischen Modus zu aktivieren, sollten Sie neben den **options** auch die Eigenschaft **script_url** verwenden:
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -204,7 +205,7 @@ scheduler.config.lightbox.sections = [
 ];
 ~~~
 
-Der `api/options`-Endpunkt sollte JSON-Daten wie folgt zurückgeben:
+wobei `api/options` das folgende JSON zurückgibt:
 
 ~~~js
 [                          

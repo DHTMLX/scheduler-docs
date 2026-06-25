@@ -77,7 +77,7 @@ Die **exportToPNG()** Methode akzeptiert ein Objekt mit verschiedenen optionalen
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) der API-Endpunkt, der für die Export-Anfrage verwendet wird. Dies kann auf einen lokal installierten Export-Service zeigen. Standard ist <strong>https://export.dhtmlx.com/scheduler</strong></td>
+  <td>(<i>string</i>) der API-Endpunkt, der für die Export-Anfrage verwendet wird. Dies kann auf einen lokal installierten Export-Service zeigen. Standard ist `https://export.dhtmlx.com/scheduler`</td>
   </tr>
   </tbody>
 </table>

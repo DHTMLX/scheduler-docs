@@ -25,7 +25,7 @@ description: "Das Datum, das in einer Tageszelle der Ansicht angezeigt wird"
 
 ~~~jsx
 scheduler.templates.week_agenda_scale_date = function(date) {
-        var scale_date_format = scheduler.date.date_to_str("%l, %F %d");
+        const scale_date_format = scheduler.date.date_to_str("%l, %F %d");
         return scale_date_format(date);
 };
 ~~~

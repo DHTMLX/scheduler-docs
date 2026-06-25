@@ -22,7 +22,7 @@ description: "创建一个新的键盘快捷键"
 
 ~~~jsx
 scheduler.addShortcut("shift+w", function(e){ 
-    var eventId = scheduler.locate(e); 
+    const eventId = scheduler.locate(e); 
     if(eventId) 
         scheduler.showQuickInfo(eventId);
 },"event");

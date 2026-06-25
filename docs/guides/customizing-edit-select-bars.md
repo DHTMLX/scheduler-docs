@@ -136,7 +136,7 @@ Depending on the value of this property, you'd like to hide/show the 'delete' bu
 
 ~~~js
 scheduler.attachEvent("onClick", function(id){
-    var event = scheduler.getEvent(id);
+    const event = scheduler.getEvent(id);
     if (event.important)
         scheduler.config.icons_select = ["icon_details"];
     else

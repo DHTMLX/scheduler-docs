@@ -16,7 +16,7 @@ Die Tagesansicht ist standardmäßig im [Grund-Markup des Schedulers](guides/sch
 
 ~~~js
 //Standard-Initialisierung. Die Tagesansicht ist automatisch enthalten
-scheduler.init('scheduler_here',new Date(2019,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 ...
 scheduler.load("/data/events");
 ~~~

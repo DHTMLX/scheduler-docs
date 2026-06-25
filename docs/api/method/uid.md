@@ -18,5 +18,5 @@ description: "generates a unique ID (unique inside the current scheduler, not GU
 ### Example
 
 ~~~jsx
-var new_id = scheduler.uid();
+const new_id = scheduler.uid();
 ~~~

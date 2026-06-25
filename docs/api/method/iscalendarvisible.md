@@ -19,7 +19,7 @@ description: "checks whether the calendar is currently opened in the scheduler"
 
 ~~~jsx
 //if the mini calendar is opened
-var check= scheduler.isCalendarVisible();// -><div class=​"dhx_minical_popup">​…​</div>​
+const check= scheduler.isCalendarVisible();// -><div class=​"dhx_minical_popup">​…​</div>​
 ~~~
 
 ### Related samples

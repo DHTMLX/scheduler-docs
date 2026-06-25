@@ -1,51 +1,56 @@
 ---
-title: "实时更新模式（旧版）"
-sidebar_label: "实时更新模式（旧版）"
+title: "实时更新模式（遗留版）"
+sidebar_label: "实时更新模式（遗留版）"
 ---
 
-# 实时更新模式（旧版）
+# 实时更新模式（遗留版）
 
-:::note
-本文介绍的是 DHTMLX Scheduler 实时更新模式的旧版。如需了解最新版本的信息，请参阅[这里](guides/multiuser-live-updates.md)。
+:::warning
+所述功能已被弃用，且不再维护。
 :::
 
-实时更新模式可让数据在用户之间实时同步。
+:::note
+本文指的是 DHTMLX Scheduler 的 Live Updates 模块的传统实现。当前版本的详细信息请参阅 [这里](guides/multiuser-live-updates.md)。
+:::
 
-当某个用户做出更改时，其他所有用户会立刻看到这些更改。
+Live Update 是一种在实时环境中提供同步数据更新的模式。
 
-该模式使用 `Faye` socket 库，以确保无需刷新页面即可实现快速且灵活的更新（仅相关组件会更新）。
+当一个用户进行更改时，立即对所有其他用户可见。
 
-本文将为你提供一份简单的入门指南，帮助你快速上手此功能。
+该模式使用 `Faye` 套接字库，使该过程尽可能快速且灵活，并且不需要页面刷新（它只更新应用了该模式的组件）。
+
+在本文中，我们将为你提供一步步的教程，帮助你快速入门该主题。
 
 ## 基本原理
 
-实时更新通过将一个已连接客户端的更改广播给所有其他客户端来实现。这依赖于 WebSocket 连接，允许客户端与后端之间进行双向通信。
+实时更新是通过将一个已连接客户端所作的更改广播给所有其他已连接客户端来实现的。\
+这是通过利用 WebSocket 连接在已连接的客户端和后端之间进行双向消息交换来实现的。
 
-在此版本中，实时更新模块扩展了 `DataProcessor` 模块，使用 `Faye` 客户端库，并结合用于在客户端之间分发消息的后端应用。
+在此 Live Updates 模块的版本中，通过扩展 `DataProcessor` 模块以使用 `Faye` 库客户端，并配合一个额外的后端应用程序在客户端之间分发消息来实现。
 
-整体架构包含三个部分:
+该解决方案由三部分组成：
 
-1. 带有 Scheduler 和 `DataProcessor` 模块的**前端**。
-2. 负责数据库 CRUD 操作的**后端**。
-3. 管理客户端连接的**实时更新中心（hub）**。
+1. 之前端，包含 Scheduler 与 `DataProcessor` 模块。  
+2. 后端，在持久存储上实现 CRUD 操作。  
+3. live-updates hub，负责连接客户端。
 
-当用户更新数据时:
+当用户对数据进行修改时：
 
-- **前端**将更新发送到**后端**。
-- 同时，**前端**会将相同的更新发送到**实时更新中心**。
-- **实时更新中心**将该更新广播给所有已连接的客户端。
-- **前端**在收到来自**实时更新中心**的更新后，会将其应用到 Scheduler 数据中，但不会触发后端的 CRUD 操作。
+- 前端将更新发送到后端。  
+- 同时，前端将同样的更新发送到 live-updates hub。  
+- live-updates hub 将更新广播给所有已连接的客户端。  
+- 当前端从 live-updates hub 接收到更新时，它将其应用到 Scheduler 数据中，以避免触发对 CRUD 后端的变更。
 
-## 开始前准备
+## 开始之前
 
-要完成本教程，你需要一个已集成服务端逻辑的 dhtmlxScheduler 应用，该应用能从数据库加载数据并保存更改。（详细信息见[这里](integrations/howtostart-guides.md)。）
+要开始本教程，你必须拥有一个与服务器端逻辑集成的完整 dhtmlxScheduler 应用程序——它能够从数据库加载数据并将修改保存回数据库。 (详细信息请参阅 [这里](integrations/howtostart-guides.md)。)
 
-一个简单示例如下:
+此类应用程序的一个基本示例可能如下所示：
 
 ~~~js
 <script>
     function init() {
-        scheduler.init('scheduler_here', new Date(2025,5,24), "week");
+        scheduler.init('scheduler_here', new Date(2027,5,24), "week");
         scheduler.load("api/scheduler");
 
         const dp = scheduler.createDataProcessor({
@@ -59,30 +64,30 @@ sidebar_label: "实时更新模式（旧版）"
 ## 配置实时更新
 
 :::note
-本实时更新实现已废弃，不再包含于主包中。
+此实现的 Live Updates 已弃用，且不包含在主包中。
 :::
 
-### 步骤 1. 安装
+### 第 1 步：设置
 
-1. 下载 Scheduler 的**实时更新插件**:[download link](https://files.dhtmlx.com/30d/20deb2ff205dc16bc94a7e9fcef4c5fe/live_updates.zip)
-2. 下载**实时更新后端**应用:[download link](https://files.dhtmlx.com/30d/57084e02b121f14bb14b6734d465ad41/websocket-backend.zip)
-3. 按照后端应用的 readme 文件说明启动**实时更新后端**。
+1. 下载用于 Scheduler 的 **Live Updates 插件**：[下载链接](https://files.dhtmlx.com/30d/20deb2ff205dc16bc94a7e9fcef4c5fe/live_updates.zip)
+2. 下载 **Live Updates backend** 应用：[下载链接](https://files.dhtmlx.com/30d/57084e02b121f14bb14b6734d465ad41/websocket-backend.zip)
+3. 按照随附自述文件中的说明启动 **Live Updates backend**。
 
-### 步骤 2. 配置前端
+### 第 2 步：配置前端
 
-要启用实时更新模式，需要在前端应用中添加两个额外文件:
+要使用 Live Update 模式，在前端应用中添加两个附加文件：
 
-- **live_updates.js** -- 上一步获得的插件文件
-- **client.js** -- WebSocket 后端应用动态生成的文件
+- **live_updates.js** - 上一步下载的文件  
+- **client.js** - 由 WebSocket 后端应用动态生成的文件
 
 ~~~js
 <script src="./lib/dhtmlxscheduler/live_updates.js"></script>
 <script src="http://localhost:8008/client.js"></script>
 ~~~
 
-此示例直接连接 WebSocket 应用。通常建议通过主应用转发此 URL，以隐藏二级应用的地址和端口。你可以通过设置反向代理实现。
+在上面的代码示例中，我们直接连接到 WebSocket 应用。通常，你会希望通过主应用来路由这个 URL，以避免暴露次要应用的地址和端口。这可以通过使用反向代理来实现。
 
-**通过主应用代理请求（Node.js）:**
+通过主应用（Node.js）进行请求代理：
 
 ~~~js
 const httpProxy = require('http-proxy');
@@ -95,16 +100,16 @@ module.exports = function(app){
 }
 ~~~
 
-**前端:**
+前端：
 
 ~~~js
 <script src="./lib/dhtmlxscheduler/live_updates.js"></script>
 <script src="/liveUpdates/client.js"></script>
 ~~~
 
-### 步骤 3. 启用实时更新
+### 第 3 步：启用 Live Updates
 
-调用 `DataProcessor` 实例的 **live_updates()** 方法以激活实时更新模式。请确保已先初始化 `DataProcessor`。该方法参数为 WebSocket 入口地址。
+通过在 `DataProcessor` 实例上调用 **live_updates()** 方法来启用该模式。要使其工作，必须先初始化 `DataProcessor`。作为参数，该方法接受 WebSocket 入口点的 URL。
 
 ~~~js
 const dp = scheduler.createDataProcessor({
@@ -115,4 +120,4 @@ const dp = scheduler.createDataProcessor({
 dp.live_updates("/liveUpdates");
 ~~~
 
-你可以在[这里](https://files.dhtmlx.com/30d/0aea2facd959a8300bf7caec3f5a7f42/dhtmlxscheduler-live-updates.zip)下载完整演示应用。
+你可以在 [此处](https://files.dhtmlx.com/30d/0aea2facd959a8300bf7caec3f5a7f42/dhtmlxscheduler-live-updates.zip) 下载一个完整的演示应用。

@@ -17,7 +17,7 @@ description: "定义月视图子标题中显示的日期格式。"
 ~~~jsx
 scheduler.config.week_date="%l, %W";
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** "%l"

@@ -19,7 +19,7 @@ scheduler.config.cascade_event_display = true;
 scheduler.config.cascade_event_count = 4;     
 scheduler.config.cascade_event_margin = 30; 
 ...
-scheduler.init('scheduler_here', new Date(2009,5,30), "week");
+scheduler.init('scheduler_here', new Date(2027,5,30), "week");
 ~~~
 
 **Default value:** false

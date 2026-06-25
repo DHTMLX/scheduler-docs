@@ -62,8 +62,7 @@ Finally, configure Firebase in your project as described below:
 
 - create a new file `src/firebase.js` and paste your Firebase config, initializing Firebase and Firestore:
 
-[path src/firebase.js](path src/firebase.js)
-~~~js
+~~~js title="src/firebase.js"
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
@@ -117,8 +116,8 @@ To begin with, prepare your HTML container. Replace your `index.html` content wi
 Then, specify the main JavaScript logic by creating the `src/main.js` file with the code provided below. 
 It connects the Scheduler UI with Firestore and handles real-time updates.
 
-[path src/main.js](path src/main.js)
-~~~js
+
+~~~js title="src/main.js"
 import { scheduler } from "dhtmlx-scheduler";
 import { db } from "./firebase.js";
 import {

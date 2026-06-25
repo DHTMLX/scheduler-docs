@@ -298,7 +298,7 @@ The **label** parameter is mandatory, while **css** and **value** options can be
 
 The **css** will be prefixed with the "scheduler_" string and added to the button element as a class name:
 
-~~~js
+~~~css
 .scheduler_link_delete_btn div{
       background:red;
 }
@@ -309,7 +309,7 @@ The **css** will be prefixed with the "scheduler_" string and added to the butto
 To hide a modal message box manually, you can use the **scheduler.modalbox.hide()** method. As a parameter it takes the div container of the modalbox:
 
 ~~~js
-var box = scheduler.modalbox({    
+const box = scheduler.modalbox({    
     title: "Settings",
     text: " ... html code here... ",
     buttons: ["Save", "Defaults", "Cancel"],
@@ -324,7 +324,7 @@ scheduler.modalbox.hide(box);
 For the **alert** and **confirm** modal boxes, you also need to use the **scheduler.modalbox.hide()** method:
 
 ~~~js
-var box = scheduler.confirm({
+const box = scheduler.confirm({
     text: "Continue?",
     ok:"Yes", 
     cancel:"No",

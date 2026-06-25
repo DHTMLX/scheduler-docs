@@ -1,5 +1,5 @@
 ---
-sidebar_label: "plugins"
+sidebar_label: plugins
 title: "plugins method"
 description: "включает выбранные расширения"
 ---
@@ -8,13 +8,13 @@ description: "включает выбранные расширения"
 
 ### Description
 
-@short: Включает выбранные расширения
+@short: Активирует указанные расширения
 
 @signature: plugins: (ext: any) =\> void
 
 ### Parameters
 
-- `ext` - (required) *object* - расширения, которые необходимо включить
+- `ext` - (required) *object* - расширения, которые необходимо активировать
 
 ### Example
 
@@ -29,4 +29,4 @@ scheduler.plugins({
 - [Полный список расширений](guides/extensions-list.md)
 
 ### Change log
-- добавлено в v6.0
+- добавлено в версии 6.0

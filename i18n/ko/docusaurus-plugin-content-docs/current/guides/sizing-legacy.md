@@ -1,43 +1,43 @@
 ---
-title: "스케일 및 이벤트 박스 크기 조정하기 (v6.0)"
-sidebar_label: "스케일 및 이벤트 박스 크기 조정하기 (v6.0)"
+title: "스케일 및 이벤트 박스 크기 조정 (v6.0)"
+sidebar_label: "스케일 및 이벤트 박스 크기 조정 (v6.0)"
 ---
 
-# 스케일 및 이벤트 박스 크기 조정하기 (v6.0)
+# 스케일 및 이벤트 박스 크기 조정 (v6.0)
 
-*이 문서는 dhtmlxScheduler 6.0 버전 및 그 이전 버전에 해당합니다. 7.0 이상 버전의 경우 [여기](guides/sizing.md)에서 자세한 내용을 확인하세요.*
+*이 문서는 dhtmlxScheduler 6.0 또는 이전 버전을 대상으로 합니다. dhtmlxScheduler 7.0+를 사용하는 경우 자세한 내용은 [여기](guides/sizing.md)를 참조하십시오.*
 
-여기서는 스케일 단위와 이벤트 박스의 크기를 조정하는 네 가지 일반적인 시나리오에 대해 설명합니다:
+이 문서에서는 4가지 문제를 해결하는 예제를 통해 스케일의 크기와 이벤트 박스의 크기를 살펴보려 합니다:
 
-**문제 1:** [1시간보다 짧은 이벤트가 스케줄러에서 1시간 이벤트와 동일한 크기로 표시됩니다. 짧은 이벤트가 스케일에 맞게 표시되도록 하는 것이 목표입니다.](guides/sizing-legacy.md#howtomakeshorteventsfitthescale)
-  
-**문제 2:** [동일한 시간대 내에 발생하는 짧은 이벤트들이 서로 겹쳐서 표시됩니다. 이러한 겹침을 방지하는 것이 목적입니다.](guides/sizing-legacy.md#preventingshorteventsfromoverlapping)
-  
-**문제 3:** [스케일 단위의 높이를 변경한 후, 스트라이프 배경도 이에 맞게 조정해야 합니다.](guides/sizing-legacy.md#howtochangethebackgroundaccordingtothesetscale)
-  
-**문제 4:** [기본 스케일 간격이 1시간으로 설정되어 있지만, 이를 30분 등으로 변경해야 할 필요가 있습니다.](guides/sizing-legacy.md#howtochangethescalespacing)
+**Problem 1:** [1시간 미만으로 지속되는 이벤트가 스케줄러에서 1시간 이벤트와 동일하게 보입니다. 짧은 이벤트가 스케일에 맞게 보이길 원합니다.](guides/sizing-legacy.md#how-to-make-short-events-fit-the-scale)
 
-## 짧은 이벤트가 스케일에 맞게 표시되도록 하기 {#howtomakeshorteventsfitthescale}
+**Problem 2:** [1시간 미만이며 서로 다른 시간에 발생하지만 한 시간 이내에 겹치는 이벤트가 있습니다. 이러한 짧은 이벤트가 겹치지 않길 원합니다.](guides/sizing-legacy.md#preventing-short-events-from-overlapping)
 
-먼저, 이벤트 박스의 기본 동작을 살펴보면 다음과 같습니다:
+**Problem 3:** [스케일 단위 높이를 변경하고 그에 따라 줄무늬 배경도 바뀌길 원합니다.](guides/sizing-legacy.md#how-to-change-the-background-according-to-the-set-scale)
 
-+ 각 스케일 단위(1시간)의 기본 높이는 44px입니다.
-+ 이벤트 박스의 최소 높이도 44px입니다.
-+ 1시간보다 짧은 이벤트는 44px 높이로 표시되어, 15분 이벤트도 1시간 이벤트와 동일하게 보입니다.
-+ 1시간보다 긴 이벤트는 스케일에 비례하여 높이가 결정됩니다(예: 90분 이벤트는 1시간이 44px일 때 63px로 표시됨).
+**Problem 4:** [기본 스케일 간격은 1시간입니다. 이를 변경해 예를 들어 30분으로 만들고 싶습니다.](guides/sizing-legacy.md#how-to-change-the-scale-spacing)
 
-30분 이벤트가 스케일에 맞게 표시되도록 하려면 두 가지 방법이 있습니다:
+## 짧은 이벤트를 스케일에 맞추는 방법
 
-- 스케일 단위의 높이를 늘립니다.
-- 이벤트 박스의 표시 방식을 커스터마이즈합니다.
+먼저 이벤트 박스의 기본 동작을 살펴보겠습니다:
+
++ 기본 스케일 단위 높이는 44px(또는 시 높이)입니다.
++ 이벤트 박스의 최소 높이는 44px입니다.
++ 1시간 미만으로 지속되는 이벤트는 44px의 크기를 차지합니다. 따라서 15분과 1시간 이벤트는 스케줄러에서 같은 모양으로 보일 것입니다.
++ 1시간 이상 지속되는 이벤트는 측면 스케일에 따라 높이가 결정됩니다(가정: 1시간은 44px에 해당합니다 — 예: 90분 이벤트의 높이는 63px가 됩니다).
+
+예를 들어 30분 이벤트를 스케일에 맞추려면 두 가지 해결책이 있습니다:
+
+- 스케일 단위의 높이를 늘리는 방법
+- 이벤트 박스를 사용자 정의하는 방법
 
 ![30-minute_custom_event.png](/img/30-minute_custom_event.png)
 
-### 솔루션 1. 스케일 단위의 높이 변경
+### 해결책 1. 스케일 단위의 높이 변경
 
-스케일 단위의 높이는 `scheduler.config.hour_size_px` 설정 옵션을 사용하여 조정할 수 있습니다.
+스케일 단위의 높이를 변경하려면 [hour_size_px](api/config/hour_size_px.md) 설정 옵션을 사용해야 합니다.
   
-예를 들어, 단위 높이를 두 배로 늘리려면 다음과 같이 설정합니다:
+예를 들어 단위를 두 배로 늘리려면 다음과 같이 설정합니다:
 
 ~~~js
 scheduler.config.hour_size_px = 88;
@@ -45,31 +45,27 @@ scheduler.config.hour_size_px = 88;
 scheduler.init(...);
 ~~~
 
-이렇게 하면 스케일 단위 높이가 88px이 되어, 30분 이벤트는 44px 높이로 표시되어 스케일에 맞게 됩니다.
+이제 스케일 단위의 높이가 88 px이므로 30분 이벤트가 44px를 차지하더라도 30분 높이에 맞춰 표시됩니다.
 
+[Y축 간격 변경](https://docs.dhtmlx.com/scheduler/samples/02_customization/09_timestep.html)
 
-[Changing the Y-Axis step](https://docs.dhtmlx.com/scheduler/samples/02_customization/09_timestep.html)
+### 해결책 2. 이벤트 박스를 커스터마이즈하기
 
-
-### 솔루션 2. 이벤트 박스 커스터마이징
-
-이벤트 박스의 표시 방식을 변경하려면 `scheduler.renderEvent` 메서드를 사용하여 이벤트에 대한 커스텀 템플릿을 지정할 수 있습니다.
+이벤트 박스의 표시를 커스터마이즈하려면 [renderEvent](api/method/renderevent.md) 메서드를 사용해 사용자 정의 템플릿을 설정할 수 있습니다.
 
 ~~~js
 scheduler.renderEvent = function(container, ev) {
-    // 여기에 커스터마이즈 코드를 작성하세요
+    //your customizing code
 }
 ~~~
 
-자세한 내용은 ["커스텀 이벤트 박스"](guides/custom-events-display.md) 챕터에서 확인할 수 있습니다.
-
+관련 챕터의 자세한 내용은 - [Custom Event's Box](guides/custom-events-display.md)에서 확인하십시오.
 
 [Custom event box](https://docs.dhtmlx.com/scheduler/samples/02_customization/27_custom_event_box.html)
 
+## 짧은 이벤트가 겹치지 않게 하기
 
-## 짧은 이벤트가 겹치지 않도록 하기 {#preventingshorteventsfromoverlapping}
-
-짧은 이벤트가 서로 겹치지 않고 개별적으로 표시되도록 하려면, `scheduler.config.separate_short_events` 옵션을 활성화하세요:
+짧은 이벤트를 서로 구분되게 표시하고 겹칠 가능성을 없애려면 [separate_short_events](api/config/separate_short_events.md) 옵션을 *true*로 설정해야 합니다:
 
 ~~~js
 scheduler.config.separate_short_events = true;
@@ -77,9 +73,9 @@ scheduler.config.separate_short_events = true;
 
 ![overlapping.png](/img/overlapping.png)
 
-## 설정한 스케일에 따라 배경 변경하기 {#howtochangethebackgroundaccordingtothesetscale}
+## 설정된 스케일에 따라 배경을 변경하는 방법
 
-스케줄러의 배경은 이미지로 제어됩니다. 이를 변경하려면 CSS 클래스 **.dhx_scale_holder**를 다음과 같이 오버라이드 하세요:
+스케줄러의 배경은 단순 이미지로 설정됩니다. 배경 이미지를 변경하려면 관련 CSS 클래스를 재정의해야 하는데, 이 클래스는 **.dhx_scale_holder** 입니다:
 
 ~~~html
 <style>
@@ -89,36 +85,30 @@ scheduler.config.separate_short_events = true;
 </style>
 ~~~
 
-그런 다음 스케줄러를 초기화합니다:
-
 ~~~js
 scheduler.init(...);
 ~~~
 
 ![changing_background.png](/img/changing_background.png)
 
-## 스케일 간격 변경하기 {#howtochangethescalespacing}
+## 스케일 간격 변경 방법
 
-기본 스케일 간격을 변경하려면 `scheduler.templates.hour_scale` 템플릿을 재정의해야 합니다. 30분 간격으로 설정하려면 다음과 같이 템플릿을 수정할 수 있습니다:
+기본 스케일 간격을 변경하려면 [hour_scale](api/template/hour_scale.md) 템플릿을 재작성해야 합니다. 간격을 30분으로 맞추려면 아래와 같이 템플릿을 재작성할 수 있습니다:
 
 ~~~js
-var format = scheduler.date.date_to_str("%H:%i");
-var step = 30;
+const format = scheduler.date.date_to_str("%H:%i");
+const step = 30;
         
 scheduler.templates.hour_scale = function(date){
-    var html="";
-    for (var i="0;" i<60/step; i++){
-        html+="<div>"+format(date)+"</div>";
+    let html="";
+    for (let i = 0; i < 60/step; i++){
+        html += "<div style='height:22px;line-height:22px;'>" + format(date) + "</div>";
         date = scheduler.date.add(date,step,"minute");
     }
     return html;
 }
-
 ~~~
 
 ![scale_spacing.png](/img/scale_spacing.png)
 
-**관련 샘플:**
-
-
-[Custom Y-Axis](https://docs.dhtmlx.com/scheduler/samples/02_customization/21_custom_hour_scale.html)
+**관련 샘플:** [맞춤 Y축](https://docs.dhtmlx.com/scheduler/samples/02_customization/21_custom_hour_scale.html)

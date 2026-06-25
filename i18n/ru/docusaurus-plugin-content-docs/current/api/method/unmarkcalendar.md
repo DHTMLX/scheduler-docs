@@ -1,22 +1,22 @@
 ---
-sidebar_label: "unmarkCalendar"
-title: "unmarkCalendar method"
-description: "удаляет CSS класс с указанной даты"
+sidebar_label: unmarkCalendar
+title: "unmarkCalendar метод"
+description: "удаляет CSS-класс с указанной даты"
 ---
 
 # unmarkCalendar
 
 ### Description
 
-@short: Удаляет CSS класс с указанной даты
+@short: Удаляет CSS-класс с указанной даты
 
 @signature: unmarkCalendar: (calendar: any, date: Date, css: string) =\> void
 
 ### Parameters
 
 - `calendar` - (required) *object* - объект мини-календаря
-- `date` - (required) *Date* - дата, с которой нужно убрать отметку
-- `css` - (required) *string* - имя CSS класса для удаления
+- `date` - (required) *Date* - дата, которую нужно снять пометку
+- `css` - (required) *string* - имя CSS-класса, который нужно удалить
 
 ### Example
 
@@ -24,7 +24,7 @@ description: "удаляет CSS класс с указанной даты"
 // существует два способа получить объект календаря:
 
 // создание мини-календаря
-var calendar = scheduler.renderCalendar({
+const calendar = scheduler.renderCalendar({
     container:"cal_here", 
     navigation:true,
     handler:function(date){
@@ -35,20 +35,20 @@ var calendar = scheduler.renderCalendar({
 // или выбор контейнера с мини-календарём
 var calendar = document.querySelector(".dhx_mini_calendar");
 
-scheduler.markCalendar(calendar, new Date(2010,3,1), "my_style");
+scheduler.markCalendar(calendar, new Date(2025,3,1), "my_style");
 ...
-scheduler.unmarkCalendar(calendar, new Date(2010,3,1), "my_style");
+scheduler.unmarkCalendar(calendar, new Date(2027,3,1), "my_style");
 ~~~
 
 ### Details
 
 :::note
- Метод требует активированного плагина [minical](guides/extensions-list.md#minicalendardatepicker). 
+ Метoд требует активированного плагина minical (mini-calendar-date-picker) для активации. 
 ::: 
 
 :::note
 
-Учтите, что этот метод работает только с мини-календарём, а не с самим scheduler.
+Примечание: метод применяется только к мини-календарю, а не к scheduler!
  
 :::
 

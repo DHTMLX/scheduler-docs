@@ -22,7 +22,7 @@ description: "loads data to the scheduler from an external data source"
 ~~~jsx
 scheduler.load("data"); // the format of loaded data is auto-detected
 // or
-scheduler.load("data",function(){
+scheduler.load("data", () => {
     alert("Data has been successfully loaded");
 });
 ~~~
@@ -33,20 +33,20 @@ scheduler.load("data",function(){
 
 ### Details
 
-Pay attention that in case of dynamic loading the callback function that is passed as a second parameter will be called only during the initial loading of data.
-While next portions of data will be loaded later, the callback function won't be called anymore.
+Pay attention that in case of dynamic loading, the callback function that is passed as a second parameter will be called only during the initial loading of data.
+While the next portions of data will be loaded later, the callback function won't be called anymore.
 
-If you need to call the callback function each time data is loaded into Scheduler, you can make use of the [onLoadEnd](api/event/onloadend.md) event.
+If you need to call the callback function each time data is loaded into Scheduler, you can use the [`onLoadEnd`](api/event/onloadend.md) event.
 
 ## Migration
 
-In v5.2 and upper, scheduler detects the format of data automatically. 
+In v5.2 and later, Scheduler detects the data format automatically.
 
 But before v5.2, the method included three parameters:
 
-- **url** - (*string*)  the server-side URL (may be a static file or a server-side script which outputs data as XML)
-- **type** - (*string*) <i>('json', 'xml', 'ical')</i> the data type. The default value - <i>'xml'</i>
-- **callback** - (*function*) the callback function
+- `url` - (*string*) the server-side URL (may be a static file or a server-side script that outputs data as XML)
+- `type` - (*string*) (*'json', 'xml', 'ical'*) the data type. The default value is *'xml'*
+- `callback` - (*function*) the callback function
 
 ### Related API
 - [onLoadEnd](api/event/onloadend.md)
@@ -59,4 +59,4 @@ But before v5.2, the method included three parameters:
 - [Loading Data](guides/loading-data.md)
 
 ### Change log
-- The second **type** parameter of the method has been removed in v5.2.
+- The second `type` parameter of the method was removed in v5.2.

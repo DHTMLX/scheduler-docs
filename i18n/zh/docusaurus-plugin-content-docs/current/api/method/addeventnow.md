@@ -25,8 +25,8 @@ description: "创建一个新的事件并打开lightbox进行确认"
 scheduler.addEventNow();
 //或者
 scheduler.addEventNow({
-    start_date: new Date(2013,0,10,8,30),
-    end_date:     new Date(2013,0,10,10,30),
+    start_date: new Date(2027,0,10,8,30),
+    end_date:     new Date(2027,0,10,10,30),
     text:    "Meeting",
     holder:    "John", //userdata
     room:    "5"     //userdata

@@ -1,21 +1,21 @@
 ---
-sidebar_label: "render"
-title: "render method"
-description: "обновляет отображение scheduler-а"
+sidebar_label: render
+title: "render метод"
+description: "Перерисовывает планировщик"
 ---
 
 # render
 
 ### Description
 
-@short: Обновляет отображение scheduler-а
+@short: Перерисовывает планировщик
 
 @signature: render: (date?: Date, view?: string) =\> void
 
 ### Parameters
 
-- `date` - (optional) *Date* - дата для отображения
-- `view` - (optional) *string* - название view, на которое нужно переключиться
+- `date` - (optional) *Date* - дата, которую нужно отобразить
+- `view` - (optional) *string* - имя отображаемого вида
 
 ### Example
 
@@ -26,7 +26,7 @@ scheduler.render();
 
 
 // переключиться на другую дату
-scheduler.render(new Date(2020,7,4));
+scheduler.render(new Date(2027,7,4));
 
 // переключиться на другой view
 scheduler.render(null, "week");
@@ -34,11 +34,11 @@ scheduler.render(null, "week");
 
 ### Details
 
-Этот метод является алиасом для [scheduler.setCurrentView](api/method/setcurrentview.md) и работает аналогично.
+Этот метод является псевдонимом для [scheduler.setCurrentView](api/method/setcurrentview.md) и работает идентично ему.
 
-- Стандартные имена view включают 'day', 'week' и 'month'. Для других view используйте их параметр <b>name</b>.
-- Вызов этого метода запускает события [onBeforeViewChange](api/event/onbeforeviewchange.md) и [onViewChange](api/event/onviewchange.md).
-- Он похож на [updateView](api/method/updateview.md), но ключевое отличие в том, что [updateView](api/method/updateview.md) **не вызывает никаких событий**.
+- Имена представлений по умолчанию: 'day', 'week', 'month'. Чтобы указать любое другое представление — используйте его параметр <b>name</b>.
+- Метод вызывает [onBeforeViewChange](api/event/onbeforeviewchange.md) и [onViewChange](api/event/onviewchange.md).
+- Метод похож на [updateView](api/method/updateview.md). Единственное различие между методами состоит в том, что [updateView](api/method/updateview.md)  **не генерирует никаких событий**.
 
 ### Related API
 - [setCurrentView](api/method/setcurrentview.md)

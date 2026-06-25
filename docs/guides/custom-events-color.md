@@ -22,11 +22,11 @@ To specify a custom color for an event, it's enough to add 2 extra properties to
 
 ![custom_color_model](/img/custom_color_model.png)
 
-[Setting the event's color in the data object](Setting the event's color in the data object)
-~~~
+Setting the event's color in the data object:
+~~~js
 scheduler.parse([
-   {id:1, start_date:"2019-05-21",end_date:"2019-05-25",text:"Task1", color:"red"},
-   {id:2, start_date:"2019-06-02",end_date:"2019-06-05",text:"Task2", color:"blue"}
+   {id:1, start_date:"2027-05-21",end_date:"2027-05-25",text:"Task1", color:"red"},
+   {id:2, start_date:"2027-06-02",end_date:"2027-06-05",text:"Task2", color:"blue"}
 ],"json");
 ...
 scheduler.getEvent(1).color = "yellow";
@@ -177,19 +177,19 @@ scheduler.serverList("people");
 ~~~js
 scheduler.attachEvent("onLoadEnd", function(){
     // use an arbitrary id for the style element
-    var styleId = "dynamicSchedulerStyles";
+    const styleId = "dynamicSchedulerStyles";
  
     // in case you'll be reloading options with colors - reuse previously
     // created style element
  
-    var element = document.getElementById(styleId);
+    let element = document.getElementById(styleId);
     if(!element){
         element = document.createElement("style");
         element.id = styleId;
         document.querySelector("head").appendChild(element);
     }
-    var html = [];
-    var resources = scheduler.serverList("people");
+    let html = [];
+    const resources = scheduler.serverList("people");
  
     // generate css styles for each option and write css into the style element,
  
@@ -207,7 +207,7 @@ scheduler.attachEvent("onLoadEnd", function(){
 
 ~~~js
 scheduler.templates.event_class = function (start, end, event) {
-    var css = [];
+    let css = [];
  
     if(task.owner_id){
         css.push("event_resource_" + event.owner_id);

@@ -18,7 +18,7 @@ description: "highlights the event's initial position and duration on the time s
 //removes the highlighting
 scheduler.config.drag_highlight = false; /*!*/
 
-scheduler.init('scheduler_here',new Date(2010,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 scheduler.load("./data/events.xml");
 ~~~
 

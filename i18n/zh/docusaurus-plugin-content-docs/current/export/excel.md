@@ -9,14 +9,14 @@ sidebar_label: "导出为 Excel 和 iCal"
 
 ## 请求大小限制
 
-有一个共享的 API 端点 **https://export.dhtmlx.com/scheduler**，用于多种导出方法（如 *exportToPDF*、*exportToPNG* 等）。**最大请求大小为 10 MB**。
+有一个共享的 API 端点 `https://export.dhtmlx.com/scheduler`，用于多种导出方法（如 *exportToPDF*、*exportToPNG* 等）。**最大请求大小为 10 MB**。
 
 
 ## 导出为 Excel
 
 要将调度器数据导出为 Excel 文件，请按照以下步骤操作:
 
-1. 在页面中添加 "https://export.dhtmlx.com/scheduler/api.js" 脚本以启用在线导出服务:
+1. 在页面中添加 `https://export.dhtmlx.com/scheduler/api.js` 脚本以启用在线导出服务:
 ~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
 <script src="https://export.dhtmlx.com/scheduler/api.js"></script>  /*!*/
@@ -27,7 +27,7 @@ sidebar_label: "导出为 Excel 和 iCal"
 <input value="Export to Excel" type="button" onclick="scheduler.exportToExcel()">/*!*/
 
 <script>
-    scheduler.init("scheduler_here",new Date(2019,5,30),"month");
+    scheduler.init("scheduler_here",new Date(2027,5,30),"month");
     scheduler.load("data/events");
 </script>
 ~~~
@@ -49,7 +49,7 @@ sidebar_label: "导出为 Excel 和 iCal"
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) 指定导出请求的 API 端点。可以指向本地安装的导出服务。默认值为 <strong>https://export.dhtmlx.com/scheduler</strong></td>
+  <td>(<i>string</i>) 指定导出请求的 API 端点。可以指向本地安装的导出服务。默认值为 `https://export.dhtmlx.com/scheduler`</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>start</b></td>
@@ -72,7 +72,7 @@ scheduler.exportToExcel({
     ],
     server:"https://myapp.com/myexport/scheduler",
     start: new Date(1999, 01, 01),
-    end:  new Date(2022, 01, 01)
+    end:  new Date(2027, 01, 01)
 });
 ~~~
 
@@ -92,7 +92,7 @@ scheduler.templates.xml_format = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
 
 要将调度器数据导出为 iCal 字符串，请按照以下步骤操作:
 
-- 引入 <b>"https://export.dhtmlx.com/scheduler/api.js"</b> 脚本以启用在线导出服务:
+- 引入 `https://export.dhtmlx.com/scheduler/api.js` 脚本以启用在线导出服务:
 
 ~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
@@ -106,7 +106,7 @@ scheduler.templates.xml_format = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
 <input value="Export to iCal" type="button" onclick="scheduler.exportToICal()">/*!*/
 
 <script>
-    scheduler.init("scheduler_here",new Date(2019,5,30),"month");
+    scheduler.init("scheduler_here",new Date(2027,5,30),"month");
     scheduler.load("data/events");
 </script>
 ~~~
@@ -120,7 +120,7 @@ scheduler.templates.xml_format = scheduler.date.date_to_str("%Y-%m-%d %H:%i");
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) 指定导出请求的 API 端点。可以设置为本地部署的导出服务。默认值为 <strong>https://export.dhtmlx.com/scheduler</strong></td>
+  <td>(<i>string</i>) 指定导出请求的 API 端点。可以设置为本地部署的导出服务。默认值为 `https://export.dhtmlx.com/scheduler`</td>
   </tr>
   </tbody>
 </table>

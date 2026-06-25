@@ -25,8 +25,8 @@ description: "보조 X축에 표시되는 항목을 정의합니다"
 
 ~~~jsx
 scheduler.templates.timeline_second_scale_date = function(date){
-    var timeline = scheduler.matrix.timeline;
-    var func = scheduler.date.date_to_str(
+    const timeline = scheduler.matrix.timeline;
+    const func = scheduler.date.date_to_str(
         (timeline.second_scale && timeline.second_scale.x_date)?
         timeline.second_scale.x_date:scheduler.config.hour_date
     );

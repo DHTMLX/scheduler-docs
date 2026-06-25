@@ -14,17 +14,17 @@ description: "specifies the CSS class that will be applied to the event's contai
 
 ### Parameters
 
-- `start` - (required) *Date* - the date when an event is scheduled to begin   
+- `start` - (required) *Date* - the date when an event is scheduled to begin
 - `end` - (required) *Date* - the date when an event is scheduled to be completed
 - `ev` - (required) *object* - the event's object
 
 ### Returns
-- ` css_class` - (string) - css class for related element
+- `css_class` - (string) - the CSS class for the related element
 
 ### Example
 
 ~~~jsx
-scheduler.templates.event_class = function(start,end,ev){
+scheduler.templates.event_class = (start, end, ev) => {
     return "";
 };
 ~~~
@@ -37,9 +37,9 @@ scheduler.templates.event_class = function(start,end,ev){
 
 ### Details
 
-In case of the Timeline view, the template is applied to 'Bar' and 'Tree' modes only.
+In the Timeline view, the template is applied to 'Bar' and 'Tree' modes only.
 
-Check the full information about customization of events colors in the related article [Custom Event's Color](guides/custom-events-color.md).
+Check the full information about customizing event colors in the related article [Custom Event's Color](guides/custom-events-color.md).
 
 ### Related Guides
 - [Custom Event's Color](guides/custom-events-color.md)

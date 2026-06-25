@@ -1,14 +1,14 @@
 ---
-sidebar_label: "wai_aria_application_role"
-title: "wai_aria_application_role config"
-description: "устанавливает, должен ли атрибут role='application' быть назначен основному контейнеру scheduler и элементам minicalendar"
+sidebar_label: wai_aria_application_role
+title: "wai_aria_application_role конфигурация"
+description: "определяет, будет ли role='application' использоваться для основного контейнера планировщика и элементов мини-календаря"
 ---
 
 # wai_aria_application_role
 
 ### Description
 
-@short: Устанавливает, должен ли атрибут role="application" быть назначен основному контейнеру scheduler и элементам minicalendar
+@short: Определяет, будет ли role="application" использоваться для основного контейнера планировщика и элементов мини-календаря
 
 @signature: wai_aria_application_role: boolean
 
@@ -20,13 +20,13 @@ scheduler.config.wai_aria_application_role = true;
 scheduler.init("scheduler_here");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
 ### Details
 
-добавлено в версии 5.0
+Добавлено в версии 5.0
 
-Управляет тем, как скринридеры обрабатывают интерфейс scheduler.
+Определяет, как скрин-ридеры взаимодействуют с планировщиком.
 
 ### Related Guides
 - [Доступность](guides/accessibility.md)

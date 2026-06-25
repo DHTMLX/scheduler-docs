@@ -58,7 +58,6 @@ scheduler.updateView();
  
 :::
 
-<br>
 
 ## 설정 객체 속성
 
@@ -83,8 +82,8 @@ scheduler.updateView();
   <tr>
   <td colspan="2">
 ~~~js
-// 2012년 5월 3일부터 'end_date'까지 이벤트 생성 차단
-start_date:new Date(2012,4,3)
+// 2027년 5월 3일부터 'end_date'까지 이벤트 생성 차단
+start_date: new Date(2027, 4, 3)
 ~~~
   </td>
   </tr>
@@ -95,8 +94,8 @@ start_date:new Date(2012,4,3)
   <tr>
   <td colspan="2" >
 ~~~js
-// 'start_date'부터 2012년 9월 3일까지 이벤트 생성 차단
-end_date:new Date(2012,8,3)
+// 'start_date'부터 2027년 9월 3일까지 이벤트 생성 차단
+end_date: new Date(2027, 8, 3)
 ~~~
   </td>
   </tr>
@@ -109,7 +108,7 @@ end_date:new Date(2012,8,3)
 ~~~js
 days:[0, 2, 6] // 일요일, 화요일, 토요일 제한
 days:"fullweek" // 주 전체 제한
-days:new Date(2012,6,1) // 2012년 7월 1일 차단
+days:new Date(2027, 6, 1) // 2027년 7월 1일 차단
 ~~~
   </td>
   </tr>
@@ -121,8 +120,8 @@ days:new Date(2012,6,1) // 2012년 7월 1일 차단
   <td colspan="2" >
 ~~~js
 // 두 개의 제한 구간: 04:00-08:00 및 12:00-15:00
-zones:[4*60,8*60,12*60,15*60] 
-zones:"fullday" // 하루 종일 제한
+zones: [4 * 60, 8 * 60, 12 * 60, 15 * 60]
+zones: "fullday" // 하루 종일 제한
 ~~~
   </td>
   </tr>
@@ -133,7 +132,7 @@ zones:"fullday" // 하루 종일 제한
   <tr>
   <td colspan="2" >
 ~~~js
-css:"gray" // 'gray' CSS 클래스가 적용된 DIV를 그림
+css: "gray" // 'gray' CSS 클래스가 적용된 DIV를 그림
 ~~~
   </td>
   </tr>
@@ -145,7 +144,7 @@ css:"gray" // 'gray' CSS 클래스가 적용된 DIV를 그림
   <td colspan="2" >
 ~~~js
 // 표시 구간 위에 이 텍스트가 포함된 DIV를 그림  
-html:"<b>Blocked</b>"
+html: "<b>Blocked</b>"
 ~~~
   </td>
   </tr>
@@ -168,9 +167,9 @@ type: "dhx_time_block" // 시간 구간이 표시되고 차단됨
   <td colspan="2" >
 ~~~js
 // 두 개의 제한 구간: 00:00-08:00 및 17:00-24:00
-zones: [8*60, 17*60], invert_zones: true 
+zones: [8 * 60, 17 * 60], invert_zones: true
 // 두 개의 제한 구간: 00:00-08:00 및 17:00-24:00
-zones: [0, 8*60, 17*60, 24*60], invert_zones: false
+zones: [0, 8 * 60, 17 * 60, 24 * 60], invert_zones: false
 ~~~
   </td>
   </tr> 
@@ -183,7 +182,7 @@ zones: [0, 8*60, 17*60, 24*60], invert_zones: false
 ~~~js
 // Unit 뷰에서 id=5인 항목만 차단
 // Timeline 뷰에서 id 2, 3인 항목만 차단
-sections: { unit: 5, timeline: [2,3]}
+sections: { unit: 5, timeline: [2, 3] }
 ~~~
   </td>
   </tr> 
@@ -227,15 +226,14 @@ sections: { unit: 5, timeline: [2,3]}
   </td>
   <td>
 ~~~js
-var config ={
-    days:  1, 
-    zones: [9*60, 15*60], 
-    css: "cssClassName", 
+const config = {
+    days: 1,
+    zones: [9 * 60, 15 * 60],
+    css: "cssClassName",
     sections: {
-         unit: 5
+        unit: 5
     }
-}
-
+};
 ~~~
 </td>
   </tr>
@@ -252,14 +250,14 @@ var config ={
   </td>
   <td>
 ~~~js
-var config ={
-    start_date: new Date(2013,7,13),
-    end_date:   new Date(2013,7,14),
+const config = {
+    start_date: new Date(2027, 7, 13),
+    end_date: new Date(2027, 7, 14),
     css: "cssClassName",
     sections: {
-         unit: 5
+        unit: 5
     }
-}
+};
 ~~~
 </td>
   </tr>
@@ -270,24 +268,24 @@ var config ={
 ## markTimespan()와 addMarkedTimespan() 비교
 
 <table >
-<tr><td markdown='1'>
+<tr><td>
 addMarkedTimespan 
-</td><td markdown='1'>
+</td><td>
 markTimespan 
 </td></tr>
-<tr><td markdown='1'>
+<tr><td>
 시간 구간에 대한 DIV를 렌더링하려면 [updateView](api/method/updateview.md) 호출 필요 
-</td><td markdown='1'>
+</td><td>
 시간 구간에 대한 DIV를 자동으로 그림 
 </td></tr>
-<tr><td markdown='1'>
+<tr><td>
 시간 구간이 무기한 지속됨 
-</td><td markdown='1'>
+</td><td>
 앱 내 내부 업데이트 후 즉시 시간 구간이 숨겨짐 
 </td></tr>
-<tr><td markdown='1'>
+<tr><td>
 설정된 시간 구간의 ID를 반환 
-</td><td markdown='1'>
+</td><td>
 DIV 요소 또는 DIV 배열을 반환 
 </td></tr>
 </table>

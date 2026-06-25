@@ -1,44 +1,44 @@
 ---
-sidebar_label: "limit_view"
-title: "limit_view config"
-description: "ограничивает диапазон дат, в пределах которого пользователи могут просматривать события"
+sidebar_label: limit_view
+title: "limit_view конфигурация"
+description: "ограничивает диапазон дат, в течение которого пользователь может просматривать события"
 ---
 
 # limit_view
 
 ### Description
 
-@short: Ограничивает диапазон дат, в пределах которого пользователи могут просматривать события
+@short: Ограничивает диапазон дат, в рамках которого пользователь может просматривать события
 
 @signature: limit_view: boolean
 
 ### Example
 
 ~~~jsx
-scheduler.init('scheduler_here',new Date(2022,5,17),"week");
+scheduler.init('scheduler_here',new Date(2027,5,17),"week");
 ...
 scheduler.config.limit_view  = true;
 ~~~
 
-**Default value:** false
+**Значение по умолчанию:** false
 
 ### Details
 
-Например, установка ограничения на 2023 год означает, что пользователи не смогут перейти к 2022 году - будут доступны только даты в пределах 2023 года.
+Например, если мы установим ограничение на год 2027, перейти к году 2026 нельзя — доступен только 2027 год.
 
-Если также заданы настройки **limit_start/limit_end** для ограничения периода создания новых событий, то **limit_view** предотвратит просмотр событий за пределами этого разрешённого диапазона дат.
+Если вы также укажите конфигурации **limit_start/limit_end**, чтобы ограничить диапазон, доступный для создания новых событий, **limit_view** не позволит вам просматривать события за пределами допустимого диапазона дат.
 
 ~~~js
-scheduler.config.limit_start = new Date(2022,5,15);
-scheduler.config.limit_end = new Date(2022,6,15);
+scheduler.config.limit_start = new Date(2027,5,15);
+scheduler.config.limit_end = new Date(2027,6,15);
 scheduler.config.limit_view  = true;
 ~~~
 
-С такой конфигурацией события можно создавать только с 15 июня по 15 июля, и навигация по календарю также ограничена этими датами.
+С учетом этой конфигурации вы сможете создавать события только в диапазоне между 15 июня и 15 июля, и перемещаться по календарю только в пределах этого диапазона дат.
 
 ### Related API
 - [limit_start](api/config/limit_start.md)
 - [limit_end](api/config/limit_end.md)
 
 ### Related Guides
-- [Блокировка и выделение дат](guides/limits.md)
+- [Blocking and Marking Dates](guides/limits.md)

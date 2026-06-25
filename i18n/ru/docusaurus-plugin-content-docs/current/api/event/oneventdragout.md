@@ -1,35 +1,35 @@
 ---
-sidebar_label: "onEventDragOut"
+sidebar_label: onEventDragOut
 title: "onEventDragOut event"
-description: "срабатывает, когда перетаскиваемое событие покидает область планировщика"
+description: "срабатывает, когда перетаскиваемое событие перемещается за пределы планировщика"
 ---
 
 # onEventDragOut
 
 ### Description
 
-@short: Срабатывает, когда перетаскиваемое событие покидает область планировщика
+@short: Срабатывает, когда перетаскиваемое событие перемещается за пределы планировщика
 
 @signature: onEventDragOut: (id: string, e: Event) =\> void;
 
 ### Parameters
 
-- `id` - (required) *string* - id события
-- `e` - (required) *Event* - объект нативного события
+- `id` - (required) *string* - идентификатор события
+- `e` - (required) *Event* - нативный объект события
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onEventDragOut", function (id, e){
-    //любая ваша логика здесь
+    // любая ваша логика здесь
 });
 ~~~
 
 ### Details
 
 :::note
- Это событие происходит только во время операций drag-and-drop между разными планировщиками. 
+ Событие срабатывает только в случае перетаскивания между планировщиками. 
 :::
 
 ### Related Guides
-- [Операции Drag-and-Drop](guides/drag-between.md)
+- [Операции перетаскивания](guides/drag-between.md)

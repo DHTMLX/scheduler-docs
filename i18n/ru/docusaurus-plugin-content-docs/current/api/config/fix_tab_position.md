@@ -1,14 +1,14 @@
 ---
-sidebar_label: "fix_tab_position"
-title: "fix_tab_position config"
-description: "сдвигает вкладки видов с левой стороны на правую сторону"
+sidebar_label: fix_tab_position
+title: "конфигурация fix_tab_position"
+description: "перемещает вкладки видов с левой стороны на правую"
 ---
 
 # fix_tab_position
 
 ### Description
 
-@short: Сдвигает вкладки видов с левой стороны на правую сторону
+@short: Перемещает вкладки видов с левой стороны на правую.
 
 @signature: fix_tab_position: boolean
 
@@ -20,18 +20,18 @@ scheduler.config.fix_tab_position = false;
 scheduler.init('scheduler_here',new Date(2013,05,11),"week");
 ~~~
 
-**Default value:** true
+**Значение по умолчанию:** true
 
-**Applicable views:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
+**Подходящие представления:** [Day view](views/day.md), [Week view](views/week.md), [Units view](views/units.md)
 
 ### Related samples
-- [Terrace skin](https://docs.dhtmlx.com/scheduler/samples/07_skins/01_default.html)
+- [Скин Terrace](https://docs.dhtmlx.com/scheduler/samples/07_skins/01_default.html)
 
 ### Details
 
-Эта опция доступна с версии 3.5. 
+The property is available from version 3.5. 
 
-По умолчанию, планировщик с скином ['dhx_terrace'](guides/skins.md) показывает вкладки видов слева. Чтобы переместить вкладки на правую сторону, просто установите эту опцию в *false*.
+By default, the ['dhx_terrace'-skinned scheduler](guides/skins.md#terrace-skin) presents the views tabs on the left side. To place the tabs on the right side - set the option to *false*.
 
 ### Related Guides
-- [Разметка Scheduler](guides/scheduler-markup.md#tabs-positioning)
+- [Scheduler Markup](guides/scheduler-markup.md#tabs-positioning)

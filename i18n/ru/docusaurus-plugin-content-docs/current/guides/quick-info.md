@@ -17,15 +17,14 @@ sidebar_label: "Крупные кнопки для удобной навигац
     scheduler.plugins({
         quick_info: true
     });
-    scheduler.init('scheduler_here',new Date(2009,5,30),"day");
+    scheduler.init('scheduler_here',new Date(2027,5,30),"day");
     ...
 <script>
 ~~~
 
-[Touch-oriented scheduler](https://docs.dhtmlx.com/scheduler/samples/03_extensions/29_quick_info.html)
+[Сенсорный планировщик](https://docs.dhtmlx.com/scheduler/samples/03_extensions/29_quick_info.html)
 
-
-После активации планировщик автоматически заменит стандартные кнопки на их увеличенные версии:
+После включения расширения планировщик автоматически заменяет стандартные кнопки кнопками большого размера:
 
 ![quick_info_extension.png](/img/quick_info_extension.png)
 
@@ -33,19 +32,18 @@ sidebar_label: "Крупные кнопки для удобной навигац
 
 Существует несколько API, которые позволяют настроить или изменить работу планировщика с крупными кнопками:
 
-- **3 шаблона** 
+- **3 шаблона**
 
-- [quick_info_content](api/template/quick_info_content.md) - управляет содержимым, отображаемым во всплывающей форме редактирования
-- [quick_info_date](api/template/quick_info_date.md) - управляет датой, отображаемой во всплывающей форме редактирования
-- [quick_info_title](api/template/quick_info_title.md) - управляет заголовком всплывающей формы редактирования
+- [quick_info_content](api/template/quick_info_content.md) - задает содержимое всплывающей формы редактирования
+- [quick_info_date](api/template/quick_info_date.md) - задает дату всплывающей формы редактирования
+- [quick_info_title](api/template/quick_info_title.md) - задает заголовок всплывающей формы редактирования
+
 
 - **1 параметр конфигурации**
 
+- [quick_info_detached](api/config/quick_info_detached.md) - определяет, будет ли форма события появляться слева/справа от экрана или рядом с выбранным событием
 
-- [quick_info_detached](api/config/quick_info_detached.md) - задаёт, будет ли форма события появляться с левой/правой стороны экрана или рядом с выбранным событием
+- **2 метода**
 
-
-- **2 метода** 
-
-- [hideQuickInfo](api/method/hidequickinfo.md) - скрывает всплывающую форму события, если она открыта
-- [showQuickInfo](api/method/showquickinfo.md) - открывает всплывающую форму события для указанного события
+- [hideQuickInfo](api/method/hidequickinfo.md) - скрывает всплывающую форму редактирования события (если она в данный момент активна)
+- [showQuickInfo](api/method/showquickinfo.md) - отображает всплывающую форму редактирования события для указанного события

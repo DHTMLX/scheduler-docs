@@ -19,11 +19,11 @@ description: "scheduler ajax 模块"
 {status: "ok", data: "value", data2: "value2"}
 
 
-var xhr = scheduler.ajax;
+const xhr = scheduler.ajax;
 
 // HTTP GET
 xhr.get("server.php").then(function(response) {
-    var res = JSON.parse(response.responseText); 
+    const res = JSON.parse(response.responseText); 
     if (res && res.status == "ok") {
         // 响应正常
     }
@@ -36,7 +36,7 @@ xhr.post({
            paramName: "paramValue"
     }
 }).then(function(response){
-    var res = JSON.parse(response.responseText); 
+    const res = JSON.parse(response.responseText); 
     if (res && res.status == "ok") {
         // 响应正常
     }
@@ -107,7 +107,7 @@ scheduler.ajax.post({
            paramName: "paramValue"
     },
     callback: function(result){
-           var response = result.xmlDoc;
+           const response = result.xmlDoc;
        
            alert(response.responseText);
     }
@@ -221,7 +221,7 @@ dhtmlxScheduler 支持 promises（包括 IE8+）。它内部使用 [Bluebird](ht
 创建 promise 的方式如下:
 
 ~~~js
-var promise = new scheduler.Promise(function(resolve, reject) {...});
+const promise = new scheduler.Promise(function(resolve, reject) {...});
 ~~~
 
 该 promise 实现作用域限定在 Scheduler 内部，因此不是全局的。

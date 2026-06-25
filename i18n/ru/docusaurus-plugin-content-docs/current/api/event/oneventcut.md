@@ -1,20 +1,20 @@
 ---
-sidebar_label: "onEventCut"
-title: "onEventCut event"
-description: "срабатывает, когда пользователь нажимает сочетание клавиш 'CTRL+X' (работает только если включено расширение 'keyboard navigation')"
+sidebar_label: onEventCut
+title: "onEventCut событие"
+description: "срабатывает, когда пользователь нажимает сочетание клавиш CTRL+X (только при включенном расширении 'keyboard navigation')"
 ---
 
 # onEventCut
 
 ### Description
 
-@short: Срабатывает, когда пользователь нажимает сочетание клавиш 'CTRL+X' (работает только если включено расширение 'keyboard navigation')
+@short: Срабатывает, когда пользователь нажимает сочетание клавиш CTRL+X (только при включенном расширении 'keyboard navigation')
 
-@signature: onEventCut: (ev: object) =\> void;
+@signature: onEventCut: (ev: object) => void;
 
 ### Parameters
 
-- `ev` - (required) *object* - объект события
+- `ev` - (обязательно) *object* - объект события
 
 ### Example
 
@@ -25,14 +25,15 @@ scheduler.attachEvent("onEventCut", function(ev) {
 });
 ~~~
 
+
 ### Related samples
-- [Keyboard navigation in the scheduler](https://docs.dhtmlx.com/scheduler/samples/03_extensions/07_navigation_plugin.html)
-- [Recurring events](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
+- [Навигация по клавиатуре в планировщике](https://docs.dhtmlx.com/scheduler/samples/03_extensions/07_navigation_plugin.html)
+- [Повторяющиеся события](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html)
 
 ### Details
 
 :::note
- Это событие работает только при активном расширении [key_nav](guides/extensions-list.md#keyboard-navigation). 
+Событие требует включенного расширения [key_nav](guides/extensions-list.md#keyboard-navigation).
 :::
 
 ### Related Guides

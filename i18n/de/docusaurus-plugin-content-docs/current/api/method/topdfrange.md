@@ -23,9 +23,9 @@ description: "exportiert mehrere Scheduler-Views in ein PDF-Dokument (nützlich 
 ### Example
 
 ~~~jsx
-//exportiert Seiten der 'week' View vom 1. Januar 2012 
-//bis zum 1. Februar 2012
-scheduler.toPDFRange(new Date(2012,0,1), new Date(2012, 1,1),'week', 
+//exportiert Seiten der 'week' View vom 1. Januar 2027 
+//bis zum 1. Februar 2027
+scheduler.toPDFRange(new Date(2027,0,1), new Date(2027, 1,1),'week', 
   'generate.php', 'fullcolor');
 ~~~
 

@@ -1,14 +1,14 @@
 ---
-sidebar_label: "map_zoom_after_resolve"
-title: "map_zoom_after_resolve config"
-description: "устанавливает уровень масштабирования для отображения местоположения пользователя, когда браузер запрашивает разрешение и пользователь соглашается"
+sidebar_label: map_zoom_after_resolve
+title: "map_zoom_after_resolve конфигурация"
+description: "устанавливает масштаб, который будет использоваться для отображения местоположения пользователя, если пользователь согласится с предложением браузера показать его"
 ---
 
 # map_zoom_after_resolve
 
 ### Description
 
-@short: Устанавливает уровень масштабирования для отображения местоположения пользователя, когда браузер запрашивает разрешение и пользователь соглашается
+@short: Устанавливает масштаб, который будет использоваться для отображения местоположения пользователя, если пользователь согласится с предложением браузера показать его
 
 @signature: map_zoom_after_resolve: number
 
@@ -17,17 +17,17 @@ description: "устанавливает уровень масштабирова
 ~~~jsx
 scheduler.config.map_zoom_after_resolve = 10;
 ...
-scheduler.init('scheduler_here', new Date(2013, 05, 11), "week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
-**Default value:** 15
+**Значение по умолчанию:** 15
 
-**Applicable views:** [Map view](views/map.md)
+**Доступные представления:** [Map view](views/map.md)
 
 ### Details
 
 :::note
- Свойство требует включения плагина [map_view](guides/extensions-list.md#mapview). 
+ Сво́йство требует активации плагина [map_view](guides/extensions-list.md#map-view).
 :::
 
-Настройка **zoom_after_resolve** также может быть определена внутри объекта конфигурации [map_settings](api/config/map_settings.md).
+Вы также можете указать настройку **zoom_after_resolve** внутри конфигурационного объекта [map_settings](api/config/map_settings.md).

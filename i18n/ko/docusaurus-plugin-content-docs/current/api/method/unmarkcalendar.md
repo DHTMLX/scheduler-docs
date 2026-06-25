@@ -24,7 +24,7 @@ description: "지정된 날짜에서 CSS 클래스를 제거합니다."
 // 캘린더 객체를 얻는 두 가지 방법이 있습니다:
 
 // 미니 캘린더를 생성하여 얻기
-var calendar = scheduler.renderCalendar({
+const calendar = scheduler.renderCalendar({
     container:"cal_here", 
     navigation:true,
     handler:function(date){
@@ -33,11 +33,11 @@ var calendar = scheduler.renderCalendar({
 });
 
 // 또는 미니 캘린더가 포함된 컨테이너를 선택하여 얻기
-var calendar = document.querySelector(".dhx_mini_calendar");
+const calendar = document.querySelector(".dhx_mini_calendar");
 
-scheduler.markCalendar(calendar, new Date(2010,3,1), "my_style");
+scheduler.markCalendar(calendar, new Date(2027,3,1), "my_style");
 ...
-scheduler.unmarkCalendar(calendar, new Date(2010,3,1), "my_style");
+scheduler.unmarkCalendar(calendar, new Date(2027,3,1), "my_style");
 ~~~
 
 ### Details

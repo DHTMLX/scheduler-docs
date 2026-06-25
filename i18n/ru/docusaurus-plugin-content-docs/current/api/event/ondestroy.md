@@ -1,14 +1,14 @@
 ---
-sidebar_label: "onDestroy"
-title: "onDestroy event"
-description: "срабатывает один раз после очистки планировщика с помощью метода [destructor](api/method/destructor.md)"
+sidebar_label: onDestroy
+title: "Событие onDestroy"
+description: "срабатывает после того, как планировщик очищен методом [destructor](api/method/destructor.md)"
 ---
 
 # onDestroy
 
 ### Description
 
-@short: Срабатывает один раз после очистки планировщика с помощью метода [destructor](api/method/destructor.md)
+@short: Срабатывает после того, как планировщик очищен методом [destructor](api/method/destructor.md)
 
 @signature: onDestroy: () =\> void
 
@@ -26,4 +26,4 @@ scheduler.destructor();
 - [destructor](api/method/destructor.md)
 
 ### Change log
-- добавлено в версии 6.0
+- добавлено в v6.0

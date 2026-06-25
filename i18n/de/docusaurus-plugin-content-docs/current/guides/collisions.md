@@ -5,35 +5,36 @@ sidebar_label: "Verhindern von doppelten Ereignissen in einem Zeitfenster"
 
 # Verhindern von doppelten Ereignissen in einem Zeitfenster
 
-In vielen Szenarien ist es wichtig, die Anzahl der Ereignisse zu begrenzen, die im selben Zeitfenster geplant werden können. Beispielsweise möchten Sie möglicherweise verhindern, dass ein zweites Ereignis hinzugefügt wird, wenn bereits eines für diesen Zeitpunkt geplant ist.
+In vielen Anwendungsfällen müssen Sie möglicherweise die Anzahl der Termine pro Zeitfenster begrenzen. Beispielsweise müssen Sie eventuell die Erstellung des 2. Termins verweigern, falls zu diesem Zeitpunkt bereits ein anderer Termin definiert wurde.
 
-## Aktivieren der Überwachung auf Kollisionen
+## Aktivierung der Kollisionsüberwachung
 
-Um die Anzahl der zulässigen Ereignisse in einem einzelnen Zeitfenster zu steuern, kann die [**collision**](guides/extensions-list.md#collision) Erweiterung verwendet werden.
+Um die Anzahl der Termine in einem Zeitfenster zu steuern, verwenden Sie die [**collision**](guides/extensions-list.md#collision)-Erweiterung.
 
-~~~js title="Aktivieren der 'collision'-Erweiterung"
+Aktivierung der 'collision'-Erweiterung:
+~~~js
 scheduler.plugins({
     collision: true
 });
 ~~~
 
-*Sobald diese Erweiterung auf der Seite aktiviert ist, verhindert sie, dass Benutzer zwei Ereignisse im selben Zeitfenster platzieren - sowohl beim Erstellen neuer Ereignisse als auch beim Verschieben bestehender.*
+*Einmal aktiviert, wird die Erweiterung auf der Seite aktiv sein.
+Von diesem Moment an wird der Scheduler nicht zulassen, dass Benutzer 2 Termine im selben Zeitfenster platzieren (erstellen oder verschieben).*
 
-## Verwalten der zulässigen Anzahl von Ereignissen in einem Zeitfenster
+## Verwaltung der zulässigen Anzahl von Terminen in einem Zeitfenster
 
-Standardmäßig ist nur ein Ereignis pro Zeitfenster erlaubt. Um dieses Limit anzupassen, verwenden Sie die Eigenschaft [collision_limit](api/config/collision_limit.md):
+Standardmäßig beträgt die zulässige Anzahl von Terminen in einem Zeitfenster 1. Um diese Zahl zu regeln, verwenden Sie die Eigenschaft [collision_limit](api/config/collision_limit.md):
 
-~~~js title="Verhindern, dass mehr als 2 Ereignisse pro Zeitfenster erstellt werden"
-scheduler.config.collision_limit = 2;      // erlaubt das Erstellen von 2 Ereignissen pro Zeitfenster
+[Denying creating more than 2 events per time slot](Denying creating more than 2 events per time slot)
+~~~js
+scheduler.config.collision_limit = 2;      //allows creating 2 events per time slot
 ~~~
 
-[Controlling the number of events in a time slot](https://docs.dhtmlx.com/scheduler/samples/03_extensions/15_collision.html)
+[Kontrolle der Anzahl der Termine in einem Zeitfenster](https://docs.dhtmlx.com/scheduler/samples/03_extensions/15_collision.html)
 
+*Mit der ['collision'-Erweiterung](guides/extensions-list.md#collision) aktiviert, ruft der Scheduler jedes Mal das [onEventCollision](api/event/oneventcollision.md) Event auf, wenn der Benutzer versucht, einen neuen Termin zu erstellen oder einen vorhandenen innerhalb eines bereits belegten Zeitfensters zu ändern. Das Event prüft den Wert der Eigenschaft [collision_limit](api/config/collision_limit.md).*
 
-*Mit der aktivierten ['collision'-Erweiterung](guides/extensions-list.md#collision) löst der Scheduler jedes Mal das Ereignis [onEventCollision](api/event/oneventcollision.md) aus, wenn ein Benutzer versucht, ein Ereignis in ein bereits belegtes Zeitfenster hinzuzufügen oder zu verschieben. Dieses Ereignis prüft das durch die Eigenschaft [collision_limit](api/config/collision_limit.md) gesetzte Limit.*
-
-
-Beachten Sie, dass das Ereignis [onEventCollision](api/event/oneventcollision.md) während des Ladens der Daten nicht ausgelöst wird. Um das Ereignislimit auch beim Laden von Daten zu erzwingen, ist eine kleine Ergänzung im Code erforderlich:
+Aber denken Sie daran, dass das [onEventCollision](api/event/oneventcollision.md) Event beim Laden von Daten nicht ausgelöst wird. Um also die Anzahl der Items in einem Zeitfenster während des Ladens von Daten in den Scheduler zu kontrollieren, müssen Sie den vorherigen Code etwas erweitern:
 
 ~~~js title="Verhindern, dass mehr als 2 Ereignisse pro Zeitfenster erstellt/geladen werden"
 scheduler.config.collision_limit = 2; // erlaubt das Erstellen von 2 Ereignissen pro Zeitfenster
@@ -42,24 +43,24 @@ scheduler.attachEvent("onEventLoading", function(ev){ /*!*/
 });                                                   /*!*/
 
 ~~~
-Die Methode [checkCollision](api/method/checkcollision.md) prüft, ob ein Ereignis mit bestehenden Ereignissen überlappt, und löst gegebenenfalls das Ereignis [onEventCollision](api/event/oneventcollision.md) aus.
+Die [checkCollision](api/method/checkcollision.md) Methode prüft, ob ein Termin zu einer Zeit erfolgt, die bereits von einem anderen Termin(en) belegt ist, und löst das [onEventCollision](api/event/oneventcollision.md) Event aus. 
 
 
-## Ermitteln der Anzahl der Ereignisse in einem Zeitfenster
+## Die Anzahl der in einem Zeitfenster vorhandenen Termine ermitteln
 
-Um herauszufinden, wie viele Ereignisse in einem bestimmten Zeitfenster geplant sind, kann die Methode [getEvents](api/method/getevents.md) verwendet werden:
+Um die Anzahl der Termine in einem Zeitfenster zu ermitteln, verwenden Sie die [getEvents](api/method/getevents.md)-Methode: 
 
 ~~~js title="Ermitteln der Anzahl der Ereignisse in einem Zeitfenster"
-var count = scheduler.getEvents(ev.start_date, ev.end_date).length;
+const count = scheduler.getEvents(ev.start_date, ev.end_date).length;
 ~~~
 
-Beachten Sie, dass die Methode [getEvents](api/method/getevents.md) alle Ereignisse durchsucht und deren Daten vergleicht. Bei einer sehr großen Anzahl von Ereignissen kann dieser Vorgang etwas Zeit in Anspruch nehmen.
+Beachten Sie, dass die [getEvents](api/method/getevents.md)-Methode alle Termine durchläuft und deren Daten vergleicht, wodurch es etwas dauern kann, wenn Sie Tausende von Terminen verwenden. 
 
-## Vollständige Checkliste zur Verhinderung von Doppelbuchungen/Ereignissen
+## Vollständige Checkliste zur Verhinderung doppelter Belegungen von Terminen
 
-Hier ist eine Zusammenfassung der Schritte, die Sie befolgen sollten, um Kollisionen von Ereignissen in einem Zeitfenster zu verhindern:
+Nachfolgend finden Sie eine Liste der Schritte, die Sie ausführen sollten, um Kollisionen von Terminen in einem Zeitfenster zu vermeiden: 
 
-1) Fügen Sie die *collision*-Erweiterung auf der Seite ein:
+1) Die *collision*-Erweiterung auf der Seite einbinden:
 
 ~~~js
 scheduler.plugins({
@@ -67,49 +68,49 @@ scheduler.plugins({
 });
 ~~~
 
-2) Verhindern Sie, dass Benutzer neue Ereignisse erstellen, während Daten noch vom Server geladen werden.
+2) Das Erstellen neuer Termine blockieren, während Daten vom Server geladen werden. 
 
-Dies stellt sicher, dass keine Ereignisse hinzugefügt werden können, bevor der Kalender vollständig geladen ist. Verwenden Sie dazu die Event-Handler [onLoadEnd](api/event/onloadend.md) und [onLoadStart](api/event/onloadstart.md) zusammen mit der Eigenschaft [readonly](api/config/readonly.md), wie folgt:
+Auf diese Weise kann der Benutzer keinen Termin erstellen, solange die Daten noch nicht geladen wurden und der Kalender leer ist.
+Dazu verwenden Sie die Event-Handler [onLoadEnd](api/event/onloadend.md) und [onLoadStart](api/event/onloadstart.md) sowie die Eigenschaft [readonly](api/config/readonly.md), wie folgt:
 
 ~~~js
-// Scheduler schreibgeschützt machen
-// bevor das Laden der Daten aus der Datenquelle begonnen hat
+// den Scheduler schreibgeschützt machen 
+// bevor das Laden von Daten aus der Datenquelle begonnen wurde
 scheduler.attachEvent("onLoadStart", function(){
     scheduler.config.readonly = true;
 });
 
-// Scheduler wieder bearbeitbar machen
-// erst nachdem das Laden der Daten abgeschlossen ist
+// den Scheduler bearbeitbar machen 
+// erst nachdem das Laden der Daten aus der Datenquelle abgeschlossen ist
 scheduler.attachEvent("onLoadEnd", function(){
     scheduler.config.readonly = false;
 });
 ~~~
 
-3) Aktivieren Sie das dynamische Laden, um die Leistung zu verbessern, wenn viele Datensätze geladen werden müssten.
+3) Dynamisches Laden aktivieren, um das Laden von Daten zu beschleunigen, falls Sie viele Datensätze haben und sie alle auf einmal geladen werden.
 
-Um das dynamische Laden zu aktivieren, rufen Sie die Methode [setLoadMode](api/method/setloadmode.md) vor dem Laden der Daten auf:
+Um das dynamische Laden zu aktivieren, rufen Sie die Methode [setLoadMode](api/method/setloadmode.md) auf und laden danach Ihr Skript:
 
-~~~js title="Aktivieren des dynamischen Ladens"
+[Enabling the dynamic loading](Enabling the dynamic loading)
+~~~js
 scheduler.setLoadMode("month");
 scheduler.load("/some");
 ~~~
 
-4) Validieren Sie kollidierende Ereignisse serverseitig mit der PHP Connector Validierung. Weitere Informationen finden Sie im Artikel zur 
-[Datenvalidierung](https://docs.dhtmlx.com/connector__php__validation.html#processingincaseofvalidationerror).
+4) Konfliktierende Termine serverseitig in Ihrer API validieren. Wenn ein Konflikt erkannt wird, geben Sie einen Fehlerstatus in der Antwort zurück und behandeln Sie ihn auf dem Client.
 
-Falls die Validierung fehlschlägt, können Sie die Daten auf der Client-Seite neu laden.
+Sie können auch Daten auf der Client-Seite neu laden, falls die Prüfung fehlschlägt. 
 
-Um einen Validierungsfehler zu behandeln, verwenden Sie die DataProcessor Events [onValidationError](https://docs.dhtmlx.com/api__dataprocessor_onvalidationerror_event.html) und 
-[onAfterUpdate](https://docs.dhtmlx.com/api__dataprocessor_onafterupdate_event.html) und laden Sie die Daten mit den Scheduler-Methoden [clearAll](api/method/clearall.md) und [load](api/method/load.md) neu:
-
+Um das Fehlschlagen der Prüfung zu verarbeiten, verwenden Sie die DataProcessor-Ereignisse [onValidationError](https://docs.dhtmlx.com/api__dataprocessor_onvalidationerror_event.html) und 
+[onAfterUpdate](https://docs.dhtmlx.com/api__dataprocessor_onafterupdate_event.html) und um Daten neu zu laden, verwenden Sie die Scheduler-Methoden [clearAll](api/method/clearall.md) und [load](api/method/load.md):
 
 a. [onValidationError](https://docs.dhtmlx.com/api__dataprocessor_onvalidationerror_event.html)
 
-Wird ausgelöst, nachdem ein Validierungsfehler aufgetreten ist, bevor die Daten gesendet werden:
+tritt auf, nachdem Validierungsfehler ausgelöst wurde, bevor Daten gesendet werden
 
 ~~~js
 dp.attachEvent("onValidationError", function(id, details){
-   //aktuelle Daten vom Server neu laden
+   //neuladen der aktuellen Daten vom Server
    scheduler.clearAll();
    scheduler.load("/data");
 });
@@ -117,17 +118,17 @@ dp.attachEvent("onValidationError", function(id, details){
 
 Parameter:
 
-- id - (string) ID des Elements mit dem Fehler
+- id - (string) id des Elements, für das der Fehler auftritt
 - details -    (object) Fehlerdetails
 
 b. [onAfterUpdate](https://docs.dhtmlx.com/api__dataprocessor_onafterupdate_event.html)
 
-Wird ausgelöst, nachdem die Serverantwort verarbeitet wurde:
+wird ausgelöst, nachdem die serverseitige Antwort empfangen und verarbeitet wurde
 
 ~~~js
 dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
      if(action == "invalid" || action == "error"){
-          //aktuelle Daten vom Server neu laden
+          //neuladen der aktuellen Daten vom Server
           scheduler.clearAll();
           scheduler.load("/data");
      }
@@ -136,14 +137,14 @@ dp.attachEvent("onAfterUpdate", function(id, action, tid, response){
 
 Parameter:
 
-- id - (string)    ID des aktualisierten Elements
-- action - (string)    Status der Antwort (Operationstyp), siehe unten für Details
-- tid - (string) Neue ID (nur relevant bei Insert-Operationen)
-- response - (mixed) XML-Knoten/JSON-Objekt mit der geparsten Antwort
+- id - (string)    id des aktualisierten Elements
+- action - (string)    Antwortstatus (Operations-Typ), siehe unten
+- tid - (string) neue id (gilt nur für Einfügeoperationen)
+- response - (mixed) xml-Knoten/json-Objekt, enthält geparste XML/JSON-Antwort
 
-Mögliche Antwort-Status sind:
+Mögliche Antwortstatus sind die folgenden: 
 
-- updated;
+- updated; 
 - inserted;
 - deleted;
 - invalid;

@@ -1,14 +1,14 @@
 ---
-sidebar_label: "default_date"
+sidebar_label: default_date
 title: "default_date config"
-description: "определяет формат даты, используемый в шаблонах 'day_date', 'week_date', 'day_scale_date' для отображения дат в заголовках представлений"
+description: "устанавливает формат даты, используемый шаблонами 'day_date', 'week_date', 'day_scale_date' для отображения даты в заголовках представлений"
 ---
 
 # default_date
 
 ### Description
 
-@short: Определяет формат даты, используемый в шаблонах 'day_date', 'week_date', 'day_scale_date' для отображения дат в заголовках представлений
+@short: Устанавливает формат даты, используемый шаблонами 'day_date', 'week_date', 'day_scale_date' для установки даты в заголовках представлений
 
 @signature: default_date: string
 
@@ -17,12 +17,12 @@ description: "определяет формат даты, используемы
 ~~~jsx
 scheduler.config.default_date = "%j %M %Y";
 ...
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
-**Default value:** "%j %M %Y"
+**Значение по умолчанию:** "%j %M %Y"
 
-**Applicable views:** [Day view](views/day.md), [Timeline view](views/timeline.md), [Week view](views/week.md), [Week Agenda view](views/weekagenda.md), [Units view](views/units.md)
+**Доступные представления:** [Day view](views/day.md), [Timeline view](views/timeline.md), [Week view](views/week.md), [Week Agenda view](views/weekagenda.md), [Units view](views/units.md)
 
 ### Related samples
 - [Configuring the time scale (X-Axis)](https://docs.dhtmlx.com/scheduler/samples/06_timeline/05_week_lines.html)
@@ -37,4 +37,4 @@ scheduler.init('scheduler_here', new Date(2013,05,11), "week");
 - [day_scale_date](api/template/day_scale_date.md)
 
 ### Related Guides
-- [Спецификация формата даты](guides/settings-format.md)
+- [Date Format Specification](guides/settings-format.md)

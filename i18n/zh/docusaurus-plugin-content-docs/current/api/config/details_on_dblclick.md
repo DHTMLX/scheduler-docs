@@ -17,7 +17,7 @@ description: "通过双击事件来启用打开lightbox功能"
 ~~~jsx
 scheduler.config.details_on_dblclick = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** true

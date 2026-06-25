@@ -1,136 +1,139 @@
 ---
-sidebar_label: "date"
+sidebar_label: date
 title: "date config"
-description: "一组用于格式化和操作日期的方法集合"
+description: "a set of date formatting methods"
 ---
 
-# date
+# 日期
 
 ### Description
 
-@short: 一组用于格式化和操作日期的方法集合
+@short: 一组日期格式化方法
 
 @signature: date: SchedulerDateHelpers
 
+
 ### Details
 
-**date** 对象包含多个实用方法:
+`date` 对象提供以下方法：
 
-- **add**(date, number, unit) - 通过添加或减少指定的时间单位来调整日期
-    - **date** - (<i>Date</i>) 要修改的日期对象
-    - **number** - (<i>number</i>) 要添加的时间单位数量；正数表示增加时间，负数表示减少时间
-    - **unit** - (<i>'minute', 'hour', 'day', 'week', 'month', 'year'</i>) 时间单位
+- `add()` - 向日期添加/从日期中减去指定的时间区间
+    - `date` - (<i>Date</i>) 需要添加时间/减去时间的日期对象
+    - `number` - (<i>number</i>) 要添加的单位数量。若此数字为正，时间将被添加到日期；若为负，则从日期中减去时间
+    - `unit` - (<i>'minute', 'hour', 'day', 'week', 'month', 'year'</i>) 时间单位
 
 ~~~js
-// 给指定日期加1年：2019年6月29日 -> 2020年6月29日
-var newDate = scheduler.date.add(new Date(2019, 05, 29), 1, 'year');
+// 给指定日期加上 1 年: 2027-06-29 -> 2028-06-29
+const newDate = scheduler.date.add(new Date(2027, 5, 29), 1, 'year');
 ~~~
 
-- **convert_to_utc**(date) - 将本地时间转换为对应的UTC时间
-    - **date** - (<i>Date</i>) 要转换的日期对象
+- `convert_to_utc()` - 将本地时间转换为 UTC
+    - `date` - (<i>Date</i>) 需要转换的日期对象
   
 ~~~js
-// 2019年6月29日14:00（本地时间） -> 2019年6月29日12:00（UTC）
-var time = scheduler.date.convert_to_utc(new Date(2019, 05, 29, 14, 00));
+// 2027-06-29 14:00（本地时间） -> 2027-06-29 12:00（UTC）
+const time = scheduler.date.convert_to_utc(new Date(2027, 5, 29, 14, 0));
 ~~~
 
-- **copy**(date) - 创建一个日期对象的副本
-    - **date** - (<i>Date</i>) 要复制的日期对象
+- `copy()` - 复制一个 Date 对象
+    - `date` - (<i>Date</i>) 要复制的日期对象
   
 ~~~js
-var copy = scheduler.date.copy(new Date(2019, 05, 29)); // -> 2019年6月29日
+const copy = scheduler.date.copy(new Date(2027, 5, 29)); // -> 2027-06-29
 ~~~
   
-- **date_part**(date) - 将日期的时间部分重置为00:00:00
-    - **date** - (<i>Date</i>) 要修改的日期对象
+- `date_part()` - 将提供日期的时间部分重置为 00:00:00
+    - `date` - (<i>Date</i>) 要格式化的日期对象
   
 ~~~js
-// 2019年6月29日14:30:10 -> 2019年6月29日00:00:00
-var date = scheduler.date.date_part(new Date(2019, 05, 29, 14, 30, 10));
+// 2027-06-29 14:30:10 -> 2027-06-29 00:00:00
+const date = scheduler.date.date_part(new Date(2027, 5, 29, 14, 30, 10));
 ~~~
   
-- **date_to_str**(format, utc) - 返回一个函数，该函数将Date对象转换为指定格式的字符串
-       - **format** - (<i>string</i>) 期望的日期格式（参见 [날짜 형식 지정](guides/settings-format.md)）  
-       - **utc** - (<i>boolean</i>) 是否将本地时间转换为UTC时间  
+- `date_to_str()` - 返回一个函数，将 Date 对象转换为指定格式的字符串
+参数: `format` - (<i>string</i>) 日期格式（见 [Date Format Specification](guides/settings-format.md)）  
+`utc` - (<i>boolean</i>) 指定是否将本地时间转换为 UTC
   
 ~~~js
-var formatFunc = scheduler.date.date_to_str("%d/%m/%Y");
-var date = formatFunc(new Date(2019, 05, 29)); // -> "29/06/2019"
+const formatFunc = scheduler.date.date_to_str("%d/%m/%Y");
+const date = formatFunc(new Date(2027, 5, 29)); // -> "29/06/2027"
 ~~~
   
-- **day_start**(date) - 将日期的时间部分重置为00:00:00；这是 <b>date_part</b> 方法的别名。该方法用于Day视图中设置显示日期，可根据需要自定义
-      - **date** - (<i>Date</i>) 要修改的日期对象
+- `day_start()` - 将提供日期的时间部分重置为 00:00:00。是 `date_part()` 方法的别名。Day 视图用于设置显示日期，并且可以被重新定义以提供默认行为
+参数: `date` - (<i>Date</i>) 要格式化的日期对象
 
 ~~~js
-// 2019年6月29日14:30:10 -> 2019年6月29日00:00:00
-var date = scheduler.date.day_start(new Date(2019, 05, 29, 14, 30, 10));
+// 2027-06-29 14:30:10 -> 2027-06-29 00:00:00
+const date = scheduler.date.day_start(new Date(2027, 5, 29, 14, 30, 10));
 ~~~
 
->**注意**，此方法会修改传入的日期对象。若要避免修改原始日期，请在传入前用 *new Date* 包裹。例如:
+> **注**，传入给方法的日期实际会被修改。若要防止原始日期被修改，可以用 `new Date()` 包装输入日期。例如：
 
 ~~~js
-var date1 = new Date(2019, 05, 29, 14, 30, 10);
-var date2 = scheduler.date.day_start(new Date(date1));
+const originalDate = new Date(2027, 5, 29, 14, 30, 10);
+const dayStartDate = scheduler.date.day_start(new Date(originalDate));
 ~~~
 
-- **getISOWeek**(date) - 返回给定日期的ISO周数
-    - **date** - (<i>Date</i>) 要计算的日期对象
+- `getISOWeek()` - 返回日期的周数
+    - `date` - (<i>Date</i>) 要格式化的日期对象
 
 ~~~js
-var week = scheduler.date.getISOWeek(new Date(2019, 05, 29)); // -> 26
+const week = scheduler.date.getISOWeek(new Date(2027, 5, 29)); // -> 26
 ~~~
 
-- **getUTCISOWeek**(date) - 在将日期转换为UTC后，返回该日期的ISO周数
-    - **date** - (<i>Date</i>) 要计算的日期对象
+- `getUTCISOWeek()` - 返回日期的周数，但先将本地时间转换为 UTC
+    - `date` - (<i>Date</i>) 要格式化的日期对象
 
 ~~~js
-var week = scheduler.date.getUTCISOWeek(new Date(2019, 05, 29)); // -> 26
+const week = scheduler.date.getUTCISOWeek(new Date(2027, 5, 29)); // -> 26
 ~~~
 
-- **month_start**(date) - 返回一个新的Date对象，表示该日期所在月份的第一天，时间部分重置为00:00:00
-    - **date** - (<i>Date</i>) 要处理的日期对象
+- `month_start()` - 返回指定日期所在月份的第一天的 Date 对象，并将时间部分清零
+    - `date` - (<i>Date</i>) 要格式化的日期对象
   
 ~~~js
-// 2019年6月29日14:30 -> 2019年6月1日00:00
-var firstDay = scheduler.date.month_start(new Date(2019, 05, 29, 14, 30));
+// 2027-06-29 14:30 -> 2027-06-01 00:00
+const firstDay = scheduler.date.month_start(new Date(2027, 5, 29, 14, 30));
 ~~~
 
-- <span id="strtodate">**str_to_date**(format, utc, parseExact)</span> - 返回一个函数，该函数将指定格式的日期字符串转换为Date对象
-      - **format** - (<i>string</i>) 日期格式（参见 [날짜 형식 지정](guides/settings-format.md)）  
-      - **utc** - (<i>boolean</i>) 是否将本地时间转换为UTC时间  
-      - **parseExact** - (<i>boolean</i>) 指定Scheduler是否自动检测日期格式（默认*false*）或严格使用提供的格式（*true*）
+<span id="strtodate"></span>
+- `str_to_date()` - 返回一个函数，将指定格式的字符串转换为 Date 对象
+参数: `format` - (<i>string</i>) 日期格式（见 [Date Format Specification](guides/settings-format.md)）  
+`utc` - (<i>boolean</i>) 指定是否将本地时间转换为 UTC  
+`parseExact` - (<i>boolean</i>) 定义 Scheduler 是否自动识别日期格式（*false*，默认）还是使用用户传入的格式（*true*）
+
 ~~~js
-var formatFunc = scheduler.date.str_to_date("%d/%m/%Y");
-var date = formatFunc("29/06/2019"); // -> 2019年6月29日00:00:00
+const formatFunc = scheduler.date.str_to_date("%d/%m/%Y");
+const date = formatFunc("29/06/2027"); // -> 2027-06-29 00:00:00
 ~~~
 
-- **time_part**(date) - 返回Date对象的时间部分，表示为自午夜（00:00:00）起的秒数
-    - **date** - (<i>Date</i>) 要计算的日期对象
+- `time_part()` - 以自午夜 (00:00:00) 起的秒数返回 Date 对象的时间部分
+    - `date` - (<i>Date</i>) 要格式化的日期对象
 ~~~js
-var time = scheduler.date.time_part(new Date(2019, 05, 29, 14, 30, 10));
-//time -> 52210
+const time = scheduler.date.time_part(new Date(2027, 5, 29, 14, 30, 10));
+// time -> 52210
 ~~~
 
-- **to_fixed**(num) - 对小于10的数字添加前导零，返回字符串；10及以上数字保持不变
-    - **num** - (<i>number</i>) 要格式化的数字
+- `to_fixed()` - 给小于 10 的数字添加前导零，并将结果作为字符串返回。对大于等于 10 的数字不做处理
+    - `num` - (<i>number</i>) 要格式化的数字
 
 ~~~js
-var num1 = scheduler.date.to_fixed(2);  // -> "02"
-var num2 = scheduler.date.to_fixed(10); // -> 10
-~~~
-  
-- **week_start**(date) - 返回一个Date对象，表示给定日期所在周的第一天，时间部分重置为00:00:00
-    - **date** - (<i>Date</i>) 要处理的日期对象
-
-~~~js
-// 2019年6月29日14:30 -> 2019年6月24日00:00
-var weekStart = scheduler.date.week_start(new Date(2019, 05, 29, 14, 30));
+const num1 = scheduler.date.to_fixed(2); // -> "02"
+const num2 = scheduler.date.to_fixed(10); // -> 10
 ~~~
   
-- **year_start**(date) - 返回一个Date对象，表示给定日期所在年份的第一天，时间部分重置为00:00:00
-    - **date** - (<i>Date</i>) 要处理的日期对象
+- `week_start()` - 返回指定日期所在周的第一天的 Date 对象，并将时间部分清零
+    - `date` - (<i>Date</i>) 要格式化的日期对象
+
+~~~js
+// 2027-06-29 14:30 -> 2027-06-28 00:00
+const weekStart = scheduler.date.week_start(new Date(2027, 5, 29, 14, 30));
+~~~
+  
+- `year_start()` - 返回指定日期所在年份的第一天的 Date 对象，并将时间部分清零
+    - `date` - (<i>Date</i>) 要格式化的日期对象
   
 ~~~js
-// 2019年6月29日14:30 -> 2019年1月1日00:00
-var yearStart = scheduler.date.year_start(new Date(2019, 05, 29, 14, 30));
+// 2027-06-29 14:30 -> 2027-01-01 00:00
+const yearStart = scheduler.date.year_start(new Date(2027, 5, 29, 14, 30));
 ~~~

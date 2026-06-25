@@ -15,7 +15,7 @@ Month View는 [기본 스케줄러 마크업](guides/scheduler-markup.md)에 기
 
 ~~~js
 // 표준 초기화; Month View는 자동으로 포함됩니다
-scheduler.init('scheduler_here', new Date(2019,0,10), "month");
+scheduler.init('scheduler_here', new Date(2027,0,10), "month");
 ...
 scheduler.load("/data/events");
 ~~~
@@ -41,10 +41,10 @@ Month View 탭을 제거하려면, [스케줄러 마크업](guides/scheduler-mar
 
 셀당 최대 이벤트 개수를 설정하려면 [max_month_events](api/config/max_month_events.md) 옵션을 사용하세요:
 
-~~~
+~~~js
 scheduler.config.max_month_events = 3;
 ..
-scheduler.init('scheduler_here', new Date(2019,5,30), "month");
+scheduler.init('scheduler_here', new Date(2027,5,30), "month");
 ~~~
 
 설정한 개수보다 더 많은 이벤트가 있을 경우, 'View more' 링크가 나타납니다. 이 링크를 클릭하면 Day View로 이동하여 모든 이벤트를 확인할 수 있습니다.
@@ -89,7 +89,7 @@ scheduler.plugins({
 // 날짜 클릭 시 Week View로 이동
 scheduler.config.active_link_view = "week";
 ...
-scheduler.init('scheduler_here', new Date(2012,7,6), "month");
+scheduler.init('scheduler_here', new Date(2027,7,6), "month");
 ~~~
 
 
@@ -106,7 +106,7 @@ scheduler.init('scheduler_here', new Date(2012,7,6), "month");
 // 여러 날 이벤트 드래그앤드롭 크기 조절 활성화
 scheduler.config.resize_month_events = true; /*!*/
 
-scheduler.init('scheduler_here', new Date(2019,0,10), "month");
+scheduler.init('scheduler_here', new Date(2027,0,10), "month");
 ~~~
 
 [Resizable events in Month view](https://docs.dhtmlx.com/scheduler/samples/02_customization/32_resizable_month_events.html)
@@ -118,7 +118,7 @@ scheduler.init('scheduler_here', new Date(2019,0,10), "month");
 // 단일 및 여러 날 이벤트 모두 드래그앤드롭 크기 조절 활성화
 scheduler.config.resize_month_events = true;/*!*/
 scheduler.config.resize_month_timed = true;  /*!*/
-scheduler.init('scheduler_here', new Date(2019,0,10), "month");
+scheduler.init('scheduler_here', new Date(2027,0,10), "month");
 ~~~
 
 **참고:**

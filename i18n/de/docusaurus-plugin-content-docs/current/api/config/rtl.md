@@ -17,7 +17,7 @@ description: "aktiviert den RTL (right-to-left) Modus für den Scheduler"
 ~~~jsx
 scheduler.config.rtl = true;
 ...
-scheduler.init('scheduler_here',new Date(2018,0,1),"week");
+scheduler.init('scheduler_here',new Date(2027,0,1),"week");
 ~~~
 
 **Default value:** false

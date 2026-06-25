@@ -1,36 +1,36 @@
 ---
-sidebar_label: "event_bar_text"
-title: "event_bar_text template"
-description: "задаёт текст, отображаемый на событиях, охватывающих несколько дней."
+sidebar_label: event_bar_text
+title: "event_bar_text шаблон"
+description: "задает текст события. Применяется только к многодневным событиям"
 ---
 
 # event_bar_text
 
 ### Description
 
-@short: Задаёт текст, отображаемый на событиях, охватывающих несколько дней.
+@short: Указывает текст события. Применяется только к многодневным событиям
 
 @signature: event_bar_text: (start: Date, end: Date, event: any) =\> string
 
 ### Parameters
 
-- `start` - (required) *Date* - дата начала события  
-- `end` - (required) *Date* - дата окончания события
-- `event` - (required) *object* - объект события
+- `start` - (обязательный) *Date* - дата начала запланированного события
+- `end` - (обязательный) *Date* - дата завершения запланированного события
+- `event` - (обязательный) *object* - объект события
 
 ### Returns
-- ` text` - (string) - HTML-содержимое для отображения внутри scheduler
+- `text` - (string) - HTML-текст для отображения в Scheduler
 
 ### Example
 
 ~~~jsx
-scheduler.templates.event_bar_text = function(start,end,event){
-      return event.text;
+scheduler.templates.event_bar_text = (start, end, event) => {
+    return event.text;
 };
 ~~~
 
-**Applicable views:** [Month view](views/month.md), [Timeline view](views/timeline.md)
+**Доступные представления:** [Month view](views/month.md), [Timeline view](views/timeline.md)
 
 ### Related Guides
-- [Шаблоны для Месячного Вида](views/month-view-templates.md)
-- [Шаблоны представления Timeline](views/timeline-view-templates.md)
+- [Шаблоны отображения месяца](views/month-view-templates.md)
+- [Шаблоны отображения Таймлайна](views/timeline-view-templates.md)

@@ -26,7 +26,7 @@ scheduler.render();
 
 
 // 切换到不同日期
-scheduler.render(new Date(2020,7,4));
+scheduler.render(new Date(2027,7,4));
 
 // 切换到不同视图
 scheduler.render(null, "week");

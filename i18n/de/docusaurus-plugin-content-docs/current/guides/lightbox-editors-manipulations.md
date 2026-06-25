@@ -1,29 +1,29 @@
 ---
-title: "Manipulationen mit dem Lightbox"
-sidebar_label: "Manipulationen mit dem Lightbox"
+title: "Manipulationen am Lightbox"
+sidebar_label: "Manipulationen am Lightbox"
 ---
 
-# Manipulationen mit dem Lightbox
+# Manipulationen am Lightbox
 
-## Abrufen/Setzen des Steuerungswerts {#gettingsettingthecontrolvalue}
+## Abrufen/Setzen des Werts des Steuerelements
 
-Um den Wert einer Steuerung in einem Abschnitt abzurufen oder zu aktualisieren, verwenden Sie das Objekt [formSection](api/method/formsection.md) wie folgt:
+Um den Wert des Abschnitts-Steuerelements abzurufen bzw. zu setzen, verwenden Sie das [formSection](api/method/formsection.md) Objekt wie folgt:
 
 ~~~js
-// zum Abrufen des Werts
-var value = scheduler.formSection('description').getValue();
+//to get the value
+const value = scheduler.formSection('description').getValue();
 
-// zum Setzen des Werts
+//to set the value
 scheduler.formSection('description').setValue('abc');
 ~~~
 
 
-[Setting/getting values of lightbox's controls](https://docs.dhtmlx.com/scheduler/samples/02_customization/22_opertions_with_lightbox.html)
+[Setzen/Abrufen von Werten der Lightbox-Steuerelemente](https://docs.dhtmlx.com/scheduler/samples/02_customization/22_opertions_with_lightbox.html)
 
 
-## Öffnen des Lightbox mit einem einfachen Klick {#opening-the-lightbox-on-a-single-click}
+## Öffnen der Lightbox mit einem Klick
 
-Sie können konfigurieren, dass das Lightbox mit einem einzigen Klick geöffnet wird. Dies erreichen Sie, indem Sie das Ereignis [onClick](api/event/onclick.md) zusammen mit der Methode [showLightbox](api/method/showlightbox.md) verwenden:
+Es ist möglich, die vorhandene Lightbox mit einem einzigen Klick zu öffnen. Dazu verwenden Sie das [onClick](api/event/onclick.md) Event und die [showLightbox](api/method/showlightbox.md) Methode:
 
 ~~~js
 scheduler.attachEvent("onClick", function (id, e){
@@ -32,51 +32,51 @@ scheduler.attachEvent("onClick", function (id, e){
 });
 ~~~
 
-**Related sample** [Opening the lightbox on one click](https://snippet.dhtmlx.com/5/50e639d2a)
+**Zugehöriges Beispiel** [Öffnen der Lightbox mit einem Klick]
 
-Mit dieser Konfiguration öffnet ein Klick mit der linken Maustaste auf eine Ereignisbox das Lightbox.
+Die Lightbox wird geöffnet, wenn der Benutzer mit der linken Maustaste auf das Ereignisfenster klickt. 
 
-## Überprüfen, ob das Lightbox geöffnet ist {#checking-whether-the-lightbox-is-opened}
+## Überprüfung, ob die Lightbox geöffnet ist
 
-Um festzustellen, ob das Lightbox derzeit geöffnet oder geschlossen ist, überprüfen Sie die Eigenschaft **lightbox_id** aus dem von der Methode [getState](api/method/getstate.md) zurückgegebenen Statusobjekt. 
-Wenn das Lightbox geöffnet ist, wird die ID des Ereignisses im Lightbox zurückgegeben; andernfalls wird 'null' oder 'undefined' zurückgegeben:
+Um zu prüfen, ob die Lightbox derzeit geöffnet oder geschlossen ist, verwenden Sie die **lightbox_id**-Eigenschaft des Statusobjekts, das durch die [getState](api/method/getstate.md) Methode zurückgegeben wird. 
+Wird die Lightbox geöffnet, gibt die Methode die ID des geöffneten Ereignisses zurück, andernfalls wird 'null' oder 'undefined' zurückgegeben:
 
 ~~~js
 if (scheduler.getState().lightbox_id){
-    // Code, wenn das Lightbox geöffnet ist
+    //the code for the opened lightbox
 } else {
-    // Code, wenn das Lightbox geschlossen ist
+    //the code for the closed lightbox
 }
 ~~~
 
-## Zuordnung von Eigenschaften eines Ereignisobjekts zu den Lightbox-Abschnitten {#mapping-properties-of-an-event-object-to-the-lightbox-sections}
+## Zuordnung von Eigenschaften eines Ereignisobjekts zu den Lightbox-Abschnitten
 
 Um eine Eigenschaft eines Ereignisobjekts einem Lightbox-Abschnitt zuzuordnen, gehen Sie wie folgt vor:
 
-- Stellen Sie sicher, dass Ihre Datenquelle Ereignisse in einem [unterstützten Format](guides/data-formats.md) bereitstellt
+- Stellen Sie sicher, dass Ihre Datenquelle Ereignisse in einem [unterstützten Format](guides/data-formats.md) zurückgibt
 
 ~~~js
 { 
    "data":[
       {
           "id":"1",
-          "start_date":"2019-03-02 00:00:00",
-          "end_date":"2019-03-04 00:00:00",
+          "start_date":"2027-03-02 00:00:00",
+          "end_date":"2027-03-04 00:00:00",
           "text":"Graduation ceremony",
           "type":"1",
           "location":"London"
       },
       ...
-   ]
+   ]                                       
 }
 ~~~
 
-Beachten Sie, dass alle von Ihrer Datenquelle zurückgegebenen Eigenschaften zu Ereignisobjekten hinzugefügt werden und über die [Client-seitige API](guides/event-object-operations.md) zugänglich sind.
+Beachten Sie, dass alle Eigenschaften, die Ihre Datenquelle zurückgibt, zu Event-Objekten hinzugefügt werden und für die [Client-seitige API](guides/event-object-operations.md) verfügbar sein werden.
 
-- Um eine Lightbox-Steuerung einer bestimmten Eigenschaft zuzuordnen, setzen Sie die Eigenschaft **map_to** des Abschnitts auf den Namen der Ereigniseigenschaft:
+- Um ein Lightbox-Steuerelement einer bestimmten Eigenschaft zuzuordnen, weisen Sie dem Abschnitt die Eigenschaft **map_to** den Namen der entsprechenden Ereignis-Eigenschaft zu:
 
 ~~~js
-scheduler.config.lightbox.sections="["
+scheduler.config.lightbox.sections=[
     {name:"description", height:70, map_to:"text", type:"textarea" , focus:true},
     {name:"locationInput", height:35, map_to:"location", type:"textarea" },
     {name:"typeSelect", map_to:"type", type:"select", options:scheduler.serverList("types")},
@@ -84,29 +84,29 @@ scheduler.config.lightbox.sections="["
 ];
 ~~~
 
-Die [time](guides/time.md)- und [recurring](guides/recurring-events.md#recurringlightbox)-Steuerungen sind Ausnahmen, da sie immer auf feste Eigenschaften abbilden (**event.start_date/event.end_date** bzw. **event.rec_type/event.event_length/event.event_pid**).
+Nur Ausnahmen sind die [time](guides/time.md)- und die [recurring](guides/recurring-events.md#recurring-lightbox)-Steuerelemente, die immer festen Eigenschaften zugeordnet sind (**event.start_date/event.end_date** und **event.rec_type/event.event_length/event.event_pid**) entsprechend.
 
-## Automatisches Enddatum in der Zeit-Steuerung {#automatic-end-date-in-the-time-control}
+## Automatisches Enddatum im Time-Control
 
-Um eine Standarddauer für Ereignisse festzulegen und das Enddatum automatisch zu aktualisieren, damit diese Dauer beibehalten wird, konfigurieren Sie die folgenden Eigenschaften:
+Um die anfängliche Dauer von Ereignissen festzulegen und das Enddatum automatisch anzupassen, verwenden Sie die Eigenschaften **event_duration** und **auto_end_date**:
 
 ~~~js
-// Geben Sie die Ereignisdauer in Minuten für den auto_end_time-Parameter an
+//specify the event duration in minutes for the auto_end_time parameter
 scheduler.config.event_duration = 60; 
 scheduler.config.auto_end_date = true;
 ~~~
 
 
-[Automatic end date](https://docs.dhtmlx.com/scheduler/samples/02_customization/11_auto_end_date.html)
+[Automatisches Enddatum](https://docs.dhtmlx.com/scheduler/samples/02_customization/11_auto_end_date.html)
 
 
-Mit dieser Einstellung wird jedes Mal, wenn der Benutzer die Startzeit oder das Startdatum des Ereignisses im Lightbox ändert, die Endzeit und das Enddatum automatisch angepasst, sodass die Ereignisdauer 60 Minuten beträgt (wie in der Option [event_duration](api/config/event_duration.md) angegeben).
+Bei einer solchen Konfiguration wird jedes Mal, wenn der Benutzer die Startzeit oder das Datum des Start-Ereignisses im Lightbox ändert, die Endzeit und das Enddatum des Ereignisses automatisch angepasst, damit die Dauer des Ereignisses 60 Minuten entspricht (dem Wert der Option [event_duration](api/config/event_duration.md)).
 
-## Setzen des Standardwerts für eine Lightbox-Steuerung {#setting-the-default-value-for-a-lightboxs-control}
+## Festlegen des Standardwerts für den Lightbox-Abschnitt
 
-Um einen Standardwert für einen Abschnitt des Lightbox festzulegen, verwenden Sie die Eigenschaft **default_value** dieses Abschnitts.
+Um den Standardwert für einen Lightbox-Abschnitt festzulegen, verwenden Sie die **default_value**-Eigenschaft des Abschnittsobjekts.
 
-Wenn zum Beispiel ein benutzerdefinierter Abschnitt für den Ereignisort hinzugefügt und als 'Location' bezeichnet wird, ist dieser beim Erstellen eines neuen Ereignisses standardmäßig leer. Um standardmäßig eine bestimmte Adresse (wie das Greenwich Observatory) anzuzeigen, konfigurieren Sie das Lightbox wie folgt:
+Zum Beispiel haben Sie einen benutzerdefinierten Abschnitt hinzugefügt, der den Ort des Ereignisses im Lightbox anzeigt und ihn 'Location' genannt. Wenn der Benutzer ein neues Ereignis erstellt, bleibt das Feld leer. Um dieses Verhalten zu korrigieren und standardmäßig beispielsweise die Adresse des Greenwich Observatory anzuzeigen, definieren Sie das Lightbox wie folgt:
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -117,167 +117,167 @@ scheduler.config.lightbox.sections = [
 ];
 ~~~
 
-Beachten Sie, dass **default_value** den Standardinhalt für den Abschnitt im Lightbox selbst festlegt, nicht für das neue Ereignis. Das bedeutet, dass ein neues Ereignis den angegebenen Wert erst erhält, nachdem das Lightbox geöffnet und das Ereignis gespeichert wurde.
+Hinweis: Die **default_value**-Eigenschaft legt den Standardwert für den Lightbox-Abschnitt fest, nicht für ein neues Ereignis, d. h. ein neues Ereignis erhält den angegebenen Wert erst, nachdem der Benutzer den Lightbox geöffnet und das Ereignis gespeichert hat.
 
-Um beim Erstellen neuer Ereignisse direkt einen Standardwert zuzuweisen, verwenden Sie das Ereignis [onEventCreated](api/event/oneventcreated.md):
+Um den Standardwert direkt für neue Ereignisse festzulegen, verwenden Sie das Event [onEventCreated](api/event/oneventcreated.md):
 
 ~~~js
 scheduler.attachEvent("onEventCreated", function(id,e){
     scheduler.getEvent(id).location = 'Blackheath Avenue London, Greenwich...';
-    scheduler.updateEvent(id); // aktualisiert das angezeigte Ereignis
+    scheduler.updateEvent(id); // renders the updated event
     return true;
 });
 ~~~
 
-## Ändern der Reihenfolge der Datums-/Zeitsteuerungen und Entfernen von Zeitselektoren {#changingtheorderofdatetimecontrolsandremovingtimeselectors}
+## Änderung der Reihenfolge der Datum-Uhrzeit-Steuerelemente und Entfernen von Zeit-Auswahlfeldern
 
-Sie können die Reihenfolge der Datums-/Zeitsteuerungen im Abschnitt 'Zeitperiode' ändern oder Zeitselektoren auslassen, indem Sie die Eigenschaft **time_format** festlegen:
+Sie haben die Möglichkeit, die Reihenfolge der Datum-Uhrzeit-Steuerelemente im Abschnitt 'Time period' zu ändern oder einige davon zu entfernen. Verwenden Sie dazu die **time_format**-Eigenschaft:
 
 ~~~js
-scheduler.config.lightbox.sections="["
+scheduler.config.lightbox.sections= [
   {name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
   {name:"time", ..., time_format:["%H:%i","%m","%d","%Y"]}
 ];
 ~~~
 
 :::note
-Beachten Sie, dass dies nur die Reihenfolge der Elemente im Array ändert; das Datenanzeigeformat wird dadurch nicht beeinflusst.
+Hinweis: Sie können das Darstellungsformat der Daten nicht ändern, nur die Reihenfolge der Elemente im Array.
 :::
 
-Zum Beispiel können Sie das Format wie folgt anpassen:
+Zum Beispiel können Sie das Format wie folgt ändern:
 
 ~~~js
-// Standard
+//default
 time_format:["%H:%i", "%m", "%d", "%Y"] 
-// Monat zuerst
+//month goes first
 time_format:["%m","%d", "%Y", "%H:%i"]
-// Jahr-Selektor auslassen
+//the year selector is removed
 time_format:["%H:%i", "%m", "%d"]
-// Falsche Verwendung
-time_format:["%H:%i", "%M", "%d", "%Y"] // "%m" wurde fälschlicherweise zu "%M" geändert
+//incorrect
+time_format:["%H:%i", "%M", "%d", "%Y"] //"%m" wurde zu "%M"
 ~~~
 
-## Nur-Lese-Modus {#readonlymode}
+## Lesemodus
 
-Weitere Details zum Nur-Lese-Modus finden Sie im Kapitel [Schreibgeschützter Modus](guides/readonly.md).
+Die detaillierten Informationen zum Lesemodus finden Sie im Kapitel [Read-only Mode](guides/readonly.md).
 
-## Einen Abschnitt für bestimmte Ereignisse ausblenden {#makingasectionhiddenforsomeevents}
+## Ausblenden eines Abschnitts für bestimmte Ereignisse 
 
-Um einen Abschnitt für bestimmte Ereignisse auszublenden, überschreiben Sie dessen **set_value**-Methode wie folgt:
-
+Um einen Abschnitt für bestimmte Ereignisse auszublenden, definieren Sie seine **set_value**-Methode wie folgt neu:
 
 ~~~js
-scheduler.form_blocks.textarea.set_value="function(node,value,ev){"
-    node.firstChild.value="value||""";
-    var style = ev.some_property?"":"none";
-    node.style.display="style;" // Editorbereich
-    node.previousSibling.style.display="style;" // Abschnittsüberschrift
+scheduler.form_blocks.textarea.set_value = function(node,value,ev){
+    node.firstChild.value= value || "";
+    let style = ev.some_property ? "" : "none";
+    node.style.display = "style;" // Editorbereich
+    node.previousSibling.style.display = "style;" // Abschnittsüberschrift
     scheduler.setLightboxSize(); // passt die Größe des Lightbox an
 }
 ~~~
 
-### 'Ganztägiges Ereignis'-Option
+### 'Volltag-Ereignis' Option
 
-Um die Option 'ganztägiges Ereignis' im Lightbox zu aktivieren, setzen Sie die Option [full_day](api/config/full_day.md) auf *true*, indem Sie Folgendes hinzufügen:
+Um die Option 'Volltag-Ereignis' zur Lightbox hinzuzufügen, setzen Sie die [full_day](api/config/full_day.md) Option auf *true*.
+Dazu fügen Sie einfach die folgende Codezeile hinzu:
 
 ~~~js
 scheduler.config.full_day  = true;
 ~~~
 
-Sobald dies aktiviert ist, erscheint das **Ganztägig**-Kontrollkästchen auf der linken Seite des Abschnitts **Zeitperiode**. Wenn es aktiviert ist, werden alle Eingabefelder in diesem Abschnitt deaktiviert und die Ereignisdauer wird auf den gesamten Tag festgelegt - von **0:00 Uhr** des aktuellen Zellen-Datums bis **0:00 Uhr** des folgenden Tages.
+Sobald die [full_day](api/config/full_day.md) Option aktiviert ist, wird das Kontrollkästchen **Full Day** im linken Teil des **Time period**-Abschnitts angezeigt. Nach Auswahl werden alle Eingabefelder des Abschnitts blockiert, und die Dauer des Ereignisses wird als ganzer Tag festgelegt, von **0:00 Uhr** des aktuellen Zellendatums bis **0:00 Uhr** des nächsten Tages.
 
 
 [Full day events](https://docs.dhtmlx.com/scheduler/samples/02_customization/12_full_day_event.html)
 
 
-## Arten von Lightbox {#types-of-lightbox}
+## Arten der Lightbox
 
-Das Lightbox ist in zwei Varianten verfügbar:
+Die Lightbox kann in einem von 2 Typen dargestellt werden:
 
-- Standard (breit)
-- Kurz
+- Standard (breit);
+- Kurz.
 
-Im Standard-Skin ist nur das breite Lightbox verfügbar, während in den Skins 'glossy' oder 'classic' zwischen beiden Varianten gewählt werden kann.
+Im Standard-Skin kann die Lightbox nur im Standard (breit) Typ dargestellt werden, während man im Skin 'glossy' oder 'classic' zwischen Typen wählen kann.
 
-Um den bevorzugten Typ auszuwählen, verwenden Sie die Eigenschaft [wide_form](api/config/wide_form.md):
+Um den gewünschten Typ festzulegen, verwenden Sie die Eigenschaft [wide_form](api/config/wide_form.md):
 
 ~~~js
 scheduler.config.wide_form = true;
 ~~~
 
 
-**Standard (breites) Lightbox**:
+**Standard (breit) Lightbox**:
 
 ![scheduler_wide_form.png](/img/scheduler_wide_form.png)
 
-**Kurzes Formular**:
+**Kurze Form**:
 
 ![scheduler_standard_form.png](/img/scheduler_standard_form.png)
 
 
-### Schaltfläche in der Abschnittsüberschrift 
+### Button im Abschnittskopf 
 
-Sie können eine benutzerdefinierte Schaltfläche zur Abschnittsüberschrift hinzufügen, indem Sie wie folgt vorgehen:
+Es ist möglich, einen benutzerdefinierten Button im Abschnittskopf zu haben. Um einen Button in der Kopfzeile eines Abschnitts hinzuzufügen, führen Sie die folgenden Schritte aus:
 
-- Fügen Sie die Eigenschaft 'button' zum Abschnittsobjekt hinzu:
+- Weisen Sie dem Abschnittsobjekt die Eigenschaft **button** zu:
 
 ~~~js
 {name:"description", height:130, map_to:"text", type:"textarea", button:"help"}
 ~~~
 
-- Definieren Sie die Beschriftung für die Schaltfläche:
+- Legen Sie die Bezeichnung für den Button fest:
 
 ~~~js
-// 'help' entspricht dem Wert der Eigenschaft 'button'
-scheduler.locale.labels.button_help = "Hilfebeschriftung";
+// 'help' is the value of the 'button' property
+scheduler.locale.labels.button_help = "Help label";
 ~~~
 
-- Geben Sie den Handler für Klicks auf die Schaltfläche an:
+- Geben Sie den Handler von Button-Klicks an:
 
-~~~
-scheduler.form_blocks.textarea.button_click="function(index,button,shead,sbody){"
-    // Ihr benutzerdefinierter Code hier
+~~~js
+scheduler.form_blocks.textarea.button_click = function(index,button,shead,sbody){
+    // any custom code
 }
 ~~~
 
-Hierbei gilt:
+wobei:
+  
+- **index** - (*number*) der Abschnittsindex. Nullbasierte Nummerierung
+- **button** - (*HTMLElement*) das HTML-Element des Buttons
+- **shead** - (*HTMLElement*) das HTML-Element des Abschnittskopfes
+- **sbody** - (*HTMLElement*) das HTML-Element des Abschnittsinhalts
 
-- **index** - (*number*) der nullbasierte Index des Abschnitts
-- **button** - (*HTMLElement*) das Schaltflächenelement
-- **shead** - (*HTMLElement*) das Abschnittsüberschrift-Element
-- **sbody** - (*HTMLElement*) das Abschnittskörper-Element
 
+Sie können das für den Button verwendete Bild über die folgende CSS-Klasse definieren:
 
-Sie können das Bild der Schaltfläche mit dieser CSS-Klasse anpassen:
-
-~~~js
+~~~css
 .dhx_custom_button_help{
     background-image:url(imgs/but_help.gif);
 }
 ~~~
 
-## Verknüpfung von Auswahl-Steuerelementen {#linkingselectcontrols}
+## Verknüpfung von Auswahlelementen
 
-Auswahl-Steuerelemente im Lightbox können voneinander abhängig gemacht werden. Dies wird mit der [onchange-Eigenschaft](guides/select.md#properties) des Auswahl-Steuerelements erreicht, wie unten gezeigt:
+Sie können Auswahlelemente in der Lightbox voneinander abhängig machen. Verwenden Sie dazu die onchange-Eigenschaft des Auswahlelements, wie folgt:
 
 ~~~js
-var update_select_options = function(select, options) { // Hilfsfunktion
+const update_select_options = function(select, options) { // helper function
     select.options.length = 0;
-    for (var i="0;" i<options.length; i++) {
-        var option = options[i];
+    for (let i = 0; i < options.length; i++) {
+        let option = options[i];
         select[i] = new Option(option.label, option.key);
     }
 };
 
-var parent_onchange = function(event) {
-    var new_child_options = child_select_options[this.value];
+const parent_onchange = function(event) {
+    const new_child_options = child_select_options[this.value];
     update_select_options(scheduler.formSection('child').control, new_child_options);
 };
 scheduler.attachEvent("onBeforeLightbox", function(id){
-    var ev = scheduler.getEvent(id);
+    const ev = scheduler.getEvent(id);
     if (!ev.child_id) {
-        var parent_id = ev.parent_id||parent_select_options[0].key;
-        var new_child_options = child_select_options[parent_id];
+        const parent_id = ev.parent_id||parent_select_options[0].key;
+        const new_child_options = child_select_options[parent_id];
         update_select_options(
             scheduler.formSection('child').control, new_child_options
         );
@@ -285,7 +285,7 @@ scheduler.attachEvent("onBeforeLightbox", function(id){
     return true;
 });
 
-scheduler.config.lightbox.sections="["
+scheduler.config.lightbox.sections= [
     ...
     {name:"parent", height:23, type:"select", options: parent_select_options, 
      map_to:"parent_id", onchange:parent_onchange },
@@ -296,62 +296,60 @@ scheduler.config.lightbox.sections="["
 ~~~
 
 
-[Linking select controls in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/26_linked_selects_in_lightbox.html)
+[Verknüpfung von Auswahlelementen in der Lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/26_linked_selects_in_lightbox.html)
 
+![linking_controls.png](/img/linking_controls.png)
 
-![/img/linking_controls.png](/img/linking_controls.png)
+Das <b>onchange</b>-Ereignis wird ausgelöst, wenn der Benutzer die ausgewählte Option des übergeordneten Abschnitts ändert. Die Optionen des untergeordneten Abschnitts ändern sich entsprechend. 
 
-Das <b>onchange</b>-Ereignis wird ausgelöst, wenn der Benutzer eine andere Option im übergeordneten Abschnitt auswählt, wodurch die Optionen des untergeordneten Abschnitts entsprechend aktualisiert werden.
+## Dynamische Änderungen der Lightbox-Abschnitte
 
-## Dynamisches Ändern der Lightbox-Abschnitte {#dynamic-changing-of-the-lightbox-sections}
+Es besteht die Möglichkeit, die Lightbox-Abschnitte dynamisch zu ändern. Das bedeutet, dass die Abschnitte der Lightbox je nach konfigurierten Vorgaben ausgeblendet, blockiert oder angezeigt werden können.
 
-Es ist möglich, die Abschnitte des Lightbox dynamisch zu ändern. Das bedeutet, dass Sie Abschnitte des Lightbox basierend auf einer bestimmten Konfiguration ausblenden, blockieren oder anzeigen können.
+Sie können die Lightbox-Abschnitte dynamisch über die Methode [resetLightbox()](api/method/resetlightbox.md) ändern. Zum Beispiel:
 
-Dafür können Sie die Methode [resetLightbox()](api/method/resetlightbox.md) verwenden. So gehen Sie vor:
-
-1. Erstellen Sie zunächst zwei Arrays, die unterschiedliche Steuerelement-Sets für das Lightbox definieren.
+1. Erstellen Sie zwei Arrays mit der Lightbox-Konfiguration, die zwei verschiedene Satz von Steuerelementen enthalten.
 
 ~~~js
-var full_lightbox = [
+const full_lightbox = [
     { name: "description", height: 200, map_to: "text", type: "textarea", focus: true},
     { name: "hidden", height: 23, map_to: "hidden", type: "textarea"},
     { name: "time", height: 72, type: "time", map_to: "auto"}
 ];
-var restricted_lightbox = [
+const restricted_lightbox = [
     { name: "description", height: 200, map_to: "text", type: "textarea", focus: true},
     { name: "time", height: 72, type: "time", map_to: "auto"}
 ];
 ~~~
 
-2. Implementieren Sie anschließend Folgendes:
+2. Im nächsten Schritt müssen Sie folgende Schritte umsetzen:
 
-- Rufen Sie vor dem Öffnen eines neuen Lightbox die Methode <b>resetLightbox()</b> auf, um die aktuellen Steuerelemente zu löschen und ein neues Lightbox mit dem gewünschten Steuerelement-Set zu erstellen.
+- Bevor eine neue Lightbox angezeigt wird, rufen Sie die <b>resetLightbox()</b>-Methode auf, um den aktuellen Satz von Steuerelementen des Bearbeitungsformulars zu entfernen und ein neues Lightbox-Objekt mit einem anderen Satz von Steuerelementen zu erzeugen.
 
-- Rufen Sie das Ereignisobjekt über seine ID ab und definieren Sie eine Bedingung, um zu entscheiden, welche Lightbox-Konfiguration angewendet wird. Im folgenden Beispiel wird das Attribut "restricted" als Bedingung verwendet.
+- Holen Sie das Ereignisobjekt anhand seiner ID und geben Sie die Bedingung an, anhand der entschieden wird, welche Lightbox-Konfiguration angewendet wird. Im nachstehenden Beispiel wird die Bedingung über das Attribut "restricted" eingeführt.
 
 ~~~js
 scheduler.attachEvent("onBeforeLightbox", function(event_id) {
     scheduler.resetLightbox();
-    var ev = scheduler.getEvent(event_id);
+    const ev = scheduler.getEvent(event_id);
     scheduler.config.lightbox.sections = (ev.restricted) ?
         restricted_lightbox : full_lightbox;
     return true;
 });
 ~~~
 
-3. Die Eigenschaft 'restricted' des Ereignisses steuert, ob die "restricted_lightbox"-Konfiguration verwendet wird. Wenn sie nicht gesetzt ist, wird das vollständige Lightbox angezeigt.
+3. Verwenden Sie die Eigenschaft 'restricted' des Ereignisses, um die Konfiguration "restricted_lightbox" anzuwenden. Andernfalls wird die vollständige Lightbox angezeigt.
 
 ~~~js
-scheduler.init('scheduler_here', new Date(2017, 5, 30), "week");
+scheduler.init('scheduler_here', new Date(2027, 5, 30), "week");
 scheduler.parse([
-    { start_date: "2017-06-27 04:00", end_date: "2017-06-27 7:00", 
+    { start_date: "2027-06-27 04:00", end_date: "2027-06-27 7:00", 
         text: "Restricted event", hidden: "You won't see me", restricted: true },
-    { start_date: "2017-06-29 05:00", end_date: "2017-06-29 11:00", 
+    { start_date: "2027-06-29 05:00", end_date: "2027-06-29 11:00", 
         text: "Full access", hidden: "Hidden text" }
 ]);
 ~~~
 
-
-![/img/dinamicchanges_lightbox](/img/dinamicchanges_lightbox.png)
+![dinamicchanges_lightbox.png](/img/dinamicchanges_lightbox.png)
 
 [Dynamic changing of lightbox configurations](https://docs.dhtmlx.com/scheduler/samples/02_customization/29_changing_lightbox_configurations.html)

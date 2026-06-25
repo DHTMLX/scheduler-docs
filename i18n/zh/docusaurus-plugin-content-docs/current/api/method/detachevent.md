@@ -19,7 +19,7 @@ description: "移除之前通过 attachEvent 方法添加的事件处理程序"
 ### Example
 
 ~~~jsx
-var myEvent = scheduler.attachEvent("onClick", function (id){
+const myEvent = scheduler.attachEvent("onClick", function (id){
     ...//事件处理代码
 });
 ...

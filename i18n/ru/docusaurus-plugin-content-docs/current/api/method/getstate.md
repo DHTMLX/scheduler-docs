@@ -1,14 +1,14 @@
 ---
-sidebar_label: "getState"
-title: "getState method"
-description: "получает текущее состояние scheduler'а"
+sidebar_label: getState
+title: "getState метод"
+description: "получает текущее состояние планировщика"
 ---
 
 # getState
 
 ### Description
 
-@short: Получает текущее состояние scheduler'а
+@short: Получает текущее состояние планировщика
 
 @signature: getState: () =\> any
 
@@ -18,7 +18,7 @@ description: "получает текущее состояние scheduler'а"
 ### Example
 
 ~~~jsx
-var mode = scheduler.getState().mode;
+const mode = scheduler.getState().mode;
 if(mode == "day"){
     // кастомная логика здесь
 }
@@ -28,64 +28,64 @@ else {
 ~~~
 
 ### Related samples
-- [Fully custom lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/16_custom_form.html)
-- [Removing needless hours from the time scale](https://docs.dhtmlx.com/scheduler/samples/06_timeline/09_drag_duration.html)
+- [Полностью настраиваемый lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/16_custom_form.html)
+- [Удаление лишних часов из временной шкалы](https://docs.dhtmlx.com/scheduler/samples/06_timeline/09_drag_duration.html)
 
 ### Details
 
-Объект состояния представляет внутреннюю конфигурацию UI scheduler'а и включает следующие свойства:
+Объект состояния отражает внутреннюю конфигурацию пользовательского интерфейса планировщика и имеет следующие свойства:
 
 <table class="webixdoc_links">
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>mode</b></td>
-  <td>(<i>string</i>) текущий активный вид</td>
+  <td>(<i>string</i>) текущее открытое представление</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>date</b></td>
-  <td>(<i>Date</i>) выбранная дата</td>
+  <td>(<i>Date</i>) активная дата</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>min_date</b></td>
-  <td>(<i>Date</i>) дата начала, с которой показываются события в текущем виде</td>
+  <td>(<i>Date</i>) дата начала отображения событий в текущем открытом представлении</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>max_date</b></td>
-  <td>(<i>Date</i>) дата окончания, до которой показываются события в текущем виде</td>
+  <td>(<i>Date</i>) дата окончания отображения событий в текущем открытом представлении</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>editor_id</b></td>
-  <td>(<i>string</i>) ID события, которое в данный момент редактируется inline. Будет 'undefined' или 'null', если никакое событие не редактируется inline.</td>
+  <td>(<i>string</i>) идентификатор события, которое в данный момент редактируется во встроенном редакторе. 'Undefined' или 'null', если никакие события не редактируются во встроенном редакторе.</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>lightbox_id</b></td>
-  <td>(<i>string</i>) ID события, которое открыто в lightbox. Будет 'undefined' или 'null', если никакое событие не открыто в lightbox.</td>
+  <td>(<i>string</i>) идентификатор события, которое в данный момент открыто в lightbox. 'Undefined' или 'null', если ни одно событие не открыто в lightbox.</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>new_event</b></td>
-  <td>(<i>Date</i>) указывает, создаётся ли в данный момент новое событие. Содержит текущую дату, если создаётся новое событие, иначе 'undefined' или 'null'.</td>
+  <td>(<i>Date</i>) флаг, указывающий на то, что в данный момент создаётся новое событие. Текущая дата, если новое событие создаётся в планировщике. 'Undefined' или 'null', если новые события не создаются в планировщике.</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>select_id</b></td>
-  <td>(<i>string</i>) ID текущего выбранного события. Будет 'undefined' или 'null', если событие не выбрано.</td>
+  <td>(<i>string</i>) идентификатор текущего выбранного события. 'Undefined' или 'null', если в планировщике не выбрано ни одно событие.</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>expanded</b></td>
-  <td>(<i>boolean</i>) true, если scheduler развернут. Будет 'undefined' или 'null', если scheduler находится в обычном размере или если расширение [expand](guides/extensions-list.md#expand) не включено.</td>
+  <td>(<i>boolean</i>) возвращает <i>true</i>, когда планировщик развернут. 'Undefined' или 'null', если планировщик имеет обычный размер или расширение [expand](guides/extensions-list.md#expand) не включено в приложении.</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>drag_id</b></td>
-  <td>(<i>string</i>) ID события, которое в данный момент перетаскивается. Будет 'undefined' или 'null', если событие не перетаскивается.</td>
+  <td>(<i>string</i>) идентификатор события, которое в данный момент перетаскивается пользователем в планировщике. 'Undefined' или 'null', если никакие задачи не перетаскиваются.</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>drag_mode</b></td>
-  <td>(<i>'move','resize','create', 'new-size'</i>) текущий режим drag. Будет 'undefined' или 'null', если событие не перетаскивается.</td>
+  <td>(<i>'move','resize','create', 'new-size'</i>) режим перетаскивания. 'Underfined' или 'null', если в планировщике не перетаскиваются события.</td>
   </tr>
   </tbody>
 </table>
 
 :::note
 
-Обратите внимание, изменение этого объекта не повлияет на поведение scheduler'а.
- 
+Примечание: поведение планировщика нельзя изменить путём модификации этого объекта.
+
 :::

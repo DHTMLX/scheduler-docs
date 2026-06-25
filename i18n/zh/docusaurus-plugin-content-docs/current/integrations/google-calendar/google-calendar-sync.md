@@ -1,157 +1,163 @@
 ---
-title: "Two-way sync with Google Calendar (Node.js)"
-sidebar_label: "Two-way sync (Node.js)"
-description: "Implement a Node.js + Express integration that syncs DHTMLX Scheduler events with Google Calendar using OAuth 2.0 and Google Calendar API v3."
+title: "与 Google 日历的双向同步（Node.js）"
+sidebar_label: "Google 日历"
+description: "实现一个 Node.js + Express 集成，将 DHTMLX Scheduler 事件通过 OAuth 2.0 与 Google 日历 API v3 同步。"
 ---
 
-# DHTMLX Scheduler: Two-way sync with Google Calendar (Node.js)
+# DHTMLX Scheduler: 与 Google 日历的双向同步（Node.js）
 
-In this guide, you will implement **two-way sync** between **DHTMLX Scheduler** and **Google Calendar** in a small Node.js app:
+在本指南中，你将实现 **DHTMLX Scheduler** 与 **Google 日历** 之间的 **双向同步**，在一个小型 Node.js 应用中：
 
-- Load calendars and events from Google Calendar into Scheduler
-- Push Scheduler create/update/delete operations back to Google Calendar
+- 从 Google 日历加载日历和事件到 Scheduler
+- 将 Scheduler 的创建/更新/删除操作推送回 Google 日历
 
 :::note
-This approach implements **two-way sync via API calls** (Scheduler → backend → Google Calendar). It does **not** implement real-time Google → Scheduler push updates (webhooks). If you change events directly in Google Calendar, reload the app (or reload a date range) to see the updated data in Scheduler.
+此方法实现的是通过 API 调用的 **双向同步**（Scheduler → 后端 → Google 日历）。它不实现 Google → Scheduler 的实时推送更新（webhook）。如果你直接在 Google 日历中修改事件，请重新加载应用（或重新加载一个日期范围）以在 Scheduler 中看到更新的数据。
 :::
 
-You will build:
+你将构建：
 
-- a Node.js + Express backend with Google OAuth 2.0 ([Passport](https://www.npmjs.com/package/passport)) and a small REST API for Scheduler
-- an event mapping layer (Google ↔ Scheduler), including basic recurring events/exceptions handling
-- a Scheduler client wired to the backend via `scheduler.createDataProcessor()`
+- 一个包含 Google OAuth 2.0 的 Node.js + Express 后端（[Passport](https://www.npmjs.com/package/passport)）以及一个用于 Scheduler 的小型 REST API
+- 一个事件映射层（Google ↔ Scheduler），包括基本的计划内事件/例外处理
+- 一个通过 `scheduler.createDataProcessor()` 连接到后端的 Scheduler 客户端
 
-## Prerequisites
+:::note
+完整的源代码可在 GitHub 上获取：[https://github.com/DHTMLX/scheduler-google-calendar-demo](https://github.com/DHTMLX/scheduler-google-calendar-demo)。
+:::
+
+## 前提条件
 
 - Node.js 18+
-- A Google account with access to Google Cloud Console
-- Basic familiarity with TypeScript and Express
-- Access to DHTMLX Scheduler packages (the example uses `@dhx/trial-scheduler`)
+- 拥有 Google Cloud Console 访问权限的 Google 账号
+- 对 TypeScript 和 Express 的基本熟悉
+- 访问 DHTMLX Scheduler 包（示例使用 `@dhx/trial-scheduler`）
 
-## Demo repository
+## 演示仓库
 
-A complete working project that matches this guide is available on GitHub:
-- https://github.com/dhtmlx/scheduler-google-auth-demo *(placeholder - replace with your actual repo)*
+与本指南匹配的完整可运行项目可在 GitHub 上获取：
+- https://github.com/dhtmlx/scheduler-google-auth-demo
 
-The guide explains the key steps and shows the integration code that matters. The repository is the "full runnable reference".
+该指南解释了关键步骤并展示了重要的集成代码。仓库是“完整可运行的参考实现”。
 
-## Project setup
+## 项目设置
 
-In this section you will prepare Google OAuth credentials, configure the project, and run the app locally.
+在本节中，你将准备 Google OAuth 凭据、配置项目并在本地运行应用。
 
-### 1) Get the project code
+### 1) 获取项目代码
 
-Do one of the following:
+执行以下任意一种操作：
 
-- Clone the repository:
-
+- 克隆仓库：
 ~~~bash title="Terminal"
 git clone https://github.com/dhtmlx/scheduler-google-auth-demo.git
 cd scheduler-google-auth-demo
 ~~~
 
-If your project installs `@dhx/*` packages from the private registry, configure npm:
-
+如果你的项目需要从私有注册表安装 `@dhx/*` 包，请配置 npm：
 ~~~bash title="Terminal"
 npm config set @dhx:registry https://npm.dhtmlx.com
 ~~~
 
-### 2) Configure Google Cloud (OAuth 2.0)
+### 2) 配置 Google Cloud（OAuth 2.0）
 
-In this step you will create OAuth credentials that the backend uses to access Google Calendar on behalf of a user.
+在此步骤中，你将创建后端用于以用户身份访问 Google 日历的 OAuth 凭据。
 
-> The guide uses OAuth in **Testing** mode (recommended for development). In this mode, only users listed as **Test users** can authorize the app.
+> 本指南在 **Testing** 模式下使用 OAuth（开发推荐）。在该模式下，只有被列为测试用户的用户才可以授权应用。
 
-#### 2.1 Create or select a Google Cloud project
+#### 2.1 创建或选择 Google Cloud 项目
 
-1. Open [Google Cloud Console](https://console.cloud.google.com/).
-2. Select an existing project or create a new one.
+1. 打开 [Google Cloud Console](https://console.cloud.google.com/)。
+2. 选择一个已有项目或创建一个新项目。
 
-#### 2.2 Enable Google Calendar API
+#### 2.2 启用 Google 日历 API
 
-1. Go to **APIs & Services → Library**.
-2. Search for **Google Calendar API**.
-3. Click **Enable**.
+1. 转到 **APIs & Services → Library**。
+2. 搜索 **Google Calendar API**。
+3. 点击 **Enable**（启用）。
 
-#### 2.3 Configure the OAuth consent screen
+#### 2.3 配置 OAuth 同意屏幕
 
-1. Go to **APIs & Services → OAuth consent screen**.
-2. Choose **External** (typical for consumer Google accounts), then click **Create**.
-3. Fill in the required fields:
-   - **App name**
-   - **User support email**
-   - **Developer contact email**
-4. Set **Publishing status** to **Testing**.
-5. Add **Test users**:
-   - Add the Google accounts you will use to sign in while developing/testing.
+1. 转到 **APIs & Services → OAuth consent screen**。
+2. 选择 **External**（对于消费型 Google 账户常见），然后点击 **Create**。
+3. 填写必填字段：
+   - **App name**（应用名称）
+   - **User support email**（用户支持邮箱）
+   - **Developer contact email**（开发者联系邮箱）
+4. 将 **Publishing status** 设置为 **Testing**。
+5. 添加 **Test users**：
+   - 添加你在开发/测试时将用于登录的 Google 账号。
 
 :::note
-If you skip test users in **Testing** mode, Google will block authorization for accounts that are not explicitly added.
+如果在 **Testing** 模式下跳过测试用户，Google 将阻止未明确添加的账户授权。
 :::
 
-#### 2.4 Create OAuth client credentials
+#### 2.4 创建 OAuth 客户端凭据
 
-1. Go to **APIs & Services → Credentials**.
-2. Click **Create credentials → OAuth client ID**.
-3. Application type: **Web application**.
-4. Add this **Authorized redirect URI**:
+1. 转到 **APIs & Services → Credentials**。
+2. 点击 **Create credentials → OAuth client ID**。
+3. 应用类型：**Web application**。
+4. 添加以下 **Authorized JavaScript origin**：
+~~~text title="JavaScript origin"
+http://localhost:3000
+~~~
 
+5. 添加以下 **Authorized redirect URI**：
 ~~~text title="Redirect URI"
 http://localhost:3000/auth/google/callback
 ~~~
 
-5. Save and copy:
+6. 保存并复制：
    - **Client ID**
    - **Client Secret**
 
-#### 2.5 Scope used by this integration
+#### 2.5 本集成使用的作用域
 
-The backend requests Google Calendar access via:
+后端通过以下方式请求 Google 日历访问权限：
 
 - `https://www.googleapis.com/auth/calendar`
 
-This scope is sufficient for listing calendars and performing event CRUD operations.
+此作用域足以列出日历并执行事件的 CRUD 操作。
 
-### 3) Configure environment variables
+### 3) 配置环境变量
 
-In this step you will provide OAuth credentials and session settings to the backend.
+在此步骤中，你将向后端提供 OAuth 凭据和会话设置。
 
-Copy `.env.example` to `.env`, then fill in the values:
+把 `.env.example` 复制为 `.env`，然后填写值：
 
 ~~~ini title=".env"
-GOOGLE_CLIENT_ID=...
-GOOGLE_CLIENT_SECRET=...
+GOOGLE_CLIENT_ID=<上一步中的 Client ID>
+GOOGLE_CLIENT_SECRET=<上一步中的 Client Secret>
 GOOGLE_REDIRECT_URI=http://localhost:3000/auth/google/callback
 SESSION_SECRET=some-long-random-string
 PORT=3000
 ~~~
 
-### 4) Install dependencies and run
+### 4) 安装依赖并运行
 
 ~~~bash title="Terminal"
 npm install
 npm run start
 ~~~
 
-Open:
+打开：
 
 ~~~text title="App URL"
 http://localhost:3000
 ~~~
 
-At this point you should be able to click **Add Google Calendars**, sign in, and see Scheduler populated with events.
+此时你应该能够点击 **Add Google Calendars**、完成登录，并在 Scheduler 中看到加载的日历与事件。
 
 ---
 
-## Implementation
+## 实现
 
-The rest of the guide explains how the integration is put together. If you are adapting this to an existing app, treat each section below as an implementation milestone.
+本节后续内容将解释如何把集成组合在一起。如果你是在将本指南应用于现有应用，请将下面每个小节视为一个实现里程碑。
 
-## Step 1 - Split responsibilities (backend vs client)
+## 步骤 1 - 职责分离（后端 vs 客户端）
 
-In this step you will separate responsibilities so Scheduler stays a UI component and the backend owns OAuth + Google API calls.
+在此步骤中，你将分离职责，让 Scheduler 保持为 UI 组件，后端负责 OAuth 和 Google API 调用。
 
-A typical structure:
+一个典型的结构是：
 
 ~~~text title="Project structure"
 scheduler-google-auth-demo/
@@ -175,18 +181,18 @@ scheduler-google-auth-demo/
   .env.example
 ~~~
 
-- **server/**: OAuth, token storage (in session), Google Calendar API calls, and REST endpoints for Scheduler
-- **client/**: Scheduler init + loading, and [DataProcessor](guides/server-integration.md) that forwards CRUD actions to the server
+- **server/**：OAuth、会话中的令牌存储、Google Calendar API 调用，以及 Scheduler 的 REST 端点
+- **client/**：Scheduler 初始化和加载，以及 [DataProcessor](guides/server-integration.md) 将 CRUD 操作转发到服务器
 
-## Step 2 - Implement Google OAuth (Express session + Passport)
+## 步骤 2 - 实现 Google OAuth（Express 会话 + Passport）
 
-In this step you will make the backend able to authenticate a user and store Google access/refresh tokens.
+在此步骤中，你将使后端能够对用户进行认证并在会话中存储 Google 的访问令牌/刷新令牌。
 
-### 2.1 Bootstrap the server (sessions + passport)
+### 2.1 引导服务器（会话 + passport）
 
-Update `server/index.ts` to enable sessions and passport, then mount your routes.
+更新 `server/index.ts` 以启用会话和 passport，然后挂载路由。
 
-Below is the core wiring (only the relevant parts are shown):
+以下是核心连接（仅展示相关部分）：
 
 ~~~ts title="server/index.ts"
 app.use(
@@ -206,7 +212,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/events", eventsRoute);
+app.use("/events", (req, res, next) => {
+  req.isAuthenticated() ? next() : res.status(401).json({ error: "Not authenticated" });
+}, eventsRoute);
 app.use("/auth", authRoute);
 
 app.get("/", (req, res) => {
@@ -214,13 +222,21 @@ app.get("/", (req, res) => {
 });
 ~~~
 
-### 2.2 Configure the Google strategy
+在 `/events` 上的行内中间件确保未认证的请求在路由处理程序将 `req` 转换为 `AuthenticatedRequest` 时不会导致服务器崩溃，而是返回 `401` 响应。
 
-Update `server/config/passport.ts` to register `passport-google-oauth20`.
+### 2.2 配置 Google 策略
 
-The key idea: keep `accessToken` and `refreshToken` on the user object stored in the session:
+更新 `server/config/passport.ts`，注册 `passport-google-oauth20`。核心思路是：在会话中存储的用户对象上保留 `accessToken` 和 `refreshToken`：
 
 ~~~ts title="server/config/passport.ts"
+passport.serializeUser((user: Express.User, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((obj: Express.User, done) => {
+  done(null, obj);
+});
+
 passport.use(
   new GoogleStrategy(
     {
@@ -241,12 +257,12 @@ passport.use(
 ~~~
 
 :::note
-Production apps usually persist tokens per user in a database and implement refresh token rotation/revocation. This example keeps tokens in-session to keep the flow easy to follow.
+生产环境中通常会把令牌持久化到数据库，并实现刷新令牌的轮换/撤销。本示例将令牌保存在会话中，以便于理解。
 :::
 
-### 2.3 Add OAuth routes
+### 2.3 添加 OAuth 路由
 
-Update `server/routes/auth.route.ts` to expose the OAuth entry point, callback, and logout:
+更新 `server/routes/auth.route.ts`，暴露 OAuth 入口、回调和登出：
 
 ~~~ts title="server/routes/auth.route.ts"
 router.get(
@@ -269,26 +285,109 @@ router.get("/google/logout", (req, res, next) => {
 });
 ~~~
 
-At this point you should be able to hit `/auth/google`, complete the Google consent screen, and return to `/` with an authenticated session.
+到此，你应能够访问 `/auth/google`，完成 Google 同意屏幕并带着已认证的会话返回到 `/`。
 
-## Step 3 - Expose a REST API for Scheduler CRUD
+### 创建 Google 日历服务层
 
-In this step you will implement the API contract Scheduler uses:
+创建 `server/services/googleService.ts`，封装 Google Calendar API v3 的 CRUD 方法。它从会话令牌中创建 OAuth2 客户端，并暴露列出日历、列出事件、以及创建/更新/删除事件的帮助函数：
 
-- `GET /events` - load calendars + events
-- `POST /events` - create
-- `PUT /events/:eventId` - update
-- `DELETE /events/:eventId` - delete
+~~~ts title="server/services/googleService.ts"
+import { google, calendar_v3 } from "googleapis";
+import type { GoogleOAuthTokens } from "../types/auth.types.ts";
+import config from "../config/index.ts";
 
-### 3.1 Load calendars + events (GET /events)
+const calendarClient = google.calendar("v3");
 
-Update `server/routes/events.route.ts` to return:
+function oauthClient(tokens: GoogleOAuthTokens) {
+  const client = new google.auth.OAuth2(
+    config.GOOGLE_CLIENT_ID,
+    config.GOOGLE_CLIENT_SECRET,
+    config.GOOGLE_REDIRECT_URI
+  );
+  client.setCredentials({
+    access_token: tokens.accessToken,
+    refresh_token: tokens.refreshToken,
+  });
+  return client;
+}
 
+/* ------ CRUD helpers ------- */
 
-- `data` containing Scheduler-style events
-- `collections.calendars` containing list of calendars that will be [available on the client]](guides/loading-data.md#loadingdatawithtimelineandunitssectionsfromtheserver)
+export async function listCalendars(tokens: GoogleOAuthTokens): Promise<calendar_v3.Schema$CalendarListEntry[]> {
+  const { data } = await calendarClient.calendarList.list({ auth: oauthClient(tokens) });
+  return data.items ?? [];
+}
 
-Below is a working example handler:
+export async function listEvents(
+  tokens: GoogleOAuthTokens,
+  opts: calendar_v3.Params$Resource$Events$List
+): Promise<calendar_v3.Schema$Event[]> {
+  const { data } = await calendarClient.events.list({
+    auth: oauthClient(tokens),
+    ...opts,
+  });
+  return data.items ?? [];
+}
+
+export async function createEvent(
+  tokens: GoogleOAuthTokens,
+  calendarId: string | undefined,
+  gEvent: calendar_v3.Schema$Event
+): Promise<calendar_v3.Schema$Event> {
+  const { data } = await calendarClient.events.insert({
+    auth: oauthClient(tokens),
+    calendarId: calendarId || "primary",
+    requestBody: gEvent,
+    conferenceDataVersion: 1,
+  });
+  return data;
+}
+
+export async function updateEvent(
+  tokens: GoogleOAuthTokens,
+  calendarId: string | undefined,
+  eventId: string,
+  gPatch: calendar_v3.Schema$Event
+): Promise<calendar_v3.Schema$Event> {
+  const { data } = await calendarClient.events.patch({
+    auth: oauthClient(tokens),
+    calendarId: calendarId || "primary",
+    eventId,
+    requestBody: gPatch,
+  });
+  return data;
+}
+
+export async function deleteEvent(
+  tokens: GoogleOAuthTokens,
+  calendarId: string | undefined,
+  eventId: string
+): Promise<void> {
+  await calendarClient.events.delete({
+    auth: oauthClient(tokens),
+    calendarId: calendarId || "primary",
+    eventId,
+  });
+}
+~~~
+
+## 步骤 3 - 为 Scheduler CRUD 暴露 REST API
+
+在此步骤中，你将实现 Scheduler 使用的 API 合同：
+
+- `GET /events` - 加载日历 + 事件
+- `POST /events` - 创建
+- `PUT /events/:eventId` - 更新
+- `DELETE /events/:eventId` - 删除
+
+### 3.1 加载日历 + 事件（GET /events）
+
+更新 `server/routes/events.route.ts`，返回：
+
+- `data`：包含 Scheduler 风格的事件
+- `collections.calendars`：包含日历列表，客户端将可用该列表（详见 [加载数据](guides/loading-data.md#collections)）
+
+以下为一个工作示例处理程序：
 
 ~~~ts title="server/routes/events.route.ts"
 router.get("/", async (req, res, next) => {
@@ -314,7 +413,7 @@ router.get("/", async (req, res, next) => {
 
     const googleEvents = await Promise.all(
       mappedCals.map(async (calendar) => {
-        const params: Record<string, unknown> = { calendarId: calendar.id, timeMin: minDate };
+        const params: calendar_v3.Params$Resource$Events$List = { calendarId: calendar.id, timeMin: minDate };
         if (maxDate) params.timeMax = maxDate;
 
         const calendarEventsResponse = await googleService.listEvents(authedReq.user.tokens, params);
@@ -336,13 +435,13 @@ router.get("/", async (req, res, next) => {
 });
 ~~~
 
-Related docs: [Loading data](guides/loading-data.md#loadingdatawithtimelineandunitssectionsfromtheserver).
+相关文档： [加载数据](guides/loading-data.md#collections)。
 
-### 3.2 Forward CRUD operations to Google Calendar
+### 3.2 将 CRUD 操作转发到 Google Calendar
 
-Update the same route module to handle create/update/delete.
+更新同一路由模块以处理创建/更新/删除。
 
-Create:
+创建：
 
 ~~~ts title="server/routes/events.route.ts"
 router.post("/", async (req, res, next) => {
@@ -363,7 +462,7 @@ router.post("/", async (req, res, next) => {
 });
 ~~~
 
-Update:
+更新：
 
 ~~~ts title="server/routes/events.route.ts"
 router.put("/:eventId", async (req, res, next) => {
@@ -385,15 +484,15 @@ router.put("/:eventId", async (req, res, next) => {
 });
 ~~~
 
-Delete:
+删除：
 
 ~~~ts title="server/routes/events.route.ts"
 router.delete("/:eventId", async (req, res, next) => {
   const authedReq = req as AuthenticatedRequest;
   const calendarId = (req.body as DhxEvent)?.calendarId as string | undefined;
 
-  // If this is an exception occurrence (id contains "_"), there is nothing to delete on Google side.
-  // Google Calendar removes occurrences when deleting the main recurring event.
+  // 如果这是一个异常发生（id 包含 "_"），则 Google 端暂无需要删除的项。
+  // Google 日历在删除主循环事件时会删除发生的全部实例
   const dhxId = req.body?.id as string | undefined;
   if (typeof dhxId === "string" && dhxId.indexOf("_") > -1) {
     res.json({ action: "deleted" });
@@ -409,37 +508,41 @@ router.delete("/:eventId", async (req, res, next) => {
 });
 ~~~
 
-At this point Scheduler can load `/events`, and basic CRUD can be wired on the client.
+至此，Scheduler 可以加载 `/events`，客户端也可以完成基本的 CRUD 逻辑并与 Google Calendar 对接。
 
-## Step 4 - Map Google events to Scheduler events (and back)
+## 步骤 4 - 将 Google 事件映射为 Scheduler 事件（以及相反）
 
-In this step you will implement a mapper that converts between:
+在此步骤中，你将实现一个映射器，用于在以下字段之间进行转换：
 
-- Google event fields (`start.dateTime` / `start.date`, `recurrence`, etc.)
-- Scheduler event fields (`start_date`, `end_date`, `rrule`, etc.)
+- Google 事件字段（`start.dateTime` / `start.date`、`recurrence` 等）
+- Scheduler 事件字段（`start_date`、`end_date`、`rrule` 等）
 
-### Key differences you must handle
+### 你必须处理的关键差异
 
-1) **All-day vs timed events**
-- Google: all-day uses `start.date` / `end.date`
-- Google: timed uses `start.dateTime` / `end.dateTime` and may include `timeZone`
-- Scheduler: uses `start_date` / `end_date` (Date objects)
+1) **全天事件 vs 有时段的事件**
+- Google：全天事件使用 `start.date` / `end.date`
+- Google：有时段的事件使用 `start.dateTime` / `end.dateTime`，可能包含 `timeZone`
+- Scheduler：使用 `start_date` / `end_date`（Date 对象）
 
-2) **Recurrence rules**
-- Google stores recurrence as array strings with `RRULE:` prefix
-- Scheduler uses `rrule` without the prefix
+2) **重复规则**
+- Google 将重复存储为带有 `RRULE:` 前缀的数组字符串
+- Scheduler 使用无前缀的 `rrule`
 
-3) **Recurring series end date**
-- Scheduler expects an `end_date` for recurring series.
-- Google may use `UNTIL=` in RRULE, or no UNTIL (infinite series).
+3) **重复系列的结束日期**
+- Scheduler 期望重复事件有一个 `end_date`
+- Google 的 RRULE 可能包含 `UNTIL=`，也可能没有 UNTIL（无限重复）
 
-Related docs: [Recurring events](guides/recurring-events.md).
+相关文档： [Recurring events](guides/recurring-events.md)。
 
 ### Google → Scheduler
 
-Update `server/mappers/eventMapper.ts` to map the Google event shape into Scheduler's event shape (excerpt below; keep helper functions like `calculateEndDate()` in the same module):
+更新 `server/mappers/eventMapper.ts`，将 Google 事件的形状映射到 Scheduler 的事件形状（摘录如下；请保持 `calculateEndDate()` 等辅助函数在同一模块中）：
 
 ~~~ts title="server/mappers/eventMapper.ts"
+import moment from "moment-timezone";
+import type { DhxEvent, MappedCalendar } from "../types/types.ts";
+import type { calendar_v3 } from "googleapis";
+
 export function toDhxEvent(gEvent: calendar_v3.Schema$Event, calendar: MappedCalendar): DhxEvent {
   const ev: DhxEvent = {
     id: gEvent.id as string,
@@ -456,7 +559,7 @@ export function toDhxEvent(gEvent: calendar_v3.Schema$Event, calendar: MappedCal
   const start = gEvent.start;
   const end = gEvent.end;
 
-  // Non-recurring
+  // 非重复
   if (start?.dateTime && end?.dateTime && !gEvent.recurrence?.length) {
     ev.start_date = new Date(start.dateTime);
     ev.end_date = new Date(end.dateTime);
@@ -465,7 +568,7 @@ export function toDhxEvent(gEvent: calendar_v3.Schema$Event, calendar: MappedCal
     ev.end_date = new Date(end.date + "T00:00:00");
   }
 
-  // Recurring
+  // 递归
   if (gEvent.recurrence?.length) {
     ev.rrule = String(gEvent.recurrence[0]).replace("RRULE:", "");
 
@@ -480,7 +583,7 @@ export function toDhxEvent(gEvent: calendar_v3.Schema$Event, calendar: MappedCal
     ev.end_date = calculateEndDate(gEvent);
   }
 
-  // Exceptions: original start time
+  // 异常：原始开始时间
   if (gEvent.originalStartTime?.dateTime) {
     ev.original_start = new Date(gEvent.originalStartTime.dateTime);
   }
@@ -489,9 +592,27 @@ export function toDhxEvent(gEvent: calendar_v3.Schema$Event, calendar: MappedCal
 }
 ~~~
 
+### `calculateEndDate()` 助手函数
+
+从 Google 的重复规则中提取 UNTIL 日期，若不存在 UNTIL，则为无限系列返回一个很远的未来日期。Scheduler 期望在重复事件上有 `end_date`，因此此助手提供一个值：
+
+~~~ts title="server/mappers/eventMapper.ts"
+// 将 UNTIL=20260129T205959Z 转换为 '2026-01-29T20:59:59Z'（如果存在）
+// 如果不存在 UNTIL -> 事件无限重复 -> 返回 '9999-02-01T00:00:00Z'
+function calculateEndDate(gEvent: calendar_v3.Schema$Event): Date {
+  const until = String(gEvent.recurrence?.[0] ?? "").match(/RRULE:.*?UNTIL=([^;]+)/)?.[1];
+
+  return until
+    ? new Date(
+        until.replace(/^([0-9]{4})([0-9]{2})([0-9]{2})T([0-9]{2})([0-9]{2})([0-9]{2})Z$/, "$1-$2-$3T$4:$5:$6Z")
+      )
+    : new Date(9999, 1, 1);
+}
+~~~
+
 ### Scheduler → Google
 
-Update the mapper to convert Scheduler event fields back into Google's schema:
+更新映射器，将 Scheduler 的事件字段再转换为 Google 的模式：
 
 ~~~ts title="server/mappers/eventMapper.ts"
 export function toGoogleEventPayload(dhx: DhxEvent): calendar_v3.Schema$Event {
@@ -500,12 +621,14 @@ export function toGoogleEventPayload(dhx: DhxEvent): calendar_v3.Schema$Event {
     description: dhx.details ?? "",
   };
 
+  const tz = dhx.timeZone || "UTC";
+
   if (dhx.start_date && dhx.end_date) {
     const isAllDay =
       dhx.duration === 24 * 60 * 60 ||
       new Date(dhx.end_date).getTime() - new Date(dhx.start_date).getTime() === 24 * 60 * 60 * 1000;
 
-    // Recurring
+    // 递归
     if (dhx.rrule && dhx.duration) {
       gEvent.recurrence = ["RRULE:" + dhx.rrule];
 
@@ -514,49 +637,41 @@ export function toGoogleEventPayload(dhx: DhxEvent): calendar_v3.Schema$Event {
         gEvent.end = { date: moment(dhx.start_date).add(1, "day").format("YYYY-MM-DD") };
       } else {
         gEvent.start = {
-          dateTime: moment
-            .tz(new Date(dhx.start_date).toISOString(), "YYYY-MM-DD HH:mm", dhx.timeZone)
-            .format("YYYY-MM-DDTHH:mm:ssZZ"),
-          timeZone: dhx.timeZone,
+          dateTime: moment(new Date(dhx.start_date).toISOString()).tz(tz).format("YYYY-MM-DDTHH:mm:ssZZ"),
+          timeZone: tz,
         };
 
         const endDate = new Date(new Date(dhx.start_date).getTime() + dhx.duration * 1000).toISOString();
         gEvent.end = {
-          dateTime: moment.tz(endDate, "YYYY-MM-DD HH:mm", dhx.timeZone).format("YYYY-MM-DDTHH:mm:ssZZ"),
-          timeZone: dhx.timeZone,
+          dateTime: moment(endDate).tz(tz).format("YYYY-MM-DDTHH:mm:ssZZ"),
+          timeZone: tz,
         };
       }
     } else {
-      // Non-recurring
+      // 非重复
       if (isAllDay) {
         gEvent.start = { date: moment(dhx.start_date).format("YYYY-MM-DD") };
         gEvent.end = { date: moment(dhx.start_date).add(1, "day").format("YYYY-MM-DD") };
       } else {
         gEvent.start = {
-          dateTime: moment
-            .tz(new Date(dhx.start_date).toISOString(), "YYYY-MM-DD HH:mm", dhx.timeZone)
-            .format("YYYY-MM-DDTHH:mm:ssZZ"),
-          timeZone: dhx.timeZone,
+          dateTime: moment(new Date(dhx.start_date).toISOString()).tz(tz).format("YYYY-MM-DDTHH:mm:ssZZ"),
+          timeZone: tz,
         };
         gEvent.end = {
-          dateTime: moment
-            .tz(new Date(dhx.end_date).toISOString(), "YYYY-MM-DD HH:mm", dhx.timeZone)
-            .format("YYYY-MM-DDTHH:mm:ssZZ"),
-          timeZone: dhx.timeZone,
+          dateTime: moment(new Date(dhx.end_date).toISOString()).tz(tz).format("YYYY-MM-DDTHH:mm:ssZZ"),
+          timeZone: tz,
         };
       }
     }
 
-    // Recurring exceptions support
+    // 递归异常支持
     if (dhx.recurring_event_id) {
       gEvent.recurringEventId = dhx.recurring_event_id.toString();
     }
     if (dhx.original_start) {
       gEvent.originalStartTime = {
-        dateTime: moment
-          .tz(new Date(dhx.original_start).toISOString(), "YYYY-MM-DD HH:mm", dhx.timeZone)
-          .format("YYYY-MM-DDTHH:mm:ssZZ"),
-        timeZone: dhx.timeZone,
+        dateTime: moment(new Date(dhx.original_start).toISOString()).tz(tz).format("YYYY-MM-DDTHH:mm:ssZZ"),
+        timeZone: tz,
       };
     }
     if (dhx.deleted) {
@@ -568,13 +683,13 @@ export function toGoogleEventPayload(dhx: DhxEvent): calendar_v3.Schema$Event {
 }
 ~~~
 
-## Step 5 - Wire Scheduler to the backend (load + CRUD)
+## 步骤 5 - 将 Scheduler 与后端连接（加载 + CRUD）
 
-In this step you will initialize Scheduler, load data from `GET /events`, and send CRUD operations to the backend via DataProcessor.
+在此步骤中，你将初始化 Scheduler、从 `GET /events` 加载数据，并通过 DataProcessor 将 CRUD 操作发送到后端。
 
-### 5.1 Render a different UI for "authorized vs not authorized"
+### 5.1 为“已授权 vs 未授权”呈现不同的 UI
 
-Update `client/index.ejs` to expose an authorization flag to the client:
+更新 `client/index.ejs`，向客户端暴露授权标志：
 
 ~~~html title="client/index.ejs"
 <script>
@@ -582,11 +697,9 @@ Update `client/index.ejs` to expose an authorization flag to the client:
 </script>
 ~~~
 
-### 5.2 Initialize Scheduler and load events
+### 5.2 初始化 Scheduler 并加载事件
 
-Update `client/main.ts` to initialize Scheduler and load data once the user is authorized.
-
-Only the relevant part is shown:
+更新 `client/main.ts`，初始化 Scheduler 并在用户授权后加载数据。仅展示相关部分：
 
 ~~~ts title="client/main.ts"
 scheduler.plugins({ recurring: true });
@@ -602,19 +715,19 @@ if (GOOGLE_AUTHORIZED) {
 }
 ~~~
 
-### 5.3 Enable two-way sync with DataProcessor
+### 5.3 使用 DataProcessor 启用双向同步
 
-Update `client/main.ts` to forward Scheduler CRUD actions to the server.
+更新 `client/main.ts`，将 Scheduler 的 CRUD 操作转发到服务器。
 
 ~~~ts title="client/main.ts"
 scheduler.createDataProcessor(async (entity, action, data, id) => {
   const calendars = scheduler.serverList("calendars") as MappedCalendar[];
 
-  // Demo simplification: send everything into the first available calendar.
-  // In a real app, let users choose a target calendar.
+  // 演示简化：将所有内容发送到第一个可用日历。
+  // 实际应用中让用户选择目标日历。
   data.calendarId = calendars[0]?.id;
 
-  // Provide client timezone so the server can generate correct dateTime values.
+  // 提供客户端时区，以便服务器生成正确的 dateTime 值。
   data.timeZone = momentTz.tz.guess();
 
   return fetchEvent(action, data, id);
@@ -639,41 +752,41 @@ async function fetchEvent(action, data, id) {
 }
 ~~~
 
-Related docs: [DataProcessor](guides/server-integration.md#createdp).
+相关文档： [DataProcessor](guides/server-integration.md#technique)。
 
-At this point:
+至此：
 
-- events from Google Calendar should appear in Scheduler after authorization
-- creating/updating/deleting in Scheduler should update Google Calendar
+- 授权后，Google Calendar 的事件应会显示在 Scheduler 中
+- Scheduler 中的创建/更新/删除应当同步回 Google Calendar
 
 ---
 
-## Troubleshooting
+## 故障排除
 
 ### "Error 400: redirect_uri_mismatch"
-- **Cause:** The redirect URI in Google Cloud credentials does not match your app callback URL.
-- **Fix:** Ensure the Authorized redirect URI is exactly:
+- 原因：Google Cloud 凭据中的回调 URI 与应用回调 URL 不匹配。
+- 解决：确保授权的重定向 URI 与下面完全一致：
   - `http://localhost:3000/auth/google/callback`
 
 ### "Access blocked: app has not completed the Google verification process"
-- **Cause:** Consent screen is not in Testing mode or you are not listed as a test user.
-- **Fix:** Set Publishing status to **Testing** and add your account in **Test users**.
+- 原因：同意屏幕未处于 Testing 模式，或你不在测试用户列表中。
+- 解决：将 Publishing status 设置为 **Testing**，并在 **Test users** 中添加你的账户。
 
 ### "No refresh token returned"
-- **Cause:** Google may return a refresh token only the first time the user consents for a given client ID.
-- **Fix:** Ensure your auth request includes `accessType: "offline"` and `prompt: "consent"`. If you already authorized before, revoke access in Google Account permissions and authorize again.
+- 原因：Google 可能只有在用户对给定客户端 ID 第一次同意时才返回刷新令牌。
+- 解决：确保你的授权请求包含 `accessType: "offline"` 和 `prompt: "consent"`。如果你之前已经授权，请在 Google 账户权限中撤销授权并重新授权。
 
-## Summary
+## 总结
 
-You implemented two-way sync between Scheduler and Google Calendar:
+你已经实现了 Scheduler 与 Google 日历之间的双向同步：
 
-- The backend authenticates users via Google OAuth 2.0 and stores tokens in the session
-- Scheduler loads calendars and events through `GET /events`
-- Scheduler CRUD operations are forwarded to Google Calendar via `POST/PUT/DELETE /events`
-- A mapper converts timed/all-day and recurring events between Google Calendar and Scheduler
+- 后端通过 Google OAuth 2.0 进行用户认证，并将令牌存储在会话中
+- Scheduler 通过 `GET /events` 加载日历和事件
+- Scheduler 的 CRUD 操作通过 `POST/PUT/DELETE /events` 转发到 Google Calendar
+- 映射器在 Google 日历和 Scheduler 之间转换有时段/全天以及重复事件
 
-## Demo repository link
+## 演示仓库链接
 
-Full working source (replace with your real repo):
+完整可运行的源代码：
 
-- https://github.com/dhtmlx/scheduler-google-auth-demo
+- https://github.com/DHTMLX/scheduler-google-calendar-demo

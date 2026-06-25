@@ -15,7 +15,7 @@ description: "스케줄러의 현재 skin을 제공합니다"
 ### Example
 
 ~~~jsx
-var currentSkin = scheduler.skin;// -> 'glossy' 또는 'classic'
+const currentSkin = scheduler.skin;// -> 'glossy' 또는 'classic'
 ~~~
 
 ### Details

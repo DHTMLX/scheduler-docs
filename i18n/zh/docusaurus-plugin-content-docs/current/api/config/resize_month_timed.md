@@ -18,7 +18,7 @@ description: "允许通过拖拽调整月视图中单日事件的大小"
 scheduler.config.resize_month_events = true; /*!*/
 scheduler.config.resize_month_timed = true; /*!*/
 
-scheduler.init('scheduler_here',new Date(2010,0,10),"month");
+scheduler.init('scheduler_here',new Date(2027,0,10),"month");
 ~~~
 
 **Default value:** false

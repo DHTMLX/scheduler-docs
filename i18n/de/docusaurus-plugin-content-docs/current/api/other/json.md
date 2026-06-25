@@ -15,8 +15,7 @@ description: "verwaltet JSON-Serialisierung und -Parsing"
 ### Example
 
 ~~~jsx
-var obj = scheduler.json; // -> { parse(data){... 
-:::
+const obj = scheduler.json; // -> { parse(data){... }}
 ~~~
 
 ### Details

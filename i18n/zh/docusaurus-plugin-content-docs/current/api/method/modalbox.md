@@ -22,7 +22,7 @@ description: "打开一个 modalbox"
 ### Example
 
 ~~~jsx
-var box = scheduler.modalbox({
+const box = scheduler.modalbox({
     title: "Close",
      type: "alert-warning"
 });

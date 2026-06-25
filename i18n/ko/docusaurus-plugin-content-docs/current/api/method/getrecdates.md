@@ -23,7 +23,7 @@ description: "반복 이벤트의 모든 발생일을 가져옵니다"
 ### Example
 
 ~~~jsx
-var dates = scheduler.getRecDates(22);
+const dates = scheduler.getRecDates(22);
 ~~~
 
 ### Details
@@ -39,17 +39,16 @@ var dates = scheduler.getRecDates(22);
 ~~~js
 [
     { 
-      start_date: Tue Oct 12 2010 14:00:00 GMT+0300 (E. Europe Daylight Time),
-      end_date: Tue Oct 12 2010 15:00:00 GMT+0300 (E. Europe Daylight Time)
+      start_date: Tue Oct 12 2027 14:00:00 GMT+0300 (E. Europe Daylight Time),
+      end_date: Tue Oct 12 2027 15:00:00 GMT+0300 (E. Europe Daylight Time)
     },
     { 
-      start_date: Tue Oct 14 2010 14:00:00 GMT+0300 (E. Europe Daylight Time),
-      end_date: Tue Oct 14 2010 15:00:00 GMT+0300 (E. Europe Daylight Time)
+      start_date: Thu Oct 14 2027 14:00:00 GMT+0300 (E. Europe Daylight Time),
+      end_date: Thu Oct 14 2027 15:00:00 GMT+0300 (E. Europe Daylight Time)
     },
     { 
-      start_date: Tue Oct 16 2010 14:00:00 GMT+0300 (E. Europe Daylight Time),
-      end_date: Tue Oct 16 2010 15:00:00 GMT+0300 (E. Europe Daylight Time)
+      start_date: Sat Oct 16 2027 14:00:00 GMT+0300 (E. Europe Daylight Time),
+      end_date: Sat Oct 16 2027 15:00:00 GMT+0300 (E. Europe Daylight Time)
     }
 ]
-
 ~~~

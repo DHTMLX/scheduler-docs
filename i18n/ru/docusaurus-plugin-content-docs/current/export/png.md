@@ -19,7 +19,7 @@ sidebar_label: "Экспорт в PNG"
 
 ## Ограничения на размер запроса {#limitsonrequestsize}
 
-Все методы экспорта (*exportToPDF*, *exportToPNG* и др.) используют общий API-эндпоинт **https://export.dhtmlx.com/scheduler**. Максимально допустимый размер запроса - **10 МБ**.
+Все методы экспорта (*exportToPDF*, *exportToPNG* и др.) используют общий API-эндпоинт `https://export.dhtmlx.com/scheduler`. Максимально допустимый размер запроса - **10 МБ**.
 
 
 ## Экспорт в PNG по умолчанию {#defaultexporttopng}
@@ -35,7 +35,7 @@ scheduler.plugins({
 ~~~
 
 :::note
-Для версий Scheduler младше 7.0 необходимо также добавить скрипт **https://export.dhtmlx.com/scheduler/api.js** на вашу страницу для активации онлайн-сервиса экспорта, например:
+Для версий Scheduler младше 7.0 необходимо также добавить скрипт `https://export.dhtmlx.com/scheduler/api.js` на вашу страницу для активации онлайн-сервиса экспорта, например:
 
 ~~~js
 <script src="codebase/dhtmlxscheduler.js"></script>
@@ -85,7 +85,7 @@ scheduler.plugins({
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) указывает API-эндпоинт для запроса экспорта. Полезно, если вы используете локальный сервис экспорта. По умолчанию <strong>https://export.dhtmlx.com/scheduler</strong></td>
+  <td>(<i>string</i>) указывает API-эндпоинт для запроса экспорта. Полезно, если вы используете локальный сервис экспорта. По умолчанию `https://export.dhtmlx.com/scheduler`</td>
   </tr>
   </tbody>
 </table>

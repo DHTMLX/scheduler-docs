@@ -17,7 +17,7 @@ description: "stores a collection of icons visible in the side edit menu of the 
 ~~~jsx
 scheduler.config.icons_edit = ['icon_custom', 'icon_save', 'icon_cancel'];
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** ['icon_save', 'icon_cancel']

@@ -17,7 +17,7 @@ description: "스케줄러의 읽기 전용 모드를 활성화합니다."
 ~~~jsx
 scheduler.config.readonly = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** false

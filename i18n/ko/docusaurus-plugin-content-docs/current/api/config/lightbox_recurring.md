@@ -17,7 +17,7 @@ description: "반복 이벤트를 편집할 때 라이트박스의 동작 방식
 ~~~jsx
 scheduler.config.lightbox_recurring = 'series';
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** 'ask'

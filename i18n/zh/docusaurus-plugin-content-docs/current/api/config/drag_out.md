@@ -16,11 +16,11 @@ description: "防止事件从此scheduler拖动到其他scheduler"
 
 ~~~jsx
 scheduler.config.drag_out = false; // 禁用从此scheduler向其他scheduler拖动事件
-scheduler.init('scheduler_here', new Date(2009,05,30), "week");
+scheduler.init('scheduler_here', new Date(2027,05,30), "week");
 scheduler.load("./data/units.xml");
 
 scheduler2 = Scheduler.getSchedulerInstance();
-scheduler2.init('scheduler_here_2', new Date(2009,05,30), "week");
+scheduler2.init('scheduler_here_2', new Date(2027,05,30), "week");
 ~~~
 
 **Default value:** true

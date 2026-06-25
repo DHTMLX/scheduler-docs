@@ -1,30 +1,30 @@
 ---
-sidebar_label: "onBeforeDrag"
+sidebar_label: onBeforeDrag
 title: "onBeforeDrag event"
-description: "срабатывает, когда пользователь начинает действие перетаскивания или изменения размера (доступно с версии 2.1+)"
+description: "срабатывает, когда пользователь начинает операцию перетаскивания/изменения размера (версия 2.1+)"
 ---
 
 # onBeforeDrag
 
 ### Description
 
-@short: Срабатывает, когда пользователь начинает действие перетаскивания или изменения размера (доступно с версии 2.1+)
+@short: Срабатывает, когда пользователь начинает операцию перетаскивания/изменения размера (версия 2.1+)
 
-@signature: onBeforeDrag: (id: string, mode: string, e: Event) =\> boolean
+@signature: onBeforeDrag: (id: string, mode: string, e: Event) => boolean
 
 ### Parameters
 
 - `id` - (required) *string* - идентификатор события
-- `mode` - (required) *string* - тип действия перетаскивания: "move", "resize" или "create"
-- `e` - (required) *Event* - объект нативного события
+- `mode` - (required) *string* - режим перетаскивания: "move","resize" или "create"
+- `e` - (required) *Event* - нативный объект события
 
 ### Returns
-- ` result` - (boolean) - определяет, должно ли выполняться действие по умолчанию для события (<b>true</b>) или быть предотвращено (<b>false</b>)
+- `result` - (boolean) - определяет, будет ли выполнено действие по умолчанию у события (`true`) или отменено (`false`)
 
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onBeforeDrag", function (id, mode, e){
+scheduler.attachEvent("onBeforeDrag", (id, mode, e) => {
     // здесь можно добавить кастомную логику
     return true;
 });
@@ -36,6 +36,6 @@ scheduler.attachEvent("onBeforeDrag", function (id, mode, e){
 
 ### Details
 
-Это событие срабатывает, когда пользователь кликает внутри scheduler по элементу, поддерживающему перетаскивание.
+Событие срабатывает, когда пользователь кликает внутри Scheduler по элементу, который можно перетащить.
 
-В случае режима "create" параметр id ещё не установлен, так как новое событие ещё не создано.
+Для режима "create" значение `id` не предоставляется, потому что новое событие ещё не создано.

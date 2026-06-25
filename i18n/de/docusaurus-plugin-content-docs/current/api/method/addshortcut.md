@@ -22,7 +22,7 @@ description: "erstellt eine neue Tastenkombination (Shortcut)"
 
 ~~~jsx
 scheduler.addShortcut("shift+w", function(e){ 
-    var eventId = scheduler.locate(e); 
+    const eventId = scheduler.locate(e); 
     if(eventId) 
         scheduler.showQuickInfo(eventId);
 },"event");

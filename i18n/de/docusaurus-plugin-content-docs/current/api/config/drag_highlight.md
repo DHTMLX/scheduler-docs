@@ -18,7 +18,7 @@ description: "Diese Option hebt den Startzeitpunkt und die Dauer eines Events au
 //deaktiviert die Hervorhebung
 scheduler.config.drag_highlight = false; /*!*/
 
-scheduler.init('scheduler_here',new Date(2010,0,10),"week");
+scheduler.init('scheduler_here',new Date(2027,0,10),"week");
 scheduler.load("./data/events.xml");
 ~~~
 

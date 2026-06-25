@@ -17,7 +17,7 @@ description: "이벤트를 더블 클릭하여 라이트박스를 열 수 있도
 ~~~jsx
 scheduler.config.details_on_dblclick = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** true

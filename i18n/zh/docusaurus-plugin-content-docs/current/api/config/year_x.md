@@ -18,7 +18,7 @@ description: "指定Year视图中显示的行数"
 scheduler.config.year_x = 5;
 scheduler.config.year_y = 5;
 ...
-scheduler.init('scheduler_here',new Date(2013,0,10),"year");
+scheduler.init('scheduler_here',new Date(2027,0,10),"year");
 ~~~
 
 **Default value:** 4

@@ -23,7 +23,7 @@ description: "legt das im Header der Ansicht angezeigte Datum fest"
 
 ~~~jsx
 scheduler.templates.month_date = function(date){
-    var dateToStr_func = scheduler.date.date_to_str(scheduler.config.month_date);
+    const dateToStr_func = scheduler.date.date_to_str(scheduler.config.month_date);
     return  dateToStr_func(date);
 };
 ~~~

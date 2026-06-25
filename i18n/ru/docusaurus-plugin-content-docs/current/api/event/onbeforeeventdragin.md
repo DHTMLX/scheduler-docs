@@ -1,30 +1,30 @@
 ---
-sidebar_label: "onBeforeEventDragIn"
+sidebar_label: onBeforeEventDragIn
 title: "onBeforeEventDragIn event"
-description: "срабатывает непосредственно перед тем, как перетаскиваемое событие входит в область scheduler"
+description: "вызывает перед тем, как перетаскиваемое событие будет перемещено над планировщиком"
 ---
 
 # onBeforeEventDragIn
 
 ### Description
 
-@short: Срабатывает непосредственно перед тем, как перетаскиваемое событие входит в область scheduler
+@short: Срабатывает перед тем, как перетаскиваемое событие будет перемещено над планировщиком
 
 @signature: onBeforeEventDragIn: (id: string, e: Event) =\> boolean
 
 ### Parameters
 
-- `id` - (required) *string* - идентификатор события
-- `e` - (required) *Event* - нативный объект события
+- `id` - (обязательно) *string* - идентификатор события
+- `e` - (обязательно) *Event* - нативный объект события
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено стандартное действие события (<b>true</b>) или оно будет отменено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onBeforeEventDragIn", function (id, e){
-    // разместите здесь вашу пользовательскую логику
+    // любая ваша логика здесь
     return true;
 });
 ~~~
@@ -32,8 +32,8 @@ scheduler.attachEvent("onBeforeEventDragIn", function (id, e){
 ### Details
 
 :::note
- Это событие происходит только во время операций drag-and-drop между разными schedulers. 
+ Событие срабатывает только в случае перетаскивания между планировщиками. 
 :::
 
 ### Related Guides
-- [Операции Drag-and-Drop](guides/drag-between.md)
+- [Операции перетаскивания](guides/drag-between.md)

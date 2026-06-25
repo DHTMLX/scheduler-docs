@@ -17,7 +17,7 @@ description: "Legt die maximale Breite für das Popup-Marker auf der Karte in de
 ~~~jsx
 scheduler.config.map_infowindow_max_width = 350;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** 300

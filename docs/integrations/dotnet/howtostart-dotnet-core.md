@@ -88,7 +88,7 @@ Note, that scheduler files are [added from CDN](guides/installation.md#cdn) in t
         <div class="dhx_cal_data"></div>
   </div>
     <script>
-        scheduler.init('scheduler_here', new Date(2026, 0, 14), "week");
+        scheduler.init('scheduler_here', new Date(2027, 0, 20), "week");
     </script>
 </body>
 </html>
@@ -255,20 +255,20 @@ namespace SchedulerApp.Models
                 new SchedulerEvent
                 {
                     Name = "Event 1",
-                    StartDate = new DateTime(2026, 1, 15, 2, 0, 0),
-                    EndDate = new DateTime(2026, 1, 15, 4, 0, 0)
+                    StartDate = new DateTime(2027, 1, 15, 2, 0, 0),
+                    EndDate = new DateTime(2027, 1, 15, 4, 0, 0)
                 },
                 new SchedulerEvent()
                 {
                     Name = "Event 2",
-                    StartDate = new DateTime(2026, 1, 17, 3, 0, 0),
-                    EndDate = new DateTime(2026, 1, 17, 6, 0, 0)
+                    StartDate = new DateTime(2027, 1, 17, 3, 0, 0),
+                    EndDate = new DateTime(2027, 1, 17, 6, 0, 0)
                 },
                 new SchedulerEvent()
                 {
                     Name = "Multiday event",
-                    StartDate = new DateTime(2026, 1, 15, 0, 0, 0),
-                    EndDate = new DateTime(2026, 1, 20, 0, 0, 0)
+                    StartDate = new DateTime(2027, 1, 15, 0, 0, 0),
+                    EndDate = new DateTime(2027, 1, 20, 0, 0, 0)
                 }
             };
 
@@ -573,7 +573,7 @@ Web API is done, now we can return to our HTML page and configure scheduler to m
 
 ~~~js title="wwwroot/index.html"
 scheduler.config.date_format = "%Y-%m-%d %H:%i";
-scheduler.init("scheduler_here", new Date(2026, 0, 14), "week");
+scheduler.init("scheduler_here", new Date(2027, 0, 20), "week");
 
 // load data from backend
 scheduler.load("/api/events", "json");

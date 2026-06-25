@@ -1,35 +1,36 @@
----
-title: "미니 캘린더(날짜 선택기)"
-sidebar_label: "미니 캘린더(날짜 선택기)"
+--- 
+title: "미니 달력(날짜 선택기)"
+sidebar_label: "미니 달력(날짜 선택기)"
 ---
 
-# 미니 캘린더(날짜 선택기)
+# 미니 달력(날짜 선택기)
 
-미니 캘린더(날짜 선택기)는 HTML 컨테이너 안에 컴팩트한 월간 뷰를 표시할 수 있는 편리한 확장 기능입니다.
+미니 달력(날짜 선택기)은 페이지의 HTML 컨테이너에 작은 달 뷰를 렌더링할 수 있도록 하는 특수 확장 기능입니다.
 
 ![mini_calendar](/img/mini_calendar.png)
 
 
-[Mini calendar without the scheduler](https://docs.dhtmlx.com/scheduler/samples/05_calendar/02_without_scheduler.html)
+[스케줄러 없이 미니 달력](https://docs.dhtmlx.com/scheduler/samples/05_calendar/02_without_scheduler.html)
 
 
 :::note
-앱에 미니 캘린더를 포함하려면, 페이지에 **minical** 확장 기능을 추가해야 합니다.
-:::
+앱에서 미니 달력을 사용하려면 페이지에 **minical** 확장을 포함하세요.
+ :::
 
-## 헤더에 추가하기 {#intheheader}
 
-스케줄러의 헤더에 미니 캘린더(날짜 선택기)를 추가하려면 다음 단계를 따르세요(아래 이미지 참고):
+## 헤더에서
+
+스케줄러의 헤더에 미니 달력(날짜 선택기)을 배치하려면 아래의 절차를 따르십시오(아래 그림 참조):
 
 ![calendar_in_header](/img/calendar_in_header.png)
 
-1. 확장 파일을 페이지에 포함하세요:
+1. 페이지에 확장 파일을 포함합니다:
 ~~~js
 scheduler.plugins({
     minical: true
 });
 ~~~
-2. 미니 캘린더의 컨테이너를 정의하고 스케줄러 마크업에 추가하세요:
+2. 미니 달력의 컨테이너를 지정하고 스케줄러 마크업에 추가합니다:
 ~~~js
 <div class="dhx_cal_navline">
     ...
@@ -38,7 +39,7 @@ scheduler.plugins({
     onclick="show_minical()">&nbsp;</div>
 </div>
 ~~~
-3. 미니 캘린더를 초기화([renderCalendar](api/method/rendercalendar.md) 메서드 사용) 및 제거([destroyCalendar](api/method/destroycalendar.md) 메서드 사용)하는 로직을 구현하세요:
+3. 미니 달력을 초기화(renderCalendar)하고 파괴(destroyCalendar)하는 로직을 제공합니다:
 ~~~js
 function show_minical(){
     if (scheduler.isCalendarVisible()){
@@ -57,47 +58,46 @@ function show_minical(){
 }
 ~~~
 
+[스케줄러 헤더의 미니 달력](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
 
-[Mini calendar in the scheduler header](https://docs.dhtmlx.com/scheduler/samples/05_calendar/01_select.html)
 
+## 헤더 안에서(Third-party Date Picker)
 
-## 헤더에 추가하기 (서드파티 날짜 선택기) {#intheheaderthirdpartydatepicker}
-
-이 섹션에서는 서드파티 미니 캘린더(날짜 선택기)를 스케줄러 헤더에 통합하는 방법을 설명합니다.
+이 섹션에서는 스케줄러의 헤더에 타사 미니 달력(날짜 선택기)을 추가하는 방법을 보여드립니다.
 
 ![custom_minicalendar](/img/custom_minicalendar.png)
 
-**Related sample** [3rd party Mini Calendar in the header](https://snippet.dhtmlx.com/5/0dca14de9)
+관련 샘플 [3rd party Mini Calendar in the header](https://snippet.dhtmlx.com/5/0dca14de9)
 
-예제에서는 [jQuery](https://jquery.com)와 [Bootstrap Datepicker](https://bootstrap-datepicker.readthedocs.io/en/latest/)를 사용해 미니 캘린더를 추가합니다. 다른 라이브러리를 사용할 경우 코드를 적절히 조정해야 하지만, 전체적인 접근 방식은 비슷합니다.
+샘플에서는 [jQuery](https://jquery.com)와 [Bootstrap Datepicker](https://bootstrap-datepicker.readthedocs.io/en/latest/)를 기반으로 미니 달력을 추가합니다. 다른 라이브러리를 사용하시는 경우에도 코드를 수정해야 할 수 있지만 주된 접근 방식은 동일하게 유지됩니다:
 
-1. *캘린더 헤더 클릭 시 날짜 선택기 표시*
+1. *헤더를 클릭할 때 날짜 선택기를 표시*
 
-먼저, 스케줄러 헤더 안에 미니 캘린더(또는 다른 컨트롤)를 위한 DIV 컨테이너를 정의하세요. [마크업 초기화 방법](guides/initialization.md#initializing-scheduler-via-markup)을 사용할 경우 다음과 같이 작성합니다:
+우선, 미니 달력의 DIV 컨테이너(또는 다른 컨트롤)를 스케줄러 헤더에 정의해야 합니다. 초기화에 대한 [마크업 방식(markup approach)으로의 초기화](guides/initialization.md#initializing-scheduler-via-markup)을 사용하는 경우, 아래와 같이 할 수 있습니다:
 
 ~~~js
-<div id="scheduler_here" class="dhx_cal_container">
+<div id="scheduler_here" class="dhx_cal_container" style="width:100%; height:100%;">
   <div class="dhx_cal_navline">
     <div class="dhx_cal_prev_button">&nbsp;</div>
     <div class="dhx_cal_next_button">&nbsp;</div>
     <div class="dhx_cal_today_button"></div>
     <div class="dhx_cal_date"></div>
     <!--- HERE -->
-    <div class="input-group date">
+    <div class="input-group date" style="display: none;">
       <input type="text" class="form-control">
       <div class="dhx_minical_icon input-group-addon" id="dhx_minical_icon">&nbsp;</div>
     </div>
     <!--- end HERE -->
 ~~~
 
-[헤더 설정](guides/initialization.md)을 사용할 경우, [커스텀 요소](api/config/header.md)를 다음과 같이 추가하세요:
+만약 [header config](guides/initialization.md#initializing-scheduler-via-header-config)를 사용한다면, 커스텀 요소를 추가해야 합니다:
 
 ~~~js
 scheduler.config.header = [
   "day",
   "week",
   "month",
-  {html:'<div class="input-group date">'+
+  {html:'<div class="input-group date" style="display: none;">'+
     '<input type="text" class="form-control">'+
     '<div class="dhx_minical_icon input-group-addon" id="dhx_minical_icon">&nbsp;</div>'+
        '</div>'},
@@ -109,7 +109,7 @@ scheduler.config.header = [
 scheduler.init("scheduler_here");
 ~~~
 
-다음으로, 스케줄러가 준비된 후 네비게이션 패널의 날짜를 클릭하면 날짜 선택기가 표시되도록 클릭 이벤트를 설정하세요:
+날짜를 탐색 패널의 날짜를 클릭하면 날짜 선택기를 표시하도록 하려면, 스케줄러가 준비되자마자 클릭 이벤트를 초기화합니다:
 
 ~~~js
 scheduler.attachEvent("onSchedulerReady", function(){
@@ -127,7 +127,7 @@ scheduler.attachEvent("onSchedulerReady", function(){
        $node.datepicker().on("show", function () {
         $node.datepicker("update", scheduler.getState().date);
 
-           // center popup below date label
+           // date 라벨 아래에 팝업 중앙 정렬
         centerDatepicker($(".dhx_cal_date"));
     });
     ...
@@ -135,7 +135,7 @@ scheduler.attachEvent("onSchedulerReady", function(){
 });
 ~~~
 
-`centerDatepicker` 함수는 드롭다운 날짜 선택기를 올바르게 위치시키는 데 사용됩니다:
+`centerDatepicker`는 필요한 위치에 드롭다운 날짜 선택기를 렌더링하기 위해 우리가 구현하는 보조 함수입니다:
 
 ~~~js
     ...
@@ -144,10 +144,10 @@ scheduler.attachEvent("onSchedulerReady", function(){
         if (!$('.datepicker-dropdown').is(':visible')) {
             return;
            }
-        // center popup below date label
-        var offset = $(".dhx_cal_date").offset();
-        var width = $(".dhx_cal_date").width();
-        var popupWidth = $(".datepicker-dropdown").width();
+        // date 라벨 아래에 팝업 중앙 정렬
+        let offset = $(".dhx_cal_date").offset();
+        let width = $(".dhx_cal_date").width();
+        let popupWidth = $(".datepicker-dropdown").width();
         $(".datepicker-dropdown").css({
             top: offset.bottom + "px",
             left: (width - popupWidth) / 2 + "px"
@@ -155,19 +155,19 @@ scheduler.attachEvent("onSchedulerReady", function(){
     }
 ~~~
 
-2. *사용자가 날짜를 선택하면 스케줄러의 현재 날짜를 업데이트*
+2. *사용자가 날짜 선택기에 날짜를 클릭하면 스케줄러를 선택된 날짜로 전환합니다*
 
-날짜 선택기를 표시한 후, 날짜를 선택하면 스케줄러의 날짜를 업데이트하세요:
+날짜 선택기를 필요에 따라 표시한 뒤, 달력에서 날짜를 선택하면 스케줄러의 날짜를 변경해야 합니다:
 
 ~~~js
     $node.datepicker().on("changeDate", function () {
         scheduler.setCurrentView($node.datepicker("getDate"));
     });
-~~~
+~~~ 
 
-3. *스케줄러에 표시 중인 날짜를 날짜 선택기에서 강조 표시*
+3. *날짜 선택기에 현재 날짜를 하이라이트*
 
-스케줄러에 현재 표시 중인 날짜를 강조하려면 간단한 CSS 클래스를 적용하세요:
+날짜 선택기에 현재 스케줄러에 표시된 날짜를 하이라이트하려면 간단한 CSS 클래스를 사용합니다:
 
 ~~~js
 .datepicker table .scheduler-date{
@@ -175,7 +175,7 @@ scheduler.attachEvent("onSchedulerReady", function(){
 }
 ~~~
 
-스케줄러에 보이는 모든 날짜 셀에 이 클래스를 추가합니다:
+달력 안의 모든 셀 중에서 현재 스케줄러에 표시되는 날짜는 이 클래스를 받게 됩니다:
 
 ~~~js
     function fillDatepicker(scheduler) {
@@ -184,7 +184,7 @@ scheduler.attachEvent("onSchedulerReady", function(){
           $(".datepicker-dropdown").find("[data-date]").removeClass("scheduler-date");
 
           // highlight scheduler date
-          var visibleDates = getVisibleDates(scheduler);
+          const visibleDates = getVisibleDates(scheduler);
           visibleDates.forEach(function (date) {
             $(".datepicker-dropdown").find(
                 "[data-date='" + date + "']"
@@ -194,17 +194,17 @@ scheduler.attachEvent("onSchedulerReady", function(){
     }
 ~~~
 
-현재 보이는 날짜를 가져오려면 `scheduler.getState`를 사용하세요:
+스케줄러에서 현재 보이는 날짜를 얻으려면 `scheduler.getState`를 사용할 수 있습니다:
 
 ~~~js
     function getVisibleDates(scheduler) {
-        var minVisible = scheduler.getState().min_date;
-        var maxVisible = scheduler.getState().max_date;
+        const minVisible = scheduler.getState().min_date;
+        const maxVisible = scheduler.getState().max_date;
 
-        var current = minVisible;
-        var result = [];
+        let current = minVisible;
+        let result = [];
         while (current.valueOf() < maxVisible.valueOf()) {
-            var currentUTC = Date.UTC(
+            let currentUTC = Date.UTC(
                 current.getFullYear(),current.getMonth(),current.getDate()
             );
             result.push(currentUTC.valueOf());
@@ -215,9 +215,9 @@ scheduler.attachEvent("onSchedulerReady", function(){
     }
 ~~~
 
-4. *날짜 선택기에서 이벤트가 있는 날짜 표시*
+4. *날짜 선택기에서 이벤트가 있는 날짜를 하이라이트*
 
-스케줄러에서 이벤트가 있는 날짜를 강조하려면 또 다른 CSS 클래스를 추가하세요:
+다음으로, 이벤트가 있는 날짜를 하이라이트하도록 합니다. 이를 위해서는 위와 동일한 방식으로 CSS 클래스를 추가합니다:
 
 ~~~js
 .datepicker table .has-event::after {
@@ -230,26 +230,26 @@ scheduler.attachEvent("onSchedulerReady", function(){
 }
 ~~~
 
-이렇게 하면 미니 캘린더에서 이벤트가 있는 날짜가 강조 표시됩니다.
+위 예시에서 보듯, 미니 달력에서 이벤트가 있는 날짜를 하이라이트합니다.
 
-날짜 위에 마우스를 올릴 때 해당 날짜의 이벤트 개수를 툴팁으로 표시하려면, 날짜 선택기에 현재 표시 중인 월의 이벤트를 가져오세요:
+마우스를 올려 놓으면 해당 날짜의 이벤트 수를 표시하는 툴팁을 보려면, 날짜 선택기에 현재 보이는 월의 이벤트를 가져와야 합니다:
 
 ~~~js
     function getVisibleEvents(calendarDate, scheduler) {
-          var min = scheduler.date.month_start(new Date(calendarDate));
-          var max = scheduler.date.add(calendarDate, 1, "month");
+          const min = scheduler.date.month_start(new Date(calendarDate));
+          const max = scheduler.date.add(calendarDate, 1, "month");
           min = scheduler.date.week_start(min);
           if(scheduler.date.week_start(new Date(max)) < max){
              max = scheduler.date.week_start(new Date(max));
              max = scheduler.date.add(max, 1, "week");
           }
-          var events = scheduler.getEvents(min, max);
-          var days = {};
+          const events = scheduler.getEvents(min, max);
+          let days = {};
 
           events.forEach(function (event) {
-             var eventDate = event.start_date;
+             let eventDate = event.start_date;
              while(eventDate < event.end_date){
-                   var day = Date.UTC(
+                   let day = Date.UTC(
                      eventDate.getFullYear(),
                      eventDate.getMonth(),
                     eventDate.getDate()
@@ -264,20 +264,19 @@ scheduler.attachEvent("onSchedulerReady", function(){
              }
           });
 
-          var result = [];
-          for (var i in days) {
+          let result = [];
+          for (let i in days) {
              result.push({ timestamp: i, count: days[i] });
           }
           return result;
        }
 ~~~
 
-이 방법은 스케줄러에서 이벤트 데이터를 가져오기 때문에, 현재 로드된 이벤트만 강조 표시됩니다. 앱에서 동적 로딩을 사용하는 경우, 일부 이벤트만 로드되므로 모든 이벤트가 표시되지 않을 수 있습니다. 
+위 예제에서 이벤트 정보는 스케줄러로부터 가져옵니다. 즉, 이미 로드된 이벤트만 하이라이트할 수 있습니다. 동적 로딩을 사용하는 경우 전체 이벤트 중 일부만 스케줄러에 로드되므로 이 방식은 특히 성능에 불리할 수 있습니다.
 
+대안은 서버로부터 이벤트 데이터를 요청하는 것입니다.
 
-대안으로 서버에서 이벤트 데이터를 요청할 수 있습니다.
-
-이벤트 타임스탬프와 개수를 얻은 후, 날짜 선택기를 다음과 같이 업데이트할 수 있습니다:
+이벤트가 포함된 셀의 타임스탬프와 셀당 이벤트 수에 대한 데이터가 있을 때, 이를 이용해 날짜 선택기에 이 정보를 채워 넣을 수 있습니다, 예시는 다음과 같습니다:
 
 ~~~js
     function fillDatepicker(scheduler) {
@@ -299,9 +298,9 @@ scheduler.attachEvent("onSchedulerReady", function(){
     }
 ~~~
 
-5. *표시된 날짜 레이블을 스케줄러의 활성 날짜와 동기화*
+5. *스케줄러의 활성 날짜와 날짜 선택기의 표시 라벨을 동기화*
 
-마지막으로, 창 크기가 변경될 때 날짜 선택기를 다시 중앙에 위치시키고, 사용자가 날짜 선택기에서 날짜를 변경할 때 강조 표시를 업데이트하세요:
+마지막으로, 창 크기가 바뀌거나 사용자가 날짜 선택기에서 현재 날짜를 바꿀 때 날짜 선택기를 다시 중심에 맞추고 하이라이트를 적용해야 합니다:
 
 ~~~js
     $(window).on('resize', function () {
@@ -332,7 +331,7 @@ scheduler.attachEvent("onSchedulerReady", function(){
     }
 ~~~
 
-스케줄러의 활성 날짜를 별도의 요소에 표시하는 경우, [onViewChange](api/event/onviewchange.md) 이벤트를 감지하여 해당 레이블을 업데이트하세요:
+별도의 요소를 사용해 스케줄러의 활성 날짜를 표시하는 경우, [onViewChange](api/event/onviewchange.md) 이벤트를 캡처하고 거기서 날짜 레이블을 업데이트해야 합니다:
 
 ~~~js
 scheduler.attachEvent("onViewChange", function (newMode , newDate){
@@ -345,31 +344,31 @@ scheduler.attachEvent("onViewChange", function (newMode , newDate){
 });
 ~~~
 
-이 핸들러는 샘플 코드에서는 사용되지 않습니다. 내장된 날짜 헤더가 자동으로 업데이트되기 때문입니다. [기본 날짜 헤더를 숨기는 경우](guides/scheduler-markup.md#hidingtheschedulersheader)나, 활성 날짜를 여러 곳에 표시하고 싶을 때만 사용하세요.
+참고로, 기본 날짜 헤더가 자동으로 업데이트되도록 코드를 구성하였으므로 본 코드 샘플에서는 이 핸들러를 사용하지 않습니다. 기본 날짜 헤더를 숨겼거나(active date를 여러 위치에 표시해야 하는 경우 등) 이 필요가 있을 때만 이러한 코드를 사용해야 합니다. 
+계속하여 사용하면 됩니다.
 
+## 라이트박스에서
 
-## 라이트박스에서 사용하기 {#in-the-lightbox}
-
-미니 캘린더(날짜 선택기)는 라이트박스 안에서 "시작" 및 "종료" 날짜를 선택하는 데에도 사용할 수 있습니다.
+미니 달력(날짜 선택기)은 시작 날짜와 종료 날짜를 선택하기 위한 라이트박스에서도 사용할 수 있습니다.
 
 ![in_the_lightbox](/img/in_the_lightbox.png)
 
-라이트박스에 미니 캘린더를 추가하려면 다음 단계를 따르세요:
+미니 달력을 라이트박스에 배치하려면 아래 절차를 따르세요:
 
-1. 페이지에서 확장 기능을 활성화하세요:
+1. 페이지에서 확장을 활성화합니다:
 ~~~js
 scheduler.plugins({
     minical: true
 });
 ~~~
-2. time 섹션의 type을 calendar_time으로 변경하세요:
+2. 시간 섹션의 <i>type</i>을 <b>calendar_time</b>으로 설정합니다(대신 <b>time</b>이 아닌):
 ~~~js
-//기본 라이트박스 정의
-scheduler.config.lightbox.sections="["
+//default lightbox definition
+scheduler.config.lightbox.sections= [
   {name:"description", height:200, map_to:"text", type:"textarea", focus:true},
   {name:"time", height:72, type:"time", map_to:"auto"}
 ];
-//type:"time" -> type:"calendar_time"으로 변경
+//change type:"time" -> type:"calendar_time"
 scheduler.config.lightbox.sections = [
   {name:"description", height:200, map_to:"text", type:"textarea", focus:true},
   {name:"time", height:72, type:"calendar_time", map_to:"auto" }
@@ -377,34 +376,34 @@ scheduler.config.lightbox.sections = [
 ~~~
 
 
-[Mini calendar in the lightbox](https://docs.dhtmlx.com/scheduler/samples/05_calendar/03_in_form.html)
+[미니 달력 라이트박스에서](https://docs.dhtmlx.com/scheduler/samples/05_calendar/03_in_form.html)
 
 
-## 스케줄러 외부에서 사용하기 {#outsidethescheduler}
+## 스케줄러 밖에서
 
-미니 캘린더(날짜 선택기)는 페이지 어디에나 배치할 수 있습니다.
+미니 달력(날짜 선택기)은 페이지의 어떤 위치에서도 사용할 수 있습니다.
 
 ![outside_the_scheduler](/img/outside_the_scheduler.png)
 
-스케줄러 외부의 HTML 컨테이너에 미니 캘린더를 추가하려면 다음 단계를 따르세요:
+스케줄러 외부의 HTML 컨테이너에 미니 달력을 배치하려면 아래의 절차를 따르십시오:
 
-1. 페이지에서 확장 기능을 활성화하세요:
+1. 페이지에서 확장을 활성화합니다:
 ~~~js
 scheduler.plugins({
     minical: true
 });
 ~~~
-2. 페이지에 미니 캘린더 컨테이너를 정의하세요:
+2. 페이지의 미니 달력 컨테이너를 지정합니다:
 ~~~js
 <div id="scheduler_here" class="dhx_cal_container" ...>
 ...
 </div>
 
-<div>
-        <div id="cal_here"></div>
+<div style='float: left; padding:10px;'>
+        <div id="cal_here" style='width:250px;'></div>
 </div>
 ~~~
-3. [renderCalendar](api/method/rendercalendar.md) 메서드를 호출해 미니 캘린더를 렌더링하세요:
+3. 페이지에 미니 달력을 렌더링(renderCalendar)하는 메서드를 호출합니다:
 ~~~js
 const calendar = scheduler.renderCalendar({
     container:"cal_here", 
@@ -416,13 +415,13 @@ const calendar = scheduler.renderCalendar({
 ~~~
 
 
-[Mini calendar outside the scheduler](https://docs.dhtmlx.com/scheduler/samples/05_calendar/05_plain_structure.html)
+[미니 달력 스케줄러 밖 샘플](https://docs.dhtmlx.com/scheduler/samples/05_calendar/05_plain_structure.html)
 
 
-## 템플릿 및 스타일 {#templatesandstyles}
+## 템플릿과 스타일
 
 ### 템플릿
-mini calendar(날짜 선택기)에서 날짜가 표시되는 방식을 쉽게 변경하려면 ["Mini Calendar Templates"](guides/mini-calendar-templates.md) 문서에서 설명된 다양한 템플릿을 사용할 수 있습니다.
+미니 달력(날짜 선택기)에 표시되는 날짜 형식을 사용자 정의하려면 [미니 달력 템플릿(Mini Calendar Templates)](guides/mini-calendar-templates.md) 문서에 나열된 여러 템플릿을 사용할 수 있습니다.
 
 ~~~js
 scheduler.templates.calendar_month = scheduler.date.date_to_str("%M, %Y");
@@ -433,30 +432,31 @@ const calendar = scheduler.renderCalendar({..});
 
 ![mini_calendar_custom_template](/img/mini_calendar_custom_template.png)
 
+
 ### CSS 클래스
-mini calendar(날짜 선택기)에서 날짜의 표시 방식을 조정하려면 아래 CSS 클래스를 오버라이드할 수 있습니다:
+미니 달력(날짜 선택기)의 날짜 모양을 사용자 정의하려면 아래의 CSS 클래스를 재정의하면 됩니다:
 
 <table class="list" cellspacing="0" cellpadding="5" border="0">
   <thead>
   <th>CSS class</th>
-  <th>적용 대상</th>
+  <th>Applied to</th>
   </thead>
   <tbody>
   <tr>
-  <td>.dhx_cal_container.dhx_mini_calendar .dhx_month_head</td>
-  <td>하루의 셀</td>
+  <td style="width:490px;text-align:left;font-weight: bold;">.dhx_cal_container.dhx_mini_calendar .dhx_month_head</td>
+  <td>a day's cell</td>
   </tr>
   <tr>
-  <td>.dhx_cal_container.dhx_mini_calendar .dhx_month_head.dhx_year_event</td>
-  <td>이벤트가 할당된 하루의 셀</td>
+  <td style="text-align:left;font-weight: bold;">.dhx_cal_container.dhx_mini_calendar .dhx_month_head.dhx_year_event</td>
+  <td>a day's cell with the assigned event(s)</td>
   </tr>
   <tr>
-  <td>.dhx_cal_container.dhx_mini_calendar .dhx_now .dhx_month_head</td>
-  <td>현재 날짜에 해당하는 셀</td>
+  <td style="text-align:left;font-weight: bold;">.dhx_cal_container.dhx_mini_calendar .dhx_now .dhx_month_head</td>
+  <td>a day's cell with the current date</td>
   </tr>
   <tr>
-  <td>.dhx_cal_container.dhx_mini_calendar .dhx_calendar_click</td>
-  <td>현재 활성화된 날짜의 셀</td>
+  <td style="text-align:left;font-weight: bold;">.dhx_cal_container.dhx_mini_calendar .dhx_calendar_click</td>
+  <td>a day's cell with the currently active date</td>
   </tr>
   </tbody>
 </table>
@@ -474,8 +474,8 @@ mini calendar(날짜 선택기)에서 날짜의 표시 방식을 조정하려면
 
 ![mini_calendar_custom_css](/img/mini_calendar_custom_css.png)
 
-### markCalendar() 메서드로 날짜 표시하기
-특정 날짜에 CSS 클래스를 지정하려면 [markCalendar](api/method/markcalendar.md) 메서드를 사용할 수 있습니다:
+### Marking days with the markCalendar() method
+날짜에 사용자 정의 CSS 클래스를 지정하려면 [markCalendar](api/method/markcalendar.md) 메서드를 사용할 수 있습니다:
 
 ~~~js
 <style>
@@ -492,44 +492,46 @@ mini calendar(날짜 선택기)에서 날짜의 표시 방식을 조정하려면
 
 ![mini_calendar_custom_marking](/img/mini_calendar_custom_marking.png)
 
-## API {#api}
+
+## API
 
 <table class="webixdoc_links">
   <tbody>
   <tr>
   <td class="webixdoc_links0">[destroyCalendar](api/method/destroycalendar.md)</td>
-  <td>이전에 생성된 mini-calendar를 제거합니다</td>
+  <td>destroys the previously created mini-calendar</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[isCalendarVisible](api/method/iscalendarvisible.md)</td>
-  <td>mini-calendar가 현재 스케줄러에 열려 있는지 확인합니다</td>
+  <td>checks whether the calendar is currently opened in the scheduler</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[linkCalendar](api/method/linkcalendar.md)</td>
-  <td>스케줄러의 활성 날짜가 변경될 때 mini calendar의 활성 날짜도 함께 갱신되도록 합니다</td>
+  <td>'says' to change the active date in the mini calendar each time the active date in the scheduler is changed</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[markCalendar](api/method/markcalendar.md)</td>
-  <td>특정 날짜에 CSS 클래스를 적용합니다</td>
+  <td>applies a CSS class to the specified date</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[renderCalendar](api/method/rendercalendar.md)</td>
-  <td>mini calendar를 생성합니다</td>
+  <td>creates a mini calendar</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[unmarkCalendar](api/method/unmarkcalendar.md)</td>
-  <td>특정 날짜에서 CSS 클래스를 제거합니다</td>
+  <td>removes a CSS class from the specified date</td>
   </tr>
   <tr>
   <td class="webixdoc_links0">[updateCalendar](api/method/updatecalendar.md)</td>
-  <td>mini calendar에서 지정한 날짜를 표시합니다</td>
+  <td>displays the specified date in the mini calendar</td>
   </tr>
   </tbody>
 </table>
 
-## 이벤트 처리 {#event-handling}
 
-mini calendar는 사용자가 월을 변경하거나, 날짜에 마우스를 올리거나, 날짜를 클릭하는 등 일반적인 상호작용에 대한 콜백을 지원합니다. 이러한 콜백은 설정 객체의 `events` 속성에서 지정할 수 있습니다:
+## 이벤트 핸들링
+
+미니 달력은 보이는 달을 변경하거나, 날짜 위에 마우스를 올리거나 날짜를 클릭하는 등의 일반적인 사용자 동작에 대한 콜백을 제공합니다. 이러한 콜백은 구성 객체의 `events` 속성에 지정할 수 있습니다:
 
 ~~~js
 const dateToStr = (date) => date ? scheduler.templates.format_date(date) : null;

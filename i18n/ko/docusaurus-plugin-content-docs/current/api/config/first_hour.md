@@ -18,7 +18,7 @@ description: "시간 눈금(Y축)의 시작 시간을 정의합니다."
 scheduler.config.first_hour = 9;
 scheduler.config.last_hour = 18;
 ...
-scheduler.init('scheduler_here', new Date(2013,05,11), "week");
+scheduler.init('scheduler_here', new Date(2027,05,11), "week");
 ~~~
 
 **Default value:** 0 (제로)

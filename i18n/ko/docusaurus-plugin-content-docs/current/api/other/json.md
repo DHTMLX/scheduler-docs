@@ -15,7 +15,7 @@ description: "JSON 직렬화 및 파싱을 처리합니다"
 ### Example
 
 ~~~jsx
-var obj = scheduler.json; // -> { parse(data){... }}
+const obj = scheduler.json; // -> { parse(data){... }}
 ~~~
 
 ### Details

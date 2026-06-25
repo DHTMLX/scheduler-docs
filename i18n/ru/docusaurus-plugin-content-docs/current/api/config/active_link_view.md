@@ -1,14 +1,14 @@
 ---
-sidebar_label: "active_link_view"
-title: "active_link_view config"
-description: "Позволяет отображать номера дней в Month view в виде кликабельных ссылок, которые открывают соответствующий день в выбранном представлении."
+sidebar_label: active_link_view
+title: "конфигурация active_link_view"
+description: "позволяет отображать числа дней в месячном виде как кликабельные ссылки, которые открывают соответствующий день в указанном представлении"
 ---
 
 # active_link_view
 
 ### Description
 
-@short: Позволяет отображать номера дней в Month view в виде кликабельных ссылок, которые открывают соответствующий день в выбранном представлении.
+@short: "позволяет отображать числа дней в месячном виде как кликабельные ссылки, которые открывают соответствующий день в указанном представлении"
 
 @signature: active_link_view: string
 
@@ -20,21 +20,21 @@ scheduler.config.active_link_view = "week"; // указывает предста
 scheduler.init('scheduler_here',new Date(2012,7,6),"month");
 ~~~
 
-**Default value:** day
+**Значение по умолчанию:** day
 
-**Applicable views:** [Month view](views/month.md)
+**Доступные представления:** [Month view](views/month.md)
 
 ### Related samples
-- [Month days as links](https://docs.dhtmlx.com/scheduler/samples/03_extensions/06_links_plugin.html)
-- [Highlighted timespans in Month view](https://docs.dhtmlx.com/scheduler/samples/09_api/07_highlighted_timespans_month_view.html)
+- [Дни месяца как ссылки](https://docs.dhtmlx.com/scheduler/samples/03_extensions/06_links_plugin.html)
+- [Выделенные временные диапазоны во месячном виде](https://docs.dhtmlx.com/scheduler/samples/09_api/07_highlighted_timespans_month_view.html)
 
 ### Details
 
 :::note
- Для работы данной настройки требуется включение плагина [active_links](guides/extensions-list.md#activelinks). 
+ Свойство требует активации плагина [active_links](guides/extensions-list.md#active-links). 
 :::
 
-Установите это свойство в имя представления, на которое должны ссылаться номера дней месяца.
+Свойство должно быть установлено на имя представления, в котором вы хотите открыть дни месяца.
 
 ### Related Guides
-- [Месячный вид](views/month.md#presentingdaysnumbersasclickablelinks)
+- [Месячный просмотр](views/month.md#presenting-days-numbers-as-clickable-links)

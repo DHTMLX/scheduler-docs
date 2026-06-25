@@ -9,14 +9,14 @@ Ab Version 4.2 ermöglicht dhtmlxScheduler das Exportieren aller Scheduler-Daten
 
 ## Beschränkungen der Anfragegröße
 
-Es gibt einen gemeinsamen API-Endpunkt **https://export.dhtmlx.com/scheduler**, der für verschiedene Exportmethoden (*exportToPDF*, *exportToPNG*, usw.) verwendet wird. Die **maximale Anfragegröße beträgt 10 MB**.
+Es gibt einen gemeinsamen API-Endpunkt `https://export.dhtmlx.com/scheduler`, der für verschiedene Exportmethoden (*exportToPDF*, *exportToPNG*, usw.) verwendet wird. Die **maximale Anfragegröße beträgt 10 MB**.
 
 
 ## Export nach Excel
 
 Um Scheduler-Daten in eine Excel-Datei zu exportieren, gehen Sie wie folgt vor:
 
-1. Fügen Sie das Skript "https://export.dhtmlx.com/scheduler/api.js" auf Ihrer Seite hinzu, um den Online-Exportdienst zu aktivieren:
+1. Fügen Sie das Skript `https://export.dhtmlx.com/scheduler/api.js` auf Ihrer Seite hinzu, um den Online-Exportdienst zu aktivieren:
 ~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
 <script src="https://export.dhtmlx.com/scheduler/api.js"></script>  /*!*/
@@ -27,7 +27,7 @@ Um Scheduler-Daten in eine Excel-Datei zu exportieren, gehen Sie wie folgt vor:
 <input value="Export to Excel" type="button" onclick="scheduler.exportToExcel()">/*!*/
 
 <script>
-    scheduler.init("scheduler_here",new Date(2019,5,30),"month");
+    scheduler.init("scheduler_here",new Date(2027,5,30),"month");
     scheduler.load("data/events");
 </script>
 ~~~
@@ -49,7 +49,7 @@ Die **exportToExcel()**-Methode akzeptiert ein optionales Objekt mit mehreren Ei
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) Gibt den API-Endpunkt für die Exportanfrage an. Dies kann auf einen lokal installierten Exportdienst verweisen. Standard ist <strong>https://export.dhtmlx.com/scheduler</strong></td>
+  <td>(<i>string</i>) Gibt den API-Endpunkt für die Exportanfrage an. Dies kann auf einen lokal installierten Exportdienst verweisen. Standard ist `https://export.dhtmlx.com/scheduler`</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>start</b></td>
@@ -72,7 +72,7 @@ scheduler.exportToExcel({
     ],
     server:"https://myapp.com/myexport/scheduler",
     start: new Date(1999, 01, 01),
-    end:  new Date(2022, 01, 01)
+    end:  new Date(2027, 01, 01)
 });
 ~~~
 
@@ -92,7 +92,7 @@ Weitere Details zur Datumsformatierung finden Sie in der Spezifikation [hier](gu
 
 Um Scheduler-Daten als iCal-String zu exportieren, gehen Sie wie folgt vor:
 
-- Fügen Sie das Skript <b>"https://export.dhtmlx.com/scheduler/api.js"</b> ein, um den Online-Exportdienst zu aktivieren:
+- Fügen Sie das Skript `https://export.dhtmlx.com/scheduler/api.js` ein, um den Online-Exportdienst zu aktivieren:
 
 ~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
@@ -106,7 +106,7 @@ Um Scheduler-Daten als iCal-String zu exportieren, gehen Sie wie folgt vor:
 <input value="Export to iCal" type="button" onclick="scheduler.exportToICal()">/*!*/
 
 <script>
-    scheduler.init("scheduler_here",new Date(2019,5,30),"month");
+    scheduler.init("scheduler_here",new Date(2027,5,30),"month");
     scheduler.load("data/events");
 </script>
 ~~~
@@ -120,13 +120,13 @@ Die **exportToICal()**-Methode akzeptiert ein optionales Objekt mit folgender Ei
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) Gibt den API-Endpunkt für die Exportanfrage an. Dies kann auf einen lokal gehosteten Exportdienst gesetzt werden. Standard ist <strong>https://export.dhtmlx.com/scheduler</strong></td>
+  <td>(<i>string</i>) Gibt den API-Endpunkt für die Exportanfrage an. Dies kann auf einen lokal gehosteten Exportdienst gesetzt werden. Standard ist `https://export.dhtmlx.com/scheduler`</td>
   </tr>
   </tbody>
 </table>
 
 
-~~~js title="Calling the export method with optional properties"
+~~~js title="Calling the export method with server property"
 scheduler.exportToICal({
     server:"https://myapp.com/myexport/scheduler"
 });

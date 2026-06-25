@@ -9,14 +9,14 @@ Starting from version 4.2, dhtmlxScheduler provides a possibility to export all 
 
 ## Limits on request size
 
-There is a common API endpoint **https://export.dhtmlx.com/scheduler** which serves for export methods (*exportToPDF*, *exportToPNG*, etc.). **Max request size is 10 MB**.
+There is a common API endpoint `https://export.dhtmlx.com/scheduler` which serves for export methods (*exportToPDF*, *exportToPNG*, etc.). **Max request size is 10 MB**.
 
 
 ## Export to Excel
 
 To export scheduler's data to an Excel document, do the following steps:
 
-1. Include the <b>"https://export.dhtmlx.com/scheduler/api.js"</b> file on the page to enable the online export service:
+1. Include the `https://export.dhtmlx.com/scheduler/api.js` file on the page to enable the online export service:
 ~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
 <script src="https://export.dhtmlx.com/scheduler/api.js"></script>  /*!*/
@@ -27,7 +27,7 @@ To export scheduler's data to an Excel document, do the following steps:
 <input value="Export to Excel" type="button" onclick="scheduler.exportToExcel()">/*!*/
 
 <script>
-    scheduler.init("scheduler_here",new Date(2019,5,30),"month");
+    scheduler.init("scheduler_here",new Date(2027,5,30),"month");
     scheduler.load("data/events");
 </script>
 ~~~
@@ -49,7 +49,7 @@ The **exportToExcel()** method takes as a parameter an object with several prope
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/scheduler</strong></td>
+  <td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is `https://export.dhtmlx.com/scheduler`</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>start</b></td>
@@ -63,7 +63,7 @@ The **exportToExcel()** method takes as a parameter an object with several prope
 </table>
 
 
-[Calling the export method with optional properties](Calling the export method with optional properties)
+Calling the export method with optional properties:
 ~~~js
 scheduler.exportToExcel({
     name:"My document.xls", 
@@ -73,7 +73,7 @@ scheduler.exportToExcel({
     ],
     server:"https://myapp.com/myexport/scheduler",
     start: new Date(1999, 01, 01),
-    end:  new Date(2022, 01, 01)
+    end:  new Date(2027, 01, 01)
 });
 ~~~
 
@@ -93,7 +93,7 @@ See the date format specification [here](guides/settings-format.md).
 
 To export scheduler's data to an iCal string, do the following steps:
 
-- Include the <b>"https://export.dhtmlx.com/scheduler/api.js"</b> file on the page to enable the online export service:
+- Include the `https://export.dhtmlx.com/scheduler/api.js` file on the page to enable the online export service:
 
 ~~~html
 <script src="codebase/dhtmlxscheduler.js"></script>
@@ -107,7 +107,7 @@ To export scheduler's data to an iCal string, do the following steps:
 <input value="Export to iCal" type="button" onclick="scheduler.exportToICal()">/*!*/
 
 <script>
-    scheduler.init("scheduler_here",new Date(2019,5,30),"month");
+    scheduler.init("scheduler_here",new Date(2027,5,30),"month");
     scheduler.load("data/events");
 </script>
 ~~~
@@ -121,13 +121,13 @@ The **exportToICal()** method takes as a parameter an object with the following 
   <tbody>
   <tr>
   <td class="webixdoc_links0"><b>server</b></td>
-  <td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is <strong>https://export.dhtmlx.com/scheduler</strong></td>
+  <td>(<i>string</i>) sets the API endpoint for the request. Can be used with the local install of the export service. The default value is `https://export.dhtmlx.com/scheduler` </td>
   </tr>
   </tbody>
 </table>
 
 
-[Calling the export method with optional properties](Calling the export method with optional properties)
+Calling the export method with server property:
 ~~~js
 scheduler.exportToICal({
     server:"https://myapp.com/myexport/scheduler"

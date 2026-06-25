@@ -19,7 +19,7 @@ description: "Timeline 또는 Units 뷰에서 동일한 이벤트를 여러 섹�
 ~~~jsx
 scheduler.config.multisection = true; 
 
-scheduler.init('scheduler_here', new Date(2012, 5, 30), "timeline");
+scheduler.init('scheduler_here', new Date(2027, 5, 30), "timeline");
 ~~~
 
 **Default value:** false

@@ -5,12 +5,12 @@ sidebar_label: "Radio"
 
 # Radio 
 
-Группа радиокнопок
+Набор радиокнопок
 
 ![radio_editor](/img/radio_editor.png)
 
 :::note
-Убедитесь, что для использования этого элемента в lightbox включено расширение **editors**.
+Включите расширение **editors**, чтобы использовать элемент управления в лайтбоксе
 :::
 
 ~~~js
@@ -18,7 +18,7 @@ scheduler.plugins({
     editors: true /*!*/
 });
 
-var priorities = [
+const priorities = [
     { key: 1, label: 'High' },
     { key: 2, label: 'Medium' },
     { key: 3, label: 'Low' }
@@ -35,20 +35,20 @@ scheduler.config.lightbox.sections = [
 ~~~
 
 
-[Radio button in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/14_radio_buttons_section.html)
+[Радиокнопка в лайтбоксе](https://docs.dhtmlx.com/scheduler/samples/02_customization/14_radio_buttons_section.html)
 
 
 ## Инициализация
 
 Чтобы добавить элемент Radio в lightbox, выполните следующие шаги:
 
-1. Включите расширение 'editors' на вашей странице:
+1. Включите на странице расширение 'editors':
 ~~~js
 scheduler.plugins({
     editors: true
 });
 ~~~
-2. Добавьте секцию radio в конфигурацию lightbox:
+2. Добавьте секцию в конфигурацию лайтбокса:
 ~~~js
 scheduler.config.lightbox.sections = [
     { name:"description", ... },
@@ -61,14 +61,14 @@ scheduler.config.lightbox.sections = [
 ~~~js
 scheduler.locale.labels.section_priority = 'Priority';
 ~~~
-  
 
-[Radio button in the lightbox](https://docs.dhtmlx.com/scheduler/samples/02_customization/14_radio_buttons_section.html)
+
+[Радиокнопка в лайтбоксе](https://docs.dhtmlx.com/scheduler/samples/02_customization/14_radio_buttons_section.html)
 
 
 ## Свойства
 
-Ниже приведены основные свойства, которые обычно задаются для элемента 'radio' (полный список смотрите [здесь](api/config/lightbox.md)):
+Следующие свойства наиболее важны и обычно устанавливаются для элемента управления 'radio' (см. полный список [здесь](api/config/lightbox.md)):
 
 <table class="webixdoc_links">
   <tbody>
@@ -82,29 +82,30 @@ scheduler.locale.labels.section_priority = 'Priority';
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>map_to</b></td>
-  <td>(<i>string</i>) имя свойства данных, с которым связана эта секция</td>
+  <td>(<i>string</i>) имя свойства данных, которое будет отображено в секции</td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>type</b></td>
   <td>(<i>textarea,time,select,template,multiselect,radio,checkbox,combo</i>) тип элемента управления секции</td>
   </tr>
   <tr>
-  <td class="webixdoc_links0"><b>options</b></td>
-  <td>(<i>array of objects</i>) определяет варианты выбора для элемента управления (<b>используется для элементов 'select', 'multiselect', 'radio', 'combo'</b>). Каждый объект представляет одну опцию и включает: <ul> <li><b>key</b> - (<i>string</i>) ID опции, сопоставляется со свойством данных события</li> <li><b>label</b> - (<i>string</i>) отображаемая подпись опции</li> </ul></td>
+  <td class="webixdoc_links0" style="vertical-align: top;"><b>options</b></td>
+  <td>(<i>array of objects</i>) задаёт варианты выбора элемента управления (<b>для контролов 'select', 'multiselect', 'radio', 'combo'</b>). Каждый объект массива задаёт одну опцию и имеет следующие свойства: <ul> <li><b>key</b> - (<i>string</i>) идентификатор опции. Это свойство сравнивается с данными события, чтобы назначать опции событиям</li> <li><b>label</b> - (<i>string</i>) метка опции</li> </ul></td>
   </tr>
   <tr>
   <td class="webixdoc_links0"><b>vertical</b></td>
-  <td>(<i>boolean</i>) определяет, будут ли радиокнопки располагаться вертикально (<i>true</i>) или горизонтально (<b>применимо к элементам 'multiselect' и 'radio'</b>)</td>
+  <td>(<i>boolean</i>) указывает, следует ли располагать радиокнопки вертикально (<i>true</i>) или горизонтально (<b>для контролов 'multiselect' и 'radio'</b>)</td>
   </tr>
   </tbody>
 </table>
 
-## Заполнение элемента управления данными
 
-Обычно значения для радиокнопок задаются с помощью параметра [options](api/config/lightbox.md):
+## Заполнение элемента данными
+
+Как правило, для задания значений радиокнопкам следует использовать параметр [options](api/config/lightbox.md):
 
 ~~~js
-scheduler.config.lightbox.sections = 
+scheduler.config.lightbox.sections = [
     {      name:"alert", type:"select", 
         ...
         options:[
@@ -116,14 +117,15 @@ scheduler.config.lightbox.sections =
 ];
 ~~~
 
-Каждый элемент массива [options](api/config/lightbox.md) должен содержать два обязательных свойства:
 
-- **key** - ID опции
-- **label** - отображаемый текст опции
+Элементы в параметре [options](api/config/lightbox.md) должны иметь 2 обязательных свойства:
+
+- **key** - (<i>string</i>) идентификатор опции
+- **label** - (<i>string</i>) метка опции
 
 ## Получение значений радиокнопок с сервера
 
-Чтобы заполнить радиокнопки данными, полученными с сервера, используйте метод [serverList](api/method/serverlist.md):
+Чтобы задать значения радиокнопкам, используя данные, полученные с сервера, используйте метод [serverList](api/method/serverlist.md):
 
 ~~~js
 scheduler.config.lightbox.sections = [
@@ -133,25 +135,27 @@ scheduler.config.lightbox.sections = [
     {name:"time", ...}
 ];
 
-scheduler.load("./data/types.php");
+scheduler.load("/api/types");
 ~~~
 
-Ответ сервера для метода [load](api/method/load.md) должен включать коллекцию с именем, соответствующим названию server list, в формате JSON, как показано в [этом примере](guides/data-formats.md#json-with-collections):
+
+Ответ данных для метода [load](api/method/load.md) должен содержать коллекцию с именем списка сервера, указанным в JSON
+[в следующем формате](guides/data-formats.md#json-with-collections):
 
 ~~~js
 { 
    "data":[
       {
           "id":"1",
-          "start_date":"2019-03-02 15:00:00",
-          "end_date":"2019-03-04 16:00:00",
+          "start_date":"2027-03-02 15:00:00",
+          "end_date":"2027-03-04 16:00:00",
           "text":"Interview",
           "priority":1
       },
       {
           "id":"2",
-          "start_date":"2019-03-02 17:00:00",
-          "end_date":"2019-03-04 18:00:00",
+          "start_date":"2027-03-02 17:00:00",
+          "end_date":"2027-03-04 18:00:00",
           "text":"Performance review",
           "type":2
       }
@@ -164,72 +168,67 @@ scheduler.load("./data/types.php");
       ]/*!*/
    }/*!*/
 }
-
 ~~~
 
-Если вы используете библиотеку [PHP Connector](https://github.com/DHTMLX/connector-php), серверная часть может выглядеть так:
+Пример обработчика бэкенда (Node.js/Express):
 
-~~~php
-//types.php
-<?php
-    require_once('../../../../connector-php/codebase/scheduler_connector.php');
-    include ('../../common/config.php');
-
-    $list = new JSONOptionsConnector($res, $dbtype);
-    $list->render_table("types","typeid","typeid(value),name(label)");
-    
-    $scheduler = new JSONSchedulerConnector($res, $dbtype);
-    $scheduler->set_options("type", $list);
-    $scheduler->render_table(
-        "tevents",
-        "event_id",
-        "start_date,end_date,event_name,type"
-    );
-?>
+~~~js
+app.get("/api/types", async (req, res) => {
+  const data = await eventsService.list();
+  const collections = {
+    type: [
+      { value: 1, label: "Low" },
+      { value: 2, label: "Medium" },
+      { value: 3, label: "High" }
+    ]
+  };
+  res.json({ data, collections });
+});
 ~~~
 
 :::note
-Имейте в виду, что метод [updateCollection](api/method/updatecollection.md) может быть использован для обновления списка опций, полученных с сервера.
+Примечание: вы можете использовать метод [updateCollection](api/method/updatecollection.md) для обновления списка полученных опций
 :::
 
-## Обработка событий для элемента Radio
 
-API dhtmlxScheduler не предоставляет встроенных обработчиков событий специально для радиокнопок в lightbox Scheduler.
+## Обработка событий для радиоконтроля
 
-Однако вы можете добавить обработчик клика для радиокнопок в Lightbox следующим образом:
+По умолчанию API dhtmlxScheduler не предоставляет специальных обработчиков событий для радиокнопок в лайтбоксе Scheduler.
 
-1. Получите элементы radio после открытия lightbox.
+Но вы можете назначить обработчик клика для радиокнопок лайтбокса следующим образом:
+
+1. Получите элементы радиокнопок после открытия лайтбокса.
 
 ~~~js
 
 scheduler.attachEvent("onLightbox", function(){
-    var node = scheduler.formSection("type").node;
-    var radios = node.getElementsByTagName("input");
+    const node = scheduler.formSection("type").node;
+    const radios = node.getElementsByTagName("input");
     ...
 });
 ~~~
 
-2. Добавьте событие <b>onclick</b> для каждой радиокнопки в Lightbox.
+2. Назначьте событие <b>onclick</b> найденным радиокнопкам лайтбокса.
 
 ~~~js
 
 scheduler.attachEvent("onLightbox", function(){
     ...
-    for(var i = 0; i < radios.length; i++){
+    for(let i = 0; i < radios.length; i++){
       radios[i].onclick = onRadioClick; 
     }
 });
 ~~~
 
-3. Определите функцию, которая будет выполняться при клике по радиокнопке.
+3. Наконец, задайте функцию, которая будет выполняться после нажатия радиокнопки.
 
 ~~~js
 function onRadioClick(event){
-    var e = event || window.event,
+    let e = event || window.event,
         node = this;
   
     dhtmlx.message(node.value);
 }
 ~~~
 
-**Related sample** [Обработка событий для элемента Radio](https://snippet.dhtmlx.com/5/5b62dd79e)
+Связанный пример [Обработка событий для радиоконтроля](https://snippet.dhtmlx.com/5/5b62dd79e)

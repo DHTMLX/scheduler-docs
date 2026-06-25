@@ -83,7 +83,7 @@ scheduler.locale.labels.section_location = "Location";
 
 ~~~js
 //'map' — это стандартное имя для Map View
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
   
 
@@ -114,7 +114,7 @@ scheduler.config.map_settings = {
     }
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
  
 [Подробнее](views/map.md#map-related-configuration-options)
@@ -126,7 +126,7 @@ scheduler.init('scheduler_here',new Date(2024,5,11),"map");
 ~~~js
 scheduler.config.map_view_provider = "googleMap";
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
 
 Доступные значения: *"googleMap", "openStreetMaps", "mapbox"*.
@@ -138,7 +138,7 @@ scheduler.config.map_settings = {
     view_provider: "googleMap"
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
 
 ## Параметры конфигурации для карты {#map-related-configuration-options}
@@ -169,7 +169,7 @@ scheduler.config.map_settings = {
     view_provider: "googleMap"
 }
 ...
-scheduler.init('scheduler_here',new Date(2024,5,11),"map");
+scheduler.init('scheduler_here',new Date(2027,5,11),"map");
 ~~~
 
 Эти свойства включают:

@@ -1,34 +1,34 @@
 ---
-sidebar_label: "onBeforeEventDelete"
+sidebar_label: onBeforeEventDelete
 title: "onBeforeEventDelete event"
-description: "срабатывает сразу после того, как пользователь нажимает кнопку удаления (либо в event bar, либо в окне деталей)"
+description: "срабатывает после того, как пользователь нажимает кнопку удаления (в панели событий или окне деталей)"
 ---
 
 # onBeforeEventDelete
 
 ### Description
 
-@short: Срабатывает сразу после того, как пользователь нажимает кнопку удаления (либо в event bar, либо в окне деталей)
+@short: Срабатывает после нажатия пользователем кнопки удаления (в панели событий или окне деталей)
 
 @signature: onBeforeEventDelete: (id: string, ev: object) =\> boolean
 
 ### Parameters
 
-- `id` - (required) *string* - id события
-- `ev` - (required) *object* - объект с данными события
+- `id` - (required) *string* - идентификатор события
+- `ev` - (required) *object* - объект данных события
 
 ### Returns
-- ` result` - (boolean) - определяет, будет ли выполнено стандартное действие удаления (<b>true</b>) или оно будет отменено (<b>false</b>)
+- ` result` - (boolean) - определяет, будет ли выполнено действие по умолчанию события (<b>true</b>) или будет отменено (<b>false</b>)
 
 ### Example
 
 ~~~jsx
 scheduler.attachEvent("onBeforeEventDelete", function(id,ev){
-    //место для вашей кастомной логики
+    // любая ваша логика здесь
     return true;
 });
 ~~~
 
 ### Details
 
-Это событие можно заблокировать. Возврат *false* остановит стандартный процесс удаления.
+Событие можно заблокировать. Верните *false*, чтобы отменить обработку по умолчанию.

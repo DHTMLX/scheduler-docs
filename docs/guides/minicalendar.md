@@ -147,9 +147,9 @@ scheduler.attachEvent("onSchedulerReady", function(){
             return;
            }
         // center popup below date label
-        var offset = $(".dhx_cal_date").offset();
-        var width = $(".dhx_cal_date").width();
-        var popupWidth = $(".datepicker-dropdown").width();
+        let offset = $(".dhx_cal_date").offset();
+        let width = $(".dhx_cal_date").width();
+        let popupWidth = $(".datepicker-dropdown").width();
         $(".datepicker-dropdown").css({
             top: offset.bottom + "px",
             left: (width - popupWidth) / 2 + "px"
@@ -186,7 +186,7 @@ All cells of the date picker, that are currently visible in the scheduler, will 
           $(".datepicker-dropdown").find("[data-date]").removeClass("scheduler-date");
 
           // highlight scheduler date
-          var visibleDates = getVisibleDates(scheduler);
+          const visibleDates = getVisibleDates(scheduler);
           visibleDates.forEach(function (date) {
             $(".datepicker-dropdown").find(
                 "[data-date='" + date + "']"
@@ -200,13 +200,13 @@ In order to get the dates that are currently visible, you can use `scheduler.get
 
 ~~~js
     function getVisibleDates(scheduler) {
-        var minVisible = scheduler.getState().min_date;
-        var maxVisible = scheduler.getState().max_date;
+        const minVisible = scheduler.getState().min_date;
+        const maxVisible = scheduler.getState().max_date;
 
-        var current = minVisible;
-        var result = [];
+        let current = minVisible;
+        let result = [];
         while (current.valueOf() < maxVisible.valueOf()) {
-            var currentUTC = Date.UTC(
+            let currentUTC = Date.UTC(
                 current.getFullYear(),current.getMonth(),current.getDate()
             );
             result.push(currentUTC.valueOf());
@@ -239,20 +239,20 @@ To show the tooltip with the amount of events for the date that the user hovers 
 
 ~~~js
     function getVisibleEvents(calendarDate, scheduler) {
-          var min = scheduler.date.month_start(new Date(calendarDate));
-          var max = scheduler.date.add(calendarDate, 1, "month");
+          const min = scheduler.date.month_start(new Date(calendarDate));
+          const max = scheduler.date.add(calendarDate, 1, "month");
           min = scheduler.date.week_start(min);
           if(scheduler.date.week_start(new Date(max)) < max){
              max = scheduler.date.week_start(new Date(max));
              max = scheduler.date.add(max, 1, "week");
           }
-          var events = scheduler.getEvents(min, max);
-          var days = {};
+          const events = scheduler.getEvents(min, max);
+          let days = {};
 
           events.forEach(function (event) {
-             var eventDate = event.start_date;
+             let eventDate = event.start_date;
              while(eventDate < event.end_date){
-                   var day = Date.UTC(
+                   let day = Date.UTC(
                      eventDate.getFullYear(),
                      eventDate.getMonth(),
                     eventDate.getDate()
@@ -267,8 +267,8 @@ To show the tooltip with the amount of events for the date that the user hovers 
              }
           });
 
-          var result = [];
-          for (var i in days) {
+          let result = [];
+          for (let i in days) {
              result.push({ timestamp: i, count: days[i] });
           }
           return result;
@@ -369,7 +369,7 @@ scheduler.plugins({
 2. Set the <i>type</i> of the <b>time</b> section to <b>calendar_time</b> (instead of <b>time</b>):
 ~~~js
 //default lightbox definition
-scheduler.config.lightbox.sections="["
+scheduler.config.lightbox.sections= [
   {name:"description", height:200, map_to:"text", type:"textarea", focus:true},
   {name:"time", height:72, type:"time", map_to:"auto"}
 ];

@@ -41,11 +41,11 @@ The method can be called in different ways as in:
 
 
 ~~~js
-//blocks the entire day 3rd May,2009
-scheduler.blockTime(new Date(2009,5,3), "fullday");
+//blocks the entire day 3rd May,2027
+scheduler.blockTime(new Date(2027,5,3), "fullday");
 
-//blocks events from 0 till 10 hours for 3rd June,2009
-scheduler.blockTime(new Date(2009,6,3), [0,10*60]);
+//blocks events from 0 till 10 hours for 3rd June,2027
+scheduler.blockTime(new Date(2027,6,3), [0,10*60]);
 
 //blocks events from 0 till 8 hours and from 18 till 24 hours for each Saturday
 scheduler.blockTime(6, [0,8*60,18*60,24*60]);
@@ -87,8 +87,8 @@ scheduler.blockTime({
   <tr>
   <td colspan="2">
 ~~~js
-//denies creating events from 3rd May,2012 till 'end_date' 
-start_date:new Date(2012,4,3)
+//denies creating events from 3rd May,2027 till 'end_date' 
+start_date:new Date(2027,4,3)
 ~~~
   </td>
   </tr>
@@ -99,8 +99,8 @@ start_date:new Date(2012,4,3)
   <tr>
   <td colspan="2" >
 ~~~js
-//denies creating events from 'start_date' till 3rd September,2012
-end_date:new Date(2012,8,3)
+//denies creating events from 'start_date' till 3rd September,2027
+end_date:new Date(2027,8,3)
 ~~~
   </td>
   </tr>
@@ -113,7 +113,7 @@ end_date:new Date(2012,8,3)
 ~~~js
 days:[0, 2, 6] //limits Sunday,Tuesday and Saturday
 days:"fullweek" //limits the entire week
-days:new Date(2012,6,1) //blocks 1st July,2012
+days:new Date(2027,6,1) //blocks 1st July,2027
 ~~~
   </td>
   </tr>

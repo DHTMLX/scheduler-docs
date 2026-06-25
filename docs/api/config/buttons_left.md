@@ -24,7 +24,7 @@ description: "stores a collection of buttons resided in the left bottom corner o
 <script>
     scheduler.config.buttons_left = ["custom_btn_info"];
     scheduler.locale.labels["custom_btn_info"] = "Info";
-    scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+    scheduler.init('scheduler_here',new Date(2027,05,11),"week");
     ...
     scheduler.attachEvent("onLightboxButton", function(button_id, node, e){
         if(button_id == "custom_btn_info"){

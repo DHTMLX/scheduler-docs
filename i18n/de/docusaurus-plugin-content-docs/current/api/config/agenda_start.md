@@ -15,10 +15,10 @@ description: "Gibt das Datum an, ab dem Ereignisse angezeigt werden"
 ### Example
 
 ~~~jsx
-scheduler.config.agenda_start = new Date(2012, 7, 1);
-scheduler.config.agenda_end = new Date(2014, 7, 1);
+scheduler.config.agenda_start = new Date(2025, 7, 1);
+scheduler.config.agenda_end = new Date(2027, 7, 1);
 ...
-scheduler.init('scheduler_here', new Date(2010, 0, 10), "agenda");
+scheduler.init('scheduler_here', new Date(2026, 0, 10), "agenda");
 ~~~
 
 **Default value:** das Datum des aktuellen Benutzers

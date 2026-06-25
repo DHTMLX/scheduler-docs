@@ -23,8 +23,8 @@ description: "gibt das Datum und den Bereich zurück, der sich derzeit unter dem
 
 ~~~jsx
 scheduler.attachEvent("onMouseMove", function(id, e){
-   var action_data = scheduler.getActionData(e);
-   // -> {date:Tue Jun 30 2009 09:10:00, section:2}
+   const action_data = scheduler.getActionData(e);
+   // -> {date:Tue Jun 30 2027 09:10:00, section:2}
    ...
 })
 ~~~

@@ -17,7 +17,7 @@ description: "Ermöglicht es, die Tageszahlen in der Monatsansicht als anklickba
 ~~~jsx
 scheduler.config.active_link_view = "week"; // gibt die Ansicht an, zu der von der Monatsansicht gesprungen wird
 ...
-scheduler.init('scheduler_here',new Date(2012,7,6),"month");
+scheduler.init('scheduler_here',new Date(2027,7,6),"month");
 ~~~
 
 **Default value:** day

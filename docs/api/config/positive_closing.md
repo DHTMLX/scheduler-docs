@@ -17,7 +17,7 @@ description: "defines the 'saving' behaviour for the case, when the user edits t
 ~~~jsx
 scheduler.config.positive_closing = true;
 ...
-scheduler.init('scheduler_here',new Date(2013,05,11),"week");
+scheduler.init('scheduler_here',new Date(2027,05,11),"week");
 ~~~
 
 **Default value:** false
