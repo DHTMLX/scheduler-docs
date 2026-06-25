@@ -1,50 +1,48 @@
 ---
 title: "dhtmlxScheduler with Vue.js"
-sidebar_label: "Vue.js"
+sidebar_label: "Low-Level Integration"
+description: "Step-by-step guide to using the JS DHTMLX Scheduler in a Vue app without the official Vue wrapper."
 ---
 
 # dhtmlxScheduler with Vue.js
 
-You should be familiar with the basic concepts and patterns of [Vue](https://vuejs.org/) to use this documentation.
-If you are not, please refer to the [Vue 3 documentation](https://vuejs.org/guide/introduction.html#getting-started) for a getting-started tutorial.
+:::note
+This tutorial shows how to use the JS DHTMLX Scheduler package directly in a Vue app without the official wrapper.
 
-DHTMLX Scheduler is compatible with Vue. You can check the corresponding example on GitHub: [DHTMLX Scheduler with Vue Demo](https://github.com/DHTMLX/vue-scheduler-demo).
+If you want Vue props/events, wrapper-managed sync, and wrapper composables, use [Vue Scheduler](integrations/vue.md) instead.
+:::
 
-## Creating a project
+This page is for low-level integration. You initialize and manage the Scheduler instance yourself.
 
-Before you start to create a new project, install [Node.js](https://nodejs.org/en/).
+## Prerequisites
 
-To create a Vue project, run the following command:
+- Node.js installed
+- Basic Vue 3 knowledge (components, refs, lifecycle hooks)
+- A Vue 3 project (this tutorial shows how to create one with Vite)
 
-~~~
-npm create vue@latest
-~~~ 
+## Create A Vue Project
 
-This command will install and execute **create-vue**, the official Vue project scaffolding tool. Check the details in the 
-[Vue.js Quick Start](https://vuejs.org/guide/quick-start.html#creating-a-vue-application).
+Create a Vue 3 app with Vite:
 
-### Installation of dependencies
-
-Next you should go to the app directory. Let's name our project **scheduler-vue** and run:
-
-~~~
-cd scheduler-vue
+~~~bash
+npm create vue@latest scheduler-vue-app
+cd scheduler-vue-app
 ~~~
 
-After that you should install dependencies and start the dev server. For this, you need to make use of a package manager:
+Install dependencies and start the dev server once to confirm the project works:
 
-- if you use **yarn**, you need to call the following commands:
+- npm:
 
-~~~
-yarn install
-yarn dev
-~~~
-
-- if you use **npm**, you need to call the following commands:
-
-~~~
+~~~bash
 npm install
 npm run dev
+~~~
+
+- yarn:
+
+~~~bash
+yarn install
+yarn dev
 ~~~
 
 You should now have your Vue project running on **http://localhost:5173**.
@@ -213,14 +211,14 @@ To add data into the Scheduler, we need to provide a data set. Let's create the 
 export function getData() {
     const data = [
         {
-            start_date: "2027-06-10 6:00",
-            end_date: "2027-06-10 8:00",
+            start_date: "2026-06-10 6:00",
+            end_date: "2026-06-10 8:00",
             text: "Event 1",
             id: 1,
         },
         {
-            start_date: "2027-06-13 10:00",
-            end_date: "2027-06-13 18:00",
+            start_date: "2026-06-13 10:00",
+            end_date: "2026-06-13 18:00",
             text: "Event 2",
             id: 2,
         },

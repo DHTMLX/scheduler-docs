@@ -16,16 +16,16 @@ sidebar_label: "如何开始使用 dhtmlxScheduler"
   <td>[![scheduler_plainjs](/img/scheduler_plainjs.png)](/guides/initialization/)</td>
   </tr> 
   <tr>
-  <td><span>[dhtmlxScheduler와 Angular 연동](integrations/angular/howtostart-angular.md)</span> 详细介绍如何使用 Angular 构建 Scheduler 的指南。</td> 
-  <td>[![scheduler_angular](/img/scheduler_angular.png)](/integrations/angular/howtostart-angular/)</td>
+  <td><span>[dhtmlxScheduler와 Angular 연동](integrations/angular/js-scheduler-angular.md)</span> 详细介绍如何使用 Angular 构建 Scheduler 的指南。</td> 
+  <td>[![scheduler_angular](/img/scheduler_angular.png)](/integrations/angular/js-scheduler-angular/)</td>
   </tr> 
   <tr>
   <td><span>[dhtmlxScheduler와 React](integrations/react/js-scheduler-react.md)</span> 一个全面的教程，介绍如何使用 React 创建 Scheduler。</td> 
   <td>[![scheduler_react](/img/scheduler_react.png)](/integrations/react/js-scheduler-react/)</td>
   </tr>
   <tr>
-  <td><span>[dhtmlxScheduler와 Vue.js](integrations/vue/howtostart-vue.md)</span> 深入讲解如何在 Vue.js 中配置 Scheduler 的指南。</td> 
-  <td>[![scheduler_vue](/img/scheduler_vue.png)](/integrations/vue/howtostart-vue/)</td>
+  <td><span>[dhtmlxScheduler와 Vue.js](integrations/vue/js-scheduler-vue.md)</span> 深入讲解如何在 Vue.js 中配置 Scheduler 的指南。</td> 
+  <td>[![scheduler_vue](/img/scheduler_vue.png)](/integrations/vue/js-scheduler-vue/)</td>
   </tr>
   <tr>
   <td><span>[dhtmlxScheduler와 Svelte 연동](integrations/svelte/howtostart-svelte.md)</span> 逐步指导如何使用 Svelte 创建 Scheduler。</td> 

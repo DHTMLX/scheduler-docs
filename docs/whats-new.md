@@ -8,6 +8,17 @@ sidebar_label: "What's New"
 If you are updating Scheduler from an older version, check [Migration From Older Versions](migration.md) for details.
 
 
+7.2.14
+-------------
+<span class='release_date'>May 29, 2026. Bugfix release</span>
+
+### Fixes
+
+- Fix the incorrect `@dhx/scheduler` dependency listed in the published [React Scheduler](integrations/react/overview.md) package
+- Fix the issue where not all changes were applied when editing the first occurrence of a [recurring event](guides/recurring-events.md) in "All events" mode
+- Update the [url](guides/extensions-list.md#url) plugin to avoid a false-positive finding from static analysis
+
+
 7.2.13
 -------------
 <span class='release_date'>March 31, 2026. Bugfix release</span>

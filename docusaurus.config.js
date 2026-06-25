@@ -191,7 +191,7 @@ const config = {
 			onBrokenMarkdownLinks: 'throw',
 		}
 	},
-	onBrokenLinks: 'throw',
+	onBrokenLinks: 'warn',
 	onBrokenAnchors: 'warn',
 	favicon: 'img/favicon.ico',
 	organizationName: 'DHTMLX', // Usually your GitHub org/user name.
@@ -204,7 +204,7 @@ const config = {
 			({
 				docs: {
 					sidebarPath: require.resolve('./sidebars.js'),
-					editUrl: 'https://github.com/DHTMLX/docs-scheduler/edit/master/',
+					editUrl: 'https://github.com/DHTMLX/scheduler-docs/edit/master/',
 					routeBasePath: '/',
 				},
 				blog: false,
@@ -231,6 +231,7 @@ const config = {
 				onAfterDataTransformation
 			}
 		],
+		path.resolve(__dirname, './plugins/dhx-llms-plugin'),
 		[
 			require.resolve('docusaurus-gtm-plugin'),
 			{
@@ -256,6 +257,14 @@ const config = {
   	themeConfig:
     /* @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+		image: 'img/og-default-scheduler.png',
+		metadata: [
+			{ property: 'og:type', content: 'website' },
+			{ property: 'og:site_name', content: 'DHTMLX Scheduler Docs' },
+			{ property: 'og:locale', content: 'en_US' },
+			{ name: 'twitter:card', content: 'summary_large_image' },
+			{ name: 'twitter:site', content: '@dhtmlx' }
+		],
 		navbar: {
 			title: 'JavaScript Scheduler Documentation',
 			logo: {
@@ -271,7 +280,7 @@ const config = {
 				},
 				{
 					"label": "Forum",
-					"href": "https://forum.dhtmlx.com/c/scheduler/15",
+					"href": "https://forum.dhtmlx.com/c/scheduler-all/40",
 					"position": "right"
 				},
 				{

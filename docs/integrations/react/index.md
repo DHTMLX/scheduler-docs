@@ -42,4 +42,9 @@ If you're using a state management library, the guides in [Data & State Manageme
 
 ## Examples and evaluation resources
 
+Browse the public React Scheduler examples for runnable demos of the wrapper:
+
+- [Live demo](https://dhtmlx.github.io/react-scheduler-examples/)
+- [GitHub repository](https://github.com/DHTMLX/react-scheduler-examples)
+
 If you're evaluating React Scheduler, the evaluation page provides access to technical support during the evaluation period. See [Installation](integrations/react/installation.md).

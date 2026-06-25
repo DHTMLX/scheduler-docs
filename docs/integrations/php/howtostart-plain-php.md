@@ -15,6 +15,7 @@ There are tutorials intended for building server-side integration with the help 
 - [dhtmlxScheduler with ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
 - [dhtmlxScheduler with ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
 - [dhtmlxScheduler with Node.js](integrations/node/howtostart-nodejs.md)
+- [dhtmlxScheduler with FastAPI](integrations/python/howtostart-fastapi.md)
 - [dhtmlxScheduler with PHP:Slim](integrations/php/howtostart-php-slim4.md)
 - [dhtmlxScheduler with PHP:Laravel](integrations/php/howtostart-php-laravel.md)
 - [dhtmlxScheduler with SalesForce LWC](integrations/salesforce/howtostart-salesforce.md)
@@ -73,7 +74,7 @@ Create an `index.html` file in the `scheduler-howto-php-plain` folder and fill i
     <div class="dhx_cal_data"></div> 
     </div> 
     <script>
-        scheduler.init('scheduler_here', new Date(2019,0,20), "week");
+        scheduler.init('scheduler_here', new Date(2026,0,20), "week");
         scheduler.load("data/api.php");
     </script> 
     </body> 
@@ -193,7 +194,7 @@ To enable dynamic loading in UI, you can set the *setLoadMode* option to any of 
 
 
 ~~~js title="index.html"
-scheduler.init("scheduler_here", new Date(2019, 0, 20), "week");
+scheduler.init("scheduler_here", new Date(2026, 0, 20), "week");
 scheduler.setLoadMode("day"); /*!*/
 
 // load data from the backend
@@ -316,14 +317,13 @@ The response JSON can have any number of additional properties, they all can be 
 Finally, we will configure the client side to utilize the API we've just implemented:
 
 ~~~js title="index.html"
-scheduler.init("scheduler_here", new Date(2019, 0, 20), "week");
-scheduler.setLoadMode("day");
- 
+scheduler.init('scheduler_here', new Date(2026, 0, 20), "week");
+
 // load data from the backend
 scheduler.load("data/api.php"); /*!*/
- 
+
 // send updates to the backend
-var dp = scheduler.createDataProcessor({ /*!*/
+const dp = scheduler.createDataProcessor({ /*!*/
     url: "data/api.php", /*!*/
     mode: "JSON" /*!*/
 }); /*!*/
@@ -337,6 +337,10 @@ Now you have a basic scheduler that stores its events in the mysql database.
 
 ## Recurring events
 
+:::note
+The implementation below applies to Scheduler v7.1 and newer, which uses the `rrule` based recurring events format. If you are still using the legacy recurring events (`rec_type`, `event_pid`, `event_length`) shipped before v7.1, the previous approach with those columns continues to work for that data.
+:::
+
 In order to enable recurrence (e.g. "repeat event daily") you'll need to add an appropriate extension to the scheduler page:
 
 ~~~html
@@ -347,7 +351,7 @@ In order to enable recurrence (e.g. "repeat event daily") you'll need to add an 
         scheduler.plugins({
             recurring: true /*!*/
         });
-        scheduler.init('scheduler_here', new Date(2019,0,20), "week");
+        scheduler.init('scheduler_here', new Date(2026,0,20), "week");
         ...
     </script> 
 </body>
@@ -356,28 +360,28 @@ In order to enable recurrence (e.g. "repeat event daily") you'll need to add an 
 The "events" table needs additional columns to store info of recurring events. Here is an SQL query for creating a recurring events table:
 
 ~~~js
-CREATE DATABASE  IF NOT EXISTS `scheduler_howto_php`;
-USE `scheduler_howto_php`;
- 
-DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events` (
-  `id` int(11) AUTO_INCREMENT,
+  `id` bigint(20) unsigned AUTO_INCREMENT,
+  `text` varchar(255) DEFAULT NULL,
   `start_date` datetime NOT NULL,
   `end_date` datetime NOT NULL,
-  `text` varchar(255) DEFAULT NULL,
-  `event_pid` int(11) DEFAULT 0,  
-  `event_length` bigint(20) unsigned DEFAULT 0,
-  `rec_type` varchar(25) DEFAULT '',
+  `duration` bigint(20) unsigned DEFAULT NULL,
+  `rrule` varchar(255) DEFAULT NULL,
+  `recurring_event_id` varchar(255) DEFAULT NULL,
+  `original_start` varchar(255) DEFAULT NULL,
+  `deleted` BOOLEAN DEFAULT NULL,
   PRIMARY KEY (`id`)
-) DEFAULT CHARSET="utf8;"
+) DEFAULT CHARSET=utf8;
 ~~~
 
 Or, you can update the events table from our previous step:
 
 ~~~js
-ALTER TABLE `events` ADD COLUMN `event_pid` int(11) DEFAULT '0';
-ALTER TABLE `events` ADD COLUMN `event_length` bigint(20) unsigned DEFAULT '0';
-ALTER TABLE `events` ADD COLUMN `rec_type` varchar(25) DEFAULT '';
+ALTER TABLE `events` ADD COLUMN `duration` bigint(20) unsigned DEFAULT NULL;
+ALTER TABLE `events` ADD COLUMN `rrule` varchar(255) DEFAULT NULL;
+ALTER TABLE `events` ADD COLUMN `recurring_event_id` varchar(255) DEFAULT NULL;
+ALTER TABLE `events` ADD COLUMN `original_start` varchar(255) DEFAULT NULL;
+ALTER TABLE `events` ADD COLUMN `deleted` tinyint(1) DEFAULT NULL;
 ~~~
 
 ### Updating the backend
@@ -390,22 +394,27 @@ Secondly, you need to process a special case for recurring events - deletion of 
 
 
 ~~~js title="data/api.php"
+// create a new event
 function create($db, $event){
     $queryText = "INSERT INTO `events` SET
         `start_date`=?,
         `end_date`=?,
         `text`=?,
-        `event_pid`=?,  /*!*/
-        `event_length`=?,  /*!*/
-        `rec_type`=?";  /*!*/
+        `duration`=?, /*!*/
+        `rrule`=?, /*!*/
+        `recurring_event_id`=?, /*!*/
+        `original_start`=?, /*!*/
+        `deleted`=?"; /*!*/
     $queryParams = [
         $event["start_date"],
         $event["end_date"],
         $event["text"],
         // recurring events columns
-        $event["event_pid"] ? $event["event_pid"] : 0,  /*!*/
-        $event["event_length"] ? $event["event_length"] : 0,  /*!*/
-        $event["rec_type"]  /*!*/
+        $event["duration"] ? $event["duration"] : null, /*!*/
+        $event["rrule"] ? $event["rrule"] : null, /*!*/
+        $event["recurring_event_id"] ? $event["recurring_event_id"] : null, /*!*/
+        $event["original_start"] ? $event["original_start"] : null, /*!*/
+        $event["deleted"] = array_key_exists("deleted", $event) ? $event["deleted"] : null, /*!*/
     ];
     $query = $db->prepare($queryText);
     $query->execute($queryParams);
@@ -419,7 +428,7 @@ You'll also need to update the `POST` request handler, since the client requires
 switch ($_SERVER["REQUEST_METHOD"]) {
     case "GET":
         $result = read($db, $_GET);
-    break;
+        break;
     case "POST":
         $requestPayload = json_decode(file_get_contents("php://input"));
         $id = $requestPayload->id;
@@ -432,8 +441,8 @@ switch ($_SERVER["REQUEST_METHOD"]) {
             $databaseId = create($db, $body);
             $result["tid"] = $databaseId;
             // delete a single occurrence from  recurring series
-            if ($body["rec_type"] === "none") {
-                $result["action"] = "deleted";/*!*/
+            if ($body["deleted"]) { /*!*/
+                $result["action"] = "deleted"; /*!*/
             }
         } elseif($action == "updated") {
             update($db, $body, $id);
@@ -441,8 +450,8 @@ switch ($_SERVER["REQUEST_METHOD"]) {
             delete($db, $id);
         }
     break;
-    default: 
-        throw new Exception("Unexpected Method"); 
+    default:
+        throw new Exception("Unexpected Method");
     break;
 }
 ~~~
@@ -450,62 +459,67 @@ switch ($_SERVER["REQUEST_METHOD"]) {
 The update handler requires the same changes in the SQL query. Additionally, you need to handle a different special case there: when a recurring series is modified, you need to delete all modified occurrences of that series:
 
 ~~~js title="data/api.php"
+// update an event
 function update($db, $event, $id){
     $queryText = "UPDATE `events` SET
         `start_date`=?,
         `end_date`=?,
         `text`=?,
-        `event_pid`=?, /*!*/
-        `event_length`=?, /*!*/
-        `rec_type`=? /*!*/
+        `duration`=?, /*!*/
+        `rrule`=?, /*!*/
+        `recurring_event_id`=?, /*!*/
+        `original_start`=?, /*!*/
+        `deleted`=? /*!*/
         WHERE `id`=?";
     $queryParams = [
         $event["start_date"],
         $event["end_date"],
         $event["text"],
-        $event["event_pid"] ? $event["event_pid"] : 0, /*!*/
-        $event["event_length"] ? $event["event_length"] : 0, /*!*/
-        $event["rec_type"], /*!*/
+        $event["duration"] ? $event["duration"] : null, /*!*/
+        $event["rrule"] ? $event["rrule"] : null, /*!*/
+        $event["recurring_event_id"] ? $event["recurring_event_id"] : null, /*!*/
+        $event["original_start"] ? $event["original_start"] : null, /*!*/
+        $event["deleted"] ? $event["deleted"] : null, /*!*/
         $id
     ];
-    if ($event["rec_type"] && $event["rec_type"] != "none") { /*!*/
-        //all modified occurrences must be deleted when you update recurring  series /*!*/
-        //https://docs.dhtmlx.com/scheduler/ server_integration.html#recurringevents /*!*/
-        $subQueryText = "DELETE FROM `events` WHERE `event_pid`=? ;"; /*!*/
-        $subQuery = $db->prepare($subQueryText); /*!*/
-        $subQuery->execute([$id]); /*!*/
-    } /*!*/
+    if ($event["rrule"] && $event["recurring_event_id"] == null) { /*!*/
+        //all modified occurrences must be deleted when you update recurring  series
+        //https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents
+        $subQueryText = "DELETE FROM `events` WHERE `recurring_event_id`=? ;"; /*!*/
+        $subQuery = $db->prepare($subQueryText);
+        $subQuery->execute([$id]);
+    }
     $query = $db->prepare($queryText);
     $query->execute($queryParams);
 }
 ~~~
 
 And finally, the `DELETE` action. Here we have to check two special cases:
-  
-- if the event you are going to delete has a non-empty `event_pid`, it means a user deletes a modified instance of the recurring series. Instead of deleting such a record from the database, you need to give it `rec_type='none'`, in order for scheduler to skip this occurrence.
-  
+
+- if the event you are going to delete is a modified instance of the recurring series. Instead of deleting, update the record to mark `deleted`.
+
 - if a user deletes a whole recurring series, you also need to delete all the modified instances of that series.
 
 ~~~js title="data/api.php"
+// delete an event
 function delete($db, $id){
     // some logic specific to recurring events support
     // https://docs.dhtmlx.com/scheduler/server_integration.html#recurringevents
-    $subQueryText = "SELECT * FROM `events` WHERE id="?" LIMIT 1;";
+    $subQueryText = "SELECT * FROM `events` WHERE id=? LIMIT 1;";
     $subQuery = $db->prepare($subQueryText);
     $subQuery->execute([$id]);
     $event = $subQuery->fetch();
-    if ($event["event_pid"]) {
+    if ($event["recurring_event_id"]) { /*!*/
         // deleting a modified occurrence from a recurring series
-        // If an event with the event_pid value was deleted - it needs updating
-        // with rec_type==none instead of deleting.
-        $subQueryText="UPDATE `events` SET `rec_type`='none' WHERE `id`=?;";
+        // Instead of deleting, update the record to mark deleted (soft delete)
+        $subQueryText="UPDATE `events` SET `deleted`= 1 WHERE `id`=?;"; /*!*/
         $subQuery = $db->prepare($subQueryText);
         $subQuery->execute([$id]);
     }else{
-        if ($event["rec_type"] && $event["rec_type"] != "none") { /*!*/
-            // if a recurring series deleted, delete all modified occurrences 
+        if ($event["rrule"]) { /*!*/
+            // if a recurring series deleted, delete all modified occurrences
             // of the series
-            $subQueryText = "DELETE FROM `events` WHERE `event_pid`=? ;";
+            $subQueryText = "DELETE FROM `events` WHERE `recurring_event_id`=? ;"; /*!*/
             $subQuery = $db->prepare($subQueryText);
             $subQuery->execute([$id]);
         }
@@ -579,7 +593,7 @@ try {
                 $databaseId = create($db, $body);
                 $result["tid"] = $databaseId;
                 // delete a single occurrence from  recurring series
-                if ($body["rec_type"] === "none") {
+                if ($body["deleted"]) {
                     $result["action"] = "deleted";/*!*/
                 }
             } elseif($action == "updated") {

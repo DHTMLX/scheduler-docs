@@ -26,9 +26,9 @@ Shows how to install and initialize Scheduler and provides the list of available
 Says how to build and configure a standard Scheduler on the front-end.
 
 - ### [Scheduler in Plain JS/HTML](guides/initialization.md)
-- ### [Scheduler with Angular](integrations/angular/howtostart-angular.md)
+- ### [Scheduler with Angular](integrations/angular/js-scheduler-angular.md)
 - ### [Scheduler with React](integrations/react/js-scheduler-react.md)
-- ### [Scheduler with Vue.js](integrations/vue/howtostart-vue.md)
+- ### [Scheduler with Vue.js](integrations/vue/js-scheduler-vue.md)
 - ### [Scheduler with Svelte](integrations/svelte/howtostart-svelte.md)
 
 ## Getting Started on Server Side

@@ -10,7 +10,9 @@ sidebar_label: "ASP.NET MVC"
 You can also explore other server-side integration possibilities of Scheduler by choosing one of the following tutorials:
 
 - [dhtmlxScheduler with ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
+- [dhtmlxScheduler with Blazor](integrations/dotnet/howtostart-blazor.md)
 - [dhtmlxScheduler with Node.js](integrations/node/howtostart-nodejs.md)
+- [dhtmlxScheduler with FastAPI](integrations/python/howtostart-fastapi.md)
 - [dhtmlxScheduler with PHP](integrations/php/howtostart-plain-php.md)
 - [dhtmlxScheduler with PHP:Slim](integrations/php/howtostart-php-slim4.md)
 - [dhtmlxScheduler with PHP:Laravel](integrations/php/howtostart-php-laravel.md)
@@ -102,14 +104,13 @@ Open the newly created view and put the following code into it:
             // initializing scheduler
             scheduler.init("scheduler_here", new Date(2027,0,15));
 
-            // initiating data loading
+            // load data from backend
             scheduler.load("/api/scheduler");
-            // initializing dataProcessor
-            var dp = scheduler.createDataProcessor("/api/scheduler");
-            // and attaching it to scheduler
-            dp.init(scheduler);
-            // setting the REST mode for dataProcessor
-            dp.setTransactionMode("REST");
+            // connect backend to scheduler
+            const dp = scheduler.createDataProcessor({
+                url: "/api/scheduler",
+                mode: "REST"
+            });
         });
     </script>
 </head>
@@ -141,13 +142,13 @@ And also we told the scheduler that it's going to work with the RESTful API on a
 
 
 ~~~js title="Views/Home/Index.cshtml"
+// load data from backend
 scheduler.load("/api/scheduler");
-// initializing dataProcessor
-var dp = scheduler.createDataProcessor("/api/scheduler");
-// and attaching it to scheduler
-dp.init(scheduler);
-// setting the REST mode for dataProcessor
-dp.setTransactionMode("REST");
+// connect backend to scheduler
+const dp = scheduler.createDataProcessor({
+    url: "/api/scheduler",
+    mode: "REST"
+});
 ~~~
 
 The server side itself will be implemented a bit later. For now, you can run the application and see that a scheduler is rendered on the page.
@@ -513,7 +514,7 @@ In case Scheduler doesn't render events on a page, check the [Troubleshooting Ba
 
 ## Recurring events
 
-In order to enable recurrence (e.g. "repeat event daily"), you'll need to enable an appropriate extension on the scheduler page: 
+In order to enable recurrence (e.g. "repeat event daily"), you'll need to enable an appropriate extension on the scheduler page:
 
 ~~~js
 scheduler.plugins({
@@ -523,7 +524,224 @@ scheduler.plugins({
 
 ### Updating the Models
 
-We also need to update our model in order for it to store the recurrence info: 
+We also need to update our model in order for it to store the recurrence info:
+
+
+~~~js title="Models/SchedulerEvent.cs"
+using System;
+
+namespace DHX.Scheduler.Web.Models
+{
+    public class SchedulerEvent
+    {
+        public int Id { get; set; }
+        public string Text { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int? Duration { get; set; } /*!*/
+        public string Rrule { get; set; } /*!*/
+        public string RecurringEventId { get; set; } /*!*/
+        public string OriginalStart { get; set; } /*!*/
+        public bool? Deleted { get; set; } /*!*/
+    }
+}
+~~~
+
+as well as the DTO:
+
+
+~~~js title="Models/WebAPIEvent.cs"
+using System;
+
+namespace DHX.Scheduler.Web.Models
+{
+    public class WebAPIEvent
+    {
+        public int id { get; set; }
+        public string text { get; set; }
+        public string start_date { get; set; }
+        public string end_date { get; set; }
+        public int? duration { get; set; } /*!*/
+        public string rrule { get; set; } /*!*/
+        public string recurring_event_id { get; set; } /*!*/
+        public string original_start { get; set; } /*!*/
+        public bool? deleted { get; set; } /*!*/
+
+        public static explicit operator WebAPIEvent(SchedulerEvent schedulerEvent)
+        {
+            return new WebAPIEvent
+            {
+                id = schedulerEvent.Id,
+                text = schedulerEvent.Text,
+                start_date = schedulerEvent.StartDate.ToString("yyyy-MM-dd HH:mm"),
+                end_date = schedulerEvent.EndDate.ToString("yyyy-MM-dd HH:mm"),
+                duration = schedulerEvent.Duration, /*!*/
+                rrule = schedulerEvent.Rrule, /*!*/
+                recurring_event_id = schedulerEvent.RecurringEventId, /*!*/
+                original_start = schedulerEvent.OriginalStart, /*!*/
+                deleted = schedulerEvent.Deleted /*!*/
+            };
+        }
+
+        public static explicit operator SchedulerEvent(WebAPIEvent schedulerEvent)
+        {
+            return new SchedulerEvent
+            {
+                Id = schedulerEvent.id,
+                Text = schedulerEvent.text,
+                StartDate = DateTime.Parse(
+                    schedulerEvent.start_date,
+                    System.Globalization.CultureInfo.InvariantCulture),
+                EndDate = DateTime.Parse(
+                    schedulerEvent.end_date,
+                    System.Globalization.CultureInfo.InvariantCulture),
+                Duration = schedulerEvent.duration, /*!*/
+                Rrule = schedulerEvent.rrule, /*!*/
+                RecurringEventId = schedulerEvent.recurring_event_id, /*!*/
+                OriginalStart = schedulerEvent.original_start, /*!*/
+                Deleted = schedulerEvent.deleted /*!*/
+            };
+        }
+    }
+}
+~~~
+
+:::note
+If the database does not apply changes made to a Scheduler event, you need to delete the database so that the changes will be applied the next time you run the project.
+:::
+
+### Updating API Controller
+
+Lastly, we need to modify our PUT/POST/DELETE actions in order to handle [special rules of recurring events](guides/recurring-events.md#editingdeleting-a-certain-occurrence-in-the-series).
+
+First, let's take a look at the POST action. We need to process a special case for recurring events: deletion of a specific occurrence of the recurring series requires creating a new database record and the client will call the insert action for it:
+
+
+~~~js title="Controllers/SchedulerController.cs"
+// POST: api/scheduler/5
+[HttpPost]
+public IHttpActionResult CreateSchedulerEvent(WebAPIEvent webAPIEvent)
+{
+    var newSchedulerEvent = (SchedulerEvent)webAPIEvent;
+    var action = "inserted";
+    if (webAPIEvent.deleted == true) /*!*/
+    {
+        // delete a single occurrence from a recurring series
+        action = "deleted"; /*!*/
+    }
+    db.SchedulerEvents.Add(newSchedulerEvent);
+    db.SaveChanges();
+
+    return Ok(new
+    {
+        tid = newSchedulerEvent.Id,
+        action
+    });
+}
+~~~
+
+In the PUT action we need to make sure to update all properties of the model. Additionally, we need to handle a different special case there: when a recurring series is modified, we need to delete all modified occurrences of that series:
+
+
+~~~js title="Controllers/SchedulerController.cs"
+// PUT: api/scheduler/5
+[HttpPut]
+public IHttpActionResult EditSchedulerEvent(int id, WebAPIEvent webAPIEvent)
+{
+    var updatedSchedulerEvent = (SchedulerEvent)webAPIEvent;
+    var dbEvent = db.SchedulerEvents.Find(id);
+    if (dbEvent == null)
+    {
+        return NotFound();
+    }
+    dbEvent.Text = updatedSchedulerEvent.Text;
+    dbEvent.StartDate = updatedSchedulerEvent.StartDate;
+    dbEvent.EndDate = updatedSchedulerEvent.EndDate;
+    dbEvent.Duration = updatedSchedulerEvent.Duration; /*!*/
+    dbEvent.Rrule = updatedSchedulerEvent.Rrule; /*!*/
+    dbEvent.RecurringEventId = updatedSchedulerEvent.RecurringEventId; /*!*/
+    dbEvent.OriginalStart = updatedSchedulerEvent.OriginalStart; /*!*/
+    if (!string.IsNullOrEmpty(dbEvent.Rrule) && dbEvent.RecurringEventId == null) /*!*/
+    {
+        // all modified occurrences must be deleted when we update a recurring series
+        // https://docs.dhtmlx.com/scheduler/server_integration.html#savingrecurringevents
+        var eventsToDelete = db.SchedulerEvents
+            .Where(e => !string.IsNullOrEmpty(e.RecurringEventId)
+                && e.RecurringEventId == dbEvent.Id.ToString())
+            .ToList();
+        db.SchedulerEvents.RemoveRange(eventsToDelete);
+    }
+
+    db.SaveChanges();
+
+    return Ok(new
+    {
+        action = "updated"
+    });
+}
+~~~
+
+And finally, the DELETE action. Here we have to check two special cases:
+
+- if the event you are going to delete is a modified instance of the recurring series. Instead of deleting, update the record to mark `deleted`.
+- if a user deletes a whole recurring series, you also need to delete all the modified instances of that series.
+
+
+~~~js title="Controllers/SchedulerController.cs"
+// DELETE: api/scheduler/5
+[HttpDelete]
+public IHttpActionResult DeleteSchedulerEvent(int id)
+{
+    var dbEvent = db.SchedulerEvents.Find(id);
+    if (dbEvent != null)
+    {
+        if (dbEvent.RecurringEventId != null) /*!*/
+        {
+            // deleting a modified occurrence from a recurring series.
+            // An event with a recurring_event_id value should be marked
+            // with .deleted = true instead of being deleted.
+            dbEvent.Deleted = true; /*!*/
+        }
+        else
+        {
+            if (dbEvent.Rrule != null) /*!*/
+            {
+                // if a recurring series was deleted, delete all modified occurrences of the series
+                var eventsToDelete = db.SchedulerEvents
+                    .Where(e => !string.IsNullOrEmpty(e.RecurringEventId)
+                        && e.RecurringEventId == dbEvent.Id.ToString())
+                    .ToList();
+                db.SchedulerEvents.RemoveRange(eventsToDelete);
+            }
+            db.SchedulerEvents.Remove(dbEvent);
+        }
+        db.SaveChanges();
+    }
+
+    return Ok(new
+    {
+        action = "deleted"
+    });
+}
+~~~
+
+### Recurring events (legacy, pre-7.1)
+
+:::note
+The approach below applies to events stored in the legacy pre-7.1 format (`event_pid`, `rec_type`, `event_length`). Use it only if you still maintain data that uses those fields; new projects should use the rrule-based engine described above. See the [migration guide](migration.md#new-engine-for-recurring-events) and the [legacy recurring events guide](guides/recurring-events-legacy.md) for context.
+:::
+
+To stay on the legacy engine, enable the `recurring_legacy` plugin instead of `recurring`:
+
+~~~js
+scheduler.plugins({
+    recurring_legacy: true
+});
+~~~
+
+#### Updating the Models
+
+The legacy engine stores recurrence info in three columns - `event_pid`, `rec_type`, `event_length`:
 
 
 ~~~js title="Models/SchedulerEvent.cs"
@@ -546,7 +764,7 @@ namespace DHX.Scheduler.Web.Models
 }
 ~~~
 
-as well as the DTO: 
+as well as the DTO:
 
 ~~~js title="Models/WebAPIEvent.cs"
 using System;
@@ -586,14 +804,14 @@ namespace DHX.Scheduler.Web.Models
                 Id = schedulerEvent.id,
                 Text = schedulerEvent.text,
                 StartDate = DateTime.Parse(
-                    schedulerEvent.start_date, 
+                    schedulerEvent.start_date,
                     System.Globalization.CultureInfo.InvariantCulture),
                 EndDate = DateTime.Parse(
-                    schedulerEvent.end_date, 
+                    schedulerEvent.end_date,
                     System.Globalization.CultureInfo.InvariantCulture),
-                EventPID = schedulerEvent.event_pid != null ? 
+                EventPID = schedulerEvent.event_pid != null ?
                     schedulerEvent.event_pid.Value : 0,
-                EventLength = schedulerEvent.event_length != null ? 
+                EventLength = schedulerEvent.event_length != null ?
                     schedulerEvent.event_length.Value : 0,
                 RecType = schedulerEvent.rec_type
             };
@@ -603,12 +821,10 @@ namespace DHX.Scheduler.Web.Models
 }
 ~~~
 
-### Updating API Controller
+#### Updating API Controller
 
-Lastly, we need to modify our PUT/POST/DELETE actions in order to handle [special rules of recurring events](guides/recurring-events.md#editingdeleting-a-certain-occurrence-in-the-series). 
+The legacy POST/PUT/DELETE actions follow the same idea but key off `rec_type` and `event_pid`. Firstly, the `POST` action - a deleted occurrence of a recurring series is created as a new record with `rec_type == "none"`:
 
-First, let's take a look at the POST action. We need to process a special case for recurring events: deletion of a specific occurrence of the recurring series 
-requires creating a new database record and the client will call the insert action for it:
 
 ~~~js title="Controllers/SchedulerController.cs"
 // POST: api/scheduler/5
@@ -634,8 +850,7 @@ public IHttpActionResult CreateSchedulerEvent(WebAPIEvent webAPIEvent)
 }
 ~~~
 
-In the PUT action we need to make sure to update all properties of the model. Additionally, we need to handle a different special case there: when a recurring series 
-is modified, we need to delete all modified occurrences of that series:
+In the PUT action we need to make sure to update all properties of the model. When a recurring series is modified, all modified occurrences of that series have to be deleted:
 
 
 ~~~js title="Controllers/SchedulerController.cs"
@@ -667,10 +882,9 @@ public IHttpActionResult EditSchedulerEvent(int id, WebAPIEvent webAPIEvent)
 }
 ~~~
 
-And finally, the DELETE action. Here we have to check two special cases:
+And finally, the DELETE action. Two special cases:
 
-- if the event you are going to delete has a non-empty event_pid, it means a user deletes a modified instance of the recurring series. Instead of deleting such a record from the database, you need to give it rec_type='none', 
-in order for scheduler to skip this occurrence.
+- if the event you are going to delete has a non-empty event_pid, it means a user deletes a modified instance of the recurring series. Instead of deleting such a record from the database, you need to give it rec_type='none', in order for scheduler to skip this occurrence.
 - if a user deletes a whole recurring series, you also need to delete all the modified instances of that series.
 
 

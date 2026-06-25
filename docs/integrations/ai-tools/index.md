@@ -11,6 +11,7 @@ This section collects materials for using AI with DHTMLX Scheduler in two ways:
 - **AI-assisted development** - app builders, coding agents, and tool integrations.
 - **AI features inside your app** - demos and recommended implementation patterns.
 
-## MCP Server
+## AI-assisted development
 
 - [DHTMLX MCP Server](./mcp-server/) — connect an AI tool to up-to-date DHTMLX documentation and API reference.
+- [Agent Skills](./agent-skills/) — teach AI coding assistants (Claude Code, Codex, and others) the correct patterns for working with DHTMLX Scheduler.

@@ -26,9 +26,9 @@ sidebar_label: "指南"
 介绍如何在前端构建并配置标准的 Scheduler。
 
 - ### [在纯 JavaScript/HTML 中的 Scheduler](guides/initialization.md)
-- ### [使用 Angular 的 Scheduler](integrations/angular/howtostart-angular.md)
+- ### [使用 Angular 的 Scheduler](integrations/angular/js-scheduler-angular.md)
 - ### [使用 React 的 Scheduler](integrations/react/js-scheduler-react.md)
-- ### [使用 Vue.js 的 Scheduler](integrations/vue/howtostart-vue.md)
+- ### [使用 Vue.js 的 Scheduler](integrations/vue/js-scheduler-vue.md)
 - ### [使用 Svelte 的 Scheduler](integrations/svelte/howtostart-svelte.md)
 
 ## 服务端入门

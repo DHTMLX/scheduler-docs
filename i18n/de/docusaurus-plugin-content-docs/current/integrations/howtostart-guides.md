@@ -16,16 +16,16 @@ Hier finden Sie einen schnellen Überblick über Anleitungen, die die Grundlagen
   <td>[![scheduler_plainjs](/img/scheduler_plainjs.png)](/guides/initialization/)</td>
   </tr> 
   <tr>
-  <td><span>[dhtmlxScheduler mit Angular](/integrations/angular/howtostart-angular.md)</span> Eine ausführliche Anleitung zum Aufbau des Schedulers mit Angular.</td> 
-  <td>[![scheduler_angular](/img/scheduler_angular.png)](/integrations/angular/howtostart-angular/)</td>
+  <td><span>[dhtmlxScheduler mit Angular](/integrations/angular/js-scheduler-angular.md)</span> Eine ausführliche Anleitung zum Aufbau des Schedulers mit Angular.</td> 
+  <td>[![scheduler_angular](/img/scheduler_angular.png)](/integrations/angular/js-scheduler-angular/)</td>
   </tr> 
   <tr>
   <td><span>[dhtmlxScheduler mit React](/integrations/react/js-scheduler-react.md)</span> Eine umfassende Anleitung zur Erstellung des Schedulers mit React.</td> 
   <td>[![scheduler_react](/img/scheduler_react.png)](/integrations/react/js-scheduler-react/)</td>
   </tr>
   <tr>
-  <td><span>[dhtmlxScheduler mit Vue.js](/integrations/vue/howtostart-vue.md)</span> Eine detaillierte Anleitung zum Einrichten des Schedulers mit Vue.js.</td> 
-  <td>[![scheduler_vue](/img/scheduler_vue.png)](/integrations/vue/howtostart-vue/)</td>
+  <td><span>[dhtmlxScheduler mit Vue.js](/integrations/vue/js-scheduler-vue.md)</span> Eine detaillierte Anleitung zum Einrichten des Schedulers mit Vue.js.</td> 
+  <td>[![scheduler_vue](/img/scheduler_vue.png)](/integrations/vue/js-scheduler-vue/)</td>
   </tr>
   <tr>
   <td><span>[dhtmlxScheduler mit Svelte](/integrations/svelte/howtostart-svelte.md)</span> Eine Schritt-für-Schritt-Anleitung zur Erstellung des Schedulers mit Svelte.</td> 

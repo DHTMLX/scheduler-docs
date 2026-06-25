@@ -12,6 +12,7 @@ If you use some other technology, check the list of available integration varian
 - [dhtmlxScheduler with ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
 - [dhtmlxScheduler with ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
 - [dhtmlxScheduler with Node.js](integrations/node/howtostart-nodejs.md)
+- [dhtmlxScheduler with FastAPI](integrations/python/howtostart-fastapi.md)
 - [dhtmlxScheduler with PHP](integrations/php/howtostart-plain-php.md)
 - [dhtmlxScheduler with PHP:Slim](integrations/php/howtostart-php-slim4.md)
 - [dhtmlxScheduler with PHP:Laravel](integrations/php/howtostart-php-laravel.md)

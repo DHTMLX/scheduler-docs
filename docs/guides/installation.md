@@ -5,20 +5,64 @@ sidebar_label: "Installation"
 
 # Installation 
 
-You can use [Bower](https://bower.io/) or [npm](https://www.npmjs.com/) package managers to install the dhtmlxScheduler package into your project.
+You can use the [npm](https://www.npmjs.com/) package manager to install the dhtmlxScheduler package into your project.
 
 It's also possible to include the necessary JS/CSS files from CDN.
 
+:::tip Using a frontend framework?
+If you're building with React, Angular, or Vue, use the dedicated wrapper package and its installation guide instead of the core library:
+
+- [React Scheduler installation](integrations/react/installation.md)
+- [Angular Scheduler installation](integrations/angular/installation.md)
+- [Vue Scheduler installation](integrations/vue/installation.md)
+
+The rest of this guide covers the core JavaScript library.
+:::
+
 ## npm - Evaluation and PRO versions
+
+The Evaluation and Professional builds are published to the private DHTMLX npm registry under the `@dhx` scope. Point the `@dhx` scope at the registry first:
+
+~~~bash
+npm config set @dhx:registry=https://npm.dhtmlx.com
+~~~
 
 **Professional Evaluation version**
 
-Download the [trial Scheduler package](https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml) and follow the steps mentioned in the README file. 
-Note that the trial Scheduler version is available 30 days only.
+The evaluation build is fully functional but displays a watermark indicating that it runs in evaluation mode. Install it with npm:
+
+~~~bash
+npm install @dhx/trial-scheduler
+~~~
+
+You can also [start an official evaluation](https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml) on the website. A formal trial grants free technical support for the 30-day evaluation period and includes downloadable offline examples.
 
 **Professional version**
 
-You can access the DHTMLX private npm directly in the [Client's Area](https://dhtmlx.com/clients/) by generating your login and password for **npm**. A detailed installation guide is also available there. Please note that access to the private **npm** is available only while your proprietary Scheduler license is active.
+The Professional build is intended for production and requires an active commercial license. After you obtain a license, generate your npm credentials in the [Client's Area](https://dhtmlx.com/clients/) and log in to the registry:
+
+~~~bash
+npm login --registry=https://npm.dhtmlx.com --scope=@dhx
+~~~
+
+Then install the package:
+
+~~~bash
+npm install @dhx/scheduler
+~~~
+
+Access to the private npm is available only while your proprietary Scheduler license is active. To keep using the paid `@dhx` packages after your subscription expires, [back them up first](guides/using-packages-after-subscription-expires.md).
+
+## Moving from the trial package to the commercial one
+
+Most projects start on the evaluation package and switch once a commercial license is in place. Both packages share the same API, so the move is mostly mechanical:
+
+1. [Configure the private registry and log in](#npm---evaluation-and-pro-versions) with your commercial credentials.
+2. In `package.json`, replace the `@dhx/trial-scheduler` dependency with `@dhx/scheduler` (keep the version you need).
+3. Update every `@dhx/trial-scheduler` reference in your code to `@dhx/scheduler` - including the stylesheet import, if your setup imports the CSS separately.
+4. Run `npm install` and rebuild.
+
+Search the project for any leftover `@dhx/trial-scheduler` mentions - the CSS import is the easiest to forget. See [Uninstall trial version](#uninstall-trial-version) for verifying that no evaluation files remain. Once the watermark is gone and the UI behaves identically, the swap is complete.
 
 ## npm - standard free version
 
@@ -32,34 +76,45 @@ npm install dhtmlx-scheduler
 Only the Standard version of the Scheduler is available at [npmjs.com](https://www.npmjs.com/package/dhtmlx-scheduler)
 :::
 
-## Bower
-
-To install the Standard version of Scheduler through [Bower](https://bower.io/), execute the following command line:
-
-~~~html
-bower install scheduler
-~~~
-
 ## CDN
 
 To include JS/CSS files from CDN, you should set direct links to **dhtmlxscheduler.js** and **dhtmlxscheduler.css** files:
 
 ~~~html
-<link rel="stylesheet" href="http://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css" 
+<link rel="stylesheet" href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css" 
     type="text/css"> 
-<script src="http://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js" 
+<script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js" 
     type="text/javascript"></script>  
 ~~~
 
 You can find the full list of links you can include from CDN, depending on the version of dhtmlxScheduler in a [separate article](guides/cdn-links-list.md).
 
+## Download the Package
+
+### Standard edition
+
+[Download the package of the free dhtmlxScheduler Standard edition](https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml).
+
+### PRO version
+
+If you have the PRO version of the component, you need to go to the [Client Area](https://dhtmlx.com/clients/) and download the PRO package from there.
+
+Independent of the version, unpack the downloaded package into a folder of your project. Then include **dhtmlxscheduler.js** and **dhtmlxscheduler.css** files into a page. Make sure that you set correct relative paths to these files:
+
+~~~html
+<script type="text/javascript" src="codebase/dhtmlxscheduler.js"></script>
+<link rel="stylesheet" href="codebase/dhtmlxscheduler.css">
+~~~
+
 ## Adding PRO Edition into Project
 
-All public sources (CDN, Bower, and npm) contain the Standard edition of the component which is distributed under the GPL license.
+### **Install Pro version**
 
-We also provide our [private npm registry](#npm---evaluation-and-pro-versions) from where the Professional and Evaluation versions of the component can be installed. 
+:::note
+Before installing the Pro version of Scheduler, you should [uninstall the trial version package](#uninstall-trial-version) (if you've installed it)
+:::
 
-If for some reason the methods described above are not available to you, there are two possible ways out:
+All public sources (CDN and npm) contain the Standard edition of the component, distributed under the GPL license. The Professional and Evaluation builds are installed from the [private npm registry](#npm---evaluation-and-pro-versions) described above. If that isn't an option, there are two other ways to add the Pro version:
  
 - you can add the Pro version to your project by hand
 - you can install the Pro version to your project via npm from a local directory
@@ -69,13 +124,13 @@ If for some reason the methods described above are not available to you, there a
 If case of **npm** you can install the Pro package from a local folder using  [`npm install ./local_path`](https://docs.npmjs.com/cli/install/) or [`npm link`](https://docs.npmjs.com/cli/link/) commands.
 There are step-by-step instructions for both variants:
 
-### npm install
+#### npm install
 
 1. Copy the Scheduler package into some local directory
 2. Go to your project directory
 3. Call `npm install ../scheduler-local-package-path`
 
-### npm link
+#### npm link
 
 1. Copy the Scheduler package into some local directory
 2. Call `npm link` in the package folder
@@ -83,3 +138,29 @@ There are step-by-step instructions for both variants:
 4. Call `npm link dhtmlx-scheduler`
 
 To see the difference between the Standard and PRO versions of the dhtmlxScheduler library, check the related article [Standard vs PRO Library Versions](guides/editions-comparison.md).
+
+### **Uninstall trial version**
+
+The correct way to install the Pro version would be to remove the trial version package:
+
+~~~js
+npm uninstall @dhx/trial-scheduler
+~~~
+
+Then you need to thoroughly check that your applications don't have the *dhtmlxscheduler.js* file anywhere.
+
+**For Linux and MacOS**, you can use the following commands in the terminal:
+
+~~~js
+grep -rin "dhtmlxScheduler v"
+grep -rin evaluation
+~~~
+
+**For Windows**, you can use the following commands in the command line:
+
+~~~js
+findstr /mis "dhtmlxScheduler v" path_to_your_app*
+findstr /mis "evaluation" path_to_your_app*
+~~~
+
+After that you can install the Pro version of the Scheduler as described above.

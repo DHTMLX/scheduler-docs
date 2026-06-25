@@ -79,7 +79,9 @@ Key CSS Variables:
 
 ~~~
 
-All variables can be found in the **codebase/sources/less/src/themes/variables.less** file of the package.
+All variables can be found in the **codebase/sources/less/src/themes/variables.less** file of the package. You can also view that in Github repo of the Standard edition of the Scheduler at [https://github.com/DHTMLX/scheduler/blob/master/codebase/sources/less/src/themes/variables.less](https://github.com/DHTMLX/scheduler/blob/master/codebase/sources/less/src/themes/variables.less).
+
+For a concise reference of the main theme variables and their default inheritance, see [Theme CSS Variables](guides/theme-css-variables.md).
 
 ## How to customize skins
 

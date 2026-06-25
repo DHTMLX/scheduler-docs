@@ -21,7 +21,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
     </div>
   </a>
 
-  <a className="framework-card" href="../../integrations/angular/howtostart-angular/">
+  <a className="framework-card" href="../../integrations/angular/js-scheduler-angular/">
     <FrameworkIcon name="angular" className="framework-icon" />
     <div className="framework-title">Angular</div>
     <div className="framework-desc">
@@ -29,7 +29,7 @@ import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
     </div>
   </a>
 
-  <a className="framework-card" href="../../integrations/vue/howtostart-vue/">
+  <a className="framework-card" href="../../integrations/vue/js-scheduler-vue/">
     <FrameworkIcon name="vue" className="framework-icon" />
     <div className="framework-title">Vue</div>
     <div className="framework-desc">

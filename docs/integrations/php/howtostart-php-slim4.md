@@ -17,6 +17,7 @@ There are tutorials intended for building server-side integration with the help 
 - [dhtmlxScheduler with ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
 - [dhtmlxScheduler with ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
 - [dhtmlxScheduler with Node.js](integrations/node/howtostart-nodejs.md)
+- [dhtmlxScheduler with FastAPI](integrations/python/howtostart-fastapi.md)
 - [dhtmlxScheduler with PHP](integrations/php/howtostart-plain-php.md)
 - [dhtmlxScheduler with PHP:Laravel](integrations/php/howtostart-php-laravel.md)
 - [dhtmlxScheduler with SalesForce LWC](integrations/salesforce/howtostart-salesforce.md)
