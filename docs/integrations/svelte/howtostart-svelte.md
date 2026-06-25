@@ -109,22 +109,22 @@ To display Scheduler on the page, we need to set the container to render the com
 
 ~~~html title="Scheduler.svelte"
 <script>
-    import { onMount } from "svelte";
-    import { Scheduler } from "@dhx/trial-scheduler";
-    import "@dhx/trial-scheduler/codebase/dhtmlxscheduler.css";
+  import { onMount } from "svelte";
+  import { Scheduler } from "@dhx/trial-scheduler";
+  import "@dhx/trial-scheduler/codebase/dhtmlxscheduler.css";
 
-    let scheduler;
-    let container;
-    onMount(() => {
-        scheduler = Scheduler.getSchedulerInstance();
-        scheduler.skin = "terrace";
-        scheduler.init(container, new Date(2027, 9, 6), "week");
+  let scheduler;
+  let container;
 
-        return () => scheduler.destructor();
-    });
+  onMount(() => {
+    scheduler = Scheduler.getSchedulerInstance();
+
+    scheduler.init(container, new Date(2027, 5, 10), "week");
+    return () => scheduler.destructor();
+  });
 </script>
 
-<div bind:this="{container}" style="width: 100%; height: 100vh;"></div>
+<div bind:this={container} style="width: 100%; height: 100vh;"></div>
 ~~~
 
 To make the Scheduler container occupy the entire space of the body, you need to remove the default 
@@ -199,26 +199,32 @@ And use props in the **scheduler.parse()** method in the Scheduler component:
 
 ~~~html  title="Scheduler.svelte"
 <script>
-    import { onMount } from "svelte";
-    
-    import { Scheduler } from "@dhx/trial-scheduler";
-    import "@dhx/trial-scheduler/codebase/dhtmlxscheduler.css"
-    export let data; /*!*/
+  import { onMount } from "svelte";
+  import { Scheduler } from "@dhx/trial-scheduler";
+  import "@dhx/trial-scheduler/codebase/dhtmlxscheduler.css";
 
-    let scheduler;
-    let container;
-    onMount(() => {
-        scheduler = Scheduler.getSchedulerInstance();
-        scheduler.skin = "terrace"
-        scheduler.init(container, new Date(2027, 5, 10), "week");
+  let { data } = $props();
 
-        return () => scheduler.destructor();
-    });
+  let scheduler;
+  let schedulerReady = $state(false);
+  let container;
 
-    $: scheduler?.parse(data); /*!*/
+  onMount(() => {
+    scheduler = Scheduler.getSchedulerInstance();
+
+    scheduler.init(container, new Date(2027, 5, 10), "week");
+    schedulerReady = true;
+    return () => scheduler.destructor();
+  });
+
+  $effect(() => {
+    if (schedulerReady && scheduler && data) {
+      scheduler.parse(data);
+    }
+  });
 </script>
 
-<div bind:this="{container}" style="width: 100%; height: 100vh;"></div>
+<div bind:this={container} style="width: 100%; height: 100vh;"></div>
 ~~~
 
 Now, if you reopen the app page, you should see a Scheduler with events:
