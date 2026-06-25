@@ -85,6 +85,7 @@ module.exports = {
 								"integrations/react/firebase-integration",
                                 "integrations/react/starhive-integration",
                             ],
+						},
 						// Frameworks
 						{
 							type: "category",
