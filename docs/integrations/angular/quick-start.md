@@ -6,7 +6,15 @@ description: "Step-by-step guide to render the official Angular Scheduler wrappe
 
 # Quick Start with Angular Scheduler
 
+:::note
+This tutorial covers the Angular wrapper included in the **Commercial, Enterprise, and Ultimate** editions of DHTMLX Scheduler.
+If you are using the **Individual** or **GPL** edition, follow the alternative guide:
+[How to Start with Angular](integrations/angular/js-scheduler-angular.md).
+:::
+
 This guide renders a working Angular Scheduler in a standalone Angular application. It creates Scheduler inside a dedicated Angular component and mounts that component in the app shell.
+
+Check [a complete working project that follows this tutorial on GitHub](https://github.com/DHTMLX/angular-scheduler-quick-start).
 
 ## 1. Create An Angular Project
 
@@ -65,29 +73,26 @@ If you later move the Scheduler CSS import or overrides for internal Scheduler c
 Create `src/app/demo-data.ts`:
 
 ~~~ts title="src/app/demo-data.ts"
-import type { Event } from "@dhx/angular-scheduler";
+import type { Event } from "@dhtmlx/trial-angular-scheduler";
 
-export const mainDate = new Date("2026-05-18T00:00:00");
+export const mainDate = new Date("2026-08-15T00:00:00Z");
 
 export const schedulerEvents: Event[] = [
-  {
-    id: 1,
-    text: "Planning",
-    start_date: new Date("2026-05-18T09:00:00"),
-    end_date: new Date("2026-05-18T10:30:00"),
-  },
-  {
-    id: 2,
-    text: "Design review",
-    start_date: new Date("2026-05-18T12:00:00"),
-    end_date: new Date("2026-05-18T13:00:00"),
-  },
-  {
-    id: 3,
-    text: "Implementation",
-    start_date: new Date("2026-05-19T14:00:00"),
-    end_date: new Date("2026-05-19T15:30:00"),
-  },
+  { id: 1, start_date: new Date("2026-08-10T02:00:00Z"), end_date: new Date("2026-08-10T10:20:00Z"), text: "Product Strategy Hike" },
+  { id: 2, start_date: new Date("2026-08-10T12:00:00Z"), end_date: new Date("2026-08-10T16:00:00Z"), text: "Agile Meditation and Release" },
+  { id: 3, start_date: new Date("2026-08-11T06:00:00Z"), end_date: new Date("2026-08-11T11:00:00Z"), text: "Tranquil Tea Time" },
+  { id: 4, start_date: new Date("2026-08-11T11:30:00Z"), end_date: new Date("2026-08-11T19:00:00Z"), text: "Sprint Review and Retreat" },
+  { id: 5, start_date: new Date("2026-08-12T01:00:00Z"), end_date: new Date("2026-08-12T03:00:00Z"), text: "Kayaking Workshop" },
+  { id: 6, start_date: new Date("2026-08-12T06:00:00Z"), end_date: new Date("2026-08-12T08:00:00Z"), text: "Stakeholder Sunset Yoga Session" },
+  { id: 7, start_date: new Date("2026-08-12T07:00:00Z"), end_date: new Date("2026-08-12T12:00:00Z"), text: "Roadmap Alignment Walk" },
+  { id: 8, start_date: new Date("2026-08-12T13:00:00Z"), end_date: new Date("2026-08-12T18:00:00Z"), text: "Mindful Team Building" },
+  { id: 9, start_date: new Date("2026-08-13T01:00:00Z"), end_date: new Date("2026-08-13T18:00:00Z"), text: "Cross-Functional Expedition" },
+  { id: 10, start_date: new Date("2026-08-13T14:00:00Z"), end_date: new Date("2026-08-13T20:00:00Z"), text: "User Feedback Picnic" },
+  { id: 11, start_date: new Date("2026-08-14T03:00:00Z"), end_date: new Date("2026-08-14T08:00:00Z"), text: "Demo and Showcase" },
+  { id: 12, start_date: new Date("2026-08-14T11:00:00Z"), end_date: new Date("2026-08-14T17:00:00Z"), text: "Quality Assurance Spa Day" },
+  { id: 13, start_date: new Date("2026-08-15T01:00:00Z"), end_date: new Date("2026-08-15T03:00:00Z"), text: "Motion Cycling Adventure" },
+  { id: 14, start_date: new Date("2026-08-15T10:00:00Z"), end_date: new Date("2026-08-15T16:00:00Z"), text: "Competitor Analysis Beach Day" },
+  { id: 15, start_date: new Date("2026-08-16T02:00:00Z"), end_date: new Date("2026-08-16T06:00:00Z"), text: "Creativity Painting Retreat" },
 ];
 ~~~
 
@@ -102,7 +107,7 @@ import {
   type AngularSchedulerDataConfig,
   type Event,
   type SchedulerConfig,
-} from "@dhx/angular-scheduler";
+} from "@dhtmlx/trial-angular-scheduler";
 import { mainDate, schedulerEvents } from "./demo-data";
 
 @Component({
@@ -195,6 +200,10 @@ dataConfig: AngularSchedulerDataConfig = {
 ~~~
 
 For grouped updates, prefer `data.batchSave` and handle all changes in one state transaction.
+
+## GitHub demo repository
+
+A complete working project that follows this tutorial is [provided on GitHub](https://github.com/DHTMLX/angular-scheduler-quick-start).
 
 ## Continue With
 

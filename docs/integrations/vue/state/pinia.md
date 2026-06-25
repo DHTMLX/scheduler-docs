@@ -61,21 +61,21 @@ import type { Event } from "@dhtmlx/trial-vue-scheduler";
 export const mainDate = new Date("2026-08-15T00:00:00Z");
 
 export const schedulerEvents: Event[] = [
-  { id: 1, classname: "blue", start_date: new Date("2026-08-10T02:00:00Z"), end_date: new Date("2026-08-10T10:20:00Z"), text: "Product Strategy Hike" },
-  { id: 2, classname: "blue", start_date: new Date("2026-08-10T12:00:00Z"), end_date: new Date("2026-08-10T16:00:00Z"), text: "Agile Meditation and Release" },
-  { id: 3, classname: "violet", start_date: new Date("2026-08-11T06:00:00Z"), end_date: new Date("2026-08-11T11:00:00Z"), text: "Tranquil Tea Time" },
-  { id: 4, classname: "green", start_date: new Date("2026-08-11T11:30:00Z"), end_date: new Date("2026-08-11T19:00:00Z"), text: "Sprint Review and Retreat" },
-  { id: 5, classname: "violet", start_date: new Date("2026-08-12T01:00:00Z"), end_date: new Date("2026-08-12T03:00:00Z"), text: "Kayaking Workshop" },
-  { id: 6, classname: "yellow", start_date: new Date("2026-08-12T06:00:00Z"), end_date: new Date("2026-08-12T08:00:00Z"), text: "Stakeholder Sunset Yoga Session" },
-  { id: 7, classname: "green", start_date: new Date("2026-08-12T07:00:00Z"), end_date: new Date("2026-08-12T12:00:00Z"), text: "Roadmap Alignment Walk" },
-  { id: 8, classname: "violet", start_date: new Date("2026-08-12T13:00:00Z"), end_date: new Date("2026-08-12T18:00:00Z"), text: "Mindful Team Building" },
-  { id: 9, classname: "blue", start_date: new Date("2026-08-13T01:00:00Z"), end_date: new Date("2026-08-13T18:00:00Z"), text: "Cross-Functional Expedition" },
-  { id: 10, classname: "yellow", start_date: new Date("2026-08-13T14:00:00Z"), end_date: new Date("2026-08-13T20:00:00Z"), text: "User Feedback Picnic" },
-  { id: 11, classname: "blue", start_date: new Date("2026-08-14T03:00:00Z"), end_date: new Date("2026-08-14T08:00:00Z"), text: "Demo and Showcase" },
-  { id: 12, classname: "yellow", start_date: new Date("2026-08-14T11:00:00Z"), end_date: new Date("2026-08-14T17:00:00Z"), text: "Quality Assurance Spa Day" },
-  { id: 13, classname: "violet", start_date: new Date("2026-08-15T01:00:00Z"), end_date: new Date("2026-08-15T03:00:00Z"), text: "Motion Cycling Adventure" },
-  { id: 14, classname: "blue", start_date: new Date("2026-08-15T10:00:00Z"), end_date: new Date("2026-08-15T16:00:00Z"), text: "Competitor Analysis Beach Day" },
-  { id: 15, classname: "blue", start_date: new Date("2026-08-16T02:00:00Z"), end_date: new Date("2026-08-16T06:00:00Z"), text: "Creativity Painting Retreat" }
+  { id: 1, start_date: new Date("2026-08-10T02:00:00Z"), end_date: new Date("2026-08-10T10:20:00Z"), text: "Product Strategy Hike" },
+  { id: 2, start_date: new Date("2026-08-10T12:00:00Z"), end_date: new Date("2026-08-10T16:00:00Z"), text: "Agile Meditation and Release" },
+  { id: 3, start_date: new Date("2026-08-11T06:00:00Z"), end_date: new Date("2026-08-11T11:00:00Z"), text: "Tranquil Tea Time" },
+  { id: 4, start_date: new Date("2026-08-11T11:30:00Z"), end_date: new Date("2026-08-11T19:00:00Z"), text: "Sprint Review and Retreat" },
+  { id: 5, start_date: new Date("2026-08-12T01:00:00Z"), end_date: new Date("2026-08-12T03:00:00Z"), text: "Kayaking Workshop" },
+  { id: 6, start_date: new Date("2026-08-12T06:00:00Z"), end_date: new Date("2026-08-12T08:00:00Z"), text: "Stakeholder Sunset Yoga Session" },
+  { id: 7, start_date: new Date("2026-08-12T07:00:00Z"), end_date: new Date("2026-08-12T12:00:00Z"), text: "Roadmap Alignment Walk" },
+  { id: 8, start_date: new Date("2026-08-12T13:00:00Z"), end_date: new Date("2026-08-12T18:00:00Z"), text: "Mindful Team Building" },
+  { id: 9, start_date: new Date("2026-08-13T01:00:00Z"), end_date: new Date("2026-08-13T18:00:00Z"), text: "Cross-Functional Expedition" },
+  { id: 10, start_date: new Date("2026-08-13T14:00:00Z"), end_date: new Date("2026-08-13T20:00:00Z"), text: "User Feedback Picnic" },
+  { id: 11, start_date: new Date("2026-08-14T03:00:00Z"), end_date: new Date("2026-08-14T08:00:00Z"), text: "Demo and Showcase" },
+  { id: 12, start_date: new Date("2026-08-14T11:00:00Z"), end_date: new Date("2026-08-14T17:00:00Z"), text: "Quality Assurance Spa Day" },
+  { id: 13, start_date: new Date("2026-08-15T01:00:00Z"), end_date: new Date("2026-08-15T03:00:00Z"), text: "Motion Cycling Adventure" },
+  { id: 14, start_date: new Date("2026-08-15T10:00:00Z"), end_date: new Date("2026-08-15T16:00:00Z"), text: "Competitor Analysis Beach Day" },
+  { id: 15, start_date: new Date("2026-08-16T02:00:00Z"), end_date: new Date("2026-08-16T06:00:00Z"), text: "Creativity Painting Retreat" },
 ];
 ~~~
 
@@ -279,7 +279,7 @@ Replace the store from step 2 with this version.
 
 ~~~ts title="src/stores/schedulerStore.ts"
 import { defineStore } from "pinia";
-import type { BatchChanges, Event } from "@dhx/vue-scheduler";
+import type { BatchChanges, Event } from "@dhtmlx/trial-vue-scheduler";
 import { mainDate, schedulerEvents } from "../demoData";
 
 type SchedulerView = "day" | "week" | "month";
@@ -429,9 +429,9 @@ Update `src/components/Scheduler.vue`:
 <script setup lang="ts">
 import { computed } from "vue";
 import { storeToRefs } from "pinia";
-import { VueScheduler } from "@dhx/vue-scheduler";
-import type { SchedulerXY } from "@dhx/vue-scheduler";
-import "@dhx/vue-scheduler/dist/vue-scheduler.css";
+import { VueScheduler } from "@dhtmlx/trial-vue-scheduler";
+import type { SchedulerXY } from "@dhtmlx/trial-vue-scheduler";
+import "@dhtmlx/trial-vue-scheduler/dist/vue-scheduler.css";
 
 import { useSchedulerStore } from "../stores/schedulerStore";
 
@@ -490,7 +490,7 @@ function addDate(step: number) {
       <button data-cy="state-next" type="button" @click="addDate(1)">&gt;</button>
     </div>
 
-    <VueScheduler class="demo-scheduler" :events="events" :date="date" :view="view" :data="data" :xy="xy" />
+    <VueScheduler :events="events" :date="date" :view="view" :data="data" :xy="xy" />
   </section>
 </template>
 ~~~

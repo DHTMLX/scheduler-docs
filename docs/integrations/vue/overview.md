@@ -10,17 +10,17 @@ Vue Scheduler is the official Vue wrapper for DHTMLX Scheduler. It combines Vue-
 
 If you need setup instructions first, start with [Quick Start with Vue Scheduler](integrations/vue/quick-start.md).
 
-## Mental Model
+## How the Wrapper Works
 
 Vue Scheduler is a wrapper around the DHTMLX Scheduler engine. The wrapper gives you a Vue component API, but the underlying engine is still the source of scheduler behavior and low-level methods.
 
-The wrapper layer does three main jobs:
+The wrapper layer handles three things:
 
 - initializes and destroys the Scheduler instance with Vue lifecycle
 - syncs selected Vue props into the current Scheduler instance
 - exposes wrapper-specific extension points (`on<EventName>` listeners, `@ready`, `customLightbox`, `eventBoxRenderer`, composables)
 
-That means you can stay declarative for most integration work and still use `instance` when needed.
+That means you can stay declarative for most integration work and still drop down to `instance` when needed.
 
 ## Core Capabilities
 

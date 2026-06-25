@@ -9,7 +9,7 @@ description: Learn how to integrate DHTMLX React Scheduler with Next.js using th
 This tutorial shows how to create a simple **Next.js** application and render a **DHTMLX React Scheduler** on a page.
 
 :::note
-The complete source code is [available on GitHub](https://github.com/dhtmlx/react-scheduler-nextjs-starter).
+The complete source code is [available on GitHub](https://github.com/DHTMLX/react-scheduler-nextjs-starter).
 :::
 
 ## Prerequisites

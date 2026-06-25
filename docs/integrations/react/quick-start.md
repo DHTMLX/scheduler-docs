@@ -15,7 +15,7 @@ If you are using the **Individual** or **GPL** edition, follow the alternative g
 The **React Scheduler** component is the official wrapper for **DHTMLX Scheduler**.
 This guide walks you through creating a small React application and rendering a basic Scheduler using the trial package.
 
-If you're new to React, start with the official [React documentation](https://react.dev/learn). Check [a complete working project that follows this tutorial on GitHub](https://github.com/dhtmlx/react-scheduler-quick-start).
+If you're new to React, start with the official [React documentation](https://react.dev/learn). Check [a complete working project that follows this tutorial on GitHub](https://github.com/DHTMLX/react-scheduler-quick-start).
 
 ## Version requirements
 
@@ -195,7 +195,7 @@ This setup represents the **minimum configuration** needed to:
 - attach the Scheduler instance via a React ref
 - receive events through the `data.save` callback
 
-This is the same minimal example used in the [GitHub demo project](https://github.com/dhtmlx/react-scheduler-quick-start).
+This is the same minimal example used in the [GitHub demo project](https://github.com/DHTMLX/react-scheduler-quick-start).
 
 From here, you can continue by adding more advanced features:
 
@@ -304,7 +304,7 @@ See the full section here: [React Scheduler Templates Documentation](integration
 
 ## GitHub demo repository
 
-A complete working project that follows this tutorial is [provided on GitHub](https://github.com/dhtmlx/react-scheduler-quick-start).
+A complete working project that follows this tutorial is [provided on GitHub](https://github.com/DHTMLX/react-scheduler-quick-start).
 
 ## Next steps
 

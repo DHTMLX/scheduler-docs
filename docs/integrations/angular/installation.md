@@ -120,7 +120,7 @@ import { DhxSchedulerComponent } from "@dhx/angular-scheduler";
 @import "@dhx/angular-scheduler/dist/angular-scheduler.css";
 ~~~
 
-Search the project for any remaining mentions of `@dhtmlx/trial-angular-gantt`, including the CSS import path - that one is the easiest to forget. Replace the dependency in `package.json`, then `npm install` and run the app. If the watermark is gone and the rest of the UI behaves identically, the swap is done.
+Search the project for any remaining mentions of `@dhtmlx/trial-angular-scheduler`, including the CSS import path - that one is the easiest to forget. Replace the dependency in `package.json`, then `npm install` and run the app. If the watermark is gone and the rest of the UI behaves identically, the swap is done.
 
 ## Using The Registry From CI Or Shared Build Environments
 

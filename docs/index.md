@@ -37,7 +37,7 @@ You can use DHTMLX Scheduler as a vanilla JavaScript widget or integrate it into
     </div>
   </a>
 
-  <a className="framework-card" href="integrations/angular/js-scheduler-angular/">
+  <a className="framework-card" href="integrations/angular/quick-start/">
     <FrameworkIcon name="angular" className="framework-icon" />
     <div className="framework-title">Angular</div>
     <div className="framework-desc">
@@ -45,11 +45,11 @@ You can use DHTMLX Scheduler as a vanilla JavaScript widget or integrate it into
     </div>
   </a>
 
-  <a className="framework-card" href="integrations/vue/js-scheduler-vue/">
+  <a className="framework-card" href="integrations/vue/quick-start/">
     <FrameworkIcon name="vue" className="framework-icon" />
     <div className="framework-title">Vue</div>
     <div className="framework-desc">
-      Use Scheduler inside Vue apps with a small wrapper and reactive configuration.
+      Use the ready-made <code>VueScheduler</code> component with props and events.
     </div>
   </a>
 

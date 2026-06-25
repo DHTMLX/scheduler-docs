@@ -23,6 +23,8 @@ A complete working project that follows this tutorial is on GitHub: [angular-sch
 - Working wrapper render (see [Quick Start](integrations/angular/quick-start.md)).
 - Basic Angular dependency injection and RxJS knowledge.
 
+This tutorial uses the evaluation package `@dhtmlx/trial-angular-scheduler`. If you already use the Professional package, replace it with `@dhx/angular-scheduler` in the imports.
+
 ## Project Layout
 
 The starter splits the feature into a small set of files:
@@ -50,27 +52,24 @@ Create `src/app/scheduler-demo.data.ts`:
 ~~~ts title="src/app/scheduler-demo.data.ts"
 import type { Event } from "@dhtmlx/trial-angular-scheduler";
 
-export const mainDate = new Date("2026-05-18T00:00:00");
+export const mainDate = new Date("2026-08-15T00:00:00Z");
 
 export const schedulerEvents: Event[] = [
-  {
-    id: 1,
-    text: "Planning",
-    start_date: new Date("2026-05-18T09:00:00"),
-    end_date: new Date("2026-05-18T10:30:00"),
-  },
-  {
-    id: 2,
-    text: "Design review",
-    start_date: new Date("2026-05-18T12:00:00"),
-    end_date: new Date("2026-05-18T13:00:00"),
-  },
-  {
-    id: 3,
-    text: "Implementation",
-    start_date: new Date("2026-05-19T14:00:00"),
-    end_date: new Date("2026-05-19T15:30:00"),
-  },
+  { id: 1, start_date: new Date("2026-08-10T02:00:00Z"), end_date: new Date("2026-08-10T10:20:00Z"), text: "Product Strategy Hike" },
+  { id: 2, start_date: new Date("2026-08-10T12:00:00Z"), end_date: new Date("2026-08-10T16:00:00Z"), text: "Agile Meditation and Release" },
+  { id: 3, start_date: new Date("2026-08-11T06:00:00Z"), end_date: new Date("2026-08-11T11:00:00Z"), text: "Tranquil Tea Time" },
+  { id: 4, start_date: new Date("2026-08-11T11:30:00Z"), end_date: new Date("2026-08-11T19:00:00Z"), text: "Sprint Review and Retreat" },
+  { id: 5, start_date: new Date("2026-08-12T01:00:00Z"), end_date: new Date("2026-08-12T03:00:00Z"), text: "Kayaking Workshop" },
+  { id: 6, start_date: new Date("2026-08-12T06:00:00Z"), end_date: new Date("2026-08-12T08:00:00Z"), text: "Stakeholder Sunset Yoga Session" },
+  { id: 7, start_date: new Date("2026-08-12T07:00:00Z"), end_date: new Date("2026-08-12T12:00:00Z"), text: "Roadmap Alignment Walk" },
+  { id: 8, start_date: new Date("2026-08-12T13:00:00Z"), end_date: new Date("2026-08-12T18:00:00Z"), text: "Mindful Team Building" },
+  { id: 9, start_date: new Date("2026-08-13T01:00:00Z"), end_date: new Date("2026-08-13T18:00:00Z"), text: "Cross-Functional Expedition" },
+  { id: 10, start_date: new Date("2026-08-13T14:00:00Z"), end_date: new Date("2026-08-13T20:00:00Z"), text: "User Feedback Picnic" },
+  { id: 11, start_date: new Date("2026-08-14T03:00:00Z"), end_date: new Date("2026-08-14T08:00:00Z"), text: "Demo and Showcase" },
+  { id: 12, start_date: new Date("2026-08-14T11:00:00Z"), end_date: new Date("2026-08-14T17:00:00Z"), text: "Quality Assurance Spa Day" },
+  { id: 13, start_date: new Date("2026-08-15T01:00:00Z"), end_date: new Date("2026-08-15T03:00:00Z"), text: "Motion Cycling Adventure" },
+  { id: 14, start_date: new Date("2026-08-15T10:00:00Z"), end_date: new Date("2026-08-15T16:00:00Z"), text: "Competitor Analysis Beach Day" },
+  { id: 15, start_date: new Date("2026-08-16T02:00:00Z"), end_date: new Date("2026-08-16T06:00:00Z"), text: "Creativity Painting Retreat" },
 ];
 ~~~
 
@@ -80,7 +79,7 @@ Create `src/app/scheduler-demo.store.ts`:
 
 ~~~ts title="src/app/scheduler-demo.store.ts"
 import { Injectable } from "@angular/core";
-import type { AngularSchedulerDataConfig, BatchChanges, Event } from "@dhx/angular-scheduler";
+import type { AngularSchedulerDataConfig, BatchChanges, Event } from "@dhtmlx/trial-angular-scheduler";
 import { BehaviorSubject, map } from "rxjs";
 import { mainDate, schedulerEvents } from "./scheduler-demo.data";
 
@@ -289,7 +288,7 @@ import {
   type AngularSchedulerDataConfig,
   type Event,
   type SchedulerXY,
-} from "@dhx/angular-scheduler";
+} from "@dhtmlx/trial-angular-scheduler";
 import type { SchedulerView } from "../../scheduler-demo.store";
 
 @Component({
@@ -392,14 +391,14 @@ export class ToolbarComponent {
 ```
 Keeping the toolbar dumb means the shell can change how state is sourced (different store, different input names) without touching the toolbar.
 
-## 4. Compose The Shell
+## 5. Compose The Shell
 
 Create `src/app/scheduler-demo.component.ts`:
 
 ~~~ts title="src/app/scheduler-demo.component.ts"
 import { AsyncPipe } from "@angular/common";
 import { Component, inject } from "@angular/core";
-import { type SchedulerXY } from "@dhx/angular-scheduler";
+import { type SchedulerXY } from "@dhtmlx/trial-angular-scheduler";
 import { SchedulerViewComponent } from "./components/scheduler/scheduler-view.component";
 import { ToolbarComponent } from "./components/toolbar/toolbar.component";
 import { SchedulerStore, type SchedulerView } from "./scheduler-demo.store";
@@ -474,7 +473,7 @@ Create `src/app/scheduler-demo.component.html`:
 
 The toolbar markup can be split into its own component, as in the starter project. Keep it presentation-only: inputs for current state, outputs for user intent.
 
-## 5. Wire It Into The App
+## 6. Wire It Into The App
 
 Mount the shell as the root view or as a route target:
 
@@ -492,7 +491,7 @@ import { SchedulerDemoComponent } from './scheduler-demo.component';
 export class App {}
 ~~~
 
-## 6. Data Flow And Rationale
+## 7. Data Flow And Rationale
 
 For a typical edit, such as dragging an event:
 

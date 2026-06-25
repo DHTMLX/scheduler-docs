@@ -9,7 +9,7 @@ description: Learn how to integrate DHTMLX React Scheduler with Remix (React Rou
 This tutorial shows how to create a simple **Remix** application and render a **DHTMLX React Scheduler** on a page.
 
 :::note
-The complete source code is [available on GitHub](https://github.com/dhtmlx/react-scheduler-remix-starter).
+The complete source code is [available on GitHub](https://github.com/DHTMLX/react-scheduler-remix-starter).
 :::
 
 ## Prerequisites
