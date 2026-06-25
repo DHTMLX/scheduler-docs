@@ -83,8 +83,8 @@ module.exports = {
 								"integrations/react/state/jotai",
 								"integrations/react/state/valtio",
 								"integrations/react/firebase-integration",
-							],
-						},
+                                "integrations/react/starhive-integration",
+                            ],
 						// Frameworks
 						{
 							type: "category",
@@ -107,16 +107,18 @@ module.exports = {
 					]
 				},
 				{
-					type: "category",
-					label: "AI Tools",
-					link: {
-						type: "doc",
-						id: "integrations/ai-tools/index"
-					},
-					items: [
-						"integrations/ai-tools/mcp-server"
-					]
-				},
+                    type: "category",
+                    label: "AI Tools",
+                    link: {
+                        type: "doc",
+                        id: "integrations/ai-tools/index"
+                    },
+                    items: [
+                        "integrations/ai-tools/mcp-server",
+                        "integrations/ai-tools/agent-skills",
+                        "integrations/ai-tools/lovable-starter-walkthrough"
+                    ]
+                },
 				{
 					type: "category",
 					label: "Vue (BETA)",
@@ -198,59 +200,61 @@ module.exports = {
 				},
 				"integrations/svelte/howtostart-svelte",
 				"integrations/salesforce/howtostart-salesforce",
-				"integrations/google-calendar/google-calendar-sync",
-				"integrations/firebase/howtostart-firebase",
-				{
-					type: "category",
-					label: "Backends",
-					link: {
-						type: 'generated-index',
-						title: 'Backend integrations',
-						keywords: ['Implementing CRUD in different backends', 'dhtmlxScheduler backend integration'],
-					},
-					items: [
-						"integrations/node/howtostart-nodejs",
-						"integrations/dotnet/howtostart-dotnet-core",
-						"integrations/php/howtostart-php-laravel",
-						"integrations/dotnet/howtostart-dotnet",
-						"integrations/php/howtostart-php-slim4",
-						"integrations/php/howtostart-plain-php",
-						"integrations/other/howtostart-ruby",
-					]
-				},
-				{
-					type: "category",
-					label: "Legacy",
-					link: {
-						type: 'generated-index',
-						title: 'Legacy integrations',
-					},
-					items: [
-						"integrations/other/dhxlayout-integration",
-						"integrations/other/howtostart-php",
-						
-						"integrations/other/jquery-integration",
-						"integrations/other/bootstrap",
-						{
-							type: "doc",
-							id: "integrations/legacy/backbone-integration",
-							className: "deprecated",
-						},
-						{
-							type: "doc",
-							id: "integrations/other/howtostart-connector",
-							className: "deprecated",
-						},
-						{
-							type: "doc",
-							id: "integrations/legacy/dhtmlx-dnd",
-							className: "deprecated",
-						},
-						
-					]
-				},
-			]
-		},
+                "integrations/google-calendar/google-calendar-sync",
+                "integrations/dotnet/howtostart-blazor",
+                "integrations/firebase/howtostart-firebase",
+                {
+                    type: "category",
+                    label: "Backends",
+                    link: {
+                        type: 'generated-index',
+                        title: 'Backend integrations',
+                        keywords: ['Implementing CRUD in different backends', 'dhtmlxScheduler backend integration'],
+                    },
+                    items: [
+                        "integrations/node/howtostart-nodejs",
+                        "integrations/python/howtostart-fastapi",
+                        "integrations/dotnet/howtostart-dotnet-core",
+                        "integrations/php/howtostart-php-laravel",
+                        "integrations/dotnet/howtostart-dotnet",
+                        "integrations/php/howtostart-php-slim4",
+                        "integrations/php/howtostart-plain-php",
+                        "integrations/other/howtostart-ruby",
+                    ]
+                },
+                {
+                    type: "category",
+                    label: "Legacy",
+                    link: {
+                        type: 'generated-index',
+                        title: 'Legacy integrations',
+                    },
+                    items: [
+                        "integrations/other/dhxlayout-integration",
+                        "integrations/other/howtostart-php",
+                        
+                        "integrations/other/jquery-integration",
+                        "integrations/other/bootstrap",
+                        {
+                            type: "doc",
+                            id: "integrations/legacy/backbone-integration",
+                            className: "deprecated",
+                        },
+                        {
+                            type: "doc",
+                            id: "integrations/other/howtostart-connector",
+                            className: "deprecated",
+                        },
+                        {
+                            type: "doc",
+                            id: "integrations/legacy/dhtmlx-dnd",
+                            className: "deprecated",
+                        },
+                        
+                    ]
+                },
+            ]
+        },
 
 		{
 			type: "category",
@@ -1064,6 +1068,7 @@ module.exports = {
 			},
 			items: [
 				"guides/editions-comparison",
+				"guides/using-packages-after-subscription-expires",
 				{
 					type: "category",
 					label: "Configuring Scheduler",
@@ -1244,6 +1249,7 @@ module.exports = {
 						"guides/skins",
 						"guides/templates",
 						"guides/custom-skins",
+						"guides/theme-css-variables",
 						"guides/popups-and-modals",
 						"guides/mini-calendar-templates",
 						"guides/common-templates",

@@ -8,6 +8,7 @@ sidebar_label: "Node.js"
 The current tutorial is intended for creating Scheduler with Node.js and REST API on the server side.
 If you use some other technology, check the list of available integration variants below:
 
+- [dhtmlxScheduler with FastAPI](integrations/python/howtostart-fastapi.md)
 - [dhtmlxScheduler with ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md)
 - [dhtmlxScheduler with ASP.NET MVC](integrations/dotnet/howtostart-dotnet.md)
 - [dhtmlxScheduler with PHP](integrations/php/howtostart-plain-php.md)

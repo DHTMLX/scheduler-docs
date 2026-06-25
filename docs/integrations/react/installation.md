@@ -67,6 +67,10 @@ Or, with Yarn:
 yarn add @dhx/react-scheduler
 ~~~
 
+:::note
+Access to the private registry ends when your subscription expires. To keep using the paid `@dhx` packages afterward, [back them up first](guides/using-packages-after-subscription-expires.md).
+:::
+
 ## Next Steps
 
 After installation, continue with:
