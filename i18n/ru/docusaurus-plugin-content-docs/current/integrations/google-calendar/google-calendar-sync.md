@@ -35,7 +35,7 @@ description: "Реализуйте интеграцию Node.js + Express, ко�
 ## Демонстрационный репозиторий
 
 Полный рабочий проект, соответствующий данному руководству, доступен на GitHub:
-- https://github.com/dhtmlx/scheduler-google-auth-demo
+- https://github.com/dhtmlx/scheduler-google-calendar-demo
 
 Руководство объясняет ключевые шаги и демонстрирует важный код интеграции. Репозиторий является «полной рабочей ссылкой».
 
@@ -50,8 +50,8 @@ description: "Реализуйте интеграцию Node.js + Express, ко�
 - Клонировать репозиторий:
 
 ~~~bash title="Terminal"
-git clone https://github.com/dhtmlx/scheduler-google-auth-demo.git
-cd scheduler-google-auth-demo
+git clone https://github.com/dhtmlx/scheduler-google-calendar-demo.git
+cd scheduler-google-calendar-demo
 ~~~
 
 Если ваш проект устанавливает пакеты `@dhx/*` из частного реестра, настройте npm:
@@ -164,7 +164,7 @@ http://localhost:3000
 Типичная структура:
 
 ~~~text title="Project structure"
-scheduler-google-auth-demo/
+scheduler-google-calendar-demo/
   client/
     index.ejs
     main.ts

@@ -35,7 +35,7 @@ Der vollständige Quellcode ist auf GitHub verfügbar: [https://github.com/DHTML
 ## Demo-Repository
 
 Ein vollständiges, funktionsfähiges Projekt, das dieser Anleitung entspricht, ist auf GitHub verfügbar:
-- https://github.com/dhtmlx/scheduler-google-auth-demo
+- https://github.com/DHTMLX/scheduler-google-calendar-demo
 
 Die Anleitung erläutert die wichtigsten Schritte und zeigt den relevanten Integrationscode. Das Repository ist die „voll funktionsfähige Referenz“.
 
@@ -50,8 +50,8 @@ Führen Sie eine der folgenden Optionen aus:
 - Das Repository klonen:
 
 ~~~bash title="Terminal"
-git clone https://github.com/dhtmlx/scheduler-google-auth-demo.git
-cd scheduler-google-auth-demo
+git clone https://github.com/dhtmlx/scheduler-google-calendar-demo.git
+cd scheduler-google-calendar-demo
 ~~~
 
 Wenn Ihr Projekt `@dhx/*`-Pakete aus dem privaten Registry installiert, konfigurieren Sie npm:
@@ -164,7 +164,7 @@ In diesem Schritt trennen Sie die Verantwortlichkeiten, sodass Scheduler eine UI
 Eine typische Struktur:
 
 ~~~text title="Project structure"
-scheduler-google-auth-demo/
+scheduler-google-calendar-demo/
   client/
     index.ejs
     main.ts

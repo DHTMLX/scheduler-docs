@@ -35,7 +35,7 @@ description: "OAuth 2.0 및 Google Calendar API v3를 사용하는 Node.js + Exp
 ## 데모 저장소
 
 이 가이드와 일치하는 완전한 작동 프로젝트는 GitHub에서 확인할 수 있습니다:
-- https://github.com/dhtmlx/scheduler-google-auth-demo
+- https://github.com/dhtmlx/scheduler-google-calendar-demo
 
 가이드는 핵심 단계와 중요한 통합 코드를 설명합니다. 저장소는 “실행 가능한 전체 참조”입니다.
 
@@ -50,8 +50,8 @@ description: "OAuth 2.0 및 Google Calendar API v3를 사용하는 Node.js + Exp
 - 저장소를 클론합니다:
 
 ~~~bash title="Terminal"
-git clone https://github.com/dhtmlx/scheduler-google-auth-demo.git
-cd scheduler-google-auth-demo
+git clone https://github.com/dhtmlx/scheduler-google-calendar-demo.git
+cd scheduler-google-calendar-demo
 ~~~
 
 프로젝트가 private 레지스트리에서 `@dhx/*` 패키지를 설치한다면 npm을 구성하십시오:
@@ -164,7 +164,7 @@ http://localhost:3000
 일반적인 구조:
 
 ~~~text title="Project structure"
-scheduler-google-auth-demo/
+scheduler-google-calendar-demo/
   client/
     index.ejs
     main.ts
