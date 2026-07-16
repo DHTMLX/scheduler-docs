@@ -15,7 +15,7 @@ By the end, you will have a Scheduler with:
 - snapshot-based undo/redo (events + config)
 
 :::note
-The complete source code is [available on GitHub](https://github.com/nicetip/react-scheduler-valtio-starter).
+The complete source code is [available on GitHub](https://github.com/DHTMLX/react-scheduler-valtio-starter).
 :::
 
 ## Prerequisites

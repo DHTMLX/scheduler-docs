@@ -1,76 +1,76 @@
 ---
-title: React Scheduler and Starhive Integration
-sidebar_label: Starhive Quick Start
-description: "Connect DHTMLX React Scheduler to a Starhive NoSQL backend via Next.js API routes."
+title: React Scheduler und Starhive-Integration
+sidebar_label: Starhive Schnellstart
+description: "DHTMLX React Scheduler mit einem Starhive NoSQL-Backend über Next.js API-Routen verbinden."
 ---
 
-# React Scheduler and Starhive Integration
+# React Scheduler und Starhive-Integration
 
-This tutorial connects **React Scheduler** to a **Starhive** NoSQL backend through Next.js Route Handlers. Starhive provides a typed schema and a generated TypeScript client, so the API layer stays minimal: one endpoint loads events and resources, another handles create / update / delete.
+Diese Anleitung verbindet **React Scheduler** mit einem **Starhive** NoSQL-Backend über Next.js Route-Handler. Starhive bietet ein typisiertes Schema und einen generierten TypeScript-Client, sodass die API-Schicht minimal bleibt: ein Endpunkt lädt Ereignisse und Ressourcen, ein anderer erledigt Create / Update / Delete.
 
-You will build:
+Sie werden Folgendes erstellen:
 
-- a Next.js page that hosts the Scheduler in a Client Component
-- `/api/load` - fetches events and resources from Starhive on first render
-- `/api/event` (POST) and `/api/event/[id]` (PUT, DELETE) - write paths used by the Scheduler `dataBridge`
+- eine Next.js-Seite, die den Scheduler in einer Client-Komponente hostet
+- `/api/load` – lädt beim ersten Rendern Ereignisse und Ressourcen von Starhive
+- `/api/event` (POST) und `/api/event/[id]` (PUT, DELETE) – Schreibpfade, die vom Scheduler `dataBridge` verwendet werden
 
 :::note
-The complete source code is [available on GitHub](https://github.com/DHTMLX/react-scheduler-starhive-demo).
+Der vollständige Quellcode ist [auf GitHub verfügbar](https://github.com/DHTMLX/react-scheduler-starhive-demo).
 :::
 
-## Prerequisites
+## Voraussetzungen
 
-- Next.js + React + TypeScript basics
+- Grundlagen zu Next.js + React + TypeScript
 - Node.js 18+
-- A [Starhive](https://starhive.com/) account (the 30-day trial is sufficient)
+- Ein [Starhive](https://starhive.com/) Konto (die 30-tägige Testversion reicht aus)
 
-## Step 1. Create the project
+## Schritt 1. Projekt erstellen
 
 ```bash
 npx create-next-app@latest react-scheduler-starhive-demo
 cd react-scheduler-starhive-demo
 ```
 
-Install React Scheduler as described in the [React Scheduler installation guide](integrations/react/installation.md). For evaluation:
+Installieren Sie den React Scheduler wie im [Installationsleitfaden für den React Scheduler](integrations/react/installation.md) beschrieben. Zur Evaluation:
 
 ```bash
 npm install @dhtmlx/trial-react-scheduler
 ```
 
-If you already use the Professional package, replace `@dhtmlx/trial-react-scheduler` with `@dhx/react-scheduler` in commands and imports.
+Wenn Sie bereits das Professional-Paket verwenden, ersetzen Sie `@dhtmlx/trial-react-scheduler` durch `@dhx/react-scheduler` in Befehlen und Imports.
 
-You also need `axios` - it's a peer dependency of the generated Starhive TypeScript client. 
+Außerdem benötigen Sie `axios` – es ist eine Peer-Abhängigkeit des generierten Starhive TypeScript-Clients. 
 
 ```bash
 npm install axios
 ```
 
-## Step 2. Set up the Starhive space
+## Schritt 2. Starhive Space einrichten
 
-After signing in, click **+ Create** in the top right corner and name the space `Scheduler`.
+Nach dem Anmelden klicken Sie rechts oben auf **+ Create** und benennen den Space mit `Scheduler`.
 
-Inside the space, create two types: `Resources` and `Events`. Resources hold the rows of the timeline (teams, people, rooms, etc.). Events reference one Resource each.
+Im Space erstellen Sie zwei Typen: `Resources` und `Events`. Resources halten die Zeilen der Timeline (Teams, Personen, Räume usw.). Events beziehen sich jeweils auf eine Resource.
 
-Add the following attributes via the **+ Attribute** button. Starhive autogenerates the `id` for each item, so you don't need to declare it.
+Fügen Sie die folgenden Attribute über die Schaltfläche **+ Attribute** hinzu. Starhive erzeugt automatisch die `id` für jeden Eintrag, daher müssen Sie sie nicht deklarieren.
 
 **Resources type**
 
-| Field   | Type |
+| Feld   | Typ |
 | ------- | ---- |
 | `label` | Text |
 
 **Events type**
 
-| Field         | Type                       |
+| Feld         | Typ                       |
 | ------------- | -------------------------- |
 | `text`        | Text                       |
-| `start_date`  | Date & Time                |
-| `end_date`    | Date & Time                |
-| `resource_id` | Reference → Resources      |
+| `start_date`  | Datum & Uhrzeit            |
+| `end_date`    | Datum & Uhrzeit            |
+| `resource_id` | Referenz → Resources         |
 
-## Step 3. Import sample data
+## Schritt 3. Beispieldaten importieren
 
-Create `scheduler_resources.csv`:
+Erstellen Sie `scheduler_resources.csv`:
 
 ```csv
 label
@@ -81,7 +81,7 @@ label
 "Security Team"
 ```
 
-And `scheduler_events.csv`:
+Und `scheduler_events.csv`:
 
 ```csv
 text,start_date,end_date,resource_id
@@ -94,21 +94,21 @@ text,start_date,end_date,resource_id
 "Security Scan","2026-04-01T13:00:00","2026-04-01T15:30:00","Security Team"
 ```
 
-In the Starhive UI, open the type and click **CSV import** for each file.
+Im Starhive UI öffnen Sie den Typ und klicken Sie für jeden Datei den CSV-Import.  
 
-## Step 4. Generate and copy the schema
+## Schritt 4. Schema generieren und kopieren
 
-Go to **Settings → API Connectors**. Select the `Scheduler` space, set the language to TypeScript, click **Generate**, then **Download**.
+Gehen Sie zu **Settings → API Connectors**. Wählen Sie den Space `Scheduler`, setzen Sie die Sprache auf TypeScript, klicken Sie auf **Generate**, dann **Download**.
 
-Extract the zip, locate the `starhive` folder under `project/src/io/`, and copy it into `lib/starhive/` in your Next.js project. The generated files contain workspace-specific UUIDs, so you'll repeat this step whenever the schema changes or you switch workspaces.
+Entpacken Sie das Archiv, lokalisieren Sie den Ordner `starhive` unter `project/src/io/` und kopieren Sie ihn nach `lib/starhive/` in Ihr Next.js-Projekt. Die generierten Dateien enthalten arbeitsbereichsspezifische UUIDs, daher führen Sie diesen Schritt jedes Mal erneut aus, wenn sich das Schema ändert oder Sie zwischen Arbeitsbereichen wechseln.
 
 :::note
-At the time of writing, the Starhive TypeScript generator produces output that does not pass strict TypeScript: a missing `Sla.ts` reference, a missing `visitSlaAttribute` implementation in the inline `AttributeVisitor` literal, and a `client.request<T>` call against an `any`-typed field (TS2347). The companion demo repo ships three minimal patches that work around these; see [`lib/starhive/PATCHES.md`](https://github.com/DHTMLX/react-scheduler-starhive-demo/blob/main/lib/starhive/) for the diffs. Re-apply the same patches whenever you regenerate the schema, until Starhive ships a fix.
+Zum Zeitpunkt des Verfassens erzeugt der Starhive TypeScript-Generator eine Ausgabe, die kein strenges TypeScript erfüllt: ein fehlender `Sla.ts`-Verweis, eine fehlende Implementierung von `visitSlaAttribute` im Inline-`AttributeVisitor`-Literal und ein `client.request<T>`-Aufruf gegen ein Feld vom Typ `any` (TS2347). Das Begleit-Demo-Repo enthält drei minimale Patches, die diese Probleme umgehen; siehe [`lib/starhive/PATCHES.md`](https://github.com/DHTMLX/react-scheduler-starhive-demo/blob/main/lib/starhive/) für die Diffs. Wenden Sie dieselben Patches erneut an, wenn Sie das Schema regenerieren, bis Starhive einen Fix liefert.
 :::
 
-## Step 5. Configure the Starhive client
+## Schritt 5. Starhive-Client konfigurieren
 
-Create `lib/starhiveClient.ts`:
+Erstellen Sie `lib/starhiveClient.ts`:
 
 ```ts title="lib/starhiveClient.ts"
 import { StarhiveClient } from "./starhive/client/StarhiveClient";
@@ -131,20 +131,20 @@ export function getStarhiveClient() {
 }
 ```
 
-The function caches the client at module scope so route handlers share a single instance.
+Die Funktion cacht den Client im Modul-Scope, sodass Route-Handler eine einzige Instanz teilen.
 
-Add `.env.local` (or `.env`) at the project root:
+Fügen Sie `.env.local` (oder `.env`) im Projektstamm hinzu:
 
 ```env title=".env.local"
 STARHIVE_API_TOKEN=your-api-token
 STARHIVE_WORKSPACE_ID=your-workspace-id
 ```
 
-Generate the API token under **Settings → Personal access tokens**. The workspace ID is the path segment in `https://app.starhive.com/workspace/<workspace-id>/home`.
+Generieren Sie den API-Token unter **Settings → Personal access tokens**. Die Workspace-ID ist der Pfadabschnitt in `https://app.starhive.com/workspace/<workspace-id>/home`.
 
-## Step 6. Load events and resources
+## Schritt 6. Ereignisse und Ressourcen laden
 
-Create `app/api/load/route.ts`:
+Erstellen Sie `app/api/load/route.ts`:
 
 ```ts title="app/api/load/route.ts"
 import { NextResponse } from 'next/server';
@@ -183,13 +183,13 @@ export async function GET() {
 }
 ```
 
-`normalizeEvents` flattens each Starhive object into the shape the React Scheduler expects: `{ id, text, start_date, end_date, resource_id }`. Resources collapse to `{ key, label }`, which is what a timeline view's `y_unit` consumes.
+`normalizeEvents` wandelt jedes Starhive-Objekt in die Form um, die der React Scheduler erwartet: `{ id, text, start_date, end_date, resource_id }`. Ressourcen werden zu `{ key, label }` zusammengefasst, was von der Timeline-Ansicht als `y_unit` konsumiert wird.
 
-Visit `http://localhost:3000/api/load` after starting the dev server to confirm the JSON shape.
+Rufen Sie nach dem Starten des Entwicklungsservers die URL `http://localhost:3000/api/load` auf, um die JSON-Form zu überprüfen.
 
-## Step 7. Render Scheduler and load events
+## Schritt 7. Scheduler rendern und Ereignisse laden
 
-Create `app/page.tsx`:
+Erstellen Sie `app/page.tsx`:
 
 ```tsx title="app/page.tsx"
 'use client';
@@ -262,22 +262,22 @@ export default function Scheduler() {
 }
 ```
 
-A `loading` flag is preferable to checking `events.length` or `resources.length`: a workspace that legitimately has zero events should still render the empty Scheduler instead of being stuck on the loader.
+Ein `loading`-Flag ist vorzuziehen gegenüber dem Prüfen von `events.length` oder `resources.length`: Ein Workspace, der tatsächlich zero Events hat, sollte dennoch den leeren Scheduler rendern statt in der Ladeanzeige hängen zu bleiben.
 
-Run `npm run dev` and the timeline appears with the imported events grouped by resource.
+Führen Sie `npm run dev` aus – die Timeline erscheint mit den importierten Ereignissen, gruppiert nach Ressource.
 
-## Step 8. Implement the CRUD endpoints
+## Schritt 8. Die CRUD-Endpunkte implementieren
 
-The Scheduler `dataBridge` calls into three endpoints - POST for create, PUT for update, DELETE for delete - and expects specific response shapes:
+Die Scheduler-`dataBridge` ruft drei Endpunkte auf – POST für Create, PUT für Update, DELETE für Delete – und erwartet bestimmte Antwortformen:
 
-| HTTP method | Endpoint                  | Response                          |
+| HTTP-Methode | Endpoint                  | Antwort                          |
 | ----------- | ------------------------- | --------------------------------- |
 | `GET`       | `/api/load`               | `{ events, resources }`           |
 | `POST`      | `/api/event`              | `{ action: "inserted", tid: id }` |
 | `PUT`       | `/api/event/{event_id}`   | `{ action: "updated" }`           |
 | `DELETE`    | `/api/event/{event_id}`   | `{ action: "deleted" }`           |
 
-Create the POST handler at `app/api/event/route.ts`:
+Erstellen Sie den POST-Handler unter `app/api/event/route.ts`:
 
 ```ts title="app/api/event/route.ts"
 import { NextRequest, NextResponse } from 'next/server';
@@ -304,7 +304,7 @@ export async function POST(req: NextRequest) {
 }
 ```
 
-And the dynamic PUT/DELETE handlers at `app/api/event/[id]/route.ts`:
+Und die dynamischen PUT/DELETE-Handler unter `app/api/event/[id]/route.ts`:
 
 ```ts title="app/api/event/[id]/route.ts"
 import { NextRequest, NextResponse } from 'next/server';
@@ -365,12 +365,12 @@ export async function DELETE(
 ```
 
 :::note
-In Next.js 15+ the `params` argument of dynamic route handlers is a `Promise`. Always type it as `Promise<{...}>` and `await` it before reading the segment values - omitting the `Promise<>` wrapper compiles in some setups but fails strict mode.
+In Next.js 15+ ist das `params`-Argument dynamischer Routen-Handler ein `Promise`. Typisieren Sie es immer als `Promise<{...}>` und warten Sie darauf, bevor Sie die Segmentwerte lesen – das Weglassen der `Promise<>`-Umhüllung kompiliert in einigen Setups, schlägt aber im Strict-Modus fehlt.
 :::
 
-## Step 9. Wire the dataBridge
+## Schritt 9. Den dataBridge anschließen
 
-Create a small client-side helper at `services/scheduler.ts`:
+Erstellen Sie eine kleine client-seitige Hilfsfunktion unter `services/scheduler.ts`:
 
 ```ts title="services/scheduler.ts"
 import type { Event } from '@dhtmlx/trial-react-scheduler';
@@ -404,7 +404,7 @@ export function deleteEvent(id: string | number) {
 }
 ```
 
-Then wire the `dataBridge` into the page. Update `app/page.tsx` with the imports and a `data` prop on `<ReactScheduler>`:
+Schließen Sie den `dataBridge` an die Seite an. Aktualisieren Sie `app/page.tsx` mit den Imports und einer `data`-Eigenschaft auf `<ReactScheduler>`:
 
 ```tsx title="app/page.tsx"
 import { createEvent, deleteEvent, updateEvent } from '@/services/scheduler';
@@ -428,7 +428,7 @@ const dataBridge = useMemo(() => ({
   },
 }), []);
 
-// pass it to the component:
+// an ReactScheduler übergeben:
 <ReactScheduler
   events={events}
   data={dataBridge}
@@ -438,25 +438,25 @@ const dataBridge = useMemo(() => ({
 />
 ```
 
-## Test it
+## Testen
 
 ```bash
 npm run dev
 ```
 
-Open `http://localhost:3000`, drag an event to a new time, edit its text, and delete one. Each change should appear in the Starhive UI under the `Events` type immediately.
+Öffnen Sie `http://localhost:3000`, ziehen Sie ein Ereignis in eine neue Zeitspanne, bearbeiten Sie dessen Text und löschen Sie eines. Jede Änderung sollte sofort in der Starhive-Oberfläche unter dem Typ `Events` erscheinen.
 
-## Notes on Starhive integration
+## Hinweise zur Starhive-Integration
 
-- **Server-side credentials only.** `STARHIVE_API_TOKEN` and `STARHIVE_WORKSPACE_ID` are read inside Route Handlers (`getStarhiveClient`); they never reach the browser bundle. Don't move the Starhive client into a Client Component or expose the token via a `NEXT_PUBLIC_*` variable.
-- **Schema regeneration.** Whenever you add or rename attributes in Starhive, regenerate the TypeScript schema and replace `lib/starhive/`. Re-apply the patches in [`lib/starhive/PATCHES.md`](https://github.com/DHTMLX/react-scheduler-starhive-demo/blob/main/lib/starhive/) if `next build` complains about the same upstream issues.
-- **No realtime sync.** Unlike the Firebase integration, Starhive doesn't push changes to connected clients. Multiple users editing the same Scheduler will overwrite each other's changes. For multi-user scenarios, add polling on the client - or wire up Starhive webhooks to push invalidation events through SSE / WebSockets and refresh `events` state on remote changes.
-- **Dynamic loading for larger datasets.** The `/api/load` route loads every event in the workspace. For production, accept `from` / `to` query parameters in the GET handler, filter on `start_date` / `end_date`, and call `scheduler.setLoadMode("day")` on the client so only the visible range is fetched.
-- **Reference attributes carry arrays.** `Events.getResourceId()` returns `string[] | undefined` because Starhive's reference attributes are multi-valued. The demo flattens via `?.[0] || null`. If you allow events to belong to multiple resources, change the timeline view's `y_property` resolution and the normalize / builder calls accordingly.
+- **Nur serverseitige Anmeldeinformationen.** `STARHIVE_API_TOKEN` und `STARHIVE_WORKSPACE_ID` werden in Route-Handlern (`getStarhiveClient`) gelesen; sie gelangen nie in das Browser-Bundle. Verschieben Sie den Starhive-Client nicht in eine Client-Komponente oder geben Sie das Token nicht über eine `NEXT_PUBLIC_*`-Variable weiter.
+- **Schema-Neugenerierung.** Wann immer Sie Attribute in Starhive hinzufügen oder umbenennen, regenerieren Sie das TypeScript-Schema und ersetzen Sie `lib/starhive/`. Wenden Sie ggf. die Patches in [`lib/starhive/PATCHES.md`](https://github.com/DHTMLX/react-scheduler-starhive-demo/blob/main/lib/starhive/) erneut an, falls `next build` dieselben upstream-Probleme meldet.
+- **Kein Echtzeit-Sync.** Im Gegensatz zur Firebase-Integration sendet Starhive keine Änderungen sofort an verbundene Clients. Mehrere Benutzer, die denselben Scheduler bearbeiten, überschreiben gegenseitig ihre Änderungen. Für Mehrbenutzer-Szenarien fügen Sie auf dem Client Polling hinzu – oder verbinden Sie Starhive-Webhooks mit SSE/WebSockets, um Invalidation-Ereignisse auszulösen und den `events`-Zustand bei entfernten Änderungen zu aktualisieren.
+- **Dynamisches Laden großer Datensätze.** Die `/api/load`-Route lädt alle Ereignisse im Workspace. Für die Produktion akzeptieren Sie `from` / `to`-Abfrageparameter im GET-Handler, filtern Sie nach `start_date` / `end_date` und rufen Sie `scheduler.setLoadMode("day")` auf dem Client auf, damit nur der sichtbare Bereich abgerufen wird.
+- **Referenzattribute tragen Arrays.** `Events.getResourceId()` gibt `string[] | undefined` zurück, da Starhives Referenzattribute mehrfach vorkommen können. Das Demo-Beispiel flatten dies über `?.[0] || null`. Wenn Sie Ereignisse mehreren Ressourcen zuordnen lassen, passen Sie die Auflösung des Timeline-View-`y_property` sowie die Normalize-/Builder-Aufrufe entsprechend an.
 
-## Related pages
+## Verwandte Seiten
 
-- [Data Binding & State Management Basics](integrations/react/state/state-management-basics.md)
-- [React Scheduler Overview](integrations/react/overview.md#bindingdata)
-- [Server Integration](guides/server-integration.md)
-- [React Scheduler and Firebase Integration](integrations/react/firebase-integration.md) - sibling pattern with realtime sync
+- [Datenbindung & Grundlagen der Zustandsverwaltung](integrations/react/state/state-management-basics.md)
+- [React Scheduler Überblick](integrations/react/overview.md#bindingdata)
+- [Server-Integration](guides/server-integration.md)
+- [React Scheduler und Firebase-Integration] (integrations/react/firebase-integration.md) – sibling pattern with realtime sync

@@ -15,7 +15,7 @@ Am Ende verfügen Sie über einen Scheduler mit:
 - snapshotbasierte Undo/Redo (Ereignisse + Konfiguration)
 
 :::note
-Der vollständige Quellcode ist [auf GitHub verfügbar](https://github.com/nicetip/react-scheduler-valtio-starter).
+Der vollständige Quellcode ist [auf GitHub verfügbar](https://github.com/DHTMLX/react-scheduler-valtio-starter).
 :::
 
 ## Voraussetzungen

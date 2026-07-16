@@ -55,11 +55,11 @@ The `[version_number]` specifies `major.minor` version of the package, for examp
 Separate skin files are available in v6.0 and earlier.
 Starting from v7.0, all skins are included in `dhtmlxscheduler.css` and selected via `scheduler.skin`/`scheduler.setSkin()`, please check the [Migration guide](migration.md) for more details.
 
-- Terrace: https://cdn.dhtmlx.com/scheduler/6.0/skins/dhtmlxscheduler_terrace.css
-- Flat: https://cdn.dhtmlx.com/scheduler/6.0/skins/dhtmlxscheduler_flat.css
-- Contrast Black: https://cdn.dhtmlx.com/scheduler/6.0/skins/dhtmlxscheduler_contrast_black.css
-- Contrast White: https://cdn.dhtmlx.com/scheduler/6.0/skins/dhtmlxscheduler_contrast_white.css
-- Material: https://cdn.dhtmlx.com/scheduler/6.0/skins/dhtmlxscheduler_material.css
+- Terrace: https://cdn.dhtmlx.com/scheduler/6.0/dhtmlxscheduler_terrace.css
+- Flat: https://cdn.dhtmlx.com/scheduler/6.0/dhtmlxscheduler_flat.css
+- Contrast Black: https://cdn.dhtmlx.com/scheduler/6.0/dhtmlxscheduler_contrast_black.css
+- Contrast White: https://cdn.dhtmlx.com/scheduler/6.0/dhtmlxscheduler_contrast_white.css
+- Material: https://cdn.dhtmlx.com/scheduler/6.0/dhtmlxscheduler_material.css
 
 ## Particular Scheduler version, Uncompressed
 
@@ -82,8 +82,8 @@ Starting from v7.0, all skins are included in `dhtmlxscheduler.css` and selected
 
 Uncompressed skin files:
 
-- Terrace: https://cdn.dhtmlx.com/scheduler/8.0/sources/skins/dhtmlxscheduler_terrace.css
-- Flat: https://cdn.dhtmlx.com/scheduler/8.0/sources/skins/dhtmlxscheduler_flat.css
-- Contrast Black: https://cdn.dhtmlx.com/scheduler/8.0/sources/skins/dhtmlxscheduler_contrast_black.css
-- Contrast White: https://cdn.dhtmlx.com/scheduler/8.0/sources/skins/dhtmlxscheduler_contrast_white.css
-- Material: https://cdn.dhtmlx.com/scheduler/8.0/sources/skins/dhtmlxscheduler_material.css
+- Terrace: https://cdn.dhtmlx.com/scheduler/6.0/sources/skins/dhtmlxscheduler_terrace.css
+- Flat: https://cdn.dhtmlx.com/scheduler/6.0/sources/skins/dhtmlxscheduler_flat.css
+- Contrast Black: https://cdn.dhtmlx.com/scheduler/6.0/sources/skins/dhtmlxscheduler_contrast_black.css
+- Contrast White: https://cdn.dhtmlx.com/scheduler/6.0/sources/skins/dhtmlxscheduler_contrast_white.css
+- Material: https://cdn.dhtmlx.com/scheduler/6.0/sources/skins/dhtmlxscheduler_material.css

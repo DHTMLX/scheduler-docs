@@ -7,8 +7,8 @@ sidebar_label: "通用配置说明"
 
 为了自定义调度器的外观，库提供了三个主要对象:
 
-- <a href="api/overview/properties_overview.md">scheduler.config</a> - 用于设置日期、视图、控件等选项。
-- <a href="api/overview/templates_overview.md">scheduler.templates</a> - 用于格式化日期、标题、提示信息和样式的模板。
+- [scheduler.config](api/overview/properties_overview.md) - 用于设置日期、视图、控件等选项。
+- [scheduler.templates](api/api_overview.md#scheduler-templates) - 用于格式化日期、标题、提示信息和样式的模板。
 - [scheduler.xy](api/other/xy.md) - 定义调度器各元素尺寸的设置。
 
 此外，dhtmlxScheduler 还包含了[若干扩展](#extensions)，以增强组件功能。

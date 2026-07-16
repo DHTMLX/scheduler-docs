@@ -7,8 +7,8 @@ sidebar_label: "일반 설정 안내"
 
 스케줄러의 외관을 사용자 정의하려면, 라이브러리는 세 가지 주요 객체를 제공합니다:
 
-- <a href="api/overview/properties_overview.md">scheduler.config</a> - 날짜, 스케일, 컨트롤 등 다양한 옵션을 설정할 수 있습니다.
-- <a href="api/overview/templates_overview.md">scheduler.templates</a> - 날짜, 제목, 툴팁의 포맷 및 스타일링을 위한 템플릿을 제공합니다.
+- [scheduler.config](api/api_overview.md#scheduler-properties) - 날짜, 스케일, 컨트롤 등 다양한 옵션을 설정할 수 있습니다.
+- [scheduler.templates](api/api_overview.md#scheduler-templates) - 날짜, 제목, 툴팁의 포맷 및 스타일링을 위한 템플릿을 제공합니다.
 - [scheduler.xy](api/other/xy.md) - 다양한 스케줄러 요소의 크기를 정의하는 설정입니다.
 
 또한, dhtmlxScheduler는 컴포넌트의 기능을 확장하는 [여러 확장 기능](#extensions)을 포함하고 있습니다.

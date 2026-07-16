@@ -275,7 +275,7 @@ scheduler.config.day_column_padding = 0;
 
 自 v7.0 起，导入/导出功能已集成至 Scheduler 库中。
 
-如果之前为在线导出功能引入了 **https://export.dhtmlx.com/scheduler/api.js**，例如:
+如果之前为在线导出功能引入了 `https://export.dhtmlx.com/scheduler/api.js`，例如:
 
 ~~~js
 <script src="codebase/dhtmlxscheduler.js"></script>

@@ -39,7 +39,7 @@ This build is fully functional, but shows a message indicating that the library 
 ### Optional: Start a full evaluation period (recommended)
 
 Although the trial package installs without restrictions, you may also start an official evaluation through the website at
-[https://dhtmlx.com/docs/products/dhtmlxScheduler-for-Vuejs/download.shtml](https://dhtmlx.com/docs/products/dhtmlxScheduler-for-Vuejs/download.shtml).
+[https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml](https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml).
 
 Starting a formal evaluation gives you free technical support during the trial period.
 

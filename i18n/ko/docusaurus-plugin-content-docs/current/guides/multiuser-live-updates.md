@@ -365,4 +365,4 @@ remoteEvents.on({
    "value":{"type":"custom-action","value":value}}}
 ~~~
 
-이 가이드는 DHTMLX Scheduler에서 실시간 업데이트를 구현하고 사용자 정의하는 기초를 제공합니다. 전체 예제는 [GitHub 저장소](https://github.com/DHTMLX/scheduler-multiuser-backend-demo/.를 참고하십시오.
+이 가이드는 DHTMLX Scheduler에서 실시간 업데이트를 구현하고 사용자 정의하는 기초를 제공합니다. 전체 예제는 [GitHub 저장소](https://github.com/DHTMLX/scheduler-multiuser-backend-demo/).를 참고하십시오.
