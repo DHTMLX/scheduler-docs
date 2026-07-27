@@ -5,7 +5,7 @@ sidebar_label: "Server-Side Integration"
 
 # Server-Side Integration
 
-The recommended approach of connecting dhtmlxScheduler to a backend is to implement a RESTful API on the server and use the module on the client.
+The recommended approach of connecting dhtmlxScheduler to a backend is to implement a RESTful API on the server and use the DataProcessor module on the client.
 
 DataProcessor is a built-in module that monitors data changes in Scheduler and sends updates to the REST API in the specified format, allowing easy [integration with server-side platforms](integrations/howtostart-guides.md). When using an object data source, DataProcessor can be configured to provide callbacks for data changes, which you can utilize for data binding.
 
@@ -19,21 +19,6 @@ Generally, to load data from the server side using REST API, you need to:
 
 2. Create a DataProcessor instance using one of the two ways:
 
-- Initialize DataProcessor and attach it to the dhtmlxScheduler object:
-
-~~~js
-scheduler.init("scheduler_here", new Date(), "month");
-scheduler.load("apiUrl");
-
-const dp = new scheduler.DataProcessor("apiUrl");
-dp.init(scheduler);
-dp.setTransactionMode("REST");
-~~~
-
-:::note
-It is recommended to use the second method.
-:::
-
 - Call the [`createDataProcessor()`](api/method/createdataprocessor.md) method and pass an object with configuration options as its parameter:
 
 ~~~js
@@ -43,8 +28,19 @@ const dp = scheduler.createDataProcessor({
 });
 ~~~
 
-
 Check the detailed information in the next section.
+
+- Alternatively, initialize DataProcessor and attach it to the dhtmlxScheduler object:
+
+~~~js
+scheduler.init('scheduler_here', new Date(), 'month');
+scheduler.load('apiUrl');
+
+const dp = new scheduler.DataProcessor('apiUrl');
+dp.init(scheduler);
+dp.setTransactionMode('REST');
+~~~
+
 
 <h3 id="createdp">Creating DataProcessor</h3>
 
