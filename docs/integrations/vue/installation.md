@@ -115,6 +115,8 @@ Search your project for any remaining mentions of `@dhtmlx/trial-vue-scheduler`,
 npm token create --registry=https://npm.dhtmlx.com
 ~~~
 
+npm will prompt for a password. Use the same password that was used to log in to the private repository, which is the password from the Client Area.
+
 The token is printed once in the terminal output - copy it before closing the session, since it cannot be retrieved later. Then expose it through an `.npmrc` file that the build can read:
 
 
