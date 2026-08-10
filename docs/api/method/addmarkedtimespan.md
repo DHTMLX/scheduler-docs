@@ -114,15 +114,18 @@ days: new Date(2027, 6, 1) // blocks 2027-07-01
   </tr>
   <tr>
   <td rowspan="2"><b id="zones">zones</b></td>
-  <td>the period in minutes that should be limited</td>
+  <td>the period that should be limited. You can set it as minute pairs or as readable time ranges in the <code>"H:mm-H:mm"</code> or <code>"HH:mm-HH:mm"</code> format</td>
   </tr>
   <tr>
   <td colspan="2" >
 ~~~js
 // 2 limit blocks: 04:00-08:00, 12:00-15:00
 zones: [4 * 60, 8 * 60, 12 * 60, 15 * 60]
+// the same blocks in a readable format
+zones: ["4:00-8:00", "12:00-15:00"]
 zones: "fullday" // limits the entire day
 ~~~
+<p>Spaces around the dash are allowed, for example <code>"09:00 - 15:00"</code>. Use <code>"24:00"</code> as the end-of-day boundary.</p>
   </td>
   </tr>
   <tr>
@@ -226,7 +229,7 @@ Therefore, there are 2 acceptable combinations with specific set of properties:
 ~~~js
 const config = {
     days: 1,
-    zones: [9 * 60, 15 * 60],
+    zones: ["9:00-15:00"],
     css: "cssClassName",
     sections: {
         unit: 5
@@ -295,3 +298,6 @@ returns a DIV or an array of DIVs
 
 ### Related Guides
 - [Blocking and Marking Dates](guides/limits.md)
+
+### Change log
+- Support for the string format in the `zones` property was added in v8.0.
