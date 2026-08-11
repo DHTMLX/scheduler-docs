@@ -16,15 +16,15 @@ Before you start to create a new project, install [Node.js](https://nodejs.org/e
 
 You can create a basic React project using the following command:
 
-~~~
-npx create-vite my-react-scheduler-app --template react
+~~~bash
+npm create vite@latest my-react-scheduler-app -- --template react-ts
 ~~~
 
 ### Installation of dependencies
 
 Next you should go to the app directory. Let's call our project **my-react-scheduler-app** and run:
 
-~~~
+~~~bash
 cd my-react-scheduler-app
 ~~~
 
@@ -32,14 +32,14 @@ After that you should install dependencies and start the dev server. For this, y
 
 - if you use yarn, you need to call the following commands:
 
-~~~
-yarn install
+~~~bash
+yarn
 yarn dev
 ~~~
 
 - if you use npm, you need to call the following commands:
 
-~~~
+~~~bash
 npm install
 npm run dev
 ~~~
@@ -62,13 +62,13 @@ After you've got the Evaluation version of the Scheduler, you can install it wit
 
 - for npm:
 
-~~~
+~~~bash
 npm install @dhx/trial-scheduler
 ~~~
 
 - for yarn:
 
-~~~
+~~~bash
 yarn add @dhx/trial-scheduler
 ~~~
 
@@ -78,7 +78,7 @@ Alternatively, since the zip-package of the library is structured as an **npm** 
 ## Step 2. Component creation
 
 Now we should create a React component, to add a Scheduler into the application. Let's create the ***src/components/Scheduler*** folder. 
-Here we'll create the ***Scheduler.jsx***, ***Scheduler.css*** and ***index.js*** files.
+Here we'll create the ***Scheduler.tsx***, ***Scheduler.css*** and ***index.ts*** files.
 
 We need to create the ***Scheduler.css*** file and add styles for the *scheduler-container*:
 
@@ -93,19 +93,19 @@ We need to create the ***Scheduler.css*** file and add styles for the *scheduler
 To make the Scheduler container occupy the entire space of the body, you need to remove the default styles from the ***App.css*** file 
 located in the ***src*** folder and add the following one:
 
-~~~css
-#root {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
+~~~css title="src/App.css"
+#root, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
 }
 ~~~
 
-And add the ***index.js*** file with the following content:
+And add the ***index.ts*** file with the following content:
 
 
-~~~js title="src/components/Scheduler/index.js"
+~~~js title="src/components/Scheduler/index.ts"
 import Scheduler from './Scheduler';
 import './Scheduler.css';
 export default Scheduler;
@@ -113,19 +113,19 @@ export default Scheduler;
 
 ### Importing source files
 
-Open the newly created ***Scheduler.jsx*** file and import Scheduler source files. Note that:
+Open the newly created ***Scheduler.tsx*** file and import Scheduler source files. Note that:
 
 - if you've installed the Scheduler package from a local folder, your import paths will look like this:
 
 
-~~~js title="Scheduler.jsx"
+~~~js title="Scheduler.tsx"
 import { Scheduler } from 'dhtmlx-scheduler';
 import 'dhtmlx-scheduler/codebase/dhtmlxscheduler.css';
 ~~~
 
 - if you've chosen to install the trial version, the import paths should be as in:
 
-~~~js title="Scheduler.jsx"
+~~~js title="Scheduler.tsx"
 import { Scheduler } from '@dhx/trial-scheduler';
 import '@dhx/trial-scheduler/codebase/dhtmlxscheduler.css';
 ~~~
@@ -134,18 +134,20 @@ In this tutorial we will use the **trial** version of Scheduler.
 
 ### Setting the container and adding Scheduler
 
-To display Scheduler on the page, we need to set the container to render the component inside. Create the ***Scheduler.jsx*** file with the following code:
+To display Scheduler on the page, we need to set the container to render the component inside. Create the ***Scheduler.tsx*** file with the following code:
 
-~~~js title="src/components/Scheduler/Scheduler.jsx"
+~~~js title="src/components/Scheduler/Scheduler.tsx"
 import { useEffect, useRef } from "react";
 import { Scheduler } from "@dhx/trial-scheduler";
 import "@dhx/trial-scheduler/codebase/dhtmlxscheduler.css";
 
-export default function SchedulerView( ) {
-    let container = useRef();
+export default function SchedulerComponent() {
+    const containerRef = useRef<HTMLDivElement | null>(null);
     useEffect(() => {
+        if (!containerRef.current) {
+            return;
+        }
         let scheduler = Scheduler.getSchedulerInstance();
-        scheduler.skin = "terrace";
         scheduler.config.header = [
             "day",
             "week",
@@ -156,25 +158,25 @@ export default function SchedulerView( ) {
             "next",
         ];
 
-        scheduler.init(container.current, new Date(2024, 5, 10));
+        scheduler.init(containerRef.current, new Date(2027, 5, 10));
         return () => {
             scheduler.destructor();
-            container.current.innerHTML = "";
+            if (containerRef.current) {
+                containerRef.current.innerHTML = "";
+            }
         };
     }, []);
 
-    return (
-        <div ref="{container}" style="{{" width: "100%", height: "100%" }}></div>
-    );
+    return <div ref={containerRef} style={{ width: "100%", height: "100%" }}/>;
 }
 ~~~
 
 ## Step 3. Adding Scheduler into the app
 
-Now it's time to add the component into our app. Open ***src/App.jsx*** and use the *Scheduler* component instead of the default content by inserting the code below:
+Now it's time to add the component into our app. Open ***src/App.tsx*** and use the *Scheduler* component instead of the default content by inserting the code below:
 
-~~~js title="src/App.jsx"
-import Scheduler from "./components/Scheduler";
+~~~js title="src/App.tsx"
+import Scheduler from "./components/index";
 import "./App.css";
 
 function App() {
@@ -193,44 +195,62 @@ After that, when we start the app, we should see an empty Scheduler on a page:
 
 ## Step 4. Providing Data
 
-To add data into the Scheduler, we need to provide a data set. Let's create the ***data.js*** file in the ***src/*** directory and add some data into it:
+Before adding data to the Scheduler, let's create types for scheduler events and props that Scheduler will receive:
 
+~~~ts title="src/types.ts"
+export interface SchedulerEvent {
+    id: string | number;
+    text?: string;
+    start_date: string | Date;
+    end_date: string | Date;
+    [key: string]: unknown;
+}
 
-~~~js title="src/data.js"
-export function getData() {
-    const data = [
+export interface SchedulerComponentProps {
+    events: SchedulerEvent[];
+}
+~~~
+
+To add data into the Scheduler, we need to provide a data set. Let's create the ***data.ts*** file in the ***src/*** directory and add some data into it:
+
+~~~js title="src/data.ts"
+import type { SchedulerEvent } from "./types";
+
+export function getData(): SchedulerEvent[] {
+    const initialEvents: SchedulerEvent[] = [
         {
-            start_date: "2024-06-10 6:00",
-            end_date: "2024-06-10 8:00",
+            start_date: "2027-06-10 6:00",
+            end_date: "2027-06-10 12:00",
             text: "Event 1",
             id: 1,
         },
         {
-            start_date: "2024-06-13 10:00",
-            end_date: "2024-06-13 18:00",
+            start_date: "2027-06-13 10:00",
+            end_date: "2027-06-13 18:00",
             text: "Event 2",
             id: 2,
         },
     ];
-    return data;
+    return initialEvents;
 }
 ~~~
 
-And we should [pass props (our data)](https://react.dev/learn/passing-props-to-a-component) to a Scheduler component in ***App.jsx***:
+And we should [pass props (our data)](https://react.dev/learn/passing-props-to-a-component) to a Scheduler component in ***App.tsx***:
 
 
-~~~js title="App.jsx"
-import { getData } from "./data.js";
-import Scheduler from "./components/Scheduler";
+~~~js title="App.tsx"
+import { getData } from "./data.ts";
+import Scheduler from "./components/index";
 import "./App.css";
 
 function App() {
     return (
         <div className="scheduler-container">
-               <Scheduler events="{getData()}/">
+            <Scheduler events={getData()}/>
         </div>
     );
 }
+
 export default App;
 ~~~
 
@@ -241,12 +261,15 @@ And use props in the **scheduler.parse()** method in the Scheduler component:
 import { useEffect, useRef } from "react";
 import { Scheduler } from "@dhx/trial-scheduler";
 import "@dhx/trial-scheduler/codebase/dhtmlxscheduler.css";
+import type { SchedulerComponentProps } from "../types";
 
-export default function SchedulerView({events}) {
-    let container = useRef();
+export default function SchedulerComponent({events} : SchedulerComponentProps) {
+    const containerRef = useRef<HTMLDivElement | null>(null);
     useEffect(() => {
+        if (!containerRef.current) {
+          return;
+        }
         let scheduler = Scheduler.getSchedulerInstance();
-        scheduler.skin = "terrace";
         scheduler.config.header = [
             "day",
             "week",
@@ -257,17 +280,17 @@ export default function SchedulerView({events}) {
             "next",
         ];
 
-        scheduler.init(container.current, new Date(2024, 5, 10));
+        scheduler.init(containerRef.current, new Date(2027, 5, 10));
         scheduler.parse(events);
         return () => {
             scheduler.destructor();
-            container.current.innerHTML = "";
+            if (containerRef.current) {
+              containerRef.current.innerHTML = "";
+            }
         };
     }, []);
 
-    return (
-        <div ref="{container}" style="{{" width: "100%", height: "100%" }}></div>
-    );
+    return <div ref={containerRef} style={{ width: "100%", height: "100%" }}/>;
 }
 ~~~
 
