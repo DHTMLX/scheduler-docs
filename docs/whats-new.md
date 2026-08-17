@@ -8,6 +8,18 @@ sidebar_label: "What's New"
 If you are updating Scheduler from an older version, check [Migration From Older Versions](migration.md) for details.
 
 
+7.2.15
+-------------
+<span class='release_date'>August 17, 2026. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue where the macOS Option key was not recognized as Alt, so the [keyboard navigation](guides/keyboard-navigation.md) shortcuts for switching views did not work
+- Fix the issue where converting a [recurring event](guides/recurring-events.md) into a regular one replaced the event end date with the end date of the whole series
+- Fix the incorrect background and border colors of events in the [multisection events](views/timeline.md#assignment-of-events-to-several-sections) sample
+- Fix the performance bottleneck where repainting a single event scanned all rendered event nodes, which slowed down views repainting many events per frame
+
+
 7.2.14
 -------------
 <span class='release_date'>May 29, 2026. Bugfix release</span>
