@@ -139,7 +139,7 @@ scheduler.date.units_start = function (date) {
 
 Starting from version 4.1, you have a possibility to assign events to several units.
 
-![multiple_sections](/img/multiple_sections.png)
+![multiple_sections](/img/multiple_sections_units.png)
 
 
 To enable the possibility: 
