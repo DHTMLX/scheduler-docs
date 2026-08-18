@@ -14,7 +14,7 @@ The Week Agenda view is a combination of Week and Agenda views presenting a list
 ![weekagenda_view](/img/weekagenda_view.png)
 
 
-[WeekAgenda view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/24_week_agenda.html)
+[Week Agenda view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/24_week_agenda.html)
 
 
 ## Initialization
@@ -43,7 +43,7 @@ scheduler.plugins({
 scheduler.locale.labels.week_agenda_tab = "Week Agenda"; 
 ~~~
 
-[WeekAgenda view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/24_week_agenda.html)
+[Week Agenda view](https://docs.dhtmlx.com/scheduler/samples/03_extensions/24_week_agenda.html)
 
 ## GUI details 
 
@@ -54,7 +54,7 @@ scheduler.locale.labels.week_agenda_tab = "Week Agenda";
 ## Related guides
 
 - [Common Config Instructions](guides/configuration.md)
-- [WeekAgenda View Templates](views/weekagenda-view-templates.md)
+- [Week Agenda View Templates](views/weekagenda-view-templates.md)
 - [Loading Data](guides/loading-data.md)
 - [Skins](guides/skins.md)
 - [Localization](guides/localization.md)
