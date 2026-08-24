@@ -8,9 +8,9 @@ description: "Overview of the DHTMLX Scheduler JavaScript component. Start with 
 import Link from '@docusaurus/Link';
 import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 
-**DHTMLX Scheduler** is a highly configurable JavaScript event calendar component, complete with TypeScript definitions. It is designed for displaying and editing schedules in the browser. It integrates with React, Angular, Vue, and other frontend frameworks. DHTMLX Scheduler also supports AI-assisted development through the DHTMLX MCP Server, Agent Skills, and a structured API.
+**DHTMLX Scheduler** is a highly configurable JavaScript event calendar component, complete with TypeScript definitions. It is designed for displaying and editing schedules in the browser. It integrates with React, Angular, Vue and other frontend frameworks. DHTMLX Scheduler also supports AI-assisted development through the DHTMLX MCP Server, Agent Skills and a structured API.
 
-You can use it in project management, CRM, booking, healthcare, education, field service, SaaS, and other business applications that require an interactive calendar or event-planning timeline.
+You can use it in project management, CRM, booking, healthcare, education, field service, SaaS and other business applications that require an interactive calendar or event-planning timeline.
 
 ## Quick start by framework
 
@@ -73,7 +73,7 @@ Some samples demonstrate PRO functionality, so check the [Standard vs PRO compar
 
 ## Developer resources
 
-- [Installation guide](guides/installation.md) for Standard, trial, and PRO setup flows
+- [Installation guide](guides/installation.md) for Standard, trial and PRO setup flows
 - [Standard vs PRO comparison](guides/editions-comparison.md) for feature differences between editions
 - Public [npm package](https://www.npmjs.com/package/dhtmlx-scheduler) of the JavaScript Scheduler under the Standard edition
 - [GitHub repository](https://github.com/DHTMLX/scheduler) for the source code of the Standard edition and issue tracking
@@ -82,20 +82,20 @@ Some samples demonstrate PRO functionality, so check the [Standard vs PRO compar
 
 ## Scheduler feature highlights
 
-DHTMLX Scheduler includes multiple calendar views, rich event editing, and resource planning tools.
+DHTMLX Scheduler includes multiple calendar views, rich event editing and resource planning tools.
 
 ### Calendar views and navigation
 
 At its core, Scheduler renders classic calendar views and lets users move through time. It includes:
 
-- [Day](views/day.md), [Week](views/week.md), [Month](views/month.md), [Year](views/year.md), and [Agenda](views/agenda.md) views for visualizing schedules at any scale.
+- [Day](views/day.md), [Week](views/week.md), [Month](views/month.md), [Year](views/year.md) and [Agenda](views/agenda.md) views for visualizing schedules at any scale.
 - [Configurable header](api/config/header.md) with navigation options and view tabs.
 
 ### Event creation and editing
 
 The component provides "calendar-first" editing, i.e. users can create or update events quickly right on the calendar:
 
-- [Drag-create](api/config/drag_create.md), [drag-resize](api/config/drag_resize.md), and [drag-move](api/config/drag_move.md) interactions for events within the scheduler.
+- [Drag-create](api/config/drag_create.md), [drag-resize](api/config/drag_resize.md) and [drag-move](api/config/drag_move.md) interactions for events within the scheduler.
 - [Flexible lightbox editor](guides/configuring-the-lightbox.md) for full event details, plus optional [Quick Info](guides/quick-info.md) popups for quick edits.
 - [Cross-scheduler drag-and-drop](guides/drag-between.md) for moving events between different schedulers
 - [Drag-and-drop integration with external sources](https://dhtmlx.com/blog/creating-task-backlog-drag-drop-support-dhtmlx-scheduler/) for dragging records from separate components into the scheduler as new events.
@@ -125,7 +125,7 @@ Teams often need to share schedules, keep local backups, or sync with external c
 
 ### Customization and styling
 
-The calendar's appearance can be adjusted at every level, from a full theme to a single event box, through:
+The calendar's appearance can be adjusted at every level from a full theme to a single event box through:
 
 - A set of built-in [skins](guides/skins.md), with support for [deep customization](guides/custom-skins.md) and creating new themes.
 - Templates for [event content, headers](guides/custom-events-content.md), [tooltips](guides/tooltips.md) and other UI fragments.
@@ -137,7 +137,7 @@ DHTMLX Scheduler is available in two editions: **Standard** and **PRO**. You can
 
 - **Standard edition.** Distributed via public package sources (npm, CDN), it covers the core interactive calendar features.
 - **[Official trial](https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml).** It lets you evaluate the full PRO feature set and receive technical support during the trial period.
-- **[PRO edition](https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing).** Built for production environments, it includes advanced scheduling features, official support, and commercial licensing. It is installed from a private npm registry or added manually.
+- **[PRO edition](https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing).** Built for production environments, it includes advanced scheduling features, official support and commercial licensing. It is installed from a private npm registry or added manually.
 
 To see the exact feature differences between editions, check the [Standard vs PRO comparison](guides/editions-comparison.md). For the setup flow of each option, see the [installation guide](guides/installation.md).
 
@@ -155,7 +155,7 @@ For AI-assisted development, start with the DHTMLX Scheduler guides created spec
 DHTMLX Scheduler lets you connect to any backend by implementing a RESTful API on the server:
 
 - Data is typically loaded and saved as JSON for [events](guides/loading-data.md) and their [recurrence rules](guides/recurring-events.md).
-- The built-in [DataProcessor](guides/server-integration.md) helps route create, update, and delete operations to your server.
+- The built-in [DataProcessor](guides/server-integration.md) helps route create, update and delete operations to your server.
 - There are tutorials for popular backend platforms and frameworks ([Node.js](integrations/node/howtostart-nodejs.md), [ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md), [Laravel](integrations/php/howtostart-php-laravel.md), [Ruby on Rails](integrations/other/howtostart-ruby.md), etc.) that cover CRUD operations and best practices for syncing Scheduler with your database.
 
 ## What's next
@@ -163,7 +163,7 @@ DHTMLX Scheduler lets you connect to any backend by implementing a RESTful API o
 If you are just getting started, proceed as follows:
 
 1. Refer to the [How to start guide](integrations/howtostart-guides.md) for your preferred front-end framework or plain JavaScript.
-2. Configure the [header](api/config/header.md), [views](views.md), [templates](guides/templates.md), and editing behavior via the [Lightbox](guides/configuring-the-lightbox.md).
+2. Configure the [header](api/config/header.md), [views](views.md), [templates](guides/templates.md) and editing behavior via the [Lightbox](guides/configuring-the-lightbox.md).
 3. Enable the extensions you need, such as [Recurring events](guides/recurring-events.md), [Timeline/Units](views/timeline.md) in PRO, [Quick Info](guides/quick-info.md), [Tooltips](guides/tooltips.md).
 4. Connect to your backend, set up the [Server-Side Integration](guides/server-integration.md) and application endpoints for events.
 5. Explore [Guides](guides.md) and [API reference](api/api_overview.md) for deeper customization such as templates, events, and extensions.
