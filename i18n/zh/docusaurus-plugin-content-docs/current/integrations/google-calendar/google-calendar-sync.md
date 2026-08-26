@@ -35,7 +35,7 @@ description: "实现一个 Node.js + Express 集成，将 DHTMLX Scheduler 事�
 ## 演示仓库
 
 与本指南匹配的完整可运行项目可在 GitHub 上获取：
-- https://github.com/dhtmlx/scheduler-google-auth-demo
+- https://github.com/dhtmlx/scheduler-google-calendar-demo
 
 该指南解释了关键步骤并展示了重要的集成代码。仓库是“完整可运行的参考实现”。
 
@@ -49,8 +49,8 @@ description: "实现一个 Node.js + Express 集成，将 DHTMLX Scheduler 事�
 
 - 克隆仓库：
 ~~~bash title="Terminal"
-git clone https://github.com/dhtmlx/scheduler-google-auth-demo.git
-cd scheduler-google-auth-demo
+git clone https://github.com/dhtmlx/scheduler-google-calendar-demo.git
+cd scheduler-google-calendar-demo
 ~~~
 
 如果你的项目需要从私有注册表安装 `@dhx/*` 包，请配置 npm：
@@ -160,7 +160,7 @@ http://localhost:3000
 一个典型的结构是：
 
 ~~~text title="Project structure"
-scheduler-google-auth-demo/
+scheduler-google-calendar-demo/
   client/
     index.ejs
     main.ts

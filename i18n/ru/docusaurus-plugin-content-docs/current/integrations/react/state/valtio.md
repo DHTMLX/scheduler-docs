@@ -15,7 +15,7 @@ description: Управляйте состоянием React Scheduler с пом
 - откат/повтор на основе снимков (события + конфигурация)
 
 :::note
-Полный исходный код доступен [на GitHub](https://github.com/nicetip/react-scheduler-valtio-starter).
+Полный исходный код доступен [на GitHub](https://github.com/DHTMLX/react-scheduler-valtio-starter).
 :::
 
 ## Требования

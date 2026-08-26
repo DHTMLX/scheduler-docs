@@ -1,63 +1,89 @@
 ---
 title: "Полный список CDN-ссылок"
-sidebar_label: "Полный список CDN-ссылок"
+sidebar_label: "CDN-ссылки"
 ---
 
 # Полный список CDN-ссылок
 
-В этой статье представлен полный набор ссылок для подключения функционала Scheduler через CDN. Каждый раздел посвящён определённой версии Scheduler:
+В этой статье перечислены CDN-ссылки для подключения **dhtmlxScheduler** к вашему приложению.
 
-- Основные файлы - *dhtmlxscheduler.js* и *dhtmlxscheduler.css*, содержащие основные возможности
-- Скины - ссылки на все доступные [скины](guides/skins.md)
+Scheduler состоит из двух основных файлов:
 
-:::note
-Начиная с версии v6.0, все [расширения](guides/extensions-list.md) включены в файл *dhtmlxscheduler.js*. Если вы используете dhtmlxScheduler 5.3 или более раннюю версию, ознакомьтесь со статьёй по [миграции](migration.md#53---60).
-:::
+- **JavaScript:** `dhtmlxscheduler.js`
+- **Стили:** `dhtmlxscheduler.css`
 
-## Последняя версия Scheduler
 
-Чтобы использовать последнюю версию библиотеки, укажите путь **https://cdn.dhtmlx.com/scheduler/edge/...**
+## Последняя версия Scheduler (edge)
 
-Основные файлы: [JS](https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js), [CSS](https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css)
+Используйте:
 
-Скины: [Terrace](https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_terrace.css),
-[Material](https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_material.css),
-[Flat](https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_flat.css),
-[Contrast Black](https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_contrast_black.css),
-[Contrast White](https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_contrast_white.css).
+`https://cdn.dhtmlx.com/scheduler/edge/...`
 
-## Последняя версия Scheduler, не сжатая
+### Основные файлы
 
-Для получения не сжатых исходников последней версии используйте путь **https://cdn.dhtmlx.com/scheduler/edge/sources/...**
+- JS: https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js
+- CSS: https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css
 
-Основные файлы: [JS](https://cdn.dhtmlx.com/scheduler/edge/sources/dhtmlxscheduler.js), [CSS](https://cdn.dhtmlx.com/scheduler/edge/sources/dhtmlxscheduler.css)
 
-Скины: [Terrace](https://cdn.dhtmlx.com/scheduler/edge/sources/skins/dhtmlxscheduler_terrace.css),
-[Material](https://cdn.dhtmlx.com/scheduler/edge/sources/skins/dhtmlxscheduler_material.css),
-[Flat](https://cdn.dhtmlx.com/scheduler/edge/sources/skins/dhtmlxscheduler_flat.css),
-[Contrast Black](https://cdn.dhtmlx.com/scheduler/edge/sources/skins/dhtmlxscheduler_contrast_black.css),
-[Contrast White](https://cdn.dhtmlx.com/scheduler/edge/sources/skins/dhtmlxscheduler_contrast_white.css).
+## Последняя версия Scheduler (edge), Несжатая
 
-## Конкретная версия Scheduler
+Используйте:
 
-Чтобы подключить определённую версию библиотеки, укажите путь **https://cdn.dhtmlx.com/scheduler/[version_number]/...**
+`https://cdn.dhtmlx.com/scheduler/edge/sources/...`
 
-Основные файлы: [JS](https://cdn.dhtmlx.com/scheduler/4.3/dhtmlxscheduler.js), [CSS](https://cdn.dhtmlx.com/scheduler/4.3/dhtmlxscheduler.css)
+### Основные файлы
 
-Скины: [Terrace](https://cdn.dhtmlx.com/scheduler/5.0/dhtmlxscheduler_terrace.css),
-[Material](https://cdn.dhtmlx.com/scheduler/5.0/dhtmlxscheduler_material.css),
-[Flat](https://cdn.dhtmlx.com/scheduler/5.0/dhtmlxscheduler_flat.css),
-[Contrast Black](https://cdn.dhtmlx.com/scheduler/5.0/dhtmlxscheduler_contrast_black.css),
-[Contrast White](https://cdn.dhtmlx.com/scheduler/5.0/dhtmlxscheduler_contrast_white.css).
+- JS: https://cdn.dhtmlx.com/scheduler/edge/sources/dhtmlxscheduler.js
+- CSS: https://cdn.dhtmlx.com/scheduler/edge/sources/dhtmlxscheduler.css
 
-## Конкретная версия Scheduler, не сжатая
 
-Чтобы использовать не сжатые исходники выбранной версии, укажите путь **https://cdn.dhtmlx.com/scheduler/[version_number]/sources/...**
+## Определённая версия Scheduler
 
-Основные файлы: [JS](https://cdn.dhtmlx.com/scheduler/4.3/sources/dhtmlxscheduler.js), [CSS](https://cdn.dhtmlx.com/scheduler/4.3/sources/skins/dhtmlxscheduler.css)
+Используйте:
 
-Скины: [Terrace](https://cdn.dhtmlx.com/scheduler/5.0/sources/skins/dhtmlxscheduler_terrace.css),
-[Material](https://cdn.dhtmlx.com/scheduler/5.0/sources/skins/dhtmlxscheduler_material.css),
-[Flat](https://cdn.dhtmlx.com/scheduler/5.0/sources/skins/dhtmlxscheduler_flat.css),
-[Contrast Black](https://cdn.dhtmlx.com/scheduler/5.0/sources/skins/dhtmlxscheduler_contrast_black.css),
-[Contrast White](https://cdn.dhtmlx.com/scheduler/5.0/sources/skins/dhtmlxscheduler_contrast_white.css).
+`https://cdn.dhtmlx.com/scheduler/[version_number]/...`
+
+Значение `[version_number]` задаёт версию пакета в формате `major.minor`, например **7.0**, **6.0**, **5.3** и т. д. Наш CDN всегда предоставляет последнюю патч-версию для каждого выпуска major/minor.
+
+### Основные файлы
+
+- JS: https://cdn.dhtmlx.com/scheduler/7.0/dhtmlxscheduler.js
+- CSS: https://cdn.dhtmlx.com/scheduler/7.0/dhtmlxscheduler.css
+
+### Скины (только для v6.0 и более ранних)
+
+Отдельные файлы скинов доступны в версиях v6.0 и ранее.
+Начиная с v7.0, все скины входят в `dhtmlxscheduler.css` и выбираются через `scheduler.skin`/`scheduler.setSkin()`, пожалуйста, ознакомьтесь с [Руководство по миграции](migration.md) для получения более подробной информации.
+
+- Terrace: https://cdn.dhtmlx.com/scheduler/6.0/dhtmlxscheduler_terrace.css
+- Flat: https://cdn.dhtmlx.com/scheduler/6.0/dhtmlxscheduler_flat.css
+- Contrast Black: https://cdn.dhtmlx.com/scheduler/6.0/dhtmlxscheduler_contrast_black.css
+- Contrast White: https://cdn.dhtmlx.com/scheduler/6.0/dhtmlxscheduler_contrast_white.css
+- Material: https://cdn.dhtmlx.com/scheduler/6.0/dhtmlxscheduler_material.css
+
+## Определённая версия Scheduler, Несжатая
+
+Используйте:
+
+`https://cdn.dhtmlx.com/scheduler/[version_number]/sources/...`
+
+Значение `[version_number]` задаёт версию пакета в формате `major.minor`, например **7.0**, **6.0**, **5.3** и т. д. Наш CDN всегда предоставляет последнюю патч-версию для каждого выпуска major/minor.
+
+### Основные файлы
+
+- JS: https://cdn.dhtmlx.com/scheduler/7.0/sources/dhtmlxscheduler.js
+- CSS: https://cdn.dhtmlx.com/scheduler/7.0/sources/dhtmlxscheduler.css
+
+
+### Скины (только для v6.0 и более ранних)
+
+Отдельные файлы скинов доступны в версиях v6.0 и ранее.
+Начиная с v7.0, все скины входят в `dhtmlxscheduler.css` и выбираются через `scheduler.skin`/`scheduler.setSkin()`, пожалуйста, ознакомьтесь с [Руководство по миграции](migration.md) для получения более подробной информации.
+
+Несжатые файлы скинов:
+
+- Terrace: https://cdn.dhtmlx.com/scheduler/6.0/sources/skins/dhtmlxscheduler_terrace.css
+- Flat: https://cdn.dhtmlx.com/scheduler/6.0/sources/skins/dhtmlxscheduler_flat.css
+- Contrast Black: https://cdn.dhtmlx.com/scheduler/6.0/sources/skins/dhtmlxscheduler_contrast_black.css
+- Contrast White: https://cdn.dhtmlx.com/scheduler/6.0/sources/skins/dhtmlxscheduler_contrast_white.css
+- Material: https://cdn.dhtmlx.com/scheduler/6.0/sources/skins/dhtmlxscheduler_material.css

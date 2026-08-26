@@ -1,63 +1,89 @@
 ---
 title: "Vollständige Liste der CDN-Links"
-sidebar_label: "Vollständige Liste der CDN-Links"
+sidebar_label: "CDN-Links"
 ---
 
 # Vollständige Liste der CDN-Links
 
-Dieser Artikel bietet eine vollständige Sammlung von Links, um die Scheduler-Funktionalität über das CDN einzubinden. Jeder Abschnitt ist einer bestimmten Scheduler-Version gewidmet:
+Dieser Artikel führt CDN-Links auf, um **dhtmlxScheduler** in Ihrer Anwendung einzubinden.
 
-- Core-Dateien - die *dhtmlxscheduler.js*- und *dhtmlxscheduler.css*-Dateien, die die Hauptfunktionen enthalten
-- Skins - Links zu allen verfügbaren [Skins](guides/skins.md)
+Scheduler besteht aus zwei Kern-Dateien:
 
-:::note
-Ab Version v6.0 sind alle [Erweiterungen](guides/extensions-list.md) im *dhtmlxscheduler.js*-File gebündelt. Wenn Sie dhtmlxScheduler 5.3 oder älter verwenden, lesen Sie bitte den [Migrationsartikel](migration.md#53---60).
-:::
+- **JavaScript:** `dhtmlxscheduler.js`
+- **Styles:** `dhtmlxscheduler.css`
 
-## Neueste Scheduler-Version
 
-Um die neueste Version der Bibliothek zu verwenden, setzen Sie den Quellpfad auf **https://cdn.dhtmlx.com/scheduler/edge/...**
+## Neueste Scheduler-Version (edge)
 
-Core-Dateien: [JS](https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js), [CSS](https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css)
+Verwenden Sie:
 
-Skins: [Terrace](https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_terrace.css),
-[Material](https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_material.css),
-[Flat](https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_flat.css),
-[Contrast Black](https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_contrast_black.css),
-[Contrast White](https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_contrast_white.css).
+`https://cdn.dhtmlx.com/scheduler/edge/...`
 
-## Neueste Scheduler-Version, Unkomprimiert
+### Kernel-Dateien
 
-Für unkomprimierte Quellen der neuesten Version verwenden Sie den Pfad **https://cdn.dhtmlx.com/scheduler/edge/sources/...**
+- JS: https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js
+- CSS: https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.css
 
-Core-Dateien: [JS](https://cdn.dhtmlx.com/scheduler/edge/sources/dhtmlxscheduler.js), [CSS](https://cdn.dhtmlx.com/scheduler/edge/sources/dhtmlxscheduler.css)
 
-Skins: [Terrace](https://cdn.dhtmlx.com/scheduler/edge/sources/skins/dhtmlxscheduler_terrace.css),
-[Material](https://cdn.dhtmlx.com/scheduler/edge/sources/skins/dhtmlxscheduler_material.css),
-[Flat](https://cdn.dhtmlx.com/scheduler/edge/sources/skins/dhtmlxscheduler_flat.css),
-[Contrast Black](https://cdn.dhtmlx.com/scheduler/edge/sources/skins/dhtmlxscheduler_contrast_black.css),
-[Contrast White](https://cdn.dhtmlx.com/scheduler/edge/sources/skins/dhtmlxscheduler_contrast_white.css).
+## Neueste Scheduler-Version (edge), Unkomprimiert
+
+Verwenden Sie:
+
+`https://cdn.dhtmlx.com/scheduler/edge/sources/...`
+
+### Kern-Dateien
+
+- JS: https://cdn.dhtmlx.com/scheduler/edge/sources/dhtmlxscheduler.js
+- CSS: https://cdn.dhtmlx.com/scheduler/edge/sources/dhtmlxscheduler.css
+
 
 ## Bestimmte Scheduler-Version
 
-Um auf eine bestimmte Version der Bibliothek zu verweisen, setzen Sie den Quellpfad auf **https://cdn.dhtmlx.com/scheduler/[version_number]/...**
+Verwenden Sie:
 
-Core-Dateien: [JS](https://cdn.dhtmlx.com/scheduler/4.3/dhtmlxscheduler.js), [CSS](https://cdn.dhtmlx.com/scheduler/4.3/dhtmlxscheduler.css)
+`https://cdn.dhtmlx.com/scheduler/[version_number]/...`
 
-Skins: [Terrace](https://cdn.dhtmlx.com/scheduler/5.0/dhtmlxscheduler_terrace.css),
-[Material](https://cdn.dhtmlx.com/scheduler/5.0/dhtmlxscheduler_material.css),
-[Flat](https://cdn.dhtmlx.com/scheduler/5.0/dhtmlxscheduler_flat.css),
-[Contrast Black](https://cdn.dhtmlx.com/scheduler/5.0/dhtmlxscheduler_contrast_black.css),
-[Contrast White](https://cdn.dhtmlx.com/scheduler/5.0/dhtmlxscheduler_contrast_white.css).
+Die `[version_number]` gibt die major.minor-Version des Pakets an, zum Beispiel **7.0**, **6.0**, **5.3** usw. Unser CDN stellt immer die neueste Patch-Version für jede major/minor-Veröffentlichung bereit.
 
-## Bestimmte Scheduler-Version, Unkomprimiert 
+### Kern-Dateien
 
-Um unkomprimierte Quellen einer bestimmten Version zu verwenden, setzen Sie den Pfad auf **https://cdn.dhtmlx.com/scheduler/[version_number]/sources/...**
+- JS: https://cdn.dhtmlx.com/scheduler/7.0/dhtmlxscheduler.js
+- CSS: https://cdn.dhtmlx.com/scheduler/7.0/dhtmlxscheduler.css
 
-Core-Dateien: [JS](https://cdn.dhtmlx.com/scheduler/4.3/sources/dhtmlxscheduler.js), [CSS](https://cdn.dhtmlx.com/scheduler/4.3/sources/skins/dhtmlxscheduler.css)
+### Skins (nur für v6.0 und älter)
 
-Skins: [Terrace](https://cdn.dhtmlx.com/scheduler/5.0/sources/skins/dhtmlxscheduler_terrace.css),
-[Material](https://cdn.dhtmlx.com/scheduler/5.0/sources/skins/dhtmlxscheduler_material.css),
-[Flat](https://cdn.dhtmlx.com/scheduler/5.0/sources/skins/dhtmlxscheduler_flat.css),
-[Contrast Black](https://cdn.dhtmlx.com/scheduler/5.0/sources/skins/dhtmlxscheduler_contrast_black.css),
-[Contrast White](https://cdn.dhtmlx.com/scheduler/5.0/sources/skins/dhtmlxscheduler_contrast_white.css).
+Getrennte Skin-Dateien sind in v6.0 und älter verfügbar.
+Ab Version v7.0 sind alle Skins in `dhtmlxscheduler.css` enthalten und über `scheduler.skin`/`scheduler.setSkin()` auswählbar, bitte prüfen Sie den [Migrationsleitfaden](migration.md) für weitere Details.
+
+- Terrace: https://cdn.dhtmlx.com/scheduler/6.0/dhtmlxscheduler_terrace.css
+- Flat: https://cdn.dhtmlx.com/scheduler/6.0/dhtmlxscheduler_flat.css
+- Contrast Black: https://cdn.dhtmlx.com/scheduler/6.0/dhtmlxscheduler_contrast_black.css
+- Contrast White: https://cdn.dhtmlx.com/scheduler/6.0/dhtmlxscheduler_contrast_white.css
+- Material: https://cdn.dhtmlx.com/scheduler/6.0/dhtmlxscheduler_material.css
+
+## Bestimmte Scheduler-Version, Unkomprimiert
+
+Verwenden Sie:
+
+`https://cdn.dhtmlx.com/scheduler/[version_number]/sources/...`
+
+Die `[version_number]` gibt die major.minor-Version des Pakets an, zum Beispiel **7.0**, **6.0**, **5.3** usw. Unser CDN liefert immer die neueste Patch-Version für jede major/minor-Veröffentlichung.
+
+### Kern-Dateien
+
+- JS: https://cdn.dhtmlx.com/scheduler/7.0/sources/dhtmlxscheduler.js
+- CSS: https://cdn.dhtmlx.com/scheduler/7.0/sources/dhtmlxscheduler.css
+
+
+### Skins (nur für v6.0 und älter)
+
+Getrennte Skin-Dateien sind in v6.0 und älter verfügbar.
+Ab Version v7.0 sind alle Skins in `dhtmlxscheduler.css` enthalten und über `scheduler.skin`/`scheduler.setSkin()` auswählbar, bitte prüfen Sie den [Migrationsleitfaden](migration.md) für weitere Details.
+
+Unkomprimierte Skin-Dateien:
+
+- Terrace: https://cdn.dhtmlx.com/scheduler/6.0/sources/skins/dhtmlxscheduler_terrace.css
+- Flat: https://cdn.dhtmlx.com/scheduler/6.0/sources/skins/dhtmlxscheduler_flat.css
+- Contrast Black: https://cdn.dhtmlx.com/scheduler/6.0/sources/skins/dhtmlxscheduler_contrast_black.css
+- Contrast White: https://cdn.dhtmlx.com/scheduler/6.0/sources/skins/dhtmlxscheduler_contrast_white.css
+- Material: https://cdn.dhtmlx.com/scheduler/6.0/sources/skins/dhtmlxscheduler_material.css

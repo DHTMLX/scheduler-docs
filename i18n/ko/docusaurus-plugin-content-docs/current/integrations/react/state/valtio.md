@@ -15,7 +15,7 @@ description: Valtio 프록시 저장소로 React Scheduler의 상태를 관리�
 - 스냅샷 기반 undo/redo(이벤트 + 구성)
 
 :::note
-전체 소스 코드는 [GitHub에서 확인 가능](https://github.com/nicetip/react-scheduler-valtio-starter).
+전체 소스 코드는 [GitHub에서 확인 가능](https://github.com/DHTMLX/react-scheduler-valtio-starter).
 :::
 
 ## Prerequisites

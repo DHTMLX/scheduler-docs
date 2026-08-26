@@ -15,7 +15,7 @@ description: 使用 Valtio 代理存储管理 React Scheduler 的状态，通过
 - 基于快照的撤销/重做（事件 + 配置）
 
 :::note
-完整的源代码可在 GitHub 上查看：[GitHub 演示仓库](https://github.com/nicetip/react-scheduler-valtio-starter)。
+完整的源代码可在 GitHub 上查看：[GitHub 演示仓库](https://github.com/DHTMLX/react-scheduler-valtio-starter)。
 :::
 
 ## 前提条件

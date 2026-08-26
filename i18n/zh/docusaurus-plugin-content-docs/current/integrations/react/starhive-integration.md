@@ -1,76 +1,76 @@
+--- 
+title: React Scheduler 与 Starhive 集成
+sidebar_label: Starhive 快速入门
+description: "通过 Next.js API 路由，将 DHTMLX React Scheduler 连接到 Starhive NoSQL 后端。"
 ---
-title: React Scheduler and Starhive Integration
-sidebar_label: Starhive Quick Start
-description: "Connect DHTMLX React Scheduler to a Starhive NoSQL backend via Next.js API routes."
----
 
-# React Scheduler and Starhive Integration
+# React Scheduler 与 Starhive 集成
 
-This tutorial connects **React Scheduler** to a **Starhive** NoSQL backend through Next.js Route Handlers. Starhive provides a typed schema and a generated TypeScript client, so the API layer stays minimal: one endpoint loads events and resources, another handles create / update / delete.
+本教程通过 Next.js Route Handlers 将 **React Scheduler** 连接到一个 **Starhive** NoSQL 后端。Starhive 提供带类型的架构和一个生成的 TypeScript 客户端，因此 API 层保持尽量简洁：一个端点用于加载事件和资源，另一个用于创建 / 更新 / 删除。
 
-You will build:
+你将构建：
 
-- a Next.js page that hosts the Scheduler in a Client Component
-- `/api/load` - fetches events and resources from Starhive on first render
-- `/api/event` (POST) and `/api/event/[id]` (PUT, DELETE) - write paths used by the Scheduler `dataBridge`
+- 一个在客户端组件中托管 Scheduler 的 Next.js 页面
+- `/api/load` - 首次渲染时从 Starhive 获取事件与资源
+- `/api/event`（POST）和 `/api/event/[id]`（PUT、DELETE） - Scheduler `dataBridge` 使用的写入路径
 
 :::note
-The complete source code is [available on GitHub](https://github.com/DHTMLX/react-scheduler-starhive-demo).
+完整的源代码可在 [GitHub 上获取](https://github.com/DHTMLX/react-scheduler-starhive-demo)。
 :::
 
-## Prerequisites
+## 前提条件
 
-- Next.js + React + TypeScript basics
+- Next.js + React + TypeScript 的基础知识
 - Node.js 18+
-- A [Starhive](https://starhive.com/) account (the 30-day trial is sufficient)
+- 一个 [Starhive](https://starhive.com/) 帐户（30 天试用即可）
 
-## Step 1. Create the project
+## 步骤 1. 创建项目
 
 ```bash
 npx create-next-app@latest react-scheduler-starhive-demo
 cd react-scheduler-starhive-demo
 ```
 
-Install React Scheduler as described in the [React Scheduler installation guide](integrations/react/installation.md). For evaluation:
+按照 [React Scheduler 安装指南](integrations/react/installation.md) 的指引安装 React Scheduler。为了评估：
 
 ```bash
 npm install @dhtmlx/trial-react-scheduler
 ```
 
-If you already use the Professional package, replace `@dhtmlx/trial-react-scheduler` with `@dhx/react-scheduler` in commands and imports.
+如果你已使用 Professional 版本，请将命令及导入中的 `@dhtmlx/trial-react-scheduler` 替换为 `@dhx/react-scheduler`。
 
-You also need `axios` - it's a peer dependency of the generated Starhive TypeScript client. 
+你还需要 `axios` —— 它是生成的 Starhive TypeScript 客户端的对等依赖项。
 
 ```bash
 npm install axios
 ```
 
-## Step 2. Set up the Starhive space
+## 步骤 2. 设置 Starhive 空间
 
-After signing in, click **+ Create** in the top right corner and name the space `Scheduler`.
+登录后，在右上角点击 **+ Create**，将空间命名为 `Scheduler`。
 
-Inside the space, create two types: `Resources` and `Events`. Resources hold the rows of the timeline (teams, people, rooms, etc.). Events reference one Resource each.
+在空间内创建两个类型：`Resources` 与 `Events`。Resources 负责时间线的行（团队、人员、房间等）。Events 参考每一个 Resource。
 
-Add the following attributes via the **+ Attribute** button. Starhive autogenerates the `id` for each item, so you don't need to declare it.
+通过 **+ Attribute** 按钮添加以下属性。Starhive 会为每个项自动生成 `id`，因此你不需要显式声明它。
 
-**Resources type**
+**Resources 类型**
 
-| Field   | Type |
-| ------- | ---- |
+| 字段 | 类型 |
+| ---- | ---- |
 | `label` | Text |
 
-**Events type**
+**Events 类型**
 
-| Field         | Type                       |
-| ------------- | -------------------------- |
-| `text`        | Text                       |
-| `start_date`  | Date & Time                |
-| `end_date`    | Date & Time                |
-| `resource_id` | Reference → Resources      |
+| 字段 | 类型 |
+| ---- | ---- |
+| `text` | Text |
+| `start_date` | Date & Time |
+| `end_date` | Date & Time |
+| `resource_id` | Reference → Resources |
 
-## Step 3. Import sample data
+## 步骤 3. 导入示例数据
 
-Create `scheduler_resources.csv`:
+创建 `scheduler_resources.csv`：
 
 ```csv
 label
@@ -81,7 +81,7 @@ label
 "Security Team"
 ```
 
-And `scheduler_events.csv`:
+以及 `scheduler_events.csv`：
 
 ```csv
 text,start_date,end_date,resource_id
@@ -94,21 +94,21 @@ text,start_date,end_date,resource_id
 "Security Scan","2026-04-01T13:00:00","2026-04-01T15:30:00","Security Team"
 ```
 
-In the Starhive UI, open the type and click **CSV import** for each file.
+在 Starhive UI 中打开各类型并为每个文件点击 CSV 导入。
 
-## Step 4. Generate and copy the schema
+## 步骤 4. 生成并复制模式
 
-Go to **Settings → API Connectors**. Select the `Scheduler` space, set the language to TypeScript, click **Generate**, then **Download**.
+前往 Settings → API Connectors。选择 `Scheduler` 空间，将语言设为 TypeScript，点击 Generate，然后 Download。
 
-Extract the zip, locate the `starhive` folder under `project/src/io/`, and copy it into `lib/starhive/` in your Next.js project. The generated files contain workspace-specific UUIDs, so you'll repeat this step whenever the schema changes or you switch workspaces.
+解压缩 ZIP，在 `project/src/io/` 下找到 `starhive` 文件夹，并将其拷贝到你 Next.js 项目的 `lib/starhive/` 目录中。生成的文件包含工作区特定的 UUID，因此每当模式变化或切换工作区时你都需要重复此步骤。
 
 :::note
-At the time of writing, the Starhive TypeScript generator produces output that does not pass strict TypeScript: a missing `Sla.ts` reference, a missing `visitSlaAttribute` implementation in the inline `AttributeVisitor` literal, and a `client.request<T>` call against an `any`-typed field (TS2347). The companion demo repo ships three minimal patches that work around these; see [`lib/starhive/PATCHES.md`](https://github.com/DHTMLX/react-scheduler-starhive-demo/blob/main/lib/starhive/) for the diffs. Re-apply the same patches whenever you regenerate the schema, until Starhive ships a fix.
-:::
+撰写时，Starhive TypeScript 生成器输出的内容尚未通过严格的 TypeScript：存在缺失的 `Sla.ts` 引用、内联 `AttributeVisitor` 字面量中缺失的 `visitSlaAttribute` 实现，以及对一个 **any** 类型字段的 `client.request<T>` 调用（TS2347）。配套的演示仓库提供了三处最小化补丁，能够解决这些问题；请参阅 [`lib/starhive/PATCHES.md`](https://github.com/DHTMLX/react-scheduler-starhive-demo/blob/main/lib/starhive/) 的 diff。在重新生成模式时请再次应用相同补丁，直到 Starhive 提供修复为止。
+ :::
 
-## Step 5. Configure the Starhive client
+## 步骤 5. 配置 Starhive 客户端
 
-Create `lib/starhiveClient.ts`:
+创建 `lib/starhiveClient.ts`：
 
 ```ts title="lib/starhiveClient.ts"
 import { StarhiveClient } from "./starhive/client/StarhiveClient";
@@ -131,20 +131,20 @@ export function getStarhiveClient() {
 }
 ```
 
-The function caches the client at module scope so route handlers share a single instance.
+该函数在模块作用域缓存客户端，因此路由处理程序共享同一个实例。
 
-Add `.env.local` (or `.env`) at the project root:
+在项目根目录添加 `.env.local`（或 `.env`）：
 
 ```env title=".env.local"
 STARHIVE_API_TOKEN=your-api-token
 STARHIVE_WORKSPACE_ID=your-workspace-id
 ```
 
-Generate the API token under **Settings → Personal access tokens**. The workspace ID is the path segment in `https://app.starhive.com/workspace/<workspace-id>/home`.
+在 Settings → Personal access tokens 下生成 API 令牌。工作区 ID 是在 `https://app.starhive.com/workspace/<workspace-id>/home` 的路径段。
 
-## Step 6. Load events and resources
+## 步骤 6. 加载事件与资源
 
-Create `app/api/load/route.ts`:
+创建 `app/api/load/route.ts`：
 
 ```ts title="app/api/load/route.ts"
 import { NextResponse } from 'next/server';
@@ -183,13 +183,13 @@ export async function GET() {
 }
 ```
 
-`normalizeEvents` flattens each Starhive object into the shape the React Scheduler expects: `{ id, text, start_date, end_date, resource_id }`. Resources collapse to `{ key, label }`, which is what a timeline view's `y_unit` consumes.
+`normalizeEvents` 将每个 Starhive 对象扁平化为 React Scheduler 期望的形状：`{ id, text, start_date, end_date, resource_id }`。Resources 将扁平化为 `{ key, label }`，这是时间线视图中的 `y_unit` 所消耗的格式。
 
-Visit `http://localhost:3000/api/load` after starting the dev server to confirm the JSON shape.
+在启动开发服务器后访问 `http://localhost:3000/api/load` 以确认 JSON 结构。
 
-## Step 7. Render Scheduler and load events
+## 步骤 7. 渲染 Scheduler 并加载事件
 
-Create `app/page.tsx`:
+创建 `app/page.tsx`：
 
 ```tsx title="app/page.tsx"
 'use client';
@@ -262,22 +262,22 @@ export default function Scheduler() {
 }
 ```
 
-A `loading` flag is preferable to checking `events.length` or `resources.length`: a workspace that legitimately has zero events should still render the empty Scheduler instead of being stuck on the loader.
+使用 `loading` 标志比直接检查 `events.length` 或 `resources.length` 更可靠：一个工作区如果确实没有事件，也应渲染空的 Scheduler 而不是一直处于加载状态。
 
-Run `npm run dev` and the timeline appears with the imported events grouped by resource.
+运行 `npm run dev`，时间线将显示并按资源分组导入的事件。
 
-## Step 8. Implement the CRUD endpoints
+## 步骤 8. 实现 CRUD 端点
 
-The Scheduler `dataBridge` calls into three endpoints - POST for create, PUT for update, DELETE for delete - and expects specific response shapes:
+Scheduler 的 `dataBridge` 会调用三个端点 - 创建使用 POST、更新使用 PUT、删除使用 DELETE - 并期望特定的响应结构：
 
-| HTTP method | Endpoint                  | Response                          |
-| ----------- | ------------------------- | --------------------------------- |
-| `GET`       | `/api/load`               | `{ events, resources }`           |
-| `POST`      | `/api/event`              | `{ action: "inserted", tid: id }` |
-| `PUT`       | `/api/event/{event_id}`   | `{ action: "updated" }`           |
-| `DELETE`    | `/api/event/{event_id}`   | `{ action: "deleted" }`           |
+| HTTP 方法 | Endpoint                  | Response                          |
+| --------- | ------------------------- | --------------------------------- |
+| `GET`     | `/api/load`               | `{ events, resources }`           |
+| `POST`    | `/api/event`              | `{ action: "inserted", tid: id }` |
+| `PUT`     | `/api/event/{event_id}`   | `{ action: "updated" }`           |
+| `DELETE`  | `/api/event/{event_id}`   | `{ action: "deleted" }`           |
 
-Create the POST handler at `app/api/event/route.ts`:
+在 `app/api/event/route.ts` 上创建 POST 处理程序：
 
 ```ts title="app/api/event/route.ts"
 import { NextRequest, NextResponse } from 'next/server';
@@ -304,7 +304,7 @@ export async function POST(req: NextRequest) {
 }
 ```
 
-And the dynamic PUT/DELETE handlers at `app/api/event/[id]/route.ts`:
+以及动态 PUT/DELETE 处理程序在 `app/api/event/[id]/route.ts`：
 
 ```ts title="app/api/event/[id]/route.ts"
 import { NextRequest, NextResponse } from 'next/server';
@@ -365,12 +365,12 @@ export async function DELETE(
 ```
 
 :::note
-In Next.js 15+ the `params` argument of dynamic route handlers is a `Promise`. Always type it as `Promise<{...}>` and `await` it before reading the segment values - omitting the `Promise<>` wrapper compiles in some setups but fails strict mode.
+在 Next.js 15+ 中，动态路由处理程序的 `params` 参数是一个 `Promise`。请始终将其类型标注为 `Promise<{...}>`，并在读取段值之前 `await` 它——在某些环境中省略 `Promise<>` 包装会在严格模式下编译失败。
 :::
 
-## Step 9. Wire the dataBridge
+## 步骤 9. 将 dataBridge 与前端连接起来
 
-Create a small client-side helper at `services/scheduler.ts`:
+在 `services/scheduler.ts` 中创建一个小型客户端辅助工具：
 
 ```ts title="services/scheduler.ts"
 import type { Event } from '@dhtmlx/trial-react-scheduler';
@@ -404,12 +404,12 @@ export function deleteEvent(id: string | number) {
 }
 ```
 
-Then wire the `dataBridge` into the page. Update `app/page.tsx` with the imports and a `data` prop on `<ReactScheduler>`:
+接着将 `dataBridge` 连接到页面中。更新 `app/page.tsx`，添加导入并在 `<ReactScheduler>` 上使用 `data` 属性：
 
 ```tsx title="app/page.tsx"
 import { createEvent, deleteEvent, updateEvent } from '@/services/scheduler';
 
-// inside the Scheduler component:
+// Scheduler 组件内部：
 const dataBridge = useMemo(() => ({
   save: (entity: string, action: string, payload: Event, id: string | number) => {
     if (entity !== "event") return;
@@ -428,7 +428,7 @@ const dataBridge = useMemo(() => ({
   },
 }), []);
 
-// pass it to the component:
+// 将其传给组件：
 <ReactScheduler
   events={events}
   data={dataBridge}
@@ -438,25 +438,25 @@ const dataBridge = useMemo(() => ({
 />
 ```
 
-## Test it
+## 测试
 
 ```bash
 npm run dev
 ```
 
-Open `http://localhost:3000`, drag an event to a new time, edit its text, and delete one. Each change should appear in the Starhive UI under the `Events` type immediately.
+打开 `http://localhost:3000`，拖动某个事件到新的时间段、编辑文本、删除一个事件。每次修改都会在 Starhive UI 的 `Events` 类型下即时体现。
 
-## Notes on Starhive integration
+## 关于 Starhive 集成的说明
 
-- **Server-side credentials only.** `STARHIVE_API_TOKEN` and `STARHIVE_WORKSPACE_ID` are read inside Route Handlers (`getStarhiveClient`); they never reach the browser bundle. Don't move the Starhive client into a Client Component or expose the token via a `NEXT_PUBLIC_*` variable.
-- **Schema regeneration.** Whenever you add or rename attributes in Starhive, regenerate the TypeScript schema and replace `lib/starhive/`. Re-apply the patches in [`lib/starhive/PATCHES.md`](https://github.com/DHTMLX/react-scheduler-starhive-demo/blob/main/lib/starhive/) if `next build` complains about the same upstream issues.
-- **No realtime sync.** Unlike the Firebase integration, Starhive doesn't push changes to connected clients. Multiple users editing the same Scheduler will overwrite each other's changes. For multi-user scenarios, add polling on the client - or wire up Starhive webhooks to push invalidation events through SSE / WebSockets and refresh `events` state on remote changes.
-- **Dynamic loading for larger datasets.** The `/api/load` route loads every event in the workspace. For production, accept `from` / `to` query parameters in the GET handler, filter on `start_date` / `end_date`, and call `scheduler.setLoadMode("day")` on the client so only the visible range is fetched.
-- **Reference attributes carry arrays.** `Events.getResourceId()` returns `string[] | undefined` because Starhive's reference attributes are multi-valued. The demo flattens via `?.[0] || null`. If you allow events to belong to multiple resources, change the timeline view's `y_property` resolution and the normalize / builder calls accordingly.
+- **服务器端凭据独立。** `STARHIVE_API_TOKEN` 和 `STARHIVE_WORKSPACE_ID` 仅在路由处理程序中读取；它们永远不会进入浏览器打包中。不要将 Starhive 客户端放入客户端组件，或通过 `NEXT_PUBLIC_*` 变量暴露令牌。
+- **模式再生成。** 当你在 Starhive 中添加或重命名属性时，重新生成 TypeScript 模式并替换 `lib/starhive/`。如果在执行 `next build` 时收到相同的上游问题，请按照 [`lib/starhive/PATCHES.md`](https://github.com/DHTMLX/react-scheduler-starhive-demo/blob/main/lib/starhive/) 的 diff 重新应用补丁，直到 Starhive 提供修复。
+- **没有实时同步。** 与 Firebase 集成不同，Starhive 不会将变更推送给已连接的客户端。多用户编辑同一 Scheduler 时会覆盖彼此的改动。若需要支持多用户场景，可以在客户端添加轮询，或将 Starhive 的 Webhooks 连接到 SSE / WebSockets 以在远程变更时刷新 `events` 状态。
+- **大数据集的动态加载。** `/api/load` 路由会加载工作空间中的所有事件。生产环境中，可以在 GET 处理程序中接受 `from` / `to` 查询参数，按 `start_date` / `end_date` 进行筛选，并在客户端调用 `scheduler.setLoadMode("day")`，以便仅获取可见范围的数据。
+- **引用属性携带数组。** `Events.getResourceId()` 返回 `string[] | undefined`，因为 Starhive 的引用属性是多值的。演示中通过 `?.[0] || null` 进行扁平化处理。如果允许事件属于多个资源，请相应地调整时间线视图的 `y_property` 分辨方案以及 normalize / builder 调用。
 
-## Related pages
+## 相关页面
 
-- [Data Binding & State Management Basics](integrations/react/state/state-management-basics.md)
-- [React Scheduler Overview](integrations/react/overview.md#bindingdata)
-- [Server Integration](guides/server-integration.md)
-- [React Scheduler and Firebase Integration](integrations/react/firebase-integration.md) - sibling pattern with realtime sync
+- [数据绑定与状态管理基础](integrations/react/state/state-management-basics.md)
+- [React Scheduler 概览](integrations/react/overview.md#bindingdata)
+- [服务端集成](guides/server-integration.md)
+- [React Scheduler 与 Firebase 集成](integrations/react/firebase-integration.md) - 实时同步的对等模式

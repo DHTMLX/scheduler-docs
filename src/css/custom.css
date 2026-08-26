@@ -122,6 +122,9 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 
 /* end imgs */
 
+.markdown a {
+  font-weight: 600;
+}
 
 /* Change the appearance of mobile navigation */
 
