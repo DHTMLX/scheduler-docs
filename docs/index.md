@@ -63,6 +63,8 @@ To see DHTMLX Scheduler in action, explore some of the most popular demos:
 - [Recurring events](https://docs.dhtmlx.com/scheduler/samples/?sample=%2703_extensions/01_recurring_events.html%27&filter=%27%27) and [Timeline view performance](https://docs.dhtmlx.com/scheduler/samples/?sample=%2706_timeline/16_lines_performance.html%27&filter=%27%27) examples
 - [Templates example](https://docs.dhtmlx.com/scheduler/samples/index.html?sample=%2702_customization/06_templates.html%27&filter=%27%27)
 
+![scheduler_overview](/img/scheduler_overview.png)
+
 View [All Samples](https://docs.dhtmlx.com/scheduler/samples/?sample=%2701_initialization_loading/01_basic_init.html%27&filter=%27%27) to check the full range of Scheduler features.
 
 For framework-oriented starting points, see the example repositories for [React](integrations/react/js-scheduler-react.md), [Angular](integrations/angular/js-scheduler-angular.md), and [Vue](integrations/vue/js-scheduler-vue.md).
@@ -140,6 +142,10 @@ DHTMLX Scheduler is available in two editions: **Standard** and **PRO**. You can
 - **[PRO edition](https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing).** Built for production environments, it includes advanced scheduling features, official support and commercial licensing. It is installed from a private npm registry or added manually.
 
 To see the exact feature differences between editions, check the [Standard vs PRO comparison](guides/editions-comparison.md). For the setup flow of each option, see the [installation guide](guides/installation.md).
+
+:::note
+Standard edition is available under the GNU GPL v2 license only. To use DHTMLX Scheduler in non-GPL projects (and get Pro version of the product), please purchase Commercial/Enterprise or Ultimate license on our [site](https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing) or contact us at **sales@dhtmlx.com**.
+:::
 
 ## AI coding tools
 
