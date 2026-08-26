@@ -8,9 +8,9 @@ description: "Overview of the DHTMLX Scheduler JavaScript component. Start with 
 import Link from '@docusaurus/Link';
 import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 
-**DHTMLX Scheduler** is a highly configurable JavaScript event calendar component, complete with TypeScript definitions. It is designed for displaying and editing schedules in the browser. It integrates with React, Angular, Vue and other frontend frameworks. DHTMLX Scheduler also supports AI-assisted development through the DHTMLX MCP Server, Agent Skills and a structured API.
+**DHTMLX Scheduler** is a highly configurable JavaScript event calendar component, complete with TypeScript definitions. It is designed for displaying, editing and managing schedules directly in the browser. The component integrates with React, Angular, Vue and other frontend frameworks. DHTMLX Scheduler also supports AI-assisted development through the DHTMLX MCP Server, Agent Skills, and a structured API.
 
-You can use it in project management, CRM, booking, healthcare, education, field service, SaaS and other business applications that require an interactive calendar or event-planning timeline.
+You can use it in project management, CRM, booking systems, healthcare, education, field service, SaaS and other business applications that require an interactive calendar, event planner or resource scheduling timeline.
 
 ## Quick start by framework
 
