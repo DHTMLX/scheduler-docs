@@ -144,7 +144,7 @@ DHTMLX Scheduler is available in two editions: **Standard** and **PRO**. You can
 To see the exact feature differences between editions, check the [Standard vs PRO comparison](guides/editions-comparison.md). For the setup flow of each option, see the [installation guide](guides/installation.md).
 
 :::note
-Standard edition is available under the GNU GPL v2 license only. To use DHTMLX Scheduler in non-GPL projects (and get Pro version of the product), please purchase Commercial/Enterprise or Ultimate license on our [site](https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing) or contact us at **sales@dhtmlx.com**.
+Standard edition is available under the GNU GPL v2 license only. To use DHTMLX Scheduler in non-GPL projects (and get PRO version of the product), please purchase Individual, Commercial, Enterprise, Ultimate, or Startup license on our [site](https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing) or contact us at **sales@dhtmlx.com**.
 :::
 
 ## AI coding tools
