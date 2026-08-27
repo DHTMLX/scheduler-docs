@@ -5,9 +5,7 @@ sidebar_label: "Шаблоны представления Timeline"
 
 # Шаблоны представления Timeline
 
-![timeline_view_templates_01](/img/timeline_view_templates_01.png)
-
-![timeline_view_templates_02](/img/timeline_view_templates_02.png)
+![timeline_view_templates](/img/timeline_view_templates.png)
 
 - [event_bar_text](api/template/event_bar_text.md) - отображает текст внутри события
 - [event_class](api/template/event_class.md) - определяет CSS-стиль для контейнера события
