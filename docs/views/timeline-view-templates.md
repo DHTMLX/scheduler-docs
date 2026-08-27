@@ -5,10 +5,7 @@ sidebar_label: "Timeline View Templates"
 
 # Timeline View Templates
 
-![timeline_view_templates_01](/img/timeline_view_templates_01.png)
-
-![timeline_view_templates_02](/img/timeline_view_templates_02.png)
-
+![timeline_view_templates](/img/timeline_view_templates.png)
 
 - [event_bar_text](api/template/event_bar_text.md) - the event text
 - [event_class](api/template/event_class.md) - the css style for the event container

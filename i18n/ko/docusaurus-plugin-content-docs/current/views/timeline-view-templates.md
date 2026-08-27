@@ -5,10 +5,7 @@ sidebar_label: "타임라인 뷰 템플릿"
 
 # 타임라인 뷰 템플릿
 
-![timeline_view_templates_01](/img/timeline_view_templates_01.png)
-
-
-![timeline_view_templates_02](/img/timeline_view_templates_02.png)
+![timeline_view_templates](/img/timeline_view_templates.png)
 
 - [event_bar_text](api/template/event_bar_text.md) - 이벤트 내부에 표시되는 텍스트를 설정합니다.
 - [event_class](api/template/event_class.md) - 이벤트 컨테이너의 CSS 스타일을 정의합니다.

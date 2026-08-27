@@ -68,7 +68,7 @@ In this section we'll demonstrate you how to add a third party mini calendar (da
 
 ![custom_minicalendar](/img/custom_minicalendar.png)
 
-**Related sample** [3rd party Mini Calendar in the header](https://snippet.dhtmlx.com/5/0dca14de9)
+**Related sample** [3rd party Mini Calendar in the header](https://snippet.dhtmlx.com/7rozjr08)
 
 In our sample, we will add a mini calendar on the base of [jQuery](https://jquery.com) and [Bootstrap Datepicker](https://bootstrap-datepicker.readthedocs.io/en/latest/). If you use other libraries, you'll need to modify the code but the main approach should stay the same:
 
@@ -430,7 +430,7 @@ To customize the format of dates presented in the mini calendar (date picker), y
 
 ~~~js
 scheduler.templates.calendar_month = scheduler.date.date_to_str("%M, %Y");
-scheduler.init('scheduler_here',new Date(2019,2,1),"day");
+scheduler.init('scheduler_here',new Date(2027,2,1),"day");
 ...
 const calendar = scheduler.renderCalendar({..});
 ~~~
@@ -491,7 +491,7 @@ To assign a custom CSS class to a day, you can use the [markCalendar](api/method
 <script>
     const calendar = scheduler.renderCalendar({...});
      ...
-    scheduler.markCalendar(calendar, new Date(2019,3,1), "my_style");
+    scheduler.markCalendar(calendar, new Date(2027,3,1), "my_style");
 </script>
 ~~~
 
