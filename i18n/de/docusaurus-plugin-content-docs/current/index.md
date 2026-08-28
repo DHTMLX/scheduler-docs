@@ -2,162 +2,176 @@
 sidebar_label: DHTMLX Scheduler Überblick
 title: DHTMLX Scheduler Überblick
 slug: /
-description: "Überblick über die JavaScript-Komponente DHTMLX Scheduler. Starten Sie mit Quick-Start-Anleitungen, erkunden Sie ausführliche Guides und die API-Referenz, und probieren Sie Live-Demos aus."
+description: "Überblick über die DHTMLX Scheduler JavaScript-Komponente. Beginnen Sie mit Schnellstart-Anleitungen, erkunden Sie detaillierte Anleitungen und die API-Referenz, und testen Sie Live-Demos."
 ---
 
 import Link from '@docusaurus/Link';
 import { FrameworkIcon } from '@site/src/components/FrameworkIcon';
 
+**DHTMLX Scheduler** ist eine hochgradig konfigurierbare JavaScript-Ereignis-Kalender-Komponente, komplett mit TypeScript-Definitionen. Sie ist darauf ausgelegt, Zeitpläne direkt im Browser anzuzeigen, zu bearbeiten und zu verwalten. Die Komponente lässt sich mit React, Angular, Vue und anderen Frontend-Frameworks integrieren. DHTMLX Scheduler unterstützt auch AI-gestützte Entwicklung durch den DHTMLX MCP Server, Agent Skills und eine strukturierte API.
 
-**DHTMLX Scheduler** ist eine JavaScript-Komponente für Event-Kalender, mit der Sie Zeitpläne im Browser anzeigen und bearbeiten können.
-Sie unterstützt klassische Kalenderansichten ([Tag](views/day.md)/[Woche](views/week.md)/[Monat](views/month.md)/[Jahr](views/year.md)), umfangreiche Event-Bearbeitung (Erstellen/Größe ändern/Verschieben per Drag-and-Drop + Lightbox), [wiederkehrende Serien](guides/recurring-events.md) sowie erweiterte Ansichten für die Ressourcenplanung ([Timeline](views/timeline.md)/[Units](views/units.md) in PRO).
+Sie können sie in Projektmanagement, CRM, Buchungssystemen, Gesundheitswesen, Bildung, Außendienst, SaaS und anderen Geschäftsapplikationen einsetzen, die einen interaktiven Kalender, einen Terminplaner oder eine Ressourcenplanungs-Timeline erfordern.
 
-DHTMLX Scheduler ist in den Editionen Standard und PRO verfügbar. Die Standard-Edition wird über öffentliche Paketquellen bereitgestellt, während PRO/Evaluation über eine private npm-Registry installiert werden kann (oder manuell hinzugefügt werden kann).
+## Schneller Einstieg nach Framework
 
-
-## Schnellstart nach Framework
-
-Sie können DHTMLX Scheduler als Vanilla-JavaScript-Widget verwenden oder in ein modernes Framework integrieren. Starten Sie mit einer schrittweisen „Erste Schritte“-Anleitung, die zu Ihrem Stack passt:
+Sie können DHTMLX Scheduler als Vanilla-JavaScript-Widget verwenden oder es in ein modernes Framework integrieren. Beginnen Sie mit einer schrittweisen Anleitung, die zu Ihrem Stack passt:
 
 <div className="framework-grid">
 
   <a className="framework-card" href="guides/initialization/">
     <FrameworkIcon name="javascript" className="framework-icon" />
     <div className="framework-title">JavaScript</div>
-    <div className="framework-desc">
-      Minimales Setup mit Script-Tags oder Bundlern.
-    </div>
   </a>
 
   <a className="framework-card" href="integrations/react/quick-start/">
     <FrameworkIcon name="react" className="framework-icon" />
     <div className="framework-title">React</div>
-    <div className="framework-desc">
-      Verwenden Sie die fertige <code>ReactScheduler</code>-Komponente mit Props und Events.
-    </div>
   </a>
 
-  <a className="framework-card" href="integrations/angular/js-scheduler-angular/">
+  <a className="framework-card" href="integrations/angular/quick-start/">
     <FrameworkIcon name="angular" className="framework-icon" />
     <div className="framework-title">Angular</div>
-    <div className="framework-desc">
-      Integrieren Sie Scheduler über einen schlanken Wrapper in Angular-Projekte.
-    </div>
   </a>
 
-  <a className="framework-card" href="integrations/vue/js-scheduler-vue/">
+  <a className="framework-card" href="integrations/vue/quick-start/">
     <FrameworkIcon name="vue" className="framework-icon" />
     <div className="framework-title">Vue</div>
-    <div className="framework-desc">
-      Verwenden Sie Scheduler in Vue-Apps mit einem kleinen Wrapper und reaktiver Konfiguration.
-    </div>
   </a>
 
   <a className="framework-card" href="integrations/svelte/howtostart-svelte/">
     <FrameworkIcon name="svelte" className="framework-icon" />
     <div className="framework-title">Svelte</div>
-    <div className="framework-desc">
-      Betten Sie Scheduler in Svelte mit einer einfachen Komponente ein, die Konfiguration und Events bindet.
-    </div>
-  </a>
-
-  
-  <a className="framework-card" href="integrations/react/js-scheduler-react/">
-    <FrameworkIcon name="react" className="framework-icon" />
-    <div className="framework-title">React</div>
-    <div className="framework-desc">
-      Betten Sie das zentrale Scheduler-Widget in Ihre eigenen Komponenten ein, um den Lebenszyklus und den Datenfluss vollständig zu steuern.
-    </div>
   </a>
 
   <a className="framework-card" href="integrations/salesforce/howtostart-salesforce/">
     <FrameworkIcon name="salesforce" className="framework-icon" />
     <div className="framework-title">Salesforce</div>
-    <div className="framework-desc">
-      Verwenden Sie Scheduler in Salesforce Lightning Web Components und verbinden Sie ihn mit Ihren Org-Daten.
-    </div>
   </a>
 
 </div>
 
+React, Angular und Vue unterstützen zwei Integrationsansätze:
+
+- Vorgefertigte Wrapper für [React Scheduler](integrations/react/quick-start.md), [Angular Scheduler](integrations/angular/quick-start.md) und [Vue Scheduler](integrations/vue/quick-start.md) (empfohlen für PRO- und Evaluierungsprojekte)
+- Direkte Integration der Kern-JavaScript Scheduler-Komponente mit [React](integrations/react/js-scheduler-react.md), [Angular](integrations/angular/js-scheduler-angular.md), [Vue](integrations/vue/js-scheduler-vue.md) (Standardedition)
 
 ## Live-Demos
 
-Um DHTMLX Scheduler in Aktion zu sehen, erkunden Sie die Online-Demos:
+Um DHTMLX Scheduler in Aktion zu sehen, erkunden Sie einige der beliebtesten Demos:
 
-- [Grundlegende Initialisierung (Wochenansicht)](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/01_basic_init.html).
-- [Wiederkehrende Ereignisse](https://docs.dhtmlx.com/scheduler/samples/03_extensions/01_recurring_events.html).
-- [Performance der Timeline-Ansicht (horizontaler Bildlauf)](https://docs.dhtmlx.com/scheduler/samples/06_timeline/16_lines_performance.html).
-- [Templates-Beispiel](https://docs.dhtmlx.com/scheduler/samples/index.html?filter=%27%27&sample=%2702_customization%2F06_templates.html%27).
-- [Alle Samples durchsuchen](https://docs.dhtmlx.com/scheduler/samples/).
+- [Grundlegende Initialisierung (Wochenansicht)](https://docs.dhtmlx.com/scheduler/samples/?sample=%2701_initialization_loading/01_basic_init.html%27&filter=%27%27)
+- [Wiederkehrende Ereignisse](https://docs.dhtmlx.com/scheduler/samples/?sample=%2703_extensions/01_recurring_events.html%27&filter=%27%27) und [Leistung der Timeline-Ansicht](https://docs.dhtmlx.com/scheduler/samples/?sample=%2706_timeline/16_lines_performance.html%27&filter=%27%27) Beispiele
+- [Beispiele für Vorlagen](https://docs.dhtmlx.com/scheduler/samples/index.html?sample=%2702_customization/06_templates.html%27&filter=%27%27)
 
+![scheduler_overview](/img/scheduler_overview.png)
 
-## Zentrale Funktionen
+View [Alle Beispiele](https://docs.dhtmlx.com/scheduler/samples/?sample=%2701_initialization_loading/01_basic_init.html%27&filter=%27%27) to check the full range of Scheduler features.
 
-DHTMLX Scheduler konzentriert sich auf interaktive Kalender-UX und Erweiterbarkeit. Die folgenden Abschnitte heben die wichtigsten Bereiche hervor und verweisen auf weiterführende Kapitel.
+Für frameworkorientierte Startpunkte sehen Sie sich die Beispiel-Repositories für [React](integrations/react/js-scheduler-react.md), [Angular](integrations/angular/js-scheduler-angular.md) und [Vue](integrations/vue/js-scheduler-vue.md) an.
+
+:::note
+Einige Beispiele demonstrieren PRO-Funktionalität, daher prüfen Sie vor der Wiederverwendung in einem Standard-Edition-Projekt den [Standard- vs PRO-Vergleich](guides/editions-comparison.md).
+:::
+
+## Entwicklerressourcen
+
+- [Installationsanleitung](guides/installation.md) für Standard-, Trial- und PRO-Setup-Flows
+- [Standard- vs PRO-Vergleich](guides/editions-comparison.md) zu Funktionsunterschieden zwischen Editionen
+- Öffentliches [npm-Paket](https://www.npmjs.com/package/dhtmlx-scheduler) des JavaScript Scheduler unter der Standardedition
+- [GitHub-Repository](https://github.com/DHTMLX/scheduler) für den Quellcode der Standardedition und das Issue-Tracking
+- [API-Referenz](api/api_overview.md) und [Beispiele](https://docs.dhtmlx.com/scheduler/samples/?sample=%2701_initialization_loading/01_basic_init.html%27&filter=%27%27) für Implementierungsdetails
+- [Was gibt es Neues](whats-new.md) zu Releases und Migrationhinweisen
+
+## Scheduler-Funktionen im Fokus
+
+DHTMLX Scheduler bietet mehrere Kalenderversionen, umfangreiche Ereignisbearbeitung und Ressourcenplanungstools.
 
 ### Kalenderansichten und Navigation
 
-Scheduler bietet mehrere Möglichkeiten, Zeit und Ereignisse zu visualisieren:
+Im Kern rendert Scheduler klassische Kalenderansichten und ermöglicht Benutzern, durch die Zeit zu navigieren. Es enthält:
 
-- Integrierte Kalenderansichten ([Tag](views/day.md)/[Woche](views/week.md)/[Monat](views/month.md)/[Jahr](views/year.md)/[Agenda](views/agenda.md)-Varianten). Einen allgemeinen Überblick finden Sie unter [Ansichten](views.md).
-- Konfigurierbare Navigation/Header und responsive Initialisierung über [scheduler.config.header](api/config/header.md). 
+- [Day](views/day.md), [Week](views/week.md), [Month](views/month.md), [Year](views/year.md) und [Agenda](views/agenda.md)-Ansichten zur Visualisierung von Zeitplänen in jeder Skala.
+- [Anpassbare Kopfzeile](api/config/header.md) mit Navigationsoptionen und Ansichtentabs.
 
-### Erstellen und Bearbeiten von Ereignissen
+### Ereigniserstellung und Bearbeitung
 
-Scheduler ist für eine „Kalender-zuerst“-Bearbeitung konzipiert:
+Die Komponente bietet eine "Kalender-zuerst"-Bearbeitung, d. h. Benutzer können Ereignisse direkt im Kalender schnell erstellen oder aktualisieren:
 
-- Interaktionen zum Erstellen, Vergrößern/Verkleinern und Verschieben per Drag-and-Drop (konfigurierbar).
-- Integrierter Editor ([Lightbox](guides/configuring-the-lightbox.md)) und optionale [Quick Info](guides/quick-info.md)-Popups über Erweiterungen.
-- Templates für [Ereignistext](guides/custom-events-content.md), [Tooltips](guides/tooltips.md), Header und UI-Fragmente (für vollständige Kontrolle über das Rendering).
+- [Drag-create](api/config/drag_create.md), [drag-resize](api/config/drag_resize.md) und [drag-move](api/config/drag_move.md)-Interaktionen für Ereignisse innerhalb des Schedulers.
+- [Flexibler Lightbox-Editor](guides/configuring-the-lightbox.md) für vollständige Ereignisdetails, plus optionale [Quick Info](guides/quick-info.md) Popups für schnelle Bearbeitungen.
+- [Drag-and-Drop über Scheduler-Grenzen hinweg](guides/drag-between.md) zum Verschieben von Ereignissen zwischen verschiedenen Scheduler-Instanzen.
+- [Drag-and-Drop-Integration mit externen Quellen](https://dhtmlx.com/blog/creating-task-backlog-drag-drop-support-dhtmlx-scheduler/) zum Ziehen von Datensätzen aus separaten Komponenten in den Scheduler als neue Ereignisse.
+- [Multi-User-Live-Updates](guides/multiuser-live-updates.md) für kollaborative Planungs-Szenarien.
 
 ### Wiederkehrende Serien und Ausnahmen
 
-Wiederkehrende Ereignisse werden über eine dedizierte Erweiterung und ein modernes Wiederholungsformat unterstützt. Siehe [Wiederkehrende Ereignisse](guides/recurring-events.md).
+Wiederkehrende Ereignisse werden über eine dedizierte Erweiterung unterstützt und iCalendar-kompatibles RFC 5545-Rekurrenzformat:
 
-### Ansichten für Ressourcenplanung (PRO)
+- [Wiederkehrende Ereignisse](guides/recurring-events.md) mit Ausnahmen pro Vorkommen.
+- [Validierung](guides/validation.md) und [Kollisionen-Vermeidung](guides/collisions.md), um Zeitpläne konsistent zu halten.
 
-PRO ergänzt erweiterte Planungsmodi, die häufig für die Ressourcenplanung verwendet werden:
+### Ressourcenplanungsansichten (PRO)
 
-- [Timeline](views/timeline.md)-Ansicht, [Units](views/units.md)-Ansicht, [Week Agenda](views/weekagenda.md), [Grid](views/grid.md)-Ansicht und weitere PRO-exklusive Erweiterungen.
-- Ereignisse mit mehreren Bereichen (ein Ereignis mehreren Ressourcen/Bereichen zuweisen) über die Erweiterung [Multisection](guides/extensions-list.md#multisection).
+Für Teams, die mehr als einen einfachen Kalender benötigen, bietet die PRO-Edition fortgeschrittene Planungsmodi:
 
-### Daten laden, Formate und Synchronisierung
+- [Timeline](views/timeline.md) und [Units](views/units.md) Ansichten für Ressourcenplanung.
+- [Week Agenda](views/weekagenda.md) und [Grid](views/grid.md) Ansichten für kompakte, Listen-artige Planung.
+- [Multi-Section-Ereignisse](guides/extensions-list.md#multisection), die ein Ereignis mehreren Ressourcen zuweisen.
 
-Scheduler kann auf verschiedene Weise mit Ihrer Datenebene verbunden werden:
+### Export und Ökosystem
 
-- Laden Sie Daten aus Ihrem Backend und halten Sie sie synchron (gängige Muster verwenden eine [REST-ähnliche API + DataProcessor](guides/server-integration.md)).
-- Serverseitige [Erste Schritte](integrations/howtostart-guides.md)-Anleitungen gibt es für mehrere Stacks (Node, ASP.NET Core, PHP/Laravel, Ruby usw.). 
+Teams müssen oft Zeitpläne teilen, lokale Backups behalten oder mit externen Kalendern synchronisieren. DHTMLX Scheduler lässt sich mit externen Tools und Ausgabeformaten integrieren, indem er unterstützt:
 
+- Export nach [PDF](export/pdf.md), [PNG](export/png.md), [Excel and iCal](export/excel.md).
+- Zwei-Wege-Synchronisation mit [Google Calendar](integrations/google-calendar/google-calendar-sync.md).
 
-## Frameworks und Backend-Integration
+### Anpassung und Styling
 
-### Frontend-Integration
+Das Erscheinungsbild des Kalenders kann auf jeder Ebene angepasst werden, von einem vollständigen Theme bis hin zu einer einzelnen Ereignis-Box:
 
-Scheduler kann verwendet werden:
+- Eine Reihe integrierter [Skins](guides/skins.md) mit Unterstützung für [umfangreiche Anpassungen](guides/custom-skins.md) und die Erstellung neuer Themes.
+- Vorlagen für [Event-Inhalte, Header](guides/custom-events-content.md), [Tooltips](guides/tooltips.md) und weitere UI-Elemente.
+- Unterstützung für [Lokalisierung](guides/localization.md) (Sprache der Benutzeroberfläche sowie Datums- und Zeitformate) sowie [RTL-Modus](guides/rtl-mode.md).
 
-- Als eigenständiges JS-Widget auf jeder Seite - [Initialisierung mit reinem HTML/JS](guides/initialization.md). 
-- Eingebettet in Framework-Komponenten über die [Erste Schritte](integrations/howtostart-guides.md)-Anleitungen für [React](integrations/react/)/[Angular](integrations/angular/js-scheduler-angular.md)/[Vue](integrations/vue/js-scheduler-vue.md)/[Svelte](integrations/svelte/howtostart-svelte.md).
+## Editionen und Lizenzierung
 
+DHTMLX Scheduler ist in zwei Editionen erhältlich: **Standard** und **PRO**. Sie können mit der kostenfreien Standardedition beginnen und später auf die PRO Edition upgraden, falls Sie mehr Funktionen, offiziellen Support und eine vollständig gepflegte Scheduler-Grundlage benötigen. Sie können auch direkt mit der PRO Edition starten, entweder durch eine offizielle Testversion oder mit einer kostenpflichtigen Lizenz. Wählen Sie eine der folgenden Optionen, um mit DHTMLX Scheduler zu starten:
 
-## Hinweise zur Installation
+- **Standard Edition.** Veröffentlicht über öffentliche Paketquellen (npm, CDN); deckt die Kernfunktionen des interaktiven Kalenders ab.
+- **[Offizielle Testversion](https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml).** Ermöglicht es Ihnen, den vollständigen PRO-Funktionsumfang zu testen und technischen Support während der Testphase zu erhalten.
+- **[PRO-Edition](https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing).** Für Produktionsumgebungen gedacht, enthält fortschrittliche Planungsfunktionen, offiziellen Support und kommerzielle Lizenzen. Sie wird aus einem privaten npm-Registrierungsdienst installiert oder manuell hinzugefügt.
 
-- Standard-Edition:
-  - <code>npm install dhtmlx-scheduler</code>
-  - oder über CDN einbinden.
-- PRO/Evaluation:
-  - über eine private npm-Registry installieren oder das Paket manuell/aus einem lokalen Ordner hinzufügen, siehe [Installationsanleitung](guides/installation.md).
+Um die genauen Funktionsunterschiede zwischen Editionen zu sehen, prüfen Sie den [Standard vs PRO comparison](guides/editions-comparison.md). Für den Installationsablauf jeder Option lesen Sie die Installationsanleitung.
 
+:::note
+Die Standard-Edition steht nur unter der GNU GPL v2-Lizenz zur Verfügung. Um DHTMLX Scheduler in Nicht-GPL-Projekten zu verwenden (und die PRO-Version des Produkts zu erhalten), erwerben Sie bitte eine Individual-, Commercial-, Enterprise-, Ultimate- oder Startup-Lizenz auf unserer Website oder kontaktieren Sie uns unter sales@dhtmlx.com.
+:::
 
+## KI-Programmierwerkzeuge
 
-## Nächste Schritte
+Für AI-gestützte Entwicklung beginnen Sie mit den speziellen Guides für Codierhilfen:
 
-Wenn Sie gerade erst beginnen:
+- [Anleitung zu KI-Tools](integrations/ai-tools.md)
+- [DHTMLX MCP Server Guide](integrations/ai-tools/mcp-server.md)
+- [Agent Skills Guide](integrations/ai-tools/agent-skills.md)
+- [Lovable Starter Walkthrough](integrations/ai-tools/lovable-starter-walkthrough.md)
 
-1. Wählen Sie eine Anleitung aus [Schnellstart nach Framework](#schnellstart-nach-framework) oder starten Sie mit [Initialisierung mit reinem HTML/JS](guides/initialization.md).
-2. Konfigurieren Sie Ihre UI: [Header](api/config/header.md), [Ansichten](/views/), [Templates](guides/templates.md) und Bearbeitungsregeln.
-3. Aktivieren Sie die benötigten [Erweiterungen](guides/extensions-list.md) - [Recurring](guides/recurring-events.md), [Timeline](views/timeline.md)/[Units](views/units.md) in PRO, [Quick Info](guides/quick-info.md), [Tooltip](guides/tooltips.md) usw.
-4. Verbinden Sie Ihr Backend mithilfe der Anleitungen zur [Server-Side Integration](guides/server-integration.md).
-5. Erkunden Sie [Guides](guides/) und die [API-Referenz](api/api_overview.md) für weitergehende Anpassungen.
+## Backend-Integration
 
-Wenn Sie ein Upgrade durchführen, sehen Sie sich [Was ist neu](whats-new.md) und die [Migrationsanleitungen](migration.md) in der Dokumentation an.
+DHTMLX Scheduler ermöglicht es Ihnen, sich mit jedem Backend zu verbinden, indem Sie eine RESTful-API auf dem Server implementieren:
+
+- Daten für [Ereignisse](guides/loading-data.md) und deren [Wiederholungsregeln](guides/recurring-events.md) werden typischerweise im JSON-Format geladen und gespeichert.
+- Der integrierte [DataProcessor](guides/server-integration.md) unterstützt die Weiterleitung von Erstellungs-, Aktualisierungs- und Löschvorgängen an Ihren Server.
+- Es gibt Tutorials für beliebte Backend-Plattformen und Frameworks ([Node.js](integrations/node/howtostart-nodejs.md), [ASP.NET Core](integrations/dotnet/howtostart-dotnet-core.md), [Laravel](integrations/php/howtostart-php-laravel.md), [Ruby on Rails](integrations/other/howtostart-ruby.md), usw.), die CRUD-Operationen und Best Practices für das Abgleichen des Scheduler mit Ihrer Datenbank abdecken.
+
+## Was kommt als Nächstes
+
+Wenn Sie gerade mit DHTMLX Scheduler beginnen, gehen Sie wie folgt vor:
+
+1. Konsultieren Sie die [Anleitung für den Einstieg](integrations/howtostart-guides.md) für Ihr bevorzugtes Frontend-Framework oder für reines JavaScript.
+2. Konfigurieren Sie [Header](api/config/header.md), [Ansichten](views.md), [Vorlagen](guides/templates.md) und das Bearbeitungsverhalten über die [Lightbox](guides/configuring-the-lightbox.md).
+3. Aktivieren Sie die benötigten Erweiterungen, wie z. B. [Wiederkehrende Termine](guides/recurring-events.md), [Zeitleiste/Einheiten](views/timeline.md) (in der PRO-Version), [Kurzinfos](guides/quick-info.md) oder [Tooltips](guides/tooltips.md).
+4. Stellen Sie die Verbindung zu Ihrem Backend her und richten Sie die [serverseitige Integration](guides/server-integration.md) sowie die Anwendungsendpunkte für Termine ein.
+5. Nutzen Sie die [Anleitungen](guides.md) und die [API-Referenz](api/api_overview.md) für weitergehende Anpassungen, etwa bei Vorlagen, Ereignissen und Erweiterungen.
+
+Wenn Sie DHTMLX Scheduler bereits verwenden und von einer älteren Version upgraden, prüfen Sie Was gibt es Neues für Release-Notes und eine Zusammenfassung der neuesten Funktionen und Migration Guides [What's New](whats-new.md).
