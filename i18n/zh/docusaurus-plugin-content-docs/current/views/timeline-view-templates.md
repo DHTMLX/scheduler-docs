@@ -5,10 +5,7 @@ sidebar_label: "时间线视图模板"
 
 # 时间线视图模板
 
-![timeline_view_templates_01](/img/timeline_view_templates_01.png)
-
-
-![timeline_view_templates_02](/img/timeline_view_templates_02.png)
+![timeline_view_templates](/img/timeline_view_templates.png)
 
 - [event_bar_text](api/template/event_bar_text.md) - 显示事件内部的文本
 - [event_class](api/template/event_class.md) - 定义事件容器的CSS样式
