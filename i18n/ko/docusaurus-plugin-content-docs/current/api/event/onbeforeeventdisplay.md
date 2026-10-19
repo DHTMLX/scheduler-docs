@@ -1,33 +1,17 @@
 ---
-sidebar_label: "onBeforeEventDisplay"
+sidebar_label: onBeforeEventDisplay
 title: "onBeforeEventDisplay event"
-description: "'showEvent' 메서드가 특정 이벤트를 표시하기 직전에 트리거되며, 이벤트가 나타나기 전에 코드를 실행할 수 있습니다."
+description: "filters events before rendering"
 ---
 
 # onBeforeEventDisplay
 
-### Description
+@short: 이벤트 렌더링 전에 호출됩니다. 이벤트를 숨기려면 `false`를 반환하세요. 모든 핸들러가 `true`를 반환해야 합니다.
 
-@short: 'showEvent' 메서드가 특정 이벤트를 표시하기 직전에 트리거되며, 이벤트가 나타나기 전에 코드를 실행할 수 있습니다.
+@signature: onBeforeEventDisplay: (id: string | number, event: object) =\> boolean
 
-@signature: onBeforeEventDisplay: (event: object, view: string) =\> boolean
-
-### Parameters
-
-- `event` - (required) *object* - 이벤트 객체
-- `view` - (required) *string* - 이벤트를 표시하는 데 사용된 뷰 이름
-
-### Returns
-- ` result` - (boolean) - 이벤트의 기본 동작이 진행될지(<b>true</b>) 취소될지(<b>false</b>) 결정합니다.
-
-### Example
+이벤트 렌더링 전에 호출됩니다. 이벤트를 숨기려면 `false`를 반환하세요. 모든 핸들러가 `true`를 반환해야 합니다.
 
 ~~~jsx
-scheduler.attachEvent("onBeforeEventDisplay", function(event,view){
-    //여기에 사용자 정의 로직 작성
-    return true;
-});
+scheduler.attachEvent("onBeforeEventDisplay", function(id, event){ return true; });
 ~~~
-
-### Related API
-- [onAfterEventDisplay](api/event/onaftereventdisplay.md)

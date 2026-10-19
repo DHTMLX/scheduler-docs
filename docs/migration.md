@@ -5,6 +5,19 @@ sidebar_label: "Migration From Older Versions"
 
 # Migration From Older Versions 
 
+## 7.2 -> 8.0
+
+### Event display and show events
+
+`onBeforeEventDisplay` is now the event-rendering filter. Its signature changed from `(event, view)` to `(id, event)`; return `false` to prevent an event from being rendered.
+
+The `showEvent()` lifecycle events were renamed:
+
+- `onBeforeEventDisplay` -> [onBeforeEventShow](api/event/onbeforeeventshow.md)
+- `onAfterEventDisplay` -> [onAfterEventShow](api/event/onaftereventshow.md)
+
+Use `onBeforeEventShow(event, view)` to cancel `showEvent()`. Use `onBeforeEventDisplay(id, event)` only to filter rendered events.
+
 ## 7.1 -> 7.2
 
 The v7.2 update changes several default settings.

@@ -5,6 +5,10 @@ sidebar_label: "Migration From Older Versions"
 
 # Migration From Older Versions 
 
+## 7.2 -> 8.0
+
+`onBeforeEventDisplay` теперь фильтрует отрисовываемые события и использует `(id, event)`. Прежние хуки `showEvent()` переименованы в `onBeforeEventShow` и `onAfterEventShow`.
+
 ## 7.1 -> 7.2
 
 Обновление до версии 7.2 вносит изменения в некоторые значения по умолчанию.

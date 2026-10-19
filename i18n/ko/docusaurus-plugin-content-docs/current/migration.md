@@ -5,6 +5,10 @@ sidebar_label: "Migration From Older Versions"
 
 # Migration From Older Versions 
 
+## 7.2 -> 8.0
+
+`onBeforeEventDisplay`은 이제 `(id, event)`로 렌더링할 이벤트를 필터링합니다. 이전 `showEvent()` 훅은 `onBeforeEventShow` 및 `onAfterEventShow`로 이름이 변경되었습니다.
+
 ## 7.1 -> 7.2
 
 v7.2로 업데이트되면서 일부 기본 설정이 변경되었습니다.
@@ -666,4 +670,3 @@ codebase/dhtmlxgrid_units.js => codebase/ext/dhtmlxgrid_units.js
 - 스페인어 로케일 파일명이 locale_sp.js에서 locale_es.js로 변경되었습니다.
 
 - 'drag_create' 옵션은 이제 드래그 앤 드롭으로 새 이벤트를 생성하는 것만 제어합니다; 더블 클릭으로 이벤트 생성은 'dblclick_create'로 제어합니다.
-

@@ -675,7 +675,7 @@ module.exports = {
 					},
 					items: [
 						"api/event/onafterbatchupdate",
-						"api/event/onaftereventdisplay",
+						"api/event/onaftereventshow",
 						{
 							type: "doc",
 							id: "api/event/onafterfoldertoggle",
@@ -691,6 +691,7 @@ module.exports = {
 						"api/event/onbeforeeventcreated",
 						"api/event/onbeforeeventdelete",
 						"api/event/onbeforeeventdisplay",
+						"api/event/onbeforeeventshow",
 						"api/event/onbeforeeventdragin",
 						"api/event/onbeforeeventdragout",
 						"api/event/onbeforeeventpasted",

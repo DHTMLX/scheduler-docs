@@ -5,6 +5,10 @@ sidebar_label: "Migration von älteren Versionen"
 
 # Migration von älteren Versionen
 
+## 7.2 -> 8.0
+
+`onBeforeEventDisplay` filtert nun gerenderte Events mit `(id, event)`. Die früheren `showEvent()`-Hooks wurden in `onBeforeEventShow` und `onAfterEventShow` umbenannt.
+
 ## 7.1 -> 7.2
 
 Das Update auf v7.2 bringt Änderungen an einigen Standardeinstellungen mit sich.

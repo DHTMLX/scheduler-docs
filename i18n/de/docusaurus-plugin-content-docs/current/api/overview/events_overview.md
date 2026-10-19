@@ -9,7 +9,7 @@ description: You can explore Events overview in the documentation of the DHTMLX 
 | Name                                                          | Description                                                          |
 |---------------------------------------------------------------|----------------------------------------------------------------------|
 | [](api/event/onafterbatchupdate.md)                  | @getshort(api/event/onafterbatchupdate.md)                  |
-| [](api/event/onaftereventdisplay.md)                 | @getshort(api/event/onaftereventdisplay.md)                 |
+| [](api/event/onaftereventshow.md)                    | @getshort(api/event/onaftereventshow.md)                    |
 | [](api/event/onafterfoldertoggle.md)                 | @getshort(api/event/onafterfoldertoggle.md)                 |
 | [](api/event/onafterlightbox.md)                     | @getshort(api/event/onafterlightbox.md)                     |
 | [](api/event/onafterquickinfo.md)                    | @getshort(api/event/onafterquickinfo.md)                    |
@@ -96,4 +96,3 @@ description: You can explore Events overview in the documentation of the DHTMLX 
 | [](api/event/onxscaledblclick.md)                    | @getshort(api/event/onxscaledblclick.md)                    |
 | [](api/event/onyscaleclick.md)                       | @getshort(api/event/onyscaleclick.md)                       |
 | [](api/event/onyscaledblclick.md)                    | @getshort(api/event/onyscaledblclick.md)                    |
-  

@@ -5,6 +5,10 @@ sidebar_label: "从旧版本迁移"
 
 # 从旧版本迁移 
 
+## 7.2 -> 8.0
+
+`onBeforeEventDisplay` 现在使用 `(id, event)` 过滤渲染的事件。原来的 `showEvent()` 钩子已重命名为 `onBeforeEventShow` 和 `onAfterEventShow`。
+
 ## 7.1 -> 7.2
 
 升级到 v7.2 带来了一些默认设置的变更。
@@ -668,5 +672,3 @@ codebase/dhtmlxgrid_units.js => codebase/ext/dhtmlxgrid_units.js
 - 西班牙语本地化文件已从 locale_sp.js 重命名为 locale_es.js。
 
 - 'drag_create' 选项现在仅控制通过拖拽创建新事件；通过双击创建事件现在由 'dblclick_create' 控制。
-
-

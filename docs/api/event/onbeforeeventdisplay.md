@@ -1,21 +1,21 @@
 ---
 sidebar_label: onBeforeEventDisplay
 title: "onBeforeEventDisplay event"
-description: "fires when the 'showEvent' method is called to show a specific event and fires BEFORE the event is displayed"
+description: "fires before an event is rendered and allows preventing its display"
 ---
 
 # onBeforeEventDisplay
 
 ### Description
 
-@short: Fires when the 'showEvent' method is called to show a specific event and fires BEFORE the event is displayed
+@short: Fires before an event is rendered and allows preventing its display
 
-@signature: onBeforeEventDisplay: (event: object, view: string) =\> boolean
+@signature: onBeforeEventDisplay: (id: string | number, event: object) =\> boolean
 
 ### Parameters
 
+- `id` - (required) *string | number* - the event's id
 - `event` - (required) *object* - the event's object
-- `view` - (required) *string* - the name of a view used to display the event
 
 ### Returns
 - ` result` - (boolean) - defines whether the default action of the event will be triggered (<b>true</b>) or canceled (<b>false</b>)
@@ -23,11 +23,15 @@ description: "fires when the 'showEvent' method is called to show a specific eve
 ### Example
 
 ~~~jsx
-scheduler.attachEvent("onBeforeEventDisplay", function(event,view){
-    //any custom logic here
-    return true;
+scheduler.attachEvent("onBeforeEventDisplay", function(id, event){
+    return event.priority !== "low";
 });
 ~~~
 
+### Details
+
+The event is called for every event considered for rendering, including events in the mini calendar. Return `false` to hide the event. If several handlers are attached, all of them must return `true` for the event to be displayed.
+
 ### Related API
-- [onAfterEventDisplay](api/event/onaftereventdisplay.md)
+- [onBeforeEventShow](api/event/onbeforeeventshow.md)
+- [onAfterEventShow](api/event/onaftereventshow.md)
