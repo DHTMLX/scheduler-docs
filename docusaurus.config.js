@@ -311,6 +311,10 @@ const config = {
 							"position": "right"
 						},
 						{
+							"label": "Product Page",
+							"href": "https://dhtmlx.com/docs/products/dhtmlxScheduler/"
+						},
+						{
 							"label": "Examples",
 							"href": "https://docs.dhtmlx.com/scheduler/samples/",
 							"position": "right"

@@ -1,7 +1,7 @@
 {
-  "link.title.Development center": {
+  "link.title.Development Center": {
     "message": "Entwicklungszentrum",
-    "description": "The title of the footer links column with title=Development center in the footer"
+    "description": "The title of the footer links column with title=Development Center in the footer"
   },
   "link.title.Community": {
     "message": "Community",
@@ -14,6 +14,10 @@
   "link.item.label.Download Scheduler": {
     "message": "Scheduler herunterladen",
     "description": "The label of footer link with label=Download Scheduler linking to https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml"
+  },
+  "link.item.label.Product Page": {
+    "message": "Produktseite",
+    "description": "The label of footer link with label=Product Page linking to https://dhtmlx.com/docs/products/dhtmlxScheduler/"
   },
   "link.item.label.Examples": {
     "message": "Beispiele",
@@ -47,16 +51,16 @@
     "message": "LinkedIn",
     "description": "The label of footer link with label=Linkedin linking to https://www.linkedin.com/groups/3345009/"
   },
-  "link.item.label.About us": {
+  "link.item.label.About Us": {
     "message": "Über uns",
-    "description": "The label of footer link with label=About us linking to https://dhtmlx.com/docs/company.shtml"
+    "description": "The label of footer link with label=About Us linking to https://dhtmlx.com/docs/company.shtml"
   },
-  "link.item.label.Contact us": {
+  "link.item.label.Contact Us": {
     "message": "Kontaktieren Sie uns",
-    "description": "The label of footer link with label=Contact us linking to https://dhtmlx.com/docs/contact.shtml"
+    "description": "The label of footer link with label=Contact Us linking to https://dhtmlx.com/docs/contact.shtml"
   },
   "link.item.label.Licensing": {
     "message": "Lizenzierung",
-    "description": "The label of footer link with label=Licensing linking to https://dhtmlx.com/docs/products/dhtmlxEventCalendar/#licensing"
+    "description": "The label of footer link with label=Licensing linking to https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing"
   }
 }

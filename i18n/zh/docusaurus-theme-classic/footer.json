@@ -1,5 +1,5 @@
 {
-	"link.title.Development center": {
+	"link.title.Development Center": {
 		"message": "开发中心",
 		"description": "页脚链接栏目标题为开发中心"
 	},
@@ -14,6 +14,10 @@
 	"link.item.label.Download Scheduler": {
 		"message": "下载调度器",
 		"description": "链接到 https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml 的页脚链接标签"
+	},
+	"link.item.label.Product Page": {
+		"message": "产品页面",
+		"description": "链接到 https://dhtmlx.com/docs/products/dhtmlxScheduler/ 的页脚链接标签"
 	},
 	"link.item.label.Examples": {
 		"message": "示例",
@@ -47,16 +51,16 @@
 		"message": "领英",
 		"description": "链接到 https://www.linkedin.com/groups/3345009/ 的页脚链接标签"
 	},
-	"link.item.label.About us": {
+	"link.item.label.About Us": {
 		"message": "关于我们",
 		"description": "链接到 https://dhtmlx.com/docs/company.shtml 的页脚链接标签"
 	},
-	"link.item.label.Contact us": {
+	"link.item.label.Contact Us": {
 		"message": "联系我们",
 		"description": "链接到 https://dhtmlx.com/docs/contact.shtml 的页脚链接标签"
 	},
 	"link.item.label.Licensing": {
 		"message": "许可信息",
-		"description": "链接到 https://dhtmlx.com/docs/products/dhtmlxEventCalendar/#licensing 的页脚链接标签"
+		"description": "链接到 https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing 的页脚链接标签"
 	}
 }

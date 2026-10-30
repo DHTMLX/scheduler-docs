@@ -1,5 +1,5 @@
 {
-  "link.title.Development center": {
+  "link.title.Development Center": {
     "message": "Центр разработки",
     "description": "Заголовок колонки ссылок в подвале с заголовком Центр разработки"
   },
@@ -14,6 +14,10 @@
   "link.item.label.Download Scheduler": {
     "message": "Скачать Scheduler",
     "description": "Метка ссылки в подвале с меткой Скачать Scheduler, ведущей на https://dhtmlx.com/docs/products/dhtmlxScheduler/download.shtml"
+  },
+  "link.item.label.Product Page": {
+    "message": "Страница продукта",
+    "description": "Метка ссылки в подвале с меткой Страница продукта, ведущей на https://dhtmlx.com/docs/products/dhtmlxScheduler/"
   },
   "link.item.label.Examples": {
     "message": "Примеры",
@@ -47,16 +51,16 @@
     "message": "Linkedin",
     "description": "Метка ссылки в подвале с меткой Linkedin, ведущей на https://www.linkedin.com/groups/3345009/"
   },
-  "link.item.label.About us": {
+  "link.item.label.About Us": {
     "message": "О нас",
     "description": "Метка ссылки в подвале с меткой О нас, ведущей на https://dhtmlx.com/docs/company.shtml"
   },
-  "link.item.label.Contact us": {
+  "link.item.label.Contact Us": {
     "message": "Связаться с нами",
     "description": "Метка ссылки в подвале с меткой Связаться с нами, ведущей на https://dhtmlx.com/docs/contact.shtml"
   },
   "link.item.label.Licensing": {
     "message": "Лицензирование",
-    "description": "Метка ссылки в подвале с меткой Лицензирование, ведущей на https://dhtmlx.com/docs/products/dhtmlxEventCalendar/#licensing"
+    "description": "Метка ссылки в подвале с меткой Лицензирование, ведущей на https://dhtmlx.com/docs/products/dhtmlxScheduler/#licensing"
   }
 }
