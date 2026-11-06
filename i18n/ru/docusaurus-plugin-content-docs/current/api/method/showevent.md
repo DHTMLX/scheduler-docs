@@ -33,7 +33,7 @@ scheduler.showEvent(someId);
 ### Details
 
 - Названия представлений по умолчанию: 'day', 'week', 'month'. Чтобы указать любое другое представление - используйте его **name** параметр.
-- Метод вызывает события [onBeforeEventDisplay](api/event/onbeforeeventdisplay.md) и [onAfterEventDisplay](api/event/onaftereventdisplay.md).
+- Метод вызывает события [onBeforeEventShow](api/event/onbeforeeventshow.md) и [onAfterEventShow](api/event/onaftereventshow.md).
 
 
 Например, после программного добавления нового ивента, вы можете отобразить его в scheduler следующим образом:

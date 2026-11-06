@@ -9,7 +9,7 @@ description: You can explore Events overview in the documentation of the DHTMLX 
 | Name                                                          | Description                                                          |
 |---------------------------------------------------------------|----------------------------------------------------------------------|
 | [](api/event/onafterbatchupdate.md)                  | @getshort(api/event/onafterbatchupdate.md)                  |
-| [](api/event/onaftereventdisplay.md)                 | @getshort(api/event/onaftereventdisplay.md)                 |
+| [](api/event/onaftereventshow.md)                    | @getshort(api/event/onaftereventshow.md)                    |
 | [](api/event/onafterfoldertoggle.md)                 | @getshort(api/event/onafterfoldertoggle.md)                 |
 | [](api/event/onafterlightbox.md)                     | @getshort(api/event/onafterlightbox.md)                     |
 | [](api/event/onafterquickinfo.md)                    | @getshort(api/event/onafterquickinfo.md)                    |
@@ -21,8 +21,10 @@ description: You can explore Events overview in the documentation of the DHTMLX 
 | [](api/event/onbeforeeventcreated.md)                | @getshort(api/event/onbeforeeventcreated.md)                |
 | [](api/event/onbeforeeventdelete.md)                 | @getshort(api/event/onbeforeeventdelete.md)                 |
 | [](api/event/onbeforeeventdisplay.md)                | @getshort(api/event/onbeforeeventdisplay.md)                |
+| [](api/event/onbeforeeventshow.md)                   | @getshort(api/event/onbeforeeventshow.md)                   |
 | [](api/event/onbeforeeventdragin.md)                 | @getshort(api/event/onbeforeeventdragin.md)                 |
 | [](api/event/onbeforeeventdragout.md)                | @getshort(api/event/onbeforeeventdragout.md)                |
+| [](api/event/onbeforeeventgroupactivechange.md)      | @getshort(api/event/onbeforeeventgroupactivechange.md)      |
 | [](api/event/onbeforeeventpasted.md)                 | @getshort(api/event/onbeforeeventpasted.md)                 |
 | [](api/event/onbeforeexpand.md)                      | @getshort(api/event/onbeforeexpand.md)                      |
 | [](api/event/onbeforeexternaldragin.md)              | @getshort(api/event/onbeforeexternaldragin.md)              |
@@ -58,6 +60,7 @@ description: You can explore Events overview in the documentation of the DHTMLX 
 | [](api/event/oneventdrag.md)                         | @getshort(api/event/oneventdrag.md)                         |
 | [](api/event/oneventdragin.md)                       | @getshort(api/event/oneventdragin.md)                       |
 | [](api/event/oneventdragout.md)                      | @getshort(api/event/oneventdragout.md)                      |
+| [](api/event/oneventgroupactivechange.md)            | @getshort(api/event/oneventgroupactivechange.md)            |
 | [](api/event/oneventdropout.md)                      | @getshort(api/event/oneventdropout.md)                      |
 | [](api/event/oneventidchange.md)                     | @getshort(api/event/oneventidchange.md)                     |
 | [](api/event/oneventloading.md)                      | @getshort(api/event/oneventloading.md)                      |
@@ -67,6 +70,7 @@ description: You can explore Events overview in the documentation of the DHTMLX 
 | [](api/event/oneventunselected.md)                   | @getshort(api/event/oneventunselected.md)                   |
 | [](api/event/onexpand.md)                            | @getshort(api/event/onexpand.md)                            |
 | [](api/event/onexternaldragin.md)                    | @getshort(api/event/onexternaldragin.md)                    |
+| [](api/event/onlayoutsizechange.md)                  | @getshort(api/event/onlayoutsizechange.md)                  |
 | [](api/event/onlightbox.md)                          | @getshort(api/event/onlightbox.md)                          |
 | [](api/event/onlightboxbutton.md)                    | @getshort(api/event/onlightboxbutton.md)                    |
 | [](api/event/onlimitviolation.md)                    | @getshort(api/event/onlimitviolation.md)                    |
@@ -82,18 +86,23 @@ description: You can explore Events overview in the documentation of the DHTMLX 
 | [](api/event/onparse.md)                             | @getshort(api/event/onparse.md)                             |
 | [](api/event/onquickinfo.md)                         | @getshort(api/event/onquickinfo.md)                         |
 | [](api/event/onsaveerror.md)                         | @getshort(api/event/onsaveerror.md)                         |
+| [](api/event/onsidebaritemrender.md)                 | @getshort(api/event/onsidebaritemrender.md)                 |
+| [](api/event/onsidebartoggle.md)                     | @getshort(api/event/onsidebartoggle.md)                     |
 | [](api/event/onscaleadd.md)                          | @getshort(api/event/onscaleadd.md)                          |
 | [](api/event/onscaledblclick.md)                     | @getshort(api/event/onscaledblclick.md)                     |
 | [](api/event/onschedulerready.md)                    | @getshort(api/event/onschedulerready.md)                    |
 | [](api/event/onschedulerresize.md)                   | @getshort(api/event/onschedulerresize.md)                   |
 | [](api/event/ontemplatesready.md)                    | @getshort(api/event/ontemplatesready.md)                    |
+| [](api/event/ontoolbaritemchange.md)                 | @getshort(api/event/ontoolbaritemchange.md)                 |
+| [](api/event/ontoolbaritemclick.md)                  | @getshort(api/event/ontoolbaritemclick.md)                  |
+| [](api/event/ontoolbaritemrender.md)                 | @getshort(api/event/ontoolbaritemrender.md)                 |
 | [](api/event/ontimelinecreated.md)                   | @getshort(api/event/ontimelinecreated.md)                   |
 | [](api/event/onviewchange.md)                        | @getshort(api/event/onviewchange.md)                        |
 | [](api/event/onviewmoreclick.md)                     | @getshort(api/event/onviewmoreclick.md)                     |
+| [](api/event/onviewstatechange.md)                   | @getshort(api/event/onviewstatechange.md)                   |
 | [](api/event/onxle.md)                               | @getshort(api/event/onxle.md)                               |
 | [](api/event/onxls.md)                               | @getshort(api/event/onxls.md)                               |
 | [](api/event/onxscaleclick.md)                       | @getshort(api/event/onxscaleclick.md)                       |
 | [](api/event/onxscaledblclick.md)                    | @getshort(api/event/onxscaledblclick.md)                    |
 | [](api/event/onyscaleclick.md)                       | @getshort(api/event/onyscaleclick.md)                       |
 | [](api/event/onyscaledblclick.md)                    | @getshort(api/event/onyscaledblclick.md)                    |
-  

@@ -1,33 +1,43 @@
 ---
-sidebar_label: "onBeforeEventDisplay"
-title: "onBeforeEventDisplay event"
-description: "在调用 'showEvent' 方法显示特定事件之前触发，允许您在事件出现之前运行代码。"
+sidebar_label: onBeforeEventDisplay
+title: "onBeforeEventDisplay 事件"
+description: "在渲染前过滤事件"
 ---
 
 # onBeforeEventDisplay
 
-### Description
+### 描述
 
-@short: 在调用 'showEvent' 方法显示特定事件之前触发，允许您在事件出现之前运行代码。
+@short: 在事件渲染前触发，并可阻止其显示
 
-@signature: onBeforeEventDisplay: (event: object, view: string) =\> boolean
+@signature: onBeforeEventDisplay: (id: string | number, event: object) =\> boolean
 
-### Parameters
+### 参数
 
-- `event` - (required) *object* - 事件对象
-- `view` - (required) *string* - 用于显示事件的视图名称
+- `id` - （必需）*string | number* - 事件 ID
+- `event` - （必需）*object* - 事件对象
 
-### Returns
-- ` result` - (boolean) - 决定事件的默认操作是否继续执行（<b>true</b>）或被取消（<b>false</b>）
+### 返回值
+- `result` - (boolean) - 定义默认操作是触发（**true**）还是取消（**false**）
 
-### Example
+### 示例
 
 ~~~jsx
-scheduler.attachEvent("onBeforeEventDisplay", function(event,view){
-    //这里编写自定义逻辑
-    return true;
+scheduler.attachEvent("onBeforeEventDisplay", function(id, event){
+    return event.priority !== "low";
 });
 ~~~
 
-### Related API
-- [onAfterEventDisplay](api/event/onaftereventdisplay.md)
+### 详细说明
+
+对于每个考虑渲染的事件都会触发，包括重复事件实例和用于迷你日历标记的事件。它与当前视图的 `filter_<view>` 函数同时运行。
+
+可以附加多个 `onBeforeEventDisplay` 处理器。仅当视图过滤器和所有处理器都返回 `true` 时才显示事件。分离一个处理器不会影响其他处理器。
+
+### 从 v7.2 迁移
+
+在 v7.2 中，`onBeforeEventDisplay(event, view)` 属于 `showEvent()` 生命周期。在 v8.0 中请使用 [onBeforeEventShow](api/event/onbeforeeventshow.md) 实现该行为。v8.0 的 `onBeforeEventDisplay` 是本页介绍的渲染条件，接收 `(id, event)`。
+
+### 相关 API
+- [onBeforeEventShow](api/event/onbeforeeventshow.md)
+- [onAfterEventShow](api/event/onaftereventshow.md)

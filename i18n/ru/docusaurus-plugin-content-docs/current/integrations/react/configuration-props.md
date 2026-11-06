@@ -18,11 +18,43 @@ description: "Полная справка об обертках пропсов, 
 | `templates` | `SchedulerTemplates` | Соответствует шаблонам Scheduler (например, рендеринг стиля/текста события). |
 | `config` | `SchedulerConfig` | Соответствует параметрам конфигурации Scheduler. |
 | `xy` | `Record<string, number>` | Настройки размера пользовательского интерфейса (например, скрытие встроенной навигации через `nav_height: 0`). |
+| `plugins` | `SchedulerPlugins` | Включает плагины Scheduler: `toolbar`, `sidebar`, `recurring`, `collision`, `timeline`, `units`, `tooltip`, `quick_info`. Плагины макета передаются как `{ toolbar: true, sidebar: true }`. |
 | `data` | `{ load?: string \| (() => Promise<any>); save?: string \| SaveHandler; batchSave?: BatchSaveHandler }` | Загрузка данных и обработка изменений: колбэки/URL-адреса. |
 | `customLightbox` | `ReactElement \| null` | Заменяет встроенный Lightbox вашим React-компонентом. |
+| `toolbarComponents` | `Record<string, ReactElement \| null \| undefined>` | Выводит React-элементы в соответствующих элементах Toolbar `{ id, comp: "container" }`. |\n| `sidebarComponents` | `Record<string, ReactElement \| null \| undefined>` | Выводит React-элементы в соответствующих пользовательских элементах Sidebar. |
 | `modals` | `SchedulerModals` | Переопределяет встроенные диалоги подтверждения (например, подтверждение удаления события). |
 | `filter` | `(event: Event) => boolean` | Фильтрует события, отображаемые в Scheduler. |
 | `on<EventName>` props | `(...args) => any` | Обработчики событий, сопоставленные с событиями Scheduler (`onViewChange`, `onBeforeLightbox` и т. д.). |
+
+## Компоненты Toolbar и Sidebar {#toolbar-and-sidebar-components}
+
+Включите плагины макета, добавьте пользовательские ID в конфигурацию и сопоставьте их с React-элементами. Обертка выводит их через React-порталы в узлы Scheduler.
+
+```tsx
+const config: SchedulerConfig = {
+  header: [
+    "toggle_sidebar",
+    { id: "status", comp: "container" },
+    "spacer", "prev", "date", "next", "views"
+  ],
+  sidebar: {
+    items: ["minicalendar", { id: "legend" }]
+  }
+};
+
+<ReactScheduler
+  plugins={{ toolbar: true, sidebar: true }}
+  config={config}
+  toolbarComponents={{ status: <Status /> }}
+  sidebarComponents={{ legend: <Legend /> }}
+/>
+```
+
+Компонентам Toolbar нужен `{ id, comp: "container" }`, пользовательским элементам Sidebar — `{ id }`. Ключ объекта — ID, преобразованный в строку. При повторяющемся ID каждый элемент получает отдельный портал и состояние.
+
+Эквивалентные отрисовки сохраняют хост и состояние. Обновление `toolbarComponents` или `sidebarComponents` обновляет props без повторной инициализации. Установите значение в `null`, удалите элемент или уничтожьте Scheduler, чтобы размонтировать компонент.
+
+Prop `config` также может обновлять `header`, `sidebar`, `event_groups` после инициализации. Обертка копирует измененные ключи и отрисовывает существующий экземпляр, не вызывая `init()` снова.
 
 ## Базовый пример
 

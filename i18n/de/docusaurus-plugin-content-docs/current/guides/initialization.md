@@ -282,19 +282,18 @@ Um die Kopfzeilen fest zu halten, können Sie die Sticky-Position zusammen mit z
 </style>
 ~~~
 
-Zusätzlich benötigen Sie etwas JavaScript, um die korrekte obere Position der Sticky-Zeitachse sicherzustellen und sie direkt unter dem Navigationspanel zu positionieren.
+Mit dem Toolbar-Plug-in liegt die Leiste außerhalb des Kalenders und darf nicht zusammen mit dem Skalen-Header sticky sein. Der Skalen-Header bleibt daher bei `top: 0`; eine Messung in `onViewChange` ist nicht erforderlich. Behalten Sie das Legacy-Rezept für `.dhx_cal_navline` nur für den Legacy-Header-Renderer.
 
-Da das Navigationspanel flexibel ist und seine Höhe basierend auf anderen Stilen und Inhalten anpassen kann, müssen Sie dessen Höhe dynamisch berechnen und als obere Koordinate für den Header anwenden, wie folgt:
+Wenn Toolbar oder Sidebar eine Shell erstellt, löst eine von `container_autoresize` geschriebene Höhe kein `onSchedulerResize` aus. Verwenden Sie den normalen Ansichtslebenszyklus für Inhaltsarbeit. Befindet sich eine prozentbreite Shell in einem scrollenden Elternelement, reservieren Sie Platz für die Scrollleiste, damit ihr Erscheinen die Shell-Breite nicht ändert:
 
-~~~js
-scheduler.attachEvent("onViewChange", function(){
-   const navBar = scheduler.$container.querySelector(".dhx_cal_navline");
-   const header = scheduler.$container.querySelector(".dhx_cal_header");
-   if(navBar && header){
-       header.style.top = `${navBar.offsetHeight}px`;
-   }
-});
+~~~css
+.scheduler-scroller {
+    overflow: auto;
+    scrollbar-gutter: stable;
+}
 ~~~
+
+Wenn die Zielbrowser keinen Scrollleistenplatz reservieren können, verwenden Sie in diesem scrollenden Layout kein Container-Autoresize.
 
 Schauen Sie sich die vollständige Demo im untenstehenden Snippet an:
 

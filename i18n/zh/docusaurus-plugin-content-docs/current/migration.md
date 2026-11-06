@@ -5,6 +5,45 @@ sidebar_label: "从旧版本迁移"
 
 # 从旧版本迁移 
 
+## 7.2 -> 8.0
+
+### 事件显示与 `showEvent()` 生命周期事件 {#event-display-and-showevent-lifecycle-events}
+
+事件名称现在会区分渲染期间的事件过滤和 [showEvent](api/method/showevent.md) 方法的生命周期：
+
+- `onBeforeEventDisplay` 现在是渲染条件，接收 `(id, event)`。为 `showEvent()` 运行的现有 `onBeforeEventDisplay(event, view)` 处理器必须重命名为 [onBeforeEventShow](api/event/onbeforeeventshow.md)。参数仍为 `(event, view)`。
+- `onAfterEventDisplay(event, view)` 已重命名为 [onAfterEventShow](api/event/onaftereventshow.md)。参数保持不变。
+
+## Toolbar 插件
+
+`toolbar: true` 需要选择启用。它在内部日历周围引入 `.dhx_scheduler_shell`，并在 `.dhx_scheduler_toolbar` 中渲染控件。请更新 `#scheduler > .dhx_cal_*` 等 CSS 选择器，因为在 Toolbar 模式下它们不再匹配直接子元素。未启用插件的 Scheduler 和永久标记回退保留旧式 DOM。若 init 宿主已有完整 Scheduler 标记，Toolbar 和 Sidebar 使用该回退：不会渲染外壳、Toolbar 或 Sidebar。
+
+### CSS 选择器映射
+
+| 旧式导航选择器 | Toolbar 替代项 |
+| --- | --- |
+| `.dhx_cal_navline`、`.dhx_cal_navline_flex` | `.dhx_scheduler_toolbar`；旧式 flex 断点不适用 |
+| `.dhx_cal_prev_button`、`.dhx_cal_next_button`、`.dhx_cal_today_button` | `.dhx_scheduler_toolbar [data-item-id="prev"]`、`[data-item-id="next"]`、`[data-item-id="today"]` |
+| `.dhx_cal_date` | `.dhx_scheduler_toolbar [data-item-id="date"]` |
+| `.dhx_cal_tab`、`.dhx_cal_tab_first`、`.dhx_cal_tab_last`、`.dhx_cal_tab_standalone`、`.dhx_cal_tab_segmented` | `[data-item-id="views"]` 或单个视图项；旧式选项卡类没有 Toolbar 对应项 |
+| `.dhx_cal_nav_button`、`.dhx_cal_nav_button_custom`、`.dhx_cal_nav_content` | 配置项上的 `data-item-id`；应用类使用项的 `css` 选项 |
+| `.dhx_cal_line_spacer` | `[data-item-id="spacer"]` 或 Toolbar `spacer` 组件 |
+| `.dhx_cal_navbar_rows_container`、`.dhx_cal_navbar_row` | 来自 `rows` 和 `cols` 的 Toolbar 组；没有公共类对应项 |
+
+Toolbar 继续将 `--dhx-scheduler-toolbar-height` 用作最小高度，`--dhx-scheduler-navline-font-color` 用作文本颜色，`--dhx-scheduler-important-font-weight` 用作字重。较窄的 Toolbar 项会换行；旧式小按钮断点已移除。每个 Toolbar 是一个 Tab 停靠点，方向键、Home 和 End 在项之间移动。
+
+例如，将导航按钮规则迁移如下：
+
+~~~css
+/* legacy */
+.dhx_cal_prev_button { color: #1565c0; }
+
+/* Toolbar */
+.dhx_scheduler_toolbar [data-item-id="prev"] { color: #1565c0; }
+~~~
+
+Toolbar 接受所有现有 `config.header` 格式。新应用可使用 `add_event`、`views`、`toggle_sidebar`、`"|"` 和 UI kit 项对象。迁移旧式自定义标题时，请保持 `{ html, click }` 不变且不要添加 `id`。仅对新的空宿主使用 `{ id, comp: "container" }`，并在 `onToolbarItemRender` 中填充。
+
 ## 7.1 -> 7.2
 
 升级到 v7.2 带来了一些默认设置的变更。
@@ -668,5 +707,3 @@ codebase/dhtmlxgrid_units.js => codebase/ext/dhtmlxgrid_units.js
 - 西班牙语本地化文件已从 locale_sp.js 重命名为 locale_es.js。
 
 - 'drag_create' 选项现在仅控制通过拖拽创建新事件；通过双击创建事件现在由 'dblclick_create' 控制。
-
-
