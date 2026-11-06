@@ -46,6 +46,7 @@ description: You can explore Properties overview in the documentation of the DHT
 | [](api/config/edit_on_create.md)                          | @getshort(api/config/edit_on_create.md)               |
 | [](api/config/event_attribute.md)                         | @getshort(api/config/event_attribute.md)              |
 | [](api/config/event_duration.md)                          | @getshort(api/config/event_duration.md)               |
+| [](api/config/event_groups.md)                            | @getshort(api/config/event_groups.md)                 |
 | [](api/config/first_hour.md)                              | @getshort(api/config/first_hour.md)                   |
 | [](api/config/fix_tab_position.md)                        | @getshort(api/config/fix_tab_position.md)             |
 | [](api/config/full_day.md)                                | @getshort(api/config/full_day.md)                     |
@@ -119,6 +120,7 @@ description: You can explore Properties overview in the documentation of the DHT
 | [](api/config/show_errors.md)                             | @getshort(api/config/show_errors.md)                  |
 | [](api/config/show_loading.md)                            | @getshort(api/config/show_loading.md)                 |
 | [](api/config/show_quick_info.md)                         | @getshort(api/config/show_quick_info.md)              |
+| [](api/config/sidebar.md)                                 | @getshort(api/config/sidebar.md)                      |
 | [](api/config/start_on_monday.md)                         | @getshort(api/config/start_on_monday.md)              |
 | [](api/config/time_step.md)                               | @getshort(api/config/time_step.md)                    |
 | [](api/config/timeline_swap_resize.md)                    | @getshort(api/config/timeline_swap_resize.md)         |

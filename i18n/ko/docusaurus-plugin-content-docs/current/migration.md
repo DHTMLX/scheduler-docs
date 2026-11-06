@@ -7,7 +7,42 @@ sidebar_label: "Migration From Older Versions"
 
 ## 7.2 -> 8.0
 
-`onBeforeEventDisplay`은 이제 `(id, event)`로 렌더링할 이벤트를 필터링합니다. 이전 `showEvent()` 훅은 `onBeforeEventShow` 및 `onAfterEventShow`로 이름이 변경되었습니다.
+### 이벤트 표시 및 `showEvent()` 수명 주기 이벤트 {#event-display-and-showevent-lifecycle-events}
+
+이벤트 이름은 이제 렌더링 중 필터링과 [showEvent](api/method/showevent.md) 메서드 수명 주기를 구분합니다.
+
+- `onBeforeEventDisplay`는 렌더링 조건이며 `(id, event)`를 받습니다. `showEvent()`에서 실행되는 기존 `onBeforeEventDisplay(event, view)` 핸들러는 [onBeforeEventShow](api/event/onbeforeeventshow.md)로 이름을 변경해야 합니다. 인수는 `(event, view)` 그대로입니다.
+- `onAfterEventDisplay(event, view)`는 [onAfterEventShow](api/event/onaftereventshow.md)로 변경되었습니다. 인수는 그대로입니다.
+
+## Toolbar 플러그인
+
+`toolbar: true`는 선택 사항입니다. 내부 캘린더 주위에 `.dhx_scheduler_shell`을 만들고 `.dhx_scheduler_toolbar`에 컨트롤을 렌더링합니다. Toolbar 모드에서 더 이상 직접 자식을 찾지 못하는 `#scheduler > .dhx_cal_*` 같은 CSS 선택자를 업데이트하세요. 플러그인이 꺼진 Scheduler와 영구 마크업 폴백은 레거시 DOM을 유지합니다. init 호스트에 완전한 Scheduler 마크업이 있으면 Toolbar와 Sidebar는 이 폴백을 사용하므로 셸, Toolbar, Sidebar를 렌더링하지 않습니다.
+
+### CSS 선택자 매핑
+
+| 레거시 탐색 선택자 | Toolbar 대체 항목 |
+| --- | --- |
+| `.dhx_cal_navline`, `.dhx_cal_navline_flex` | `.dhx_scheduler_toolbar`; 레거시 flex 중단점은 적용되지 않음 |
+| `.dhx_cal_prev_button`, `.dhx_cal_next_button`, `.dhx_cal_today_button` | `.dhx_scheduler_toolbar [data-item-id="prev"]`, `[data-item-id="next"]`, `[data-item-id="today"]` |
+| `.dhx_cal_date` | `.dhx_scheduler_toolbar [data-item-id="date"]` |
+| `.dhx_cal_tab`, `.dhx_cal_tab_first`, `.dhx_cal_tab_last`, `.dhx_cal_tab_standalone`, `.dhx_cal_tab_segmented` | `[data-item-id="views"]` 또는 개별 뷰 항목; 레거시 탭 클래스에 해당하는 Toolbar 클래스는 없음 |
+| `.dhx_cal_nav_button`, `.dhx_cal_nav_button_custom`, `.dhx_cal_nav_content` | 설정된 항목의 `data-item-id`; 애플리케이션 클래스는 항목의 `css` 옵션 사용 |
+| `.dhx_cal_line_spacer` | `[data-item-id="spacer"]` 또는 Toolbar `spacer` 컴포넌트 |
+| `.dhx_cal_navbar_rows_container`, `.dhx_cal_navbar_row` | `rows`와 `cols`의 Toolbar 그룹; 공개 클래스 대체 없음 |
+
+Toolbar는 `--dhx-scheduler-toolbar-height`를 최소 높이로, `--dhx-scheduler-navline-font-color`를 텍스트 색상으로, `--dhx-scheduler-important-font-weight`를 글꼴 두께로 계속 사용합니다. 좁은 항목은 다음 줄로 넘어가며 레거시 작은 버튼 중단점은 제거됩니다. 각 Toolbar는 하나의 Tab 정지점이며 화살표, Home, End 키로 항목 사이를 이동합니다.
+
+예를 들어 탐색 버튼 규칙을 다음과 같이 마이그레이션하세요.
+
+~~~css
+/* legacy */
+.dhx_cal_prev_button { color: #1565c0; }
+
+/* Toolbar */
+.dhx_scheduler_toolbar [data-item-id="prev"] { color: #1565c0; }
+~~~
+
+Toolbar는 기존의 모든 `config.header` 형식을 지원합니다. 새 애플리케이션은 `add_event`, `views`, `toggle_sidebar`, `"|"` 및 UI 키트 항목 객체를 사용할 수 있습니다. 레거시 사용자 지정 헤더를 마이그레이션할 때 `{ html, click }` 항목은 그대로 두고 `id`를 추가하지 마세요. 새 빈 호스트에만 `{ id, comp: "container" }`를 사용하고 `onToolbarItemRender`에서 내용을 채우세요.
 
 ## 7.1 -> 7.2
 

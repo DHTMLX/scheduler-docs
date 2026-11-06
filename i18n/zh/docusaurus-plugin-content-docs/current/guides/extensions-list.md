@@ -9,6 +9,34 @@ dhtmlxScheduler 包含若干扩展，为标准行为添加额外功能。
 
 要使用扩展，请通过 [`plugins()`](api/method/plugins.md) 方法激活它。
 
+## Toolbar
+
+通过外部外壳中的 UI kit Toolbar 渲染 Scheduler 标题。
+
+~~~js
+scheduler.plugins({ toolbar: true });
+~~~
+
+#### 相关资源
+
+文章：[Toolbar](guides/toolbar.md)
+
+API：[header](api/config/header.md)
+
+## Sidebar
+
+渲染包含迷你日历、事件组列表或应用内容的侧面板。
+
+~~~js
+scheduler.plugins({ sidebar: true });
+~~~
+
+#### 相关资源
+
+文章：[Sidebar](guides/sidebar.md)
+
+API：[sidebar](api/config/sidebar.md)
+
 :::info
 在 v6.0 版本中，扩展代码文件已从调度器代码库的 **ext** 文件夹中移除，并合并到 *dhtmlxscheduler.js* 文件中。
 

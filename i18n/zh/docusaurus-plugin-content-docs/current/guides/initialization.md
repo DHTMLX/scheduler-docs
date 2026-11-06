@@ -281,19 +281,18 @@ scheduler.plugins({
 </style>
 ~~~
 
-此外，你需要一些 JavaScript 代码来确保粘性时间刻度的正确顶部位置，使其正好位于导航面板下方。
+使用 Toolbar 插件时，该栏位于日历之外，不应与刻度标题一起设为 sticky。因此刻度标题保持 `top: 0`，无需在 `onViewChange` 中测量。仅为旧式标题渲染器保留旧式 `.dhx_cal_navline` 方案。
 
-由于导航面板是可扩展的，并且可以根据其他样式和内容调整其高度，因此你需要动态计算其高度并将其应用为头部的顶部坐标，具体如下：
+当 Toolbar 或 Sidebar 创建外壳时，`container_autoresize` 写入的高度不会触发 `onSchedulerResize`。内容处理请使用正常的视图生命周期。如果百分比宽度外壳位于可滚动祖先中，请预留滚动条空间，避免垂直滚动条出现时改变外壳宽度：
 
-~~~js
-scheduler.attachEvent("onViewChange", function(){
-   const navBar = scheduler.$container.querySelector(".dhx_cal_navline");
-   const header = scheduler.$container.querySelector(".dhx_cal_header");
-   if(navBar && header){
-       header.style.top = `${navBar.offsetHeight}px`;
-   }
-});
+~~~css
+.scheduler-scroller {
+    overflow: auto;
+    scrollbar-gutter: stable;
+}
 ~~~
+
+如果目标浏览器无法预留滚动条空间，请勿在该滚动布局中使用容器自动调整大小。
 
 在下面的片段中查看完整演示：
 

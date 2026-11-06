@@ -8,7 +8,7 @@ description: "fires after the scheduler shows an event requested by the 'showEve
 
 ### Description
 
-@short: Fires after the scheduler shows an event requested by the 'showEvent' method
+@short: Fires after the scheduler shows an event requested by the `showEvent` method
 
 @signature: onAfterEventShow: (event: object, view: string) =\> void
 
@@ -25,6 +25,16 @@ scheduler.attachEvent("onAfterEventShow", function(event, view){
 });
 ~~~
 
+### Details
+
+The event belongs to the `showEvent()` lifecycle and fires after Scheduler has switched to the view that contains the requested event.
+
+### Migration from v7.2
+
+This event replaces the former `onAfterEventDisplay(event, view)` lifecycle event. Rename the event to `onAfterEventShow`; its `(event, view)` arguments remain unchanged.
+
 ### Related API
 
+- [showEvent](api/method/showevent.md)
 - [onBeforeEventShow](api/event/onbeforeeventshow.md)
+- [Migration from v7.2 to v8.0](migration.md#event-display-and-showevent-lifecycle-events)

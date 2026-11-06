@@ -7,6 +7,18 @@ sidebar_label: "更新日志"
 
 如果您正在从旧版本更新 Scheduler，请查看 [从旧版本迁移](migration.md) 以了解详细信息。
 
+## 8.0
+
+### 新增
+
+- 新增可选的 [Sidebar 插件](guides/sidebar.md)，通过 [scheduler.config.sidebar](api/config/sidebar.md) 配置。它可在日历任一侧渲染面板，提供内置 `minicalendar` 和 `event_groups` 项，支持自定义容器项，并通过 [scheduler.ext.sidebar](api/other/sidebar.md) 提供运行时控制。
+- Sidebar 支持停靠和折叠状态，并可在低于配置的 `overlay_width` 时成为覆盖层。覆盖模式使用 Scheduler 布局宽度，并需要可见的 `toggle_sidebar` Toolbar 项；没有切换项时面板保持停靠。
+
+### 不兼容更改
+
+- 事件渲染现在使用具有 `(id, event)` 签名的 [onBeforeEventDisplay](api/event/onbeforeeventdisplay.md)。v7.2 中将 `onBeforeEventDisplay(event, view)` 用于 `showEvent()` 生命周期的代码必须改用 [onBeforeEventShow](api/event/onbeforeeventshow.md)。
+- 原来的 `onAfterEventDisplay(event, view)` 生命周期事件已重命名为 [onAfterEventShow](api/event/onaftereventshow.md)。请参阅[从 v7.2 到 v8.0 的迁移指南](migration.md#event-display-and-showevent-lifecycle-events)。
+
 
 7.2.13
 -------------
@@ -1149,4 +1161,3 @@ Timeline 视图的 HTML 结构有重大更新，迁移时可能需要调整部�
 - 包含 Day/Week/Month 视图  
 - 支持拖放操作  
 - 支持基于 Ajax 的 web API
-

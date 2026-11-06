@@ -288,6 +288,7 @@ description: You can explore an API overview in the documentation of the DHTMLX 
 | [](api/event/onbeforeeventcreated.md)               | @getshort(api/event/onbeforeeventcreated.md)               |
 | [](api/event/onbeforeeventdelete.md)                | @getshort(api/event/onbeforeeventdelete.md)                |
 | [](api/event/onbeforeeventdisplay.md)               | @getshort(api/event/onbeforeeventdisplay.md)               |
+| [](api/event/onbeforeeventshow.md)                  | @getshort(api/event/onbeforeeventshow.md)                  |
 | [](api/event/onbeforeeventdragin.md)                | @getshort(api/event/onbeforeeventdragin.md)                |
 | [](api/event/onbeforeeventdragout.md)               | @getshort(api/event/onbeforeeventdragout.md)               |
 | [](api/event/onbeforeeventpasted.md)                | @getshort(api/event/onbeforeeventpasted.md)                |

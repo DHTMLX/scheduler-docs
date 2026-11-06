@@ -42,7 +42,7 @@ This page documents the public wrapper surface of `@dhtmlx/trial-angular-schedul
     <tr>
       <td>`plugins`</td>
       <td>`SchedulerPlugins`</td>
-      <td>Plugin activation map, for example `{ recurring: true, timeline: true }`.</td>
+      <td>Plugin activation map, for example `{ toolbar: true, sidebar: true }` or `{ recurring: true, timeline: true }`.</td>
     </tr>
     <tr>
       <td>`data`</td>
@@ -100,12 +100,69 @@ This page documents the public wrapper surface of `@dhtmlx/trial-angular-schedul
       <td>Replaces the built-in lightbox with an Angular component.</td>
     </tr>
     <tr>
+      <td>`toolbarComponents`</td>
+      <td>`AngularSchedulerRegionComponents`</td>
+      <td>Renders Angular components in matching `{ id, comp: "container" }` Toolbar items.</td>
+    </tr>
+    <tr>
+      <td>`sidebarComponents`</td>
+      <td>`AngularSchedulerRegionComponents`</td>
+      <td>Renders Angular components in matching custom Sidebar items.</td>
+    </tr>
+    <tr>
       <td>`on<EventName>`</td>
       <td>`SchedulerCallback`</td>
       <td>Scheduler event handler input, for example `[onViewChange]` or `[onBeforeLightbox]`.</td>
     </tr>
   </tbody>
 </table>
+
+## Toolbar and Sidebar components
+
+Enable the layout plug-ins, add custom item IDs to the configuration, and map those IDs to Angular component types or descriptors created with `templateComponent()`.
+
+~~~ts
+import {
+  type AngularSchedulerRegionComponents,
+  templateComponent
+} from "@dhx/angular-scheduler";
+
+plugins = { toolbar: true, sidebar: true };
+
+config: SchedulerConfig = {
+  header: [
+    "toggle_sidebar",
+    { id: "status", comp: "container" },
+    "spacer", "prev", "date", "next", "views"
+  ],
+  sidebar: {
+    items: ["minicalendar", { id: "legend" }]
+  }
+};
+
+toolbarComponents: AngularSchedulerRegionComponents = {
+  status: templateComponent(StatusComponent, { label: "Ready" })
+};
+
+sidebarComponents: AngularSchedulerRegionComponents = {
+  legend: LegendComponent
+};
+~~~
+
+~~~html
+<dhx-scheduler
+  [plugins]="plugins"
+  [config]="config"
+  [toolbarComponents]="toolbarComponents"
+  [sidebarComponents]="sidebarComponents"
+></dhx-scheduler>
+~~~
+
+Toolbar components require `{ id, comp: "container" }`; Sidebar custom items require `{ id }`. The map key is the item ID converted to a string. Duplicate IDs create separate Angular component instances.
+
+Equivalent layout renders keep the host node and component state. Replacing either component map updates inputs without reinitializing Scheduler. Set a mapped value to `null`, remove the item, or destroy the wrapper to destroy the Angular component instance.
+
+Changes to the `config` input can update `header`, `sidebar`, and `event_groups` after initialization. The wrapper synchronizes the changed keys and renders the existing Scheduler instance rather than calling `init()` again.
 
 
 ## Output And Instance Access

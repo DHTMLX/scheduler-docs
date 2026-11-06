@@ -9,6 +9,34 @@ dhtmlxScheduler включает ряд расширений, которые д�
 
 Чтобы использовать расширение, активируйте его с помощью метода [`plugins()`](api/method/plugins.md).
 
+## Toolbar
+
+Выводит заголовок Scheduler через UI-kit Toolbar во внешней оболочке.
+
+~~~js
+scheduler.plugins({ toolbar: true });
+~~~
+
+#### Связанные ресурсы
+
+Статья: [Toolbar](guides/toolbar.md)
+
+API: [header](api/config/header.md)
+
+## Sidebar
+
+Выводит боковую панель с мини-календарем, списком групп событий или содержимым приложения.
+
+~~~js
+scheduler.plugins({ sidebar: true });
+~~~
+
+#### Связанные ресурсы
+
+Статья: [Sidebar](guides/sidebar.md)
+
+API: [sidebar](api/config/sidebar.md)
+
 :::info
 В версии v6.0 файлы кода расширений были удалены из папки **ext** исходного кода планировщика и включены в файл *dhtmlxscheduler.js*.
 

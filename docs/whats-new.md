@@ -7,6 +7,18 @@ sidebar_label: "What's New"
 
 If you are updating Scheduler from an older version, check [Migration From Older Versions](migration.md) for details.
 
+## 8.0
+
+### New
+
+- Add the opt-in [Sidebar plugin](guides/sidebar.md), configured through [scheduler.config.sidebar](api/config/sidebar.md). It renders a panel on either side of the calendar with built-in `minicalendar` and `event_groups` items, supports custom container items, and provides runtime control through [scheduler.ext.sidebar](api/other/sidebar.md).
+- The Sidebar supports docked and collapsed states and can become an overlay below the configured `overlay_width`. Overlay mode uses the Scheduler layout width and requires a visible `toggle_sidebar` Toolbar item; without a toggle, the panel remains docked.
+
+### Breaking changes
+
+- Event rendering now uses [onBeforeEventDisplay](api/event/onbeforeeventdisplay.md) with the `(id, event)` signature. Code written for v7.2 that used `onBeforeEventDisplay(event, view)` as part of the `showEvent()` lifecycle must use [onBeforeEventShow](api/event/onbeforeeventshow.md) instead.
+- The former `onAfterEventDisplay(event, view)` lifecycle event has been renamed to [onAfterEventShow](api/event/onaftereventshow.md). See the [v7.2 to v8.0 migration guide](migration.md#event-display-and-showevent-lifecycle-events).
+
 
 7.2.14
 -------------

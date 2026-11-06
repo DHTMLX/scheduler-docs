@@ -35,7 +35,7 @@ scheduler.init("scheduler_here");
 
 Значение этой конфигурации может быть либо простым массивом элементов, либо вложенной структурой, которая описывает сложный макет.
 
-Обратите внимание, что высота заголовка/панели навигации по-прежнему контролируется параметром [`scheduler.xy.nav_height`](api/other/xy.md#illustration-images) опции.
+`scheduler.xy.nav_height = 0` скрывает панель навигации. Другие положительные значения не задают ее высоту. В режиме Toolbar используйте положительное `header.height` или `--dhx-scheduler-toolbar-height`.
 
 ~~~js
 scheduler.xy.nav_height = 80;
@@ -68,17 +68,82 @@ scheduler.init("scheduler_here");
 ~~~
 
 
-Поддерживаемые значения:
+Поддерживаемые устаревшие значения:
 
-- `{rows: Array, css: string}` - контейнер для многострочного заголовка
-- `{cols: Array, css: string}` - одна строка в многострочном заголовке
+- `{ rows: Array, align?: "left" | "right" }` и `{ cols: Array, align?: "left" | "right" }` - вложенные контейнеры; каждый ряд элементов становится группой Toolbar
 - `"prev"`, `"next"`, `"today"` - кнопки навигации по дате
-- `"date"` - метка даты
-- `"day"`, `"week"`, `"month"`, и т. д. - вкладки видов
-- `"spacer"` - прозрачный элемент, занимающий всё свободное пространство и может использоваться для выравнивания элементов по правой стороне заголовка
-- `{html: string, click: function, css: string}` - объект для внедрения пользовательских кнопок или значков в заголовок
-- `"minicalendar"` - переключатель [Mini Calendar](guides/minicalendar.md)
+- `"date"` - метка текущей даты
+- `"day"`, `"week"`, `"month"` или имя зарегистрированного представления - вкладка представления
+- `"spacer"` - гибкий пустой элемент, сдвигающий следующие элементы вправо
+- `"minicalendar"`, `"button"` или `{ view: "..." }` - соответствующий устаревший элемент
+- `{ html, click, css, width, height }` или объект без `id`, `view`, `rows`, `cols` - пользовательская устаревшая кнопка. `html` задает содержимое, `click` выполняется с узлом в `this`.
 
+## Формы элементов Toolbar
+
+Следующие формы доступны только при включенном `toolbar: true`:
+
+- `"views"` - выбор представления, по умолчанию сегментированный. Для меню используйте `{ id: "views", comp: "menu" }`, для выбора и порядка — `options`.
+- `"add_event"` - действие нового события.
+- `"toggle_sidebar"` - переключает Sidebar.
+- `"|"` - визуальный разделитель.
+- `{ id, comp, label, ... }` - элемент UI kit. Встроенный `id` настраивает соответствующий элемент, остальные создают пользовательские.
+- `{ id, comp: "container" }` - пустой хост, заполняемый в `onToolbarItemRender`.
+
+`comp` может быть `button`, `toggle`, `menu`, `combo`, `segmented`, `text`, `stepper`, `datepicker`, `separator`, `spacer`, `container`. Пользовательские элементы могут использовать `label`, `icon`, `tooltip`, `css`, `width`, `height`, `align`, `disabled`, `hidden`, `value`, `placeholder`, `options`, `items`, `config`. `options` настраивает `combo` и `segmented`, `items` — `menu`, `config` — параметры компонента.
+
+Не объединяйте `id` с устаревшими `view`, `html`, `click`: элемент остается устаревшим, и Scheduler выводит предупреждение. Для действий используйте `onToolbarItemClick` и `onToolbarItemChange`.
+
+### Примеры настройки Toolbar
+
+Включите плагин перед инициализацией:
+
+~~~js
+scheduler.plugins({ toolbar: true, minical: true });
+~~~
+
+**1. Стандартная навигация с сегментированным выбором представления**
+
+~~~js
+scheduler.config.header = [
+    "add_event", "spacer", "prev", "date", "next", "today",
+    { id: "views", comp: "segmented", options: ["day", "week", "month"] }
+];
+~~~
+
+**2. Пользовательские элементы UI kit и разделитель**
+
+~~~js
+scheduler.config.header = [
+    "prev", "next", "|",
+    { id: "range", comp: "combo", label: "Range", options: ["week", "month"] },
+    { id: "search", comp: "text", placeholder: "Search events", width: 220 },
+    "spacer",
+    { id: "create", comp: "button", label: "Create", css: "my-create-button" }
+];
+
+scheduler.attachEvent("onToolbarItemChange", (id, value) => {
+    if (id === "range") scheduler.setCurrentView(null, value);
+    return true;
+});
+~~~
+
+**3. Двухстрочный макет с устаревшими элементами и содержимым приложения**
+
+~~~js
+scheduler.config.header = {
+    rows: [
+        { cols: ["prev", "date", "next", { view: "minicalendar" }] },
+        { cols: ["today", { id: "views", comp: "menu" }, "spacer", { id: "filters", comp: "container" }], align: "right" }
+    ]
+};
+
+scheduler.attachEvent("onToolbarItemRender", (id, node) => {
+    if (id !== "filters" || node.firstChild) return;
+    const input = document.createElement("input");
+    input.placeholder = "Filter";
+    node.appendChild(input);
+});
+~~~
 ~~~js
 scheduler.config.header = [
     "day",

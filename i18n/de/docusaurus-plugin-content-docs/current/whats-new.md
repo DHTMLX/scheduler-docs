@@ -7,6 +7,18 @@ sidebar_label: "Was ist neu"
 
 Wenn Sie Scheduler von einer älteren Version aktualisieren, lesen Sie [Migration von älteren Versionen](migration.md) für Details.
 
+## 8.0
+
+### Neu
+
+- Das optionale [Sidebar-Plug-in](guides/sidebar.md) wird über [scheduler.config.sidebar](api/config/sidebar.md) konfiguriert. Es rendert ein Panel auf einer Kalenderseite mit den integrierten Elementen `minicalendar` und `event_groups`, unterstützt benutzerdefinierte Container und bietet Laufzeitsteuerung über [scheduler.ext.sidebar](api/other/sidebar.md).
+- Die Sidebar unterstützt angedockte und eingeklappte Zustände und kann unterhalb von `overlay_width` zum Overlay werden. Der Overlay-Modus verwendet die Scheduler-Layoutbreite und benötigt ein sichtbares `toggle_sidebar`-Toolbar-Element; ohne Umschalter bleibt das Panel angedockt.
+
+### Inkompatible Änderungen
+
+- Ereignisrendering verwendet nun [onBeforeEventDisplay](api/event/onbeforeeventdisplay.md) mit `(id, event)`. Code aus v7.2, der `onBeforeEventDisplay(event, view)` im `showEvent()`-Lebenszyklus nutzte, muss [onBeforeEventShow](api/event/onbeforeeventshow.md) verwenden.
+- Das frühere Lebenszyklusereignis `onAfterEventDisplay(event, view)` heißt jetzt [onAfterEventShow](api/event/onaftereventshow.md). Siehe [Migrationsanleitung v7.2 zu v8.0](migration.md#event-display-and-showevent-lifecycle-events).
+
 7.2.13
 -------------
 <span class='release_date'>31. März 2026. Bugfix-Veröffentlichung</span>

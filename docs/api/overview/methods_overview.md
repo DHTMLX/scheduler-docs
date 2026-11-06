@@ -62,6 +62,7 @@ description: You can explore Methods overview in the documentation of the DHTMLX
 | [](api/method/geteventstartdate.md)              | @getshort(api/method/geteventstartdate.md)              |
 | [](api/method/geteventtext.md)                   | @getshort(api/method/geteventtext.md)                   |
 | [](api/method/getevents.md)                      | @getshort(api/method/getevents.md)                      |
+| [](api/method/getlayoutsize.md)                  | @getshort(api/method/getlayoutsize.md)                  |
 | [](api/method/getlabel.md)                       | @getshort(api/method/getlabel.md)                       |
 | [](api/method/getlightbox.md)                    | @getshort(api/method/getlightbox.md)                    |
 | [](api/method/getrecdates.md)                    | @getshort(api/method/getrecdates.md)                    |
@@ -71,6 +72,7 @@ description: You can explore Methods overview in the documentation of the DHTMLX
 | [](api/method/getstate.md)                       | @getshort(api/method/getstate.md)                       |
 | [](api/method/getuserdata.md)                    | @getshort(api/method/getuserdata.md)                    |
 | [](api/method/getview.md)                        | @getshort(api/method/getview.md)                        |
+| [](api/method/getviewstate.md)                   | @getshort(api/method/getviewstate.md)                   |
 | [](api/method/hidecover.md)                      | @getshort(api/method/hidecover.md)                      |
 | [](api/method/hidelightbox.md)                   | @getshort(api/method/hidelightbox.md)                   |
 | [](api/method/hidequickinfo.md)                  | @getshort(api/method/hidequickinfo.md)                  |

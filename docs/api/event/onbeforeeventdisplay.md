@@ -30,7 +30,13 @@ scheduler.attachEvent("onBeforeEventDisplay", function(id, event){
 
 ### Details
 
-The event is called for every event considered for rendering, including events in the mini calendar. Return `false` to hide the event. If several handlers are attached, all of them must return `true` for the event to be displayed.
+The event fires for every event considered for rendering, including recurring occurrences and events used for mini-calendar marks. It runs in addition to the current view's `filter_<view>` function.
+
+You can attach more than one `onBeforeEventDisplay` handler. An event is displayed only when the view filter and every attached handler return `true`. Detaching one handler does not affect the others.
+
+### Migration from v7.2
+
+In v7.2, `onBeforeEventDisplay(event, view)` belonged to the `showEvent()` lifecycle. In v8.0, use [onBeforeEventShow](api/event/onbeforeeventshow.md) for that behavior. The v8.0 `onBeforeEventDisplay` event is the rendering predicate documented on this page and receives `(id, event)`.
 
 ### Related API
 - [onBeforeEventShow](api/event/onbeforeeventshow.md)

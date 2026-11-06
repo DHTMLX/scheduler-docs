@@ -16,7 +16,7 @@ This page describes the props accepted by **React Scheduler** and how they map t
 | `view` | `"day" \| "week" \| "month" \| "year" \| ...` | Active Scheduler view. |
 | `date` | `Date` | Active date used to render the selected view. |
 | `markers` | `Marker[]` | Time markers (for example, non-working time blocks). |
-| `plugins` | `SchedulerPlugins` | Enables Scheduler plugins such as `recurring`, `collision`, `timeline`, `units`, `tooltip`, `quick_info`, etc. Pass as `{ recurring: true, collision: true }`. |
+| `plugins` | `SchedulerPlugins` | Enables Scheduler plugins such as `toolbar`, `sidebar`, `recurring`, `collision`, `timeline`, `units`, `tooltip`, and `quick_info`. Pass layout plugins as `{ toolbar: true, sidebar: true }`. |
 | `data` | `{ load?: string \| (() => Promise<any>); save?: string \| SaveHandler; batchSave?: BatchSaveHandler }` | Data loading and change handling callbacks/URLs. |
 | `locale` | `string \| Locale` | Active locale (for example, `"en"`, `"es"`). Defaults to `"en"`. |
 | `theme` | `string` | Active skin: `"terrace"` (default), `"dark"`, `"material"`, `"flat"`, `"contrast_black"`, `"contrast_white"`. |
@@ -29,8 +29,40 @@ This page describes the props accepted by **React Scheduler** and how they map t
 | `views` | `any[]` | Registers configurations for the available views. Use `TimelineViewConfig`, `UnitsViewConfig`, or `GridViewConfig` shapes. |
 | `customViews` | `any[]` | Registers user-defined view definitions. |
 | `customLightbox` | `ReactElement \| null` | Replaces built-in Lightbox with your React component. |
+| `toolbarComponents` | `Record<string, ReactElement \| null \| undefined>` | Renders React elements in matching `{ id, comp: "container" }` Toolbar items. |
+| `sidebarComponents` | `Record<string, ReactElement \| null \| undefined>` | Renders React elements in matching custom Sidebar items. |
 | `templateWrapper` | `(element: ReactElement) => ReactElement` | Wraps template React elements with app-level providers (for example, a ThemeProvider) to avoid flicker during server-side render. |
 | `on<EventName>` props | `(...args) => any` | Event handlers mapped to Scheduler events (`onViewChange`, `onBeforeLightbox`, etc.). |
+
+## Toolbar and Sidebar components
+
+Enable the layout plug-ins, add custom item IDs to the configuration, and map those IDs to React elements. The wrapper renders them through React portals into nodes owned by Scheduler.
+
+```tsx
+const config: SchedulerConfig = {
+  header: [
+    "toggle_sidebar",
+    { id: "status", comp: "container" },
+    "spacer", "prev", "date", "next", "views"
+  ],
+  sidebar: {
+    items: ["minicalendar", { id: "legend" }]
+  }
+};
+
+<ReactScheduler
+  plugins={{ toolbar: true, sidebar: true }}
+  config={config}
+  toolbarComponents={{ status: <Status /> }}
+  sidebarComponents={{ legend: <Legend /> }}
+/>
+```
+
+Toolbar components require `{ id, comp: "container" }`; Sidebar custom items require `{ id }`. The object key is the item ID converted to a string. If the same ID occurs more than once, each item receives an independent portal and component state.
+
+Equivalent layout renders keep the host node and component state. Updating `toolbarComponents` or `sidebarComponents` updates props without reinitializing Scheduler. Set a mapped value to `null`, remove the item from the layout, or destroy Scheduler to unmount the component and run normal React cleanup.
+
+The `config` prop can also update `header`, `sidebar`, and `event_groups` after initialization. The wrapper copies the changed keys and renders the existing Scheduler instance; it does not call `init()` again.
 
 ## Basic example
 

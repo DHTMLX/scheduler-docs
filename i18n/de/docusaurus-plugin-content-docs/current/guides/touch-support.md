@@ -1,199 +1,122 @@
 ---
-title: "Mobile Responsive Scheduler"
-sidebar_label: "Mobile Responsive Scheduler"
+title: "Mobiler responsiver Scheduler"
+sidebar_label: "Mobiler responsiver Scheduler"
+description: "Scheduler v8 für Touch-Geräte und responsive Toolbar-/Sidebar-Layouts konfigurieren"
 ---
 
-# Mobile Responsive Scheduler
+# Mobiler responsiver Scheduler
 
-dhtmlxScheduler unterstützt Touch-Geräte wie:
+Scheduler unterstützt Touch-Eingaben auf iOS, Android, Windows-Tablets, Touchscreen-Monitoren und Smartphones. Touch-Gesten sind in jeder Ansicht verfügbar. Konfigurieren Sie auf kleinen Bildschirmen sowohl das Anwendungslayout als auch den Kalender.
 
-- iOS-Geräte (iPad, iPhone, iPod);
-- Windows 10 Tablets und Touchscreen-Monitore;
-- Android-Geräte.
+:::note
+Diese Anleitung beschreibt das Toolbar- und Sidebar-Layout von v8.0. Anwendungen mit Legacy-Navigationsleiste können weiterhin den [responsiven Header-Ansatz aus v7.2](guides/touch-support-legacy.md) verwenden.
+:::
 
-_Der Scheduler läuft auch auf Smartphones, aber aufgrund des begrenzten Bildschirms kann eine manuelle Anpassung erforderlich sein._
+Für touchorientierte Anwendungen:
 
-**Hilfreiche Tipps!**
+- fügen Sie `<meta name="viewport" content="width=device-width, initial-scale=1">` ein;
+- verwenden Sie den [Material-Skin](guides/skins.md#material-skin) oder ein Theme mit ausreichend großen Steuerelementen;
+- aktivieren Sie das [Quick Info](guides/quick-info.md)-Plug-in für einen kompakten Ereigniseditor;
+- aktivieren Sie `responsive_lightbox`, wenn sich die integrierte Lightbox an schmale Bildschirme anpassen soll.
 
-+ Die Touch-Unterstützung ist standardmäßig aktiviert und funktioniert in allen Scheduler-Modi.
-+ Für Apps, die auf Touch-Geräte abzielen, wird die Verwendung des ['material' Skin](guides/skins.md#material-skin) dringend empfohlen, da er größere, leicht zu bedienende Schaltflächen bietet.
-+ Wenn Sie mit mobilen Nutzern rechnen, ist das Hinzufügen von [Quick Info](guides/extensions-list.md#quick-info) in der Regel eine gute Wahl.
-+ Das Hinzufügen des folgenden Meta-Tags zu Ihrer Seite sorgt dafür, dass alle Scheduler-Elemente größer und leichter bedienbar werden:
+## Responsive Toolbar
 
-~~~js
-<meta name="viewport" content="width="device-width," initial-scale="1"">
-~~~
-
-## Responsives Layout {#responsivelayout}
-
-Wenn Sie den [Scheduler über die Header-Konfiguration initialisieren](guides/initialization.md#initializing-scheduler-via-header-config), können Sie ein Header-Layout wählen, das zur Bildschirmgröße des Clients passt.
-Dabei werden auch Stile angewendet, die die Größe von Elementen und Schriftarten für kleinere Bildschirme anpassen.
-
-### Header
-
-Zum Beispiel können Sie den Header in mehrere Zeilen aufteilen:
-
-![header_responsive](/img/header_responsive.png)
-
-Der obige Screenshot zeigt den Scheduler auf einem kleinen Bildschirm.
-
-Diese Konfiguration kann dynamisch gewechselt werden, sodass Sie verschiedene Header-Konfigurationen für große und kleine Bildschirme definieren können:
+Aktivieren Sie das Toolbar-Plug-in und stellen Sie vollständige und kompakte Varianten von `scheduler.config.header` bereit. Wählen Sie mit `onLayoutSizeChange` zwischen ihnen:
 
 ~~~js
-// Konfigurationen definieren
 const compactHeader = {
     rows: [
-        { 
-            cols: [
-                "prev",
-                "date",
-                "next",
-            ]
-        },
-        { 
-            cols: [
-                "day",
-                "week",
-                "month",
-                "spacer",
-                "today"
-            ]
-        }
+        { cols: ["prev", "date", "next"] },
+        { cols: ["today", { id: "views", comp: "menu" }] }
     ]
 };
-            
+
 const fullHeader = [
-    "day",
-    "week",
-    "month",
-    "date",
-    "prev",
-    "today",
-    "next"
+    "toggle_sidebar", "add_event", "spacer",
+    "prev", "date", "next", "spacer", "today", "views"
 ];
 
-// Umschalter hinzufügen, um die passende Konfiguration je nach aktueller Bildschirmgröße zu wählen
+scheduler.plugins({ toolbar: true, sidebar: true });
 
-function resetConfig(){
-    let header;
-    if (window.innerWidth < 1000) {
-        header = compactHeader;
-    } else {
-        header = fullHeader;
-    
-    }
-    scheduler.config.header = header;
-    return true;
-}
+scheduler.attachEvent("onLayoutSizeChange", ({ width }) => {
+    scheduler.config.header = width < 700 ? compactHeader : fullHeader;
+});
 
-// Konfiguration initial und bei jedem Neuzeichnen oder Ändern der Größe des Schedulers anwenden:
-
-resetConfig();
-scheduler.attachEvent("onBeforeViewChange", resetConfig);
-scheduler.attachEvent("onSchedulerResize", resetConfig);
-
-scheduler.config.responsive_lightbox = true; // responsive Lightbox
-
-scheduler.init("scheduler_here");
+scheduler.init("scheduler_here", new Date(), "week");
 ~~~
 
+Das Ereignis meldet die Breite der Layout-Shell, also des an `scheduler.init()` übergebenen Elements. Verwenden Sie sie statt `window.innerWidth`, da Scheduler nur einen Teil der Seite belegen kann. Wählen Sie den Header nicht anhand der Kalenderhöhe; der Wechsel zwischen einer und zwei Toolbar-Zeilen verändert diese Höhe und kann eine Resize-Schleife erzeugen.
 
-[Responsive scheduler](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/13_touch_ui.html)
+Toolbar liest `config.header` nach `onLayoutSizeChange` erneut, sodass die ausgewählte Struktur im selben Rendern verwendet wird. Eine unveränderte Struktur behält vorhandene Steuerelemente und Framework-Komponenten.
 
+`scheduler.xy.nav_height = 0` blendet die Navigationsleiste aus. Positive Werte legen ihre Höhe nicht fest. Verwenden Sie für eine feste Toolbar-Höhe eine positive `config.header.height` oder die CSS-Variable `--dhx-scheduler-toolbar-height`.
 
-### Lightbox
+## Responsive Sidebar
 
-Die Scheduler-API enthält die Option [responsive_lightbox](api/config/responsive_lightbox.md), um die Lightbox an verschiedene Bildschirmgrößen anzupassen.
+Die Sidebar verwendet dieselbe Shell-Breite wie die Toolbar:
 
-~~~~js
-scheduler.config.responsive_lightbox = true; //standardmäßig deaktiviert
-//auf true setzen, um die Lightbox responsiv zu machen
-~~~~
+~~~js
+scheduler.config.sidebar = {
+    items: ["minicalendar", "event_groups"],
+    position: "left",
+    width: 260,
+    collapsed: false,
+    overlay_width: 768
+};
+~~~
 
-So passt sich die Lightbox auf kleineren Bildschirmen an:
+Unterhalb von `overlay_width` wird die Sidebar zu einem geschlossenen Overlay, wenn ein sichtbares `toggle_sidebar`-Element in der integrierten oder einer eigenständigen Toolbar vorhanden ist. Ohne dieses Steuerelement bleibt sie angedockt. Laufzeitaufrufe wie `scheduler.ext.sidebar.show()` und `hide()` ändern den sichtbaren Zustand, ohne `config.sidebar.collapsed` zu überschreiben.
 
-![lightbox_responsive](/img/lightbox_responsive.png)
+Siehe [Anwendungslayout](guides/application-layout.md), [Toolbar](guides/toolbar.md) und [Sidebar](guides/sidebar.md).
 
+## Automatische Containergröße
 
-[Responsive scheduler](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/13_touch_ui.html)
+Reservieren Sie bei `container_autoresize` in einem scrollenden Elternelement Platz für dessen vertikale Scrollleiste. Andernfalls kann sie die Shell-Breite an einem responsiven Breakpoint wiederholt ändern:
 
+~~~css
+.scheduler-scroll-container {
+    overflow: auto;
+    scrollbar-gutter: stable;
+}
+~~~
 
-Sie können das Aussehen der Lightbox im responsiven Modus anpassen. Sie erhält eine zusätzliche CSS-Klasse <b>dhx_cal_light_responsive</b>, die Sie in Ihren Styles gezielt ansprechen können.
+Mit einer Toolbar- oder Sidebar-Shell löst eine von `container_autoresize` geschriebene Höhe kein `onSchedulerResize` aus. Verwenden Sie `onLayoutSizeChange` für Entscheidungen zum Anwendungslayout.
 
-Standardmäßig enthält diese Klasse Media Queries, die nur auf kleineren Bildschirmen (weniger als 1024px) angewendet werden, sodass Sie das Erscheinungsbild der Lightbox auf diesen Geräten anpassen können.
+## Responsive Lightbox
 
-## Touch-Konfigurationsoptionen {#touchconfigurationoptions}
+Aktivieren Sie responsive Stile für die integrierte Lightbox:
 
-Nachfolgend finden Sie die Konfigurationsoptionen für mobile und responsive Unterstützung:
+~~~js
+scheduler.config.responsive_lightbox = true;
+~~~
 
+Auf schmalen Bildschirmen erhält die Lightbox die Klasse `dhx_cal_light_responsive`. Verwenden Sie sie für anwendungsspezifische responsive Stile.
 
-- [header](api/config/header.md) - steuert das Header-Layout
-- [touch](api/config/touch.md) - schaltet die Touch-Unterstützung im Scheduler ein/aus
-- [touch_drag](api/config/touch_drag.md) - legt die Zeit in Millisekunden fest, um einen langen Touch von einem Scrollen zu unterscheiden
-- [touch_tip](api/config/touch_tip.md) - schaltet Hinweisnachrichten in der oberen rechten Ecke ein/aus
-- [touch_swipe_dates](api/config/touch_swipe_dates.md) - schaltet Wischgesten zum Wechseln von Daten ein/aus
-- [responsive_lightbox](api/config/responsive_lightbox.md) - aktiviert responsive Styles für die Lightbox (standardmäßig aus)
+## Touch-Konfigurationsoptionen
 
+- [touch](api/config/touch.md) aktiviert oder deaktiviert Touch-Unterstützung;
+- [touch_drag](api/config/touch_drag.md) legt die Verzögerung zwischen langem Drücken und Scrollen fest;
+- [touch_swipe_dates](api/config/touch_swipe_dates.md) aktiviert Datumsnavigation per horizontalem Wischen;
+- [touch_tip](api/config/touch_tip.md) steuert Touch-Hinweise;
+- [touch_tooltip](api/config/touch_tooltip.md) steuert Touch-Tooltips;
+- [responsive_lightbox](api/config/responsive_lightbox.md) aktiviert responsive Lightbox-Stile.
 
 ## Touch-Gesten im Scheduler {#touch-gestures-in-the-scheduler}
 
-- **Doppeltippen** - entspricht einem Doppelklick und öffnet die Event-Bearbeitung oder -Erstellung;
-- **Langes Tippen und Ziehen** - wird zum Verschieben oder Erstellen von Events verwendet;
-- **Wischen** - wechselt zur nächsten oder vorherigen Zeitspanne ([standardmäßig deaktiviert](api/config/touch_swipe_dates.md)).
+- **Doppeltippen** funktioniert wie ein Doppelklick und öffnet oder erstellt ein Ereignis.
+- **Lang tippen und ziehen** verschiebt ein Ereignis oder erstellt eines in einem leeren Zeitfenster.
+- **Wischen** wechselt bei aktiviertem `touch_swipe_dates` zum vorherigen oder nächsten Datumsbereich.
 
-## 'Quick info' Erweiterung {#quick-info-extension}
+Bei aktivierter Toolbar verwendet horizontales Wischen denselben abbrechbaren `onToolbarItemClick`-Aktionspfad wie `prev` und `next`.
 
-Um die Touch-Funktionalität zu verbessern, enthält die Bibliothek die ["Quick Info" Erweiterung](guides/extensions-list.md#quick-info).
+## Quick Info-Erweiterung {#quick-info-extension}
 
-Diese Erweiterung ersetzt die Standard-Sidebar-Schaltflächen und das kleine Bearbeitungsformular (die auf Touch-Geräten schwer zu bedienen sein können) durch größere, benutzerfreundlichere Bedienelemente.
-
-Um den Scheduler mit großen Schaltflächen zu aktivieren, fügen Sie die ["Quick Info"](guides/extensions-list.md#quick-info) Erweiterung zu Ihrer Seite hinzu:
+Das [Quick Info](guides/quick-info.md)-Plug-in bietet eine touchfreundliche Ereigniszusammenfassung und Aktionsschaltflächen. Aktivieren Sie es vor der Initialisierung:
 
 ~~~js
-<script>
-    scheduler.plugins({
-        quick_info: true
-    });
-    scheduler.init('scheduler_here',new Date(2019,5,30),"day");
-      ...
-<script>
+scheduler.plugins({ quick_info: true });
 ~~~
 
+Quick Info verwendet die Templates `quick_info_content`, `quick_info_date`, `quick_info_title`. Methoden und Ereignisse sind unter anderem `showQuickInfo`, `hideQuickInfo`, `onQuickInfo`, `onAfterQuickInfo`.
 
-[Touch-oriented scheduler](https://docs.dhtmlx.com/scheduler/samples/03_extensions/29_quick_info.html)
-
-
-Nach der Aktivierung ersetzt der Scheduler die Standard-Schaltflächen durch größere:
-
-![quick_info_extension.png](/img/quick_info_extension.png)
-
-:::note
-Beachten Sie, dass das Auswahlmenü der Quick-Info-Seitenleiste und das Auswahlmenü im Standard-Scheduler die gleiche Konfiguration verwenden, die in [icons_select](api/config/icons_select.md) beschrieben ist.
-:::
-
-Die Erweiterung bietet:
-
-- **3 Templates**
-
-- [quick_info_content](api/template/quick_info_content.md) - definiert den Inhalt des Pop-up-Bearbeitungsformulars
-- [quick_info_date](api/template/quick_info_date.md) - definiert das Datum im Pop-up-Bearbeitungsformular
-- [quick_info_title](api/template/quick_info_title.md) - definiert den Titel des Pop-up-Bearbeitungsformulars
-
-- **1 Konfigurationsoption**
-
-
-- [quick_info_detached](api/config/quick_info_detached.md) - steuert, ob das Event-Formular seitlich oder in der Nähe des ausgewählten Events angezeigt wird
-
-
-- **2 Methoden**
-
-
-- [hideQuickInfo](api/method/hidequickinfo.md) - blendet das Pop-up-Eventformular aus, falls es geöffnet ist
-- [showQuickInfo](api/method/showquickinfo.md) - zeigt das Pop-up-Eventformular für ein bestimmtes Event an
-
-
-- **2 Events**
-
-
-- [onQuickInfo](api/event/onquickinfo.md) - wird ausgelöst, wenn das Pop-up-Bearbeitungsformular erscheint
-- [onAfterQuickInfo](api/event/onafterquickinfo.md) - wird ausgelöst, nachdem das Pop-up-Eventformular geschlossen wurde
+[Beispiel für ein responsives Anwendungslayout](https://docs.dhtmlx.com/scheduler/samples/16_layout/03_layout.html)
