@@ -18,11 +18,43 @@ description: "封装属性的完整参考，映射到 Scheduler 配置、模板�
 | `templates` | `SchedulerTemplates` | 映射到 Scheduler 模板（例如，事件样式/文本渲染）。 |
 | `config` | `SchedulerConfig` | 映射到 Scheduler 配置选项。 |
 | `xy` | `Record<string, number>` | UI 尺寸设置（例如，将内置导航隐藏，`nav_height: 0`）。 |
+| `plugins` | `SchedulerPlugins` | 启用 `toolbar`、`sidebar`、`recurring`、`collision`、`timeline`、`units`、`tooltip`、`quick_info` 等 Scheduler 插件。布局插件以 `{ toolbar: true, sidebar: true }` 传入。 |
 | `data` | `{ load?: string \| (() => Promise<any>); save?: string \| SaveHandler; batchSave?: BatchSaveHandler }` | 数据加载与变更处理的回调/URL。 |
 | `customLightbox` | `ReactElement \| null` | 用你自己的 React 组件替换内置 Lightbox。 |
+| `toolbarComponents` | `Record<string, ReactElement \| null \| undefined>` | 在匹配的 `{ id, comp: "container" }` Toolbar 项中渲染 React 元素。 |\n| `sidebarComponents` | `Record<string, ReactElement \| null \| undefined>` | 在匹配的自定义 Sidebar 项中渲染 React 元素。 |
 | `modals` | `SchedulerModals` | 覆盖内置的确认对话框（例如，事件删除确认）。 |
 | `filter` | `(event: Event) => boolean` | 筛选在 Scheduler 中显示的事件。 |
 | `on<EventName>` props | `(...args) => any` | 映射到 Scheduler 事件的事件处理函数（`onViewChange`、`onBeforeLightbox` 等）。 |
+
+## Toolbar 和 Sidebar 组件 {#toolbar-and-sidebar-components}
+
+启用布局插件，在配置中添加自定义项 ID，并将这些 ID 映射到 React 元素。包装器通过 React portal 将它们渲染到 Scheduler 拥有的节点中。
+
+```tsx
+const config: SchedulerConfig = {
+  header: [
+    "toggle_sidebar",
+    { id: "status", comp: "container" },
+    "spacer", "prev", "date", "next", "views"
+  ],
+  sidebar: {
+    items: ["minicalendar", { id: "legend" }]
+  }
+};
+
+<ReactScheduler
+  plugins={{ toolbar: true, sidebar: true }}
+  config={config}
+  toolbarComponents={{ status: <Status /> }}
+  sidebarComponents={{ legend: <Legend /> }}
+/>
+```
+
+Toolbar 组件需要 `{ id, comp: "container" }`，Sidebar 自定义项需要 `{ id }`。对象键是转换为字符串的项 ID。相同 ID 多次出现时，每个项获得独立 portal 和组件状态。
+
+等价布局渲染会保留宿主节点和组件状态。更新 `toolbarComponents` 或 `sidebarComponents` 会更新 props，而不重新初始化 Scheduler。将映射值设为 `null`、删除布局项或销毁 Scheduler 会卸载组件。
+
+`config` prop 也可在初始化后更新 `header`、`sidebar` 和 `event_groups`。包装器复制已更改的键并渲染现有 Scheduler 实例，不会再次调用 `init()`。
 
 ## 基本示例
 

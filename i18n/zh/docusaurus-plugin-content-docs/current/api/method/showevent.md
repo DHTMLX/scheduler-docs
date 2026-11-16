@@ -35,7 +35,7 @@ scheduler.showEvent(someId);
 ### Details
 
 - 默认的视图名称包括 'day'、'week' 和 'month'。如果想使用其他视图，请传入对应的**name**参数。  
-- 此方法会触发 [onBeforeEventDisplay](api/event/onbeforeeventdisplay.md) 和 [onAfterEventDisplay](api/event/onaftereventdisplay.md) 事件。  
+- 此方法会触发 [onBeforeEventShow](api/event/onbeforeeventshow.md) 和 [onAfterEventShow](api/event/onaftereventshow.md) 事件。
 
 例如，在程序中添加一个新事件后，可以这样在scheduler中显示它:
 

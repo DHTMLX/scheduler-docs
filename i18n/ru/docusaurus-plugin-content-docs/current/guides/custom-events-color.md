@@ -139,73 +139,29 @@ scheduler.templates.event_class = function (start, end, event) {
 
 ## Загрузка цветов из данных
 
-Если цвета являются частью данных, поступающих из бэкенда, например когда цвет задачи связан с этапом или ресурсом, назначенным задаче и которые не могут быть зашиты непосредственно на странице, возможно распространить решение — генерировать стили из ваших данных вручную.
-
-Предположим, у вас есть следующая коллекция пользователей, которых можно назначать на задачи. Стиль задач должен задаваться свойствами записей пользователей:
+Если цвета приходят с сервера, используйте группы событий вместо создания таблицы стилей. Коллекция групп может описывать людей, этапы, ресурсы и любые другие категории событий.
 
 ~~~js
 [
-    {"key":1, "label":"John", "backgroundColor":"#03A9F4", "textColor":"#FFF"},
-    {"key":2, "label":"Mike", "backgroundColor":"#f57730", "textColor":"#FFF"},
-    {"key":3, "label":"Anna", "backgroundColor":"#e157de", "textColor":"#FFF"},
-    {"key":4, "label":"Bill", "backgroundColor":"#78909C", "textColor":"#FFF"},
-    {"key":7, "label":"Floe", "backgroundColor":"#8D6E63", "textColor":"#FFF"}
+    {"key":1, "label":"John", "color":"#03A9F4", "textColor":"#FFF"},
+    {"key":2, "label":"Mike", "color":"#f57730", "textColor":"#FFF"}
 ]
 ~~~
 
-В этом случае пользователи и их цвета создаются и управляются разными частями приложения, и scheduler обычно не знает идентификаторы пользователей и их цвета заранее.
-
-Вот что можно сделать в этом случае:
-
-- Определите именованный serverList для этой коллекции
+Один раз настройте коллекцию и свойство события. Коллекции из JSON можно передать в `parse()`, а для последующих обновлений использовать `updateCollection()`.
 
 ~~~js
-scheduler.serverList("people");
-~~~
-
-- Загрузите варианты на страницу, используя один из поддерживаемых [data formats](guides/data-formats.md#json-with-collections) или вручную через собственный xhr
-
-- Как только варианты загружены, можно генерировать CSS‑стили из данных:
-
-~~~js
-scheduler.attachEvent("onLoadEnd", function(){
-    // используйте произвольный идентификатор для элемента стилей
-    const styleId = "dynamicSchedulerStyles";
- 
-    // если вы будете повторно загружать варианты с цветами - повторно используйте ранее
-    // созданный элемент стилей
- 
-    let element = document.getElementById(styleId);
-    if(!element){
-        element = document.createElement("style");
-        element.id = styleId;
-        document.querySelector("head").appendChild(element);
-    }
-    let html = [];
-    const resources = scheduler.serverList("people");
- 
-    // сгенерируйте стили CSS для каждой опции и запишите CSS в элемент стилей,
- 
-    resources.forEach(function(r){
-        html.push(`.event_resource_${r.key} {
-            --dhx-scheduler-event-background:${r.backgroundColor};
-            --dhx-scheduler-event-color:${r.textColor};
-        }`);
-    });
-    element.innerHTML = html.join("");
+scheduler.config.event_groups = { list: "people", property: "owner_id" };
+scheduler.init("scheduler_here");
+scheduler.parse({
+    data: [{ id: 1, text: "Task", start_date: "2027-05-21 09:00", end_date: "2027-05-21 10:00", owner_id: 1 }],
+    collections: { people: [{ key: 1, label: "John", color: "#03A9F4", textColor: "#FFF" }] }
 });
+
+// Replaces colors and labels from a later server response.
+scheduler.updateCollection("people", [
+    { key: 1, label: "John", color: "#1565c0", textColor: "#fff" }
+]);
 ~~~
 
-- После этого вы сможете присвоить связанные классы, которые вы сгенерировали из шаблона класса:
-
-~~~js
-scheduler.templates.event_class = function (start, end, event) {
-    let css = [];
- 
-    if(task.owner_id){
-        css.push("event_resource_" + event.owner_id);
-    }
- 
-    return css.join(" ");
-};
-~~~
+Scheduler определяет цвет фона и текста независимо. Сначала используются `color` или `textColor` события, затем CSS-правило с соответствующей переменной события, цвет группы и активная тема. Сохраняйте CSS-правила `event_class`, если оформление зависит не только от значения коллекции.

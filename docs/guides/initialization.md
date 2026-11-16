@@ -263,38 +263,32 @@ To keep the headers fixed, you can use the sticky position along with some addit
   .dhx_cal_container{
     overflow: visible!important;
    }
-  .dhx_cal_navline,
   .dhx_cal_header {
       position: sticky;
       z-index: 10;
       background:var(--dhx-scheduler-container-background);
     
   }
-  .dhx_cal_navline{
-      z-index: 11;
-      top:0;
-  }
   .dhx_cal_header{
-      /* top coordinate is assigned from JS */
+      top: 0;
       margin-left: -1px;
       box-shadow: 0 1px 0px 0px var(--dhx-scheduler-base-colors-border);
   }
 </style>
 ~~~
 
-Additionally, you need some JavaScript to ensure the correct top position of the sticky time scale, positioning it just below the navigation panel.
+With the Toolbar plug-in, the bar is outside the calendar and must not be sticky with the scale header. The scale header therefore stays at `top: 0`; no `onViewChange` measurement is needed. Keep the legacy `.dhx_cal_navline` recipe only for the legacy header renderer.
 
-Since the navigation panel is flexible and can adjust its height based on other styles and content, you need to dynamically calculate its height and apply it as the top coordinate for the header, as follows:
+When Toolbar or Sidebar creates a shell, a height written by `container_autoresize` does not fire `onSchedulerResize`. Use the normal view lifecycle for content work instead of relying on that resize event. If a scrolling ancestor contains a percentage-width shell, reserve scrollbar space so an appearing vertical scrollbar does not change the shell width:
 
-~~~js
-scheduler.attachEvent("onViewChange", function(){
-   const navBar = scheduler.$container.querySelector(".dhx_cal_navline");
-   const header = scheduler.$container.querySelector(".dhx_cal_header");
-   if(navBar && header){
-       header.style.top = `${navBar.offsetHeight}px`;
-   }
-});
+~~~css
+.scheduler-scroller {
+    overflow: auto;
+    scrollbar-gutter: stable;
+}
 ~~~
+
+If the target browsers cannot reserve scrollbar space, do not use container autoresize in that scrolling layout.
 
 Check the complete demo in the snippet below:
 

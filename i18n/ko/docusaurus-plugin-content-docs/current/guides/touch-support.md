@@ -1,196 +1,122 @@
 ---
-title: "Mobile Responsive Scheduler"
-sidebar_label: "Mobile Responsive Scheduler"
+title: "모바일 반응형 Scheduler"
+sidebar_label: "모바일 반응형 Scheduler"
+description: "터치 장치와 반응형 Toolbar 및 Sidebar 레이아웃을 위한 Scheduler v8 설정"
 ---
 
-# Mobile Responsive Scheduler 
+# 모바일 반응형 Scheduler
 
-dhtmlxScheduler는 다음과 같은 터치 디바이스를 지원합니다:
-
-- iOS 기기(iPad, iPhone, iPod)
-- Windows 10 태블릿 및 터치 스크린 모니터
-- Android 기기
-
-_스케줄러는 스마트폰에서도 동작하지만, 화면 공간이 제한적이므로 일부 수동 설정이 필요할 수 있습니다._
-
-**도움이 되는 팁!**
-
-+ 터치 지원은 기본적으로 활성화되어 있으며, 모든 스케줄러 모드에서 동작합니다.
-+ 터치 디바이스를 대상으로 하는 앱의 경우, ['material' skin](guides/skins.md#material-skin) 사용을 권장합니다. 이 스킨은 버튼이 크고 터치하기 쉽습니다.
-+ 모바일 사용자가 예상된다면 [Quick Info](guides/extensions-list.md#quick-info) 추가를 추천합니다.
-+ 아래 meta 태그를 페이지에 추가하면 스케줄러의 모든 요소가 더 커지고 터치하기 쉬워집니다:
-  
-~~~js
-<meta name="viewport" content="width="device-width," initial-scale="1"">
-~~~
-
-## 반응형 레이아웃 {#responsive-layout}
-
-[header 구성 프로퍼티를 사용해 Scheduler를 초기화](guides/initialization.md)할 때, 클라이언트의 화면 크기에 맞는 헤더 레이아웃을 선택할 수 있습니다. 
-이 설정은 작은 화면에 맞춰 요소와 폰트 크기를 조정하는 스타일도 적용합니다.
-
-### 헤더
-
-예를 들어, 헤더를 여러 행으로 분할할 수 있습니다:
-
-![header_responsive](/img/header_responsive.png)
-
-위 스크린샷은 작은 화면에서의 Scheduler를 보여줍니다.
-
-이 설정은 동적으로 전환할 수 있으므로, 큰 화면과 작은 화면에 각각 다른 헤더 구성을 정의할 수 있습니다:
-
-~~~js
-// define configs
-const compactHeader = {
-    rows: [
-        { 
-            cols: [
-                "prev",
-                "date",
-                "next",
-            ]
-        },
-        { 
-            cols: [
-                "day",
-                "week",
-                "month",
-                "spacer",
-                "today"
-            ]
-        }
-    ]
-};
-            
-const fullHeader = [
-    "day",
-    "week",
-    "month",
-    "date",
-    "prev",
-    "today",
-    "next"
-];
-
-// add a switch to select an appropriate config for a current screen size
-
-function resetConfig(){
-    let header;
-    if (window.innerWidth < 1000) {
-        header = compactHeader;
-    } else {
-        header = fullHeader;
-    
-    }
-    scheduler.config.header = header;
-    return true;
-}
-
-// apply the config initially and each time scheduler repaints or resizes:
-
-resetConfig();
-scheduler.attachEvent("onBeforeViewChange", resetConfig);
-scheduler.attachEvent("onSchedulerResize", resetConfig);
-
-scheduler.config.responsive_lightbox = true; // responsive lightbox
-
-scheduler.init("scheduler_here");
-~~~
-
-
-[Responsive scheduler](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/13_touch_ui.html)
-
-
-### 라이트박스
-
-Scheduler API에는 라이트박스가 다양한 화면 크기에 맞게 조정되도록 하는 [responsive_lightbox](api/config/responsive_lightbox.md) 옵션이 포함되어 있습니다.
-
-~~~~js
-scheduler.config.responsive_lightbox = true; //disabled by default
-//set this to true to enable lightbox responsiveness
-~~~~
-
-아래는 작은 화면에서 라이트박스가 조정되는 방식입니다:
-
-![lightbox_responsive](/img/lightbox_responsive.png)
-
-
-[Responsive scheduler](https://docs.dhtmlx.com/scheduler/samples/01_initialization_loading/13_touch_ui.html)
-
-
-라이트박스가 반응형일 때의 스타일을 직접 커스터마이즈할 수 있습니다. 
-이때 라이트박스에는 <b>dhx_cal_light_responsive</b>라는 추가 CSS 클래스가 적용되며, 이를 스타일에서 타겟팅할 수 있습니다.
-
-기본적으로 이 클래스에는 1024px 미만의 작은 화면에서만 적용되는 미디어 쿼리가 포함되어 있어, 해당 디바이스에서 라이트박스의 외형을 조정할 수 있습니다.
-
-## 터치 관련 설정 옵션 {#touchconfigurationoptions}
-
-모바일 및 반응형 지원과 관련된 설정 옵션은 아래와 같습니다:
-
-
-- [header](api/config/header.md) - 헤더 레이아웃 제어
-- [touch](api/config/touch.md) - 스케줄러의 터치 지원 토글
-- [touch_drag](api/config/touch_drag.md) - 롱터치와 스크롤을 구분하는 시간(밀리초) 설정
-- [touch_tip](api/config/touch_tip.md) - 우측 상단에 메시지 프롬프트 표시 토글
-- [touch_swipe_dates](api/config/touch_swipe_dates.md) - 날짜 전환을 위한 스와이프 제스처 토글
-- [responsive_lightbox](api/config/responsive_lightbox.md) - 라이트박스의 반응형 스타일 활성화(기본값: 비활성)
-
-
-## 스케줄러의 터치 제스처 {#touch-gestures-in-the-scheduler}
-
-- **더블 탭** - 더블 클릭과 동일하게 동작하며, 이벤트 편집 또는 생성 창을 엽니다.
-- **롱탭 후 드래그** - 이벤트를 이동하거나 생성할 때 사용합니다.
-- **스와이프** - 다음 또는 이전 시간대로 뷰를 전환합니다([기본값: 비활성](api/config/touch_swipe_dates.md)).
-
-## 'Quick info' 확장 {#quick-info-extension}
-
-터치 기능을 향상시키기 위해, 라이브러리에는 ["Quick Info" 확장](guides/extensions-list.md#quick-info)이 포함되어 있습니다.
-
-이 확장은 표준 사이드바 버튼과 작은 편집 폼(터치 디바이스에서 누르기 어려운)을 더 크고 사용하기 쉬운 컨트롤로 대체합니다.
-
-큰 버튼의 스케줄러를 활성화하려면 ["Quick Info"](guides/extensions-list.md#quick-info) 확장을 페이지에 추가하세요:
-
-~~~js
-<script>
-    scheduler.plugins({
-        quick_info: true
-    });
-    scheduler.init('scheduler_here',new Date(2019,5,30),"day");
-      ...
-<script>
-~~~
-
-
-[Touch-oriented scheduler](https://docs.dhtmlx.com/scheduler/samples/03_extensions/29_quick_info.html)
-
-
-활성화되면, 스케줄러는 표준 버튼을 더 큰 버튼으로 교체합니다:
-
-![quick_info_extension.png](/img/quick_info_extension.png)
+Scheduler는 iOS, Android, Windows 태블릿, 터치스크린 모니터 및 휴대폰의 터치 입력을 지원합니다. 모든 뷰에서 터치 제스처를 사용할 수 있습니다. 작은 화면에서는 캘린더뿐 아니라 애플리케이션 레이아웃도 설정하세요.
 
 :::note
-quick-info 선택 사이드 메뉴와 표준 스케줄러의 선택 메뉴는 모두 [icons_select](api/config/icons_select.md)에 정의된 동일한 구성을 사용합니다.
+이 가이드는 v8.0 Toolbar 및 Sidebar 레이아웃을 설명합니다. 레거시 탐색 모음을 유지하는 애플리케이션은 [v7.2 반응형 헤더 방식](guides/touch-support-legacy.md)을 계속 사용할 수 있습니다.
 :::
 
-확장에서 제공하는 기능은 다음과 같습니다:
+터치 중심 애플리케이션에서는:
 
-- **3개의 템플릿**
+- `<meta name="viewport" content="width=device-width, initial-scale=1">`를 포함하고,
+- [Material 스킨](guides/skins.md#material-skin) 또는 충분히 큰 컨트롤의 테마를 사용하며,
+- 간결한 이벤트 편집기가 필요하면 [Quick Info](guides/quick-info.md) 플러그인을 활성화하고,
+- 내장 lightbox가 좁은 화면에 맞아야 하면 `responsive_lightbox`를 활성화하세요.
 
-- [quick_info_content](api/template/quick_info_content.md) - 팝업 편집 폼의 내용 정의
-- [quick_info_date](api/template/quick_info_date.md) - 팝업 편집 폼에 표시되는 날짜 정의
-- [quick_info_title](api/template/quick_info_title.md) - 팝업 편집 폼의 제목 정의
+## 반응형 Toolbar
 
+Toolbar 플러그인을 활성화하고 `scheduler.config.header`의 전체 및 간결한 버전을 제공하세요. `onLayoutSizeChange`로 선택합니다.
 
-- **1개의 설정 옵션**
+~~~js
+const compactHeader = {
+    rows: [
+        { cols: ["prev", "date", "next"] },
+        { cols: ["today", { id: "views", comp: "menu" }] }
+    ]
+};
 
-- [quick_info_detached](api/config/quick_info_detached.md) - 이벤트 폼이 화면 측면에서 나타날지, 선택된 이벤트 근처에서 나타날지 제어
+const fullHeader = [
+    "toggle_sidebar", "add_event", "spacer",
+    "prev", "date", "next", "spacer", "today", "views"
+];
 
-- **2개의 메서드**
+scheduler.plugins({ toolbar: true, sidebar: true });
 
-- [hideQuickInfo](api/method/hidequickinfo.md) - 팝업 이벤트 폼이 열려 있다면 숨김
-- [showQuickInfo](api/method/showquickinfo.md) - 특정 이벤트의 팝업 이벤트 폼 표시
+scheduler.attachEvent("onLayoutSizeChange", ({ width }) => {
+    scheduler.config.header = width < 700 ? compactHeader : fullHeader;
+});
 
-- **2개의 이벤트**
+scheduler.init("scheduler_here", new Date(), "week");
+~~~
 
-- [onQuickInfo](api/event/onquickinfo.md) - 팝업 편집 폼이 나타날 때 발생
-- [onAfterQuickInfo](api/event/onafterquickinfo.md) - 팝업 이벤트 폼이 닫힌 후 발생
+이 이벤트는 `scheduler.init()`에 전달된 요소인 레이아웃 셸 너비를 보고합니다. Scheduler가 페이지 일부만 차지할 수 있으므로 `window.innerWidth` 대신 이 값을 사용하세요. 캘린더 높이로 헤더를 선택하지 마세요. Toolbar 행 수가 바뀌면 높이가 변경되어 크기 변경 루프가 생길 수 있습니다.
+
+Toolbar는 `onLayoutSizeChange` 후 `config.header`를 다시 읽어 같은 렌더링에서 선택한 구조를 사용합니다. 구조가 같으면 기존 컨트롤과 프레임워크 컴포넌트를 유지합니다.
+
+`scheduler.xy.nav_height = 0`은 탐색 모음을 숨깁니다. 양수 값은 높이를 설정하지 않습니다. 고정 높이는 양수 `config.header.height` 또는 `--dhx-scheduler-toolbar-height` CSS 변수를 사용하세요.
+
+## 반응형 Sidebar
+
+Sidebar는 Toolbar와 같은 셸 너비를 사용합니다.
+
+~~~js
+scheduler.config.sidebar = {
+    items: ["minicalendar", "event_groups"],
+    position: "left",
+    width: 260,
+    collapsed: false,
+    overlay_width: 768
+};
+~~~
+
+`overlay_width` 아래에서 내장 또는 독립형 Toolbar에 표시되는 `toggle_sidebar`가 있으면 Sidebar는 닫힌 오버레이가 됩니다. 없으면 접근 불가 상태를 방지하기 위해 도킹 상태를 유지합니다. `scheduler.ext.sidebar.show()`, `hide()` 같은 런타임 호출은 `config.sidebar.collapsed`를 다시 쓰지 않고 표시 상태만 바꿉니다.
+
+전체 설정은 [애플리케이션 레이아웃](guides/application-layout.md), [Toolbar](guides/toolbar.md), [Sidebar](guides/sidebar.md)를 참조하세요.
+
+## 컨테이너 자동 크기 조정
+
+스크롤 부모 내부에서 `container_autoresize`를 사용하면 세로 스크롤바 공간을 확보하세요. 그렇지 않으면 반응형 중단점에서 스크롤바가 셸 너비를 반복해서 변경할 수 있습니다.
+
+~~~css
+.scheduler-scroll-container {
+    overflow: auto;
+    scrollbar-gutter: stable;
+}
+~~~
+
+Toolbar 또는 Sidebar 셸에서는 `container_autoresize`가 기록한 높이가 `onSchedulerResize`를 발생시키지 않습니다. 애플리케이션 레이아웃 판단에는 `onLayoutSizeChange`를 사용하세요.
+
+## 반응형 lightbox
+
+내장 lightbox의 반응형 스타일을 활성화합니다.
+
+~~~js
+scheduler.config.responsive_lightbox = true;
+~~~
+
+좁은 화면에서 lightbox는 `dhx_cal_light_responsive` 클래스를 받습니다. 애플리케이션별 반응형 스타일에 사용하세요.
+
+## 터치 설정 옵션
+
+- [touch](api/config/touch.md)는 터치 지원을 켜거나 끕니다.
+- [touch_drag](api/config/touch_drag.md)는 길게 누르기와 스크롤을 구분하는 지연을 설정합니다.
+- [touch_swipe_dates](api/config/touch_swipe_dates.md)는 가로 스와이프 날짜 탐색을 활성화합니다.
+- [touch_tip](api/config/touch_tip.md)은 터치 안내를 제어합니다.
+- [touch_tooltip](api/config/touch_tooltip.md)은 터치 툴팁을 제어합니다.
+- [responsive_lightbox](api/config/responsive_lightbox.md)는 반응형 lightbox 스타일을 활성화합니다.
+
+## Scheduler의 터치 제스처 {#touch-gestures-in-the-scheduler}
+
+- **두 번 탭**은 더블클릭처럼 이벤트를 열거나 만듭니다.
+- **길게 탭하고 드래그**하면 이벤트를 이동하거나 빈 시간대에 만듭니다.
+- **스와이프**는 `touch_swipe_dates`가 활성화되면 이전/다음 날짜 범위로 이동합니다.
+
+Toolbar가 활성화되면 가로 스와이프는 `prev` 및 `next`와 같은 취소 가능한 `onToolbarItemClick` 작업 경로를 사용합니다.
+
+## Quick Info 확장 {#quick-info-extension}
+
+[Quick Info](guides/quick-info.md) 플러그인은 터치 친화적인 이벤트 요약 및 작업 버튼을 제공합니다. 초기화 전에 활성화하세요.
+
+~~~js
+scheduler.plugins({ quick_info: true });
+~~~
+
+Quick Info는 `quick_info_content`, `quick_info_date`, `quick_info_title` 템플릿을 사용합니다. 런타임 메서드와 이벤트에는 `showQuickInfo`, `hideQuickInfo`, `onQuickInfo`, `onAfterQuickInfo`가 있습니다.
+
+[반응형 애플리케이션 레이아웃 샘플](https://docs.dhtmlx.com/scheduler/samples/16_layout/03_layout.html)

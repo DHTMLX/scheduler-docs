@@ -137,73 +137,29 @@ scheduler.templates.event_class = function (start, end, event) {
 
 ## Farben mit Daten laden
 
-Wenn Farben Teil Ihrer Daten sind, die vom Backend stammen, z. B. wenn die Farbe einer Aufgabe mit einer Phase oder einer Ressource verknüpft ist, die einer Aufgabe zugewiesen ist und nicht direkt auf der Seite fest codiert werden kann, kann es sinnvoll sein, Stile manuell aus Ihren Daten zu generieren.
-
-Angenommen, Sie haben die folgende Sammlung von Benutzern, die Aufgaben zugewiesen werden können. Die Stile der Aufgaben sollten durch die Eigenschaften der Benutzer-Datensätze definiert werden:
+Wenn Farben vom Backend stammen, verwenden Sie Ereignisgruppen statt ein Stylesheet zu erzeugen. Eine Gruppensammlung kann Personen, Phasen, Ressourcen oder jede andere Ereigniskategorie beschreiben.
 
 ~~~js
 [
-    {"key":1, "label":"John", "backgroundColor":"#03A9F4", "textColor":"#FFF"},
-    {"key":2, "label":"Mike", "backgroundColor":"#f57730", "textColor":"#FFF"},
-    {"key":3, "label":"Anna", "backgroundColor":"#e157de", "textColor":"#FFF"},
-    {"key":4, "label":"Bill", "backgroundColor":"#78909C", "textColor":"#FFF"},
-    {"key":7, "label":"Floe", "backgroundColor":"#8D6E63", "textColor":"#FFF"}
+    {"key":1, "label":"John", "color":"#03A9F4", "textColor":"#FFF"},
+    {"key":2, "label":"Mike", "color":"#f57730", "textColor":"#FFF"}
 ]
 ~~~
 
-In diesem Anwendungsfall werden Benutzer und ihre Farben von verschiedenen Teilen der App erstellt und verwaltet, und der Scheduler kennt in der Regel Benutzer-IDs und deren Farben nicht im Voraus.
-
-Folgendes können Sie in diesem Fall tun:
-
-- Definieren Sie eine benannte serverList für diese Sammlung
+Konfigurieren Sie Sammlung und Ereigniseigenschaft einmal. In JSON empfangene Sammlungen können an `parse()` übergeben werden; spätere Aktualisierungen verwenden `updateCollection()`.
 
 ~~~js
-scheduler.serverList("people");
-~~~
-
-- Optionen auf die Seite laden, entweder mit einem der unterstützten [Datenformate](guides/data-formats.md#json-with-collections) oder manuell über einen benutzerdefinierten xhr
-
-- Sobald Optionen geladen sind, können Sie CSS-Stile aus den Daten generieren:
-
-~~~js
-scheduler.attachEvent("onLoadEnd", function(){
-    // use an arbitrary id for the style element
-    const styleId = "dynamicSchedulerStyles";
- 
-    // in case you'll be reloading options with colors - reuse previously
-    // created style element
- 
-    let element = document.getElementById(styleId);
-    if(!element){
-        element = document.createElement("style");
-        element.id = styleId;
-        document.querySelector("head").appendChild(element);
-    }
-    let html = [];
-    const resources = scheduler.serverList("people");
- 
-    // generate css styles for each option and write css into the style element,
- 
-    resources.forEach(function(r){
-        html.push(`.event_resource_${r.key} {
-            --dhx-scheduler-event-background:${r.backgroundColor};
-            --dhx-scheduler-event-color:${r.textColor};
-        }`);
-    });
-    element.innerHTML = html.join("");
+scheduler.config.event_groups = { list: "people", property: "owner_id" };
+scheduler.init("scheduler_here");
+scheduler.parse({
+    data: [{ id: 1, text: "Task", start_date: "2027-05-21 09:00", end_date: "2027-05-21 10:00", owner_id: 1 }],
+    collections: { people: [{ key: 1, label: "John", color: "#03A9F4", textColor: "#FFF" }] }
 });
+
+// Replaces colors and labels from a later server response.
+scheduler.updateCollection("people", [
+    { key: 1, label: "John", color: "#1565c0", textColor: "#fff" }
+]);
 ~~~
 
-- Danach können Sie die zugehörigen Klassen zuweisen, die Sie aus der Klassen-Vorlage generiert haben:
-
-~~~js
-scheduler.templates.event_class = function (start, end, event) {
-    let css = [];
- 
-    if(task.owner_id){
-        css.push("event_resource_" + event.owner_id);
-    }
- 
-    return css.join(" ");
-};
-~~~
+Scheduler löst Hintergrund- und Textfarbe unabhängig auf. `color` oder `textColor` eines Ereignisses hat Vorrang, danach eine CSS-Regel mit der zugehörigen Ereignisvariable, die Ereignisgruppenfarbe und schließlich das aktive Theme. Behalten Sie `event_class`-CSS-Regeln bei, wenn die Gestaltung von mehr als einem Sammlungswert abhängt.

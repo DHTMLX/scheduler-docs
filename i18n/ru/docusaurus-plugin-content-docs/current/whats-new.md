@@ -7,6 +7,18 @@ sidebar_label: "Что нового"
 
 Если вы обновляете Scheduler с более старой версии, ознакомьтесь с [Миграция с более ранних версий](migration.md) для получения дополнительной информации.
 
+## 8.0
+
+### Новое
+
+- Добавлен подключаемый [плагин Sidebar](guides/sidebar.md), настраиваемый через [scheduler.config.sidebar](api/config/sidebar.md). Он выводит панель с любой стороны календаря со встроенными элементами `minicalendar` и `event_groups`, поддерживает пользовательские контейнеры и управление через [scheduler.ext.sidebar](api/other/sidebar.md).
+- Sidebar поддерживает закрепленное и свернутое состояния и может стать оверлеем ниже `overlay_width`. Оверлей использует ширину макета Scheduler и требует видимого элемента Toolbar `toggle_sidebar`; без него панель остается закрепленной.
+
+### Несовместимые изменения
+
+- Отрисовка событий теперь использует [onBeforeEventDisplay](api/event/onbeforeeventdisplay.md) с сигнатурой `(id, event)`. Код v7.2 с `onBeforeEventDisplay(event, view)` в жизненном цикле `showEvent()` должен использовать [onBeforeEventShow](api/event/onbeforeeventshow.md).
+- Прежнее событие `onAfterEventDisplay(event, view)` переименовано в [onAfterEventShow](api/event/onaftereventshow.md). См. [руководство по миграции с v7.2 на v8.0](migration.md#event-display-and-showevent-lifecycle-events).
+
 7.2.13
 -------------
 <span class='release_date'>31 марта 2026 г. Выпуск с исправлениями</span>

@@ -138,73 +138,29 @@ scheduler.templates.event_class = function (start, end, event) {
 
 ## 데이터로 색상 로딩
 
-색상이 백엔드에서 오는 데이터의 일부인 경우(예: 작업 색상이 단계(stage)와 연관되거나 페이지에서 하드코딩할 수 없는 작업에 할당된 리소스), 데이터를 기반으로 스타일을 수동으로 생성하는 것이 좋은 해결책일 수 있습니다.
-
-다음과 같은 사용자 모음이 있고, 이들을 작업에 배정할 수 있다고 가정해 봅시다. 작업의 스타일은 사용자 레코드의 속성으로 정의되어야 합니다:
+색상이 백엔드에서 제공된다면 스타일시트를 생성하는 대신 이벤트 그룹을 사용하세요. 그룹 컬렉션은 사람, 단계, 리소스 또는 기타 이벤트 범주를 나타낼 수 있습니다.
 
 ~~~js
 [
-    {"key":1, "label":"John", "backgroundColor":"#03A9F4", "textColor":"#FFF"},
-    {"key":2, "label":"Mike", "backgroundColor":"#f57730", "textColor":"#FFF"},
-    {"key":3, "label":"Anna", "backgroundColor":"#e157de", "textColor":"#FFF"},
-    {"key":4, "label":"Bill", "backgroundColor":"#78909C", "textColor":"#FFF"},
-    {"key":7, "label":"Floe", "backgroundColor":"#8D6E63", "textColor":"#FFF"}
+    {"key":1, "label":"John", "color":"#03A9F4", "textColor":"#FFF"},
+    {"key":2, "label":"Mike", "color":"#f57730", "textColor":"#FFF"}
 ]
 ~~~
 
-이 사용 사례에서 사용자와 그 색상은 애플리케이션의 서로 다른 부분에서 생성되고 관리되며 Scheduler는 일반적으로 사용자 ID와 색상을 미리 알지 못합니다.
-
-다음과 같이 처리할 수 있습니다:
-
-- 이 컬렉션에 대해 이름이 있는 serverList를 정의합니다
+컬렉션과 이벤트 속성을 한 번 설정하세요. JSON으로 받은 컬렉션은 `parse()`에 전달하고 이후 업데이트에는 `updateCollection()`을 사용합니다.
 
 ~~~js
-scheduler.serverList("people");
-~~~
-
-- 지원되는 [데이터 형식](guides/data-formats.md#json-with-collections) 중 하나를 사용하거나 커스텀 xhr를 통해 페이지에 옵션을 로드합니다.
-
-- 옵션이 로드되면 데이터를 기반으로 CSS 스타일을 생성할 수 있습니다:
-
-~~~js
-scheduler.attachEvent("onLoadEnd", function(){
-    // 스타일 요소에 대한 임의의 id를 사용합니다
-    const styleId = "dynamicSchedulerStyles";
- 
-    // 색상이 포함된 옵션을 다시 로드하는 경우 - 이전에 생성된
-    // 스타일 요소를 재사용합니다
- 
-    let element = document.getElementById(styleId);
-    if(!element){
-        element = document.createElement("style");
-        element.id = styleId;
-        document.querySelector("head").appendChild(element);
-    }
-    let html = [];
-    const resources = scheduler.serverList("people");
- 
-    // 각 옵션에 대한 CSS 스타일을 생성하고 스타일 요소에 CSS를 작성합니다:
- 
-    resources.forEach(function(r){
-        html.push(`.event_resource_${r.key} {
-            --dhx-scheduler-event-background:${r.backgroundColor};
-            --dhx-scheduler-event-color:${r.textColor};
-        }`);
-    });
-    element.innerHTML = html.join("");
+scheduler.config.event_groups = { list: "people", property: "owner_id" };
+scheduler.init("scheduler_here");
+scheduler.parse({
+    data: [{ id: 1, text: "Task", start_date: "2027-05-21 09:00", end_date: "2027-05-21 10:00", owner_id: 1 }],
+    collections: { people: [{ key: 1, label: "John", color: "#03A9F4", textColor: "#FFF" }] }
 });
+
+// Replaces colors and labels from a later server response.
+scheduler.updateCollection("people", [
+    { key: 1, label: "John", color: "#1565c0", textColor: "#fff" }
+]);
 ~~~
 
-- 그다음 클래스 템플릿에서 생성한 관련 클래스를 할당할 수 있습니다:
-
-~~~js
-scheduler.templates.event_class = function (start, end, event) {
-    let css = [];
- 
-    if(task.owner_id){
-        css.push("event_resource_" + event.owner_id);
-    }
- 
-    return css.join(" ");
-};
-~~~
+Scheduler는 배경색과 텍스트 색상을 독립적으로 결정합니다. 이벤트의 `color` 또는 `textColor`, 관련 이벤트 변수를 설정하는 CSS 규칙, 이벤트 그룹 색상, 활성 테마 순서로 우선합니다. 스타일이 컬렉션 값 외의 요소에도 의존한다면 `event_class` CSS 규칙을 유지하세요.

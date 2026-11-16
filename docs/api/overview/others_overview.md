@@ -12,6 +12,7 @@ description: You can explore Others overview in the documentation of the DHTMLX 
 | [](api/other/config.md)           | @getshort(api/other/config.md)           |
 | [](api/other/date.md)             | @getshort(api/other/date.md)             |
 | [](api/other/env.md)              | @getshort(api/other/env.md)              |
+| [](api/other/eventgroups.md)      | @getshort(api/other/eventgroups.md)      |
 | [](api/other/i18n.md)             | @getshort(api/other/i18n.md)             |
 | [](api/other/ical.md)             | @getshort(api/other/ical.md)             |
 | [](api/other/json.md)             | @getshort(api/other/json.md)             |
@@ -19,8 +20,10 @@ description: You can explore Others overview in the documentation of the DHTMLX 
 | [](api/other/locale.md)           | @getshort(api/other/locale.md)           |
 | [](api/other/matrix.md)           | @getshort(api/other/matrix.md)           |
 | [](api/other/skin.md)             | @getshort(api/other/skin.md)             |
+| [](api/other/sidebar.md)          | @getshort(api/other/sidebar.md)          |
 | [](api/other/templates.md)        | @getshort(api/other/templates.md)        |
 | [](api/other/tooltip.md)          | @getshort(api/other/tooltip.md)          |
+| [](api/other/toolbar.md)          | @getshort(api/other/toolbar.md)          |
 | [](api/other/version.md)          | @getshort(api/other/version.md)          |
 | [](api/other/xy.md)               | @getshort(api/other/xy.md)               |
   

@@ -18,11 +18,43 @@ description: "\"React Scheduler\"의 래퍼 props 전체 참조로, Scheduler �
 | `templates` | `SchedulerTemplates` | Scheduler 템플릿에 매핑합니다(예: 이벤트 스타일/텍스트 렌더링). |
 | `config` | `SchedulerConfig` | Scheduler 구성 옵션에 매핑됩니다. |
 | `xy` | `Record<string, number>` | UI 크기 조정 설정(예: 내장 내비게이션 숨김 `nav_height: 0`). |
+| `plugins` | `SchedulerPlugins` | `toolbar`, `sidebar`, `recurring`, `collision`, `timeline`, `units`, `tooltip`, `quick_info` 같은 Scheduler 플러그인을 활성화합니다. 레이아웃 플러그인은 `{ toolbar: true, sidebar: true }`로 전달합니다. |
 | `data` | `{ load?: string \| (() => Promise<any>); save?: string \| SaveHandler; batchSave?: BatchSaveHandler }` | 데이터 로딩 및 변경 처리 콜백/URL. |
 | `customLightbox` | `ReactElement \| null` | 내장 Lightbox를 사용자의 React 컴포넌트로 교체합니다. |
+| `toolbarComponents` | `Record<string, ReactElement \| null \| undefined>` | 일치하는 `{ id, comp: "container" }` Toolbar 항목에 React 요소를 렌더링합니다. |\n| `sidebarComponents` | `Record<string, ReactElement \| null \| undefined>` | 일치하는 사용자 지정 Sidebar 항목에 React 요소를 렌더링합니다. |
 | `modals` | `SchedulerModals` | 내장 확인 대화상자를 재정의합니다(예: 이벤트 삭제 확인). |
 | `filter` | `(event: Event) => boolean` | Scheduler에 표시될 이벤트를 필터링합니다. |
 | `on<EventName>` props | `(...args) => any` | Scheduler 이벤트에 매핑된 이벤트 핸들러들(`onViewChange`, `onBeforeLightbox` 등). |
+
+## Toolbar 및 Sidebar 컴포넌트 {#toolbar-and-sidebar-components}
+
+레이아웃 플러그인을 활성화하고 설정에 사용자 지정 항목 ID를 추가한 뒤 React 요소에 매핑하세요. 래퍼는 React portal을 통해 Scheduler 소유 노드에 렌더링합니다.
+
+```tsx
+const config: SchedulerConfig = {
+  header: [
+    "toggle_sidebar",
+    { id: "status", comp: "container" },
+    "spacer", "prev", "date", "next", "views"
+  ],
+  sidebar: {
+    items: ["minicalendar", { id: "legend" }]
+  }
+};
+
+<ReactScheduler
+  plugins={{ toolbar: true, sidebar: true }}
+  config={config}
+  toolbarComponents={{ status: <Status /> }}
+  sidebarComponents={{ legend: <Legend /> }}
+/>
+```
+
+Toolbar 컴포넌트에는 `{ id, comp: "container" }`, Sidebar 사용자 항목에는 `{ id }`가 필요합니다. 객체 키는 문자열로 변환된 항목 ID입니다. 같은 ID가 반복되면 각 항목에 독립적인 portal과 컴포넌트 상태가 제공됩니다.
+
+동등한 레이아웃 렌더링은 호스트 노드와 상태를 유지합니다. `toolbarComponents` 또는 `sidebarComponents` 업데이트는 Scheduler를 다시 초기화하지 않고 props를 갱신합니다. 값을 `null`로 설정하거나 항목을 제거하거나 Scheduler를 제거하면 컴포넌트가 언마운트됩니다.
+
+`config` prop은 초기화 후 `header`, `sidebar`, `event_groups`도 업데이트할 수 있습니다. 래퍼는 변경된 키를 복사하고 기존 인스턴스를 렌더링하며 `init()`을 다시 호출하지 않습니다.
 
 ## 기본 예제
 

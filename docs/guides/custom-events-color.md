@@ -146,73 +146,29 @@ scheduler.templates.event_class = function (start, end, event) {
 
 ## Loading colors with data
 
-If colors are a part of your data which comes from the backend, e.g. when task color is associated with a stage or a resource assigned to a task which can't be hardcoded on the page, it may be a good solution to generate styles from your data manually.
-
-Let's suppose that you have the following collection of users that can be assigned to tasks. Task styles should be defined by the properties of user records:
+If colors come from the backend, use event groups instead of generating a stylesheet. A group collection can describe people, stages, resources, or any other event category.
 
 ~~~js
 [
-    {"key":1, "label":"John", "backgroundColor":"#03A9F4", "textColor":"#FFF"},
-    {"key":2, "label":"Mike", "backgroundColor":"#f57730", "textColor":"#FFF"},
-    {"key":3, "label":"Anna", "backgroundColor":"#e157de", "textColor":"#FFF"},
-    {"key":4, "label":"Bill", "backgroundColor":"#78909C", "textColor":"#FFF"},
-    {"key":7, "label":"Floe", "backgroundColor":"#8D6E63", "textColor":"#FFF"}
+    {"key":1, "label":"John", "color":"#03A9F4", "textColor":"#FFF"},
+    {"key":2, "label":"Mike", "color":"#f57730", "textColor":"#FFF"}
 ]
 ~~~
 
-In this use case, users and their colors are created and managed by different parts of the app and scheduler generally doesn't know user ids and their colors in advance.
-
-This is what you can do in this case:
-
-- Define a named serverList for this collection
+Configure the collection and the event property once. Collections received in JSON can be passed in `parse()`, and later updates use `updateCollection()`.
 
 ~~~js
-scheduler.serverList("people");
-~~~
-
-- Load options to the page, either by using one of supported [data formats](guides/data-formats.md#json-with-collections) or manually via a custom xhr
-
-- Once options are loaded, you can generate CSS styles from the data:
-
-~~~js
-scheduler.attachEvent("onLoadEnd", function(){
-    // use an arbitrary id for the style element
-    const styleId = "dynamicSchedulerStyles";
- 
-    // in case you'll be reloading options with colors - reuse previously
-    // created style element
- 
-    let element = document.getElementById(styleId);
-    if(!element){
-        element = document.createElement("style");
-        element.id = styleId;
-        document.querySelector("head").appendChild(element);
-    }
-    let html = [];
-    const resources = scheduler.serverList("people");
- 
-    // generate css styles for each option and write css into the style element,
- 
-    resources.forEach(function(r){
-        html.push(`.event_resource_${r.key} {
-            --dhx-scheduler-event-background:${r.backgroundColor};
-            --dhx-scheduler-event-color:${r.textColor};
-        }`);
-    });
-    element.innerHTML = html.join("");
+scheduler.config.event_groups = { list: "people", property: "owner_id" };
+scheduler.init("scheduler_here");
+scheduler.parse({
+    data: [{ id: 1, text: "Task", start_date: "2027-05-21 09:00", end_date: "2027-05-21 10:00", owner_id: 1 }],
+    collections: { people: [{ key: 1, label: "John", color: "#03A9F4", textColor: "#FFF" }] }
 });
+
+// Replaces colors and labels from a later server response.
+scheduler.updateCollection("people", [
+    { key: 1, label: "John", color: "#1565c0", textColor: "#fff" }
+]);
 ~~~
 
-- After that you'll be able to assign related classes you generated from the class template:
-
-~~~js
-scheduler.templates.event_class = function (start, end, event) {
-    let css = [];
- 
-    if(task.owner_id){
-        css.push("event_resource_" + event.owner_id);
-    }
- 
-    return css.join(" ");
-};
-~~~
+Scheduler resolves background and text color independently. An event's `color` or `textColor` wins, followed by a CSS rule that sets the related event variable, then the event-group color, and finally the active theme. Keep `event_class` CSS rules when the styling depends on more than a collection value.

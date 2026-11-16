@@ -1,33 +1,43 @@
 ---
-sidebar_label: "onBeforeEventDisplay"
+sidebar_label: onBeforeEventDisplay
 title: "onBeforeEventDisplay event"
-description: "Wird direkt ausgelöst, bevor die Methode 'showEvent' ein bestimmtes Event anzeigt, und ermöglicht es, Code auszuführen, bevor das Event erscheint."
+description: "filtert Ereignisse vor dem Rendern"
 ---
 
 # onBeforeEventDisplay
 
-### Description
+### Beschreibung
 
-@short: Wird direkt ausgelöst, bevor die Methode 'showEvent' ein bestimmtes Event anzeigt, und ermöglicht es, Code auszuführen, bevor das Event erscheint.
+@short: Wird vor dem Rendern eines Ereignisses ausgelöst und kann dessen Anzeige verhindern
 
-@signature: onBeforeEventDisplay: (event: object, view: string) =\> boolean
+@signature: onBeforeEventDisplay: (id: string | number, event: object) =\> boolean
 
-### Parameters
+### Parameter
 
-- `event` - (required) *object* - Das Objekt des Events
-- `view` - (required) *string* - Der Name der View, die zur Anzeige des Events verwendet wird
+- `id` - (erforderlich) *string | number* - die Ereignis-ID
+- `event` - (erforderlich) *object* - das Ereignisobjekt
 
-### Returns
-- ` result` - (boolean) - Bestimmt, ob die Standardaktion des Events ausgeführt wird (<b>true</b>) oder abgebrochen wird (<b>false</b>)
+### Rückgabewert
+- `result` - (boolean) - bestimmt, ob die Standardaktion ausgelöst (**true**) oder abgebrochen (**false**) wird
 
-### Example
+### Beispiel
 
 ~~~jsx
-scheduler.attachEvent("onBeforeEventDisplay", function(event,view){
-    //beliebige eigene Logik hier
-    return true;
+scheduler.attachEvent("onBeforeEventDisplay", function(id, event){
+    return event.priority !== "low";
 });
 ~~~
 
-### Related API
-- [onAfterEventDisplay](api/event/onaftereventdisplay.md)
+### Details
+
+Das Ereignis wird für jedes zum Rendern berücksichtigte Ereignis ausgelöst, einschließlich wiederkehrender Vorkommen und Ereignisse für Mini-Kalender-Markierungen. Es läuft zusätzlich zur Funktion `filter_<view>` der aktuellen Ansicht.
+
+Sie können mehrere `onBeforeEventDisplay`-Handler anhängen. Ein Ereignis wird nur angezeigt, wenn der Ansichtsfilter und alle Handler `true` zurückgeben. Das Entfernen eines Handlers beeinflusst die anderen nicht.
+
+### Migration von v7.2
+
+In v7.2 gehörte `onBeforeEventDisplay(event, view)` zum Lebenszyklus von `showEvent()`. Verwenden Sie in v8.0 dafür [onBeforeEventShow](api/event/onbeforeeventshow.md). Das v8.0-Ereignis `onBeforeEventDisplay` ist das auf dieser Seite beschriebene Render-Prädikat und empfängt `(id, event)`.
+
+### Verwandte API
+- [onBeforeEventShow](api/event/onbeforeeventshow.md)
+- [onAfterEventShow](api/event/onaftereventshow.md)

@@ -279,17 +279,18 @@ scheduler.plugins({
 </style>
 ~~~
 
-또한 헤더의 올바른 상단 위치를 보장하기 위해 필요한 JavaScript가 있습니다. 네비게이션 패널은 다른 스타일과 콘텐츠에 따라 높이가 달라질 수 있으므로, 이 높이를 동적으로 계산해 헤더의 top 좌표로 적용해야 합니다:
+Toolbar 플러그인을 사용하면 바가 캘린더 밖에 있으므로 스케일 헤더와 함께 sticky로 만들면 안 됩니다. 따라서 스케일 헤더는 `top: 0`에 유지되며 `onViewChange` 측정이 필요하지 않습니다. 레거시 `.dhx_cal_navline` 방식은 레거시 헤더 렌더러에서만 유지하세요.
 
-~~~js
-scheduler.attachEvent("onViewChange", function(){
-   const navBar = scheduler.$container.querySelector(".dhx_cal_navline");
-   const header = scheduler.$container.querySelector(".dhx_cal_header");
-   if(navBar && header){
-       header.style.top = `${navBar.offsetHeight}px`;
-   }
-});
+Toolbar 또는 Sidebar가 셸을 만들면 `container_autoresize`가 기록한 높이는 `onSchedulerResize`를 발생시키지 않습니다. 콘텐츠 작업에는 일반 뷰 수명 주기를 사용하세요. 스크롤 조상 안에 백분율 너비 셸이 있다면 세로 스크롤바가 나타나도 셸 너비가 바뀌지 않도록 스크롤바 공간을 확보하세요.
+
+~~~css
+.scheduler-scroller {
+    overflow: auto;
+    scrollbar-gutter: stable;
+}
 ~~~
+
+대상 브라우저가 스크롤바 공간을 확보할 수 없다면 해당 스크롤 레이아웃에서 컨테이너 자동 크기 조정을 사용하지 마세요.
 
 전체 데모는 아래 스니펫에서 확인할 수 있습니다:
 

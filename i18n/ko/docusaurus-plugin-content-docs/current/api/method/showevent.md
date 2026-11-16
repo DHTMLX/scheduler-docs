@@ -33,7 +33,7 @@ scheduler.showEvent(someId);
 ### Details
 
 - 기본 뷰 이름은 'day', 'week', 'month'입니다. 다른 뷰를 사용하려면 해당 뷰의 **이름**을 파라미터로 제공하세요.
-- 이 메서드는 [onBeforeEventDisplay](api/event/onbeforeeventdisplay.md) 와 [onAfterEventDisplay](api/event/onaftereventdisplay.md) 이벤트를 발생시킵니다.
+- 이 메서드는 [onBeforeEventShow](api/event/onbeforeeventshow.md) 와 [onAfterEventShow](api/event/onaftereventshow.md) 이벤트를 발생시킵니다.
 
 
 예를 들어, 프로그래밍 방식으로 새 이벤트를 추가한 후 다음과 같이 스케줄러에 표시할 수 있습니다:

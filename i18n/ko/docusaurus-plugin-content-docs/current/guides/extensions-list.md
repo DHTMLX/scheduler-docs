@@ -9,6 +9,34 @@ dhtmlxScheduler에는 표준 동작에 기능을 추가하는 여러 확장 기�
 
 확장 기능을 사용하려면 [`plugins()`](api/method/plugins.md) 메서드로 활성화합니다.
 
+## Toolbar
+
+외부 셸에서 UI 키트 Toolbar로 Scheduler 헤더를 렌더링합니다.
+
+~~~js
+scheduler.plugins({ toolbar: true });
+~~~
+
+#### 관련 리소스
+
+문서: [Toolbar](guides/toolbar.md)
+
+API: [header](api/config/header.md)
+
+## Sidebar
+
+미니 캘린더, 이벤트 그룹 목록 또는 애플리케이션 콘텐츠가 있는 측면 패널을 렌더링합니다.
+
+~~~js
+scheduler.plugins({ sidebar: true });
+~~~
+
+#### 관련 리소스
+
+문서: [Sidebar](guides/sidebar.md)
+
+API: [sidebar](api/config/sidebar.md)
+
 :::info
 v6.0 버전에서 확장 기능 코드 파일은 스케줄러 코드베이스의 **ext** 폴더에서 제거되었고 *dhtmlxscheduler.js* 파일에 포함되었습니다.
 

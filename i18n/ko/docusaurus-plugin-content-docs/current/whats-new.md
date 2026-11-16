@@ -7,6 +7,18 @@ sidebar_label: "새로운 기능"
 
 오래된 버전의 Scheduler를 업데이트하는 경우, 자세한 내용은 [이전 버전에서의 마이그레이션](migration.md)을 확인하십시오.
 
+## 8.0
+
+### 새로운 기능
+
+- 선택형 [Sidebar 플러그인](guides/sidebar.md)을 추가했습니다. [scheduler.config.sidebar](api/config/sidebar.md)로 설정하며 캘린더 양쪽에 내장 `minicalendar`와 `event_groups` 항목, 사용자 지정 컨테이너를 렌더링하고 [scheduler.ext.sidebar](api/other/sidebar.md)로 런타임 제어를 제공합니다.
+- Sidebar는 도킹/접힘 상태를 지원하고 설정된 `overlay_width` 아래에서 오버레이가 될 수 있습니다. 오버레이 모드는 Scheduler 레이아웃 너비를 사용하며 표시되는 `toggle_sidebar` Toolbar 항목이 필요합니다. 토글이 없으면 패널은 도킹 상태를 유지합니다.
+
+### 호환되지 않는 변경 사항
+
+- 이벤트 렌더링은 이제 `(id, event)` 시그니처의 [onBeforeEventDisplay](api/event/onbeforeeventdisplay.md)를 사용합니다. v7.2에서 `showEvent()` 수명 주기의 `onBeforeEventDisplay(event, view)`를 사용한 코드는 [onBeforeEventShow](api/event/onbeforeeventshow.md)를 사용해야 합니다.
+- 이전 `onAfterEventDisplay(event, view)` 수명 주기 이벤트는 [onAfterEventShow](api/event/onaftereventshow.md)로 변경되었습니다. [v7.2에서 v8.0으로의 마이그레이션 가이드](migration.md#event-display-and-showevent-lifecycle-events)를 참조하세요.
+
 ## 7.2.13
 -------------
 <span class='release_date'>2026년 3월 31일. 버그 수정 릴리스</span>

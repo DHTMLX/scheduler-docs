@@ -5,6 +5,45 @@ sidebar_label: "Migration von älteren Versionen"
 
 # Migration von älteren Versionen
 
+## 7.2 -> 8.0
+
+### Ereignisanzeige und Lebenszyklusereignisse von `showEvent()` {#event-display-and-showevent-lifecycle-events}
+
+Die Ereignisnamen unterscheiden nun das Filtern beim Rendern vom Lebenszyklus der Methode [showEvent](api/method/showevent.md):
+
+- `onBeforeEventDisplay` ist nun das Render-Prädikat und empfängt `(id, event)`. Vorhandene Handler `onBeforeEventDisplay(event, view)` für `showEvent()` müssen in [onBeforeEventShow](api/event/onbeforeeventshow.md) umbenannt werden. Die Argumente bleiben `(event, view)`.
+- `onAfterEventDisplay(event, view)` wurde in [onAfterEventShow](api/event/onaftereventshow.md) umbenannt. Die Argumente bleiben `(event, view)`.
+
+## Toolbar-Plug-in
+
+`toolbar: true` ist optional. Es führt `.dhx_scheduler_shell` um einen inneren Kalender ein und rendert Steuerelemente in `.dhx_scheduler_toolbar`. Aktualisieren Sie CSS-Selektoren wie `#scheduler > .dhx_cal_*`, die im Toolbar-Modus keine direkten Kinder mehr treffen. Scheduler ohne Plug-in und der permanente Markup-Fallback behalten das Legacy-DOM. Enthält der Initialisierungs-Host vollständiges Scheduler-Markup, verwenden Toolbar und Sidebar diesen Fallback: Es wird keine Shell, Toolbar oder Sidebar gerendert.
+
+### Zuordnung der CSS-Selektoren
+
+| Legacy-Navigationsselektor | Toolbar-Ersatz |
+| --- | --- |
+| `.dhx_cal_navline`, `.dhx_cal_navline_flex` | `.dhx_scheduler_toolbar`; die Legacy-Flex-Breakpoints gelten nicht |
+| `.dhx_cal_prev_button`, `.dhx_cal_next_button`, `.dhx_cal_today_button` | `.dhx_scheduler_toolbar [data-item-id="prev"]`, `[data-item-id="next"]`, `[data-item-id="today"]` |
+| `.dhx_cal_date` | `.dhx_scheduler_toolbar [data-item-id="date"]` |
+| `.dhx_cal_tab`, `.dhx_cal_tab_first`, `.dhx_cal_tab_last`, `.dhx_cal_tab_standalone`, `.dhx_cal_tab_segmented` | `[data-item-id="views"]` oder das einzelne Ansichtselement; Legacy-Tabklassen haben keine Toolbar-Entsprechung |
+| `.dhx_cal_nav_button`, `.dhx_cal_nav_button_custom`, `.dhx_cal_nav_content` | `data-item-id` des konfigurierten Elements; verwenden Sie die `css`-Option für Anwendungsklassen |
+| `.dhx_cal_line_spacer` | `[data-item-id="spacer"]` oder eine Toolbar-`spacer`-Komponente |
+| `.dhx_cal_navbar_rows_container`, `.dhx_cal_navbar_row` | Toolbar-Gruppen aus `rows` und `cols`; keine öffentliche Klassenentsprechung |
+
+Toolbar berücksichtigt weiterhin `--dhx-scheduler-toolbar-height` als Mindesthöhe, `--dhx-scheduler-navline-font-color` für Textfarbe und `--dhx-scheduler-important-font-weight` für Schriftstärke. Schmale Toolbar-Elemente umbrechen; der Legacy-Breakpoint für kleinere Schaltflächen entfällt. Jede Toolbar ist ein Tabstopp, Pfeil-, Pos1- und Ende-Tasten bewegen zwischen ihren Elementen.
+
+Beispiel für die Migration einer Navigationsregel:
+
+~~~css
+/* legacy */
+.dhx_cal_prev_button { color: #1565c0; }
+
+/* Toolbar */
+.dhx_scheduler_toolbar [data-item-id="prev"] { color: #1565c0; }
+~~~
+
+Toolbar akzeptiert alle vorhandenen `config.header`-Formen. Neue Anwendungen können `add_event`, `views`, `toggle_sidebar`, `"|"` und UI-Kit-Elementobjekte verwenden. Behalten Sie bei einem Legacy-Header `{ html, click }` unverändert und fügen Sie kein `id` hinzu. Verwenden Sie `{ id, comp: "container" }` nur für neue leere Hosts und füllen Sie diese in `onToolbarItemRender`.
+
 ## 7.1 -> 7.2
 
 Das Update auf v7.2 bringt Änderungen an einigen Standardeinstellungen mit sich.

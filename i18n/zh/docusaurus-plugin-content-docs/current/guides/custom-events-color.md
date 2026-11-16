@@ -135,72 +135,29 @@ scheduler.templates.event_class = function (start, end, event) {
 
 ## 使用数据加载颜色
 
-如果颜色是来自后端数据的一部分，例如任务颜色与阶段相关，或分配给任务的资源无法在页面上硬编码，那么手动从数据生成样式可能是一个不错的解决方法。
-
-设想你拥有以下可分配给任务的用户集合。任务样式应由用户记录的属性来定义：
+若颜色来自后端，请使用事件组，而不是生成样式表。组集合可描述人员、阶段、资源或任何其他事件类别。
 
 ~~~js
 [
-    {"key":1, "label":"John", "backgroundColor":"#03A9F4", "textColor":"#FFF"},
-    {"key":2, "label":"Mike", "backgroundColor":"#f57730", "textColor":"#FFF"},
-    {"key":3, "label":"Anna", "backgroundColor":"#e157de", "textColor":"#FFF"},
-    {"key":4, "label":"Bill", "backgroundColor":"#78909C", "textColor":"#FFF"},
-    {"key":7, "label":"Floe", "backgroundColor":"#8D6E63", "textColor":"#FFF"}
+    {"key":1, "label":"John", "color":"#03A9F4", "textColor":"#FFF"},
+    {"key":2, "label":"Mike", "color":"#f57730", "textColor":"#FFF"}
 ]
 ~~~
 
-在此用例中，用户及其颜色由应用程序的不同部分创建和管理，调度器通常事先并不知道用户 ID 及其颜色。
-
-在这种情况下你可以这样做：
-
-- 为此集合定义一个命名的 serverList
+只需配置一次集合和事件属性。可将 JSON 中收到的集合传给 `parse()`，后续更新使用 `updateCollection()`。
 
 ~~~js
-scheduler.serverList("people");
-~~~
-
-- 将选项加载到页面，可以使用受支持的 [数据格式](guides/data-formats.md#json-with-collections) 之一，或通过自定义 xhr 手动加载
-
-- 选项加载完成后，你可以从数据生成 CSS 样式：
-
-~~~js
-scheduler.attachEvent("onLoadEnd", function(){
-    // 为样式元素使用一个任意的 id
-    const styleId = "dynamicSchedulerStyles";
- 
-    // 如果你将重新加载带颜色的选项 - 重用之前创建的样式元素
- 
-    let element = document.getElementById(styleId);
-    if(!element){
-        element = document.createElement("style");
-        element.id = styleId;
-        document.querySelector("head").appendChild(element);
-    }
-    let html = [];
-    const resources = scheduler.serverList("people");
- 
-    // 为每个选项生成 css 样式并写入到样式元素中
- 
-    resources.forEach(function(r){
-        html.push(`.event_resource_${r.key} {
-            --dhx-scheduler-event-background:${r.backgroundColor};
-            --dhx-scheduler-event-color:${r.textColor};
-        }`);
-    });
-    element.innerHTML = html.join("");
+scheduler.config.event_groups = { list: "people", property: "owner_id" };
+scheduler.init("scheduler_here");
+scheduler.parse({
+    data: [{ id: 1, text: "Task", start_date: "2027-05-21 09:00", end_date: "2027-05-21 10:00", owner_id: 1 }],
+    collections: { people: [{ key: 1, label: "John", color: "#03A9F4", textColor: "#FFF" }] }
 });
+
+// Replaces colors and labels from a later server response.
+scheduler.updateCollection("people", [
+    { key: 1, label: "John", color: "#1565c0", textColor: "#fff" }
+]);
 ~~~
 
-- 之后你就可以将从模板生成的相关类分配给事件了：
-
-~~~js
-scheduler.templates.event_class = function (start, end, event) {
-    let css = [];
- 
-    if(task.owner_id){
-        css.push("event_resource_" + event.owner_id);
-    }
- 
-    return css.join(" ");
-};
-~~~
+Scheduler 独立解析背景色和文本颜色。事件的 `color` 或 `textColor` 优先，其次是设置相关事件变量的 CSS 规则，然后是事件组颜色，最后是活动主题。如果样式不仅取决于集合值，请保留 `event_class` CSS 规则。

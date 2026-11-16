@@ -9,6 +9,34 @@ dhtmlxScheduler includes a number of extensions which add extra functionality to
 
 To use an extension, activate it with the [`plugins()`](api/method/plugins.md) method.
 
+## Toolbar
+
+Renders the Scheduler header through the UI-kit Toolbar in an external shell.
+
+~~~js
+scheduler.plugins({ toolbar: true });
+~~~
+
+#### Related resources
+
+Article: [Toolbar](guides/toolbar.md)
+
+API: [header](api/config/header.md)
+
+## Sidebar
+
+Renders a side panel with a Mini Calendar, event-group list, or application content.
+
+~~~js
+scheduler.plugins({ sidebar: true });
+~~~
+
+#### Related resources
+
+Article: [Sidebar](guides/sidebar.md)
+
+API: [sidebar](api/config/sidebar.md)
+
 :::info
 In v6.0, the extensions code files were removed from the **ext** folder of the scheduler's codebase and included into the *dhtmlxscheduler.js* file.
 

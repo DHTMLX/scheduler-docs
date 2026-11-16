@@ -33,7 +33,7 @@ scheduler.showEvent(someId);
 ### Details
 
 - Die Standard-View-Namen sind 'day', 'week' und 'month'. Um eine andere Ansicht zu verwenden, geben Sie deren **Name** als Parameter an.
-- Diese Methode löst die Events [onBeforeEventDisplay](api/event/onbeforeeventdisplay.md) und [onAfterEventDisplay](api/event/onaftereventdisplay.md) aus.
+- Diese Methode löst die Events [onBeforeEventShow](api/event/onbeforeeventshow.md) und [onAfterEventShow](api/event/onaftereventshow.md) aus.
 
 
 Zum Beispiel können Sie nach dem programmatischen Hinzufügen eines neuen Events dieses so im Scheduler anzeigen:

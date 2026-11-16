@@ -5,6 +5,55 @@ sidebar_label: "Migration From Older Versions"
 
 # Migration From Older Versions 
 
+## 7.2 -> 8.0
+
+### Event display and `showEvent()` lifecycle events
+
+The event names now distinguish filtering events during rendering from the lifecycle of the [showEvent](api/method/showevent.md) method:
+
+- `onBeforeEventDisplay` is now the rendering predicate and receives `(id, event)`. Existing `onBeforeEventDisplay(event, view)` handlers that run for `showEvent()` must be renamed to [onBeforeEventShow](api/event/onbeforeeventshow.md). The arguments remain `(event, view)`.
+- `onAfterEventDisplay(event, view)` has been renamed to [onAfterEventShow](api/event/onaftereventshow.md). The arguments remain `(event, view)`.
+
+## Toolbar plug-in
+
+`toolbar: true` is opt-in. It introduces `.dhx_scheduler_shell` around an
+inner calendar and renders controls in `.dhx_scheduler_toolbar`. Update CSS
+selectors such as `#scheduler > .dhx_cal_*`, which no longer match direct
+children in Toolbar mode. Plugin-off Scheduler and permanent markup fallback
+retain the legacy DOM. If the init host already contains complete Scheduler
+markup, Toolbar and Sidebar take that fallback: no shell, Toolbar, or Sidebar
+is rendered.
+
+### CSS selector mapping
+
+| Legacy navigation selector | Toolbar replacement |
+| --- | --- |
+| `.dhx_cal_navline`, `.dhx_cal_navline_flex` | `.dhx_scheduler_toolbar`; the legacy flex breakpoints do not apply |
+| `.dhx_cal_prev_button`, `.dhx_cal_next_button`, `.dhx_cal_today_button` | `.dhx_scheduler_toolbar [data-item-id="prev"]`, `[data-item-id="next"]`, `[data-item-id="today"]` |
+| `.dhx_cal_date` | `.dhx_scheduler_toolbar [data-item-id="date"]` |
+| `.dhx_cal_tab`, `.dhx_cal_tab_first`, `.dhx_cal_tab_last`, `.dhx_cal_tab_standalone`, `.dhx_cal_tab_segmented` | `[data-item-id="views"]` or the individual view item; the legacy tab classes have no Toolbar equivalent |
+| `.dhx_cal_nav_button`, `.dhx_cal_nav_button_custom`, `.dhx_cal_nav_content` | `data-item-id` on the configured item; use the item's `css` option for application classes |
+| `.dhx_cal_line_spacer` | `[data-item-id="spacer"]` or a Toolbar `spacer` component |
+| `.dhx_cal_navbar_rows_container`, `.dhx_cal_navbar_row` | Toolbar groups from `rows` and `cols`; no public class equivalent |
+
+The Toolbar continues to honor `--dhx-scheduler-toolbar-height` as a minimum height, `--dhx-scheduler-navline-font-color` for text color, and `--dhx-scheduler-important-font-weight` for font weight. Narrow Toolbar items wrap to another line; the legacy smaller-button breakpoint is gone. Each Toolbar is one Tab stop, and Arrow, Home, and End move through its items.
+
+For example, migrate a navigation-button rule like this:
+
+~~~css
+/* legacy */
+.dhx_cal_prev_button { color: #1565c0; }
+
+/* Toolbar */
+.dhx_scheduler_toolbar [data-item-id="prev"] { color: #1565c0; }
+~~~
+
+The Toolbar accepts all existing `config.header` forms. New applications can
+use `add_event`, `views`, `toggle_sidebar`, `"|"`, and UI-kit item objects.
+When migrating a legacy custom header, keep `{ html, click }` items unchanged;
+do not add `id` to them. Use `{ id, comp: "container" }` only for new empty
+hosts and populate it in `onToolbarItemRender`.
+
 ## 7.1 -> 7.2
 
 The v7.2 update changes several default settings.

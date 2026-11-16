@@ -44,7 +44,7 @@ Use it as a reference after [Overview](integrations/vue/overview.md) or [Quick S
     <tr>
       <td>`plugins`</td>
       <td>`SchedulerPlugins`</td>
-      <td>Enables Scheduler plugins such as `recurring`, `collision`, `timeline`, `units`, `tooltip`, `quick_info`, etc. Pass as `{ recurring: true, collision: true }`.</td>
+      <td>Enables Scheduler plugins such as `toolbar`, `sidebar`, `recurring`, `collision`, `timeline`, `units`, `tooltip`, and `quick_info`. Pass layout plugins as `{ toolbar: true, sidebar: true }`.</td>
     </tr>
     <tr>
       <td>`data`</td>
@@ -102,6 +102,16 @@ Use it as a reference after [Overview](integrations/vue/overview.md) or [Quick S
       <td>Custom Vue event editor component.</td>
     </tr>
     <tr>
+      <td>`toolbarComponents`</td>
+      <td>`Record&lt;string, VNode | null | undefined&gt;`</td>
+      <td>Renders Vue VNodes in matching `{ id, comp: "container" }` Toolbar items.</td>
+    </tr>
+    <tr>
+      <td>`sidebarComponents`</td>
+      <td>`Record&lt;string, VNode | null | undefined&gt;`</td>
+      <td>Renders Vue VNodes in matching custom Sidebar items.</td>
+    </tr>
+    <tr>
       <td>`templateWrapper`</td>
       <td>`(node: VNode) => VNode`</td>
       <td>Wraps template Vue elements with app-level providers (for example, a ThemeProvider) to avoid flicker during server-side render.</td>
@@ -113,6 +123,51 @@ Use it as a reference after [Overview](integrations/vue/overview.md) or [Quick S
     </tr>
   </tbody>
 </table>
+
+## Toolbar and Sidebar components
+
+Enable the layout plug-ins, add custom item IDs to the configuration, and map those IDs to Vue VNodes. The wrapper teleports each VNode into the corresponding Scheduler-owned item node.
+
+```vue
+<script setup lang="ts">
+import { computed, h } from "vue";
+import Status from "./Status.vue";
+import Legend from "./Legend.vue";
+
+const config = {
+  header: [
+    "toggle_sidebar",
+    { id: "status", comp: "container" },
+    "spacer", "prev", "date", "next", "views"
+  ],
+  sidebar: {
+    items: ["minicalendar", { id: "legend" }]
+  }
+};
+
+const toolbarComponents = computed(() => ({
+  status: h(Status, { label: "Ready" })
+}));
+const sidebarComponents = computed(() => ({
+  legend: h(Legend)
+}));
+</script>
+
+<template>
+  <VueScheduler
+    :plugins="{ toolbar: true, sidebar: true }"
+    :config="config"
+    :toolbar-components="toolbarComponents"
+    :sidebar-components="sidebarComponents"
+  />
+</template>
+```
+
+Toolbar components require `{ id, comp: "container" }`; Sidebar custom items require `{ id }`. The map key is the item ID converted to a string. Duplicate IDs receive separate teleports and component state.
+
+Equivalent layout renders keep the host node and component state. Reactive component maps update props without reinitializing Scheduler. Set a mapped value to `null`, remove the item, or unmount Scheduler to dispose the Vue component.
+
+Reactive `config` changes can update `header`, `sidebar`, and `event_groups` after initialization. The wrapper synchronizes the changed keys and renders the existing Scheduler instance rather than calling `init()` again.
 
 ## Data Collections And Synchronization
 

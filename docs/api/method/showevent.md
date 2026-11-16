@@ -33,7 +33,7 @@ scheduler.showEvent(someId);
 ### Details
 
 - The names for default views are 'day', 'week', 'month'. To specify any other view - use its **name** parameter.
-- The method invokes the [onBeforeEventDisplay](api/event/onbeforeeventdisplay.md) and [onAfterEventDisplay](api/event/onaftereventdisplay.md) events.
+- The method invokes the [onBeforeEventShow](api/event/onbeforeeventshow.md) and [onAfterEventShow](api/event/onaftereventshow.md) events.
 
 
 For example, you programmatically add a new event and want to show it in the scheduler:

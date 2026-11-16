@@ -5,6 +5,45 @@ sidebar_label: "Migration From Older Versions"
 
 # Migration From Older Versions 
 
+## 7.2 -> 8.0
+
+### Отображение событий и жизненный цикл `showEvent()` {#event-display-and-showevent-lifecycle-events}
+
+Названия событий теперь отличают фильтрацию во время отрисовки от жизненного цикла метода [showEvent](api/method/showevent.md):
+
+- `onBeforeEventDisplay` теперь является предикатом отрисовки и получает `(id, event)`. Существующие обработчики `onBeforeEventDisplay(event, view)` для `showEvent()` следует переименовать в [onBeforeEventShow](api/event/onbeforeeventshow.md). Аргументы остаются `(event, view)`.
+- `onAfterEventDisplay(event, view)` переименовано в [onAfterEventShow](api/event/onaftereventshow.md). Аргументы не меняются.
+
+## Плагин Toolbar
+
+`toolbar: true` включается явно. Он создает `.dhx_scheduler_shell` вокруг внутреннего календаря и выводит элементы в `.dhx_scheduler_toolbar`. Обновите CSS-селекторы вроде `#scheduler > .dhx_cal_*`, которые в режиме Toolbar больше не соответствуют прямым дочерним узлам. Scheduler без плагина и постоянный резервный вариант разметки сохраняют устаревший DOM. Если хост инициализации содержит полную разметку Scheduler, Toolbar и Sidebar используют этот вариант: оболочка, Toolbar и Sidebar не выводятся.
+
+### Соответствие CSS-селекторов
+
+| Устаревший селектор навигации | Замена Toolbar |
+| --- | --- |
+| `.dhx_cal_navline`, `.dhx_cal_navline_flex` | `.dhx_scheduler_toolbar`; устаревшие flex-брейкпоинты не применяются |
+| `.dhx_cal_prev_button`, `.dhx_cal_next_button`, `.dhx_cal_today_button` | `.dhx_scheduler_toolbar [data-item-id="prev"]`, `[data-item-id="next"]`, `[data-item-id="today"]` |
+| `.dhx_cal_date` | `.dhx_scheduler_toolbar [data-item-id="date"]` |
+| `.dhx_cal_tab`, `.dhx_cal_tab_first`, `.dhx_cal_tab_last`, `.dhx_cal_tab_standalone`, `.dhx_cal_tab_segmented` | `[data-item-id="views"]` или отдельный элемент представления; эквивалента устаревших классов нет |
+| `.dhx_cal_nav_button`, `.dhx_cal_nav_button_custom`, `.dhx_cal_nav_content` | `data-item-id` настроенного элемента; для классов приложения используйте `css` |
+| `.dhx_cal_line_spacer` | `[data-item-id="spacer"]` или компонент Toolbar `spacer` |
+| `.dhx_cal_navbar_rows_container`, `.dhx_cal_navbar_row` | группы Toolbar из `rows` и `cols`; публичного класса-эквивалента нет |
+
+Toolbar продолжает учитывать `--dhx-scheduler-toolbar-height` как минимальную высоту, `--dhx-scheduler-navline-font-color` как цвет текста и `--dhx-scheduler-important-font-weight` как насыщенность. Узкие элементы переносятся; устаревший брейкпоинт уменьшенных кнопок удален. Каждая Toolbar — одна точка Tab, а стрелки, Home и End перемещают между элементами.
+
+Пример миграции правила навигационной кнопки:
+
+~~~css
+/* legacy */
+.dhx_cal_prev_button { color: #1565c0; }
+
+/* Toolbar */
+.dhx_scheduler_toolbar [data-item-id="prev"] { color: #1565c0; }
+~~~
+
+Toolbar принимает все существующие формы `config.header`. Новые приложения могут использовать `add_event`, `views`, `toggle_sidebar`, `"|"` и объекты UI kit. При миграции оставьте `{ html, click }` без изменений и не добавляйте `id`. Используйте `{ id, comp: "container" }` только для новых пустых хостов и заполняйте их в `onToolbarItemRender`.
+
 ## 7.1 -> 7.2
 
 Обновление до версии 7.2 вносит изменения в некоторые значения по умолчанию.
