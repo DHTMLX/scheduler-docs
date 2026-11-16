@@ -5,6 +5,8 @@ sidebar_label: "Agenda View Templates"
 
 # Agenda View Templates
 
+![agenda_view_templates](/img/agenda_view_templates.png)
+
 *If you use dhtmlxScheduler 6.0 or earlier, see details [here](views/agenda-view-templates-legacy.md).
 
 - [agenda_date](api/template/agenda_date.md) - the date in the header of the view

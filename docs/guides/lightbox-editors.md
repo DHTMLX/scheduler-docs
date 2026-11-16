@@ -7,7 +7,7 @@ sidebar_label: "Lightbox Controls"
 
 Lightbox is an edit form used to alter the event's details. The default lightbox is presented in the image below.
 
-![lightbox](/img/lightbox.png)
+![lightbox](/img/standard_form.png)
 
 ## Lightbox Structure
 
@@ -16,7 +16,7 @@ The structure of the lightbox is specified by the **sections** property of the [
 
 ~~~js
 //default lightbox definition
-scheduler.config.lightbox.sections="["
+scheduler.config.lightbox.sections = [
     {name:"description", height:200, map_to:"text", type:"textarea" , focus:true},
     {name:"time", height:72, type:"time", map_to:"auto"}
 ];

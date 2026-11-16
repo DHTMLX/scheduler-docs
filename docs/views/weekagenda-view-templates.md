@@ -5,7 +5,7 @@ sidebar_label: "WeekAgenda View Templates"
 
 # WeekAgenda View Templates
 
-![view_templates_week_agenda](/img/view_templates_week_agenda.png)
+![view_templates_week_agenda](/img/weekAgenda_view_templates.png)
 
 - [week_agenda_event_text](api/template/week_agenda_event_text.md) - specifies the event text
 - [week_agenda_scale_date](api/template/week_agenda_scale_date.md) - the date of a day cell of the view

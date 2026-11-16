@@ -45,19 +45,21 @@ and coloring the event's duration into orange color.*
 Then, here is the code you should use:
 
 ~~~js
-scheduler.attachEvent("onTemplatesReady", function(){
-    scheduler.templates.event_header = function(start,end,ev){
-        if (event.important == true){
-            return ("<img src='red_check.png'/> <b style='color:#F08080'>"+
-                scheduler.templates.event_date(start)+" - "+
-        } else {
-            return(scheduler.templates.event_date(start)+" - "+
-            scheduler.templates.event_date(end))
-        }
-    };
+scheduler.attachEvent("onTemplatesReady", function () {
+	scheduler.templates.event_header = function (start, end, ev) {
+		if (event.important) {
+			return `<div class="customHeader">
+						<img src='red_check.png'/>
+						<b>${scheduler.templates.event_date(start)} - ${scheduler.templates.event_date(end)}</b>
+					</div>`
+		} else {
+			return (scheduler.templates.event_date(start) + " - " +
+				scheduler.templates.event_date(end))
+		}
+	};
 }); 
 ...
-scheduler.init('scheduler_here', new Date(2019, 6, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 6, 5), "week");
 ~~~
 
 
@@ -80,13 +82,11 @@ scheduler.templates.event_text = function(start,end,ev){
 Then, here is the code you should use:
 
 ~~~js
-scheduler.attachEvent("onTemplatesReady", function(){
-    scheduler.templates.event_text="function(start,end,event){"
-        return "<b>" + event.text + "</b>
-
-<i>" + event.location + "</i>";
+scheduler.attachEvent("onTemplatesReady", function() {
+    scheduler.templates.event_text = function(start,end,event) {
+        return `<b>${event.text}</b><br><i>${event.location}</i>`;
     }
 }); 
 ...
-scheduler.init('scheduler_here', new Date(2019, 6, 5), "week");
+scheduler.init('scheduler_here', new Date(2027, 6, 5), "week");
 ~~~

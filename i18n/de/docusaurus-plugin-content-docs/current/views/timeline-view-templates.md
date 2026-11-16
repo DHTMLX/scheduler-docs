@@ -5,10 +5,7 @@ sidebar_label: "Timeline-Ansichtsvorlagen"
 
 # Timeline-Ansichtsvorlagen
 
-![timeline_view_templates_01](/img/timeline_view_templates_01.png)
-
-
-![timeline_view_templates_02](/img/timeline_view_templates_02.png)
+![timeline_view_templates](/img/timeline_view_templates.png)
 
 - [event_bar_text](api/template/event_bar_text.md) - zeigt den Text innerhalb eines Ereignisses an
 - [event_class](api/template/event_class.md) - definiert den CSS-Stil für den Ereignis-Container
