@@ -8,6 +8,19 @@ sidebar_label: "What's New"
 If you are updating Scheduler from an older version, check [Migration From Older Versions](migration.md) for details.
 
 
+7.2.16
+-------------
+<span class='release_date'>November 26, 2026. Bugfix release</span>
+
+### Fixes
+
+- Fix the issue where an event that crossed a daylight saving time change got an extra hour added to its end date
+- Fix the issue where dragging an event across a daylight saving time change in the [Month view](views/month.md) made the event one day longer
+- Fix the incorrect drag of events across a daylight saving time change in the [Week](views/week.md) and [Timeline](views/timeline.md) views
+- Fix the incorrect display of full-day events on a daylight saving time change day in time zones where that day is 23 hours long
+- Fix the issue where creating an event on a daylight saving time change day with the [mini calendar in the lightbox](guides/minicalendar.md#in-the-lightbox) shifted the event time by one hour
+
+
 7.2.15
 -------------
 <span class='release_date'>August 17, 2026. Bugfix release</span>
